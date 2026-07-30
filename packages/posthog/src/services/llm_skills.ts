@@ -185,10 +185,6 @@ export interface LLMSkillCreateOutput {
   name?: string;
   /** What this skill does and when to use it. Max 4096 characters. */
   description?: string;
-  /** Total length of the full body in characters, independent of any body_offset/body_length paging. Compare against the length of the returned body to detect a truncated response. */
-  body_total_length?: number;
-  /** When body_length paging stops before the end of the body, the character offset to request next (pass as body_offset). Null when the returned body reaches the end. */
-  body_next_offset?: number | null;
   /** The SKILL.md instruction content (markdown). */
   body?: string;
   /** License name or reference to a bundled license file. */
@@ -218,8 +214,6 @@ export const LLMSkillCreateOutput = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     name: S.optional(S.String),
     description: S.optional(S.String),
-    body_total_length: S.optional(S.Number),
-    body_next_offset: S.optional(S.NullOr(S.Number)),
     body: S.optional(S.String),
     license: S.optional(S.String),
     compatibility: S.optional(S.String),
@@ -279,23 +273,17 @@ export const LLMSkillMetadataMap = /*@__PURE__*/ S.Record(
 export interface LLMSkillFileManifest {
   path?: string;
   content_type?: string;
-  /** Number of lines in the file content. */
-  line_count?: number;
-  /** Number of characters in the file content. */
-  char_count?: number;
 }
 export const LLMSkillFileManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     content_type: S.optional(S.String),
-    line_count: S.optional(S.Number),
-    char_count: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "LLMSkillFileManifest",
 }) as any as S.Schema<LLMSkillFileManifest>;
 
-/** Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
+/** Bundled files manifest. Each entry is path + content_type only; fetch content via /llm_skills/name/{name}/files/{path}/. */
 export type LLMSkillFilesList = Array<LLMSkillFileManifest>;
 export const LLMSkillFilesList = /*@__PURE__*/ S.Array(
   LLMSkillFileManifest,
@@ -313,10 +301,6 @@ export interface LLMSkill {
   name?: string;
   /** What this skill does and when to use it. Max 4096 characters. */
   description?: string;
-  /** Total length of the full body in characters, independent of any body_offset/body_length paging. Compare against the length of the returned body to detect a truncated response. */
-  body_total_length?: number;
-  /** When body_length paging stops before the end of the body, the character offset to request next (pass as body_offset). Null when the returned body reaches the end. */
-  body_next_offset?: number | null;
   /** The SKILL.md instruction content (markdown). */
   body?: string;
   /** License name or reference to a bundled license file. */
@@ -329,7 +313,7 @@ export interface LLMSkill {
   metadata?: LLMSkillMetadataMap;
   /** Server-owned classification — set by the producing system (the Signals harness stamps "scout"), not writable via the API. Empty for an ordinary skill. Groups skills into their own surface (e.g. the Scouts tab) independently of the skill name. */
   category?: string;
-  /** Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/. */
+  /** Bundled files manifest. Each entry is path + content_type only; fetch content via /llm_skills/name/{name}/files/{path}/. */
   files?: LLMSkillFilesList;
   /** Flat list of markdown headings parsed from the skill body. Useful as a lightweight table of contents. */
   outline?: LLMSkillOutlineList;
@@ -348,8 +332,6 @@ export const LLMSkill = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     name: S.optional(S.String),
     description: S.optional(S.String),
-    body_total_length: S.optional(S.Number),
-    body_next_offset: S.optional(S.NullOr(S.Number)),
     body: S.optional(S.String),
     license: S.optional(S.String),
     compatibility: S.optional(S.String),
@@ -932,10 +914,6 @@ export interface LlmSkillsNameRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   skill_name: string;
-  /** Maximum number of characters of the body to return starting at body_offset. Omit to return the whole body from the offset onwards. When the slice stops before the end, body_next_offset is the offset to request next. */
-  body_length?: number;
-  /** Zero-based character offset to start the returned body from. Use with body_length to page through a large body that a client would otherwise truncate. Compare the returned body length against body_total_length to detect truncation, then re-fetch from body_next_offset. Defaults to 0 (start of body). */
-  body_offset?: number;
   /** Specific skill version to fetch. If omitted, the latest version is returned. */
   version?: number;
 }
@@ -943,8 +921,6 @@ export const LlmSkillsNameRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_name: S.String.pipe(T.Label()),
-    body_length: S.optional(S.Number.pipe(T.Query())),
-    body_offset: S.optional(S.Number.pipe(T.Query())),
     version: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1030,102 +1006,6 @@ export const LLMSkillResolveResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LLMSkillResolveResponse",
 }) as any as S.Schema<LLMSkillResolveResponse>;
-
-export interface LlmSkillsSearchRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Case-insensitive substring to search across ordinary skill names, descriptions, bodies, file paths, and Markdown file contents. */
-  query: string;
-}
-export const LlmSkillsSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    query: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/llm_skills/search/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LlmSkillsSearchRetrieveRequest",
-}) as any as S.Schema<LlmSkillsSearchRetrieveRequest>;
-
-/** * `name` - name * `description` - description * `body` - body * `file_path` - file_path * `file_content` - file_content */
-export type MatchedFieldEnum =
-  | "name"
-  | "description"
-  | "body"
-  | "file_path"
-  | "file_content";
-export const MatchedFieldEnum = /*@__PURE__*/ S.String;
-
-export interface LLMSkillSearchMatch {
-  /** Skill field that matched the search query. * `name` - name * `description` - description * `body` - body * `file_path` - file_path * `file_content` - file_content */
-  matched_field: MatchedFieldEnum;
-  /** Skill-relative file path for body or bundled-file matches. Omitted for name and description matches. */
-  path?: string;
-  /** One-based line containing the match when the result came from a body or bundled file. */
-  line?: number;
-  /** Short excerpt showing why this skill matched. */
-  excerpt: string;
-}
-export const LLMSkillSearchMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matched_field: MatchedFieldEnum,
-    path: S.optional(S.String),
-    line: S.optional(S.Number),
-    excerpt: S.String,
-  }),
-).annotate({
-  identifier: "LLMSkillSearchMatch",
-}) as any as S.Schema<LLMSkillSearchMatch>;
-
-/** Up to two locations that matched the search query, ordered by field relevance. */
-export type LLMSkillSearchResultMatchesList = Array<LLMSkillSearchMatch>;
-export const LLMSkillSearchResultMatchesList = /*@__PURE__*/ S.Array(
-  LLMSkillSearchMatch,
-) as any as S.Schema<LLMSkillSearchResultMatchesList>;
-
-export interface LLMSkillSearchResult {
-  /** Unique skill name. */
-  name: string;
-  /** What this skill does and when to use it. */
-  description: string;
-  /** Up to two locations that matched the search query, ordered by field relevance. */
-  matches: LLMSkillSearchResultMatchesList;
-}
-export const LLMSkillSearchResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.String,
-    matches: LLMSkillSearchResultMatchesList,
-  }),
-).annotate({
-  identifier: "LLMSkillSearchResult",
-}) as any as S.Schema<LLMSkillSearchResult>;
-
-/** Matching ordinary skills in relevance order. */
-export type LLMSkillSearchResponseResultsList = Array<LLMSkillSearchResult>;
-export const LLMSkillSearchResponseResultsList = /*@__PURE__*/ S.Array(
-  LLMSkillSearchResult,
-) as any as S.Schema<LLMSkillSearchResponseResultsList>;
-
-export interface LLMSkillSearchResponse {
-  /** Number of matching skills returned, capped at 10. */
-  count: number;
-  /** Matching ordinary skills in relevance order. */
-  results: LLMSkillSearchResponseResultsList;
-}
-export const LLMSkillSearchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    results: LLMSkillSearchResponseResultsList,
-  }),
-).annotate({
-  identifier: "LLMSkillSearchResponse",
-}) as any as S.Schema<LLMSkillSearchResponse>;
 
 export type LlmSkillsCreateError = PosthogOpError;
 export const llmSkillsCreate: API.OperationMethod<
@@ -1334,20 +1214,6 @@ export const llmSkillsResolveNameRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmSkillsResolveNameRetrieveRequest,
   output: LLMSkillResolveResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LlmSkillsSearchRetrieveError = PosthogOpError;
-export const llmSkillsSearchRetrieve: API.OperationMethod<
-  LlmSkillsSearchRetrieveRequest,
-  LLMSkillSearchResponse,
-  LlmSkillsSearchRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LlmSkillsSearchRetrieveRequest,
-  output: LLMSkillSearchResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

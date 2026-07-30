@@ -78,18 +78,18 @@ export const AssetList = /*@__PURE__*/ S.suspend(() =>
 
 /** A request to add assets to a group. */
 export interface AddAssetsToGroupRequest {
-  /** Optional. When this value is set to `false` and one of the given assets is already an existing member of the group, the operation fails with an `Already Exists` error. When set to `true` this situation is silently ignored by the server. Default value is `false`. */
-  allowExisting?: boolean;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. List of assets to be added. The maximum number of assets that can be added in a single request is 2000. */
   assets?: AssetList;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. When this value is set to `false` and one of the given assets is already an existing member of the group, the operation fails with an `Already Exists` error. When set to `true` this situation is silently ignored by the server. Default value is `false`. */
+  allowExisting?: boolean;
 }
 export const AddAssetsToGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allowExisting: S.optional(S.Boolean),
-    requestId: S.optional(S.String),
     assets: S.optional(AssetList),
+    requestId: S.optional(S.String),
+    allowExisting: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "AddAssetsToGroupRequest",
@@ -130,41 +130,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    code: S.optional(S.Number),
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
+    error: S.optional(Status),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
+    done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -279,18 +279,18 @@ export const AggregateValuesProjectsLocationsAssetsRequest =
 
 /** A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity. */
 export interface AggregationResultHistogramBucket {
-  /** Count of items in the bucket. */
-  count?: string;
   /** Lower bound - inclusive. */
   lowerBound?: number;
   /** Upper bound - exclusive. */
   upperBound?: number;
+  /** Count of items in the bucket. */
+  count?: string;
 }
 export const AggregationResultHistogramBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.String),
     lowerBound: S.optional(S.Number),
     upperBound: S.optional(S.Number),
+    count: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AggregationResultHistogramBucket",
@@ -314,18 +314,6 @@ export const AggregationResultHistogram = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AggregationResultHistogram",
 }) as any as S.Schema<AggregationResultHistogram>;
-
-/** The result of a sum aggregation. */
-export interface AggregationResultSum {
-  value?: number;
-}
-export const AggregationResultSum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AggregationResultSum",
-}) as any as S.Schema<AggregationResultSum>;
 
 /** The result of a count aggregation. */
 export interface AggregationResultCount {
@@ -357,21 +345,33 @@ export const AggregationResultFrequency = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregationResultFrequency",
 }) as any as S.Schema<AggregationResultFrequency>;
 
+/** The result of a sum aggregation. */
+export interface AggregationResultSum {
+  value?: number;
+}
+export const AggregationResultSum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AggregationResultSum",
+}) as any as S.Schema<AggregationResultSum>;
+
 /** Message describing a result of an aggregation. */
 export interface AggregationResult {
   histogram?: AggregationResultHistogram;
-  sum?: AggregationResultSum;
   field?: string;
   count?: AggregationResultCount;
   frequency?: AggregationResultFrequency;
+  sum?: AggregationResultSum;
 }
 export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogram: S.optional(AggregationResultHistogram),
-    sum: S.optional(AggregationResultSum),
     field: S.optional(S.String),
     count: S.optional(AggregationResultCount),
     frequency: S.optional(AggregationResultFrequency),
+    sum: S.optional(AggregationResultSum),
   }),
 ).annotate({
   identifier: "AggregationResult",
@@ -466,40 +466,322 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type AwsS3BucketDetailsStorageClassTypeEnum =
-  | "STORAGE_CLASS_TYPE_UNSPECIFIED"
-  | "STANDARD"
-  | "INTELLIGENT_TIERING"
-  | "STANDARD_IA"
-  | "ONE_ZONE_IA"
-  | "GLACIER"
-  | "DEEP_ARCHIVE"
-  | "GLACIER_IR"
-  | "REDUCED_REDUNDANCY"
-  | "EXPRESS_ONEZONE";
-export const AwsS3BucketDetailsStorageClassTypeEnum = /*@__PURE__*/ S.String;
+/** Asset information specific for AWS EBS Volumes. */
+export interface AwsEbsVolumeDetails {}
+export const AwsEbsVolumeDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEbsVolumeDetails",
+}) as any as S.Schema<AwsEbsVolumeDetails>;
 
-/** Details about storage class. */
-export interface AwsS3BucketDetailsStorageClass {
-  /** Required. Type of the storage class. */
-  type?: AwsS3BucketDetailsStorageClassTypeEnum | (string & {});
-  /** Optional. The total size of the storage class in bytes. */
-  totalBytes?: string;
+/** Details of an AWS Redshift cluster. */
+export interface AwsRedshiftDetails {}
+export const AwsRedshiftDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsRedshiftDetails",
+}) as any as S.Schema<AwsRedshiftDetails>;
+
+/** Details of an AWS Route 53 Hosted Zone. */
+export interface AwsRoute53HostedZoneDetails {}
+export const AwsRoute53HostedZoneDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsRoute53HostedZoneDetails",
+}) as any as S.Schema<AwsRoute53HostedZoneDetails>;
+
+/** Contains details for an AWS Athena Work Group asset. */
+export interface AwsAthenaWorkGroupDetails {}
+export const AwsAthenaWorkGroupDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsAthenaWorkGroupDetails",
+}) as any as S.Schema<AwsAthenaWorkGroupDetails>;
+
+/** Asset information specific for AWS AppSync GraphQL APIs. */
+export interface AwsAppSyncGraphqlApiDetails {}
+export const AwsAppSyncGraphqlApiDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsAppSyncGraphqlApiDetails",
+}) as any as S.Schema<AwsAppSyncGraphqlApiDetails>;
+
+/** Asset information specific for AWS ECR Repository. */
+export interface AwsEcrRepositoryDetails {}
+export const AwsEcrRepositoryDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEcrRepositoryDetails",
+}) as any as S.Schema<AwsEcrRepositoryDetails>;
+
+/** Asset information specific for AWS Internet Gateways. */
+export interface AwsInternetGatewayDetails {}
+export const AwsInternetGatewayDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsInternetGatewayDetails",
+}) as any as S.Schema<AwsInternetGatewayDetails>;
+
+/** Details of an AWS EFS file system. */
+export interface AwsEfsFileSystemDetails {}
+export const AwsEfsFileSystemDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEfsFileSystemDetails",
+}) as any as S.Schema<AwsEfsFileSystemDetails>;
+
+/** Details of an AWS CloudFront distribution. */
+export interface AwsCloudFrontDistributionDetails {}
+export const AwsCloudFrontDistributionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsCloudFrontDistributionDetails",
+}) as any as S.Schema<AwsCloudFrontDistributionDetails>;
+
+/** Asset information specific for AWS SNS Topics. */
+export interface AwsSnsTopicDetails {}
+export const AwsSnsTopicDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsSnsTopicDetails",
+}) as any as S.Schema<AwsSnsTopicDetails>;
+
+export type MySqlStorageEngineDetailsEngineEnum =
+  | "ENGINE_UNSPECIFIED"
+  | "INNODB"
+  | "MYISAM"
+  | "MEMORY"
+  | "CSV"
+  | "ARCHIVE"
+  | "BLACKHOLE"
+  | "NDB"
+  | "MERGE"
+  | "FEDERATED"
+  | "EXAMPLE"
+  | "OTHER";
+export const MySqlStorageEngineDetailsEngineEnum = /*@__PURE__*/ S.String;
+
+/** Mysql storage engine tables. */
+export interface MySqlStorageEngineDetails {
+  /** Optional. The number of tables. */
+  tableCount?: number;
+  /** Optional. The number of encrypted tables. */
+  encryptedTableCount?: number;
+  /** Required. The storage engine. */
+  engine?: MySqlStorageEngineDetailsEngineEnum | (string & {});
 }
-export const AwsS3BucketDetailsStorageClass = /*@__PURE__*/ S.suspend(() =>
+export const MySqlStorageEngineDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(AwsS3BucketDetailsStorageClassTypeEnum),
-    totalBytes: S.optional(S.String),
+    tableCount: S.optional(S.Number),
+    encryptedTableCount: S.optional(S.Number),
+    engine: S.optional(MySqlStorageEngineDetailsEngineEnum),
   }),
 ).annotate({
-  identifier: "AwsS3BucketDetailsStorageClass",
-}) as any as S.Schema<AwsS3BucketDetailsStorageClass>;
+  identifier: "MySqlStorageEngineDetails",
+}) as any as S.Schema<MySqlStorageEngineDetails>;
 
-export type AwsS3BucketDetailsStorageClassList =
-  Array<AwsS3BucketDetailsStorageClass>;
-export const AwsS3BucketDetailsStorageClassList = /*@__PURE__*/ S.Array(
-  AwsS3BucketDetailsStorageClass,
-) as any as S.Schema<AwsS3BucketDetailsStorageClassList>;
+export type MySqlStorageEngineDetailsList = Array<MySqlStorageEngineDetails>;
+export const MySqlStorageEngineDetailsList = /*@__PURE__*/ S.Array(
+  MySqlStorageEngineDetails,
+) as any as S.Schema<MySqlStorageEngineDetailsList>;
+
+/** Specific details for a Mysql database. */
+export interface MySqlSchemaDetails {
+  /** Optional. Mysql storage engine tables. */
+  storageEngines?: MySqlStorageEngineDetailsList;
+}
+export const MySqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageEngines: S.optional(MySqlStorageEngineDetailsList),
+  }),
+).annotate({
+  identifier: "MySqlSchemaDetails",
+}) as any as S.Schema<MySqlSchemaDetails>;
+
+/** PostgreSql extension. */
+export interface PostgreSqlExtension {
+  /** Required. The extension name. */
+  extension?: string;
+  /** Required. The extension version. */
+  version?: string;
+}
+export const PostgreSqlExtension = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extension: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgreSqlExtension",
+}) as any as S.Schema<PostgreSqlExtension>;
+
+export type PostgreSqlExtensionList = Array<PostgreSqlExtension>;
+export const PostgreSqlExtensionList = /*@__PURE__*/ S.Array(
+  PostgreSqlExtension,
+) as any as S.Schema<PostgreSqlExtensionList>;
+
+/** Specific details for a PostgreSql schema. */
+export interface PostgreSqlSchemaDetails {
+  /** Optional. PostgreSql extensions. */
+  postgresqlExtensions?: PostgreSqlExtensionList;
+  /** Optional. PostgreSql foreign tables. */
+  foreignTablesCount?: number;
+}
+export const PostgreSqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    postgresqlExtensions: S.optional(PostgreSqlExtensionList),
+    foreignTablesCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PostgreSqlSchemaDetails",
+}) as any as S.Schema<PostgreSqlSchemaDetails>;
+
+export type DatabaseObjectsCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "TABLE"
+  | "INDEX"
+  | "CONSTRAINTS"
+  | "VIEWS"
+  | "SOURCE_CODE"
+  | "OTHER";
+export const DatabaseObjectsCategoryEnum = /*@__PURE__*/ S.String;
+
+/** Details of a group of database objects. */
+export interface DatabaseObjects {
+  /** The category of the objects. */
+  category?: DatabaseObjectsCategoryEnum | (string & {});
+  /** The number of objects. */
+  count?: string;
+}
+export const DatabaseObjects = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: S.optional(DatabaseObjectsCategoryEnum),
+    count: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseObjects",
+}) as any as S.Schema<DatabaseObjects>;
+
+export type DatabaseObjectsList = Array<DatabaseObjects>;
+export const DatabaseObjectsList = /*@__PURE__*/ S.Array(
+  DatabaseObjects,
+) as any as S.Schema<DatabaseObjectsList>;
+
+/** Specific details for a SqlServer database. */
+export interface SqlServerSchemaDetails {
+  /** Optional. SqlServer number of CLR objects. */
+  clrObjectCount?: number;
+}
+export const SqlServerSchemaDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clrObjectCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SqlServerSchemaDetails",
+}) as any as S.Schema<SqlServerSchemaDetails>;
+
+/** Details of a database schema. */
+export interface DatabaseSchema {
+  /** The total size of tables in bytes. */
+  tablesSizeBytes?: string;
+  /** The name of the schema. */
+  schemaName?: string;
+  /** Details of a Mysql schema. */
+  mysql?: MySqlSchemaDetails;
+  /** Details of a PostgreSql schema. */
+  postgresql?: PostgreSqlSchemaDetails;
+  /** List of details of objects by category. */
+  objects?: DatabaseObjectsList;
+  /** Details of a SqlServer schema. */
+  sqlServer?: SqlServerSchemaDetails;
+}
+export const DatabaseSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tablesSizeBytes: S.optional(S.String),
+    schemaName: S.optional(S.String),
+    mysql: S.optional(MySqlSchemaDetails),
+    postgresql: S.optional(PostgreSqlSchemaDetails),
+    objects: S.optional(DatabaseObjectsList),
+    sqlServer: S.optional(SqlServerSchemaDetails),
+  }),
+).annotate({ identifier: "DatabaseSchema" }) as any as S.Schema<DatabaseSchema>;
+
+export type DatabaseSchemaList = Array<DatabaseSchema>;
+export const DatabaseSchemaList = /*@__PURE__*/ S.Array(
+  DatabaseSchema,
+) as any as S.Schema<DatabaseSchemaList>;
+
+/** The identifiers of the parent database deployment. */
+export interface DatabaseDetailsParentDatabaseDeployment {
+  /** The parent database deployment optional manual unique ID set by the user. */
+  manualUniqueId?: string;
+  /** The parent database deployment generated ID. */
+  generatedId?: string;
+}
+export const DatabaseDetailsParentDatabaseDeployment = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      manualUniqueId: S.optional(S.String),
+      generatedId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DatabaseDetailsParentDatabaseDeployment",
+}) as any as S.Schema<DatabaseDetailsParentDatabaseDeployment>;
+
+/** Details of a logical database. */
+export interface DatabaseDetails {
+  /** The name of the database. */
+  databaseName?: string;
+  /** The allocated storage for the database in bytes. */
+  allocatedStorageBytes?: string;
+  /** The database schemas. */
+  schemas?: DatabaseSchemaList;
+  /** The parent database deployment that contains the logical database. */
+  parentDatabaseDeployment?: DatabaseDetailsParentDatabaseDeployment;
+}
+export const DatabaseDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    databaseName: S.optional(S.String),
+    allocatedStorageBytes: S.optional(S.String),
+    schemas: S.optional(DatabaseSchemaList),
+    parentDatabaseDeployment: S.optional(
+      DatabaseDetailsParentDatabaseDeployment,
+    ),
+  }),
+).annotate({
+  identifier: "DatabaseDetails",
+}) as any as S.Schema<DatabaseDetails>;
+
+/** Asset information specific for AWS Lambda functions. */
+export interface AwsLambdaFunctionDetails {}
+export const AwsLambdaFunctionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsLambdaFunctionDetails",
+}) as any as S.Schema<AwsLambdaFunctionDetails>;
+
+/** Asset information specific for AWS API Gateway REST APIs. */
+export interface AwsApiGatewayRestApiDetails {}
+export const AwsApiGatewayRestApiDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsApiGatewayRestApiDetails",
+}) as any as S.Schema<AwsApiGatewayRestApiDetails>;
+
+/** Details of an AWS DynamoDB table. */
+export interface AwsDynamoDBTableDetails {}
+export const AwsDynamoDBTableDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsDynamoDBTableDetails",
+}) as any as S.Schema<AwsDynamoDBTableDetails>;
+
+/** Asset information specific for AWS EKS clusters. */
+export interface AwsEksClusterDetails {}
+export const AwsEksClusterDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEksClusterDetails",
+}) as any as S.Schema<AwsEksClusterDetails>;
 
 /** Versioning configuration of the bucket. */
 export interface AwsS3BucketDetailsVersioning {
@@ -541,835 +823,59 @@ export const AwsS3BucketDetailsObjectsMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsS3BucketDetailsObjectsMetadata",
 }) as any as S.Schema<AwsS3BucketDetailsObjectsMetadata>;
 
+export type AwsS3BucketDetailsStorageClassTypeEnum =
+  | "STORAGE_CLASS_TYPE_UNSPECIFIED"
+  | "STANDARD"
+  | "INTELLIGENT_TIERING"
+  | "STANDARD_IA"
+  | "ONE_ZONE_IA"
+  | "GLACIER"
+  | "DEEP_ARCHIVE"
+  | "GLACIER_IR"
+  | "REDUCED_REDUNDANCY"
+  | "EXPRESS_ONEZONE";
+export const AwsS3BucketDetailsStorageClassTypeEnum = /*@__PURE__*/ S.String;
+
+/** Details about storage class. */
+export interface AwsS3BucketDetailsStorageClass {
+  /** Optional. The total size of the storage class in bytes. */
+  totalBytes?: string;
+  /** Required. Type of the storage class. */
+  type?: AwsS3BucketDetailsStorageClassTypeEnum | (string & {});
+}
+export const AwsS3BucketDetailsStorageClass = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalBytes: S.optional(S.String),
+    type: S.optional(AwsS3BucketDetailsStorageClassTypeEnum),
+  }),
+).annotate({
+  identifier: "AwsS3BucketDetailsStorageClass",
+}) as any as S.Schema<AwsS3BucketDetailsStorageClass>;
+
+export type AwsS3BucketDetailsStorageClassList =
+  Array<AwsS3BucketDetailsStorageClass>;
+export const AwsS3BucketDetailsStorageClassList = /*@__PURE__*/ S.Array(
+  AwsS3BucketDetailsStorageClass,
+) as any as S.Schema<AwsS3BucketDetailsStorageClassList>;
+
 /** Asset information specific for AWS S3 buckets. */
 export interface AwsS3BucketDetails {
-  /** Optional. The storage classes in the bucket. */
-  storageClasses?: AwsS3BucketDetailsStorageClassList;
   /** Optional. Versioning configuration of the bucket. */
   versioning?: AwsS3BucketDetailsVersioning;
   /** Optional. The metadata of the objects in the bucket. */
   objectsMetadata?: AwsS3BucketDetailsObjectsMetadata;
+  /** Optional. The storage classes in the bucket. */
+  storageClasses?: AwsS3BucketDetailsStorageClassList;
 }
 export const AwsS3BucketDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    storageClasses: S.optional(AwsS3BucketDetailsStorageClassList),
     versioning: S.optional(AwsS3BucketDetailsVersioning),
     objectsMetadata: S.optional(AwsS3BucketDetailsObjectsMetadata),
+    storageClasses: S.optional(AwsS3BucketDetailsStorageClassList),
   }),
 ).annotate({
   identifier: "AwsS3BucketDetails",
 }) as any as S.Schema<AwsS3BucketDetails>;
-
-/** Asset information specific for AWS SNS Topics. */
-export interface AwsSnsTopicDetails {}
-export const AwsSnsTopicDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsSnsTopicDetails",
-}) as any as S.Schema<AwsSnsTopicDetails>;
-
-/** Asset information specific for AWS VPCs. */
-export interface AwsVpcDetails {}
-export const AwsVpcDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "AwsVpcDetails" }) as any as S.Schema<AwsVpcDetails>;
-
-/** Location of a resource. */
-export interface ResourceLocation {
-  /** Optional. The name of the region. */
-  region?: string;
-}
-export const ResourceLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceLocation",
-}) as any as S.Schema<ResourceLocation>;
-
-/** Details for AWS platform. */
-export interface HostingProviderDetailsAws {
-  /** Optional. The AWS account ID owning the resource represented by this asset. */
-  owningAccountId?: string;
-}
-export const HostingProviderDetailsAws = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owningAccountId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostingProviderDetailsAws",
-}) as any as S.Schema<HostingProviderDetailsAws>;
-
-/** Details about the hosting platform of the asset. */
-export interface HostingProviderDetails {
-  /** Optional. Display name of the asset. */
-  displayName?: string;
-  /** Optional. Location of the asset. */
-  location?: ResourceLocation;
-  /** Optional. Unique identifier for the asset in the hosting provider. */
-  originalId?: string;
-  /** Optional. The timestamp when resource was created in the hosting provider. */
-  createTime?: string;
-  /** Optional. The AWS platform details. */
-  aws?: HostingProviderDetailsAws;
-}
-export const HostingProviderDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    location: S.optional(ResourceLocation),
-    originalId: S.optional(S.String),
-    createTime: S.optional(S.String),
-    aws: S.optional(HostingProviderDetailsAws),
-  }),
-).annotate({
-  identifier: "HostingProviderDetails",
-}) as any as S.Schema<HostingProviderDetails>;
-
-/** Details of an AWS CloudFront distribution. */
-export interface AwsCloudFrontDistributionDetails {}
-export const AwsCloudFrontDistributionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsCloudFrontDistributionDetails",
-}) as any as S.Schema<AwsCloudFrontDistributionDetails>;
-
-/** Information about software detected on an asset. */
-export interface DetectedSoftware {
-  /** Output only. Software family of the detected software, e.g. Database, SAP family. */
-  softwareFamily?: string;
-  /** Output only. Software's name. */
-  softwareName?: string;
-}
-export const DetectedSoftware = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    softwareFamily: S.optional(S.String),
-    softwareName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DetectedSoftware",
-}) as any as S.Schema<DetectedSoftware>;
-
-/** An insight regarding software detected on an asset. */
-export interface SoftwareInsight {
-  /** Output only. Information about the detected software. */
-  detectedSoftware?: DetectedSoftware;
-}
-export const SoftwareInsight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectedSoftware: S.optional(DetectedSoftware),
-  }),
-).annotate({
-  identifier: "SoftwareInsight",
-}) as any as S.Schema<SoftwareInsight>;
-
-/** VMWare engine migration target. */
-export interface VmwareEngineMigrationTarget {}
-export const VmwareEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VmwareEngineMigrationTarget",
-}) as any as S.Schema<VmwareEngineMigrationTarget>;
-
-/** GKE migration target. */
-export interface GoogleKubernetesEngineMigrationTarget {}
-export const GoogleKubernetesEngineMigrationTarget = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GoogleKubernetesEngineMigrationTarget",
-}) as any as S.Schema<GoogleKubernetesEngineMigrationTarget>;
-
-export type FitDescriptorFitLevelEnum =
-  | "FIT_LEVEL_UNSPECIFIED"
-  | "FIT"
-  | "NO_FIT"
-  | "REQUIRES_EFFORT";
-export const FitDescriptorFitLevelEnum = /*@__PURE__*/ S.String;
-
-/** Describes the fit level of an asset for migration to a specific target. */
-export interface FitDescriptor {
-  /** Output only. Fit level. */
-  fitLevel?: FitDescriptorFitLevelEnum | (string & {});
-}
-export const FitDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fitLevel: S.optional(FitDescriptorFitLevelEnum),
-  }),
-).annotate({ identifier: "FitDescriptor" }) as any as S.Schema<FitDescriptor>;
-
-export type IssueCompatibilityIssueCategoryEnum =
-  | "CATEGORY_UNSPECIFIED"
-  | "DATABASE_FLAG"
-  | "DATABASE_FEATURE";
-export const IssueCompatibilityIssueCategoryEnum = /*@__PURE__*/ S.String;
-
-export type IssueCompatibilityIssueAssociatedObjectTypeEnum =
-  | "OBJECT_TYPE_UNSPECIFIED"
-  | "DATABASE_DEPLOYMENT"
-  | "DATABASE"
-  | "SCHEMA";
-export const IssueCompatibilityIssueAssociatedObjectTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Details about a compatibility issue. */
-export interface IssueCompatibilityIssue {
-  /** Output only. Name of the object associated with this compatibility issue relative to the relevant asset. Does not represent a fully qualified resource name and is not intended for programmatic use. */
-  associatedObject?: string;
-  /** Output only. Category of this compatibility issue. */
-  category?: IssueCompatibilityIssueCategoryEnum | (string & {});
-  /** Output only. Type of object associated with this migration compatibility issue. */
-  associatedObjectType?:
-    | IssueCompatibilityIssueAssociatedObjectTypeEnum
-    | (string & {});
-  /** Output only. A string representation of actual value associated with this issue. Some values may contain aggregated information, such as a flag name and the actual value assigned to it. */
-  associatedValue?: string;
-}
-export const IssueCompatibilityIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    associatedObject: S.optional(S.String),
-    category: S.optional(IssueCompatibilityIssueCategoryEnum),
-    associatedObjectType: S.optional(
-      IssueCompatibilityIssueAssociatedObjectTypeEnum,
-    ),
-    associatedValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IssueCompatibilityIssue",
-}) as any as S.Schema<IssueCompatibilityIssue>;
-
-/** An issue associated with a migration. */
-export interface Issue {
-  /** Output only. Unique identifier for this issue type. */
-  issueCode?: string;
-  /** Output only. Details about a compatibility issue. */
-  compatibilityIssue?: IssueCompatibilityIssue;
-  /** Output only. English description of the issue. */
-  description?: string;
-}
-export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueCode: S.optional(S.String),
-    compatibilityIssue: S.optional(IssueCompatibilityIssue),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
-
-export type IssueList = Array<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<IssueList>;
-
-export type ComputeStorageDescriptorTypeEnum =
-  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
-  | "PERSISTENT_DISK_TYPE_STANDARD"
-  | "PERSISTENT_DISK_TYPE_BALANCED"
-  | "PERSISTENT_DISK_TYPE_SSD";
-export const ComputeStorageDescriptorTypeEnum = /*@__PURE__*/ S.String;
-
-/** Compute Engine storage option descriptor. */
-export interface ComputeStorageDescriptor {
-  /** Output only. Disk type backing the storage. */
-  type?: ComputeStorageDescriptorTypeEnum | (string & {});
-  /** Disk size in GiB. */
-  sizeGb?: number;
-}
-export const ComputeStorageDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ComputeStorageDescriptorTypeEnum),
-    sizeGb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeStorageDescriptor",
-}) as any as S.Schema<ComputeStorageDescriptor>;
-
-export type ComputeStorageDescriptorList = Array<ComputeStorageDescriptor>;
-export const ComputeStorageDescriptorList = /*@__PURE__*/ S.Array(
-  ComputeStorageDescriptor,
-) as any as S.Schema<ComputeStorageDescriptorList>;
-
-/** Compute Engine target shape descriptor. */
-export interface ComputeEngineShapeDescriptor {
-  /** Output only. Compute Engine storage. Never empty. */
-  storage?: ComputeStorageDescriptorList;
-  /** Output only. Whether simultaneous multithreading is enabled (see https://cloud.google.com/compute/docs/instances/set-threads-per-core). */
-  smtEnabled?: boolean;
-  /** Output only. Memory in mebibytes. */
-  memoryMb?: number;
-  /** Output only. Number of physical cores. */
-  physicalCoreCount?: number;
-  /** Output only. Number of logical cores. */
-  logicalCoreCount?: number;
-  /** Output only. Compute Engine machine series. */
-  series?: string;
-  /** Output only. Compute Engine machine type. */
-  machineType?: string;
-}
-export const ComputeEngineShapeDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storage: S.optional(ComputeStorageDescriptorList),
-    smtEnabled: S.optional(S.Boolean),
-    memoryMb: S.optional(S.Number),
-    physicalCoreCount: S.optional(S.Number),
-    logicalCoreCount: S.optional(S.Number),
-    series: S.optional(S.String),
-    machineType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComputeEngineShapeDescriptor",
-}) as any as S.Schema<ComputeEngineShapeDescriptor>;
-
-/** Compute engine migration target. */
-export interface ComputeEngineMigrationTarget {
-  /** Description of the suggested shape for the migration target. */
-  shape?: ComputeEngineShapeDescriptor;
-}
-export const ComputeEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shape: S.optional(ComputeEngineShapeDescriptor),
-  }),
-).annotate({
-  identifier: "ComputeEngineMigrationTarget",
-}) as any as S.Schema<ComputeEngineMigrationTarget>;
-
-/** Compute engine sole tenant migration target. */
-export interface ComputeEngineSoleTenantMigrationTarget {}
-export const ComputeEngineSoleTenantMigrationTarget = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ComputeEngineSoleTenantMigrationTarget",
-}) as any as S.Schema<ComputeEngineSoleTenantMigrationTarget>;
-
-export type CloudSqlForSqlServerShapeVersionEnum =
-  | "SQL_SERVER_VERSION_UNSPECIFIED"
-  | "SQL_SERVER_VERSION_2017_EXPRESS"
-  | "SQL_SERVER_VERSION_2017_WEB"
-  | "SQL_SERVER_VERSION_2017_STANDARD"
-  | "SQL_SERVER_VERSION_2017_ENTERPRISE"
-  | "SQL_SERVER_VERSION_2019_EXPRESS"
-  | "SQL_SERVER_VERSION_2019_WEB"
-  | "SQL_SERVER_VERSION_2019_STANDARD"
-  | "SQL_SERVER_VERSION_2019_ENTERPRISE"
-  | "SQL_SERVER_VERSION_2022_EXPRESS"
-  | "SQL_SERVER_VERSION_2022_WEB"
-  | "SQL_SERVER_VERSION_2022_STANDARD"
-  | "SQL_SERVER_VERSION_2022_ENTERPRISE";
-export const CloudSqlForSqlServerShapeVersionEnum = /*@__PURE__*/ S.String;
-
-export type CloudSqlForSqlServerShapeZoneAvailabilityEnum =
-  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const CloudSqlForSqlServerShapeZoneAvailabilityEnum =
-  /*@__PURE__*/ S.String;
-
-export type CloudSqlForSqlServerShapeEditionEnum =
-  | "CLOUD_SQL_EDITION_UNSPECIFIED"
-  | "CLOUD_SQL_EDITION_ENTERPRISE"
-  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
-export const CloudSqlForSqlServerShapeEditionEnum = /*@__PURE__*/ S.String;
-
-/** Cloud SQL for SQL Server database shape. */
-export interface CloudSqlForSqlServerShape {
-  /** Output only. Whether simultaneous multithreading is enabled (see https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance). */
-  smtEnabled?: boolean;
-  /** Output only. Microsoft SQL Server version to be used on the Cloud SQL for SQL server instance. */
-  version?: CloudSqlForSqlServerShapeVersionEnum | (string & {});
-  /** Output only. Predicted storage shape. */
-  storage?: ComputeStorageDescriptor;
-  /** Output only. Predicted Network Out traffic GiB per month. */
-  egressGbPerMonth?: string;
-  /** Output only. Number of logical cores. */
-  logicalCoreCount?: number;
-  /** Output only. Predicted amount of memory in MiB. */
-  memoryMb?: number;
-  /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?:
-    | CloudSqlForSqlServerShapeZoneAvailabilityEnum
-    | (string & {});
-  /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForSqlServerShapeEditionEnum | (string & {});
-  /** Output only. Predicted backup storage size in GiB. */
-  backupStorageGb?: number;
-}
-export const CloudSqlForSqlServerShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    smtEnabled: S.optional(S.Boolean),
-    version: S.optional(CloudSqlForSqlServerShapeVersionEnum),
-    storage: S.optional(ComputeStorageDescriptor),
-    egressGbPerMonth: S.optional(S.String),
-    logicalCoreCount: S.optional(S.Number),
-    memoryMb: S.optional(S.Number),
-    zoneAvailability: S.optional(CloudSqlForSqlServerShapeZoneAvailabilityEnum),
-    edition: S.optional(CloudSqlForSqlServerShapeEditionEnum),
-    backupStorageGb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudSqlForSqlServerShape",
-}) as any as S.Schema<CloudSqlForSqlServerShape>;
-
-export type CloudSqlForMySqlShapeZoneAvailabilityEnum =
-  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const CloudSqlForMySqlShapeZoneAvailabilityEnum = /*@__PURE__*/ S.String;
-
-export type CloudSqlForMySqlShapeEditionEnum =
-  | "CLOUD_SQL_EDITION_UNSPECIFIED"
-  | "CLOUD_SQL_EDITION_ENTERPRISE"
-  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
-export const CloudSqlForMySqlShapeEditionEnum = /*@__PURE__*/ S.String;
-
-export type CloudSqlForMySqlShapeVersionEnum =
-  | "MY_SQL_VERSION_UNSPECIFIED"
-  | "MY_SQL_VERSION_5_6"
-  | "MY_SQL_VERSION_5_7"
-  | "MY_SQL_VERSION_8_0";
-export const CloudSqlForMySqlShapeVersionEnum = /*@__PURE__*/ S.String;
-
-/** Cloud SQL for MySQL database shape. */
-export interface CloudSqlForMySqlShape {
-  /** Output only. Predicted Network Out traffic GiB per month. */
-  egressGbPerMonth?: string;
-  /** Output only. Number of logical cores. */
-  logicalCoreCount?: number;
-  /** Output only. Predicted amount of memory in MiB. */
-  memoryMb?: number;
-  /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?: CloudSqlForMySqlShapeZoneAvailabilityEnum | (string & {});
-  /** Output only. Predicted storage shape. */
-  storage?: ComputeStorageDescriptor;
-  /** Output only. Predicted backup storage size in GiB. */
-  backupStorageGb?: number;
-  /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForMySqlShapeEditionEnum | (string & {});
-  /** Output only. MySQL version to be used on the Cloud SQL for MySQL instance. */
-  version?: CloudSqlForMySqlShapeVersionEnum | (string & {});
-}
-export const CloudSqlForMySqlShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    egressGbPerMonth: S.optional(S.String),
-    logicalCoreCount: S.optional(S.Number),
-    memoryMb: S.optional(S.Number),
-    zoneAvailability: S.optional(CloudSqlForMySqlShapeZoneAvailabilityEnum),
-    storage: S.optional(ComputeStorageDescriptor),
-    backupStorageGb: S.optional(S.Number),
-    edition: S.optional(CloudSqlForMySqlShapeEditionEnum),
-    version: S.optional(CloudSqlForMySqlShapeVersionEnum),
-  }),
-).annotate({
-  identifier: "CloudSqlForMySqlShape",
-}) as any as S.Schema<CloudSqlForMySqlShape>;
-
-export type CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
-  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
-  /*@__PURE__*/ S.String;
-
-export type CloudSqlForPostgreSqlShapeEditionEnum =
-  | "CLOUD_SQL_EDITION_UNSPECIFIED"
-  | "CLOUD_SQL_EDITION_ENTERPRISE"
-  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
-export const CloudSqlForPostgreSqlShapeEditionEnum = /*@__PURE__*/ S.String;
-
-export type CloudSqlForPostgreSqlShapeVersionEnum =
-  | "POSTGRESQL_VERSION_UNSPECIFIED"
-  | "POSTGRESQL_VERSION_9_6"
-  | "POSTGRESQL_VERSION_10"
-  | "POSTGRESQL_VERSION_11"
-  | "POSTGRESQL_VERSION_12"
-  | "POSTGRESQL_VERSION_13"
-  | "POSTGRESQL_VERSION_14"
-  | "POSTGRESQL_VERSION_15";
-export const CloudSqlForPostgreSqlShapeVersionEnum = /*@__PURE__*/ S.String;
-
-/** Cloud SQL for PostgreSQL database shape. */
-export interface CloudSqlForPostgreSqlShape {
-  /** Output only. Number of logical cores. */
-  logicalCoreCount?: number;
-  /** Output only. Predicted amount of memory in MiB. */
-  memoryMb?: number;
-  /** Output only. Cloud SQL zone availability. */
-  zoneAvailability?:
-    | CloudSqlForPostgreSqlShapeZoneAvailabilityEnum
-    | (string & {});
-  /** Output only. Predicted Network Out traffic GiB per month. */
-  egressGbPerMonth?: string;
-  /** Output only. Cloud SQL edition. */
-  edition?: CloudSqlForPostgreSqlShapeEditionEnum | (string & {});
-  /** Output only. PostgreSql version to be used on the Cloud SQL for PostgreSql instance. */
-  version?: CloudSqlForPostgreSqlShapeVersionEnum | (string & {});
-  /** Output only. Predicted storage shape. */
-  storage?: ComputeStorageDescriptor;
-  /** Output only. Predicted backup storage size in GiB. */
-  backupStorageGb?: number;
-}
-export const CloudSqlForPostgreSqlShape = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logicalCoreCount: S.optional(S.Number),
-    memoryMb: S.optional(S.Number),
-    zoneAvailability: S.optional(
-      CloudSqlForPostgreSqlShapeZoneAvailabilityEnum,
-    ),
-    egressGbPerMonth: S.optional(S.String),
-    edition: S.optional(CloudSqlForPostgreSqlShapeEditionEnum),
-    version: S.optional(CloudSqlForPostgreSqlShapeVersionEnum),
-    storage: S.optional(ComputeStorageDescriptor),
-    backupStorageGb: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CloudSqlForPostgreSqlShape",
-}) as any as S.Schema<CloudSqlForPostgreSqlShape>;
-
-/** Cloud database migration target. */
-export interface CloudDatabaseMigrationTarget {
-  /** Cloud SQL for SQL Server database shape. */
-  cloudSqlShape?: CloudSqlForSqlServerShape;
-  /** Cloud SQL for MySQL database shape. */
-  cloudSqlForMysqlShape?: CloudSqlForMySqlShape;
-  /** Cloud SQL for PostgreSQL database shape. */
-  cloudSqlForPostgresqlShape?: CloudSqlForPostgreSqlShape;
-}
-export const CloudDatabaseMigrationTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudSqlShape: S.optional(CloudSqlForSqlServerShape),
-    cloudSqlForMysqlShape: S.optional(CloudSqlForMySqlShape),
-    cloudSqlForPostgresqlShape: S.optional(CloudSqlForPostgreSqlShape),
-  }),
-).annotate({
-  identifier: "CloudDatabaseMigrationTarget",
-}) as any as S.Schema<CloudDatabaseMigrationTarget>;
-
-/** An insight about potential migrations for an asset. */
-export interface MigrationInsight {
-  /** Output only. A VMWare Engine target. */
-  vmwareEngineTarget?: VmwareEngineMigrationTarget;
-  /** Output only. A Google Kubernetes Engine target. */
-  gkeTarget?: GoogleKubernetesEngineMigrationTarget;
-  /** Output only. Description of how well the asset this insight is associated with fits the proposed migration. */
-  fit?: FitDescriptor;
-  /** Output only. Issues associated with this migration. */
-  issues?: IssueList;
-  /** Output only. A Google Compute Engine target. */
-  computeEngineTarget?: ComputeEngineMigrationTarget;
-  /** Output only. A Google Compute Engine Sole Tenant target. */
-  computeEngineSoleTenantTarget?: ComputeEngineSoleTenantMigrationTarget;
-  /** Output only. A Cloud database migration target. */
-  cloudDatabaseTarget?: CloudDatabaseMigrationTarget;
-}
-export const MigrationInsight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vmwareEngineTarget: S.optional(VmwareEngineMigrationTarget),
-    gkeTarget: S.optional(GoogleKubernetesEngineMigrationTarget),
-    fit: S.optional(FitDescriptor),
-    issues: S.optional(IssueList),
-    computeEngineTarget: S.optional(ComputeEngineMigrationTarget),
-    computeEngineSoleTenantTarget: S.optional(
-      ComputeEngineSoleTenantMigrationTarget,
-    ),
-    cloudDatabaseTarget: S.optional(CloudDatabaseMigrationTarget),
-  }),
-).annotate({
-  identifier: "MigrationInsight",
-}) as any as S.Schema<MigrationInsight>;
-
-/** A generic insight about an asset. */
-export interface GenericInsight {
-  /** Output only. Represents a globally unique message id for this insight, can be used for localization purposes, in case message_code is not yet known by the client use default_message instead. */
-  messageId?: string;
-  /** Output only. In case message_code is not yet known by the client default_message will be the message to be used instead. Text can contain md file style links. */
-  defaultMessage?: string;
-  /** Output only. Additional information about the insight, each entry can be a logical entry and must make sense if it is displayed with line breaks between each entry. Text can contain md style links. */
-  additionalInformation?: StringList;
-}
-export const GenericInsight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messageId: S.optional(S.String),
-    defaultMessage: S.optional(S.String),
-    additionalInformation: S.optional(StringList),
-  }),
-).annotate({ identifier: "GenericInsight" }) as any as S.Schema<GenericInsight>;
-
-/** An insight about an asset. */
-export interface Insight {
-  /** Output only. An insight regarding software detected on an asset. */
-  softwareInsight?: SoftwareInsight;
-  /** Output only. An insight about potential migrations for an asset. */
-  migrationInsight?: MigrationInsight;
-  /** Output only. A generic insight about an asset. */
-  genericInsight?: GenericInsight;
-}
-export const Insight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    softwareInsight: S.optional(SoftwareInsight),
-    migrationInsight: S.optional(MigrationInsight),
-    genericInsight: S.optional(GenericInsight),
-  }),
-).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
-
-export type InsightList_ = Array<Insight>;
-export const InsightList_ = /*@__PURE__*/ S.Array(
-  Insight,
-) as any as S.Schema<InsightList_>;
-
-/** Message containing insights list. */
-export interface InsightList {
-  /** Output only. Insights of the list. */
-  insights?: InsightList_;
-  /** Output only. Update timestamp. */
-  updateTime?: string;
-}
-export const InsightList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insights: S.optional(InsightList_),
-    updateTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "InsightList" }) as any as S.Schema<InsightList>;
-
-/** Contains details for an AWS EMR Cluster asset. */
-export interface AwsEmrClusterDetails {}
-export const AwsEmrClusterDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEmrClusterDetails",
-}) as any as S.Schema<AwsEmrClusterDetails>;
-
-/** Details of an AWS ECS cluster. */
-export interface AwsEcsClusterDetails {}
-export const AwsEcsClusterDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEcsClusterDetails",
-}) as any as S.Schema<AwsEcsClusterDetails>;
-
-/** Asset information specific for AWS ECR Repository. */
-export interface AwsEcrRepositoryDetails {}
-export const AwsEcrRepositoryDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEcrRepositoryDetails",
-}) as any as S.Schema<AwsEcrRepositoryDetails>;
-
-/** Asset information specific for AWS Internet Gateways. */
-export interface AwsInternetGatewayDetails {}
-export const AwsInternetGatewayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsInternetGatewayDetails",
-}) as any as S.Schema<AwsInternetGatewayDetails>;
-
-/** Asset information specific for AWS AppSync GraphQL APIs. */
-export interface AwsAppSyncGraphqlApiDetails {}
-export const AwsAppSyncGraphqlApiDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsAppSyncGraphqlApiDetails",
-}) as any as S.Schema<AwsAppSyncGraphqlApiDetails>;
-
-/** Specific details for a SqlServer database. */
-export interface SqlServerSchemaDetails {
-  /** Optional. SqlServer number of CLR objects. */
-  clrObjectCount?: number;
-}
-export const SqlServerSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clrObjectCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SqlServerSchemaDetails",
-}) as any as S.Schema<SqlServerSchemaDetails>;
-
-/** PostgreSql extension. */
-export interface PostgreSqlExtension {
-  /** Required. The extension name. */
-  extension?: string;
-  /** Required. The extension version. */
-  version?: string;
-}
-export const PostgreSqlExtension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extension: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PostgreSqlExtension",
-}) as any as S.Schema<PostgreSqlExtension>;
-
-export type PostgreSqlExtensionList = Array<PostgreSqlExtension>;
-export const PostgreSqlExtensionList = /*@__PURE__*/ S.Array(
-  PostgreSqlExtension,
-) as any as S.Schema<PostgreSqlExtensionList>;
-
-/** Specific details for a PostgreSql schema. */
-export interface PostgreSqlSchemaDetails {
-  /** Optional. PostgreSql foreign tables. */
-  foreignTablesCount?: number;
-  /** Optional. PostgreSql extensions. */
-  postgresqlExtensions?: PostgreSqlExtensionList;
-}
-export const PostgreSqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    foreignTablesCount: S.optional(S.Number),
-    postgresqlExtensions: S.optional(PostgreSqlExtensionList),
-  }),
-).annotate({
-  identifier: "PostgreSqlSchemaDetails",
-}) as any as S.Schema<PostgreSqlSchemaDetails>;
-
-export type DatabaseObjectsCategoryEnum =
-  | "CATEGORY_UNSPECIFIED"
-  | "TABLE"
-  | "INDEX"
-  | "CONSTRAINTS"
-  | "VIEWS"
-  | "SOURCE_CODE"
-  | "OTHER";
-export const DatabaseObjectsCategoryEnum = /*@__PURE__*/ S.String;
-
-/** Details of a group of database objects. */
-export interface DatabaseObjects {
-  /** The category of the objects. */
-  category?: DatabaseObjectsCategoryEnum | (string & {});
-  /** The number of objects. */
-  count?: string;
-}
-export const DatabaseObjects = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    category: S.optional(DatabaseObjectsCategoryEnum),
-    count: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseObjects",
-}) as any as S.Schema<DatabaseObjects>;
-
-export type DatabaseObjectsList = Array<DatabaseObjects>;
-export const DatabaseObjectsList = /*@__PURE__*/ S.Array(
-  DatabaseObjects,
-) as any as S.Schema<DatabaseObjectsList>;
-
-export type MySqlStorageEngineDetailsEngineEnum =
-  | "ENGINE_UNSPECIFIED"
-  | "INNODB"
-  | "MYISAM"
-  | "MEMORY"
-  | "CSV"
-  | "ARCHIVE"
-  | "BLACKHOLE"
-  | "NDB"
-  | "MERGE"
-  | "FEDERATED"
-  | "EXAMPLE"
-  | "OTHER";
-export const MySqlStorageEngineDetailsEngineEnum = /*@__PURE__*/ S.String;
-
-/** Mysql storage engine tables. */
-export interface MySqlStorageEngineDetails {
-  /** Required. The storage engine. */
-  engine?: MySqlStorageEngineDetailsEngineEnum | (string & {});
-  /** Optional. The number of tables. */
-  tableCount?: number;
-  /** Optional. The number of encrypted tables. */
-  encryptedTableCount?: number;
-}
-export const MySqlStorageEngineDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    engine: S.optional(MySqlStorageEngineDetailsEngineEnum),
-    tableCount: S.optional(S.Number),
-    encryptedTableCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MySqlStorageEngineDetails",
-}) as any as S.Schema<MySqlStorageEngineDetails>;
-
-export type MySqlStorageEngineDetailsList = Array<MySqlStorageEngineDetails>;
-export const MySqlStorageEngineDetailsList = /*@__PURE__*/ S.Array(
-  MySqlStorageEngineDetails,
-) as any as S.Schema<MySqlStorageEngineDetailsList>;
-
-/** Specific details for a Mysql database. */
-export interface MySqlSchemaDetails {
-  /** Optional. Mysql storage engine tables. */
-  storageEngines?: MySqlStorageEngineDetailsList;
-}
-export const MySqlSchemaDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageEngines: S.optional(MySqlStorageEngineDetailsList),
-  }),
-).annotate({
-  identifier: "MySqlSchemaDetails",
-}) as any as S.Schema<MySqlSchemaDetails>;
-
-/** Details of a database schema. */
-export interface DatabaseSchema {
-  /** The name of the schema. */
-  schemaName?: string;
-  /** Details of a SqlServer schema. */
-  sqlServer?: SqlServerSchemaDetails;
-  /** Details of a PostgreSql schema. */
-  postgresql?: PostgreSqlSchemaDetails;
-  /** List of details of objects by category. */
-  objects?: DatabaseObjectsList;
-  /** The total size of tables in bytes. */
-  tablesSizeBytes?: string;
-  /** Details of a Mysql schema. */
-  mysql?: MySqlSchemaDetails;
-}
-export const DatabaseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaName: S.optional(S.String),
-    sqlServer: S.optional(SqlServerSchemaDetails),
-    postgresql: S.optional(PostgreSqlSchemaDetails),
-    objects: S.optional(DatabaseObjectsList),
-    tablesSizeBytes: S.optional(S.String),
-    mysql: S.optional(MySqlSchemaDetails),
-  }),
-).annotate({ identifier: "DatabaseSchema" }) as any as S.Schema<DatabaseSchema>;
-
-export type DatabaseSchemaList = Array<DatabaseSchema>;
-export const DatabaseSchemaList = /*@__PURE__*/ S.Array(
-  DatabaseSchema,
-) as any as S.Schema<DatabaseSchemaList>;
-
-/** The identifiers of the parent database deployment. */
-export interface DatabaseDetailsParentDatabaseDeployment {
-  /** The parent database deployment optional manual unique ID set by the user. */
-  manualUniqueId?: string;
-  /** The parent database deployment generated ID. */
-  generatedId?: string;
-}
-export const DatabaseDetailsParentDatabaseDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      manualUniqueId: S.optional(S.String),
-      generatedId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatabaseDetailsParentDatabaseDeployment",
-}) as any as S.Schema<DatabaseDetailsParentDatabaseDeployment>;
-
-/** Details of a logical database. */
-export interface DatabaseDetails {
-  /** The database schemas. */
-  schemas?: DatabaseSchemaList;
-  /** The name of the database. */
-  databaseName?: string;
-  /** The parent database deployment that contains the logical database. */
-  parentDatabaseDeployment?: DatabaseDetailsParentDatabaseDeployment;
-  /** The allocated storage for the database in bytes. */
-  allocatedStorageBytes?: string;
-}
-export const DatabaseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemas: S.optional(DatabaseSchemaList),
-    databaseName: S.optional(S.String),
-    parentDatabaseDeployment: S.optional(
-      DatabaseDetailsParentDatabaseDeployment,
-    ),
-    allocatedStorageBytes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseDetails",
-}) as any as S.Schema<DatabaseDetails>;
 
 /** Asset information specific for AWS Elastic Network Interfaces. */
 export interface AwsElasticNetworkInterfaceDetails {}
@@ -1379,58 +885,23 @@ export const AwsElasticNetworkInterfaceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsElasticNetworkInterfaceDetails",
 }) as any as S.Schema<AwsElasticNetworkInterfaceDetails>;
 
-/** Contains details for an AWS Athena Work Group asset. */
-export interface AwsAthenaWorkGroupDetails {}
-export const AwsAthenaWorkGroupDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsAthenaWorkGroupDetails",
-}) as any as S.Schema<AwsAthenaWorkGroupDetails>;
-
-/** Contains details for an AWS Glue Job asset. */
-export interface AwsGlueJobDetails {}
-export const AwsGlueJobDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsGlueJobDetails",
-}) as any as S.Schema<AwsGlueJobDetails>;
-
-/** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
-export interface Migrationcenter_Date {
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-}
-export const Migrationcenter_Date = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    month: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "Migrationcenter_Date",
-}) as any as S.Schema<Migrationcenter_Date>;
-
 /** Statistical aggregation of samples for a single resource usage. */
 export interface DailyResourceUsageAggregationStats {
-  /** Peak usage value. */
-  peak?: number;
+  /** 95th percentile usage value. */
+  ninteyFifthPercentile?: number;
   /** Average usage value. */
   average?: number;
   /** Median usage value. */
   median?: number;
-  /** 95th percentile usage value. */
-  ninteyFifthPercentile?: number;
+  /** Peak usage value. */
+  peak?: number;
 }
 export const DailyResourceUsageAggregationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    peak: S.optional(S.Number),
+    ninteyFifthPercentile: S.optional(S.Number),
     average: S.optional(S.Number),
     median: S.optional(S.Number),
-    ninteyFifthPercentile: S.optional(S.Number),
+    peak: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "DailyResourceUsageAggregationStats",
@@ -1449,24 +920,22 @@ export const DailyResourceUsageAggregationMemory = /*@__PURE__*/ S.suspend(() =>
   identifier: "DailyResourceUsageAggregationMemory",
 }) as any as S.Schema<DailyResourceUsageAggregationMemory>;
 
-/** Statistical aggregation of disk usage. */
-export interface DailyResourceUsageAggregationDisk {
-  /** Disk I/O operations per second. */
-  iops?: DailyResourceUsageAggregationStats;
-  /** Disk read I/O operations per second. */
-  readIops?: DailyResourceUsageAggregationStats;
-  /** Disk write I/O operations per second. */
-  writeIops?: DailyResourceUsageAggregationStats;
+/** Statistical aggregation of network usage. */
+export interface DailyResourceUsageAggregationNetwork {
+  /** Network egress in B/s. */
+  egressBps?: DailyResourceUsageAggregationStats;
+  /** Network ingress in B/s. */
+  ingressBps?: DailyResourceUsageAggregationStats;
 }
-export const DailyResourceUsageAggregationDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iops: S.optional(DailyResourceUsageAggregationStats),
-    readIops: S.optional(DailyResourceUsageAggregationStats),
-    writeIops: S.optional(DailyResourceUsageAggregationStats),
-  }),
+export const DailyResourceUsageAggregationNetwork = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      egressBps: S.optional(DailyResourceUsageAggregationStats),
+      ingressBps: S.optional(DailyResourceUsageAggregationStats),
+    }),
 ).annotate({
-  identifier: "DailyResourceUsageAggregationDisk",
-}) as any as S.Schema<DailyResourceUsageAggregationDisk>;
+  identifier: "DailyResourceUsageAggregationNetwork",
+}) as any as S.Schema<DailyResourceUsageAggregationNetwork>;
 
 /** Statistical aggregation of CPU usage. */
 export interface DailyResourceUsageAggregationCPU {
@@ -1481,43 +950,64 @@ export const DailyResourceUsageAggregationCPU = /*@__PURE__*/ S.suspend(() =>
   identifier: "DailyResourceUsageAggregationCPU",
 }) as any as S.Schema<DailyResourceUsageAggregationCPU>;
 
-/** Statistical aggregation of network usage. */
-export interface DailyResourceUsageAggregationNetwork {
-  /** Network ingress in B/s. */
-  ingressBps?: DailyResourceUsageAggregationStats;
-  /** Network egress in B/s. */
-  egressBps?: DailyResourceUsageAggregationStats;
+/** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
+export interface Migrationcenter_Date {
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
 }
-export const DailyResourceUsageAggregationNetwork = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ingressBps: S.optional(DailyResourceUsageAggregationStats),
-      egressBps: S.optional(DailyResourceUsageAggregationStats),
-    }),
+export const Migrationcenter_Date = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    year: S.optional(S.Number),
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+  }),
 ).annotate({
-  identifier: "DailyResourceUsageAggregationNetwork",
-}) as any as S.Schema<DailyResourceUsageAggregationNetwork>;
+  identifier: "Migrationcenter_Date",
+}) as any as S.Schema<Migrationcenter_Date>;
+
+/** Statistical aggregation of disk usage. */
+export interface DailyResourceUsageAggregationDisk {
+  /** Disk read I/O operations per second. */
+  readIops?: DailyResourceUsageAggregationStats;
+  /** Disk I/O operations per second. */
+  iops?: DailyResourceUsageAggregationStats;
+  /** Disk write I/O operations per second. */
+  writeIops?: DailyResourceUsageAggregationStats;
+}
+export const DailyResourceUsageAggregationDisk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readIops: S.optional(DailyResourceUsageAggregationStats),
+    iops: S.optional(DailyResourceUsageAggregationStats),
+    writeIops: S.optional(DailyResourceUsageAggregationStats),
+  }),
+).annotate({
+  identifier: "DailyResourceUsageAggregationDisk",
+}) as any as S.Schema<DailyResourceUsageAggregationDisk>;
 
 /** Usage data aggregation for a single day. */
 export interface DailyResourceUsageAggregation {
-  /** Aggregation date. Day boundaries are at midnight UTC. */
-  date?: Migrationcenter_Date;
   /** Memory usage. */
   memory?: DailyResourceUsageAggregationMemory;
-  /** Disk usage. */
-  disk?: DailyResourceUsageAggregationDisk;
-  /** CPU usage. */
-  cpu?: DailyResourceUsageAggregationCPU;
   /** Network usage. */
   network?: DailyResourceUsageAggregationNetwork;
+  /** CPU usage. */
+  cpu?: DailyResourceUsageAggregationCPU;
+  /** Aggregation date. Day boundaries are at midnight UTC. */
+  date?: Migrationcenter_Date;
+  /** Disk usage. */
+  disk?: DailyResourceUsageAggregationDisk;
 }
 export const DailyResourceUsageAggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    date: S.optional(Migrationcenter_Date),
     memory: S.optional(DailyResourceUsageAggregationMemory),
-    disk: S.optional(DailyResourceUsageAggregationDisk),
-    cpu: S.optional(DailyResourceUsageAggregationCPU),
     network: S.optional(DailyResourceUsageAggregationNetwork),
+    cpu: S.optional(DailyResourceUsageAggregationCPU),
+    date: S.optional(Migrationcenter_Date),
+    disk: S.optional(DailyResourceUsageAggregationDisk),
   }),
 ).annotate({
   identifier: "DailyResourceUsageAggregation",
@@ -1544,211 +1034,32 @@ export const AssetPerformanceData = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetPerformanceData",
 }) as any as S.Schema<AssetPerformanceData>;
 
-/** Details of an AWS Route 53 Hosted Zone. */
-export interface AwsRoute53HostedZoneDetails {}
-export const AwsRoute53HostedZoneDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsRoute53HostedZoneDetails",
-}) as any as S.Schema<AwsRoute53HostedZoneDetails>;
-
-/** Contains details for an AWS Firehose asset. */
-export interface AwsFirehoseDetails {}
-export const AwsFirehoseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsFirehoseDetails",
-}) as any as S.Schema<AwsFirehoseDetails>;
-
-/** Details of an AWS DynamoDB table. */
-export interface AwsDynamoDBTableDetails {}
-export const AwsDynamoDBTableDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsDynamoDBTableDetails",
-}) as any as S.Schema<AwsDynamoDBTableDetails>;
-
-/** Asset information specific for AWS Elastic IP Addresses. */
-export interface AwsElasticIpAddressDetails {}
-export const AwsElasticIpAddressDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsElasticIpAddressDetails",
-}) as any as S.Schema<AwsElasticIpAddressDetails>;
-
-/** Asset information specific for AWS EKS clusters. */
-export interface AwsEksClusterDetails {}
-export const AwsEksClusterDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEksClusterDetails",
-}) as any as S.Schema<AwsEksClusterDetails>;
-
-/** Details of an AWS Redshift cluster. */
-export interface AwsRedshiftDetails {}
-export const AwsRedshiftDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsRedshiftDetails",
-}) as any as S.Schema<AwsRedshiftDetails>;
-
-/** Details of an AWS EFS file system. */
-export interface AwsEfsFileSystemDetails {}
-export const AwsEfsFileSystemDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEfsFileSystemDetails",
-}) as any as S.Schema<AwsEfsFileSystemDetails>;
-
-/** Details of an AWS NAT Gateway. */
-export interface AwsNatGatewayDetails {}
-export const AwsNatGatewayDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsNatGatewayDetails",
-}) as any as S.Schema<AwsNatGatewayDetails>;
-
-export type NetworkAddressAssignmentEnum =
-  | "ADDRESS_ASSIGNMENT_UNSPECIFIED"
-  | "ADDRESS_ASSIGNMENT_STATIC"
-  | "ADDRESS_ASSIGNMENT_DHCP";
-export const NetworkAddressAssignmentEnum = /*@__PURE__*/ S.String;
-
-/** Details of network address. */
-export interface NetworkAddress {
-  /** Whether DHCP is used to assign addresses. */
-  assignment?: NetworkAddressAssignmentEnum | (string & {});
-  /** Fully qualified domain name. */
-  fqdn?: string;
-  /** Assigned or configured IP Address. */
-  ipAddress?: string;
-  /** Broadcast address. */
-  bcast?: string;
-  /** Subnet mask. */
-  subnetMask?: string;
-}
-export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignment: S.optional(NetworkAddressAssignmentEnum),
-    fqdn: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    bcast: S.optional(S.String),
-    subnetMask: S.optional(S.String),
-  }),
-).annotate({ identifier: "NetworkAddress" }) as any as S.Schema<NetworkAddress>;
-
-export type NetworkAddressList_ = Array<NetworkAddress>;
-export const NetworkAddressList_ = /*@__PURE__*/ S.Array(
-  NetworkAddress,
-) as any as S.Schema<NetworkAddressList_>;
-
-/** List of allocated/assigned network addresses. */
-export interface NetworkAddressList {
-  /** Network address entries. */
-  addresses?: NetworkAddressList_;
-  /** Network address entries. */
-  entries?: NetworkAddressList_;
-}
-export const NetworkAddressList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(NetworkAddressList_),
-    entries: S.optional(NetworkAddressList_),
-  }),
-).annotate({
-  identifier: "NetworkAddressList",
-}) as any as S.Schema<NetworkAddressList>;
-
-/** Details of network adapter. */
-export interface NetworkAdapterDetails {
-  /** NetworkAddressList */
-  addresses?: NetworkAddressList;
-  /** MAC address. */
-  macAddress?: string;
-  /** Network adapter type (e.g. VMXNET3). */
-  adapterType?: string;
-}
-export const NetworkAdapterDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(NetworkAddressList),
-    macAddress: S.optional(S.String),
-    adapterType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkAdapterDetails",
-}) as any as S.Schema<NetworkAdapterDetails>;
-
-export type NetworkAdapterDetailsList = Array<NetworkAdapterDetails>;
-export const NetworkAdapterDetailsList = /*@__PURE__*/ S.Array(
-  NetworkAdapterDetails,
-) as any as S.Schema<NetworkAdapterDetailsList>;
-
-/** List of network adapters. */
-export interface NetworkAdapterList {
-  /** Network adapter descriptions. */
-  networkAdapters?: NetworkAdapterDetailsList;
-  /** Network adapter entries. */
-  entries?: NetworkAdapterDetailsList;
-}
-export const NetworkAdapterList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkAdapters: S.optional(NetworkAdapterDetailsList),
-    entries: S.optional(NetworkAdapterDetailsList),
-  }),
-).annotate({
-  identifier: "NetworkAdapterList",
-}) as any as S.Schema<NetworkAdapterList>;
-
-/** Details of network adapters and settings. */
-export interface MachineNetworkDetails {
-  /** The public IP address of the machine. */
-  publicIpAddress?: string;
-  /** MAC address of the machine. This property is used to uniqly identify the machine. */
-  primaryMacAddress?: string;
-  /** The primary IP address of the machine. */
-  primaryIpAddress?: string;
-  /** Default gateway address. */
-  defaultGateway?: string;
-  /** List of network adapters. */
-  networkAdapters?: NetworkAdapterList;
-}
-export const MachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicIpAddress: S.optional(S.String),
-    primaryMacAddress: S.optional(S.String),
-    primaryIpAddress: S.optional(S.String),
-    defaultGateway: S.optional(S.String),
-    networkAdapters: S.optional(NetworkAdapterList),
-  }),
-).annotate({
-  identifier: "MachineNetworkDetails",
-}) as any as S.Schema<MachineNetworkDetails>;
-
 /** Disk Partition details. */
 export interface DiskPartition {
-  /** Partition file system. */
-  fileSystem?: string;
-  /** Partition capacity. */
-  capacityBytes?: string;
-  /** Partition type (e.g. BIOS boot). */
-  type?: string;
   /** Partition free space. */
   freeBytes?: string;
-  /** Sub-partitions. */
-  subPartitions?: DiskPartitionList;
-  /** Mount point (Linux/Windows) or drive letter (Windows). */
-  mountPoint?: string;
+  /** Partition capacity. */
+  capacityBytes?: string;
   /** Partition UUID. */
   uuid?: string;
+  /** Sub-partitions. */
+  subPartitions?: DiskPartitionList;
+  /** Partition type (e.g. BIOS boot). */
+  type?: string;
+  /** Partition file system. */
+  fileSystem?: string;
+  /** Mount point (Linux/Windows) or drive letter (Windows). */
+  mountPoint?: string;
 }
 export const DiskPartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fileSystem: S.optional(S.String),
-    capacityBytes: S.optional(S.String),
-    type: S.optional(S.String),
     freeBytes: S.optional(S.String),
-    subPartitions: S.optional(S.suspend(() => DiskPartitionList)),
-    mountPoint: S.optional(S.String),
+    capacityBytes: S.optional(S.String),
     uuid: S.optional(S.String),
+    subPartitions: S.optional(S.suspend(() => DiskPartitionList)),
+    type: S.optional(S.String),
+    fileSystem: S.optional(S.String),
+    mountPoint: S.optional(S.String),
   }),
 ).annotate({ identifier: "DiskPartition" }) as any as S.Schema<DiskPartition>;
 
@@ -1770,232 +1081,41 @@ export const DiskPartitionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskPartitionList",
 }) as any as S.Schema<DiskPartitionList>;
 
-/** Disk partition details. */
-export interface DiskPartitionDetails {
-  /** Output only. Total capacity of all partitions. */
-  totalCapacityBytes?: string;
-  /** Output only. Total free space of all partitions. */
-  freeSpaceBytes?: string;
-  /** Optional. List of partitions. */
-  partitions?: DiskPartitionList;
-}
-export const DiskPartitionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalCapacityBytes: S.optional(S.String),
-    freeSpaceBytes: S.optional(S.String),
-    partitions: S.optional(DiskPartitionList),
-  }),
-).annotate({
-  identifier: "DiskPartitionDetails",
-}) as any as S.Schema<DiskPartitionDetails>;
-
-export type AwsEc2PlatformDetailsHyperthreadingEnum =
-  | "HYPERTHREADING_STATUS_UNSPECIFIED"
-  | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
-export const AwsEc2PlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
-
-/** AWS EC2 specific details. */
-export interface AwsEc2PlatformDetails {
-  /** AWS platform's machine type label. */
-  machineTypeLabel?: string;
-  /** The location of the machine in the AWS format. */
-  location?: string;
-  /** Optional. Whether the machine is hyperthreaded. */
-  hyperthreading?: AwsEc2PlatformDetailsHyperthreadingEnum | (string & {});
-}
-export const AwsEc2PlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machineTypeLabel: S.optional(S.String),
-    location: S.optional(S.String),
-    hyperthreading: S.optional(AwsEc2PlatformDetailsHyperthreadingEnum),
-  }),
-).annotate({
-  identifier: "AwsEc2PlatformDetails",
-}) as any as S.Schema<AwsEc2PlatformDetails>;
-
-export type PhysicalPlatformDetailsHyperthreadingEnum =
-  | "HYPERTHREADING_STATUS_UNSPECIFIED"
-  | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
-export const PhysicalPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
-
-/** Platform specific details for Physical Machines. */
-export interface PhysicalPlatformDetails {
-  /** Whether the machine is hyperthreaded. */
-  hyperthreading?: PhysicalPlatformDetailsHyperthreadingEnum | (string & {});
-  /** Free text representation of the machine location. The format of this field should not be relied on. Different machines in the same location may have different string values for this field. */
-  location?: string;
-}
-export const PhysicalPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hyperthreading: S.optional(PhysicalPlatformDetailsHyperthreadingEnum),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PhysicalPlatformDetails",
-}) as any as S.Schema<PhysicalPlatformDetails>;
-
-export type VmwarePlatformDetailsEsxHyperthreadingEnum =
-  | "HYPERTHREADING_STATUS_UNSPECIFIED"
-  | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
-export const VmwarePlatformDetailsEsxHyperthreadingEnum =
-  /*@__PURE__*/ S.String;
-
-/** VMware specific details. */
-export interface VmwarePlatformDetails {
-  /** vCenter version. */
-  vcenterVersion?: string;
-  /** VMware os enum - https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html. */
-  osid?: string;
-  /** Folder name in vCenter where asset resides. */
-  vcenterFolder?: string;
-  /** vCenter URI used in collection. */
-  vcenterUri?: string;
-  /** ESX version. */
-  esxVersion?: string;
-  /** vCenter VM ID. */
-  vcenterVmId?: string;
-  /** Whether the ESX is hyperthreaded. */
-  esxHyperthreading?:
-    | VmwarePlatformDetailsEsxHyperthreadingEnum
-    | (string & {});
-}
-export const VmwarePlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vcenterVersion: S.optional(S.String),
-    osid: S.optional(S.String),
-    vcenterFolder: S.optional(S.String),
-    vcenterUri: S.optional(S.String),
-    esxVersion: S.optional(S.String),
-    vcenterVmId: S.optional(S.String),
-    esxHyperthreading: S.optional(VmwarePlatformDetailsEsxHyperthreadingEnum),
-  }),
-).annotate({
-  identifier: "VmwarePlatformDetails",
-}) as any as S.Schema<VmwarePlatformDetails>;
-
-export type AzureVmPlatformDetailsHyperthreadingEnum =
-  | "HYPERTHREADING_STATUS_UNSPECIFIED"
-  | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
-export const AzureVmPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
-
-/** Azure VM specific details. */
-export interface AzureVmPlatformDetails {
-  /** Azure platform's provisioning state. */
-  provisioningState?: string;
-  /** Whether the machine is hyperthreaded. */
-  hyperthreading?: AzureVmPlatformDetailsHyperthreadingEnum | (string & {});
-  /** Azure platform's machine type label. */
-  machineTypeLabel?: string;
-  /** The location of the machine in the Azure format. */
-  location?: string;
-}
-export const AzureVmPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(S.String),
-    hyperthreading: S.optional(AzureVmPlatformDetailsHyperthreadingEnum),
-    machineTypeLabel: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AzureVmPlatformDetails",
-}) as any as S.Schema<AzureVmPlatformDetails>;
-
-export type GenericPlatformDetailsHyperthreadingEnum =
-  | "HYPERTHREADING_STATUS_UNSPECIFIED"
-  | "HYPERTHREADING_STATUS_DISABLED"
-  | "HYPERTHREADING_STATUS_ENABLED";
-export const GenericPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
-
-/** Generic platform details. */
-export interface GenericPlatformDetails {
-  /** Free text representation of the machine location. The format of this field should not be relied on. Different VMs in the same location may have different string values for this field. */
-  location?: string;
-  /** Whether the machine is hyperthreaded. */
-  hyperthreading?: GenericPlatformDetailsHyperthreadingEnum | (string & {});
-}
-export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    hyperthreading: S.optional(GenericPlatformDetailsHyperthreadingEnum),
-  }),
-).annotate({
-  identifier: "GenericPlatformDetails",
-}) as any as S.Schema<GenericPlatformDetails>;
-
-/** Information about the platform. */
-export interface PlatformDetails {
-  /** AWS EC2 specific details. */
-  awsEc2Details?: AwsEc2PlatformDetails;
-  /** Physical machines platform details. */
-  physicalDetails?: PhysicalPlatformDetails;
-  /** VMware specific details. */
-  vmwareDetails?: VmwarePlatformDetails;
-  /** Azure VM specific details. */
-  azureVmDetails?: AzureVmPlatformDetails;
-  /** Generic platform details. */
-  genericDetails?: GenericPlatformDetails;
-}
-export const PlatformDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsEc2Details: S.optional(AwsEc2PlatformDetails),
-    physicalDetails: S.optional(PhysicalPlatformDetails),
-    vmwareDetails: S.optional(VmwarePlatformDetails),
-    azureVmDetails: S.optional(AzureVmPlatformDetails),
-    genericDetails: S.optional(GenericPlatformDetails),
-  }),
-).annotate({
-  identifier: "PlatformDetails",
-}) as any as S.Schema<PlatformDetails>;
-
-export type MachineDetailsPowerStateEnum =
-  | "POWER_STATE_UNSPECIFIED"
-  | "PENDING"
-  | "ACTIVE"
-  | "SUSPENDING"
-  | "SUSPENDED"
-  | "DELETING"
-  | "DELETED";
-export const MachineDetailsPowerStateEnum = /*@__PURE__*/ S.String;
-
 /** Single disk entry. */
 export interface DiskEntry {
-  /** Disk free space. */
-  freeSpaceBytes?: string;
-  /** Disk capacity. */
-  totalCapacityBytes?: string;
-  /** Disks interface type (e.g. SATA/SCSI) */
-  interfaceType?: string;
-  /** Disk label type (e.g. BIOS/GPT) */
-  diskLabelType?: string;
   /** Disk free space. */
   totalFreeBytes?: string;
   /** Partition layout. */
   partitions?: DiskPartitionList;
+  /** Disk capacity. */
+  totalCapacityBytes?: string;
   /** Disk hardware address (e.g. 0:1 for SCSI). */
   hwAddress?: string;
+  /** Disk label type (e.g. BIOS/GPT) */
+  diskLabelType?: string;
+  /** Disk status (e.g. online). */
+  status?: string;
   /** Disk label. */
   diskLabel?: string;
   /** Disk capacity. */
   capacityBytes?: string;
-  /** Disk status (e.g. online). */
-  status?: string;
+  /** Disk free space. */
+  freeSpaceBytes?: string;
+  /** Disks interface type (e.g. SATA/SCSI) */
+  interfaceType?: string;
 }
 export const DiskEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    freeSpaceBytes: S.optional(S.String),
-    totalCapacityBytes: S.optional(S.String),
-    interfaceType: S.optional(S.String),
-    diskLabelType: S.optional(S.String),
     totalFreeBytes: S.optional(S.String),
     partitions: S.optional(DiskPartitionList),
+    totalCapacityBytes: S.optional(S.String),
     hwAddress: S.optional(S.String),
+    diskLabelType: S.optional(S.String),
+    status: S.optional(S.String),
     diskLabel: S.optional(S.String),
     capacityBytes: S.optional(S.String),
-    status: S.optional(S.String),
+    freeSpaceBytes: S.optional(S.String),
+    interfaceType: S.optional(S.String),
   }),
 ).annotate({ identifier: "DiskEntry" }) as any as S.Schema<DiskEntry>;
 
@@ -2015,289 +1135,48 @@ export const DiskEntryList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiskEntryList" }) as any as S.Schema<DiskEntryList>;
 
-/** Details of machine disks. */
-export interface MachineDiskDetails {
+/** Details of VM disks. */
+export interface VirtualMachineDiskDetails {
+  /** Disk total Capacity. */
+  hddTotalCapacityBytes?: string;
+  /** Raw lsblk output in json. */
+  lsblkJson?: string;
+  /** Total Disk Free Space. */
+  hddTotalFreeBytes?: string;
   /** List of disks. */
   disks?: DiskEntryList;
-  /** Disk total Capacity. */
-  totalCapacityBytes?: string;
-  /** Total disk free space. */
-  totalFreeBytes?: string;
-  /** Raw disk scan result. This field is intended for human inspection. The format of this field may be lsblk output or any another raw output. The exact format may change without notice and should not be relied upon. */
-  rawScanResult?: string;
 }
-export const MachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
+export const VirtualMachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    hddTotalCapacityBytes: S.optional(S.String),
+    lsblkJson: S.optional(S.String),
+    hddTotalFreeBytes: S.optional(S.String),
     disks: S.optional(DiskEntryList),
-    totalCapacityBytes: S.optional(S.String),
-    totalFreeBytes: S.optional(S.String),
-    rawScanResult: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "MachineDiskDetails",
-}) as any as S.Schema<MachineDiskDetails>;
-
-export type MachineArchitectureDetailsFirmwareTypeEnum =
-  | "FIRMWARE_TYPE_UNSPECIFIED"
-  | "BIOS"
-  | "EFI";
-export const MachineArchitectureDetailsFirmwareTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type MachineArchitectureDetailsHyperthreadingEnum =
-  | "CPU_HYPER_THREADING_UNSPECIFIED"
-  | "DISABLED"
-  | "ENABLED";
-export const MachineArchitectureDetailsHyperthreadingEnum =
-  /*@__PURE__*/ S.String;
-
-/** Details about the BIOS. */
-export interface BiosDetails {
-  /** BIOS ID. */
-  id?: string;
-  /** BIOS version. */
-  version?: string;
-  /** BIOS manufacturer. */
-  manufacturer?: string;
-  /** BIOS version. */
-  biosVersion?: string;
-  /** BIOS release date. */
-  biosReleaseDate?: string;
-  /** BIOS release date. */
-  releaseTime?: string;
-  /** BIOS name. */
-  biosName?: string;
-  /** SMBIOS UUID. */
-  smbiosUuid?: string;
-  /** BIOS manufacturer. */
-  biosManufacturer?: string;
-}
-export const BiosDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    version: S.optional(S.String),
-    manufacturer: S.optional(S.String),
-    biosVersion: S.optional(S.String),
-    biosReleaseDate: S.optional(S.String),
-    releaseTime: S.optional(S.String),
-    biosName: S.optional(S.String),
-    smbiosUuid: S.optional(S.String),
-    biosManufacturer: S.optional(S.String),
-  }),
-).annotate({ identifier: "BiosDetails" }) as any as S.Schema<BiosDetails>;
-
-/** Details of the machine architecture. */
-export interface MachineArchitectureDetails {
-  /** CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc. */
-  cpuName?: string;
-  /** Firmware type. */
-  firmwareType?: MachineArchitectureDetailsFirmwareTypeEnum | (string & {});
-  /** CPU hyper-threading support. */
-  hyperthreading?: MachineArchitectureDetailsHyperthreadingEnum | (string & {});
-  /** CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc. */
-  cpuArchitecture?: string;
-  /** BIOS Details. */
-  bios?: BiosDetails;
-  /** Optional. CPU manufacturer, e.g., "Intel", "AMD". */
-  cpuManufacturer?: string;
-  /** Number of processor sockets allocated to the machine. */
-  cpuSocketCount?: number;
-  /** Hardware vendor. */
-  vendor?: string;
-}
-export const MachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuName: S.optional(S.String),
-    firmwareType: S.optional(MachineArchitectureDetailsFirmwareTypeEnum),
-    hyperthreading: S.optional(MachineArchitectureDetailsHyperthreadingEnum),
-    cpuArchitecture: S.optional(S.String),
-    bios: S.optional(BiosDetails),
-    cpuManufacturer: S.optional(S.String),
-    cpuSocketCount: S.optional(S.Number),
-    vendor: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MachineArchitectureDetails",
-}) as any as S.Schema<MachineArchitectureDetails>;
-
-export type GuestOsDetailsFamilyEnum =
-  | "OS_FAMILY_UNKNOWN"
-  | "OS_FAMILY_WINDOWS"
-  | "OS_FAMILY_LINUX"
-  | "OS_FAMILY_UNIX";
-export const GuestOsDetailsFamilyEnum = /*@__PURE__*/ S.String;
-
-export type GuestConfigDetailsSelinuxModeEnum =
-  | "SE_LINUX_MODE_UNSPECIFIED"
-  | "SE_LINUX_MODE_DISABLED"
-  | "SE_LINUX_MODE_PERMISSIVE"
-  | "SE_LINUX_MODE_ENFORCING";
-export const GuestConfigDetailsSelinuxModeEnum = /*@__PURE__*/ S.String;
-
-/** Single /etc/hosts entry. */
-export interface HostsEntry {
-  /** IP (raw, IPv4/6 agnostic). */
-  ip?: string;
-  /** List of host names / aliases. */
-  hostNames?: StringList;
-}
-export const HostsEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.optional(S.String),
-    hostNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "HostsEntry" }) as any as S.Schema<HostsEntry>;
-
-export type HostsEntryList_ = Array<HostsEntry>;
-export const HostsEntryList_ = /*@__PURE__*/ S.Array(
-  HostsEntry,
-) as any as S.Schema<HostsEntryList_>;
-
-/** Hosts content. */
-export interface HostsEntryList {
-  /** Output only. Hosts entries. */
-  entries?: HostsEntryList_;
-}
-export const HostsEntryList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(HostsEntryList_),
-  }),
-).annotate({ identifier: "HostsEntryList" }) as any as S.Schema<HostsEntryList>;
-
-/** Single fstab entry. */
-export interface FstabEntry {
-  /** The mount point for the filesystem. */
-  file?: string;
-  /** The type of the filesystem. */
-  vfstype?: string;
-  /** The block special device or remote filesystem to be mounted. */
-  spec?: string;
-  /** Mount options associated with the filesystem. */
-  mntops?: string;
-  /** Used by dump to determine which filesystems need to be dumped. */
-  freq?: number;
-  /** Used by the fsck(8) program to determine the order in which filesystem checks are done at reboot time. */
-  passno?: number;
-}
-export const FstabEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: S.optional(S.String),
-    vfstype: S.optional(S.String),
-    spec: S.optional(S.String),
-    mntops: S.optional(S.String),
-    freq: S.optional(S.Number),
-    passno: S.optional(S.Number),
-  }),
-).annotate({ identifier: "FstabEntry" }) as any as S.Schema<FstabEntry>;
-
-export type FstabEntryList_ = Array<FstabEntry>;
-export const FstabEntryList_ = /*@__PURE__*/ S.Array(
-  FstabEntry,
-) as any as S.Schema<FstabEntryList_>;
-
-/** Fstab content. */
-export interface FstabEntryList {
-  /** Fstab entries. */
-  entries?: FstabEntryList_;
-}
-export const FstabEntryList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(FstabEntryList_),
-  }),
-).annotate({ identifier: "FstabEntryList" }) as any as S.Schema<FstabEntryList>;
-
-/** NFS export. */
-export interface NfsExport {
-  /** The directory being exported. */
-  exportDirectory?: string;
-  /** The hosts or networks to which the export is being shared. */
-  hosts?: StringList;
-}
-export const NfsExport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportDirectory: S.optional(S.String),
-    hosts: S.optional(StringList),
-  }),
-).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
-
-export type NfsExportList_ = Array<NfsExport>;
-export const NfsExportList_ = /*@__PURE__*/ S.Array(
-  NfsExport,
-) as any as S.Schema<NfsExportList_>;
-
-/** NFS exports. */
-export interface NfsExportList {
-  /** NFS export entries. */
-  entries?: NfsExportList_;
-}
-export const NfsExportList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(NfsExportList_),
-  }),
-).annotate({ identifier: "NfsExportList" }) as any as S.Schema<NfsExportList>;
-
-/** SELinux details. */
-export interface Selinux {
-  /** Is SELinux enabled. */
-  enabled?: boolean;
-  /** SELinux mode disabled / enforcing / permissive. */
-  mode?: string;
-}
-export const Selinux = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    mode: S.optional(S.String),
-  }),
-).annotate({ identifier: "Selinux" }) as any as S.Schema<Selinux>;
-
-/** Guest OS config information. */
-export interface GuestConfigDetails {
-  /** Security-Enhanced Linux (SELinux) mode. */
-  selinuxMode?: GuestConfigDetailsSelinuxModeEnum | (string & {});
-  /** Output only. Hosts file (/etc/hosts). */
-  hosts?: HostsEntryList;
-  /** Mount list (Linux fstab). */
-  fstab?: FstabEntryList;
-  /** OS issue (typically /etc/issue in Linux). */
-  issue?: string;
-  /** NFS exports. */
-  nfsExports?: NfsExportList;
-  /** SELinux details. */
-  selinux?: Selinux;
-}
-export const GuestConfigDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selinuxMode: S.optional(GuestConfigDetailsSelinuxModeEnum),
-    hosts: S.optional(HostsEntryList),
-    fstab: S.optional(FstabEntryList),
-    issue: S.optional(S.String),
-    nfsExports: S.optional(NfsExportList),
-    selinux: S.optional(Selinux),
-  }),
-).annotate({
-  identifier: "GuestConfigDetails",
-}) as any as S.Schema<GuestConfigDetails>;
+  identifier: "VirtualMachineDiskDetails",
+}) as any as S.Schema<VirtualMachineDiskDetails>;
 
 /** Guest OS running process details. */
 export interface RunningProcess {
-  /** Process binary path. */
-  exePath?: string;
-  /** Process extended attributes. */
-  attributes?: StringMap;
   /** Process full command line. */
   cmdline?: string;
-  /** Process ID. */
-  pid?: string;
   /** User running the process. */
   user?: string;
+  /** Process ID. */
+  pid?: string;
+  /** Process extended attributes. */
+  attributes?: StringMap;
+  /** Process binary path. */
+  exePath?: string;
 }
 export const RunningProcess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exePath: S.optional(S.String),
-    attributes: S.optional(StringMap),
     cmdline: S.optional(S.String),
-    pid: S.optional(S.String),
     user: S.optional(S.String),
+    pid: S.optional(S.String),
+    attributes: S.optional(StringMap),
+    exePath: S.optional(S.String),
   }),
 ).annotate({ identifier: "RunningProcess" }) as any as S.Schema<RunningProcess>;
 
@@ -2322,177 +1201,34 @@ export const RunningProcessList = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunningProcessList",
 }) as any as S.Schema<RunningProcessList>;
 
-/** Guest installed application information. */
-export interface GuestInstalledApplication {
-  /** Installed application name. */
-  name?: string;
-  /** The time when the application was installed. */
-  installTime?: string;
-  /** Installed application name. */
-  applicationName?: string;
-  /** Date application was installed. */
-  time?: string;
-  /** Source path. */
-  path?: string;
-  /** Installed application vendor. */
-  vendor?: string;
-  /** Installed application version. */
-  version?: string;
-  /** License strings associated with the installed application. */
-  licenses?: StringList;
-}
-export const GuestInstalledApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    installTime: S.optional(S.String),
-    applicationName: S.optional(S.String),
-    time: S.optional(S.String),
-    path: S.optional(S.String),
-    vendor: S.optional(S.String),
-    version: S.optional(S.String),
-    licenses: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GuestInstalledApplication",
-}) as any as S.Schema<GuestInstalledApplication>;
-
-export type GuestInstalledApplicationList_ = Array<GuestInstalledApplication>;
-export const GuestInstalledApplicationList_ = /*@__PURE__*/ S.Array(
-  GuestInstalledApplication,
-) as any as S.Schema<GuestInstalledApplicationList_>;
-
-/** Guest installed application list. */
-export interface GuestInstalledApplicationList {
-  /** Application entries. */
-  entries?: GuestInstalledApplicationList_;
-}
-export const GuestInstalledApplicationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(GuestInstalledApplicationList_),
-  }),
-).annotate({
-  identifier: "GuestInstalledApplicationList",
-}) as any as S.Schema<GuestInstalledApplicationList>;
-
-/** Open file Information. */
-export interface OpenFileDetails {
-  /** Opened file file path. */
-  filePath?: string;
-  /** Opened file command. */
-  command?: string;
-  /** Opened file user. */
-  user?: string;
-  /** Opened file file type. */
-  fileType?: string;
-}
-export const OpenFileDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filePath: S.optional(S.String),
-    command: S.optional(S.String),
-    user: S.optional(S.String),
-    fileType: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OpenFileDetails",
-}) as any as S.Schema<OpenFileDetails>;
-
-export type OpenFileDetailsList = Array<OpenFileDetails>;
-export const OpenFileDetailsList = /*@__PURE__*/ S.Array(
-  OpenFileDetails,
-) as any as S.Schema<OpenFileDetailsList>;
-
-/** Open file list. */
-export interface OpenFileList {
-  /** Open file details entries. */
-  entries?: OpenFileDetailsList;
-}
-export const OpenFileList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entries: S.optional(OpenFileDetailsList),
-  }),
-).annotate({ identifier: "OpenFileList" }) as any as S.Schema<OpenFileList>;
-
-/** Guest OS running service details. */
-export interface RunningService {
-  /** Service state (raw, OS-agnostic). */
-  state?: string;
-  /** Service command line. */
-  cmdline?: string;
-  /** Service status. */
-  status?: string;
-  /** Service binary path. */
-  exePath?: string;
-  /** Service pid. */
-  pid?: string;
-  /** Service name. */
-  name?: string;
-  /** Service start mode (raw, OS-agnostic). */
-  startMode?: string;
-  /** Service name. */
-  serviceName?: string;
-}
-export const RunningService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(S.String),
-    cmdline: S.optional(S.String),
-    status: S.optional(S.String),
-    exePath: S.optional(S.String),
-    pid: S.optional(S.String),
-    name: S.optional(S.String),
-    startMode: S.optional(S.String),
-    serviceName: S.optional(S.String),
-  }),
-).annotate({ identifier: "RunningService" }) as any as S.Schema<RunningService>;
-
-export type RunningServiceList_ = Array<RunningService>;
-export const RunningServiceList_ = /*@__PURE__*/ S.Array(
-  RunningService,
-) as any as S.Schema<RunningServiceList_>;
-
-/** List of running guest OS services. */
-export interface RunningServiceList {
-  /** Running service entries. */
-  services?: RunningServiceList_;
-  /** Running service entries. */
-  entries?: RunningServiceList_;
-}
-export const RunningServiceList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    services: S.optional(RunningServiceList_),
-    entries: S.optional(RunningServiceList_),
-  }),
-).annotate({
-  identifier: "RunningServiceList",
-}) as any as S.Schema<RunningServiceList>;
-
 export interface NetworkConnection {
-  /** Remote IP address. */
-  remoteIpAddress?: string;
-  /** Connection state (e.g. CONNECTED). */
-  state?: string;
-  /** Process or service name. */
-  processName?: string;
-  /** Connection protocol (e.g. TCP/UDP). */
-  protocol?: string;
   /** Process ID. */
   pid?: string;
-  /** Remote port. */
-  remotePort?: number;
+  /** Connection state (e.g. CONNECTED). */
+  state?: string;
   /** Local IP address. */
   localIpAddress?: string;
   /** Local port. */
   localPort?: number;
+  /** Remote IP address. */
+  remoteIpAddress?: string;
+  /** Process or service name. */
+  processName?: string;
+  /** Remote port. */
+  remotePort?: number;
+  /** Connection protocol (e.g. TCP/UDP). */
+  protocol?: string;
 }
 export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    remoteIpAddress: S.optional(S.String),
-    state: S.optional(S.String),
-    processName: S.optional(S.String),
-    protocol: S.optional(S.String),
     pid: S.optional(S.String),
-    remotePort: S.optional(S.Number),
+    state: S.optional(S.String),
     localIpAddress: S.optional(S.String),
     localPort: S.optional(S.Number),
+    remoteIpAddress: S.optional(S.String),
+    processName: S.optional(S.String),
+    remotePort: S.optional(S.Number),
+    protocol: S.optional(S.String),
   }),
 ).annotate({
   identifier: "NetworkConnection",
@@ -2532,36 +1268,36 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  month?: number;
-  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
-  day?: number;
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  year?: number;
-  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  utcOffset?: string;
   /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
   nanos?: number;
-  /** Time zone. */
-  timeZone?: TimeZone;
   /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
   minutes?: number;
+  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
+  day?: number;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  month?: number;
+  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
+  utcOffset?: string;
   /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  year?: number;
+  /** Time zone. */
+  timeZone?: TimeZone;
 }
 export const DateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    month: S.optional(S.Number),
-    day: S.optional(S.Number),
-    year: S.optional(S.Number),
-    utcOffset: S.optional(S.String),
     hours: S.optional(S.Number),
     nanos: S.optional(S.Number),
-    timeZone: S.optional(TimeZone),
     minutes: S.optional(S.Number),
+    day: S.optional(S.Number),
+    month: S.optional(S.Number),
+    utcOffset: S.optional(S.String),
     seconds: S.optional(S.Number),
+    year: S.optional(S.Number),
+    timeZone: S.optional(TimeZone),
   }),
 ).annotate({ identifier: "DateTime" }) as any as S.Schema<DateTime>;
 
@@ -2571,395 +1307,1541 @@ export interface RuntimeNetworkInfo {
   rawScanResult?: string;
   /** Network connections. */
   connections?: NetworkConnectionList;
-  /** Time of the last network scan. */
-  scanTime?: string;
-  /** Netstat (raw, OS-agnostic). */
-  netstat?: string;
   /** Netstat time collected. */
   netstatTime?: DateTime;
+  /** Netstat (raw, OS-agnostic). */
+  netstat?: string;
+  /** Time of the last network scan. */
+  scanTime?: string;
 }
 export const RuntimeNetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rawScanResult: S.optional(S.String),
     connections: S.optional(NetworkConnectionList),
-    scanTime: S.optional(S.String),
-    netstat: S.optional(S.String),
     netstatTime: S.optional(DateTime),
+    netstat: S.optional(S.String),
+    scanTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RuntimeNetworkInfo",
 }) as any as S.Schema<RuntimeNetworkInfo>;
 
+/** Guest OS running service details. */
+export interface RunningService {
+  /** Service name. */
+  name?: string;
+  /** Service status. */
+  status?: string;
+  /** Service command line. */
+  cmdline?: string;
+  /** Service pid. */
+  pid?: string;
+  /** Service state (raw, OS-agnostic). */
+  state?: string;
+  /** Service start mode (raw, OS-agnostic). */
+  startMode?: string;
+  /** Service name. */
+  serviceName?: string;
+  /** Service binary path. */
+  exePath?: string;
+}
+export const RunningService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    cmdline: S.optional(S.String),
+    pid: S.optional(S.String),
+    state: S.optional(S.String),
+    startMode: S.optional(S.String),
+    serviceName: S.optional(S.String),
+    exePath: S.optional(S.String),
+  }),
+).annotate({ identifier: "RunningService" }) as any as S.Schema<RunningService>;
+
+export type RunningServiceList_ = Array<RunningService>;
+export const RunningServiceList_ = /*@__PURE__*/ S.Array(
+  RunningService,
+) as any as S.Schema<RunningServiceList_>;
+
+/** List of running guest OS services. */
+export interface RunningServiceList {
+  /** Running service entries. */
+  services?: RunningServiceList_;
+  /** Running service entries. */
+  entries?: RunningServiceList_;
+}
+export const RunningServiceList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    services: S.optional(RunningServiceList_),
+    entries: S.optional(RunningServiceList_),
+  }),
+).annotate({
+  identifier: "RunningServiceList",
+}) as any as S.Schema<RunningServiceList>;
+
+/** Guest installed application information. */
+export interface GuestInstalledApplication {
+  /** Installed application vendor. */
+  vendor?: string;
+  /** Installed application name. */
+  applicationName?: string;
+  /** Source path. */
+  path?: string;
+  /** License strings associated with the installed application. */
+  licenses?: StringList;
+  /** Date application was installed. */
+  time?: string;
+  /** Installed application version. */
+  version?: string;
+  /** The time when the application was installed. */
+  installTime?: string;
+  /** Installed application name. */
+  name?: string;
+}
+export const GuestInstalledApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vendor: S.optional(S.String),
+    applicationName: S.optional(S.String),
+    path: S.optional(S.String),
+    licenses: S.optional(StringList),
+    time: S.optional(S.String),
+    version: S.optional(S.String),
+    installTime: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GuestInstalledApplication",
+}) as any as S.Schema<GuestInstalledApplication>;
+
+export type GuestInstalledApplicationList_ = Array<GuestInstalledApplication>;
+export const GuestInstalledApplicationList_ = /*@__PURE__*/ S.Array(
+  GuestInstalledApplication,
+) as any as S.Schema<GuestInstalledApplicationList_>;
+
+/** Guest installed application list. */
+export interface GuestInstalledApplicationList {
+  /** Application entries. */
+  entries?: GuestInstalledApplicationList_;
+}
+export const GuestInstalledApplicationList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(GuestInstalledApplicationList_),
+  }),
+).annotate({
+  identifier: "GuestInstalledApplicationList",
+}) as any as S.Schema<GuestInstalledApplicationList>;
+
+/** Open file Information. */
+export interface OpenFileDetails {
+  /** Opened file command. */
+  command?: string;
+  /** Opened file file type. */
+  fileType?: string;
+  /** Opened file file path. */
+  filePath?: string;
+  /** Opened file user. */
+  user?: string;
+}
+export const OpenFileDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    command: S.optional(S.String),
+    fileType: S.optional(S.String),
+    filePath: S.optional(S.String),
+    user: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OpenFileDetails",
+}) as any as S.Schema<OpenFileDetails>;
+
+export type OpenFileDetailsList = Array<OpenFileDetails>;
+export const OpenFileDetailsList = /*@__PURE__*/ S.Array(
+  OpenFileDetails,
+) as any as S.Schema<OpenFileDetailsList>;
+
+/** Open file list. */
+export interface OpenFileList {
+  /** Open file details entries. */
+  entries?: OpenFileDetailsList;
+}
+export const OpenFileList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(OpenFileDetailsList),
+  }),
+).annotate({ identifier: "OpenFileList" }) as any as S.Schema<OpenFileList>;
+
 /** Guest OS runtime information. */
 export interface GuestRuntimeDetails {
-  /** Domain, e.g. c.stratozone-development.internal. */
-  domain?: string;
-  /** Running processes. */
-  processes?: RunningProcessList;
-  /** Installed applications information. */
-  installedApps?: GuestInstalledApplicationList;
-  /** Machine name. */
-  machineName?: string;
-  /** Open files information. */
-  openFileList?: OpenFileList;
-  /** Running background services. */
-  services?: RunningServiceList;
   /** Date since last booted (last uptime date). */
   lastUptime?: Migrationcenter_Date;
-  /** Last time the OS was booted. */
-  lastBootTime?: string;
+  /** Running processes. */
+  processes?: RunningProcessList;
   /** Runtime network information (connections, ports). */
   networkInfo?: RuntimeNetworkInfo;
+  /** Last time the OS was booted. */
+  lastBootTime?: string;
+  /** Running background services. */
+  services?: RunningServiceList;
+  /** Domain, e.g. c.stratozone-development.internal. */
+  domain?: string;
+  /** Installed applications information. */
+  installedApps?: GuestInstalledApplicationList;
+  /** Open files information. */
+  openFileList?: OpenFileList;
+  /** Machine name. */
+  machineName?: string;
 }
 export const GuestRuntimeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    domain: S.optional(S.String),
-    processes: S.optional(RunningProcessList),
-    installedApps: S.optional(GuestInstalledApplicationList),
-    machineName: S.optional(S.String),
-    openFileList: S.optional(OpenFileList),
-    services: S.optional(RunningServiceList),
     lastUptime: S.optional(Migrationcenter_Date),
-    lastBootTime: S.optional(S.String),
+    processes: S.optional(RunningProcessList),
     networkInfo: S.optional(RuntimeNetworkInfo),
+    lastBootTime: S.optional(S.String),
+    services: S.optional(RunningServiceList),
+    domain: S.optional(S.String),
+    installedApps: S.optional(GuestInstalledApplicationList),
+    openFileList: S.optional(OpenFileList),
+    machineName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GuestRuntimeDetails",
 }) as any as S.Schema<GuestRuntimeDetails>;
 
+/** Single /etc/hosts entry. */
+export interface HostsEntry {
+  /** IP (raw, IPv4/6 agnostic). */
+  ip?: string;
+  /** List of host names / aliases. */
+  hostNames?: StringList;
+}
+export const HostsEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ip: S.optional(S.String),
+    hostNames: S.optional(StringList),
+  }),
+).annotate({ identifier: "HostsEntry" }) as any as S.Schema<HostsEntry>;
+
+export type HostsEntryList_ = Array<HostsEntry>;
+export const HostsEntryList_ = /*@__PURE__*/ S.Array(
+  HostsEntry,
+) as any as S.Schema<HostsEntryList_>;
+
+/** Hosts content. */
+export interface HostsEntryList {
+  /** Output only. Hosts entries. */
+  entries?: HostsEntryList_;
+}
+export const HostsEntryList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(HostsEntryList_),
+  }),
+).annotate({ identifier: "HostsEntryList" }) as any as S.Schema<HostsEntryList>;
+
+/** Single fstab entry. */
+export interface FstabEntry {
+  /** Mount options associated with the filesystem. */
+  mntops?: string;
+  /** The block special device or remote filesystem to be mounted. */
+  spec?: string;
+  /** Used by dump to determine which filesystems need to be dumped. */
+  freq?: number;
+  /** Used by the fsck(8) program to determine the order in which filesystem checks are done at reboot time. */
+  passno?: number;
+  /** The type of the filesystem. */
+  vfstype?: string;
+  /** The mount point for the filesystem. */
+  file?: string;
+}
+export const FstabEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mntops: S.optional(S.String),
+    spec: S.optional(S.String),
+    freq: S.optional(S.Number),
+    passno: S.optional(S.Number),
+    vfstype: S.optional(S.String),
+    file: S.optional(S.String),
+  }),
+).annotate({ identifier: "FstabEntry" }) as any as S.Schema<FstabEntry>;
+
+export type FstabEntryList_ = Array<FstabEntry>;
+export const FstabEntryList_ = /*@__PURE__*/ S.Array(
+  FstabEntry,
+) as any as S.Schema<FstabEntryList_>;
+
+/** Fstab content. */
+export interface FstabEntryList {
+  /** Fstab entries. */
+  entries?: FstabEntryList_;
+}
+export const FstabEntryList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(FstabEntryList_),
+  }),
+).annotate({ identifier: "FstabEntryList" }) as any as S.Schema<FstabEntryList>;
+
+/** NFS export. */
+export interface NfsExport {
+  /** The hosts or networks to which the export is being shared. */
+  hosts?: StringList;
+  /** The directory being exported. */
+  exportDirectory?: string;
+}
+export const NfsExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hosts: S.optional(StringList),
+    exportDirectory: S.optional(S.String),
+  }),
+).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
+
+export type NfsExportList_ = Array<NfsExport>;
+export const NfsExportList_ = /*@__PURE__*/ S.Array(
+  NfsExport,
+) as any as S.Schema<NfsExportList_>;
+
+/** NFS exports. */
+export interface NfsExportList {
+  /** NFS export entries. */
+  entries?: NfsExportList_;
+}
+export const NfsExportList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entries: S.optional(NfsExportList_),
+  }),
+).annotate({ identifier: "NfsExportList" }) as any as S.Schema<NfsExportList>;
+
+export type GuestConfigDetailsSelinuxModeEnum =
+  | "SE_LINUX_MODE_UNSPECIFIED"
+  | "SE_LINUX_MODE_DISABLED"
+  | "SE_LINUX_MODE_PERMISSIVE"
+  | "SE_LINUX_MODE_ENFORCING";
+export const GuestConfigDetailsSelinuxModeEnum = /*@__PURE__*/ S.String;
+
+/** SELinux details. */
+export interface Selinux {
+  /** Is SELinux enabled. */
+  enabled?: boolean;
+  /** SELinux mode disabled / enforcing / permissive. */
+  mode?: string;
+}
+export const Selinux = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    mode: S.optional(S.String),
+  }),
+).annotate({ identifier: "Selinux" }) as any as S.Schema<Selinux>;
+
+/** Guest OS config information. */
+export interface GuestConfigDetails {
+  /** OS issue (typically /etc/issue in Linux). */
+  issue?: string;
+  /** Output only. Hosts file (/etc/hosts). */
+  hosts?: HostsEntryList;
+  /** Mount list (Linux fstab). */
+  fstab?: FstabEntryList;
+  /** NFS exports. */
+  nfsExports?: NfsExportList;
+  /** Security-Enhanced Linux (SELinux) mode. */
+  selinuxMode?: GuestConfigDetailsSelinuxModeEnum | (string & {});
+  /** SELinux details. */
+  selinux?: Selinux;
+}
+export const GuestConfigDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issue: S.optional(S.String),
+    hosts: S.optional(HostsEntryList),
+    fstab: S.optional(FstabEntryList),
+    nfsExports: S.optional(NfsExportList),
+    selinuxMode: S.optional(GuestConfigDetailsSelinuxModeEnum),
+    selinux: S.optional(Selinux),
+  }),
+).annotate({
+  identifier: "GuestConfigDetails",
+}) as any as S.Schema<GuestConfigDetails>;
+
+export type GuestOsDetailsFamilyEnum =
+  | "OS_FAMILY_UNKNOWN"
+  | "OS_FAMILY_WINDOWS"
+  | "OS_FAMILY_LINUX"
+  | "OS_FAMILY_UNIX";
+export const GuestOsDetailsFamilyEnum = /*@__PURE__*/ S.String;
+
 /** Information from Guest-level collections. */
 export interface GuestOsDetails {
-  /** What family the OS belong to, if known. */
-  family?: GuestOsDetailsFamilyEnum | (string & {});
-  /** OS and app configuration. */
-  config?: GuestConfigDetails;
-  /** The name of the operating system. */
-  osName?: string;
   /** Runtime information. */
   runtime?: GuestRuntimeDetails;
   /** The version of the operating system. */
   version?: string;
+  /** OS and app configuration. */
+  config?: GuestConfigDetails;
+  /** The name of the operating system. */
+  osName?: string;
+  /** What family the OS belong to, if known. */
+  family?: GuestOsDetailsFamilyEnum | (string & {});
 }
 export const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    family: S.optional(GuestOsDetailsFamilyEnum),
-    config: S.optional(GuestConfigDetails),
-    osName: S.optional(S.String),
     runtime: S.optional(GuestRuntimeDetails),
     version: S.optional(S.String),
+    config: S.optional(GuestConfigDetails),
+    osName: S.optional(S.String),
+    family: S.optional(GuestOsDetailsFamilyEnum),
   }),
 ).annotate({ identifier: "GuestOsDetails" }) as any as S.Schema<GuestOsDetails>;
 
-/** Details of a machine. */
-export interface MachineDetails {
-  /** The amount of memory in the machine. Must be non-negative. */
-  memoryMb?: number;
-  /** Network details. */
-  network?: MachineNetworkDetails;
-  /** Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore might not have a one-to-one correspondence with local disks. */
-  diskPartitions?: DiskPartitionDetails;
-  /** Number of logical CPU cores in the machine. Must be non-negative. */
-  coreCount?: number;
-  /** Machine unique identifier. */
-  uuid?: string;
-  /** Platform specific information. */
-  platform?: PlatformDetails;
-  /** Machine creation time. */
-  createTime?: string;
-  /** Power state of the machine. */
-  powerState?: MachineDetailsPowerStateEnum | (string & {});
-  /** Disk details. */
-  disks?: MachineDiskDetails;
-  /** Machine name. */
-  machineName?: string;
-  /** Architecture details (vendor, CPU architecture). */
-  architecture?: MachineArchitectureDetails;
-  /** Guest OS information. */
-  guestOs?: GuestOsDetails;
-}
-export const MachineDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryMb: S.optional(S.Number),
-    network: S.optional(MachineNetworkDetails),
-    diskPartitions: S.optional(DiskPartitionDetails),
-    coreCount: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    platform: S.optional(PlatformDetails),
-    createTime: S.optional(S.String),
-    powerState: S.optional(MachineDetailsPowerStateEnum),
-    disks: S.optional(MachineDiskDetails),
-    machineName: S.optional(S.String),
-    architecture: S.optional(MachineArchitectureDetails),
-    guestOs: S.optional(GuestOsDetails),
-  }),
-).annotate({ identifier: "MachineDetails" }) as any as S.Schema<MachineDetails>;
+export type NetworkAddressAssignmentEnum =
+  | "ADDRESS_ASSIGNMENT_UNSPECIFIED"
+  | "ADDRESS_ASSIGNMENT_STATIC"
+  | "ADDRESS_ASSIGNMENT_DHCP";
+export const NetworkAddressAssignmentEnum = /*@__PURE__*/ S.String;
 
-/** SQL Server server flag details. */
-export interface SqlServerServerFlag {
-  /** Required. The server flag name. */
-  serverFlagName?: string;
-  /** Required. The server flag value set by the user. */
-  value?: string;
-  /** Required. The server flag actual value. If `value_in_use` is different from `value` it means that either the configuration change was not applied or it is an expected behavior. See SQL Server documentation for more details. */
-  valueInUse?: string;
+/** Details of network address. */
+export interface NetworkAddress {
+  /** Subnet mask. */
+  subnetMask?: string;
+  /** Assigned or configured IP Address. */
+  ipAddress?: string;
+  /** Whether DHCP is used to assign addresses. */
+  assignment?: NetworkAddressAssignmentEnum | (string & {});
+  /** Broadcast address. */
+  bcast?: string;
+  /** Fully qualified domain name. */
+  fqdn?: string;
 }
-export const SqlServerServerFlag = /*@__PURE__*/ S.suspend(() =>
+export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    serverFlagName: S.optional(S.String),
-    value: S.optional(S.String),
-    valueInUse: S.optional(S.String),
+    subnetMask: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    assignment: S.optional(NetworkAddressAssignmentEnum),
+    bcast: S.optional(S.String),
+    fqdn: S.optional(S.String),
+  }),
+).annotate({ identifier: "NetworkAddress" }) as any as S.Schema<NetworkAddress>;
+
+export type NetworkAddressList_ = Array<NetworkAddress>;
+export const NetworkAddressList_ = /*@__PURE__*/ S.Array(
+  NetworkAddress,
+) as any as S.Schema<NetworkAddressList_>;
+
+/** List of allocated/assigned network addresses. */
+export interface NetworkAddressList {
+  /** Network address entries. */
+  addresses?: NetworkAddressList_;
+  /** Network address entries. */
+  entries?: NetworkAddressList_;
+}
+export const NetworkAddressList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    addresses: S.optional(NetworkAddressList_),
+    entries: S.optional(NetworkAddressList_),
   }),
 ).annotate({
-  identifier: "SqlServerServerFlag",
-}) as any as S.Schema<SqlServerServerFlag>;
+  identifier: "NetworkAddressList",
+}) as any as S.Schema<NetworkAddressList>;
 
-export type SqlServerServerFlagList = Array<SqlServerServerFlag>;
-export const SqlServerServerFlagList = /*@__PURE__*/ S.Array(
-  SqlServerServerFlag,
-) as any as S.Schema<SqlServerServerFlagList>;
-
-/** SQL Server feature details. */
-export interface SqlServerFeature {
-  /** Required. The feature name. */
-  featureName?: string;
-  /** Required. Field enabled is set when a feature is used on the source deployment. */
-  enabled?: boolean;
+/** Details of network adapter. */
+export interface NetworkAdapterDetails {
+  /** NetworkAddressList */
+  addresses?: NetworkAddressList;
+  /** Network adapter type (e.g. VMXNET3). */
+  adapterType?: string;
+  /** MAC address. */
+  macAddress?: string;
 }
-export const SqlServerFeature = /*@__PURE__*/ S.suspend(() =>
+export const NetworkAdapterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    featureName: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    addresses: S.optional(NetworkAddressList),
+    adapterType: S.optional(S.String),
+    macAddress: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SqlServerFeature",
-}) as any as S.Schema<SqlServerFeature>;
+  identifier: "NetworkAdapterDetails",
+}) as any as S.Schema<NetworkAdapterDetails>;
 
-export type SqlServerFeatureList = Array<SqlServerFeature>;
-export const SqlServerFeatureList = /*@__PURE__*/ S.Array(
-  SqlServerFeature,
-) as any as S.Schema<SqlServerFeatureList>;
+export type NetworkAdapterDetailsList = Array<NetworkAdapterDetails>;
+export const NetworkAdapterDetailsList = /*@__PURE__*/ S.Array(
+  NetworkAdapterDetails,
+) as any as S.Schema<NetworkAdapterDetailsList>;
 
-export type SqlServerTraceFlagScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "OFF"
-  | "GLOBAL"
-  | "SESSION";
-export const SqlServerTraceFlagScopeEnum = /*@__PURE__*/ S.String;
-
-/** SQL Server trace flag details. */
-export interface SqlServerTraceFlag {
-  /** Required. The trace flag scope. */
-  scope?: SqlServerTraceFlagScopeEnum | (string & {});
-  /** Required. The trace flag name. */
-  traceFlagName?: string;
+/** List of network adapters. */
+export interface NetworkAdapterList {
+  /** Network adapter descriptions. */
+  networkAdapters?: NetworkAdapterDetailsList;
+  /** Network adapter entries. */
+  entries?: NetworkAdapterDetailsList;
 }
-export const SqlServerTraceFlag = /*@__PURE__*/ S.suspend(() =>
+export const NetworkAdapterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scope: S.optional(SqlServerTraceFlagScopeEnum),
-    traceFlagName: S.optional(S.String),
+    networkAdapters: S.optional(NetworkAdapterDetailsList),
+    entries: S.optional(NetworkAdapterDetailsList),
   }),
 ).annotate({
-  identifier: "SqlServerTraceFlag",
-}) as any as S.Schema<SqlServerTraceFlag>;
+  identifier: "NetworkAdapterList",
+}) as any as S.Schema<NetworkAdapterList>;
 
-export type SqlServerTraceFlagList = Array<SqlServerTraceFlag>;
-export const SqlServerTraceFlagList = /*@__PURE__*/ S.Array(
-  SqlServerTraceFlag,
-) as any as S.Schema<SqlServerTraceFlagList>;
-
-/** Specific details for a Microsoft SQL Server database deployment. */
-export interface SqlServerDatabaseDeployment {
-  /** Optional. List of SQL Server server flags. */
-  serverFlags?: SqlServerServerFlagList;
-  /** Optional. List of SQL Server features. */
-  features?: SqlServerFeatureList;
-  /** Optional. List of SQL Server trace flags. */
-  traceFlags?: SqlServerTraceFlagList;
-}
-export const SqlServerDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverFlags: S.optional(SqlServerServerFlagList),
-    features: S.optional(SqlServerFeatureList),
-    traceFlags: S.optional(SqlServerTraceFlagList),
-  }),
-).annotate({
-  identifier: "SqlServerDatabaseDeployment",
-}) as any as S.Schema<SqlServerDatabaseDeployment>;
-
-export type DatabaseInstanceRoleEnum =
-  | "ROLE_UNSPECIFIED"
-  | "PRIMARY"
-  | "SECONDARY"
-  | "ARBITER";
-export const DatabaseInstanceRoleEnum = /*@__PURE__*/ S.String;
-
-/** Network details of a database instance. */
-export interface DatabaseInstanceNetwork {
-  /** Optional. The instance's host names. */
-  hostNames?: StringList;
-  /** Optional. The instance's IP addresses. */
-  ipAddresses?: StringList;
-  /** Optional. The instance's primary MAC address. */
+/** Details of network adapters and settings. */
+export interface VirtualMachineNetworkDetails {
+  /** Default gateway address. */
+  defaultGw?: string;
+  /** IP address of the machine. */
+  primaryIpAddress?: string;
+  /** List of network adapters. */
+  networkAdapters?: NetworkAdapterList;
+  /** Public IP address of the machine. */
+  publicIpAddress?: string;
+  /** MAC address of the machine. This property is used to uniqly identify the machine. */
   primaryMacAddress?: string;
 }
-export const DatabaseInstanceNetwork = /*@__PURE__*/ S.suspend(() =>
+export const VirtualMachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    hostNames: S.optional(StringList),
-    ipAddresses: S.optional(StringList),
+    defaultGw: S.optional(S.String),
+    primaryIpAddress: S.optional(S.String),
+    networkAdapters: S.optional(NetworkAdapterList),
+    publicIpAddress: S.optional(S.String),
     primaryMacAddress: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DatabaseInstanceNetwork",
-}) as any as S.Schema<DatabaseInstanceNetwork>;
+  identifier: "VirtualMachineNetworkDetails",
+}) as any as S.Schema<VirtualMachineNetworkDetails>;
 
-/** Details of a database instance. */
-export interface DatabaseInstance {
-  /** The instance's name. */
-  instanceName?: string;
-  /** The instance role in the database engine. */
-  role?: DatabaseInstanceRoleEnum | (string & {});
-  /** Optional. Networking details. */
-  network?: DatabaseInstanceNetwork;
-}
-export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.optional(S.String),
-    role: S.optional(DatabaseInstanceRoleEnum),
-    network: S.optional(DatabaseInstanceNetwork),
-  }),
-).annotate({
-  identifier: "DatabaseInstance",
-}) as any as S.Schema<DatabaseInstance>;
+export type VirtualMachineArchitectureDetailsHyperthreadingEnum =
+  | "HYPER_THREADING_UNSPECIFIED"
+  | "HYPER_THREADING_DISABLED"
+  | "HYPER_THREADING_ENABLED";
+export const VirtualMachineArchitectureDetailsHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
 
-export type DatabaseInstanceList = Array<DatabaseInstance>;
-export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
-  DatabaseInstance,
-) as any as S.Schema<DatabaseInstanceList>;
-
-/** Details of database deployment's topology. */
-export interface DatabaseDeploymentTopology {
-  /** Optional. Number of total logical cores. */
-  coreCount?: number;
-  /** Optional. Number of total physical cores limited by db deployment. */
-  physicalCoreLimit?: number;
-  /** Optional. Disk allocated in bytes. */
-  diskAllocatedBytes?: string;
-  /** Optional. Total memory in bytes limited by db deployment. */
-  memoryLimitBytes?: string;
-  /** Optional. List of database instances. */
-  instances?: DatabaseInstanceList;
-  /** Optional. Number of total physical cores. */
-  physicalCoreCount?: number;
-  /** Optional. Total memory in bytes. */
-  memoryBytes?: string;
-  /** Optional. Disk used in bytes. */
-  diskUsedBytes?: string;
-  /** Optional. Number of total logical cores limited by db deployment. */
-  coreLimit?: number;
-}
-export const DatabaseDeploymentTopology = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coreCount: S.optional(S.Number),
-    physicalCoreLimit: S.optional(S.Number),
-    diskAllocatedBytes: S.optional(S.String),
-    memoryLimitBytes: S.optional(S.String),
-    instances: S.optional(DatabaseInstanceList),
-    physicalCoreCount: S.optional(S.Number),
-    memoryBytes: S.optional(S.String),
-    diskUsedBytes: S.optional(S.String),
-    coreLimit: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabaseDeploymentTopology",
-}) as any as S.Schema<DatabaseDeploymentTopology>;
-
-/** MySql property. */
-export interface MySqlProperty {
-  /** Required. The property numeric value. */
-  numericValue?: string;
-  /** Required. The property name. */
-  property?: string;
-  /** Required. The property is enabled. */
-  enabled?: boolean;
-}
-export const MySqlProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numericValue: S.optional(S.String),
-    property: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MySqlProperty" }) as any as S.Schema<MySqlProperty>;
-
-export type MySqlPropertyList = Array<MySqlProperty>;
-export const MySqlPropertyList = /*@__PURE__*/ S.Array(
-  MySqlProperty,
-) as any as S.Schema<MySqlPropertyList>;
-
-/** MySql plugin. */
-export interface MySqlPlugin {
-  /** Required. The plugin name. */
-  plugin?: string;
-  /** Required. The plugin is active. */
-  enabled?: boolean;
-  /** Required. The plugin version. */
+/** Details about the BIOS. */
+export interface BiosDetails {
+  /** BIOS version. */
+  biosVersion?: string;
+  /** BIOS version. */
   version?: string;
+  /** BIOS release date. */
+  releaseTime?: string;
+  /** BIOS ID. */
+  id?: string;
+  /** BIOS manufacturer. */
+  manufacturer?: string;
+  /** BIOS name. */
+  biosName?: string;
+  /** SMBIOS UUID. */
+  smbiosUuid?: string;
+  /** BIOS release date. */
+  biosReleaseDate?: string;
+  /** BIOS manufacturer. */
+  biosManufacturer?: string;
 }
-export const MySqlPlugin = /*@__PURE__*/ S.suspend(() =>
+export const BiosDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    plugin: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
+    biosVersion: S.optional(S.String),
     version: S.optional(S.String),
+    releaseTime: S.optional(S.String),
+    id: S.optional(S.String),
+    manufacturer: S.optional(S.String),
+    biosName: S.optional(S.String),
+    smbiosUuid: S.optional(S.String),
+    biosReleaseDate: S.optional(S.String),
+    biosManufacturer: S.optional(S.String),
   }),
-).annotate({ identifier: "MySqlPlugin" }) as any as S.Schema<MySqlPlugin>;
+).annotate({ identifier: "BiosDetails" }) as any as S.Schema<BiosDetails>;
 
-export type MySqlPluginList = Array<MySqlPlugin>;
-export const MySqlPluginList = /*@__PURE__*/ S.Array(
-  MySqlPlugin,
-) as any as S.Schema<MySqlPluginList>;
-
-/** MySql variable. */
-export interface MySqlVariable {
-  /** Required. The variable name. */
-  variable?: string;
-  /** Required. The variable category. */
-  category?: string;
-  /** Required. The variable value. */
-  value?: string;
+/** Details of the VM architecture. */
+export interface VirtualMachineArchitectureDetails {
+  /** CPU manufacturer, e.g., "Intel", "AMD". */
+  cpuManufacturer?: string;
+  /** Deprecated: use VirtualMachineDetails.core_count instead. Number of CPU threads allocated to the machine. */
+  cpuThreadCount?: number;
+  /** Number of processor sockets allocated to the machine. */
+  cpuSocketCount?: number;
+  /** CPU hyperthreading support. */
+  hyperthreading?:
+    | VirtualMachineArchitectureDetailsHyperthreadingEnum
+    | (string & {});
+  /** Hardware vendor. */
+  vendor?: string;
+  /** CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc. */
+  cpuName?: string;
+  /** BIOS Details. */
+  bios?: BiosDetails;
+  /** Firmware (BIOS/efi). */
+  firmware?: string;
+  /** CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc. */
+  cpuArchitecture?: string;
 }
-export const MySqlVariable = /*@__PURE__*/ S.suspend(() =>
+export const VirtualMachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variable: S.optional(S.String),
-    category: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "MySqlVariable" }) as any as S.Schema<MySqlVariable>;
-
-export type MySqlVariableList = Array<MySqlVariable>;
-export const MySqlVariableList = /*@__PURE__*/ S.Array(
-  MySqlVariable,
-) as any as S.Schema<MySqlVariableList>;
-
-/** Specific details for a Mysql database deployment. */
-export interface MysqlDatabaseDeployment {
-  /** Optional. List of MySql properties. */
-  properties?: MySqlPropertyList;
-  /** Optional. List of MySql plugins. */
-  plugins?: MySqlPluginList;
-  /** Optional. Number of resource groups. */
-  resourceGroupsCount?: number;
-  /** Optional. List of MySql variables. */
-  variables?: MySqlVariableList;
-}
-export const MysqlDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(MySqlPropertyList),
-    plugins: S.optional(MySqlPluginList),
-    resourceGroupsCount: S.optional(S.Number),
-    variables: S.optional(MySqlVariableList),
+    cpuManufacturer: S.optional(S.String),
+    cpuThreadCount: S.optional(S.Number),
+    cpuSocketCount: S.optional(S.Number),
+    hyperthreading: S.optional(
+      VirtualMachineArchitectureDetailsHyperthreadingEnum,
+    ),
+    vendor: S.optional(S.String),
+    cpuName: S.optional(S.String),
+    bios: S.optional(BiosDetails),
+    firmware: S.optional(S.String),
+    cpuArchitecture: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "MysqlDatabaseDeployment",
-}) as any as S.Schema<MysqlDatabaseDeployment>;
+  identifier: "VirtualMachineArchitectureDetails",
+}) as any as S.Schema<VirtualMachineArchitectureDetails>;
+
+export type GenericPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const GenericPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+
+/** Generic platform details. */
+export interface GenericPlatformDetails {
+  /** Free text representation of the machine location. The format of this field should not be relied on. Different VMs in the same location may have different string values for this field. */
+  location?: string;
+  /** Whether the machine is hyperthreaded. */
+  hyperthreading?: GenericPlatformDetailsHyperthreadingEnum | (string & {});
+}
+export const GenericPlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    hyperthreading: S.optional(GenericPlatformDetailsHyperthreadingEnum),
+  }),
+).annotate({
+  identifier: "GenericPlatformDetails",
+}) as any as S.Schema<GenericPlatformDetails>;
+
+export type VmwarePlatformDetailsEsxHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const VmwarePlatformDetailsEsxHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
+
+/** VMware specific details. */
+export interface VmwarePlatformDetails {
+  /** vCenter VM ID. */
+  vcenterVmId?: string;
+  /** vCenter version. */
+  vcenterVersion?: string;
+  /** VMware os enum - https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html. */
+  osid?: string;
+  /** Folder name in vCenter where asset resides. */
+  vcenterFolder?: string;
+  /** vCenter URI used in collection. */
+  vcenterUri?: string;
+  /** Whether the ESX is hyperthreaded. */
+  esxHyperthreading?:
+    | VmwarePlatformDetailsEsxHyperthreadingEnum
+    | (string & {});
+  /** ESX version. */
+  esxVersion?: string;
+}
+export const VmwarePlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vcenterVmId: S.optional(S.String),
+    vcenterVersion: S.optional(S.String),
+    osid: S.optional(S.String),
+    vcenterFolder: S.optional(S.String),
+    vcenterUri: S.optional(S.String),
+    esxHyperthreading: S.optional(VmwarePlatformDetailsEsxHyperthreadingEnum),
+    esxVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmwarePlatformDetails",
+}) as any as S.Schema<VmwarePlatformDetails>;
+
+export type AzureVmPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const AzureVmPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+
+/** Azure VM specific details. */
+export interface AzureVmPlatformDetails {
+  /** Azure platform's provisioning state. */
+  provisioningState?: string;
+  /** The location of the machine in the Azure format. */
+  location?: string;
+  /** Whether the machine is hyperthreaded. */
+  hyperthreading?: AzureVmPlatformDetailsHyperthreadingEnum | (string & {});
+  /** Azure platform's machine type label. */
+  machineTypeLabel?: string;
+}
+export const AzureVmPlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(S.String),
+    location: S.optional(S.String),
+    hyperthreading: S.optional(AzureVmPlatformDetailsHyperthreadingEnum),
+    machineTypeLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AzureVmPlatformDetails",
+}) as any as S.Schema<AzureVmPlatformDetails>;
+
+export type AwsEc2PlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const AwsEc2PlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+
+/** AWS EC2 specific details. */
+export interface AwsEc2PlatformDetails {
+  /** The location of the machine in the AWS format. */
+  location?: string;
+  /** Optional. Whether the machine is hyperthreaded. */
+  hyperthreading?: AwsEc2PlatformDetailsHyperthreadingEnum | (string & {});
+  /** AWS platform's machine type label. */
+  machineTypeLabel?: string;
+}
+export const AwsEc2PlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    hyperthreading: S.optional(AwsEc2PlatformDetailsHyperthreadingEnum),
+    machineTypeLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsEc2PlatformDetails",
+}) as any as S.Schema<AwsEc2PlatformDetails>;
+
+export type PhysicalPlatformDetailsHyperthreadingEnum =
+  | "HYPERTHREADING_STATUS_UNSPECIFIED"
+  | "HYPERTHREADING_STATUS_DISABLED"
+  | "HYPERTHREADING_STATUS_ENABLED";
+export const PhysicalPlatformDetailsHyperthreadingEnum = /*@__PURE__*/ S.String;
+
+/** Platform specific details for Physical Machines. */
+export interface PhysicalPlatformDetails {
+  /** Free text representation of the machine location. The format of this field should not be relied on. Different machines in the same location may have different string values for this field. */
+  location?: string;
+  /** Whether the machine is hyperthreaded. */
+  hyperthreading?: PhysicalPlatformDetailsHyperthreadingEnum | (string & {});
+}
+export const PhysicalPlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    hyperthreading: S.optional(PhysicalPlatformDetailsHyperthreadingEnum),
+  }),
+).annotate({
+  identifier: "PhysicalPlatformDetails",
+}) as any as S.Schema<PhysicalPlatformDetails>;
+
+/** Information about the platform. */
+export interface PlatformDetails {
+  /** Generic platform details. */
+  genericDetails?: GenericPlatformDetails;
+  /** VMware specific details. */
+  vmwareDetails?: VmwarePlatformDetails;
+  /** Azure VM specific details. */
+  azureVmDetails?: AzureVmPlatformDetails;
+  /** AWS EC2 specific details. */
+  awsEc2Details?: AwsEc2PlatformDetails;
+  /** Physical machines platform details. */
+  physicalDetails?: PhysicalPlatformDetails;
+}
+export const PlatformDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    genericDetails: S.optional(GenericPlatformDetails),
+    vmwareDetails: S.optional(VmwarePlatformDetails),
+    azureVmDetails: S.optional(AzureVmPlatformDetails),
+    awsEc2Details: S.optional(AwsEc2PlatformDetails),
+    physicalDetails: S.optional(PhysicalPlatformDetails),
+  }),
+).annotate({
+  identifier: "PlatformDetails",
+}) as any as S.Schema<PlatformDetails>;
+
+/** Disk partition details. */
+export interface DiskPartitionDetails {
+  /** Output only. Total capacity of all partitions. */
+  totalCapacityBytes?: string;
+  /** Output only. Total free space of all partitions. */
+  freeSpaceBytes?: string;
+  /** Optional. List of partitions. */
+  partitions?: DiskPartitionList;
+}
+export const DiskPartitionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalCapacityBytes: S.optional(S.String),
+    freeSpaceBytes: S.optional(S.String),
+    partitions: S.optional(DiskPartitionList),
+  }),
+).annotate({
+  identifier: "DiskPartitionDetails",
+}) as any as S.Schema<DiskPartitionDetails>;
+
+export type VirtualMachineDetailsOsFamilyEnum =
+  | "OS_FAMILY_UNKNOWN"
+  | "OS_FAMILY_WINDOWS"
+  | "OS_FAMILY_LINUX"
+  | "OS_FAMILY_UNIX";
+export const VirtualMachineDetailsOsFamilyEnum = /*@__PURE__*/ S.String;
+
+/** Details of a VirtualMachine. */
+export interface VirtualMachineDetails {
+  /** Virtual Machine unique identifier. */
+  vmUuid?: string;
+  /** vCenter VM ID. */
+  vcenterVmId?: string;
+  /** VM creation timestamp. */
+  createTime?: string;
+  /** VM disk details. */
+  vmDisks?: VirtualMachineDiskDetails;
+  /** Power state of VM (poweredOn or poweredOff). */
+  powerState?: string;
+  /** Number of logical CPU cores in the VirtualMachine. Must be non-negative. */
+  coreCount?: number;
+  /** Guest OS information. */
+  guestOs?: GuestOsDetails;
+  /** vCenter URL used in collection. */
+  vcenterUrl?: string;
+  /** VM network details. */
+  vmNetwork?: VirtualMachineNetworkDetails;
+  /** VM architecture details (vendor, cpu arch). */
+  vmArchitecture?: VirtualMachineArchitectureDetails;
+  /** Virtual Machine display name. */
+  vmName?: string;
+  /** The version of the operating system running on the virtual machine. */
+  osVersion?: string;
+  /** The amount of memory in the VirtualMachine. Must be non-negative. */
+  memoryMb?: number;
+  /** The name of the operating system running on the VirtualMachine. */
+  osName?: string;
+  /** Platform information. */
+  platform?: PlatformDetails;
+  /** Folder name in vCenter where asset resides. */
+  vcenterFolder?: string;
+  /** Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore might not have a one-to-one correspondence with local disks. */
+  diskPartitions?: DiskPartitionDetails;
+  /** What family the OS belong to, if known. */
+  osFamily?: VirtualMachineDetailsOsFamilyEnum | (string & {});
+}
+export const VirtualMachineDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vmUuid: S.optional(S.String),
+    vcenterVmId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    vmDisks: S.optional(VirtualMachineDiskDetails),
+    powerState: S.optional(S.String),
+    coreCount: S.optional(S.Number),
+    guestOs: S.optional(GuestOsDetails),
+    vcenterUrl: S.optional(S.String),
+    vmNetwork: S.optional(VirtualMachineNetworkDetails),
+    vmArchitecture: S.optional(VirtualMachineArchitectureDetails),
+    vmName: S.optional(S.String),
+    osVersion: S.optional(S.String),
+    memoryMb: S.optional(S.Number),
+    osName: S.optional(S.String),
+    platform: S.optional(PlatformDetails),
+    vcenterFolder: S.optional(S.String),
+    diskPartitions: S.optional(DiskPartitionDetails),
+    osFamily: S.optional(VirtualMachineDetailsOsFamilyEnum),
+  }),
+).annotate({
+  identifier: "VirtualMachineDetails",
+}) as any as S.Schema<VirtualMachineDetails>;
+
+/** Asset information specific for AWS Load Balancers. */
+export interface AwsElbLoadBalancerDetails {}
+export const AwsElbLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElbLoadBalancerDetails",
+}) as any as S.Schema<AwsElbLoadBalancerDetails>;
+
+/** Details of machine disks. */
+export interface MachineDiskDetails {
+  /** Raw disk scan result. This field is intended for human inspection. The format of this field may be lsblk output or any another raw output. The exact format may change without notice and should not be relied upon. */
+  rawScanResult?: string;
+  /** Total disk free space. */
+  totalFreeBytes?: string;
+  /** Disk total Capacity. */
+  totalCapacityBytes?: string;
+  /** List of disks. */
+  disks?: DiskEntryList;
+}
+export const MachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rawScanResult: S.optional(S.String),
+    totalFreeBytes: S.optional(S.String),
+    totalCapacityBytes: S.optional(S.String),
+    disks: S.optional(DiskEntryList),
+  }),
+).annotate({
+  identifier: "MachineDiskDetails",
+}) as any as S.Schema<MachineDiskDetails>;
+
+export type MachineArchitectureDetailsHyperthreadingEnum =
+  | "CPU_HYPER_THREADING_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED";
+export const MachineArchitectureDetailsHyperthreadingEnum =
+  /*@__PURE__*/ S.String;
+
+export type MachineArchitectureDetailsFirmwareTypeEnum =
+  | "FIRMWARE_TYPE_UNSPECIFIED"
+  | "BIOS"
+  | "EFI";
+export const MachineArchitectureDetailsFirmwareTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Details of the machine architecture. */
+export interface MachineArchitectureDetails {
+  /** CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc. */
+  cpuArchitecture?: string;
+  /** CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc. */
+  cpuName?: string;
+  /** BIOS Details. */
+  bios?: BiosDetails;
+  /** Hardware vendor. */
+  vendor?: string;
+  /** Number of processor sockets allocated to the machine. */
+  cpuSocketCount?: number;
+  /** CPU hyper-threading support. */
+  hyperthreading?: MachineArchitectureDetailsHyperthreadingEnum | (string & {});
+  /** Optional. CPU manufacturer, e.g., "Intel", "AMD". */
+  cpuManufacturer?: string;
+  /** Firmware type. */
+  firmwareType?: MachineArchitectureDetailsFirmwareTypeEnum | (string & {});
+}
+export const MachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cpuArchitecture: S.optional(S.String),
+    cpuName: S.optional(S.String),
+    bios: S.optional(BiosDetails),
+    vendor: S.optional(S.String),
+    cpuSocketCount: S.optional(S.Number),
+    hyperthreading: S.optional(MachineArchitectureDetailsHyperthreadingEnum),
+    cpuManufacturer: S.optional(S.String),
+    firmwareType: S.optional(MachineArchitectureDetailsFirmwareTypeEnum),
+  }),
+).annotate({
+  identifier: "MachineArchitectureDetails",
+}) as any as S.Schema<MachineArchitectureDetails>;
+
+/** Details of network adapters and settings. */
+export interface MachineNetworkDetails {
+  /** List of network adapters. */
+  networkAdapters?: NetworkAdapterList;
+  /** Default gateway address. */
+  defaultGateway?: string;
+  /** MAC address of the machine. This property is used to uniqly identify the machine. */
+  primaryMacAddress?: string;
+  /** The public IP address of the machine. */
+  publicIpAddress?: string;
+  /** The primary IP address of the machine. */
+  primaryIpAddress?: string;
+}
+export const MachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkAdapters: S.optional(NetworkAdapterList),
+    defaultGateway: S.optional(S.String),
+    primaryMacAddress: S.optional(S.String),
+    publicIpAddress: S.optional(S.String),
+    primaryIpAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachineNetworkDetails",
+}) as any as S.Schema<MachineNetworkDetails>;
+
+export type MachineDetailsPowerStateEnum =
+  | "POWER_STATE_UNSPECIFIED"
+  | "PENDING"
+  | "ACTIVE"
+  | "SUSPENDING"
+  | "SUSPENDED"
+  | "DELETING"
+  | "DELETED";
+export const MachineDetailsPowerStateEnum = /*@__PURE__*/ S.String;
+
+/** Details of a machine. */
+export interface MachineDetails {
+  /** Machine unique identifier. */
+  uuid?: string;
+  /** The amount of memory in the machine. Must be non-negative. */
+  memoryMb?: number;
+  /** Platform specific information. */
+  platform?: PlatformDetails;
+  /** Guest OS information. */
+  guestOs?: GuestOsDetails;
+  /** Number of logical CPU cores in the machine. Must be non-negative. */
+  coreCount?: number;
+  /** Disk details. */
+  disks?: MachineDiskDetails;
+  /** Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore might not have a one-to-one correspondence with local disks. */
+  diskPartitions?: DiskPartitionDetails;
+  /** Architecture details (vendor, CPU architecture). */
+  architecture?: MachineArchitectureDetails;
+  /** Network details. */
+  network?: MachineNetworkDetails;
+  /** Machine creation time. */
+  createTime?: string;
+  /** Machine name. */
+  machineName?: string;
+  /** Power state of the machine. */
+  powerState?: MachineDetailsPowerStateEnum | (string & {});
+}
+export const MachineDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.optional(S.String),
+    memoryMb: S.optional(S.Number),
+    platform: S.optional(PlatformDetails),
+    guestOs: S.optional(GuestOsDetails),
+    coreCount: S.optional(S.Number),
+    disks: S.optional(MachineDiskDetails),
+    diskPartitions: S.optional(DiskPartitionDetails),
+    architecture: S.optional(MachineArchitectureDetails),
+    network: S.optional(MachineNetworkDetails),
+    createTime: S.optional(S.String),
+    machineName: S.optional(S.String),
+    powerState: S.optional(MachineDetailsPowerStateEnum),
+  }),
+).annotate({ identifier: "MachineDetails" }) as any as S.Schema<MachineDetails>;
+
+/** A generic insight about an asset. */
+export interface GenericInsight {
+  /** Output only. Additional information about the insight, each entry can be a logical entry and must make sense if it is displayed with line breaks between each entry. Text can contain md style links. */
+  additionalInformation?: StringList;
+  /** Output only. Represents a globally unique message id for this insight, can be used for localization purposes, in case message_code is not yet known by the client use default_message instead. */
+  messageId?: string;
+  /** Output only. In case message_code is not yet known by the client default_message will be the message to be used instead. Text can contain md file style links. */
+  defaultMessage?: string;
+}
+export const GenericInsight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    additionalInformation: S.optional(StringList),
+    messageId: S.optional(S.String),
+    defaultMessage: S.optional(S.String),
+  }),
+).annotate({ identifier: "GenericInsight" }) as any as S.Schema<GenericInsight>;
+
+/** Information about software detected on an asset. */
+export interface DetectedSoftware {
+  /** Output only. Software family of the detected software, e.g. Database, SAP family. */
+  softwareFamily?: string;
+  /** Output only. Software's name. */
+  softwareName?: string;
+}
+export const DetectedSoftware = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    softwareFamily: S.optional(S.String),
+    softwareName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DetectedSoftware",
+}) as any as S.Schema<DetectedSoftware>;
+
+/** An insight regarding software detected on an asset. */
+export interface SoftwareInsight {
+  /** Output only. Information about the detected software. */
+  detectedSoftware?: DetectedSoftware;
+}
+export const SoftwareInsight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectedSoftware: S.optional(DetectedSoftware),
+  }),
+).annotate({
+  identifier: "SoftwareInsight",
+}) as any as S.Schema<SoftwareInsight>;
+
+/** Compute engine sole tenant migration target. */
+export interface ComputeEngineSoleTenantMigrationTarget {}
+export const ComputeEngineSoleTenantMigrationTarget = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ComputeEngineSoleTenantMigrationTarget",
+}) as any as S.Schema<ComputeEngineSoleTenantMigrationTarget>;
+
+export type ComputeStorageDescriptorTypeEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
+export const ComputeStorageDescriptorTypeEnum = /*@__PURE__*/ S.String;
+
+/** Compute Engine storage option descriptor. */
+export interface ComputeStorageDescriptor {
+  /** Disk size in GiB. */
+  sizeGb?: number;
+  /** Output only. Disk type backing the storage. */
+  type?: ComputeStorageDescriptorTypeEnum | (string & {});
+}
+export const ComputeStorageDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sizeGb: S.optional(S.Number),
+    type: S.optional(ComputeStorageDescriptorTypeEnum),
+  }),
+).annotate({
+  identifier: "ComputeStorageDescriptor",
+}) as any as S.Schema<ComputeStorageDescriptor>;
+
+export type CloudSqlForSqlServerShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const CloudSqlForSqlServerShapeZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
+
+export type CloudSqlForSqlServerShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export const CloudSqlForSqlServerShapeEditionEnum = /*@__PURE__*/ S.String;
+
+export type CloudSqlForSqlServerShapeVersionEnum =
+  | "SQL_SERVER_VERSION_UNSPECIFIED"
+  | "SQL_SERVER_VERSION_2017_EXPRESS"
+  | "SQL_SERVER_VERSION_2017_WEB"
+  | "SQL_SERVER_VERSION_2017_STANDARD"
+  | "SQL_SERVER_VERSION_2017_ENTERPRISE"
+  | "SQL_SERVER_VERSION_2019_EXPRESS"
+  | "SQL_SERVER_VERSION_2019_WEB"
+  | "SQL_SERVER_VERSION_2019_STANDARD"
+  | "SQL_SERVER_VERSION_2019_ENTERPRISE"
+  | "SQL_SERVER_VERSION_2022_EXPRESS"
+  | "SQL_SERVER_VERSION_2022_WEB"
+  | "SQL_SERVER_VERSION_2022_STANDARD"
+  | "SQL_SERVER_VERSION_2022_ENTERPRISE";
+export const CloudSqlForSqlServerShapeVersionEnum = /*@__PURE__*/ S.String;
+
+/** Cloud SQL for SQL Server database shape. */
+export interface CloudSqlForSqlServerShape {
+  /** Output only. Predicted storage shape. */
+  storage?: ComputeStorageDescriptor;
+  /** Output only. Cloud SQL zone availability. */
+  zoneAvailability?:
+    | CloudSqlForSqlServerShapeZoneAvailabilityEnum
+    | (string & {});
+  /** Output only. Whether simultaneous multithreading is enabled (see https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance). */
+  smtEnabled?: boolean;
+  /** Output only. Cloud SQL edition. */
+  edition?: CloudSqlForSqlServerShapeEditionEnum | (string & {});
+  /** Output only. Number of logical cores. */
+  logicalCoreCount?: number;
+  /** Output only. Predicted amount of memory in MiB. */
+  memoryMb?: number;
+  /** Output only. Predicted backup storage size in GiB. */
+  backupStorageGb?: number;
+  /** Output only. Predicted Network Out traffic GiB per month. */
+  egressGbPerMonth?: string;
+  /** Output only. Microsoft SQL Server version to be used on the Cloud SQL for SQL server instance. */
+  version?: CloudSqlForSqlServerShapeVersionEnum | (string & {});
+}
+export const CloudSqlForSqlServerShape = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storage: S.optional(ComputeStorageDescriptor),
+    zoneAvailability: S.optional(CloudSqlForSqlServerShapeZoneAvailabilityEnum),
+    smtEnabled: S.optional(S.Boolean),
+    edition: S.optional(CloudSqlForSqlServerShapeEditionEnum),
+    logicalCoreCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
+    backupStorageGb: S.optional(S.Number),
+    egressGbPerMonth: S.optional(S.String),
+    version: S.optional(CloudSqlForSqlServerShapeVersionEnum),
+  }),
+).annotate({
+  identifier: "CloudSqlForSqlServerShape",
+}) as any as S.Schema<CloudSqlForSqlServerShape>;
+
+export type CloudSqlForMySqlShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export const CloudSqlForMySqlShapeEditionEnum = /*@__PURE__*/ S.String;
+
+export type CloudSqlForMySqlShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const CloudSqlForMySqlShapeZoneAvailabilityEnum = /*@__PURE__*/ S.String;
+
+export type CloudSqlForMySqlShapeVersionEnum =
+  | "MY_SQL_VERSION_UNSPECIFIED"
+  | "MY_SQL_VERSION_5_6"
+  | "MY_SQL_VERSION_5_7"
+  | "MY_SQL_VERSION_8_0";
+export const CloudSqlForMySqlShapeVersionEnum = /*@__PURE__*/ S.String;
+
+/** Cloud SQL for MySQL database shape. */
+export interface CloudSqlForMySqlShape {
+  /** Output only. Number of logical cores. */
+  logicalCoreCount?: number;
+  /** Output only. Cloud SQL edition. */
+  edition?: CloudSqlForMySqlShapeEditionEnum | (string & {});
+  /** Output only. Predicted storage shape. */
+  storage?: ComputeStorageDescriptor;
+  /** Output only. Cloud SQL zone availability. */
+  zoneAvailability?: CloudSqlForMySqlShapeZoneAvailabilityEnum | (string & {});
+  /** Output only. Predicted Network Out traffic GiB per month. */
+  egressGbPerMonth?: string;
+  /** Output only. MySQL version to be used on the Cloud SQL for MySQL instance. */
+  version?: CloudSqlForMySqlShapeVersionEnum | (string & {});
+  /** Output only. Predicted amount of memory in MiB. */
+  memoryMb?: number;
+  /** Output only. Predicted backup storage size in GiB. */
+  backupStorageGb?: number;
+}
+export const CloudSqlForMySqlShape = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logicalCoreCount: S.optional(S.Number),
+    edition: S.optional(CloudSqlForMySqlShapeEditionEnum),
+    storage: S.optional(ComputeStorageDescriptor),
+    zoneAvailability: S.optional(CloudSqlForMySqlShapeZoneAvailabilityEnum),
+    egressGbPerMonth: S.optional(S.String),
+    version: S.optional(CloudSqlForMySqlShapeVersionEnum),
+    memoryMb: S.optional(S.Number),
+    backupStorageGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CloudSqlForMySqlShape",
+}) as any as S.Schema<CloudSqlForMySqlShape>;
+
+export type CloudSqlForPostgreSqlShapeEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export const CloudSqlForPostgreSqlShapeEditionEnum = /*@__PURE__*/ S.String;
+
+export type CloudSqlForPostgreSqlShapeVersionEnum =
+  | "POSTGRESQL_VERSION_UNSPECIFIED"
+  | "POSTGRESQL_VERSION_9_6"
+  | "POSTGRESQL_VERSION_10"
+  | "POSTGRESQL_VERSION_11"
+  | "POSTGRESQL_VERSION_12"
+  | "POSTGRESQL_VERSION_13"
+  | "POSTGRESQL_VERSION_14"
+  | "POSTGRESQL_VERSION_15";
+export const CloudSqlForPostgreSqlShapeVersionEnum = /*@__PURE__*/ S.String;
+
+export type CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const CloudSqlForPostgreSqlShapeZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
+
+/** Cloud SQL for PostgreSQL database shape. */
+export interface CloudSqlForPostgreSqlShape {
+  /** Output only. Number of logical cores. */
+  logicalCoreCount?: number;
+  /** Output only. Cloud SQL edition. */
+  edition?: CloudSqlForPostgreSqlShapeEditionEnum | (string & {});
+  /** Output only. Predicted Network Out traffic GiB per month. */
+  egressGbPerMonth?: string;
+  /** Output only. PostgreSql version to be used on the Cloud SQL for PostgreSql instance. */
+  version?: CloudSqlForPostgreSqlShapeVersionEnum | (string & {});
+  /** Output only. Predicted amount of memory in MiB. */
+  memoryMb?: number;
+  /** Output only. Predicted backup storage size in GiB. */
+  backupStorageGb?: number;
+  /** Output only. Predicted storage shape. */
+  storage?: ComputeStorageDescriptor;
+  /** Output only. Cloud SQL zone availability. */
+  zoneAvailability?:
+    | CloudSqlForPostgreSqlShapeZoneAvailabilityEnum
+    | (string & {});
+}
+export const CloudSqlForPostgreSqlShape = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logicalCoreCount: S.optional(S.Number),
+    edition: S.optional(CloudSqlForPostgreSqlShapeEditionEnum),
+    egressGbPerMonth: S.optional(S.String),
+    version: S.optional(CloudSqlForPostgreSqlShapeVersionEnum),
+    memoryMb: S.optional(S.Number),
+    backupStorageGb: S.optional(S.Number),
+    storage: S.optional(ComputeStorageDescriptor),
+    zoneAvailability: S.optional(
+      CloudSqlForPostgreSqlShapeZoneAvailabilityEnum,
+    ),
+  }),
+).annotate({
+  identifier: "CloudSqlForPostgreSqlShape",
+}) as any as S.Schema<CloudSqlForPostgreSqlShape>;
+
+/** Cloud database migration target. */
+export interface CloudDatabaseMigrationTarget {
+  /** Cloud SQL for SQL Server database shape. */
+  cloudSqlShape?: CloudSqlForSqlServerShape;
+  /** Cloud SQL for MySQL database shape. */
+  cloudSqlForMysqlShape?: CloudSqlForMySqlShape;
+  /** Cloud SQL for PostgreSQL database shape. */
+  cloudSqlForPostgresqlShape?: CloudSqlForPostgreSqlShape;
+}
+export const CloudDatabaseMigrationTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudSqlShape: S.optional(CloudSqlForSqlServerShape),
+    cloudSqlForMysqlShape: S.optional(CloudSqlForMySqlShape),
+    cloudSqlForPostgresqlShape: S.optional(CloudSqlForPostgreSqlShape),
+  }),
+).annotate({
+  identifier: "CloudDatabaseMigrationTarget",
+}) as any as S.Schema<CloudDatabaseMigrationTarget>;
+
+export type IssueCompatibilityIssueCategoryEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "DATABASE_FLAG"
+  | "DATABASE_FEATURE";
+export const IssueCompatibilityIssueCategoryEnum = /*@__PURE__*/ S.String;
+
+export type IssueCompatibilityIssueAssociatedObjectTypeEnum =
+  | "OBJECT_TYPE_UNSPECIFIED"
+  | "DATABASE_DEPLOYMENT"
+  | "DATABASE"
+  | "SCHEMA";
+export const IssueCompatibilityIssueAssociatedObjectTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Details about a compatibility issue. */
+export interface IssueCompatibilityIssue {
+  /** Output only. Category of this compatibility issue. */
+  category?: IssueCompatibilityIssueCategoryEnum | (string & {});
+  /** Output only. Type of object associated with this migration compatibility issue. */
+  associatedObjectType?:
+    | IssueCompatibilityIssueAssociatedObjectTypeEnum
+    | (string & {});
+  /** Output only. Name of the object associated with this compatibility issue relative to the relevant asset. Does not represent a fully qualified resource name and is not intended for programmatic use. */
+  associatedObject?: string;
+  /** Output only. A string representation of actual value associated with this issue. Some values may contain aggregated information, such as a flag name and the actual value assigned to it. */
+  associatedValue?: string;
+}
+export const IssueCompatibilityIssue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: S.optional(IssueCompatibilityIssueCategoryEnum),
+    associatedObjectType: S.optional(
+      IssueCompatibilityIssueAssociatedObjectTypeEnum,
+    ),
+    associatedObject: S.optional(S.String),
+    associatedValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IssueCompatibilityIssue",
+}) as any as S.Schema<IssueCompatibilityIssue>;
+
+/** An issue associated with a migration. */
+export interface Issue {
+  /** Output only. English description of the issue. */
+  description?: string;
+  /** Output only. Details about a compatibility issue. */
+  compatibilityIssue?: IssueCompatibilityIssue;
+  /** Output only. Unique identifier for this issue type. */
+  issueCode?: string;
+}
+export const Issue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    compatibilityIssue: S.optional(IssueCompatibilityIssue),
+    issueCode: S.optional(S.String),
+  }),
+).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
+
+export type IssueList = Array<Issue>;
+export const IssueList = /*@__PURE__*/ S.Array(
+  Issue,
+) as any as S.Schema<IssueList>;
+
+export type FitDescriptorFitLevelEnum =
+  | "FIT_LEVEL_UNSPECIFIED"
+  | "FIT"
+  | "NO_FIT"
+  | "REQUIRES_EFFORT";
+export const FitDescriptorFitLevelEnum = /*@__PURE__*/ S.String;
+
+/** Describes the fit level of an asset for migration to a specific target. */
+export interface FitDescriptor {
+  /** Output only. Fit level. */
+  fitLevel?: FitDescriptorFitLevelEnum | (string & {});
+}
+export const FitDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fitLevel: S.optional(FitDescriptorFitLevelEnum),
+  }),
+).annotate({ identifier: "FitDescriptor" }) as any as S.Schema<FitDescriptor>;
+
+export type ComputeStorageDescriptorList = Array<ComputeStorageDescriptor>;
+export const ComputeStorageDescriptorList = /*@__PURE__*/ S.Array(
+  ComputeStorageDescriptor,
+) as any as S.Schema<ComputeStorageDescriptorList>;
+
+/** Compute Engine target shape descriptor. */
+export interface ComputeEngineShapeDescriptor {
+  /** Output only. Compute Engine machine type. */
+  machineType?: string;
+  /** Output only. Whether simultaneous multithreading is enabled (see https://cloud.google.com/compute/docs/instances/set-threads-per-core). */
+  smtEnabled?: boolean;
+  /** Output only. Compute Engine storage. Never empty. */
+  storage?: ComputeStorageDescriptorList;
+  /** Output only. Memory in mebibytes. */
+  memoryMb?: number;
+  /** Output only. Compute Engine machine series. */
+  series?: string;
+  /** Output only. Number of logical cores. */
+  logicalCoreCount?: number;
+  /** Output only. Number of physical cores. */
+  physicalCoreCount?: number;
+}
+export const ComputeEngineShapeDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    machineType: S.optional(S.String),
+    smtEnabled: S.optional(S.Boolean),
+    storage: S.optional(ComputeStorageDescriptorList),
+    memoryMb: S.optional(S.Number),
+    series: S.optional(S.String),
+    logicalCoreCount: S.optional(S.Number),
+    physicalCoreCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ComputeEngineShapeDescriptor",
+}) as any as S.Schema<ComputeEngineShapeDescriptor>;
+
+/** Compute engine migration target. */
+export interface ComputeEngineMigrationTarget {
+  /** Description of the suggested shape for the migration target. */
+  shape?: ComputeEngineShapeDescriptor;
+}
+export const ComputeEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    shape: S.optional(ComputeEngineShapeDescriptor),
+  }),
+).annotate({
+  identifier: "ComputeEngineMigrationTarget",
+}) as any as S.Schema<ComputeEngineMigrationTarget>;
+
+/** GKE migration target. */
+export interface GoogleKubernetesEngineMigrationTarget {}
+export const GoogleKubernetesEngineMigrationTarget = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleKubernetesEngineMigrationTarget",
+}) as any as S.Schema<GoogleKubernetesEngineMigrationTarget>;
+
+/** VMWare engine migration target. */
+export interface VmwareEngineMigrationTarget {}
+export const VmwareEngineMigrationTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "VmwareEngineMigrationTarget",
+}) as any as S.Schema<VmwareEngineMigrationTarget>;
+
+/** An insight about potential migrations for an asset. */
+export interface MigrationInsight {
+  /** Output only. A Google Compute Engine Sole Tenant target. */
+  computeEngineSoleTenantTarget?: ComputeEngineSoleTenantMigrationTarget;
+  /** Output only. A Cloud database migration target. */
+  cloudDatabaseTarget?: CloudDatabaseMigrationTarget;
+  /** Output only. Issues associated with this migration. */
+  issues?: IssueList;
+  /** Output only. Description of how well the asset this insight is associated with fits the proposed migration. */
+  fit?: FitDescriptor;
+  /** Output only. A Google Compute Engine target. */
+  computeEngineTarget?: ComputeEngineMigrationTarget;
+  /** Output only. A Google Kubernetes Engine target. */
+  gkeTarget?: GoogleKubernetesEngineMigrationTarget;
+  /** Output only. A VMWare Engine target. */
+  vmwareEngineTarget?: VmwareEngineMigrationTarget;
+}
+export const MigrationInsight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEngineSoleTenantTarget: S.optional(
+      ComputeEngineSoleTenantMigrationTarget,
+    ),
+    cloudDatabaseTarget: S.optional(CloudDatabaseMigrationTarget),
+    issues: S.optional(IssueList),
+    fit: S.optional(FitDescriptor),
+    computeEngineTarget: S.optional(ComputeEngineMigrationTarget),
+    gkeTarget: S.optional(GoogleKubernetesEngineMigrationTarget),
+    vmwareEngineTarget: S.optional(VmwareEngineMigrationTarget),
+  }),
+).annotate({
+  identifier: "MigrationInsight",
+}) as any as S.Schema<MigrationInsight>;
+
+/** An insight about an asset. */
+export interface Insight {
+  /** Output only. A generic insight about an asset. */
+  genericInsight?: GenericInsight;
+  /** Output only. An insight regarding software detected on an asset. */
+  softwareInsight?: SoftwareInsight;
+  /** Output only. An insight about potential migrations for an asset. */
+  migrationInsight?: MigrationInsight;
+}
+export const Insight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    genericInsight: S.optional(GenericInsight),
+    softwareInsight: S.optional(SoftwareInsight),
+    migrationInsight: S.optional(MigrationInsight),
+  }),
+).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+
+export type InsightList_ = Array<Insight>;
+export const InsightList_ = /*@__PURE__*/ S.Array(
+  Insight,
+) as any as S.Schema<InsightList_>;
+
+/** Message containing insights list. */
+export interface InsightList {
+  /** Output only. Insights of the list. */
+  insights?: InsightList_;
+  /** Output only. Update timestamp. */
+  updateTime?: string;
+}
+export const InsightList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insights: S.optional(InsightList_),
+    updateTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "InsightList" }) as any as S.Schema<InsightList>;
+
+/** Details of an AWS NAT Gateway. */
+export interface AwsNatGatewayDetails {}
+export const AwsNatGatewayDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsNatGatewayDetails",
+}) as any as S.Schema<AwsNatGatewayDetails>;
+
+/** Asset information specific for AWS Batch Compute Environments. */
+export interface AwsBatchComputeEnvironmentDetails {}
+export const AwsBatchComputeEnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsBatchComputeEnvironmentDetails",
+}) as any as S.Schema<AwsBatchComputeEnvironmentDetails>;
+
+/** Contains details for an AWS EMR Cluster asset. */
+export interface AwsEmrClusterDetails {}
+export const AwsEmrClusterDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsEmrClusterDetails",
+}) as any as S.Schema<AwsEmrClusterDetails>;
+
+/** Asset information specific for AWS Application Load Balancers. */
+export interface AwsApplicationLoadBalancerDetails {}
+export const AwsApplicationLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsApplicationLoadBalancerDetails",
+}) as any as S.Schema<AwsApplicationLoadBalancerDetails>;
+
+/** Details of an AWS ElastiCache Cluster. */
+export interface AwsElastiCacheClusterDetails {}
+export const AwsElastiCacheClusterDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElastiCacheClusterDetails",
+}) as any as S.Schema<AwsElastiCacheClusterDetails>;
+
+/** Asset information specific for AWS Elastic IP Addresses. */
+export interface AwsElasticIpAddressDetails {}
+export const AwsElasticIpAddressDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsElasticIpAddressDetails",
+}) as any as S.Schema<AwsElasticIpAddressDetails>;
+
+/** Contains details for an AWS Kinesis Stream asset. */
+export interface AwsKinesisStreamDetails {}
+export const AwsKinesisStreamDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsKinesisStreamDetails",
+}) as any as S.Schema<AwsKinesisStreamDetails>;
 
 /** Specific details for an AWS RDS database deployment. */
 export interface AwsRds {}
@@ -2980,6 +2862,42 @@ export const DatabaseDeploymentDetailsAggregatedStats = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DatabaseDeploymentDetailsAggregatedStats",
 }) as any as S.Schema<DatabaseDeploymentDetailsAggregatedStats>;
+
+/** PostgreSql setting. */
+export interface PostgreSqlSetting {
+  /** Required. The setting int value. */
+  intValue?: string;
+  /** Required. The setting source. */
+  source?: string;
+  /** Required. The setting name. */
+  setting?: string;
+  /** Optional. The setting unit. */
+  unit?: string;
+  /** Required. The setting boolean value. */
+  boolValue?: boolean;
+  /** Required. The setting real value. */
+  realValue?: number;
+  /** Required. The setting string value. Notice that enum values are stored as strings. */
+  stringValue?: string;
+}
+export const PostgreSqlSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    intValue: S.optional(S.String),
+    source: S.optional(S.String),
+    setting: S.optional(S.String),
+    unit: S.optional(S.String),
+    boolValue: S.optional(S.Boolean),
+    realValue: S.optional(S.Number),
+    stringValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgreSqlSetting",
+}) as any as S.Schema<PostgreSqlSetting>;
+
+export type PostgreSqlSettingList = Array<PostgreSqlSetting>;
+export const PostgreSqlSettingList = /*@__PURE__*/ S.Array(
+  PostgreSqlSetting,
+) as any as S.Schema<PostgreSqlSettingList>;
 
 /** PostgreSql property. */
 export interface PostgreSqlProperty {
@@ -3005,129 +2923,409 @@ export const PostgreSqlPropertyList = /*@__PURE__*/ S.Array(
   PostgreSqlProperty,
 ) as any as S.Schema<PostgreSqlPropertyList>;
 
-/** PostgreSql setting. */
-export interface PostgreSqlSetting {
-  /** Required. The setting boolean value. */
-  boolValue?: boolean;
-  /** Required. The setting int value. */
-  intValue?: string;
-  /** Required. The setting source. */
-  source?: string;
-  /** Optional. The setting unit. */
-  unit?: string;
-  /** Required. The setting string value. Notice that enum values are stored as strings. */
-  stringValue?: string;
-  /** Required. The setting name. */
-  setting?: string;
-  /** Required. The setting real value. */
-  realValue?: number;
-}
-export const PostgreSqlSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    boolValue: S.optional(S.Boolean),
-    intValue: S.optional(S.String),
-    source: S.optional(S.String),
-    unit: S.optional(S.String),
-    stringValue: S.optional(S.String),
-    setting: S.optional(S.String),
-    realValue: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PostgreSqlSetting",
-}) as any as S.Schema<PostgreSqlSetting>;
-
-export type PostgreSqlSettingList = Array<PostgreSqlSetting>;
-export const PostgreSqlSettingList = /*@__PURE__*/ S.Array(
-  PostgreSqlSetting,
-) as any as S.Schema<PostgreSqlSettingList>;
-
 /** Specific details for a PostgreSQL database deployment. */
 export interface PostgreSqlDatabaseDeployment {
-  /** Optional. List of PostgreSql properties. */
-  properties?: PostgreSqlPropertyList;
   /** Optional. List of PostgreSql settings. */
   settings?: PostgreSqlSettingList;
+  /** Optional. List of PostgreSql properties. */
+  properties?: PostgreSqlPropertyList;
 }
 export const PostgreSqlDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(PostgreSqlPropertyList),
     settings: S.optional(PostgreSqlSettingList),
+    properties: S.optional(PostgreSqlPropertyList),
   }),
 ).annotate({
   identifier: "PostgreSqlDatabaseDeployment",
 }) as any as S.Schema<PostgreSqlDatabaseDeployment>;
 
+export type DatabaseInstanceRoleEnum =
+  | "ROLE_UNSPECIFIED"
+  | "PRIMARY"
+  | "SECONDARY"
+  | "ARBITER";
+export const DatabaseInstanceRoleEnum = /*@__PURE__*/ S.String;
+
+/** Network details of a database instance. */
+export interface DatabaseInstanceNetwork {
+  /** Optional. The instance's primary MAC address. */
+  primaryMacAddress?: string;
+  /** Optional. The instance's IP addresses. */
+  ipAddresses?: StringList;
+  /** Optional. The instance's host names. */
+  hostNames?: StringList;
+}
+export const DatabaseInstanceNetwork = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryMacAddress: S.optional(S.String),
+    ipAddresses: S.optional(StringList),
+    hostNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DatabaseInstanceNetwork",
+}) as any as S.Schema<DatabaseInstanceNetwork>;
+
+/** Details of a database instance. */
+export interface DatabaseInstance {
+  /** The instance role in the database engine. */
+  role?: DatabaseInstanceRoleEnum | (string & {});
+  /** The instance's name. */
+  instanceName?: string;
+  /** Optional. Networking details. */
+  network?: DatabaseInstanceNetwork;
+}
+export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: S.optional(DatabaseInstanceRoleEnum),
+    instanceName: S.optional(S.String),
+    network: S.optional(DatabaseInstanceNetwork),
+  }),
+).annotate({
+  identifier: "DatabaseInstance",
+}) as any as S.Schema<DatabaseInstance>;
+
+export type DatabaseInstanceList = Array<DatabaseInstance>;
+export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
+  DatabaseInstance,
+) as any as S.Schema<DatabaseInstanceList>;
+
+/** Details of database deployment's topology. */
+export interface DatabaseDeploymentTopology {
+  /** Optional. Total memory in bytes limited by db deployment. */
+  memoryLimitBytes?: string;
+  /** Optional. Number of total physical cores limited by db deployment. */
+  physicalCoreLimit?: number;
+  /** Optional. Number of total physical cores. */
+  physicalCoreCount?: number;
+  /** Optional. Total memory in bytes. */
+  memoryBytes?: string;
+  /** Optional. Disk used in bytes. */
+  diskUsedBytes?: string;
+  /** Optional. Number of total logical cores limited by db deployment. */
+  coreLimit?: number;
+  /** Optional. Disk allocated in bytes. */
+  diskAllocatedBytes?: string;
+  /** Optional. List of database instances. */
+  instances?: DatabaseInstanceList;
+  /** Optional. Number of total logical cores. */
+  coreCount?: number;
+}
+export const DatabaseDeploymentTopology = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    memoryLimitBytes: S.optional(S.String),
+    physicalCoreLimit: S.optional(S.Number),
+    physicalCoreCount: S.optional(S.Number),
+    memoryBytes: S.optional(S.String),
+    diskUsedBytes: S.optional(S.String),
+    coreLimit: S.optional(S.Number),
+    diskAllocatedBytes: S.optional(S.String),
+    instances: S.optional(DatabaseInstanceList),
+    coreCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DatabaseDeploymentTopology",
+}) as any as S.Schema<DatabaseDeploymentTopology>;
+
+export type SqlServerTraceFlagScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "OFF"
+  | "GLOBAL"
+  | "SESSION";
+export const SqlServerTraceFlagScopeEnum = /*@__PURE__*/ S.String;
+
+/** SQL Server trace flag details. */
+export interface SqlServerTraceFlag {
+  /** Required. The trace flag name. */
+  traceFlagName?: string;
+  /** Required. The trace flag scope. */
+  scope?: SqlServerTraceFlagScopeEnum | (string & {});
+}
+export const SqlServerTraceFlag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    traceFlagName: S.optional(S.String),
+    scope: S.optional(SqlServerTraceFlagScopeEnum),
+  }),
+).annotate({
+  identifier: "SqlServerTraceFlag",
+}) as any as S.Schema<SqlServerTraceFlag>;
+
+export type SqlServerTraceFlagList = Array<SqlServerTraceFlag>;
+export const SqlServerTraceFlagList = /*@__PURE__*/ S.Array(
+  SqlServerTraceFlag,
+) as any as S.Schema<SqlServerTraceFlagList>;
+
+/** SQL Server feature details. */
+export interface SqlServerFeature {
+  /** Required. The feature name. */
+  featureName?: string;
+  /** Required. Field enabled is set when a feature is used on the source deployment. */
+  enabled?: boolean;
+}
+export const SqlServerFeature = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    featureName: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SqlServerFeature",
+}) as any as S.Schema<SqlServerFeature>;
+
+export type SqlServerFeatureList = Array<SqlServerFeature>;
+export const SqlServerFeatureList = /*@__PURE__*/ S.Array(
+  SqlServerFeature,
+) as any as S.Schema<SqlServerFeatureList>;
+
+/** SQL Server server flag details. */
+export interface SqlServerServerFlag {
+  /** Required. The server flag name. */
+  serverFlagName?: string;
+  /** Required. The server flag value set by the user. */
+  value?: string;
+  /** Required. The server flag actual value. If `value_in_use` is different from `value` it means that either the configuration change was not applied or it is an expected behavior. See SQL Server documentation for more details. */
+  valueInUse?: string;
+}
+export const SqlServerServerFlag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serverFlagName: S.optional(S.String),
+    value: S.optional(S.String),
+    valueInUse: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlServerServerFlag",
+}) as any as S.Schema<SqlServerServerFlag>;
+
+export type SqlServerServerFlagList = Array<SqlServerServerFlag>;
+export const SqlServerServerFlagList = /*@__PURE__*/ S.Array(
+  SqlServerServerFlag,
+) as any as S.Schema<SqlServerServerFlagList>;
+
+/** Specific details for a Microsoft SQL Server database deployment. */
+export interface SqlServerDatabaseDeployment {
+  /** Optional. List of SQL Server trace flags. */
+  traceFlags?: SqlServerTraceFlagList;
+  /** Optional. List of SQL Server features. */
+  features?: SqlServerFeatureList;
+  /** Optional. List of SQL Server server flags. */
+  serverFlags?: SqlServerServerFlagList;
+}
+export const SqlServerDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    traceFlags: S.optional(SqlServerTraceFlagList),
+    features: S.optional(SqlServerFeatureList),
+    serverFlags: S.optional(SqlServerServerFlagList),
+  }),
+).annotate({
+  identifier: "SqlServerDatabaseDeployment",
+}) as any as S.Schema<SqlServerDatabaseDeployment>;
+
+/** MySql variable. */
+export interface MySqlVariable {
+  /** Required. The variable value. */
+  value?: string;
+  /** Required. The variable category. */
+  category?: string;
+  /** Required. The variable name. */
+  variable?: string;
+}
+export const MySqlVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    category: S.optional(S.String),
+    variable: S.optional(S.String),
+  }),
+).annotate({ identifier: "MySqlVariable" }) as any as S.Schema<MySqlVariable>;
+
+export type MySqlVariableList = Array<MySqlVariable>;
+export const MySqlVariableList = /*@__PURE__*/ S.Array(
+  MySqlVariable,
+) as any as S.Schema<MySqlVariableList>;
+
+/** MySql property. */
+export interface MySqlProperty {
+  /** Required. The property name. */
+  property?: string;
+  /** Required. The property is enabled. */
+  enabled?: boolean;
+  /** Required. The property numeric value. */
+  numericValue?: string;
+}
+export const MySqlProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    numericValue: S.optional(S.String),
+  }),
+).annotate({ identifier: "MySqlProperty" }) as any as S.Schema<MySqlProperty>;
+
+export type MySqlPropertyList = Array<MySqlProperty>;
+export const MySqlPropertyList = /*@__PURE__*/ S.Array(
+  MySqlProperty,
+) as any as S.Schema<MySqlPropertyList>;
+
+/** MySql plugin. */
+export interface MySqlPlugin {
+  /** Required. The plugin name. */
+  plugin?: string;
+  /** Required. The plugin version. */
+  version?: string;
+  /** Required. The plugin is active. */
+  enabled?: boolean;
+}
+export const MySqlPlugin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    plugin: S.optional(S.String),
+    version: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "MySqlPlugin" }) as any as S.Schema<MySqlPlugin>;
+
+export type MySqlPluginList = Array<MySqlPlugin>;
+export const MySqlPluginList = /*@__PURE__*/ S.Array(
+  MySqlPlugin,
+) as any as S.Schema<MySqlPluginList>;
+
+/** Specific details for a Mysql database deployment. */
+export interface MysqlDatabaseDeployment {
+  /** Optional. Number of resource groups. */
+  resourceGroupsCount?: number;
+  /** Optional. List of MySql variables. */
+  variables?: MySqlVariableList;
+  /** Optional. List of MySql properties. */
+  properties?: MySqlPropertyList;
+  /** Optional. List of MySql plugins. */
+  plugins?: MySqlPluginList;
+}
+export const MysqlDatabaseDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceGroupsCount: S.optional(S.Number),
+    variables: S.optional(MySqlVariableList),
+    properties: S.optional(MySqlPropertyList),
+    plugins: S.optional(MySqlPluginList),
+  }),
+).annotate({
+  identifier: "MysqlDatabaseDeployment",
+}) as any as S.Schema<MysqlDatabaseDeployment>;
+
 /** The details of a database deployment asset. */
 export interface DatabaseDeploymentDetails {
+  /** A manual unique ID set by the user. */
+  manualUniqueId?: string;
   /** The database deployment edition. */
   edition?: string;
-  /** Details of a Microsoft SQL Server database deployment. */
-  sqlServer?: SqlServerDatabaseDeployment;
-  /** Details of the database deployment topology. */
-  topology?: DatabaseDeploymentTopology;
-  /** Details of a MYSQL database deployment. */
-  mysql?: MysqlDatabaseDeployment;
   /** Optional. Details of an AWS RDS instance. */
   awsRds?: AwsRds;
-  /** The database deployment version. */
-  version?: string;
   /** Output only. Aggregated stats for the database deployment. */
   aggregatedStats?: DatabaseDeploymentDetailsAggregatedStats;
   /** The database deployment generated ID. */
   generatedId?: string;
   /** Details of a PostgreSQL database deployment. */
   postgresql?: PostgreSqlDatabaseDeployment;
-  /** A manual unique ID set by the user. */
-  manualUniqueId?: string;
+  /** Details of the database deployment topology. */
+  topology?: DatabaseDeploymentTopology;
+  /** Details of a Microsoft SQL Server database deployment. */
+  sqlServer?: SqlServerDatabaseDeployment;
+  /** The database deployment version. */
+  version?: string;
+  /** Details of a MYSQL database deployment. */
+  mysql?: MysqlDatabaseDeployment;
 }
 export const DatabaseDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    manualUniqueId: S.optional(S.String),
     edition: S.optional(S.String),
-    sqlServer: S.optional(SqlServerDatabaseDeployment),
-    topology: S.optional(DatabaseDeploymentTopology),
-    mysql: S.optional(MysqlDatabaseDeployment),
     awsRds: S.optional(AwsRds),
-    version: S.optional(S.String),
     aggregatedStats: S.optional(DatabaseDeploymentDetailsAggregatedStats),
     generatedId: S.optional(S.String),
     postgresql: S.optional(PostgreSqlDatabaseDeployment),
-    manualUniqueId: S.optional(S.String),
+    topology: S.optional(DatabaseDeploymentTopology),
+    sqlServer: S.optional(SqlServerDatabaseDeployment),
+    version: S.optional(S.String),
+    mysql: S.optional(MysqlDatabaseDeployment),
   }),
 ).annotate({
   identifier: "DatabaseDeploymentDetails",
 }) as any as S.Schema<DatabaseDeploymentDetails>;
 
-/** Asset information specific for AWS Application Load Balancers. */
-export interface AwsApplicationLoadBalancerDetails {}
-export const AwsApplicationLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
+/** Contains details for an AWS Firehose asset. */
+export interface AwsFirehoseDetails {}
+export const AwsFirehoseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "AwsApplicationLoadBalancerDetails",
-}) as any as S.Schema<AwsApplicationLoadBalancerDetails>;
+  identifier: "AwsFirehoseDetails",
+}) as any as S.Schema<AwsFirehoseDetails>;
 
-/** Asset information specific for AWS Lambda functions. */
-export interface AwsLambdaFunctionDetails {}
-export const AwsLambdaFunctionDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+/** Details for AWS platform. */
+export interface HostingProviderDetailsAws {
+  /** Optional. The AWS account ID owning the resource represented by this asset. */
+  owningAccountId?: string;
+}
+export const HostingProviderDetailsAws = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owningAccountId: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "AwsLambdaFunctionDetails",
-}) as any as S.Schema<AwsLambdaFunctionDetails>;
+  identifier: "HostingProviderDetailsAws",
+}) as any as S.Schema<HostingProviderDetailsAws>;
 
-/** Asset information specific for AWS Load Balancers. */
-export interface AwsElbLoadBalancerDetails {}
-export const AwsElbLoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+/** Location of a resource. */
+export interface ResourceLocation {
+  /** Optional. The name of the region. */
+  region?: string;
+}
+export const ResourceLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "AwsElbLoadBalancerDetails",
-}) as any as S.Schema<AwsElbLoadBalancerDetails>;
+  identifier: "ResourceLocation",
+}) as any as S.Schema<ResourceLocation>;
 
-/** Details of an AWS ElastiCache Cluster. */
-export interface AwsElastiCacheClusterDetails {}
-export const AwsElastiCacheClusterDetails = /*@__PURE__*/ S.suspend(() =>
+/** Details about the hosting platform of the asset. */
+export interface HostingProviderDetails {
+  /** Optional. Unique identifier for the asset in the hosting provider. */
+  originalId?: string;
+  /** Optional. Display name of the asset. */
+  displayName?: string;
+  /** Optional. The AWS platform details. */
+  aws?: HostingProviderDetailsAws;
+  /** Optional. Location of the asset. */
+  location?: ResourceLocation;
+  /** Optional. The timestamp when resource was created in the hosting provider. */
+  createTime?: string;
+}
+export const HostingProviderDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originalId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    aws: S.optional(HostingProviderDetailsAws),
+    location: S.optional(ResourceLocation),
+    createTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostingProviderDetails",
+}) as any as S.Schema<HostingProviderDetails>;
+
+/** Details of an AWS ECS cluster. */
+export interface AwsEcsClusterDetails {}
+export const AwsEcsClusterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "AwsElastiCacheClusterDetails",
-}) as any as S.Schema<AwsElastiCacheClusterDetails>;
+  identifier: "AwsEcsClusterDetails",
+}) as any as S.Schema<AwsEcsClusterDetails>;
+
+/** Contains details for an AWS Glue Job asset. */
+export interface AwsGlueJobDetails {}
+export const AwsGlueJobDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AwsGlueJobDetails",
+}) as any as S.Schema<AwsGlueJobDetails>;
+
+/** Asset information specific for AWS VPCs. */
+export interface AwsVpcDetails {}
+export const AwsVpcDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "AwsVpcDetails" }) as any as S.Schema<AwsVpcDetails>;
 
 /** Asset information specific for AWS Autoscaling Group. */
 export interface AwsAutoscalingGroupDetails {}
@@ -3137,378 +3335,180 @@ export const AwsAutoscalingGroupDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsAutoscalingGroupDetails",
 }) as any as S.Schema<AwsAutoscalingGroupDetails>;
 
-/** Asset information specific for AWS Batch Compute Environments. */
-export interface AwsBatchComputeEnvironmentDetails {}
-export const AwsBatchComputeEnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsBatchComputeEnvironmentDetails",
-}) as any as S.Schema<AwsBatchComputeEnvironmentDetails>;
-
-/** Contains details for an AWS Kinesis Stream asset. */
-export interface AwsKinesisStreamDetails {}
-export const AwsKinesisStreamDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsKinesisStreamDetails",
-}) as any as S.Schema<AwsKinesisStreamDetails>;
-
-/** Details of network adapters and settings. */
-export interface VirtualMachineNetworkDetails {
-  /** IP address of the machine. */
-  primaryIpAddress?: string;
-  /** List of network adapters. */
-  networkAdapters?: NetworkAdapterList;
-  /** MAC address of the machine. This property is used to uniqly identify the machine. */
-  primaryMacAddress?: string;
-  /** Default gateway address. */
-  defaultGw?: string;
-  /** Public IP address of the machine. */
-  publicIpAddress?: string;
-}
-export const VirtualMachineNetworkDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryIpAddress: S.optional(S.String),
-    networkAdapters: S.optional(NetworkAdapterList),
-    primaryMacAddress: S.optional(S.String),
-    defaultGw: S.optional(S.String),
-    publicIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualMachineNetworkDetails",
-}) as any as S.Schema<VirtualMachineNetworkDetails>;
-
-export type VirtualMachineArchitectureDetailsHyperthreadingEnum =
-  | "HYPER_THREADING_UNSPECIFIED"
-  | "HYPER_THREADING_DISABLED"
-  | "HYPER_THREADING_ENABLED";
-export const VirtualMachineArchitectureDetailsHyperthreadingEnum =
-  /*@__PURE__*/ S.String;
-
-/** Details of the VM architecture. */
-export interface VirtualMachineArchitectureDetails {
-  /** CPU architecture, e.g., "x64-based PC", "x86_64", "i686" etc. */
-  cpuArchitecture?: string;
-  /** Firmware (BIOS/efi). */
-  firmware?: string;
-  /** CPU name, e.g., "Intel Xeon E5-2690", "AMD EPYC 7571" etc. */
-  cpuName?: string;
-  /** Deprecated: use VirtualMachineDetails.core_count instead. Number of CPU threads allocated to the machine. */
-  cpuThreadCount?: number;
-  /** Number of processor sockets allocated to the machine. */
-  cpuSocketCount?: number;
-  /** CPU manufacturer, e.g., "Intel", "AMD". */
-  cpuManufacturer?: string;
-  /** BIOS Details. */
-  bios?: BiosDetails;
-  /** CPU hyperthreading support. */
-  hyperthreading?:
-    | VirtualMachineArchitectureDetailsHyperthreadingEnum
-    | (string & {});
-  /** Hardware vendor. */
-  vendor?: string;
-}
-export const VirtualMachineArchitectureDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpuArchitecture: S.optional(S.String),
-    firmware: S.optional(S.String),
-    cpuName: S.optional(S.String),
-    cpuThreadCount: S.optional(S.Number),
-    cpuSocketCount: S.optional(S.Number),
-    cpuManufacturer: S.optional(S.String),
-    bios: S.optional(BiosDetails),
-    hyperthreading: S.optional(
-      VirtualMachineArchitectureDetailsHyperthreadingEnum,
-    ),
-    vendor: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualMachineArchitectureDetails",
-}) as any as S.Schema<VirtualMachineArchitectureDetails>;
-
-/** Details of VM disks. */
-export interface VirtualMachineDiskDetails {
-  /** List of disks. */
-  disks?: DiskEntryList;
-  /** Disk total Capacity. */
-  hddTotalCapacityBytes?: string;
-  /** Total Disk Free Space. */
-  hddTotalFreeBytes?: string;
-  /** Raw lsblk output in json. */
-  lsblkJson?: string;
-}
-export const VirtualMachineDiskDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disks: S.optional(DiskEntryList),
-    hddTotalCapacityBytes: S.optional(S.String),
-    hddTotalFreeBytes: S.optional(S.String),
-    lsblkJson: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualMachineDiskDetails",
-}) as any as S.Schema<VirtualMachineDiskDetails>;
-
-export type VirtualMachineDetailsOsFamilyEnum =
-  | "OS_FAMILY_UNKNOWN"
-  | "OS_FAMILY_WINDOWS"
-  | "OS_FAMILY_LINUX"
-  | "OS_FAMILY_UNIX";
-export const VirtualMachineDetailsOsFamilyEnum = /*@__PURE__*/ S.String;
-
-/** Details of a VirtualMachine. */
-export interface VirtualMachineDetails {
-  /** The amount of memory in the VirtualMachine. Must be non-negative. */
-  memoryMb?: number;
-  /** vCenter VM ID. */
-  vcenterVmId?: string;
-  /** Number of logical CPU cores in the VirtualMachine. Must be non-negative. */
-  coreCount?: number;
-  /** Platform information. */
-  platform?: PlatformDetails;
-  /** VM network details. */
-  vmNetwork?: VirtualMachineNetworkDetails;
-  /** vCenter URL used in collection. */
-  vcenterUrl?: string;
-  /** VM architecture details (vendor, cpu arch). */
-  vmArchitecture?: VirtualMachineArchitectureDetails;
-  /** The version of the operating system running on the virtual machine. */
-  osVersion?: string;
-  /** VM disk details. */
-  vmDisks?: VirtualMachineDiskDetails;
-  /** Optional. Disk partitions details. Note: Partitions are not necessarily mounted on local disks and therefore might not have a one-to-one correspondence with local disks. */
-  diskPartitions?: DiskPartitionDetails;
-  /** Virtual Machine display name. */
-  vmName?: string;
-  /** Folder name in vCenter where asset resides. */
-  vcenterFolder?: string;
-  /** What family the OS belong to, if known. */
-  osFamily?: VirtualMachineDetailsOsFamilyEnum | (string & {});
-  /** Power state of VM (poweredOn or poweredOff). */
-  powerState?: string;
-  /** VM creation timestamp. */
-  createTime?: string;
-  /** The name of the operating system running on the VirtualMachine. */
-  osName?: string;
-  /** Virtual Machine unique identifier. */
-  vmUuid?: string;
-  /** Guest OS information. */
-  guestOs?: GuestOsDetails;
-}
-export const VirtualMachineDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryMb: S.optional(S.Number),
-    vcenterVmId: S.optional(S.String),
-    coreCount: S.optional(S.Number),
-    platform: S.optional(PlatformDetails),
-    vmNetwork: S.optional(VirtualMachineNetworkDetails),
-    vcenterUrl: S.optional(S.String),
-    vmArchitecture: S.optional(VirtualMachineArchitectureDetails),
-    osVersion: S.optional(S.String),
-    vmDisks: S.optional(VirtualMachineDiskDetails),
-    diskPartitions: S.optional(DiskPartitionDetails),
-    vmName: S.optional(S.String),
-    vcenterFolder: S.optional(S.String),
-    osFamily: S.optional(VirtualMachineDetailsOsFamilyEnum),
-    powerState: S.optional(S.String),
-    createTime: S.optional(S.String),
-    osName: S.optional(S.String),
-    vmUuid: S.optional(S.String),
-    guestOs: S.optional(GuestOsDetails),
-  }),
-).annotate({
-  identifier: "VirtualMachineDetails",
-}) as any as S.Schema<VirtualMachineDetails>;
-
-/** Asset information specific for AWS EBS Volumes. */
-export interface AwsEbsVolumeDetails {}
-export const AwsEbsVolumeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsEbsVolumeDetails",
-}) as any as S.Schema<AwsEbsVolumeDetails>;
-
-/** Asset information specific for AWS API Gateway REST APIs. */
-export interface AwsApiGatewayRestApiDetails {}
-export const AwsApiGatewayRestApiDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AwsApiGatewayRestApiDetails",
-}) as any as S.Schema<AwsApiGatewayRestApiDetails>;
-
 /** An asset represents a resource in your environment. Asset types include virtual machines and databases. */
 export interface Asset {
-  /** Output only. Asset information specific for AWS S3 buckets. */
-  awsS3BucketDetails?: AwsS3BucketDetails;
-  /** Output only. Asset information specific for AWS SNS Topics. */
-  awsSnsTopicDetails?: AwsSnsTopicDetails;
-  /** Output only. Asset information specific for AWS VPCs. */
-  awsVpcDetails?: AwsVpcDetails;
-  /** Output only. Server generated human readable name of the asset. */
-  title?: string;
-  /** Output only. Details about the hosting provider of the asset. */
-  hostingProviderDetails?: HostingProviderDetails;
-  /** Output only. Asset information specific for AWS CloudFront distributions. */
-  awsCloudFrontDistributionDetails?: AwsCloudFrontDistributionDetails;
-  /** Output only. The list of insights associated with the asset. */
-  insightList?: InsightList;
-  /** Output only. Asset information specific for AwsEmrClusterDetails */
-  awsEmrClusterDetails?: AwsEmrClusterDetails;
   /** Labels as key value pairs. */
   labels?: StringMap;
-  /** Output only. The timestamp when the asset was marked as hidden. */
-  hideTime?: string;
-  /** Output only. Asset information specific for AWS ECS clusters. */
-  awsEcsClusterDetails?: AwsEcsClusterDetails;
-  /** Output only. Asset information specific for AwsEcrRepositoryDetails */
-  awsEcrRepositoryDetails?: AwsEcrRepositoryDetails;
-  /** Generic asset attributes. */
-  attributes?: StringMap;
-  /** Output only. Asset information specific for AWS Internet Gateways. */
-  awsInternetGatewayDetails?: AwsInternetGatewayDetails;
-  /** Output only. Asset information specific for AWS AppSync GraphQL APIs. */
-  awsAppSyncGraphqlApiDetails?: AwsAppSyncGraphqlApiDetails;
-  /** Output only. Asset information specific for logical databases. */
-  databaseDetails?: DatabaseDetails;
-  /** Output only. Asset information specific for AWS Elastic Network Interfaces. */
-  awsElasticNetworkInterfaceDetails?: AwsElasticNetworkInterfaceDetails;
-  /** Output only. Asset information specific for AwsAthenaWorkGroupDetails */
-  awsAthenaWorkGroupDetails?: AwsAthenaWorkGroupDetails;
-  /** Optional. An optional reason for marking this asset as hidden. */
-  hideReason?: string;
-  /** Output only. Asset information specific for AwsGlueJobDetails */
-  awsGlueJobDetails?: AwsGlueJobDetails;
-  /** Performance data for the asset. */
-  performanceData?: AssetPerformanceData;
-  /** Output only. The timestamp when the asset was created. */
-  createTime?: string;
-  /** Output only. The timestamp when the asset was last updated. */
-  updateTime?: string;
-  /** Output only. Asset information specific for AwsRoute53HostedZoneDetails */
-  awsRoute53HostedZoneDetails?: AwsRoute53HostedZoneDetails;
-  /** Output only. Asset information specific for AwsFirehoseDetails */
-  awsFirehoseDetails?: AwsFirehoseDetails;
-  /** Output only. The list of sources contributing to the asset. */
-  sources?: StringList;
-  /** Output only. Asset information specific for AWS DynamoDB tables. */
-  awsDynamodbTableDetails?: AwsDynamoDBTableDetails;
-  /** Output only. Asset information specific for AWS Elastic IP Addresses. */
-  awsElasticIpAddressDetails?: AwsElasticIpAddressDetails;
-  /** Optional. Generic structured asset attributes. */
-  structuredAttributes?: DocumentMap;
-  /** Output only. Asset information specific for AWS EKS clusters. */
-  awsEksClusterDetails?: AwsEksClusterDetails;
-  /** Output only. Asset information specific for AWS Redshift */
-  awsRedshiftDetails?: AwsRedshiftDetails;
-  /** Output only. Asset information specific for AWS EFS file systems. */
-  awsEfsFileSystemDetails?: AwsEfsFileSystemDetails;
-  /** Output only. Asset information specific for AwsNatGatewayDetails */
-  awsNatGatewayDetails?: AwsNatGatewayDetails;
-  /** Output only. Asset information specific for virtual machines. */
-  machineDetails?: MachineDetails;
-  /** Output only. Asset information specific for database deployments. */
-  databaseDeploymentDetails?: DatabaseDeploymentDetails;
-  /** Output only. The list of groups that the asset is assigned to. */
-  assignedGroups?: StringList;
-  /** Output only. Asset information specific for AWS Application Load Balancers. */
-  awsApplicationLoadBalancerDetails?: AwsApplicationLoadBalancerDetails;
-  /** Output only. Asset information specific for AWS Lambda functions. */
-  awsLambdaFunctionDetails?: AwsLambdaFunctionDetails;
-  /** Output only. The full name of the asset. */
-  name?: string;
-  /** Output only. Asset information specific for AWS Load Balancers. */
-  awsElbLoadBalancerDetails?: AwsElbLoadBalancerDetails;
-  /** Output only. Asset information specific for AWS ElastiCache Clusters. */
-  awsElasticacheClusterDetails?: AwsElastiCacheClusterDetails;
-  /** Output only. Asset information specific for AwsAutoscalingGroupDetails */
-  awsAutoscalingGroupDetails?: AwsAutoscalingGroupDetails;
-  /** Output only. Asset information specific for AWS Batch Compute Environments. */
-  awsBatchComputeEnvironmentDetails?: AwsBatchComputeEnvironmentDetails;
-  /** Optional. Indicates if the asset is hidden. */
-  hidden?: boolean;
-  /** Output only. Asset information specific for AwsKinesisStreamDetails */
-  awsKinesisStreamDetails?: AwsKinesisStreamDetails;
-  /** Output only. Asset information specific for virtual machines. */
-  virtualMachineDetails?: VirtualMachineDetails;
   /** Output only. Asset information specific for AWS EBS Volumes. */
   awsEbsVolumeDetails?: AwsEbsVolumeDetails;
+  /** Optional. An optional reason for marking this asset as hidden. */
+  hideReason?: string;
+  /** Output only. The list of groups that the asset is assigned to. */
+  assignedGroups?: StringList;
+  /** Output only. Asset information specific for AWS Redshift */
+  awsRedshiftDetails?: AwsRedshiftDetails;
+  /** Output only. Asset information specific for AwsRoute53HostedZoneDetails */
+  awsRoute53HostedZoneDetails?: AwsRoute53HostedZoneDetails;
+  /** Output only. Asset information specific for AwsAthenaWorkGroupDetails */
+  awsAthenaWorkGroupDetails?: AwsAthenaWorkGroupDetails;
+  /** Output only. Asset information specific for AWS AppSync GraphQL APIs. */
+  awsAppSyncGraphqlApiDetails?: AwsAppSyncGraphqlApiDetails;
+  /** Output only. Asset information specific for AwsEcrRepositoryDetails */
+  awsEcrRepositoryDetails?: AwsEcrRepositoryDetails;
+  /** Output only. Asset information specific for AWS Internet Gateways. */
+  awsInternetGatewayDetails?: AwsInternetGatewayDetails;
+  /** Output only. Asset information specific for AWS EFS file systems. */
+  awsEfsFileSystemDetails?: AwsEfsFileSystemDetails;
+  /** Output only. Asset information specific for AWS CloudFront distributions. */
+  awsCloudFrontDistributionDetails?: AwsCloudFrontDistributionDetails;
+  /** Output only. Asset information specific for AWS SNS Topics. */
+  awsSnsTopicDetails?: AwsSnsTopicDetails;
+  /** Output only. The list of sources contributing to the asset. */
+  sources?: StringList;
+  /** Output only. Asset information specific for logical databases. */
+  databaseDetails?: DatabaseDetails;
+  /** Output only. Asset information specific for AWS Lambda functions. */
+  awsLambdaFunctionDetails?: AwsLambdaFunctionDetails;
+  /** Output only. The timestamp when the asset was last updated. */
+  updateTime?: string;
+  /** Output only. The full name of the asset. */
+  name?: string;
   /** Output only. Asset information specific for AWS API Gateway REST APIs. */
   awsApiGatewayRestApiDetails?: AwsApiGatewayRestApiDetails;
+  /** Output only. Asset information specific for AWS DynamoDB tables. */
+  awsDynamodbTableDetails?: AwsDynamoDBTableDetails;
+  /** Output only. Asset information specific for AWS EKS clusters. */
+  awsEksClusterDetails?: AwsEksClusterDetails;
+  /** Output only. Asset information specific for AWS S3 buckets. */
+  awsS3BucketDetails?: AwsS3BucketDetails;
+  /** Output only. Asset information specific for AWS Elastic Network Interfaces. */
+  awsElasticNetworkInterfaceDetails?: AwsElasticNetworkInterfaceDetails;
+  /** Performance data for the asset. */
+  performanceData?: AssetPerformanceData;
+  /** Output only. Asset information specific for virtual machines. */
+  virtualMachineDetails?: VirtualMachineDetails;
+  /** Output only. Asset information specific for AWS Load Balancers. */
+  awsElbLoadBalancerDetails?: AwsElbLoadBalancerDetails;
+  /** Output only. Asset information specific for virtual machines. */
+  machineDetails?: MachineDetails;
+  /** Output only. The list of insights associated with the asset. */
+  insightList?: InsightList;
+  /** Optional. Generic structured asset attributes. */
+  structuredAttributes?: DocumentMap;
+  /** Output only. The timestamp when the asset was created. */
+  createTime?: string;
+  /** Output only. Asset information specific for AwsNatGatewayDetails */
+  awsNatGatewayDetails?: AwsNatGatewayDetails;
+  /** Output only. Asset information specific for AWS Batch Compute Environments. */
+  awsBatchComputeEnvironmentDetails?: AwsBatchComputeEnvironmentDetails;
+  /** Output only. Asset information specific for AwsEmrClusterDetails */
+  awsEmrClusterDetails?: AwsEmrClusterDetails;
+  /** Output only. Asset information specific for AWS Application Load Balancers. */
+  awsApplicationLoadBalancerDetails?: AwsApplicationLoadBalancerDetails;
+  /** Output only. Asset information specific for AWS ElastiCache Clusters. */
+  awsElasticacheClusterDetails?: AwsElastiCacheClusterDetails;
+  /** Optional. Indicates if the asset is hidden. */
+  hidden?: boolean;
+  /** Output only. Asset information specific for AWS Elastic IP Addresses. */
+  awsElasticIpAddressDetails?: AwsElasticIpAddressDetails;
+  /** Output only. Asset information specific for AwsKinesisStreamDetails */
+  awsKinesisStreamDetails?: AwsKinesisStreamDetails;
+  /** Output only. The timestamp when the asset was marked as hidden. */
+  hideTime?: string;
+  /** Output only. Asset information specific for database deployments. */
+  databaseDeploymentDetails?: DatabaseDeploymentDetails;
+  /** Output only. Asset information specific for AwsFirehoseDetails */
+  awsFirehoseDetails?: AwsFirehoseDetails;
+  /** Output only. Details about the hosting provider of the asset. */
+  hostingProviderDetails?: HostingProviderDetails;
+  /** Output only. Asset information specific for AWS ECS clusters. */
+  awsEcsClusterDetails?: AwsEcsClusterDetails;
+  /** Generic asset attributes. */
+  attributes?: StringMap;
+  /** Output only. Asset information specific for AwsGlueJobDetails */
+  awsGlueJobDetails?: AwsGlueJobDetails;
+  /** Output only. Asset information specific for AWS VPCs. */
+  awsVpcDetails?: AwsVpcDetails;
+  /** Output only. Asset information specific for AwsAutoscalingGroupDetails */
+  awsAutoscalingGroupDetails?: AwsAutoscalingGroupDetails;
+  /** Output only. Server generated human readable name of the asset. */
+  title?: string;
 }
 export const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
-    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
-    awsVpcDetails: S.optional(AwsVpcDetails),
-    title: S.optional(S.String),
-    hostingProviderDetails: S.optional(HostingProviderDetails),
+    labels: S.optional(StringMap),
+    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
+    hideReason: S.optional(S.String),
+    assignedGroups: S.optional(StringList),
+    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
+    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
+    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
+    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
+    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
+    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
+    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
     awsCloudFrontDistributionDetails: S.optional(
       AwsCloudFrontDistributionDetails,
     ),
-    insightList: S.optional(InsightList),
-    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
-    labels: S.optional(StringMap),
-    hideTime: S.optional(S.String),
-    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
-    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
-    attributes: S.optional(StringMap),
-    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
-    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
+    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
+    sources: S.optional(StringList),
     databaseDetails: S.optional(DatabaseDetails),
+    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
+    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
+    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
+    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
     awsElasticNetworkInterfaceDetails: S.optional(
       AwsElasticNetworkInterfaceDetails,
     ),
-    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
-    hideReason: S.optional(S.String),
-    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
     performanceData: S.optional(AssetPerformanceData),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
-    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
-    sources: S.optional(StringList),
-    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
-    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
-    structuredAttributes: S.optional(DocumentMap),
-    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
-    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
-    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
-    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
-    machineDetails: S.optional(MachineDetails),
-    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
-    assignedGroups: S.optional(StringList),
-    awsApplicationLoadBalancerDetails: S.optional(
-      AwsApplicationLoadBalancerDetails,
-    ),
-    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
-    name: S.optional(S.String),
+    virtualMachineDetails: S.optional(VirtualMachineDetails),
     awsElbLoadBalancerDetails: S.optional(AwsElbLoadBalancerDetails),
-    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
-    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
+    machineDetails: S.optional(MachineDetails),
+    insightList: S.optional(InsightList),
+    structuredAttributes: S.optional(DocumentMap),
+    createTime: S.optional(S.String),
+    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
     awsBatchComputeEnvironmentDetails: S.optional(
       AwsBatchComputeEnvironmentDetails,
     ),
+    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
+    awsApplicationLoadBalancerDetails: S.optional(
+      AwsApplicationLoadBalancerDetails,
+    ),
+    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
     hidden: S.optional(S.Boolean),
+    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
     awsKinesisStreamDetails: S.optional(AwsKinesisStreamDetails),
-    virtualMachineDetails: S.optional(VirtualMachineDetails),
-    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
-    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
+    hideTime: S.optional(S.String),
+    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
+    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
+    hostingProviderDetails: S.optional(HostingProviderDetails),
+    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
+    attributes: S.optional(StringMap),
+    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
+    awsVpcDetails: S.optional(AwsVpcDetails),
+    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
+    title: S.optional(S.String),
   }),
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
 /** A request to update an asset. */
 export interface UpdateAssetRequest {
-  /** Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. */
-  updateMask?: string;
   /** Required. The resource being updated. */
   asset?: Asset;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. */
+  updateMask?: string;
 }
 export const UpdateAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateMask: S.optional(S.String),
     asset: S.optional(Asset),
     requestId: S.optional(S.String),
+    updateMask: S.optional(S.String),
   }),
 ).annotate({
   identifier: "UpdateAssetRequest",
@@ -3644,15 +3644,15 @@ export const AssetsExportJobPerformanceData = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains a signed URI. */
 export interface SignedUri {
-  /** Output only. Download URI for the file. */
-  uri?: string;
   /** Output only. Name of the file the Signed URI references. */
   file?: string;
+  /** Output only. Download URI for the file. */
+  uri?: string;
 }
 export const SignedUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uri: S.optional(S.String),
     file: S.optional(S.String),
+    uri: S.optional(S.String),
   }),
 ).annotate({ identifier: "SignedUri" }) as any as S.Schema<SignedUri>;
 
@@ -3660,16 +3660,16 @@ export const SignedUri = /*@__PURE__*/ S.suspend(() =>
 export interface CsvOutputFile {
   /** Output only. Number of columns in the file. */
   columnsCount?: number;
-  /** Output only. Signed URI destination. */
-  signedUri?: SignedUri;
   /** Output only. Number of rows in the file. */
   rowCount?: number;
+  /** Output only. Signed URI destination. */
+  signedUri?: SignedUri;
 }
 export const CsvOutputFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnsCount: S.optional(S.Number),
-    signedUri: S.optional(SignedUri),
     rowCount: S.optional(S.Number),
+    signedUri: S.optional(SignedUri),
   }),
 ).annotate({ identifier: "CsvOutputFile" }) as any as S.Schema<CsvOutputFile>;
 
@@ -3754,27 +3754,27 @@ export const AssetsExportJobExecutionResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Execution status of assets export job. */
 export interface AssetsExportJobExecution {
-  /** Output only. Execution timestamp. */
-  startTime?: string;
-  /** Output only. Completion time of the export. */
-  endTime?: string;
-  /** Output only. Number of assets requested for export after resolving the requested filters. */
-  requestedAssetCount?: number;
-  /** Output only. Expiration time for the export and artifacts. */
-  expireTime?: string;
   /** Output only. Globally unique identifier of the execution. */
   executionId?: string;
   /** Output only. Result of the export execution. */
   result?: AssetsExportJobExecutionResult;
+  /** Output only. Execution timestamp. */
+  startTime?: string;
+  /** Output only. Number of assets requested for export after resolving the requested filters. */
+  requestedAssetCount?: number;
+  /** Output only. Expiration time for the export and artifacts. */
+  expireTime?: string;
+  /** Output only. Completion time of the export. */
+  endTime?: string;
 }
 export const AssetsExportJobExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    requestedAssetCount: S.optional(S.Number),
-    expireTime: S.optional(S.String),
     executionId: S.optional(S.String),
     result: S.optional(AssetsExportJobExecutionResult),
+    startTime: S.optional(S.String),
+    requestedAssetCount: S.optional(S.Number),
+    expireTime: S.optional(S.String),
+    endTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AssetsExportJobExecution",
@@ -3784,14 +3784,6 @@ export type AssetsExportJobExecutionList = Array<AssetsExportJobExecution>;
 export const AssetsExportJobExecutionList = /*@__PURE__*/ S.Array(
   AssetsExportJobExecution,
 ) as any as S.Schema<AssetsExportJobExecutionList>;
-
-/** Configuration for network dependencies exports. */
-export interface AssetsExportJobNetworkDependencies {}
-export const AssetsExportJobNetworkDependencies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssetsExportJobNetworkDependencies",
-}) as any as S.Schema<AssetsExportJobNetworkDependencies>;
 
 /** Conditions for selecting assets to export. */
 export interface AssetsExportJobExportCondition {
@@ -3806,65 +3798,73 @@ export const AssetsExportJobExportCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetsExportJobExportCondition",
 }) as any as S.Schema<AssetsExportJobExportCondition>;
 
+/** Configuration for network dependencies exports. */
+export interface AssetsExportJobNetworkDependencies {}
+export const AssetsExportJobNetworkDependencies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssetsExportJobNetworkDependencies",
+}) as any as S.Schema<AssetsExportJobNetworkDependencies>;
+
 /** Assets export job message. */
 export interface AssetsExportJob {
+  /** Output only. Identifier. Resource name. */
+  name?: string;
   /** Export asset inventory details. */
   inventory?: AssetsExportJobInventory;
   /** Export to Cloud Storage files downloadable using signed URIs. */
   signedUriDestination?: SignedUriDestination;
-  /** Output only. Resource creation time. */
-  createTime?: string;
-  /** Output only. Resource update time. */
-  updateTime?: string;
-  /** Optional. When this value is set to 'true' the response will include all assets, including those that are hidden. */
-  showHidden?: boolean;
   /** Export asset with performance data. */
   performanceData?: AssetsExportJobPerformanceData;
-  /** Output only. Identifier. Resource name. */
-  name?: string;
   /** Output only. Recent non expired executions of the job. */
   recentExecutions?: AssetsExportJobExecutionList;
-  /** Export data regarding asset network dependencies. */
-  networkDependencies?: AssetsExportJobNetworkDependencies;
+  /** Optional. When this value is set to 'true' the response will include all assets, including those that are hidden. */
+  showHidden?: boolean;
   /** Optional. Conditions for selecting assets to export. */
   condition?: AssetsExportJobExportCondition;
   /** Optional. Labels as key value pairs. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes. */
   labels?: StringMap;
+  /** Export data regarding asset network dependencies. */
+  networkDependencies?: AssetsExportJobNetworkDependencies;
+  /** Output only. Resource creation time. */
+  createTime?: string;
+  /** Output only. Resource update time. */
+  updateTime?: string;
 }
 export const AssetsExportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
     inventory: S.optional(AssetsExportJobInventory),
     signedUriDestination: S.optional(SignedUriDestination),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    showHidden: S.optional(S.Boolean),
     performanceData: S.optional(AssetsExportJobPerformanceData),
-    name: S.optional(S.String),
     recentExecutions: S.optional(AssetsExportJobExecutionList),
-    networkDependencies: S.optional(AssetsExportJobNetworkDependencies),
+    showHidden: S.optional(S.Boolean),
     condition: S.optional(AssetsExportJobExportCondition),
     labels: S.optional(StringMap),
+    networkDependencies: S.optional(AssetsExportJobNetworkDependencies),
+    createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AssetsExportJob",
 }) as any as S.Schema<AssetsExportJob>;
 
 export interface CreateProjectsLocationsAssetsExportJobsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. The parent resource where the assts export job will be created. */
   parent: string;
   /** Required. The ID to use for the asset export job. */
   assetsExportJobId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: AssetsExportJob;
 }
 export const CreateProjectsLocationsAssetsExportJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       assetsExportJobId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(AssetsExportJob.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3877,18 +3877,31 @@ export const CreateProjectsLocationsAssetsExportJobsRequest =
     identifier: "CreateProjectsLocationsAssetsExportJobsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAssetsExportJobsRequest>;
 
+export type DiscoveryClientStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "OFFLINE"
+  | "DEGRADED"
+  | "EXPIRED";
+export const DiscoveryClientStateEnum = /*@__PURE__*/ S.String;
+
+export type StatusList = Array<Status>;
+export const StatusList = /*@__PURE__*/ S.Array(
+  Status,
+) as any as S.Schema<StatusList>;
+
 /** Discovery client recommended version. */
 export interface DiscoveryClientDiscoveryClientRecommendedVersion {
-  /** Output only. The URI of the discovery client version. */
-  uri?: string;
   /** Output only. The version of the discovery client. */
   version?: string;
+  /** Output only. The URI of the discovery client version. */
+  uri?: string;
 }
 export const DiscoveryClientDiscoveryClientRecommendedVersion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      uri: S.optional(S.String),
       version: S.optional(S.String),
+      uri: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DiscoveryClientDiscoveryClientRecommendedVersion",
@@ -3901,84 +3914,71 @@ export const DiscoveryClientDiscoveryClientRecommendedVersionList =
     DiscoveryClientDiscoveryClientRecommendedVersion,
   ) as any as S.Schema<DiscoveryClientDiscoveryClientRecommendedVersionList>;
 
-export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
-
-export type DiscoveryClientStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "OFFLINE"
-  | "DEGRADED"
-  | "EXPIRED";
-export const DiscoveryClientStateEnum = /*@__PURE__*/ S.String;
-
 /** Represents an installed Migration Center Discovery Client instance. */
 export interface DiscoveryClient {
-  /** Output only. The recommended versions of the discovery client. */
-  recommendedVersions?: DiscoveryClientDiscoveryClientRecommendedVersionList;
-  /** Output only. Identifier. Full name of this discovery client. */
-  name?: string;
-  /** Output only. Last heartbeat time. Healthy clients are expected to send heartbeats regularly (normally every few minutes). */
-  heartbeatTime?: string;
-  /** Required. Service account used by the discovery client for various operation. */
-  serviceAccount?: string;
-  /** Output only. Client version, as reported in recent heartbeat. */
-  version?: string;
   /** Output only. This field is intended for internal use. */
   signalsEndpoint?: string;
-  /** Optional. Free text description. Maximum length is 1000 characters. */
-  description?: string;
-  /** Output only. Errors affecting client functionality. */
-  errors?: StatusList;
-  /** Output only. Current state of the discovery client. */
-  state?: DiscoveryClientStateEnum | (string & {});
-  /** Optional. Input only. Client time-to-live. If specified, the backend will not accept new frames after this time. This field is input only. The derived expiration time is provided as output through the `expire_time` field. */
-  ttl?: string;
-  /** Output only. Time when the discovery client was first created. */
-  createTime?: string;
-  /** Output only. Time when the discovery client was last updated. This value is not updated by heartbeats, to view the last heartbeat time please refer to the `heartbeat_time` field. */
-  updateTime?: string;
+  /** Output only. Last heartbeat time. Healthy clients are expected to send heartbeats regularly (normally every few minutes). */
+  heartbeatTime?: string;
   /** Optional. Labels as key value pairs. */
   labels?: StringMap;
-  /** Required. Full name of the source object associated with this discovery client. */
-  source?: string;
-  /** Optional. Client expiration time in UTC. If specified, the backend will not accept new frames after this time. */
-  expireTime?: string;
+  /** Output only. Time when the discovery client was first created. */
+  createTime?: string;
   /** Optional. Free text display name. Maximum length is 63 characters. */
   displayName?: string;
+  /** Required. Full name of the source object associated with this discovery client. */
+  source?: string;
+  /** Output only. Current state of the discovery client. */
+  state?: DiscoveryClientStateEnum | (string & {});
+  /** Output only. Errors affecting client functionality. */
+  errors?: StatusList;
+  /** Required. Service account used by the discovery client for various operation. */
+  serviceAccount?: string;
+  /** Output only. Time when the discovery client was last updated. This value is not updated by heartbeats, to view the last heartbeat time please refer to the `heartbeat_time` field. */
+  updateTime?: string;
+  /** Optional. Input only. Client time-to-live. If specified, the backend will not accept new frames after this time. This field is input only. The derived expiration time is provided as output through the `expire_time` field. */
+  ttl?: string;
+  /** Output only. The recommended versions of the discovery client. */
+  recommendedVersions?: DiscoveryClientDiscoveryClientRecommendedVersionList;
+  /** Optional. Free text description. Maximum length is 1000 characters. */
+  description?: string;
+  /** Output only. Identifier. Full name of this discovery client. */
+  name?: string;
+  /** Optional. Client expiration time in UTC. If specified, the backend will not accept new frames after this time. */
+  expireTime?: string;
+  /** Output only. Client version, as reported in recent heartbeat. */
+  version?: string;
 }
 export const DiscoveryClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    signalsEndpoint: S.optional(S.String),
+    heartbeatTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    source: S.optional(S.String),
+    state: S.optional(DiscoveryClientStateEnum),
+    errors: S.optional(StatusList),
+    serviceAccount: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    ttl: S.optional(S.String),
     recommendedVersions: S.optional(
       DiscoveryClientDiscoveryClientRecommendedVersionList,
     ),
-    name: S.optional(S.String),
-    heartbeatTime: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    version: S.optional(S.String),
-    signalsEndpoint: S.optional(S.String),
     description: S.optional(S.String),
-    errors: S.optional(StatusList),
-    state: S.optional(DiscoveryClientStateEnum),
-    ttl: S.optional(S.String),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    source: S.optional(S.String),
+    name: S.optional(S.String),
     expireTime: S.optional(S.String),
-    displayName: S.optional(S.String),
+    version: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DiscoveryClient",
 }) as any as S.Schema<DiscoveryClient>;
 
 export interface CreateProjectsLocationsDiscoveryClientsRequest {
-  /** Required. Parent resource. */
-  parent: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Parent resource. */
+  parent: string;
   /** Required. User specified ID for the discovery client. It will become the last component of the discovery client name. The ID must be unique within the project, is restricted to lower-cased letters and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. */
   discoveryClientId?: string;
   /** Request body */
@@ -3987,8 +3987,8 @@ export interface CreateProjectsLocationsDiscoveryClientsRequest {
 export const CreateProjectsLocationsDiscoveryClientsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       discoveryClientId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(DiscoveryClient.pipe(T.HttpBody())),
     }).pipe(
@@ -4006,44 +4006,44 @@ export const CreateProjectsLocationsDiscoveryClientsRequest =
 export interface Group {
   /** Optional. User-friendly display name. */
   displayName?: string;
-  /** Output only. The timestamp when the group was created. */
-  createTime?: string;
   /** Output only. The timestamp when the group was last updated. */
   updateTime?: string;
+  /** Optional. The description of the group. */
+  description?: string;
+  /** Output only. The timestamp when the group was created. */
+  createTime?: string;
   /** Output only. The name of the group. */
   name?: string;
   /** Labels as key value pairs. */
   labels?: StringMap;
-  /** Optional. The description of the group. */
-  description?: string;
 }
 export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
     name: S.optional(S.String),
     labels: S.optional(StringMap),
-    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export interface CreateProjectsLocationsGroupsRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. */
   groupId?: string;
   /** Required. Value for parent. */
   parent: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Request body */
   body?: Group;
 }
 export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
       groupId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Group.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4069,28 +4069,63 @@ export const GCSPayloadInfoFormatEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents a payload hosted on Google Cloud Storage. */
 export interface GCSPayloadInfo {
-  /** The import job format. */
-  format?: GCSPayloadInfoFormatEnum | (string & {});
   /** The payload path in Google Cloud Storage. */
   path?: string;
+  /** The import job format. */
+  format?: GCSPayloadInfoFormatEnum | (string & {});
 }
 export const GCSPayloadInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    format: S.optional(GCSPayloadInfoFormatEnum),
     path: S.optional(S.String),
+    format: S.optional(GCSPayloadInfoFormatEnum),
   }),
 ).annotate({ identifier: "GCSPayloadInfo" }) as any as S.Schema<GCSPayloadInfo>;
 
-export type ImportJobStateEnum =
-  | "IMPORT_JOB_STATE_UNSPECIFIED"
-  | "IMPORT_JOB_STATE_PENDING"
-  | "IMPORT_JOB_STATE_RUNNING"
-  | "IMPORT_JOB_STATE_COMPLETED"
-  | "IMPORT_JOB_STATE_FAILED"
-  | "IMPORT_JOB_STATE_VALIDATING"
-  | "IMPORT_JOB_STATE_FAILED_VALIDATION"
-  | "IMPORT_JOB_STATE_READY";
-export const ImportJobStateEnum = /*@__PURE__*/ S.String;
+/** Payload file for inline import job payload. */
+export interface PayloadFile {
+  /** The file name. */
+  name?: string;
+  /** The file data. */
+  data?: string;
+}
+export const PayloadFile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    data: S.optional(S.String),
+  }),
+).annotate({ identifier: "PayloadFile" }) as any as S.Schema<PayloadFile>;
+
+export type PayloadFileList = Array<PayloadFile>;
+export const PayloadFileList = /*@__PURE__*/ S.Array(
+  PayloadFile,
+) as any as S.Schema<PayloadFileList>;
+
+export type InlinePayloadInfoFormatEnum =
+  | "IMPORT_JOB_FORMAT_UNSPECIFIED"
+  | "IMPORT_JOB_FORMAT_CMDB"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
+  | "IMPORT_JOB_FORMAT_RVTOOLS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
+  | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
+  | "IMPORT_JOB_FORMAT_MANUAL_CSV"
+  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
+export const InlinePayloadInfoFormatEnum = /*@__PURE__*/ S.String;
+
+/** A resource that represents the inline import job payload. */
+export interface InlinePayloadInfo {
+  /** List of payload files. */
+  payload?: PayloadFileList;
+  /** The import job format. */
+  format?: InlinePayloadInfoFormatEnum | (string & {});
+}
+export const InlinePayloadInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    payload: S.optional(PayloadFileList),
+    format: S.optional(InlinePayloadInfoFormatEnum),
+  }),
+).annotate({
+  identifier: "InlinePayloadInfo",
+}) as any as S.Schema<InlinePayloadInfo>;
 
 export type ImportErrorSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -4101,15 +4136,15 @@ export const ImportErrorSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A resource that reports the errors encountered while processing an import job. */
 export interface ImportError {
-  /** The error information. */
-  errorDetails?: string;
   /** The severity of the error. */
   severity?: ImportErrorSeverityEnum | (string & {});
+  /** The error information. */
+  errorDetails?: string;
 }
 export const ImportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorDetails: S.optional(S.String),
     severity: S.optional(ImportErrorSeverityEnum),
+    errorDetails: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImportError" }) as any as S.Schema<ImportError>;
 
@@ -4131,22 +4166,6 @@ export const ImportRowErrorCsvErrorDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportRowErrorCsvErrorDetails",
 }) as any as S.Schema<ImportRowErrorCsvErrorDetails>;
 
-/** Error details for an XLSX file. */
-export interface ImportRowErrorXlsxErrorDetails {
-  /** The name of the sheet where the error was detected. */
-  sheet?: string;
-  /** The row number where the error was detected. */
-  rowNumber?: number;
-}
-export const ImportRowErrorXlsxErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sheet: S.optional(S.String),
-    rowNumber: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ImportRowErrorXlsxErrorDetails",
-}) as any as S.Schema<ImportRowErrorXlsxErrorDetails>;
-
 /** Error details for an archive file. */
 export interface ImportRowErrorArchiveErrorDetails {
   /** The file path inside the archive where the error was detected. */
@@ -4163,35 +4182,51 @@ export const ImportRowErrorArchiveErrorDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportRowErrorArchiveErrorDetails",
 }) as any as S.Schema<ImportRowErrorArchiveErrorDetails>;
 
+/** Error details for an XLSX file. */
+export interface ImportRowErrorXlsxErrorDetails {
+  /** The name of the sheet where the error was detected. */
+  sheet?: string;
+  /** The row number where the error was detected. */
+  rowNumber?: number;
+}
+export const ImportRowErrorXlsxErrorDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sheet: S.optional(S.String),
+    rowNumber: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ImportRowErrorXlsxErrorDetails",
+}) as any as S.Schema<ImportRowErrorXlsxErrorDetails>;
+
 /** A resource that reports the import job errors at row level. */
 export interface ImportRowError {
-  /** The name of the VM in the row. */
-  vmName?: string;
+  /** The VM UUID. */
+  vmUuid?: string;
   /** The list of errors detected in the row. */
   errors?: ImportErrorList;
   /** Error details for a CSV file. */
   csvError?: ImportRowErrorCsvErrorDetails;
-  /** Error details for an XLSX file. */
-  xlsxError?: ImportRowErrorXlsxErrorDetails;
-  /** The VM UUID. */
-  vmUuid?: string;
   /** The row number where the error was detected. */
   rowNumber?: number;
-  /** The asset title. */
-  assetTitle?: string;
   /** Error details for an archive file. */
   archiveError?: ImportRowErrorArchiveErrorDetails;
+  /** Error details for an XLSX file. */
+  xlsxError?: ImportRowErrorXlsxErrorDetails;
+  /** The name of the VM in the row. */
+  vmName?: string;
+  /** The asset title. */
+  assetTitle?: string;
 }
 export const ImportRowError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    vmName: S.optional(S.String),
+    vmUuid: S.optional(S.String),
     errors: S.optional(ImportErrorList),
     csvError: S.optional(ImportRowErrorCsvErrorDetails),
-    xlsxError: S.optional(ImportRowErrorXlsxErrorDetails),
-    vmUuid: S.optional(S.String),
     rowNumber: S.optional(S.Number),
-    assetTitle: S.optional(S.String),
     archiveError: S.optional(ImportRowErrorArchiveErrorDetails),
+    xlsxError: S.optional(ImportRowErrorXlsxErrorDetails),
+    vmName: S.optional(S.String),
+    assetTitle: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImportRowError" }) as any as S.Schema<ImportRowError>;
 
@@ -4202,21 +4237,21 @@ export const ImportRowErrorList = /*@__PURE__*/ S.Array(
 
 /** A resource that aggregates the validation errors found in an import job file. */
 export interface FileValidationReport {
-  /** The name of the file. */
-  fileName?: string;
-  /** Flag indicating that processing was aborted due to maximum number of errors. */
-  partialReport?: boolean;
-  /** Partial list of rows that encountered validation error. */
-  rowErrors?: ImportRowErrorList;
   /** List of file level errors. */
   fileErrors?: ImportErrorList;
+  /** The name of the file. */
+  fileName?: string;
+  /** Partial list of rows that encountered validation error. */
+  rowErrors?: ImportRowErrorList;
+  /** Flag indicating that processing was aborted due to maximum number of errors. */
+  partialReport?: boolean;
 }
 export const FileValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fileName: S.optional(S.String),
-    partialReport: S.optional(S.Boolean),
-    rowErrors: S.optional(ImportRowErrorList),
     fileErrors: S.optional(ImportErrorList),
+    fileName: S.optional(S.String),
+    rowErrors: S.optional(ImportRowErrorList),
+    partialReport: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "FileValidationReport",
@@ -4229,15 +4264,15 @@ export const FileValidationReportList = /*@__PURE__*/ S.Array(
 
 /** A resource that aggregates errors across import job files. */
 export interface ValidationReport {
-  /** List of job level errors. */
-  jobErrors?: ImportErrorList;
   /** List of errors found in files. */
   fileValidations?: FileValidationReportList;
+  /** List of job level errors. */
+  jobErrors?: ImportErrorList;
 }
 export const ValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    jobErrors: S.optional(ImportErrorList),
     fileValidations: S.optional(FileValidationReportList),
+    jobErrors: S.optional(ImportErrorList),
   }),
 ).annotate({
   identifier: "ValidationReport",
@@ -4245,10 +4280,10 @@ export const ValidationReport = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that reports result of the import job execution. */
 export interface ExecutionReport {
-  /** List of job-level errors. Deprecated, use the job errors under execution_errors instead. */
-  jobErrors?: ImportErrorList;
   /** Total number of asset frames reported for the import job. */
   framesReported?: number;
+  /** List of job-level errors. Deprecated, use the job errors under execution_errors instead. */
+  jobErrors?: ImportErrorList;
   /** Validation errors encountered during the execution of the import job. */
   executionErrors?: ValidationReport;
   /** Total number of rows in the import job. */
@@ -4256,8 +4291,8 @@ export interface ExecutionReport {
 }
 export const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    jobErrors: S.optional(ImportErrorList),
     framesReported: S.optional(S.Number),
+    jobErrors: S.optional(ImportErrorList),
     executionErrors: S.optional(ValidationReport),
     totalRowsCount: S.optional(S.Number),
   }),
@@ -4265,103 +4300,68 @@ export const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionReport",
 }) as any as S.Schema<ExecutionReport>;
 
-export type InlinePayloadInfoFormatEnum =
-  | "IMPORT_JOB_FORMAT_UNSPECIFIED"
-  | "IMPORT_JOB_FORMAT_CMDB"
-  | "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
-  | "IMPORT_JOB_FORMAT_RVTOOLS_CSV"
-  | "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
-  | "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
-  | "IMPORT_JOB_FORMAT_MANUAL_CSV"
-  | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
-export const InlinePayloadInfoFormatEnum = /*@__PURE__*/ S.String;
-
-/** Payload file for inline import job payload. */
-export interface PayloadFile {
-  /** The file data. */
-  data?: string;
-  /** The file name. */
-  name?: string;
-}
-export const PayloadFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "PayloadFile" }) as any as S.Schema<PayloadFile>;
-
-export type PayloadFileList = Array<PayloadFile>;
-export const PayloadFileList = /*@__PURE__*/ S.Array(
-  PayloadFile,
-) as any as S.Schema<PayloadFileList>;
-
-/** A resource that represents the inline import job payload. */
-export interface InlinePayloadInfo {
-  /** The import job format. */
-  format?: InlinePayloadInfoFormatEnum | (string & {});
-  /** List of payload files. */
-  payload?: PayloadFileList;
-}
-export const InlinePayloadInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(InlinePayloadInfoFormatEnum),
-    payload: S.optional(PayloadFileList),
-  }),
-).annotate({
-  identifier: "InlinePayloadInfo",
-}) as any as S.Schema<InlinePayloadInfo>;
+export type ImportJobStateEnum =
+  | "IMPORT_JOB_STATE_UNSPECIFIED"
+  | "IMPORT_JOB_STATE_PENDING"
+  | "IMPORT_JOB_STATE_RUNNING"
+  | "IMPORT_JOB_STATE_COMPLETED"
+  | "IMPORT_JOB_STATE_FAILED"
+  | "IMPORT_JOB_STATE_VALIDATING"
+  | "IMPORT_JOB_STATE_FAILED_VALIDATION"
+  | "IMPORT_JOB_STATE_READY";
+export const ImportJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that represents the background job that imports asset frames. */
 export interface ImportJob {
-  /** Output only. The timestamp when the import job was created. */
-  createTime?: string;
   /** Output only. The timestamp when the import job was last updated. */
   updateTime?: string;
+  /** Output only. The timestamp when the import job was created. */
+  createTime?: string;
   /** The payload is in Google Cloud Storage. */
   gcsPayload?: GCSPayloadInfo;
-  /** Output only. The state of the import job. */
-  state?: ImportJobStateEnum | (string & {});
-  /** Output only. The full name of the import job. */
-  name?: string;
-  /** Output only. The report with the validation results of the import job. */
-  validationReport?: ValidationReport;
-  /** Output only. The timestamp when the import job was completed. */
-  completeTime?: string;
-  /** User-friendly display name. Maximum length is 63 characters. */
-  displayName?: string;
   /** Labels as key value pairs. */
   labels?: StringMap;
-  /** Output only. The report with the results of running the import job. */
-  executionReport?: ExecutionReport;
   /** The payload is included in the request, mainly used for small import jobs. */
   inlinePayload?: InlinePayloadInfo;
   /** Required. Reference to a source. */
   assetSource?: string;
+  /** User-friendly display name. Maximum length is 63 characters. */
+  displayName?: string;
+  /** Output only. The report with the validation results of the import job. */
+  validationReport?: ValidationReport;
+  /** Output only. The report with the results of running the import job. */
+  executionReport?: ExecutionReport;
+  /** Output only. The timestamp when the import job was completed. */
+  completeTime?: string;
+  /** Output only. The state of the import job. */
+  state?: ImportJobStateEnum | (string & {});
+  /** Output only. The full name of the import job. */
+  name?: string;
 }
 export const ImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
     gcsPayload: S.optional(GCSPayloadInfo),
-    state: S.optional(ImportJobStateEnum),
-    name: S.optional(S.String),
-    validationReport: S.optional(ValidationReport),
-    completeTime: S.optional(S.String),
-    displayName: S.optional(S.String),
     labels: S.optional(StringMap),
-    executionReport: S.optional(ExecutionReport),
     inlinePayload: S.optional(InlinePayloadInfo),
     assetSource: S.optional(S.String),
+    displayName: S.optional(S.String),
+    validationReport: S.optional(ValidationReport),
+    executionReport: S.optional(ExecutionReport),
+    completeTime: S.optional(S.String),
+    state: S.optional(ImportJobStateEnum),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
 
 export interface CreateProjectsLocationsImportJobsRequest {
   /** Required. Value for parent. */
   parent: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. ID of the import job. */
   importJobId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: ImportJob;
 }
@@ -4369,8 +4369,8 @@ export const CreateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
       importJobId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(ImportJob.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4387,24 +4387,18 @@ export const CreateProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
 export interface UploadFileInfo {
   /** Output only. Upload URI for the file. */
   signedUri?: string;
-  /** Output only. The headers that were used to sign the URL. */
-  headers?: StringMap;
   /** Output only. Expiration time of the upload URI. */
   uriExpirationTime?: string;
+  /** Output only. The headers that were used to sign the URL. */
+  headers?: StringMap;
 }
 export const UploadFileInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedUri: S.optional(S.String),
-    headers: S.optional(StringMap),
     uriExpirationTime: S.optional(S.String),
+    headers: S.optional(StringMap),
   }),
 ).annotate({ identifier: "UploadFileInfo" }) as any as S.Schema<UploadFileInfo>;
-
-export type ImportDataFileStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE";
-export const ImportDataFileStateEnum = /*@__PURE__*/ S.String;
 
 export type ImportDataFileFormatEnum =
   | "IMPORT_JOB_FORMAT_UNSPECIFIED"
@@ -4417,48 +4411,54 @@ export type ImportDataFileFormatEnum =
   | "IMPORT_JOB_FORMAT_DATABASE_ZIP";
 export const ImportDataFileFormatEnum = /*@__PURE__*/ S.String;
 
+export type ImportDataFileStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE";
+export const ImportDataFileStateEnum = /*@__PURE__*/ S.String;
+
 /** A resource that represents a payload file in an import job. */
 export interface ImportDataFile {
-  /** Information about a file that is uploaded to a storage service. */
-  uploadFileInfo?: UploadFileInfo;
-  /** Optional. User-friendly display name. Maximum length is 256 characters. */
-  displayName?: string;
-  /** Output only. The state of the import data file. */
-  state?: ImportDataFileStateEnum | (string & {});
-  /** Output only. The timestamp when the file was created. */
-  createTime?: string;
   /** Output only. The name of the file. */
   name?: string;
+  /** Information about a file that is uploaded to a storage service. */
+  uploadFileInfo?: UploadFileInfo;
   /** Required. The payload format. */
   format?: ImportDataFileFormatEnum | (string & {});
+  /** Output only. The timestamp when the file was created. */
+  createTime?: string;
+  /** Output only. The state of the import data file. */
+  state?: ImportDataFileStateEnum | (string & {});
+  /** Optional. User-friendly display name. Maximum length is 256 characters. */
+  displayName?: string;
 }
 export const ImportDataFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uploadFileInfo: S.optional(UploadFileInfo),
-    displayName: S.optional(S.String),
-    state: S.optional(ImportDataFileStateEnum),
-    createTime: S.optional(S.String),
     name: S.optional(S.String),
+    uploadFileInfo: S.optional(UploadFileInfo),
     format: S.optional(ImportDataFileFormatEnum),
+    createTime: S.optional(S.String),
+    state: S.optional(ImportDataFileStateEnum),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImportDataFile" }) as any as S.Schema<ImportDataFile>;
 
 export interface CreateProjectsLocationsImportJobsImportDataFilesRequest {
-  /** Required. The ID of the new data file. */
-  importDataFileId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the parent of the ImportDataFile. */
   parent: string;
+  /** Required. The ID of the new data file. */
+  importDataFileId?: string;
   /** Request body */
   body?: ImportDataFile;
 }
 export const CreateProjectsLocationsImportJobsImportDataFilesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      importDataFileId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      importDataFileId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(ImportDataFile.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4471,32 +4471,213 @@ export const CreateProjectsLocationsImportJobsImportDataFilesRequest =
     identifier: "CreateProjectsLocationsImportJobsImportDataFilesRequest",
   }) as any as S.Schema<CreateProjectsLocationsImportJobsImportDataFilesRequest>;
 
-export type VirtualMachinePreferencesCommitmentPlanEnum =
+export type DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+  | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
+  | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+  | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
+  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
+  | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
+export const DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+  /*@__PURE__*/ S.String;
+
+export type DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
+  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+  | "PERSISTENT_DISK_TYPE_STANDARD"
+  | "PERSISTENT_DISK_TYPE_BALANCED"
+  | "PERSISTENT_DISK_TYPE_SSD";
+export const DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
+  /*@__PURE__*/ S.String;
+
+export type DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
   | "COMMITMENT_PLAN_UNSPECIFIED"
   | "COMMITMENT_PLAN_NONE"
   | "COMMITMENT_PLAN_ONE_YEAR"
   | "COMMITMENT_PLAN_THREE_YEARS"
   | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR"
   | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
-export const VirtualMachinePreferencesCommitmentPlanEnum =
+export const DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
   /*@__PURE__*/ S.String;
 
-/** Estimated usage data. */
-export interface EstimatedUsage {
-  /** Optional. Estimated CPU utilization percentage. Must be in the range [1, 100]. */
-  estimatedCpuPercentage?: number;
-  /** Optional. Estimated disk utilization percentage. Must be in the range [1, 100]. */
-  estimatedDiskPercentage?: number;
-  /** Optional. Estimated memory utilization percentage. Must be in the range [1, 100]. */
-  estimatedMemoryPercentage?: number;
+export type DatabasePreferencesCloudSqlCommonEditionEnum =
+  | "CLOUD_SQL_EDITION_UNSPECIFIED"
+  | "CLOUD_SQL_EDITION_ENTERPRISE"
+  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
+export const DatabasePreferencesCloudSqlCommonEditionEnum =
+  /*@__PURE__*/ S.String;
+
+export type DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
+  | "BACKUP_MODE_UNSPECIFIED"
+  | "BACKUP_MODE_DISABLED"
+  | "BACKUP_MODE_ENABLED";
+export const DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Preferences for database backups. */
+export interface DatabasePreferencesCloudSqlCommonBackup {
+  /** Optional. Automated backup mode. */
+  backupMode?:
+    | DatabasePreferencesCloudSqlCommonBackupBackupModeEnum
+    | (string & {});
 }
-export const EstimatedUsage = /*@__PURE__*/ S.suspend(() =>
+export const DatabasePreferencesCloudSqlCommonBackup = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      backupMode: S.optional(
+        DatabasePreferencesCloudSqlCommonBackupBackupModeEnum,
+      ),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlCommonBackup",
+}) as any as S.Schema<DatabasePreferencesCloudSqlCommonBackup>;
+
+export type DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
+  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
+  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
+export const DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
+  /*@__PURE__*/ S.String;
+
+/** Preferences common to Cloud SQL databases. */
+export interface DatabasePreferencesCloudSqlCommon {
+  /** Optional. Sizing optimization strategy of the database. Currently supported for Cloud SQL are just two values: SIZING_OPTIMIZATION_STRATEGY_MODERATE and SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE. SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED will behave like SIZING_OPTIMIZATION_STRATEGY_MODERATE. */
+  sizingOptimizationStrategy?:
+    | DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum
+    | (string & {});
+  /** Optional. Persistent disk type to use. If unspecified, a disk type is recommended based on available usage data. For SQL Server, only SSD is available. For MySQL and PostgreSQL, only STANDARD (HDD) and SSD types are available. */
+  persistentDiskType?:
+    | DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum
+    | (string & {});
+  /** Optional. Commitment plan to consider when calculating costs. Only regular CUDs (not flexible) are currently available. */
+  commitmentPlan?:
+    | DatabasePreferencesCloudSqlCommonCommitmentPlanEnum
+    | (string & {});
+  /** Optional. Preferred Cloud SQL edition. */
+  edition?: DatabasePreferencesCloudSqlCommonEditionEnum | (string & {});
+  /** Optional. Preferences for database backups. */
+  backup?: DatabasePreferencesCloudSqlCommonBackup;
+  /** Optional. Preferred zone availability. */
+  zoneAvailability?:
+    | DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum
+    | (string & {});
+}
+export const DatabasePreferencesCloudSqlCommon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    estimatedCpuPercentage: S.optional(S.Number),
-    estimatedDiskPercentage: S.optional(S.Number),
-    estimatedMemoryPercentage: S.optional(S.Number),
+    sizingOptimizationStrategy: S.optional(
+      DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum,
+    ),
+    persistentDiskType: S.optional(
+      DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum,
+    ),
+    commitmentPlan: S.optional(
+      DatabasePreferencesCloudSqlCommonCommitmentPlanEnum,
+    ),
+    edition: S.optional(DatabasePreferencesCloudSqlCommonEditionEnum),
+    backup: S.optional(DatabasePreferencesCloudSqlCommonBackup),
+    zoneAvailability: S.optional(
+      DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum,
+    ),
   }),
-).annotate({ identifier: "EstimatedUsage" }) as any as S.Schema<EstimatedUsage>;
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlCommon",
+}) as any as S.Schema<DatabasePreferencesCloudSqlCommon>;
+
+export type DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
+  | "MULTITHREADING_UNSPECIFIED"
+  | "MULTITHREADING_DISABLED"
+  | "MULTITHREADING_ENABLED"
+  | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
+export const DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
+  /*@__PURE__*/ S.String;
+
+export type DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
+  | "VERSION_TYPE_UNSPECIFIED"
+  | "VERSION_TYPE_AUTO"
+  | "VERSION_TYPE_EXPRESS"
+  | "VERSION_TYPE_WEB"
+  | "VERSION_TYPE_STANDARD"
+  | "VERSION_TYPE_ENTERPRISE";
+export const DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Preferences for SQL Server on Cloud SQL. */
+export interface DatabasePreferencesCloudSqlSqlServer {
+  /** Optional. Preferences to Cloud SQL databases. */
+  common?: DatabasePreferencesCloudSqlCommon;
+  /** Optional. Preferences for multithreading support. */
+  multithreading?:
+    | DatabasePreferencesCloudSqlSqlServerMultithreadingEnum
+    | (string & {});
+  /** Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL server instance. */
+  versionType?:
+    | DatabasePreferencesCloudSqlSqlServerVersionTypeEnum
+    | (string & {});
+}
+export const DatabasePreferencesCloudSqlSqlServer = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      common: S.optional(DatabasePreferencesCloudSqlCommon),
+      multithreading: S.optional(
+        DatabasePreferencesCloudSqlSqlServerMultithreadingEnum,
+      ),
+      versionType: S.optional(
+        DatabasePreferencesCloudSqlSqlServerVersionTypeEnum,
+      ),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlSqlServer",
+}) as any as S.Schema<DatabasePreferencesCloudSqlSqlServer>;
+
+/** Preferences for MySQL on Cloud SQL. */
+export interface DatabasePreferencesCloudSqlMySql {
+  /** Optional. Preferences to Cloud SQL databases. */
+  common?: DatabasePreferencesCloudSqlCommon;
+}
+export const DatabasePreferencesCloudSqlMySql = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    common: S.optional(DatabasePreferencesCloudSqlCommon),
+  }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlMySql",
+}) as any as S.Schema<DatabasePreferencesCloudSqlMySql>;
+
+/** Preferences for PostgreSQL on Cloud SQL. */
+export interface DatabasePreferencesCloudSqlPostgreSql {
+  /** Optional. Preferences to Cloud SQL databases. */
+  common?: DatabasePreferencesCloudSqlCommon;
+}
+export const DatabasePreferencesCloudSqlPostgreSql = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      common: S.optional(DatabasePreferencesCloudSqlCommon),
+    }),
+).annotate({
+  identifier: "DatabasePreferencesCloudSqlPostgreSql",
+}) as any as S.Schema<DatabasePreferencesCloudSqlPostgreSql>;
+
+/** DatabasePreferences enables you to create sets of preferences for your migrated databases. */
+export interface DatabasePreferences {
+  /** Optional. Preferences for target SQL Server on Cloud SQL when migrating from source Microsoft SQL server. */
+  mssqlToCloudSqlForSqlServerPreferences?: DatabasePreferencesCloudSqlSqlServer;
+  /** Optional. Preferences for target MySQL on Cloud SQL when migrating from source MySQL. */
+  mysqlToCloudSqlForMysqlPreferences?: DatabasePreferencesCloudSqlMySql;
+  /** Optional. Preferences for target PostgreSQL on Cloud SQL when migrating from source PostgreSQL. */
+  postgresqlToCloudSqlForPostgresqlPreferences?: DatabasePreferencesCloudSqlPostgreSql;
+}
+export const DatabasePreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mssqlToCloudSqlForSqlServerPreferences: S.optional(
+      DatabasePreferencesCloudSqlSqlServer,
+    ),
+    mysqlToCloudSqlForMysqlPreferences: S.optional(
+      DatabasePreferencesCloudSqlMySql,
+    ),
+    postgresqlToCloudSqlForPostgresqlPreferences: S.optional(
+      DatabasePreferencesCloudSqlPostgreSql,
+    ),
+  }),
+).annotate({
+  identifier: "DatabasePreferences",
+}) as any as S.Schema<DatabasePreferences>;
 
 /** The user preferences relating to target regions. */
 export interface RegionPreferences {
@@ -4526,12 +4707,12 @@ export interface VirtualMachinePreferencesSizingOptimizationCustomParameters {
   aggregationMethod?:
     | VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum
     | (string & {});
-  /** Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value). */
-  memoryUsagePercentage?: number;
   /** Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value). */
   storageMultiplier?: number;
   /** Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value). */
   cpuUsagePercentage?: number;
+  /** Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value). */
+  memoryUsagePercentage?: number;
 }
 export const VirtualMachinePreferencesSizingOptimizationCustomParameters =
   /*@__PURE__*/ S.suspend(() =>
@@ -4539,149 +4720,13 @@ export const VirtualMachinePreferencesSizingOptimizationCustomParameters =
       aggregationMethod: S.optional(
         VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethodEnum,
       ),
-      memoryUsagePercentage: S.optional(S.Number),
       storageMultiplier: S.optional(S.Number),
       cpuUsagePercentage: S.optional(S.Number),
+      memoryUsagePercentage: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "VirtualMachinePreferencesSizingOptimizationCustomParameters",
   }) as any as S.Schema<VirtualMachinePreferencesSizingOptimizationCustomParameters>;
-
-/** Parameters that affect network cost estimations. */
-export interface VirtualMachinePreferencesNetworkCostParameters {
-  /** Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100]. */
-  estimatedEgressTrafficPercentage?: number;
-}
-export const VirtualMachinePreferencesNetworkCostParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      estimatedEgressTrafficPercentage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "VirtualMachinePreferencesNetworkCostParameters",
-  }) as any as S.Schema<VirtualMachinePreferencesNetworkCostParameters>;
-
-export type VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
-  | "STORAGE_ONLY_NODES_UNSPECIFIED"
-  | "STORAGE_ONLY_NODES_ENABLED"
-  | "STORAGE_ONLY_NODES_DISABLED";
-export const VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
-  /*@__PURE__*/ S.String;
-
-export type VMwareEngineMachinePreferencesProtectedNodesEnum =
-  | "PROTECTED_NODES_UNSPECIFIED"
-  | "PROTECTED_NODES_ENABLED"
-  | "PROTECTED_NODES_DISABLED";
-export const VMwareEngineMachinePreferencesProtectedNodesEnum =
-  /*@__PURE__*/ S.String;
-
-/** A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine). */
-export interface MachineSeries {
-  /** Code to identify a machine series. Consult this for more details on the available series for Compute Engine: https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison Consult this for more details on the available series for Google Cloud VMware Engine: https://cloud.google.com/vmware-engine/pricing */
-  code?: string;
-}
-export const MachineSeries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-  }),
-).annotate({ identifier: "MachineSeries" }) as any as S.Schema<MachineSeries>;
-
-export type MachineSeriesList = Array<MachineSeries>;
-export const MachineSeriesList = /*@__PURE__*/ S.Array(
-  MachineSeries,
-) as any as S.Schema<MachineSeriesList>;
-
-/** The type of machines to consider when calculating virtual machine migration insights and recommendations for VMware Engine. Not all machine types are available in all zones and regions. */
-export interface VMwareEngineMachinePreferences {
-  /** Optional. Whether to use storage-only nodes, if those are available. */
-  storageOnlyNodes?:
-    | VMwareEngineMachinePreferencesStorageOnlyNodesEnum
-    | (string & {});
-  /** Optional. Whether to use VMware Engine Protected offering. */
-  protectedNodes?:
-    | VMwareEngineMachinePreferencesProtectedNodesEnum
-    | (string & {});
-  /** Optional. VMware Engine on Google Cloud machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series. */
-  allowedMachineSeries?: MachineSeriesList;
-}
-export const VMwareEngineMachinePreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageOnlyNodes: S.optional(
-      VMwareEngineMachinePreferencesStorageOnlyNodesEnum,
-    ),
-    protectedNodes: S.optional(
-      VMwareEngineMachinePreferencesProtectedNodesEnum,
-    ),
-    allowedMachineSeries: S.optional(MachineSeriesList),
-  }),
-).annotate({
-  identifier: "VMwareEngineMachinePreferences",
-}) as any as S.Schema<VMwareEngineMachinePreferences>;
-
-export type VmwareEnginePreferencesServiceTypeEnum =
-  | "SERVICE_TYPE_UNSPECIFIED"
-  | "SERVICE_TYPE_FULLY_LICENSED"
-  | "SERVICE_TYPE_PORTABLE_LICENSE";
-export const VmwareEnginePreferencesServiceTypeEnum = /*@__PURE__*/ S.String;
-
-export type VmwareEnginePreferencesCommitmentPlanEnum =
-  | "COMMITMENT_PLAN_UNSPECIFIED"
-  | "ON_DEMAND"
-  | "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS"
-  | "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS"
-  | "COMMITMENT_1_YEAR_UPFRONT_PAYMENT"
-  | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
-  | "COMMITMENT_FLEXIBLE_3_YEAR_MONTHLY_PAYMENTS"
-  | "COMMITMENT_FLEXIBLE_3_YEAR_UPFRONT_PAYMENT";
-export const VmwareEnginePreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
-
-/** The user preferences relating to Google Cloud VMware Engine target platform. */
-export interface VmwareEnginePreferences {
-  /** Optional. Preferences concerning the machine types to consider on Google Cloud VMware Engine. */
-  machinePreferences?: VMwareEngineMachinePreferences;
-  /** Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0. */
-  memoryOvercommitRatio?: number;
-  /** The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0. */
-  storageDeduplicationCompressionRatio?: number;
-  /** Optional. GCVE service type (fully licensed or portable license). */
-  serviceType?: VmwareEnginePreferencesServiceTypeEnum | (string & {});
-  /** Optional. Discount percentage for the license offered to you by Broadcom. Must be between 0 and 100. Only valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE. */
-  licenseDiscountPercentage?: number;
-  /** CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment. */
-  cpuOvercommitRatio?: number;
-  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: VmwareEnginePreferencesCommitmentPlanEnum | (string & {});
-}
-export const VmwareEnginePreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    machinePreferences: S.optional(VMwareEngineMachinePreferences),
-    memoryOvercommitRatio: S.optional(S.Number),
-    storageDeduplicationCompressionRatio: S.optional(S.Number),
-    serviceType: S.optional(VmwareEnginePreferencesServiceTypeEnum),
-    licenseDiscountPercentage: S.optional(S.Number),
-    cpuOvercommitRatio: S.optional(S.Number),
-    commitmentPlan: S.optional(VmwareEnginePreferencesCommitmentPlanEnum),
-  }),
-).annotate({
-  identifier: "VmwareEnginePreferences",
-}) as any as S.Schema<VmwareEnginePreferences>;
-
-export type VirtualMachinePreferencesTargetProductEnum =
-  | "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"
-  | "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
-  | "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"
-  | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY";
-export const VirtualMachinePreferencesTargetProductEnum =
-  /*@__PURE__*/ S.String;
-
-export type VirtualMachinePreferencesSizingOptimizationStrategyEnum =
-  | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
-  | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
-  | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
-  | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
-  | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
-export const VirtualMachinePreferencesSizingOptimizationStrategyEnum =
-  /*@__PURE__*/ S.String;
 
 export type OperatingSystemPricingPreferencesOperatingSystemPricingCommitmentPlanEnum =
     | "COMMITMENT_PLAN_UNSPECIFIED"
@@ -4725,93 +4770,29 @@ export const OperatingSystemPricingPreferencesOperatingSystemPricing =
 
 /** Pricing options for OS images. */
 export interface OperatingSystemPricingPreferences {
+  /** Optional. Pricing options for RHEL images. */
+  rhel?: OperatingSystemPricingPreferencesOperatingSystemPricing;
+  /** Optional. Pricing options for SLES images. */
+  sles?: OperatingSystemPricingPreferencesOperatingSystemPricing;
   /** Optional. Pricing options for Windows images. No commitment plans are available, set it to unspecified. */
   windows?: OperatingSystemPricingPreferencesOperatingSystemPricing;
   /** Optional. Pricing options for SLES for SAP images. */
   slesForSap?: OperatingSystemPricingPreferencesOperatingSystemPricing;
-  /** Optional. Pricing options for SLES images. */
-  sles?: OperatingSystemPricingPreferencesOperatingSystemPricing;
-  /** Optional. Pricing options for RHEL images. */
-  rhel?: OperatingSystemPricingPreferencesOperatingSystemPricing;
 }
 export const OperatingSystemPricingPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    rhel: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
+    sles: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
     windows: S.optional(
       OperatingSystemPricingPreferencesOperatingSystemPricing,
     ),
     slesForSap: S.optional(
       OperatingSystemPricingPreferencesOperatingSystemPricing,
     ),
-    sles: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
-    rhel: S.optional(OperatingSystemPricingPreferencesOperatingSystemPricing),
   }),
 ).annotate({
   identifier: "OperatingSystemPricingPreferences",
 }) as any as S.Schema<OperatingSystemPricingPreferences>;
-
-export type SoleTenancyPreferencesHostMaintenancePolicyEnum =
-  | "HOST_MAINTENANCE_POLICY_UNSPECIFIED"
-  | "HOST_MAINTENANCE_POLICY_DEFAULT"
-  | "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"
-  | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP";
-export const SoleTenancyPreferencesHostMaintenancePolicyEnum =
-  /*@__PURE__*/ S.String;
-
-export type SoleTenancyPreferencesCommitmentPlanEnum =
-  | "COMMITMENT_PLAN_UNSPECIFIED"
-  | "ON_DEMAND"
-  | "COMMITMENT_1_YEAR"
-  | "COMMITMENT_3_YEAR"
-  | "COMMITMENT_FLEXIBLE_1_YEAR"
-  | "COMMITMENT_FLEXIBLE_3_YEAR";
-export const SoleTenancyPreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
-
-/** A Sole Tenant node type. */
-export interface SoleTenantNodeType {
-  /** Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes */
-  nodeName?: string;
-}
-export const SoleTenantNodeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SoleTenantNodeType",
-}) as any as S.Schema<SoleTenantNodeType>;
-
-export type SoleTenantNodeTypeList = Array<SoleTenantNodeType>;
-export const SoleTenantNodeTypeList = /*@__PURE__*/ S.Array(
-  SoleTenantNodeType,
-) as any as S.Schema<SoleTenantNodeTypeList>;
-
-/** Preferences concerning Sole Tenancy nodes and VMs. */
-export interface SoleTenancyPreferences {
-  /** Optional. Pricing options for OS images. */
-  osPricingPreferences?: OperatingSystemPricingPreferences;
-  /** Sole Tenancy nodes maintenance policy. */
-  hostMaintenancePolicy?:
-    | SoleTenancyPreferencesHostMaintenancePolicyEnum
-    | (string & {});
-  /** CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive. */
-  cpuOvercommitRatio?: number;
-  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: SoleTenancyPreferencesCommitmentPlanEnum | (string & {});
-  /** A list of sole tenant node types. An empty list means that all possible node types will be considered. */
-  nodeTypes?: SoleTenantNodeTypeList;
-}
-export const SoleTenancyPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
-    hostMaintenancePolicy: S.optional(
-      SoleTenancyPreferencesHostMaintenancePolicyEnum,
-    ),
-    cpuOvercommitRatio: S.optional(S.Number),
-    commitmentPlan: S.optional(SoleTenancyPreferencesCommitmentPlanEnum),
-    nodeTypes: S.optional(SoleTenantNodeTypeList),
-  }),
-).annotate({
-  identifier: "SoleTenancyPreferences",
-}) as any as S.Schema<SoleTenancyPreferences>;
 
 export type ComputeEnginePreferencesPersistentDiskTypeEnum =
   | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
@@ -4821,11 +4802,21 @@ export type ComputeEnginePreferencesPersistentDiskTypeEnum =
 export const ComputeEnginePreferencesPersistentDiskTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type ComputeEnginePreferencesLicenseTypeEnum =
-  | "LICENSE_TYPE_UNSPECIFIED"
-  | "LICENSE_TYPE_DEFAULT"
-  | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
-export const ComputeEnginePreferencesLicenseTypeEnum = /*@__PURE__*/ S.String;
+/** A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine). */
+export interface MachineSeries {
+  /** Code to identify a machine series. Consult this for more details on the available series for Compute Engine: https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison Consult this for more details on the available series for Google Cloud VMware Engine: https://cloud.google.com/vmware-engine/pricing */
+  code?: string;
+}
+export const MachineSeries = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+  }),
+).annotate({ identifier: "MachineSeries" }) as any as S.Schema<MachineSeries>;
+
+export type MachineSeriesList = Array<MachineSeries>;
+export const MachineSeriesList = /*@__PURE__*/ S.Array(
+  MachineSeries,
+) as any as S.Schema<MachineSeriesList>;
 
 /** The type of machines to consider when calculating virtual machine migration insights and recommendations for Compute Engine. Not all machine types are available in all zones and regions. */
 export interface MachinePreferences {
@@ -4848,329 +4839,338 @@ export type ComputeEnginePreferencesMultithreadingEnum =
 export const ComputeEnginePreferencesMultithreadingEnum =
   /*@__PURE__*/ S.String;
 
+export type ComputeEnginePreferencesLicenseTypeEnum =
+  | "LICENSE_TYPE_UNSPECIFIED"
+  | "LICENSE_TYPE_DEFAULT"
+  | "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE";
+export const ComputeEnginePreferencesLicenseTypeEnum = /*@__PURE__*/ S.String;
+
 /** The user preferences relating to Compute Engine target platform. */
 export interface ComputeEnginePreferences {
+  /** Optional. Pricing options for OS images. */
+  osPricingPreferences?: OperatingSystemPricingPreferences;
   /** Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data. */
   persistentDiskType?:
     | ComputeEnginePreferencesPersistentDiskTypeEnum
     | (string & {});
-  /** License type to consider when calculating costs for operating systems. If unspecified, costs are calculated based on the default licensing plan. If os_pricing_preferences is specified, it overrides this field. */
-  licenseType?: ComputeEnginePreferencesLicenseTypeEnum | (string & {});
   /** Preferences concerning the machine types to consider on Compute Engine. */
   machinePreferences?: MachinePreferences;
-  /** Optional. Pricing options for OS images. */
-  osPricingPreferences?: OperatingSystemPricingPreferences;
   /** Optional. Preferences for multithreading support on Windows Server. */
   multithreading?: ComputeEnginePreferencesMultithreadingEnum | (string & {});
+  /** License type to consider when calculating costs for operating systems. If unspecified, costs are calculated based on the default licensing plan. If os_pricing_preferences is specified, it overrides this field. */
+  licenseType?: ComputeEnginePreferencesLicenseTypeEnum | (string & {});
 }
 export const ComputeEnginePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
     persistentDiskType: S.optional(
       ComputeEnginePreferencesPersistentDiskTypeEnum,
     ),
-    licenseType: S.optional(ComputeEnginePreferencesLicenseTypeEnum),
     machinePreferences: S.optional(MachinePreferences),
-    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
     multithreading: S.optional(ComputeEnginePreferencesMultithreadingEnum),
+    licenseType: S.optional(ComputeEnginePreferencesLicenseTypeEnum),
   }),
 ).annotate({
   identifier: "ComputeEnginePreferences",
 }) as any as S.Schema<ComputeEnginePreferences>;
 
-/** VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets. */
-export interface VirtualMachinePreferences {
-  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
-  commitmentPlan?: VirtualMachinePreferencesCommitmentPlanEnum | (string & {});
-  /** Optional. Estimated usage data for missing usage data. If performance data is available, it overrides this field. If not set, default values will be used for the usage data. */
-  estimatedUsage?: EstimatedUsage;
-  /** Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field. */
-  regionPreferences?: RegionPreferences;
-  /** Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom". */
-  sizingOptimizationCustomParameters?: VirtualMachinePreferencesSizingOptimizationCustomParameters;
-  /** Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters. */
-  networkCostParameters?: VirtualMachinePreferencesNetworkCostParameters;
-  /** Preferences concerning insights and recommendations for Google Cloud VMware Engine. */
-  vmwareEnginePreferences?: VmwareEnginePreferences;
-  /** Target product for assets using this preference set. Specify either target product or business goal, but not both. */
-  targetProduct?: VirtualMachinePreferencesTargetProductEnum | (string & {});
-  /** Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. */
-  sizingOptimizationStrategy?:
-    | VirtualMachinePreferencesSizingOptimizationStrategyEnum
-    | (string & {});
-  /** Preferences concerning Sole Tenant nodes and virtual machines. */
-  soleTenancyPreferences?: SoleTenancyPreferences;
-  /** Optional. Compute Engine preferences concern insights and recommendations for Compute Engine target. */
-  computeEnginePreferences?: ComputeEnginePreferences;
-}
-export const VirtualMachinePreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitmentPlan: S.optional(VirtualMachinePreferencesCommitmentPlanEnum),
-    estimatedUsage: S.optional(EstimatedUsage),
-    regionPreferences: S.optional(RegionPreferences),
-    sizingOptimizationCustomParameters: S.optional(
-      VirtualMachinePreferencesSizingOptimizationCustomParameters,
-    ),
-    networkCostParameters: S.optional(
-      VirtualMachinePreferencesNetworkCostParameters,
-    ),
-    vmwareEnginePreferences: S.optional(VmwareEnginePreferences),
-    targetProduct: S.optional(VirtualMachinePreferencesTargetProductEnum),
-    sizingOptimizationStrategy: S.optional(
-      VirtualMachinePreferencesSizingOptimizationStrategyEnum,
-    ),
-    soleTenancyPreferences: S.optional(SoleTenancyPreferences),
-    computeEnginePreferences: S.optional(ComputeEnginePreferences),
-  }),
-).annotate({
-  identifier: "VirtualMachinePreferences",
-}) as any as S.Schema<VirtualMachinePreferences>;
-
-export type DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
-  | "BACKUP_MODE_UNSPECIFIED"
-  | "BACKUP_MODE_DISABLED"
-  | "BACKUP_MODE_ENABLED";
-export const DatabasePreferencesCloudSqlCommonBackupBackupModeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Preferences for database backups. */
-export interface DatabasePreferencesCloudSqlCommonBackup {
-  /** Optional. Automated backup mode. */
-  backupMode?:
-    | DatabasePreferencesCloudSqlCommonBackupBackupModeEnum
-    | (string & {});
-}
-export const DatabasePreferencesCloudSqlCommonBackup = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      backupMode: S.optional(
-        DatabasePreferencesCloudSqlCommonBackupBackupModeEnum,
-      ),
-    }),
-).annotate({
-  identifier: "DatabasePreferencesCloudSqlCommonBackup",
-}) as any as S.Schema<DatabasePreferencesCloudSqlCommonBackup>;
-
-export type DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+export type VirtualMachinePreferencesSizingOptimizationStrategyEnum =
   | "SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
   | "SIZING_OPTIMIZATION_STRATEGY_MODERATE"
   | "SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE"
   | "SIZING_OPTIMIZATION_STRATEGY_CUSTOM";
-export const DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum =
+export const VirtualMachinePreferencesSizingOptimizationStrategyEnum =
   /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
+export type VirtualMachinePreferencesCommitmentPlanEnum =
   | "COMMITMENT_PLAN_UNSPECIFIED"
   | "COMMITMENT_PLAN_NONE"
   | "COMMITMENT_PLAN_ONE_YEAR"
   | "COMMITMENT_PLAN_THREE_YEARS"
   | "COMMITMENT_PLAN_FLEXIBLE_ONE_YEAR"
   | "COMMITMENT_PLAN_FLEXIBLE_THREE_YEARS";
-export const DatabasePreferencesCloudSqlCommonCommitmentPlanEnum =
+export const VirtualMachinePreferencesCommitmentPlanEnum =
   /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonEditionEnum =
-  | "CLOUD_SQL_EDITION_UNSPECIFIED"
-  | "CLOUD_SQL_EDITION_ENTERPRISE"
-  | "CLOUD_SQL_EDITION_ENTERPRISE_PLUS";
-export const DatabasePreferencesCloudSqlCommonEditionEnum =
+export type VmwareEnginePreferencesCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "COMMITMENT_1_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_3_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_1_YEAR_UPFRONT_PAYMENT"
+  | "COMMITMENT_3_YEAR_UPFRONT_PAYMENT"
+  | "COMMITMENT_FLEXIBLE_3_YEAR_MONTHLY_PAYMENTS"
+  | "COMMITMENT_FLEXIBLE_3_YEAR_UPFRONT_PAYMENT";
+export const VmwareEnginePreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
+
+export type VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
+  | "STORAGE_ONLY_NODES_UNSPECIFIED"
+  | "STORAGE_ONLY_NODES_ENABLED"
+  | "STORAGE_ONLY_NODES_DISABLED";
+export const VMwareEngineMachinePreferencesStorageOnlyNodesEnum =
   /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
-  | "PERSISTENT_DISK_TYPE_UNSPECIFIED"
-  | "PERSISTENT_DISK_TYPE_STANDARD"
-  | "PERSISTENT_DISK_TYPE_BALANCED"
-  | "PERSISTENT_DISK_TYPE_SSD";
-export const DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum =
+export type VMwareEngineMachinePreferencesProtectedNodesEnum =
+  | "PROTECTED_NODES_UNSPECIFIED"
+  | "PROTECTED_NODES_ENABLED"
+  | "PROTECTED_NODES_DISABLED";
+export const VMwareEngineMachinePreferencesProtectedNodesEnum =
   /*@__PURE__*/ S.String;
 
-export type DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
-  | "CLOUD_SQL_ZONE_AVAILABILITY_UNSPECIFIED"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_ZONAL"
-  | "CLOUD_SQL_ZONE_AVAILABILITY_REGIONAL";
-export const DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum =
+/** The type of machines to consider when calculating virtual machine migration insights and recommendations for VMware Engine. Not all machine types are available in all zones and regions. */
+export interface VMwareEngineMachinePreferences {
+  /** Optional. Whether to use storage-only nodes, if those are available. */
+  storageOnlyNodes?:
+    | VMwareEngineMachinePreferencesStorageOnlyNodesEnum
+    | (string & {});
+  /** Optional. VMware Engine on Google Cloud machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series. */
+  allowedMachineSeries?: MachineSeriesList;
+  /** Optional. Whether to use VMware Engine Protected offering. */
+  protectedNodes?:
+    | VMwareEngineMachinePreferencesProtectedNodesEnum
+    | (string & {});
+}
+export const VMwareEngineMachinePreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageOnlyNodes: S.optional(
+      VMwareEngineMachinePreferencesStorageOnlyNodesEnum,
+    ),
+    allowedMachineSeries: S.optional(MachineSeriesList),
+    protectedNodes: S.optional(
+      VMwareEngineMachinePreferencesProtectedNodesEnum,
+    ),
+  }),
+).annotate({
+  identifier: "VMwareEngineMachinePreferences",
+}) as any as S.Schema<VMwareEngineMachinePreferences>;
+
+export type VmwareEnginePreferencesServiceTypeEnum =
+  | "SERVICE_TYPE_UNSPECIFIED"
+  | "SERVICE_TYPE_FULLY_LICENSED"
+  | "SERVICE_TYPE_PORTABLE_LICENSE";
+export const VmwareEnginePreferencesServiceTypeEnum = /*@__PURE__*/ S.String;
+
+/** The user preferences relating to Google Cloud VMware Engine target platform. */
+export interface VmwareEnginePreferences {
+  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
+  commitmentPlan?: VmwareEnginePreferencesCommitmentPlanEnum | (string & {});
+  /** Optional. Discount percentage for the license offered to you by Broadcom. Must be between 0 and 100. Only valid when service_type is set to SERVICE_TYPE_PORTABLE_LICENSE. */
+  licenseDiscountPercentage?: number;
+  /** Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0. */
+  memoryOvercommitRatio?: number;
+  /** Optional. Preferences concerning the machine types to consider on Google Cloud VMware Engine. */
+  machinePreferences?: VMwareEngineMachinePreferences;
+  /** Optional. GCVE service type (fully licensed or portable license). */
+  serviceType?: VmwareEnginePreferencesServiceTypeEnum | (string & {});
+  /** The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data before applying deduplication and compression, in relation to the physical (Used After) space required after applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0. */
+  storageDeduplicationCompressionRatio?: number;
+  /** CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment. */
+  cpuOvercommitRatio?: number;
+}
+export const VmwareEnginePreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    commitmentPlan: S.optional(VmwareEnginePreferencesCommitmentPlanEnum),
+    licenseDiscountPercentage: S.optional(S.Number),
+    memoryOvercommitRatio: S.optional(S.Number),
+    machinePreferences: S.optional(VMwareEngineMachinePreferences),
+    serviceType: S.optional(VmwareEnginePreferencesServiceTypeEnum),
+    storageDeduplicationCompressionRatio: S.optional(S.Number),
+    cpuOvercommitRatio: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VmwareEnginePreferences",
+}) as any as S.Schema<VmwareEnginePreferences>;
+
+/** A Sole Tenant node type. */
+export interface SoleTenantNodeType {
+  /** Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes */
+  nodeName?: string;
+}
+export const SoleTenantNodeType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SoleTenantNodeType",
+}) as any as S.Schema<SoleTenantNodeType>;
+
+export type SoleTenantNodeTypeList = Array<SoleTenantNodeType>;
+export const SoleTenantNodeTypeList = /*@__PURE__*/ S.Array(
+  SoleTenantNodeType,
+) as any as S.Schema<SoleTenantNodeTypeList>;
+
+export type SoleTenancyPreferencesCommitmentPlanEnum =
+  | "COMMITMENT_PLAN_UNSPECIFIED"
+  | "ON_DEMAND"
+  | "COMMITMENT_1_YEAR"
+  | "COMMITMENT_3_YEAR"
+  | "COMMITMENT_FLEXIBLE_1_YEAR"
+  | "COMMITMENT_FLEXIBLE_3_YEAR";
+export const SoleTenancyPreferencesCommitmentPlanEnum = /*@__PURE__*/ S.String;
+
+export type SoleTenancyPreferencesHostMaintenancePolicyEnum =
+  | "HOST_MAINTENANCE_POLICY_UNSPECIFIED"
+  | "HOST_MAINTENANCE_POLICY_DEFAULT"
+  | "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"
+  | "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP";
+export const SoleTenancyPreferencesHostMaintenancePolicyEnum =
   /*@__PURE__*/ S.String;
 
-/** Preferences common to Cloud SQL databases. */
-export interface DatabasePreferencesCloudSqlCommon {
-  /** Optional. Preferences for database backups. */
-  backup?: DatabasePreferencesCloudSqlCommonBackup;
-  /** Optional. Sizing optimization strategy of the database. Currently supported for Cloud SQL are just two values: SIZING_OPTIMIZATION_STRATEGY_MODERATE and SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE. SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED will behave like SIZING_OPTIMIZATION_STRATEGY_MODERATE. */
+/** Preferences concerning Sole Tenancy nodes and VMs. */
+export interface SoleTenancyPreferences {
+  /** A list of sole tenant node types. An empty list means that all possible node types will be considered. */
+  nodeTypes?: SoleTenantNodeTypeList;
+  /** Optional. Pricing options for OS images. */
+  osPricingPreferences?: OperatingSystemPricingPreferences;
+  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
+  commitmentPlan?: SoleTenancyPreferencesCommitmentPlanEnum | (string & {});
+  /** Sole Tenancy nodes maintenance policy. */
+  hostMaintenancePolicy?:
+    | SoleTenancyPreferencesHostMaintenancePolicyEnum
+    | (string & {});
+  /** CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive. */
+  cpuOvercommitRatio?: number;
+}
+export const SoleTenancyPreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeTypes: S.optional(SoleTenantNodeTypeList),
+    osPricingPreferences: S.optional(OperatingSystemPricingPreferences),
+    commitmentPlan: S.optional(SoleTenancyPreferencesCommitmentPlanEnum),
+    hostMaintenancePolicy: S.optional(
+      SoleTenancyPreferencesHostMaintenancePolicyEnum,
+    ),
+    cpuOvercommitRatio: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SoleTenancyPreferences",
+}) as any as S.Schema<SoleTenancyPreferences>;
+
+/** Estimated usage data. */
+export interface EstimatedUsage {
+  /** Optional. Estimated disk utilization percentage. Must be in the range [1, 100]. */
+  estimatedDiskPercentage?: number;
+  /** Optional. Estimated CPU utilization percentage. Must be in the range [1, 100]. */
+  estimatedCpuPercentage?: number;
+  /** Optional. Estimated memory utilization percentage. Must be in the range [1, 100]. */
+  estimatedMemoryPercentage?: number;
+}
+export const EstimatedUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    estimatedDiskPercentage: S.optional(S.Number),
+    estimatedCpuPercentage: S.optional(S.Number),
+    estimatedMemoryPercentage: S.optional(S.Number),
+  }),
+).annotate({ identifier: "EstimatedUsage" }) as any as S.Schema<EstimatedUsage>;
+
+/** Parameters that affect network cost estimations. */
+export interface VirtualMachinePreferencesNetworkCostParameters {
+  /** Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound traffic. Must be in the interval [0, 100]. */
+  estimatedEgressTrafficPercentage?: number;
+}
+export const VirtualMachinePreferencesNetworkCostParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      estimatedEgressTrafficPercentage: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "VirtualMachinePreferencesNetworkCostParameters",
+  }) as any as S.Schema<VirtualMachinePreferencesNetworkCostParameters>;
+
+export type VirtualMachinePreferencesTargetProductEnum =
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"
+  | "COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY";
+export const VirtualMachinePreferencesTargetProductEnum =
+  /*@__PURE__*/ S.String;
+
+/** VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets. */
+export interface VirtualMachinePreferences {
+  /** Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to "custom". */
+  sizingOptimizationCustomParameters?: VirtualMachinePreferencesSizingOptimizationCustomParameters;
+  /** Optional. Compute Engine preferences concern insights and recommendations for Compute Engine target. */
+  computeEnginePreferences?: ComputeEnginePreferences;
+  /** Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. */
   sizingOptimizationStrategy?:
-    | DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum
+    | VirtualMachinePreferencesSizingOptimizationStrategyEnum
     | (string & {});
-  /** Optional. Commitment plan to consider when calculating costs. Only regular CUDs (not flexible) are currently available. */
-  commitmentPlan?:
-    | DatabasePreferencesCloudSqlCommonCommitmentPlanEnum
-    | (string & {});
-  /** Optional. Preferred Cloud SQL edition. */
-  edition?: DatabasePreferencesCloudSqlCommonEditionEnum | (string & {});
-  /** Optional. Persistent disk type to use. If unspecified, a disk type is recommended based on available usage data. For SQL Server, only SSD is available. For MySQL and PostgreSQL, only STANDARD (HDD) and SSD types are available. */
-  persistentDiskType?:
-    | DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum
-    | (string & {});
-  /** Optional. Preferred zone availability. */
-  zoneAvailability?:
-    | DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum
-    | (string & {});
+  /** Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. */
+  commitmentPlan?: VirtualMachinePreferencesCommitmentPlanEnum | (string & {});
+  /** Preferences concerning insights and recommendations for Google Cloud VMware Engine. */
+  vmwareEnginePreferences?: VmwareEnginePreferences;
+  /** Preferences concerning Sole Tenant nodes and virtual machines. */
+  soleTenancyPreferences?: SoleTenancyPreferences;
+  /** Optional. Estimated usage data for missing usage data. If performance data is available, it overrides this field. If not set, default values will be used for the usage data. */
+  estimatedUsage?: EstimatedUsage;
+  /** Optional. Parameters that affect network cost estimations. If not set, default values will be used for the parameters. */
+  networkCostParameters?: VirtualMachinePreferencesNetworkCostParameters;
+  /** Target product for assets using this preference set. Specify either target product or business goal, but not both. */
+  targetProduct?: VirtualMachinePreferencesTargetProductEnum | (string & {});
+  /** Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If PreferenceSet.RegionPreferences is specified, it overrides this field. */
+  regionPreferences?: RegionPreferences;
 }
-export const DatabasePreferencesCloudSqlCommon = /*@__PURE__*/ S.suspend(() =>
+export const VirtualMachinePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    backup: S.optional(DatabasePreferencesCloudSqlCommonBackup),
+    sizingOptimizationCustomParameters: S.optional(
+      VirtualMachinePreferencesSizingOptimizationCustomParameters,
+    ),
+    computeEnginePreferences: S.optional(ComputeEnginePreferences),
     sizingOptimizationStrategy: S.optional(
-      DatabasePreferencesCloudSqlCommonSizingOptimizationStrategyEnum,
+      VirtualMachinePreferencesSizingOptimizationStrategyEnum,
     ),
-    commitmentPlan: S.optional(
-      DatabasePreferencesCloudSqlCommonCommitmentPlanEnum,
+    commitmentPlan: S.optional(VirtualMachinePreferencesCommitmentPlanEnum),
+    vmwareEnginePreferences: S.optional(VmwareEnginePreferences),
+    soleTenancyPreferences: S.optional(SoleTenancyPreferences),
+    estimatedUsage: S.optional(EstimatedUsage),
+    networkCostParameters: S.optional(
+      VirtualMachinePreferencesNetworkCostParameters,
     ),
-    edition: S.optional(DatabasePreferencesCloudSqlCommonEditionEnum),
-    persistentDiskType: S.optional(
-      DatabasePreferencesCloudSqlCommonPersistentDiskTypeEnum,
-    ),
-    zoneAvailability: S.optional(
-      DatabasePreferencesCloudSqlCommonZoneAvailabilityEnum,
-    ),
+    targetProduct: S.optional(VirtualMachinePreferencesTargetProductEnum),
+    regionPreferences: S.optional(RegionPreferences),
   }),
 ).annotate({
-  identifier: "DatabasePreferencesCloudSqlCommon",
-}) as any as S.Schema<DatabasePreferencesCloudSqlCommon>;
-
-/** Preferences for MySQL on Cloud SQL. */
-export interface DatabasePreferencesCloudSqlMySql {
-  /** Optional. Preferences to Cloud SQL databases. */
-  common?: DatabasePreferencesCloudSqlCommon;
-}
-export const DatabasePreferencesCloudSqlMySql = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    common: S.optional(DatabasePreferencesCloudSqlCommon),
-  }),
-).annotate({
-  identifier: "DatabasePreferencesCloudSqlMySql",
-}) as any as S.Schema<DatabasePreferencesCloudSqlMySql>;
-
-export type DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
-  | "MULTITHREADING_UNSPECIFIED"
-  | "MULTITHREADING_DISABLED"
-  | "MULTITHREADING_ENABLED"
-  | "MULTITHREADING_DISABLED_WITH_COMPENSATION";
-export const DatabasePreferencesCloudSqlSqlServerMultithreadingEnum =
-  /*@__PURE__*/ S.String;
-
-export type DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
-  | "VERSION_TYPE_UNSPECIFIED"
-  | "VERSION_TYPE_AUTO"
-  | "VERSION_TYPE_EXPRESS"
-  | "VERSION_TYPE_WEB"
-  | "VERSION_TYPE_STANDARD"
-  | "VERSION_TYPE_ENTERPRISE";
-export const DatabasePreferencesCloudSqlSqlServerVersionTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Preferences for SQL Server on Cloud SQL. */
-export interface DatabasePreferencesCloudSqlSqlServer {
-  /** Optional. Preferences for multithreading support. */
-  multithreading?:
-    | DatabasePreferencesCloudSqlSqlServerMultithreadingEnum
-    | (string & {});
-  /** Optional. Preferences to Cloud SQL databases. */
-  common?: DatabasePreferencesCloudSqlCommon;
-  /** Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL server instance. */
-  versionType?:
-    | DatabasePreferencesCloudSqlSqlServerVersionTypeEnum
-    | (string & {});
-}
-export const DatabasePreferencesCloudSqlSqlServer = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multithreading: S.optional(
-        DatabasePreferencesCloudSqlSqlServerMultithreadingEnum,
-      ),
-      common: S.optional(DatabasePreferencesCloudSqlCommon),
-      versionType: S.optional(
-        DatabasePreferencesCloudSqlSqlServerVersionTypeEnum,
-      ),
-    }),
-).annotate({
-  identifier: "DatabasePreferencesCloudSqlSqlServer",
-}) as any as S.Schema<DatabasePreferencesCloudSqlSqlServer>;
-
-/** Preferences for PostgreSQL on Cloud SQL. */
-export interface DatabasePreferencesCloudSqlPostgreSql {
-  /** Optional. Preferences to Cloud SQL databases. */
-  common?: DatabasePreferencesCloudSqlCommon;
-}
-export const DatabasePreferencesCloudSqlPostgreSql = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      common: S.optional(DatabasePreferencesCloudSqlCommon),
-    }),
-).annotate({
-  identifier: "DatabasePreferencesCloudSqlPostgreSql",
-}) as any as S.Schema<DatabasePreferencesCloudSqlPostgreSql>;
-
-/** DatabasePreferences enables you to create sets of preferences for your migrated databases. */
-export interface DatabasePreferences {
-  /** Optional. Preferences for target MySQL on Cloud SQL when migrating from source MySQL. */
-  mysqlToCloudSqlForMysqlPreferences?: DatabasePreferencesCloudSqlMySql;
-  /** Optional. Preferences for target SQL Server on Cloud SQL when migrating from source Microsoft SQL server. */
-  mssqlToCloudSqlForSqlServerPreferences?: DatabasePreferencesCloudSqlSqlServer;
-  /** Optional. Preferences for target PostgreSQL on Cloud SQL when migrating from source PostgreSQL. */
-  postgresqlToCloudSqlForPostgresqlPreferences?: DatabasePreferencesCloudSqlPostgreSql;
-}
-export const DatabasePreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mysqlToCloudSqlForMysqlPreferences: S.optional(
-      DatabasePreferencesCloudSqlMySql,
-    ),
-    mssqlToCloudSqlForSqlServerPreferences: S.optional(
-      DatabasePreferencesCloudSqlSqlServer,
-    ),
-    postgresqlToCloudSqlForPostgresqlPreferences: S.optional(
-      DatabasePreferencesCloudSqlPostgreSql,
-    ),
-  }),
-).annotate({
-  identifier: "DatabasePreferences",
-}) as any as S.Schema<DatabasePreferences>;
+  identifier: "VirtualMachinePreferences",
+}) as any as S.Schema<VirtualMachinePreferences>;
 
 /** The preferences that apply to all assets in a given context. */
 export interface PreferenceSet {
   /** User-friendly display name. Maximum length is 63 characters. */
   displayName?: string;
-  /** A set of preferences that applies to all virtual machines in the context. */
-  virtualMachinePreferences?: VirtualMachinePreferences;
-  /** Optional. Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If unspecified, VirtualMachinePreferences.RegionPreferences is used. */
-  regionPreferences?: RegionPreferences;
-  /** Output only. The timestamp when the preference set was created. */
-  createTime?: string;
   /** Output only. The timestamp when the preference set was last updated. */
   updateTime?: string;
   /** A description of the preference set. */
   description?: string;
-  /** Output only. Name of the PreferenceSet. */
-  name?: string;
+  /** Output only. The timestamp when the preference set was created. */
+  createTime?: string;
   /** Optional. A set of preferences that applies to all databases in the context. */
   databasePreferences?: DatabasePreferences;
+  /** Optional. Region preferences for assets using this preference set. If you are unsure which value to set, the migration service API region is often a good value to start with. If unspecified, VirtualMachinePreferences.RegionPreferences is used. */
+  regionPreferences?: RegionPreferences;
+  /** A set of preferences that applies to all virtual machines in the context. */
+  virtualMachinePreferences?: VirtualMachinePreferences;
+  /** Output only. Name of the PreferenceSet. */
+  name?: string;
 }
 export const PreferenceSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
-    virtualMachinePreferences: S.optional(VirtualMachinePreferences),
-    regionPreferences: S.optional(RegionPreferences),
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
     description: S.optional(S.String),
-    name: S.optional(S.String),
+    createTime: S.optional(S.String),
     databasePreferences: S.optional(DatabasePreferences),
+    regionPreferences: S.optional(RegionPreferences),
+    virtualMachinePreferences: S.optional(VirtualMachinePreferences),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "PreferenceSet" }) as any as S.Schema<PreferenceSet>;
 
 export interface CreateProjectsLocationsPreferenceSetsRequest {
   preferenceSetId?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. Value for parent. */
   parent: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: PreferenceSet;
 }
@@ -5178,8 +5178,8 @@ export const CreateProjectsLocationsPreferenceSetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       preferenceSetId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(PreferenceSet.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -5218,48 +5218,48 @@ export const ReportConfigGroupPreferenceSetAssignmentList =
 
 /** The groups and associated preference sets on which we can generate reports. */
 export interface ReportConfig {
-  /** Output only. Name of resource. */
-  name?: string;
-  /** Free-text description. */
-  description?: string;
   /** User-friendly display name. Maximum length is 63 characters. */
   displayName?: string;
-  /** Output only. The timestamp when the resource was created. */
-  createTime?: string;
   /** Output only. The timestamp when the resource was last updated. */
   updateTime?: string;
+  /** Free-text description. */
+  description?: string;
   /** Required. Collection of combinations of groups and preference sets. */
   groupPreferencesetAssignments?: ReportConfigGroupPreferenceSetAssignmentList;
+  /** Output only. The timestamp when the resource was created. */
+  createTime?: string;
+  /** Output only. Name of resource. */
+  name?: string;
 }
 export const ReportConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
     displayName: S.optional(S.String),
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    description: S.optional(S.String),
     groupPreferencesetAssignments: S.optional(
       ReportConfigGroupPreferenceSetAssignmentList,
     ),
+    createTime: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ReportConfig" }) as any as S.Schema<ReportConfig>;
 
 export interface CreateProjectsLocationsReportConfigsRequest {
+  /** Required. Value for parent. */
+  parent: string;
   /** Required. User specified ID for the report config. It will become the last component of the report config name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. */
   reportConfigId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. Value for parent. */
-  parent: string;
   /** Request body */
   body?: ReportConfig;
 }
 export const CreateProjectsLocationsReportConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
       reportConfigId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       body: S.optional(ReportConfig.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -5275,63 +5275,17 @@ export const CreateProjectsLocationsReportConfigsRequest =
 export type ReportTypeEnum = "TYPE_UNSPECIFIED" | "TOTAL_COST_OF_OWNERSHIP";
 export const ReportTypeEnum = /*@__PURE__*/ S.String;
 
-export type ReportStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "SUCCEEDED"
-  | "FAILED";
-export const ReportStateEnum = /*@__PURE__*/ S.String;
-
-/** A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity. */
-export interface ReportSummaryHistogramChartDataBucket {
-  /** Count of items in the bucket. */
-  count?: string;
-  /** Lower bound - inclusive. */
-  lowerBound?: string;
-  /** Upper bound - exclusive. */
-  upperBound?: string;
-}
-export const ReportSummaryHistogramChartDataBucket = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.String),
-      lowerBound: S.optional(S.String),
-      upperBound: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ReportSummaryHistogramChartDataBucket",
-}) as any as S.Schema<ReportSummaryHistogramChartDataBucket>;
-
-export type ReportSummaryHistogramChartDataBucketList =
-  Array<ReportSummaryHistogramChartDataBucket>;
-export const ReportSummaryHistogramChartDataBucketList = /*@__PURE__*/ S.Array(
-  ReportSummaryHistogramChartDataBucket,
-) as any as S.Schema<ReportSummaryHistogramChartDataBucketList>;
-
-/** A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a bucket. */
-export interface ReportSummaryHistogramChartData {
-  /** Buckets in the histogram. There will be `n+1` buckets matching `n` lower bounds in the request. The first bucket will be from -infinity to the first bound. Subsequent buckets will be between one bound and the next. The final bucket will be from the final bound to infinity. */
-  buckets?: ReportSummaryHistogramChartDataBucketList;
-}
-export const ReportSummaryHistogramChartData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buckets: S.optional(ReportSummaryHistogramChartDataBucketList),
-  }),
-).annotate({
-  identifier: "ReportSummaryHistogramChartData",
-}) as any as S.Schema<ReportSummaryHistogramChartData>;
-
 /** Describes a single data point in the Chart. */
 export interface ReportSummaryChartDataDataPoint {
-  /** The Y-axis value for this data point. */
-  value?: number;
   /** The X-axis label for this data point. */
   label?: string;
+  /** The Y-axis value for this data point. */
+  value?: number;
 }
 export const ReportSummaryChartDataDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(S.Number),
     label: S.optional(S.String),
+    value: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ReportSummaryChartDataDataPoint",
@@ -5356,6 +5310,45 @@ export const ReportSummaryChartData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportSummaryChartData",
 }) as any as S.Schema<ReportSummaryChartData>;
 
+/** A histogram bucket with a lower and upper bound, and a count of items with a field value between those bounds. The lower bound is inclusive and the upper bound is exclusive. Lower bound may be -infinity and upper bound may be infinity. */
+export interface ReportSummaryHistogramChartDataBucket {
+  /** Lower bound - inclusive. */
+  lowerBound?: string;
+  /** Upper bound - exclusive. */
+  upperBound?: string;
+  /** Count of items in the bucket. */
+  count?: string;
+}
+export const ReportSummaryHistogramChartDataBucket = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lowerBound: S.optional(S.String),
+      upperBound: S.optional(S.String),
+      count: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReportSummaryHistogramChartDataBucket",
+}) as any as S.Schema<ReportSummaryHistogramChartDataBucket>;
+
+export type ReportSummaryHistogramChartDataBucketList =
+  Array<ReportSummaryHistogramChartDataBucket>;
+export const ReportSummaryHistogramChartDataBucketList = /*@__PURE__*/ S.Array(
+  ReportSummaryHistogramChartDataBucket,
+) as any as S.Schema<ReportSummaryHistogramChartDataBucketList>;
+
+/** A Histogram Chart shows a distribution of values into buckets, showing a count of values which fall into a bucket. */
+export interface ReportSummaryHistogramChartData {
+  /** Buckets in the histogram. There will be `n+1` buckets matching `n` lower bounds in the request. The first bucket will be from -infinity to the first bound. Subsequent buckets will be between one bound and the next. The final bucket will be from the final bound to infinity. */
+  buckets?: ReportSummaryHistogramChartDataBucketList;
+}
+export const ReportSummaryHistogramChartData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buckets: S.optional(ReportSummaryHistogramChartDataBucketList),
+  }),
+).annotate({
+  identifier: "ReportSummaryHistogramChartData",
+}) as any as S.Schema<ReportSummaryHistogramChartData>;
+
 /** Estimated usage stats for the assets in this collection. */
 export interface ReportSummaryAssetAggregateStatsEstimatedUsageStats {
   /** Output only. The number of assets that are using at least one estimated usage metric for rightsizing. */
@@ -5375,15 +5368,15 @@ export const ReportSummaryAssetAggregateStatsEstimatedUsageStats =
 
 /** Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free" buckets. */
 export interface ReportSummaryUtilizationChartData {
-  /** Aggregate value which falls into the "Used" bucket. */
-  used?: string;
   /** Aggregate value which falls into the "Free" bucket. */
   free?: string;
+  /** Aggregate value which falls into the "Used" bucket. */
+  used?: string;
 }
 export const ReportSummaryUtilizationChartData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    used: S.optional(S.String),
     free: S.optional(S.String),
+    used: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ReportSummaryUtilizationChartData",
@@ -5391,69 +5384,63 @@ export const ReportSummaryUtilizationChartData = /*@__PURE__*/ S.suspend(() =>
 
 /** Aggregate statistics for a collection of assets. */
 export interface ReportSummaryAssetAggregateStats {
-  /** Histogram showing a distribution of memory sizes. */
-  memoryBytesHistogram?: ReportSummaryHistogramChartData;
-  /** Count of assets grouped by age. */
-  assetAge?: ReportSummaryChartData;
-  /** Histogram showing a distribution of storage sizes. */
-  storageBytesHistogram?: ReportSummaryHistogramChartData;
-  /** Sum of the CPU core count of all the assets in this collection. */
-  totalCores?: string;
-  /** Histogram showing a distribution of logical CPU core counts. */
-  coreCountHistogram?: ReportSummaryHistogramChartData;
-  /** Total storage split into Used/Free buckets. */
-  storageUtilization?: ReportSummaryChartData;
-  /** Count of assets grouped by Operating System families. Only present for virtual machines. */
-  operatingSystem?: ReportSummaryChartData;
-  /** Sum of the memory in bytes of all the assets in this collection. */
-  totalMemoryBytes?: string;
-  /** Count of the number of unique assets in this collection. */
-  totalAssets?: string;
   /** Sum of persistent storage in bytes of all the assets in this collection. */
   totalStorageBytes?: string;
-  /** Output only. Estimated usage stats for the assets in this collection. */
-  estimatedUsageStats?: ReportSummaryAssetAggregateStatsEstimatedUsageStats;
-  /** Output only. Count of assets grouped by software name. Only present for virtual machines. */
-  softwareInstances?: ReportSummaryChartData;
+  /** Sum of the CPU core count of all the assets in this collection. */
+  totalCores?: string;
   /** Total memory split into Used/Free buckets. */
   memoryUtilization?: ReportSummaryChartData;
-  /** Total memory split into Used/Free buckets. */
-  memoryUtilizationChart?: ReportSummaryUtilizationChartData;
+  /** Histogram showing a distribution of memory sizes. */
+  memoryBytesHistogram?: ReportSummaryHistogramChartData;
+  /** Output only. Estimated usage stats for the assets in this collection. */
+  estimatedUsageStats?: ReportSummaryAssetAggregateStatsEstimatedUsageStats;
+  /** Count of assets grouped by age. */
+  assetAge?: ReportSummaryChartData;
+  /** Histogram showing a distribution of logical CPU core counts. */
+  coreCountHistogram?: ReportSummaryHistogramChartData;
+  /** Histogram showing a distribution of storage sizes. */
+  storageBytesHistogram?: ReportSummaryHistogramChartData;
   /** Output only. Count of assets grouped by database type. Keys here are taken from DatabaseType enum. Only present for databases. */
   databaseTypes?: ReportSummaryChartData;
   /** Total memory split into Used/Free buckets. */
+  memoryUtilizationChart?: ReportSummaryUtilizationChartData;
+  /** Sum of the memory in bytes of all the assets in this collection. */
+  totalMemoryBytes?: string;
+  /** Output only. Count of assets grouped by software name. Only present for virtual machines. */
+  softwareInstances?: ReportSummaryChartData;
+  /** Total memory split into Used/Free buckets. */
   storageUtilizationChart?: ReportSummaryUtilizationChartData;
+  /** Count of assets grouped by Operating System families. Only present for virtual machines. */
+  operatingSystem?: ReportSummaryChartData;
+  /** Count of the number of unique assets in this collection. */
+  totalAssets?: string;
+  /** Total storage split into Used/Free buckets. */
+  storageUtilization?: ReportSummaryChartData;
 }
 export const ReportSummaryAssetAggregateStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    memoryBytesHistogram: S.optional(ReportSummaryHistogramChartData),
-    assetAge: S.optional(ReportSummaryChartData),
-    storageBytesHistogram: S.optional(ReportSummaryHistogramChartData),
-    totalCores: S.optional(S.String),
-    coreCountHistogram: S.optional(ReportSummaryHistogramChartData),
-    storageUtilization: S.optional(ReportSummaryChartData),
-    operatingSystem: S.optional(ReportSummaryChartData),
-    totalMemoryBytes: S.optional(S.String),
-    totalAssets: S.optional(S.String),
     totalStorageBytes: S.optional(S.String),
+    totalCores: S.optional(S.String),
+    memoryUtilization: S.optional(ReportSummaryChartData),
+    memoryBytesHistogram: S.optional(ReportSummaryHistogramChartData),
     estimatedUsageStats: S.optional(
       ReportSummaryAssetAggregateStatsEstimatedUsageStats,
     ),
-    softwareInstances: S.optional(ReportSummaryChartData),
-    memoryUtilization: S.optional(ReportSummaryChartData),
-    memoryUtilizationChart: S.optional(ReportSummaryUtilizationChartData),
+    assetAge: S.optional(ReportSummaryChartData),
+    coreCountHistogram: S.optional(ReportSummaryHistogramChartData),
+    storageBytesHistogram: S.optional(ReportSummaryHistogramChartData),
     databaseTypes: S.optional(ReportSummaryChartData),
+    memoryUtilizationChart: S.optional(ReportSummaryUtilizationChartData),
+    totalMemoryBytes: S.optional(S.String),
+    softwareInstances: S.optional(ReportSummaryChartData),
     storageUtilizationChart: S.optional(ReportSummaryUtilizationChartData),
+    operatingSystem: S.optional(ReportSummaryChartData),
+    totalAssets: S.optional(S.String),
+    storageUtilization: S.optional(ReportSummaryChartData),
   }),
 ).annotate({
   identifier: "ReportSummaryAssetAggregateStats",
 }) as any as S.Schema<ReportSummaryAssetAggregateStats>;
-
-export type ReportSummaryGroupFindingAssetTypeEnum =
-  | "ASSET_TYPE_UNSPECIFIED"
-  | "VIRTUAL_MACHINE"
-  | "DATABASE";
-export const ReportSummaryGroupFindingAssetTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReportSummaryGroupFindingDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
@@ -5461,6 +5448,86 @@ export type ReportSummaryGroupFindingDatabaseTypeEnum =
   | "MYSQL"
   | "POSTGRES";
 export const ReportSummaryGroupFindingDatabaseTypeEnum = /*@__PURE__*/ S.String;
+
+export type ReportSummaryGroupFindingAssetTypeEnum =
+  | "ASSET_TYPE_UNSPECIFIED"
+  | "VIRTUAL_MACHINE"
+  | "DATABASE";
+export const ReportSummaryGroupFindingAssetTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents an amount of money with its currency type. */
+export interface Money {
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+}
+export const Money = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    units: S.optional(S.String),
+    nanos: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
+
+/** A VMWare Engine Node */
+export interface ReportSummaryVMWareNode {
+  /** Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes */
+  code?: string;
+}
+export const ReportSummaryVMWareNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareNode",
+}) as any as S.Schema<ReportSummaryVMWareNode>;
+
+/** Represents assets allocated to a specific VMWare Node type. */
+export interface ReportSummaryVMWareNodeAllocation {
+  /** Count of assets allocated to these nodes */
+  allocatedAssetCount?: string;
+  /** VMWare node type, e.g. "ve1-standard-72" */
+  vmwareNode?: ReportSummaryVMWareNode;
+  /** Count of this node type to be provisioned */
+  nodeCount?: string;
+}
+export const ReportSummaryVMWareNodeAllocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allocatedAssetCount: S.optional(S.String),
+    vmwareNode: S.optional(ReportSummaryVMWareNode),
+    nodeCount: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareNodeAllocation",
+}) as any as S.Schema<ReportSummaryVMWareNodeAllocation>;
+
+export type ReportSummaryVMWareNodeAllocationList =
+  Array<ReportSummaryVMWareNodeAllocation>;
+export const ReportSummaryVMWareNodeAllocationList = /*@__PURE__*/ S.Array(
+  ReportSummaryVMWareNodeAllocation,
+) as any as S.Schema<ReportSummaryVMWareNodeAllocationList>;
+
+/** A set of findings that applies to assets destined for VMWare Engine. */
+export interface ReportSummaryVMWareEngineFinding {
+  /** Set of per-nodetype allocation records */
+  nodeAllocations?: ReportSummaryVMWareNodeAllocationList;
+  /** Count of assets which are allocated */
+  allocatedAssetCount?: string;
+  /** Set of regions in which the assets were allocated */
+  allocatedRegions?: StringList;
+}
+export const ReportSummaryVMWareEngineFinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeAllocations: S.optional(ReportSummaryVMWareNodeAllocationList),
+    allocatedAssetCount: S.optional(S.String),
+    allocatedRegions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ReportSummaryVMWareEngineFinding",
+}) as any as S.Schema<ReportSummaryVMWareEngineFinding>;
 
 /** DatabaseFinding contains an aggregate costs and shapes for a single database type. */
 export interface ReportSummaryDatabaseFinding {
@@ -5478,35 +5545,18 @@ export const ReportSummaryDatabaseFinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportSummaryDatabaseFinding",
 }) as any as S.Schema<ReportSummaryDatabaseFinding>;
 
-/** Represents an amount of money with its currency type. */
-export interface Money {
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-}
-export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    units: S.optional(S.String),
-    nanos: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
-
 /** Represents a data point tracking the count of assets allocated for a specific Machine Series. */
 export interface ReportSummaryMachineSeriesAllocation {
-  /** Count of assets allocated to this machine series. */
-  allocatedAssetCount?: string;
   /** The Machine Series (e.g. "E2", "N2") */
   machineSeries?: MachineSeries;
+  /** Count of assets allocated to this machine series. */
+  allocatedAssetCount?: string;
 }
 export const ReportSummaryMachineSeriesAllocation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      allocatedAssetCount: S.optional(S.String),
       machineSeries: S.optional(MachineSeries),
+      allocatedAssetCount: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ReportSummaryMachineSeriesAllocation",
@@ -5536,25 +5586,25 @@ export const ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList =
 
 /** A set of findings that applies to assets of type Virtual/Physical Machine. */
 export interface ReportSummaryMachineFinding {
-  /** Set of regions in which the assets were allocated. */
-  allocatedRegions?: StringList;
-  /** Distribution of assets based on the Machine Series. */
-  machineSeriesAllocations?: ReportSummaryMachineSeriesAllocationList;
   /** Count of assets which were allocated. */
   allocatedAssetCount?: string;
+  /** Distribution of assets based on the Machine Series. */
+  machineSeriesAllocations?: ReportSummaryMachineSeriesAllocationList;
   /** @deprecated. Use storage_allocations instead. Set of disk types allocated to assets. */
   allocatedDiskTypes?: ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList;
+  /** Set of regions in which the assets were allocated. */
+  allocatedRegions?: StringList;
 }
 export const ReportSummaryMachineFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allocatedRegions: S.optional(StringList),
+    allocatedAssetCount: S.optional(S.String),
     machineSeriesAllocations: S.optional(
       ReportSummaryMachineSeriesAllocationList,
     ),
-    allocatedAssetCount: S.optional(S.String),
     allocatedDiskTypes: S.optional(
       ReportSummaryMachineFindingAllocatedDiskTypesItemEnumList,
     ),
+    allocatedRegions: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ReportSummaryMachineFinding",
@@ -5562,19 +5612,19 @@ export const ReportSummaryMachineFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the assets allocated to a specific Sole-Tenant node type. */
 export interface ReportSummarySoleTenantNodeAllocation {
-  /** Sole Tenant node type, e.g. "m3-node-128-3904" */
-  node?: SoleTenantNodeType;
   /** Count of this node type to be provisioned */
   nodeCount?: string;
   /** Count of assets allocated to these nodes */
   allocatedAssetCount?: string;
+  /** Sole Tenant node type, e.g. "m3-node-128-3904" */
+  node?: SoleTenantNodeType;
 }
 export const ReportSummarySoleTenantNodeAllocation = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      node: S.optional(SoleTenantNodeType),
       nodeCount: S.optional(S.String),
       allocatedAssetCount: S.optional(S.String),
+      node: S.optional(SoleTenantNodeType),
     }),
 ).annotate({
   identifier: "ReportSummarySoleTenantNodeAllocation",
@@ -5588,149 +5638,92 @@ export const ReportSummarySoleTenantNodeAllocationList = /*@__PURE__*/ S.Array(
 
 /** A set of findings that applies to assets destined for Sole-Tenant nodes. */
 export interface ReportSummarySoleTenantFinding {
-  /** Count of assets which are allocated */
-  allocatedAssetCount?: string;
   /** Set of regions in which the assets are allocated */
   allocatedRegions?: StringList;
   /** Set of per-nodetype allocation records */
   nodeAllocations?: ReportSummarySoleTenantNodeAllocationList;
+  /** Count of assets which are allocated */
+  allocatedAssetCount?: string;
 }
 export const ReportSummarySoleTenantFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allocatedAssetCount: S.optional(S.String),
     allocatedRegions: S.optional(StringList),
     nodeAllocations: S.optional(ReportSummarySoleTenantNodeAllocationList),
+    allocatedAssetCount: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ReportSummarySoleTenantFinding",
 }) as any as S.Schema<ReportSummarySoleTenantFinding>;
 
-/** A VMWare Engine Node */
-export interface ReportSummaryVMWareNode {
-  /** Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes */
-  code?: string;
-}
-export const ReportSummaryVMWareNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportSummaryVMWareNode",
-}) as any as S.Schema<ReportSummaryVMWareNode>;
-
-/** Represents assets allocated to a specific VMWare Node type. */
-export interface ReportSummaryVMWareNodeAllocation {
-  /** Count of this node type to be provisioned */
-  nodeCount?: string;
-  /** VMWare node type, e.g. "ve1-standard-72" */
-  vmwareNode?: ReportSummaryVMWareNode;
-  /** Count of assets allocated to these nodes */
-  allocatedAssetCount?: string;
-}
-export const ReportSummaryVMWareNodeAllocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeCount: S.optional(S.String),
-    vmwareNode: S.optional(ReportSummaryVMWareNode),
-    allocatedAssetCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportSummaryVMWareNodeAllocation",
-}) as any as S.Schema<ReportSummaryVMWareNodeAllocation>;
-
-export type ReportSummaryVMWareNodeAllocationList =
-  Array<ReportSummaryVMWareNodeAllocation>;
-export const ReportSummaryVMWareNodeAllocationList = /*@__PURE__*/ S.Array(
-  ReportSummaryVMWareNodeAllocation,
-) as any as S.Schema<ReportSummaryVMWareNodeAllocationList>;
-
-/** A set of findings that applies to assets destined for VMWare Engine. */
-export interface ReportSummaryVMWareEngineFinding {
-  /** Set of regions in which the assets were allocated */
-  allocatedRegions?: StringList;
-  /** Set of per-nodetype allocation records */
-  nodeAllocations?: ReportSummaryVMWareNodeAllocationList;
-  /** Count of assets which are allocated */
-  allocatedAssetCount?: string;
-}
-export const ReportSummaryVMWareEngineFinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allocatedRegions: S.optional(StringList),
-    nodeAllocations: S.optional(ReportSummaryVMWareNodeAllocationList),
-    allocatedAssetCount: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReportSummaryVMWareEngineFinding",
-}) as any as S.Schema<ReportSummaryVMWareEngineFinding>;
-
 /** Summary Findings for a specific Group/PreferenceSet combination. */
 export interface ReportSummaryGroupPreferenceSetFinding {
-  /** Output only. Details about databases in this finding. Only present for databases. */
-  databaseFinding?: ReportSummaryDatabaseFinding;
-  /** Output only. VMware portable license monthly cost for this preference set. Only present for VMware target with portable license service type. This cost is not paid to google, but is an estimate of license costs paid to VMware. */
-  monthlyCostPortableVmwareLicense?: Money;
-  /** Output only. A copy of the preference set used for this finding. */
-  preferenceSet?: PreferenceSet;
-  /** Target region for this Preference Set */
-  preferredRegion?: string;
-  /** Output only. GCVE Protected nodes cost for this preference set. */
-  monthlyCostGcveProtected?: Money;
-  /** Output only. Database licensing monthly cost for this preference set. Only present for databases. */
-  monthlyCostDatabaseLicensing?: Money;
-  /** Output only. Miscellaneous monthly cost for this preference set. */
-  monthlyCostOther?: Money;
-  /** Output only. A set of findings that applies to all virtual machines in the input. Only present for virtual machines. */
-  machineFinding?: ReportSummaryMachineFinding;
-  /** Output only. Total monthly cost for this preference set. */
-  monthlyCostTotal?: Money;
   /** Output only. Network Egress monthly cost for this preference set. Only present for virtual machines. */
   monthlyCostNetworkEgress?: Money;
-  /** Text describing the pricing track specified for this Preference Set */
-  pricingTrack?: string;
+  /** Output only. Database licensing monthly cost for this preference set. Only present for databases. */
+  monthlyCostDatabaseLicensing?: Money;
+  /** A set of findings that applies to VMWare machines in the input. Only present for virtual machines. */
+  vmwareEngineFinding?: ReportSummaryVMWareEngineFinding;
   /** Text describing the business priority specified for this Preference Set */
   topPriority?: string;
   /** Output only. Storage monthly cost for this preference set. */
   monthlyCostStorage?: Money;
-  /** Description for the Preference Set. */
-  description?: string;
-  /** A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines. */
-  soleTenantFinding?: ReportSummarySoleTenantFinding;
-  /** Output only. All operating systems licensing monthly cost for this preference set. Only present for virtual machines. */
-  monthlyCostOsLicense?: Money;
-  /** A set of findings that applies to VMWare machines in the input. Only present for virtual machines. */
-  vmwareEngineFinding?: ReportSummaryVMWareEngineFinding;
-  /** Output only. Compute monthly cost for this preference set. */
-  monthlyCostCompute?: Money;
-  /** Output only. Backup monthly cost for this preference set. Only present for databases. */
-  monthlyCostDatabaseBackup?: Money;
-  /** A set of preferences that applies to all machines in the context. */
-  machinePreferences?: VirtualMachinePreferences;
+  /** Output only. A copy of the preference set used for this finding. */
+  preferenceSet?: PreferenceSet;
   /** Display Name of the Preference Set */
   displayName?: string;
+  /** Output only. GCVE Protected nodes cost for this preference set. */
+  monthlyCostGcveProtected?: Money;
+  /** Output only. Backup monthly cost for this preference set. Only present for databases. */
+  monthlyCostDatabaseBackup?: Money;
+  /** Text describing the pricing track specified for this Preference Set */
+  pricingTrack?: string;
+  /** Output only. Compute monthly cost for this preference set. */
+  monthlyCostCompute?: Money;
+  /** Output only. All operating systems licensing monthly cost for this preference set. Only present for virtual machines. */
+  monthlyCostOsLicense?: Money;
+  /** Output only. Miscellaneous monthly cost for this preference set. */
+  monthlyCostOther?: Money;
+  /** Output only. Details about databases in this finding. Only present for databases. */
+  databaseFinding?: ReportSummaryDatabaseFinding;
+  /** A set of preferences that applies to all machines in the context. */
+  machinePreferences?: VirtualMachinePreferences;
+  /** Description for the Preference Set. */
+  description?: string;
+  /** Output only. A set of findings that applies to all virtual machines in the input. Only present for virtual machines. */
+  machineFinding?: ReportSummaryMachineFinding;
+  /** A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines. */
+  soleTenantFinding?: ReportSummarySoleTenantFinding;
+  /** Output only. Total monthly cost for this preference set. */
+  monthlyCostTotal?: Money;
+  /** Output only. VMware portable license monthly cost for this preference set. Only present for VMware target with portable license service type. This cost is not paid to google, but is an estimate of license costs paid to VMware. */
+  monthlyCostPortableVmwareLicense?: Money;
+  /** Target region for this Preference Set */
+  preferredRegion?: string;
 }
 export const ReportSummaryGroupPreferenceSetFinding = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      databaseFinding: S.optional(ReportSummaryDatabaseFinding),
-      monthlyCostPortableVmwareLicense: S.optional(Money),
-      preferenceSet: S.optional(PreferenceSet),
-      preferredRegion: S.optional(S.String),
-      monthlyCostGcveProtected: S.optional(Money),
-      monthlyCostDatabaseLicensing: S.optional(Money),
-      monthlyCostOther: S.optional(Money),
-      machineFinding: S.optional(ReportSummaryMachineFinding),
-      monthlyCostTotal: S.optional(Money),
       monthlyCostNetworkEgress: S.optional(Money),
-      pricingTrack: S.optional(S.String),
+      monthlyCostDatabaseLicensing: S.optional(Money),
+      vmwareEngineFinding: S.optional(ReportSummaryVMWareEngineFinding),
       topPriority: S.optional(S.String),
       monthlyCostStorage: S.optional(Money),
-      description: S.optional(S.String),
-      soleTenantFinding: S.optional(ReportSummarySoleTenantFinding),
-      monthlyCostOsLicense: S.optional(Money),
-      vmwareEngineFinding: S.optional(ReportSummaryVMWareEngineFinding),
-      monthlyCostCompute: S.optional(Money),
-      monthlyCostDatabaseBackup: S.optional(Money),
-      machinePreferences: S.optional(VirtualMachinePreferences),
+      preferenceSet: S.optional(PreferenceSet),
       displayName: S.optional(S.String),
+      monthlyCostGcveProtected: S.optional(Money),
+      monthlyCostDatabaseBackup: S.optional(Money),
+      pricingTrack: S.optional(S.String),
+      monthlyCostCompute: S.optional(Money),
+      monthlyCostOsLicense: S.optional(Money),
+      monthlyCostOther: S.optional(Money),
+      databaseFinding: S.optional(ReportSummaryDatabaseFinding),
+      machinePreferences: S.optional(VirtualMachinePreferences),
+      description: S.optional(S.String),
+      machineFinding: S.optional(ReportSummaryMachineFinding),
+      soleTenantFinding: S.optional(ReportSummarySoleTenantFinding),
+      monthlyCostTotal: S.optional(Money),
+      monthlyCostPortableVmwareLicense: S.optional(Money),
+      preferredRegion: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ReportSummaryGroupPreferenceSetFinding",
@@ -5744,35 +5737,35 @@ export const ReportSummaryGroupPreferenceSetFindingList = /*@__PURE__*/ S.Array(
 
 /** Summary Findings for a specific Group. */
 export interface ReportSummaryGroupFinding {
-  /** This field is deprecated, do not rely on it having a value. */
-  overlappingAssetCount?: string;
-  /** Output only. Asset type for the group finding. */
-  assetType?: ReportSummaryGroupFindingAssetTypeEnum | (string & {});
-  /** Display Name for this group finding. */
-  displayName?: string;
   /** Summary statistics for all the assets in this group. */
   assetAggregateStats?: ReportSummaryAssetAggregateStats;
-  /** Output only. Full name of the group. */
-  group?: string;
+  /** This field is deprecated, do not rely on it having a value. */
+  overlappingAssetCount?: string;
   /** Output only. Source asset database type for the group finding. Only present for databases. */
   databaseType?: ReportSummaryGroupFindingDatabaseTypeEnum | (string & {});
-  /** Findings for each of the PreferenceSets for this group. */
-  preferenceSetFindings?: ReportSummaryGroupPreferenceSetFindingList;
+  /** Output only. Full name of the group. */
+  group?: string;
   /** Description for this group finding. */
   description?: string;
+  /** Output only. Asset type for the group finding. */
+  assetType?: ReportSummaryGroupFindingAssetTypeEnum | (string & {});
+  /** Findings for each of the PreferenceSets for this group. */
+  preferenceSetFindings?: ReportSummaryGroupPreferenceSetFindingList;
+  /** Display Name for this group finding. */
+  displayName?: string;
 }
 export const ReportSummaryGroupFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    overlappingAssetCount: S.optional(S.String),
-    assetType: S.optional(ReportSummaryGroupFindingAssetTypeEnum),
-    displayName: S.optional(S.String),
     assetAggregateStats: S.optional(ReportSummaryAssetAggregateStats),
-    group: S.optional(S.String),
+    overlappingAssetCount: S.optional(S.String),
     databaseType: S.optional(ReportSummaryGroupFindingDatabaseTypeEnum),
+    group: S.optional(S.String),
+    description: S.optional(S.String),
+    assetType: S.optional(ReportSummaryGroupFindingAssetTypeEnum),
     preferenceSetFindings: S.optional(
       ReportSummaryGroupPreferenceSetFindingList,
     ),
-    description: S.optional(S.String),
+    displayName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ReportSummaryGroupFinding",
@@ -5785,72 +5778,79 @@ export const ReportSummaryGroupFindingList = /*@__PURE__*/ S.Array(
 
 /** Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets included in this Report. */
 export interface ReportSummary {
-  /** Aggregate statistics for unique assets across all the groups. */
-  allAssetsStats?: ReportSummaryAssetAggregateStats;
   /** Output only. Aggregate statistics for unique virtual machine assets across all the groups. */
   virtualMachineStats?: ReportSummaryAssetAggregateStats;
   /** Output only. Aggregate statistics for unique database assets across all the groups. */
   databaseStats?: ReportSummaryAssetAggregateStats;
   /** Findings for each Group included in this report. */
   groupFindings?: ReportSummaryGroupFindingList;
+  /** Aggregate statistics for unique assets across all the groups. */
+  allAssetsStats?: ReportSummaryAssetAggregateStats;
 }
 export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    allAssetsStats: S.optional(ReportSummaryAssetAggregateStats),
     virtualMachineStats: S.optional(ReportSummaryAssetAggregateStats),
     databaseStats: S.optional(ReportSummaryAssetAggregateStats),
     groupFindings: S.optional(ReportSummaryGroupFindingList),
+    allAssetsStats: S.optional(ReportSummaryAssetAggregateStats),
   }),
 ).annotate({ identifier: "ReportSummary" }) as any as S.Schema<ReportSummary>;
 
+export type ReportStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "PENDING"
+  | "SUCCEEDED"
+  | "FAILED";
+export const ReportStateEnum = /*@__PURE__*/ S.String;
+
 /** Report represents a point-in-time rendering of the ReportConfig results. */
 export interface Report {
-  /** Output only. Creation timestamp. */
-  createTime?: string;
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-  /** User-friendly display name. Maximum length is 63 characters. */
-  displayName?: string;
-  /** Report type. */
-  type?: ReportTypeEnum | (string & {});
-  /** Report creation state. */
-  state?: ReportStateEnum | (string & {});
-  /** Output only. Summary view of the Report. */
-  summary?: ReportSummary;
   /** Output only. Name of resource. */
   name?: string;
+  /** Report type. */
+  type?: ReportTypeEnum | (string & {});
+  /** Output only. Summary view of the Report. */
+  summary?: ReportSummary;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
+  /** Report creation state. */
+  state?: ReportStateEnum | (string & {});
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
   /** Free-text description. */
   description?: string;
+  /** User-friendly display name. Maximum length is 63 characters. */
+  displayName?: string;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    type: S.optional(ReportTypeEnum),
-    state: S.optional(ReportStateEnum),
-    summary: S.optional(ReportSummary),
     name: S.optional(S.String),
+    type: S.optional(ReportTypeEnum),
+    summary: S.optional(ReportSummary),
+    createTime: S.optional(S.String),
+    state: S.optional(ReportStateEnum),
+    updateTime: S.optional(S.String),
     description: S.optional(S.String),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export interface CreateProjectsLocationsReportConfigsReportsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Value for parent. */
-  parent: string;
   /** Required. User specified id for the report. It will become the last component of the report name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The id must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. */
   reportId?: string;
+  /** Required. Value for parent. */
+  parent: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: Report;
 }
 export const CreateProjectsLocationsReportConfigsReportsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       reportId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Report.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -5865,17 +5865,17 @@ export const CreateProjectsLocationsReportConfigsReportsRequest =
 
 /** Contains the result of the report export. */
 export interface ReportExportExecutionResult {
-  /** Output only. Signed URLs for downloading export artifacts. */
-  signedUris?: SignedUris;
   /** Output only. List of output files. */
   outputFiles?: OutputFileList;
+  /** Output only. Signed URLs for downloading export artifacts. */
+  signedUris?: SignedUris;
   /** Output only. Error encountered during export. */
   error?: Status;
 }
 export const ReportExportExecutionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    signedUris: S.optional(SignedUris),
     outputFiles: S.optional(OutputFileList),
+    signedUris: S.optional(SignedUris),
     error: S.optional(Status),
   }),
 ).annotate({
@@ -5884,27 +5884,27 @@ export const ReportExportExecutionResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Execution status of report export operation. */
 export interface ReportExportExecution {
-  /** Output only. Execution start timestamp. */
-  startTime?: string;
-  /** Output only. Completion time of the export. */
-  endTime?: string;
   /** Output only. Represents the progress of the execution. It reaches 100 when the execution is successfully completed. When the execution finishes with a failure, the progress is set to 0. */
   progressPercentage?: number;
-  /** Output only. Globally unique identifier of the execution. */
-  executionId?: string;
   /** Output only. Expiration time for the export and artifacts. */
   expireTime?: string;
+  /** Output only. Completion time of the export. */
+  endTime?: string;
+  /** Output only. Globally unique identifier of the execution. */
+  executionId?: string;
   /** Output only. Result of the export execution. */
   result?: ReportExportExecutionResult;
+  /** Output only. Execution start timestamp. */
+  startTime?: string;
 }
 export const ReportExportExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
     progressPercentage: S.optional(S.Number),
-    executionId: S.optional(S.String),
     expireTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    executionId: S.optional(S.String),
     result: S.optional(ReportExportExecutionResult),
+    startTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ReportExportExecution",
@@ -5917,17 +5917,17 @@ export const ReportExportExecutionList = /*@__PURE__*/ S.Array(
 
 /** Report export job message. */
 export interface ReportExportJob {
-  /** Output only. Recent not expired executions of the export report job. */
-  recentExecutions?: ReportExportExecutionList;
   /** Output only. Identifier. Resource name. */
   name?: string;
+  /** Output only. Recent not expired executions of the export report job. */
+  recentExecutions?: ReportExportExecutionList;
   /** Export with a SignedUri. */
   signedUriDestination?: SignedUriDestination;
 }
 export const ReportExportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    recentExecutions: S.optional(ReportExportExecutionList),
     name: S.optional(S.String),
+    recentExecutions: S.optional(ReportExportExecutionList),
     signedUriDestination: S.optional(SignedUriDestination),
   }),
 ).annotate({
@@ -5963,13 +5963,6 @@ export const CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest 
       "CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest",
   }) as any as S.Schema<CreateProjectsLocationsReportConfigsReportsReportExportJobsRequest>;
 
-export type SourceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETING"
-  | "INVALID";
-export const SourceStateEnum = /*@__PURE__*/ S.String;
-
 export type SourceTypeEnum =
   | "SOURCE_TYPE_UNKNOWN"
   | "SOURCE_TYPE_UPLOAD"
@@ -5979,54 +5972,61 @@ export type SourceTypeEnum =
   | "SOURCE_TYPE_DISCOVERY_CLIENT";
 export const SourceTypeEnum = /*@__PURE__*/ S.String;
 
+export type SourceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DELETING"
+  | "INVALID";
+export const SourceStateEnum = /*@__PURE__*/ S.String;
+
 /** Source represents an object from which asset information is streamed to Migration Center. */
 export interface Source {
-  /** Output only. The timestamp when the source was created. */
-  createTime?: string;
+  /** If `true`, the source is managed by other service(s). */
+  isManaged?: boolean;
+  /** Free-text description. */
+  description?: string;
+  /** User-friendly display name. */
+  displayName?: string;
+  /** Output only. The full name of the source. */
+  name?: string;
+  /** Output only. Number of frames that are still being processed. */
+  pendingFrameCount?: number;
+  /** Data source type. */
+  type?: SourceTypeEnum | (string & {});
+  /** Output only. The number of frames that were reported by the source and contained errors. */
+  errorFrameCount?: number;
+  /** Output only. The state of the source. */
+  state?: SourceStateEnum | (string & {});
   /** Output only. The timestamp when the source was last updated. */
   updateTime?: string;
   /** The information confidence of the source. The higher the value, the higher the confidence. */
   priority?: number;
-  /** Output only. The state of the source. */
-  state?: SourceStateEnum | (string & {});
-  /** Free-text description. */
-  description?: string;
-  /** If `true`, the source is managed by other service(s). */
-  isManaged?: boolean;
-  /** Output only. The full name of the source. */
-  name?: string;
-  /** Output only. The number of frames that were reported by the source and contained errors. */
-  errorFrameCount?: number;
-  /** Output only. Number of frames that are still being processed. */
-  pendingFrameCount?: number;
-  /** User-friendly display name. */
-  displayName?: string;
-  /** Data source type. */
-  type?: SourceTypeEnum | (string & {});
+  /** Output only. The timestamp when the source was created. */
+  createTime?: string;
 }
 export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
+    isManaged: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    pendingFrameCount: S.optional(S.Number),
+    type: S.optional(SourceTypeEnum),
+    errorFrameCount: S.optional(S.Number),
+    state: S.optional(SourceStateEnum),
     updateTime: S.optional(S.String),
     priority: S.optional(S.Number),
-    state: S.optional(SourceStateEnum),
-    description: S.optional(S.String),
-    isManaged: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    errorFrameCount: S.optional(S.Number),
-    pendingFrameCount: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    type: S.optional(SourceTypeEnum),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
 export interface CreateProjectsLocationsSourcesRequest {
   /** Required. Value for parent. */
   parent: string;
-  /** Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. */
-  sourceId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. */
+  sourceId?: string;
   /** Request body */
   body?: Source;
 }
@@ -6034,8 +6034,8 @@ export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      sourceId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
+      sourceId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Source.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -6090,16 +6090,16 @@ export const DeleteProjectsLocationsAssetsExportJobsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsAssetsExportJobsRequest>;
 
 export interface DeleteProjectsLocationsDiscoveryClientsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. The discovery client name. */
   name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
 }
 export const DeleteProjectsLocationsDiscoveryClientsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -6112,16 +6112,16 @@ export const DeleteProjectsLocationsDiscoveryClientsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsDiscoveryClientsRequest>;
 
 export interface DeleteProjectsLocationsGroupsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. Name of the group resource. */
   name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
 }
 export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -6200,16 +6200,16 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsPreferenceSetsRequest {
-  /** Required. Name of the group resource. */
-  name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Name of the group resource. */
+  name: string;
 }
 export const DeleteProjectsLocationsPreferenceSetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -6269,16 +6269,16 @@ export const DeleteProjectsLocationsReportConfigsReportsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsReportConfigsReportsRequest>;
 
 export interface DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest {
-  /** Required. Name of the resource. */
-  name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Name of the resource. */
+  name: string;
 }
 export const DeleteProjectsLocationsReportConfigsReportsReportExportJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -6550,24 +6550,24 @@ export const RelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a relation between 2 resource. */
 export interface Relation {
-  /** Output only. The timestamp when the relation was created. */
-  createTime?: string;
-  /** Optional. The type of the relation. */
-  type?: RelationTypeEnum;
-  /** Output only. The destination asset name in the relation. */
-  dstAsset?: string;
   /** Output only. Identifier. The identifier of the relation. */
   name?: string;
+  /** Output only. The destination asset name in the relation. */
+  dstAsset?: string;
+  /** Optional. The type of the relation. */
+  type?: RelationTypeEnum;
   /** Output only. The source asset name in the relation. */
   srcAsset?: string;
+  /** Output only. The timestamp when the relation was created. */
+  createTime?: string;
 }
 export const Relation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    type: S.optional(RelationTypeEnum),
-    dstAsset: S.optional(S.String),
     name: S.optional(S.String),
+    dstAsset: S.optional(S.String),
+    type: S.optional(RelationTypeEnum),
     srcAsset: S.optional(S.String),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
@@ -6599,18 +6599,18 @@ export const GetProjectsLocationsReportConfigsReportsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsReportConfigsReportsRequest {
-  /** Required. Name of the resource. */
-  name: string;
   /** Determines what information to retrieve for the Report. */
   view?: GetProjectsLocationsReportConfigsReportsViewEnum | (string & {});
+  /** Required. Name of the resource. */
+  name: string;
 }
 export const GetProjectsLocationsReportConfigsReportsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       view: S.optional(
         GetProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query()),
       ),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -6691,243 +6691,6 @@ export const GetProjectsLocationsSourcesErrorFramesRequest =
     identifier: "GetProjectsLocationsSourcesErrorFramesRequest",
   }) as any as S.Schema<GetProjectsLocationsSourcesErrorFramesRequest>;
 
-/** CPU usage sample. */
-export interface CpuUsageSample {
-  /** Percentage of total CPU capacity utilized. Must be in the interval [0, 100]. On most systems can be calculated using 100 - idle percentage. */
-  utilizedPercentage?: number;
-}
-export const CpuUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizedPercentage: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CpuUsageSample" }) as any as S.Schema<CpuUsageSample>;
-
-/** Network usage sample. Values are across all network interfaces. */
-export interface NetworkUsageSample {
-  /** Average network egress in B/s sampled over a short window. Must be non-negative. */
-  averageEgressBps?: number;
-  /** Average network ingress in B/s sampled over a short window. Must be non-negative. */
-  averageIngressBps?: number;
-}
-export const NetworkUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    averageEgressBps: S.optional(S.Number),
-    averageIngressBps: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NetworkUsageSample",
-}) as any as S.Schema<NetworkUsageSample>;
-
-/** Memory usage sample. */
-export interface MemoryUsageSample {
-  /** Percentage of system memory utilized. Must be in the interval [0, 100]. */
-  utilizedPercentage?: number;
-}
-export const MemoryUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utilizedPercentage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MemoryUsageSample",
-}) as any as S.Schema<MemoryUsageSample>;
-
-/** Disk usage sample. Values are across all disks. */
-export interface DiskUsageSample {
-  /** Average write IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored. */
-  averageWriteIops?: number;
-  /** Average IOPS sampled over a short window. Must be non-negative. If read or write are set, the sum of read and write will override the value of the average_iops. */
-  averageIops?: number;
-  /** Average read IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored. */
-  averageReadIops?: number;
-}
-export const DiskUsageSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    averageWriteIops: S.optional(S.Number),
-    averageIops: S.optional(S.Number),
-    averageReadIops: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DiskUsageSample",
-}) as any as S.Schema<DiskUsageSample>;
-
-/** Performance data sample. */
-export interface PerformanceSample {
-  /** CPU usage sample. */
-  cpu?: CpuUsageSample;
-  /** Network usage sample. */
-  network?: NetworkUsageSample;
-  /** Time the sample was collected. If omitted, the frame report time will be used. */
-  sampleTime?: string;
-  /** Memory usage sample. */
-  memory?: MemoryUsageSample;
-  /** Disk usage sample. */
-  disk?: DiskUsageSample;
-}
-export const PerformanceSample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu: S.optional(CpuUsageSample),
-    network: S.optional(NetworkUsageSample),
-    sampleTime: S.optional(S.String),
-    memory: S.optional(MemoryUsageSample),
-    disk: S.optional(DiskUsageSample),
-  }),
-).annotate({
-  identifier: "PerformanceSample",
-}) as any as S.Schema<PerformanceSample>;
-
-export type PerformanceSampleList = Array<PerformanceSample>;
-export const PerformanceSampleList = /*@__PURE__*/ S.Array(
-  PerformanceSample,
-) as any as S.Schema<PerformanceSampleList>;
-
-export type AssetFrameCollectionTypeEnum =
-  | "SOURCE_TYPE_UNKNOWN"
-  | "SOURCE_TYPE_UPLOAD"
-  | "SOURCE_TYPE_GUEST_OS_SCAN"
-  | "SOURCE_TYPE_INVENTORY_SCAN"
-  | "SOURCE_TYPE_CUSTOM"
-  | "SOURCE_TYPE_DISCOVERY_CLIENT";
-export const AssetFrameCollectionTypeEnum = /*@__PURE__*/ S.String;
-
-/** Contains data reported from an inventory source on an asset. */
-export interface AssetFrame {
-  /** Optional. Asset information specific for AwsAutoscalingGroupDetails */
-  awsAutoscalingGroupDetails?: AwsAutoscalingGroupDetails;
-  /** Optional. Asset information specific for AWS Batch Compute Environments. */
-  awsBatchComputeEnvironmentDetails?: AwsBatchComputeEnvironmentDetails;
-  /** Asset information specific for AWS Load Balancers. */
-  awsElbLoadBalancerDetails?: AwsElbLoadBalancerDetails;
-  /** Optional. Asset information specific for AWS ElastiCache Clusters. */
-  awsElasticacheClusterDetails?: AwsElastiCacheClusterDetails;
-  /** Asset information specific for AWS Lambda functions. */
-  awsLambdaFunctionDetails?: AwsLambdaFunctionDetails;
-  /** Asset information specific for virtual machines. */
-  virtualMachineDetails?: VirtualMachineDetails;
-  /** Optional. Asset information specific for AWS EBS Volumes. */
-  awsEbsVolumeDetails?: AwsEbsVolumeDetails;
-  /** Optional. Asset information specific for AWS API Gateway REST APIs. */
-  awsApiGatewayRestApiDetails?: AwsApiGatewayRestApiDetails;
-  /** Optional. Asset information specific for AwsKinesisStreamDetails */
-  awsKinesisStreamDetails?: AwsKinesisStreamDetails;
-  /** Optional. Asset information specific for AwsFirehoseDetails */
-  awsFirehoseDetails?: AwsFirehoseDetails;
-  /** Optional. Asset information specific for AwsGlueJobDetails */
-  awsGlueJobDetails?: AwsGlueJobDetails;
-  /** Asset information specific for AwsRoute53HostedZoneDetails */
-  awsRoute53HostedZoneDetails?: AwsRoute53HostedZoneDetails;
-  /** Optional. Asset information specific for AwsAthenaWorkGroupDetails */
-  awsAthenaWorkGroupDetails?: AwsAthenaWorkGroupDetails;
-  /** Optional. Trace token is optionally provided to assist with debugging and traceability. */
-  traceToken?: string;
-  /** Optional. Asset information specific for AWS Application Load Balancers. */
-  awsApplicationLoadBalancerDetails?: AwsApplicationLoadBalancerDetails;
-  /** Asset information specific for database deployments. */
-  databaseDeploymentDetails?: DatabaseDeploymentDetails;
-  /** Asset information specific for AWS EFS file systems. */
-  awsEfsFileSystemDetails?: AwsEfsFileSystemDetails;
-  /** Asset information specific for AwsNatGatewayDetails */
-  awsNatGatewayDetails?: AwsNatGatewayDetails;
-  /** Asset information specific for virtual and physical machines. */
-  machineDetails?: MachineDetails;
-  /** Asset performance data samples. Samples that are from more than 40 days ago or after tomorrow are ignored. */
-  performanceSamples?: PerformanceSampleList;
-  /** Asset information specific for AWS DynamoDB tables. */
-  awsDynamodbTableDetails?: AwsDynamoDBTableDetails;
-  /** Optional. Asset information specific for AWS Elastic IP Addresses. */
-  awsElasticIpAddressDetails?: AwsElasticIpAddressDetails;
-  /** Asset information specific for AWS EKS clusters. */
-  awsEksClusterDetails?: AwsEksClusterDetails;
-  /** Asset information specific for AWS Redshift clusters. */
-  awsRedshiftDetails?: AwsRedshiftDetails;
-  /** Optional. Generic structured asset attributes. */
-  structuredAttributes?: DocumentMap;
-  /** Optional. Asset information specific for AWS Internet Gateways. */
-  awsInternetGatewayDetails?: AwsInternetGatewayDetails;
-  /** Generic asset attributes. */
-  attributes?: StringMap;
-  /** Optional. Asset information specific for AWS Elastic Network Interfaces. */
-  awsElasticNetworkInterfaceDetails?: AwsElasticNetworkInterfaceDetails;
-  /** Optional. Asset information specific for AWS AppSync GraphQL APIs. */
-  awsAppSyncGraphqlApiDetails?: AwsAppSyncGraphqlApiDetails;
-  /** Asset information specific for logical databases. */
-  databaseDetails?: DatabaseDetails;
-  /** The time the data was reported. */
-  reportTime?: string;
-  /** Optional. Details about the hosting provider of the asset. */
-  hostingProviderDetails?: HostingProviderDetails;
-  /** Asset information specific for AWS CloudFront distributions. */
-  awsCloudFrontDistributionDetails?: AwsCloudFrontDistributionDetails;
-  /** Asset information specific for AWS VPCs. */
-  awsVpcDetails?: AwsVpcDetails;
-  /** Asset information specific for AWS S3 buckets. */
-  awsS3BucketDetails?: AwsS3BucketDetails;
-  /** Optional. Asset information specific for AWS SNS Topics. */
-  awsSnsTopicDetails?: AwsSnsTopicDetails;
-  /** Optional. Frame collection type, if not specified the collection type will be based on the source type of the source the frame was reported on. */
-  collectionType?: AssetFrameCollectionTypeEnum | (string & {});
-  /** Asset information specific for AWS ECS clusters. */
-  awsEcsClusterDetails?: AwsEcsClusterDetails;
-  /** Asset information specific for AwsEcrRepositoryDetails */
-  awsEcrRepositoryDetails?: AwsEcrRepositoryDetails;
-  /** Labels as key value pairs. */
-  labels?: StringMap;
-  /** Optional. Asset information specific for AwsEmrClusterDetails */
-  awsEmrClusterDetails?: AwsEmrClusterDetails;
-}
-export const AssetFrame = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
-    awsBatchComputeEnvironmentDetails: S.optional(
-      AwsBatchComputeEnvironmentDetails,
-    ),
-    awsElbLoadBalancerDetails: S.optional(AwsElbLoadBalancerDetails),
-    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
-    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
-    virtualMachineDetails: S.optional(VirtualMachineDetails),
-    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
-    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
-    awsKinesisStreamDetails: S.optional(AwsKinesisStreamDetails),
-    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
-    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
-    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
-    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
-    traceToken: S.optional(S.String),
-    awsApplicationLoadBalancerDetails: S.optional(
-      AwsApplicationLoadBalancerDetails,
-    ),
-    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
-    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
-    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
-    machineDetails: S.optional(MachineDetails),
-    performanceSamples: S.optional(PerformanceSampleList),
-    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
-    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
-    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
-    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
-    structuredAttributes: S.optional(DocumentMap),
-    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
-    attributes: S.optional(StringMap),
-    awsElasticNetworkInterfaceDetails: S.optional(
-      AwsElasticNetworkInterfaceDetails,
-    ),
-    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
-    databaseDetails: S.optional(DatabaseDetails),
-    reportTime: S.optional(S.String),
-    hostingProviderDetails: S.optional(HostingProviderDetails),
-    awsCloudFrontDistributionDetails: S.optional(
-      AwsCloudFrontDistributionDetails,
-    ),
-    awsVpcDetails: S.optional(AwsVpcDetails),
-    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
-    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
-    collectionType: S.optional(AssetFrameCollectionTypeEnum),
-    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
-    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
-    labels: S.optional(StringMap),
-    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
-  }),
-).annotate({ identifier: "AssetFrame" }) as any as S.Schema<AssetFrame>;
-
 /** A resource that contains a single violation of a reported `AssetFrame` resource. */
 export interface FrameViolationEntry {
   /** The field of the original frame where the violation occurred. */
@@ -6949,23 +6712,260 @@ export const FrameViolationEntryList = /*@__PURE__*/ S.Array(
   FrameViolationEntry,
 ) as any as S.Schema<FrameViolationEntryList>;
 
+/** Disk usage sample. Values are across all disks. */
+export interface DiskUsageSample {
+  /** Average read IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored. */
+  averageReadIops?: number;
+  /** Average write IOPS sampled over a short window. Must be non-negative. If both read and write are zero they are ignored. */
+  averageWriteIops?: number;
+  /** Average IOPS sampled over a short window. Must be non-negative. If read or write are set, the sum of read and write will override the value of the average_iops. */
+  averageIops?: number;
+}
+export const DiskUsageSample = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    averageReadIops: S.optional(S.Number),
+    averageWriteIops: S.optional(S.Number),
+    averageIops: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DiskUsageSample",
+}) as any as S.Schema<DiskUsageSample>;
+
+/** CPU usage sample. */
+export interface CpuUsageSample {
+  /** Percentage of total CPU capacity utilized. Must be in the interval [0, 100]. On most systems can be calculated using 100 - idle percentage. */
+  utilizedPercentage?: number;
+}
+export const CpuUsageSample = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    utilizedPercentage: S.optional(S.Number),
+  }),
+).annotate({ identifier: "CpuUsageSample" }) as any as S.Schema<CpuUsageSample>;
+
+/** Memory usage sample. */
+export interface MemoryUsageSample {
+  /** Percentage of system memory utilized. Must be in the interval [0, 100]. */
+  utilizedPercentage?: number;
+}
+export const MemoryUsageSample = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    utilizedPercentage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MemoryUsageSample",
+}) as any as S.Schema<MemoryUsageSample>;
+
+/** Network usage sample. Values are across all network interfaces. */
+export interface NetworkUsageSample {
+  /** Average network ingress in B/s sampled over a short window. Must be non-negative. */
+  averageIngressBps?: number;
+  /** Average network egress in B/s sampled over a short window. Must be non-negative. */
+  averageEgressBps?: number;
+}
+export const NetworkUsageSample = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    averageIngressBps: S.optional(S.Number),
+    averageEgressBps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NetworkUsageSample",
+}) as any as S.Schema<NetworkUsageSample>;
+
+/** Performance data sample. */
+export interface PerformanceSample {
+  /** Disk usage sample. */
+  disk?: DiskUsageSample;
+  /** CPU usage sample. */
+  cpu?: CpuUsageSample;
+  /** Time the sample was collected. If omitted, the frame report time will be used. */
+  sampleTime?: string;
+  /** Memory usage sample. */
+  memory?: MemoryUsageSample;
+  /** Network usage sample. */
+  network?: NetworkUsageSample;
+}
+export const PerformanceSample = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disk: S.optional(DiskUsageSample),
+    cpu: S.optional(CpuUsageSample),
+    sampleTime: S.optional(S.String),
+    memory: S.optional(MemoryUsageSample),
+    network: S.optional(NetworkUsageSample),
+  }),
+).annotate({
+  identifier: "PerformanceSample",
+}) as any as S.Schema<PerformanceSample>;
+
+export type PerformanceSampleList = Array<PerformanceSample>;
+export const PerformanceSampleList = /*@__PURE__*/ S.Array(
+  PerformanceSample,
+) as any as S.Schema<PerformanceSampleList>;
+
+export type AssetFrameCollectionTypeEnum =
+  | "SOURCE_TYPE_UNKNOWN"
+  | "SOURCE_TYPE_UPLOAD"
+  | "SOURCE_TYPE_GUEST_OS_SCAN"
+  | "SOURCE_TYPE_INVENTORY_SCAN"
+  | "SOURCE_TYPE_CUSTOM"
+  | "SOURCE_TYPE_DISCOVERY_CLIENT";
+export const AssetFrameCollectionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Contains data reported from an inventory source on an asset. */
+export interface AssetFrame {
+  /** Optional. Asset information specific for AWS EBS Volumes. */
+  awsEbsVolumeDetails?: AwsEbsVolumeDetails;
+  /** Labels as key value pairs. */
+  labels?: StringMap;
+  /** Asset performance data samples. Samples that are from more than 40 days ago or after tomorrow are ignored. */
+  performanceSamples?: PerformanceSampleList;
+  /** Optional. Trace token is optionally provided to assist with debugging and traceability. */
+  traceToken?: string;
+  /** Asset information specific for AWS Redshift clusters. */
+  awsRedshiftDetails?: AwsRedshiftDetails;
+  /** Asset information specific for AwsEcrRepositoryDetails */
+  awsEcrRepositoryDetails?: AwsEcrRepositoryDetails;
+  /** Optional. Asset information specific for AWS Internet Gateways. */
+  awsInternetGatewayDetails?: AwsInternetGatewayDetails;
+  /** Asset information specific for AwsRoute53HostedZoneDetails */
+  awsRoute53HostedZoneDetails?: AwsRoute53HostedZoneDetails;
+  /** Optional. Asset information specific for AwsAthenaWorkGroupDetails */
+  awsAthenaWorkGroupDetails?: AwsAthenaWorkGroupDetails;
+  /** Optional. Asset information specific for AWS AppSync GraphQL APIs. */
+  awsAppSyncGraphqlApiDetails?: AwsAppSyncGraphqlApiDetails;
+  /** Optional. Asset information specific for AWS SNS Topics. */
+  awsSnsTopicDetails?: AwsSnsTopicDetails;
+  /** Asset information specific for AWS EFS file systems. */
+  awsEfsFileSystemDetails?: AwsEfsFileSystemDetails;
+  /** Asset information specific for AWS CloudFront distributions. */
+  awsCloudFrontDistributionDetails?: AwsCloudFrontDistributionDetails;
+  /** Asset information specific for AWS Lambda functions. */
+  awsLambdaFunctionDetails?: AwsLambdaFunctionDetails;
+  /** Asset information specific for logical databases. */
+  databaseDetails?: DatabaseDetails;
+  /** Asset information specific for AWS EKS clusters. */
+  awsEksClusterDetails?: AwsEksClusterDetails;
+  /** Asset information specific for AWS S3 buckets. */
+  awsS3BucketDetails?: AwsS3BucketDetails;
+  /** Optional. Asset information specific for AWS Elastic Network Interfaces. */
+  awsElasticNetworkInterfaceDetails?: AwsElasticNetworkInterfaceDetails;
+  /** Optional. Asset information specific for AWS API Gateway REST APIs. */
+  awsApiGatewayRestApiDetails?: AwsApiGatewayRestApiDetails;
+  /** Asset information specific for AWS DynamoDB tables. */
+  awsDynamodbTableDetails?: AwsDynamoDBTableDetails;
+  /** Asset information specific for AWS Load Balancers. */
+  awsElbLoadBalancerDetails?: AwsElbLoadBalancerDetails;
+  /** Asset information specific for virtual machines. */
+  virtualMachineDetails?: VirtualMachineDetails;
+  /** Optional. Generic structured asset attributes. */
+  structuredAttributes?: DocumentMap;
+  /** Asset information specific for virtual and physical machines. */
+  machineDetails?: MachineDetails;
+  /** Optional. Asset information specific for AwsEmrClusterDetails */
+  awsEmrClusterDetails?: AwsEmrClusterDetails;
+  /** Optional. Asset information specific for AWS Application Load Balancers. */
+  awsApplicationLoadBalancerDetails?: AwsApplicationLoadBalancerDetails;
+  /** Optional. Asset information specific for AWS ElastiCache Clusters. */
+  awsElasticacheClusterDetails?: AwsElastiCacheClusterDetails;
+  /** Optional. Asset information specific for AWS Elastic IP Addresses. */
+  awsElasticIpAddressDetails?: AwsElasticIpAddressDetails;
+  /** Asset information specific for AwsNatGatewayDetails */
+  awsNatGatewayDetails?: AwsNatGatewayDetails;
+  /** Optional. Asset information specific for AWS Batch Compute Environments. */
+  awsBatchComputeEnvironmentDetails?: AwsBatchComputeEnvironmentDetails;
+  /** Optional. Asset information specific for AwsKinesisStreamDetails */
+  awsKinesisStreamDetails?: AwsKinesisStreamDetails;
+  /** Asset information specific for database deployments. */
+  databaseDeploymentDetails?: DatabaseDeploymentDetails;
+  /** Optional. Frame collection type, if not specified the collection type will be based on the source type of the source the frame was reported on. */
+  collectionType?: AssetFrameCollectionTypeEnum | (string & {});
+  /** The time the data was reported. */
+  reportTime?: string;
+  /** Optional. Details about the hosting provider of the asset. */
+  hostingProviderDetails?: HostingProviderDetails;
+  /** Optional. Asset information specific for AwsFirehoseDetails */
+  awsFirehoseDetails?: AwsFirehoseDetails;
+  /** Generic asset attributes. */
+  attributes?: StringMap;
+  /** Asset information specific for AWS ECS clusters. */
+  awsEcsClusterDetails?: AwsEcsClusterDetails;
+  /** Optional. Asset information specific for AwsGlueJobDetails */
+  awsGlueJobDetails?: AwsGlueJobDetails;
+  /** Asset information specific for AWS VPCs. */
+  awsVpcDetails?: AwsVpcDetails;
+  /** Optional. Asset information specific for AwsAutoscalingGroupDetails */
+  awsAutoscalingGroupDetails?: AwsAutoscalingGroupDetails;
+}
+export const AssetFrame = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    awsEbsVolumeDetails: S.optional(AwsEbsVolumeDetails),
+    labels: S.optional(StringMap),
+    performanceSamples: S.optional(PerformanceSampleList),
+    traceToken: S.optional(S.String),
+    awsRedshiftDetails: S.optional(AwsRedshiftDetails),
+    awsEcrRepositoryDetails: S.optional(AwsEcrRepositoryDetails),
+    awsInternetGatewayDetails: S.optional(AwsInternetGatewayDetails),
+    awsRoute53HostedZoneDetails: S.optional(AwsRoute53HostedZoneDetails),
+    awsAthenaWorkGroupDetails: S.optional(AwsAthenaWorkGroupDetails),
+    awsAppSyncGraphqlApiDetails: S.optional(AwsAppSyncGraphqlApiDetails),
+    awsSnsTopicDetails: S.optional(AwsSnsTopicDetails),
+    awsEfsFileSystemDetails: S.optional(AwsEfsFileSystemDetails),
+    awsCloudFrontDistributionDetails: S.optional(
+      AwsCloudFrontDistributionDetails,
+    ),
+    awsLambdaFunctionDetails: S.optional(AwsLambdaFunctionDetails),
+    databaseDetails: S.optional(DatabaseDetails),
+    awsEksClusterDetails: S.optional(AwsEksClusterDetails),
+    awsS3BucketDetails: S.optional(AwsS3BucketDetails),
+    awsElasticNetworkInterfaceDetails: S.optional(
+      AwsElasticNetworkInterfaceDetails,
+    ),
+    awsApiGatewayRestApiDetails: S.optional(AwsApiGatewayRestApiDetails),
+    awsDynamodbTableDetails: S.optional(AwsDynamoDBTableDetails),
+    awsElbLoadBalancerDetails: S.optional(AwsElbLoadBalancerDetails),
+    virtualMachineDetails: S.optional(VirtualMachineDetails),
+    structuredAttributes: S.optional(DocumentMap),
+    machineDetails: S.optional(MachineDetails),
+    awsEmrClusterDetails: S.optional(AwsEmrClusterDetails),
+    awsApplicationLoadBalancerDetails: S.optional(
+      AwsApplicationLoadBalancerDetails,
+    ),
+    awsElasticacheClusterDetails: S.optional(AwsElastiCacheClusterDetails),
+    awsElasticIpAddressDetails: S.optional(AwsElasticIpAddressDetails),
+    awsNatGatewayDetails: S.optional(AwsNatGatewayDetails),
+    awsBatchComputeEnvironmentDetails: S.optional(
+      AwsBatchComputeEnvironmentDetails,
+    ),
+    awsKinesisStreamDetails: S.optional(AwsKinesisStreamDetails),
+    databaseDeploymentDetails: S.optional(DatabaseDeploymentDetails),
+    collectionType: S.optional(AssetFrameCollectionTypeEnum),
+    reportTime: S.optional(S.String),
+    hostingProviderDetails: S.optional(HostingProviderDetails),
+    awsFirehoseDetails: S.optional(AwsFirehoseDetails),
+    attributes: S.optional(StringMap),
+    awsEcsClusterDetails: S.optional(AwsEcsClusterDetails),
+    awsGlueJobDetails: S.optional(AwsGlueJobDetails),
+    awsVpcDetails: S.optional(AwsVpcDetails),
+    awsAutoscalingGroupDetails: S.optional(AwsAutoscalingGroupDetails),
+  }),
+).annotate({ identifier: "AssetFrame" }) as any as S.Schema<AssetFrame>;
+
 /** Message representing a frame which failed to be processed due to an error. */
 export interface ErrorFrame {
-  /** Output only. The frame that was originally reported. */
-  originalFrame?: AssetFrame;
   /** Output only. Frame ingestion time. */
   ingestionTime?: string;
   /** Output only. The identifier of the ErrorFrame. */
   name?: string;
   /** Output only. All the violations that were detected for the frame. */
   violations?: FrameViolationEntryList;
+  /** Output only. The frame that was originally reported. */
+  originalFrame?: AssetFrame;
 }
 export const ErrorFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originalFrame: S.optional(AssetFrame),
     ingestionTime: S.optional(S.String),
     name: S.optional(S.String),
     violations: S.optional(FrameViolationEntryList),
+    originalFrame: S.optional(AssetFrame),
   }),
 ).annotate({ identifier: "ErrorFrame" }) as any as S.Schema<ErrorFrame>;
 
@@ -6991,41 +6991,41 @@ export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Settings {
   /** Customer consent for Google sales to access their Cloud Migration Center project. */
   customerConsentForGoogleSalesToAccessMigrationCenter?: boolean;
-  /** Disable Cloud Logging for the Migration Center API. Users are billed for the logs. */
-  disableCloudLogging?: boolean;
   /** Output only. The name of the resource. */
   name?: string;
   /** The preference set used by default for a project. */
   preferenceSet?: string;
+  /** Disable Cloud Logging for the Migration Center API. Users are billed for the logs. */
+  disableCloudLogging?: boolean;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerConsentForGoogleSalesToAccessMigrationCenter: S.optional(S.Boolean),
-    disableCloudLogging: S.optional(S.Boolean),
     name: S.optional(S.String),
     preferenceSet: S.optional(S.String),
+    disableCloudLogging: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export interface ListProjectsLocationsRequest {
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7044,15 +7044,15 @@ export const LocationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: LocationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
   }),
 ).annotate({
   identifier: "ListLocationsResponse",
@@ -7074,10 +7074,10 @@ export interface ListProjectsLocationsAssetsRequest {
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** View of the assets. Defaults to BASIC. */
-  view?: ListProjectsLocationsAssetsViewEnum | (string & {});
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
+  /** View of the assets. Defaults to BASIC. */
+  view?: ListProjectsLocationsAssetsViewEnum | (string & {});
   /** Optional. When this value is set to 'true' the response will include all assets, including those that are hidden. */
   showHidden?: boolean;
 }
@@ -7087,8 +7087,8 @@ export const ListProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
-    view: S.optional(ListProjectsLocationsAssetsViewEnum.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListProjectsLocationsAssetsViewEnum.pipe(T.Query())),
     showHidden: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -7123,17 +7123,17 @@ export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsAssetsExportJobsRequest {
   /** Required. Parent resource. */
   parent: string;
-  /** Optional. A token identifying a page of results that the server should return. */
-  pageToken?: string;
   /** Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
+  /** Optional. A token identifying a page of results that the server should return. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsAssetsExportJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7152,40 +7152,40 @@ export const AssetsExportJobList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing assets export jobs. */
 export interface ListAssetsExportJobsResponse {
-  /** Output only. The list of assets export jobs. */
-  assetsExportJobs?: AssetsExportJobList;
   /** Output only. A token identifying a page of results the server should return. */
   nextPageToken?: string;
+  /** Output only. The list of assets export jobs. */
+  assetsExportJobs?: AssetsExportJobList;
 }
 export const ListAssetsExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    assetsExportJobs: S.optional(AssetsExportJobList),
     nextPageToken: S.optional(S.String),
+    assetsExportJobs: S.optional(AssetsExportJobList),
   }),
 ).annotate({
   identifier: "ListAssetsExportJobsResponse",
 }) as any as S.Schema<ListAssetsExportJobsResponse>;
 
 export interface ListProjectsLocationsDiscoveryClientsRequest {
-  /** Optional. The maximum number of items to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListDiscoveryClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDiscoveryClients` must match the call that provided the page token. */
-  pageToken?: string;
+  /** Optional. Field to sort by. */
+  orderBy?: string;
   /** Required. Parent resource. */
   parent: string;
   /** Optional. Filter expression to filter results by. */
   filter?: string;
-  /** Optional. Field to sort by. */
-  orderBy?: string;
+  /** Optional. A page token, received from a previous `ListDiscoveryClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDiscoveryClients` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. The maximum number of items to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsDiscoveryClientsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7204,17 +7204,17 @@ export const DiscoveryClientList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing discovery clients. */
 export interface ListDiscoveryClientsResponse {
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
   /** List of discovery clients. */
   discoveryClients?: DiscoveryClientList;
 }
 export const ListDiscoveryClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
     discoveryClients: S.optional(DiscoveryClientList),
   }),
 ).annotate({
@@ -7222,24 +7222,24 @@ export const ListDiscoveryClientsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDiscoveryClientsResponse>;
 
 export interface ListProjectsLocationsGroupsRequest {
+  /** A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
   /** Required. Parent value for `ListGroupsRequest`. */
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
 }
 export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7284,14 +7284,14 @@ export const ListProjectsLocationsImportJobsViewEnum = /*@__PURE__*/ S.String;
 export interface ListProjectsLocationsImportJobsRequest {
   /** Optional. The level of details of each import job. Default value is BASIC. */
   view?: ListProjectsLocationsImportJobsViewEnum | (string & {});
+  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** A token identifying a page of results the server should return. */
+  pageToken?: string;
   /** Required. Parent value for `ListImportJobsRequest`. */
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
@@ -7299,10 +7299,10 @@ export const ListProjectsLocationsImportJobsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       view: S.optional(ListProjectsLocationsImportJobsViewEnum.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -7340,25 +7340,25 @@ export const ListImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListImportJobsResponse>;
 
 export interface ListProjectsLocationsImportJobsImportDataFilesRequest {
-  /** The maximum number of data files to return. The service may return fewer than this value. If unspecified, at most 500 data files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListImportDataFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImportDataFiles` must match the call that provided the page token. */
-  pageToken?: string;
+  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
+  orderBy?: string;
   /** Required. Name of the parent of the `ImportDataFiles` resource. */
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
-  orderBy?: string;
+  /** A page token, received from a previous `ListImportDataFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImportDataFiles` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of data files to return. The service may return fewer than this value. If unspecified, at most 500 data files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsImportJobsImportDataFilesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7377,43 +7377,43 @@ export const ImportDataFileList = /*@__PURE__*/ S.Array(
 
 /** Response for listing payload files of an import job. */
 export interface ListImportDataFilesResponse {
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
   /** The list of import data files. */
   importDataFiles?: ImportDataFileList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
 }
 export const ListImportDataFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    nextPageToken: S.optional(S.String),
     importDataFiles: S.optional(ImportDataFileList),
     unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListImportDataFilesResponse",
 }) as any as S.Schema<ListImportDataFilesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list page size. */
   pageSize?: number;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7432,18 +7432,18 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
@@ -7484,43 +7484,43 @@ export const PreferenceSetList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing preference sets. */
 export interface ListPreferenceSetsResponse {
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The list of PreferenceSets */
   preferenceSets?: PreferenceSetList;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListPreferenceSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     preferenceSets: S.optional(PreferenceSetList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListPreferenceSetsResponse",
 }) as any as S.Schema<ListPreferenceSetsResponse>;
 
 export interface ListProjectsLocationsRelationsRequest {
+  /** A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
   /** Required. Parent value for `ListRelationsRequest`. */
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-  /** A token identifying a page of results the server should return. */
-  pageToken?: string;
 }
 export const ListProjectsLocationsRelationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7591,18 +7591,18 @@ export const ReportConfigList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing report configs. */
 export interface ListReportConfigsResponse {
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
   /** A list of report configs. */
   reportConfigs?: ReportConfigList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
 }
 export const ListReportConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    nextPageToken: S.optional(S.String),
     reportConfigs: S.optional(ReportConfigList),
     unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListReportConfigsResponse",
@@ -7621,26 +7621,26 @@ export interface ListProjectsLocationsReportConfigsReportsRequest {
   pageToken?: string;
   /** Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
-  /** Determines what information to retrieve for each Report. */
-  view?: ListProjectsLocationsReportConfigsReportsViewEnum | (string & {});
+  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
+  orderBy?: string;
   /** Required. Parent value for `ListReportsRequest`. */
   parent: string;
   /** Filtering results. */
   filter?: string;
-  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
-  orderBy?: string;
+  /** Determines what information to retrieve for each Report. */
+  view?: ListProjectsLocationsReportConfigsReportsViewEnum | (string & {});
 }
 export const ListProjectsLocationsReportConfigsReportsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       view: S.optional(
         ListProjectsLocationsReportConfigsReportsViewEnum.pipe(T.Query()),
       ),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7659,37 +7659,37 @@ export const ReportList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing Reports. */
 export interface ListReportsResponse {
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
   /** The list of Reports. */
   reports?: ReportList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
 }
 export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     reports: S.optional(ReportList),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListReportsResponse",
 }) as any as S.Schema<ListReportsResponse>;
 
 export interface ListProjectsLocationsReportConfigsReportsReportExportJobsRequest {
-  /** Required. Parent report owning the export jobs. */
-  parent: string;
   /** Optional. A token identifying a page of results that the server should return. */
   pageToken?: string;
   /** Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
+  /** Required. Parent report owning the export jobs. */
+  parent: string;
 }
 export const ListProjectsLocationsReportConfigsReportsReportExportJobsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -7709,21 +7709,23 @@ export const ReportExportJobList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing report export jobs. */
 export interface ListReportExportJobsResponse {
-  /** Output only. The list of report export jobs. */
-  reportExportJobs?: ReportExportJobList;
   /** Output only. A token identifying a page of results the server should return. */
   nextPageToken?: string;
+  /** Output only. The list of report export jobs. */
+  reportExportJobs?: ReportExportJobList;
 }
 export const ListReportExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reportExportJobs: S.optional(ReportExportJobList),
     nextPageToken: S.optional(S.String),
+    reportExportJobs: S.optional(ReportExportJobList),
   }),
 ).annotate({
   identifier: "ListReportExportJobsResponse",
 }) as any as S.Schema<ListReportExportJobsResponse>;
 
 export interface ListProjectsLocationsSourcesRequest {
+  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
+  orderBy?: string;
   /** Required. Parent value for `ListSourcesRequest`. */
   parent: string;
   /** Filtering results. */
@@ -7732,16 +7734,14 @@ export interface ListProjectsLocationsSourcesRequest {
   pageToken?: string;
   /** Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. */
   pageSize?: number;
-  /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
-  orderBy?: string;
 }
 export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -7760,18 +7760,18 @@ export const SourceList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing sources. */
 export interface ListSourcesResponse {
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** The list of sources. */
   sources?: SourceList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
 }
 export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
     sources: S.optional(SourceList),
-    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListSourcesResponse",
@@ -7785,23 +7785,23 @@ export const ListProjectsLocationsSourcesErrorFramesViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsSourcesErrorFramesRequest {
-  /** Optional. An optional view mode to control the level of details of each error frame. The default is a BASIC frame view. */
-  view?: ListProjectsLocationsSourcesErrorFramesViewEnum | (string & {});
   /** Required. Parent value (the source) for `ListErrorFramesRequest`. */
   parent: string;
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
+  /** Optional. An optional view mode to control the level of details of each error frame. The default is a BASIC frame view. */
+  view?: ListProjectsLocationsSourcesErrorFramesViewEnum | (string & {});
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
 export const ListProjectsLocationsSourcesErrorFramesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       view: S.optional(
         ListProjectsLocationsSourcesErrorFramesViewEnum.pipe(T.Query()),
       ),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -7821,38 +7821,38 @@ export const ErrorFrameList = /*@__PURE__*/ S.Array(
 
 /** A response for listing error frames. */
 export interface ListErrorFramesResponse {
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
   /** The list of error frames. */
   errorFrames?: ErrorFrameList;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
 }
 export const ListErrorFramesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    unreachable: S.optional(StringList),
     errorFrames: S.optional(ErrorFrameList),
     nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListErrorFramesResponse",
 }) as any as S.Schema<ListErrorFramesResponse>;
 
 export interface PatchProjectsLocationsAssetsRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Output only. The full name of the asset. */
   name: string;
   /** Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Request body */
   body?: Asset;
 }
 export const PatchProjectsLocationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
-    requestId: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Asset.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -7977,21 +7977,21 @@ export const PatchProjectsLocationsPreferenceSetsRequest =
   }) as any as S.Schema<PatchProjectsLocationsPreferenceSetsRequest>;
 
 export interface PatchProjectsLocationsSourcesRequest {
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Output only. The full name of the source. */
   name: string;
   /** Required. Field mask is used to specify the fields to be overwritten in the `Source` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Request body */
   body?: Source;
 }
 export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Source.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -8006,17 +8006,17 @@ export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** A request to remove assets from a group. */
 export interface RemoveAssetsFromGroupRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. List of assets to be removed. The maximum number of assets that can be removed in a single request is 1000. */
   assets?: AssetList;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Optional. When this value is set to `false` and one of the given assets is not an existing member of the group, the operation fails with a `Not Found` error. When set to `true` this situation is silently ignored by the server. Default value is `false`. */
   allowMissing?: boolean;
 }
 export const RemoveAssetsFromGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    requestId: S.optional(S.String),
     assets: S.optional(AssetList),
+    requestId: S.optional(S.String),
     allowMissing: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -8062,18 +8062,18 @@ export const Frames = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Frames" }) as any as S.Schema<Frames>;
 
 export interface ReportAssetFramesProjectsLocationsAssetsRequest {
-  /** Required. Reference to a source. */
-  source?: string;
   /** Required. Parent of the resource. */
   parent: string;
+  /** Required. Reference to a source. */
+  source?: string;
   /** Request body */
   body?: Frames;
 }
 export const ReportAssetFramesProjectsLocationsAssetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      source: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      source: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Frames.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -8239,21 +8239,21 @@ export const SendHeartbeatProjectsLocationsDiscoveryClientsRequest =
   }) as any as S.Schema<SendHeartbeatProjectsLocationsDiscoveryClientsRequest>;
 
 export interface UpdateSettingsProjectsLocationsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Output only. The name of the resource. */
   name: string;
   /** Required. Field mask is used to specify the fields to be overwritten in the `Settings` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. */
   updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: Settings;
 }
 export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Settings.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

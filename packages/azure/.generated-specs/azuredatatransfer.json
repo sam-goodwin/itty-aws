@@ -1316,7 +1316,7 @@
         "passphrase": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
+            "smithy.api#documentation": "The passphrase used for SRT streams"
           }
         },
         "sourceAddresses": {
@@ -3609,7 +3609,7 @@
         "passphrase": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
+            "smithy.api#documentation": "The passphrase used for SRT streams"
           }
         },
         "sourceAddresses": {
@@ -4882,7 +4882,7 @@
         "value": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
+            "smithy.api#documentation": "The passphrase used for SRT streams"
           }
         }
       },
@@ -7165,7 +7165,7 @@
         "passphrase": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The passphrase used for SRT streams (non-secret)"
+            "smithy.api#documentation": "The passphrase used for SRT streams"
           }
         },
         "sourceAddresses": {

@@ -103,7 +103,7 @@
         "column_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table/view-level description."
+            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table-level description."
           }
         },
         "description": {
@@ -148,9 +148,7 @@
           }
         }
       },
-      "traits": {
-        "smithy.api#documentation": "Shared serializer for the physical-table and saved-query-view annotation surfaces.\n\nSubclasses add a `Meta` (model + fields) and the parent foreign-key field (`table`/`saved_query`),\nand set `parent_field_name` to that FK's name. The shared field definitions and the\nimmutable-FK-on-update rule live here; column-name validation lives on the viewset so it runs after\nthe editor-access check (avoiding a schema leak to callers denied the parent)."
-      }
+      "traits": {}
     },
     "com.posthog.warehouse_column_annotations#DescriptionSourceEnum": {
       "type": "enum",
@@ -199,7 +197,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsCreateRequest": {
@@ -223,7 +221,7 @@
         "column_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table/view-level description."
+            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table-level description."
           }
         },
         "description": {
@@ -252,7 +250,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsRetrieveRequest": {
@@ -293,7 +291,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsUpdateRequest": {
@@ -325,7 +323,7 @@
         "column_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table/view-level description."
+            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table-level description."
           }
         },
         "description": {
@@ -354,7 +352,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsPartialUpdateRequest": {
@@ -385,7 +383,7 @@
         "column_name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table/view-level description."
+            "smithy.api#documentation": "Column this annotation describes. Empty string denotes the table-level description."
           }
         },
         "description": {
@@ -413,7 +411,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotationsDestroyRequest": {
@@ -454,7 +452,7 @@
           "uri": "/api/projects/{project_id}/warehouse_column_annotations/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation."
+        "smithy.api#documentation": "Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.\n\nList can be filtered to one table with `?table_id=<uuid>`. Any create or update is treated as a\nuser edit (`is_user_edited=True`), which protects the row from being overwritten by automatic\nenrichment."
       }
     },
     "com.posthog.warehouse_column_annotations#WarehouseColumnAnnotations": {

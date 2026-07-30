@@ -47,43 +47,6 @@ export const CheckDatabaseNameResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckDatabaseNameResponse",
 }) as any as S.Schema<CheckDatabaseNameResponse>;
 
-export interface DataWarehouseCheckSchemaNameRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Schema name to check */
-  name: string;
-}
-export const DataWarehouseCheckSchemaNameRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/data_warehouse/check-schema-name/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DataWarehouseCheckSchemaNameRetrieveRequest",
-  }) as any as S.Schema<DataWarehouseCheckSchemaNameRetrieveRequest>;
-
-export interface CheckSchemaNameResponse {
-  /** The schema name that was checked */
-  name: string;
-  /** Whether the schema name is free within the organization's warehouse */
-  available: boolean;
-}
-export const CheckSchemaNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    available: S.Boolean,
-  }),
-).annotate({
-  identifier: "CheckSchemaNameResponse",
-}) as any as S.Schema<CheckSchemaNameResponse>;
-
 export interface DataWarehouseCompletedActivityRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -159,40 +122,6 @@ export const DataWarehouseDataOpsDashboardRetrieveResponse =
     identifier: "DataWarehouseDataOpsDashboardRetrieveResponse",
   }) as any as S.Schema<DataWarehouseDataOpsDashboardRetrieveResponse>;
 
-export interface DataWarehouseDeleteOrgDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const DataWarehouseDeleteOrgDestroyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/projects/{project_id}/data_warehouse/delete-org/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DataWarehouseDeleteOrgDestroyRequest",
-}) as any as S.Schema<DataWarehouseDeleteOrgDestroyRequest>;
-
-export interface DeleteWarehouseOrgResponse {
-  /** Deletion lifecycle message from the provisioner */
-  status?: string;
-  /** duckgres org identifier (the PostHog organization id) */
-  org?: string;
-}
-export const DeleteWarehouseOrgResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    org: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteWarehouseOrgResponse",
-}) as any as S.Schema<DeleteWarehouseOrgResponse>;
-
 export interface DataWarehouseDeprovisionCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -219,6 +148,43 @@ export const DataWarehouseDeprovisionCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DataWarehouseDeprovisionCreateResponse",
 }) as any as S.Schema<DataWarehouseDeprovisionCreateResponse>;
 
+export interface DataWarehouseEnableBackfillCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Name for this environment's warehouse tables (events_<name>, persons_<name>, …). Lowercase letters, numbers, and underscores only; used verbatim as the suffix and must be unique across the organization's environments. */
+  table_name: string;
+}
+export const DataWarehouseEnableBackfillCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_name: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/data_warehouse/enable_backfill/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "DataWarehouseEnableBackfillCreateRequest",
+}) as any as S.Schema<DataWarehouseEnableBackfillCreateRequest>;
+
+export interface EnableWarehouseBackfillResponse {
+  /** Whether warehouse backfill is now enabled */
+  enabled: boolean;
+  /** Suffix used for this environment's tables (events_<suffix>, persons_<suffix>) */
+  table_suffix: string;
+}
+export const EnableWarehouseBackfillResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    table_suffix: S.String,
+  }),
+).annotate({
+  identifier: "EnableWarehouseBackfillResponse",
+}) as any as S.Schema<EnableWarehouseBackfillResponse>;
+
 export interface DataWarehouseJobStatsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -244,279 +210,6 @@ export const DataWarehouseJobStatsRetrieveResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DataWarehouseJobStatsRetrieveResponse",
 }) as any as S.Schema<DataWarehouseJobStatsRetrieveResponse>;
-
-export interface DataWarehouseManagedWarehouseDataStatusRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const DataWarehouseManagedWarehouseDataStatusRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/data_warehouse/managed-warehouse-data-status/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DataWarehouseManagedWarehouseDataStatusRetrieveRequest",
-  }) as any as S.Schema<DataWarehouseManagedWarehouseDataStatusRetrieveRequest>;
-
-/** * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-export type ManagedWarehouseReadinessStateEnum =
-  | "not_configured"
-  | "waiting"
-  | "backfilling"
-  | "up_to_date"
-  | "needs_attention"
-  | "sync_paused";
-export const ManagedWarehouseReadinessStateEnum = /*@__PURE__*/ S.String;
-
-/** * `events` - events * `persons` - persons */
-export type DatasetEnum = "events" | "persons";
-export const DatasetEnum = /*@__PURE__*/ S.String;
-
-export interface ManagedWarehouseDatasetStatus {
-  /** Warehouse dataset represented by this status. * `events` - events * `persons` - persons */
-  dataset: DatasetEnum;
-  /** User-facing readiness state for this dataset. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-  readiness_state: ManagedWarehouseReadinessStateEnum;
-  /** Human-readable explanation of the current readiness state. */
-  detail: string;
-  /** Number of historical backfill partitions completed successfully. */
-  completed_partitions: number;
-  /** Expected historical partitions, or null while the range is being calculated. */
-  total_partitions: number | null;
-  /** Partition currently running or requiring attention, when applicable. */
-  current_partition: string | null;
-  /** When the durable backfill status last changed. */
-  last_updated_at: string | null;
-}
-export const ManagedWarehouseDatasetStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset: DatasetEnum,
-    readiness_state: ManagedWarehouseReadinessStateEnum,
-    detail: S.String,
-    completed_partitions: S.Number,
-    total_partitions: S.NullOr(S.Number),
-    current_partition: S.NullOr(S.String),
-    last_updated_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ManagedWarehouseDatasetStatus",
-}) as any as S.Schema<ManagedWarehouseDatasetStatus>;
-
-export interface ManagedWarehouseSourceSummary {
-  /** Imported source connection identifier. */
-  source_id: string;
-  /** Display name for the imported source connection. */
-  source_name: string;
-  /** Type of the imported source connection. */
-  source_type: string;
-  /** Rolled-up warehouse readiness state across this source's schemas. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-  readiness_state: ManagedWarehouseReadinessStateEnum;
-  /** Human-readable explanation of this source's readiness state. */
-  detail: string;
-  /** Number of this source's schemas visible to the warehouse. */
-  total_schemas: number;
-  /** Number of schemas whose one-time historical copy into the warehouse has completed. */
-  backfilled_schemas: number;
-  /** Most recent time an imported batch was applied to the warehouse across this source's schemas, or null if no apply has been recorded. */
-  last_applied_at: string | null;
-  /** Most recent upstream source import completion across this source's schemas. */
-  last_synced_at: string | null;
-}
-export const ManagedWarehouseSourceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_id: S.String,
-    source_name: S.String,
-    source_type: S.String,
-    readiness_state: ManagedWarehouseReadinessStateEnum,
-    detail: S.String,
-    total_schemas: S.Number,
-    backfilled_schemas: S.Number,
-    last_applied_at: S.NullOr(S.String),
-    last_synced_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ManagedWarehouseSourceSummary",
-}) as any as S.Schema<ManagedWarehouseSourceSummary>;
-
-/** Per-source rollup of schema backfill and live import application statuses. Reflects only warehouse source imports with sync enabled — manage sources at /data-management/sources. */
-export type ManagedWarehouseSourcesStatusSourcesList =
-  Array<ManagedWarehouseSourceSummary>;
-export const ManagedWarehouseSourcesStatusSourcesList = /*@__PURE__*/ S.Array(
-  ManagedWarehouseSourceSummary,
-) as any as S.Schema<ManagedWarehouseSourcesStatusSourcesList>;
-
-export interface ManagedWarehouseSourcesStatus {
-  /** Rolled-up readiness state for imported sources. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-  readiness_state: ManagedWarehouseReadinessStateEnum;
-  /** Human-readable explanation of imported source readiness. */
-  detail: string;
-  /** Per-source rollup of schema backfill and live import application statuses. Reflects only warehouse source imports with sync enabled — manage sources at /data-management/sources. */
-  sources: ManagedWarehouseSourcesStatusSourcesList;
-}
-export const ManagedWarehouseSourcesStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readiness_state: ManagedWarehouseReadinessStateEnum,
-    detail: S.String,
-    sources: ManagedWarehouseSourcesStatusSourcesList,
-  }),
-).annotate({
-  identifier: "ManagedWarehouseSourcesStatus",
-}) as any as S.Schema<ManagedWarehouseSourcesStatus>;
-
-export interface ManagedWarehouseDataStatusResponse {
-  /** Highest-priority readiness state across all warehouse datasets. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-  overall_readiness_state: ManagedWarehouseReadinessStateEnum;
-  /** Events backfill readiness. */
-  events: ManagedWarehouseDatasetStatus;
-  /** Persons backfill readiness. */
-  persons: ManagedWarehouseDatasetStatus;
-  /** Imported source table readiness. */
-  sources: ManagedWarehouseSourcesStatus;
-  /** When this status snapshot was generated. */
-  generated_at: string;
-}
-export const ManagedWarehouseDataStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    overall_readiness_state: ManagedWarehouseReadinessStateEnum,
-    events: ManagedWarehouseDatasetStatus,
-    persons: ManagedWarehouseDatasetStatus,
-    sources: ManagedWarehouseSourcesStatus,
-    generated_at: S.String,
-  }),
-).annotate({
-  identifier: "ManagedWarehouseDataStatusResponse",
-}) as any as S.Schema<ManagedWarehouseDataStatusResponse>;
-
-export interface DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Imported source connection to fetch per-schema detail for. */
-  source_id: string;
-}
-export const DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      source_id: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/data_warehouse/managed-warehouse-source-schemas/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest",
-  }) as any as S.Schema<DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest>;
-
-export interface ManagedWarehouseSourceTableStatus {
-  /** Imported source schema identifier. */
-  schema_id: string;
-  /** Imported source connection identifier. */
-  source_id: string;
-  /** Display name for the imported source connection. */
-  source_name: string;
-  /** Type of the imported source connection. */
-  source_type: string;
-  /** Imported table name. */
-  table_name: string;
-  /** User-facing warehouse readiness state for this table. * `not_configured` - not_configured * `waiting` - waiting * `backfilling` - backfilling * `up_to_date` - up_to_date * `needs_attention` - needs_attention * `sync_paused` - sync_paused */
-  readiness_state: ManagedWarehouseReadinessStateEnum;
-  /** Human-readable explanation of the table's readiness state. */
-  detail: string;
-  /** Whether the one-time historical copy into the warehouse has completed for this table. */
-  backfilled: boolean;
-  /** Backfill chunks already copied into the warehouse. */
-  completed_chunks: number;
-  /** Total backfill chunks, or null before the copy plan is ready. */
-  total_chunks: number | null;
-  /** When an imported batch was most recently applied to the warehouse, or null if no apply has been recorded for this table. */
-  last_applied_at: string | null;
-  /** When PostHog most recently completed the upstream source import. */
-  last_synced_at: string | null;
-}
-export const ManagedWarehouseSourceTableStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schema_id: S.String,
-    source_id: S.String,
-    source_name: S.String,
-    source_type: S.String,
-    table_name: S.String,
-    readiness_state: ManagedWarehouseReadinessStateEnum,
-    detail: S.String,
-    backfilled: S.Boolean,
-    completed_chunks: S.Number,
-    total_chunks: S.NullOr(S.Number),
-    last_applied_at: S.NullOr(S.String),
-    last_synced_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ManagedWarehouseSourceTableStatus",
-}) as any as S.Schema<ManagedWarehouseSourceTableStatus>;
-
-/** Per-schema backfill and live import application status for the requested source. */
-export type ManagedWarehouseSourceSchemasResponseSchemasList =
-  Array<ManagedWarehouseSourceTableStatus>;
-export const ManagedWarehouseSourceSchemasResponseSchemasList =
-  /*@__PURE__*/ S.Array(
-    ManagedWarehouseSourceTableStatus,
-  ) as any as S.Schema<ManagedWarehouseSourceSchemasResponseSchemasList>;
-
-export interface ManagedWarehouseSourceSchemasResponse {
-  /** Per-schema backfill and live import application status for the requested source. */
-  schemas: ManagedWarehouseSourceSchemasResponseSchemasList;
-}
-export const ManagedWarehouseSourceSchemasResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      schemas: ManagedWarehouseSourceSchemasResponseSchemasList,
-    }),
-).annotate({
-  identifier: "ManagedWarehouseSourceSchemasResponse",
-}) as any as S.Schema<ManagedWarehouseSourceSchemasResponse>;
-
-export interface DataWarehouseOnboardTeamCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Schema name for this project's data in the organization's warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Must be unique within the organization and cannot be changed later. */
-  schema_name: string;
-}
-export const DataWarehouseOnboardTeamCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      schema_name: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/data_warehouse/onboard-team/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DataWarehouseOnboardTeamCreateRequest",
-}) as any as S.Schema<DataWarehouseOnboardTeamCreateRequest>;
-
-export interface OnboardWarehouseTeamResponse {
-  /** Whether this project is now onboarded onto the managed warehouse */
-  onboarded: boolean;
-  /** Schema this project's data lands in */
-  schema_name: string;
-}
-export const OnboardWarehouseTeamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onboarded: S.Boolean,
-    schema_name: S.String,
-  }),
-).annotate({
-  identifier: "OnboardWarehouseTeamResponse",
-}) as any as S.Schema<OnboardWarehouseTeamResponse>;
 
 export interface DataWarehousePropertyValuesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -548,14 +241,14 @@ export interface DataWarehouseProvisionCreateRequest {
   project_id: string;
   /** Name for the new database */
   database_name: string;
-  /** Schema name for the provisioning project's data in the warehouse. Lowercase letters, numbers, and underscores only, max 63 characters. Cannot be changed later. Required — the first project gets its own schema, and other projects pick theirs when they join. */
-  schema_name: string;
+  /** Name for the provisioning project's warehouse tables (events_<name>, persons_<name>, …). Lowercase letters, numbers, and underscores only; used verbatim as the suffix. Required so the first project gets its own per-environment tables. */
+  table_name: string;
 }
 export const DataWarehouseProvisionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     database_name: S.String,
-    schema_name: S.String,
+    table_name: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -730,10 +423,6 @@ export interface WarehouseStatusResponse {
   has_backfill: boolean;
   /** This project's per-environment table suffix (events_<suffix>). Null when the project still writes to the shared tables. */
   table_suffix: string | null;
-  /** Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet — show the onboarding screen in that case. */
-  team_onboarded: boolean;
-  /** Schema this project's data lands in. Null when the project is not onboarded. */
-  schema_name: string | null;
 }
 export const WarehouseStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -749,8 +438,6 @@ export const WarehouseStatusResponse = /*@__PURE__*/ S.suspend(() =>
     connection: S.optional(S.NullOr(WarehouseConnection)),
     has_backfill: S.Boolean,
     table_suffix: S.NullOr(S.String),
-    team_onboarded: S.Boolean,
-    schema_name: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "WarehouseStatusResponse",
@@ -766,21 +453,6 @@ export const dataWarehouseCheckDatabaseNameRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DataWarehouseCheckDatabaseNameRetrieveRequest,
   output: CheckDatabaseNameResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataWarehouseCheckSchemaNameRetrieveError = PosthogOpError;
-/** Check if a schema name is free within the organization's managed warehouse. */
-export const dataWarehouseCheckSchemaNameRetrieve: API.OperationMethod<
-  DataWarehouseCheckSchemaNameRetrieveRequest,
-  CheckSchemaNameResponse,
-  DataWarehouseCheckSchemaNameRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseCheckSchemaNameRetrieveRequest,
-  output: CheckSchemaNameResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -831,21 +503,6 @@ export const dataWarehouseDataOpsDashboardRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DataWarehouseDeleteOrgDestroyError = PosthogOpError;
-/** Remove the organization's provisioning record after teardown, freeing its warehouse name. Called once the warehouse status reports `deleted`: deprovision tears the warehouse down, this removes the now-empty org row so the database_name can be reused. Restricted to organization admins. */
-export const dataWarehouseDeleteOrgDestroy: API.OperationMethod<
-  DataWarehouseDeleteOrgDestroyRequest,
-  DeleteWarehouseOrgResponse,
-  DataWarehouseDeleteOrgDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseDeleteOrgDestroyRequest,
-  output: DeleteWarehouseOrgResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DataWarehouseDeprovisionCreateError = PosthogOpError;
 /** Start deprovisioning the organization's managed warehouse. Restricted to organization admins. */
 export const dataWarehouseDeprovisionCreate: API.OperationMethod<
@@ -861,6 +518,21 @@ export const dataWarehouseDeprovisionCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DataWarehouseEnableBackfillCreateError = PosthogOpError;
+/** Enable warehouse backfill for this environment with a dedicated set of tables. Requires a table name and records the environment's membership in the organization's managed warehouse. Restricted to organization admins. */
+export const dataWarehouseEnableBackfillCreate: API.OperationMethod<
+  DataWarehouseEnableBackfillCreateRequest,
+  EnableWarehouseBackfillResponse,
+  DataWarehouseEnableBackfillCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DataWarehouseEnableBackfillCreateRequest,
+  output: EnableWarehouseBackfillResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DataWarehouseJobStatsRetrieveError = PosthogOpError;
 /** Returns success and failed job statistics for the last 1, 7, or 30 days. Query parameter 'days' can be 1, 7, or 30 (default: 7). */
 export const dataWarehouseJobStatsRetrieve: API.OperationMethod<
@@ -871,53 +543,6 @@ export const dataWarehouseJobStatsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DataWarehouseJobStatsRetrieveRequest,
   output: DataWarehouseJobStatsRetrieveResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataWarehouseManagedWarehouseDataStatusRetrieveError =
-  PosthogOpError;
-/** Get events, persons, and imported source readiness for the managed warehouse. */
-export const dataWarehouseManagedWarehouseDataStatusRetrieve: API.OperationMethod<
-  DataWarehouseManagedWarehouseDataStatusRetrieveRequest,
-  ManagedWarehouseDataStatusResponse,
-  DataWarehouseManagedWarehouseDataStatusRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseManagedWarehouseDataStatusRetrieveRequest,
-  output: ManagedWarehouseDataStatusResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataWarehouseManagedWarehouseSourceSchemasRetrieveError =
-  PosthogOpError;
-/** Get per-schema detail for one imported source Per-schema backfill and live import status for one source, for the Overview tab's drill-down modal — the main status endpoint only returns a per-source rollup. */
-export const dataWarehouseManagedWarehouseSourceSchemasRetrieve: API.OperationMethod<
-  DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest,
-  ManagedWarehouseSourceSchemasResponse,
-  DataWarehouseManagedWarehouseSourceSchemasRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseManagedWarehouseSourceSchemasRetrieveRequest,
-  output: ManagedWarehouseSourceSchemasResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataWarehouseOnboardTeamCreateError = PosthogOpError;
-/** Onboard this project onto the organization's existing managed warehouse. Requires a schema name; records the project's membership both in duckgres and in the Django backfill state. Restricted to organization admins. */
-export const dataWarehouseOnboardTeamCreate: API.OperationMethod<
-  DataWarehouseOnboardTeamCreateRequest,
-  OnboardWarehouseTeamResponse,
-  DataWarehouseOnboardTeamCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataWarehouseOnboardTeamCreateRequest,
-  output: OnboardWarehouseTeamResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -999,7 +624,7 @@ export const dataWarehouseTotalRowsStatsRetrieve: API.OperationMethod<
 }));
 
 export type DataWarehouseWarehouseStatusRetrieveError = PosthogOpError;
-/** Get the current provisioning status of the managed warehouse, with this project's onboarding state. */
+/** Get the current provisioning status of the managed warehouse, with this project's backfill state. */
 export const dataWarehouseWarehouseStatusRetrieve: API.OperationMethod<
   DataWarehouseWarehouseStatusRetrieveRequest,
   WarehouseStatusResponse,

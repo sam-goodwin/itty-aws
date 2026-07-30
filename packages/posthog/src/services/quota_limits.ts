@@ -32,22 +32,16 @@ export const QuotaLimitsListRequest = /*@__PURE__*/ S.suspend(() =>
 export interface QuotaResourceLimit {
   /** True when the team is currently over its quota for this resource and limits are in effect. */
   limited: boolean;
-  /** Units of this resource the organization has used so far this billing period, in the resource's native unit (credits for credit buckets). Null when billing hasn't synced usage for the resource. */
-  usage: number | null;
-  /** The organization's limit for this resource in the same unit. Null when unlimited or unknown. */
-  limit: number | null;
 }
 export const QuotaResourceLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limited: S.Boolean,
-    usage: S.NullOr(S.Number),
-    limit: S.NullOr(S.Number),
   }),
 ).annotate({
   identifier: "QuotaResourceLimit",
 }) as any as S.Schema<QuotaResourceLimit>;
 
-/** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. */
+/** Per-resource limit state keyed by `QuotaResource` value. Currently only `ai_credits` is reported; additional resources may be added. */
 export type QuotaLimitsResponseLimitedMap = {
   [key: string]: QuotaResourceLimit | undefined;
 };
@@ -57,15 +51,12 @@ export const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QuotaLimitsResponseLimitedMap>;
 
 export interface QuotaLimitsResponse {
-  /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. */
+  /** Per-resource limit state keyed by `QuotaResource` value. Currently only `ai_credits` is reported; additional resources may be added. */
   limited: QuotaLimitsResponseLimitedMap;
-  /** Whether the team's organization pays for PostHog Code usage: billing grants the `posthog_code_usage` product feature only on the Code usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Code behavior on this; an org unknown to billing reads as not paying. */
-  code_usage_billing_active: boolean;
 }
 export const QuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limited: QuotaLimitsResponseLimitedMap,
-    code_usage_billing_active: S.Boolean,
   }),
 ).annotate({
   identifier: "QuotaLimitsResponse",

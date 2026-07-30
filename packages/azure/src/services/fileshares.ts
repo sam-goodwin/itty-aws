@@ -403,11 +403,11 @@ export interface FileSharePropertiesInput {
   /** The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system. */
   mountName?: string;
   /** The storage media tier of the file share. */
-  mediaTier?: MediaTier;
+  mediaTier?: MediaTier | (string & {});
   /** The chosen redundancy level of the file share. */
   redundancy?: Redundancy | (string & {});
   /** The file sharing protocol for this file share. */
-  protocol?: Protocol;
+  protocol?: Protocol | (string & {});
   /** The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage. */
   provisionedStorageGiB?: number;
   /** The provisioned IO / sec of the share. */

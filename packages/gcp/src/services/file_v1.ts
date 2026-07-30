@@ -96,17 +96,26 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export type BackupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "FINALIZING"
+  | "READY"
+  | "DELETING"
+  | "INVALID";
+export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupFileSystemProtocolEnum =
   | "FILE_PROTOCOL_UNSPECIFIED"
   | "NFS_V3"
   | "NFS_V4_1";
 export const BackupFileSystemProtocolEnum = /*@__PURE__*/ S.String;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
 
 export type BackupSourceInstanceTierEnum =
   | "TIER_UNSPECIFIED"
@@ -120,68 +129,59 @@ export type BackupSourceInstanceTierEnum =
   | "REGIONAL";
 export const BackupSourceInstanceTierEnum = /*@__PURE__*/ S.String;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "FINALIZING"
-  | "READY"
-  | "DELETING"
-  | "INVALID";
-export const BackupStateEnum = /*@__PURE__*/ S.String;
-
 /** A Filestore backup. */
 export interface Backup {
-  /** Output only. The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`. */
-  name?: string;
-  /** Resource labels to represent user provided metadata. */
-  labels?: StringMap;
-  /** Output only. The file system protocol of the source Filestore instance that this backup is created from. */
-  fileSystemProtocol?: BackupFileSystemProtocolEnum | (string & {});
-  /** The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup. */
-  sourceInstance?: string;
-  /** A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected. */
-  description?: string;
-  /** Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage. */
-  downloadBytes?: string;
-  /** Immutable. KMS key name used for data encryption. */
-  kmsKey?: string;
-  /** Output only. The service tier of the source Filestore instance that this backup is created from. */
-  sourceInstanceTier?: BackupSourceInstanceTierEnum | (string & {});
-  /** Output only. The backup state. */
-  state?: BackupStateEnum | (string & {});
   /** Output only. The time when the backup was created. */
   createTime?: string;
-  /** Output only. Capacity of the source file share when the backup was created. */
-  capacityGb?: string;
-  /** Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced name and each value a short name. Example: "123456789012/environment" : "production", "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value */
-  tags?: StringMap;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
   /** Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion. */
   storageBytes?: string;
+  /** Output only. The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`. */
+  name?: string;
+  /** Immutable. KMS key name used for data encryption. */
+  kmsKey?: string;
+  /** Output only. The backup state. */
+  state?: BackupStateEnum | (string & {});
+  /** Output only. The file system protocol of the source Filestore instance that this backup is created from. */
+  fileSystemProtocol?: BackupFileSystemProtocolEnum | (string & {});
+  /** Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage. */
+  downloadBytes?: string;
+  /** Resource labels to represent user provided metadata. */
+  labels?: StringMap;
+  /** The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup. */
+  sourceInstance?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. Capacity of the source file share when the backup was created. */
+  capacityGb?: string;
+  /** A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected. */
+  description?: string;
+  /** Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced name and each value a short name. Example: "123456789012/environment" : "production", "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value */
+  tags?: StringMap;
   /** Name of the file share in the source Filestore instance that the backup is created from. */
   sourceFileShare?: string;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
+  /** Output only. The service tier of the source Filestore instance that this backup is created from. */
+  sourceInstanceTier?: BackupSourceInstanceTierEnum | (string & {});
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    fileSystemProtocol: S.optional(BackupFileSystemProtocolEnum),
-    sourceInstance: S.optional(S.String),
-    description: S.optional(S.String),
-    downloadBytes: S.optional(S.String),
-    kmsKey: S.optional(S.String),
-    sourceInstanceTier: S.optional(BackupSourceInstanceTierEnum),
-    state: S.optional(BackupStateEnum),
     createTime: S.optional(S.String),
-    capacityGb: S.optional(S.String),
-    tags: S.optional(StringMap),
-    satisfiesPzi: S.optional(S.Boolean),
     storageBytes: S.optional(S.String),
+    name: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    state: S.optional(BackupStateEnum),
+    fileSystemProtocol: S.optional(BackupFileSystemProtocolEnum),
+    downloadBytes: S.optional(S.String),
+    labels: S.optional(StringMap),
+    sourceInstance: S.optional(S.String),
+    satisfiesPzi: S.optional(S.Boolean),
+    capacityGb: S.optional(S.String),
+    description: S.optional(S.String),
+    tags: S.optional(StringMap),
     sourceFileShare: S.optional(S.String),
     satisfiesPzs: S.optional(S.Boolean),
+    sourceInstanceTier: S.optional(BackupSourceInstanceTierEnum),
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
@@ -225,48 +225,82 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
-    details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    done: S.optional(S.Boolean),
+    name: S.optional(S.String),
     response: S.optional(DocumentMap),
     metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
     error: S.optional(Status),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type NetworkConfigConnectModeEnum =
-  | "CONNECT_MODE_UNSPECIFIED"
-  | "DIRECT_PEERING"
-  | "PRIVATE_SERVICE_ACCESS"
-  | "PRIVATE_SERVICE_CONNECT";
-export const NetworkConfigConnectModeEnum = /*@__PURE__*/ S.String;
+/** The enforced performance limits, calculated from the instance's performance configuration. */
+export interface PerformanceLimits {
+  /** Output only. The maximum read IOPS. */
+  maxReadIops?: string;
+  /** Output only. The maximum read throughput in bytes per second. */
+  maxReadThroughputBps?: string;
+  /** Output only. The maximum IOPS. */
+  maxIops?: string;
+  /** Output only. The maximum write IOPS. */
+  maxWriteIops?: string;
+  /** Output only. The maximum write throughput in bytes per second. */
+  maxWriteThroughputBps?: string;
+}
+export const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxReadIops: S.optional(S.String),
+    maxReadThroughputBps: S.optional(S.String),
+    maxIops: S.optional(S.String),
+    maxWriteIops: S.optional(S.String),
+    maxWriteThroughputBps: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PerformanceLimits",
+}) as any as S.Schema<PerformanceLimits>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** Private Service Connect configuration. */
+export interface PscConfig {
+  /** Optional. Consumer service project in which the Private Service Connect endpoint would be set up. This is optional, and only relevant in case the network is a shared VPC. If this is not specified, the endpoint would be setup in the VPC host project. */
+  endpointProject?: string;
+}
+export const PscConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointProject: S.optional(S.String),
+  }),
+).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
 export type NetworkConfigModesItemEnum =
   | "ADDRESS_MODE_UNSPECIFIED"
@@ -281,45 +315,36 @@ export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
   NetworkConfigModesItemEnum,
 ) as any as S.Schema<NetworkConfigModesItemEnumList>;
 
-/** Private Service Connect configuration. */
-export interface PscConfig {
-  /** Optional. Consumer service project in which the Private Service Connect endpoint would be set up. This is optional, and only relevant in case the network is a shared VPC. If this is not specified, the endpoint would be setup in the VPC host project. */
-  endpointProject?: string;
-}
-export const PscConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointProject: S.optional(S.String),
-  }),
-).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
+export type NetworkConfigConnectModeEnum =
+  | "CONNECT_MODE_UNSPECIFIED"
+  | "DIRECT_PEERING"
+  | "PRIVATE_SERVICE_ACCESS"
+  | "PRIVATE_SERVICE_CONNECT";
+export const NetworkConfigConnectModeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration for the instance. */
 export interface NetworkConfig {
-  /** The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
-  connectMode?: NetworkConfigConnectModeEnum | (string & {});
-  /** Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Filestore instances in the selected VPC network. */
-  reservedIpRange?: string;
   /** The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. */
   network?: string;
-  /** Internet protocol versions for which the instance has IP addresses assigned. */
-  modes?: NetworkConfigModesItemEnumList;
-  /** Optional. Private Service Connect configuration. Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT. */
-  pscConfig?: PscConfig;
   /** Output only. IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`. */
   ipAddresses?: StringList;
+  /** Optional. Private Service Connect configuration. Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT. */
+  pscConfig?: PscConfig;
+  /** Internet protocol versions for which the instance has IP addresses assigned. */
+  modes?: NetworkConfigModesItemEnumList;
+  /** Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Filestore instances in the selected VPC network. */
+  reservedIpRange?: string;
+  /** The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
+  connectMode?: NetworkConfigConnectModeEnum | (string & {});
 }
 export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    connectMode: S.optional(NetworkConfigConnectModeEnum),
-    reservedIpRange: S.optional(S.String),
     network: S.optional(S.String),
-    modes: S.optional(NetworkConfigModesItemEnumList),
-    pscConfig: S.optional(PscConfig),
     ipAddresses: S.optional(StringList),
+    pscConfig: S.optional(PscConfig),
+    modes: S.optional(NetworkConfigModesItemEnumList),
+    reservedIpRange: S.optional(S.String),
+    connectMode: S.optional(NetworkConfigConnectModeEnum),
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
@@ -327,184 +352,6 @@ export type NetworkConfigList = Array<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
-
-export type InstanceTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "PREMIUM"
-  | "BASIC_HDD"
-  | "BASIC_SSD"
-  | "HIGH_SCALE_SSD"
-  | "ENTERPRISE"
-  | "ZONAL"
-  | "REGIONAL";
-export const InstanceTierEnum = /*@__PURE__*/ S.String;
-
-/** The enforced performance limits, calculated from the instance's performance configuration. */
-export interface PerformanceLimits {
-  /** Output only. The maximum read throughput in bytes per second. */
-  maxReadThroughputBps?: string;
-  /** Output only. The maximum write throughput in bytes per second. */
-  maxWriteThroughputBps?: string;
-  /** Output only. The maximum write IOPS. */
-  maxWriteIops?: string;
-  /** Output only. The maximum read IOPS. */
-  maxReadIops?: string;
-  /** Output only. The maximum IOPS. */
-  maxIops?: string;
-}
-export const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxReadThroughputBps: S.optional(S.String),
-    maxWriteThroughputBps: S.optional(S.String),
-    maxWriteIops: S.optional(S.String),
-    maxReadIops: S.optional(S.String),
-    maxIops: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PerformanceLimits",
-}) as any as S.Schema<PerformanceLimits>;
-
-/** LdapConfig contains all the parameters for connecting to LDAP servers. */
-export interface LdapConfig {
-  /** Required. The LDAP domain name in the format of `my-domain.com`. */
-  domain?: string;
-  /** Required. The servers names are used for specifying the LDAP servers names. The LDAP servers names can come with two formats: 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`. 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either all DNS names or all IP addresses. */
-  servers?: StringList;
-  /** Optional. The users Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole LDAP namespace. */
-  usersOu?: string;
-  /** Optional. The groups Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole LDAP namespace. */
-  groupsOu?: string;
-}
-export const LdapConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.optional(S.String),
-    servers: S.optional(StringList),
-    usersOu: S.optional(S.String),
-    groupsOu: S.optional(S.String),
-  }),
-).annotate({ identifier: "LdapConfig" }) as any as S.Schema<LdapConfig>;
-
-/** Directory Services configuration for Kerberos-based authentication. */
-export interface DirectoryServicesConfig {
-  /** Configuration for LDAP servers. */
-  ldap?: LdapConfig;
-}
-export const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ldap: S.optional(LdapConfig),
-  }),
-).annotate({
-  identifier: "DirectoryServicesConfig",
-}) as any as S.Schema<DirectoryServicesConfig>;
-
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "REPAIRING"
-  | "DELETING"
-  | "ERROR"
-  | "RESTORING"
-  | "SUSPENDED"
-  | "SUSPENDING"
-  | "RESUMING"
-  | "REVERTING"
-  | "PROMOTING";
-export const InstanceStateEnum = /*@__PURE__*/ S.String;
-
-export type InstanceSuspensionReasonsItemEnum =
-  | "SUSPENSION_REASON_UNSPECIFIED"
-  | "KMS_KEY_ISSUE";
-export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
-
-export type InstanceSuspensionReasonsItemEnumList = Array<
-  InstanceSuspensionReasonsItemEnum | (string & {})
->;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceSuspensionReasonsItemEnum,
-) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
-
-export type NfsExportOptionsAccessModeEnum =
-  | "ACCESS_MODE_UNSPECIFIED"
-  | "READ_ONLY"
-  | "READ_WRITE";
-export const NfsExportOptionsAccessModeEnum = /*@__PURE__*/ S.String;
-
-export type NfsExportOptionsSquashModeEnum =
-  | "SQUASH_MODE_UNSPECIFIED"
-  | "NO_ROOT_SQUASH"
-  | "ROOT_SQUASH";
-export const NfsExportOptionsSquashModeEnum = /*@__PURE__*/ S.String;
-
-/** NFS export options specifications. */
-export interface NfsExportOptions {
-  /** List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions. */
-  ipRanges?: StringList;
-  /** Optional. The source VPC network for ip_ranges. Required for instances using Private Service Connect, optional otherwise. If provided, must be the same network specified in the `NetworkConfig.network` field. */
-  network?: string;
-  /** Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. */
-  accessMode?: NfsExportOptionsAccessModeEnum | (string & {});
-  /** Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH. */
-  squashMode?: NfsExportOptionsSquashModeEnum | (string & {});
-  /** An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
-  anonUid?: string;
-  /** An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
-  anonGid?: string;
-}
-export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipRanges: S.optional(StringList),
-    network: S.optional(S.String),
-    accessMode: S.optional(NfsExportOptionsAccessModeEnum),
-    squashMode: S.optional(NfsExportOptionsSquashModeEnum),
-    anonUid: S.optional(S.String),
-    anonGid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NfsExportOptions",
-}) as any as S.Schema<NfsExportOptions>;
-
-export type NfsExportOptionsList = Array<NfsExportOptions>;
-export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
-  NfsExportOptions,
-) as any as S.Schema<NfsExportOptionsList>;
-
-/** File share configuration for the instance. */
-export interface FileShareConfig {
-  /** The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from. */
-  sourceBackup?: string;
-  /** File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. */
-  capacityGb?: string;
-  /** Nfs Export Options. There is a limit of 10 export options per file share. */
-  nfsExportOptions?: NfsExportOptionsList;
-  /** Required. The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable. */
-  name?: string;
-  /** The resource name of the BackupDR backup, in the format `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`, */
-  sourceBackupdrBackup?: string;
-}
-export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceBackup: S.optional(S.String),
-    capacityGb: S.optional(S.String),
-    nfsExportOptions: S.optional(NfsExportOptionsList),
-    name: S.optional(S.String),
-    sourceBackupdrBackup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FileShareConfig",
-}) as any as S.Schema<FileShareConfig>;
-
-export type FileShareConfigList = Array<FileShareConfig>;
-export const FileShareConfigList = /*@__PURE__*/ S.Array(
-  FileShareConfig,
-) as any as S.Schema<FileShareConfigList>;
-
-export type InstanceProtocolEnum =
-  | "FILE_PROTOCOL_UNSPECIFIED"
-  | "NFS_V3"
-  | "NFS_V4_1";
-export const InstanceProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ReplicationRoleEnum = "ROLE_UNSPECIFIED" | "ACTIVE" | "STANDBY";
 export const ReplicationRoleEnum = /*@__PURE__*/ S.String;
@@ -538,6 +385,8 @@ export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
 
 /** Replica configuration for the instance. */
 export interface ReplicaConfig {
+  /** Output only. The time when the replica state was updated. */
+  stateUpdateTime?: string;
   /** Optional. The name of the source instance for the replica, in the format `projects/{project}/locations/{location}/instances/{instance}`. This field is required when creating a replica. */
   peerInstance?: string;
   /** Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely. */
@@ -546,16 +395,14 @@ export interface ReplicaConfig {
   state?: ReplicaConfigStateEnum | (string & {});
   /** Output only. Additional information about the replication state, if available. */
   stateReasons?: ReplicaConfigStateReasonsItemEnumList;
-  /** Output only. The time when the replica state was updated. */
-  stateUpdateTime?: string;
 }
 export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    stateUpdateTime: S.optional(S.String),
     peerInstance: S.optional(S.String),
     lastActiveSyncTime: S.optional(S.String),
     state: S.optional(ReplicaConfigStateEnum),
     stateReasons: S.optional(ReplicaConfigStateReasonsItemEnumList),
-    stateUpdateTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "ReplicaConfig" }) as any as S.Schema<ReplicaConfig>;
 
@@ -616,89 +463,242 @@ export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerformanceConfig",
 }) as any as S.Schema<PerformanceConfig>;
 
+/** LdapConfig contains all the parameters for connecting to LDAP servers. */
+export interface LdapConfig {
+  /** Required. The servers names are used for specifying the LDAP servers names. The LDAP servers names can come with two formats: 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`. 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either all DNS names or all IP addresses. */
+  servers?: StringList;
+  /** Optional. The groups Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole LDAP namespace. */
+  groupsOu?: string;
+  /** Required. The LDAP domain name in the format of `my-domain.com`. */
+  domain?: string;
+  /** Optional. The users Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole LDAP namespace. */
+  usersOu?: string;
+}
+export const LdapConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servers: S.optional(StringList),
+    groupsOu: S.optional(S.String),
+    domain: S.optional(S.String),
+    usersOu: S.optional(S.String),
+  }),
+).annotate({ identifier: "LdapConfig" }) as any as S.Schema<LdapConfig>;
+
+/** Directory Services configuration for Kerberos-based authentication. */
+export interface DirectoryServicesConfig {
+  /** Configuration for LDAP servers. */
+  ldap?: LdapConfig;
+}
+export const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ldap: S.optional(LdapConfig),
+  }),
+).annotate({
+  identifier: "DirectoryServicesConfig",
+}) as any as S.Schema<DirectoryServicesConfig>;
+
+export type NfsExportOptionsSquashModeEnum =
+  | "SQUASH_MODE_UNSPECIFIED"
+  | "NO_ROOT_SQUASH"
+  | "ROOT_SQUASH";
+export const NfsExportOptionsSquashModeEnum = /*@__PURE__*/ S.String;
+
+export type NfsExportOptionsAccessModeEnum =
+  | "ACCESS_MODE_UNSPECIFIED"
+  | "READ_ONLY"
+  | "READ_WRITE";
+export const NfsExportOptionsAccessModeEnum = /*@__PURE__*/ S.String;
+
+/** NFS export options specifications. */
+export interface NfsExportOptions {
+  /** Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH. */
+  squashMode?: NfsExportOptionsSquashModeEnum | (string & {});
+  /** Optional. The source VPC network for ip_ranges. Required for instances using Private Service Connect, optional otherwise. If provided, must be the same network specified in the `NetworkConfig.network` field. */
+  network?: string;
+  /** An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
+  anonGid?: string;
+  /** List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions. */
+  ipRanges?: StringList;
+  /** Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. */
+  accessMode?: NfsExportOptionsAccessModeEnum | (string & {});
+  /** An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
+  anonUid?: string;
+}
+export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    squashMode: S.optional(NfsExportOptionsSquashModeEnum),
+    network: S.optional(S.String),
+    anonGid: S.optional(S.String),
+    ipRanges: S.optional(StringList),
+    accessMode: S.optional(NfsExportOptionsAccessModeEnum),
+    anonUid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NfsExportOptions",
+}) as any as S.Schema<NfsExportOptions>;
+
+export type NfsExportOptionsList = Array<NfsExportOptions>;
+export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
+  NfsExportOptions,
+) as any as S.Schema<NfsExportOptionsList>;
+
+/** File share configuration for the instance. */
+export interface FileShareConfig {
+  /** The resource name of the BackupDR backup, in the format `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`, */
+  sourceBackupdrBackup?: string;
+  /** Nfs Export Options. There is a limit of 10 export options per file share. */
+  nfsExportOptions?: NfsExportOptionsList;
+  /** File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. */
+  capacityGb?: string;
+  /** The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from. */
+  sourceBackup?: string;
+  /** Required. The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable. */
+  name?: string;
+}
+export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceBackupdrBackup: S.optional(S.String),
+    nfsExportOptions: S.optional(NfsExportOptionsList),
+    capacityGb: S.optional(S.String),
+    sourceBackup: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FileShareConfig",
+}) as any as S.Schema<FileShareConfig>;
+
+export type FileShareConfigList = Array<FileShareConfig>;
+export const FileShareConfigList = /*@__PURE__*/ S.Array(
+  FileShareConfig,
+) as any as S.Schema<FileShareConfigList>;
+
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "REPAIRING"
+  | "DELETING"
+  | "ERROR"
+  | "RESTORING"
+  | "SUSPENDED"
+  | "SUSPENDING"
+  | "RESUMING"
+  | "REVERTING"
+  | "PROMOTING";
+export const InstanceStateEnum = /*@__PURE__*/ S.String;
+
+export type InstanceSuspensionReasonsItemEnum =
+  | "SUSPENSION_REASON_UNSPECIFIED"
+  | "KMS_KEY_ISSUE";
+export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
+
+export type InstanceSuspensionReasonsItemEnumList = Array<
+  InstanceSuspensionReasonsItemEnum | (string & {})
+>;
+export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  InstanceSuspensionReasonsItemEnum,
+) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
+
+export type InstanceProtocolEnum =
+  | "FILE_PROTOCOL_UNSPECIFIED"
+  | "NFS_V3"
+  | "NFS_V4_1";
+export const InstanceProtocolEnum = /*@__PURE__*/ S.String;
+
+export type InstanceTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "STANDARD"
+  | "PREMIUM"
+  | "BASIC_HDD"
+  | "BASIC_SSD"
+  | "HIGH_SCALE_SSD"
+  | "ENTERPRISE"
+  | "ZONAL"
+  | "REGIONAL";
+export const InstanceTierEnum = /*@__PURE__*/ S.String;
+
 /** A Filestore instance. */
 export interface Instance {
-  /** VPC networks to which the instance is connected. For this version, only a single network is supported. */
-  networks?: NetworkConfigList;
-  /** Output only. Indicates whether this instance supports configuring its performance. If true, the user can configure the instance's performance by using the 'performance_config' field. */
-  customPerformanceSupported?: boolean;
-  /** The service tier of the instance. */
-  tier?: InstanceTierEnum | (string & {});
-  /** Output only. The maximum capacity of the instance in GB. */
-  maxCapacityGb?: string;
-  /** The description of the instance (2048 characters or less). */
-  description?: string;
-  /** Optional. The reason for enabling deletion protection. */
-  deletionProtectionReason?: string;
-  /** Output only. Used for getting performance limits. */
-  performanceLimits?: PerformanceLimits;
-  /** Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced name and each value a short name. Example: "123456789012/environment" : "production", "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value */
-  tags?: StringMap;
-  /** Output only. The time when the instance was created. */
-  createTime?: string;
-  /** KMS key name used for data encryption. */
-  kmsKeyName?: string;
-  /** Output only. The minimum capacity of the instance in GB. */
-  minCapacityGb?: string;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1". */
-  directoryServices?: DirectoryServicesConfig;
-  /** Output only. The instance state. */
-  state?: InstanceStateEnum | (string & {});
-  /** Optional. Indicates whether the instance is protected against deletion. */
-  deletionProtectionEnabled?: boolean;
-  /** Output only. The incremental increase or decrease in capacity, designated in some number of GB. */
-  capacityStepSizeGb?: string;
-  /** Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other. */
-  etag?: string;
-  /** Output only. Additional information about the instance state, if available. */
-  statusMessage?: string;
-  /** Output only. Field indicates all the reasons the instance is in "SUSPENDED" state. */
-  suspensionReasons?: InstanceSuspensionReasonsItemEnumList;
   /** Output only. The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`. */
   name?: string;
+  /** Output only. The time when the instance was created. */
+  createTime?: string;
+  /** Output only. Used for getting performance limits. */
+  performanceLimits?: PerformanceLimits;
   /** Resource labels to represent user provided metadata. */
   labels?: StringMap;
-  /** File system shares on the instance. For this version, only a single file share is supported. */
-  fileShares?: FileShareConfigList;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`. */
-  protocol?: InstanceProtocolEnum | (string & {});
+  /** Output only. The incremental increase or decrease in capacity, designated in some number of GB. */
+  capacityStepSizeGb?: string;
+  /** VPC networks to which the instance is connected. For this version, only a single network is supported. */
+  networks?: NetworkConfigList;
   /** Optional. Replication configuration. */
   replication?: Replication;
+  /** Output only. Additional information about the instance state, if available. */
+  statusMessage?: string;
   /** Optional. Used to configure performance. */
   performanceConfig?: PerformanceConfig;
+  /** Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1". */
+  directoryServices?: DirectoryServicesConfig;
+  /** The description of the instance (2048 characters or less). */
+  description?: string;
+  /** File system shares on the instance. For this version, only a single file share is supported. */
+  fileShares?: FileShareConfigList;
+  /** KMS key name used for data encryption. */
+  kmsKeyName?: string;
+  /** Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other. */
+  etag?: string;
+  /** Output only. Indicates whether this instance supports configuring its performance. If true, the user can configure the instance's performance by using the 'performance_config' field. */
+  customPerformanceSupported?: boolean;
+  /** Output only. The minimum capacity of the instance in GB. */
+  minCapacityGb?: string;
+  /** Output only. The maximum capacity of the instance in GB. */
+  maxCapacityGb?: string;
+  /** Output only. The instance state. */
+  state?: InstanceStateEnum | (string & {});
+  /** Output only. Field indicates all the reasons the instance is in "SUSPENDED" state. */
+  suspensionReasons?: InstanceSuspensionReasonsItemEnumList;
+  /** Optional. Indicates whether the instance is protected against deletion. */
+  deletionProtectionEnabled?: boolean;
+  /** Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`. */
+  protocol?: InstanceProtocolEnum | (string & {});
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Optional. The reason for enabling deletion protection. */
+  deletionProtectionReason?: string;
+  /** Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced name and each value a short name. Example: "123456789012/environment" : "production", "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value */
+  tags?: StringMap;
+  /** The service tier of the instance. */
+  tier?: InstanceTierEnum | (string & {});
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    networks: S.optional(NetworkConfigList),
-    customPerformanceSupported: S.optional(S.Boolean),
-    tier: S.optional(InstanceTierEnum),
-    maxCapacityGb: S.optional(S.String),
-    description: S.optional(S.String),
-    deletionProtectionReason: S.optional(S.String),
-    performanceLimits: S.optional(PerformanceLimits),
-    tags: S.optional(StringMap),
-    createTime: S.optional(S.String),
-    kmsKeyName: S.optional(S.String),
-    minCapacityGb: S.optional(S.String),
-    satisfiesPzi: S.optional(S.Boolean),
-    directoryServices: S.optional(DirectoryServicesConfig),
-    state: S.optional(InstanceStateEnum),
-    deletionProtectionEnabled: S.optional(S.Boolean),
-    capacityStepSizeGb: S.optional(S.String),
-    etag: S.optional(S.String),
-    statusMessage: S.optional(S.String),
-    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
     name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    performanceLimits: S.optional(PerformanceLimits),
     labels: S.optional(StringMap),
-    fileShares: S.optional(FileShareConfigList),
-    satisfiesPzs: S.optional(S.Boolean),
-    protocol: S.optional(InstanceProtocolEnum),
+    capacityStepSizeGb: S.optional(S.String),
+    networks: S.optional(NetworkConfigList),
     replication: S.optional(Replication),
+    statusMessage: S.optional(S.String),
     performanceConfig: S.optional(PerformanceConfig),
+    directoryServices: S.optional(DirectoryServicesConfig),
+    description: S.optional(S.String),
+    fileShares: S.optional(FileShareConfigList),
+    kmsKeyName: S.optional(S.String),
+    etag: S.optional(S.String),
+    customPerformanceSupported: S.optional(S.Boolean),
+    minCapacityGb: S.optional(S.String),
+    maxCapacityGb: S.optional(S.String),
+    state: S.optional(InstanceStateEnum),
+    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
+    deletionProtectionEnabled: S.optional(S.Boolean),
+    protocol: S.optional(InstanceProtocolEnum),
+    satisfiesPzi: S.optional(S.Boolean),
+    deletionProtectionReason: S.optional(S.String),
+    tags: S.optional(StringMap),
+    tier: S.optional(InstanceTierEnum),
+    satisfiesPzs: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
@@ -736,46 +736,46 @@ export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore snapshot. */
 export interface Snapshot {
-  /** A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected. */
-  description?: string;
-  /** Output only. The snapshot state. */
-  state?: SnapshotStateEnum | (string & {});
-  /** Output only. The amount of bytes needed to allocate a full copy of the snapshot content */
-  filesystemUsedBytes?: string;
   /** Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. */
   name?: string;
-  /** Resource labels to represent user provided metadata. */
-  labels?: StringMap;
-  /** Output only. The time when the snapshot was created. */
-  createTime?: string;
+  /** A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected. */
+  description?: string;
   /** Optional. Input only. Immutable. Tag key-value pairs bound to this resource. Each key must be a namespaced name and each value a short name. Example: "123456789012/environment" : "production", "123456789013/costCenter" : "marketing" See the documentation for more information: - Namespaced name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key - Short name: https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value */
   tags?: StringMap;
+  /** Resource labels to represent user provided metadata. */
+  labels?: StringMap;
+  /** Output only. The amount of bytes needed to allocate a full copy of the snapshot content */
+  filesystemUsedBytes?: string;
+  /** Output only. The snapshot state. */
+  state?: SnapshotStateEnum | (string & {});
+  /** Output only. The time when the snapshot was created. */
+  createTime?: string;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    state: S.optional(SnapshotStateEnum),
-    filesystemUsedBytes: S.optional(S.String),
     name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    createTime: S.optional(S.String),
+    description: S.optional(S.String),
     tags: S.optional(StringMap),
+    labels: S.optional(StringMap),
+    filesystemUsedBytes: S.optional(S.String),
+    state: S.optional(SnapshotStateEnum),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 export interface CreateProjectsLocationsInstancesSnapshotsRequest {
-  /** Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. */
-  snapshotId?: string;
   /** Required. The Filestore Instance to create the snapshots of, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` */
   parent: string;
+  /** Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. */
+  snapshotId?: string;
   /** Request body */
   body?: Snapshot;
 }
 export const CreateProjectsLocationsInstancesSnapshotsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      snapshotId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      snapshotId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Snapshot.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -887,24 +887,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    locationId: S.optional(S.String),
-    labels: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -984,24 +984,24 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1035,24 +1035,24 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsBackupsRequest {
+  /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
+  orderBy?: string;
   /** List filter. */
   filter?: string;
+  /** The next_page_token value to use if there are additional results to retrieve for this list request. */
+  pageToken?: string;
   /** Required. The project and location for which to retrieve backup information, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the `{location}` value. */
   parent: string;
   /** The maximum number of items to return. */
   pageSize?: number;
-  /** The next_page_token value to use if there are additional results to retrieve for this list request. */
-  pageToken?: string;
-  /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
-  orderBy?: string;
 }
 export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1071,43 +1071,43 @@ export const BackupList = /*@__PURE__*/ S.Array(
 
 /** ListBackupsResponse is the result of ListBackupsRequest. */
 export interface ListBackupsResponse {
+  /** A list of backups in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of backups from all locations. If any location is unreachable, the response will only return backups in reachable locations and the "unreachable" field will be populated with a list of unreachable locations. */
+  backups?: BackupList;
   /** The token you can use to retrieve the next page of results. Not returned if there are no more results in the list. */
   nextPageToken?: string;
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
-  /** A list of backups in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of backups from all locations. If any location is unreachable, the response will only return backups in reachable locations and the "unreachable" field will be populated with a list of unreachable locations. */
-  backups?: BackupList;
 }
 export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    backups: S.optional(BackupList),
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
-    backups: S.optional(BackupList),
   }),
 ).annotate({
   identifier: "ListBackupsResponse",
 }) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
-  /** The next_page_token value to use if there are additional results to retrieve for this list request. */
-  pageToken?: string;
   /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
   orderBy?: string;
+  /** List filter. */
+  filter?: string;
+  /** The next_page_token value to use if there are additional results to retrieve for this list request. */
+  pageToken?: string;
   /** Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-" for the `{location}` value. */
   parent: string;
   /** The maximum number of items to return. */
   pageSize?: number;
-  /** List filter. */
-  filter?: string;
 }
 export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1148,12 +1148,12 @@ export interface ListProjectsLocationsInstancesSnapshotsRequest {
   parent: string;
   /** The maximum number of items to return. */
   pageSize?: number;
-  /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
-  returnPartialSuccess?: boolean;
   /** List filter. */
   filter?: string;
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
+  /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
+  returnPartialSuccess?: boolean;
   /** Sort results. Supported values are "name", "name desc" or "" (unsorted). */
   orderBy?: string;
 }
@@ -1162,9 +1162,9 @@ export const ListProjectsLocationsInstancesSnapshotsRequest =
     S.Struct({
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1202,24 +1202,24 @@ export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSnapshotsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The name of the operation's parent resource. */
-  name: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** The standard list filter. */
   filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
+  /** The name of the operation's parent resource. */
+  name: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1257,18 +1257,18 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsBackupsRequest {
-  /** Required. Mask of fields to update. At least one path must be supplied in this field. */
-  updateMask?: string;
   /** Output only. The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`. */
   name: string;
+  /** Required. Mask of fields to update. At least one path must be supplied in this field. */
+  updateMask?: string;
   /** Request body */
   body?: Backup;
 }
 export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Backup.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1307,18 +1307,18 @@ export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
 
 export interface PatchProjectsLocationsInstancesSnapshotsRequest {
-  /** Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. */
-  name: string;
   /** Required. Mask of fields to update. At least one path must be supplied in this field. */
   updateMask?: string;
+  /** Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. */
+  name: string;
   /** Request body */
   body?: Snapshot;
 }
 export const PatchProjectsLocationsInstancesSnapshotsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(Snapshot.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

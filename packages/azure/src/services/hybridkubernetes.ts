@@ -335,7 +335,7 @@ export interface ConnectedClusterCreateOrReplaceRequest {
   /** The identity of the connected cluster. */
   identity: ConnectedClusterIdentityInput;
   /** The kind of connected cluster. */
-  kind?: ConnectedClusterKind;
+  kind?: ConnectedClusterKind | (string & {});
 }
 export const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
   () =>

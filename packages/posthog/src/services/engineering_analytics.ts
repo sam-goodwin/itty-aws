@@ -27,220 +27,15 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export interface EngineeringAnalyticsAuthorWorkflowCostsRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** GitHub handle whose CI spend to break down. */
-  author: string;
-  /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsAuthorWorkflowCostsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      author: S.String.pipe(T.Query()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/author_workflow_costs/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsAuthorWorkflowCostsRequest",
-  }) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsRequest>;
-
-export interface WorkflowCost {
-  /** GitHub Actions workflow name this cost is for. */
-  workflow_name: string;
-  /** Billable (self-hosted) minutes for this workflow within the scope. */
-  billable_minutes: number;
-  /** Estimated dollar cost for this workflow, or null when nothing was costable. */
-  estimated_cost_usd: number | null;
-  /** Costed jobs for this workflow (billable Linux runner, finished). */
-  costed_jobs: number;
-  /** Billable Linux jobs still queued/running for this workflow. */
-  unsettled_jobs: number;
-  /** Provider-hosted/non-Linux jobs for this workflow, outside the estimate. */
-  excluded_jobs: number;
-}
-export const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflow_name: S.String,
-    billable_minutes: S.Number,
-    estimated_cost_usd: S.NullOr(S.Number),
-    costed_jobs: S.Number,
-    unsettled_jobs: S.Number,
-    excluded_jobs: S.Number,
-  }),
-).annotate({ identifier: "WorkflowCost" }) as any as S.Schema<WorkflowCost>;
-
-export type EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList =
-  Array<WorkflowCost>;
-export const EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    WorkflowCost,
-  ) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList>;
-
-export type EngineeringAnalyticsAuthorWorkflowCostsResponse =
-  EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList;
-export const EngineeringAnalyticsAuthorWorkflowCostsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsAuthorWorkflowCostsResponse",
-  }) as any as S.Schema<EngineeringAnalyticsAuthorWorkflowCostsResponse>;
-
-export interface EngineeringAnalyticsBrokenTestsRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsBrokenTestsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/broken_tests/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsBrokenTestsRequest",
-}) as any as S.Schema<EngineeringAnalyticsBrokenTestsRequest>;
-
-/** * `breaking_master` - BREAKING_MASTER * `novel_burst` - NOVEL_BURST * `potentially_resolved` - POTENTIALLY_RESOLVED * `flaky` - FLAKY * `pr_only` - PR_ONLY */
-export type BrokenTestRowStateEnum =
-  | "breaking_master"
-  | "novel_burst"
-  | "potentially_resolved"
-  | "flaky"
-  | "pr_only";
-export const BrokenTestRowStateEnum = /*@__PURE__*/ S.String;
-
-/** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
-export type BrokenTestRowTrend24hList = Array<number>;
-export const BrokenTestRowTrend24hList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<BrokenTestRowTrend24hList>;
-
-export interface BrokenTestRow {
-  /** Stable identity of this distinct failure: the failing test's node id plus a normalized error signature, so the same failure across runs groups into one row. */
-  fingerprint: string;
-  /** The pytest node id from the CI 'FAILED <id>' line — the failing test. */
-  test_id: string;
-  /** The trailing failure detail with volatile bits (numbers, hashes) normalized, shared across runs of the same failure. Empty when the FAILED line carried no detail. */
-  error_signature: string;
-  /** The CI job the failure most recently came from. Matched against default-branch job status to decide whether trunk is currently broken by it. */
-  job_name: string;
-  /** 'owner/name' repository the failure belongs to. */
-  repo: string;
-  /** The classifier's verdict on how this failure is behaving right now: 'breaking_master' (failing on trunk, latest trunk run still red), 'novel_burst' (new within a day and spreading across branches, not on trunk yet), 'potentially_resolved' (hit trunk but trunk is green again), 'flaky' (sporadic across branches over more than a day), or 'pr_only' (confined to one branch — one PR's own problem). * `breaking_master` - BREAKING_MASTER * `novel_burst` - NOVEL_BURST * `potentially_resolved` - POTENTIALLY_RESOLVED * `flaky` - FLAKY * `pr_only` - PR_ONLY */
-  state: BrokenTestRowStateEnum;
-  /** Earliest failure line for this fingerprint in the analysis window. */
-  first_seen: string;
-  /** Most recent failure line for this fingerprint in the analysis window. */
-  last_seen: string;
-  /** Total failure lines for this fingerprint in the window. An absolute count, never a rate — passing runs aren't in this data. */
-  occurrences: number;
-  /** Distinct branches the failure appeared on in the window. */
-  branches: number;
-  /** Failure lines on the default branch (master/main). 0 means it never reached trunk. */
-  master_hits: number;
-  /** The most recent failing workflow run for this fingerprint — pass it to run_failure_logs to fetch the actual failing log lines. */
-  latest_run_id: number;
-  /** The branch of the most recent failing run. */
-  latest_branch: string;
-  /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
-  trend_24h?: BrokenTestRowTrend24hList;
-}
-export const BrokenTestRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.String,
-    test_id: S.String,
-    error_signature: S.String,
-    job_name: S.String,
-    repo: S.String,
-    state: BrokenTestRowStateEnum,
-    first_seen: S.String,
-    last_seen: S.String,
-    occurrences: S.Number,
-    branches: S.Number,
-    master_hits: S.Number,
-    latest_run_id: S.Number,
-    latest_branch: S.String,
-    trend_24h: S.optional(BrokenTestRowTrend24hList),
-  }),
-).annotate({ identifier: "BrokenTestRow" }) as any as S.Schema<BrokenTestRow>;
-
-/** Classified failures ranked by triage urgency — breaking trunk first, single-PR failures last. */
-export type BrokenTestsResultRowsList = Array<BrokenTestRow>;
-export const BrokenTestsResultRowsList = /*@__PURE__*/ S.Array(
-  BrokenTestRow,
-) as any as S.Schema<BrokenTestsResultRowsList>;
-
-/** Default-branch job names whose latest completed run is failing — the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
-export type BrokenTestsResultBreakingMasterJobsList = Array<string>;
-export const BrokenTestsResultBreakingMasterJobsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
-
-export interface BrokenTestsResult {
-  /** Classified failures ranked by triage urgency — breaking trunk first, single-PR failures last. */
-  rows: BrokenTestsResultRowsList;
-  /** Default-branch job names whose latest completed run is failing — the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
-  breaking_master_jobs: BrokenTestsResultBreakingMasterJobsList;
-  /** Length in days of the analysis window the counts cover. */
-  window_days: number;
-  /** True when more failures qualified than the cap; `rows` is the top `limit` by urgency. */
-  truncated: boolean;
-  /** Maximum number of rows returned. */
-  limit: number;
-}
-export const BrokenTestsResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: BrokenTestsResultRowsList,
-    breaking_master_jobs: BrokenTestsResultBreakingMasterJobsList,
-    window_days: S.Number,
-    truncated: S.Boolean,
-    limit: S.Number,
-  }),
-).annotate({
-  identifier: "BrokenTestsResult",
-}) as any as S.Schema<BrokenTestsResult>;
-
 export interface EngineeringAnalyticsCiCardsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
 export const EngineeringAnalyticsCiCardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    repo: S.optional(S.String.pipe(T.Query())),
     source_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -272,531 +67,6 @@ export const CICardSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CICardSummary" }) as any as S.Schema<CICardSummary>;
 
-export interface EngineeringAnalyticsCiFailureLogsRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Pull request number whose CI failure logs to fetch. */
-  pr_number: number;
-  /** 'owner/name' repository the pull request belongs to. */
-  repo: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsCiFailureLogsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      pr_number: S.Number.pipe(T.Query()),
-      repo: S.String.pipe(T.Query()),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/ci_failure_logs/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsCiFailureLogsRequest",
-}) as any as S.Schema<EngineeringAnalyticsCiFailureLogsRequest>;
-
-export interface RepoRef {
-  /** Code host provider, e.g. 'github'. */
-  provider: string;
-  /** Repository owner or organization. */
-  owner: string;
-  /** Repository name. */
-  name: string;
-}
-export const RepoRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String,
-    owner: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "RepoRef" }) as any as S.Schema<RepoRef>;
-
-export interface CIFailureLogLine {
-  /** 1-based line number in the full pre-thinning job log, or null for a '... N lines omitted ...' marker. The gap between consecutive values is how many lines were elided. */
-  original_line: number | null;
-  /** The log line text, or the omission-marker text. */
-  text: string;
-}
-export const CIFailureLogLine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    original_line: S.NullOr(S.Number),
-    text: S.String,
-  }),
-).annotate({
-  identifier: "CIFailureLogLine",
-}) as any as S.Schema<CIFailureLogLine>;
-
-/** The thinned failure-log lines in original order, with omission markers. */
-export type CIJobFailureLogLinesList = Array<CIFailureLogLine>;
-export const CIJobFailureLogLinesList = /*@__PURE__*/ S.Array(
-  CIFailureLogLine,
-) as any as S.Schema<CIJobFailureLogLinesList>;
-
-export interface CIJobFailureLog {
-  /** The thinned failure-log lines in original order, with omission markers. */
-  lines: CIJobFailureLogLinesList;
-  /** GitHub Actions job id of the failed job. */
-  job_id: number;
-  /** Workflow run id the job belongs to. */
-  run_id: number;
-  /** Job conclusion ('failure', 'timed_out', ...). Only failed jobs have logs. */
-  conclusion: string;
-  /** Git branch the run was triggered on, or '' when unknown. */
-  branch: string;
-  /** Total lines in the full job log before thinning (the denominator for each line's original_line); 0 when unknown. */
-  original_total_lines: number;
-  /** Number of lines returned for this job (after the per-job cap). */
-  line_count: number;
-  /** True when the job had more failure lines than the per-job cap. */
-  truncated: boolean;
-}
-export const CIJobFailureLog = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: CIJobFailureLogLinesList,
-    job_id: S.Number,
-    run_id: S.Number,
-    conclusion: S.String,
-    branch: S.String,
-    original_total_lines: S.Number,
-    line_count: S.Number,
-    truncated: S.Boolean,
-  }),
-).annotate({
-  identifier: "CIJobFailureLog",
-}) as any as S.Schema<CIJobFailureLog>;
-
-/** Failed CI jobs with their thinned failure logs, grouped by job. */
-export type CIFailureLogsJobsList = Array<CIJobFailureLog>;
-export const CIFailureLogsJobsList = /*@__PURE__*/ S.Array(
-  CIJobFailureLog,
-) as any as S.Schema<CIFailureLogsJobsList>;
-
-export interface CIFailureLogs {
-  /** Repository the pull request belongs to. */
-  repo: RepoRef;
-  /** Failed CI jobs with their thinned failure logs, grouped by job. */
-  jobs: CIFailureLogsJobsList;
-  /** Pull request number the failure logs are for. */
-  pr_number: number;
-  /** Workflow runs attributed to the PR (across all its pushes) that were searched for logs. */
-  runs_attributed: number;
-  /** False when no failure logs were found — CI hasn't failed, the logs aged out of the short Logs retention, or a fork PR carries no run association to resolve. */
-  logs_available: boolean;
-  /** True when the overall line cap across all jobs was hit. */
-  truncated: boolean;
-}
-export const CIFailureLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo: RepoRef,
-    jobs: CIFailureLogsJobsList,
-    pr_number: S.Number,
-    runs_attributed: S.Number,
-    logs_available: S.Boolean,
-    truncated: S.Boolean,
-  }),
-).annotate({ identifier: "CIFailureLogs" }) as any as S.Schema<CIFailureLogs>;
-
-export interface EngineeringAnalyticsCiSignalsConfigRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const EngineeringAnalyticsCiSignalsConfigRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/ci-signals-config/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCiSignalsConfigRetrieveRequest",
-  }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigRetrieveRequest>;
-
-/** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
-export type SyncStatusEnum = "running" | "completed" | "failed";
-export const SyncStatusEnum = /*@__PURE__*/ S.String;
-
-export interface CISignalsConfig {
-  /** Whether this project has ever configured CI signals. */
-  configured: boolean;
-  /** Whether every CI signal detector is enabled. */
-  enabled: boolean;
-  /** Aggregate sync status for pull requests, workflow runs, and workflow jobs. * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
-  sync_status: SyncStatusEnum | null;
-}
-export const CISignalsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configured: S.Boolean,
-    enabled: S.Boolean,
-    sync_status: S.NullOr(SyncStatusEnum),
-  }),
-).annotate({
-  identifier: "CISignalsConfig",
-}) as any as S.Schema<CISignalsConfig>;
-
-export interface EngineeringAnalyticsCiSignalsConfigUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Enable or disable every CI signal detector atomically. */
-  enabled: boolean;
-}
-export const EngineeringAnalyticsCiSignalsConfigUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/api/projects/{project_id}/engineering_analytics/ci-signals-config/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCiSignalsConfigUpdateRequest",
-  }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigUpdateRequest>;
-
-export interface EngineeringAnalyticsCurrentBranchHealthRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsCurrentBranchHealthRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/current_branch_health/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCurrentBranchHealthRequest",
-  }) as any as S.Schema<EngineeringAnalyticsCurrentBranchHealthRequest>;
-
-/** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
-export type CurrentBranchHealthFailingWorkflowNamesList = Array<string>;
-export const CurrentBranchHealthFailingWorkflowNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CurrentBranchHealthFailingWorkflowNamesList>;
-
-export interface CurrentBranchHealth {
-  /** Detected default branch ('master' or 'main') from runs in the same 24-hour window. */
-  default_branch: string;
-  /** Workflows with at least one completed run in the last 24 hours. */
-  settled_workflows: number;
-  /** Workflows whose latest completed run in the last 24 hours failed or timed out. */
-  failing_workflows: number;
-  /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
-  failing_workflow_names: CurrentBranchHealthFailingWorkflowNamesList;
-}
-export const CurrentBranchHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default_branch: S.String,
-    settled_workflows: S.Number,
-    failing_workflows: S.Number,
-    failing_workflow_names: CurrentBranchHealthFailingWorkflowNamesList,
-  }),
-).annotate({
-  identifier: "CurrentBranchHealth",
-}) as any as S.Schema<CurrentBranchHealth>;
-
-export interface EngineeringAnalyticsFlakyTestsRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Window start: relative ('-7d', '-30d') or ISO8601. Defaults to -7d; the window may span at most 30 days. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** Maximum number of tests to return (1-200). Defaults to 50. */
-  limit?: number;
-  /** A test with no recorded recovery qualifies once it failed on at least this many distinct pull requests in the window. Minimum 1. Defaults to 3. */
-  min_failed_prs?: number;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      min_failed_prs: S.optional(S.Number.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/flaky_tests/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsFlakyTestsRequest",
-}) as any as S.Schema<EngineeringAnalyticsFlakyTestsRequest>;
-
-/** * `confirmed_flake` - CONFIRMED_FLAKE * `suspected_regression` - SUSPECTED_REGRESSION * `quarantined` - QUARANTINED */
-export type FlakyTestItemClassificationEnum =
-  | "confirmed_flake"
-  | "suspected_regression"
-  | "quarantined";
-export const FlakyTestItemClassificationEnum = /*@__PURE__*/ S.String;
-
-export interface FlakyTestItem {
-  /** Reconstructed pytest nodeid (the CI span name), e.g. 'posthog/api/test/test_event/TestEvents::test_x'. A stable grouping key, not a runnable selector — use `selector` to run or quarantine the test. */
-  nodeid: string;
-  /** Runnable pytest selector, e.g. 'posthog/api/test/test_event.py::TestEvents::test_x'. Exact when the CI reporter emitted it; otherwise reconstructed from the nodeid, where the file/class boundary is a best-effort guess. */
-  selector: string;
-  /** confirmed_flake: one commit both failed and passed the test (a re-run attempt went green, or an in-job retry recovered it), so it is provably nondeterministic. quarantined: it fails while masked as xfail. suspected_regression: only failures were recorded, which is absence of proof, not proof that it is a real break. * `confirmed_flake` - CONFIRMED_FLAKE * `suspected_regression` - SUSPECTED_REGRESSION * `quarantined` - QUARANTINED */
-  classification: FlakyTestItemClassificationEnum;
-  /** Runs where one commit both failed and passed the test: a 'Re-run failed jobs' attempt went green on the same commit, or an in-job pytest retry (tests hand-marked @pytest.mark.flaky(reruns=N)) recovered it. A pass in a different run is a different commit and never counts. */
-  same_commit_recovery_run_count: number;
-  /** Distinct CI runs whose recorded outcome was failed or error. A run counts once however many matrix legs it failed in. */
-  failed_run_count: number;
-  /** Distinct pull requests among the failed runs. Failures on master or unattributed branches carry no PR number and are excluded here (still in failed_run_count). */
-  failed_pr_count: number;
-  /** Failed runs on the default branch (master/main approximation): the 'matters right now' signal that a test is breaking the trunk, not just PR branches. */
-  master_failed_run_count: number;
-  /** Runs where the test failed while quarantined (xfail): already masked in CI, still failing. */
-  quarantined_failed_run_count: number;
-  /** Most recent failure, recovery, or xfail run for this test in the window. */
-  last_signal_at: string;
-}
-export const FlakyTestItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeid: S.String,
-    selector: S.String,
-    classification: FlakyTestItemClassificationEnum,
-    same_commit_recovery_run_count: S.Number,
-    failed_run_count: S.Number,
-    failed_pr_count: S.Number,
-    master_failed_run_count: S.Number,
-    quarantined_failed_run_count: S.Number,
-    last_signal_at: S.String,
-  }),
-).annotate({ identifier: "FlakyTestItem" }) as any as S.Schema<FlakyTestItem>;
-
-/** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. */
-export type FlakyTestListItemsList = Array<FlakyTestItem>;
-export const FlakyTestListItemsList = /*@__PURE__*/ S.Array(
-  FlakyTestItem,
-) as any as S.Schema<FlakyTestListItemsList>;
-
-export interface FlakyTestList {
-  /** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. */
-  items: FlakyTestListItemsList;
-  /** True when more tests qualified than the cap; `items` is the highest-ranked `limit` rows. */
-  truncated: boolean;
-  /** Maximum number of tests returned in `items`. */
-  limit: number;
-}
-export const FlakyTestList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: FlakyTestListItemsList,
-    truncated: S.Boolean,
-    limit: S.Number,
-  }),
-).annotate({ identifier: "FlakyTestList" }) as any as S.Schema<FlakyTestList>;
-
-export interface EngineeringAnalyticsJobAggregatesRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
-  branch?: string;
-  /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-  /** Workflow name to aggregate jobs for. */
-  workflow_name: string;
-}
-export const EngineeringAnalyticsJobAggregatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-      workflow_name: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/job_aggregates/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsJobAggregatesRequest",
-}) as any as S.Schema<EngineeringAnalyticsJobAggregatesRequest>;
-
-export interface WorkflowJobAggregate {
-  /** De-sharded job name: the matrix '(G/N)' suffix is stripped and unexpanded '${{ matrix.* }}' templates are collapsed, so shards of one matrix aggregate together. */
-  job_name: string;
-  /** Job instances observed in the window (all shards, all attempts). */
-  job_count: number;
-  /** Distinct raw job names inside the group - the observed matrix width. */
-  shard_count: number;
-  /** Distinct workflow runs the job appeared in. */
-  runs_in: number;
-  /** runs_in divided by the workflow's total runs in the window; below 1.0 means the job is conditional and skips some runs. Null when the workflow had no runs. */
-  run_share: number | null;
-  /** Median queue wait (created to started) in seconds - where runner-capacity problems hide. Null when nothing started. */
-  queue_p50_seconds: number | null;
-  /** Median duration of successful job instances, in seconds — cancelled and failed instances end early and would bias the percentile. Null if none succeeded. */
-  p50_seconds: number | null;
-  /** 95th-percentile duration of successful job instances, in seconds — cancelled and failed instances end early and would bias the percentile. Null if none succeeded. */
-  p95_seconds: number | null;
-  /** Decisive failures ('failure', 'timed_out') over completed instances (0-1). Null if none completed. */
-  failure_rate: number | null;
-  /** Job instances that ran on a 2nd+ run attempt - retry pressure. */
-  retry_job_count: number;
-  /** Billable (self-hosted) minutes across the group's instances; null when every instance ran on an unknown tier. */
-  billable_minutes: number | null;
-  /** Estimated cost in USD via the runner-tier rate ladder; null when every instance ran on an unknown tier. */
-  estimated_cost_usd: number | null;
-}
-export const WorkflowJobAggregate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_name: S.String,
-    job_count: S.Number,
-    shard_count: S.Number,
-    runs_in: S.Number,
-    run_share: S.NullOr(S.Number),
-    queue_p50_seconds: S.NullOr(S.Number),
-    p50_seconds: S.NullOr(S.Number),
-    p95_seconds: S.NullOr(S.Number),
-    failure_rate: S.NullOr(S.Number),
-    retry_job_count: S.Number,
-    billable_minutes: S.NullOr(S.Number),
-    estimated_cost_usd: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "WorkflowJobAggregate",
-}) as any as S.Schema<WorkflowJobAggregate>;
-
-export type EngineeringAnalyticsJobAggregatesResponseBodyList =
-  Array<WorkflowJobAggregate>;
-export const EngineeringAnalyticsJobAggregatesResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    WorkflowJobAggregate,
-  ) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponseBodyList>;
-
-export type EngineeringAnalyticsJobAggregatesResponse =
-  EngineeringAnalyticsJobAggregatesResponseBodyList;
-export const EngineeringAnalyticsJobAggregatesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    EngineeringAnalyticsJobAggregatesResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "EngineeringAnalyticsJobAggregatesResponse",
-  }) as any as S.Schema<EngineeringAnalyticsJobAggregatesResponse>;
-
-export interface EngineeringAnalyticsMasterFailuresRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
-  branch?: string;
-  /** Window start: relative ('-24h', '-7d') or ISO8601. Defaults to -24h. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsMasterFailuresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/master_failures/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsMasterFailuresRequest",
-  }) as any as S.Schema<EngineeringAnalyticsMasterFailuresRequest>;
-
-export interface MasterFailureGroup {
-  /** Repository the failures occurred in. */
-  repo: RepoRef;
-  /** GitHub Actions workflow name the failing runs belong to. */
-  workflow_name: string;
-  /** De-sharded failing job name (matrix '(G/N)' suffix stripped) — the group's failure signature together with the workflow. '' when the job-level source isn't synced and the group degrades to workflow level. */
-  failed_job: string;
-  /** Distinct failing default-branch runs in this group within the window. */
-  run_count: number;
-  /** When the oldest failing run in the group started. */
-  first_seen: string;
-  /** When the newest failing run in the group started. */
-  last_seen: string;
-  /** Run id of the newest failing run — the drill-down anchor. */
-  latest_run_id: number;
-}
-export const MasterFailureGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo: RepoRef,
-    workflow_name: S.String,
-    failed_job: S.String,
-    run_count: S.Number,
-    first_seen: S.String,
-    last_seen: S.String,
-    latest_run_id: S.Number,
-  }),
-).annotate({
-  identifier: "MasterFailureGroup",
-}) as any as S.Schema<MasterFailureGroup>;
-
-export type EngineeringAnalyticsMasterFailuresResponseBodyList =
-  Array<MasterFailureGroup>;
-export const EngineeringAnalyticsMasterFailuresResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    MasterFailureGroup,
-  ) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponseBodyList>;
-
-export type EngineeringAnalyticsMasterFailuresResponse =
-  EngineeringAnalyticsMasterFailuresResponseBodyList;
-export const EngineeringAnalyticsMasterFailuresResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    EngineeringAnalyticsMasterFailuresResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsMasterFailuresResponse",
-  }) as any as S.Schema<EngineeringAnalyticsMasterFailuresResponse>;
-
 export interface EngineeringAnalyticsPrCostRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -823,6 +93,31 @@ export const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EngineeringAnalyticsPrCostRequest",
 }) as any as S.Schema<EngineeringAnalyticsPrCostRequest>;
+
+export interface WorkflowCost {
+  /** GitHub Actions workflow name this cost is for. */
+  workflow_name: string;
+  /** Billable (self-hosted) minutes for this workflow within the scope. */
+  billable_minutes: number;
+  /** Estimated dollar cost for this workflow, or null when nothing was costable. */
+  estimated_cost_usd: number | null;
+  /** Costed jobs for this workflow (billable Linux runner, finished). */
+  costed_jobs: number;
+  /** Billable Linux jobs still queued/running for this workflow. */
+  unsettled_jobs: number;
+  /** Provider-hosted/non-Linux jobs for this workflow, outside the estimate. */
+  excluded_jobs: number;
+}
+export const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflow_name: S.String,
+    billable_minutes: S.Number,
+    estimated_cost_usd: S.NullOr(S.Number),
+    costed_jobs: S.Number,
+    unsettled_jobs: S.Number,
+    excluded_jobs: S.Number,
+  }),
+).annotate({ identifier: "WorkflowCost" }) as any as S.Schema<WorkflowCost>;
 
 /** Same spend broken down per workflow. */
 export type PRCostSummaryByWorkflowList = Array<WorkflowCost>;
@@ -855,35 +150,14 @@ export const PRCostSummaryByRunList = /*@__PURE__*/ S.Array(
   RunCost,
 ) as any as S.Schema<PRCostSummaryByRunList>;
 
-export interface PRLLMSpend {
-  /** Total agent LLM token cost in USD attributed to this PR (sum of $ai_total_cost_usd over the matched $ai_generation events). */
-  cost_usd: number;
-  /** Total input (prompt) tokens across the attributed generations. */
-  input_tokens: number;
-  /** Total output (completion) tokens across the attributed generations. */
-  output_tokens: number;
-  /** Number of $ai_generation events attributed to this PR by git branch ($ai_git_branch). */
-  generations: number;
-}
-export const PRLLMSpend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cost_usd: S.Number,
-    input_tokens: S.Number,
-    output_tokens: S.Number,
-    generations: S.Number,
-  }),
-).annotate({ identifier: "PRLLMSpend" }) as any as S.Schema<PRLLMSpend>;
-
 export interface PRCostSummary {
   /** Same spend broken down per workflow. */
   by_workflow: PRCostSummaryByWorkflowList;
   /** Same spend broken down per workflow run, keyed by (run_id, run_attempt). */
   by_run: PRCostSummaryByRunList;
-  /** Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched — independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null. */
-  llm_spend?: PRLLMSpend | null;
   /** False when the job-level source (github_workflow_jobs) isn't synced — every figure is then zero/null and the cost cards should be hidden. */
   jobs_available: boolean;
-  /** Billable CI minutes: each costed (self-hosted) job's elapsed time, summed. Parallel jobs add up, so this is compute time spent, not wall-clock run duration. */
+  /** Wall-clock minutes consumed on billable (self-hosted) runners, summed across costed jobs. */
   billable_minutes: number;
   /** Estimated dollar cost (sum of per-job estimates: elapsed x tier multiplier x reference rate). Null when no job was costable. */
   estimated_cost_usd: number | null;
@@ -898,7 +172,6 @@ export const PRCostSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     by_workflow: PRCostSummaryByWorkflowList,
     by_run: PRCostSummaryByRunList,
-    llm_spend: S.optional(S.NullOr(PRLLMSpend)),
     jobs_available: S.Boolean,
     billable_minutes: S.Number,
     estimated_cost_usd: S.NullOr(S.Number),
@@ -954,6 +227,22 @@ export const Author = /*@__PURE__*/ S.suspend(() =>
     is_bot: S.Boolean,
   }),
 ).annotate({ identifier: "Author" }) as any as S.Schema<Author>;
+
+export interface RepoRef {
+  /** Code host provider, e.g. 'github'. */
+  provider: string;
+  /** Repository owner or organization. */
+  owner: string;
+  /** Repository name. */
+  name: string;
+}
+export const RepoRef = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String,
+    owner: S.String,
+    name: S.String,
+  }),
+).annotate({ identifier: "RepoRef" }) as any as S.Schema<RepoRef>;
 
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
 export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
@@ -1145,8 +434,6 @@ export interface EngineeringAnalyticsPullRequestsRequest {
   author?: string;
   /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
   date_from?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
@@ -1156,7 +443,6 @@ export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       author: S.optional(S.String.pipe(T.Query())),
       date_from: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
       source_id: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1169,12 +455,6 @@ export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend(
   identifier: "EngineeringAnalyticsPullRequestsRequest",
 }) as any as S.Schema<EngineeringAnalyticsPullRequestsRequest>;
 
-/** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
-export type CIStatusRollupFailingWorkflowsList = Array<string>;
-export const CIStatusRollupFailingWorkflowsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CIStatusRollupFailingWorkflowsList>;
-
 export interface CIStatusRollup {
   /** Distinct workflows run on the PR's head SHA. */
   runs: number;
@@ -1184,8 +464,6 @@ export interface CIStatusRollup {
   failing: number;
   /** Latest runs not yet completed (queued or in progress). */
   pending: number;
-  /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
-  failing_workflows?: CIStatusRollupFailingWorkflowsList;
 }
 export const CIStatusRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1193,37 +471,8 @@ export const CIStatusRollup = /*@__PURE__*/ S.suspend(() =>
     passing: S.Number,
     failing: S.Number,
     pending: S.Number,
-    failing_workflows: S.optional(CIStatusRollupFailingWorkflowsList),
   }),
 ).annotate({ identifier: "CIStatusRollup" }) as any as S.Schema<CIStatusRollup>;
-
-export interface PushCISample {
-  /** Head commit SHA of this push (CI round). */
-  head_sha: string;
-  /** Earliest workflow-run start on this push. */
-  started_at: string;
-  /** Wall-clock CI seconds for this push: earliest run start to latest completed run end. Null while nothing has completed. */
-  wall_seconds: number | null;
-  /** True when any latest-per-workflow run on this push concluded 'failure' or 'timed_out'. */
-  failed: boolean;
-  /** True when any latest-per-workflow run on this push hasn't completed yet. */
-  pending: boolean;
-}
-export const PushCISample = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    head_sha: S.String,
-    started_at: S.String,
-    wall_seconds: S.NullOr(S.Number),
-    failed: S.Boolean,
-    pending: S.Boolean,
-  }),
-).annotate({ identifier: "PushCISample" }) as any as S.Schema<PushCISample>;
-
-/** This PR's CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count. */
-export type PullRequestListItemPushHistoryList = Array<PushCISample>;
-export const PullRequestListItemPushHistoryList = /*@__PURE__*/ S.Array(
-  PushCISample,
-) as any as S.Schema<PullRequestListItemPushHistoryList>;
 
 /** GitHub label names on the pull request. */
 export type PullRequestListItemLabelsList = Array<string>;
@@ -1238,8 +487,6 @@ export interface PullRequestListItem {
   repo: RepoRef;
   /** CI status from the latest workflow runs on the head SHA. */
   ci: CIStatusRollup;
-  /** This PR's CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count. */
-  push_history: PullRequestListItemPushHistoryList;
   /** Pull request number within the repository. */
   number: number;
   /** Pull request title. */
@@ -1270,7 +517,6 @@ export const PullRequestListItem = /*@__PURE__*/ S.suspend(() =>
     author: Author,
     repo: RepoRef,
     ci: CIStatusRollup,
-    push_history: PullRequestListItemPushHistoryList,
     number: S.Number,
     title: S.String,
     state: EngineeringAnalyticsPRStateEnum,
@@ -1437,479 +683,6 @@ export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuarantineFile" }) as any as S.Schema<QuarantineFile>;
 
-/** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-export type OperationEnum = "quarantine" | "extend" | "remove";
-export const OperationEnum = /*@__PURE__*/ S.String;
-
-export interface EngineeringAnalyticsQuarantineRequestRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** What to do: 'quarantine' (add or replace an entry and file a tracking issue), 'extend' (re-stamp an existing entry's expiry, reusing its issue), or 'remove' (delete the entry). All three open a pull request. * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-  operation: OperationEnum | (string & {});
-  /** Test selector to act on: an exact test id, a file, a directory, a class prefix, or 'product:<dashed-name>'. */
-  selector: string;
-  /** Optional 'owner/name' repository override; defaults to the team's most active repo. */
-  repo?: string | null;
-  /** Why the test is quarantined. Required for quarantine and extend; ignored by remove. */
-  reason?: string;
-  /** GitHub team or user handle responsible for the fix, e.g. '@PostHog/team-x'. Required for quarantine and extend. */
-  owner?: string;
-  /** Existing tracking issue URL, carried forward on extend and remove. Ignored by quarantine, which files a fresh issue. */
-  issue?: string;
-  /** ISO date the quarantine expires (at most 30 days out). Defaults to 14 days from today. Ignored by remove. */
-  expires?: string | null;
-  /** 'run' (the test still executes but cannot fail the suite) or 'skip' (not run at all). Defaults to 'run'. * `run` - RUN * `skip` - SKIP */
-  mode?: QuarantineModeEnum | (string & {});
-}
-export const EngineeringAnalyticsQuarantineRequestRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      operation: OperationEnum,
-      selector: S.String,
-      repo: S.optional(S.NullOr(S.String)),
-      reason: S.optional(S.String),
-      owner: S.optional(S.String),
-      issue: S.optional(S.String),
-      expires: S.optional(S.NullOr(S.String)),
-      mode: S.optional(QuarantineModeEnum),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/engineering_analytics/quarantine/request/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsQuarantineRequestRequest",
-  }) as any as S.Schema<EngineeringAnalyticsQuarantineRequestRequest>;
-
-export interface QuarantineRequestResult {
-  /** URL of the opened pull request that edits the quarantine file. */
-  pr_url: string;
-  /** URL of the tracking issue filed for a new quarantine; empty for extend and remove. */
-  issue_url: string;
-  /** Branch the pull request was opened from. */
-  branch: string;
-}
-export const QuarantineRequestResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pr_url: S.String,
-    issue_url: S.String,
-    branch: S.String,
-  }),
-).annotate({
-  identifier: "QuarantineRequestResult",
-}) as any as S.Schema<QuarantineRequestResult>;
-
-export interface EngineeringAnalyticsRepoOverviewRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** Set false to skip the chart series (cost_series, time_to_green_series, success_rate_series, open_to_merge_series return empty) and their query cost — for headline-only consumers like the weekly digest. Defaults to true. */
-  include_series?: boolean;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsRepoOverviewRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      include_series: S.optional(S.Boolean.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/repo_overview/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsRepoOverviewRequest",
-}) as any as S.Schema<EngineeringAnalyticsRepoOverviewRequest>;
-
-export interface CostPerMergeBucket {
-  /** Bucket start, aligned to cost_series_granularity (top of hour, midnight, or Monday). */
-  bucket_start: string;
-  /** Estimated Depot CI cost (USD) of all runs started in this bucket. Null when nothing was costable (no billable self-hosted Linux jobs) or the job source isn't synced. */
-  estimated_cost_usd: number | null;
-  /** PRs merged in this bucket (all authors, bots included). */
-  merges: number;
-  /** Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost. */
-  cost_per_merge_usd: number | null;
-}
-export const CostPerMergeBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    estimated_cost_usd: S.NullOr(S.Number),
-    merges: S.Number,
-    cost_per_merge_usd: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "CostPerMergeBucket",
-}) as any as S.Schema<CostPerMergeBucket>;
-
-/** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
-export type RepoOverviewCostSeriesList = Array<CostPerMergeBucket>;
-export const RepoOverviewCostSeriesList = /*@__PURE__*/ S.Array(
-  CostPerMergeBucket,
-) as any as S.Schema<RepoOverviewCostSeriesList>;
-
-export interface TimeToGreenBucket {
-  /** Bucket start, aligned to time_to_green_series_granularity (top of hour, midnight, or Monday). */
-  bucket_start: string;
-  /** Median wall-clock seconds of successful PR-attributed CI runs started in this bucket. Null when the bucket had no successful PR run (a gap, not instant CI). */
-  p50_seconds: number | null;
-}
-export const TimeToGreenBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    p50_seconds: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "TimeToGreenBucket",
-}) as any as S.Schema<TimeToGreenBucket>;
-
-/** Median time-to-green (p50 successful PR-attributed CI run duration) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewTimeToGreenSeriesList = Array<TimeToGreenBucket>;
-export const RepoOverviewTimeToGreenSeriesList = /*@__PURE__*/ S.Array(
-  TimeToGreenBucket,
-) as any as S.Schema<RepoOverviewTimeToGreenSeriesList>;
-
-export interface PassRateBucket {
-  /** Bucket start, aligned to success_rate_series_granularity (top of hour, midnight, or Monday). */
-  bucket_start: string;
-  /** Fraction (0-1) of completed runs started in this bucket that succeeded. Null when the bucket had no completed run (a gap, not a 0% pass rate). */
-  success_rate: number | null;
-}
-export const PassRateBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    success_rate: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "PassRateBucket" }) as any as S.Schema<PassRateBucket>;
-
-/** CI pass rate (completed runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewSuccessRateSeriesList = Array<PassRateBucket>;
-export const RepoOverviewSuccessRateSeriesList = /*@__PURE__*/ S.Array(
-  PassRateBucket,
-) as any as S.Schema<RepoOverviewSuccessRateSeriesList>;
-
-export interface OpenToMergeBucket {
-  /** Bucket start, aligned to open_to_merge_series_granularity (top of hour, midnight, or Monday). */
-  bucket_start: string;
-  /** Median merged_at - created_at seconds over PRs merged in this bucket, bots and drafts excluded. Null when nothing merged in the bucket (a gap, not instant merges). */
-  p50_seconds: number | null;
-}
-export const OpenToMergeBucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    p50_seconds: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "OpenToMergeBucket",
-}) as any as S.Schema<OpenToMergeBucket>;
-
-/** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewOpenToMergeSeriesList = Array<OpenToMergeBucket>;
-export const RepoOverviewOpenToMergeSeriesList = /*@__PURE__*/ S.Array(
-  OpenToMergeBucket,
-) as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
-
-export interface RepoOverview {
-  /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
-  cost_series: RepoOverviewCostSeriesList;
-  /** Median time-to-green (p50 successful PR-attributed CI run duration) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-  time_to_green_series: RepoOverviewTimeToGreenSeriesList;
-  /** CI pass rate (completed runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-  success_rate_series: RepoOverviewSuccessRateSeriesList;
-  /** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-  open_to_merge_series: RepoOverviewOpenToMergeSeriesList;
-  /** Workflow runs started in the window, all branches and workflows. */
-  run_count: number;
-  /** Same count over the equal-length window immediately before date_from — the delta baseline. */
-  run_count_prev: number;
-  /** Fraction of completed runs that succeeded (0-1) in the window. Null if none completed. */
-  success_rate: number | null;
-  /** Success rate over the previous window. Null if none completed. */
-  success_rate_prev: number | null;
-  /** Runs in the window that were a 2nd+ attempt (attempt > 1). */
-  rerun_cycles: number;
-  /** Re-run cycles over the previous window. */
-  rerun_cycles_prev: number;
-  /** PRs merged in the window, all authors and bots included — the merge population that triggered the CI spend, so it divides cleanly into billable_minutes and estimated_cost_usd. */
-  merged_pr_count: number;
-  /** Merged-PR count over the previous window. */
-  merged_pr_count_prev: number;
-  /** Median merged_at - created_at over PRs merged in the window, bots and drafts excluded. Coarse by design: draft and ready-for-review time are fused. Null when nothing merged. */
-  median_open_to_merge_seconds: number | null;
-  /** The same median over the previous window. Null when nothing merged. */
-  median_open_to_merge_seconds_prev: number | null;
-  /** Billable (self-hosted) job minutes in the window; null when the job-level source isn't synced. */
-  billable_minutes: number | null;
-  /** Billable minutes over the previous window; null when the job-level source isn't synced. */
-  billable_minutes_prev: number | null;
-  /** Estimated CI cost in USD (billable minutes x runner-tier rate); null when the job-level source isn't synced. */
-  estimated_cost_usd: number | null;
-  /** Estimated cost over the previous window; null when the job-level source isn't synced. */
-  estimated_cost_usd_prev: number | null;
-  /** Whether the job-level source is synced (cost and queue figures exist). */
-  jobs_available: boolean;
-  /** 'master' or 'main', picked by observed run volume in the window. */
-  default_branch: string;
-  /** Bucket width of the cost_series trend, chosen to fit the window: 'hour', 'day', or 'week'. */
-  cost_series_granularity: string;
-  /** Bucket width of the time_to_green_series trend: 'hour', 'day', or 'week'. */
-  time_to_green_series_granularity: string;
-  /** Bucket width of the success_rate_series trend: 'hour', 'day', or 'week'. */
-  success_rate_series_granularity: string;
-  /** Bucket width of the open_to_merge_series trend: 'hour', 'day', or 'week'. */
-  open_to_merge_series_granularity: string;
-}
-export const RepoOverview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cost_series: RepoOverviewCostSeriesList,
-    time_to_green_series: RepoOverviewTimeToGreenSeriesList,
-    success_rate_series: RepoOverviewSuccessRateSeriesList,
-    open_to_merge_series: RepoOverviewOpenToMergeSeriesList,
-    run_count: S.Number,
-    run_count_prev: S.Number,
-    success_rate: S.NullOr(S.Number),
-    success_rate_prev: S.NullOr(S.Number),
-    rerun_cycles: S.Number,
-    rerun_cycles_prev: S.Number,
-    merged_pr_count: S.Number,
-    merged_pr_count_prev: S.Number,
-    median_open_to_merge_seconds: S.NullOr(S.Number),
-    median_open_to_merge_seconds_prev: S.NullOr(S.Number),
-    billable_minutes: S.NullOr(S.Number),
-    billable_minutes_prev: S.NullOr(S.Number),
-    estimated_cost_usd: S.NullOr(S.Number),
-    estimated_cost_usd_prev: S.NullOr(S.Number),
-    jobs_available: S.Boolean,
-    default_branch: S.String,
-    cost_series_granularity: S.String,
-    time_to_green_series_granularity: S.String,
-    success_rate_series_granularity: S.String,
-    open_to_merge_series_granularity: S.String,
-  }),
-).annotate({ identifier: "RepoOverview" }) as any as S.Schema<RepoOverview>;
-
-export interface EngineeringAnalyticsRepoRunActivityRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Optional exact git branch (head_branch) to chart, e.g. 'main'. Omit or leave blank to use the repo's detected default branch. */
-  branch?: string;
-  /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsRepoRunActivityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/repo_run_activity/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsRepoRunActivityRequest",
-  }) as any as S.Schema<EngineeringAnalyticsRepoRunActivityRequest>;
-
-export interface WorkflowRunActivityPoint {
-  /** GitHub Actions run id. */
-  run_id: number;
-  /** Run conclusion ('success', 'failure', 'timed_out', 'cancelled', 'skipped', ...), or null while still in progress. */
-  conclusion: string | null;
-  /** When the run started. Never null on this endpoint: runs without a parseable start timestamp are excluded from the window (they can't be plotted on the chart's time axis). */
-  run_started_at: string;
-  /** Wall-clock duration in seconds; null until the run completes. */
-  duration_seconds: number | null;
-  /** Git branch the run was triggered on, or '' when unknown. */
-  head_branch: string;
-  /** Attributed pull request number, or 0 when unattributed. */
-  pr_number: number;
-  /** Head commit SHA of the run/commit, or '' when unknown. */
-  head_sha: string;
-}
-export const WorkflowRunActivityPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    run_id: S.Number,
-    conclusion: S.NullOr(S.String),
-    run_started_at: S.String,
-    duration_seconds: S.NullOr(S.Number),
-    head_branch: S.String,
-    pr_number: S.Number,
-    head_sha: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowRunActivityPoint",
-}) as any as S.Schema<WorkflowRunActivityPoint>;
-
-/** Per-run chart points, newest first, capped at `limit`. */
-export type WorkflowRunActivityPointsList = Array<WorkflowRunActivityPoint>;
-export const WorkflowRunActivityPointsList = /*@__PURE__*/ S.Array(
-  WorkflowRunActivityPoint,
-) as any as S.Schema<WorkflowRunActivityPointsList>;
-
-export interface WorkflowRunActivity {
-  /** Per-run chart points, newest first, capped at `limit`. */
-  points: WorkflowRunActivityPointsList;
-  /** True when more runs matched than the cap; `points` is the newest `limit` runs, so the chart covers only the most recent activity, not the full window. */
-  truncated: boolean;
-  /** Maximum number of run points returned in `points`. */
-  limit: number;
-}
-export const WorkflowRunActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    points: WorkflowRunActivityPointsList,
-    truncated: S.Boolean,
-    limit: S.Number,
-  }),
-).annotate({
-  identifier: "WorkflowRunActivity",
-}) as any as S.Schema<WorkflowRunActivity>;
-
-export interface EngineeringAnalyticsResolveBranchRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Git branch (the PR's head ref) to resolve. Open PRs are returned first, then most recently updated. */
-  branch: string;
-  /** Optional 'owner/name' repository to narrow matching to a single repo. */
-  repo?: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-  /** Optional ISO8601 timestamp, e.g. the trace's capture time. When a branch name has been reused across PRs over time, the PR whose lifetime window contains this moment is ranked first so the result matches the PR that was active when the trace was captured. A preference only, not a filter; omit to rank purely by open state then recency. */
-  timestamp?: string;
-}
-export const EngineeringAnalyticsResolveBranchRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch: S.String.pipe(T.Query()),
-      repo: S.optional(S.String.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-      timestamp: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/resolve_branch/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsResolveBranchRequest",
-}) as any as S.Schema<EngineeringAnalyticsResolveBranchRequest>;
-
-export interface BranchPRMatch {
-  /** Repository the pull request belongs to, as 'owner/name'. */
-  repo: string;
-  /** Pull request number within the repository — pair with `repo` to link to it. */
-  number: number;
-  /** Pull request title, or null when the snapshot carries no title. */
-  title: string | null;
-  /** Derived PR state ('open', 'closed', 'merged'), or null when the snapshot carries no state. */
-  state: string | null;
-}
-export const BranchPRMatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repo: S.String,
-    number: S.Number,
-    title: S.NullOr(S.String),
-    state: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BranchPRMatch" }) as any as S.Schema<BranchPRMatch>;
-
-export type EngineeringAnalyticsResolveBranchResponseBodyList =
-  Array<BranchPRMatch>;
-export const EngineeringAnalyticsResolveBranchResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    BranchPRMatch,
-  ) as any as S.Schema<EngineeringAnalyticsResolveBranchResponseBodyList>;
-
-export type EngineeringAnalyticsResolveBranchResponse =
-  EngineeringAnalyticsResolveBranchResponseBodyList;
-export const EngineeringAnalyticsResolveBranchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    EngineeringAnalyticsResolveBranchResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "EngineeringAnalyticsResolveBranchResponse",
-  }) as any as S.Schema<EngineeringAnalyticsResolveBranchResponse>;
-
-export interface EngineeringAnalyticsRunFailureLogsRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Workflow run id whose failure logs to fetch. */
-  run_id: number;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsRunFailureLogsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      repo: S.optional(S.String.pipe(T.Query())),
-      run_id: S.Number.pipe(T.Query()),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/run_failure_logs/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsRunFailureLogsRequest",
-  }) as any as S.Schema<EngineeringAnalyticsRunFailureLogsRequest>;
-
-/** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
-export type RunFailureLogsJobsList = Array<CIJobFailureLog>;
-export const RunFailureLogsJobsList = /*@__PURE__*/ S.Array(
-  CIJobFailureLog,
-) as any as S.Schema<RunFailureLogsJobsList>;
-
-export interface RunFailureLogs {
-  /** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
-  jobs: RunFailureLogsJobsList;
-  /** Workflow run id the failure logs are for. */
-  run_id: number;
-  /** False when no failure logs were found — the run didn't fail, or its logs aged out of the short Logs retention. */
-  logs_available: boolean;
-  /** True when the overall line cap across all jobs was hit. */
-  truncated: boolean;
-}
-export const RunFailureLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobs: RunFailureLogsJobsList,
-    run_id: S.Number,
-    logs_available: S.Boolean,
-    truncated: S.Boolean,
-  }),
-).annotate({ identifier: "RunFailureLogs" }) as any as S.Schema<RunFailureLogs>;
-
 export interface EngineeringAnalyticsSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1929,21 +702,18 @@ export const EngineeringAnalyticsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EngineeringAnalyticsSourcesRequest>;
 
 export interface GitHubSource {
-  /** Source id — pass back as `source_id` (with `repo`) to read this repository. */
+  /** Source id — pass as `source_id` to the other endpoints to read this source. */
   id: string;
-  /** Repository as 'owner/name' — pass back as `repo` to scope to it. One entry per repository a source syncs; '' if unknown. */
+  /** Connected repository as 'owner/name', or '' if unknown. */
   repo: string;
   /** User-chosen warehouse table-name prefix for this source, or '' when none. */
   prefix: string;
-  /** Whether this repo has both pull_requests and workflow_runs synced (readable now). Default the picker to the first synced entry so its label matches the resolved repo. */
-  synced?: boolean;
 }
 export const GitHubSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     repo: S.String,
     prefix: S.String,
-    synced: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GitHubSource" }) as any as S.Schema<GitHubSource>;
 
@@ -1961,280 +731,15 @@ export const EngineeringAnalyticsSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EngineeringAnalyticsSourcesResponse",
 }) as any as S.Schema<EngineeringAnalyticsSourcesResponse>;
 
-export interface EngineeringAnalyticsTeamCiActivityRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Window start: relative ('-14d', '-7d') or ISO8601. Defaults to -14d; the window may span at most 30 days. An equal-length prior window feeds the *_prior twins; near the 30-day ceiling that prior window can reach past Traces retention, deflating *_prior counts. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** Owning team slug to scope to (as returned by team_ci_health), e.g. 'team-replay', or the literal 'unowned' for tests with no ownership stamp. */
-  owner_team: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-  /** Maximum number of per-test signal rows to return (1-100). Defaults to 25. */
-  test_limit?: number;
-}
-export const EngineeringAnalyticsTeamCiActivityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      owner_team: S.String.pipe(T.Query()),
-      source_id: S.optional(S.String.pipe(T.Query())),
-      test_limit: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/team_ci_activity/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsTeamCiActivityRequest",
-  }) as any as S.Schema<EngineeringAnalyticsTeamCiActivityRequest>;
-
-export interface TeamTestSignal {
-  /** Reconstructed pytest nodeid (the CI span name), a stable grouping key. */
-  nodeid: string;
-  /** Runnable pytest selector; exact when the CI reporter emitted it. */
-  selector: string;
-  /** Runs in the current window where the test failed, errored, or a retry recovered it (xfail excluded). */
-  signal_count: number;
-  /** Same count over the equal-length window before date_from. */
-  signal_count_prior: number;
-  /** Most recent failure, recovery, or xfail run for this test, either window. */
-  last_seen_at: string;
-}
-export const TeamTestSignal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeid: S.String,
-    selector: S.String,
-    signal_count: S.Number,
-    signal_count_prior: S.Number,
-    last_seen_at: S.String,
-  }),
-).annotate({ identifier: "TeamTestSignal" }) as any as S.Schema<TeamTestSignal>;
-
-/** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
-export type TeamCIActivityTestsList = Array<TeamTestSignal>;
-export const TeamCIActivityTestsList = /*@__PURE__*/ S.Array(
-  TeamTestSignal,
-) as any as S.Schema<TeamCIActivityTestsList>;
-
-export interface TeamCIActivity {
-  /** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
-  tests: TeamCIActivityTestsList;
-  /** The team slug this activity is scoped to, or 'unowned'. */
-  owner_team: string;
-  /** True when more owned tests had signal than the test cap. */
-  truncated_tests: boolean;
-}
-export const TeamCIActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tests: TeamCIActivityTestsList,
-    owner_team: S.String,
-    truncated_tests: S.Boolean,
-  }),
-).annotate({ identifier: "TeamCIActivity" }) as any as S.Schema<TeamCIActivity>;
-
-export interface EngineeringAnalyticsTeamCiHealthRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Window start: relative ('-14d', '-7d') or ISO8601. Defaults to -14d; the window may span at most 30 days. An equal-length prior window is scanned for the *_prior twins; near the 30-day ceiling that prior window can reach past Traces retention, deflating *_prior counts and overstating deltas. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** Maximum number of teams to return (1-200). Defaults to 100. */
-  limit?: number;
-  /** An unrecovered test counts toward regression_test_count once it failed on at least this many distinct pull requests in the window. Minimum 1. Defaults to 3. Does not affect flaky_test_count, which needs proof, not a threshold. */
-  min_failed_prs?: number;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsTeamCiHealthRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      min_failed_prs: S.optional(S.Number.pipe(T.Query())),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/team_ci_health/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "EngineeringAnalyticsTeamCiHealthRequest",
-}) as any as S.Schema<EngineeringAnalyticsTeamCiHealthRequest>;
-
-export interface TeamCIHealthItem {
-  /** Owning team slug (the CODEOWNERS handle minus '@PostHog/', e.g. 'team-replay'), or the literal 'unowned' for tests whose spans carry no ownership stamp. */
-  owner_team: string;
-  /** Owned tests one commit was seen both failing and passing in the window: the same proof, and the same word, that flaky_tests calls a confirmed_flake. Compare with flaky_test_count_prior for the delta. */
-  flaky_test_count: number;
-  /** Same count over the equal-length window immediately before date_from. */
-  flaky_test_count_prior: number;
-  /** Owned tests that failed with no recorded same-commit recovery and still hit the blast-radius bar (a master/main failure, or min_failed_prs distinct PRs). Not flakes: absence of proof, not proof. */
-  regression_test_count: number;
-  /** Same count over the prior window. */
-  regression_test_count_prior: number;
-  /** CI runs (not spans) where an owned test's recorded outcome was failed or error. An absolute count, not a rate: fast passing runs are not emitted. */
-  failed_run_count: number;
-  /** Same count over the prior window. */
-  failed_run_count_prior: number;
-  /** Runs where one commit both failed and passed an owned test: a re-run attempt went green, or an in-job retry recovered it. */
-  same_commit_recovery_run_count: number;
-  /** Same count over the prior window. */
-  same_commit_recovery_run_count_prior: number;
-  /** Runs where an owned test failed while quarantined (xfail): masked in CI, still failing. */
-  quarantined_failed_run_count: number;
-  /** Same count over the prior window. */
-  quarantined_failed_run_count_prior: number;
-  /** Most recent failure, recovery, or xfail run across the team's owned tests, either window. */
-  last_seen_at: string;
-}
-export const TeamCIHealthItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner_team: S.String,
-    flaky_test_count: S.Number,
-    flaky_test_count_prior: S.Number,
-    regression_test_count: S.Number,
-    regression_test_count_prior: S.Number,
-    failed_run_count: S.Number,
-    failed_run_count_prior: S.Number,
-    same_commit_recovery_run_count: S.Number,
-    same_commit_recovery_run_count_prior: S.Number,
-    quarantined_failed_run_count: S.Number,
-    quarantined_failed_run_count_prior: S.Number,
-    last_seen_at: S.String,
-  }),
-).annotate({
-  identifier: "TeamCIHealthItem",
-}) as any as S.Schema<TeamCIHealthItem>;
-
-/** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. */
-export type TeamCIHealthListItemsList = Array<TeamCIHealthItem>;
-export const TeamCIHealthListItemsList = /*@__PURE__*/ S.Array(
-  TeamCIHealthItem,
-) as any as S.Schema<TeamCIHealthListItemsList>;
-
-export interface TeamCIHealthList {
-  /** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. */
-  items: TeamCIHealthListItemsList;
-  /** True when more teams had signal than the cap. */
-  truncated: boolean;
-  /** Maximum number of teams returned in `items`. */
-  limit: number;
-}
-export const TeamCIHealthList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: TeamCIHealthListItemsList,
-    truncated: S.Boolean,
-    limit: S.Number,
-  }),
-).annotate({
-  identifier: "TeamCIHealthList",
-}) as any as S.Schema<TeamCIHealthList>;
-
-export interface EngineeringAnalyticsTeamMergeTrendRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Window start: relative ('-14d', '-7d') or ISO8601. Defaults to -14d; the window may span at most 30 days. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** Team slug to scope to (as returned by team_ci_health), matched against the GitHub org team slug of the source's team_members snapshot. The literal 'unowned' names an ownership gap, not an org team, and has no merge trend. */
-  owner_team: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-}
-export const EngineeringAnalyticsTeamMergeTrendRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      owner_team: S.String.pipe(T.Query()),
-      source_id: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/team_merge_trend/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsTeamMergeTrendRequest",
-  }) as any as S.Schema<EngineeringAnalyticsTeamMergeTrendRequest>;
-
-export interface TeamMergeTrendPoint {
-  /** Start of the day bucket (team timezone), keyed on merged_at. */
-  day: string;
-  /** Median open→merge seconds of the PRs this team's members merged that day; null on a day the team merged nothing. */
-  median_seconds: number | null;
-  /** Average open→merge seconds over the same merges; diverges above the median when a few long-running PRs drag the mean. Null on a day the team merged nothing. */
-  average_seconds: number | null;
-  /** Merged PRs behind that day's median and average. */
-  merged_count: number;
-}
-export const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.String,
-    median_seconds: S.NullOr(S.Number),
-    average_seconds: S.NullOr(S.Number),
-    merged_count: S.Number,
-  }),
-).annotate({
-  identifier: "TeamMergeTrendPoint",
-}) as any as S.Schema<TeamMergeTrendPoint>;
-
-/** Daily median and average open→merge over the PRs this team's members merged, ascending by day. Coarse timing (open→merge combines draft and review time); bots excluded. */
-export type TeamMergeTrendPointsList = Array<TeamMergeTrendPoint>;
-export const TeamMergeTrendPointsList = /*@__PURE__*/ S.Array(
-  TeamMergeTrendPoint,
-) as any as S.Schema<TeamMergeTrendPointsList>;
-
-export interface TeamMergeTrend {
-  /** Daily median and average open→merge over the PRs this team's members merged, ascending by day. Coarse timing (open→merge combines draft and review time); bots excluded. */
-  points: TeamMergeTrendPointsList;
-  /** The team slug this trend is scoped to. */
-  owner_team: string;
-  /** False when the GitHub source has no team_members snapshot synced: the trend then has no honest team attribution and `points` is empty. */
-  has_membership_data: boolean;
-}
-export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    points: TeamMergeTrendPointsList,
-    owner_team: S.String,
-    has_membership_data: S.Boolean,
-  }),
-).annotate({ identifier: "TeamMergeTrend" }) as any as S.Schema<TeamMergeTrend>;
-
-export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
-  | "all"
-  | "pull_request";
-export const EngineeringAnalyticsWorkflowHealthRequestRunScope =
-  /*@__PURE__*/ S.String;
-
 export interface EngineeringAnalyticsWorkflowHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
+  /** Optional exact git branch (head_branch) to scope workflow health to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
   branch?: string;
   /** Window start: relative ('-24h', '-7d') or ISO8601. Defaults to -24h. */
   date_from?: string;
   /** Window end: relative or ISO8601. Defaults to now. */
   date_to?: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
-  /** Run scope for workflow health: 'all' (default) includes every run; 'pull_request' includes runs attributed to pull requests, excluding default-branch (master/main) runs. Fork PRs carry no PR attribution (a GitHub limitation), so 'pull_request' covers same-repo PRs only. Any other value is a 400. */
-  run_scope?: EngineeringAnalyticsWorkflowHealthRequestRunScope | (string & {});
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
   source_id?: string;
 }
@@ -2245,10 +750,6 @@ export const EngineeringAnalyticsWorkflowHealthRequest =
       branch: S.optional(S.String.pipe(T.Query())),
       date_from: S.optional(S.String.pipe(T.Query())),
       date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.optional(S.String.pipe(T.Query())),
-      run_scope: S.optional(
-        EngineeringAnalyticsWorkflowHealthRequestRunScope.pipe(T.Query()),
-      ),
       source_id: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -2300,13 +801,11 @@ export interface WorkflowHealthItem {
   workflow_name: string;
   /** Total runs started in the window. */
   run_count: number;
-  successful_run_count: number;
-  conclusive_run_count: number;
   /** Fraction of completed runs that succeeded (0-1). Null if no completed runs. */
   success_rate: number | null;
-  /** Median duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window. */
+  /** Median duration of completed runs, in seconds. Null if none completed. */
   p50_seconds: number | null;
-  /** 95th-percentile duration in seconds over successful runs only — cancelled (superseded) and failed runs end early and would bias the percentile. Null if no run succeeded in the window. */
+  /** 95th-percentile duration of completed runs, in seconds. Null if none completed. */
   p95_seconds: number | null;
   /** When the most recent failing run (conclusion 'failure' or 'timed_out') started, or null. */
   last_failure_at: string | null;
@@ -2314,19 +813,12 @@ export interface WorkflowHealthItem {
   latest_run_failed: boolean | null;
   /** Raw conclusion of the most recent completed run ('success', 'cancelled', 'skipped', ...), so a real pass can be told from a non-failure non-success. Null when none completed. */
   latest_run_conclusion: string | null;
-  latest_run_id: number | null;
-  latest_run_attempt: number | null;
   /** Bucket width of the `buckets` series, chosen to fit the window: 'hour', 'day', or 'week'. */
   granularity: string;
   /** Billable (self-hosted) minutes over this workflow's jobs in the window. Null when the job-level source isn't synced. */
   billable_minutes?: number | null;
   /** Estimated cost in USD over this workflow's jobs in the window. Null when nothing was costable or the job source isn't synced. */
   estimated_cost_usd?: number | null;
-  /** Runs in the window that were a 2nd+ attempt - retry pressure, a flakiness proxy. */
-  rerun_cycles?: number;
-  /** Success rate over the equal-length window before date_from - the delta baseline. Null when that window had no completed runs. */
-  success_rate_prev?: number | null;
-  percentile_run_count?: number;
 }
 export const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2334,22 +826,15 @@ export const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
     buckets: WorkflowHealthItemBucketsList,
     workflow_name: S.String,
     run_count: S.Number,
-    successful_run_count: S.Number,
-    conclusive_run_count: S.Number,
     success_rate: S.NullOr(S.Number),
     p50_seconds: S.NullOr(S.Number),
     p95_seconds: S.NullOr(S.Number),
     last_failure_at: S.NullOr(S.String),
     latest_run_failed: S.NullOr(S.Boolean),
     latest_run_conclusion: S.NullOr(S.String),
-    latest_run_id: S.NullOr(S.Number),
-    latest_run_attempt: S.NullOr(S.Number),
     granularity: S.String,
     billable_minutes: S.optional(S.NullOr(S.Number)),
     estimated_cost_usd: S.optional(S.NullOr(S.Number)),
-    rerun_cycles: S.optional(S.Number),
-    success_rate_prev: S.optional(S.NullOr(S.Number)),
-    percentile_run_count: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "WorkflowHealthItem",
@@ -2376,8 +861,6 @@ export const EngineeringAnalyticsWorkflowHealthResponse =
 export interface EngineeringAnalyticsWorkflowJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
   /** Which re-run attempt to scope jobs to. Omit to use the run's latest attempt; pass an explicit attempt to avoid mixing jobs across a re-run's attempts. */
   run_attempt?: number;
   /** Workflow run id to list jobs for. */
@@ -2389,7 +872,6 @@ export const EngineeringAnalyticsWorkflowJobsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      repo: S.optional(S.String.pipe(T.Query())),
       run_attempt: S.optional(S.Number.pipe(T.Query())),
       run_id: S.Number.pipe(T.Query()),
       source_id: S.optional(S.String.pipe(T.Query())),
@@ -2463,8 +945,6 @@ export const EngineeringAnalyticsWorkflowJobsResponse = /*@__PURE__*/ S.suspend(
 export interface EngineeringAnalyticsWorkflowRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** 'owner/name' repository to scope to when the selected source syncs several repositories (from the `sources` list). Defaults to the source's first repository. */
-  repo?: string;
   /** GitHub Actions run id to inspect. */
   run_id: number;
   /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
@@ -2474,7 +954,6 @@ export const EngineeringAnalyticsWorkflowRunRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      repo: S.optional(S.String.pipe(T.Query())),
       run_id: S.Number.pipe(T.Query()),
       source_id: S.optional(S.String.pipe(T.Query())),
     }).pipe(
@@ -2488,48 +967,9 @@ export const EngineeringAnalyticsWorkflowRunRequest = /*@__PURE__*/ S.suspend(
   identifier: "EngineeringAnalyticsWorkflowRunRequest",
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunRequest>;
 
-export interface EngineeringAnalyticsWorkflowRunActivityRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
-  branch?: string;
-  /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
-  date_from?: string;
-  /** Window end: relative or ISO8601. Defaults to now. */
-  date_to?: string;
-  /** 'owner/name' repository the workflow belongs to. */
-  repo: string;
-  /** Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one. */
-  source_id?: string;
-  /** Workflow name to load run activity for. */
-  workflow_name: string;
-}
-export const EngineeringAnalyticsWorkflowRunActivityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
-      date_from: S.optional(S.String.pipe(T.Query())),
-      date_to: S.optional(S.String.pipe(T.Query())),
-      repo: S.String.pipe(T.Query()),
-      source_id: S.optional(S.String.pipe(T.Query())),
-      workflow_name: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/engineering_analytics/workflow_run_activity/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsWorkflowRunActivityRequest",
-  }) as any as S.Schema<EngineeringAnalyticsWorkflowRunActivityRequest>;
-
 export interface EngineeringAnalyticsWorkflowRunnerCostsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
-  branch?: string;
   /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
   date_from?: string;
   /** Window end: relative or ISO8601. Defaults to now. */
@@ -2545,7 +985,6 @@ export const EngineeringAnalyticsWorkflowRunnerCostsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
       date_from: S.optional(S.String.pipe(T.Query())),
       date_to: S.optional(S.String.pipe(T.Query())),
       repo: S.String.pipe(T.Query()),
@@ -2607,8 +1046,6 @@ export const EngineeringAnalyticsWorkflowRunnerCostsResponse =
 export interface EngineeringAnalyticsWorkflowRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Optional exact git branch (head_branch) to scope results to, e.g. 'main'. Omit or leave blank to aggregate across all branches. */
-  branch?: string;
   /** Window start: relative ('-30d', '-8w') or ISO8601. Defaults to -30d. */
   date_from?: string;
   /** Window end: relative or ISO8601. Defaults to now. */
@@ -2624,7 +1061,6 @@ export const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      branch: S.optional(S.String.pipe(T.Query())),
       date_from: S.optional(S.String.pipe(T.Query())),
       date_to: S.optional(S.String.pipe(T.Query())),
       repo: S.String.pipe(T.Query()),
@@ -2657,38 +1093,6 @@ export const EngineeringAnalyticsWorkflowRunsResponse = /*@__PURE__*/ S.suspend(
   identifier: "EngineeringAnalyticsWorkflowRunsResponse",
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
 
-export type EngineeringAnalyticsAuthorWorkflowCostsError =
-  | BadRequest
-  | PosthogOpError;
-/** One author's estimated CI cost split by workflow over a window (date_from default -30d), highest spend first. Runs are attributed to the author through their pull requests (attribution is by PR number). Returns an empty list when the job-level source isn't synced. */
-export const engineeringAnalyticsAuthorWorkflowCosts: API.OperationMethod<
-  EngineeringAnalyticsAuthorWorkflowCostsRequest,
-  EngineeringAnalyticsAuthorWorkflowCostsResponse,
-  EngineeringAnalyticsAuthorWorkflowCostsError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsAuthorWorkflowCostsRequest,
-  output: EngineeringAnalyticsAuthorWorkflowCostsResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsBrokenTestsError = BadRequest | PosthogOpError;
-/** The broken-tests triage panel: live CI failures over the last 2 days grouped into distinct failures (by test id + normalized error signature) and classified by how each is behaving right now — breaking trunk, a new failure spreading across branches, probably-resolved, flaky, or one PR's own problem — ranked with the most urgent first. Also returns breaking_master_jobs, the default-branch jobs whose latest run is red. Reach for this to answer 'what CI failures should I care about right now'; expand a row's latest_run_id via run_failure_logs for the failing lines. Fingerprinting is pytest-only for now (jest/playwright/cargo failures aren't grouped yet), and the breaking/resolved distinction needs the job-level source synced — without it those failures fall through to flaky/pr_only rather than being misreported. */
-export const engineeringAnalyticsBrokenTests: API.OperationMethod<
-  EngineeringAnalyticsBrokenTestsRequest,
-  BrokenTestsResult,
-  EngineeringAnalyticsBrokenTestsError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsBrokenTestsRequest,
-  output: BrokenTestsResult,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EngineeringAnalyticsCiCardsError = BadRequest | PosthogOpError;
 /** Headline counts for the open-PR backlog: open PRs, distinct repos, stuck PRs (open, non-draft, non-bot, older than 7 days), and PRs with failing CI. The failing-CI count rests on the head-SHA join and can lag until late CI completions settle. */
 export const engineeringAnalyticsCiCards: API.OperationMethod<
@@ -2704,121 +1108,8 @@ export const engineeringAnalyticsCiCards: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EngineeringAnalyticsCiFailureLogsError =
-  | BadRequest
-  | PosthogOpError;
-/** The thinned CI failure logs for a pull request, grouped by failed job. Resolves the PR to its workflow runs via the pull_requests association (all of the PR's pushes, not just the latest commit), then reads the Logs product joined on run_id. Returns failed jobs only (the worker fetches logs for failures); logs_available is false when CI hasn't failed, the logs aged out of the short Logs retention, or a fork PR has no run association. Each line carries its original 1-based line number in the full pre-thinning log; lines are the failure region (errors plus surrounding context, with omission markers), capped per job and overall. */
-export const engineeringAnalyticsCiFailureLogs: API.OperationMethod<
-  EngineeringAnalyticsCiFailureLogsRequest,
-  CIFailureLogs,
-  EngineeringAnalyticsCiFailureLogsError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiFailureLogsRequest,
-  output: CIFailureLogs,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsCiSignalsConfigRetrieveError = PosthogOpError;
-/** Return the atomic CI Signals configuration and aggregate GitHub warehouse sync status. */
-export const engineeringAnalyticsCiSignalsConfigRetrieve: API.OperationMethod<
-  EngineeringAnalyticsCiSignalsConfigRetrieveRequest,
-  CISignalsConfig,
-  EngineeringAnalyticsCiSignalsConfigRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiSignalsConfigRetrieveRequest,
-  output: CISignalsConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsCiSignalsConfigUpdateError = PosthogOpError;
-/** Enable or disable all CI signal detectors in one transaction. */
-export const engineeringAnalyticsCiSignalsConfigUpdate: API.OperationMethod<
-  EngineeringAnalyticsCiSignalsConfigUpdateRequest,
-  CISignalsConfig,
-  EngineeringAnalyticsCiSignalsConfigUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiSignalsConfigUpdateRequest,
-  output: CISignalsConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsCurrentBranchHealthError =
-  | BadRequest
-  | PosthogOpError;
-/** Current default-branch CI verdict over the fixed last-24-hours window. Counts every workflow whose latest completed run failed or timed out; failing workflow names are a bounded preview. The default branch is detected from the same window, independently of analytics date filters. */
-export const engineeringAnalyticsCurrentBranchHealth: API.OperationMethod<
-  EngineeringAnalyticsCurrentBranchHealthRequest,
-  CurrentBranchHealth,
-  EngineeringAnalyticsCurrentBranchHealthError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCurrentBranchHealthRequest,
-  output: CurrentBranchHealth,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsFlakyTestsError = BadRequest | PosthogOpError;
-/** The active test-health queue: backend tests worth acting on now, from the per-test CI spans, over a window (default -7d, maximum 30 days). Evidence is counted per CI run, never per span or run attempt. A test is a 'confirmed_flake' when one commit both failed and passed it (a 'Re-run failed jobs' attempt went green, or an in-job retry recovered it); 'quarantined' when it fails while masked as xfail; otherwise 'suspected_regression'. It qualifies on any same-commit recovery, any master/main failure, an xfail, or failures on at least min_failed_prs distinct PRs. Counts are absolute, never rates: CI emits a span for every failure but only for passes slow enough to clear the emitter's duration threshold, so there is no execution denominator. 'suspected_regression' means no recovery was recorded in this data, not that the test never flakes. */
-export const engineeringAnalyticsFlakyTests: API.OperationMethod<
-  EngineeringAnalyticsFlakyTestsRequest,
-  FlakyTestList,
-  EngineeringAnalyticsFlakyTestsError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsFlakyTestsRequest,
-  output: FlakyTestList,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsJobAggregatesError =
-  | BadRequest
-  | PosthogOpError;
-/** Per-job aggregates for one workflow over a window (default -30d), one row per de-sharded job name (matrix shards aggregate together), busiest first: queue p50, duration p50/p95, failure rate, retry pressure, run share (below 1.0 = conditional job), and billable cost. Jobs always need their run as context — this is the aggregate view; use workflow_jobs for one run's jobs. Empty when the job-level source isn't synced. */
-export const engineeringAnalyticsJobAggregates: API.OperationMethod<
-  EngineeringAnalyticsJobAggregatesRequest,
-  EngineeringAnalyticsJobAggregatesResponse,
-  EngineeringAnalyticsJobAggregatesError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsJobAggregatesRequest,
-  output: EngineeringAnalyticsJobAggregatesResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsMasterFailuresError =
-  | BadRequest
-  | PosthogOpError;
-/** Default-branch failures over a window (default -24h), grouped error-tracking style by (workflow, de-sharded failing job) with a run count and first/last seen, newest group first. `branch` overrides the detected default branch. PR-branch failures are deliberately excluded — at monorepo volume a flat feed is a firehose; those surface per PR. Groups degrade to workflow level (failed_job '') when the job-level source isn't synced. */
-export const engineeringAnalyticsMasterFailures: API.OperationMethod<
-  EngineeringAnalyticsMasterFailuresRequest,
-  EngineeringAnalyticsMasterFailuresResponse,
-  EngineeringAnalyticsMasterFailuresError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsMasterFailuresRequest,
-  output: EngineeringAnalyticsMasterFailuresResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EngineeringAnalyticsPrCostError = BadRequest | PosthogOpError;
-/** Estimated CI cost for a pull request, summed over the jobs of all its workflow runs. Billable self-hosted Linux runners only — provider-hosted (free GitHub-hosted) and non-Linux jobs are excluded. Every figure is zero/null with `jobs_available` false when the job-level source isn't synced yet. `llm_spend` carries the agent LLM token spend attributed to the PR by git branch, or null when no `$ai_generation` event matched. */
+/** Estimated CI cost for a pull request, summed over the jobs of all its workflow runs. Billable self-hosted Linux runners only — provider-hosted (free GitHub-hosted) and non-Linux jobs are excluded. Every figure is zero/null with `jobs_available` false when the job-level source isn't synced yet. */
 export const engineeringAnalyticsPrCost: API.OperationMethod<
   EngineeringAnalyticsPrCostRequest,
   PRCostSummary,
@@ -2895,91 +1186,8 @@ export const engineeringAnalyticsQuarantine: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EngineeringAnalyticsQuarantineRequest2Error =
-  | BadRequest
-  | PosthogOpError;
-/** Quarantine, extend, or unquarantine a flaky test Opens a pull request that edits the repository's checked-in .test_quarantine.json — and, for a new quarantine, a tracking issue the PR links but does not close. The file stays the source of truth that CI enforces; this never bypasses it. A quarantine only affects CI runs that start after the PR merges. */
-export const engineeringAnalyticsQuarantineRequest2: API.OperationMethod<
-  EngineeringAnalyticsQuarantineRequestRequest,
-  QuarantineRequestResult,
-  EngineeringAnalyticsQuarantineRequest2Error,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsQuarantineRequestRequest,
-  output: QuarantineRequestResult,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsRepoOverviewError = BadRequest | PosthogOpError;
-/** Repo-level headline aggregates over a window (default -30d): run count, success rate, re-run cycles, merged-PR count (bots included), median PR open-to-merge (bots and drafts excluded; coarse — draft and ready time fused), and billable minutes + estimated cost — each with its equal-length previous-window twin so a caller can render honest deltas. Also carries the detected default branch and its completed-run history series (skippable via include_series=false). Cost figures are null until the job-level source is synced. */
-export const engineeringAnalyticsRepoOverview: API.OperationMethod<
-  EngineeringAnalyticsRepoOverviewRequest,
-  RepoOverview,
-  EngineeringAnalyticsRepoOverviewError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsRepoOverviewRequest,
-  output: RepoOverview,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsRepoRunActivityError =
-  | BadRequest
-  | PosthogOpError;
-/** Default-branch health as compact chart points over a window (default -30d), newest first, for the repo-hub run-activity chart. All of a commit's workflow runs are collapsed into ONE point per commit (head SHA): its earliest workflow start, wall-clock duration until the last workflow settled (null while any is still running), and an overall conclusion that is 'failure' if any workflow decisively failed, else 'success' when at least one passed, else 'neutral'. `branch` overrides the detected default branch. `truncated` is true when more commits matched than the cap, so the chart covers only the most recent commits. */
-export const engineeringAnalyticsRepoRunActivity: API.OperationMethod<
-  EngineeringAnalyticsRepoRunActivityRequest,
-  WorkflowRunActivity,
-  EngineeringAnalyticsRepoRunActivityError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsRepoRunActivityRequest,
-  output: WorkflowRunActivity,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsResolveBranchError =
-  | BadRequest
-  | PosthogOpError;
-/** Resolve a git branch to the pull request(s) it belongs to — the cross-product link seam so another product (the LLM analytics UI) can turn a git branch into a PR detail link. Matches the PR's head ref, open PRs first then most recently updated. Pass `timestamp` (the trace's capture time) to prefer the PR that was active at that moment when a branch name has been reused across PRs. `branch` is required. Returns a possibly-empty, possibly-multi list — an empty list is a valid 200 (the caller renders a plain chip). */
-export const engineeringAnalyticsResolveBranch: API.OperationMethod<
-  EngineeringAnalyticsResolveBranchRequest,
-  EngineeringAnalyticsResolveBranchResponse,
-  EngineeringAnalyticsResolveBranchError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsResolveBranchRequest,
-  output: EngineeringAnalyticsResolveBranchResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsRunFailureLogsError =
-  | BadRequest
-  | PosthogOpError;
-/** The thinned CI failure logs of one workflow run, grouped by failed job — the run-scoped twin of ci_failure_logs for surfaces that aren't PR-scoped (default-branch failures, the run page). logs_available is false when the run didn't fail or its logs aged out of the short Logs retention. */
-export const engineeringAnalyticsRunFailureLogs: API.OperationMethod<
-  EngineeringAnalyticsRunFailureLogsRequest,
-  RunFailureLogs,
-  EngineeringAnalyticsRunFailureLogsError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsRunFailureLogsRequest,
-  output: RunFailureLogs,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EngineeringAnalyticsSourcesError = PosthogOpError;
-/** The team's selectable GitHub repositories, oldest source first — one entry per repository a source is configured to sync, so a source syncing several repositories appears once per repo. Populate a repo picker from this and pass a chosen entry's `id` back as `source_id` and its `repo` back as `repo` to the other endpoints. Includes repositories whose tables aren't fully synced yet. */
+/** The team's connected GitHub data warehouse sources, oldest first. Populate a source picker from this and pass a chosen `id` back as `source_id` to the other endpoints. A team can connect GitHub more than once (e.g. one source per repository); this lists them all, including any whose tables aren't fully synced yet. */
 export const engineeringAnalyticsSources: API.OperationMethod<
   EngineeringAnalyticsSourcesRequest,
   EngineeringAnalyticsSourcesResponse,
@@ -2993,59 +1201,10 @@ export const engineeringAnalyticsSources: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EngineeringAnalyticsTeamCiActivityError =
-  | BadRequest
-  | PosthogOpError;
-/** One owning team's CI test activity: per-test current-vs-prior signal pairs (the before/after comparison) over the window and its equal-length prior twin. Signal = runs where an owned test failed, errored, or a retry recovered it. Counts are absolute, never rates: CI emits a span for every failure but only for passes slow enough to clear the emitter's duration threshold, so there is no execution denominator. 'suspected_regression' means no recovery was recorded in this data, not that the test never flakes. */
-export const engineeringAnalyticsTeamCiActivity: API.OperationMethod<
-  EngineeringAnalyticsTeamCiActivityRequest,
-  TeamCIActivity,
-  EngineeringAnalyticsTeamCiActivityError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTeamCiActivityRequest,
-  output: TeamCIActivity,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsTeamCiHealthError = BadRequest | PosthogOpError;
-/** Per-owning-team rollup of the CI test surfaces each team owns, over the same run evidence as flaky_tests and with the same meaning of flaky: flaky_test_count is owned tests one commit was seen both failing and passing in the window, regression_test_count is owned tests that failed with no such proof and still hit the blast-radius bar, plus failed/recovery/quarantined run counts. Each has an equal-length previous-window twin for honest deltas. Ownership is stamped on the spans at CI emission time from the repo's ownership map (products/*\/product.yaml + CODEOWNERS); unstamped spans aggregate under the literal team 'unowned', and a re-stamped test lands under its latest owner only. Teams are organizational owners of code surfaces, never authors. Counts are absolute, never rates: CI emits a span for every failure but only for passes slow enough to clear the emitter's duration threshold, so there is no execution denominator. 'suspected_regression' means no recovery was recorded in this data, not that the test never flakes. */
-export const engineeringAnalyticsTeamCiHealth: API.OperationMethod<
-  EngineeringAnalyticsTeamCiHealthRequest,
-  TeamCIHealthList,
-  EngineeringAnalyticsTeamCiHealthError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTeamCiHealthRequest,
-  output: TeamCIHealthList,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsTeamMergeTrendError =
-  | BadRequest
-  | PosthogOpError;
-/** One team's daily time-to-merge trend: the median and average open→merge seconds over the PRs the team's members merged each day (PR author login → GitHub org team membership). Team-level aggregates only, never per-member figures or cross-team rankings. Timing is the coarse open→merge (draft + review time combined); bots are excluded. Requires the GitHub source's team_members snapshot; has_membership_data is false without it. */
-export const engineeringAnalyticsTeamMergeTrend: API.OperationMethod<
-  EngineeringAnalyticsTeamMergeTrendRequest,
-  TeamMergeTrend,
-  EngineeringAnalyticsTeamMergeTrendError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsTeamMergeTrendRequest,
-  output: TeamMergeTrend,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EngineeringAnalyticsWorkflowHealthError =
   | BadRequest
   | PosthogOpError;
-/** Per-workflow CI health over a window (default last 24 hours, maximum 366 days): run count, success rate, p50/p95 duration, last failure time, latest-run status, and a zero-filled run history bucketed by hour/day/week to fit the window. p50/p95 are over successful runs only, so cancelled (superseded) and failed runs never bias the duration trend. Optionally scope to a single git branch via `branch`, or to attributed pull-request runs via `run_scope=pull_request`. Use this for 'is CI getting slower' and 'which workflow is the long pole'; compare two windows to get a trend. */
+/** Per-workflow CI health over a window (default last 24 hours, maximum 366 days): run count, success rate, p50/p95 duration over completed runs, last failure time, latest-run status, and a zero-filled run history bucketed by hour/day/week to fit the window. Optionally scope to a single git branch via `branch`. Use this for 'is CI getting slower' and 'which workflow is the long pole'; compare two windows to get a trend. */
 export const engineeringAnalyticsWorkflowHealth: API.OperationMethod<
   EngineeringAnalyticsWorkflowHealthRequest,
   EngineeringAnalyticsWorkflowHealthResponse,
@@ -3092,27 +1251,10 @@ export const engineeringAnalyticsWorkflowRun: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EngineeringAnalyticsWorkflowRunActivityError =
-  | BadRequest
-  | PosthogOpError;
-/** Compact per-run points for a single workflow over a window (date_from default -30d), newest first, for the run-activity chart: each run's start time, duration, conclusion, branch, and attributed PR. Optionally scope to a single git branch via `branch`, matching workflow_runs. Leaner and higher-capped than workflow_runs so the chart spans the full window even on busy workflows; `truncated` is true when the cap is hit, so the chart covers only the most recent runs. */
-export const engineeringAnalyticsWorkflowRunActivity: API.OperationMethod<
-  EngineeringAnalyticsWorkflowRunActivityRequest,
-  WorkflowRunActivity,
-  EngineeringAnalyticsWorkflowRunActivityError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsWorkflowRunActivityRequest,
-  output: WorkflowRunActivity,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EngineeringAnalyticsWorkflowRunnerCostsError =
   | BadRequest
   | PosthogOpError;
-/** A workflow's estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Optionally scope to a single git branch via `branch`. Returns an empty list when the job-level source isn't synced. */
+/** A workflow's estimated CI cost broken down by runner tier over a window (date_from default -30d), highest spend first. Returns an empty list when the job-level source isn't synced. */
 export const engineeringAnalyticsWorkflowRunnerCosts: API.OperationMethod<
   EngineeringAnalyticsWorkflowRunnerCostsRequest,
   EngineeringAnalyticsWorkflowRunnerCostsResponse,
@@ -3127,7 +1269,7 @@ export const engineeringAnalyticsWorkflowRunnerCosts: API.OperationMethod<
 }));
 
 export type EngineeringAnalyticsWorkflowRunsError = BadRequest | PosthogOpError;
-/** Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Optionally scope to a single git branch via `branch`. Each row is run-level — per-job and per-step detail are not tracked yet. Use this as the GitHub 'workflow' page between the workflow list and a single run. */
+/** Runs of a single workflow within a repo over a window (date_from default -30d), newest first. Each row is run-level — per-job and per-step detail are not tracked yet. Use this as the GitHub 'workflow' page between the workflow list and a single run. */
 export const engineeringAnalyticsWorkflowRuns: API.OperationMethod<
   EngineeringAnalyticsWorkflowRunsRequest,
   EngineeringAnalyticsWorkflowRunsResponse,

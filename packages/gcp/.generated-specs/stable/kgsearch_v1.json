@@ -10,10 +10,10 @@
     "com.gcp.kgsearch_v1#SearchResponse": {
       "type": "structure",
       "members": {
-        "@context": {
+        "@type": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions."
+            "smithy.api#documentation": "The schema type of top-level JSON-LD object, e.g. ItemList."
           }
         },
         "itemListElement": {
@@ -22,10 +22,10 @@
             "smithy.api#documentation": "The item list of search results."
           }
         },
-        "@type": {
+        "@context": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "The schema type of top-level JSON-LD object, e.g. ItemList."
+            "smithy.api#documentation": "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions."
           }
         }
       },
@@ -55,11 +55,25 @@
             "smithy.api#httpQuery": "query"
           }
         },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Limits the number of entities to be returned.",
+            "smithy.api#httpQuery": "limit"
+          }
+        },
         "ids": {
           "target": "com.gcp.kgsearch_v1#StringList",
           "traits": {
             "smithy.api#documentation": "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B",
             "smithy.api#httpQuery": "ids"
+          }
+        },
+        "types": {
+          "target": "com.gcp.kgsearch_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
+            "smithy.api#httpQuery": "types"
           }
         },
         "languages": {
@@ -69,20 +83,6 @@
             "smithy.api#httpQuery": "languages"
           }
         },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Limits the number of entities to be returned.",
-            "smithy.api#httpQuery": "limit"
-          }
-        },
-        "indent": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enables indenting of json results.",
-            "smithy.api#httpQuery": "indent"
-          }
-        },
         "prefix": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -90,11 +90,11 @@
             "smithy.api#httpQuery": "prefix"
           }
         },
-        "types": {
-          "target": "com.gcp.kgsearch_v1#StringList",
+        "indent": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
-            "smithy.api#httpQuery": "types"
+            "smithy.api#documentation": "Enables indenting of json results.",
+            "smithy.api#httpQuery": "indent"
           }
         }
       }

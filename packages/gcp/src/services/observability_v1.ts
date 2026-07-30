@@ -142,37 +142,37 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A link lets a dataset be accessible to BigQuery via usage of linked datasets. */
 export interface Link {
-  /** Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
-  name?: string;
   /** Optional. A user friendly display name. */
   displayName?: string;
-  /** Optional. Description of the link. */
-  description?: string;
   /** Output only. Create timestamp. */
   createTime?: string;
+  /** Optional. Description of the link. */
+  description?: string;
+  /** Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
+  name?: string;
 }
 export const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     displayName: S.optional(S.String),
-    description: S.optional(S.String),
     createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
-  /** Required. Id of the link to create. */
-  linkId?: string;
   /** Required. Name of the containing dataset for this link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   parent: string;
+  /** Required. Id of the link to create. */
+  linkId?: string;
   /** Request body */
   body?: Link;
 }
 export const CreateProjectsLocationsBucketsDatasetsLinksRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      linkId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      linkId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Link.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -215,24 +215,24 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
-    error: S.optional(Status),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -245,22 +245,22 @@ export const StringList = /*@__PURE__*/ S.Array(
 export interface TraceScope {
   /** Required. Names of the projects that are included in this trace scope. * `projects/[PROJECT_ID]` A trace scope can include a maximum of 20 projects. */
   resourceNames?: StringList;
-  /** Optional. Describes this trace scope. The maximum length of the description is 8000 characters. */
-  description?: string;
   /** Output only. The last update timestamp of the trace scope. */
   updateTime?: string;
-  /** Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
-  name?: string;
   /** Output only. The creation timestamp of the trace scope. */
   createTime?: string;
+  /** Optional. Describes this trace scope. The maximum length of the description is 8000 characters. */
+  description?: string;
+  /** Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
+  name?: string;
 }
 export const TraceScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceNames: S.optional(StringList),
-    description: S.optional(S.String),
     updateTime: S.optional(S.String),
-    name: S.optional(S.String),
     createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "TraceScope" }) as any as S.Schema<TraceScope>;
 
@@ -410,24 +410,24 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    labels: S.optional(StringMap),
     locationId: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
     displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -542,32 +542,32 @@ export const CmekSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Bucket configuration for storing observability data. */
 export interface Bucket {
-  /** Optional. Settings for configuring CMEK on a bucket. */
-  cmekSettings?: CmekSettings;
-  /** Output only. Delete timestamp. */
-  deleteTime?: string;
-  /** Optional. Description of the bucket. */
-  description?: string;
   /** Output only. Update timestamp. */
   updateTime?: string;
+  /** Output only. Delete timestamp. */
+  deleteTime?: string;
+  /** Optional. Settings for configuring CMEK on a bucket. */
+  cmekSettings?: CmekSettings;
   /** Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   name?: string;
   /** Optional. User friendly display name. */
   displayName?: string;
   /** Output only. Create timestamp. */
   createTime?: string;
+  /** Optional. Description of the bucket. */
+  description?: string;
   /** Output only. Timestamp when the bucket in soft-deleted state is purged. */
   purgeTime?: string;
 }
 export const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cmekSettings: S.optional(CmekSettings),
-    deleteTime: S.optional(S.String),
-    description: S.optional(S.String),
     updateTime: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    cmekSettings: S.optional(CmekSettings),
     name: S.optional(S.String),
     displayName: S.optional(S.String),
     createTime: S.optional(S.String),
+    description: S.optional(S.String),
     purgeTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
@@ -595,25 +595,25 @@ export const GetProjectsLocationsBucketsDatasetsRequest =
 export interface Dataset {
   /** Output only. Delete timestamp. */
   deleteTime?: string;
-  /** Optional. Description of the dataset. */
-  description?: string;
   /** Identifier. Name of the dataset. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name?: string;
+  /** Optional. Description of the dataset. */
+  description?: string;
+  /** Output only. Timestamp when the dataset in soft-deleted state is purged. */
+  purgeTime?: string;
   /** Optional. User friendly display name. */
   displayName?: string;
   /** Output only. Create timestamp. */
   createTime?: string;
-  /** Output only. Timestamp when the dataset in soft-deleted state is purged. */
-  purgeTime?: string;
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteTime: S.optional(S.String),
-    description: S.optional(S.String),
     name: S.optional(S.String),
+    description: S.optional(S.String),
+    purgeTime: S.optional(S.String),
     displayName: S.optional(S.String),
     createTime: S.optional(S.String),
-    purgeTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
@@ -719,19 +719,19 @@ export const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Scope {
   /** Identifier. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
   name?: string;
-  /** Required. The resource name of the `TraceScope`. For example: projects/myproject/locations/global/traceScopes/my-trace-scope */
-  traceScope?: string;
   /** Output only. Update timestamp. Note: The Update timestamp for the default scope is initially unset. */
   updateTime?: string;
   /** Required. The full resource name of the `LogScope`. For example: //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope */
   logScope?: string;
+  /** Required. The resource name of the `TraceScope`. For example: projects/myproject/locations/global/traceScopes/my-trace-scope */
+  traceScope?: string;
 }
 export const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    traceScope: S.optional(S.String),
     updateTime: S.optional(S.String),
     logScope: S.optional(S.String),
+    traceScope: S.optional(S.String),
   }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 
@@ -776,19 +776,19 @@ export const GetSettingsFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Settings {
   /** Identifier. The resource name of the settings. */
   name?: string;
-  /** Optional. The resource name for the configured Cloud KMS key. KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example: `"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"` */
-  kmsKeyName?: string;
-  /** Optional. The location which should be used when any regional resources are provisioned by Google Cloud. */
-  defaultStorageLocation?: string;
   /** Output only. The service account for the given resource container, such as project or folder. This will be used by Cloud Observability to perform actions in the container's project like access KMS keys or create Links. Always the same service account per resource container regardless of region. */
   serviceAccountId?: string;
+  /** Optional. The location which should be used when any regional resources are provisioned by Google Cloud. */
+  defaultStorageLocation?: string;
+  /** Optional. The resource name for the configured Cloud KMS key. KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example: `"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"` */
+  kmsKeyName?: string;
 }
 export const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    kmsKeyName: S.optional(S.String),
-    defaultStorageLocation: S.optional(S.String),
     serviceAccountId: S.optional(S.String),
+    defaultStorageLocation: S.optional(S.String),
+    kmsKeyName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
@@ -830,12 +830,12 @@ export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
 
 export interface ListFoldersLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -843,9 +843,9 @@ export interface ListFoldersLocationsRequest {
 }
 export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -881,25 +881,25 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListFoldersLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
+  /** The standard list filter. */
+  filter?: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
 }
 export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -918,30 +918,30 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListOrganizationsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -949,9 +949,9 @@ export interface ListOrganizationsLocationsRequest {
 }
 export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -966,25 +966,25 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
 export interface ListOrganizationsLocationsOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list filter. */
   filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
 }
 export const ListOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -997,24 +997,24 @@ export const ListOrganizationsLocationsOperationsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1075,22 +1075,22 @@ export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBucketsResponse>;
 
 export interface ListProjectsLocationsBucketsDatasetsRequest {
+  /** Optional. If true, then the response will include deleted datasets. */
+  showDeleted?: boolean;
   /** Required. The parent bucket that owns this collection of datasets. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   parent: string;
   /** Optional. The maximum number of datasets to return. If unspecified, then at most 100 datasets are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
   /** Optional. A page token, received from a previous `ListDatasets` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
-  /** Optional. If true, then the response will include deleted datasets. */
-  showDeleted?: boolean;
 }
 export const ListProjectsLocationsBucketsDatasetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1218,12 +1218,12 @@ export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
+  /** The standard list filter. */
+  filter?: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
-  /** The standard list filter. */
-  filter?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
@@ -1231,9 +1231,9 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1278,15 +1278,15 @@ export const TraceScopeList = /*@__PURE__*/ S.Array(
 
 /** Response for listing TraceScopes. */
 export interface ListTraceScopesResponse {
-  /** Optional. If there might be more results than appear in this response, then `next_page_token` is included. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
-  nextPageToken?: string;
   /** Optional. A list of trace scopes. */
   traceScopes?: TraceScopeList;
+  /** Optional. If there might be more results than appear in this response, then `next_page_token` is included. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
+  nextPageToken?: string;
 }
 export const ListTraceScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     traceScopes: S.optional(TraceScopeList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListTraceScopesResponse",

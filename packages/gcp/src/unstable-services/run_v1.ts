@@ -89,297 +89,100 @@ export const CancelNamespacesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelNamespacesExecutionsRequest",
 }) as any as S.Schema<CancelNamespacesExecutionsRequest>;
 
-/** Maps a string key to a path within a volume. */
-export interface KeyToPath {
-  /** The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project. */
-  key?: string;
-  /** The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'. */
-  path?: string;
-  /** (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
-  mode?: number;
-}
-export const KeyToPath = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    path: S.optional(S.String),
-    mode: S.optional(S.Number),
-  }),
-).annotate({ identifier: "KeyToPath" }) as any as S.Schema<KeyToPath>;
-
-export type KeyToPathList = Array<KeyToPath>;
-export const KeyToPathList = /*@__PURE__*/ S.Array(
-  KeyToPath,
-) as any as S.Schema<KeyToPathList>;
-
-/** A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. */
-export interface SecretVolumeSource {
-  /** Not supported by Cloud Run. */
-  optional?: boolean;
-  /** The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use. */
-  secretName?: string;
-  /** Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
-  defaultMode?: number;
-  /** A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path. */
-  items?: KeyToPathList;
-}
-export const SecretVolumeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optional: S.optional(S.Boolean),
-    secretName: S.optional(S.String),
-    defaultMode: S.optional(S.Number),
-    items: S.optional(KeyToPathList),
-  }),
-).annotate({
-  identifier: "SecretVolumeSource",
-}) as any as S.Schema<SecretVolumeSource>;
-
-/** In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). */
-export interface EmptyDirVolumeSource {
-  /** Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir */
-  sizeLimit?: string;
-  /** The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir */
-  medium?: string;
-}
-export const EmptyDirVolumeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeLimit: S.optional(S.String),
-    medium: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EmptyDirVolumeSource",
-}) as any as S.Schema<EmptyDirVolumeSource>;
-
-/** Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down. */
-export interface NFSVolumeSource {
-  /** Hostname or IP address of the NFS server. */
-  server?: string;
-  /** If true, mount the NFS volume as read only. Defaults to false. */
-  readOnly?: boolean;
-  /** Path that is exported by the NFS server. */
-  path?: string;
-}
-export const NFSVolumeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    server: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NFSVolumeSource",
-}) as any as S.Schema<NFSVolumeSource>;
-
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<StringMap>;
 
-/** Storage volume source using the Container Storage Interface. */
-export interface CSIVolumeSource {
-  /** stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket. * mountOptions: comma-separated list of mount options to pass to the gcsfuse. */
-  volumeAttributes?: StringMap;
-  /** name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume. */
-  driver?: string;
-  /** If true, mount the volume as read only. Defaults to false. */
-  readOnly?: boolean;
-}
-export const CSIVolumeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeAttributes: S.optional(StringMap),
-    driver: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CSIVolumeSource",
-}) as any as S.Schema<CSIVolumeSource>;
-
-/** Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. */
-export interface ConfigMapVolumeSource {
-  /** (Optional) Specify whether the Secret or its keys must be defined. */
-  optional?: boolean;
-  /** Name of the config. */
-  name?: string;
-  /** (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
-  defaultMode?: number;
-  /** (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional. */
-  items?: KeyToPathList;
-}
-export const ConfigMapVolumeSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optional: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    defaultMode: S.optional(S.Number),
-    items: S.optional(KeyToPathList),
-  }),
-).annotate({
-  identifier: "ConfigMapVolumeSource",
-}) as any as S.Schema<ConfigMapVolumeSource>;
-
-/** Volume represents a named volume in a container. */
-export interface Volume {
-  /** The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName. */
-  secret?: SecretVolumeSource;
-  /** Ephemeral storage used as a shared volume. */
-  emptyDir?: EmptyDirVolumeSource;
-  nfs?: NFSVolumeSource;
-  /** Volume specified by the Container Storage Interface driver */
-  csi?: CSIVolumeSource;
-  /** Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved. */
-  name?: string;
-  /** Not supported in Cloud Run. */
-  configMap?: ConfigMapVolumeSource;
-}
-export const Volume = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secret: S.optional(SecretVolumeSource),
-    emptyDir: S.optional(EmptyDirVolumeSource),
-    nfs: S.optional(NFSVolumeSource),
-    csi: S.optional(CSIVolumeSource),
-    name: S.optional(S.String),
-    configMap: S.optional(ConfigMapVolumeSource),
-  }),
-).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
-
-export type VolumeList = Array<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(
-  Volume,
-) as any as S.Schema<VolumeList>;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** TCPSocketAction describes an action based on opening a socket */
-export interface TCPSocketAction {
-  /** Port number to access on the container. Number must be in the range 1 to 65535. */
-  port?: number;
-  /** Not supported by Cloud Run. */
-  host?: string;
-}
-export const TCPSocketAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    host: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TCPSocketAction",
-}) as any as S.Schema<TCPSocketAction>;
-
-/** HTTPHeader describes a custom header to be used in HTTP probes */
-export interface HTTPHeader {
-  /** The header field value */
-  value?: string;
-  /** Required. The header field name */
+/** This is not supported or used by Cloud Run. */
+export interface OwnerReference {
+  /** This is not supported or used by Cloud Run. */
+  apiVersion?: string;
+  /** This is not supported or used by Cloud Run. */
+  blockOwnerDeletion?: boolean;
+  /** This is not supported or used by Cloud Run. */
+  controller?: boolean;
+  /** This is not supported or used by Cloud Run. */
+  kind?: string;
+  /** This is not supported or used by Cloud Run. */
   name?: string;
+  /** This is not supported or used by Cloud Run. */
+  uid?: string;
 }
-export const HTTPHeader = /*@__PURE__*/ S.suspend(() =>
+export const OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(S.String),
+    apiVersion: S.optional(S.String),
+    blockOwnerDeletion: S.optional(S.Boolean),
+    controller: S.optional(S.Boolean),
+    kind: S.optional(S.String),
     name: S.optional(S.String),
+    uid: S.optional(S.String),
   }),
-).annotate({ identifier: "HTTPHeader" }) as any as S.Schema<HTTPHeader>;
+).annotate({ identifier: "OwnerReference" }) as any as S.Schema<OwnerReference>;
 
-export type HTTPHeaderList = Array<HTTPHeader>;
-export const HTTPHeaderList = /*@__PURE__*/ S.Array(
-  HTTPHeader,
-) as any as S.Schema<HTTPHeaderList>;
+export type OwnerReferenceList = Array<OwnerReference>;
+export const OwnerReferenceList = /*@__PURE__*/ S.Array(
+  OwnerReference,
+) as any as S.Schema<OwnerReferenceList>;
 
-/** HTTPGetAction describes an action based on HTTP Get requests. */
-export interface HTTPGetAction {
-  /** Not supported by Cloud Run. */
-  host?: string;
-  /** Not supported by Cloud Run. */
-  scheme?: string;
-  /** Custom headers to set in the request. HTTP allows repeated headers. */
-  httpHeaders?: HTTPHeaderList;
-  /** Path to access on the HTTP server. */
-  path?: string;
-  /** Port number to access on the container. Number must be in the range 1 to 65535. */
-  port?: number;
+/** google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
+export interface ObjectMeta {
+  /** Optional. The name of the resource. A name for creating top-level resources (Service, Job, WorkerPool). Must be unique within a Cloud Run project/region, and cannot be changed once created. If omitted, a default name will be generated. */
+  name?: string;
+  /** Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. */
+  resourceVersion?: string;
+  /** Not supported by Cloud Run */
+  deletionGracePeriodSeconds?: number;
+  /** A system-provided sequence number representing a specific generation of the desired state. */
+  generation?: number;
+  /** URL representing this object. */
+  selfLink?: string;
+  /** Unique, system-generated identifier for this resource. */
+  uid?: string;
+  /** Required. Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number. */
+  namespace?: string;
+  /** The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field. Instead, they must call the corresponding Delete API. */
+  deletionTimestamp?: string;
+  /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. */
+  labels?: StringMap;
+  /** Not supported by Cloud Run */
+  finalizers?: StringList;
+  /** Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/build-base-image`: Service. * `run.googleapis.com/build-enable-automatic-updates`: Service. * `run.googleapis.com/build-environment-variables`: Service. * `run.googleapis.com/build-function-target`: Service, Revision. * `run.googleapis.com/build-id`: Service, Revision. * `run.googleapis.com/build-image-uri`: Service. * `run.googleapis.com/build-name`: Service. * `run.googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`: Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution, Instance. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution . * `run.googleapis.com/vpc-access-egress`: Revision, Execution. */
+  annotations?: StringMap;
+  /** Not supported by Cloud Run */
+  ownerReferences?: OwnerReferenceList;
+  /** Not supported by Cloud Run */
+  clusterName?: string;
+  /** Optional. A prefix for the resource name if not provided in the create request. Must be less than 31 characters to allow for a random suffix. */
+  generateName?: string;
+  /** UTC timestamp representing the server time when this object was created. */
+  creationTimestamp?: string;
 }
-export const HTTPGetAction = /*@__PURE__*/ S.suspend(() =>
+export const ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    host: S.optional(S.String),
-    scheme: S.optional(S.String),
-    httpHeaders: S.optional(HTTPHeaderList),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
+    name: S.optional(S.String),
+    resourceVersion: S.optional(S.String),
+    deletionGracePeriodSeconds: S.optional(S.Number),
+    generation: S.optional(S.Number),
+    selfLink: S.optional(S.String),
+    uid: S.optional(S.String),
+    namespace: S.optional(S.String),
+    deletionTimestamp: S.optional(S.String),
+    labels: S.optional(StringMap),
+    finalizers: S.optional(StringList),
+    annotations: S.optional(StringMap),
+    ownerReferences: S.optional(OwnerReferenceList),
+    clusterName: S.optional(S.String),
+    generateName: S.optional(S.String),
+    creationTimestamp: S.optional(S.String),
   }),
-).annotate({ identifier: "HTTPGetAction" }) as any as S.Schema<HTTPGetAction>;
-
-/** Not supported by Cloud Run. ExecAction describes a "run in container" action. */
-export interface ExecAction {
-  /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
-  command?: StringList;
-}
-export const ExecAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: S.optional(StringList),
-  }),
-).annotate({ identifier: "ExecAction" }) as any as S.Schema<ExecAction>;
-
-/** GRPCAction describes an action involving a GRPC port. */
-export interface GRPCAction {
-  /** Port number of the gRPC service. Number must be in the range 1 to 65535. */
-  port?: number;
-  /** Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC. */
-  service?: string;
-}
-export const GRPCAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.optional(S.Number),
-    service: S.optional(S.String),
-  }),
-).annotate({ identifier: "GRPCAction" }) as any as S.Schema<GRPCAction>;
-
-/** Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. */
-export interface Probe {
-  /** How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds. */
-  periodSeconds?: number;
-  /** TCPSocket specifies an action involving a TCP port. */
-  tcpSocket?: TCPSocketAction;
-  /** Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set. */
-  successThreshold?: number;
-  /** HTTPGet specifies the http request to perform. */
-  httpGet?: HTTPGetAction;
-  /** Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. */
-  failureThreshold?: number;
-  /** Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds; if period_seconds is not set, must be less or equal than 10. */
-  timeoutSeconds?: number;
-  /** Not supported by Cloud Run. */
-  exec?: ExecAction;
-  /** Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. */
-  initialDelaySeconds?: number;
-  /** GRPCAction specifies an action involving a GRPC port. */
-  grpc?: GRPCAction;
-}
-export const Probe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodSeconds: S.optional(S.Number),
-    tcpSocket: S.optional(TCPSocketAction),
-    successThreshold: S.optional(S.Number),
-    httpGet: S.optional(HTTPGetAction),
-    failureThreshold: S.optional(S.Number),
-    timeoutSeconds: S.optional(S.Number),
-    exec: S.optional(ExecAction),
-    initialDelaySeconds: S.optional(S.Number),
-    grpc: S.optional(GRPCAction),
-  }),
-).annotate({ identifier: "Probe" }) as any as S.Schema<Probe>;
-
-/** Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence. */
-export interface SecurityContext {
-  /** The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. */
-  runAsUser?: number;
-}
-export const SecurityContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runAsUser: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SecurityContext",
-}) as any as S.Schema<SecurityContext>;
+).annotate({ identifier: "ObjectMeta" }) as any as S.Schema<ObjectMeta>;
 
 /** Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace. */
 export interface LocalObjectReference {
@@ -398,16 +201,16 @@ export const LocalObjectReference = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigMapEnvSource {
   /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
   localObjectReference?: LocalObjectReference;
-  /** The ConfigMap to select from. */
-  name?: string;
   /** Specify whether the ConfigMap must be defined. */
   optional?: boolean;
+  /** The ConfigMap to select from. */
+  name?: string;
 }
 export const ConfigMapEnvSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localObjectReference: S.optional(LocalObjectReference),
-    name: S.optional(S.String),
     optional: S.optional(S.Boolean),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConfigMapEnvSource",
@@ -415,17 +218,17 @@ export const ConfigMapEnvSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables. */
 export interface SecretEnvSource {
-  /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
-  localObjectReference?: LocalObjectReference;
   /** The Secret to select from. */
   name?: string;
+  /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
+  localObjectReference?: LocalObjectReference;
   /** Specify whether the Secret must be defined */
   optional?: boolean;
 }
 export const SecretEnvSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    localObjectReference: S.optional(LocalObjectReference),
     name: S.optional(S.String),
+    localObjectReference: S.optional(LocalObjectReference),
     optional: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -456,15 +259,15 @@ export const EnvFromSourceList = /*@__PURE__*/ S.Array(
 
 /** ResourceRequirements describes the compute resource requirements. */
 export interface ResourceRequirements {
-  /** Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits */
-  requests?: StringMap;
   /** Limits describes the maximum amount of compute resources allowed. Only 'cpu', 'memory' and 'nvidia.com/gpu' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits. * The only supported 'nvidia.com/gpu' value is '1'. */
   limits?: StringMap;
+  /** Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits */
+  requests?: StringMap;
 }
 export const ResourceRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    requests: S.optional(StringMap),
     limits: S.optional(StringMap),
+    requests: S.optional(StringMap),
   }),
 ).annotate({
   identifier: "ResourceRequirements",
@@ -472,21 +275,21 @@ export const ResourceRequirements = /*@__PURE__*/ S.suspend(() =>
 
 /** VolumeMount describes a mounting of a Volume within a container. */
 export interface VolumeMount {
-  /** Required. The name of the volume. There must be a corresponding Volume with the same name. */
-  name?: string;
-  /** Sets the mount to be read-only or read-write. Not used by Cloud Run. */
-  readOnly?: boolean;
   /** Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root). This field is currently rejected in Secret volume mounts. */
   subPath?: string;
   /** Required. Path within the container at which the volume should be mounted. Must not contain ':'. */
   mountPath?: string;
+  /** Sets the mount to be read-only or read-write. Not used by Cloud Run. */
+  readOnly?: boolean;
+  /** Required. The name of the volume. There must be a corresponding Volume with the same name. */
+  name?: string;
 }
 export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
     subPath: S.optional(S.String),
     mountPath: S.optional(S.String),
+    readOnly: S.optional(S.Boolean),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
@@ -497,17 +300,17 @@ export const VolumeMountList = /*@__PURE__*/ S.Array(
 
 /** ContainerPort represents a network port in a single container. */
 export interface ContainerPort {
-  /** Protocol for port. Must be "TCP". Defaults to "TCP". */
-  protocol?: string;
   /** If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c". */
   name?: string;
+  /** Protocol for port. Must be "TCP". Defaults to "TCP". */
+  protocol?: string;
   /** Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port */
   containerPort?: number;
 }
 export const ContainerPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    protocol: S.optional(S.String),
     name: S.optional(S.String),
+    protocol: S.optional(S.String),
     containerPort: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ContainerPort" }) as any as S.Schema<ContainerPort>;
@@ -517,23 +320,141 @@ export const ContainerPortList = /*@__PURE__*/ S.Array(
   ContainerPort,
 ) as any as S.Schema<ContainerPortList>;
 
+/** Not supported by Cloud Run. ExecAction describes a "run in container" action. */
+export interface ExecAction {
+  /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
+  command?: StringList;
+}
+export const ExecAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    command: S.optional(StringList),
+  }),
+).annotate({ identifier: "ExecAction" }) as any as S.Schema<ExecAction>;
+
+/** GRPCAction describes an action involving a GRPC port. */
+export interface GRPCAction {
+  /** Port number of the gRPC service. Number must be in the range 1 to 65535. */
+  port?: number;
+  /** Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC. */
+  service?: string;
+}
+export const GRPCAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.optional(S.Number),
+    service: S.optional(S.String),
+  }),
+).annotate({ identifier: "GRPCAction" }) as any as S.Schema<GRPCAction>;
+
+/** HTTPHeader describes a custom header to be used in HTTP probes */
+export interface HTTPHeader {
+  /** Required. The header field name */
+  name?: string;
+  /** The header field value */
+  value?: string;
+}
+export const HTTPHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({ identifier: "HTTPHeader" }) as any as S.Schema<HTTPHeader>;
+
+export type HTTPHeaderList = Array<HTTPHeader>;
+export const HTTPHeaderList = /*@__PURE__*/ S.Array(
+  HTTPHeader,
+) as any as S.Schema<HTTPHeaderList>;
+
+/** HTTPGetAction describes an action based on HTTP Get requests. */
+export interface HTTPGetAction {
+  /** Custom headers to set in the request. HTTP allows repeated headers. */
+  httpHeaders?: HTTPHeaderList;
+  /** Path to access on the HTTP server. */
+  path?: string;
+  /** Not supported by Cloud Run. */
+  scheme?: string;
+  /** Port number to access on the container. Number must be in the range 1 to 65535. */
+  port?: number;
+  /** Not supported by Cloud Run. */
+  host?: string;
+}
+export const HTTPGetAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    httpHeaders: S.optional(HTTPHeaderList),
+    path: S.optional(S.String),
+    scheme: S.optional(S.String),
+    port: S.optional(S.Number),
+    host: S.optional(S.String),
+  }),
+).annotate({ identifier: "HTTPGetAction" }) as any as S.Schema<HTTPGetAction>;
+
+/** TCPSocketAction describes an action based on opening a socket */
+export interface TCPSocketAction {
+  /** Port number to access on the container. Number must be in the range 1 to 65535. */
+  port?: number;
+  /** Not supported by Cloud Run. */
+  host?: string;
+}
+export const TCPSocketAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.optional(S.Number),
+    host: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TCPSocketAction",
+}) as any as S.Schema<TCPSocketAction>;
+
+/** Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. */
+export interface Probe {
+  /** Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set. */
+  successThreshold?: number;
+  /** Not supported by Cloud Run. */
+  exec?: ExecAction;
+  /** GRPCAction specifies an action involving a GRPC port. */
+  grpc?: GRPCAction;
+  /** How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds. */
+  periodSeconds?: number;
+  /** HTTPGet specifies the http request to perform. */
+  httpGet?: HTTPGetAction;
+  /** Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. */
+  failureThreshold?: number;
+  /** TCPSocket specifies an action involving a TCP port. */
+  tcpSocket?: TCPSocketAction;
+  /** Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. */
+  initialDelaySeconds?: number;
+  /** Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds; if period_seconds is not set, must be less or equal than 10. */
+  timeoutSeconds?: number;
+}
+export const Probe = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successThreshold: S.optional(S.Number),
+    exec: S.optional(ExecAction),
+    grpc: S.optional(GRPCAction),
+    periodSeconds: S.optional(S.Number),
+    httpGet: S.optional(HTTPGetAction),
+    failureThreshold: S.optional(S.Number),
+    tcpSocket: S.optional(TCPSocketAction),
+    initialDelaySeconds: S.optional(S.Number),
+    timeoutSeconds: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Probe" }) as any as S.Schema<Probe>;
+
 /** SecretKeySelector selects a key of a Secret. */
 export interface SecretKeySelector {
   /** Specify whether the Secret or its key must be defined. */
   optional?: boolean;
   /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
   localObjectReference?: LocalObjectReference;
-  /** Required. A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key. */
-  key?: string;
   /** The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from. */
   name?: string;
+  /** Required. A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key. */
+  key?: string;
 }
 export const SecretKeySelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optional: S.optional(S.Boolean),
     localObjectReference: S.optional(LocalObjectReference),
-    key: S.optional(S.String),
     name: S.optional(S.String),
+    key: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SecretKeySelector",
@@ -541,21 +462,21 @@ export const SecretKeySelector = /*@__PURE__*/ S.suspend(() =>
 
 /** Not supported by Cloud Run. */
 export interface ConfigMapKeySelector {
-  /** Not supported by Cloud Run. */
-  localObjectReference?: LocalObjectReference;
-  /** Required. Not supported by Cloud Run. */
-  key?: string;
   /** Required. Not supported by Cloud Run. */
   name?: string;
+  /** Required. Not supported by Cloud Run. */
+  key?: string;
   /** Not supported by Cloud Run. */
   optional?: boolean;
+  /** Not supported by Cloud Run. */
+  localObjectReference?: LocalObjectReference;
 }
 export const ConfigMapKeySelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    localObjectReference: S.optional(LocalObjectReference),
-    key: S.optional(S.String),
     name: S.optional(S.String),
+    key: S.optional(S.String),
     optional: S.optional(S.Boolean),
+    localObjectReference: S.optional(LocalObjectReference),
   }),
 ).annotate({
   identifier: "ConfigMapKeySelector",
@@ -577,18 +498,18 @@ export const EnvVarSource = /*@__PURE__*/ S.suspend(() =>
 
 /** EnvVar represents an environment variable present in a Container. */
 export interface EnvVar {
-  /** Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty. */
-  valueFrom?: EnvVarSource;
   /** Required. Name of the environment variable. */
   name?: string;
   /** Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run. */
   value?: string;
+  /** Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty. */
+  valueFrom?: EnvVarSource;
 }
 export const EnvVar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    valueFrom: S.optional(EnvVarSource),
     name: S.optional(S.String),
     value: S.optional(S.String),
+    valueFrom: S.optional(EnvVarSource),
   }),
 ).annotate({ identifier: "EnvVar" }) as any as S.Schema<EnvVar>;
 
@@ -597,65 +518,78 @@ export const EnvVarList = /*@__PURE__*/ S.Array(
   EnvVar,
 ) as any as S.Schema<EnvVarList>;
 
+/** Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence. */
+export interface SecurityContext {
+  /** The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. */
+  runAsUser?: number;
+}
+export const SecurityContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runAsUser: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SecurityContext",
+}) as any as S.Schema<SecurityContext>;
+
 /** A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime. */
 export interface Container {
   /** Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run. */
   command?: StringList;
-  /** Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. */
-  image?: string;
-  /** Periodic probe of container liveness. Container will be restarted if the probe fails. */
-  livenessProbe?: Probe;
-  /** Not supported by Cloud Run. */
-  securityContext?: SecurityContext;
-  /** Not supported by Cloud Run. */
-  envFrom?: EnvFromSourceList;
-  /** Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. */
-  workingDir?: string;
   /** Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. */
   terminationMessagePath?: string;
+  /** Not supported by Cloud Run. */
+  envFrom?: EnvFromSourceList;
   /** Compute Resources required by this container. */
   resources?: ResourceRequirements;
-  /** Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. */
-  startupProbe?: Probe;
-  /** Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem. */
-  volumeMounts?: VolumeMountList;
-  /** Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. */
-  terminationMessagePolicy?: string;
-  /** List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on. */
-  ports?: ContainerPortList;
-  /** Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. */
-  imagePullPolicy?: string;
-  /** List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one. */
-  env?: EnvVarList;
-  /** Readiness probe to be used for health checks. */
-  readinessProbe?: Probe;
-  /** Name of the container specified as a DNS_LABEL (RFC 1123). */
-  name?: string;
-  /** Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes. */
-  sandboxLauncher?: boolean;
   /** Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run. */
   args?: StringList;
+  /** Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. */
+  workingDir?: string;
+  /** Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes. */
+  sandboxLauncher?: boolean;
+  /** Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. */
+  imagePullPolicy?: string;
+  /** Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem. */
+  volumeMounts?: VolumeMountList;
+  /** Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. */
+  image?: string;
+  /** List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on. */
+  ports?: ContainerPortList;
+  /** Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. */
+  startupProbe?: Probe;
+  /** Name of the container specified as a DNS_LABEL (RFC 1123). */
+  name?: string;
+  /** Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated. */
+  terminationMessagePolicy?: string;
+  /** Readiness probe to be used for health checks. */
+  readinessProbe?: Probe;
+  /** List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one. */
+  env?: EnvVarList;
+  /** Not supported by Cloud Run. */
+  securityContext?: SecurityContext;
+  /** Periodic probe of container liveness. Container will be restarted if the probe fails. */
+  livenessProbe?: Probe;
 }
 export const Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(StringList),
-    image: S.optional(S.String),
-    livenessProbe: S.optional(Probe),
-    securityContext: S.optional(SecurityContext),
-    envFrom: S.optional(EnvFromSourceList),
-    workingDir: S.optional(S.String),
     terminationMessagePath: S.optional(S.String),
+    envFrom: S.optional(EnvFromSourceList),
     resources: S.optional(ResourceRequirements),
-    startupProbe: S.optional(Probe),
-    volumeMounts: S.optional(VolumeMountList),
-    terminationMessagePolicy: S.optional(S.String),
-    ports: S.optional(ContainerPortList),
-    imagePullPolicy: S.optional(S.String),
-    env: S.optional(EnvVarList),
-    readinessProbe: S.optional(Probe),
-    name: S.optional(S.String),
-    sandboxLauncher: S.optional(S.Boolean),
     args: S.optional(StringList),
+    workingDir: S.optional(S.String),
+    sandboxLauncher: S.optional(S.Boolean),
+    imagePullPolicy: S.optional(S.String),
+    volumeMounts: S.optional(VolumeMountList),
+    image: S.optional(S.String),
+    ports: S.optional(ContainerPortList),
+    startupProbe: S.optional(Probe),
+    name: S.optional(S.String),
+    terminationMessagePolicy: S.optional(S.String),
+    readinessProbe: S.optional(Probe),
+    env: S.optional(EnvVarList),
+    securityContext: S.optional(SecurityContext),
+    livenessProbe: S.optional(Probe),
   }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
@@ -664,28 +598,178 @@ export const ContainerList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerList>;
 
+/** Storage volume source using the Container Storage Interface. */
+export interface CSIVolumeSource {
+  /** name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume. */
+  driver?: string;
+  /** stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket. * mountOptions: comma-separated list of mount options to pass to the gcsfuse. */
+  volumeAttributes?: StringMap;
+  /** If true, mount the volume as read only. Defaults to false. */
+  readOnly?: boolean;
+}
+export const CSIVolumeSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    driver: S.optional(S.String),
+    volumeAttributes: S.optional(StringMap),
+    readOnly: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CSIVolumeSource",
+}) as any as S.Schema<CSIVolumeSource>;
+
+/** Maps a string key to a path within a volume. */
+export interface KeyToPath {
+  /** The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project. */
+  key?: string;
+  /** The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'. */
+  path?: string;
+  /** (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
+  mode?: number;
+}
+export const KeyToPath = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    path: S.optional(S.String),
+    mode: S.optional(S.Number),
+  }),
+).annotate({ identifier: "KeyToPath" }) as any as S.Schema<KeyToPath>;
+
+export type KeyToPathList = Array<KeyToPath>;
+export const KeyToPathList = /*@__PURE__*/ S.Array(
+  KeyToPath,
+) as any as S.Schema<KeyToPathList>;
+
+/** Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. */
+export interface ConfigMapVolumeSource {
+  /** Name of the config. */
+  name?: string;
+  /** (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
+  defaultMode?: number;
+  /** (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional. */
+  items?: KeyToPathList;
+  /** (Optional) Specify whether the Secret or its keys must be defined. */
+  optional?: boolean;
+}
+export const ConfigMapVolumeSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    defaultMode: S.optional(S.Number),
+    items: S.optional(KeyToPathList),
+    optional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigMapVolumeSource",
+}) as any as S.Schema<ConfigMapVolumeSource>;
+
+/** A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. */
+export interface SecretVolumeSource {
+  /** Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
+  defaultMode?: number;
+  /** The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use. */
+  secretName?: string;
+  /** A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path. */
+  items?: KeyToPathList;
+  /** Not supported by Cloud Run. */
+  optional?: boolean;
+}
+export const SecretVolumeSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultMode: S.optional(S.Number),
+    secretName: S.optional(S.String),
+    items: S.optional(KeyToPathList),
+    optional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SecretVolumeSource",
+}) as any as S.Schema<SecretVolumeSource>;
+
+/** Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down. */
+export interface NFSVolumeSource {
+  /** Path that is exported by the NFS server. */
+  path?: string;
+  /** If true, mount the NFS volume as read only. Defaults to false. */
+  readOnly?: boolean;
+  /** Hostname or IP address of the NFS server. */
+  server?: string;
+}
+export const NFSVolumeSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    readOnly: S.optional(S.Boolean),
+    server: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NFSVolumeSource",
+}) as any as S.Schema<NFSVolumeSource>;
+
+/** In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). */
+export interface EmptyDirVolumeSource {
+  /** The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir */
+  medium?: string;
+  /** Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir */
+  sizeLimit?: string;
+}
+export const EmptyDirVolumeSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    medium: S.optional(S.String),
+    sizeLimit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EmptyDirVolumeSource",
+}) as any as S.Schema<EmptyDirVolumeSource>;
+
+/** Volume represents a named volume in a container. */
+export interface Volume {
+  /** Volume specified by the Container Storage Interface driver */
+  csi?: CSIVolumeSource;
+  /** Not supported in Cloud Run. */
+  configMap?: ConfigMapVolumeSource;
+  /** The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName. */
+  secret?: SecretVolumeSource;
+  /** Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved. */
+  name?: string;
+  nfs?: NFSVolumeSource;
+  /** Ephemeral storage used as a shared volume. */
+  emptyDir?: EmptyDirVolumeSource;
+}
+export const Volume = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    csi: S.optional(CSIVolumeSource),
+    configMap: S.optional(ConfigMapVolumeSource),
+    secret: S.optional(SecretVolumeSource),
+    name: S.optional(S.String),
+    nfs: S.optional(NFSVolumeSource),
+    emptyDir: S.optional(EmptyDirVolumeSource),
+  }),
+).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
+
+export type VolumeList = Array<Volume>;
+export const VolumeList = /*@__PURE__*/ S.Array(
+  Volume,
+) as any as S.Schema<VolumeList>;
+
 /** TaskSpec is a description of a task. */
 export interface TaskSpec {
-  /** Optional. List of volumes that can be mounted by containers belonging to the task. */
-  volumes?: VolumeList;
-  /** Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
-  serviceAccountName?: string;
   /** Optional. List of containers belonging to the task. We disallow a number of fields on this Container. */
   containers?: ContainerList;
+  /** Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
+  serviceAccountName?: string;
   /** Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3. */
   maxRetries?: number;
   /** Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds. */
   timeoutSeconds?: string;
+  /** Optional. List of volumes that can be mounted by containers belonging to the task. */
+  volumes?: VolumeList;
   /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
   nodeSelector?: StringMap;
 }
 export const TaskSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    volumes: S.optional(VolumeList),
-    serviceAccountName: S.optional(S.String),
     containers: S.optional(ContainerList),
+    serviceAccountName: S.optional(S.String),
     maxRetries: S.optional(S.Number),
     timeoutSeconds: S.optional(S.String),
+    volumes: S.optional(VolumeList),
     nodeSelector: S.optional(StringMap),
   }),
 ).annotate({ identifier: "TaskSpec" }) as any as S.Schema<TaskSpec>;
@@ -705,115 +789,31 @@ export const TaskTemplateSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** ExecutionSpec describes how the execution will look. */
 export interface ExecutionSpec {
-  /** Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism. */
-  parallelism?: number;
   /** Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1. */
   taskCount?: number;
   /** Optional. The template used to create tasks for this execution. */
   template?: TaskTemplateSpec;
+  /** Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism. */
+  parallelism?: number;
 }
 export const ExecutionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parallelism: S.optional(S.Number),
     taskCount: S.optional(S.Number),
     template: S.optional(TaskTemplateSpec),
+    parallelism: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ExecutionSpec" }) as any as S.Schema<ExecutionSpec>;
 
-/** This is not supported or used by Cloud Run. */
-export interface OwnerReference {
-  /** This is not supported or used by Cloud Run. */
-  name?: string;
-  /** This is not supported or used by Cloud Run. */
-  uid?: string;
-  /** This is not supported or used by Cloud Run. */
-  apiVersion?: string;
-  /** This is not supported or used by Cloud Run. */
-  controller?: boolean;
-  /** This is not supported or used by Cloud Run. */
-  blockOwnerDeletion?: boolean;
-  /** This is not supported or used by Cloud Run. */
-  kind?: string;
-}
-export const OwnerReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-    apiVersion: S.optional(S.String),
-    controller: S.optional(S.Boolean),
-    blockOwnerDeletion: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({ identifier: "OwnerReference" }) as any as S.Schema<OwnerReference>;
-
-export type OwnerReferenceList = Array<OwnerReference>;
-export const OwnerReferenceList = /*@__PURE__*/ S.Array(
-  OwnerReference,
-) as any as S.Schema<OwnerReferenceList>;
-
-/** google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
-export interface ObjectMeta {
-  /** Required. Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number. */
-  namespace?: string;
-  /** Unique, system-generated identifier for this resource. */
-  uid?: string;
-  /** Optional. The name of the resource. A name for creating top-level resources (Service, Job, WorkerPool). Must be unique within a Cloud Run project/region, and cannot be changed once created. If omitted, a default name will be generated. */
-  name?: string;
-  /** UTC timestamp representing the server time when this object was created. */
-  creationTimestamp?: string;
-  /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. */
-  labels?: StringMap;
-  /** URL representing this object. */
-  selfLink?: string;
-  /** Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/build-base-image`: Service. * `run.googleapis.com/build-enable-automatic-updates`: Service. * `run.googleapis.com/build-environment-variables`: Service. * `run.googleapis.com/build-function-target`: Service, Revision. * `run.googleapis.com/build-id`: Service, Revision. * `run.googleapis.com/build-image-uri`: Service. * `run.googleapis.com/build-name`: Service. * `run.googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`: Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution, Instance. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/network-interfaces`: Revision, Execution, Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution, Instance. */
-  annotations?: StringMap;
-  /** Not supported by Cloud Run */
-  clusterName?: string;
-  /** The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field. Instead, they must call the corresponding Delete API. */
-  deletionTimestamp?: string;
-  /** Not supported by Cloud Run */
-  ownerReferences?: OwnerReferenceList;
-  /** Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. */
-  resourceVersion?: string;
-  /** Not supported by Cloud Run */
-  deletionGracePeriodSeconds?: number;
-  /** A system-provided sequence number representing a specific generation of the desired state. */
-  generation?: number;
-  /** Not supported by Cloud Run */
-  finalizers?: StringList;
-  /** Optional. A prefix for the resource name if not provided in the create request. Must be less than 31 characters to allow for a random suffix. */
-  generateName?: string;
-}
-export const ObjectMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(S.String),
-    uid: S.optional(S.String),
-    name: S.optional(S.String),
-    creationTimestamp: S.optional(S.String),
-    labels: S.optional(StringMap),
-    selfLink: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    clusterName: S.optional(S.String),
-    deletionTimestamp: S.optional(S.String),
-    ownerReferences: S.optional(OwnerReferenceList),
-    resourceVersion: S.optional(S.String),
-    deletionGracePeriodSeconds: S.optional(S.Number),
-    generation: S.optional(S.Number),
-    finalizers: S.optional(StringList),
-    generateName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ObjectMeta" }) as any as S.Schema<ObjectMeta>;
-
 /** Conditions show the status of reconciliation progress on a given resource. Most resource use a top-level condition type "Ready" or "Completed" to show overall status with other conditions to checkpoint each stage of reconciliation. Note that if metadata.Generation does not equal status.ObservedGeneration, the conditions shown may not be relevant for the current spec. */
 export interface GoogleCloudRunV1Condition {
-  /** Optional. Last time the condition transitioned from one status to another. */
-  lastTransitionTime?: string;
-  /** Optional. Human readable message indicating details about the current status. */
-  message?: string;
-  /** Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness. */
-  severity?: string;
   /** Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server. */
   reason?: string;
+  /** Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness. */
+  severity?: string;
+  /** Optional. Human readable message indicating details about the current status. */
+  message?: string;
+  /** Optional. Last time the condition transitioned from one status to another. */
+  lastTransitionTime?: string;
   /** type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready. */
   type?: string;
   /** Status of the condition, one of True, False, Unknown. */
@@ -821,10 +821,10 @@ export interface GoogleCloudRunV1Condition {
 }
 export const GoogleCloudRunV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastTransitionTime: S.optional(S.String),
-    message: S.optional(S.String),
-    severity: S.optional(S.String),
     reason: S.optional(S.String),
+    severity: S.optional(S.String),
+    message: S.optional(S.String),
+    lastTransitionTime: S.optional(S.String),
     type: S.optional(S.String),
     status: S.optional(S.String),
   }),
@@ -839,39 +839,39 @@ export const GoogleCloudRunV1ConditionList = /*@__PURE__*/ S.Array(
 
 /** ExecutionStatus represents the current state of an Execution. */
 export interface ExecutionStatus {
-  /** Optional. The number of tasks which have retried at least once. */
-  retriedCount?: number;
-  /** Optional. URI where logs for this execution can be found in Cloud Console. */
-  logUri?: string;
-  /** Optional. The number of actively running tasks. */
-  runningCount?: number;
   /** Optional. The 'generation' of the execution that was last processed by the controller. */
   observedGeneration?: number;
-  /** Optional. Represents the time that the execution started to run. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
-  startTime?: string;
+  /** Optional. The number of actively running tasks. */
+  runningCount?: number;
+  /** Optional. The number of tasks which have retried at least once. */
+  retriedCount?: number;
   /** Optional. The number of tasks which reached phase Succeeded. */
   succeededCount?: number;
-  /** Optional. Represents the time that the execution was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional */
-  completionTime?: string;
   /** Optional. The number of tasks which reached phase Cancelled. */
   cancelledCount?: number;
   /** Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Execution-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `Started`: `True` when the execution has started to execute. * `Completed`: `True` when the execution has succeeded. `False` when the execution has failed. */
   conditions?: GoogleCloudRunV1ConditionList;
+  /** Optional. Represents the time that the execution started to run. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
+  startTime?: string;
+  /** Optional. Represents the time that the execution was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional */
+  completionTime?: string;
   /** Optional. The number of tasks which reached phase Failed. */
   failedCount?: number;
+  /** Optional. URI where logs for this execution can be found in Cloud Console. */
+  logUri?: string;
 }
 export const ExecutionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    retriedCount: S.optional(S.Number),
-    logUri: S.optional(S.String),
-    runningCount: S.optional(S.Number),
     observedGeneration: S.optional(S.Number),
-    startTime: S.optional(S.String),
+    runningCount: S.optional(S.Number),
+    retriedCount: S.optional(S.Number),
     succeededCount: S.optional(S.Number),
-    completionTime: S.optional(S.String),
     cancelledCount: S.optional(S.Number),
     conditions: S.optional(GoogleCloudRunV1ConditionList),
+    startTime: S.optional(S.String),
+    completionTime: S.optional(S.String),
     failedCount: S.optional(S.Number),
+    logUri: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ExecutionStatus",
@@ -879,24 +879,24 @@ export const ExecutionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Execution represents the configuration of a single execution. An execution is an immutable resource that references a container image which is run to completion. */
 export interface Execution {
-  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
-  apiVersion?: string;
+  /** Optional. Standard object's metadata. */
+  metadata?: ObjectMeta;
   /** Optional. Specification of the desired behavior of an execution. */
   spec?: ExecutionSpec;
   /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
   kind?: string;
-  /** Optional. Standard object's metadata. */
-  metadata?: ObjectMeta;
   /** Output only. Current status of an execution. */
   status?: ExecutionStatus;
+  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
+  apiVersion?: string;
 }
 export const Execution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiVersion: S.optional(S.String),
+    metadata: S.optional(ObjectMeta),
     spec: S.optional(ExecutionSpec),
     kind: S.optional(S.String),
-    metadata: S.optional(ObjectMeta),
     status: S.optional(ExecutionStatus),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 
@@ -908,18 +908,18 @@ export const DomainMappingSpecCertificateModeEnum = /*@__PURE__*/ S.String;
 
 /** The desired state of the Domain Mapping. */
 export interface DomainMappingSpec {
-  /** The mode of the certificate. */
-  certificateMode?: DomainMappingSpecCertificateModeEnum | (string & {});
   /** The name of the Knative Route that this DomainMapping applies to. The route must exist. */
   routeName?: string;
   /** If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning. */
   forceOverride?: boolean;
+  /** The mode of the certificate. */
+  certificateMode?: DomainMappingSpecCertificateModeEnum | (string & {});
 }
 export const DomainMappingSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    certificateMode: S.optional(DomainMappingSpecCertificateModeEnum),
     routeName: S.optional(S.String),
     forceOverride: S.optional(S.Boolean),
+    certificateMode: S.optional(DomainMappingSpecCertificateModeEnum),
   }),
 ).annotate({
   identifier: "DomainMappingSpec",
@@ -934,18 +934,18 @@ export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DNS resource record. */
 export interface ResourceRecord {
-  /** Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'. */
-  name?: string;
-  /** Resource record type. Example: `AAAA`. */
-  type?: ResourceRecordTypeEnum | (string & {});
   /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
   rrdata?: string;
+  /** Resource record type. Example: `AAAA`. */
+  type?: ResourceRecordTypeEnum | (string & {});
+  /** Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'. */
+  name?: string;
 }
 export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ResourceRecordTypeEnum),
     rrdata: S.optional(S.String),
+    type: S.optional(ResourceRecordTypeEnum),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
@@ -956,24 +956,24 @@ export const ResourceRecordList = /*@__PURE__*/ S.Array(
 
 /** The current state of the Domain Mapping. */
 export interface DomainMappingStatus {
-  /** The name of the route that the mapping currently points to. */
-  mappedRouteName?: string;
-  /** Array of observed DomainMappingConditions, indicating the current state of the DomainMapping. */
-  conditions?: GoogleCloudRunV1ConditionList;
   /** ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
   observedGeneration?: number;
-  /** The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping. */
-  resourceRecords?: ResourceRecordList;
+  /** Array of observed DomainMappingConditions, indicating the current state of the DomainMapping. */
+  conditions?: GoogleCloudRunV1ConditionList;
   /** Optional. Not supported by Cloud Run. */
   url?: string;
+  /** The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping. */
+  resourceRecords?: ResourceRecordList;
+  /** The name of the route that the mapping currently points to. */
+  mappedRouteName?: string;
 }
 export const DomainMappingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mappedRouteName: S.optional(S.String),
-    conditions: S.optional(GoogleCloudRunV1ConditionList),
     observedGeneration: S.optional(S.Number),
-    resourceRecords: S.optional(ResourceRecordList),
+    conditions: S.optional(GoogleCloudRunV1ConditionList),
     url: S.optional(S.String),
+    resourceRecords: S.optional(ResourceRecordList),
+    mappedRouteName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DomainMappingStatus",
@@ -981,40 +981,40 @@ export const DomainMappingStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource to hold the state and status of a user's domain mapping. NOTE: This resource is currently in Beta. */
 export interface DomainMapping {
-  /** The spec for this DomainMapping. */
-  spec?: DomainMappingSpec;
-  /** The API version for this call such as "domains.cloudrun.com/v1". */
-  apiVersion?: string;
   /** Metadata associated with this BuildTemplate. */
   metadata?: ObjectMeta;
+  /** The spec for this DomainMapping. */
+  spec?: DomainMappingSpec;
   /** The current status of the DomainMapping. */
   status?: DomainMappingStatus;
   /** The kind of resource, in this case "DomainMapping". */
   kind?: string;
+  /** The API version for this call such as "domains.cloudrun.com/v1". */
+  apiVersion?: string;
 }
 export const DomainMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(DomainMappingSpec),
-    apiVersion: S.optional(S.String),
     metadata: S.optional(ObjectMeta),
+    spec: S.optional(DomainMappingSpec),
     status: S.optional(DomainMappingStatus),
     kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainMapping" }) as any as S.Schema<DomainMapping>;
 
 export interface CreateNamespacesDomainmappingsRequest {
-  /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
   /** Request body */
   body?: DomainMapping;
 }
 export const CreateNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(DomainMapping.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1027,68 +1027,68 @@ export const CreateNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateNamespacesDomainmappingsRequest",
 }) as any as S.Schema<CreateNamespacesDomainmappingsRequest>;
 
+/** InstanceSpec describes how the Instance will look. */
+export interface InstanceSpec {
+  /** Optional. List of containers belonging to the Instance. We disallow a number of fields on this Container. */
+  containers?: ContainerList;
+  /** Optional. Restart policy for the Instance. Allowable values are 'Always', 'OnFailure', or 'Never'. */
+  restartPolicy?: string;
+  /** Optional. Email address of the IAM service account associated with the Instance. The service account represents the identity of the running container, and determines what permissions the Instance has. If not provided, the Instance will use the project's default service account. */
+  serviceAccountName?: string;
+  /** Optional. List of volumes that can be mounted by containers belonging to the Instance. */
+  volumes?: VolumeList;
+  /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
+  nodeSelector?: StringMap;
+}
+export const InstanceSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    containers: S.optional(ContainerList),
+    restartPolicy: S.optional(S.String),
+    serviceAccountName: S.optional(S.String),
+    volumes: S.optional(VolumeList),
+    nodeSelector: S.optional(StringMap),
+  }),
+).annotate({ identifier: "InstanceSpec" }) as any as S.Schema<InstanceSpec>;
+
 /** InstanceStatus represents the current state of an Instance. */
 export interface InstanceStatus {
+  /** Output only. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Instance-specific conditions include: * `Ready`: `True` when the Instance is ready to be executed. */
+  conditions?: GoogleCloudRunV1ConditionList;
+  /** Output only. All URLs serving traffic for this Instance. */
+  urls?: StringList;
   /** Optional. URI where logs for this execution can be found in Cloud Console. */
   logUri?: string;
   /** Output only. The 'generation' of the Instance that was last processed by the controller. */
   observedGeneration?: number;
-  /** Output only. All URLs serving traffic for this Instance. */
-  urls?: StringList;
-  /** Output only. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Instance-specific conditions include: * `Ready`: `True` when the Instance is ready to be executed. */
-  conditions?: GoogleCloudRunV1ConditionList;
 }
 export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    conditions: S.optional(GoogleCloudRunV1ConditionList),
+    urls: S.optional(StringList),
     logUri: S.optional(S.String),
     observedGeneration: S.optional(S.Number),
-    urls: S.optional(StringList),
-    conditions: S.optional(GoogleCloudRunV1ConditionList),
   }),
 ).annotate({ identifier: "InstanceStatus" }) as any as S.Schema<InstanceStatus>;
-
-/** InstanceSpec describes how the Instance will look. */
-export interface InstanceSpec {
-  /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
-  nodeSelector?: StringMap;
-  /** Optional. Restart policy for the Instance. Allowable values are 'Always', 'OnFailure', or 'Never'. */
-  restartPolicy?: string;
-  /** Optional. List of containers belonging to the Instance. We disallow a number of fields on this Container. */
-  containers?: ContainerList;
-  /** Optional. List of volumes that can be mounted by containers belonging to the Instance. */
-  volumes?: VolumeList;
-  /** Optional. Email address of the IAM service account associated with the Instance. The service account represents the identity of the running container, and determines what permissions the Instance has. If not provided, the Instance will use the project's default service account. */
-  serviceAccountName?: string;
-}
-export const InstanceSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeSelector: S.optional(StringMap),
-    restartPolicy: S.optional(S.String),
-    containers: S.optional(ContainerList),
-    volumes: S.optional(VolumeList),
-    serviceAccountName: S.optional(S.String),
-  }),
-).annotate({ identifier: "InstanceSpec" }) as any as S.Schema<InstanceSpec>;
 
 /** An Instance represents the configuration of a single instance that references a container image and runs to completion. */
 export interface Instance {
   /** Optional. Standard object's metadata. */
   metadata?: ObjectMeta;
-  /** Output only. Current status of an Instance. */
-  status?: InstanceStatus;
-  /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
-  kind?: string;
   /** Optional. Specification of the desired behavior of an Instance. */
   spec?: InstanceSpec;
+  /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
+  kind?: string;
+  /** Output only. Current status of an Instance. */
+  status?: InstanceStatus;
   /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
   apiVersion?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(ObjectMeta),
-    status: S.optional(InstanceStatus),
-    kind: S.optional(S.String),
     spec: S.optional(InstanceSpec),
+    kind: S.optional(S.String),
+    status: S.optional(InstanceStatus),
     apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
@@ -1096,15 +1096,12 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 export interface CreateNamespacesInstancesRequest {
   /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace. */
   parent: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
   /** Request body */
   body?: Instance;
 }
 export const CreateNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
-    dryRun: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Instance.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -1119,15 +1116,15 @@ export const CreateNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. */
 export interface ExecutionTemplateSpec {
-  /** Required. ExecutionSpec holds the desired configuration for executions of this job. */
-  spec?: ExecutionSpec;
   /** Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`. */
   metadata?: ObjectMeta;
+  /** Required. ExecutionSpec holds the desired configuration for executions of this job. */
+  spec?: ExecutionSpec;
 }
 export const ExecutionTemplateSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(ExecutionSpec),
     metadata: S.optional(ObjectMeta),
+    spec: S.optional(ExecutionSpec),
   }),
 ).annotate({
   identifier: "ExecutionTemplateSpec",
@@ -1135,17 +1132,17 @@ export const ExecutionTemplateSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** JobSpec describes how the job will look. */
 export interface JobSpec {
-  /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully started. The sum of job name and token length must be fewer than 63 characters. */
-  startExecutionToken?: string;
   /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully completed. The sum of job name and token length must be fewer than 63 characters. */
   runExecutionToken?: string;
+  /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully started. The sum of job name and token length must be fewer than 63 characters. */
+  startExecutionToken?: string;
   /** Optional. Describes the execution that will be created when running a job. */
   template?: ExecutionTemplateSpec;
 }
 export const JobSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startExecutionToken: S.optional(S.String),
     runExecutionToken: S.optional(S.String),
+    startExecutionToken: S.optional(S.String),
     template: S.optional(ExecutionTemplateSpec),
   }),
 ).annotate({ identifier: "JobSpec" }) as any as S.Schema<JobSpec>;
@@ -1161,24 +1158,24 @@ export const ExecutionReferenceCompletionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status. */
 export interface ExecutionReference {
-  /** Optional. Completion timestamp of the execution. */
-  completionTimestamp?: string;
   /** Optional. The read-only soft deletion timestamp of the execution. */
   deletionTimestamp?: string;
-  /** Optional. Status for the execution completion. */
-  completionStatus?: ExecutionReferenceCompletionStatusEnum | (string & {});
-  /** Optional. Name of the execution. */
-  name?: string;
   /** Optional. Creation timestamp of the execution. */
   creationTimestamp?: string;
+  /** Optional. Completion timestamp of the execution. */
+  completionTimestamp?: string;
+  /** Optional. Name of the execution. */
+  name?: string;
+  /** Optional. Status for the execution completion. */
+  completionStatus?: ExecutionReferenceCompletionStatusEnum | (string & {});
 }
 export const ExecutionReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    completionTimestamp: S.optional(S.String),
     deletionTimestamp: S.optional(S.String),
-    completionStatus: S.optional(ExecutionReferenceCompletionStatusEnum),
-    name: S.optional(S.String),
     creationTimestamp: S.optional(S.String),
+    completionTimestamp: S.optional(S.String),
+    name: S.optional(S.String),
+    completionStatus: S.optional(ExecutionReferenceCompletionStatusEnum),
   }),
 ).annotate({
   identifier: "ExecutionReference",
@@ -1186,59 +1183,56 @@ export const ExecutionReference = /*@__PURE__*/ S.suspend(() =>
 
 /** JobStatus represents the current state of a Job. */
 export interface JobStatus {
-  /** The 'generation' of the job that was last processed by the controller. */
-  observedGeneration?: number;
-  /** Number of executions created for this job. */
-  executionCount?: number;
-  /** A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution. */
-  latestCreatedExecution?: ExecutionReference;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed. */
   conditions?: GoogleCloudRunV1ConditionList;
+  /** A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution. */
+  latestCreatedExecution?: ExecutionReference;
+  /** Number of executions created for this job. */
+  executionCount?: number;
+  /** The 'generation' of the job that was last processed by the controller. */
+  observedGeneration?: number;
 }
 export const JobStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    observedGeneration: S.optional(S.Number),
-    executionCount: S.optional(S.Number),
-    latestCreatedExecution: S.optional(ExecutionReference),
     conditions: S.optional(GoogleCloudRunV1ConditionList),
+    latestCreatedExecution: S.optional(ExecutionReference),
+    executionCount: S.optional(S.Number),
+    observedGeneration: S.optional(S.Number),
   }),
 ).annotate({ identifier: "JobStatus" }) as any as S.Schema<JobStatus>;
 
 /** Job represents the configuration of a single job, which references a container image which is run to completion. */
 export interface Job {
-  /** Optional. Specification of the desired behavior of a job. */
-  spec?: JobSpec;
-  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
-  apiVersion?: string;
   /** Optional. Standard object's metadata. */
   metadata?: ObjectMeta;
+  /** Optional. Specification of the desired behavior of a job. */
+  spec?: JobSpec;
   /** Output only. Current status of a job. */
   status?: JobStatus;
   /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
   kind?: string;
+  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
+  apiVersion?: string;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(JobSpec),
-    apiVersion: S.optional(S.String),
     metadata: S.optional(ObjectMeta),
+    spec: S.optional(JobSpec),
     status: S.optional(JobStatus),
     kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export interface CreateNamespacesJobsRequest {
   /** Required. The namespace in which the job should be created. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
   /** Request body */
   body?: Job;
 }
 export const CreateNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
-    dryRun: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Job.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -1258,49 +1252,49 @@ export const LocalObjectReferenceList = /*@__PURE__*/ S.Array(
 
 /** RevisionSpec holds the desired state of the Revision (from the client). */
 export interface RevisionSpec {
+  volumes?: VolumeList;
+  /** Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account. */
+  serviceAccountName?: string;
   /** ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1. */
   containerConcurrency?: number;
   /** Required. Containers holds the list which define the units of execution for this Revision. */
   containers?: ContainerList;
-  /** Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account. */
-  serviceAccountName?: string;
-  /** Optional. Runtime. Leave unset for default. */
-  runtimeClassName?: string;
-  /** Optional. TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). */
-  timeoutSeconds?: number;
-  /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
-  nodeSelector?: StringMap;
   /** Not supported by Cloud Run. */
   imagePullSecrets?: LocalObjectReferenceList;
+  /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
+  nodeSelector?: StringMap;
+  /** Optional. TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). */
+  timeoutSeconds?: number;
   /** Not supported by Cloud Run. */
   enableServiceLinks?: boolean;
-  volumes?: VolumeList;
+  /** Optional. Runtime. Leave unset for default. */
+  runtimeClassName?: string;
 }
 export const RevisionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    volumes: S.optional(VolumeList),
+    serviceAccountName: S.optional(S.String),
     containerConcurrency: S.optional(S.Number),
     containers: S.optional(ContainerList),
-    serviceAccountName: S.optional(S.String),
-    runtimeClassName: S.optional(S.String),
-    timeoutSeconds: S.optional(S.Number),
-    nodeSelector: S.optional(StringMap),
     imagePullSecrets: S.optional(LocalObjectReferenceList),
+    nodeSelector: S.optional(StringMap),
+    timeoutSeconds: S.optional(S.Number),
     enableServiceLinks: S.optional(S.Boolean),
-    volumes: S.optional(VolumeList),
+    runtimeClassName: S.optional(S.String),
   }),
 ).annotate({ identifier: "RevisionSpec" }) as any as S.Schema<RevisionSpec>;
 
 /** RevisionTemplateSpec describes the data a revision should have when created from a template. */
 export interface RevisionTemplate {
-  /** RevisionSpec holds the desired state of the Revision (from the client). */
-  spec?: RevisionSpec;
   /** Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/health-check-disabled`: if true, deploy-time startup probes will not run for this revision. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`. */
   metadata?: ObjectMeta;
+  /** RevisionSpec holds the desired state of the Revision (from the client). */
+  spec?: RevisionSpec;
 }
 export const RevisionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(RevisionSpec),
     metadata: S.optional(ObjectMeta),
+    spec: S.optional(RevisionSpec),
   }),
 ).annotate({
   identifier: "RevisionTemplate",
@@ -1312,23 +1306,23 @@ export interface TrafficTarget {
   configurationName?: string;
   /** Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. */
   percent?: number;
-  /** Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.) */
-  url?: string;
-  /** Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision. */
-  revisionName?: string;
-  /** Tag is used to expose a dedicated url for referencing this target exclusively. */
-  tag?: string;
   /** Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision. */
   latestRevision?: boolean;
+  /** Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.) */
+  url?: string;
+  /** Tag is used to expose a dedicated url for referencing this target exclusively. */
+  tag?: string;
+  /** Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision. */
+  revisionName?: string;
 }
 export const TrafficTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationName: S.optional(S.String),
     percent: S.optional(S.Number),
-    url: S.optional(S.String),
-    revisionName: S.optional(S.String),
-    tag: S.optional(S.String),
     latestRevision: S.optional(S.Boolean),
+    url: S.optional(S.String),
+    tag: S.optional(S.String),
+    revisionName: S.optional(S.String),
   }),
 ).annotate({ identifier: "TrafficTarget" }) as any as S.Schema<TrafficTarget>;
 
@@ -1363,53 +1357,53 @@ export const Addressable = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the Service. Output only. */
 export interface ServiceStatus {
+  /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready. */
+  conditions?: GoogleCloudRunV1ConditionList;
+  /** Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
+  observedGeneration?: number;
+  /** Similar to url, information on where the service is available on HTTP. */
+  address?: Addressable;
+  /** Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`. */
+  latestReadyRevisionName?: string;
   /** Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName. */
   latestCreatedRevisionName?: string;
   /** Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
   traffic?: TrafficTargetList;
   /** URL that will distribute traffic over the provided traffic targets. It generally has the form `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app` */
   url?: string;
-  /** Similar to url, information on where the service is available on HTTP. */
-  address?: Addressable;
-  /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready. */
-  conditions?: GoogleCloudRunV1ConditionList;
-  /** Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`. */
-  latestReadyRevisionName?: string;
-  /** Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
-  observedGeneration?: number;
 }
 export const ServiceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    conditions: S.optional(GoogleCloudRunV1ConditionList),
+    observedGeneration: S.optional(S.Number),
+    address: S.optional(Addressable),
+    latestReadyRevisionName: S.optional(S.String),
     latestCreatedRevisionName: S.optional(S.String),
     traffic: S.optional(TrafficTargetList),
     url: S.optional(S.String),
-    address: S.optional(Addressable),
-    conditions: S.optional(GoogleCloudRunV1ConditionList),
-    latestReadyRevisionName: S.optional(S.String),
-    observedGeneration: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ServiceStatus" }) as any as S.Schema<ServiceStatus>;
 
 /** Service acts as a top-level container that manages a set of Routes and Configurations which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership. Service acts only as an orchestrator of the underlying Routes and Configurations (much as a kubernetes Deployment orchestrates ReplicaSets). The Service's controller will track the statuses of its owned Configuration and Route, reflecting their statuses and conditions as its own. */
 export interface Service {
-  /** Holds the desired state of the Service (from the client). */
-  spec?: ServiceSpec;
-  /** The API version for this call. It must be "serving.knative.dev/v1". */
-  apiVersion?: string;
   /** Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/base-images` * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/default-url-disabled` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal. */
   metadata?: ObjectMeta;
-  /** Communicates the system-controlled state of the Service. */
-  status?: ServiceStatus;
+  /** Holds the desired state of the Service (from the client). */
+  spec?: ServiceSpec;
   /** The kind of resource. It must be "Service". */
   kind?: string;
+  /** Communicates the system-controlled state of the Service. */
+  status?: ServiceStatus;
+  /** The API version for this call. It must be "serving.knative.dev/v1". */
+  apiVersion?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(ServiceSpec),
-    apiVersion: S.optional(S.String),
     metadata: S.optional(ObjectMeta),
-    status: S.optional(ServiceStatus),
+    spec: S.optional(ServiceSpec),
     kind: S.optional(S.String),
+    status: S.optional(ServiceStatus),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
@@ -1439,17 +1433,17 @@ export const CreateNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
 export interface InstanceSplit {
-  /** Optional. Specifies percent of the instance split to this Revision. This defaults to zero if unspecified. */
-  percent?: number;
   /** Revision to which to assign this portion of instances. */
   revisionName?: string;
+  /** Optional. Specifies percent of the instance split to this Revision. This defaults to zero if unspecified. */
+  percent?: number;
   /** Uses the "status.latestReadyRevisionName" to determine the instance split target. When it changes, workloads will automatically migrate from the prior "latest ready" revision to the new one. */
   latestRevision?: boolean;
 }
 export const InstanceSplit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    percent: S.optional(S.Number),
     revisionName: S.optional(S.String),
+    percent: S.optional(S.Number),
     latestRevision: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "InstanceSplit" }) as any as S.Schema<InstanceSplit>;
@@ -1458,31 +1452,6 @@ export type InstanceSplitList = Array<InstanceSplit>;
 export const InstanceSplitList = /*@__PURE__*/ S.Array(
   InstanceSplit,
 ) as any as S.Schema<InstanceSplitList>;
-
-/** The current state of the WorkerPool. Output only. */
-export interface WorkerPoolStatus {
-  /** Name of the last revision that was created from this WorkerPool's template. It might not be ready yet, for that use LatestReadyRevisionName. */
-  latestCreatedRevisionName?: string;
-  /** Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
-  observedGeneration?: number;
-  /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. * `Ready`: `True` when all underlying resources are ready. */
-  conditions?: GoogleCloudRunV1ConditionList;
-  /** Name of the latest Revision from this WorkerPool's template that has had its `Ready` condition become `True`. */
-  latestReadyRevisionName?: string;
-  /** Holds the configured workload distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
-  instanceSplits?: InstanceSplitList;
-}
-export const WorkerPoolStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    latestCreatedRevisionName: S.optional(S.String),
-    observedGeneration: S.optional(S.Number),
-    conditions: S.optional(GoogleCloudRunV1ConditionList),
-    latestReadyRevisionName: S.optional(S.String),
-    instanceSplits: S.optional(InstanceSplitList),
-  }),
-).annotate({
-  identifier: "WorkerPoolStatus",
-}) as any as S.Schema<WorkerPoolStatus>;
 
 /** WorkerPoolSpec holds the desired state of the WorkerPool's template and instance splits. */
 export interface WorkerPoolSpec {
@@ -1498,26 +1467,51 @@ export const WorkerPoolSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkerPoolSpec" }) as any as S.Schema<WorkerPoolSpec>;
 
+/** The current state of the WorkerPool. Output only. */
+export interface WorkerPoolStatus {
+  /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. * `Ready`: `True` when all underlying resources are ready. */
+  conditions?: GoogleCloudRunV1ConditionList;
+  /** Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
+  observedGeneration?: number;
+  /** Name of the latest Revision from this WorkerPool's template that has had its `Ready` condition become `True`. */
+  latestReadyRevisionName?: string;
+  /** Name of the last revision that was created from this WorkerPool's template. It might not be ready yet, for that use LatestReadyRevisionName. */
+  latestCreatedRevisionName?: string;
+  /** Holds the configured workload distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
+  instanceSplits?: InstanceSplitList;
+}
+export const WorkerPoolStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conditions: S.optional(GoogleCloudRunV1ConditionList),
+    observedGeneration: S.optional(S.Number),
+    latestReadyRevisionName: S.optional(S.String),
+    latestCreatedRevisionName: S.optional(S.String),
+    instanceSplits: S.optional(InstanceSplitList),
+  }),
+).annotate({
+  identifier: "WorkerPoolStatus",
+}) as any as S.Schema<WorkerPoolStatus>;
+
 /** WorkerPool acts as a top-level container that manages a set instance splits among a set of Revisions and a template for creating new Revisions. */
 export interface WorkerPool {
-  /** The kind of resource. It must be "WorkerPool". */
-  kind?: string;
-  /** Metadata associated with this WorkerPool, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in WorkerPool.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/description` */
-  metadata?: ObjectMeta;
-  /** Communicates the system-controlled state of the WorkerPool. */
-  status?: WorkerPoolStatus;
   /** The API version for this call. It must be "run.googleapis.com/v1". */
   apiVersion?: string;
+  /** Metadata associated with this WorkerPool, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in WorkerPool.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/description` */
+  metadata?: ObjectMeta;
   /** Holds the desired state of the WorkerPool (from the client). */
   spec?: WorkerPoolSpec;
+  /** Communicates the system-controlled state of the WorkerPool. */
+  status?: WorkerPoolStatus;
+  /** The kind of resource. It must be "WorkerPool". */
+  kind?: string;
 }
 export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    metadata: S.optional(ObjectMeta),
-    status: S.optional(WorkerPoolStatus),
     apiVersion: S.optional(S.String),
+    metadata: S.optional(ObjectMeta),
     spec: S.optional(WorkerPoolSpec),
+    status: S.optional(WorkerPoolStatus),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
 
@@ -1546,18 +1540,18 @@ export const CreateNamespacesWorkerpoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNamespacesWorkerpoolsRequest>;
 
 export interface CreateProjectsLocationsDomainmappingsRequest {
-  /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
   /** Request body */
   body?: DomainMapping;
 }
 export const CreateProjectsLocationsDomainmappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(DomainMapping.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1571,18 +1565,18 @@ export const CreateProjectsLocationsDomainmappingsRequest =
   }) as any as S.Schema<CreateProjectsLocationsDomainmappingsRequest>;
 
 export interface CreateProjectsLocationsServicesRequest {
-  /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
-  parent: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
+  parent: string;
   /** Request body */
   body?: Service;
 }
 export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1596,25 +1590,25 @@ export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
 
 export interface DeleteNamespacesDomainmappingsRequest {
-  /** Cloud Run currently ignores this parameter. */
-  apiVersion?: string;
   /** Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
-  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information. */
-  propagationPolicy?: string;
   /** Cloud Run currently ignores this parameter. */
   kind?: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Cloud Run currently ignores this parameter. */
+  apiVersion?: string;
+  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information. */
+  propagationPolicy?: string;
 }
 export const DeleteNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      apiVersion: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
       kind: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      apiVersion: S.optional(S.String.pipe(T.Query())),
+      propagationPolicy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1628,35 +1622,35 @@ export const DeleteNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(
 
 /** Metadata for synthetic resources like List. In Cloud Run, all List Resources Responses will have a ListMeta instead of ObjectMeta. */
 export interface ListMeta {
-  /** URL representing this object. */
-  selfLink?: string;
   /** Opaque string that identifies the server's internal version of this object. It can be used by clients to determine when objects have changed. If the message is passed back to the server, it must be left unmodified. */
   resourceVersion?: string;
+  /** URL representing this object. */
+  selfLink?: string;
   /** Continuation token is a value emitted when the count of items is larger than the user/system limit. To retrieve the next page of items, pass the value of `continue` as the next request's `page_token`. */
   continue?: string;
 }
 export const ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    selfLink: S.optional(S.String),
     resourceVersion: S.optional(S.String),
+    selfLink: S.optional(S.String),
     continue: S.optional(S.String),
   }),
 ).annotate({ identifier: "ListMeta" }) as any as S.Schema<ListMeta>;
 
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface StatusCause {
-  /** A human-readable description of the cause of the error. This field may be presented as-is to a reader. */
-  message?: string;
-  /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
-  field?: string;
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
+  /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
+  field?: string;
+  /** A human-readable description of the cause of the error. This field may be presented as-is to a reader. */
+  message?: string;
 }
 export const StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    message: S.optional(S.String),
-    field: S.optional(S.String),
     reason: S.optional(S.String),
+    field: S.optional(S.String),
+    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "StatusCause" }) as any as S.Schema<StatusCause>;
 
@@ -1667,40 +1661,40 @@ export const StatusCauseList = /*@__PURE__*/ S.Array(
 
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface StatusDetails {
-  /** The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. */
-  kind?: string;
-  /** The group attribute of the resource associated with the status StatusReason. */
-  group?: string;
-  /** If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action. */
-  retryAfterSeconds?: number;
-  /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
-  causes?: StatusCauseList;
-  /** UID of the resource. (when there is a single resource which can be described). */
-  uid?: string;
   /** The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described). */
   name?: string;
+  /** The group attribute of the resource associated with the status StatusReason. */
+  group?: string;
+  /** The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. */
+  kind?: string;
+  /** UID of the resource. (when there is a single resource which can be described). */
+  uid?: string;
+  /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
+  causes?: StatusCauseList;
+  /** If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action. */
+  retryAfterSeconds?: number;
 }
 export const StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    group: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number),
-    causes: S.optional(StatusCauseList),
-    uid: S.optional(S.String),
     name: S.optional(S.String),
+    group: S.optional(S.String),
+    kind: S.optional(S.String),
+    uid: S.optional(S.String),
+    causes: S.optional(StatusCauseList),
+    retryAfterSeconds: S.optional(S.Number),
   }),
 ).annotate({ identifier: "StatusDetails" }) as any as S.Schema<StatusDetails>;
 
 /** Status is a return value for calls that don't return other objects. */
 export interface Status {
-  /** Suggested HTTP return code for this status, 0 if not set. */
-  code?: number;
-  /** A human-readable description of the status of this operation. */
-  message?: string;
   /** A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it. */
   reason?: string;
+  /** A human-readable description of the status of this operation. */
+  message?: string;
   /** Standard list metadata. */
   metadata?: ListMeta;
+  /** Suggested HTTP return code for this status, 0 if not set. */
+  code?: number;
   /** Status of the operation. One of: "Success" or "Failure". */
   status?: string;
   /** Extended data associated with the reason. Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type. */
@@ -1708,31 +1702,31 @@ export interface Status {
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    code: S.optional(S.Number),
-    message: S.optional(S.String),
     reason: S.optional(S.String),
+    message: S.optional(S.String),
     metadata: S.optional(ListMeta),
+    code: S.optional(S.Number),
     status: S.optional(S.String),
     details: S.optional(StatusDetails),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export interface DeleteNamespacesExecutionsRequest {
-  /** Optional. Cloud Run currently ignores this parameter. */
-  apiVersion?: string;
-  /** Optional. Cloud Run currently ignores this parameter. */
-  kind?: string;
   /** Required. The name of the execution to delete. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
   /** Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting. */
   propagationPolicy?: string;
+  /** Optional. Cloud Run currently ignores this parameter. */
+  kind?: string;
+  /** Optional. Cloud Run currently ignores this parameter. */
+  apiVersion?: string;
 }
 export const DeleteNamespacesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiVersion: S.optional(S.String.pipe(T.Query())),
-    kind: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
     propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    kind: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1753,8 +1747,6 @@ export interface DeleteNamespacesInstancesRequest {
   propagationPolicy?: string;
   /** Optional. Cloud Run currently ignores this parameter. */
   kind?: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
 }
 export const DeleteNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1762,7 +1754,6 @@ export const DeleteNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     propagationPolicy: S.optional(S.String.pipe(T.Query())),
     kind: S.optional(S.String.pipe(T.Query())),
-    dryRun: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1775,24 +1766,21 @@ export const DeleteNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespacesInstancesRequest>;
 
 export interface DeleteNamespacesJobsRequest {
-  /** Optional. Cloud Run currently ignores this parameter. */
-  kind?: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
-  /** Optional. Cloud Run currently ignores this parameter. */
-  apiVersion?: string;
   /** Required. The name of the job to delete. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
   /** Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for more information. */
   propagationPolicy?: string;
+  /** Optional. Cloud Run currently ignores this parameter. */
+  kind?: string;
+  /** Optional. Cloud Run currently ignores this parameter. */
+  apiVersion?: string;
 }
 export const DeleteNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String.pipe(T.Query())),
-    dryRun: S.optional(S.String.pipe(T.Query())),
-    apiVersion: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
     propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    kind: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1807,10 +1795,10 @@ export const DeleteNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteNamespacesRevisionsRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
-  /** Cloud Run currently ignores this parameter. */
-  kind?: string;
   /** The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
+  /** Cloud Run currently ignores this parameter. */
+  kind?: string;
   /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. */
   propagationPolicy?: string;
   /** Cloud Run currently ignores this parameter. */
@@ -1819,8 +1807,8 @@ export interface DeleteNamespacesRevisionsRequest {
 export const DeleteNamespacesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRun: S.optional(S.String.pipe(T.Query())),
-    kind: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    kind: S.optional(S.String.pipe(T.Query())),
     propagationPolicy: S.optional(S.String.pipe(T.Query())),
     apiVersion: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -1836,23 +1824,23 @@ export const DeleteNamespacesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DeleteNamespacesServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
-  kind?: string;
+  apiVersion?: string;
+  /** Not supported, and ignored by Cloud Run. */
+  propagationPolicy?: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
-  /** Not supported, and ignored by Cloud Run. */
-  apiVersion?: string;
   /** Required. The fully qualified name of the service to delete. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
   name: string;
   /** Not supported, and ignored by Cloud Run. */
-  propagationPolicy?: string;
+  kind?: string;
 }
 export const DeleteNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String.pipe(T.Query())),
-    dryRun: S.optional(S.String.pipe(T.Query())),
     apiVersion: S.optional(S.String.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
     propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    kind: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1886,25 +1874,25 @@ export const DeleteNamespacesWorkerpoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespacesWorkerpoolsRequest>;
 
 export interface DeleteProjectsLocationsDomainmappingsRequest {
-  /** Cloud Run currently ignores this parameter. */
-  kind?: string;
-  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
+  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information. */
+  propagationPolicy?: string;
   /** Cloud Run currently ignores this parameter. */
   apiVersion?: string;
   /** Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
-  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information. */
-  propagationPolicy?: string;
+  /** Cloud Run currently ignores this parameter. */
+  kind?: string;
+  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
+  dryRun?: string;
 }
 export const DeleteProjectsLocationsDomainmappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      kind: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
+      propagationPolicy: S.optional(S.String.pipe(T.Query())),
       apiVersion: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
+      kind: S.optional(S.String.pipe(T.Query())),
+      dryRun: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1942,25 +1930,25 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 }) as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsRevisionsRequest {
-  /** The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  name: string;
-  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. */
-  propagationPolicy?: string;
   /** Cloud Run currently ignores this parameter. */
   apiVersion?: string;
-  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
+  /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. */
+  propagationPolicy?: string;
+  /** The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  name: string;
   /** Cloud Run currently ignores this parameter. */
   kind?: string;
+  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
+  dryRun?: string;
 }
 export const DeleteProjectsLocationsRevisionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
       apiVersion: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
+      propagationPolicy: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       kind: S.optional(S.String.pipe(T.Query())),
+      dryRun: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1974,24 +1962,24 @@ export const DeleteProjectsLocationsRevisionsRequest = /*@__PURE__*/ S.suspend(
 
 export interface DeleteProjectsLocationsServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
-  kind?: string;
-  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
+  propagationPolicy?: string;
   /** Not supported, and ignored by Cloud Run. */
   apiVersion?: string;
   /** Required. The fully qualified name of the service to delete. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
   name: string;
   /** Not supported, and ignored by Cloud Run. */
-  propagationPolicy?: string;
+  kind?: string;
+  /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
+  dryRun?: string;
 }
 export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      kind: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
+      propagationPolicy: S.optional(S.String.pipe(T.Query())),
       apiVersion: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
+      kind: S.optional(S.String.pipe(T.Query())),
+      dryRun: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -2004,16 +1992,16 @@ export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
 
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
 }
 export const GetIamPolicyProjectsLocationsInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resource: S.String.pipe(T.Label()),
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2074,36 +2062,36 @@ export const AuditConfigList = /*@__PURE__*/ S.Array(
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
+    description: S.optional(S.String),
     expression: S.optional(S.String),
     title: S.optional(S.String),
-    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    condition: S.optional(Expr),
-    role: S.optional(S.String),
     members: S.optional(StringList),
+    role: S.optional(S.String),
+    condition: S.optional(Expr),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
@@ -2118,31 +2106,31 @@ export interface Policy {
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     auditConfigs: S.optional(AuditConfigList),
-    etag: S.optional(S.String),
     bindings: S.optional(BindingList),
+    etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
 export interface GetIamPolicyProjectsLocationsJobsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
 }
 export const GetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      resource: S.String.pipe(T.Label()),
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2155,16 +2143,16 @@ export const GetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>;
 
 export interface GetIamPolicyProjectsLocationsServicesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
 }
 export const GetIamPolicyProjectsLocationsServicesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      resource: S.String.pipe(T.Label()),
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+      resource: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2218,21 +2206,21 @@ export const GetNamespacesConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ConfigurationStatus communicates the observed state of the Configuration (from the controller). */
 export interface ConfigurationStatus {
-  /** LatestReadyRevisionName holds the name of the latest Revision stamped out from this Configuration that has had its "Ready" condition become "True". */
-  latestReadyRevisionName?: string;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. */
   conditions?: GoogleCloudRunV1ConditionList;
-  /** ObservedGeneration is the 'Generation' of the Configuration that was last processed by the controller. The observed generation is updated even if the controller failed to process the spec and create the Revision. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
-  observedGeneration?: number;
   /** LatestCreatedRevisionName is the last revision that was created from this Configuration. It might not be ready yet, so for the latest ready revision, use LatestReadyRevisionName. */
   latestCreatedRevisionName?: string;
+  /** LatestReadyRevisionName holds the name of the latest Revision stamped out from this Configuration that has had its "Ready" condition become "True". */
+  latestReadyRevisionName?: string;
+  /** ObservedGeneration is the 'Generation' of the Configuration that was last processed by the controller. The observed generation is updated even if the controller failed to process the spec and create the Revision. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
+  observedGeneration?: number;
 }
 export const ConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    latestReadyRevisionName: S.optional(S.String),
     conditions: S.optional(GoogleCloudRunV1ConditionList),
-    observedGeneration: S.optional(S.Number),
     latestCreatedRevisionName: S.optional(S.String),
+    latestReadyRevisionName: S.optional(S.String),
+    observedGeneration: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ConfigurationStatus",
@@ -2253,24 +2241,24 @@ export const ConfigurationSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration represents the "floating HEAD" of a linear history of Revisions, and optionally how the containers those revisions reference are built. Users create new Revisions by updating the Configuration's spec. The "latest created" revision's name is available under status, as is the "latest ready" revision's name. */
 export interface Configuration {
-  /** Metadata associated with this Configuration, including name, namespace, labels, and annotations. */
-  metadata?: ObjectMeta;
-  /** Status communicates the observed state of the Configuration (from the controller). */
-  status?: ConfigurationStatus;
-  /** The kind of resource, in this case always "Configuration". */
-  kind?: string;
-  /** Spec holds the desired state of the Configuration (from the client). */
-  spec?: ConfigurationSpec;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
+  /** The kind of resource, in this case always "Configuration". */
+  kind?: string;
+  /** Status communicates the observed state of the Configuration (from the controller). */
+  status?: ConfigurationStatus;
+  /** Metadata associated with this Configuration, including name, namespace, labels, and annotations. */
+  metadata?: ObjectMeta;
+  /** Spec holds the desired state of the Configuration (from the client). */
+  spec?: ConfigurationSpec;
 }
 export const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(ObjectMeta),
-    status: S.optional(ConfigurationStatus),
-    kind: S.optional(S.String),
-    spec: S.optional(ConfigurationSpec),
     apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    status: S.optional(ConfigurationStatus),
+    metadata: S.optional(ObjectMeta),
+    spec: S.optional(ConfigurationSpec),
   }),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
@@ -2366,50 +2354,50 @@ export const GetNamespacesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** RevisionStatus communicates the observed state of the Revision (from the controller). */
 export interface RevisionStatus {
-  /** ObservedGeneration is the 'Generation' of the Revision that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
-  observedGeneration?: number;
-  /** Optional. Specifies the generated logging url for this particular revision based on the revision url template specified in the controller's config. */
-  logUrl?: string;
-  /** ImageDigest holds the resolved digest for the image specified within .Spec.Container.Image. The digest is resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object. */
-  imageDigest?: string;
-  /** Output only. The configured number of instances running this revision. For Cloud Run, this only includes instances provisioned using the minScale annotation. It does not include instances created by autoscaling. */
-  desiredReplicas?: number;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. As a Revision is being prepared, it will incrementally update conditions. Revision-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `ContainerHealthy`: `True` when the Revision readiness check completes. * `Active`: `True` when the Revision may receive traffic. */
   conditions?: GoogleCloudRunV1ConditionList;
+  /** ObservedGeneration is the 'Generation' of the Revision that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
+  observedGeneration?: number;
+  /** ImageDigest holds the resolved digest for the image specified within .Spec.Container.Image. The digest is resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object. */
+  imageDigest?: string;
+  /** Optional. Specifies the generated logging url for this particular revision based on the revision url template specified in the controller's config. */
+  logUrl?: string;
   /** Not currently used by Cloud Run. */
   serviceName?: string;
+  /** Output only. The configured number of instances running this revision. For Cloud Run, this only includes instances provisioned using the minScale annotation. It does not include instances created by autoscaling. */
+  desiredReplicas?: number;
 }
 export const RevisionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    observedGeneration: S.optional(S.Number),
-    logUrl: S.optional(S.String),
-    imageDigest: S.optional(S.String),
-    desiredReplicas: S.optional(S.Number),
     conditions: S.optional(GoogleCloudRunV1ConditionList),
+    observedGeneration: S.optional(S.Number),
+    imageDigest: S.optional(S.String),
+    logUrl: S.optional(S.String),
     serviceName: S.optional(S.String),
+    desiredReplicas: S.optional(S.Number),
   }),
 ).annotate({ identifier: "RevisionStatus" }) as any as S.Schema<RevisionStatus>;
 
 /** Revision is an immutable snapshot of code and configuration. A revision references one or more container images. Revisions are created by updates to a Service. */
 export interface Revision {
-  /** Spec holds the desired state of the Revision (from the client). */
-  spec?: RevisionSpec;
-  /** The API version for this call such as "serving.knative.dev/v1". */
-  apiVersion?: string;
   /** Metadata associated with this Revision, including name, namespace, labels, and annotations. */
   metadata?: ObjectMeta;
-  /** Status communicates the observed state of the Revision (from the controller). */
-  status?: RevisionStatus;
+  /** Spec holds the desired state of the Revision (from the client). */
+  spec?: RevisionSpec;
   /** The kind of this resource, in this case "Revision". */
   kind?: string;
+  /** Status communicates the observed state of the Revision (from the controller). */
+  status?: RevisionStatus;
+  /** The API version for this call such as "serving.knative.dev/v1". */
+  apiVersion?: string;
 }
 export const Revision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    spec: S.optional(RevisionSpec),
-    apiVersion: S.optional(S.String),
     metadata: S.optional(ObjectMeta),
-    status: S.optional(RevisionStatus),
+    spec: S.optional(RevisionSpec),
     kind: S.optional(S.String),
+    status: S.optional(RevisionStatus),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
 
@@ -2431,29 +2419,6 @@ export const GetNamespacesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamespacesRoutesRequest",
 }) as any as S.Schema<GetNamespacesRoutesRequest>;
 
-/** RouteStatus communicates the observed state of the Route (from the controller). */
-export interface RouteStatus {
-  /** Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that was last observed. */
-  traffic?: TrafficTargetList;
-  /** URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form: `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app` */
-  url?: string;
-  /** ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. Note that providing a TrafficTarget that has latest_revision=True will result in a Route that does not increment either its metadata.generation or its observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update to the Route's spec. */
-  observedGeneration?: number;
-  /** Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. */
-  conditions?: GoogleCloudRunV1ConditionList;
-  /** Similar to url, information on where the service is available on HTTP. */
-  address?: Addressable;
-}
-export const RouteStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traffic: S.optional(TrafficTargetList),
-    url: S.optional(S.String),
-    observedGeneration: S.optional(S.Number),
-    conditions: S.optional(GoogleCloudRunV1ConditionList),
-    address: S.optional(Addressable),
-  }),
-).annotate({ identifier: "RouteStatus" }) as any as S.Schema<RouteStatus>;
-
 /** RouteSpec holds the desired state of the Route (from the client). */
 export interface RouteSpec {
   /** Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations. Cloud Run currently supports a single configurationName. */
@@ -2465,26 +2430,49 @@ export const RouteSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouteSpec" }) as any as S.Schema<RouteSpec>;
 
+/** RouteStatus communicates the observed state of the Route (from the controller). */
+export interface RouteStatus {
+  /** Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that was last observed. */
+  traffic?: TrafficTargetList;
+  /** URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form: `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app` */
+  url?: string;
+  /** Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. */
+  conditions?: GoogleCloudRunV1ConditionList;
+  /** ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. Note that providing a TrafficTarget that has latest_revision=True will result in a Route that does not increment either its metadata.generation or its observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update to the Route's spec. */
+  observedGeneration?: number;
+  /** Similar to url, information on where the service is available on HTTP. */
+  address?: Addressable;
+}
+export const RouteStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    traffic: S.optional(TrafficTargetList),
+    url: S.optional(S.String),
+    conditions: S.optional(GoogleCloudRunV1ConditionList),
+    observedGeneration: S.optional(S.Number),
+    address: S.optional(Addressable),
+  }),
+).annotate({ identifier: "RouteStatus" }) as any as S.Schema<RouteStatus>;
+
 /** Route is responsible for configuring ingress over a collection of Revisions. Some of the Revisions a Route distributes traffic over may be specified by referencing the Configuration responsible for creating them; in these cases the Route is additionally responsible for monitoring the Configuration for "latest ready" revision changes, and smoothly rolling out latest revisions. Cloud Run currently supports referencing a single Configuration to automatically deploy the "latest ready" Revision from that Configuration. */
 export interface Route {
-  /** Metadata associated with this Route, including name, namespace, labels, and annotations. */
-  metadata?: ObjectMeta;
-  /** Status communicates the observed state of the Route (from the controller). */
-  status?: RouteStatus;
-  /** The kind of this resource, in this case always "Route". */
-  kind?: string;
-  /** Spec holds the desired state of the Route (from the client). */
-  spec?: RouteSpec;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
+  /** Metadata associated with this Route, including name, namespace, labels, and annotations. */
+  metadata?: ObjectMeta;
+  /** Spec holds the desired state of the Route (from the client). */
+  spec?: RouteSpec;
+  /** The kind of this resource, in this case always "Route". */
+  kind?: string;
+  /** Status communicates the observed state of the Route (from the controller). */
+  status?: RouteStatus;
 }
 export const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(ObjectMeta),
-    status: S.optional(RouteStatus),
-    kind: S.optional(S.String),
-    spec: S.optional(RouteSpec),
     apiVersion: S.optional(S.String),
+    metadata: S.optional(ObjectMeta),
+    spec: S.optional(RouteSpec),
+    kind: S.optional(S.String),
+    status: S.optional(RouteStatus),
   }),
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
@@ -2556,18 +2544,18 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of a task attempt. */
 export interface TaskAttemptResult {
-  /** Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details. At most one of exit_code or term_signal will be set. */
-  exitCode?: number;
-  /** Optional. The status of this attempt. If the status code is OK, then the attempt succeeded. */
-  status?: GoogleRpcStatus;
   /** Optional. Termination signal of the container. This is set to non-zero if the container is terminated by the system. At most one of exit_code or term_signal will be set. */
   termSignal?: number;
+  /** Optional. The status of this attempt. If the status code is OK, then the attempt succeeded. */
+  status?: GoogleRpcStatus;
+  /** Optional. The exit code of this attempt. This may be unset if the container was unable to exit cleanly with a code due to some other failure. See status field for possible failure details. At most one of exit_code or term_signal will be set. */
+  exitCode?: number;
 }
 export const TaskAttemptResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exitCode: S.optional(S.Number),
-    status: S.optional(GoogleRpcStatus),
     termSignal: S.optional(S.Number),
+    status: S.optional(GoogleRpcStatus),
+    exitCode: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "TaskAttemptResult",
@@ -2575,56 +2563,56 @@ export const TaskAttemptResult = /*@__PURE__*/ S.suspend(() =>
 
 /** TaskStatus represents the status of a task. */
 export interface TaskStatus {
-  /** Optional. Represents time when the task started to run. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
-  startTime?: string;
-  /** Optional. The number of times this task was retried. Instances are retried when they fail up to the maxRetries limit. */
-  retried?: number;
-  /** Required. Index of the task, unique per execution, and beginning at 0. */
-  index?: number;
-  /** Optional. Represents time when the task was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
-  completionTime?: string;
-  /** Optional. Result of the last attempt of this task. */
-  lastAttemptResult?: TaskAttemptResult;
-  /** Optional. URI where logs for this task can be found in Cloud Console. */
-  logUri?: string;
   /** Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Task-specific conditions include: * `Started`: `True` when the task has started to execute. * `Completed`: `True` when the task has succeeded. `False` when the task has failed. */
   conditions?: GoogleCloudRunV1ConditionList;
+  /** Required. Index of the task, unique per execution, and beginning at 0. */
+  index?: number;
+  /** Optional. Represents time when the task started to run. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
+  startTime?: string;
+  /** Optional. Represents time when the task was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
+  completionTime?: string;
   /** Optional. The 'generation' of the task that was last processed by the controller. */
   observedGeneration?: number;
+  /** Optional. Result of the last attempt of this task. */
+  lastAttemptResult?: TaskAttemptResult;
+  /** Optional. The number of times this task was retried. Instances are retried when they fail up to the maxRetries limit. */
+  retried?: number;
+  /** Optional. URI where logs for this task can be found in Cloud Console. */
+  logUri?: string;
 }
 export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startTime: S.optional(S.String),
-    retried: S.optional(S.Number),
-    index: S.optional(S.Number),
-    completionTime: S.optional(S.String),
-    lastAttemptResult: S.optional(TaskAttemptResult),
-    logUri: S.optional(S.String),
     conditions: S.optional(GoogleCloudRunV1ConditionList),
+    index: S.optional(S.Number),
+    startTime: S.optional(S.String),
+    completionTime: S.optional(S.String),
     observedGeneration: S.optional(S.Number),
+    lastAttemptResult: S.optional(TaskAttemptResult),
+    retried: S.optional(S.Number),
+    logUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "TaskStatus" }) as any as S.Schema<TaskStatus>;
 
 /** Task represents a single run of a container to completion. */
 export interface Task {
-  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
-  apiVersion?: string;
+  /** Optional. Standard object's metadata. */
+  metadata?: ObjectMeta;
   /** Optional. Specification of the desired behavior of a task. */
   spec?: TaskSpec;
   /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
   kind?: string;
-  /** Optional. Standard object's metadata. */
-  metadata?: ObjectMeta;
   /** Output only. Current status of a task. */
   status?: TaskStatus;
+  /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
+  apiVersion?: string;
 }
 export const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    apiVersion: S.optional(S.String),
+    metadata: S.optional(ObjectMeta),
     spec: S.optional(TaskSpec),
     kind: S.optional(S.String),
-    metadata: S.optional(ObjectMeta),
     status: S.optional(TaskStatus),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
@@ -2705,24 +2693,24 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
 }
 export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(GoogleRpcStatus),
     metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
     response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    error: S.optional(GoogleRpcStatus),
   }),
 ).annotate({
   identifier: "GoogleLongrunningOperation",
@@ -2784,19 +2772,19 @@ export const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsServicesRequest>;
 
 export interface ListNamespacesAuthorizeddomainsRequest {
-  /** Maximum results to return per page. */
-  pageSize?: number;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
   /** Name of the parent Project resource. Example: `projects/myproject`. */
   parent: string;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
 }
 export const ListNamespacesAuthorizeddomainsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2810,15 +2798,15 @@ export const ListNamespacesAuthorizeddomainsRequest = /*@__PURE__*/ S.suspend(
 
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via [Search Console](https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
-  /** Relative name of the domain authorized for use. Example: `example.com`. */
-  id?: string;
   /** Deprecated Read only. Full path to the `AuthorizedDomain` resource in the API. Example: `projects/myproject/authorizedDomains/example.com`. */
   name?: string;
+  /** Relative name of the domain authorized for use. Example: `example.com`. */
+  id?: string;
 }
 export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
     name: S.optional(S.String),
+    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuthorizedDomain",
@@ -2846,33 +2834,33 @@ export const ListAuthorizedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAuthorizedDomainsResponse>;
 
 export interface ListNamespacesConfigurationsRequest {
-  /** Optional. The maximum number of the records that should be returned. */
-  limit?: number;
-  /** The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id} with the project ID or number. */
-  parent: string;
   /** Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Encoded string to continue paging. */
-  continue?: string;
+  resourceVersion?: string;
   /** Not supported by Cloud Run. */
   watch?: boolean;
+  /** The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id} with the project ID or number. */
+  parent: string;
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
   /** Not supported by Cloud Run. */
-  fieldSelector?: string;
+  includeUninitialized?: boolean;
   /** Not supported by Cloud Run. */
-  resourceVersion?: string;
+  fieldSelector?: string;
+  /** Optional. The maximum number of the records that should be returned. */
+  limit?: number;
+  /** Optional. Encoded string to continue paging. */
+  continue?: string;
 }
 export const ListNamespacesConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    limit: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-    continue: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
     resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2893,55 +2881,55 @@ export const ConfigurationList = /*@__PURE__*/ S.Array(
 export interface ListConfigurationsResponse {
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
-  /** List of Configurations. */
-  items?: ConfigurationList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The kind of this resource, in this case "ConfigurationList". */
   kind?: string;
   /** Metadata associated with this Configuration list. */
   metadata?: ListMeta;
+  /** List of Configurations. */
+  items?: ConfigurationList;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
-    items: S.optional(ConfigurationList),
-    unreachable: S.optional(StringList),
     kind: S.optional(S.String),
     metadata: S.optional(ListMeta),
+    items: S.optional(ConfigurationList),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListConfigurationsResponse",
 }) as any as S.Schema<ListConfigurationsResponse>;
 
 export interface ListNamespacesDomainmappingsRequest {
-  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
-  fieldSelector?: string;
-  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
-  resourceVersion?: string;
-  /** Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Encoded string to continue paging. */
-  continue?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
+  /** Optional. Encoded string to continue paging. */
+  continue?: string;
+  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
+  resourceVersion?: string;
   /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
   watch?: boolean;
+  /** Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
+  fieldSelector?: string;
 }
 export const ListNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-    continue: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
     watch: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2962,55 +2950,55 @@ export const DomainMappingList = /*@__PURE__*/ S.Array(
 export interface ListDomainMappingsResponse {
   /** The API version for this call such as "domains.cloudrun.com/v1". */
   apiVersion?: string;
-  /** List of DomainMappings. */
-  items?: DomainMappingList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The kind of this resource, in this case "DomainMappingList". */
   kind?: string;
   /** Metadata associated with this DomainMapping list. */
   metadata?: ListMeta;
+  /** List of DomainMappings. */
+  items?: DomainMappingList;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListDomainMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
-    items: S.optional(DomainMappingList),
-    unreachable: S.optional(StringList),
     kind: S.optional(S.String),
     metadata: S.optional(ListMeta),
+    items: S.optional(DomainMappingList),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListDomainMappingsResponse",
 }) as any as S.Schema<ListDomainMappingsResponse>;
 
 export interface ListNamespacesExecutionsRequest {
+  /** Optional. Optional encoded string to continue paging. */
+  continue?: string;
+  /** Optional. The maximum number of the records that should be returned. */
+  limit?: number;
+  /** Optional. Not supported by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Optional. Not supported by Cloud Run. */
+  fieldSelector?: string;
+  /** Required. The namespace from which the executions should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
   /** Optional. Not supported by Cloud Run. */
   resourceVersion?: string;
   /** Optional. Not supported by Cloud Run. */
-  fieldSelector?: string;
-  /** Optional. Not supported by Cloud Run. */
   watch?: boolean;
-  /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
-  /** Optional. The maximum number of the records that should be returned. */
-  limit?: number;
-  /** Required. The namespace from which the executions should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Optional. Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Optional encoded string to continue paging. */
-  continue?: string;
 }
 export const ListNamespacesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3031,22 +3019,22 @@ export const ExecutionList = /*@__PURE__*/ S.Array(
 export interface ListExecutionsResponse {
   /** The kind of this resource, in this case "ExecutionsList". */
   kind?: string;
-  /** Metadata associated with this executions list. */
-  metadata?: ListMeta;
   /** List of Executions. */
   items?: ExecutionList;
-  /** The API version for this call such as "run.googleapis.com/v1". */
-  apiVersion?: string;
+  /** Metadata associated with this executions list. */
+  metadata?: ListMeta;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** The API version for this call such as "run.googleapis.com/v1". */
+  apiVersion?: string;
 }
 export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    metadata: S.optional(ListMeta),
     items: S.optional(ExecutionList),
-    apiVersion: S.optional(S.String),
+    metadata: S.optional(ListMeta),
     unreachable: S.optional(StringList),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListExecutionsResponse",
@@ -3054,32 +3042,32 @@ export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListNamespacesInstancesRequest {
   /** Optional. Not supported by Cloud Run. */
-  fieldSelector?: string;
-  /** Optional. Not supported by Cloud Run. */
   resourceVersion?: string;
-  /** Optional. The maximum number of records that should be returned. */
-  limit?: number;
-  /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace. */
-  parent: string;
-  /** Optional. Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Optional encoded string to continue paging. */
-  continue?: string;
   /** Optional. Not supported by Cloud Run. */
   watch?: boolean;
+  /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace. */
+  parent: string;
   /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
+  /** Optional. Not supported by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Optional. Not supported by Cloud Run. */
+  fieldSelector?: string;
+  /** Optional. The maximum number of records that should be returned. */
+  limit?: number;
+  /** Optional. Optional encoded string to continue paging. */
+  continue?: string;
 }
 export const ListNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
     resourceVersion: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-    continue: S.optional(S.String.pipe(T.Query())),
     watch: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
     labelSelector: S.optional(S.String.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3098,57 +3086,57 @@ export const InstanceList = /*@__PURE__*/ S.Array(
 
 /** ListInstancesResponse is a list of Instances resources. */
 export interface ListInstancesResponse {
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** List of Instances. */
   items?: InstanceList;
-  /** The API version for this call such as "run.googleapis.com/v1". */
-  apiVersion?: string;
-  /** The kind of this resource, in this case "InstancesList". */
-  kind?: string;
   /** Metadata associated with this Instances list. */
   metadata?: ListMeta;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
+  /** The kind of this resource, in this case "InstancesList". */
+  kind?: string;
+  /** The API version for this call such as "run.googleapis.com/v1". */
+  apiVersion?: string;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     items: S.optional(InstanceList),
-    apiVersion: S.optional(S.String),
-    kind: S.optional(S.String),
     metadata: S.optional(ListMeta),
+    unreachable: S.optional(StringList),
+    kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListInstancesResponse",
 }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListNamespacesJobsRequest {
+  /** Optional. Not supported by Cloud Run. */
+  resourceVersion?: string;
+  /** Optional. Not supported by Cloud Run. */
+  watch?: boolean;
   /** Required. The namespace from which the jobs should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
-  /** Optional. Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Optional encoded string to continue paging. */
-  continue?: string;
-  /** Optional. The maximum number of records that should be returned. */
-  limit?: number;
   /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
   /** Optional. Not supported by Cloud Run. */
-  watch?: boolean;
+  includeUninitialized?: boolean;
   /** Optional. Not supported by Cloud Run. */
   fieldSelector?: string;
-  /** Optional. Not supported by Cloud Run. */
-  resourceVersion?: string;
+  /** Optional. The maximum number of records that should be returned. */
+  limit?: number;
+  /** Optional. Optional encoded string to continue paging. */
+  continue?: string;
 }
 export const ListNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-    continue: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
     resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3167,55 +3155,55 @@ export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 export interface ListJobsResponse {
   /** List of Jobs. */
   items?: JobList;
-  /** The API version for this call such as "run.googleapis.com/v1". */
-  apiVersion?: string;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** Metadata associated with this jobs list. */
   metadata?: ListMeta;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
   /** The kind of this resource, in this case "JobsList". */
   kind?: string;
+  /** The API version for this call such as "run.googleapis.com/v1". */
+  apiVersion?: string;
 }
 export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(JobList),
-    apiVersion: S.optional(S.String),
-    unreachable: S.optional(StringList),
     metadata: S.optional(ListMeta),
+    unreachable: S.optional(StringList),
     kind: S.optional(S.String),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListJobsResponse",
 }) as any as S.Schema<ListJobsResponse>;
 
 export interface ListNamespacesRevisionsRequest {
-  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
-  resourceVersion?: string;
-  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
-  fieldSelector?: string;
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
-  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
-  watch?: boolean;
-  /** The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
   /** Optional. Encoded string to continue paging. */
   continue?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
+  fieldSelector?: string;
+  /** The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
+  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
+  resourceVersion?: string;
+  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
+  watch?: boolean;
 }
 export const ListNamespacesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3234,57 +3222,57 @@ export const RevisionList = /*@__PURE__*/ S.Array(
 
 /** ListRevisionsResponse is a list of Revision resources. */
 export interface ListRevisionsResponse {
-  /** The kind of this resource, in this case "RevisionList". */
-  kind?: string;
-  /** Metadata associated with this revision list. */
-  metadata?: ListMeta;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
+  /** Metadata associated with this revision list. */
+  metadata?: ListMeta;
   /** List of Revisions. */
   items?: RevisionList;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
+  /** The kind of this resource, in this case "RevisionList". */
+  kind?: string;
 }
 export const ListRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    metadata: S.optional(ListMeta),
-    unreachable: S.optional(StringList),
     apiVersion: S.optional(S.String),
+    metadata: S.optional(ListMeta),
     items: S.optional(RevisionList),
+    unreachable: S.optional(StringList),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRevisionsResponse",
 }) as any as S.Schema<ListRevisionsResponse>;
 
 export interface ListNamespacesRoutesRequest {
-  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
-  watch?: boolean;
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
-  /** The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
   /** Optional. Encoded string to continue paging. */
   continue?: string;
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
+  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
+  watch?: boolean;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
   /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
   fieldSelector?: string;
+  /** The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
 }
 export const ListNamespacesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
     resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
     fieldSelector: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3305,21 +3293,21 @@ export const RouteList = /*@__PURE__*/ S.Array(
 export interface ListRoutesResponse {
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
+  /** Metadata associated with this Route list. */
+  metadata?: ListMeta;
   /** List of Routes. */
   items?: RouteList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
-  /** Metadata associated with this Route list. */
-  metadata?: ListMeta;
   /** The kind of this resource, in this case always "RouteList". */
   kind?: string;
 }
 export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
+    metadata: S.optional(ListMeta),
     items: S.optional(RouteList),
     unreachable: S.optional(StringList),
-    metadata: S.optional(ListMeta),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -3327,33 +3315,33 @@ export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRoutesResponse>;
 
 export interface ListNamespacesServicesRequest {
+  /** Not supported, and ignored by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Not supported, and ignored by Cloud Run. */
+  fieldSelector?: string;
+  /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
+  parent: string;
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
   /** Not supported, and ignored by Cloud Run. */
-  watch?: boolean;
-  /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
-  parent: string;
+  resourceVersion?: string;
   /** Not supported, and ignored by Cloud Run. */
-  includeUninitialized?: boolean;
+  watch?: boolean;
   /** Encoded string to continue paging. */
   continue?: string;
   /** The maximum number of records that should be returned. */
   limit?: number;
-  /** Not supported, and ignored by Cloud Run. */
-  resourceVersion?: string;
-  /** Not supported, and ignored by Cloud Run. */
-  fieldSelector?: string;
 }
 export const ListNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3372,24 +3360,24 @@ export const ServiceList = /*@__PURE__*/ S.Array(
 
 /** A list of Service resources. */
 export interface ListServicesResponse {
+  /** The API version for this call; returns "serving.knative.dev/v1". */
+  apiVersion?: string;
   /** The kind of this resource; returns "ServiceList". */
   kind?: string;
   /** Metadata associated with this Service list. */
   metadata?: ListMeta;
-  /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
-  unreachable?: StringList;
-  /** The API version for this call; returns "serving.knative.dev/v1". */
-  apiVersion?: string;
   /** List of Services. */
   items?: ServiceList;
+  /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
+  unreachable?: StringList;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
     metadata: S.optional(ListMeta),
-    unreachable: S.optional(StringList),
-    apiVersion: S.optional(S.String),
     items: S.optional(ServiceList),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListServicesResponse",
@@ -3397,32 +3385,32 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ListNamespacesTasksRequest {
   /** Optional. Not supported by Cloud Run. */
-  fieldSelector?: string;
+  includeUninitialized?: boolean;
   /** Optional. Not supported by Cloud Run. */
-  resourceVersion?: string;
+  fieldSelector?: string;
   /** Required. The namespace from which the tasks should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
+  /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. For example, to list all tasks of execution "foo" in succeeded state: `run.googleapis.com/execution=foo,run.googleapis.com/runningState=Succeeded`. Supported states are: * `Pending`: Initial state of all tasks. The task has not yet started but eventually will. * `Running`: Container instances for this task are running or will be running shortly. * `Succeeded`: No more container instances to run for the task, and the last attempt succeeded. * `Failed`: No more container instances to run for the task, and the last attempt failed. This task has run out of retry attempts. * `Cancelled`: Task was running but got stopped because its parent execution has been aborted. * `Abandoned`: The task has not yet started and never will because its parent execution has been aborted. */
+  labelSelector?: string;
   /** Optional. Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
+  resourceVersion?: string;
+  /** Optional. Not supported by Cloud Run. */
+  watch?: boolean;
   /** Optional. Optional encoded string to continue paging. */
   continue?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
-  /** Optional. Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. For example, to list all tasks of execution "foo" in succeeded state: `run.googleapis.com/execution=foo,run.googleapis.com/runningState=Succeeded`. Supported states are: * `Pending`: Initial state of all tasks. The task has not yet started but eventually will. * `Running`: Container instances for this task are running or will be running shortly. * `Succeeded`: No more container instances to run for the task, and the last attempt succeeded. * `Failed`: No more container instances to run for the task, and the last attempt failed. This task has run out of retry attempts. * `Cancelled`: Task was running but got stopped because its parent execution has been aborted. * `Abandoned`: The task has not yet started and never will because its parent execution has been aborted. */
-  labelSelector?: string;
-  /** Optional. Not supported by Cloud Run. */
-  watch?: boolean;
 }
 export const ListNamespacesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
-    labelSelector: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3441,24 +3429,24 @@ export const TaskList = /*@__PURE__*/ S.Array(
 
 /** ListTasksResponse is a list of Tasks resources. */
 export interface ListTasksResponse {
-  /** Metadata associated with this tasks list. */
-  metadata?: ListMeta;
   /** The kind of this resource, in this case "TasksList". */
   kind?: string;
   /** List of Tasks. */
   items?: TaskList;
-  /** The API version for this call such as "run.googleapis.com/v1". */
-  apiVersion?: string;
+  /** Metadata associated with this tasks list. */
+  metadata?: ListMeta;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** The API version for this call such as "run.googleapis.com/v1". */
+  apiVersion?: string;
 }
 export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(ListMeta),
     kind: S.optional(S.String),
     items: S.optional(TaskList),
-    apiVersion: S.optional(S.String),
+    metadata: S.optional(ListMeta),
     unreachable: S.optional(StringList),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListTasksResponse",
@@ -3469,17 +3457,17 @@ export interface ListNamespacesWorkerpoolsRequest {
   limit?: number;
   /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/workerpools` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
   parent: string;
-  /** Encoded string to continue paging. */
-  continue?: string;
   /** =, !=, exists, in, and notIn. */
   labelSelector?: string;
+  /** Encoded string to continue paging. */
+  continue?: string;
 }
 export const ListNamespacesWorkerpoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
-    continue: S.optional(S.String.pipe(T.Query())),
     labelSelector: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3498,42 +3486,42 @@ export const WorkerPoolList = /*@__PURE__*/ S.Array(
 
 /** A list of WorkerPool resources. */
 export interface ListWorkerPoolsResponse {
-  /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
-  unreachable?: StringList;
-  /** The API version for this call; returns "run.googleapis.com/v1". */
-  apiVersion?: string;
-  /** List of WorkerPools. */
-  items?: WorkerPoolList;
   /** The kind of this resource; returns "WorkerPoolList". */
   kind?: string;
   /** Metadata associated with this WorkerPool list. */
   metadata?: ListMeta;
+  /** List of WorkerPools. */
+  items?: WorkerPoolList;
+  /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
+  unreachable?: StringList;
+  /** The API version for this call; returns "run.googleapis.com/v1". */
+  apiVersion?: string;
 }
 export const ListWorkerPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
-    apiVersion: S.optional(S.String),
-    items: S.optional(WorkerPoolList),
     kind: S.optional(S.String),
     metadata: S.optional(ListMeta),
+    items: S.optional(WorkerPoolList),
+    unreachable: S.optional(StringList),
+    apiVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListWorkerPoolsResponse",
 }) as any as S.Schema<ListWorkerPoolsResponse>;
 
 export interface ListProjectsAuthorizeddomainsRequest {
-  /** Maximum results to return per page. */
-  pageSize?: number;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
   /** Name of the parent Project resource. Example: `projects/myproject`. */
   parent: string;
 }
 export const ListProjectsAuthorizeddomainsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
@@ -3547,24 +3535,24 @@ export const ListProjectsAuthorizeddomainsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsAuthorizeddomainsRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3580,22 +3568,22 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    metadata: S.optional(DocumentMap),
-    displayName: S.optional(S.String),
     locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -3621,19 +3609,19 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAuthorizeddomainsRequest {
+  /** Name of the parent Project resource. Example: `projects/myproject`. */
+  parent: string;
   /** Maximum results to return per page. */
   pageSize?: number;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
-  /** Name of the parent Project resource. Example: `projects/myproject`. */
-  parent: string;
 }
 export const ListProjectsLocationsAuthorizeddomainsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3648,32 +3636,32 @@ export const ListProjectsLocationsAuthorizeddomainsRequest =
 export interface ListProjectsLocationsConfigurationsRequest {
   /** Optional. The maximum number of the records that should be returned. */
   limit?: number;
-  /** The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id} with the project ID or number. */
-  parent: string;
-  /** Not supported by Cloud Run. */
-  includeUninitialized?: boolean;
   /** Optional. Encoded string to continue paging. */
   continue?: string;
   /** Not supported by Cloud Run. */
+  resourceVersion?: string;
+  /** Not supported by Cloud Run. */
   watch?: boolean;
+  /** The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id} with the project ID or number. */
+  parent: string;
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
   /** Not supported by Cloud Run. */
-  fieldSelector?: string;
+  includeUninitialized?: boolean;
   /** Not supported by Cloud Run. */
-  resourceVersion?: string;
+  fieldSelector?: string;
 }
 export const ListProjectsLocationsConfigurationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       limit: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
       resourceVersion: S.optional(S.String.pipe(T.Query())),
+      watch: S.optional(S.Boolean.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      labelSelector: S.optional(S.String.pipe(T.Query())),
+      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+      fieldSelector: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3688,32 +3676,32 @@ export const ListProjectsLocationsConfigurationsRequest =
 export interface ListProjectsLocationsDomainmappingsRequest {
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
-  /** Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
   /** Optional. Encoded string to continue paging. */
   continue?: string;
-  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
-  watch?: boolean;
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
-  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
-  fieldSelector?: string;
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
+  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
+  watch?: boolean;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
+  fieldSelector?: string;
+  /** Required. The namespace from which the domain mappings should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
 }
 export const ListProjectsLocationsDomainmappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       limit: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
       resourceVersion: S.optional(S.String.pipe(T.Query())),
+      watch: S.optional(S.Boolean.pipe(T.Query())),
+      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+      fieldSelector: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      labelSelector: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3726,25 +3714,25 @@ export const ListProjectsLocationsDomainmappingsRequest =
   }) as any as S.Schema<ListProjectsLocationsDomainmappingsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** Token identifying which result to start with, which is returned by a previous list call. */
-  pageToken?: string;
-  /** Optional. A filter for matching the completed or in-progress operations. The supported formats of *filter* are: To query for only completed operations: done:true To query for only ongoing operations: done:false Must be empty to query for all of the latest operations for the given parent project. */
-  filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The maximum number of records that should be returned. Requested page size cannot exceed 100. If not set or set to less than or equal to 0, the default page size is 100. . */
   pageSize?: number;
   /** Required. To query for all of the operations for a project. */
   name: string;
+  /** Token identifying which result to start with, which is returned by a previous list call. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** Optional. A filter for matching the completed or in-progress operations. The supported formats of *filter* are: To query for only completed operations: done:true To query for only ongoing operations: done:false Must be empty to query for all of the latest operations for the given parent project. */
+  filter?: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3763,53 +3751,53 @@ export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
 }
 export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      unreachable: S.optional(StringList),
       operations: S.optional(GoogleLongrunningOperationList),
       nextPageToken: S.optional(S.String),
-      unreachable: S.optional(StringList),
     }),
 ).annotate({
   identifier: "GoogleLongrunningListOperationsResponse",
 }) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
 
 export interface ListProjectsLocationsRevisionsRequest {
-  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
-  watch?: boolean;
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
-  /** The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
-  parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
   /** Optional. Encoded string to continue paging. */
   continue?: string;
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
+  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
+  watch?: boolean;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
   /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
   fieldSelector?: string;
+  /** The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
+  parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
 }
 export const ListProjectsLocationsRevisionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
       limit: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
       resourceVersion: S.optional(S.String.pipe(T.Query())),
+      watch: S.optional(S.Boolean.pipe(T.Query())),
+      includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
       fieldSelector: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      labelSelector: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3822,33 +3810,33 @@ export const ListProjectsLocationsRevisionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRevisionsRequest>;
 
 export interface ListProjectsLocationsRoutesRequest {
-  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
-  fieldSelector?: string;
-  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
-  resourceVersion?: string;
+  /** Optional. Encoded string to continue paging. */
+  continue?: string;
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
   /** The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
-  /** Not currently used by Cloud Run. */
-  includeUninitialized?: boolean;
-  /** Optional. Encoded string to continue paging. */
-  continue?: string;
-  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
-  watch?: boolean;
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
+  /** Not currently used by Cloud Run. */
+  includeUninitialized?: boolean;
+  /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
+  fieldSelector?: string;
+  /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
+  resourceVersion?: string;
+  /** Flag that indicates that the client expects to watch this resource as well. Not currently used by Cloud Run. */
+  watch?: boolean;
 }
 export const ListProjectsLocationsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fieldSelector: S.optional(S.String.pipe(T.Query())),
-    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
-    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-    continue: S.optional(S.String.pipe(T.Query())),
-    watch: S.optional(S.Boolean.pipe(T.Query())),
     labelSelector: S.optional(S.String.pipe(T.Query())),
+    includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3861,34 +3849,34 @@ export const ListProjectsLocationsRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRoutesRequest>;
 
 export interface ListProjectsLocationsServicesRequest {
-  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
-  labelSelector?: string;
+  /** Not supported, and ignored by Cloud Run. */
+  resourceVersion?: string;
   /** Not supported, and ignored by Cloud Run. */
   watch?: boolean;
   /** Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
   parent: string;
+  /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
+  labelSelector?: string;
   /** Not supported, and ignored by Cloud Run. */
   includeUninitialized?: boolean;
-  /** Encoded string to continue paging. */
-  continue?: string;
-  /** The maximum number of records that should be returned. */
-  limit?: number;
-  /** Not supported, and ignored by Cloud Run. */
-  resourceVersion?: string;
   /** Not supported, and ignored by Cloud Run. */
   fieldSelector?: string;
+  /** The maximum number of records that should be returned. */
+  limit?: number;
+  /** Encoded string to continue paging. */
+  continue?: string;
 }
 export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      labelSelector: S.optional(S.String.pipe(T.Query())),
+      resourceVersion: S.optional(S.String.pipe(T.Query())),
       watch: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      labelSelector: S.optional(S.String.pipe(T.Query())),
       includeUninitialized: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
       fieldSelector: S.optional(S.String.pipe(T.Query())),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      continue: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3903,8 +3891,6 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 export interface ReplaceInstanceNamespacesInstancesRequest {
   /** Required. The fully qualified name of the Instance being replaced. It can be any of the following forms: * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` * `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace. */
   name: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
   /** Request body */
   body?: Instance;
 }
@@ -3912,7 +3898,6 @@ export const ReplaceInstanceNamespacesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
-      dryRun: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Instance.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3928,15 +3913,12 @@ export const ReplaceInstanceNamespacesInstancesRequest =
 export interface ReplaceJobNamespacesJobsRequest {
   /** Required. The name of the job being replaced. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
   /** Request body */
   body?: Job;
 }
 export const ReplaceJobNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
-    dryRun: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Job.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -3950,18 +3932,18 @@ export const ReplaceJobNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceJobNamespacesJobsRequest>;
 
 export interface ReplaceServiceNamespacesServicesRequest {
-  /** Required. The fully qualified name of the service to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
-  name: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Required. The fully qualified name of the service to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
+  name: string;
   /** Request body */
   body?: Service;
 }
 export const ReplaceServiceNamespacesServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4000,18 +3982,18 @@ export const ReplaceServiceProjectsLocationsServicesRequest =
   }) as any as S.Schema<ReplaceServiceProjectsLocationsServicesRequest>;
 
 export interface ReplaceWorkerPoolNamespacesWorkerpoolsRequest {
-  /** Required. The fully qualified name of the worker pool to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}` * `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}` */
-  name: string;
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
+  /** Required. The fully qualified name of the worker pool to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}` * `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}` */
+  name: string;
   /** Request body */
   body?: WorkerPool;
 }
 export const ReplaceWorkerPoolNamespacesWorkerpoolsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       dryRun: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(WorkerPool.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -4028,19 +4010,19 @@ export const ReplaceWorkerPoolNamespacesWorkerpoolsRequest =
 export interface ContainerOverride {
   /** Arguments to the entrypoint. The specified arguments replace and override any existing entrypoint arguments. Must be empty if `clear_args` is set to true. */
   args?: StringList;
-  /** The name of the container specified as a DNS_LABEL. */
-  name?: string;
-  /** Optional. Set to True to clear all existing arguments. */
-  clearArgs?: boolean;
   /** List of environment variables to set in the container. All specified environment variables are merged with existing environment variables. When the specified environment variables exist, these values override any existing values. */
   env?: EnvVarList;
+  /** Optional. Set to True to clear all existing arguments. */
+  clearArgs?: boolean;
+  /** The name of the container specified as a DNS_LABEL. */
+  name?: string;
 }
 export const ContainerOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(StringList),
-    name: S.optional(S.String),
-    clearArgs: S.optional(S.Boolean),
     env: S.optional(EnvVarList),
+    clearArgs: S.optional(S.Boolean),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ContainerOverride",
@@ -4053,17 +4035,17 @@ export const ContainerOverrideList = /*@__PURE__*/ S.Array(
 
 /** RunJob Overrides that contains Execution fields to be overridden on the go. */
 export interface Overrides {
-  /** Per container override specification. */
-  containerOverrides?: ContainerOverrideList;
   /** The desired number of tasks the execution should run. Will replace existing task_count value. */
   taskCount?: number;
+  /** Per container override specification. */
+  containerOverrides?: ContainerOverrideList;
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
   timeoutSeconds?: number;
 }
 export const Overrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    containerOverrides: S.optional(ContainerOverrideList),
     taskCount: S.optional(S.Number),
+    containerOverrides: S.optional(ContainerOverrideList),
     timeoutSeconds: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Overrides" }) as any as S.Schema<Overrides>;
@@ -4205,14 +4187,9 @@ export const SetIamPolicyProjectsLocationsWorkerpoolsRequest =
   }) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerpoolsRequest>;
 
 /** Request message for starting a stopped Instance. */
-export interface StartInstanceRequest {
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
-}
+export interface StartInstanceRequest {}
 export const StartInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dryRun: S.optional(S.String),
-  }),
+  S.Struct({}),
 ).annotate({
   identifier: "StartInstanceRequest",
 }) as any as S.Schema<StartInstanceRequest>;
@@ -4239,14 +4216,9 @@ export const StartNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartNamespacesInstancesRequest>;
 
 /** Request message for stopping a running Instance. */
-export interface StopInstanceRequest {
-  /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
-  dryRun?: string;
-}
+export interface StopInstanceRequest {}
 export const StopInstanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dryRun: S.optional(S.String),
-  }),
+  S.Struct({}),
 ).annotate({
   identifier: "StopInstanceRequest",
 }) as any as S.Schema<StopInstanceRequest>;

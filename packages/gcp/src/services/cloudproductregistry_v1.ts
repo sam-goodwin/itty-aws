@@ -69,8 +69,6 @@ export const StringList = /*@__PURE__*/ S.Array(
 
 /** Represents an independent service offering that can be provisioned by a customer. */
 export interface LogicalProduct {
-  /** Output only. Indicates whether the logical product has been replaced. If `false`, the product is active. If `true`, the product has been replaced by another type, and the `replacement` field contains the resource name of that replacement. */
-  replaced?: boolean;
   /** Display name of the LogicalProduct. */
   title?: string;
   /** Product suite associated with the logical product. Format: productSuites/{product_suite}. */
@@ -79,20 +77,22 @@ export interface LogicalProduct {
   name?: string;
   /** Output only. Current Lifecycle state of the logical product. */
   lifecycleState?: LogicalProductLifecycleStateEnum;
-  /** Output only. Child variant resource references. Format: logicalProducts/{logical_product}/variants/{variant} */
-  variants?: StringList;
+  /** Output only. Indicates whether the logical product has been replaced. If `false`, the product is active. If `true`, the product has been replaced by another type, and the `replacement` field contains the resource name of that replacement. */
+  replaced?: boolean;
   /** Output only. The resource name of the Logical Entity that the logical product is replaced by. This field is only populated when this logical product is replaced by some other type. Eg: logicalProducts/{logical_product}/variants/{variant}, productSuites/{product_suite}, etc. */
   replacement?: string;
+  /** Output only. Child variant resource references. Format: logicalProducts/{logical_product}/variants/{variant} */
+  variants?: StringList;
 }
 export const LogicalProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    replaced: S.optional(S.Boolean),
     title: S.optional(S.String),
     productSuite: S.optional(S.String),
     name: S.optional(S.String),
     lifecycleState: S.optional(LogicalProductLifecycleStateEnum),
-    variants: S.optional(StringList),
+    replaced: S.optional(S.Boolean),
     replacement: S.optional(S.String),
+    variants: S.optional(StringList),
   }),
 ).annotate({ identifier: "LogicalProduct" }) as any as S.Schema<LogicalProduct>;
 
@@ -124,24 +124,24 @@ export const LogicalProductVariantLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a distinct offering derived from a primary product that retains core functionalities but offers specialized features for a specific market segment. */
 export interface LogicalProductVariant {
-  /** Output only. The resource name of the Logical Entity that the logical product variant is replaced by. This field is only populated when this logical product variant is replaced by some other type. Eg: logicalProducts/{logical_product}, productSuites/{product_suite}, etc. */
-  replacement?: string;
-  /** Output only. Current Lifecycle state of the logical product variant. */
-  lifecycleState?: LogicalProductVariantLifecycleStateEnum;
   /** Identifier. The resource name of the LogicalProductVariant. Format: logicalProducts/{logical_product}/variants/{variant} */
   name?: string;
-  /** Display name of the LogicalProductVariant. */
-  title?: string;
+  /** Output only. Current Lifecycle state of the logical product variant. */
+  lifecycleState?: LogicalProductVariantLifecycleStateEnum;
   /** Output only. Indicates whether the logical product variant has been replaced. If `false`, the variant is active. If `true`, the variant has been replaced by another type, and the `replacement` field contains the resource name of that replacement. */
   replaced?: boolean;
+  /** Display name of the LogicalProductVariant. */
+  title?: string;
+  /** Output only. The resource name of the Logical Entity that the logical product variant is replaced by. This field is only populated when this logical product variant is replaced by some other type. Eg: logicalProducts/{logical_product}, productSuites/{product_suite}, etc. */
+  replacement?: string;
 }
 export const LogicalProductVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    replacement: S.optional(S.String),
-    lifecycleState: S.optional(LogicalProductVariantLifecycleStateEnum),
     name: S.optional(S.String),
-    title: S.optional(S.String),
+    lifecycleState: S.optional(LogicalProductVariantLifecycleStateEnum),
     replaced: S.optional(S.Boolean),
+    title: S.optional(S.String),
+    replacement: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LogicalProductVariant",
@@ -167,40 +167,40 @@ export const GetProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents a unified grouping of products sharing a common brand and market positioning. */
 export interface ProductSuite {
-  /** Output only. Indicates whether the product suite has been replaced. If `false`, the product suite is active. If `true`, the product suite has been replaced by another type, and the `replacement` field contains the resource name of that replacement. */
-  replaced?: boolean;
+  /** Output only. The resource name of the Logical Entity that the product suite is replaced by. This field is only populated when this product suite is replaced by some other type. Eg: logicalProducts/{logical_product}, logicalProducts/{logical_product}/variants/{variant}, etc. */
+  replacement?: string;
   /** Title of the ProductSuite. */
   title?: string;
   /** Identifier. The resource name of the ProductSuite. Format: productSuites/{product_suite} */
   name?: string;
   /** Output only. LogicalProducts under this suite. Format: logicalProducts/{logical_product} */
   logicalProducts?: StringList;
-  /** Output only. The resource name of the Logical Entity that the product suite is replaced by. This field is only populated when this product suite is replaced by some other type. Eg: logicalProducts/{logical_product}, logicalProducts/{logical_product}/variants/{variant}, etc. */
-  replacement?: string;
+  /** Output only. Indicates whether the product suite has been replaced. If `false`, the product suite is active. If `true`, the product suite has been replaced by another type, and the `replacement` field contains the resource name of that replacement. */
+  replaced?: boolean;
 }
 export const ProductSuite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    replaced: S.optional(S.Boolean),
+    replacement: S.optional(S.String),
     title: S.optional(S.String),
     name: S.optional(S.String),
     logicalProducts: S.optional(StringList),
-    replacement: S.optional(S.String),
+    replaced: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "ProductSuite" }) as any as S.Schema<ProductSuite>;
 
 export interface ListLogicalProductsRequest {
   /** Optional. The maximum number of logical products to return. The service may return fewer than this value. If unspecified, at most 100 logical products will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
-  /** Optional. A page token, received from a previous `ListLogicalProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProducts` must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. The filter expression for listing logical products. Filter syntax: https://google.aip.dev/160 Supported fields: suite_id */
   filter?: string;
+  /** Optional. A page token, received from a previous `ListLogicalProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProducts` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const ListLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -234,17 +234,17 @@ export const ListLogicalProductsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogicalProductsResponse>;
 
 export interface ListLogicalProductsVariantsRequest {
-  /** Required. Parent logical product id. Format: logicalProducts/{logical_product} */
-  parent: string;
   /** Optional. A page token, received from a previous `ListLogicalProductVariants` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProductVariants` must match the call that provided the page token. */
   pageToken?: string;
+  /** Required. Parent logical product id. Format: logicalProducts/{logical_product} */
+  parent: string;
   /** Optional. The maximum number of logical product variants to return. The service may return fewer than this value. If unspecified, at most 100 logical product variants will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
 export const ListLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -279,15 +279,15 @@ export const ListLogicalProductVariantsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogicalProductVariantsResponse>;
 
 export interface ListProductSuitesRequest {
-  /** Optional. The maximum number of suites to return. The service may return fewer than this value. If unspecified, at most 100 suites will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListProductSuites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductSuites` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. The maximum number of suites to return. The service may return fewer than this value. If unspecified, at most 100 suites will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
+  pageSize?: number;
 }
 export const ListProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -306,15 +306,15 @@ export const ProductSuiteList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListProductSuites. */
 export interface ListProductSuitesResponse {
-  /** Matched ProductSuites */
-  productSuites?: ProductSuiteList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** Matched ProductSuites */
+  productSuites?: ProductSuiteList;
 }
 export const ListProductSuitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    productSuites: S.optional(ProductSuiteList),
     nextPageToken: S.optional(S.String),
+    productSuites: S.optional(ProductSuiteList),
   }),
 ).annotate({
   identifier: "ListProductSuitesResponse",
@@ -342,16 +342,16 @@ export const LookupEntityLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LookupEntityResponse {
   /** Matched LogicalProduct. */
   logicalProduct?: LogicalProduct;
-  /** Matched ProductSuite. */
-  productSuite?: ProductSuite;
   /** Matched LogicalProductVariant. */
   logicalProductVariant?: LogicalProductVariant;
+  /** Matched ProductSuite. */
+  productSuite?: ProductSuite;
 }
 export const LookupEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicalProduct: S.optional(LogicalProduct),
-    productSuite: S.optional(ProductSuite),
     logicalProductVariant: S.optional(LogicalProductVariant),
+    productSuite: S.optional(ProductSuite),
   }),
 ).annotate({
   identifier: "LookupEntityResponse",

@@ -30,9 +30,11 @@ export interface AdDomainServiceMembersListRequest {
   /** The custom query. */
   query?: string;
   /** The next partition key to query for. */
-  nextPartitionKey: AdDomainServiceMembersListRequestNextPartitionKey;
+  nextPartitionKey:
+    | AdDomainServiceMembersListRequestNextPartitionKey
+    | (string & {});
   /** The next row key to query for. */
-  nextRowKey: AdDomainServiceMembersListRequestNextRowKey;
+  nextRowKey: AdDomainServiceMembersListRequestNextRowKey | (string & {});
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
@@ -1422,9 +1424,13 @@ export interface AddsServicesListReplicationSummaryRequest {
   /** The custom query. */
   query: string;
   /** The next partition key to query for. */
-  nextPartitionKey: AddsServicesListReplicationSummaryRequestNextPartitionKey;
+  nextPartitionKey:
+    | AddsServicesListReplicationSummaryRequestNextPartitionKey
+    | (string & {});
   /** The next row key to query for. */
-  nextRowKey: AddsServicesListReplicationSummaryRequestNextRowKey;
+  nextRowKey:
+    | AddsServicesListReplicationSummaryRequestNextRowKey
+    | (string & {});
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }

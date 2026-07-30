@@ -8248,7 +8248,7 @@
           "uri": "/api/projects/{project_id}/environments/{id}/logs_config/",
           "code": 200
         },
-        "smithy.api#documentation": "Manage logs product configuration for this environment. Members can read;\nwriting requires project admin, matching the admin-only settings UI."
+        "smithy.api#documentation": "Manage logs product configuration for this environment."
       }
     },
     "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList": {
@@ -8661,7 +8661,7 @@
           "uri": "/api/projects/{project_id}/environments/{id}/logs_config/",
           "code": 200
         },
-        "smithy.api#documentation": "Manage logs product configuration for this environment. Members can read;\nwriting requires project admin, matching the admin-only settings UI."
+        "smithy.api#documentation": "Manage logs product configuration for this environment."
       }
     },
     "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestAppUrlsList": {

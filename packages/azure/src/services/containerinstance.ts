@@ -673,8 +673,6 @@ export interface AzureFileVolume {
   storageAccountKey?: string;
   /** The reference to the storage account access key used to access the Azure File share. */
   storageAccountKeyReference?: string;
-  /** The client id of the user-assigned managed identity that has access to the Azure File share. */
-  userAssignedIdentityClientId?: string;
 }
 export const AzureFileVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -683,7 +681,6 @@ export const AzureFileVolume = /*@__PURE__*/ S.suspend(() =>
     storageAccountName: S.String,
     storageAccountKey: S.optional(S.String),
     storageAccountKeyReference: S.optional(S.String),
-    userAssignedIdentityClientId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AzureFileVolume",
@@ -930,7 +927,7 @@ export const CGProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1471,7 +1468,7 @@ export const CGProfileDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1503,7 +1500,7 @@ export const CGProfileGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1577,7 +1574,7 @@ export const CGProfileGetByRevisionNumberRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions/{revisionNumber}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1653,7 +1650,7 @@ export const CGProfileListAllRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1748,7 +1745,7 @@ export const CGProfilesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2025-09-01",
       }),
     ),
 ).annotate({
@@ -1767,7 +1764,7 @@ export const CGProfilesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -1804,7 +1801,7 @@ export const CGProfileUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -2222,7 +2219,7 @@ export const ContainerGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2025-09-01",
       }),
     ),
 ).annotate({
@@ -2514,7 +2511,7 @@ export const ContainerGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -2590,7 +2587,7 @@ export const ContainerGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -2667,7 +2664,7 @@ export const ContainerGroupsGetOutboundNetworkDependenciesEndpointsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/outboundNetworkDependenciesEndpoints",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2025-09-01",
       }),
     ),
   ).annotate({
@@ -2702,7 +2699,7 @@ export const ContainerGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroups",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -2957,7 +2954,7 @@ export const ContainerGroupsListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2025-09-01",
       }),
     ),
   ).annotate({
@@ -2982,7 +2979,7 @@ export const ContainerGroupsRestartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3014,7 +3011,7 @@ export const ContainerGroupsStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3046,7 +3043,7 @@ export const ContainerGroupsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/stop",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3102,7 +3099,7 @@ export const ContainerGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3181,7 +3178,7 @@ export const ContainersAttachRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/attach",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3247,7 +3244,7 @@ export const ContainersExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/exec",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3297,7 +3294,7 @@ export const ContainersListLogsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/logs",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3330,7 +3327,7 @@ export const LocationListCachedImagesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/cachedImages",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3388,7 +3385,7 @@ export const LocationListCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/capabilities",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -3477,7 +3474,7 @@ export const LocationListUsageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4034,7 +4031,7 @@ export const NGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4139,7 +4136,7 @@ export const NGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4171,7 +4168,7 @@ export const NGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4239,7 +4236,7 @@ export const NGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/ngroups",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4331,7 +4328,7 @@ export const NGroupsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4356,7 +4353,7 @@ export const NGroupsRestartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}/restart",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4388,7 +4385,7 @@ export const NGroupsStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}/start",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4420,7 +4417,7 @@ export const NGroupsStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}/stop",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4477,7 +4474,7 @@ export const NGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4542,7 +4539,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.ContainerInstance/operations",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2025-09-01",
     }),
   ),
 ).annotate({
@@ -4617,616 +4614,6 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export interface SandboxGroupsConnectRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the SandboxGroup. */
-  sandboxGroupName: string;
-}
-export const SandboxGroupsConnectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sandboxGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}/connect",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SandboxGroupsConnectRequest",
-}) as any as S.Schema<SandboxGroupsConnectRequest>;
-
-/** The result of getting an access token for a SandboxGroup. */
-export interface SandboxGroupAccessToken {
-  /** The endpoint URL to use with the access token. */
-  endpoint: string;
-  /** The access token used to authenticate against the endpoint. */
-  accessToken: string | Redacted.Redacted<string>;
-  /** The UTC date and time at which the access token expires. */
-  notAfter: string;
-}
-export const SandboxGroupAccessToken = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.String,
-    accessToken: S.String.pipe(T.SensitiveValue({})),
-    notAfter: S.String,
-  }),
-).annotate({
-  identifier: "SandboxGroupAccessToken",
-}) as any as S.Schema<SandboxGroupAccessToken>;
-
-/** Resource tags. */
-export type SandboxGroupsCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SandboxGroupsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxGroupsCreateOrUpdateRequestTagsMap>;
-
-/** A reference to a subnet resource. */
-export interface SubnetReference {
-  /** The ARM resource ID of the subnet. The caller must have `Microsoft.Network/virtualNetworks/subnets/join/action` permission on this subnet (enforced via a linked access check at create/update time). */
-  id: string;
-}
-export const SubnetReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "SubnetReference",
-}) as any as S.Schema<SubnetReference>;
-
-/** The list of subnets associated with the SandboxGroup. */
-export type SandboxGroupNetworkProfileSubnetsList = Array<SubnetReference>;
-export const SandboxGroupNetworkProfileSubnetsList = /*@__PURE__*/ S.Array(
-  SubnetReference,
-) as any as S.Schema<SandboxGroupNetworkProfileSubnetsList>;
-
-/** The network profile for a SandboxGroup. */
-export interface SandboxGroupNetworkProfile {
-  /** The list of subnets associated with the SandboxGroup. */
-  subnets?: SandboxGroupNetworkProfileSubnetsList;
-}
-export const SandboxGroupNetworkProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnets: S.optional(SandboxGroupNetworkProfileSubnetsList),
-  }),
-).annotate({
-  identifier: "SandboxGroupNetworkProfile",
-}) as any as S.Schema<SandboxGroupNetworkProfile>;
-
-/** Properties of a SandboxGroup. */
-export interface SandboxGroupPropertiesInput {
-  /** The network profile of the SandboxGroup. */
-  networkProfile?: SandboxGroupNetworkProfile;
-}
-export const SandboxGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    networkProfile: S.optional(SandboxGroupNetworkProfile),
-  }),
-).annotate({
-  identifier: "SandboxGroupPropertiesInput",
-}) as any as S.Schema<SandboxGroupPropertiesInput>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const SandboxGroupsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "SandboxGroupsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<SandboxGroupsCreateOrUpdateRequestIdentity>;
-
-export interface SandboxGroupsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the SandboxGroup. */
-  sandboxGroupName: string;
-  /** Resource tags. */
-  tags?: SandboxGroupsCreateOrUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The resource-specific properties for this resource. */
-  properties?: SandboxGroupPropertiesInput;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupsCreateOrUpdateRequestIdentity;
-}
-export const SandboxGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sandboxGroupName: S.String.pipe(T.Label()),
-    tags: S.optional(SandboxGroupsCreateOrUpdateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(SandboxGroupPropertiesInput),
-    identity: S.optional(SandboxGroupsCreateOrUpdateRequestIdentity),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SandboxGroupsCreateOrUpdateRequest",
-}) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>;
-
-/** Resource tags. */
-export type SandboxGroupsCreateOrUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SandboxGroupsCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<SandboxGroupsCreateOrUpdateResponseTagsMap>;
-
-/** The provisioning state of a SandboxGroup resource. */
-export type SandboxGroupProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Updating"
-  | "Deleting"
-  | "Accepted";
-export const SandboxGroupProvisioningState = /*@__PURE__*/ S.String;
-
-/** Properties of a SandboxGroup. */
-export interface SandboxGroupProperties {
-  /** The status of the last operation. */
-  provisioningState?: SandboxGroupProvisioningState;
-  /** The network profile of the SandboxGroup. */
-  networkProfile?: SandboxGroupNetworkProfile;
-  /** The ARM resource ID of the management resource group associated with this SandboxGroup. */
-  managementResourceGroupId?: string;
-}
-export const SandboxGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(SandboxGroupProvisioningState),
-    networkProfile: S.optional(SandboxGroupNetworkProfile),
-    managementResourceGroupId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SandboxGroupProperties",
-}) as any as S.Schema<SandboxGroupProperties>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const SandboxGroupsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "SandboxGroupsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<SandboxGroupsCreateOrUpdateResponseIdentity>;
-
-export interface SandboxGroupsCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SandboxGroupsCreateOrUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The resource-specific properties for this resource. */
-  properties?: SandboxGroupProperties;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupsCreateOrUpdateResponseIdentity;
-}
-export const SandboxGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SandboxGroupsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SandboxGroupProperties),
-    identity: S.optional(SandboxGroupsCreateOrUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "SandboxGroupsCreateOrUpdateResponse",
-}) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>;
-
-export interface SandboxGroupsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the SandboxGroup. */
-  sandboxGroupName: string;
-}
-export const SandboxGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sandboxGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SandboxGroupsDeleteRequest",
-}) as any as S.Schema<SandboxGroupsDeleteRequest>;
-
-export interface SandboxGroupsDeleteResponse {}
-export const SandboxGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SandboxGroupsDeleteResponse",
-}) as any as S.Schema<SandboxGroupsDeleteResponse>;
-
-export interface SandboxGroupsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the SandboxGroup. */
-  sandboxGroupName: string;
-}
-export const SandboxGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sandboxGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SandboxGroupsGetRequest",
-}) as any as S.Schema<SandboxGroupsGetRequest>;
-
-/** Resource tags. */
-export type SandboxGroupsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SandboxGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxGroupsGetResponseTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const SandboxGroupsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "SandboxGroupsGetResponseIdentity",
-}) as any as S.Schema<SandboxGroupsGetResponseIdentity>;
-
-export interface SandboxGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SandboxGroupsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The resource-specific properties for this resource. */
-  properties?: SandboxGroupProperties;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupsGetResponseIdentity;
-}
-export const SandboxGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SandboxGroupsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SandboxGroupProperties),
-    identity: S.optional(SandboxGroupsGetResponseIdentity),
-  }),
-).annotate({
-  identifier: "SandboxGroupsGetResponse",
-}) as any as S.Schema<SandboxGroupsGetResponse>;
-
-export interface SandboxGroupsListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const SandboxGroupsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxGroupsListByResourceGroupRequest",
-}) as any as S.Schema<SandboxGroupsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type SandboxGroupTagsMap = { [key: string]: string | undefined };
-export const SandboxGroupTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxGroupTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const SandboxGroupIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "SandboxGroupIdentity",
-}) as any as S.Schema<SandboxGroupIdentity>;
-
-/** A SandboxGroup tracked resource. */
-export interface SandboxGroup {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SandboxGroupTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The resource-specific properties for this resource. */
-  properties?: SandboxGroupProperties;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupIdentity;
-}
-export const SandboxGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SandboxGroupTagsMap),
-    location: S.String,
-    properties: S.optional(SandboxGroupProperties),
-    identity: S.optional(SandboxGroupIdentity),
-  }),
-).annotate({ identifier: "SandboxGroup" }) as any as S.Schema<SandboxGroup>;
-
-/** The SandboxGroup items on this page */
-export type SandboxGroupListResultValueList = Array<SandboxGroup>;
-export const SandboxGroupListResultValueList = /*@__PURE__*/ S.Array(
-  SandboxGroup,
-) as any as S.Schema<SandboxGroupListResultValueList>;
-
-/** The response of a SandboxGroup list operation. */
-export interface SandboxGroupListResult {
-  /** The SandboxGroup items on this page */
-  value: SandboxGroupListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SandboxGroupListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SandboxGroupListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SandboxGroupListResult",
-}) as any as S.Schema<SandboxGroupListResult>;
-
-export interface SandboxGroupsListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const SandboxGroupsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/sandboxGroups",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxGroupsListBySubscriptionRequest",
-}) as any as S.Schema<SandboxGroupsListBySubscriptionRequest>;
-
-/** Resource tags. */
-export type SandboxGroupsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SandboxGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxGroupsUpdateRequestTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const SandboxGroupsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "SandboxGroupsUpdateRequestIdentity",
-}) as any as S.Schema<SandboxGroupsUpdateRequestIdentity>;
-
-export interface SandboxGroupsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the SandboxGroup. */
-  sandboxGroupName: string;
-  /** Resource tags. */
-  tags?: SandboxGroupsUpdateRequestTagsMap;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupsUpdateRequestIdentity;
-}
-export const SandboxGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sandboxGroupName: S.String.pipe(T.Label()),
-    tags: S.optional(SandboxGroupsUpdateRequestTagsMap),
-    identity: S.optional(SandboxGroupsUpdateRequestIdentity),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SandboxGroupsUpdateRequest",
-}) as any as S.Schema<SandboxGroupsUpdateRequest>;
-
-/** Resource tags. */
-export type SandboxGroupsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SandboxGroupsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SandboxGroupsUpdateResponseTagsMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface SandboxGroupsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const SandboxGroupsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "SandboxGroupsUpdateResponseIdentity",
-}) as any as S.Schema<SandboxGroupsUpdateResponseIdentity>;
-
-export interface SandboxGroupsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SandboxGroupsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The resource-specific properties for this resource. */
-  properties?: SandboxGroupProperties;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SandboxGroupsUpdateResponseIdentity;
-}
-export const SandboxGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SandboxGroupsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SandboxGroupProperties),
-    identity: S.optional(SandboxGroupsUpdateResponseIdentity),
-  }),
-).annotate({
-  identifier: "SandboxGroupsUpdateResponse",
-}) as any as S.Schema<SandboxGroupsUpdateResponse>;
-
 export interface SubnetServiceAssociationLinkDeleteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5249,7 +4636,7 @@ export const SubnetServiceAssociationLinkDeleteRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2025-09-01",
       }),
     ),
   ).annotate({
@@ -5768,111 +5155,6 @@ export const OperationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: OperationsListRequest,
   output: OperationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsConnectError = AzureOpError;
-/** Get an access token and endpoint for connecting to the SandboxGroup. Get an access token and endpoint for connecting to the SandboxGroup. */
-export const SandboxGroupsConnect: API.OperationMethod<
-  SandboxGroupsConnectRequest,
-  SandboxGroupAccessToken,
-  SandboxGroupsConnectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsConnectRequest,
-  output: SandboxGroupAccessToken,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsCreateOrUpdateError = AzureOpError;
-/** Create a SandboxGroup Create a SandboxGroup */
-export const SandboxGroupsCreateOrUpdate: API.OperationMethod<
-  SandboxGroupsCreateOrUpdateRequest,
-  SandboxGroupsCreateOrUpdateResponse,
-  SandboxGroupsCreateOrUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsCreateOrUpdateRequest,
-  output: SandboxGroupsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsDeleteError = AzureOpError;
-/** Delete a SandboxGroup Delete a SandboxGroup */
-export const SandboxGroupsDelete: API.OperationMethod<
-  SandboxGroupsDeleteRequest,
-  SandboxGroupsDeleteResponse,
-  SandboxGroupsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsDeleteRequest,
-  output: SandboxGroupsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsGetError = AzureOpError;
-/** Get a SandboxGroup Get a SandboxGroup */
-export const SandboxGroupsGet: API.OperationMethod<
-  SandboxGroupsGetRequest,
-  SandboxGroupsGetResponse,
-  SandboxGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsGetRequest,
-  output: SandboxGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsListByResourceGroupError = AzureOpError;
-/** List SandboxGroup resources by resource group List SandboxGroup resources by resource group */
-export const SandboxGroupsListByResourceGroup: API.OperationMethod<
-  SandboxGroupsListByResourceGroupRequest,
-  SandboxGroupListResult,
-  SandboxGroupsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsListByResourceGroupRequest,
-  output: SandboxGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsListBySubscriptionError = AzureOpError;
-/** List SandboxGroup resources by subscription ID List SandboxGroup resources by subscription ID */
-export const SandboxGroupsListBySubscription: API.OperationMethod<
-  SandboxGroupsListBySubscriptionRequest,
-  SandboxGroupListResult,
-  SandboxGroupsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsListBySubscriptionRequest,
-  output: SandboxGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxGroupsUpdateError = AzureOpError;
-/** Update a SandboxGroup Update a SandboxGroup */
-export const SandboxGroupsUpdate: API.OperationMethod<
-  SandboxGroupsUpdateRequest,
-  SandboxGroupsUpdateResponse,
-  SandboxGroupsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGroupsUpdateRequest,
-  output: SandboxGroupsUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -62,29 +62,29 @@ export class NotFound extends T.applyErrorMatchers(
 
 /** A data exchange is a container that lets you share data. Along with the descriptive information about the data exchange, it contains listings that reference shared datasets. */
 export interface DataExchange {
-  /** Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes. */
-  description?: string;
+  /** Required. Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
+  displayName?: string;
   /** Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes. */
   primaryContact?: string;
   /** Output only. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. */
   name?: string;
-  /** Required. Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
-  displayName?: string;
   /** Optional. Documentation describing the data exchange. */
   documentation?: string;
   /** Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire. */
   icon?: string;
+  /** Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes. */
+  description?: string;
   /** Output only. Number of listings contained in the data exchange. */
   listingCount?: number;
 }
 export const DataExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
+    displayName: S.optional(S.String),
     primaryContact: S.optional(S.String),
     name: S.optional(S.String),
-    displayName: S.optional(S.String),
     documentation: S.optional(S.String),
     icon: S.optional(S.String),
+    description: S.optional(S.String),
     listingCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DataExchange" }) as any as S.Schema<DataExchange>;
@@ -113,6 +113,23 @@ export const CreateProjectsLocationsDataExchangesRequest =
   ).annotate({
     identifier: "CreateProjectsLocationsDataExchangesRequest",
   }) as any as S.Schema<CreateProjectsLocationsDataExchangesRequest>;
+
+export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
+export const ListingStateEnum = /*@__PURE__*/ S.String;
+
+/** Contains details of the data provider. */
+export interface DataProvider {
+  /** Optional. Email or URL of the data provider. Max Length: 1000 bytes. */
+  primaryContact?: string;
+  /** Optional. Name of the data provider. */
+  name?: string;
+}
+export const DataProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryContact: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "DataProvider" }) as any as S.Schema<DataProvider>;
 
 export type ListingCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -145,49 +162,19 @@ export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
 
-/** Contains details of the data provider. */
-export interface DataProvider {
-  /** Optional. Email or URL of the data provider. Max Length: 1000 bytes. */
-  primaryContact?: string;
-  /** Optional. Name of the data provider. */
-  name?: string;
-}
-export const DataProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primaryContact: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataProvider" }) as any as S.Schema<DataProvider>;
-
-/** A reference to a shared dataset. It is an existing BigQuery dataset with a collection of objects such as tables and views that you want to share with subscribers. When subscriber's subscribe to a listing, Analytics Hub creates a linked dataset in the subscriber's project. A Linked dataset is an opaque, read-only BigQuery dataset that serves as a _symbolic link_ to a shared dataset. */
-export interface BigQueryDatasetSource {
-  /** Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123` */
-  dataset?: string;
-}
-export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BigQueryDatasetSource",
-}) as any as S.Schema<BigQueryDatasetSource>;
-
-export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
-export const ListingStateEnum = /*@__PURE__*/ S.String;
-
 /** Restricted export config, used to configure restricted export on linked dataset. */
 export interface RestrictedExportConfig {
-  /** Optional. If true, enable restricted export. */
-  enabled?: boolean;
   /** Output only. If true, restrict direct table access(read api/tabledata.list) on linked table. */
   restrictDirectTableAccess?: boolean;
+  /** Optional. If true, enable restricted export. */
+  enabled?: boolean;
   /** Optional. If true, restrict export of query result derived from restricted linked dataset table. */
   restrictQueryResult?: boolean;
 }
 export const RestrictedExportConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
     restrictDirectTableAccess: S.optional(S.Boolean),
+    enabled: S.optional(S.Boolean),
     restrictQueryResult: S.optional(S.Boolean),
   }),
 ).annotate({
@@ -208,53 +195,66 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
+/** A reference to a shared dataset. It is an existing BigQuery dataset with a collection of objects such as tables and views that you want to share with subscribers. When subscriber's subscribe to a listing, Analytics Hub creates a linked dataset in the subscriber's project. A Linked dataset is an opaque, read-only BigQuery dataset that serves as a _symbolic link_ to a shared dataset. */
+export interface BigQueryDatasetSource {
+  /** Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123` */
+  dataset?: string;
+}
+export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataset: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BigQueryDatasetSource",
+}) as any as S.Schema<BigQueryDatasetSource>;
+
 /** A listing is what gets published into a data exchange that a subscriber can subscribe to. It contains a reference to the data source along with descriptive information that will help subscribers find and subscribe the data. */
 export interface Listing {
   /** Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes. */
   description?: string;
-  /** Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes. */
-  primaryContact?: string;
-  /** Optional. Categories of the listing. Up to five categories are allowed. */
-  categories?: ListingCategoriesItemEnumList;
-  /** Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes. */
-  requestAccess?: string;
-  /** Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire. */
-  icon?: string;
-  /** Optional. If true, the listing is only available to get the resource metadata. Listing is non subscribable. */
-  allowOnlyMetadataSharing?: boolean;
   /** Optional. Documentation describing the listing. */
   documentation?: string;
-  /** Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` */
-  name?: string;
-  /** Optional. Details of the data provider who owns the source data. */
-  dataProvider?: DataProvider;
-  /** Required. Shared dataset i.e. BigQuery dataset source. */
-  bigqueryDataset?: BigQueryDatasetSource;
   /** Output only. Current state of the listing. */
   state?: ListingStateEnum | (string & {});
+  /** Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire. */
+  icon?: string;
+  /** Optional. Details of the data provider who owns the source data. */
+  dataProvider?: DataProvider;
+  /** Optional. Categories of the listing. Up to five categories are allowed. */
+  categories?: ListingCategoriesItemEnumList;
+  /** Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` */
+  name?: string;
   /** Required. Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
   displayName?: string;
+  /** Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes. */
+  primaryContact?: string;
   /** Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset. This is a required field for data clean room exchanges. */
   restrictedExportConfig?: RestrictedExportConfig;
+  /** Optional. If true, the listing is only available to get the resource metadata. Listing is non subscribable. */
+  allowOnlyMetadataSharing?: boolean;
   /** Optional. Details of the publisher who owns the listing and who can share the source data. */
   publisher?: Publisher;
+  /** Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes. */
+  requestAccess?: string;
+  /** Required. Shared dataset i.e. BigQuery dataset source. */
+  bigqueryDataset?: BigQueryDatasetSource;
 }
 export const Listing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    primaryContact: S.optional(S.String),
-    categories: S.optional(ListingCategoriesItemEnumList),
-    requestAccess: S.optional(S.String),
-    icon: S.optional(S.String),
-    allowOnlyMetadataSharing: S.optional(S.Boolean),
     documentation: S.optional(S.String),
-    name: S.optional(S.String),
-    dataProvider: S.optional(DataProvider),
-    bigqueryDataset: S.optional(BigQueryDatasetSource),
     state: S.optional(ListingStateEnum),
+    icon: S.optional(S.String),
+    dataProvider: S.optional(DataProvider),
+    categories: S.optional(ListingCategoriesItemEnumList),
+    name: S.optional(S.String),
     displayName: S.optional(S.String),
+    primaryContact: S.optional(S.String),
     restrictedExportConfig: S.optional(RestrictedExportConfig),
+    allowOnlyMetadataSharing: S.optional(S.Boolean),
     publisher: S.optional(Publisher),
+    requestAccess: S.optional(S.String),
+    bigqueryDataset: S.optional(BigQueryDatasetSource),
   }),
 ).annotate({ identifier: "Listing" }) as any as S.Schema<Listing>;
 
@@ -402,18 +402,18 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    role: S.optional(S.String),
     members: S.optional(StringList),
     condition: S.optional(Expr),
+    role: S.optional(S.String),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
@@ -471,19 +471,19 @@ export const AuditConfigList = /*@__PURE__*/ S.Array(
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
-    etag: S.optional(S.String),
     version: S.optional(S.Number),
     auditConfigs: S.optional(AuditConfigList),
+    etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
@@ -548,18 +548,18 @@ export const GetProjectsLocationsDataExchangesListingsRequest =
   }) as any as S.Schema<GetProjectsLocationsDataExchangesListingsRequest>;
 
 export interface ListOrganizationsLocationsDataExchangesRequest {
-  /** Required. The organization resource path of the projects containing DataExchanges. e.g. `organizations/myorg/locations/us`. */
-  organization: string;
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
+  /** Required. The organization resource path of the projects containing DataExchanges. e.g. `organizations/myorg/locations/us`. */
+  organization: string;
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
 export const ListOrganizationsLocationsDataExchangesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      organization: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      organization: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -579,34 +579,34 @@ export const DataExchangeList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing data exchanges in an organization and location. */
 export interface ListOrgDataExchangesResponse {
-  /** The list of data exchanges. */
-  dataExchanges?: DataExchangeList;
   /** A token to request the next page of results. */
   nextPageToken?: string;
+  /** The list of data exchanges. */
+  dataExchanges?: DataExchangeList;
 }
 export const ListOrgDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataExchanges: S.optional(DataExchangeList),
     nextPageToken: S.optional(S.String),
+    dataExchanges: S.optional(DataExchangeList),
   }),
 ).annotate({
   identifier: "ListOrgDataExchangesResponse",
 }) as any as S.Schema<ListOrgDataExchangesResponse>;
 
 export interface ListProjectsLocationsDataExchangesRequest {
-  /** Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/us`. */
-  parent: string;
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
+  /** Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/us`. */
+  parent: string;
 }
 export const ListProjectsLocationsDataExchangesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -620,15 +620,15 @@ export const ListProjectsLocationsDataExchangesRequest =
 
 /** Message for response to the list of data exchanges. */
 export interface ListDataExchangesResponse {
-  /** The list of data exchanges. */
-  dataExchanges?: DataExchangeList;
   /** A token to request the next page of results. */
   nextPageToken?: string;
+  /** The list of data exchanges. */
+  dataExchanges?: DataExchangeList;
 }
 export const ListDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dataExchanges: S.optional(DataExchangeList),
     nextPageToken: S.optional(S.String),
+    dataExchanges: S.optional(DataExchangeList),
   }),
 ).annotate({
   identifier: "ListDataExchangesResponse",
@@ -637,17 +637,17 @@ export const ListDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsDataExchangesListingsRequest {
   /** Required. The parent resource path of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123`. */
   parent: string;
-  /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
-  pageSize?: number;
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
+  /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsDataExchangesListingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -706,18 +706,18 @@ export const PatchProjectsLocationsDataExchangesRequest =
   }) as any as S.Schema<PatchProjectsLocationsDataExchangesRequest>;
 
 export interface PatchProjectsLocationsDataExchangesListingsRequest {
-  /** Required. Field mask specifies the fields to update in the listing resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. */
-  updateMask?: string;
   /** Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` */
   name: string;
+  /** Required. Field mask specifies the fields to update in the listing resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. */
+  updateMask?: string;
   /** Request body */
   body?: Listing;
 }
 export const PatchProjectsLocationsDataExchangesListingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Listing.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -815,26 +815,26 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** Defines the destination bigquery dataset. */
 export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
-  /** Required. The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations. */
-  location?: string;
-  /** Optional. A descriptive name for the dataset. */
-  friendlyName?: string;
-  /** Optional. A user-friendly description of the dataset. */
-  description?: string;
   /** Required. A reference that identifies the destination dataset. */
   datasetReference?: GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference;
+  /** Optional. A user-friendly description of the dataset. */
+  description?: string;
+  /** Optional. A descriptive name for the dataset. */
+  friendlyName?: string;
+  /** Required. The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations. */
+  location?: string;
   /** Optional. The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See https://cloud.google.com/resource-manager/docs/creating-managing-labels for more information. */
   labels?: StringMap;
 }
 export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      location: S.optional(S.String),
-      friendlyName: S.optional(S.String),
-      description: S.optional(S.String),
       datasetReference: S.optional(
         GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference,
       ),
+      description: S.optional(S.String),
+      friendlyName: S.optional(S.String),
+      location: S.optional(S.String),
       labels: S.optional(StringMap),
     }),
   ).annotate({

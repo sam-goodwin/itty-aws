@@ -21,7 +21,7 @@ export interface CheckNameAvailabilityRequest {
   /** the name to check for availability */
   name?: string;
   /** fully qualified resource type which includes provider namespace */
-  type?: CheckNameAvailabilityRequestType;
+  type?: CheckNameAvailabilityRequestType | (string & {});
 }
 export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

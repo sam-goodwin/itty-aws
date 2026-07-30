@@ -11,14 +11,6 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
-
 /** * `approve` - approve * `reject` - reject */
 export type DecisionEnum = "approve" | "reject";
 export const DecisionEnum = /*@__PURE__*/ S.String;
@@ -401,61 +393,6 @@ export const AgentApplicationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsDestroyResponse",
 }) as any as S.Schema<AgentApplicationsDestroyResponse>;
 
-export interface AgentApplicationsInvokeRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this agent application. */
-  id: string;
-  /** The user message that starts the session. Required, non-empty. */
-  message: string;
-  /** Optional idempotency / threading key. A repeat invoke with the same external_key resumes the existing session instead of starting a new one. */
-  external_key?: string;
-}
-export const AgentApplicationsInvokeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    message: S.String,
-    external_key: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/agent_applications/{id}/invoke/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AgentApplicationsInvokeRequest",
-}) as any as S.Schema<AgentApplicationsInvokeRequest>;
-
-/** * `queued` - queued * `running` - running * `completed` - completed * `closed` - closed * `cancelled` - cancelled * `failed` - failed */
-export type AgentSessionStateEnum =
-  | "queued"
-  | "running"
-  | "completed"
-  | "closed"
-  | "cancelled"
-  | "failed";
-export const AgentSessionStateEnum = /*@__PURE__*/ S.String;
-
-export interface AgentInvokeResponse {
-  /** The newly-created (or resumed, if external_key matched) session id. Feed to agent-applications-send / agent-applications-listen. */
-  session_id: string;
-  /** Session state right after enqueue — `queued`. Poll agent-applications-listen for progress. * `queued` - queued * `running` - running * `completed` - completed * `closed` - closed * `cancelled` - cancelled * `failed` - failed */
-  state: AgentSessionStateEnum;
-  /** True if an existing session matched `external_key` and was resumed, rather than a new one being created. */
-  resumed: boolean;
-}
-export const AgentInvokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    state: AgentSessionStateEnum,
-    resumed: S.Boolean,
-  }),
-).annotate({
-  identifier: "AgentInvokeResponse",
-}) as any as S.Schema<AgentInvokeResponse>;
-
 export interface AgentApplicationsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -501,64 +438,6 @@ export const PaginatedAgentApplicationList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedAgentApplicationList",
 }) as any as S.Schema<PaginatedAgentApplicationList>;
-
-export interface AgentApplicationsListenRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this agent application. */
-  id: string;
-  /** `next_cursor` from the previous call. Omit on the first read; pass it back to summarize only what's new. */
-  cursor?: number;
-  /** Digest character budget (default 4000, range 1–20000). The digest is clipped to fit and `truncated` is set. */
-  max_chars?: number;
-  /** Session to read (must belong to this agent). */
-  session_id: string;
-}
-export const AgentApplicationsListenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    cursor: S.optional(S.Number.pipe(T.Query())),
-    max_chars: S.optional(S.Number.pipe(T.Query())),
-    session_id: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/agent_applications/{id}/listen/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AgentApplicationsListenRequest",
-}) as any as S.Schema<AgentApplicationsListenRequest>;
-
-export interface AgentListenResponse {
-  session_id: string;
-  state: AgentSessionStateEnum;
-  /** Total messages in the conversation so far. */
-  turns: number;
-  /** Pass back as `cursor` on the next call to page forward — high-water mark of messages seen. */
-  next_cursor: number;
-  /** Compact, payload-free progress summary: last assistant text, one-line tool activity, state/usage. */
-  digest: string;
-  /** True when the digest was clipped to `max_chars` — read the full transcript via `agent-applications-sessions-retrieve`. */
-  truncated: boolean;
-  /** True once the current turn has finished (`completed`) or the session ended (`closed`/`cancelled`/`failed`) — stop polling. A `completed` session is still open: `agent-applications-send` to continue it. */
-  done: boolean;
-}
-export const AgentListenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    state: AgentSessionStateEnum,
-    turns: S.Number,
-    next_cursor: S.Number,
-    digest: S.String,
-    truncated: S.Boolean,
-    done: S.Boolean,
-  }),
-).annotate({
-  identifier: "AgentListenResponse",
-}) as any as S.Schema<AgentListenResponse>;
 
 export interface AgentApplicationsModelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -823,6 +702,1126 @@ export const AgentApplicationsRevisionsAgentMdUpdateRequest =
 export type AgentRevisionStateEnum = "draft" | "ready" | "live" | "archived";
 export const AgentRevisionStateEnum = /*@__PURE__*/ S.String;
 
+/** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+export type AgentRevisionSpecModelsCase0Level = "low" | "medium" | "high";
+export const AgentRevisionSpecModelsCase0Level = /*@__PURE__*/ S.String;
+
+/** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+export type AgentRevisionSpecModelsCase0Reasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentRevisionSpecModelsCase0Reasoning = /*@__PURE__*/ S.String;
+
+/** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+export type AgentRevisionSpecModelsCase0OptimizeFor = "cost" | "availability";
+export const AgentRevisionSpecModelsCase0OptimizeFor = /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecModelsCase0 {
+  mode: string;
+  /** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+  level?: AgentRevisionSpecModelsCase0Level;
+  /** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+  reasoning?: AgentRevisionSpecModelsCase0Reasoning;
+  /** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+  optimize_for?: AgentRevisionSpecModelsCase0OptimizeFor;
+}
+export const AgentRevisionSpecModelsCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.String,
+    level: S.optional(AgentRevisionSpecModelsCase0Level),
+    reasoning: S.optional(AgentRevisionSpecModelsCase0Reasoning),
+    optimize_for: S.optional(AgentRevisionSpecModelsCase0OptimizeFor),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecModelsCase0",
+}) as any as S.Schema<AgentRevisionSpecModelsCase0>;
+
+/** Per-model reasoning effort override (else the spec default). */
+export type AgentRevisionSpecModelsCase1ModelsItemReasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentRevisionSpecModelsCase1ModelsItemReasoning =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecModelsCase1ModelsItem {
+  /** Canonical model id, e.g. `anthropic/claude-sonnet-4-6` (see the agent-applications-models tool for served ids). */
+  model: string;
+  /** Per-model reasoning effort override (else the spec default). */
+  reasoning?: AgentRevisionSpecModelsCase1ModelsItemReasoning;
+}
+export const AgentRevisionSpecModelsCase1ModelsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      model: S.String,
+      reasoning: S.optional(AgentRevisionSpecModelsCase1ModelsItemReasoning),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecModelsCase1ModelsItem",
+}) as any as S.Schema<AgentRevisionSpecModelsCase1ModelsItem>;
+
+/** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+export type AgentRevisionSpecModelsCase1ModelsList =
+  Array<AgentRevisionSpecModelsCase1ModelsItem>;
+export const AgentRevisionSpecModelsCase1ModelsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecModelsCase1ModelsItem,
+) as any as S.Schema<AgentRevisionSpecModelsCase1ModelsList>;
+
+/** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+export type AgentRevisionSpecModelsCase1OptimizeFor = "cost" | "availability";
+export const AgentRevisionSpecModelsCase1OptimizeFor = /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecModelsCase1 {
+  mode: string;
+  /** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+  models: AgentRevisionSpecModelsCase1ModelsList;
+  /** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+  optimize_for?: AgentRevisionSpecModelsCase1OptimizeFor;
+}
+export const AgentRevisionSpecModelsCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.String,
+    models: AgentRevisionSpecModelsCase1ModelsList,
+    optimize_for: S.optional(AgentRevisionSpecModelsCase1OptimizeFor),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecModelsCase1",
+}) as any as S.Schema<AgentRevisionSpecModelsCase1>;
+
+/** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+export type AgentRevisionSpecModels =
+  | AgentRevisionSpecModelsCase0
+  | AgentRevisionSpecModelsCase1;
+export const AgentRevisionSpecModels =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecModels>;
+
+export type AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  Array<string>;
+export const AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List>;
+
+export type AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspaces =
+  | AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List
+  | string;
+export const AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspaces =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspaces>;
+
+export interface AgentRevisionSpecTriggersItemCase0Config {
+  channel_id?: string;
+  mention_only: boolean;
+  auto_resume_threads: boolean;
+  allow_workspace_participants: boolean;
+  ack_reaction?: string;
+  allow_direct_messages: boolean;
+  trusted_workspaces: AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspaces;
+}
+export const AgentRevisionSpecTriggersItemCase0Config = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      channel_id: S.optional(S.String),
+      mention_only: S.Boolean,
+      auto_resume_threads: S.Boolean,
+      allow_workspace_participants: S.Boolean,
+      ack_reaction: S.optional(S.String),
+      allow_direct_messages: S.Boolean,
+      trusted_workspaces:
+        AgentRevisionSpecTriggersItemCase0ConfigTrustedWorkspaces,
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase0Config",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase0Config>;
+
+export interface AgentRevisionSpecTriggersItemCase0 {
+  type: string;
+  config: AgentRevisionSpecTriggersItemCase0Config;
+}
+export const AgentRevisionSpecTriggersItemCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    config: AgentRevisionSpecTriggersItemCase0Config,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase0",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase0>;
+
+export interface AgentRevisionSpecTriggersItemCase1Config {
+  path: string;
+}
+export const AgentRevisionSpecTriggersItemCase1Config = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      path: S.String,
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase1Config",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase1Config>;
+
+export interface AgentRevisionSpecTriggersItemCase1AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase1AuthModesItemCase0",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase0>;
+
+export type AgentRevisionSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase1ScopesList>;
+
+export type AgentRevisionSpecTriggersItemCase1AuthModesItemCase1Audience =
+  | "project"
+  | "organization";
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecTriggersItemCase1AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentRevisionSpecTriggersItemCase1AuthModesItemCase1ScopesList;
+  audience?: AgentRevisionSpecTriggersItemCase1AuthModesItemCase1Audience;
+}
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentRevisionSpecTriggersItemCase1AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentRevisionSpecTriggersItemCase1AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase1AuthModesItemCase1",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase1>;
+
+export interface AgentRevisionSpecTriggersItemCase1AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase1AuthModesItemCase2",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase2>;
+
+export interface AgentRevisionSpecTriggersItemCase1AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase1AuthModesItemCase3",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase3>;
+
+export interface AgentRevisionSpecTriggersItemCase1AuthModesItemCase4 {
+  type: string;
+}
+export const AgentRevisionSpecTriggersItemCase1AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase1AuthModesItemCase4",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItemCase4>;
+
+export type AgentRevisionSpecTriggersItemCase1AuthModesItem =
+  | AgentRevisionSpecTriggersItemCase1AuthModesItemCase0
+  | AgentRevisionSpecTriggersItemCase1AuthModesItemCase1
+  | AgentRevisionSpecTriggersItemCase1AuthModesItemCase2
+  | AgentRevisionSpecTriggersItemCase1AuthModesItemCase3
+  | AgentRevisionSpecTriggersItemCase1AuthModesItemCase4;
+export const AgentRevisionSpecTriggersItemCase1AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesItem>;
+
+export type AgentRevisionSpecTriggersItemCase1AuthModesList =
+  Array<AgentRevisionSpecTriggersItemCase1AuthModesItem>;
+export const AgentRevisionSpecTriggersItemCase1AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentRevisionSpecTriggersItemCase1AuthModesItem,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase1AuthModesList>;
+
+export interface AgentRevisionSpecTriggersItemCase1Auth {
+  modes?: AgentRevisionSpecTriggersItemCase1AuthModesList;
+}
+export const AgentRevisionSpecTriggersItemCase1Auth = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modes: S.optional(AgentRevisionSpecTriggersItemCase1AuthModesList),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase1Auth",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase1Auth>;
+
+export interface AgentRevisionSpecTriggersItemCase1 {
+  type: string;
+  config: AgentRevisionSpecTriggersItemCase1Config;
+  auth: AgentRevisionSpecTriggersItemCase1Auth;
+}
+export const AgentRevisionSpecTriggersItemCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    config: AgentRevisionSpecTriggersItemCase1Config,
+    auth: AgentRevisionSpecTriggersItemCase1Auth,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase1",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase1>;
+
+export type AgentRevisionSpecTriggersItemCase2ConfigCatchUp =
+  | "all"
+  | "most_recent"
+  | "skip";
+export const AgentRevisionSpecTriggersItemCase2ConfigCatchUp =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecTriggersItemCase2Config {
+  name: string;
+  schedule: string;
+  timezone?: string;
+  prompt: string;
+  external_key?: string;
+  catch_up?: AgentRevisionSpecTriggersItemCase2ConfigCatchUp;
+  max_catch_up_age_seconds?: number;
+}
+export const AgentRevisionSpecTriggersItemCase2Config = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      schedule: S.String,
+      timezone: S.optional(S.String),
+      prompt: S.String,
+      external_key: S.optional(S.String),
+      catch_up: S.optional(AgentRevisionSpecTriggersItemCase2ConfigCatchUp),
+      max_catch_up_age_seconds: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase2Config",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase2Config>;
+
+export interface AgentRevisionSpecTriggersItemCase2 {
+  type: string;
+  config: AgentRevisionSpecTriggersItemCase2Config;
+}
+export const AgentRevisionSpecTriggersItemCase2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    config: AgentRevisionSpecTriggersItemCase2Config,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase2",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase2>;
+
+export interface AgentRevisionSpecTriggersItemCase3Config {
+  allow_restart?: boolean;
+}
+export const AgentRevisionSpecTriggersItemCase3Config = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase3Config",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase3Config>;
+
+export interface AgentRevisionSpecTriggersItemCase3AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase3AuthModesItemCase0",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase0>;
+
+export type AgentRevisionSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase1ScopesList>;
+
+export type AgentRevisionSpecTriggersItemCase3AuthModesItemCase1Audience =
+  | "project"
+  | "organization";
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecTriggersItemCase3AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentRevisionSpecTriggersItemCase3AuthModesItemCase1ScopesList;
+  audience?: AgentRevisionSpecTriggersItemCase3AuthModesItemCase1Audience;
+}
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentRevisionSpecTriggersItemCase3AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentRevisionSpecTriggersItemCase3AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase3AuthModesItemCase1",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase1>;
+
+export interface AgentRevisionSpecTriggersItemCase3AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase3AuthModesItemCase2",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase2>;
+
+export interface AgentRevisionSpecTriggersItemCase3AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase3AuthModesItemCase3",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase3>;
+
+export interface AgentRevisionSpecTriggersItemCase3AuthModesItemCase4 {
+  type: string;
+}
+export const AgentRevisionSpecTriggersItemCase3AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase3AuthModesItemCase4",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItemCase4>;
+
+export type AgentRevisionSpecTriggersItemCase3AuthModesItem =
+  | AgentRevisionSpecTriggersItemCase3AuthModesItemCase0
+  | AgentRevisionSpecTriggersItemCase3AuthModesItemCase1
+  | AgentRevisionSpecTriggersItemCase3AuthModesItemCase2
+  | AgentRevisionSpecTriggersItemCase3AuthModesItemCase3
+  | AgentRevisionSpecTriggersItemCase3AuthModesItemCase4;
+export const AgentRevisionSpecTriggersItemCase3AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesItem>;
+
+export type AgentRevisionSpecTriggersItemCase3AuthModesList =
+  Array<AgentRevisionSpecTriggersItemCase3AuthModesItem>;
+export const AgentRevisionSpecTriggersItemCase3AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentRevisionSpecTriggersItemCase3AuthModesItem,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase3AuthModesList>;
+
+export interface AgentRevisionSpecTriggersItemCase3Auth {
+  modes?: AgentRevisionSpecTriggersItemCase3AuthModesList;
+}
+export const AgentRevisionSpecTriggersItemCase3Auth = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modes: S.optional(AgentRevisionSpecTriggersItemCase3AuthModesList),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase3Auth",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase3Auth>;
+
+export interface AgentRevisionSpecTriggersItemCase3 {
+  type: string;
+  config?: AgentRevisionSpecTriggersItemCase3Config;
+  auth: AgentRevisionSpecTriggersItemCase3Auth;
+}
+export const AgentRevisionSpecTriggersItemCase3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    config: S.optional(AgentRevisionSpecTriggersItemCase3Config),
+    auth: AgentRevisionSpecTriggersItemCase3Auth,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase3",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase3>;
+
+export interface AgentRevisionSpecTriggersItemCase4Config {
+  allow_restart?: boolean;
+}
+export const AgentRevisionSpecTriggersItemCase4Config = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase4Config",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase4Config>;
+
+export interface AgentRevisionSpecTriggersItemCase4AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase4AuthModesItemCase0",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase0>;
+
+export type AgentRevisionSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase1ScopesList>;
+
+export type AgentRevisionSpecTriggersItemCase4AuthModesItemCase1Audience =
+  | "project"
+  | "organization";
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecTriggersItemCase4AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentRevisionSpecTriggersItemCase4AuthModesItemCase1ScopesList;
+  audience?: AgentRevisionSpecTriggersItemCase4AuthModesItemCase1Audience;
+}
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentRevisionSpecTriggersItemCase4AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentRevisionSpecTriggersItemCase4AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase4AuthModesItemCase1",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase1>;
+
+export interface AgentRevisionSpecTriggersItemCase4AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase4AuthModesItemCase2",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase2>;
+
+export interface AgentRevisionSpecTriggersItemCase4AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase4AuthModesItemCase3",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase3>;
+
+export interface AgentRevisionSpecTriggersItemCase4AuthModesItemCase4 {
+  type: string;
+}
+export const AgentRevisionSpecTriggersItemCase4AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecTriggersItemCase4AuthModesItemCase4",
+  }) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItemCase4>;
+
+export type AgentRevisionSpecTriggersItemCase4AuthModesItem =
+  | AgentRevisionSpecTriggersItemCase4AuthModesItemCase0
+  | AgentRevisionSpecTriggersItemCase4AuthModesItemCase1
+  | AgentRevisionSpecTriggersItemCase4AuthModesItemCase2
+  | AgentRevisionSpecTriggersItemCase4AuthModesItemCase3
+  | AgentRevisionSpecTriggersItemCase4AuthModesItemCase4;
+export const AgentRevisionSpecTriggersItemCase4AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesItem>;
+
+export type AgentRevisionSpecTriggersItemCase4AuthModesList =
+  Array<AgentRevisionSpecTriggersItemCase4AuthModesItem>;
+export const AgentRevisionSpecTriggersItemCase4AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentRevisionSpecTriggersItemCase4AuthModesItem,
+  ) as any as S.Schema<AgentRevisionSpecTriggersItemCase4AuthModesList>;
+
+export interface AgentRevisionSpecTriggersItemCase4Auth {
+  modes?: AgentRevisionSpecTriggersItemCase4AuthModesList;
+}
+export const AgentRevisionSpecTriggersItemCase4Auth = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modes: S.optional(AgentRevisionSpecTriggersItemCase4AuthModesList),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase4Auth",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase4Auth>;
+
+export interface AgentRevisionSpecTriggersItemCase4 {
+  type: string;
+  config?: AgentRevisionSpecTriggersItemCase4Config;
+  auth: AgentRevisionSpecTriggersItemCase4Auth;
+}
+export const AgentRevisionSpecTriggersItemCase4 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    config: S.optional(AgentRevisionSpecTriggersItemCase4Config),
+    auth: AgentRevisionSpecTriggersItemCase4Auth,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecTriggersItemCase4",
+}) as any as S.Schema<AgentRevisionSpecTriggersItemCase4>;
+
+export type AgentRevisionSpecTriggersItem =
+  | AgentRevisionSpecTriggersItemCase0
+  | AgentRevisionSpecTriggersItemCase1
+  | AgentRevisionSpecTriggersItemCase2
+  | AgentRevisionSpecTriggersItemCase3
+  | AgentRevisionSpecTriggersItemCase4;
+export const AgentRevisionSpecTriggersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecTriggersItem>;
+
+export type AgentRevisionSpecTriggersList =
+  Array<AgentRevisionSpecTriggersItem>;
+export const AgentRevisionSpecTriggersList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecTriggersItem,
+) as any as S.Schema<AgentRevisionSpecTriggersList>;
+
+export type AgentRevisionSpecToolsItemCase0ApprovalPolicyType =
+  | "principal"
+  | "agent";
+export const AgentRevisionSpecToolsItemCase0ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecToolsItemCase0ApprovalPolicy {
+  type?: AgentRevisionSpecToolsItemCase0ApprovalPolicyType;
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentRevisionSpecToolsItemCase0ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(AgentRevisionSpecToolsItemCase0ApprovalPolicyType),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecToolsItemCase0ApprovalPolicy",
+  }) as any as S.Schema<AgentRevisionSpecToolsItemCase0ApprovalPolicy>;
+
+export interface AgentRevisionSpecToolsItemCase0 {
+  kind: string;
+  id: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentRevisionSpecToolsItemCase0ApprovalPolicy;
+}
+export const AgentRevisionSpecToolsItemCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+    id: S.String,
+    requires_approval: S.optional(S.Boolean),
+    approval_policy: S.optional(AgentRevisionSpecToolsItemCase0ApprovalPolicy),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecToolsItemCase0",
+}) as any as S.Schema<AgentRevisionSpecToolsItemCase0>;
+
+export type AgentRevisionSpecToolsItemCase1ApprovalPolicyType =
+  | "principal"
+  | "agent";
+export const AgentRevisionSpecToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecToolsItemCase1ApprovalPolicy {
+  type?: AgentRevisionSpecToolsItemCase1ApprovalPolicyType;
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentRevisionSpecToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(AgentRevisionSpecToolsItemCase1ApprovalPolicyType),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentRevisionSpecToolsItemCase1ApprovalPolicy>;
+
+export interface AgentRevisionSpecToolsItemCase1 {
+  kind: string;
+  id: string;
+  path: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentRevisionSpecToolsItemCase1ApprovalPolicy;
+  requires_identity?: string;
+}
+export const AgentRevisionSpecToolsItemCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+    id: S.String,
+    path: S.String,
+    requires_approval: S.optional(S.Boolean),
+    approval_policy: S.optional(AgentRevisionSpecToolsItemCase1ApprovalPolicy),
+    requires_identity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecToolsItemCase1",
+}) as any as S.Schema<AgentRevisionSpecToolsItemCase1>;
+
+export interface AgentRevisionSpecToolsItemCase2 {
+  kind: string;
+  from_template: string;
+  alias: string;
+  version?: number;
+}
+export const AgentRevisionSpecToolsItemCase2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+    from_template: S.String,
+    alias: S.String,
+    version: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecToolsItemCase2",
+}) as any as S.Schema<AgentRevisionSpecToolsItemCase2>;
+
+export interface AgentRevisionSpecToolsItemCase3 {
+  kind: string;
+  id: string;
+  description: string;
+  args_schema?: unknown;
+  required?: boolean;
+  timeout_ms?: number;
+  interactive?: boolean;
+}
+export const AgentRevisionSpecToolsItemCase3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+    id: S.String,
+    description: S.String,
+    args_schema: S.optional(S.Unknown),
+    required: S.optional(S.Boolean),
+    timeout_ms: S.optional(S.Number),
+    interactive: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecToolsItemCase3",
+}) as any as S.Schema<AgentRevisionSpecToolsItemCase3>;
+
+export type AgentRevisionSpecToolsItem =
+  | AgentRevisionSpecToolsItemCase0
+  | AgentRevisionSpecToolsItemCase1
+  | AgentRevisionSpecToolsItemCase2
+  | AgentRevisionSpecToolsItemCase3;
+export const AgentRevisionSpecToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecToolsItem>;
+
+export type AgentRevisionSpecToolsList = Array<AgentRevisionSpecToolsItem>;
+export const AgentRevisionSpecToolsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecToolsItem,
+) as any as S.Schema<AgentRevisionSpecToolsList>;
+
+export interface AgentRevisionSpecMcpsItemAuth {
+  provider?: string;
+}
+export const AgentRevisionSpecMcpsItemAuth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecMcpsItemAuth",
+}) as any as S.Schema<AgentRevisionSpecMcpsItemAuth>;
+
+export type AgentRevisionSpecMcpsItemSecretsList = Array<string>;
+export const AgentRevisionSpecMcpsItemSecretsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AgentRevisionSpecMcpsItemSecretsList>;
+
+export type AgentRevisionSpecMcpsItemHeadersMap = {
+  [key: string]: string | undefined;
+};
+export const AgentRevisionSpecMcpsItemHeadersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AgentRevisionSpecMcpsItemHeadersMap>;
+
+export type AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  | "principal"
+  | "agent";
+export const AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy {
+  type?: AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicyType;
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy>;
+
+export interface AgentRevisionSpecMcpsItemToolsItemCase1 {
+  name: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy;
+}
+export const AgentRevisionSpecMcpsItemToolsItemCase1 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentRevisionSpecMcpsItemToolsItemCase1ApprovalPolicy,
+      ),
+    }),
+).annotate({
+  identifier: "AgentRevisionSpecMcpsItemToolsItemCase1",
+}) as any as S.Schema<AgentRevisionSpecMcpsItemToolsItemCase1>;
+
+export type AgentRevisionSpecMcpsItemToolsItem =
+  | string
+  | AgentRevisionSpecMcpsItemToolsItemCase1;
+export const AgentRevisionSpecMcpsItemToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecMcpsItemToolsItem>;
+
+export type AgentRevisionSpecMcpsItemToolsList =
+  Array<AgentRevisionSpecMcpsItemToolsItem>;
+export const AgentRevisionSpecMcpsItemToolsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecMcpsItemToolsItem,
+) as any as S.Schema<AgentRevisionSpecMcpsItemToolsList>;
+
+export interface AgentRevisionSpecMcpsItem {
+  id: string;
+  url: string;
+  auth?: AgentRevisionSpecMcpsItemAuth;
+  secrets?: AgentRevisionSpecMcpsItemSecretsList;
+  headers?: AgentRevisionSpecMcpsItemHeadersMap;
+  tools?: AgentRevisionSpecMcpsItemToolsList;
+}
+export const AgentRevisionSpecMcpsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    url: S.String,
+    auth: S.optional(AgentRevisionSpecMcpsItemAuth),
+    secrets: S.optional(AgentRevisionSpecMcpsItemSecretsList),
+    headers: S.optional(AgentRevisionSpecMcpsItemHeadersMap),
+    tools: S.optional(AgentRevisionSpecMcpsItemToolsList),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecMcpsItem",
+}) as any as S.Schema<AgentRevisionSpecMcpsItem>;
+
+export type AgentRevisionSpecMcpsList = Array<AgentRevisionSpecMcpsItem>;
+export const AgentRevisionSpecMcpsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecMcpsItem,
+) as any as S.Schema<AgentRevisionSpecMcpsList>;
+
+export interface AgentRevisionSpecSkillsItem {
+  id: string;
+  path: string;
+  description?: string;
+  from_template?: string;
+  alias?: string;
+  version?: number;
+  source_version_id?: string;
+}
+export const AgentRevisionSpecSkillsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    path: S.String,
+    description: S.optional(S.String),
+    from_template: S.optional(S.String),
+    alias: S.optional(S.String),
+    version: S.optional(S.Number),
+    source_version_id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecSkillsItem",
+}) as any as S.Schema<AgentRevisionSpecSkillsItem>;
+
+export type AgentRevisionSpecSkillsList = Array<AgentRevisionSpecSkillsItem>;
+export const AgentRevisionSpecSkillsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecSkillsItem,
+) as any as S.Schema<AgentRevisionSpecSkillsList>;
+
+export type AgentRevisionSpecIdentityProvidersItemCase0Binding = "principal";
+export const AgentRevisionSpecIdentityProvidersItemCase0Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentRevisionSpecIdentityProvidersItemCase0ScopesList =
+  Array<string>;
+export const AgentRevisionSpecIdentityProvidersItemCase0ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecIdentityProvidersItemCase0ScopesList>;
+
+export interface AgentRevisionSpecIdentityProvidersItemCase0 {
+  kind: string;
+  id?: string;
+  binding?: AgentRevisionSpecIdentityProvidersItemCase0Binding;
+  scopes?: AgentRevisionSpecIdentityProvidersItemCase0ScopesList;
+  client_id?: string;
+}
+export const AgentRevisionSpecIdentityProvidersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.optional(S.String),
+      binding: S.optional(AgentRevisionSpecIdentityProvidersItemCase0Binding),
+      scopes: S.optional(AgentRevisionSpecIdentityProvidersItemCase0ScopesList),
+      client_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecIdentityProvidersItemCase0",
+  }) as any as S.Schema<AgentRevisionSpecIdentityProvidersItemCase0>;
+
+export type AgentRevisionSpecIdentityProvidersItemCase1Binding = "principal";
+export const AgentRevisionSpecIdentityProvidersItemCase1Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentRevisionSpecIdentityProvidersItemCase1ScopesList =
+  Array<string>;
+export const AgentRevisionSpecIdentityProvidersItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecIdentityProvidersItemCase1ScopesList>;
+
+export interface AgentRevisionSpecIdentityProvidersItemCase1 {
+  kind: string;
+  id: string;
+  binding?: AgentRevisionSpecIdentityProvidersItemCase1Binding;
+  authorize_url: string;
+  token_url: string;
+  client_id: string;
+  client_secret_ref?: string;
+  scopes?: AgentRevisionSpecIdentityProvidersItemCase1ScopesList;
+  userinfo_url?: string;
+}
+export const AgentRevisionSpecIdentityProvidersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      binding: S.optional(AgentRevisionSpecIdentityProvidersItemCase1Binding),
+      authorize_url: S.String,
+      token_url: S.String,
+      client_id: S.String,
+      client_secret_ref: S.optional(S.String),
+      scopes: S.optional(AgentRevisionSpecIdentityProvidersItemCase1ScopesList),
+      userinfo_url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentRevisionSpecIdentityProvidersItemCase1",
+  }) as any as S.Schema<AgentRevisionSpecIdentityProvidersItemCase1>;
+
+export type AgentRevisionSpecIdentityProvidersItem =
+  | AgentRevisionSpecIdentityProvidersItemCase0
+  | AgentRevisionSpecIdentityProvidersItemCase1;
+export const AgentRevisionSpecIdentityProvidersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecIdentityProvidersItem>;
+
+export type AgentRevisionSpecIdentityProvidersList =
+  Array<AgentRevisionSpecIdentityProvidersItem>;
+export const AgentRevisionSpecIdentityProvidersList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecIdentityProvidersItem,
+) as any as S.Schema<AgentRevisionSpecIdentityProvidersList>;
+
+export type AgentRevisionSpecSecretsItemCase1AllowedHostsList = Array<string>;
+export const AgentRevisionSpecSecretsItemCase1AllowedHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentRevisionSpecSecretsItemCase1AllowedHostsList>;
+
+export interface AgentRevisionSpecSecretsItemCase1 {
+  name: string;
+  allowed_hosts: AgentRevisionSpecSecretsItemCase1AllowedHostsList;
+}
+export const AgentRevisionSpecSecretsItemCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    allowed_hosts: AgentRevisionSpecSecretsItemCase1AllowedHostsList,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecSecretsItemCase1",
+}) as any as S.Schema<AgentRevisionSpecSecretsItemCase1>;
+
+export type AgentRevisionSpecSecretsItem =
+  | string
+  | AgentRevisionSpecSecretsItemCase1;
+export const AgentRevisionSpecSecretsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentRevisionSpecSecretsItem>;
+
+export type AgentRevisionSpecSecretsList = Array<AgentRevisionSpecSecretsItem>;
+export const AgentRevisionSpecSecretsList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecSecretsItem,
+) as any as S.Schema<AgentRevisionSpecSecretsList>;
+
+export interface AgentRevisionSpecLimits {
+  max_turns: number;
+  max_tool_calls: number;
+  max_wall_seconds: number;
+  max_output_tokens?: number;
+  max_memory_mb: number;
+  max_cpu_cores: number;
+}
+export const AgentRevisionSpecLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    max_turns: S.Number,
+    max_tool_calls: S.Number,
+    max_wall_seconds: S.Number,
+    max_output_tokens: S.optional(S.Number),
+    max_memory_mb: S.Number,
+    max_cpu_cores: S.Number,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecLimits",
+}) as any as S.Schema<AgentRevisionSpecLimits>;
+
+export type AgentRevisionSpecReasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentRevisionSpecReasoning = /*@__PURE__*/ S.String;
+
+export type AgentRevisionSpecFrameworkPromptOmitItem =
+  | "meta_tool_guidance"
+  | "state_contract"
+  | "tool_failure_guidance"
+  | "approval_guidance"
+  | "reasoning_hint";
+export const AgentRevisionSpecFrameworkPromptOmitItem = /*@__PURE__*/ S.String;
+
+export type AgentRevisionSpecFrameworkPromptOmitList =
+  Array<AgentRevisionSpecFrameworkPromptOmitItem>;
+export const AgentRevisionSpecFrameworkPromptOmitList = /*@__PURE__*/ S.Array(
+  AgentRevisionSpecFrameworkPromptOmitItem,
+) as any as S.Schema<AgentRevisionSpecFrameworkPromptOmitList>;
+
+export interface AgentRevisionSpecFrameworkPrompt {
+  omit: AgentRevisionSpecFrameworkPromptOmitList;
+  version_pin?: number;
+}
+export const AgentRevisionSpecFrameworkPrompt = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    omit: AgentRevisionSpecFrameworkPromptOmitList,
+    version_pin: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecFrameworkPrompt",
+}) as any as S.Schema<AgentRevisionSpecFrameworkPrompt>;
+
+export interface AgentRevisionSpecResume {
+  enabled: boolean;
+  max_completed_age_ms: number;
+}
+export const AgentRevisionSpecResume = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    max_completed_age_ms: S.Number,
+  }),
+).annotate({
+  identifier: "AgentRevisionSpecResume",
+}) as any as S.Schema<AgentRevisionSpecResume>;
+
+export interface AgentRevisionSpec {
+  /** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+  models: AgentRevisionSpecModels;
+  triggers: AgentRevisionSpecTriggersList;
+  tools: AgentRevisionSpecToolsList;
+  mcps: AgentRevisionSpecMcpsList;
+  skills: AgentRevisionSpecSkillsList;
+  identity_providers?: AgentRevisionSpecIdentityProvidersList;
+  secrets: AgentRevisionSpecSecretsList;
+  limits: AgentRevisionSpecLimits;
+  reasoning?: AgentRevisionSpecReasoning;
+  framework_prompt?: AgentRevisionSpecFrameworkPrompt;
+  resume?: AgentRevisionSpecResume;
+}
+export const AgentRevisionSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    models: AgentRevisionSpecModels,
+    triggers: AgentRevisionSpecTriggersList,
+    tools: AgentRevisionSpecToolsList,
+    mcps: AgentRevisionSpecMcpsList,
+    skills: AgentRevisionSpecSkillsList,
+    identity_providers: S.optional(AgentRevisionSpecIdentityProvidersList),
+    secrets: AgentRevisionSpecSecretsList,
+    limits: AgentRevisionSpecLimits,
+    reasoning: S.optional(AgentRevisionSpecReasoning),
+    framework_prompt: S.optional(AgentRevisionSpecFrameworkPrompt),
+    resume: S.optional(AgentRevisionSpecResume),
+  }),
+).annotate({
+  identifier: "AgentRevisionSpec",
+}) as any as S.Schema<AgentRevisionSpec>;
+
 /** One reference to a versioned skill in the llma-skill store, pinned into this agent's bundle at freeze. */
 export interface SkillRef {
   /** Name of the skill in the llma-skill store to pin into this agent. Resolved at freeze to the chosen `version` and materialized into the bundle. */
@@ -870,7 +1869,7 @@ export interface AgentRevision {
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
   bundle_sha256: string | null;
-  spec?: unknown;
+  spec?: AgentRevisionSpec;
   /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
   skill_refs: AgentRevisionSkillRefsList;
   created_by_id: number | null;
@@ -887,7 +1886,7 @@ export const AgentRevision = /*@__PURE__*/ S.suspend(() =>
     state: AgentRevisionStateEnum,
     bundle_uri: S.optional(S.String),
     bundle_sha256: S.NullOr(S.String),
-    spec: S.optional(S.Unknown),
+    spec: S.optional(AgentRevisionSpec),
     skill_refs: AgentRevisionSkillRefsList,
     created_by_id: S.NullOr(S.Number),
     created_by: S.NullOr(AgentRevisionCreatedBy),
@@ -919,95 +1918,6 @@ export const AgentApplicationsRevisionsArchiveCreateRequest =
   ).annotate({
     identifier: "AgentApplicationsRevisionsArchiveCreateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsArchiveCreateRequest>;
-
-export interface AgentApplicationsRevisionsBundleFileUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  application_id: string;
-  /** A UUID string identifying this agent revision. */
-  id: string;
-  /** Canonical bundle path. Must be `agent.md` or `skills/<id>/SKILL.md` where `<id>` is a skill-reference alias on this revision. */
-  path: string;
-  /** The new file contents. For `agent.md`, written verbatim to the draft bundle. For a skill, published as a new version of the referenced store skill — shared with every agent that references it. SKILL.md frontmatter (description, license, allowed-tools, metadata) is honoured when present; body-only content carries those fields forward. */
-  content: string;
-}
-export const AgentApplicationsRevisionsBundleFileUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      application_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      path: S.String,
-      content: S.String,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/bundle/file/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsBundleFileUpdateRequest",
-  }) as any as S.Schema<AgentApplicationsRevisionsBundleFileUpdateRequest>;
-
-/** One skill entry in a bulk-import payload. Skills are store-backed: each entry publishes to (or creates) a skill in the skill store and pins a `skill_refs` entry on the draft. The optional `description` is honoured when supplied; when omitted on an existing skill, the current store description is preserved. Skill `id` must match the canonical resource-id regex used by the janitor. */
-export interface ImportBundleSkill {
-  /** Skill id. Lowercase letters, digits, hyphens, or underscores; must start and end with `[a-z0-9]`. */
-  id: string;
-  /** One-line summary shown in the skill index. Required when creating a new skill; optional when updating one. */
-  description?: string;
-  /** The skill's markdown body, published as a new version of the store skill. */
-  body: string;
-}
-export const ImportBundleSkill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.optional(S.String),
-    body: S.String,
-  }),
-).annotate({
-  identifier: "ImportBundleSkill",
-}) as any as S.Schema<ImportBundleSkill>;
-
-/** Per-skill payloads merged into the skill store by id and pinned onto the draft's skill references. When omitted, no skills are touched. */
-export type AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
-  Array<ImportBundleSkill>;
-export const AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
-  /*@__PURE__*/ S.Array(
-    ImportBundleSkill,
-  ) as any as S.Schema<AgentApplicationsRevisionsBundleImportCreateRequestSkillsList>;
-
-export interface AgentApplicationsRevisionsBundleImportCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  application_id: string;
-  /** A UUID string identifying this agent revision. */
-  id: string;
-  /** New `agent.md` contents. When omitted, the existing agent.md is left alone. */
-  agent_md?: string;
-  /** Per-skill payloads merged into the skill store by id and pinned onto the draft's skill references. When omitted, no skills are touched. */
-  skills?: AgentApplicationsRevisionsBundleImportCreateRequestSkillsList;
-}
-export const AgentApplicationsRevisionsBundleImportCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      application_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      agent_md: S.optional(S.String),
-      skills: S.optional(
-        AgentApplicationsRevisionsBundleImportCreateRequestSkillsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/bundle/import/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsBundleImportCreateRequest",
-  }) as any as S.Schema<AgentApplicationsRevisionsBundleImportCreateRequest>;
 
 export interface AgentApplicationsRevisionsBundleRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1129,6 +2039,1282 @@ export const AgentApplicationsRevisionsCloneFromCreateRequest =
     identifier: "AgentApplicationsRevisionsCloneFromCreateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsCloneFromCreateRequest>;
 
+/** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase0Level =
+  | "low"
+  | "medium"
+  | "high";
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase0Level =
+  /*@__PURE__*/ S.String;
+
+/** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase0Reasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase0Reasoning =
+  /*@__PURE__*/ S.String;
+
+/** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase0OptimizeFor =
+  | "cost"
+  | "availability";
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase0OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecModelsCase0 {
+  mode: string;
+  /** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+  level?:
+    | AgentApplicationsRevisionsCreateRequestSpecModelsCase0Level
+    | (string & {});
+  /** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+  reasoning?:
+    | AgentApplicationsRevisionsCreateRequestSpecModelsCase0Reasoning
+    | (string & {});
+  /** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+  optimize_for?:
+    | AgentApplicationsRevisionsCreateRequestSpecModelsCase0OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      level: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecModelsCase0Level,
+      ),
+      reasoning: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecModelsCase0Reasoning,
+      ),
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecModelsCase0OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecModelsCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecModelsCase0>;
+
+/** Per-model reasoning effort override (else the spec default). */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItemReasoning =
+  "minimal" | "low" | "medium" | "high" | "xhigh";
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItemReasoning =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem {
+  /** Canonical model id, e.g. `anthropic/claude-sonnet-4-6` (see the agent-applications-models tool for served ids). */
+  model: string;
+  /** Per-model reasoning effort override (else the spec default). */
+  reasoning?:
+    | AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItemReasoning
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItemReasoning,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem>;
+
+/** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsList>;
+
+/** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+export type AgentApplicationsRevisionsCreateRequestSpecModelsCase1OptimizeFor =
+  | "cost"
+  | "availability";
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase1OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecModelsCase1 {
+  mode: string;
+  /** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+  models: AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsList;
+  /** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+  optimize_for?:
+    | AgentApplicationsRevisionsCreateRequestSpecModelsCase1OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecModelsCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      models: AgentApplicationsRevisionsCreateRequestSpecModelsCase1ModelsList,
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecModelsCase1OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecModelsCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecModelsCase1>;
+
+/** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+export type AgentApplicationsRevisionsCreateRequestSpecModels =
+  | AgentApplicationsRevisionsCreateRequestSpecModelsCase0
+  | AgentApplicationsRevisionsCreateRequestSpecModelsCase1;
+export const AgentApplicationsRevisionsCreateRequestSpecModels =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecModels>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List
+    | string;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config {
+  channel_id?: string;
+  mention_only: boolean;
+  auto_resume_threads: boolean;
+  allow_workspace_participants: boolean;
+  ack_reaction?: string;
+  allow_direct_messages: boolean;
+  trusted_workspaces: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel_id: S.optional(S.String),
+      mention_only: S.Boolean,
+      auto_resume_threads: S.Boolean,
+      allow_workspace_participants: S.Boolean,
+      ack_reaction: S.optional(S.String),
+      allow_direct_messages: S.Boolean,
+      trusted_workspaces:
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0 {
+  type: string;
+  config: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0Config,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config {
+  path: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItem =
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase0
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase1
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase2
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase3
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItemCase4;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth {
+  modes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesList;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1 {
+  type: string;
+  config: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config;
+  auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Config,
+      auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2ConfigCatchUp =
+  "all" | "most_recent" | "skip";
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2ConfigCatchUp =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config {
+  name: string;
+  schedule: string;
+  timezone?: string;
+  prompt: string;
+  external_key?: string;
+  catch_up?:
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2ConfigCatchUp
+    | (string & {});
+  max_catch_up_age_seconds?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      schedule: S.String,
+      timezone: S.optional(S.String),
+      prompt: S.String,
+      external_key: S.optional(S.String),
+      catch_up: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2ConfigCatchUp,
+      ),
+      max_catch_up_age_seconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2 {
+  type: string;
+  config: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2Config,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItem =
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase0
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase1
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase2
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase3
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItemCase4;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth {
+  modes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesList;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3 {
+  type: string;
+  config?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config;
+  auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Config,
+      ),
+      auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItem =
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase0
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase1
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase2
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase3
+    | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItemCase4;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth {
+  modes?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesList;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4 {
+  type: string;
+  config?: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config;
+  auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Config,
+      ),
+      auth: AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersItem =
+  | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase0
+  | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase1
+  | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase2
+  | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase3
+  | AgentApplicationsRevisionsCreateRequestSpecTriggersItemCase4;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecTriggersList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecTriggersItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecTriggersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecTriggersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecTriggersList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0 {
+  kind: string;
+  id: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1 {
+  kind: string;
+  id: string;
+  path: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy;
+  requires_identity?: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      path: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1ApprovalPolicy,
+      ),
+      requires_identity: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase2 {
+  kind: string;
+  from_template: string;
+  alias: string;
+  version?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      from_template: S.String,
+      alias: S.String,
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase2>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecToolsItemCase3 {
+  kind: string;
+  id: string;
+  description: string;
+  args_schema?: unknown;
+  required?: boolean;
+  timeout_ms?: number;
+  interactive?: boolean;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      description: S.String,
+      args_schema: S.optional(S.Unknown),
+      required: S.optional(S.Boolean),
+      timeout_ms: S.optional(S.Number),
+      interactive: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecToolsItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItemCase3>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecToolsItem =
+  | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase0
+  | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase1
+  | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase2
+  | AgentApplicationsRevisionsCreateRequestSpecToolsItemCase3;
+export const AgentApplicationsRevisionsCreateRequestSpecToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecToolsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecToolsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecToolsList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth {
+  provider?: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      provider: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsItemSecretsList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemSecretsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemSecretsList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsItemHeadersMap = {
+  [key: string]: string | undefined;
+};
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemHeadersMap>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1 {
+  name: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItem =
+  | string
+  | AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItemCase1;
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecMcpsItem {
+  id: string;
+  url: string;
+  auth?: AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth;
+  secrets?: AgentApplicationsRevisionsCreateRequestSpecMcpsItemSecretsList;
+  headers?: AgentApplicationsRevisionsCreateRequestSpecMcpsItemHeadersMap;
+  tools?: AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsList;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      url: S.String,
+      auth: S.optional(AgentApplicationsRevisionsCreateRequestSpecMcpsItemAuth),
+      secrets: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecMcpsItemSecretsList,
+      ),
+      headers: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecMcpsItemHeadersMap,
+      ),
+      tools: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecMcpsItemToolsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecMcpsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecMcpsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecMcpsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecMcpsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecMcpsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecMcpsList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecSkillsItem {
+  id: string;
+  path: string;
+  description?: string;
+  from_template?: string;
+  alias?: string;
+  version?: number;
+  source_version_id?: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecSkillsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      path: S.String,
+      description: S.optional(S.String),
+      from_template: S.optional(S.String),
+      alias: S.optional(S.String),
+      version: S.optional(S.Number),
+      source_version_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecSkillsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSkillsItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecSkillsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecSkillsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecSkillsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecSkillsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSkillsList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0Binding =
+  "principal";
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0ScopesList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0 {
+  kind: string;
+  id?: string;
+  binding?:
+    | AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0Binding
+    | (string & {});
+  scopes?: AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0ScopesList;
+  client_id?: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.optional(S.String),
+      binding: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0Binding,
+      ),
+      scopes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0ScopesList,
+      ),
+      client_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1Binding =
+  "principal";
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1ScopesList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1 {
+  kind: string;
+  id: string;
+  binding?:
+    | AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1Binding
+    | (string & {});
+  authorize_url: string;
+  token_url: string;
+  client_id: string;
+  client_secret_ref?: string;
+  scopes?: AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1ScopesList;
+  userinfo_url?: string;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      binding: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1Binding,
+      ),
+      authorize_url: S.String,
+      token_url: S.String,
+      client_id: S.String,
+      client_secret_ref: S.optional(S.String),
+      scopes: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1ScopesList,
+      ),
+      userinfo_url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItem =
+  | AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase0
+  | AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItemCase1;
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersList>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1AllowedHostsList =
+  Array<string>;
+export const AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1AllowedHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1AllowedHostsList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1 {
+  name: string;
+  allowed_hosts: AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1AllowedHostsList;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      allowed_hosts:
+        AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1AllowedHostsList,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecSecretsItem =
+  | string
+  | AgentApplicationsRevisionsCreateRequestSpecSecretsItemCase1;
+export const AgentApplicationsRevisionsCreateRequestSpecSecretsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSecretsItem>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecSecretsList =
+  Array<AgentApplicationsRevisionsCreateRequestSpecSecretsItem>;
+export const AgentApplicationsRevisionsCreateRequestSpecSecretsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecSecretsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecSecretsList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecLimits {
+  max_turns: number;
+  max_tool_calls: number;
+  max_wall_seconds: number;
+  max_output_tokens?: number;
+  max_memory_mb: number;
+  max_cpu_cores: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecLimits =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      max_turns: S.Number,
+      max_tool_calls: S.Number,
+      max_wall_seconds: S.Number,
+      max_output_tokens: S.optional(S.Number),
+      max_memory_mb: S.Number,
+      max_cpu_cores: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecLimits",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecLimits>;
+
+export type AgentApplicationsRevisionsCreateRequestSpecReasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentApplicationsRevisionsCreateRequestSpecReasoning =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitItem =
+    | "meta_tool_guidance"
+    | "state_contract"
+    | "tool_failure_guidance"
+    | "approval_guidance"
+    | "reasoning_hint";
+export const AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitItem =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitList =
+  Array<
+    | AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitItem
+    | (string & {})
+  >;
+export const AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitList>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt {
+  omit: AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitList;
+  version_pin?: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      omit: AgentApplicationsRevisionsCreateRequestSpecFrameworkPromptOmitList,
+      version_pin: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpecResume {
+  enabled: boolean;
+  max_completed_age_ms: number;
+}
+export const AgentApplicationsRevisionsCreateRequestSpecResume =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      max_completed_age_ms: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpecResume",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpecResume>;
+
+export interface AgentApplicationsRevisionsCreateRequestSpec {
+  /** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+  models: AgentApplicationsRevisionsCreateRequestSpecModels;
+  triggers: AgentApplicationsRevisionsCreateRequestSpecTriggersList;
+  tools: AgentApplicationsRevisionsCreateRequestSpecToolsList;
+  mcps: AgentApplicationsRevisionsCreateRequestSpecMcpsList;
+  skills: AgentApplicationsRevisionsCreateRequestSpecSkillsList;
+  identity_providers?: AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersList;
+  secrets: AgentApplicationsRevisionsCreateRequestSpecSecretsList;
+  limits: AgentApplicationsRevisionsCreateRequestSpecLimits;
+  reasoning?:
+    | AgentApplicationsRevisionsCreateRequestSpecReasoning
+    | (string & {});
+  framework_prompt?: AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt;
+  resume?: AgentApplicationsRevisionsCreateRequestSpecResume;
+}
+export const AgentApplicationsRevisionsCreateRequestSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      models: AgentApplicationsRevisionsCreateRequestSpecModels,
+      triggers: AgentApplicationsRevisionsCreateRequestSpecTriggersList,
+      tools: AgentApplicationsRevisionsCreateRequestSpecToolsList,
+      mcps: AgentApplicationsRevisionsCreateRequestSpecMcpsList,
+      skills: AgentApplicationsRevisionsCreateRequestSpecSkillsList,
+      identity_providers: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecIdentityProvidersList,
+      ),
+      secrets: AgentApplicationsRevisionsCreateRequestSpecSecretsList,
+      limits: AgentApplicationsRevisionsCreateRequestSpecLimits,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecReasoning,
+      ),
+      framework_prompt: S.optional(
+        AgentApplicationsRevisionsCreateRequestSpecFrameworkPrompt,
+      ),
+      resume: S.optional(AgentApplicationsRevisionsCreateRequestSpecResume),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsCreateRequestSpec",
+  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSpec>;
+
 export interface AgentApplicationsRevisionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1136,7 +3322,7 @@ export interface AgentApplicationsRevisionsCreateRequest {
   parent_revision?: string | null;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  spec?: unknown;
+  spec?: AgentApplicationsRevisionsCreateRequestSpec;
 }
 export const AgentApplicationsRevisionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1145,7 +3331,7 @@ export const AgentApplicationsRevisionsCreateRequest = /*@__PURE__*/ S.suspend(
       application_id: S.String.pipe(T.Label()),
       parent_revision: S.optional(S.NullOr(S.String)),
       bundle_uri: S.optional(S.String),
-      spec: S.optional(S.Unknown),
+      spec: S.optional(AgentApplicationsRevisionsCreateRequestSpec),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1360,6 +3546,1290 @@ export const AgentApplicationsRevisionsNewDraftCreateRequest =
     identifier: "AgentApplicationsRevisionsNewDraftCreateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsNewDraftCreateRequest>;
 
+/** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Level =
+  "low" | "medium" | "high";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Level =
+  /*@__PURE__*/ S.String;
+
+/** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Reasoning =
+  "minimal" | "low" | "medium" | "high" | "xhigh";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Reasoning =
+  /*@__PURE__*/ S.String;
+
+/** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0OptimizeFor =
+  "cost" | "availability";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0 {
+  mode: string;
+  /** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+  level?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Level
+    | (string & {});
+  /** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+  reasoning?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Reasoning
+    | (string & {});
+  /** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+  optimize_for?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      level: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Level,
+      ),
+      reasoning: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0Reasoning,
+      ),
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0>;
+
+/** Per-model reasoning effort override (else the spec default). */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItemReasoning =
+  "minimal" | "low" | "medium" | "high" | "xhigh";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItemReasoning =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem {
+  /** Canonical model id, e.g. `anthropic/claude-sonnet-4-6` (see the agent-applications-models tool for served ids). */
+  model: string;
+  /** Per-model reasoning effort override (else the spec default). */
+  reasoning?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItemReasoning
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItemReasoning,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem>;
+
+/** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsList>;
+
+/** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1OptimizeFor =
+  "cost" | "availability";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1 {
+  mode: string;
+  /** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+  models: AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsList;
+  /** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+  optimize_for?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      models:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1ModelsList,
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1>;
+
+/** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecModels =
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase0
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecModelsCase1;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecModels =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecModels>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List
+    | string;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config {
+  channel_id?: string;
+  mention_only: boolean;
+  auto_resume_threads: boolean;
+  allow_workspace_participants: boolean;
+  ack_reaction?: string;
+  allow_direct_messages: boolean;
+  trusted_workspaces: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel_id: S.optional(S.String),
+      mention_only: S.Boolean,
+      auto_resume_threads: S.Boolean,
+      allow_workspace_participants: S.Boolean,
+      ack_reaction: S.optional(S.String),
+      allow_direct_messages: S.Boolean,
+      trusted_workspaces:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0 {
+  type: string;
+  config: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0Config,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config {
+  path: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItem =
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase0
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase1
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase2
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase3
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItemCase4;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth {
+  modes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesList;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1 {
+  type: string;
+  config: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config;
+  auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Config,
+      auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1Auth,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2ConfigCatchUp =
+  "all" | "most_recent" | "skip";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2ConfigCatchUp =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config {
+  name: string;
+  schedule: string;
+  timezone?: string;
+  prompt: string;
+  external_key?: string;
+  catch_up?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2ConfigCatchUp
+    | (string & {});
+  max_catch_up_age_seconds?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      schedule: S.String,
+      timezone: S.optional(S.String),
+      prompt: S.String,
+      external_key: S.optional(S.String),
+      catch_up: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2ConfigCatchUp,
+      ),
+      max_catch_up_age_seconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2 {
+  type: string;
+  config: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2Config,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItem =
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase0
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase1
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase2
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase3
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItemCase4;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth {
+  modes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesList;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3 {
+  type: string;
+  config?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config;
+  auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Config,
+      ),
+      auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3Auth,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItem =
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase0
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase1
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase2
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase3
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItemCase4;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth {
+  modes?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesList;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4 {
+  type: string;
+  config?: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config;
+  auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Config,
+      ),
+      auth: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4Auth,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItem =
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase0
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase1
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase2
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase3
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItemCase4;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0 {
+  kind: string;
+  id: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1 {
+  kind: string;
+  id: string;
+  path: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy;
+  requires_identity?: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      path: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1ApprovalPolicy,
+      ),
+      requires_identity: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase2 {
+  kind: string;
+  from_template: string;
+  alias: string;
+  version?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      from_template: S.String,
+      alias: S.String,
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase2>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase3 {
+  kind: string;
+  id: string;
+  description: string;
+  args_schema?: unknown;
+  required?: boolean;
+  timeout_ms?: number;
+  interactive?: boolean;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      description: S.String,
+      args_schema: S.optional(S.Unknown),
+      required: S.optional(S.Boolean),
+      timeout_ms: S.optional(S.Number),
+      interactive: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase3>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItem =
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase0
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase1
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase2
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItemCase3;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecToolsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecToolsList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth {
+  provider?: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      provider: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemSecretsList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemSecretsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemSecretsList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemHeadersMap =
+  { [key: string]: string | undefined };
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemHeadersMap>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1 {
+  name: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItem =
+    | string
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItemCase1;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem {
+  id: string;
+  url: string;
+  auth?: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth;
+  secrets?: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemSecretsList;
+  headers?: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemHeadersMap;
+  tools?: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsList;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      url: S.String,
+      auth: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemAuth,
+      ),
+      secrets: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemSecretsList,
+      ),
+      headers: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemHeadersMap,
+      ),
+      tools: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItemToolsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem {
+  id: string;
+  path: string;
+  description?: string;
+  from_template?: string;
+  alias?: string;
+  version?: number;
+  source_version_id?: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      path: S.String,
+      description: S.optional(S.String),
+      from_template: S.optional(S.String),
+      alias: S.optional(S.String),
+      version: S.optional(S.Number),
+      source_version_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0Binding =
+  "principal";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0ScopesList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0 {
+  kind: string;
+  id?: string;
+  binding?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0Binding
+    | (string & {});
+  scopes?: AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0ScopesList;
+  client_id?: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.optional(S.String),
+      binding: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0Binding,
+      ),
+      scopes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0ScopesList,
+      ),
+      client_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1Binding =
+  "principal";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1ScopesList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1 {
+  kind: string;
+  id: string;
+  binding?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1Binding
+    | (string & {});
+  authorize_url: string;
+  token_url: string;
+  client_id: string;
+  client_secret_ref?: string;
+  scopes?: AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1ScopesList;
+  userinfo_url?: string;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      binding: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1Binding,
+      ),
+      authorize_url: S.String,
+      token_url: S.String,
+      client_id: S.String,
+      client_secret_ref: S.optional(S.String),
+      scopes: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1ScopesList,
+      ),
+      userinfo_url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItem =
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase0
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItemCase1;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersList>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1AllowedHostsList =
+  Array<string>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1AllowedHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1AllowedHostsList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1 {
+  name: string;
+  allowed_hosts: AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1AllowedHostsList;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      allowed_hosts:
+        AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1AllowedHostsList,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItem =
+  | string
+  | AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItemCase1;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItem>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsList =
+  Array<AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItem>;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecLimits {
+  max_turns: number;
+  max_tool_calls: number;
+  max_wall_seconds: number;
+  max_output_tokens?: number;
+  max_memory_mb: number;
+  max_cpu_cores: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecLimits =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      max_turns: S.Number,
+      max_tool_calls: S.Number,
+      max_wall_seconds: S.Number,
+      max_output_tokens: S.optional(S.Number),
+      max_memory_mb: S.Number,
+      max_cpu_cores: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecLimits",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecLimits>;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecReasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecReasoning =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitItem =
+    | "meta_tool_guidance"
+    | "state_contract"
+    | "tool_failure_guidance"
+    | "approval_guidance"
+    | "reasoning_hint";
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitItem =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitList =
+  Array<
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitItem
+    | (string & {})
+  >;
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitList>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt {
+  omit: AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitList;
+  version_pin?: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      omit: AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPromptOmitList,
+      version_pin: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpecResume {
+  enabled: boolean;
+  max_completed_age_ms: number;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpecResume =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      max_completed_age_ms: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpecResume",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpecResume>;
+
+export interface AgentApplicationsRevisionsPartialUpdateRequestSpec {
+  /** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+  models: AgentApplicationsRevisionsPartialUpdateRequestSpecModels;
+  triggers: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersList;
+  tools: AgentApplicationsRevisionsPartialUpdateRequestSpecToolsList;
+  mcps: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsList;
+  skills: AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsList;
+  identity_providers?: AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersList;
+  secrets: AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsList;
+  limits: AgentApplicationsRevisionsPartialUpdateRequestSpecLimits;
+  reasoning?:
+    | AgentApplicationsRevisionsPartialUpdateRequestSpecReasoning
+    | (string & {});
+  framework_prompt?: AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt;
+  resume?: AgentApplicationsRevisionsPartialUpdateRequestSpecResume;
+}
+export const AgentApplicationsRevisionsPartialUpdateRequestSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      models: AgentApplicationsRevisionsPartialUpdateRequestSpecModels,
+      triggers: AgentApplicationsRevisionsPartialUpdateRequestSpecTriggersList,
+      tools: AgentApplicationsRevisionsPartialUpdateRequestSpecToolsList,
+      mcps: AgentApplicationsRevisionsPartialUpdateRequestSpecMcpsList,
+      skills: AgentApplicationsRevisionsPartialUpdateRequestSpecSkillsList,
+      identity_providers: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecIdentityProvidersList,
+      ),
+      secrets: AgentApplicationsRevisionsPartialUpdateRequestSpecSecretsList,
+      limits: AgentApplicationsRevisionsPartialUpdateRequestSpecLimits,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecReasoning,
+      ),
+      framework_prompt: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecFrameworkPrompt,
+      ),
+      resume: S.optional(
+        AgentApplicationsRevisionsPartialUpdateRequestSpecResume,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsPartialUpdateRequestSpec",
+  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSpec>;
+
 export interface AgentApplicationsRevisionsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1369,7 +4839,7 @@ export interface AgentApplicationsRevisionsPartialUpdateRequest {
   parent_revision?: string | null;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  spec?: unknown;
+  spec?: AgentApplicationsRevisionsPartialUpdateRequestSpec;
 }
 export const AgentApplicationsRevisionsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1379,7 +4849,7 @@ export const AgentApplicationsRevisionsPartialUpdateRequest =
       id: S.String.pipe(T.Label()),
       parent_revision: S.optional(S.NullOr(S.String)),
       bundle_uri: S.optional(S.String),
-      spec: S.optional(S.Unknown),
+      spec: S.optional(AgentApplicationsRevisionsPartialUpdateRequestSpec),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1672,88 +5142,6 @@ export const AgentApplicationsRevisionsToolsDestroyResponse =
     identifier: "AgentApplicationsRevisionsToolsDestroyResponse",
   }) as any as S.Schema<AgentApplicationsRevisionsToolsDestroyResponse>;
 
-/** Optional `{secret_name → placeholder_string}` map. The string is returned verbatim by `ctx.secrets.ref(name)` inside the tool. The real secret value never enters the sandbox. */
-export type AgentApplicationsRevisionsToolsDryRunCreateRequestMockSecretsMap = {
-  [key: string]: string | undefined;
-};
-export const AgentApplicationsRevisionsToolsDryRunCreateRequestMockSecretsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<AgentApplicationsRevisionsToolsDryRunCreateRequestMockSecretsMap>;
-
-export interface AgentApplicationsRevisionsToolsDryRunCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  application_id: string;
-  /** A UUID string identifying this agent revision. */
-  id: string;
-  tool_id: string;
-  /** Synthetic args the tool's `actions.default` is called with. Free-form JSON; the sandbox doesn't validate against the tool's `args_schema` — that's the author's responsibility to keep in sync. */
-  args: unknown;
-  /** Optional `{secret_name → placeholder_string}` map. The string is returned verbatim by `ctx.secrets.ref(name)` inside the tool. The real secret value never enters the sandbox. */
-  mock_secrets?: AgentApplicationsRevisionsToolsDryRunCreateRequestMockSecretsMap;
-}
-export const AgentApplicationsRevisionsToolsDryRunCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      application_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      tool_id: S.String.pipe(T.Label()),
-      args: S.Unknown,
-      mock_secrets: S.optional(
-        AgentApplicationsRevisionsToolsDryRunCreateRequestMockSecretsMap,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/agent_applications/{application_id}/revisions/{id}/tools/{tool_id}/dry_run/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsToolsDryRunCreateRequest",
-  }) as any as S.Schema<AgentApplicationsRevisionsToolsDryRunCreateRequest>;
-
-export interface AgentRevisionDryRunToolError {
-  /** Stable error code. `sandbox_acquire_failed` — the platform could not start a sandbox (infrastructure issue, not tool code). `sandbox_invoke_failed` — the sandbox started but the invoke threw uncaught (problem in the tool body, or a runtime error). Dispatcher-side codes come through on `ok:false` invoke results: `timeout`, `secret_not_provisioned`, `action_not_found`, `tool_not_found`. */
-  code: string;
-  /** One-line human-readable detail. */
-  message: string;
-}
-export const AgentRevisionDryRunToolError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "AgentRevisionDryRunToolError",
-}) as any as S.Schema<AgentRevisionDryRunToolError>;
-
-export interface AgentRevisionDryRunToolResponse {
-  /** True when the tool's `actions.default` returned without throwing. False when the tool threw or the sandbox rejected the invocation (the structured `error` describes which). */
-  ok: boolean;
-  /** Echo of the tool id from the URL. */
-  tool_id: string;
-  /** Present on success — the value the tool's `actions.default` returned. */
-  result?: unknown;
-  error?: AgentRevisionDryRunToolError;
-  /** Wall-clock duration in milliseconds, measured from sandbox acquire to after release. Captured consistently across success, tool-throw, and acquire-failure paths so authors can compare timings between calls. Always present. */
-  duration_ms: number;
-}
-export const AgentRevisionDryRunToolResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ok: S.Boolean,
-    tool_id: S.String,
-    result: S.optional(S.Unknown),
-    error: S.optional(AgentRevisionDryRunToolError),
-    duration_ms: S.Number,
-  }),
-).annotate({
-  identifier: "AgentRevisionDryRunToolResponse",
-}) as any as S.Schema<AgentRevisionDryRunToolResponse>;
-
 export type AgentApplicationsRevisionsToolsUpdateRequestArgsSchemaMap = {
   [key: string]: unknown | undefined;
 };
@@ -1795,6 +5183,1282 @@ export const AgentApplicationsRevisionsToolsUpdateRequest =
     identifier: "AgentApplicationsRevisionsToolsUpdateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsToolsUpdateRequest>;
 
+/** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Level =
+  | "low"
+  | "medium"
+  | "high";
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Level =
+  /*@__PURE__*/ S.String;
+
+/** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Reasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Reasoning =
+  /*@__PURE__*/ S.String;
+
+/** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase0OptimizeFor =
+  | "cost"
+  | "availability";
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase0OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecModelsCase0 {
+  mode: string;
+  /** Quality/cost tier (auto). low = cheapest, for short, formulaic, no-reasoning jobs (lookups, FAQ bots); medium = balanced default, for multi-step but bounded work; high = top-tier, for long, branching, reasoning-heavy work. Resolved to a priority-ordered cross-provider list at session start. */
+  level?:
+    | AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Level
+    | (string & {});
+  /** Reasoning/thinking effort budget. minimal = no deliberation (fastest, cheapest) … xhigh = maximal (research-grade, ~5-10x the per-turn cost). Omit for the provider/spec default. */
+  reasoning?:
+    | AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Reasoning
+    | (string & {});
+  /** Session model stability vs. resilience. `cost` (default): the first turn picks a working model and PINS it for the whole session — keeps the provider's prompt cache warm (cache reads are ~0.1-0.5x of full input) and never fails over mid-session; if the pinned model is down the turn fails rather than re-reading the whole context cold on another provider. `availability`: fail over to the next model when the session's model fails — survives an outage at the cost of a one-time cold re-read. Prefer `cost` for long/expensive sessions, `availability` where uptime matters more than spend. */
+  optimize_for?:
+    | AgentApplicationsRevisionsUpdateRequestSpecModelsCase0OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      level: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Level,
+      ),
+      reasoning: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecModelsCase0Reasoning,
+      ),
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecModelsCase0OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecModelsCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecModelsCase0>;
+
+/** Per-model reasoning effort override (else the spec default). */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItemReasoning =
+  "minimal" | "low" | "medium" | "high" | "xhigh";
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItemReasoning =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem {
+  /** Canonical model id, e.g. `anthropic/claude-sonnet-4-6` (see the agent-applications-models tool for served ids). */
+  model: string;
+  /** Per-model reasoning effort override (else the spec default). */
+  reasoning?:
+    | AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItemReasoning
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      model: S.String,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItemReasoning,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem>;
+
+/** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsList>;
+
+/** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+export type AgentApplicationsRevisionsUpdateRequestSpecModelsCase1OptimizeFor =
+  | "cost"
+  | "availability";
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase1OptimizeFor =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecModelsCase1 {
+  mode: string;
+  /** Explicit priority-ordered fallback list — the runner tries entries in order (primary first). */
+  models: AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsList;
+  /** Session model stability vs. resilience. `cost` (default): pin the first working model for the whole session (warm prompt cache, no mid-session failover). `availability`: fail over down this list when the session's model fails (survives outages, re-reads context cold). */
+  optimize_for?:
+    | AgentApplicationsRevisionsUpdateRequestSpecModelsCase1OptimizeFor
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecModelsCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: S.String,
+      models: AgentApplicationsRevisionsUpdateRequestSpecModelsCase1ModelsList,
+      optimize_for: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecModelsCase1OptimizeFor,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecModelsCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecModelsCase1>;
+
+/** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+export type AgentApplicationsRevisionsUpdateRequestSpecModels =
+  | AgentApplicationsRevisionsUpdateRequestSpecModelsCase0
+  | AgentApplicationsRevisionsUpdateRequestSpecModelsCase1;
+export const AgentApplicationsRevisionsUpdateRequestSpecModels =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecModels>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspacesCase0List
+    | string;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config {
+  channel_id?: string;
+  mention_only: boolean;
+  auto_resume_threads: boolean;
+  allow_workspace_participants: boolean;
+  ack_reaction?: string;
+  allow_direct_messages: boolean;
+  trusted_workspaces: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel_id: S.optional(S.String),
+      mention_only: S.Boolean,
+      auto_resume_threads: S.Boolean,
+      allow_workspace_participants: S.Boolean,
+      ack_reaction: S.optional(S.String),
+      allow_direct_messages: S.Boolean,
+      trusted_workspaces:
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0ConfigTrustedWorkspaces,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0 {
+  type: string;
+  config: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0Config,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config {
+  path: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      path: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItem =
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase0
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase1
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase2
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase3
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItemCase4;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth {
+  modes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesList;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1 {
+  type: string;
+  config: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config;
+  auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Config,
+      auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2ConfigCatchUp =
+  "all" | "most_recent" | "skip";
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2ConfigCatchUp =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config {
+  name: string;
+  schedule: string;
+  timezone?: string;
+  prompt: string;
+  external_key?: string;
+  catch_up?:
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2ConfigCatchUp
+    | (string & {});
+  max_catch_up_age_seconds?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      schedule: S.String,
+      timezone: S.optional(S.String),
+      prompt: S.String,
+      external_key: S.optional(S.String),
+      catch_up: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2ConfigCatchUp,
+      ),
+      max_catch_up_age_seconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2 {
+  type: string;
+  config: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config:
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2Config,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItem =
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase0
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase1
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase2
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase3
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItemCase4;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth {
+  modes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesList;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3 {
+  type: string;
+  config?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config;
+  auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Config,
+      ),
+      auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config {
+  allow_restart?: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allow_restart: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase0 {
+  type: string;
+  acknowledge_public_exposure: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      acknowledge_public_exposure: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase0>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  "project" | "organization";
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1 {
+  type: string;
+  scopes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList;
+  audience?:
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience
+    | (string & {});
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      scopes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1ScopesList,
+      ),
+      audience: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1Audience,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase2 {
+  type: string;
+  issuer_secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      issuer_secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase2>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase3 {
+  type: string;
+  header: string;
+  secret_ref: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      header: S.String,
+      secret_ref: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase3>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase4 {
+  type: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase4>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItem =
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase0
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase1
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase2
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase3
+    | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItemCase4;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth {
+  modes?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesList;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4AuthModesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4 {
+  type: string;
+  config?: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config;
+  auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      config: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Config,
+      ),
+      auth: AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4Auth,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersItem =
+  | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase0
+  | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase1
+  | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase2
+  | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase3
+  | AgentApplicationsRevisionsUpdateRequestSpecTriggersItemCase4;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecTriggersList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecTriggersItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecTriggersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecTriggersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecTriggersList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0 {
+  kind: string;
+  id: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1 {
+  kind: string;
+  id: string;
+  path: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy;
+  requires_identity?: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      path: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1ApprovalPolicy,
+      ),
+      requires_identity: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase2 {
+  kind: string;
+  from_template: string;
+  alias: string;
+  version?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      from_template: S.String,
+      alias: S.String,
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase2",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase2>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase3 {
+  kind: string;
+  id: string;
+  description: string;
+  args_schema?: unknown;
+  required?: boolean;
+  timeout_ms?: number;
+  interactive?: boolean;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase3 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      description: S.String,
+      args_schema: S.optional(S.Unknown),
+      required: S.optional(S.Boolean),
+      timeout_ms: S.optional(S.Number),
+      interactive: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase3",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase3>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecToolsItem =
+  | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase0
+  | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase1
+  | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase2
+  | AgentApplicationsRevisionsUpdateRequestSpecToolsItemCase3;
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecToolsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecToolsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecToolsList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth {
+  provider?: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      provider: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsItemSecretsList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemSecretsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemSecretsList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsItemHeadersMap = {
+  [key: string]: string | undefined;
+};
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemHeadersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemHeadersMap>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  "principal" | "agent";
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType =
+  /*@__PURE__*/ S.String;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy {
+  type?:
+    | AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType
+    | (string & {});
+  allow_edit?: boolean;
+  ttl_ms?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicyType,
+      ),
+      allow_edit: S.optional(S.Boolean),
+      ttl_ms: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1 {
+  name: string;
+  requires_approval?: boolean;
+  approval_policy?: AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      requires_approval: S.optional(S.Boolean),
+      approval_policy: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1ApprovalPolicy,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItem =
+  | string
+  | AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItemCase1;
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecMcpsItem {
+  id: string;
+  url: string;
+  auth?: AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth;
+  secrets?: AgentApplicationsRevisionsUpdateRequestSpecMcpsItemSecretsList;
+  headers?: AgentApplicationsRevisionsUpdateRequestSpecMcpsItemHeadersMap;
+  tools?: AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsList;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      url: S.String,
+      auth: S.optional(AgentApplicationsRevisionsUpdateRequestSpecMcpsItemAuth),
+      secrets: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecMcpsItemSecretsList,
+      ),
+      headers: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecMcpsItemHeadersMap,
+      ),
+      tools: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecMcpsItemToolsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecMcpsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecMcpsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecMcpsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecMcpsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecMcpsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecMcpsList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecSkillsItem {
+  id: string;
+  path: string;
+  description?: string;
+  from_template?: string;
+  alias?: string;
+  version?: number;
+  source_version_id?: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecSkillsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      path: S.String,
+      description: S.optional(S.String),
+      from_template: S.optional(S.String),
+      alias: S.optional(S.String),
+      version: S.optional(S.Number),
+      source_version_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecSkillsItem",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSkillsItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecSkillsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecSkillsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecSkillsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecSkillsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSkillsList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0Binding =
+  "principal";
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0ScopesList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0 {
+  kind: string;
+  id?: string;
+  binding?:
+    | AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0Binding
+    | (string & {});
+  scopes?: AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0ScopesList;
+  client_id?: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.optional(S.String),
+      binding: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0Binding,
+      ),
+      scopes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0ScopesList,
+      ),
+      client_id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1Binding =
+  "principal";
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1Binding =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1ScopesList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1ScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1ScopesList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1 {
+  kind: string;
+  id: string;
+  binding?:
+    | AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1Binding
+    | (string & {});
+  authorize_url: string;
+  token_url: string;
+  client_id: string;
+  client_secret_ref?: string;
+  scopes?: AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1ScopesList;
+  userinfo_url?: string;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      id: S.String,
+      binding: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1Binding,
+      ),
+      authorize_url: S.String,
+      token_url: S.String,
+      client_id: S.String,
+      client_secret_ref: S.optional(S.String),
+      scopes: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1ScopesList,
+      ),
+      userinfo_url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItem =
+  | AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase0
+  | AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItemCase1;
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersList>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1AllowedHostsList =
+  Array<string>;
+export const AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1AllowedHostsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1AllowedHostsList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1 {
+  name: string;
+  allowed_hosts: AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1AllowedHostsList;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      allowed_hosts:
+        AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1AllowedHostsList,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecSecretsItem =
+  | string
+  | AgentApplicationsRevisionsUpdateRequestSpecSecretsItemCase1;
+export const AgentApplicationsRevisionsUpdateRequestSpecSecretsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSecretsItem>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecSecretsList =
+  Array<AgentApplicationsRevisionsUpdateRequestSpecSecretsItem>;
+export const AgentApplicationsRevisionsUpdateRequestSpecSecretsList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecSecretsItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecSecretsList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecLimits {
+  max_turns: number;
+  max_tool_calls: number;
+  max_wall_seconds: number;
+  max_output_tokens?: number;
+  max_memory_mb: number;
+  max_cpu_cores: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecLimits =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      max_turns: S.Number,
+      max_tool_calls: S.Number,
+      max_wall_seconds: S.Number,
+      max_output_tokens: S.optional(S.Number),
+      max_memory_mb: S.Number,
+      max_cpu_cores: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecLimits",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecLimits>;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecReasoning =
+  | "minimal"
+  | "low"
+  | "medium"
+  | "high"
+  | "xhigh";
+export const AgentApplicationsRevisionsUpdateRequestSpecReasoning =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitItem =
+    | "meta_tool_guidance"
+    | "state_contract"
+    | "tool_failure_guidance"
+    | "approval_guidance"
+    | "reasoning_hint";
+export const AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitItem =
+  /*@__PURE__*/ S.String;
+
+export type AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitList =
+  Array<
+    | AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitItem
+    | (string & {})
+  >;
+export const AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitList =
+  /*@__PURE__*/ S.Array(
+    AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitItem,
+  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitList>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt {
+  omit: AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitList;
+  version_pin?: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      omit: AgentApplicationsRevisionsUpdateRequestSpecFrameworkPromptOmitList,
+      version_pin: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpecResume {
+  enabled: boolean;
+  max_completed_age_ms: number;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpecResume =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      max_completed_age_ms: S.Number,
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpecResume",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpecResume>;
+
+export interface AgentApplicationsRevisionsUpdateRequestSpec {
+  /** How this agent selects its model. `auto`: pick a quality/cost `level` and the platform resolves it to a maintained, priority-ordered, cross-provider list at runtime. `manual`: give an explicit priority-ordered `models` list (primary first). `optimize_for` governs how the chosen model is treated across the session's turns. */
+  models: AgentApplicationsRevisionsUpdateRequestSpecModels;
+  triggers: AgentApplicationsRevisionsUpdateRequestSpecTriggersList;
+  tools: AgentApplicationsRevisionsUpdateRequestSpecToolsList;
+  mcps: AgentApplicationsRevisionsUpdateRequestSpecMcpsList;
+  skills: AgentApplicationsRevisionsUpdateRequestSpecSkillsList;
+  identity_providers?: AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersList;
+  secrets: AgentApplicationsRevisionsUpdateRequestSpecSecretsList;
+  limits: AgentApplicationsRevisionsUpdateRequestSpecLimits;
+  reasoning?:
+    | AgentApplicationsRevisionsUpdateRequestSpecReasoning
+    | (string & {});
+  framework_prompt?: AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt;
+  resume?: AgentApplicationsRevisionsUpdateRequestSpecResume;
+}
+export const AgentApplicationsRevisionsUpdateRequestSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      models: AgentApplicationsRevisionsUpdateRequestSpecModels,
+      triggers: AgentApplicationsRevisionsUpdateRequestSpecTriggersList,
+      tools: AgentApplicationsRevisionsUpdateRequestSpecToolsList,
+      mcps: AgentApplicationsRevisionsUpdateRequestSpecMcpsList,
+      skills: AgentApplicationsRevisionsUpdateRequestSpecSkillsList,
+      identity_providers: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecIdentityProvidersList,
+      ),
+      secrets: AgentApplicationsRevisionsUpdateRequestSpecSecretsList,
+      limits: AgentApplicationsRevisionsUpdateRequestSpecLimits,
+      reasoning: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecReasoning,
+      ),
+      framework_prompt: S.optional(
+        AgentApplicationsRevisionsUpdateRequestSpecFrameworkPrompt,
+      ),
+      resume: S.optional(AgentApplicationsRevisionsUpdateRequestSpecResume),
+    }),
+  ).annotate({
+    identifier: "AgentApplicationsRevisionsUpdateRequestSpec",
+  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSpec>;
+
 export interface AgentApplicationsRevisionsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1804,7 +6468,7 @@ export interface AgentApplicationsRevisionsUpdateRequest {
   parent_revision?: string | null;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  spec?: unknown;
+  spec?: AgentApplicationsRevisionsUpdateRequestSpec;
 }
 export const AgentApplicationsRevisionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1814,7 +6478,7 @@ export const AgentApplicationsRevisionsUpdateRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       parent_revision: S.optional(S.NullOr(S.String)),
       bundle_uri: S.optional(S.String),
-      spec: S.optional(S.Unknown),
+      spec: S.optional(AgentApplicationsRevisionsUpdateRequestSpec),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1895,45 +6559,6 @@ export const AgentRevisionValidateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AgentRevisionValidateResponse",
 }) as any as S.Schema<AgentRevisionValidateResponse>;
-
-export interface AgentApplicationsSendRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this agent application. */
-  id: string;
-  /** The session to append to (returned by agent-applications-invoke). Must belong to this agent. */
-  session_id: string;
-  /** The user message to append. Required, non-empty. */
-  message: string;
-}
-export const AgentApplicationsSendRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    session_id: S.String,
-    message: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/agent_applications/{id}/send/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AgentApplicationsSendRequest",
-}) as any as S.Schema<AgentApplicationsSendRequest>;
-
-export interface AgentSendResponse {
-  /** Session state after the message was appended — `queued` (a new turn will run). * `queued` - queued * `running` - running * `completed` - completed * `closed` - closed * `cancelled` - cancelled * `failed` - failed */
-  state: AgentSessionStateEnum;
-}
-export const AgentSendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: AgentSessionStateEnum,
-  }),
-).annotate({
-  identifier: "AgentSendResponse",
-}) as any as S.Schema<AgentSendResponse>;
 
 export interface AgentApplicationsSessionLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2102,6 +6727,16 @@ export const AgentSessionPrincipal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AgentSessionPrincipal",
 }) as any as S.Schema<AgentSessionPrincipal>;
+
+/** * `queued` - queued * `running` - running * `completed` - completed * `closed` - closed * `cancelled` - cancelled * `failed` - failed */
+export type AgentSessionStateEnum =
+  | "queued"
+  | "running"
+  | "completed"
+  | "closed"
+  | "cancelled"
+  | "failed";
+export const AgentSessionStateEnum = /*@__PURE__*/ S.String;
 
 /** Trigger-specific metadata stamped at session creation. Discriminated on `kind`: chat | slack | cron | webhook | mcp. The Zod source of truth is `agent-shared/src/runtime/trigger-metadata.ts`; the node side validates and strips unknown keys at the persistence boundary, so consumers can trust `kind` and per-kind fields. TODO: narrow this DictField to a polymorphic serializer mirroring the union (needs `hogli build:openapi`). */
 export type AgentSessionSummaryTriggerMetadataMap = {
@@ -2397,27 +7032,6 @@ export const AgentApplicationSessionsRetrieveResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AgentApplicationSessionsRetrieveResponse",
 }) as any as S.Schema<AgentApplicationSessionsRetrieveResponse>;
-
-export interface AgentApplicationsSpecSchemaRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Return only this top-level slice of the spec schema to save tokens — one of `models`, `triggers`, `tools`, `mcps`, `skills`, `identity_providers`, `secrets`, `limits`, `reasoning`, `framework_prompt`, `resume`. Omit for the whole spec schema. */
-  section?: string;
-}
-export const AgentApplicationsSpecSchemaRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    section: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/agent_applications/spec_schema/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AgentApplicationsSpecSchemaRequest",
-}) as any as S.Schema<AgentApplicationsSpecSchemaRequest>;
 
 export interface AgentApplicationsStatsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3508,21 +8122,6 @@ export const agentApplicationsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AgentApplicationsInvokeError = PosthogOpError;
-/** Start a new session on this agent's LIVE (promoted) revision. Bridges to ingress `POST /agents/<slug>/run`, forwarding the caller's PAT so the session principal is the real caller. Returns the new `session_id`; drive the conversation with `agent-applications-send` and read progress with `agent-applications-listen`. For non-live / draft revisions use `preview_proxy` instead. */
-export const agentApplicationsInvoke: API.OperationMethod<
-  AgentApplicationsInvokeRequest,
-  AgentInvokeResponse,
-  AgentApplicationsInvokeError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsInvokeRequest,
-  output: AgentInvokeResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AgentApplicationsListError = PosthogOpError;
 /** Agent applications — the deployable unit of the platform. URLs: GET /api/projects/<team>/agent_applications/ list POST /api/projects/<team>/agent_applications/ create GET /api/projects/<team>/agent_applications/<id|slug>/ retrieve PATCH /api/projects/<team>/agent_applications/<id|slug>/ update DELETE /api/projects/<team>/agent_applications/<id|slug>/ archive POST /api/projects/<team>/agent_applications/<id|slug>/set_env/ bulk replace env GET /api/projects/<team>/agent_applications/<id|slug>/env_keys/ list set keys GET /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/ is one key set? PUT /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/ set one key DELETE /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/ clear one key */
 export const agentApplicationsList: API.OperationMethod<
@@ -3533,21 +8132,6 @@ export const agentApplicationsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AgentApplicationsListRequest,
   output: PaginatedAgentApplicationList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentApplicationsListenError = PosthogOpError;
-/** Poll a LIVE session's progress as a single JSON digest (non-streaming, MCP-friendly). Bridges to the internal ingress digest RPC — the digest is built node-side (never in Python). Tenancy is enforced by the team-scoped `get_object()` here plus the ingress digest's `application_id` re-scope; there is no janitor pre-check on this polled path (see the comment below). */
-export const agentApplicationsListen: API.OperationMethod<
-  AgentApplicationsListenRequest,
-  AgentListenResponse,
-  AgentApplicationsListenError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsListenRequest,
-  output: AgentListenResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3684,40 +8268,6 @@ export const agentApplicationsRevisionsArchiveCreate: API.OperationMethod<
   input: AgentApplicationsRevisionsArchiveCreateRequest,
   output: AgentRevision,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentApplicationsRevisionsBundleFileUpdateError =
-  | Conflict
-  | PosthogOpError;
-/** Update one `.md` file on a draft revision. `agent.md` writes go to the draft bundle. `skills/<id>/SKILL.md` writes are store-backed — skills are materialized from the skill store at freeze, so the edit publishes a new version of the referenced store skill and re-pins the draft's `skill_refs` entry to it. `<id>` must be a ref alias on this revision; add new skills via `bundle/import/` or `skill_refs`. Tool source / schema editing is out of scope here — use the per-tool endpoints. Returns the updated revision so the caller can refresh in one round-trip. */
-export const agentApplicationsRevisionsBundleFileUpdate: API.OperationMethod<
-  AgentApplicationsRevisionsBundleFileUpdateRequest,
-  AgentRevision,
-  AgentApplicationsRevisionsBundleFileUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsRevisionsBundleFileUpdateRequest,
-  output: AgentRevision,
-  errors: [Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentApplicationsRevisionsBundleImportCreateError =
-  | Conflict
-  | PosthogOpError;
-/** Bulk-merge a set of `.md` files into a draft revision. Sets `agent_md` on the draft bundle if present. `skills[]` are store-backed and merge by `id`: an id already referenced by the draft publishes a new version of its store skill; an unreferenced id attaches the store skill of that name (publishing the payload's body to it), or creates it when no such skill exists — and each ref is (re-)pinned to the published version. Skills not mentioned are left alone, so the import is safe to retry. Draft-only; non-draft revisions return 409 untouched. */
-export const agentApplicationsRevisionsBundleImportCreate: API.OperationMethod<
-  AgentApplicationsRevisionsBundleImportCreateRequest,
-  AgentRevision,
-  AgentApplicationsRevisionsBundleImportCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsRevisionsBundleImportCreateRequest,
-  output: AgentRevision,
-  errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -4007,21 +8557,6 @@ export const agentApplicationsRevisionsToolsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AgentApplicationsRevisionsToolsDryRunCreateError = PosthogOpError;
-/** Execute one persisted custom tool in a single-shot sandbox. Authoring loop's "test this tool" button. The tool's source must already be PUT (compiled.js is what runs); this just invokes it with the caller-supplied args and a stubbed ctx. No real secrets leave Django — `mock_secrets` is a `{name → placeholder}` map. */
-export const agentApplicationsRevisionsToolsDryRunCreate: API.OperationMethod<
-  AgentApplicationsRevisionsToolsDryRunCreateRequest,
-  AgentRevisionDryRunToolResponse,
-  AgentApplicationsRevisionsToolsDryRunCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsRevisionsToolsDryRunCreateRequest,
-  output: AgentRevisionDryRunToolResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AgentApplicationsRevisionsToolsUpdateError = PosthogOpError;
 /** Revisions of an agent. Created in `draft`, promoted through `ready → live` once the bundle has been uploaded + frozen. URLs (nested under an application): Model CRUD: GET .../revisions/ list POST .../revisions/ create draft GET .../revisions/<id>/ retrieve PATCH .../revisions/<id>/ update spec (draft only) Lifecycle: POST .../revisions/<id>/promote/ ready → live POST .../revisions/<id>/archive/ → archived POST .../revisions/<id>/freeze/ draft → ready (stamps sha256) POST .../revisions/<id>/clone_from/ copy bundle from another rev POST .../revisions/new_draft/ create draft + clone_from atomically Bundle authoring (proxied to the janitor): GET .../revisions/<id>/manifest/ list paths + sha256 GET .../revisions/<id>/file/?path=… read one file PUT .../revisions/<id>/file/?path=… write one file (draft) DELETE .../revisions/<id>/file/?path=… delete one file (draft) GET .../revisions/<id>/bundle/ bulk pull all files PUT .../revisions/<id>/bundle/ bulk push (replace|merge) */
 export const agentApplicationsRevisionsToolsUpdate: API.OperationMethod<
@@ -4067,21 +8602,6 @@ export const agentApplicationsRevisionsValidateCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AgentApplicationsSendError = PosthogOpError;
-/** Append a message to an existing LIVE session and re-queue it. Bridges to ingress `POST /agents/<slug>/send`, forwarding the caller's PAT so the ACL principal-match passes. A `completed` session is NOT terminal — it's a per-turn idle state for a multi-turn agent, so send re-queues it for another turn; only truly-terminal states (failed / cancelled / closed) 410, which passes through as a 410. A janitor ownership pre-check runs first, but it's redundant defense-in-depth (ingress `/send` already app-scopes the load), kept for a clean early 404. */
-export const agentApplicationsSend: API.OperationMethod<
-  AgentApplicationsSendRequest,
-  AgentSendResponse,
-  AgentApplicationsSendError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsSendRequest,
-  output: AgentSendResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AgentApplicationsSessionLogsError = PosthogOpError;
 /** Read the runner's structured event log for one session from ClickHouse. Filters (limit / after / before / level / search) match the shared `LogEntryMixin` helper used by hog_function + hog_flow. */
 export const agentApplicationsSessionLogs: API.OperationMethod<
@@ -4098,7 +8618,7 @@ export const agentApplicationsSessionLogs: API.OperationMethod<
 }));
 
 export type AgentApplicationsSessionsListError = PosthogOpError;
-/** List sessions for this application, most recently active first. Strips the conversation transcript from each summary, but includes a `preview` (last assistant text, ~120 chars) and `usage_total` (token + cost aggregate). Use `agent-applications-sessions-retrieve` for the full transcript of a single session. */
+/** List sessions for this application, newest first. Strips the conversation transcript from each summary, but includes a `preview` (last assistant text, ~120 chars) and `usage_total` (token + cost aggregate). Use `agent-applications-sessions-retrieve` for the full transcript of a single session. */
 export const agentApplicationsSessionsList: API.OperationMethod<
   AgentApplicationsSessionsListRequest,
   AgentApplicationSessionsListResponse,
@@ -4122,21 +8642,6 @@ export const agentApplicationsSessionsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AgentApplicationsSessionsRetrieveRequest,
   output: AgentApplicationSessionsRetrieveResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentApplicationsSpecSchemaError = PosthogOpError;
-/** The canonical JSON Schema for an agent `spec` — every field, type, enum, default, and the discriminated unions for `models` / `triggers[]` / `tools[]`, each with an inline description. Emitted from the same source the runner validates against (fields with a default are optional on write), so read it BEFORE composing a spec for create / revisions-spec-update instead of guessing the shape. Pass `section` to fetch just one part. */
-export const agentApplicationsSpecSchema: API.OperationMethod<
-  AgentApplicationsSpecSchemaRequest,
-  AgentApplication,
-  AgentApplicationsSpecSchemaError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsSpecSchemaRequest,
-  output: AgentApplication,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

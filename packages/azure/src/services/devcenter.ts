@@ -4735,23 +4735,9 @@ export const NetworkConnectionsCreateOrUpdateRequestTagsMap =
     S.String,
   ) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
 
-/** Health check status values */
-export type NetworkPropertiesInputHealthCheckStatus =
-  | "Unknown"
-  | "Pending"
-  | "Running"
-  | "Passed"
-  | "Warning"
-  | "Failed"
-  | "Informational";
-export const NetworkPropertiesInputHealthCheckStatus = /*@__PURE__*/ S.String;
-
 /** Active Directory join type */
-export type NetworkPropertiesInputDomainJoinType =
-  | "HybridAzureADJoin"
-  | "AzureADJoin"
-  | "None";
-export const NetworkPropertiesInputDomainJoinType = /*@__PURE__*/ S.String;
+export type DomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
+export const DomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
 export interface NetworkPropertiesInput {
@@ -4765,12 +4751,10 @@ export interface NetworkPropertiesInput {
   domainUsername?: string;
   /** The password for the account used to join domain */
   domainPassword?: string | Redacted.Redacted<string>;
-  /** Health check status values */
-  healthCheckStatus?: NetworkPropertiesInputHealthCheckStatus | (string & {});
   /** The name for resource group where NICs will be placed. */
   networkingResourceGroupName?: string;
-  /** Active Directory join type */
-  domainJoinType: NetworkPropertiesInputDomainJoinType | (string & {});
+  /** AAD Join type. */
+  domainJoinType: DomainJoinType | (string & {});
 }
 export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4779,9 +4763,8 @@ export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     organizationUnit: S.optional(S.String),
     domainUsername: S.optional(S.String),
     domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    healthCheckStatus: S.optional(NetworkPropertiesInputHealthCheckStatus),
     networkingResourceGroupName: S.optional(S.String),
-    domainJoinType: NetworkPropertiesInputDomainJoinType,
+    domainJoinType: DomainJoinType,
   }),
 ).annotate({
   identifier: "NetworkPropertiesInput",
@@ -4853,7 +4836,7 @@ export type NetworkPropertiesProvisioningState =
 export const NetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Health check status values */
-export type NetworkPropertiesHealthCheckStatus =
+export type HealthCheckStatus =
   | "Unknown"
   | "Pending"
   | "Running"
@@ -4861,14 +4844,7 @@ export type NetworkPropertiesHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
-export const NetworkPropertiesHealthCheckStatus = /*@__PURE__*/ S.String;
-
-/** Active Directory join type */
-export type NetworkPropertiesDomainJoinType =
-  | "HybridAzureADJoin"
-  | "AzureADJoin"
-  | "None";
-export const NetworkPropertiesDomainJoinType = /*@__PURE__*/ S.String;
+export const HealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** Network properties */
 export interface NetworkProperties {
@@ -4884,12 +4860,12 @@ export interface NetworkProperties {
   domainPassword?: string | Redacted.Redacted<string>;
   /** Provisioning state of the resource. */
   provisioningState?: NetworkPropertiesProvisioningState;
-  /** Health check status values */
-  healthCheckStatus?: NetworkPropertiesHealthCheckStatus;
+  /** Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection. */
+  healthCheckStatus?: HealthCheckStatus;
   /** The name for resource group where NICs will be placed. */
   networkingResourceGroupName?: string;
-  /** Active Directory join type */
-  domainJoinType: NetworkPropertiesDomainJoinType;
+  /** AAD Join type. */
+  domainJoinType: DomainJoinType;
 }
 export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4899,9 +4875,9 @@ export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
     domainUsername: S.optional(S.String),
     domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     provisioningState: S.optional(NetworkPropertiesProvisioningState),
-    healthCheckStatus: S.optional(NetworkPropertiesHealthCheckStatus),
+    healthCheckStatus: S.optional(HealthCheckStatus),
     networkingResourceGroupName: S.optional(S.String),
-    domainJoinType: NetworkPropertiesDomainJoinType,
+    domainJoinType: DomainJoinType,
   }),
 ).annotate({
   identifier: "NetworkProperties",
@@ -5060,20 +5036,9 @@ export const NetworkConnectionsGetHealthDetailsRequest =
     identifier: "NetworkConnectionsGetHealthDetailsRequest",
   }) as any as S.Schema<NetworkConnectionsGetHealthDetailsRequest>;
 
-/** Health check status values */
-export type HealthCheckStatus =
-  | "Unknown"
-  | "Pending"
-  | "Running"
-  | "Passed"
-  | "Warning"
-  | "Failed"
-  | "Informational";
-export const HealthCheckStatus = /*@__PURE__*/ S.String;
-
 /** An individual health check item */
 export interface HealthCheck {
-  /** Health check status values */
+  /** The status of the health check item. */
   status?: HealthCheckStatus;
   /** The display name of this health check item. */
   displayName?: string;
@@ -5852,18 +5817,17 @@ export type PoolDevBoxDefinitionType = "Reference" | "Value";
 export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export interface PoolDevBoxDefinitionInputImageReference {
+export interface ImageReferenceInput {
   /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
   id?: string;
 }
-export const PoolDevBoxDefinitionInputImageReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
+export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "PoolDevBoxDefinitionInputImageReference",
-}) as any as S.Schema<PoolDevBoxDefinitionInputImageReference>;
+  identifier: "ImageReferenceInput",
+}) as any as S.Schema<ImageReferenceInput>;
 
 /** The resource model definition representing SKU */
 export interface PoolDevBoxDefinitionInputSku {
@@ -5889,36 +5853,17 @@ export const PoolDevBoxDefinitionInputSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolDevBoxDefinitionInputSku",
 }) as any as S.Schema<PoolDevBoxDefinitionInputSku>;
 
-/** Image reference information */
-export interface PoolDevBoxDefinitionInputActiveImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-}
-export const PoolDevBoxDefinitionInputActiveImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PoolDevBoxDefinitionInputActiveImageReference",
-  }) as any as S.Schema<PoolDevBoxDefinitionInputActiveImageReference>;
-
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinitionInput {
-  /** Image reference information */
-  imageReference?: PoolDevBoxDefinitionInputImageReference;
+  /** Image reference information. */
+  imageReference?: ImageReferenceInput;
   /** The resource model definition representing SKU */
   sku?: PoolDevBoxDefinitionInputSku;
-  /** Image reference information */
-  activeImageReference?: PoolDevBoxDefinitionInputActiveImageReference;
 }
 export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(PoolDevBoxDefinitionInputImageReference),
+    imageReference: S.optional(ImageReferenceInput),
     sku: S.optional(PoolDevBoxDefinitionInputSku),
-    activeImageReference: S.optional(
-      PoolDevBoxDefinitionInputActiveImageReference,
-    ),
   }),
 ).annotate({
   identifier: "PoolDevBoxDefinitionInput",
@@ -5998,7 +5943,7 @@ export interface PoolPropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType: LicenseType;
+  licenseType: LicenseType | (string & {});
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
   localAdministrator: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
@@ -6082,20 +6027,18 @@ export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 /** Image reference information */
-export interface PoolDevBoxDefinitionImageReference {
+export interface ImageReference {
   /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
   id?: string;
   /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
   exactVersion?: string;
 }
-export const PoolDevBoxDefinitionImageReference = /*@__PURE__*/ S.suspend(() =>
+export const ImageReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     exactVersion: S.optional(S.String),
   }),
-).annotate({
-  identifier: "PoolDevBoxDefinitionImageReference",
-}) as any as S.Schema<PoolDevBoxDefinitionImageReference>;
+).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
 
 /** The resource model definition representing SKU */
 export interface PoolDevBoxDefinitionSku {
@@ -6121,37 +6064,20 @@ export const PoolDevBoxDefinitionSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolDevBoxDefinitionSku",
 }) as any as S.Schema<PoolDevBoxDefinitionSku>;
 
-/** Image reference information */
-export interface PoolDevBoxDefinitionActiveImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
-export const PoolDevBoxDefinitionActiveImageReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PoolDevBoxDefinitionActiveImageReference",
-}) as any as S.Schema<PoolDevBoxDefinitionActiveImageReference>;
-
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinition {
-  /** Image reference information */
-  imageReference?: PoolDevBoxDefinitionImageReference;
+  /** Image reference information. */
+  imageReference?: ImageReference;
   /** The resource model definition representing SKU */
   sku?: PoolDevBoxDefinitionSku;
-  /** Image reference information */
-  activeImageReference?: PoolDevBoxDefinitionActiveImageReference;
+  /** Image reference information for the currently active image (only populated during updates). */
+  activeImageReference?: ImageReference;
 }
 export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(PoolDevBoxDefinitionImageReference),
+    imageReference: S.optional(ImageReference),
     sku: S.optional(PoolDevBoxDefinitionSku),
-    activeImageReference: S.optional(PoolDevBoxDefinitionActiveImageReference),
+    activeImageReference: S.optional(ImageReference),
   }),
 ).annotate({
   identifier: "PoolDevBoxDefinition",
@@ -6541,7 +6467,7 @@ export interface PoolUpdatePropertiesInput {
   /** Name of a Network Connection in parent Project of this Pool */
   networkConnectionName?: string;
   /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
-  licenseType?: LicenseType;
+  licenseType?: LicenseType | (string & {});
   /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
   localAdministrator?: LocalAdminStatus | (string & {});
   /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
@@ -9907,9 +9833,9 @@ export interface SchedulePropertiesInput {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type: ScheduledType;
+  type: ScheduledType | (string & {});
   /** The frequency of this scheduled task. */
-  frequency: ScheduledFrequency;
+  frequency: ScheduledFrequency | (string & {});
   /** The target time to trigger the action. The format is HH:MM. */
   time: string;
   /** The IANA timezone id at which the schedule should execute. */
@@ -10228,9 +10154,9 @@ export interface ScheduleUpdateProperties {
   /** The geo-location where the resource lives */
   location?: string;
   /** Supported type this scheduled task represents. */
-  type?: ScheduledType;
+  type?: ScheduledType | (string & {});
   /** The frequency of this scheduled task. */
-  frequency?: ScheduledFrequency;
+  frequency?: ScheduledFrequency | (string & {});
   /** The target time to trigger the action. The format is HH:MM. */
   time?: string;
   /** The IANA timezone id at which the schedule should execute. */

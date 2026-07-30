@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "A synchronous resource action.",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsDeleteResourcesRequest": {
@@ -97,10 +97,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List ResourceDetailsObject resources by Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#ResourceDetailsObjectListResult": {
@@ -427,10 +427,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "Delete a Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsDeleteRequest": {
@@ -478,10 +478,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "Update a Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsUpdateResponse": {
@@ -677,7 +677,8 @@
         "devCenterProjectResourceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The resource id of the DevCenter Project the pool belongs to."
+            "smithy.api#documentation": "The resource id of the DevCenter Project the pool belongs to.",
+            "smithy.api#required": {}
           }
         },
         "runtimeConfiguration": {
@@ -1023,10 +1024,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "Create a Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsCreateOrUpdateResponse": {
@@ -1256,10 +1257,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "Get a Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsGetResponse": {
@@ -1420,10 +1421,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List Pool resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolListResult": {
@@ -1606,10 +1607,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/images/{imageName}/versions",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List ImageVersion resources by Image",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#ImageVersionListResult": {
@@ -1740,10 +1741,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/pools",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List Pool resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PoolsListBySubscriptionRequest": {
@@ -1775,10 +1776,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List Quota resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#PagedQuota": {
@@ -1910,10 +1911,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{locationName}/skus",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List ResourceSku resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#ResourceSkuListResult": {
@@ -2351,10 +2352,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "Checks that the pool name is valid and is not already in use.",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#CheckNameAvailabilityResult": {
@@ -2490,10 +2491,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DevOpsInfrastructure/operations",
           "code": 200,
-          "apiVersion": "2026-06-02"
+          "apiVersion": "2025-09-20"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-02"
+        "com.distilled.openapi#apiVersion": "2025-09-20"
       }
     },
     "com.azure.devopsinfrastructure#OperationsListResponse": {

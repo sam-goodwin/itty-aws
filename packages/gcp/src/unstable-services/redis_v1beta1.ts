@@ -69,21 +69,21 @@ export const AuthTokenStateEnum = /*@__PURE__*/ S.String;
 
 /** Auth token for the cluster. */
 export interface AuthToken {
+  /** Identifier. Name of the auth token. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
+  name?: string;
   /** Output only. The service generated authentication token used to connect to the Redis cluster. */
   token?: string;
   /** Output only. Create time of the auth token. */
   createTime?: string;
   /** Output only. State of the auth token. */
   state?: AuthTokenStateEnum | (string & {});
-  /** Identifier. Name of the auth token. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user}/authTokens/{auth_token} */
-  name?: string;
 }
 export const AuthToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
     token: S.optional(S.String),
     createTime: S.optional(S.String),
     state: S.optional(AuthTokenStateEnum),
-    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "AuthToken" }) as any as S.Schema<AuthToken>;
 
@@ -152,23 +152,23 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** { `createTime`: The time the operation was created. `endTime`: The time the operation finished running. `target`: Server-defined resource path for the target of the operation. `verb`: Name of the verb executed by the operation. `statusDetail`: Human-readable status of the operation, if any. `cancelRequested`: Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. `apiVersion`: API version used to start the operation. } */
   metadata?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
     response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
@@ -210,15 +210,15 @@ export const AddTokenAuthUserProjectsLocationsClustersRequest =
 
 /** Request for `BackupCluster`. */
 export interface BackupClusterRequest {
-  /** Optional. The id of the backup to be created. If not specified, the default value ([YYYYMMDDHHMMSS]_[Shortened Cluster UID] is used. */
-  backupId?: string;
   /** Optional. TTL for the backup to expire. Value range is 1 day to 100 years. If not specified, the default value is 100 years. */
   ttl?: string;
+  /** Optional. The id of the backup to be created. If not specified, the default value ([YYYYMMDDHHMMSS]_[Shortened Cluster UID] is used. */
+  backupId?: string;
 }
 export const BackupClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    backupId: S.optional(S.String),
     ttl: S.optional(S.String),
+    backupId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BackupClusterRequest",
@@ -297,90 +297,26 @@ export type AclPolicyStateEnum =
   | "DELETING";
 export const AclPolicyStateEnum = /*@__PURE__*/ S.String;
 
-export type AclPolicyRevisionStatusStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "APPLYING"
-  | "APPLIED"
-  | "FAILED";
-export const AclPolicyRevisionStatusStateEnum = /*@__PURE__*/ S.String;
-
-/** AclPolicyRevisionStatus stores the per-revision status for an attached cluster. */
-export interface AclPolicyRevisionStatus {
-  /** Output only. The resource name of the ACL policy revision this status refers to. Format: "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}" */
-  aclPolicyRevision?: string;
-  /** Output only. Human-readable error message providing more details for FAILED states. */
-  errorMessage?: string;
-  /** Output only. AclPolicyRevision state. */
-  state?: AclPolicyRevisionStatusStateEnum | (string & {});
-  /** Output only. The revision number of the ACL policy revision this status refers to. */
-  aclPolicyRevisionNumber?: string;
-}
-export const AclPolicyRevisionStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aclPolicyRevision: S.optional(S.String),
-    errorMessage: S.optional(S.String),
-    state: S.optional(AclPolicyRevisionStatusStateEnum),
-    aclPolicyRevisionNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AclPolicyRevisionStatus",
-}) as any as S.Schema<AclPolicyRevisionStatus>;
-
-export type AclPolicyRevisionStatusList = Array<AclPolicyRevisionStatus>;
-export const AclPolicyRevisionStatusList = /*@__PURE__*/ S.Array(
-  AclPolicyRevisionStatus,
-) as any as S.Schema<AclPolicyRevisionStatusList>;
-
-/** ClusterAclPolicyAttachment stores the ACL policy status for an attached cluster for the revisions successfully applied, under application or failed. */
-export interface ClusterAclPolicyAttachment {
-  /** Output only. The resource name of the attached Cluster. Format: "projects/{project}/locations/{location}/clusters/{cluster}" */
-  cluster?: string;
-  /** Output only. A list of status for various revisions of this ACL policy on the cluster. */
-  aclPolicyRevisionStatuses?: AclPolicyRevisionStatusList;
-}
-export const ClusterAclPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cluster: S.optional(S.String),
-    aclPolicyRevisionStatuses: S.optional(AclPolicyRevisionStatusList),
-  }),
-).annotate({
-  identifier: "ClusterAclPolicyAttachment",
-}) as any as S.Schema<ClusterAclPolicyAttachment>;
-
-export type ClusterAclPolicyAttachmentList = Array<ClusterAclPolicyAttachment>;
-export const ClusterAclPolicyAttachmentList = /*@__PURE__*/ S.Array(
-  ClusterAclPolicyAttachment,
-) as any as S.Schema<ClusterAclPolicyAttachmentList>;
-
 /** The ACL policy resource. */
 export interface AclPolicy {
-  /** Required. The ACL rules within the ACL policy. */
-  rules?: AclRuleList;
   /** Identifier. Full resource path of the ACL policy. */
   name?: string;
+  /** Required. The ACL rules within the ACL policy. */
+  rules?: AclRuleList;
   /** Output only. The state of the ACL policy. */
   state?: AclPolicyStateEnum | (string & {});
   /** Output only. Deprecated: Used in drift resolution. */
   version?: string;
   /** Output only. Etag for the ACL policy. */
   etag?: string;
-  /** Output only. The ACL policy attachment status for each attached cluster. */
-  clusterAclPolicyAttachments?: ClusterAclPolicyAttachmentList;
-  /** Output only. The timestamp that the ACL policy was created. */
-  createTime?: string;
-  /** Output only. The timestamp that the ACL policy was last updated. */
-  updateTime?: string;
 }
 export const AclPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    rules: S.optional(AclRuleList),
     name: S.optional(S.String),
+    rules: S.optional(AclRuleList),
     state: S.optional(AclPolicyStateEnum),
     version: S.optional(S.String),
     etag: S.optional(S.String),
-    clusterAclPolicyAttachments: S.optional(ClusterAclPolicyAttachmentList),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "AclPolicy" }) as any as S.Schema<AclPolicy>;
 
@@ -412,84 +348,57 @@ export const CreateProjectsLocationsAclPoliciesRequest =
     identifier: "CreateProjectsLocationsAclPoliciesRequest",
   }) as any as S.Schema<CreateProjectsLocationsAclPoliciesRequest>;
 
-export type ClusterNodeTypeEnum =
-  | "NODE_TYPE_UNSPECIFIED"
-  | "REDIS_SHARED_CORE_NANO"
-  | "REDIS_HIGHMEM_MEDIUM"
-  | "REDIS_HIGHMEM_XLARGE"
-  | "REDIS_STANDARD_SMALL"
-  | "REDIS_HIGHCPU_MEDIUM"
-  | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE";
-export const ClusterNodeTypeEnum = /*@__PURE__*/ S.String;
-
-export type EncryptionInfoKmsKeyPrimaryStateEnum =
-  | "KMS_KEY_STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "PERMISSION_DENIED"
-  | "DISABLED"
-  | "DESTROYED"
-  | "DESTROY_SCHEDULED"
-  | "EKM_KEY_UNREACHABLE_DETECTED"
-  | "BILLING_DISABLED"
-  | "UNKNOWN_FAILURE";
-export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type EncryptionInfoEncryptionTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION";
-export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
-
-/** EncryptionInfo describes the encryption information of a cluster or a backup. */
-export interface EncryptionInfo {
-  /** Output only. The state of the primary version of the KMS key perceived by the system. This field is not populated in backups. */
-  kmsKeyPrimaryState?: EncryptionInfoKmsKeyPrimaryStateEnum | (string & {});
-  /** Output only. KMS key versions that are being used to protect the data at-rest. */
-  kmsKeyVersions?: StringList;
-  /** Output only. Type of encryption. */
-  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
-  /** Output only. The most recent time when the encryption info was updated. */
-  lastUpdateTime?: string;
+/** Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. */
+export interface GcsBackupSource {
+  /** Optional. URIs of the Cloud Storage objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2 */
+  uris?: StringList;
 }
-export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
+export const GcsBackupSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kmsKeyPrimaryState: S.optional(EncryptionInfoKmsKeyPrimaryStateEnum),
-    kmsKeyVersions: S.optional(StringList),
-    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
-    lastUpdateTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
-
-export type ZoneDistributionConfigModeEnum =
-  | "ZONE_DISTRIBUTION_MODE_UNSPECIFIED"
-  | "MULTI_ZONE"
-  | "SINGLE_ZONE";
-export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
-
-/** Zone distribution config for allocation of cluster resources. */
-export interface ZoneDistributionConfig {
-  /** Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not specified. */
-  mode?: ZoneDistributionConfigModeEnum | (string & {});
-  /** Optional. When SINGLE ZONE distribution is selected, zone field would be used to allocate all resources in that zone. This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE clusters. */
-  zone?: string;
-  /** Optional. Specify the zones of a multi-zone cluster where Redis Cluster allocates resources. This flag isn't applicable for single-zone clusters. */
-  zones?: StringList;
-}
-export const ZoneDistributionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(ZoneDistributionConfigModeEnum),
-    zone: S.optional(S.String),
-    zones: S.optional(StringList),
+    uris: S.optional(StringList),
   }),
 ).annotate({
-  identifier: "ZoneDistributionConfig",
-}) as any as S.Schema<ZoneDistributionConfig>;
+  identifier: "GcsBackupSource",
+}) as any as S.Schema<GcsBackupSource>;
+
+/** Backups that generated and managed by memorystore. */
+export interface ManagedBackupSource {
+  /** Optional. Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported, like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup_id} In this case, it assumes the backup is under redis.googleapis.com. */
+  backup?: string;
+}
+export const ManagedBackupSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedBackupSource",
+}) as any as S.Schema<ManagedBackupSource>;
+
+export type ClusterStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING";
+export const ClusterStateEnum = /*@__PURE__*/ S.String;
+
+export type ClusterAuthorizationModeEnum =
+  | "AUTH_MODE_UNSPECIFIED"
+  | "AUTH_MODE_IAM_AUTH"
+  | "AUTH_MODE_DISABLED"
+  | "AUTH_MODE_TOKEN_AUTH";
+export const ClusterAuthorizationModeEnum = /*@__PURE__*/ S.String;
+
+export type ClusterTransitEncryptionModeEnum =
+  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+  | "TRANSIT_ENCRYPTION_MODE_DISABLED"
+  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
+export const ClusterTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 export interface PscConfig {
   /** Required. The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}. */
@@ -506,54 +415,35 @@ export const PscConfigList = /*@__PURE__*/ S.Array(
   PscConfig,
 ) as any as S.Schema<PscConfigList>;
 
-export type PscAutoConnectionConnectionTypeEnum =
-  | "CONNECTION_TYPE_UNSPECIFIED"
-  | "CONNECTION_TYPE_DISCOVERY"
-  | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER";
-export const PscAutoConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
+/** Endpoints on each network, for Redis clients to connect to the cluster. */
+export interface DiscoveryEndpoint {
+  /** Output only. Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname. */
+  address?: string;
+  /** Output only. The port number of the exposed Redis endpoint. */
+  port?: number;
+  /** Output only. Customer configuration for where the endpoint is created and accessed from. */
+  pscConfig?: PscConfig;
+}
+export const DiscoveryEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    port: S.optional(S.Number),
+    pscConfig: S.optional(PscConfig),
+  }),
+).annotate({
+  identifier: "DiscoveryEndpoint",
+}) as any as S.Schema<DiscoveryEndpoint>;
 
-export type PscAutoConnectionPscConnectionStatusEnum =
+export type DiscoveryEndpointList = Array<DiscoveryEndpoint>;
+export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(
+  DiscoveryEndpoint,
+) as any as S.Schema<DiscoveryEndpointList>;
+
+export type PscConnectionPscConnectionStatusEnum =
   | "PSC_CONNECTION_STATUS_UNSPECIFIED"
   | "PSC_CONNECTION_STATUS_ACTIVE"
   | "PSC_CONNECTION_STATUS_NOT_FOUND";
-export const PscAutoConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
-
-/** Details of consumer resources in a PSC connection that is created through Service Connectivity Automation. */
-export interface PscAutoConnection {
-  /** Required. The consumer project_id where the forwarding rule is created from. */
-  projectId?: string;
-  /** Output only. Type of the PSC connection. */
-  connectionType?: PscAutoConnectionConnectionTypeEnum | (string & {});
-  /** Output only. The PSC connection id of the forwarding rule connected to the service attachment. */
-  pscConnectionId?: string;
-  /** Output only. The IP allocated on the consumer network for the PSC forwarding rule. */
-  address?: string;
-  /** Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}. */
-  forwardingRule?: string;
-  /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
-  network?: string;
-  /** Output only. The status of the PSC connection. Please note that this value is updated periodically. Please use Private Service Connect APIs for the latest status. */
-  pscConnectionStatus?:
-    | PscAutoConnectionPscConnectionStatusEnum
-    | (string & {});
-  /** Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
-  serviceAttachment?: string;
-}
-export const PscAutoConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.optional(S.String),
-    connectionType: S.optional(PscAutoConnectionConnectionTypeEnum),
-    pscConnectionId: S.optional(S.String),
-    address: S.optional(S.String),
-    forwardingRule: S.optional(S.String),
-    network: S.optional(S.String),
-    pscConnectionStatus: S.optional(PscAutoConnectionPscConnectionStatusEnum),
-    serviceAttachment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PscAutoConnection",
-}) as any as S.Schema<PscAutoConnection>;
+export const PscConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 export type PscConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
@@ -562,85 +452,102 @@ export type PscConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_READER";
 export const PscConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
-export type PscConnectionPscConnectionStatusEnum =
-  | "PSC_CONNECTION_STATUS_UNSPECIFIED"
-  | "PSC_CONNECTION_STATUS_ACTIVE"
-  | "PSC_CONNECTION_STATUS_NOT_FOUND";
-export const PscConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
-
 /** Details of consumer resources in a PSC connection. */
 export interface PscConnection {
-  /** Optional. Project ID of the consumer project where the forwarding rule is created in. */
-  projectId?: string;
-  /** Required. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}. */
-  forwardingRule?: string;
-  /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
-  network?: string;
-  /** Output only. Type of the PSC connection. */
-  connectionType?: PscConnectionConnectionTypeEnum | (string & {});
-  /** Output only. The status of the PSC connection. Please note that this value is updated periodically. To get the latest status of a PSC connection, follow https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details. */
-  pscConnectionStatus?: PscConnectionPscConnectionStatusEnum | (string & {});
   /** Output only. port will only be set for Primary/Reader or Discovery endpoint. */
   port?: number;
-  /** Required. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
-  serviceAttachment?: string;
   /** Required. The PSC connection id of the forwarding rule connected to the service attachment. */
   pscConnectionId?: string;
   /** Required. The IP allocated on the consumer network for the PSC forwarding rule. */
   address?: string;
+  /** Required. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}. */
+  forwardingRule?: string;
+  /** Optional. Project ID of the consumer project where the forwarding rule is created in. */
+  projectId?: string;
+  /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
+  network?: string;
+  /** Required. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
+  serviceAttachment?: string;
+  /** Output only. The status of the PSC connection. Please note that this value is updated periodically. To get the latest status of a PSC connection, follow https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details. */
+  pscConnectionStatus?: PscConnectionPscConnectionStatusEnum | (string & {});
+  /** Output only. Type of the PSC connection. */
+  connectionType?: PscConnectionConnectionTypeEnum | (string & {});
 }
 export const PscConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    projectId: S.optional(S.String),
-    forwardingRule: S.optional(S.String),
-    network: S.optional(S.String),
-    connectionType: S.optional(PscConnectionConnectionTypeEnum),
-    pscConnectionStatus: S.optional(PscConnectionPscConnectionStatusEnum),
     port: S.optional(S.Number),
-    serviceAttachment: S.optional(S.String),
     pscConnectionId: S.optional(S.String),
     address: S.optional(S.String),
+    forwardingRule: S.optional(S.String),
+    projectId: S.optional(S.String),
+    network: S.optional(S.String),
+    serviceAttachment: S.optional(S.String),
+    pscConnectionStatus: S.optional(PscConnectionPscConnectionStatusEnum),
+    connectionType: S.optional(PscConnectionConnectionTypeEnum),
   }),
 ).annotate({ identifier: "PscConnection" }) as any as S.Schema<PscConnection>;
 
-/** Detailed information of each PSC connection. */
-export interface ConnectionDetail {
-  /** Detailed information of a PSC connection that is created through service connectivity automation. */
-  pscAutoConnection?: PscAutoConnection;
-  /** Detailed information of a PSC connection that is created by the customer who owns the cluster. */
-  pscConnection?: PscConnection;
+export type PscConnectionList = Array<PscConnection>;
+export const PscConnectionList = /*@__PURE__*/ S.Array(
+  PscConnection,
+) as any as S.Schema<PscConnectionList>;
+
+export type UpdateInfoTargetNodeTypeEnum =
+  | "NODE_TYPE_UNSPECIFIED"
+  | "REDIS_SHARED_CORE_NANO"
+  | "REDIS_HIGHMEM_MEDIUM"
+  | "REDIS_HIGHMEM_XLARGE"
+  | "REDIS_STANDARD_SMALL"
+  | "REDIS_HIGHCPU_MEDIUM"
+  | "REDIS_STANDARD_LARGE"
+  | "REDIS_HIGHMEM_2XLARGE";
+export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents information about an updating cluster. */
+export interface UpdateInfo {
+  /** Target number of shards for redis cluster */
+  targetShardCount?: number;
+  /** Target number of replica nodes per shard. */
+  targetReplicaCount?: number;
+  /** Target node type for redis cluster. */
+  targetNodeType?: UpdateInfoTargetNodeTypeEnum | (string & {});
 }
-export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
+export const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pscAutoConnection: S.optional(PscAutoConnection),
-    pscConnection: S.optional(PscConnection),
+    targetShardCount: S.optional(S.Number),
+    targetReplicaCount: S.optional(S.Number),
+    targetNodeType: S.optional(UpdateInfoTargetNodeTypeEnum),
   }),
-).annotate({
-  identifier: "ConnectionDetail",
-}) as any as S.Schema<ConnectionDetail>;
+).annotate({ identifier: "UpdateInfo" }) as any as S.Schema<UpdateInfo>;
 
-export type ConnectionDetailList = Array<ConnectionDetail>;
-export const ConnectionDetailList = /*@__PURE__*/ S.Array(
-  ConnectionDetail,
-) as any as S.Schema<ConnectionDetailList>;
-
-/** ClusterEndpoint consists of PSC connections that are created as a group in each VPC network for accessing the cluster. In each group, there shall be one connection for each service attachment in the cluster. */
-export interface ClusterEndpoint {
-  /** Required. A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster. */
-  connections?: ConnectionDetailList;
+/** Represents additional information about the state of the cluster. */
+export interface StateInfo {
+  /** Describes ongoing update on the cluster when cluster state is UPDATING. */
+  updateInfo?: UpdateInfo;
 }
-export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
+export const StateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    connections: S.optional(ConnectionDetailList),
+    updateInfo: S.optional(UpdateInfo),
   }),
-).annotate({
-  identifier: "ClusterEndpoint",
-}) as any as S.Schema<ClusterEndpoint>;
+).annotate({ identifier: "StateInfo" }) as any as S.Schema<StateInfo>;
 
-export type ClusterEndpointList = Array<ClusterEndpoint>;
-export const ClusterEndpointList = /*@__PURE__*/ S.Array(
-  ClusterEndpoint,
-) as any as S.Schema<ClusterEndpointList>;
+export type ClusterNodeTypeEnum =
+  | "NODE_TYPE_UNSPECIFIED"
+  | "REDIS_SHARED_CORE_NANO"
+  | "REDIS_HIGHMEM_MEDIUM"
+  | "REDIS_HIGHMEM_XLARGE"
+  | "REDIS_STANDARD_SMALL"
+  | "REDIS_HIGHCPU_MEDIUM"
+  | "REDIS_STANDARD_LARGE"
+  | "REDIS_HIGHMEM_2XLARGE";
+export const ClusterNodeTypeEnum = /*@__PURE__*/ S.String;
+
+export type ClusterPersistenceConfigModeEnum =
+  | "PERSISTENCE_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "RDB"
+  | "AOF";
+export const ClusterPersistenceConfigModeEnum = /*@__PURE__*/ S.String;
 
 export type RDBConfigRdbSnapshotPeriodEnum =
   | "SNAPSHOT_PERIOD_UNSPECIFIED"
@@ -682,94 +589,63 @@ export const AOFConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AOFConfig" }) as any as S.Schema<AOFConfig>;
 
-export type ClusterPersistenceConfigModeEnum =
-  | "PERSISTENCE_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "RDB"
-  | "AOF";
-export const ClusterPersistenceConfigModeEnum = /*@__PURE__*/ S.String;
-
 /** Configuration of the persistence functionality. */
 export interface ClusterPersistenceConfig {
+  /** Optional. The mode of persistence. */
+  mode?: ClusterPersistenceConfigModeEnum | (string & {});
   /** Optional. RDB configuration. This field will be ignored if mode is not RDB. */
   rdbConfig?: RDBConfig;
   /** Optional. AOF configuration. This field will be ignored if mode is not AOF. */
   aofConfig?: AOFConfig;
-  /** Optional. The mode of persistence. */
-  mode?: ClusterPersistenceConfigModeEnum | (string & {});
 }
 export const ClusterPersistenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    mode: S.optional(ClusterPersistenceConfigModeEnum),
     rdbConfig: S.optional(RDBConfig),
     aofConfig: S.optional(AOFConfig),
-    mode: S.optional(ClusterPersistenceConfigModeEnum),
   }),
 ).annotate({
   identifier: "ClusterPersistenceConfig",
 }) as any as S.Schema<ClusterPersistenceConfig>;
 
-export type AutomatedBackupConfigAutomatedBackupModeEnum =
-  | "AUTOMATED_BACKUP_MODE_UNSPECIFIED"
-  | "DISABLED"
-  | "ENABLED";
-export const AutomatedBackupConfigAutomatedBackupModeEnum =
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+export type ZoneDistributionConfigModeEnum =
+  | "ZONE_DISTRIBUTION_MODE_UNSPECIFIED"
+  | "MULTI_ZONE"
+  | "SINGLE_ZONE";
+export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
+
+/** Zone distribution config for allocation of cluster resources. */
+export interface ZoneDistributionConfig {
+  /** Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not specified. */
+  mode?: ZoneDistributionConfigModeEnum | (string & {});
+  /** Optional. When SINGLE ZONE distribution is selected, zone field would be used to allocate all resources in that zone. This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE clusters. */
+  zone?: string;
+  /** Optional. Specify the zones of a multi-zone cluster where Redis Cluster allocates resources. This flag isn't applicable for single-zone clusters. */
+  zones?: StringList;
+}
+export const ZoneDistributionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(ZoneDistributionConfigModeEnum),
+    zone: S.optional(S.String),
+    zones: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ZoneDistributionConfig",
+}) as any as S.Schema<ZoneDistributionConfig>;
+
+export type CrossClusterReplicationConfigClusterRoleEnum =
+  | "CLUSTER_ROLE_UNSPECIFIED"
+  | "NONE"
+  | "PRIMARY"
+  | "SECONDARY";
+export const CrossClusterReplicationConfigClusterRoleEnum =
   /*@__PURE__*/ S.String;
-
-/** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
-export interface TimeOfDay {
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-}
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nanos: S.optional(S.Number),
-    hours: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
-
-/** This schedule allows the backup to be triggered at a fixed frequency (currently only daily is supported). */
-export interface FixedFrequencySchedule {
-  /** Required. The start time of every automated backup in UTC. It must be set to the start of an hour. This field is required. */
-  startTime?: TimeOfDay;
-}
-export const FixedFrequencySchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(TimeOfDay),
-  }),
-).annotate({
-  identifier: "FixedFrequencySchedule",
-}) as any as S.Schema<FixedFrequencySchedule>;
-
-/** The automated backup config for a cluster. */
-export interface AutomatedBackupConfig {
-  /** Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored. */
-  automatedBackupMode?:
-    | AutomatedBackupConfigAutomatedBackupModeEnum
-    | (string & {});
-  /** Optional. How long to keep automated backups before the backups are deleted. The value should be between 1 day and 365 days. If not specified, the default value is 35 days. */
-  retention?: string;
-  /** Optional. Trigger automated backups at a fixed frequency. */
-  fixedFrequencySchedule?: FixedFrequencySchedule;
-}
-export const AutomatedBackupConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    automatedBackupMode: S.optional(
-      AutomatedBackupConfigAutomatedBackupModeEnum,
-    ),
-    retention: S.optional(S.String),
-    fixedFrequencySchedule: S.optional(FixedFrequencySchedule),
-  }),
-).annotate({
-  identifier: "AutomatedBackupConfig",
-}) as any as S.Schema<AutomatedBackupConfig>;
 
 /** Details of the remote cluster associated with this cluster in a cross cluster replication setup. */
 export interface RemoteCluster {
@@ -804,84 +680,30 @@ export const Membership = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
-export type CrossClusterReplicationConfigClusterRoleEnum =
-  | "CLUSTER_ROLE_UNSPECIFIED"
-  | "NONE"
-  | "PRIMARY"
-  | "SECONDARY";
-export const CrossClusterReplicationConfigClusterRoleEnum =
-  /*@__PURE__*/ S.String;
-
 /** Cross cluster replication config. */
 export interface CrossClusterReplicationConfig {
-  /** List of secondary clusters that are replicating from this primary cluster. This field is only set for a primary cluster. */
-  secondaryClusters?: RemoteClusterList;
-  /** Details of the primary cluster that is used as the replication source for this secondary cluster. This field is only set for a secondary cluster. */
-  primaryCluster?: RemoteCluster;
-  /** Output only. An output only view of all the member clusters participating in the cross cluster replication. This view will be provided by every member cluster irrespective of its cluster role(primary or secondary). A primary cluster can provide information about all the secondary clusters replicating from it. However, a secondary cluster only knows about the primary cluster from which it is replicating. However, for scenarios, where the primary cluster is unavailable(e.g. regional outage), a GetCluster request can be sent to any other member cluster and this field will list all the member clusters participating in cross cluster replication. */
-  membership?: Membership;
   /** Output only. The role of the cluster in cross cluster replication. */
   clusterRole?: CrossClusterReplicationConfigClusterRoleEnum | (string & {});
+  /** Details of the primary cluster that is used as the replication source for this secondary cluster. This field is only set for a secondary cluster. */
+  primaryCluster?: RemoteCluster;
+  /** List of secondary clusters that are replicating from this primary cluster. This field is only set for a primary cluster. */
+  secondaryClusters?: RemoteClusterList;
   /** Output only. The last time cross cluster replication config was updated. */
   updateTime?: string;
+  /** Output only. An output only view of all the member clusters participating in the cross cluster replication. This view will be provided by every member cluster irrespective of its cluster role(primary or secondary). A primary cluster can provide information about all the secondary clusters replicating from it. However, a secondary cluster only knows about the primary cluster from which it is replicating. However, for scenarios, where the primary cluster is unavailable(e.g. regional outage), a GetCluster request can be sent to any other member cluster and this field will list all the member clusters participating in cross cluster replication. */
+  membership?: Membership;
 }
 export const CrossClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    secondaryClusters: S.optional(RemoteClusterList),
-    primaryCluster: S.optional(RemoteCluster),
-    membership: S.optional(Membership),
     clusterRole: S.optional(CrossClusterReplicationConfigClusterRoleEnum),
+    primaryCluster: S.optional(RemoteCluster),
+    secondaryClusters: S.optional(RemoteClusterList),
     updateTime: S.optional(S.String),
+    membership: S.optional(Membership),
   }),
 ).annotate({
   identifier: "CrossClusterReplicationConfig",
 }) as any as S.Schema<CrossClusterReplicationConfig>;
-
-export type ClusterTransitEncryptionModeEnum =
-  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
-  | "TRANSIT_ENCRYPTION_MODE_DISABLED"
-  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
-export const ClusterTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
-
-/** Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. */
-export interface GcsBackupSource {
-  /** Optional. URIs of the Cloud Storage objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2 */
-  uris?: StringList;
-}
-export const GcsBackupSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uris: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "GcsBackupSource",
-}) as any as S.Schema<GcsBackupSource>;
-
-/** Upcoming maintenance schedule. */
-export interface ClusterMaintenanceSchedule {
-  /** Output only. The start time of any upcoming scheduled maintenance for this instance. */
-  startTime?: string;
-  /** Output only. The end time of any upcoming scheduled maintenance for this instance. */
-  endTime?: string;
-}
-export const ClusterMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClusterMaintenanceSchedule",
-}) as any as S.Schema<ClusterMaintenanceSchedule>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-export type PscConnectionList = Array<PscConnection>;
-export const PscConnectionList = /*@__PURE__*/ S.Array(
-  PscConnection,
-) as any as S.Schema<PscConnectionList>;
 
 export type ClusterWeeklyMaintenanceWindowDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -893,6 +715,26 @@ export type ClusterWeeklyMaintenanceWindowDayEnum =
   | "SATURDAY"
   | "SUNDAY";
 export const ClusterWeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
+
+/** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
+export interface TimeOfDay {
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+}
+export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hours: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    seconds: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+  }),
+).annotate({ identifier: "TimeOfDay" }) as any as S.Schema<TimeOfDay>;
 
 /** Time window specified for weekly operations. */
 export interface ClusterWeeklyMaintenanceWindow {
@@ -935,84 +777,21 @@ export const ClusterMaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterMaintenancePolicy",
 }) as any as S.Schema<ClusterMaintenancePolicy>;
 
-export type ClusterServerCaModeEnum =
-  | "SERVER_CA_MODE_UNSPECIFIED"
-  | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA"
-  | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA"
-  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
-export const ClusterServerCaModeEnum = /*@__PURE__*/ S.String;
-
-export type ClusterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING";
-export const ClusterStateEnum = /*@__PURE__*/ S.String;
-
-/** Endpoints on each network, for Redis clients to connect to the cluster. */
-export interface DiscoveryEndpoint {
-  /** Output only. Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname. */
-  address?: string;
-  /** Output only. Customer configuration for where the endpoint is created and accessed from. */
-  pscConfig?: PscConfig;
-  /** Output only. The port number of the exposed Redis endpoint. */
-  port?: number;
+/** Upcoming maintenance schedule. */
+export interface ClusterMaintenanceSchedule {
+  /** Output only. The start time of any upcoming scheduled maintenance for this instance. */
+  startTime?: string;
+  /** Output only. The end time of any upcoming scheduled maintenance for this instance. */
+  endTime?: string;
 }
-export const DiscoveryEndpoint = /*@__PURE__*/ S.suspend(() =>
+export const ClusterMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    address: S.optional(S.String),
-    pscConfig: S.optional(PscConfig),
-    port: S.optional(S.Number),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DiscoveryEndpoint",
-}) as any as S.Schema<DiscoveryEndpoint>;
-
-export type DiscoveryEndpointList = Array<DiscoveryEndpoint>;
-export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(
-  DiscoveryEndpoint,
-) as any as S.Schema<DiscoveryEndpointList>;
-
-/** Details of the applied ACL policy. */
-export interface AclPolicyInfo {
-  /** Output only. The revision number of the applied ACL policy revision. */
-  appliedAclPolicyRevisionNumber?: string;
-  /** Output only. A list of status for various revisions of this ACL policy on the cluster. */
-  aclPolicyRevisionStatuses?: AclPolicyRevisionStatusList;
-  /** Output only. The resource name of the applied ACL policy. Format: "projects/{project}/locations/{location}/aclPolicies/{acl_policy}" */
-  appliedAclPolicy?: string;
-  /** Output only. The resource name of the applied ACL policy revision. Format: "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}" */
-  appliedAclPolicyRevision?: string;
-}
-export const AclPolicyInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appliedAclPolicyRevisionNumber: S.optional(S.String),
-    aclPolicyRevisionStatuses: S.optional(AclPolicyRevisionStatusList),
-    appliedAclPolicy: S.optional(S.String),
-    appliedAclPolicyRevision: S.optional(S.String),
-  }),
-).annotate({ identifier: "AclPolicyInfo" }) as any as S.Schema<AclPolicyInfo>;
-
-/** Backups that generated and managed by memorystore. */
-export interface ManagedBackupSource {
-  /** Optional. Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported, like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup_id} In this case, it assumes the backup is under redis.googleapis.com. */
-  backup?: string;
-}
-export const ManagedBackupSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedBackupSource",
-}) as any as S.Schema<ManagedBackupSource>;
-
-export type ClusterAuthorizationModeEnum =
-  | "AUTH_MODE_UNSPECIFIED"
-  | "AUTH_MODE_IAM_AUTH"
-  | "AUTH_MODE_DISABLED"
-  | "AUTH_MODE_TOKEN_AUTH";
-export const ClusterAuthorizationModeEnum = /*@__PURE__*/ S.String;
+  identifier: "ClusterMaintenanceSchedule",
+}) as any as S.Schema<ClusterMaintenanceSchedule>;
 
 export type PscServiceAttachmentConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
@@ -1042,188 +821,322 @@ export const PscServiceAttachmentList = /*@__PURE__*/ S.Array(
   PscServiceAttachment,
 ) as any as S.Schema<PscServiceAttachmentList>;
 
-export type UpdateInfoTargetNodeTypeEnum =
-  | "NODE_TYPE_UNSPECIFIED"
-  | "REDIS_SHARED_CORE_NANO"
-  | "REDIS_HIGHMEM_MEDIUM"
-  | "REDIS_HIGHMEM_XLARGE"
-  | "REDIS_STANDARD_SMALL"
-  | "REDIS_HIGHCPU_MEDIUM"
-  | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE";
-export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
+export type PscAutoConnectionPscConnectionStatusEnum =
+  | "PSC_CONNECTION_STATUS_UNSPECIFIED"
+  | "PSC_CONNECTION_STATUS_ACTIVE"
+  | "PSC_CONNECTION_STATUS_NOT_FOUND";
+export const PscAutoConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
-/** Represents information about an updating cluster. */
-export interface UpdateInfo {
-  /** Target node type for redis cluster. */
-  targetNodeType?: UpdateInfoTargetNodeTypeEnum | (string & {});
-  /** Target number of replica nodes per shard. */
-  targetReplicaCount?: number;
-  /** Target number of shards for redis cluster */
-  targetShardCount?: number;
-}
-export const UpdateInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetNodeType: S.optional(UpdateInfoTargetNodeTypeEnum),
-    targetReplicaCount: S.optional(S.Number),
-    targetShardCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "UpdateInfo" }) as any as S.Schema<UpdateInfo>;
+export type PscAutoConnectionConnectionTypeEnum =
+  | "CONNECTION_TYPE_UNSPECIFIED"
+  | "CONNECTION_TYPE_DISCOVERY"
+  | "CONNECTION_TYPE_PRIMARY"
+  | "CONNECTION_TYPE_READER";
+export const PscAutoConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
-/** Represents additional information about the state of the cluster. */
-export interface StateInfo {
-  /** Describes ongoing update on the cluster when cluster state is UPDATING. */
-  updateInfo?: UpdateInfo;
+/** Details of consumer resources in a PSC connection that is created through Service Connectivity Automation. */
+export interface PscAutoConnection {
+  /** Output only. The PSC connection id of the forwarding rule connected to the service attachment. */
+  pscConnectionId?: string;
+  /** Output only. The IP allocated on the consumer network for the PSC forwarding rule. */
+  address?: string;
+  /** Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}. */
+  forwardingRule?: string;
+  /** Required. The consumer project_id where the forwarding rule is created from. */
+  projectId?: string;
+  /** Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}. */
+  network?: string;
+  /** Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}. */
+  serviceAttachment?: string;
+  /** Output only. The status of the PSC connection. Please note that this value is updated periodically. Please use Private Service Connect APIs for the latest status. */
+  pscConnectionStatus?:
+    | PscAutoConnectionPscConnectionStatusEnum
+    | (string & {});
+  /** Output only. Type of the PSC connection. */
+  connectionType?: PscAutoConnectionConnectionTypeEnum | (string & {});
 }
-export const StateInfo = /*@__PURE__*/ S.suspend(() =>
+export const PscAutoConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateInfo: S.optional(UpdateInfo),
+    pscConnectionId: S.optional(S.String),
+    address: S.optional(S.String),
+    forwardingRule: S.optional(S.String),
+    projectId: S.optional(S.String),
+    network: S.optional(S.String),
+    serviceAttachment: S.optional(S.String),
+    pscConnectionStatus: S.optional(PscAutoConnectionPscConnectionStatusEnum),
+    connectionType: S.optional(PscAutoConnectionConnectionTypeEnum),
   }),
-).annotate({ identifier: "StateInfo" }) as any as S.Schema<StateInfo>;
+).annotate({
+  identifier: "PscAutoConnection",
+}) as any as S.Schema<PscAutoConnection>;
+
+/** Detailed information of each PSC connection. */
+export interface ConnectionDetail {
+  /** Detailed information of a PSC connection that is created through service connectivity automation. */
+  pscAutoConnection?: PscAutoConnection;
+  /** Detailed information of a PSC connection that is created by the customer who owns the cluster. */
+  pscConnection?: PscConnection;
+}
+export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pscAutoConnection: S.optional(PscAutoConnection),
+    pscConnection: S.optional(PscConnection),
+  }),
+).annotate({
+  identifier: "ConnectionDetail",
+}) as any as S.Schema<ConnectionDetail>;
+
+export type ConnectionDetailList = Array<ConnectionDetail>;
+export const ConnectionDetailList = /*@__PURE__*/ S.Array(
+  ConnectionDetail,
+) as any as S.Schema<ConnectionDetailList>;
+
+/** ClusterEndpoint consists of PSC connections that are created as a group in each VPC network for accessing the cluster. In each group, there shall be one connection for each service attachment in the cluster. */
+export interface ClusterEndpoint {
+  /** Required. A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster. */
+  connections?: ConnectionDetailList;
+}
+export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connections: S.optional(ConnectionDetailList),
+  }),
+).annotate({
+  identifier: "ClusterEndpoint",
+}) as any as S.Schema<ClusterEndpoint>;
+
+export type ClusterEndpointList = Array<ClusterEndpoint>;
+export const ClusterEndpointList = /*@__PURE__*/ S.Array(
+  ClusterEndpoint,
+) as any as S.Schema<ClusterEndpointList>;
+
+/** This schedule allows the backup to be triggered at a fixed frequency (currently only daily is supported). */
+export interface FixedFrequencySchedule {
+  /** Required. The start time of every automated backup in UTC. It must be set to the start of an hour. This field is required. */
+  startTime?: TimeOfDay;
+}
+export const FixedFrequencySchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(TimeOfDay),
+  }),
+).annotate({
+  identifier: "FixedFrequencySchedule",
+}) as any as S.Schema<FixedFrequencySchedule>;
+
+export type AutomatedBackupConfigAutomatedBackupModeEnum =
+  | "AUTOMATED_BACKUP_MODE_UNSPECIFIED"
+  | "DISABLED"
+  | "ENABLED";
+export const AutomatedBackupConfigAutomatedBackupModeEnum =
+  /*@__PURE__*/ S.String;
+
+/** The automated backup config for a cluster. */
+export interface AutomatedBackupConfig {
+  /** Optional. Trigger automated backups at a fixed frequency. */
+  fixedFrequencySchedule?: FixedFrequencySchedule;
+  /** Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored. */
+  automatedBackupMode?:
+    | AutomatedBackupConfigAutomatedBackupModeEnum
+    | (string & {});
+  /** Optional. How long to keep automated backups before the backups are deleted. The value should be between 1 day and 365 days. If not specified, the default value is 35 days. */
+  retention?: string;
+}
+export const AutomatedBackupConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fixedFrequencySchedule: S.optional(FixedFrequencySchedule),
+    automatedBackupMode: S.optional(
+      AutomatedBackupConfigAutomatedBackupModeEnum,
+    ),
+    retention: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AutomatedBackupConfig",
+}) as any as S.Schema<AutomatedBackupConfig>;
+
+export type EncryptionInfoEncryptionTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "GOOGLE_DEFAULT_ENCRYPTION"
+  | "CUSTOMER_MANAGED_ENCRYPTION";
+export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
+
+export type EncryptionInfoKmsKeyPrimaryStateEnum =
+  | "KMS_KEY_STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "PERMISSION_DENIED"
+  | "DISABLED"
+  | "DESTROYED"
+  | "DESTROY_SCHEDULED"
+  | "EKM_KEY_UNREACHABLE_DETECTED"
+  | "BILLING_DISABLED"
+  | "UNKNOWN_FAILURE";
+export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
+
+/** EncryptionInfo describes the encryption information of a cluster or a backup. */
+export interface EncryptionInfo {
+  /** Output only. Type of encryption. */
+  encryptionType?: EncryptionInfoEncryptionTypeEnum | (string & {});
+  /** Output only. KMS key versions that are being used to protect the data at-rest. */
+  kmsKeyVersions?: StringList;
+  /** Output only. The state of the primary version of the KMS key perceived by the system. This field is not populated in backups. */
+  kmsKeyPrimaryState?: EncryptionInfoKmsKeyPrimaryStateEnum | (string & {});
+  /** Output only. The most recent time when the encryption info was updated. */
+  lastUpdateTime?: string;
+}
+export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
+    kmsKeyVersions: S.optional(StringList),
+    kmsKeyPrimaryState: S.optional(EncryptionInfoKmsKeyPrimaryStateEnum),
+    lastUpdateTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
+
+export type ClusterServerCaModeEnum =
+  | "SERVER_CA_MODE_UNSPECIFIED"
+  | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA"
+  | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA"
+  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
+export const ClusterServerCaModeEnum = /*@__PURE__*/ S.String;
 
 /** A cluster instance. */
 export interface Cluster {
-  /** Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node. */
-  nodeType?: ClusterNodeTypeEnum | (string & {});
-  /** Output only. Encryption information of the data at rest of the cluster. */
-  encryptionInfo?: EncryptionInfo;
-  /** Optional. Immutable. Deprecated, do not use. */
-  allowFewerZonesDeployment?: boolean;
-  /** Optional. This config will be used to determine how the customer wants us to distribute cluster resources within the region. */
-  zoneDistributionConfig?: ZoneDistributionConfig;
-  /** Optional. Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Optional. Input only. Ondemand maintenance for the cluster. This field can be used to trigger ondemand critical update on the cluster. */
-  ondemandMaintenance?: boolean;
-  /** Optional. Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported. */
-  pscConfigs?: PscConfigList;
-  /** Optional. A list of cluster endpoints. */
-  clusterEndpoints?: ClusterEndpointList;
-  /** Optional. The number of replica nodes per shard. */
-  replicaCount?: number;
-  /** Optional. Persistence config (RDB, AOF) for the cluster. */
-  persistenceConfig?: ClusterPersistenceConfig;
-  /** Optional. The automated backup config for the cluster. */
-  automatedBackupConfig?: AutomatedBackupConfig;
-  /** Output only. Redis memory size in GB for the entire cluster rounded up to the next integer. */
-  sizeGb?: number;
-  /** Optional. Cross cluster replication config. */
-  crossClusterReplicationConfig?: CrossClusterReplicationConfig;
-  /** Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. */
-  transitEncryptionMode?: ClusterTransitEncryptionModeEnum | (string & {});
   /** Optional. Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. Read permission is required to import from the provided Cloud Storage objects. */
   gcsSource?: GcsBackupSource;
-  /** Output only. The timestamp associated with the cluster creation request. */
-  createTime?: string;
-  /** Output only. ClusterMaintenanceSchedule Output only Published maintenance schedule. */
-  maintenanceSchedule?: ClusterMaintenanceSchedule;
-  /** Optional. Output only. The backup collection full resource name. Example: projects/{project}/locations/{location}/backupCollections/{collection} */
-  backupCollection?: string;
-  /** Optional. Input only. Simulate a maintenance event. */
-  simulateMaintenanceEvent?: boolean;
-  /** Output only. This field represents the actual maintenance version of the cluster. */
-  effectiveMaintenanceVersion?: string;
-  /** Output only. System assigned, unique identifier for the cluster. */
-  uid?: string;
-  /** Optional. Key/Value pairs of customer overrides for mutable Redis Configs */
-  redisConfigs?: StringMap;
-  /** Output only. The list of PSC connections that are auto-created through service connectivity automation. */
-  pscConnections?: PscConnectionList;
-  /** Optional. ClusterMaintenancePolicy determines when to allow or deny updates. */
-  maintenancePolicy?: ClusterMaintenancePolicy;
-  /** Optional. Server CA mode for the cluster. */
-  serverCaMode?: ClusterServerCaModeEnum | (string & {});
-  /** Optional. The ACL policy to be applied to the cluster. */
-  aclPolicy?: string;
-  /** Optional. The KMS key used to encrypt the at-rest data of the cluster. */
-  kmsKey?: string;
-  /** Optional. Labels to represent user-provided metadata. */
-  labels?: StringMap;
-  /** Output only. The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED */
-  state?: ClusterStateEnum | (string & {});
-  /** Optional. Input only. Rotate the server certificates. */
-  rotateServerCertificate?: boolean;
-  /** Required. Identifier. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` */
-  name?: string;
-  /** Optional. If true, cluster endpoints that are created and registered by customers can be deleted asynchronously. That is, such a cluster endpoint can be de-registered before the forwarding rules in the cluster endpoint are deleted. */
-  asyncClusterEndpointsDeletionEnabled?: boolean;
-  /** Optional. Customer-managed CA pool for the cluster. Only applicable for BYOCA i.e. if server_ca_mode is SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA. Format: "projects/{project}/locations/{region}/caPools/{ca_pool}". */
-  serverCaPool?: string;
-  /** Optional. Output only. Deprecated: Indicates whether the ACL rules applied to the cluster are in sync. */
-  aclPolicyInSync?: boolean;
-  /** Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported. */
-  discoveryEndpoints?: DiscoveryEndpointList;
-  /** Optional. Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. Details of the applied ACL policy. */
-  aclPolicyInfo?: AclPolicyInfo;
   /** Optional. Backups generated and managed by memorystore service. */
   managedBackupSource?: ManagedBackupSource;
+  /** Required. Identifier. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` */
+  name?: string;
+  /** Output only. The timestamp associated with the cluster creation request. */
+  createTime?: string;
+  /** Output only. The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED */
+  state?: ClusterStateEnum | (string & {});
+  /** Output only. System assigned, unique identifier for the cluster. */
+  uid?: string;
+  /** Optional. The number of replica nodes per shard. */
+  replicaCount?: number;
   /** Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. */
   authorizationMode?: ClusterAuthorizationModeEnum | (string & {});
+  /** Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster. */
+  transitEncryptionMode?: ClusterTransitEncryptionModeEnum | (string & {});
+  /** Output only. Redis memory size in GB for the entire cluster rounded up to the next integer. */
+  sizeGb?: number;
   /** Optional. Number of shards for the Redis cluster. */
   shardCount?: number;
-  /** Output only. Precise value of redis memory size in GB for the entire cluster. */
-  preciseSizeGb?: number;
-  /** Optional. The delete operation will fail when the value is set to true. */
-  deletionProtectionEnabled?: boolean;
-  /** Output only. Service attachment details to configure Psc connections */
-  pscServiceAttachments?: PscServiceAttachmentList;
-  /** Optional. This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field. */
-  maintenanceVersion?: string;
+  /** Optional. Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported. */
+  pscConfigs?: PscConfigList;
+  /** Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported. */
+  discoveryEndpoints?: DiscoveryEndpointList;
+  /** Output only. The list of PSC connections that are auto-created through service connectivity automation. */
+  pscConnections?: PscConnectionList;
   /** Output only. Additional information about the current state of the cluster. */
   stateInfo?: StateInfo;
+  /** Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node. */
+  nodeType?: ClusterNodeTypeEnum | (string & {});
+  /** Optional. Persistence config (RDB, AOF) for the cluster. */
+  persistenceConfig?: ClusterPersistenceConfig;
+  /** Optional. Key/Value pairs of customer overrides for mutable Redis Configs */
+  redisConfigs?: StringMap;
+  /** Output only. Precise value of redis memory size in GB for the entire cluster. */
+  preciseSizeGb?: number;
+  /** Optional. This config will be used to determine how the customer wants us to distribute cluster resources within the region. */
+  zoneDistributionConfig?: ZoneDistributionConfig;
+  /** Optional. Cross cluster replication config. */
+  crossClusterReplicationConfig?: CrossClusterReplicationConfig;
+  /** Optional. The delete operation will fail when the value is set to true. */
+  deletionProtectionEnabled?: boolean;
+  /** Optional. ClusterMaintenancePolicy determines when to allow or deny updates. */
+  maintenancePolicy?: ClusterMaintenancePolicy;
+  /** Output only. ClusterMaintenanceSchedule Output only Published maintenance schedule. */
+  maintenanceSchedule?: ClusterMaintenanceSchedule;
+  /** Optional. Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Optional. Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. Service attachment details to configure Psc connections */
+  pscServiceAttachments?: PscServiceAttachmentList;
+  /** Optional. A list of cluster endpoints. */
+  clusterEndpoints?: ClusterEndpointList;
+  /** Optional. Input only. Simulate a maintenance event. */
+  simulateMaintenanceEvent?: boolean;
+  /** Optional. Output only. The backup collection full resource name. Example: projects/{project}/locations/{location}/backupCollections/{collection} */
+  backupCollection?: string;
+  /** Optional. The KMS key used to encrypt the at-rest data of the cluster. */
+  kmsKey?: string;
+  /** Optional. Input only. Ondemand maintenance for the cluster. This field can be used to trigger ondemand critical update on the cluster. */
+  ondemandMaintenance?: boolean;
+  /** Optional. The automated backup config for the cluster. */
+  automatedBackupConfig?: AutomatedBackupConfig;
+  /** Output only. Encryption information of the data at rest of the cluster. */
+  encryptionInfo?: EncryptionInfo;
+  /** Optional. If true, cluster endpoints that are created and registered by customers can be deleted asynchronously. That is, such a cluster endpoint can be de-registered before the forwarding rules in the cluster endpoint are deleted. */
+  asyncClusterEndpointsDeletionEnabled?: boolean;
+  /** Optional. This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field. */
+  maintenanceVersion?: string;
+  /** Output only. This field represents the actual maintenance version of the cluster. */
+  effectiveMaintenanceVersion?: string;
   /** Output only. This field is used to determine the available maintenance versions for the self service update. */
   availableMaintenanceVersions?: StringList;
+  /** Optional. Immutable. Deprecated, do not use. */
+  allowFewerZonesDeployment?: boolean;
+  /** Optional. Labels to represent user-provided metadata. */
+  labels?: StringMap;
+  /** Optional. Server CA mode for the cluster. */
+  serverCaMode?: ClusterServerCaModeEnum | (string & {});
+  /** Optional. Customer-managed CA pool for the cluster. Only applicable for BYOCA i.e. if server_ca_mode is SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA. Format: "projects/{project}/locations/{region}/caPools/{ca_pool}". */
+  serverCaPool?: string;
+  /** Optional. Input only. Rotate the server certificates. */
+  rotateServerCertificate?: boolean;
+  /** Optional. The ACL policy to be applied to the cluster. */
+  aclPolicy?: string;
+  /** Optional. Output only. Deprecated: Indicates whether the ACL rules applied to the cluster are in sync. */
+  aclPolicyInSync?: boolean;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nodeType: S.optional(ClusterNodeTypeEnum),
-    encryptionInfo: S.optional(EncryptionInfo),
-    allowFewerZonesDeployment: S.optional(S.Boolean),
-    zoneDistributionConfig: S.optional(ZoneDistributionConfig),
-    satisfiesPzi: S.optional(S.Boolean),
-    ondemandMaintenance: S.optional(S.Boolean),
-    pscConfigs: S.optional(PscConfigList),
-    clusterEndpoints: S.optional(ClusterEndpointList),
-    replicaCount: S.optional(S.Number),
-    persistenceConfig: S.optional(ClusterPersistenceConfig),
-    automatedBackupConfig: S.optional(AutomatedBackupConfig),
-    sizeGb: S.optional(S.Number),
-    crossClusterReplicationConfig: S.optional(CrossClusterReplicationConfig),
-    transitEncryptionMode: S.optional(ClusterTransitEncryptionModeEnum),
     gcsSource: S.optional(GcsBackupSource),
-    createTime: S.optional(S.String),
-    maintenanceSchedule: S.optional(ClusterMaintenanceSchedule),
-    backupCollection: S.optional(S.String),
-    simulateMaintenanceEvent: S.optional(S.Boolean),
-    effectiveMaintenanceVersion: S.optional(S.String),
-    uid: S.optional(S.String),
-    redisConfigs: S.optional(StringMap),
-    pscConnections: S.optional(PscConnectionList),
-    maintenancePolicy: S.optional(ClusterMaintenancePolicy),
-    serverCaMode: S.optional(ClusterServerCaModeEnum),
-    aclPolicy: S.optional(S.String),
-    kmsKey: S.optional(S.String),
-    labels: S.optional(StringMap),
-    state: S.optional(ClusterStateEnum),
-    rotateServerCertificate: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    asyncClusterEndpointsDeletionEnabled: S.optional(S.Boolean),
-    serverCaPool: S.optional(S.String),
-    aclPolicyInSync: S.optional(S.Boolean),
-    discoveryEndpoints: S.optional(DiscoveryEndpointList),
-    satisfiesPzs: S.optional(S.Boolean),
-    aclPolicyInfo: S.optional(AclPolicyInfo),
     managedBackupSource: S.optional(ManagedBackupSource),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    state: S.optional(ClusterStateEnum),
+    uid: S.optional(S.String),
+    replicaCount: S.optional(S.Number),
     authorizationMode: S.optional(ClusterAuthorizationModeEnum),
+    transitEncryptionMode: S.optional(ClusterTransitEncryptionModeEnum),
+    sizeGb: S.optional(S.Number),
     shardCount: S.optional(S.Number),
-    preciseSizeGb: S.optional(S.Number),
-    deletionProtectionEnabled: S.optional(S.Boolean),
-    pscServiceAttachments: S.optional(PscServiceAttachmentList),
-    maintenanceVersion: S.optional(S.String),
+    pscConfigs: S.optional(PscConfigList),
+    discoveryEndpoints: S.optional(DiscoveryEndpointList),
+    pscConnections: S.optional(PscConnectionList),
     stateInfo: S.optional(StateInfo),
+    nodeType: S.optional(ClusterNodeTypeEnum),
+    persistenceConfig: S.optional(ClusterPersistenceConfig),
+    redisConfigs: S.optional(StringMap),
+    preciseSizeGb: S.optional(S.Number),
+    zoneDistributionConfig: S.optional(ZoneDistributionConfig),
+    crossClusterReplicationConfig: S.optional(CrossClusterReplicationConfig),
+    deletionProtectionEnabled: S.optional(S.Boolean),
+    maintenancePolicy: S.optional(ClusterMaintenancePolicy),
+    maintenanceSchedule: S.optional(ClusterMaintenanceSchedule),
+    satisfiesPzs: S.optional(S.Boolean),
+    satisfiesPzi: S.optional(S.Boolean),
+    pscServiceAttachments: S.optional(PscServiceAttachmentList),
+    clusterEndpoints: S.optional(ClusterEndpointList),
+    simulateMaintenanceEvent: S.optional(S.Boolean),
+    backupCollection: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    ondemandMaintenance: S.optional(S.Boolean),
+    automatedBackupConfig: S.optional(AutomatedBackupConfig),
+    encryptionInfo: S.optional(EncryptionInfo),
+    asyncClusterEndpointsDeletionEnabled: S.optional(S.Boolean),
+    maintenanceVersion: S.optional(S.String),
+    effectiveMaintenanceVersion: S.optional(S.String),
     availableMaintenanceVersions: S.optional(StringList),
+    allowFewerZonesDeployment: S.optional(S.Boolean),
+    labels: S.optional(StringMap),
+    serverCaMode: S.optional(ClusterServerCaModeEnum),
+    serverCaPool: S.optional(S.String),
+    rotateServerCertificate: S.optional(S.Boolean),
+    aclPolicy: S.optional(S.String),
+    aclPolicyInSync: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
@@ -1254,6 +1167,61 @@ export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateProjectsLocationsClustersRequest",
 }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
+
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "READY"
+  | "UPDATING"
+  | "DELETING"
+  | "REPAIRING"
+  | "MAINTENANCE"
+  | "IMPORTING"
+  | "FAILING_OVER";
+export const InstanceStateEnum = /*@__PURE__*/ S.String;
+
+export type InstanceTierEnum = "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA";
+export const InstanceTierEnum = /*@__PURE__*/ S.String;
+
+export type InstanceConnectModeEnum =
+  | "CONNECT_MODE_UNSPECIFIED"
+  | "DIRECT_PEERING"
+  | "PRIVATE_SERVICE_ACCESS";
+export const InstanceConnectModeEnum = /*@__PURE__*/ S.String;
+
+/** TlsCertificate Resource */
+export interface TlsCertificate {
+  /** Serial number, as extracted from the certificate. */
+  serialNumber?: string;
+  /** PEM representation. */
+  cert?: string;
+  /** Output only. The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`. */
+  createTime?: string;
+  /** Output only. The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`. */
+  expireTime?: string;
+  /** Sha1 Fingerprint of the certificate. */
+  sha1Fingerprint?: string;
+}
+export const TlsCertificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serialNumber: S.optional(S.String),
+    cert: S.optional(S.String),
+    createTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    sha1Fingerprint: S.optional(S.String),
+  }),
+).annotate({ identifier: "TlsCertificate" }) as any as S.Schema<TlsCertificate>;
+
+export type TlsCertificateList = Array<TlsCertificate>;
+export const TlsCertificateList = /*@__PURE__*/ S.Array(
+  TlsCertificate,
+) as any as S.Schema<TlsCertificateList>;
+
+export type InstanceTransitEncryptionModeEnum =
+  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
+  | "SERVER_AUTHENTICATION"
+  | "DISABLED";
+export const InstanceTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyMaintenanceWindowDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -1312,78 +1280,39 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenancePolicy",
 }) as any as S.Schema<MaintenancePolicy>;
 
-export type InstanceTierEnum = "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA";
-export const InstanceTierEnum = /*@__PURE__*/ S.String;
-
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | "UPDATING"
-  | "DELETING"
-  | "REPAIRING"
-  | "MAINTENANCE"
-  | "IMPORTING"
-  | "FAILING_OVER";
-export const InstanceStateEnum = /*@__PURE__*/ S.String;
-
-/** TlsCertificate Resource */
-export interface TlsCertificate {
-  /** Sha1 Fingerprint of the certificate. */
-  sha1Fingerprint?: string;
-  /** PEM representation. */
-  cert?: string;
-  /** Output only. The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`. */
-  createTime?: string;
-  /** Output only. The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`. */
-  expireTime?: string;
-  /** Serial number, as extracted from the certificate. */
-  serialNumber?: string;
+/** Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated. */
+export interface MaintenanceSchedule {
+  /** Output only. The start time of any upcoming scheduled maintenance for this instance. */
+  startTime?: string;
+  /** Output only. The end time of any upcoming scheduled maintenance for this instance. */
+  endTime?: string;
+  /** If the scheduled maintenance can be rescheduled, default is true. */
+  canReschedule?: boolean;
+  /** Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule. */
+  scheduleDeadlineTime?: string;
 }
-export const TlsCertificate = /*@__PURE__*/ S.suspend(() =>
+export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sha1Fingerprint: S.optional(S.String),
-    cert: S.optional(S.String),
-    createTime: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    serialNumber: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    canReschedule: S.optional(S.Boolean),
+    scheduleDeadlineTime: S.optional(S.String),
   }),
-).annotate({ identifier: "TlsCertificate" }) as any as S.Schema<TlsCertificate>;
-
-export type TlsCertificateList = Array<TlsCertificate>;
-export const TlsCertificateList = /*@__PURE__*/ S.Array(
-  TlsCertificate,
-) as any as S.Schema<TlsCertificateList>;
-
-export type InstanceSuspensionReasonsItemEnum =
-  | "SUSPENSION_REASON_UNSPECIFIED"
-  | "CUSTOMER_MANAGED_KEY_ISSUE";
-export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
-
-export type InstanceSuspensionReasonsItemEnumList = Array<
-  InstanceSuspensionReasonsItemEnum | (string & {})
->;
-export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
-  InstanceSuspensionReasonsItemEnum,
-) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
-
-export type InstanceReadReplicasModeEnum =
-  | "READ_REPLICAS_MODE_UNSPECIFIED"
-  | "READ_REPLICAS_DISABLED"
-  | "READ_REPLICAS_ENABLED";
-export const InstanceReadReplicasModeEnum = /*@__PURE__*/ S.String;
+).annotate({
+  identifier: "MaintenanceSchedule",
+}) as any as S.Schema<MaintenanceSchedule>;
 
 /** Node specific properties. */
 export interface NodeInfo {
-  /** Output only. Location of the node. */
-  zone?: string;
   /** Output only. Node identifying string. e.g. 'node-0', 'node-1' */
   id?: string;
+  /** Output only. Location of the node. */
+  zone?: string;
 }
 export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone: S.optional(S.String),
     id: S.optional(S.String),
+    zone: S.optional(S.String),
   }),
 ).annotate({ identifier: "NodeInfo" }) as any as S.Schema<NodeInfo>;
 
@@ -1391,6 +1320,12 @@ export type NodeInfoList = Array<NodeInfo>;
 export const NodeInfoList = /*@__PURE__*/ S.Array(
   NodeInfo,
 ) as any as S.Schema<NodeInfoList>;
+
+export type InstanceReadReplicasModeEnum =
+  | "READ_REPLICAS_MODE_UNSPECIFIED"
+  | "READ_REPLICAS_DISABLED"
+  | "READ_REPLICAS_ENABLED";
+export const InstanceReadReplicasModeEnum = /*@__PURE__*/ S.String;
 
 export type PersistenceConfigPersistenceModeEnum =
   | "PERSISTENCE_MODE_UNSPECIFIED"
@@ -1428,159 +1363,137 @@ export const PersistenceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistenceConfig",
 }) as any as S.Schema<PersistenceConfig>;
 
-export type InstanceConnectModeEnum =
-  | "CONNECT_MODE_UNSPECIFIED"
-  | "DIRECT_PEERING"
-  | "PRIVATE_SERVICE_ACCESS";
-export const InstanceConnectModeEnum = /*@__PURE__*/ S.String;
+export type InstanceSuspensionReasonsItemEnum =
+  | "SUSPENSION_REASON_UNSPECIFIED"
+  | "CUSTOMER_MANAGED_KEY_ISSUE";
+export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
-export type InstanceTransitEncryptionModeEnum =
-  | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
-  | "SERVER_AUTHENTICATION"
-  | "DISABLED";
-export const InstanceTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
-
-/** Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated. */
-export interface MaintenanceSchedule {
-  /** Output only. The end time of any upcoming scheduled maintenance for this instance. */
-  endTime?: string;
-  /** If the scheduled maintenance can be rescheduled, default is true. */
-  canReschedule?: boolean;
-  /** Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule. */
-  scheduleDeadlineTime?: string;
-  /** Output only. The start time of any upcoming scheduled maintenance for this instance. */
-  startTime?: string;
-}
-export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String),
-    canReschedule: S.optional(S.Boolean),
-    scheduleDeadlineTime: S.optional(S.String),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MaintenanceSchedule",
-}) as any as S.Schema<MaintenanceSchedule>;
+export type InstanceSuspensionReasonsItemEnumList = Array<
+  InstanceSuspensionReasonsItemEnum | (string & {})
+>;
+export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
+  InstanceSuspensionReasonsItemEnum,
+) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
 /** A Memorystore for Redis instance. */
 export interface Instance {
-  /** Optional. Redis configuration parameters, according to [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/). Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries */
-  redisConfigs?: StringMap;
-  /** Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time. */
-  maintenancePolicy?: MaintenancePolicy;
-  /** Output only. The port number of the exposed Redis endpoint. */
-  port?: number;
-  /** Resource labels to represent user provided metadata */
-  labels?: StringMap;
-  /** Required. The service tier of the instance. */
-  tier?: InstanceTierEnum | (string & {});
-  /** Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'. */
-  readEndpointPort?: number;
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details. */
   name?: string;
-  /** Output only. The current state of this instance. */
-  state?: InstanceStateEnum | (string & {});
-  /** Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled. */
-  authEnabled?: boolean;
-  /** Optional. Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation. */
-  persistenceIamIdentity?: string;
-  /** Output only. List of server CA certificates for the instance. */
-  serverCaCerts?: TlsCertificateList;
-  /** Optional. The self service update maintenance version. The version is date based such as "20210712_00_00". */
-  maintenanceVersion?: string;
-  /** Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto". */
-  secondaryIpRange?: string;
-  /** Optional. The available maintenance versions that an instance could update to. */
-  availableMaintenanceVersions?: StringList;
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
-  tags?: StringMap;
-  /** Output only. Additional information about the current status of this instance, if available. */
-  statusMessage?: string;
-  /** Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used. */
-  authorizedNetwork?: string;
-  /** Optional. reasons that causes instance in "SUSPENDED" state. */
-  suspensionReasons?: InstanceSuspensionReasonsItemEnumList;
-  /** Optional. The KMS key reference that the customer provides when trying to create the instance. */
-  customerManagedKey?: string;
-  /** Optional. Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'. */
-  readEndpoint?: string;
-  /** Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED. */
-  readReplicasMode?: InstanceReadReplicasModeEnum | (string & {});
-  /** Output only. Info per node. */
-  nodes?: NodeInfoList;
-  /** Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service. */
-  alternativeLocationId?: string;
   /** An arbitrary and optional user-provided name for the instance. */
   displayName?: string;
-  /** Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0. */
-  replicaCount?: number;
-  /** Optional. Persistence configuration parameters */
-  persistenceConfig?: PersistenceConfig;
-  /** Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
-  connectMode?: InstanceConnectModeEnum | (string & {});
-  /** Output only. The time the instance was created. */
-  createTime?: string;
-  /** Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance. */
-  transitEncryptionMode?: InstanceTransitEncryptionModeEnum | (string & {});
-  /** Output only. Date and time of upcoming maintenance events which have been scheduled. */
-  maintenanceSchedule?: MaintenanceSchedule;
-  /** Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service. */
-  host?: string;
-  /** Output only. The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance. */
-  currentLocationId?: string;
-  /** Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28. */
-  reservedIpRange?: string;
-  /** Required. Redis memory size in GiB. */
-  memorySizeGb?: number;
+  /** Resource labels to represent user provided metadata */
+  labels?: StringMap;
   /** Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone. */
   locationId?: string;
+  /** Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service. */
+  alternativeLocationId?: string;
   /** Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0` for Redis 7.0 compatibility */
   redisVersion?: string;
+  /** Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28. */
+  reservedIpRange?: string;
+  /** Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto". */
+  secondaryIpRange?: string;
+  /** Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service. */
+  host?: string;
+  /** Output only. The port number of the exposed Redis endpoint. */
+  port?: number;
+  /** Output only. The current zone where the Redis primary node is located. In basic tier, this will always be the same as [location_id]. In standard tier, this can be the zone of any node in the instance. */
+  currentLocationId?: string;
+  /** Output only. The time the instance was created. */
+  createTime?: string;
+  /** Output only. The current state of this instance. */
+  state?: InstanceStateEnum | (string & {});
+  /** Output only. Additional information about the current status of this instance, if available. */
+  statusMessage?: string;
+  /** Optional. Redis configuration parameters, according to [Redis configuration](https://redis.io/docs/latest/operate/oss_and_stack/management/config/). Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries */
+  redisConfigs?: StringMap;
+  /** Required. The service tier of the instance. */
+  tier?: InstanceTierEnum | (string & {});
+  /** Required. Redis memory size in GiB. */
+  memorySizeGb?: number;
+  /** Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used. */
+  authorizedNetwork?: string;
+  /** Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation. */
+  persistenceIamIdentity?: string;
+  /** Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
+  connectMode?: InstanceConnectModeEnum | (string & {});
+  /** Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled. */
+  authEnabled?: boolean;
+  /** Output only. List of server CA certificates for the instance. */
+  serverCaCerts?: TlsCertificateList;
+  /** Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance. */
+  transitEncryptionMode?: InstanceTransitEncryptionModeEnum | (string & {});
+  /** Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time. */
+  maintenancePolicy?: MaintenancePolicy;
+  /** Output only. Date and time of upcoming maintenance events which have been scheduled. */
+  maintenanceSchedule?: MaintenanceSchedule;
+  /** Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0. */
+  replicaCount?: number;
+  /** Output only. Info per node. */
+  nodes?: NodeInfoList;
+  /** Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'. */
+  readEndpoint?: string;
+  /** Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'. */
+  readEndpointPort?: number;
+  /** Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED. */
+  readReplicasMode?: InstanceReadReplicasModeEnum | (string & {});
+  /** Optional. The KMS key reference that the customer provides when trying to create the instance. */
+  customerManagedKey?: string;
+  /** Optional. Persistence configuration parameters */
+  persistenceConfig?: PersistenceConfig;
+  /** Optional. reasons that causes instance in "SUSPENDED" state. */
+  suspensionReasons?: InstanceSuspensionReasonsItemEnumList;
+  /** Optional. The self service update maintenance version. The version is date based such as "20210712_00_00". */
+  maintenanceVersion?: string;
+  /** Optional. The available maintenance versions that an instance could update to. */
+  availableMaintenanceVersions?: StringList;
+  /** Optional. Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Optional. Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
+  tags?: StringMap;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    redisConfigs: S.optional(StringMap),
-    maintenancePolicy: S.optional(MaintenancePolicy),
-    port: S.optional(S.Number),
-    labels: S.optional(StringMap),
-    tier: S.optional(InstanceTierEnum),
-    readEndpointPort: S.optional(S.Number),
     name: S.optional(S.String),
-    state: S.optional(InstanceStateEnum),
-    authEnabled: S.optional(S.Boolean),
-    satisfiesPzs: S.optional(S.Boolean),
-    persistenceIamIdentity: S.optional(S.String),
-    serverCaCerts: S.optional(TlsCertificateList),
-    maintenanceVersion: S.optional(S.String),
-    secondaryIpRange: S.optional(S.String),
-    availableMaintenanceVersions: S.optional(StringList),
-    tags: S.optional(StringMap),
-    statusMessage: S.optional(S.String),
-    authorizedNetwork: S.optional(S.String),
-    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
-    customerManagedKey: S.optional(S.String),
-    satisfiesPzi: S.optional(S.Boolean),
-    readEndpoint: S.optional(S.String),
-    readReplicasMode: S.optional(InstanceReadReplicasModeEnum),
-    nodes: S.optional(NodeInfoList),
-    alternativeLocationId: S.optional(S.String),
     displayName: S.optional(S.String),
-    replicaCount: S.optional(S.Number),
-    persistenceConfig: S.optional(PersistenceConfig),
-    connectMode: S.optional(InstanceConnectModeEnum),
-    createTime: S.optional(S.String),
-    transitEncryptionMode: S.optional(InstanceTransitEncryptionModeEnum),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    host: S.optional(S.String),
-    currentLocationId: S.optional(S.String),
-    reservedIpRange: S.optional(S.String),
-    memorySizeGb: S.optional(S.Number),
+    labels: S.optional(StringMap),
     locationId: S.optional(S.String),
+    alternativeLocationId: S.optional(S.String),
     redisVersion: S.optional(S.String),
+    reservedIpRange: S.optional(S.String),
+    secondaryIpRange: S.optional(S.String),
+    host: S.optional(S.String),
+    port: S.optional(S.Number),
+    currentLocationId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    state: S.optional(InstanceStateEnum),
+    statusMessage: S.optional(S.String),
+    redisConfigs: S.optional(StringMap),
+    tier: S.optional(InstanceTierEnum),
+    memorySizeGb: S.optional(S.Number),
+    authorizedNetwork: S.optional(S.String),
+    persistenceIamIdentity: S.optional(S.String),
+    connectMode: S.optional(InstanceConnectModeEnum),
+    authEnabled: S.optional(S.Boolean),
+    serverCaCerts: S.optional(TlsCertificateList),
+    transitEncryptionMode: S.optional(InstanceTransitEncryptionModeEnum),
+    maintenancePolicy: S.optional(MaintenancePolicy),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    replicaCount: S.optional(S.Number),
+    nodes: S.optional(NodeInfoList),
+    readEndpoint: S.optional(S.String),
+    readEndpointPort: S.optional(S.Number),
+    readReplicasMode: S.optional(InstanceReadReplicasModeEnum),
+    customerManagedKey: S.optional(S.String),
+    persistenceConfig: S.optional(PersistenceConfig),
+    suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
+    maintenanceVersion: S.optional(S.String),
+    availableMaintenanceVersions: S.optional(StringList),
+    satisfiesPzs: S.optional(S.Boolean),
+    satisfiesPzi: S.optional(S.Boolean),
+    tags: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
@@ -1610,19 +1523,19 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export interface DeleteProjectsLocationsAclPoliciesRequest {
-  /** Optional. Etag of the ACL policy. If this is different from the server's etag, the request will fail with an ABORTED error. */
-  etag?: string;
-  /** Optional. Idempotent request UUID. */
-  requestId?: string;
   /** Required. Redis ACL policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. */
   name: string;
+  /** Optional. Idempotent request UUID. */
+  requestId?: string;
+  /** Optional. Etag of the ACL policy. If this is different from the server's etag, the request will fail with an ABORTED error. */
+  etag?: string;
 }
 export const DeleteProjectsLocationsAclPoliciesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      etag: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -1679,18 +1592,18 @@ export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
 
 export interface DeleteProjectsLocationsClustersTokenAuthUsersRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. The name of the token auth user to delete. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
   name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Optional. If set to true, any child auth tokens of this user will also be deleted. Otherwise, the request will only work if the user has no auth tokens. */
   force?: boolean;
 }
 export const DeleteProjectsLocationsClustersTokenAuthUsersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
       force: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -2012,24 +1925,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** Resource ID for the region. For example: "us-east1". */
-  locationId?: string;
   /** Full resource name for the region. For example: "projects/example-project/locations/us-east1". */
   name?: string;
-  /** Output only. The set of available zones in the location. The map is keyed by the lowercase ID of each zone, as defined by Compute Engine. These keys can be specified in `location_id` or `alternative_location_id` fields when creating a Redis instance. */
-  metadata?: DocumentMap;
+  /** Resource ID for the region. For example: "us-east1". */
+  locationId?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
+  /** Output only. The set of available zones in the location. The map is keyed by the lowercase ID of each zone, as defined by Compute Engine. These keys can be specified in `location_id` or `alternative_location_id` fields when creating a Redis instance. */
+  metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationId: S.optional(S.String),
     name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
     displayName: S.optional(S.String),
     labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -2052,50 +1965,6 @@ export const GetProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsAclPoliciesRequest",
 }) as any as S.Schema<GetProjectsLocationsAclPoliciesRequest>;
 
-export interface GetProjectsLocationsAclPoliciesRevisionsRequest {
-  /** Required. Redis ACL policy revision resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}` where `location_id` refers to a GCP region. */
-  name: string;
-}
-export const GetProjectsLocationsAclPoliciesRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+name}",
-        baseUrl: "https://redis.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsAclPoliciesRevisionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsAclPoliciesRevisionsRequest>;
-
-/** The ACL policy revision resource. */
-export interface AclPolicyRevision {
-  /** Output only. The timestamp that the revision was created. */
-  createTime?: string;
-  /** Output only. A list of clusters that are attached to this ACL policy revision. */
-  attachedClusters?: StringList;
-  /** Identifier. The name of the ACL policy revision. Format: "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}" */
-  name?: string;
-  /** Output only. The snapshot of the ACL policy at the time of revision creation. */
-  snapshot?: AclPolicy;
-  /** Output only. The revision number of the ACL policy revision. */
-  revisionNumber?: string;
-}
-export const AclPolicyRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    attachedClusters: S.optional(StringList),
-    name: S.optional(S.String),
-    snapshot: S.optional(AclPolicy),
-    revisionNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AclPolicyRevision",
-}) as any as S.Schema<AclPolicyRevision>;
-
 export interface GetProjectsLocationsBackupCollectionsRequest {
   /** Required. Redis backupCollection resource name using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` where `location_id` refers to a Google Cloud region. */
   name: string;
@@ -2117,36 +1986,36 @@ export const GetProjectsLocationsBackupCollectionsRequest =
 
 /** BackupCollection of a cluster. */
 export interface BackupCollection {
+  /** Identifier. Full resource path of the backup collection. */
+  name?: string;
   /** Output only. The cluster uid of the backup collection. */
   clusterUid?: string;
+  /** Output only. The full resource path of the cluster the backup collection belongs to. Example: projects/{project}/locations/{location}/clusters/{cluster} */
+  cluster?: string;
+  /** Output only. The KMS key used to encrypt the backups under this backup collection. */
+  kmsKey?: string;
+  /** Output only. System assigned unique identifier of the backup collection. */
+  uid?: string;
+  /** Output only. The time when the backup collection was created. */
+  createTime?: string;
   /** Output only. Total size of all backups in the backup collection. */
   totalBackupSizeBytes?: string;
   /** Output only. Total number of backups in the backup collection. */
   totalBackupCount?: string;
-  /** Output only. The time when the backup collection was created. */
-  createTime?: string;
-  /** Output only. The KMS key used to encrypt the backups under this backup collection. */
-  kmsKey?: string;
   /** Output only. The last time a backup was created in the backup collection. */
   lastBackupTime?: string;
-  /** Identifier. Full resource path of the backup collection. */
-  name?: string;
-  /** Output only. The full resource path of the cluster the backup collection belongs to. Example: projects/{project}/locations/{location}/clusters/{cluster} */
-  cluster?: string;
-  /** Output only. System assigned unique identifier of the backup collection. */
-  uid?: string;
 }
 export const BackupCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
     clusterUid: S.optional(S.String),
+    cluster: S.optional(S.String),
+    kmsKey: S.optional(S.String),
+    uid: S.optional(S.String),
+    createTime: S.optional(S.String),
     totalBackupSizeBytes: S.optional(S.String),
     totalBackupCount: S.optional(S.String),
-    createTime: S.optional(S.String),
-    kmsKey: S.optional(S.String),
     lastBackupTime: S.optional(S.String),
-    name: S.optional(S.String),
-    cluster: S.optional(S.String),
-    uid: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BackupCollection",
@@ -2170,6 +2039,28 @@ export const GetProjectsLocationsBackupCollectionsBackupsRequest =
   ).annotate({
     identifier: "GetProjectsLocationsBackupCollectionsBackupsRequest",
   }) as any as S.Schema<GetProjectsLocationsBackupCollectionsBackupsRequest>;
+
+/** Backup is consisted of multiple backup files. */
+export interface BackupFile {
+  /** Output only. e.g: .rdb */
+  fileName?: string;
+  /** Output only. Size of the backup file in bytes. */
+  sizeBytes?: string;
+  /** Output only. The time when the backup file was created. */
+  createTime?: string;
+}
+export const BackupFile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileName: S.optional(S.String),
+    sizeBytes: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "BackupFile" }) as any as S.Schema<BackupFile>;
+
+export type BackupFileList = Array<BackupFile>;
+export const BackupFileList = /*@__PURE__*/ S.Array(
+  BackupFile,
+) as any as S.Schema<BackupFileList>;
 
 export type BackupNodeTypeEnum =
   | "NODE_TYPE_UNSPECIFIED"
@@ -2196,78 +2087,56 @@ export type BackupStateEnum =
   | "SUSPENDED";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
-/** Backup is consisted of multiple backup files. */
-export interface BackupFile {
-  /** Output only. e.g: .rdb */
-  fileName?: string;
-  /** Output only. Size of the backup file in bytes. */
-  sizeBytes?: string;
-  /** Output only. The time when the backup file was created. */
-  createTime?: string;
-}
-export const BackupFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileName: S.optional(S.String),
-    sizeBytes: S.optional(S.String),
-    createTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "BackupFile" }) as any as S.Schema<BackupFile>;
-
-export type BackupFileList = Array<BackupFile>;
-export const BackupFileList = /*@__PURE__*/ S.Array(
-  BackupFile,
-) as any as S.Schema<BackupFileList>;
-
 /** Backup of a cluster. */
 export interface Backup {
-  /** Output only. The time when the backup was created. */
-  createTime?: string;
-  /** Output only. Number of replicas for the cluster. */
-  replicaCount?: number;
-  /** Output only. System assigned unique identifier of the backup. */
-  uid?: string;
-  /** Output only. The time when the backup will expire. */
-  expireTime?: string;
-  /** Output only. Number of shards for the cluster. */
-  shardCount?: number;
-  /** Output only. Total size of the backup in bytes. */
-  totalSizeBytes?: string;
-  /** Output only. Cluster uid of this backup. */
-  clusterUid?: string;
-  /** Output only. Node type of the cluster. */
-  nodeType?: BackupNodeTypeEnum;
-  /** Output only. Encryption information of the backup. */
-  encryptionInfo?: EncryptionInfo;
-  /** Output only. Type of the backup. */
-  backupType?: BackupBackupTypeEnum;
-  /** Output only. State of the backup. */
-  state?: BackupStateEnum;
   /** Identifier. Full resource path of the backup. the last part of the name is the backup id with the following format: [YYYYMMDDHHMMSS]_[Shorted Cluster UID] OR customer specified while backup cluster. Example: 20240515123000_1234 */
   name?: string;
+  /** Output only. The time when the backup was created. */
+  createTime?: string;
   /** Output only. Cluster resource path of this backup. */
   cluster?: string;
+  /** Output only. Cluster uid of this backup. */
+  clusterUid?: string;
+  /** Output only. Total size of the backup in bytes. */
+  totalSizeBytes?: string;
+  /** Output only. The time when the backup will expire. */
+  expireTime?: string;
   /** Output only. redis-7.2, valkey-7.5 */
   engineVersion?: string;
   /** Output only. List of backup files of the backup. */
   backupFiles?: BackupFileList;
+  /** Output only. Node type of the cluster. */
+  nodeType?: BackupNodeTypeEnum;
+  /** Output only. Number of replicas for the cluster. */
+  replicaCount?: number;
+  /** Output only. Number of shards for the cluster. */
+  shardCount?: number;
+  /** Output only. Type of the backup. */
+  backupType?: BackupBackupTypeEnum;
+  /** Output only. State of the backup. */
+  state?: BackupStateEnum;
+  /** Output only. Encryption information of the backup. */
+  encryptionInfo?: EncryptionInfo;
+  /** Output only. System assigned unique identifier of the backup. */
+  uid?: string;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    replicaCount: S.optional(S.Number),
-    uid: S.optional(S.String),
-    expireTime: S.optional(S.String),
-    shardCount: S.optional(S.Number),
-    totalSizeBytes: S.optional(S.String),
-    clusterUid: S.optional(S.String),
-    nodeType: S.optional(BackupNodeTypeEnum),
-    encryptionInfo: S.optional(EncryptionInfo),
-    backupType: S.optional(BackupBackupTypeEnum),
-    state: S.optional(BackupStateEnum),
     name: S.optional(S.String),
+    createTime: S.optional(S.String),
     cluster: S.optional(S.String),
+    clusterUid: S.optional(S.String),
+    totalSizeBytes: S.optional(S.String),
+    expireTime: S.optional(S.String),
     engineVersion: S.optional(S.String),
     backupFiles: S.optional(BackupFileList),
+    nodeType: S.optional(BackupNodeTypeEnum),
+    replicaCount: S.optional(S.Number),
+    shardCount: S.optional(S.Number),
+    backupType: S.optional(BackupBackupTypeEnum),
+    state: S.optional(BackupStateEnum),
+    encryptionInfo: S.optional(EncryptionInfo),
+    uid: S.optional(S.String),
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
@@ -2511,24 +2380,24 @@ export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2562,19 +2431,19 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAclPoliciesRequest {
-  /** Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if any. */
-  pageToken?: string;
   /** Required. The resource name of the ACL policy location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
   parent: string;
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more ACL policies left to be queried. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if any. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2610,69 +2479,20 @@ export const ListAclPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAclPoliciesResponse",
 }) as any as S.Schema<ListAclPoliciesResponse>;
 
-export interface ListProjectsLocationsAclPoliciesRevisionsRequest {
-  /** Optional. The `next_page_token` value returned from a previous `ListAclPolicyRevisions` request, if any. */
-  pageToken?: string;
-  /** Required. The name of the ACL policy to list revisions for. Format: "projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}" */
-  parent: string;
-  /** Optional. The maximum number of items to return. */
-  pageSize?: number;
-}
-export const ListProjectsLocationsAclPoliciesRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/revisions",
-        baseUrl: "https://redis.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAclPoliciesRevisionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsAclPoliciesRevisionsRequest>;
-
-export type AclPolicyRevisionList = Array<AclPolicyRevision>;
-export const AclPolicyRevisionList = /*@__PURE__*/ S.Array(
-  AclPolicyRevision,
-) as any as S.Schema<AclPolicyRevisionList>;
-
-/** Response for `ListAclPolicyRevisions`. */
-export interface ListAclPolicyRevisionsResponse {
-  /** A list of ACL policy revisions. */
-  aclPolicyRevisions?: AclPolicyRevisionList;
-  /** Unordered list. Locations that could not be reached. */
-  unreachable?: StringList;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-export const ListAclPolicyRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aclPolicyRevisions: S.optional(AclPolicyRevisionList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAclPolicyRevisionsResponse",
-}) as any as S.Schema<ListAclPolicyRevisionsResponse>;
-
 export interface ListProjectsLocationsBackupCollectionsRequest {
-  /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
-  pageToken?: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
-  pageSize?: number;
   /** Required. The resource name of the backupCollection location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
   parent: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
+  pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsBackupCollectionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2693,35 +2513,35 @@ export const BackupCollectionList = /*@__PURE__*/ S.Array(
 export interface ListBackupCollectionsResponse {
   /** A list of backupCollections in the project. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder backupCollection entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/backupCollections/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListBackupCollections". */
   backupCollections?: BackupCollectionList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListBackupCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupCollections: S.optional(BackupCollectionList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListBackupCollectionsResponse",
 }) as any as S.Schema<ListBackupCollectionsResponse>;
 
 export interface ListProjectsLocationsBackupCollectionsBackupsRequest {
-  /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
-  pageToken?: string;
   /** Required. The resource name of the backupCollection using the form: `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}` */
   parent: string;
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
+  /** Optional. The `next_page_token` value returned from a previous [ListBackupCollections] request, if any. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsBackupCollectionsBackupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2758,19 +2578,19 @@ export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackupsResponse>;
 
 export interface ListProjectsLocationsClustersRequest {
-  /** The `next_page_token` value returned from a previous `ListClusters` request, if any. */
-  pageToken?: string;
   /** Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. */
   parent: string;
   /** The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
   pageSize?: number;
+  /** The `next_page_token` value returned from a previous `ListClusters` request, if any. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2791,41 +2611,41 @@ export const ClusterList = /*@__PURE__*/ S.Array(
 export interface ListClustersResponse {
   /** A list of Redis clusters in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder Redis entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/clusters/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListClusters". */
   clusters?: ClusterList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusters: S.optional(ClusterList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListClustersResponse",
 }) as any as S.Schema<ListClustersResponse>;
 
 export interface ListProjectsLocationsClustersTokenAuthUsersRequest {
+  /** Required. The parent resource that this token based auth user will be listed for. Format: projects/{project}/locations/{location}/clusters/{cluster} */
+  parent: string;
+  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's The maximum value is 1000; values above 1000 will be coerced to 1000. `next_page_token` to determine if there are more clusters left to be queried. */
+  pageSize?: number;
   /** Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request, if any. */
   pageToken?: string;
   /** Optional. Expression for filtering results. */
   filter?: string;
   /** Optional. Sort results by a defined order. */
   orderBy?: string;
-  /** Required. The parent resource that this token based auth user will be listed for. Format: projects/{project}/locations/{location}/clusters/{cluster} */
-  parent: string;
-  /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's The maximum value is 1000; values above 1000 will be coerced to 1000. `next_page_token` to determine if there are more clusters left to be queried. */
-  pageSize?: number;
 }
 export const ListProjectsLocationsClustersTokenAuthUsersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2862,25 +2682,25 @@ export const ListTokenAuthUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTokenAuthUsersResponse>;
 
 export interface ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
-  /** Optional. The maximum number of items to return. The maximum value is 1000; values above 1000 will be coerced to 1000. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
-  pageSize?: number;
   /** Required. The parent resource that this auth token will be listed for. Format: projects/{project}/locations/{location}/clusters/{cluster}/tokenAuthUsers/{token_auth_user} */
   parent: string;
-  /** Optional. Sort results by a defined order. */
-  orderBy?: string;
+  /** Optional. The maximum number of items to return. The maximum value is 1000; values above 1000 will be coerced to 1000. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more clusters left to be queried. */
+  pageSize?: number;
   /** Optional. The `next_page_token` value returned from a previous [ListTokenAuthUsers] request, if any. */
   pageToken?: string;
   /** Optional. Expression for filtering results. */
   filter?: string;
+  /** Optional. Sort results by a defined order. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2899,37 +2719,37 @@ export const AuthTokenList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListAuthTokens. */
 export interface ListAuthTokensResponse {
-  /** Unordered list. Auth tokens that could not be reached. */
-  unreachable?: StringList;
   /** A list of auth tokens in the project. */
   authTokens?: AuthTokenList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
+  /** Unordered list. Auth tokens that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     authTokens: S.optional(AuthTokenList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListAuthTokensResponse",
 }) as any as S.Schema<ListAuthTokensResponse>;
 
 export interface ListProjectsLocationsInstancesRequest {
-  /** The `next_page_token` value returned from a previous ListInstances request, if any. */
-  pageToken?: string;
-  /** The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more instances left to be queried. */
-  pageSize?: number;
   /** Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region. */
   parent: string;
+  /** The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more instances left to be queried. */
+  pageSize?: number;
+  /** The `next_page_token` value returned from a previous ListInstances request, if any. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2948,43 +2768,43 @@ export const InstanceList = /*@__PURE__*/ S.Array(
 
 /** Response for ListInstances. */
 export interface ListInstancesResponse {
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
   /** A list of Redis instances in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder Redis entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListInstances". */
   instances?: InstanceList;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
     instances: S.optional(InstanceList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListInstancesResponse",
 }) as any as S.Schema<ListInstancesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list filter. */
   filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The name of the operation's parent resource. */
-  name: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      name: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3003,17 +2823,17 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
+    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
   }),
 ).annotate({
@@ -3021,10 +2841,10 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsAclPoliciesRequest {
-  /** Optional. Mask of fields to be updated. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from `AclPolicy`: * `rules` */
-  updateMask?: string;
   /** Identifier. Full resource path of the ACL policy. */
   name: string;
+  /** Optional. Mask of fields to be updated. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from `AclPolicy`: * `rules` */
+  updateMask?: string;
   /** Optional. Idempotent request UUID. */
   requestId?: string;
   /** Request body */
@@ -3033,8 +2853,8 @@ export interface PatchProjectsLocationsAclPoliciesRequest {
 export const PatchProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(AclPolicy.pipe(T.HttpBody())),
     }).pipe(
@@ -3049,21 +2869,21 @@ export const PatchProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsAclPoliciesRequest>;
 
 export interface PatchProjectsLocationsClustersRequest {
+  /** Required. Identifier. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` */
+  name: string;
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Cluster: * `size_gb` * `replica_count` * `cluster_endpoints` */
   updateMask?: string;
   /** Optional. Idempotent request UUID. */
   requestId?: string;
-  /** Required. Identifier. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` */
-  name: string;
   /** Request body */
   body?: Cluster;
 }
 export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       body: S.optional(Cluster.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -3642,24 +3462,6 @@ export const getProjectsLocationsAclPolicies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsAclPoliciesRevisionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets details of a specific ACL policy revision. */
-export const getProjectsLocationsAclPoliciesRevisions: API.OperationMethod<
-  GetProjectsLocationsAclPoliciesRevisionsRequest,
-  AclPolicyRevision,
-  GetProjectsLocationsAclPoliciesRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAclPoliciesRevisionsRequest,
-  output: AclPolicyRevision,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetProjectsLocationsBackupCollectionsError =
   | NotFound
   | Forbidden
@@ -3856,28 +3658,6 @@ export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAclPoliciesRequest,
   output: ListAclPoliciesResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-}));
-
-export type ListProjectsLocationsAclPoliciesRevisionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists all ACL policy revisions in a given ACL policy. */
-export const listProjectsLocationsAclPoliciesRevisions: API.PaginatedOperationMethod<
-  ListProjectsLocationsAclPoliciesRevisionsRequest,
-  ListAclPolicyRevisionsResponse,
-  ListProjectsLocationsAclPoliciesRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAclPoliciesRevisionsRequest,
-  output: ListAclPolicyRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

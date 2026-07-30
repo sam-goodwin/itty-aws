@@ -2381,7 +2381,9 @@ export interface SqlVirtualMachineTroubleshootTroubleshootRequest {
   /** End time in UTC timezone. */
   endTimeUtc?: string;
   /** SQL VM troubleshooting scenario. */
-  troubleshootingScenario?: SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario;
+  troubleshootingScenario?:
+    | SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario
+    | (string & {});
   /** Troubleshooting properties */
   properties?: TroubleshootingAdditionalProperties;
 }

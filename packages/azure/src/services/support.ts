@@ -30,7 +30,7 @@ export const ChatTranscriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -171,7 +171,7 @@ export const ChatTranscriptsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -241,7 +241,7 @@ export const ChatTranscriptsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -286,7 +286,7 @@ export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -321,7 +321,7 @@ export const CommunicationsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -387,7 +387,7 @@ export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -468,7 +468,7 @@ export const CommunicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -520,7 +520,7 @@ export const CommunicationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -593,7 +593,7 @@ export const CommunicationsNoSubscriptionCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -619,7 +619,7 @@ export const CommunicationsNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -667,7 +667,7 @@ export const CommunicationsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -718,7 +718,7 @@ export const CommunicationsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -765,7 +765,7 @@ export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -836,7 +836,7 @@ export const FilesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -882,7 +882,7 @@ export const FilesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -952,7 +952,7 @@ export const FilesNoSubscriptionCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -998,7 +998,7 @@ export const FilesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1041,7 +1041,7 @@ export const FilesNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1069,7 +1069,7 @@ export const FilesNoSubscriptionUploadRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1107,7 +1107,7 @@ export const FilesUploadRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1136,7 +1136,7 @@ export const FileWorkspacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1198,7 +1198,7 @@ export const FileWorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1242,7 +1242,7 @@ export const FileWorkspacesNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1287,7 +1287,7 @@ export const FileWorkspacesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -1328,7 +1328,7 @@ export interface LookUpResourceIdPostRequest {
   /** The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type. */
   identifier?: string;
   /** The type of resource. */
-  type?: LookUpResourceIdPostRequestType;
+  type?: LookUpResourceIdPostRequestType | (string & {});
 }
 export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1339,7 +1339,7 @@ export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/providers/Microsoft.Support/lookUpResourceId",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1366,7 +1366,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/operations",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1469,7 +1469,7 @@ export const ProblemClassificationsClassifyProblemsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1515,8 +1515,6 @@ export interface ProblemClassificationsClassificationResult {
   problemClassificationId?: string;
   /** Related service. */
   relatedService?: ClassificationService;
-  /** Identifier of the article associated with this problem classification result. This value is populated only when a related article is available; otherwise it is omitted. */
-  articleId?: string;
 }
 export const ProblemClassificationsClassificationResult =
   /*@__PURE__*/ S.suspend(() =>
@@ -1527,7 +1525,6 @@ export const ProblemClassificationsClassificationResult =
       serviceId: S.optional(S.String),
       problemClassificationId: S.optional(S.String),
       relatedService: S.optional(ClassificationService),
-      articleId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ProblemClassificationsClassificationResult",
@@ -1572,7 +1569,7 @@ export const ProblemClassificationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1657,7 +1654,7 @@ export const ProblemClassificationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1731,7 +1728,7 @@ export const ProblemClassificationsNoSubscriptionClassifyProblemsRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/services/{problemServiceName}/classifyProblems",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1760,7 +1757,7 @@ export const ServiceClassificationsClassifyServicesRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/classifyServices",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1838,7 +1835,7 @@ export const ServiceClassificationsNoSubscriptionClassifyServicesRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/classifyServices",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -1857,7 +1854,7 @@ export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services/{serviceName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1917,7 +1914,7 @@ export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Support/services",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -1988,7 +1985,7 @@ export const SupportTicketsCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2283,7 +2280,7 @@ export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2486,7 +2483,7 @@ export const SupportTicketsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2535,7 +2532,7 @@ export const SupportTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -2605,7 +2602,7 @@ export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/providers/Microsoft.Support/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2628,7 +2625,7 @@ export const SupportTicketsNoSubscriptionCreateRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2673,7 +2670,7 @@ export const SupportTicketsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2721,7 +2718,7 @@ export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Support/supportTickets",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -2819,7 +2816,7 @@ export const SupportTicketsNoSubscriptionUpdateRequest =
         method: "PATCH",
         uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2894,7 +2891,7 @@ export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({

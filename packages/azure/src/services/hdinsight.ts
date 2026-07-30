@@ -1693,7 +1693,7 @@ export const SecurityProfileClusterUsersGroupDNsList = /*@__PURE__*/ S.Array(
 /** The security profile which contains Ssh public key for the HDInsight cluster. */
 export interface SecurityProfile {
   /** The directory type. */
-  directoryType?: SecurityProfileDirectoryType;
+  directoryType?: SecurityProfileDirectoryType | (string & {});
   /** The organization's active directory domain. */
   domain?: string;
   /** The organizational unit within the Active Directory to place the cluster and service accounts. */
@@ -3105,7 +3105,7 @@ export interface ClustersResizeRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** The constant value for the roleName */
-  roleName: ClustersResizeRequestRoleName;
+  roleName: ClustersResizeRequestRoleName | (string & {});
   /** The target instance count for the operation. */
   targetInstanceCount?: number;
 }
@@ -3328,7 +3328,7 @@ export interface ClustersUpdateAutoScaleConfigurationRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** The constant value for the roleName */
-  roleName: ClustersUpdateAutoScaleConfigurationRequestRoleName;
+  roleName: ClustersUpdateAutoScaleConfigurationRequestRoleName | (string & {});
   /** The autoscale configuration. */
   autoscale?: Autoscale;
 }

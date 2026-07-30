@@ -74,21 +74,21 @@ export interface AccountLabel {
   labelType?: AccountLabelLabelTypeEnum | (string & {});
   /** Output only. The ID of the label. */
   labelId?: string;
+  /** The description of this label. */
+  description?: string;
   /** Output only. The ID of account this label belongs to. */
   accountId?: string;
   /** The display name of this label. */
   displayName?: string;
-  /** The description of this label. */
-  description?: string;
 }
 export const AccountLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labelType: S.optional(AccountLabelLabelTypeEnum),
     labelId: S.optional(S.String),
+    description: S.optional(S.String),
     accountId: S.optional(S.String),
     displayName: S.optional(S.String),
-    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "AccountLabel" }) as any as S.Schema<AccountLabel>;
 
@@ -160,15 +160,15 @@ export const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsLabelsRequest>;
 
 export interface GetAccountsRequest {
-  /** Required. The name of the managed CSS/MC account. Format: accounts/{account} */
-  name: string;
   /** Optional. Only required when retrieving MC account information. The CSS domain that is the parent resource of the MC account. Format: accounts/{account} */
   parent?: string;
+  /** Required. The name of the managed CSS/MC account. Format: accounts/{account} */
+  name: string;
 }
 export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
     parent: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -199,33 +199,33 @@ export const AccountAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about CSS/MC account. */
 export interface Account {
-  /** The label resource name. Format: accounts/{account} */
-  name?: string;
-  /** The CSS/MC account's parent resource. CSS group for CSS domains; CSS domain for MC accounts. Returned only if the user has access to the parent account. Note: For MC sub-accounts, this is also the CSS domain that is the parent resource of the MCA account, since we are effectively flattening the hierarchy." */
-  parent?: string;
-  /** Output only. Immutable. The CSS/MC account's full name. */
-  fullName?: string;
-  /** Automatically created label IDs assigned to the MC account by CSS Center. */
-  automaticLabelIds?: StringList;
   /** Output only. Immutable. The CSS/MC account's homepage. */
   homepageUri?: string;
-  /** Manually created label IDs assigned to the CSS/MC account by a CSS parent account. */
-  labelIds?: StringList;
-  /** The CSS/MC account's short display name. */
-  displayName?: string;
+  /** Automatically created label IDs assigned to the MC account by CSS Center. */
+  automaticLabelIds?: StringList;
+  /** The label resource name. Format: accounts/{account} */
+  name?: string;
   /** Output only. The type of this account. */
   accountType?: AccountAccountTypeEnum;
+  /** The CSS/MC account's parent resource. CSS group for CSS domains; CSS domain for MC accounts. Returned only if the user has access to the parent account. Note: For MC sub-accounts, this is also the CSS domain that is the parent resource of the MCA account, since we are effectively flattening the hierarchy." */
+  parent?: string;
+  /** Manually created label IDs assigned to the CSS/MC account by a CSS parent account. */
+  labelIds?: StringList;
+  /** Output only. Immutable. The CSS/MC account's full name. */
+  fullName?: string;
+  /** The CSS/MC account's short display name. */
+  displayName?: string;
 }
 export const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    parent: S.optional(S.String),
-    fullName: S.optional(S.String),
-    automaticLabelIds: S.optional(StringList),
     homepageUri: S.optional(S.String),
-    labelIds: S.optional(StringList),
-    displayName: S.optional(S.String),
+    automaticLabelIds: S.optional(StringList),
+    name: S.optional(S.String),
     accountType: S.optional(AccountAccountTypeEnum),
+    parent: S.optional(S.String),
+    labelIds: S.optional(StringList),
+    fullName: S.optional(S.String),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
@@ -249,20 +249,20 @@ export const GetAccountsCssProductsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The destination status of the product status. */
 export interface DestinationStatus {
-  /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved. */
-  disapprovedCountries?: StringList;
-  /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending approval. */
-  pendingCountries?: StringList;
   /** The name of the destination */
   destination?: string;
+  /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is pending approval. */
+  pendingCountries?: StringList;
+  /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved. */
+  disapprovedCountries?: StringList;
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved. */
   approvedCountries?: StringList;
 }
 export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    disapprovedCountries: S.optional(StringList),
-    pendingCountries: S.optional(StringList),
     destination: S.optional(S.String),
+    pendingCountries: S.optional(StringList),
+    disapprovedCountries: S.optional(StringList),
     approvedCountries: S.optional(StringList),
   }),
 ).annotate({
@@ -276,36 +276,36 @@ export const DestinationStatusList = /*@__PURE__*/ S.Array(
 
 /** The ItemLevelIssue of the product status. */
 export interface ItemLevelIssue {
-  /** A short issue description in English. */
-  description?: string;
-  /** How this issue affects serving of the CSS Product. */
-  servability?: string;
-  /** The error code of the issue. */
-  code?: string;
-  /** The attribute's name, if the issue is caused by a single attribute. */
-  attribute?: string;
   /** The destination the issue applies to. */
   destination?: string;
   /** A detailed issue description in English. */
   detail?: string;
-  /** The URL of a web page to help with resolving this issue. */
-  documentation?: string;
-  /** List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS Product. */
-  applicableCountries?: StringList;
+  /** The error code of the issue. */
+  code?: string;
   /** Whether the issue can be resolved by the merchant. */
   resolution?: string;
+  /** The attribute's name, if the issue is caused by a single attribute. */
+  attribute?: string;
+  /** List of country codes (ISO 3166-1 alpha-2) where issue applies to the CSS Product. */
+  applicableCountries?: StringList;
+  /** A short issue description in English. */
+  description?: string;
+  /** The URL of a web page to help with resolving this issue. */
+  documentation?: string;
+  /** How this issue affects serving of the CSS Product. */
+  servability?: string;
 }
 export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
-    servability: S.optional(S.String),
-    code: S.optional(S.String),
-    attribute: S.optional(S.String),
     destination: S.optional(S.String),
     detail: S.optional(S.String),
-    documentation: S.optional(S.String),
-    applicableCountries: S.optional(StringList),
+    code: S.optional(S.String),
     resolution: S.optional(S.String),
+    attribute: S.optional(S.String),
+    applicableCountries: S.optional(StringList),
+    description: S.optional(S.String),
+    documentation: S.optional(S.String),
+    servability: S.optional(S.String),
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
@@ -318,22 +318,22 @@ export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
 export interface CssProductStatus {
   /** Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   lastUpdateDate?: string;
-  /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
-  googleExpirationDate?: string;
   /** The intended destinations for the product. */
   destinationStatuses?: DestinationStatusList;
-  /** Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
-  creationDate?: string;
   /** A list of all issues associated with the product. */
   itemLevelIssues?: ItemLevelIssueList;
+  /** Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
+  creationDate?: string;
+  /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
+  googleExpirationDate?: string;
 }
 export const CssProductStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdateDate: S.optional(S.String),
-    googleExpirationDate: S.optional(S.String),
     destinationStatuses: S.optional(DestinationStatusList),
-    creationDate: S.optional(S.String),
     itemLevelIssues: S.optional(ItemLevelIssueList),
+    creationDate: S.optional(S.String),
+    googleExpirationDate: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CssProductStatus",
@@ -357,15 +357,15 @@ export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** The price represented as a number and currency. */
 export interface Price {
-  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
-  amountMicros?: string;
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
+  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
+  amountMicros?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
+    amountMicros: S.optional(S.String),
   }),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
@@ -379,75 +379,20 @@ export const HeadlineOfferSubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 export interface HeadlineOfferSubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
-  /** The number of subscription periods the buyer has to pay. */
-  periodLength?: string;
   /** The type of subscription period. Supported values are: * "`month`" * "`year`" */
   period?: HeadlineOfferSubscriptionCostPeriodEnum | (string & {});
+  /** The number of subscription periods the buyer has to pay. */
+  periodLength?: string;
 }
 export const HeadlineOfferSubscriptionCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(Price),
-    periodLength: S.optional(S.String),
     period: S.optional(HeadlineOfferSubscriptionCostPeriodEnum),
+    periodLength: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HeadlineOfferSubscriptionCost",
 }) as any as S.Schema<HeadlineOfferSubscriptionCost>;
-
-/** A message that represents installment. */
-export interface HeadlineOfferInstallment {
-  /** The number of installments the buyer has to pay. */
-  months?: string;
-  /** The up-front down payment amount the buyer has to pay. */
-  downpayment?: Price;
-  /** The amount the buyer has to pay per month. */
-  amount?: Price;
-}
-export const HeadlineOfferInstallment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    months: S.optional(S.String),
-    downpayment: S.optional(Price),
-    amount: S.optional(Price),
-  }),
-).annotate({
-  identifier: "HeadlineOfferInstallment",
-}) as any as S.Schema<HeadlineOfferInstallment>;
-
-/** The product details. */
-export interface ProductDetail {
-  /** The section header used to group a set of product details. */
-  sectionName?: string;
-  /** The name of the product detail. */
-  attributeName?: string;
-  /** The value of the product detail. */
-  attributeValue?: string;
-}
-export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sectionName: S.optional(S.String),
-    attributeName: S.optional(S.String),
-    attributeValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
-
-export type ProductDetailList = Array<ProductDetail>;
-export const ProductDetailList = /*@__PURE__*/ S.Array(
-  ProductDetail,
-) as any as S.Schema<ProductDetailList>;
-
-/** The weight of the product. */
-export interface ProductWeight {
-  /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
-  value?: number;
-  /** Required. The weight unit. Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`" */
-  unit?: string;
-}
-export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
 
 /** The certification for the product. Use the this attribute to describe certifications, such as energy efficiency ratings, associated with a product. */
 export interface Certification {
@@ -471,173 +416,228 @@ export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
 
+/** The product details. */
+export interface ProductDetail {
+  /** The section header used to group a set of product details. */
+  sectionName?: string;
+  /** The name of the product detail. */
+  attributeName?: string;
+  /** The value of the product detail. */
+  attributeValue?: string;
+}
+export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sectionName: S.optional(S.String),
+    attributeName: S.optional(S.String),
+    attributeValue: S.optional(S.String),
+  }),
+).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
+
+export type ProductDetailList = Array<ProductDetail>;
+export const ProductDetailList = /*@__PURE__*/ S.Array(
+  ProductDetail,
+) as any as S.Schema<ProductDetailList>;
+
+/** A message that represents installment. */
+export interface HeadlineOfferInstallment {
+  /** The up-front down payment amount the buyer has to pay. */
+  downpayment?: Price;
+  /** The amount the buyer has to pay per month. */
+  amount?: Price;
+  /** The number of installments the buyer has to pay. */
+  months?: string;
+}
+export const HeadlineOfferInstallment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    downpayment: S.optional(Price),
+    amount: S.optional(Price),
+    months: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HeadlineOfferInstallment",
+}) as any as S.Schema<HeadlineOfferInstallment>;
+
+/** The weight of the product. */
+export interface ProductWeight {
+  /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
+  value?: number;
+  /** Required. The weight unit. Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`" */
+  unit?: string;
+}
+export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Number),
+    unit: S.optional(S.String),
+  }),
+).annotate({ identifier: "ProductWeight" }) as any as S.Schema<ProductWeight>;
+
 /** Attributes for CSS Product. */
 export interface Attributes {
+  /** The length of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
+  productLength?: ProductDimension;
+  /** Custom label 2 for custom grouping of items in a Shopping campaign. */
+  customLabel2?: string;
+  /** Title of the item. */
+  title?: string;
+  /** The material of which the item is made. */
+  material?: string;
+  /** Global Trade Item Number ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. */
+  gtin?: string;
+  /** Google's category of the item (see [Google product taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will contain the user provided value. There is currently no way to get back the auto assigned google product categories through the API. */
+  googleProductCategory?: string;
+  /** The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size types can be provided (see [size type](https://support.google.com/merchants/answer/6324497). */
+  sizeTypes?: StringList;
+  /** Product Related Attributes.[14-36] Brand of the item. */
+  brand?: string;
+  /** URL of an image of the item. */
+  imageLink?: string;
+  /** Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price. */
+  isBundle?: boolean;
+  /** Description of the item. */
+  description?: string;
+  /** URL for the mobile-optimized version of the Product Detail Page of the CSS. */
+  cppMobileLink?: string;
+  /** Low Price of the CSS Product. */
+  lowPrice?: Price;
+  /** Custom label 3 for custom grouping of items in a Shopping campaign. */
+  customLabel3?: string;
+  /** Set to true if the item is targeted towards adults. */
+  adult?: boolean;
   /** Color of the item. */
   color?: string;
+  /** Number of periods (months or years) and amount of payment per period for an item with an associated subscription contract. */
+  headlineOfferSubscriptionCost?: HeadlineOfferSubscriptionCost;
+  /** URL directly linking to your the Product Detail Page of the CSS. */
+  cppLink?: string;
+  /** Condition of the headline offer. */
+  headlineOfferCondition?: string;
+  /** Date on which the item should expire, as specified upon insertion, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. The actual expiration date is exposed in `productstatuses` as [googleExpirationDate](https://support.google.com/merchants/answer/6324499) and might be earlier if `expirationDate` is too far in the future. Note: It may take 2+ days from the expiration date for the item to actually get deleted. */
+  expirationDate?: string;
+  /** Average rating score of the product. The value must be within the range of [`min_rating`, `max_rating`], inclusive. When displayed on the product page, this rating is normalized to a scale of [1, 5] with one decimal place. If provided, `review_count`, `min_rating`, and `max_rating` are also required. This field is for an upcoming feature and is not yet used. */
+  rating?: number;
+  /** Minimum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
+  minRating?: string;
+  /** The number of CSS Products. */
+  numberOfOffers?: string;
+  /** Headline Price of the CSS Product. */
+  headlineOfferShippingPrice?: Price;
+  /** Link to the headline offer. */
+  headlineOfferLink?: string;
+  /** The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. */
+  includedDestinations?: StringList;
+  /** Mobile Link to the headline offer. */
+  headlineOfferMobileLink?: string;
+  /** The height of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
+  productHeight?: ProductDimension;
+  /** A list of certificates claimed by the CSS for the given product. */
+  certifications?: CertificationList;
+  /** System in which the size is specified. Recommended for apparel items. */
+  sizeSystem?: string;
+  /** Custom label 4 for custom grouping of items in a Shopping campaign. */
+  customLabel4?: string;
+  /** Maximum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
+  maxRating?: string;
+  /** Additional URL of images of the item. */
+  additionalImageLinks?: StringList;
+  /** The number of identical products in a merchant-defined multipack. */
+  multipack?: string;
+  /** Custom label 0 for custom grouping of items in a Shopping campaign. */
+  customLabel0?: string;
+  /** The item's pattern (e.g. polka dots). */
+  pattern?: string;
+  /** Number of reviews of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
+  reviewCount?: string;
+  /** Bullet points describing the most relevant highlights of a product. */
+  productHighlights?: StringList;
+  /** Target age group of the item. */
+  ageGroup?: string;
+  /** Target gender of the item. */
+  gender?: string;
+  /** Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item. */
+  mpn?: string;
+  /** High Price of the CSS Product. */
+  highPrice?: Price;
+  /** Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same `itemGroupId` value (see [https://support.google.com/merchants/answer/6324492](size definition)). */
+  size?: string;
+  /** Custom label 1 for custom grouping of items in a Shopping campaign. */
+  customLabel1?: string;
+  /** Publication of this item will be temporarily paused. */
+  pause?: string;
+  /** Technical specification or additional product details. */
+  productDetails?: ProductDetailList;
   /** The width of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productWidth?: ProductDimension;
   /** Headline Price of the CSS Product. */
-  headlineOfferShippingPrice?: Price;
-  /** The item's pattern (e.g. polka dots). */
-  pattern?: string;
-  /** Average rating score of the product. The value must be within the range of [`min_rating`, `max_rating`], inclusive. When displayed on the product page, this rating is normalized to a scale of [1, 5] with one decimal place. If provided, `review_count`, `min_rating`, and `max_rating` are also required. This field is for an upcoming feature and is not yet used. */
-  rating?: number;
-  /** Global Trade Item Number ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. */
-  gtin?: string;
-  /** Set to true if the item is targeted towards adults. */
-  adult?: boolean;
-  /** The number of identical products in a merchant-defined multipack. */
-  multipack?: string;
-  /** The height of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
-  productHeight?: ProductDimension;
-  /** Date on which the item should expire, as specified upon insertion, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. The actual expiration date is exposed in `productstatuses` as [googleExpirationDate](https://support.google.com/merchants/answer/6324499) and might be earlier if `expirationDate` is too far in the future. Note: It may take 2+ days from the expiration date for the item to actually get deleted. */
-  expirationDate?: string;
-  /** Allows advertisers to override the item URL when the product is shown within the context of Product Ads. */
-  cppAdsRedirect?: string;
-  /** Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same `itemGroupId` value (see [https://support.google.com/merchants/answer/6324492](size definition)). */
-  size?: string;
-  /** Target age group of the item. */
-  ageGroup?: string;
-  /** The material of which the item is made. */
-  material?: string;
-  /** The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center). */
-  excludedDestinations?: StringList;
-  /** Headline Price of the CSS Product. */
   headlineOfferPrice?: Price;
-  /** Google's category of the item (see [Google product taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will contain the user provided value. There is currently no way to get back the auto assigned google product categories through the API. */
-  googleProductCategory?: string;
-  /** Custom label 2 for custom grouping of items in a Shopping campaign. */
-  customLabel2?: string;
-  /** Minimum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
-  minRating?: string;
-  /** System in which the size is specified. Recommended for apparel items. */
-  sizeSystem?: string;
-  /** Product Related Attributes.[14-36] Brand of the item. */
-  brand?: string;
-  /** Categories of the item (formatted as in [products data specification](https://support.google.com/merchants/answer/6324406)). */
-  productTypes?: StringList;
-  /** Number of periods (months or years) and amount of payment per period for an item with an associated subscription contract. */
-  headlineOfferSubscriptionCost?: HeadlineOfferSubscriptionCost;
-  /** URL for the mobile-optimized version of the Product Detail Page of the CSS. */
-  cppMobileLink?: string;
-  /** Custom label 3 for custom grouping of items in a Shopping campaign. */
-  customLabel3?: string;
-  /** URL of an image of the item. */
-  imageLink?: string;
   /** Number and amount of installments to pay for an item. */
   headlineOfferInstallment?: HeadlineOfferInstallment;
-  /** Additional URL of images of the item. */
-  additionalImageLinks?: StringList;
-  /** Condition of the headline offer. */
-  headlineOfferCondition?: string;
-  /** Link to the headline offer. */
-  headlineOfferLink?: string;
-  /** Custom label 4 for custom grouping of items in a Shopping campaign. */
-  customLabel4?: string;
-  /** Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/188494#mpn)) of the item. */
-  mpn?: string;
-  /** Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price. */
-  isBundle?: boolean;
-  /** The length of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
-  productLength?: ProductDimension;
-  /** High Price of the CSS Product. */
-  highPrice?: Price;
-  /** Title of the item. */
-  title?: string;
-  /** URL directly linking to your the Product Detail Page of the CSS. */
-  cppLink?: string;
-  /** Custom label 1 for custom grouping of items in a Shopping campaign. */
-  customLabel1?: string;
-  /** Mobile Link to the headline offer. */
-  headlineOfferMobileLink?: string;
-  /** Technical specification or additional product details. */
-  productDetails?: ProductDetailList;
-  /** Number of reviews of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
-  reviewCount?: string;
-  /** Description of the item. */
-  description?: string;
-  /** Low Price of the CSS Product. */
-  lowPrice?: Price;
-  /** Custom label 0 for custom grouping of items in a Shopping campaign. */
-  customLabel0?: string;
-  /** The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size types can be provided (see [size type](https://support.google.com/merchants/answer/6324497). */
-  sizeTypes?: StringList;
-  /** The number of CSS Products. */
-  numberOfOffers?: string;
-  /** Bullet points describing the most relevant highlights of a product. */
-  productHighlights?: StringList;
+  /** The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center). */
+  excludedDestinations?: StringList;
+  /** Categories of the item (formatted as in [products data specification](https://support.google.com/merchants/answer/6324406)). */
+  productTypes?: StringList;
+  /** Allows advertisers to override the item URL when the product is shown within the context of Product Ads. */
+  cppAdsRedirect?: string;
   /** The weight of the product in the units provided. The value must be between 0 (exclusive) and 2000 (inclusive). */
   productWeight?: ProductWeight;
   /** Shared identifier for all variants of the same product. */
   itemGroupId?: string;
-  /** Maximum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature and is not yet used. */
-  maxRating?: string;
-  /** Publication of this item will be temporarily paused. */
-  pause?: string;
-  /** The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. */
-  includedDestinations?: StringList;
-  /** Target gender of the item. */
-  gender?: string;
-  /** A list of certificates claimed by the CSS for the given product. */
-  certifications?: CertificationList;
 }
 export const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    color: S.optional(S.String),
-    productWidth: S.optional(ProductDimension),
-    headlineOfferShippingPrice: S.optional(Price),
-    pattern: S.optional(S.String),
-    rating: S.optional(S.Number),
-    gtin: S.optional(S.String),
-    adult: S.optional(S.Boolean),
-    multipack: S.optional(S.String),
-    productHeight: S.optional(ProductDimension),
-    expirationDate: S.optional(S.String),
-    cppAdsRedirect: S.optional(S.String),
-    size: S.optional(S.String),
-    ageGroup: S.optional(S.String),
-    material: S.optional(S.String),
-    excludedDestinations: S.optional(StringList),
-    headlineOfferPrice: S.optional(Price),
-    googleProductCategory: S.optional(S.String),
-    customLabel2: S.optional(S.String),
-    minRating: S.optional(S.String),
-    sizeSystem: S.optional(S.String),
-    brand: S.optional(S.String),
-    productTypes: S.optional(StringList),
-    headlineOfferSubscriptionCost: S.optional(HeadlineOfferSubscriptionCost),
-    cppMobileLink: S.optional(S.String),
-    customLabel3: S.optional(S.String),
-    imageLink: S.optional(S.String),
-    headlineOfferInstallment: S.optional(HeadlineOfferInstallment),
-    additionalImageLinks: S.optional(StringList),
-    headlineOfferCondition: S.optional(S.String),
-    headlineOfferLink: S.optional(S.String),
-    customLabel4: S.optional(S.String),
-    mpn: S.optional(S.String),
-    isBundle: S.optional(S.Boolean),
     productLength: S.optional(ProductDimension),
-    highPrice: S.optional(Price),
+    customLabel2: S.optional(S.String),
     title: S.optional(S.String),
-    cppLink: S.optional(S.String),
-    customLabel1: S.optional(S.String),
-    headlineOfferMobileLink: S.optional(S.String),
-    productDetails: S.optional(ProductDetailList),
-    reviewCount: S.optional(S.String),
-    description: S.optional(S.String),
-    lowPrice: S.optional(Price),
-    customLabel0: S.optional(S.String),
+    material: S.optional(S.String),
+    gtin: S.optional(S.String),
+    googleProductCategory: S.optional(S.String),
     sizeTypes: S.optional(StringList),
+    brand: S.optional(S.String),
+    imageLink: S.optional(S.String),
+    isBundle: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    cppMobileLink: S.optional(S.String),
+    lowPrice: S.optional(Price),
+    customLabel3: S.optional(S.String),
+    adult: S.optional(S.Boolean),
+    color: S.optional(S.String),
+    headlineOfferSubscriptionCost: S.optional(HeadlineOfferSubscriptionCost),
+    cppLink: S.optional(S.String),
+    headlineOfferCondition: S.optional(S.String),
+    expirationDate: S.optional(S.String),
+    rating: S.optional(S.Number),
+    minRating: S.optional(S.String),
     numberOfOffers: S.optional(S.String),
+    headlineOfferShippingPrice: S.optional(Price),
+    headlineOfferLink: S.optional(S.String),
+    includedDestinations: S.optional(StringList),
+    headlineOfferMobileLink: S.optional(S.String),
+    productHeight: S.optional(ProductDimension),
+    certifications: S.optional(CertificationList),
+    sizeSystem: S.optional(S.String),
+    customLabel4: S.optional(S.String),
+    maxRating: S.optional(S.String),
+    additionalImageLinks: S.optional(StringList),
+    multipack: S.optional(S.String),
+    customLabel0: S.optional(S.String),
+    pattern: S.optional(S.String),
+    reviewCount: S.optional(S.String),
     productHighlights: S.optional(StringList),
+    ageGroup: S.optional(S.String),
+    gender: S.optional(S.String),
+    mpn: S.optional(S.String),
+    highPrice: S.optional(Price),
+    size: S.optional(S.String),
+    customLabel1: S.optional(S.String),
+    pause: S.optional(S.String),
+    productDetails: S.optional(ProductDetailList),
+    productWidth: S.optional(ProductDimension),
+    headlineOfferPrice: S.optional(Price),
+    headlineOfferInstallment: S.optional(HeadlineOfferInstallment),
+    excludedDestinations: S.optional(StringList),
+    productTypes: S.optional(StringList),
+    cppAdsRedirect: S.optional(S.String),
     productWeight: S.optional(ProductWeight),
     itemGroupId: S.optional(S.String),
-    maxRating: S.optional(S.String),
-    pause: S.optional(S.String),
-    includedDestinations: S.optional(StringList),
-    gender: S.optional(S.String),
-    certifications: S.optional(CertificationList),
   }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
@@ -645,16 +645,16 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
   groupValues?: CustomAttributeList;
-  /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
-  value?: string;
   /** The name of the attribute. */
   name?: string;
+  /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
+  value?: string;
 }
 export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
-    value: S.optional(S.String),
     name: S.optional(S.String),
+    value: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CustomAttribute",
@@ -667,80 +667,80 @@ export const CustomAttributeList = /*@__PURE__*/ S.Array(
 
 /** The processed CSS Product. */
 export interface CssProduct {
-  /** The name of the CSS Product. Format: `"accounts/{account}/cssProducts/{css_product}"` */
-  name?: string;
-  /** Output only. The status of a product, data validation issues, that is, information about a product computed asynchronously. */
-  cssProductStatus?: CssProductStatus;
-  /** Output only. A list of product attributes. */
-  attributes?: Attributes;
   /** Output only. Your unique raw identifier for the product. */
   rawProvidedId?: string;
-  /** Output only. The feed label for the product. */
-  feedLabel?: string;
-  /** Output only. A list of custom (CSS-provided) attributes. It can also be used to submit any attribute of the feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
-  customAttributes?: CustomAttributeList;
   /** Output only. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the product. */
   contentLanguage?: string;
+  /** Output only. The feed label for the product. */
+  feedLabel?: string;
+  /** Output only. The status of a product, data validation issues, that is, information about a product computed asynchronously. */
+  cssProductStatus?: CssProductStatus;
+  /** The name of the CSS Product. Format: `"accounts/{account}/cssProducts/{css_product}"` */
+  name?: string;
+  /** Output only. A list of product attributes. */
+  attributes?: Attributes;
+  /** Output only. A list of custom (CSS-provided) attributes. It can also be used to submit any attribute of the feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
+  customAttributes?: CustomAttributeList;
 }
 export const CssProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    cssProductStatus: S.optional(CssProductStatus),
-    attributes: S.optional(Attributes),
     rawProvidedId: S.optional(S.String),
-    feedLabel: S.optional(S.String),
-    customAttributes: S.optional(CustomAttributeList),
     contentLanguage: S.optional(S.String),
+    feedLabel: S.optional(S.String),
+    cssProductStatus: S.optional(CssProductStatus),
+    name: S.optional(S.String),
+    attributes: S.optional(Attributes),
+    customAttributes: S.optional(CustomAttributeList),
   }),
 ).annotate({ identifier: "CssProduct" }) as any as S.Schema<CssProduct>;
 
 /** This resource represents input data you submit for a CSS Product, not the processed CSS Product that you see in CSS Center, in Shopping Ads, or across Google surfaces. */
 export interface CssProductInput {
+  /** Output only. The name of the processed CSS Product. Format: `accounts/{account}/cssProducts/{css_product}` " */
+  finalName?: string;
+  /** DEPRECATED. Use expiration_date instead. Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right order when multiple updates are done at the same time. This field must not be set to the future time. If set, the update is prevented if a newer version of the item already exists in our system (that is the last update time of the existing CSS products is later than the freshness time set in the update). If the update happens, the last update time is then set to this freshness time. If not set, the update will not be prevented and the last update time will default to when this request was received by the CSS API. If the operation is prevented, the aborted exception will be thrown. */
+  freshnessTime?: string;
   /** A list of custom (CSS-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (for example: `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
   customAttributes?: CustomAttributeList;
+  /** Required. Your unique identifier for the CSS Product. This is the same for the CSS Product input and processed CSS Product. We only allow ids with alphanumerics, underscores and dashes. See the [products feed specification](https://support.google.com/merchants/answer/188494#id) for details. */
+  rawProvidedId?: string;
   /** Required. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the CSS Product. */
   contentLanguage?: string;
+  /** Required. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the CSS Product. Feed Label is synonymous to "target country" and hence should always be a valid region code. For example: 'DE' for Germany, 'FR' for France. */
+  feedLabel?: string;
   /** Identifier. The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123 */
   name?: string;
   /** A list of CSS Product attributes. */
   attributes?: Attributes;
-  /** Output only. The name of the processed CSS Product. Format: `accounts/{account}/cssProducts/{css_product}` " */
-  finalName?: string;
-  /** Required. Your unique identifier for the CSS Product. This is the same for the CSS Product input and processed CSS Product. We only allow ids with alphanumerics, underscores and dashes. See the [products feed specification](https://support.google.com/merchants/answer/188494#id) for details. */
-  rawProvidedId?: string;
-  /** DEPRECATED. Use expiration_date instead. Represents the existing version (freshness) of the CSS Product, which can be used to preserve the right order when multiple updates are done at the same time. This field must not be set to the future time. If set, the update is prevented if a newer version of the item already exists in our system (that is the last update time of the existing CSS products is later than the freshness time set in the update). If the update happens, the last update time is then set to this freshness time. If not set, the update will not be prevented and the last update time will default to when this request was received by the CSS API. If the operation is prevented, the aborted exception will be thrown. */
-  freshnessTime?: string;
-  /** Required. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the CSS Product. Feed Label is synonymous to "target country" and hence should always be a valid region code. For example: 'DE' for Germany, 'FR' for France. */
-  feedLabel?: string;
 }
 export const CssProductInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    finalName: S.optional(S.String),
+    freshnessTime: S.optional(S.String),
     customAttributes: S.optional(CustomAttributeList),
+    rawProvidedId: S.optional(S.String),
     contentLanguage: S.optional(S.String),
+    feedLabel: S.optional(S.String),
     name: S.optional(S.String),
     attributes: S.optional(Attributes),
-    finalName: S.optional(S.String),
-    rawProvidedId: S.optional(S.String),
-    freshnessTime: S.optional(S.String),
-    feedLabel: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CssProductInput",
 }) as any as S.Schema<CssProductInput>;
 
 export interface InsertAccountsCssProductInputsRequest {
-  /** Required. The account where this CSS Product will be inserted. Format: accounts/{account} */
-  parent: string;
   /** Optional. DEPRECATED. Feed id is not required for CSS Products. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet. */
   feedId?: string;
+  /** Required. The account where this CSS Product will be inserted. Format: accounts/{account} */
+  parent: string;
   /** Request body */
   body?: CssProductInput;
 }
 export const InsertAccountsCssProductInputsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       feedId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(CssProductInput.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -754,18 +754,18 @@ export const InsertAccountsCssProductInputsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InsertAccountsCssProductInputsRequest>;
 
 export interface ListAccountsCssProductsRequest {
-  /** A page token, received from a previous `ListCssProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCssProducts` must match the call that provided the page token. */
-  pageToken?: string;
-  /** The maximum number of CSS Products to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of CSS products will be returned. */
-  pageSize?: number;
   /** Required. The account/domain to list processed CSS Products for. Format: accounts/{account} */
   parent: string;
+  /** The maximum number of CSS Products to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of CSS products will be returned. */
+  pageSize?: number;
+  /** A page token, received from a previous `ListCssProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCssProducts` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const ListAccountsCssProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -784,15 +784,15 @@ export const CssProductList = /*@__PURE__*/ S.Array(
 
 /** Response message for the ListCssProducts method. */
 export interface ListCssProductsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The processed CSS products from the specified account. These are your processed CSS products after applying rules and supplemental feeds. */
   cssProducts?: CssProductList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListCssProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     cssProducts: S.optional(CssProductList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListCssProductsResponse",
@@ -801,16 +801,16 @@ export const ListCssProductsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAccountsLabelsRequest {
   /** Required. The parent account. Format: accounts/{account} */
   parent: string;
-  /** A page token, received from a previous `ListAccountLabels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLabels` must match the call that provided the page token. */
-  pageToken?: string;
   /** The maximum number of labels to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** A page token, received from a previous `ListAccountLabels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLabels` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -829,33 +829,33 @@ export const AccountLabelList = /*@__PURE__*/ S.Array(
 
 /** Response message for the `ListAccountLabels` method. */
 export interface ListAccountLabelsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The labels from the specified account. */
   accountLabels?: AccountLabelList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListAccountLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     accountLabels: S.optional(AccountLabelList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListAccountLabelsResponse",
 }) as any as S.Schema<ListAccountLabelsResponse>;
 
 export interface ListAccountsQuotasRequest {
+  /** Required. The CSS account that owns the collection of method quotas and resources. In most cases, this is the CSS domain. Format: accounts/{account} */
+  parent: string;
   /** Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
   /** Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
-  /** Required. The CSS account that owns the collection of method quotas and resources. In most cases, this is the CSS domain. Format: accounts/{account} */
-  parent: string;
 }
 export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -869,20 +869,20 @@ export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The method details per method in the CSS API. */
 export interface MethodDetails {
-  /** Output only. The name of the method for example `cssproductsservice.listcssproducts`. */
-  method?: string;
   /** Output only. The API version that the method belongs to. */
   version?: string;
   /** Output only. The sub-API that the method belongs to. In the CSS API, this is always `css`. */
   subapi?: string;
+  /** Output only. The name of the method for example `cssproductsservice.listcssproducts`. */
+  method?: string;
   /** Output only. The path for the method such as `v1/cssproductsservice.listcssproducts`. */
   path?: string;
 }
 export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    method: S.optional(S.String),
     version: S.optional(S.String),
     subapi: S.optional(S.String),
+    method: S.optional(S.String),
     path: S.optional(S.String),
   }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
@@ -894,24 +894,24 @@ export const MethodDetailsList = /*@__PURE__*/ S.Array(
 
 /** The group information for methods in the CSS API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
-  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Example: `accounts/12345678/quotas/css-products-insert` Note: The {group} part is not guaranteed to follow a specific pattern. */
-  name?: string;
-  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at 12:00 PM midday UTC. */
-  quotaUsage?: string;
-  /** Output only. The maximum number of calls allowed per minute for the group. */
-  quotaMinuteLimit?: string;
-  /** Output only. The maximum number of calls allowed per day for the group. */
-  quotaLimit?: string;
   /** Output only. List of all methods group quota applies to. */
   methodDetails?: MethodDetailsList;
+  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
+  quotaUsage?: string;
+  /** Output only. The maximum number of calls allowed per day for the group. */
+  quotaLimit?: string;
+  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Example: `accounts/12345678/quotas/css-products-insert` Note: The {group} part is not guaranteed to follow a specific pattern. */
+  name?: string;
+  /** Output only. The maximum number of calls allowed per minute for the group. */
+  quotaMinuteLimit?: string;
 }
 export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    quotaUsage: S.optional(S.String),
-    quotaMinuteLimit: S.optional(S.String),
-    quotaLimit: S.optional(S.String),
     methodDetails: S.optional(MethodDetailsList),
+    quotaUsage: S.optional(S.String),
+    quotaLimit: S.optional(S.String),
+    name: S.optional(S.String),
+    quotaMinuteLimit: S.optional(S.String),
   }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
@@ -922,39 +922,39 @@ export const QuotaGroupList = /*@__PURE__*/ S.Array(
 
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
   quotaGroups?: QuotaGroupList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     quotaGroups: S.optional(QuotaGroupList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListQuotaGroupsResponse",
 }) as any as S.Schema<ListQuotaGroupsResponse>;
 
 export interface ListChildAccountsAccountsRequest {
+  /** Optional. A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** If set, only the MC accounts with the given label ID will be returned. */
+  labelId?: string;
   /** Required. The parent account. Must be a CSS group or domain. Format: accounts/{account} */
   parent: string;
   /** Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 50 accounts will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
-  /** If set, only the MC accounts with the given label ID will be returned. */
-  labelId?: string;
   /** If set, only the MC accounts with the given name (case sensitive) will be returned. */
   fullName?: string;
-  /** Optional. A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token. */
-  pageToken?: string;
 }
 export const ListChildAccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    labelId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    labelId: S.optional(S.String.pipe(T.Query())),
     fullName: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -988,18 +988,18 @@ export const ListChildAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChildAccountsResponse>;
 
 export interface PatchAccountsCssProductInputsRequest {
-  /** Identifier. The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123 */
-  name: string;
   /** The list of CSS product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the CSS product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full CSS product replacement is not supported. */
   updateMask?: string;
+  /** Identifier. The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123 */
+  name: string;
   /** Request body */
   body?: CssProductInput;
 }
 export const PatchAccountsCssProductInputsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       body: S.optional(CssProductInput.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

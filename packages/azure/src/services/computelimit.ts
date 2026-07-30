@@ -30,7 +30,7 @@ export const FeaturesDisableRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -195,7 +195,7 @@ export const FeaturesEnableRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -262,7 +262,7 @@ export const FeaturesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -381,7 +381,7 @@ export const FeaturesListBySubscriptionLocationResourceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -462,7 +462,7 @@ export const GuestSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -526,7 +526,7 @@ export const GuestSubscriptionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -558,7 +558,7 @@ export const GuestSubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -605,7 +605,7 @@ export const GuestSubscriptionsListBySubscriptionLocationResourceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -697,7 +697,7 @@ export const MemberCapOverridesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -768,7 +768,7 @@ export const MemberCapOverridesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -803,7 +803,7 @@ export const MemberCapOverridesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -853,7 +853,7 @@ export const MemberCapOverridesListByParentRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -914,7 +914,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.ComputeLimit/operations",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1033,7 +1033,7 @@ export const SharedLimitCapsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
 ).annotate({
@@ -1104,7 +1104,7 @@ export const SharedLimitCapsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1136,7 +1136,7 @@ export const SharedLimitCapsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1183,7 +1183,7 @@ export const SharedLimitCapsListBySubscriptionLocationResourceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1280,7 +1280,7 @@ export const SharedLimitCapsSetMemberCapOverridesRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/setMemberCapOverrides",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1337,7 +1337,7 @@ export const SharedLimitsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1424,7 +1424,7 @@ export const SharedLimitsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1456,7 +1456,7 @@ export const SharedLimitsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1503,7 +1503,7 @@ export const SharedLimitsListBySubscriptionLocationResourceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1555,199 +1555,6 @@ export const SharedLimitListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedLimitListResult",
 }) as any as S.Schema<SharedLimitListResult>;
 
-export interface TrustedHostSubscriptionsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-  /** The name of the TrustedHostSubscription */
-  hostSubscriptionId: string;
-}
-export const TrustedHostSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      hostSubscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-        code: 200,
-        apiVersion: "2026-07-31",
-      }),
-    ),
-).annotate({
-  identifier: "TrustedHostSubscriptionsCreateRequest",
-}) as any as S.Schema<TrustedHostSubscriptionsCreateRequest>;
-
-export interface TrustedHostSubscriptionsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-}
-export const TrustedHostSubscriptionsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-).annotate({
-  identifier: "TrustedHostSubscriptionsCreateResponse",
-}) as any as S.Schema<TrustedHostSubscriptionsCreateResponse>;
-
-export interface TrustedHostSubscriptionsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-  /** The name of the TrustedHostSubscription */
-  hostSubscriptionId: string;
-}
-export const TrustedHostSubscriptionsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      hostSubscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-        code: 200,
-        apiVersion: "2026-07-31",
-      }),
-    ),
-).annotate({
-  identifier: "TrustedHostSubscriptionsDeleteRequest",
-}) as any as S.Schema<TrustedHostSubscriptionsDeleteRequest>;
-
-export interface TrustedHostSubscriptionsDeleteResponse {}
-export const TrustedHostSubscriptionsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "TrustedHostSubscriptionsDeleteResponse",
-}) as any as S.Schema<TrustedHostSubscriptionsDeleteResponse>;
-
-export interface TrustedHostSubscriptionsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-  /** The name of the TrustedHostSubscription */
-  hostSubscriptionId: string;
-}
-export const TrustedHostSubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    hostSubscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-      code: 200,
-      apiVersion: "2026-07-31",
-    }),
-  ),
-).annotate({
-  identifier: "TrustedHostSubscriptionsGetRequest",
-}) as any as S.Schema<TrustedHostSubscriptionsGetRequest>;
-
-export interface TrustedHostSubscriptionsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-}
-export const TrustedHostSubscriptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-  }),
-).annotate({
-  identifier: "TrustedHostSubscriptionsGetResponse",
-}) as any as S.Schema<TrustedHostSubscriptionsGetResponse>;
-
-export interface TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-}
-export const TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions",
-        code: 200,
-        apiVersion: "2026-07-31",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest",
-  }) as any as S.Schema<TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest>;
-
-/** Common fields that are returned in the response for all Azure Resource Manager resources */
-export interface Resource {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-}
-export const Resource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-  }),
-).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
-
-/** The TrustedHostSubscription items on this page */
-export type TrustedHostSubscriptionListResultValueList = Array<Resource>;
-export const TrustedHostSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
-  Resource,
-) as any as S.Schema<TrustedHostSubscriptionListResultValueList>;
-
-/** The response of a TrustedHostSubscription list operation. */
-export interface TrustedHostSubscriptionListResult {
-  /** The TrustedHostSubscription items on this page */
-  value: TrustedHostSubscriptionListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const TrustedHostSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: TrustedHostSubscriptionListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TrustedHostSubscriptionListResult",
-}) as any as S.Schema<TrustedHostSubscriptionListResult>;
-
 export interface VmFamiliesGetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1766,7 +1573,7 @@ export const VmFamiliesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies/{vmFamilyName}",
       code: 200,
-      apiVersion: "2026-07-31",
+      apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
@@ -1834,7 +1641,7 @@ export const VmFamiliesListBySubscriptionLocationResourceRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
         code: 200,
-        apiVersion: "2026-07-31",
+        apiVersion: "2026-07-01",
       }),
     ),
   ).annotate({
@@ -1887,7 +1694,7 @@ export const VmFamilyListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmFamilyListResult>;
 
 export type FeaturesDisableError = AzureOpError;
-/** Disables a compute limit feature for the subscription at the specified location. Requires the Contributor role. */
+/** Disables a compute limit feature for the subscription at the specified location. */
 export const FeaturesDisable: API.OperationMethod<
   FeaturesDisableRequest,
   FeaturesDisableResponse,
@@ -1902,7 +1709,7 @@ export const FeaturesDisable: API.OperationMethod<
 }));
 
 export type FeaturesEnableError = AzureOpError;
-/** Enables a compute limit feature for the subscription at the specified location. Requires the Contributor role. */
+/** Enables a compute limit feature for the subscription at the specified location. */
 export const FeaturesEnable: API.OperationMethod<
   FeaturesEnableRequest,
   FeaturesEnableResponse,
@@ -2213,67 +2020,6 @@ export const SharedLimitsListBySubscriptionLocationResource: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: SharedLimitsListBySubscriptionLocationResourceRequest,
   output: SharedLimitListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedHostSubscriptionsCreateError = AzureOpError;
-/** Adds a host subscription to the guest subscription's list of trusted hosts. A guest subscription can trust multiple host subscriptions; this only establishes trust and does not check the guest in to the host. Guest-to-host association is determined at check-in time, where a subscription can be a guest of at most one host per region. */
-export const TrustedHostSubscriptionsCreate: API.OperationMethod<
-  TrustedHostSubscriptionsCreateRequest,
-  TrustedHostSubscriptionsCreateResponse,
-  TrustedHostSubscriptionsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedHostSubscriptionsCreateRequest,
-  output: TrustedHostSubscriptionsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedHostSubscriptionsDeleteError = AzureOpError;
-/** Removes a host subscription from the guest subscription's list of trusted hosts. */
-export const TrustedHostSubscriptionsDelete: API.OperationMethod<
-  TrustedHostSubscriptionsDeleteRequest,
-  TrustedHostSubscriptionsDeleteResponse,
-  TrustedHostSubscriptionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedHostSubscriptionsDeleteRequest,
-  output: TrustedHostSubscriptionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedHostSubscriptionsGetError = AzureOpError;
-/** Gets a host subscription that the guest subscription trusts. */
-export const TrustedHostSubscriptionsGet: API.OperationMethod<
-  TrustedHostSubscriptionsGetRequest,
-  TrustedHostSubscriptionsGetResponse,
-  TrustedHostSubscriptionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedHostSubscriptionsGetRequest,
-  output: TrustedHostSubscriptionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedHostSubscriptionsListBySubscriptionLocationResourceError =
-  AzureOpError;
-/** Lists all host subscriptions that the guest subscription trusts in a location. */
-export const TrustedHostSubscriptionsListBySubscriptionLocationResource: API.OperationMethod<
-  TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest,
-  TrustedHostSubscriptionListResult,
-  TrustedHostSubscriptionsListBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest,
-  output: TrustedHostSubscriptionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

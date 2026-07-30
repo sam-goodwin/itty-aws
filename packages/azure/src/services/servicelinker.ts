@@ -233,7 +233,7 @@ export const DryrunActionName = /*@__PURE__*/ S.String;
 
 /** The parameters of the dryrun */
 export interface DryrunParameters {
-  actionName: DryrunActionName;
+  actionName: DryrunActionName | (string & {});
 }
 export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -80,7 +80,7 @@ export interface OrganizationTeamMembershipUserDefaultOrganization {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const OrganizationTeamMembershipUserDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -89,7 +89,7 @@ export const OrganizationTeamMembershipUserDefaultOrganization =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "OrganizationTeamMembershipUserDefaultOrganization",
@@ -112,15 +112,15 @@ export interface OrganizationTeamMembershipUser {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: OrganizationTeamMembershipUserDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization: OrganizationTeamMembershipUserDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified: boolean;
 }
 export const OrganizationTeamMembershipUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -132,13 +132,11 @@ export const OrganizationTeamMembershipUser = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
-    default_organization: S.optional(
-      S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
-    ),
-    sso: S.optional(S.NullOr(S.Boolean)),
-    managed: S.optional(S.NullOr(S.Boolean)),
-    directory_managed: S.optional(S.NullOr(S.Boolean)),
-    email_verified: S.optional(S.NullOr(S.Boolean)),
+    default_organization: OrganizationTeamMembershipUserDefaultOrganization,
+    sso: S.Boolean,
+    managed: S.Boolean,
+    directory_managed: S.Boolean,
+    email_verified: S.Boolean,
   }),
 ).annotate({
   identifier: "OrganizationTeamMembershipUser",
@@ -238,10 +236,6 @@ export interface OrganizationTeamMembershipPasswordsItemRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const OrganizationTeamMembershipPasswordsItemRegion =
   /*@__PURE__*/ S.suspend(() =>
@@ -255,8 +249,6 @@ export const OrganizationTeamMembershipPasswordsItemRegion =
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
   ).annotate({
     identifier: "OrganizationTeamMembershipPasswordsItemRegion",
@@ -295,15 +287,15 @@ export interface OrganizationTeamMembershipPasswordsItem {
   /** The role for the password */
   role: OrganizationTeamMembershipPasswordsItemRole;
   /** List of IP addresses or CIDR ranges that can use this password */
-  cidrs: OrganizationTeamMembershipPasswordsItemCidrsList | null;
+  cidrs: OrganizationTeamMembershipPasswordsItemCidrsList;
   /** When the password was created */
   created_at: string;
   /** When the password was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   /** When the password will expire */
-  expires_at: string | null;
+  expires_at: string;
   /** When the password was last used to execute a query */
-  last_used_at: string | null;
+  last_used_at: string;
   /** True if the credentials are expired */
   expired: boolean;
   /** True if the credentials connect directly to a vtgate, bypassing load balancers */
@@ -311,19 +303,19 @@ export interface OrganizationTeamMembershipPasswordsItem {
   /** The list of hosts in each availability zone providing direct access to a vtgate */
   direct_vtgate_addresses: OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList;
   /** Time to live (in seconds) for the password. The password will be invalid when TTL has passed */
-  ttl_seconds: number | null;
+  ttl_seconds: number;
   /** The host URL for the password */
   access_host_url: string;
   /** The regional host URL */
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList;
-  actor: OrganizationTeamMembershipPasswordsItemActor | null;
+  actor: OrganizationTeamMembershipPasswordsItemActor;
   region: OrganizationTeamMembershipPasswordsItemRegion;
   /** The username for the password */
   username: string;
-  /** The plaintext password. Null except in the response from the create endpoint. */
-  plain_text: Redacted.Redacted<string> | null;
+  /** The plain text password, available only after create */
+  plain_text: Redacted.Redacted<string>;
   /** Whether or not the password is for a read replica */
   replica: boolean;
   /** Whether or not the password can be renewed */
@@ -336,24 +328,24 @@ export const OrganizationTeamMembershipPasswordsItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       name: S.String,
       role: OrganizationTeamMembershipPasswordsItemRole,
-      cidrs: S.NullOr(OrganizationTeamMembershipPasswordsItemCidrsList),
+      cidrs: OrganizationTeamMembershipPasswordsItemCidrsList,
       created_at: S.String,
-      deleted_at: S.NullOr(S.String),
-      expires_at: S.NullOr(S.String),
-      last_used_at: S.NullOr(S.String),
+      deleted_at: S.String,
+      expires_at: S.String,
+      last_used_at: S.String,
       expired: S.Boolean,
       direct_vtgate: S.Boolean,
       direct_vtgate_addresses:
         OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList,
-      ttl_seconds: S.NullOr(S.Number),
+      ttl_seconds: S.Number,
       access_host_url: S.String,
       access_host_regional_url: S.String,
       access_host_regional_urls:
         OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList,
-      actor: S.NullOr(OrganizationTeamMembershipPasswordsItemActor),
+      actor: OrganizationTeamMembershipPasswordsItemActor,
       region: OrganizationTeamMembershipPasswordsItemRegion,
       username: S.String,
-      plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+      plain_text: S.String.pipe(T.SensitiveValue({})),
       replica: S.Boolean,
       renewable: S.Boolean,
       database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
@@ -636,11 +628,11 @@ export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** The operation name of the deploy operation */
   operation_name: string;
   /** The estimated seconds until completion for the deploy operation */
-  eta_seconds: number | null;
+  eta_seconds: number;
   /** The percent completion for the deploy operation */
-  progress_percentage: number | null;
+  progress_percentage: number;
   /** A link to documentation explaining the deploy error, if present */
-  deploy_error_docs_url: string | null;
+  deploy_error_docs_url: string;
   /** The DDL statement for the deploy operation */
   ddl_statement: string;
   /** A syntax-highlighted DDL statement for the deploy operation */
@@ -650,7 +642,7 @@ export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** When the deploy operation was last updated */
   updated_at: string;
   /** When the deploy operation was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Whether or not the deploy operation is capable of dropping data */
   can_drop_data: boolean;
   /** Whether or not the table modified by the deploy operation is currently locked */
@@ -658,11 +650,11 @@ export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** Whether or not the table modified by the deploy operation was recently used */
   table_recently_used: boolean;
   /** When the table modified by the deploy operation was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** Names of foreign keys removed by this operation */
-  removed_foreign_key_names: DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList | null;
+  removed_foreign_key_names: DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList;
   /** Deploy errors for the deploy operation */
-  deploy_errors: string | null;
+  deploy_errors: string;
 }
 export const DatabaseDeployRequestDeploymentDeployOperationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -672,22 +664,21 @@ export const DatabaseDeployRequestDeploymentDeployOperationsItem =
       keyspace_name: S.String,
       table_name: S.String,
       operation_name: S.String,
-      eta_seconds: S.NullOr(S.Number),
-      progress_percentage: S.NullOr(S.Number),
-      deploy_error_docs_url: S.NullOr(S.String),
+      eta_seconds: S.Number,
+      progress_percentage: S.Number,
+      deploy_error_docs_url: S.String,
       ddl_statement: S.String,
       syntax_highlighted_ddl: S.String,
       created_at: S.String,
       updated_at: S.String,
-      throttled_at: S.NullOr(S.String),
+      throttled_at: S.String,
       can_drop_data: S.Boolean,
       table_locked: S.Boolean,
       table_recently_used: S.Boolean,
-      table_recently_used_at: S.NullOr(S.String),
-      removed_foreign_key_names: S.NullOr(
+      table_recently_used_at: S.String,
+      removed_foreign_key_names:
         DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList,
-      ),
-      deploy_errors: S.NullOr(S.String),
+      deploy_errors: S.String,
     }),
   ).annotate({
     identifier: "DatabaseDeployRequestDeploymentDeployOperationsItem",
@@ -790,9 +781,9 @@ export interface DatabaseDeployRequestDeploymentDeployOperationSummariesItem {
   /** The name of the table modifed by the deploy operation summary */
   table_name: string;
   /** When the table modified by the deploy operation summary was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** When the deploy operation summary was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Names of foreign keys removed by this operation summary */
   removed_foreign_key_names: DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList;
   /** The number of shards in the keyspace modified by the deploy operation summary */
@@ -821,8 +812,8 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItem =
       state: DatabaseDeployRequestDeploymentDeployOperationSummariesItemState,
       syntax_highlighted_ddl: S.String,
       table_name: S.String,
-      table_recently_used_at: S.NullOr(S.String),
-      throttled_at: S.NullOr(S.String),
+      table_recently_used_at: S.String,
+      throttled_at: S.String,
       removed_foreign_key_names:
         DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
       shard_count: S.Number,
@@ -896,15 +887,22 @@ export const DatabaseDeployRequestDeploymentLookupVindexOperationsList =
     DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap,
   ) as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsList>;
 
-/** Deployment throttling configurations. */
-export type DatabaseDeployRequestDeploymentThrottlerConfigurationsMap = {
+export type DatabaseDeployRequestDeploymentThrottlerConfigurationsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DatabaseDeployRequestDeploymentThrottlerConfigurationsMap =
+export const DatabaseDeployRequestDeploymentThrottlerConfigurationsItemMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsMap>;
+  ) as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsItemMap>;
+
+/** Deployment throttling configurations */
+export type DatabaseDeployRequestDeploymentThrottlerConfigurationsList =
+  Array<DatabaseDeployRequestDeploymentThrottlerConfigurationsItemMap>;
+export const DatabaseDeployRequestDeploymentThrottlerConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    DatabaseDeployRequestDeploymentThrottlerConfigurationsItemMap,
+  ) as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsList>;
 
 /** The request to revert the schema operations in this deployment */
 export type DatabaseDeployRequestDeploymentDeploymentRevertRequestMap = {
@@ -983,25 +981,23 @@ export interface DatabaseDeployRequestDeployment {
   /** When the deployment was created */
   created_at: string;
   /** When the cutover for the deployment was initiated */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the deployment cutover will expire soon */
   cutover_expiring: boolean;
-  /** Deploy check errors for the deployment. */
-  deploy_check_errors?: string | null;
+  /** Deploy check errors for the deployment */
+  deploy_check_errors: string;
   /** When the deployment was finished */
-  finished_at: string | null;
-  /** When force cutover was triggered for the deployment */
-  force_cutover_requested_at: string | null;
+  finished_at: string;
   /** When the deployment was queued */
-  queued_at: string | null;
+  queued_at: string;
   /** When the deployment was ready for cutover */
-  ready_to_cutover_at: string | null;
+  ready_to_cutover_at: string;
   /** When the deployment was started */
-  started_at: string | null;
+  started_at: string;
   /** The state the deployment is in */
   state: DatabaseDeployRequestDeploymentState2;
   /** When the deployment was submitted */
-  submitted_at: string | null;
+  submitted_at: string;
   /** When the deployment was last updated */
   updated_at: string;
   /** The name of the base branch the deployment will be merged into */
@@ -1020,27 +1016,23 @@ export interface DatabaseDeployRequestDeployment {
   sequential_diff_dependencies: DatabaseDeployRequestDeploymentSequentialDiffDependenciesList;
   /** Lookup Vitess index operations */
   lookup_vindex_operations: DatabaseDeployRequestDeploymentLookupVindexOperationsList;
-  /** Deployment throttling configurations. */
-  throttler_configurations?: DatabaseDeployRequestDeploymentThrottlerConfigurationsMap | null;
+  /** Deployment throttling configurations */
+  throttler_configurations: DatabaseDeployRequestDeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
-  deployment_revert_request: DatabaseDeployRequestDeploymentDeploymentRevertRequestMap | null;
-  actor?: DatabaseDeployRequestDeploymentActor | null;
-  cutover_actor?: DatabaseDeployRequestDeploymentCutoverActor | null;
-  cancelled_actor?: DatabaseDeployRequestDeploymentCancelledActor | null;
+  deployment_revert_request: DatabaseDeployRequestDeploymentDeploymentRevertRequestMap;
+  actor: DatabaseDeployRequestDeploymentActor;
+  cutover_actor: DatabaseDeployRequestDeploymentCutoverActor;
+  cancelled_actor: DatabaseDeployRequestDeploymentCancelledActor;
   /** When the schema was last updated for the deployment */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
   table_locked: boolean;
-  /** The name of the table that is locked by the deployment. */
-  locked_table_name?: string | null;
+  /** The name of he table that is locked by the deployment */
+  locked_table_name: string;
   /** Whether or not the deployment is an instant DDL deployment */
   instant_ddl: boolean;
   /** Whether or not the deployment is eligible for instant DDL */
   instant_ddl_eligible: boolean;
-  /** Whether the deploy queue for the target branch is currently paused */
-  queue_paused: boolean;
-  /** A human-readable reason the deploy queue is paused, if known */
-  queue_pause_reason: string | null;
 }
 export const DatabaseDeployRequestDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1048,16 +1040,15 @@ export const DatabaseDeployRequestDeployment = /*@__PURE__*/ S.suspend(() =>
     auto_cutover: S.Boolean,
     auto_delete_branch: S.Boolean,
     created_at: S.String,
-    cutover_at: S.NullOr(S.String),
+    cutover_at: S.String,
     cutover_expiring: S.Boolean,
-    deploy_check_errors: S.optional(S.NullOr(S.String)),
-    finished_at: S.NullOr(S.String),
-    force_cutover_requested_at: S.NullOr(S.String),
-    queued_at: S.NullOr(S.String),
-    ready_to_cutover_at: S.NullOr(S.String),
-    started_at: S.NullOr(S.String),
+    deploy_check_errors: S.String,
+    finished_at: S.String,
+    queued_at: S.String,
+    ready_to_cutover_at: S.String,
+    started_at: S.String,
     state: DatabaseDeployRequestDeploymentState2,
-    submitted_at: S.NullOr(S.String),
+    submitted_at: S.String,
     updated_at: S.String,
     into_branch: S.String,
     deploy_request_number: S.Number,
@@ -1072,26 +1063,18 @@ export const DatabaseDeployRequestDeployment = /*@__PURE__*/ S.suspend(() =>
       DatabaseDeployRequestDeploymentSequentialDiffDependenciesList,
     lookup_vindex_operations:
       DatabaseDeployRequestDeploymentLookupVindexOperationsList,
-    throttler_configurations: S.optional(
-      S.NullOr(DatabaseDeployRequestDeploymentThrottlerConfigurationsMap),
-    ),
-    deployment_revert_request: S.NullOr(
+    throttler_configurations:
+      DatabaseDeployRequestDeploymentThrottlerConfigurationsList,
+    deployment_revert_request:
       DatabaseDeployRequestDeploymentDeploymentRevertRequestMap,
-    ),
-    actor: S.optional(S.NullOr(DatabaseDeployRequestDeploymentActor)),
-    cutover_actor: S.optional(
-      S.NullOr(DatabaseDeployRequestDeploymentCutoverActor),
-    ),
-    cancelled_actor: S.optional(
-      S.NullOr(DatabaseDeployRequestDeploymentCancelledActor),
-    ),
-    schema_last_updated_at: S.NullOr(S.String),
+    actor: DatabaseDeployRequestDeploymentActor,
+    cutover_actor: DatabaseDeployRequestDeploymentCutoverActor,
+    cancelled_actor: DatabaseDeployRequestDeploymentCancelledActor,
+    schema_last_updated_at: S.String,
     table_locked: S.Boolean,
-    locked_table_name: S.optional(S.NullOr(S.String)),
+    locked_table_name: S.String,
     instant_ddl: S.Boolean,
     instant_ddl_eligible: S.Boolean,
-    queue_paused: S.Boolean,
-    queue_pause_reason: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "DatabaseDeployRequestDeployment",
@@ -1103,24 +1086,22 @@ export interface DatabaseDeployRequest {
   /** The number of the deploy request */
   number: number;
   actor: DatabaseDeployRequestActor;
-  closed_by?: DatabaseDeployRequestClosedBy | null;
+  closed_by: DatabaseDeployRequestClosedBy;
   /** The name of the branch the deploy request was created from */
   branch: string;
   /** The ID of the branch the deploy request was created from */
   branch_id: string;
   /** Whether or not the deploy request branch was deleted */
   branch_deleted: boolean;
-  branch_deleted_by?: DatabaseDeployRequestBranchDeletedBy | null;
+  branch_deleted_by: DatabaseDeployRequestBranchDeletedBy;
   /** When the deploy request branch was deleted */
-  branch_deleted_at: string | null;
+  branch_deleted_at: string;
   /** The name of the branch the deploy request will be merged into */
   into_branch: string;
   /** Whether or not the branch the deploy request will be merged into is sharded */
   into_branch_sharded: boolean;
   /** The number of shards the branch the deploy request will be merged into has */
   into_branch_shard_count: number;
-  /** The number of keyspaces the branch the deploy request will be merged into has */
-  into_branch_keyspace_count: number;
   /** Whether or not the deploy request is approved */
   approved: boolean;
   /** Whether the deploy request is open or closed */
@@ -1141,27 +1122,24 @@ export interface DatabaseDeployRequest {
   /** When the deploy request was last updated */
   updated_at: string;
   /** When the deploy request was closed */
-  closed_at: string | null;
+  closed_at: string;
   /** When the deploy request was deployed */
-  deployed_at: string | null;
+  deployed_at: string;
 }
 export const DatabaseDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     number: S.Number,
     actor: DatabaseDeployRequestActor,
-    closed_by: S.optional(S.NullOr(DatabaseDeployRequestClosedBy)),
+    closed_by: DatabaseDeployRequestClosedBy,
     branch: S.String,
     branch_id: S.String,
     branch_deleted: S.Boolean,
-    branch_deleted_by: S.optional(
-      S.NullOr(DatabaseDeployRequestBranchDeletedBy),
-    ),
-    branch_deleted_at: S.NullOr(S.String),
+    branch_deleted_by: DatabaseDeployRequestBranchDeletedBy,
+    branch_deleted_at: S.String,
     into_branch: S.String,
     into_branch_sharded: S.Boolean,
     into_branch_shard_count: S.Number,
-    into_branch_keyspace_count: S.Number,
     approved: S.Boolean,
     state: DatabaseDeployRequestState,
     deployment_state: DatabaseDeployRequestDeploymentState,
@@ -1172,8 +1150,8 @@ export const DatabaseDeployRequest = /*@__PURE__*/ S.suspend(() =>
     html_body: S.String,
     created_at: S.String,
     updated_at: S.String,
-    closed_at: S.NullOr(S.String),
-    deployed_at: S.NullOr(S.String),
+    closed_at: S.String,
+    deployed_at: S.String,
   }),
 ).annotate({
   identifier: "DatabaseDeployRequest",
@@ -1537,9 +1515,9 @@ export interface BackupBackupPolicy {
   /** The time of day that the backup is scheduled, in HH:MM format */
   schedule_time: string | null;
   /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
-  schedule_day: number | null;
+  schedule_day: number;
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
-  schedule_week: number | null;
+  schedule_week: number;
   /** When the backup policy was created */
   created_at: string;
   /** When the backup policy was last updated */
@@ -1562,8 +1540,8 @@ export const BackupBackupPolicy = /*@__PURE__*/ S.suspend(() =>
     frequency_value: S.Number,
     frequency_unit: S.String,
     schedule_time: S.NullOr(S.String),
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
+    schedule_day: S.Number,
+    schedule_week: S.Number,
     created_at: S.String,
     updated_at: S.String,
     last_ran_at: S.NullOr(S.String),
@@ -1650,17 +1628,15 @@ export interface Backup {
   deleted_at: string | null;
   /** Size of the PVC used for the backup */
   pvc_size: number;
-  /** The uncompressed (logical) size of the backup in bytes */
-  uncompressed_size: number;
   /** Whether or not the backup is protected from deletion */
   protected: boolean;
   /** Whether or not the backup policy is required */
   required: boolean;
   restored_branches: BackupRestoredBranchesList;
-  actor: BackupActor | null;
-  backup_policy?: BackupBackupPolicy | null;
-  schema_snapshot?: BackupSchemaSnapshot | null;
-  database_branch?: BackupDatabaseBranch | null;
+  actor: BackupActor;
+  backup_policy: BackupBackupPolicy | null;
+  schema_snapshot: BackupSchemaSnapshot;
+  database_branch: BackupDatabaseBranch;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1676,14 +1652,13 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
     completed_at: S.NullOr(S.String),
     deleted_at: S.NullOr(S.String),
     pvc_size: S.Number,
-    uncompressed_size: S.Number,
     protected: S.Boolean,
     required: S.Boolean,
     restored_branches: BackupRestoredBranchesList,
-    actor: S.NullOr(BackupActor),
-    backup_policy: S.optional(S.NullOr(BackupBackupPolicy)),
-    schema_snapshot: S.optional(S.NullOr(BackupSchemaSnapshot)),
-    database_branch: S.optional(S.NullOr(BackupDatabaseBranch)),
+    actor: BackupActor,
+    backup_policy: S.NullOr(BackupBackupPolicy),
+    schema_snapshot: BackupSchemaSnapshot,
+    database_branch: BackupDatabaseBranch,
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
@@ -1780,17 +1755,17 @@ export interface BackupPolicy {
   /** The time of day that the backup is scheduled, in HH:MM format */
   schedule_time: string;
   /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
-  schedule_day: number | null;
+  schedule_day: number;
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
-  schedule_week: number | null;
+  schedule_week: number;
   /** When the backup policy was created */
   created_at: string;
   /** When the backup policy was last updated */
   updated_at: string;
   /** When the backup was last run */
-  last_ran_at: string | null;
+  last_ran_at: string;
   /** When the backup will next run */
-  next_run_at: string | null;
+  next_run_at: string;
   /** Whether the policy is a required system backup */
   required: boolean;
 }
@@ -1805,12 +1780,12 @@ export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
     frequency_value: S.Number,
     frequency_unit: S.String,
     schedule_time: S.String,
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
+    schedule_day: S.Number,
+    schedule_week: S.Number,
     created_at: S.String,
     updated_at: S.String,
-    last_ran_at: S.NullOr(S.String),
-    next_run_at: S.NullOr(S.String),
+    last_ran_at: S.String,
+    next_run_at: S.String,
     required: S.Boolean,
   }),
 ).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
@@ -1910,7 +1885,7 @@ export interface PostgresBouncerBranch {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PostgresBouncerBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1918,7 +1893,7 @@ export const PostgresBouncerBranch = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "PostgresBouncerBranch",
@@ -2042,8 +2017,6 @@ export interface PostgresBouncer {
   /** The name of the bouncer */
   name: string;
   sku: PostgresBouncerSku;
-  /** The size of the bouncer as a SKU name (e.g., 'PGB_5') */
-  bouncer_size: string;
   /** The instance type the bouncer targets */
   target: PostgresBouncerTarget;
   /** The count of replicas in each cell */
@@ -2053,7 +2026,7 @@ export interface PostgresBouncer {
   /** When the bouncer was updated */
   updated_at: string;
   /** When the bouncer was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   actor: PostgresBouncerActor;
   branch: PostgresBouncerBranch;
   parameters: PostgresBouncerParametersList;
@@ -2063,12 +2036,11 @@ export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     sku: PostgresBouncerSku,
-    bouncer_size: S.String,
     target: PostgresBouncerTarget,
     replicas_per_cell: S.Number,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
     actor: PostgresBouncerActor,
     branch: PostgresBouncerBranch,
     parameters: PostgresBouncerParametersList,
@@ -2080,13 +2052,6 @@ export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
 /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
 export type CreateBranchRequestSeedData = "last_successful_backup";
 export const CreateBranchRequestSeedData = /*@__PURE__*/ S.String;
-
-/** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
-export type CreateBranchRequestKeyspaceClusterSizesList = Array<string>;
-export const CreateBranchRequestKeyspaceClusterSizesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateBranchRequestKeyspaceClusterSizesList>;
 
 export interface CreateBranchRequestStorage {
   /** The minimum storage size in bytes. */
@@ -2102,10 +2067,6 @@ export const CreateBranchRequestStorage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBranchRequestStorage",
 }) as any as S.Schema<CreateBranchRequestStorage>;
-
-/** The kind of branch to create. Required when create_database_if_missing is set. */
-export type CreateBranchRequestKind = "mysql" | "postgresql";
-export const CreateBranchRequestKind = /*@__PURE__*/ S.String;
 
 export interface CreateBranchRequest {
   /** The name of the organization the branch belongs to */
@@ -2124,17 +2085,11 @@ export interface CreateBranchRequest {
   restore_point?: string;
   /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
   seed_data?: CreateBranchRequestSeedData | (string & {});
-  /** The database cluster size. Required if a backup_id is provided (unless keyspace_cluster_sizes covers every keyspace), optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800 */
+  /** The database cluster size. Required if a backup_id is provided, optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800 */
   cluster_size?: string;
-  /** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
-  keyspace_cluster_sizes?: CreateBranchRequestKeyspaceClusterSizesList;
   storage?: CreateBranchRequestStorage;
   /** For PostgreSQL databases, the PostgreSQL major version to use for the branch. Defaults to the major version of the parent branch if it exists or the database's default branch major version. Ignored for branches restored from backups. */
   major_version?: string;
-  /** Create a new database for the branch if the database does not exist. Defaults to false. */
-  create_database_if_missing?: boolean;
-  /** The kind of branch to create. Required when create_database_if_missing is set. */
-  kind?: CreateBranchRequestKind | (string & {});
 }
 export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2147,13 +2102,8 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
     restore_point: S.optional(S.String),
     seed_data: S.optional(CreateBranchRequestSeedData),
     cluster_size: S.optional(S.String),
-    keyspace_cluster_sizes: S.optional(
-      CreateBranchRequestKeyspaceClusterSizesList,
-    ),
     storage: S.optional(CreateBranchRequestStorage),
     major_version: S.optional(S.String),
-    create_database_if_missing: S.optional(S.Boolean),
-    kind: S.optional(CreateBranchRequestKind),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2243,10 +2193,6 @@ export interface DatabaseBranchRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const DatabaseBranchRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2258,8 +2204,6 @@ export const DatabaseBranchRegion = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     slug: S.String,
     current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
   }),
 ).annotate({
   identifier: "DatabaseBranchRegion",
@@ -2288,7 +2232,7 @@ export interface DatabaseBranch {
   /** When a user last marked a backup restore checklist as completed */
   restore_checklist_completed_at: string | null;
   /** When the schema for the branch was last updated */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** The kind of branch */
   kind: DatabaseBranchKind;
   /** The MySQL address for the branch */
@@ -2321,11 +2265,9 @@ export interface DatabaseBranch {
   sharded?: boolean;
   /** The number of shards in the branch */
   shard_count?: number;
-  /** The number of keyspaces in the branch */
-  keyspace_count?: number;
   /** Whether or not the branch has a stale schema */
   stale_schema: boolean;
-  actor: DatabaseBranchActor | null;
+  actor: DatabaseBranchActor;
   restored_from_branch: DatabaseBranchRestoredFromBranch | null;
   /** True if private connections are enabled */
   private_edge_connectivity: boolean;
@@ -2352,7 +2294,7 @@ export const DatabaseBranch = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     deleted_at: S.NullOr(S.String),
     restore_checklist_completed_at: S.NullOr(S.String),
-    schema_last_updated_at: S.NullOr(S.String),
+    schema_last_updated_at: S.String,
     kind: DatabaseBranchKind,
     mysql_address: S.optional(S.String),
     mysql_edge_address: S.optional(S.String),
@@ -2369,9 +2311,8 @@ export const DatabaseBranch = /*@__PURE__*/ S.suspend(() =>
     safe_migrations: S.Boolean,
     sharded: S.optional(S.Boolean),
     shard_count: S.optional(S.Number),
-    keyspace_count: S.optional(S.Number),
     stale_schema: S.Boolean,
-    actor: S.NullOr(DatabaseBranchActor),
+    actor: DatabaseBranchActor,
     restored_from_branch: S.NullOr(DatabaseBranchRestoredFromBranch),
     private_edge_connectivity: S.Boolean,
     has_replicas: S.Boolean,
@@ -2466,17 +2407,17 @@ export interface DatabaseDataImport {
   /** Errors encountered during the import check */
   import_check_errors: string;
   /** When the import started */
-  started_at: string | null;
+  started_at: string;
   /** When the import finished */
-  finished_at: string | null;
+  finished_at: string;
   data_source: DatabaseDataImportDataSource;
 }
 export const DatabaseDataImport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.String,
     import_check_errors: S.String,
-    started_at: S.NullOr(S.String),
-    finished_at: S.NullOr(S.String),
+    started_at: S.String,
+    finished_at: S.String,
     data_source: DatabaseDataImportDataSource,
   }),
 ).annotate({
@@ -2506,10 +2447,6 @@ export interface DatabaseRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const DatabaseRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2521,8 +2458,6 @@ export const DatabaseRegion = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     slug: S.String,
     current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
   }),
 ).annotate({ identifier: "DatabaseRegion" }) as any as S.Schema<DatabaseRegion>;
 
@@ -2557,7 +2492,7 @@ export interface Database {
   /** The total number of database production branches */
   production_branches_count?: number;
   /** The total number of ongoing issues within a database */
-  issues_count?: number | null;
+  issues_count?: number;
   /** If the database requires multiple admins for deletion */
   multiple_admins_required_for_deletion?: boolean;
   /** If the database is ready to be used */
@@ -2598,7 +2533,7 @@ export interface Database {
   allow_data_branching?: boolean;
   /** Whether foreign key constraints are enabled */
   foreign_keys_enabled?: boolean;
-  /** Whether to automatically manage Rails migrations during deploy requests. */
+  /** Whether to automatically manage Rails migrations during deploy requests */
   automatic_migrations?: boolean | null;
   /** Whether to restrict branch creation to one region */
   restrict_branch_region?: boolean;
@@ -2610,16 +2545,16 @@ export interface Database {
   insights_enabled?: boolean;
   /** Whether web console is enabled for production branches */
   production_branch_web_console?: boolean;
-  /** Table name to use for copying schema migration data. */
+  /** Table name to use for copying schema migration data */
   migration_table_name?: string | null;
-  /** Framework used for applying migrations. */
+  /** Framework used for applying migrations */
   migration_framework?: string | null;
   /** When the database was created */
   created_at: string;
   /** When the database was last updated */
   updated_at: string;
   /** When the default branch schema was last changed. */
-  schema_last_updated_at?: string | null;
+  schema_last_updated_at?: string;
   /** The kind of database */
   kind: DatabaseKind;
 }
@@ -2632,7 +2567,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
     open_schema_recommendations_count: S.optional(S.Number),
     development_branches_count: S.optional(S.Number),
     production_branches_count: S.optional(S.Number),
-    issues_count: S.optional(S.NullOr(S.Number)),
+    issues_count: S.optional(S.Number),
     multiple_admins_required_for_deletion: S.optional(S.Boolean),
     ready: S.Boolean,
     at_backup_restore_branches_limit: S.optional(S.Boolean),
@@ -2664,7 +2599,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
     migration_framework: S.optional(S.NullOr(S.String)),
     created_at: S.String,
     updated_at: S.String,
-    schema_last_updated_at: S.optional(S.NullOr(S.String)),
+    schema_last_updated_at: S.optional(S.String),
     kind: DatabaseKind,
   }),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
@@ -2743,7 +2678,7 @@ export interface PostgresClusterCidr {
   /** When the entry was updated */
   updated_at: string;
   /** When the entry was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   actor: PostgresClusterCidrActor;
 }
 export const PostgresClusterCidr = /*@__PURE__*/ S.suspend(() =>
@@ -2754,7 +2689,7 @@ export const PostgresClusterCidr = /*@__PURE__*/ S.suspend(() =>
     cidrs: PostgresClusterCidrCidrsList,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
     actor: PostgresClusterCidrActor,
   }),
 ).annotate({
@@ -2850,15 +2785,13 @@ export const DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy =
 
 export interface DatabaseBranchKeyspaceReplicationDurabilityConstraints {
   /** The replication durability strategy */
-  strategy?: DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy | null;
+  strategy?: DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy;
 }
 export const DatabaseBranchKeyspaceReplicationDurabilityConstraints =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       strategy: S.optional(
-        S.NullOr(
-          DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy,
-        ),
+        DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy,
       ),
     }),
   ).annotate({
@@ -3147,7 +3080,7 @@ export interface ServiceTokenServiceTokenAccessesItemResource {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const ServiceTokenServiceTokenAccessesItemResource =
   /*@__PURE__*/ S.suspend(() =>
@@ -3156,7 +3089,7 @@ export const ServiceTokenServiceTokenAccessesItemResource =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "ServiceTokenServiceTokenAccessesItemResource",
@@ -3497,13 +3430,13 @@ export interface ServiceToken {
   /** When the service token was last used */
   last_used_at?: string | null;
   /** The ID of the actor on whose behalf the service token was created */
-  actor_id: string | null;
+  actor_id: string;
   /** The name of the actor on whose behalf the service token was created */
-  actor_display_name: string | null;
+  actor_display_name: string;
   /** The type of the actor on whose behalf the service token was created */
-  actor_type: string | null;
-  service_token_accesses?: ServiceTokenServiceTokenAccessesList | null;
-  oauth_accesses_by_resource?: ServiceTokenOauthAccessesByResource | null;
+  actor_type: string;
+  service_token_accesses?: ServiceTokenServiceTokenAccessesList;
+  oauth_accesses_by_resource?: ServiceTokenOauthAccessesByResource;
 }
 export const ServiceToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3519,15 +3452,11 @@ export const ServiceToken = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     expires_at: S.optional(S.NullOr(S.String)),
     last_used_at: S.optional(S.NullOr(S.String)),
-    actor_id: S.NullOr(S.String),
-    actor_display_name: S.NullOr(S.String),
-    actor_type: S.NullOr(S.String),
-    service_token_accesses: S.optional(
-      S.NullOr(ServiceTokenServiceTokenAccessesList),
-    ),
-    oauth_accesses_by_resource: S.optional(
-      S.NullOr(ServiceTokenOauthAccessesByResource),
-    ),
+    actor_id: S.String,
+    actor_display_name: S.String,
+    actor_type: S.String,
+    service_token_accesses: S.optional(ServiceTokenServiceTokenAccessesList),
+    oauth_accesses_by_resource: S.optional(ServiceTokenOauthAccessesByResource),
   }),
 ).annotate({ identifier: "ServiceToken" }) as any as S.Schema<ServiceToken>;
 
@@ -3583,7 +3512,7 @@ export interface OrganizationTeamMembersItemDefaultOrganization {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const OrganizationTeamMembersItemDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -3592,7 +3521,7 @@ export const OrganizationTeamMembersItemDefaultOrganization =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "OrganizationTeamMembersItemDefaultOrganization",
@@ -3615,15 +3544,15 @@ export interface OrganizationTeamMembersItem {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: OrganizationTeamMembersItemDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization: OrganizationTeamMembersItemDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified: boolean;
 }
 export const OrganizationTeamMembersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3635,13 +3564,11 @@ export const OrganizationTeamMembersItem = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
-    default_organization: S.optional(
-      S.NullOr(OrganizationTeamMembersItemDefaultOrganization),
-    ),
-    sso: S.optional(S.NullOr(S.Boolean)),
-    managed: S.optional(S.NullOr(S.Boolean)),
-    directory_managed: S.optional(S.NullOr(S.Boolean)),
-    email_verified: S.optional(S.NullOr(S.Boolean)),
+    default_organization: OrganizationTeamMembersItemDefaultOrganization,
+    sso: S.Boolean,
+    managed: S.Boolean,
+    directory_managed: S.Boolean,
+    email_verified: S.Boolean,
   }),
 ).annotate({
   identifier: "OrganizationTeamMembersItem",
@@ -3679,34 +3606,6 @@ export const OrganizationTeamDatabasesList = /*@__PURE__*/ S.Array(
   OrganizationTeamDatabasesItem,
 ) as any as S.Schema<OrganizationTeamDatabasesList>;
 
-export interface OrganizationTeamAnalystDatabasesItem {
-  /** The ID of the database */
-  id: string;
-  /** The name of the database */
-  name: string;
-  /** The URL to the database API endpoint */
-  url: string;
-  /** The URL to retrieve this database's branches via the API */
-  branches_url: string;
-}
-export const OrganizationTeamAnalystDatabasesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      url: S.String,
-      branches_url: S.String,
-    }),
-).annotate({
-  identifier: "OrganizationTeamAnalystDatabasesItem",
-}) as any as S.Schema<OrganizationTeamAnalystDatabasesItem>;
-
-export type OrganizationTeamAnalystDatabasesList =
-  Array<OrganizationTeamAnalystDatabasesItem>;
-export const OrganizationTeamAnalystDatabasesList = /*@__PURE__*/ S.Array(
-  OrganizationTeamAnalystDatabasesItem,
-) as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
-
 export interface OrganizationTeam {
   /** The ID of the team */
   id: string;
@@ -3715,7 +3614,6 @@ export interface OrganizationTeam {
   creator: OrganizationTeamCreator;
   members: OrganizationTeamMembersList;
   databases: OrganizationTeamDatabasesList;
-  analyst_databases: OrganizationTeamAnalystDatabasesList;
   /** The name of the team */
   name: string;
   /** The slug of the team */
@@ -3725,7 +3623,7 @@ export interface OrganizationTeam {
   /** When the team was last updated */
   updated_at: string;
   /** The description of the team */
-  description: string | null;
+  description: string;
   /** Whether the team is managed through SSO/directory services */
   managed: boolean;
 }
@@ -3736,12 +3634,11 @@ export const OrganizationTeam = /*@__PURE__*/ S.suspend(() =>
     creator: OrganizationTeamCreator,
     members: OrganizationTeamMembersList,
     databases: OrganizationTeamDatabasesList,
-    analyst_databases: OrganizationTeamAnalystDatabasesList,
     name: S.String,
     slug: S.String,
     created_at: S.String,
     updated_at: S.String,
-    description: S.NullOr(S.String),
+    description: S.String,
     managed: S.Boolean,
   }),
 ).annotate({
@@ -3878,10 +3775,6 @@ export interface DatabaseBranchPasswordWithSecretRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const DatabaseBranchPasswordWithSecretRegion = /*@__PURE__*/ S.suspend(
   () =>
@@ -3895,8 +3788,6 @@ export const DatabaseBranchPasswordWithSecretRegion = /*@__PURE__*/ S.suspend(
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
 ).annotate({
   identifier: "DatabaseBranchPasswordWithSecretRegion",
@@ -3935,15 +3826,15 @@ export interface DatabaseBranchPasswordWithSecret {
   /** The role for the password */
   role: DatabaseBranchPasswordWithSecretRole;
   /** List of IP addresses or CIDR ranges that can use this password */
-  cidrs: DatabaseBranchPasswordWithSecretCidrsList | null;
+  cidrs: DatabaseBranchPasswordWithSecretCidrsList;
   /** When the password was created */
   created_at: string;
   /** When the password was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   /** When the password will expire */
-  expires_at: string | null;
+  expires_at: string;
   /** When the password was last used to execute a query */
-  last_used_at: string | null;
+  last_used_at: string;
   /** True if the credentials are expired */
   expired: boolean;
   /** True if the credentials connect directly to a vtgate, bypassing load balancers */
@@ -3951,18 +3842,18 @@ export interface DatabaseBranchPasswordWithSecret {
   /** The list of hosts in each availability zone providing direct access to a vtgate */
   direct_vtgate_addresses: DatabaseBranchPasswordWithSecretDirectVtgateAddressesList;
   /** Time to live (in seconds) for the password. The password will be invalid when TTL has passed */
-  ttl_seconds: number | null;
+  ttl_seconds: number;
   /** The host URL for the password */
   access_host_url: string;
   /** The regional host URL */
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList;
-  actor: DatabaseBranchPasswordWithSecretActor | null;
+  actor: DatabaseBranchPasswordWithSecretActor;
   region: DatabaseBranchPasswordWithSecretRegion;
   /** The username for the password */
   username: string;
-  /** The plaintext password. Null except in the response from the create endpoint. */
+  /** The plain text password, available only after create */
   plain_text: Redacted.Redacted<string>;
   /** Whether or not the password is for a read replica */
   replica: boolean;
@@ -3975,21 +3866,21 @@ export const DatabaseBranchPasswordWithSecret = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     role: DatabaseBranchPasswordWithSecretRole,
-    cidrs: S.NullOr(DatabaseBranchPasswordWithSecretCidrsList),
+    cidrs: DatabaseBranchPasswordWithSecretCidrsList,
     created_at: S.String,
-    deleted_at: S.NullOr(S.String),
-    expires_at: S.NullOr(S.String),
-    last_used_at: S.NullOr(S.String),
+    deleted_at: S.String,
+    expires_at: S.String,
+    last_used_at: S.String,
     expired: S.Boolean,
     direct_vtgate: S.Boolean,
     direct_vtgate_addresses:
       DatabaseBranchPasswordWithSecretDirectVtgateAddressesList,
-    ttl_seconds: S.NullOr(S.Number),
+    ttl_seconds: S.Number,
     access_host_url: S.String,
     access_host_regional_url: S.String,
     access_host_regional_urls:
       DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList,
-    actor: S.NullOr(DatabaseBranchPasswordWithSecretActor),
+    actor: DatabaseBranchPasswordWithSecretActor,
     region: DatabaseBranchPasswordWithSecretRegion,
     username: S.String,
     plain_text: S.String.pipe(T.SensitiveValue({})),
@@ -4055,7 +3946,7 @@ export interface QueryPatternsDownload {
   /** When the download was created */
   created_at: string;
   /** When the download was finished */
-  finished_at: string | null;
+  finished_at: string;
   /** The URL to access the query patterns download */
   url: string;
   /** The URL to download the query patterns file */
@@ -4067,7 +3958,7 @@ export const QueryPatternsDownload = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     state: QueryPatternsDownloadState,
     created_at: S.String,
-    finished_at: S.NullOr(S.String),
+    finished_at: S.String,
     url: S.String,
     download_url: S.String,
     actor: QueryPatternsDownloadActor,
@@ -4113,8 +4004,6 @@ export interface CreateRoleRequest {
   ttl?: number;
   /** Roles to inherit from */
   inherited_roles?: CreateRoleRequestInheritedRolesList;
-  /** Whether the role should have the REPLICATION attribute */
-  with_replication?: boolean;
   /** Require WHERE clause on DELETE statements */
   require_where_on_delete?: string;
   /** Require WHERE clause on UPDATE statements */
@@ -4128,7 +4017,6 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     ttl: S.optional(S.Number),
     inherited_roles: S.optional(CreateRoleRequestInheritedRolesList),
-    with_replication: S.optional(S.Boolean),
     require_where_on_delete: S.optional(S.String),
     require_where_on_update: S.optional(S.String),
   }).pipe(
@@ -4253,9 +4141,7 @@ export interface PostgresRole {
   private_connection_service_name: string;
   /** The database user name */
   username: string;
-  /** The base username without branch routing suffix */
-  base_username: string;
-  /** The plaintext password, available only after create */
+  /** The plain text password, available only after create */
   password: Redacted.Redacted<string> | null;
   /** The database name */
   database_name: string;
@@ -4281,8 +4167,6 @@ export interface PostgresRole {
   ttl: number | null;
   /** Database roles these credentials inherit */
   inherited_roles: PostgresRoleInheritedRolesList;
-  /** Whether the role has the REPLICATION attribute */
-  with_replication: boolean;
   branch: PostgresRoleBranch;
   actor: PostgresRoleActor;
   query_safety_settings: PostgresRoleQuerySafetySettings;
@@ -4295,7 +4179,6 @@ export const PostgresRole = /*@__PURE__*/ S.suspend(() =>
     private_access_host_url: S.String,
     private_connection_service_name: S.String,
     username: S.String,
-    base_username: S.String,
     password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
     database_name: S.String,
     created_at: S.String,
@@ -4309,7 +4192,6 @@ export const PostgresRole = /*@__PURE__*/ S.suspend(() =>
     default: S.Boolean,
     ttl: S.NullOr(S.Number),
     inherited_roles: PostgresRoleInheritedRolesList,
-    with_replication: S.Boolean,
     branch: PostgresRoleBranch,
     actor: PostgresRoleActor,
     query_safety_settings: PostgresRoleQuerySafetySettings,
@@ -4421,7 +4303,7 @@ export const TrafficBudgetActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficBudgetActor>;
 
 /** The kind of rule */
-export type TrafficBudgetRulesItemKind = "match" | "each";
+export type TrafficBudgetRulesItemKind = "match";
 export const TrafficBudgetRulesItemKind = /*@__PURE__*/ S.String;
 
 /** The source of this tag */
@@ -4480,9 +4362,9 @@ export interface TrafficBudgetRulesItem {
   kind: TrafficBudgetRulesItemKind;
   tags: TrafficBudgetRulesItemTagsList;
   /** The query fingerprint targeted by this rule */
-  fingerprint?: string | null;
+  fingerprint?: string;
   /** The keyspace of the fingerprint */
-  keyspace?: string | null;
+  keyspace?: string;
   actor: TrafficBudgetRulesItemActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
@@ -4496,8 +4378,8 @@ export const TrafficBudgetRulesItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     kind: TrafficBudgetRulesItemKind,
     tags: TrafficBudgetRulesItemTagsList,
-    fingerprint: S.optional(S.NullOr(S.String)),
-    keyspace: S.optional(S.NullOr(S.String)),
+    fingerprint: S.optional(S.String),
+    keyspace: S.optional(S.String),
     actor: TrafficBudgetRulesItemActor,
     syntax_highlighted_sql: S.String,
     created_at: S.String,
@@ -4520,15 +4402,15 @@ export interface TrafficBudget {
   /** The mode of the budget */
   mode: TrafficBudgetMode;
   /** The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
-  capacity?: number | null;
+  capacity?: number;
   /** The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set. */
-  rate?: number | null;
+  rate?: number;
   /** The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
-  burst?: number | null;
+  burst?: number;
   /** The percentage of available worker processes this policy can use (0-100). Unlimited when not set. */
-  concurrency?: number | null;
+  concurrency?: number;
   /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
-  warning_threshold?: number | null;
+  warning_threshold?: number;
   actor: TrafficBudgetActor;
   rules: TrafficBudgetRulesList;
   /** When the budget was created */
@@ -4541,11 +4423,11 @@ export const TrafficBudget = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     mode: TrafficBudgetMode,
-    capacity: S.optional(S.NullOr(S.Number)),
-    rate: S.optional(S.NullOr(S.Number)),
-    burst: S.optional(S.NullOr(S.Number)),
-    concurrency: S.optional(S.NullOr(S.Number)),
-    warning_threshold: S.optional(S.NullOr(S.Number)),
+    capacity: S.optional(S.Number),
+    rate: S.optional(S.Number),
+    burst: S.optional(S.Number),
+    concurrency: S.optional(S.Number),
+    warning_threshold: S.optional(S.Number),
     actor: TrafficBudgetActor,
     rules: TrafficBudgetRulesList,
     created_at: S.String,
@@ -4554,10 +4436,10 @@ export const TrafficBudget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficBudget" }) as any as S.Schema<TrafficBudget>;
 
 /** Kind of rule */
-export type CreateTrafficRuleRequestKind = "match" | "each";
+export type CreateTrafficRuleRequestKind = "match";
 export const CreateTrafficRuleRequestKind = /*@__PURE__*/ S.String;
 
-/** Optional array of tags for this rule. Each rules take exactly one tag. */
+/** Optional array of tags for this rule */
 export type CreateTrafficRuleRequestTagsList = Array<string>;
 export const CreateTrafficRuleRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -4578,7 +4460,7 @@ export interface CreateTrafficRuleRequest {
   keyspace?: string;
   /** Query pattern fingerprint to apply rule to */
   fingerprint?: string;
-  /** Optional array of tags for this rule. Each rules take exactly one tag. */
+  /** Optional array of tags for this rule */
   tags?: CreateTrafficRuleRequestTagsList;
 }
 export const CreateTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4603,7 +4485,7 @@ export const CreateTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTrafficRuleRequest>;
 
 /** The kind of rule */
-export type TrafficRuleKind = "match" | "each";
+export type TrafficRuleKind = "match";
 export const TrafficRuleKind = /*@__PURE__*/ S.String;
 
 /** The source of this tag */
@@ -4661,9 +4543,9 @@ export interface TrafficRule {
   kind: TrafficRuleKind;
   tags: TrafficRuleTagsList;
   /** The query fingerprint targeted by this rule */
-  fingerprint?: string | null;
+  fingerprint?: string;
   /** The keyspace of the fingerprint */
-  keyspace?: string | null;
+  keyspace?: string;
   actor: TrafficRuleActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
@@ -4677,8 +4559,8 @@ export const TrafficRule = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     kind: TrafficRuleKind,
     tags: TrafficRuleTagsList,
-    fingerprint: S.optional(S.NullOr(S.String)),
-    keyspace: S.optional(S.NullOr(S.String)),
+    fingerprint: S.optional(S.String),
+    keyspace: S.optional(S.String),
     actor: TrafficRuleActor,
     syntax_highlighted_sql: S.String,
     created_at: S.String,
@@ -5064,7 +4946,7 @@ export interface WorkflowBranch {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const WorkflowBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5072,7 +4954,7 @@ export const WorkflowBranch = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({ identifier: "WorkflowBranch" }) as any as S.Schema<WorkflowBranch>;
 
@@ -5086,7 +4968,7 @@ export interface WorkflowSourceKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const WorkflowSourceKeyspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5094,7 +4976,7 @@ export const WorkflowSourceKeyspace = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "WorkflowSourceKeyspace",
@@ -5110,7 +4992,7 @@ export interface WorkflowTargetKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const WorkflowTargetKeyspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5118,7 +5000,7 @@ export const WorkflowTargetKeyspace = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "WorkflowTargetKeyspace",
@@ -5134,7 +5016,7 @@ export interface WorkflowGlobalKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const WorkflowGlobalKeyspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5142,7 +5024,7 @@ export const WorkflowGlobalKeyspace = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "WorkflowGlobalKeyspace",
@@ -5162,29 +5044,29 @@ export interface Workflow {
   /** When the workflow was last updated */
   updated_at: string;
   /** When the workflow was started */
-  started_at: string | null;
+  started_at: string;
   /** When the workflow was completed */
-  completed_at: string | null;
+  completed_at: string;
   /** When the workflow was cancelled */
-  cancelled_at: string | null;
+  cancelled_at: string;
   /** When the workflow was reversed */
-  reversed_at: string | null;
+  reversed_at: string;
   /** When the workflow was retried */
-  retried_at: string | null;
+  retried_at: string;
   /** When the data copy was completed */
-  data_copy_completed_at: string | null;
+  data_copy_completed_at: string;
   /** When the cutover was completed */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the replicas have been switched */
   replicas_switched: boolean;
   /** Whether or not the primaries have been switched */
   primaries_switched: boolean;
   /** When the replicas were switched */
-  switch_replicas_at: string | null;
+  switch_replicas_at: string;
   /** When the primaries were switched */
-  switch_primaries_at: string | null;
+  switch_primaries_at: string;
   /** When the data was verified */
-  verify_data_at: string | null;
+  verify_data_at: string;
   /** The type of the workflow */
   workflow_type: WorkflowWorkflowType;
   /** The subtype of the workflow */
@@ -5226,18 +5108,18 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
     state: WorkflowState,
     created_at: S.String,
     updated_at: S.String,
-    started_at: S.NullOr(S.String),
-    completed_at: S.NullOr(S.String),
-    cancelled_at: S.NullOr(S.String),
-    reversed_at: S.NullOr(S.String),
-    retried_at: S.NullOr(S.String),
-    data_copy_completed_at: S.NullOr(S.String),
-    cutover_at: S.NullOr(S.String),
+    started_at: S.String,
+    completed_at: S.String,
+    cancelled_at: S.String,
+    reversed_at: S.String,
+    retried_at: S.String,
+    data_copy_completed_at: S.String,
+    cutover_at: S.String,
     replicas_switched: S.Boolean,
     primaries_switched: S.Boolean,
-    switch_replicas_at: S.NullOr(S.String),
-    switch_primaries_at: S.NullOr(S.String),
-    verify_data_at: S.NullOr(S.String),
+    switch_replicas_at: S.String,
+    switch_primaries_at: S.String,
+    verify_data_at: S.String,
     workflow_type: WorkflowWorkflowType,
     workflow_subtype: S.String,
     defer_secondary_keys: S.Boolean,
@@ -5941,11 +5823,11 @@ export interface SchemaRecommendation {
   /** When the recommendation was last updated */
   updated_at: string;
   /** When the recommendation was applied */
-  applied_at: string | null;
+  applied_at: string;
   /** When the recommendation was dismissed */
-  dismissed_at: string | null;
-  closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest | null;
-  dismissed_by: SchemaRecommendationDismissedBy | null;
+  dismissed_at: string;
+  closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest;
+  dismissed_by: SchemaRecommendationDismissedBy;
 }
 export const SchemaRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5960,12 +5842,10 @@ export const SchemaRecommendation = /*@__PURE__*/ S.suspend(() =>
     recommendation_type: SchemaRecommendationRecommendationType,
     created_at: S.String,
     updated_at: S.String,
-    applied_at: S.NullOr(S.String),
-    dismissed_at: S.NullOr(S.String),
-    closed_by_deploy_request: S.NullOr(
-      SchemaRecommendationClosedByDeployRequest,
-    ),
-    dismissed_by: S.NullOr(SchemaRecommendationDismissedBy),
+    applied_at: S.String,
+    dismissed_at: S.String,
+    closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest,
+    dismissed_by: SchemaRecommendationDismissedBy,
   }),
 ).annotate({
   identifier: "SchemaRecommendation",
@@ -5994,30 +5874,6 @@ export const EnableSafeMigrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnableSafeMigrationsRequest",
 }) as any as S.Schema<EnableSafeMigrationsRequest>;
-
-export interface ForceCutoverDeployRequestRequest {
-  /** The name of the deploy request's organization */
-  organization: string;
-  /** The name of the deploy request's database */
-  database: string;
-  /** The number of the deploy request */
-  number: number;
-}
-export const ForceCutoverDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/force-cutover",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ForceCutoverDeployRequestRequest",
-}) as any as S.Schema<ForceCutoverDeployRequestRequest>;
 
 export interface GetBackupRequest {
   /** The name of the organization the branch belongs to */
@@ -6121,108 +5977,6 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBranchRequest",
 }) as any as S.Schema<GetBranchRequest>;
 
-export interface GetBranchAnomalyRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The anomaly ID */
-  id: string;
-}
-export const GetBranchAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/anomalies/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetBranchAnomalyRequest",
-}) as any as S.Schema<GetBranchAnomalyRequest>;
-
-/** The tablet type the query ran against */
-export type AnomalyCorrelationsItemTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const AnomalyCorrelationsItemTabletType = /*@__PURE__*/ S.String;
-
-export interface AnomalyCorrelationsItem {
-  /** The ID of the correlation */
-  id: string;
-  /** The correlation coefficient between the query and the anomaly */
-  r: number;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** The tablet type the query ran against */
-  tablet_type: AnomalyCorrelationsItemTabletType;
-}
-export const AnomalyCorrelationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    r: S.Number,
-    keyspace: S.String,
-    fingerprint: S.String,
-    normalized_sql: S.String,
-    syntax_highlighted_sql: S.String,
-    tablet_type: AnomalyCorrelationsItemTabletType,
-  }),
-).annotate({
-  identifier: "AnomalyCorrelationsItem",
-}) as any as S.Schema<AnomalyCorrelationsItem>;
-
-export type AnomalyCorrelationsList = Array<AnomalyCorrelationsItem>;
-export const AnomalyCorrelationsList = /*@__PURE__*/ S.Array(
-  AnomalyCorrelationsItem,
-) as any as S.Schema<AnomalyCorrelationsList>;
-
-export interface Anomaly {
-  /** The ID of the anomaly */
-  id: string;
-  /** When the anomaly started */
-  period_start: string;
-  /** When the anomaly ended */
-  period_end: string;
-  /** The number of minutes query latency was in violation of the expected baseline */
-  minutes_in_violation: number;
-  /** Whether the anomaly is ongoing */
-  active: boolean;
-  /** The duration of the anomaly in seconds */
-  duration: number;
-  /** Start of the metrics window surrounding the anomaly */
-  metrics_start: string;
-  /** End of the metrics window surrounding the anomaly */
-  metrics_end: string;
-  correlations?: AnomalyCorrelationsList | null;
-}
-export const Anomaly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    period_start: S.String,
-    period_end: S.String,
-    minutes_in_violation: S.Number,
-    active: S.Boolean,
-    duration: S.Number,
-    metrics_start: S.String,
-    metrics_end: S.String,
-    correlations: S.optional(S.NullOr(AnomalyCorrelationsList)),
-  }),
-).annotate({ identifier: "Anomaly" }) as any as S.Schema<Anomaly>;
-
 export interface GetBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6249,6 +6003,12 @@ export const GetBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBranchChangeRequestRequest",
 }) as any as S.Schema<GetBranchChangeRequestRequest>;
+
+/** The ports requiring a restart when changes are applied */
+export type PostgresClusterResizeRequestRestartList = Array<number>;
+export const PostgresClusterResizeRequestRestartList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<PostgresClusterResizeRequestRestartList>;
 
 /** The state of the branch change request */
 export type PostgresClusterResizeRequestState =
@@ -6303,10 +6063,12 @@ export const PostgresClusterResizeRequestStorageType = /*@__PURE__*/ S.String;
 export interface PostgresClusterResizeRequest {
   /** The ID of the branch change request */
   id: string;
+  /** The ports requiring a restart when changes are applied */
+  restart?: PostgresClusterResizeRequestRestartList;
   /** The state of the branch change request */
   state: PostgresClusterResizeRequestState;
   /** The time the branch change request started */
-  started_at: string | null;
+  started_at: string;
   /** The time the branch change request completed */
   completed_at?: string | null;
   /** The time the branch change request was created */
@@ -6366,8 +6128,9 @@ export interface PostgresClusterResizeRequest {
 export const PostgresClusterResizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
+    restart: S.optional(PostgresClusterResizeRequestRestartList),
     state: PostgresClusterResizeRequestState,
-    started_at: S.NullOr(S.String),
+    started_at: S.String,
     completed_at: S.optional(S.NullOr(S.String)),
     created_at: S.String,
     updated_at: S.String,
@@ -6400,419 +6163,6 @@ export const PostgresClusterResizeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostgresClusterResizeRequest",
 }) as any as S.Schema<PostgresClusterResizeRequest>;
-
-export interface GetBranchQueryRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The query ID */
-  id: string;
-}
-export const GetBranchQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/queries/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetBranchQueryRequest",
-}) as any as S.Schema<GetBranchQueryRequest>;
-
-/** The database password used for the query */
-export type QueryPasswordMap = { [key: string]: unknown | undefined };
-export const QueryPasswordMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryPasswordMap>;
-
-export type QueryTagsItemMap = { [key: string]: unknown | undefined };
-export const QueryTagsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QueryTagsItemMap>;
-
-/** Tags associated with the query */
-export type QueryTagsList = Array<QueryTagsItemMap>;
-export const QueryTagsList = /*@__PURE__*/ S.Array(
-  QueryTagsItemMap,
-) as any as S.Schema<QueryTagsList>;
-
-/** Tables accessed by the query */
-export type QueryTablesList = Array<string>;
-export const QueryTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QueryTablesList>;
-
-export interface Query {
-  /** The ID of the query */
-  id: string;
-  /** The database password used for the query */
-  password: QueryPasswordMap;
-  /** Tags associated with the query */
-  tags: QueryTagsList;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** When the query started */
-  started_at: string | null;
-  /** The type of SQL statement */
-  statement_type: string;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** Tables accessed by the query */
-  tables: QueryTablesList;
-  /** The username that executed the query */
-  username: string;
-  /** The remote IP address of the client */
-  remote_address: string;
-  /** The number of shard queries executed */
-  shard_queries: number;
-  /** The number of rows read */
-  rows_read: number;
-  /** The number of rows affected */
-  rows_affected: number;
-  /** The number of rows returned */
-  rows_returned: number;
-  /** Total query duration in milliseconds */
-  total_duration_millis: number;
-  /** Error message if the query failed */
-  error_message: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** When the query record was created */
-  created_at: string;
-  /** When the query record was last updated */
-  updated_at: string;
-  /** Whether the query can be explained */
-  explainable: boolean;
-  /** Whether the query was truncated */
-  truncated: boolean;
-}
-export const Query = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    password: QueryPasswordMap,
-    tags: QueryTagsList,
-    fingerprint: S.String,
-    started_at: S.NullOr(S.String),
-    statement_type: S.String,
-    keyspace: S.String,
-    tables: QueryTablesList,
-    username: S.String,
-    remote_address: S.String,
-    shard_queries: S.Number,
-    rows_read: S.Number,
-    rows_affected: S.Number,
-    rows_returned: S.Number,
-    total_duration_millis: S.Number,
-    error_message: S.String,
-    normalized_sql: S.String,
-    syntax_highlighted_sql: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    explainable: S.Boolean,
-    truncated: S.Boolean,
-  }),
-).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
-
-export interface GetBranchQueryErrorRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The error fingerprint */
-  fingerprint: string;
-  /** Start time for filtering queries (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering queries (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering queries (e.g., '1h', '24h') */
-  period?: string;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const GetBranchQueryErrorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    fingerprint: S.String.pipe(T.Label()),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/errors/{fingerprint}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetBranchQueryErrorRequest",
-}) as any as S.Schema<GetBranchQueryErrorRequest>;
-
-/** The database password used for the query */
-export type PaginatedQueryDataItemPasswordMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedQueryDataItemPasswordMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQueryDataItemPasswordMap>;
-
-export type PaginatedQueryDataItemTagsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedQueryDataItemTagsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PaginatedQueryDataItemTagsItemMap>;
-
-/** Tags associated with the query */
-export type PaginatedQueryDataItemTagsList =
-  Array<PaginatedQueryDataItemTagsItemMap>;
-export const PaginatedQueryDataItemTagsList = /*@__PURE__*/ S.Array(
-  PaginatedQueryDataItemTagsItemMap,
-) as any as S.Schema<PaginatedQueryDataItemTagsList>;
-
-/** Tables accessed by the query */
-export type PaginatedQueryDataItemTablesList = Array<string>;
-export const PaginatedQueryDataItemTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQueryDataItemTablesList>;
-
-export interface PaginatedQueryDataItem {
-  /** The ID of the query */
-  id: string;
-  /** The database password used for the query */
-  password: PaginatedQueryDataItemPasswordMap;
-  /** Tags associated with the query */
-  tags: PaginatedQueryDataItemTagsList;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** When the query started */
-  started_at: string | null;
-  /** The type of SQL statement */
-  statement_type: string;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** Tables accessed by the query */
-  tables: PaginatedQueryDataItemTablesList;
-  /** The username that executed the query */
-  username: string;
-  /** The remote IP address of the client */
-  remote_address: string;
-  /** The number of shard queries executed */
-  shard_queries: number;
-  /** The number of rows read */
-  rows_read: number;
-  /** The number of rows affected */
-  rows_affected: number;
-  /** The number of rows returned */
-  rows_returned: number;
-  /** Total query duration in milliseconds */
-  total_duration_millis: number;
-  /** Error message if the query failed */
-  error_message: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** When the query record was created */
-  created_at: string;
-  /** When the query record was last updated */
-  updated_at: string;
-  /** Whether the query can be explained */
-  explainable: boolean;
-  /** Whether the query was truncated */
-  truncated: boolean;
-}
-export const PaginatedQueryDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    password: PaginatedQueryDataItemPasswordMap,
-    tags: PaginatedQueryDataItemTagsList,
-    fingerprint: S.String,
-    started_at: S.NullOr(S.String),
-    statement_type: S.String,
-    keyspace: S.String,
-    tables: PaginatedQueryDataItemTablesList,
-    username: S.String,
-    remote_address: S.String,
-    shard_queries: S.Number,
-    rows_read: S.Number,
-    rows_affected: S.Number,
-    rows_returned: S.Number,
-    total_duration_millis: S.Number,
-    error_message: S.String,
-    normalized_sql: S.String,
-    syntax_highlighted_sql: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    explainable: S.Boolean,
-    truncated: S.Boolean,
-  }),
-).annotate({
-  identifier: "PaginatedQueryDataItem",
-}) as any as S.Schema<PaginatedQueryDataItem>;
-
-export type PaginatedQueryDataList = Array<PaginatedQueryDataItem>;
-export const PaginatedQueryDataList = /*@__PURE__*/ S.Array(
-  PaginatedQueryDataItem,
-) as any as S.Schema<PaginatedQueryDataList>;
-
-export interface PaginatedQuery {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedQueryDataList;
-}
-export const PaginatedQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedQueryDataList,
-  }),
-).annotate({ identifier: "PaginatedQuery" }) as any as S.Schema<PaginatedQuery>;
-
-export type GetBranchQueryTagRequestTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const GetBranchQueryTagRequestTabletType = /*@__PURE__*/ S.String;
-
-export interface GetBranchQueryTagRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The tag name */
-  tag: string;
-  /** Start time for filtering tag values (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering tag values (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering tag values (e.g., '1h', '24h') */
-  period?: string;
-  /** Filter to tag values on queries with this fingerprint */
-  fingerprint?: string;
-  /** Filter by keyspace */
-  keyspace?: string;
-  /** Filter by tablet type */
-  tablet_type?: GetBranchQueryTagRequestTabletType | (string & {});
-  /** Maximum number of values returned (1-100) */
-  values_limit?: number;
-  /** Only return literal tag values, excluding overflow and collapsed values */
-  literal_values_only?: boolean;
-}
-export const GetBranchQueryTagRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    tag: S.String.pipe(T.Label()),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    fingerprint: S.optional(S.String.pipe(T.Query())),
-    keyspace: S.optional(S.String.pipe(T.Query())),
-    tablet_type: S.optional(GetBranchQueryTagRequestTabletType.pipe(T.Query())),
-    values_limit: S.optional(S.Number.pipe(T.Query())),
-    literal_values_only: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/tags/{tag}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetBranchQueryTagRequest",
-}) as any as S.Schema<GetBranchQueryTagRequest>;
-
-/** The source of the tag */
-export type QueryTagSource = "sql" | "system";
-export const QueryTagSource = /*@__PURE__*/ S.String;
-
-/** The kind of tag value */
-export type QueryTagValuesItemKind = "literal" | "overflow" | "collapsed";
-export const QueryTagValuesItemKind = /*@__PURE__*/ S.String;
-
-export interface QueryTagValuesItem {
-  /** The name of the tag value */
-  name: string;
-  /** The number of queries that have this tag value */
-  query_count: number;
-  /** The kind of tag value */
-  kind: QueryTagValuesItemKind;
-}
-export const QueryTagValuesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    query_count: S.Number,
-    kind: QueryTagValuesItemKind,
-  }),
-).annotate({
-  identifier: "QueryTagValuesItem",
-}) as any as S.Schema<QueryTagValuesItem>;
-
-export type QueryTagValuesList = Array<QueryTagValuesItem>;
-export const QueryTagValuesList = /*@__PURE__*/ S.Array(
-  QueryTagValuesItem,
-) as any as S.Schema<QueryTagValuesList>;
-
-export interface QueryTag {
-  /** The ID of the tag */
-  id: string;
-  /** The name of the tag */
-  name: string;
-  /** The source of the tag */
-  source: QueryTagSource;
-  /** The number of queries that have this tag */
-  query_count: number;
-  values: QueryTagValuesList;
-}
-export const QueryTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    source: QueryTagSource,
-    query_count: S.Number,
-    values: QueryTagValuesList,
-  }),
-).annotate({ identifier: "QueryTag" }) as any as S.Schema<QueryTag>;
 
 export interface GetBranchSchemaRequest {
   /** The name of the organization the branch belongs to */
@@ -6896,7 +6246,7 @@ export interface UserDefaultOrganization {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const UserDefaultOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6904,7 +6254,7 @@ export const UserDefaultOrganization = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "UserDefaultOrganization",
@@ -6927,15 +6277,15 @@ export interface User {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: UserDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization?: UserDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso?: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed?: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed?: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified?: boolean;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6947,11 +6297,11 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
-    default_organization: S.optional(S.NullOr(UserDefaultOrganization)),
-    sso: S.optional(S.NullOr(S.Boolean)),
-    managed: S.optional(S.NullOr(S.Boolean)),
-    directory_managed: S.optional(S.NullOr(S.Boolean)),
-    email_verified: S.optional(S.NullOr(S.Boolean)),
+    default_organization: S.optional(UserDefaultOrganization),
+    sso: S.optional(S.Boolean),
+    managed: S.optional(S.Boolean),
+    directory_managed: S.optional(S.Boolean),
+    email_verified: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
@@ -7037,7 +6387,7 @@ export interface ThrottlerConfigurationsConfigurable {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const ThrottlerConfigurationsConfigurable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7045,7 +6395,7 @@ export const ThrottlerConfigurationsConfigurable = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "ThrottlerConfigurationsConfigurable",
@@ -7206,11 +6556,11 @@ export interface DeploymentDeployOperationsItem {
   /** The operation name of the deploy operation */
   operation_name: string;
   /** The estimated seconds until completion for the deploy operation */
-  eta_seconds: number | null;
+  eta_seconds: number;
   /** The percent completion for the deploy operation */
-  progress_percentage: number | null;
+  progress_percentage: number;
   /** A link to documentation explaining the deploy error, if present */
-  deploy_error_docs_url: string | null;
+  deploy_error_docs_url: string;
   /** The DDL statement for the deploy operation */
   ddl_statement: string;
   /** A syntax-highlighted DDL statement for the deploy operation */
@@ -7220,7 +6570,7 @@ export interface DeploymentDeployOperationsItem {
   /** When the deploy operation was last updated */
   updated_at: string;
   /** When the deploy operation was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Whether or not the deploy operation is capable of dropping data */
   can_drop_data: boolean;
   /** Whether or not the table modified by the deploy operation is currently locked */
@@ -7228,11 +6578,11 @@ export interface DeploymentDeployOperationsItem {
   /** Whether or not the table modified by the deploy operation was recently used */
   table_recently_used: boolean;
   /** When the table modified by the deploy operation was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** Names of foreign keys removed by this operation */
-  removed_foreign_key_names: DeploymentDeployOperationsItemRemovedForeignKeyNamesList | null;
+  removed_foreign_key_names: DeploymentDeployOperationsItemRemovedForeignKeyNamesList;
   /** Deploy errors for the deploy operation */
-  deploy_errors: string | null;
+  deploy_errors: string;
 }
 export const DeploymentDeployOperationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7241,22 +6591,21 @@ export const DeploymentDeployOperationsItem = /*@__PURE__*/ S.suspend(() =>
     keyspace_name: S.String,
     table_name: S.String,
     operation_name: S.String,
-    eta_seconds: S.NullOr(S.Number),
-    progress_percentage: S.NullOr(S.Number),
-    deploy_error_docs_url: S.NullOr(S.String),
+    eta_seconds: S.Number,
+    progress_percentage: S.Number,
+    deploy_error_docs_url: S.String,
     ddl_statement: S.String,
     syntax_highlighted_ddl: S.String,
     created_at: S.String,
     updated_at: S.String,
-    throttled_at: S.NullOr(S.String),
+    throttled_at: S.String,
     can_drop_data: S.Boolean,
     table_locked: S.Boolean,
     table_recently_used: S.Boolean,
-    table_recently_used_at: S.NullOr(S.String),
-    removed_foreign_key_names: S.NullOr(
+    table_recently_used_at: S.String,
+    removed_foreign_key_names:
       DeploymentDeployOperationsItemRemovedForeignKeyNamesList,
-    ),
-    deploy_errors: S.NullOr(S.String),
+    deploy_errors: S.String,
   }),
 ).annotate({
   identifier: "DeploymentDeployOperationsItem",
@@ -7361,9 +6710,9 @@ export interface DeploymentDeployOperationSummariesItem {
   /** The name of the table modifed by the deploy operation summary */
   table_name: string;
   /** When the table modified by the deploy operation summary was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** When the deploy operation summary was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Names of foreign keys removed by this operation summary */
   removed_foreign_key_names: DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList;
   /** The number of shards in the keyspace modified by the deploy operation summary */
@@ -7392,8 +6741,8 @@ export const DeploymentDeployOperationSummariesItem = /*@__PURE__*/ S.suspend(
       state: DeploymentDeployOperationSummariesItemState,
       syntax_highlighted_ddl: S.String,
       table_name: S.String,
-      table_recently_used_at: S.NullOr(S.String),
-      throttled_at: S.NullOr(S.String),
+      table_recently_used_at: S.String,
+      throttled_at: S.String,
       removed_foreign_key_names:
         DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
       shard_count: S.Number,
@@ -7458,14 +6807,20 @@ export const DeploymentLookupVindexOperationsList = /*@__PURE__*/ S.Array(
   DeploymentLookupVindexOperationsItemMap,
 ) as any as S.Schema<DeploymentLookupVindexOperationsList>;
 
-/** Deployment throttling configurations. */
-export type DeploymentThrottlerConfigurationsMap = {
+export type DeploymentThrottlerConfigurationsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DeploymentThrottlerConfigurationsMap = /*@__PURE__*/ S.Record(
+export const DeploymentThrottlerConfigurationsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<DeploymentThrottlerConfigurationsMap>;
+) as any as S.Schema<DeploymentThrottlerConfigurationsItemMap>;
+
+/** Deployment throttling configurations */
+export type DeploymentThrottlerConfigurationsList =
+  Array<DeploymentThrottlerConfigurationsItemMap>;
+export const DeploymentThrottlerConfigurationsList = /*@__PURE__*/ S.Array(
+  DeploymentThrottlerConfigurationsItemMap,
+) as any as S.Schema<DeploymentThrottlerConfigurationsList>;
 
 /** The request to revert the schema operations in this deployment */
 export type DeploymentDeploymentRevertRequestMap = {
@@ -7540,25 +6895,23 @@ export interface Deployment {
   /** When the deployment was created */
   created_at: string;
   /** When the cutover for the deployment was initiated */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the deployment cutover will expire soon */
   cutover_expiring: boolean;
-  /** Deploy check errors for the deployment. */
-  deploy_check_errors?: string | null;
+  /** Deploy check errors for the deployment */
+  deploy_check_errors: string;
   /** When the deployment was finished */
-  finished_at: string | null;
-  /** When force cutover was triggered for the deployment */
-  force_cutover_requested_at: string | null;
+  finished_at: string;
   /** When the deployment was queued */
-  queued_at: string | null;
+  queued_at: string;
   /** When the deployment was ready for cutover */
-  ready_to_cutover_at: string | null;
+  ready_to_cutover_at: string;
   /** When the deployment was started */
-  started_at: string | null;
+  started_at: string;
   /** The state the deployment is in */
   state: DeploymentState;
   /** When the deployment was submitted */
-  submitted_at: string | null;
+  submitted_at: string;
   /** When the deployment was last updated */
   updated_at: string;
   /** The name of the base branch the deployment will be merged into */
@@ -7577,27 +6930,23 @@ export interface Deployment {
   sequential_diff_dependencies: DeploymentSequentialDiffDependenciesList;
   /** Lookup Vitess index operations */
   lookup_vindex_operations: DeploymentLookupVindexOperationsList;
-  /** Deployment throttling configurations. */
-  throttler_configurations?: DeploymentThrottlerConfigurationsMap | null;
+  /** Deployment throttling configurations */
+  throttler_configurations: DeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
-  deployment_revert_request: DeploymentDeploymentRevertRequestMap | null;
-  actor?: DeploymentActor | null;
-  cutover_actor?: DeploymentCutoverActor | null;
-  cancelled_actor?: DeploymentCancelledActor | null;
+  deployment_revert_request: DeploymentDeploymentRevertRequestMap;
+  actor: DeploymentActor;
+  cutover_actor: DeploymentCutoverActor;
+  cancelled_actor: DeploymentCancelledActor;
   /** When the schema was last updated for the deployment */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
   table_locked: boolean;
-  /** The name of the table that is locked by the deployment. */
-  locked_table_name?: string | null;
+  /** The name of he table that is locked by the deployment */
+  locked_table_name: string;
   /** Whether or not the deployment is an instant DDL deployment */
   instant_ddl: boolean;
   /** Whether or not the deployment is eligible for instant DDL */
   instant_ddl_eligible: boolean;
-  /** Whether the deploy queue for the target branch is currently paused */
-  queue_paused: boolean;
-  /** A human-readable reason the deploy queue is paused, if known */
-  queue_pause_reason: string | null;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7605,16 +6954,15 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
     auto_cutover: S.Boolean,
     auto_delete_branch: S.Boolean,
     created_at: S.String,
-    cutover_at: S.NullOr(S.String),
+    cutover_at: S.String,
     cutover_expiring: S.Boolean,
-    deploy_check_errors: S.optional(S.NullOr(S.String)),
-    finished_at: S.NullOr(S.String),
-    force_cutover_requested_at: S.NullOr(S.String),
-    queued_at: S.NullOr(S.String),
-    ready_to_cutover_at: S.NullOr(S.String),
-    started_at: S.NullOr(S.String),
+    deploy_check_errors: S.String,
+    finished_at: S.String,
+    queued_at: S.String,
+    ready_to_cutover_at: S.String,
+    started_at: S.String,
     state: DeploymentState,
-    submitted_at: S.NullOr(S.String),
+    submitted_at: S.String,
     updated_at: S.String,
     into_branch: S.String,
     deploy_request_number: S.Number,
@@ -7625,20 +6973,16 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
     lint_errors: DeploymentLintErrorsList,
     sequential_diff_dependencies: DeploymentSequentialDiffDependenciesList,
     lookup_vindex_operations: DeploymentLookupVindexOperationsList,
-    throttler_configurations: S.optional(
-      S.NullOr(DeploymentThrottlerConfigurationsMap),
-    ),
-    deployment_revert_request: S.NullOr(DeploymentDeploymentRevertRequestMap),
-    actor: S.optional(S.NullOr(DeploymentActor)),
-    cutover_actor: S.optional(S.NullOr(DeploymentCutoverActor)),
-    cancelled_actor: S.optional(S.NullOr(DeploymentCancelledActor)),
-    schema_last_updated_at: S.NullOr(S.String),
+    throttler_configurations: DeploymentThrottlerConfigurationsList,
+    deployment_revert_request: DeploymentDeploymentRevertRequestMap,
+    actor: DeploymentActor,
+    cutover_actor: DeploymentCutoverActor,
+    cancelled_actor: DeploymentCancelledActor,
+    schema_last_updated_at: S.String,
     table_locked: S.Boolean,
-    locked_table_name: S.optional(S.NullOr(S.String)),
+    locked_table_name: S.String,
     instant_ddl: S.Boolean,
     instant_ddl_eligible: S.Boolean,
-    queue_paused: S.Boolean,
-    queue_pause_reason: S.NullOr(S.String),
   }),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
@@ -7741,11 +7085,11 @@ export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** The operation name of the deploy operation */
   operation_name: string;
   /** The estimated seconds until completion for the deploy operation */
-  eta_seconds: number | null;
+  eta_seconds: number;
   /** The percent completion for the deploy operation */
-  progress_percentage: number | null;
+  progress_percentage: number;
   /** A link to documentation explaining the deploy error, if present */
-  deploy_error_docs_url: string | null;
+  deploy_error_docs_url: string;
   /** The DDL statement for the deploy operation */
   ddl_statement: string;
   /** A syntax-highlighted DDL statement for the deploy operation */
@@ -7755,7 +7099,7 @@ export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** When the deploy operation was last updated */
   updated_at: string;
   /** When the deploy operation was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Whether or not the deploy operation is capable of dropping data */
   can_drop_data: boolean;
   /** Whether or not the table modified by the deploy operation is currently locked */
@@ -7763,11 +7107,11 @@ export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** Whether or not the table modified by the deploy operation was recently used */
   table_recently_used: boolean;
   /** When the table modified by the deploy operation was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** Names of foreign keys removed by this operation */
-  removed_foreign_key_names: PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList | null;
+  removed_foreign_key_names: PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList;
   /** Deploy errors for the deploy operation */
-  deploy_errors: string | null;
+  deploy_errors: string;
 }
 export const PaginatedDeploymentDataItemDeployOperationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7777,22 +7121,21 @@ export const PaginatedDeploymentDataItemDeployOperationsItem =
       keyspace_name: S.String,
       table_name: S.String,
       operation_name: S.String,
-      eta_seconds: S.NullOr(S.Number),
-      progress_percentage: S.NullOr(S.Number),
-      deploy_error_docs_url: S.NullOr(S.String),
+      eta_seconds: S.Number,
+      progress_percentage: S.Number,
+      deploy_error_docs_url: S.String,
       ddl_statement: S.String,
       syntax_highlighted_ddl: S.String,
       created_at: S.String,
       updated_at: S.String,
-      throttled_at: S.NullOr(S.String),
+      throttled_at: S.String,
       can_drop_data: S.Boolean,
       table_locked: S.Boolean,
       table_recently_used: S.Boolean,
-      table_recently_used_at: S.NullOr(S.String),
-      removed_foreign_key_names: S.NullOr(
+      table_recently_used_at: S.String,
+      removed_foreign_key_names:
         PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList,
-      ),
-      deploy_errors: S.NullOr(S.String),
+      deploy_errors: S.String,
     }),
   ).annotate({
     identifier: "PaginatedDeploymentDataItemDeployOperationsItem",
@@ -7895,9 +7238,9 @@ export interface PaginatedDeploymentDataItemDeployOperationSummariesItem {
   /** The name of the table modifed by the deploy operation summary */
   table_name: string;
   /** When the table modified by the deploy operation summary was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** When the deploy operation summary was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Names of foreign keys removed by this operation summary */
   removed_foreign_key_names: PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList;
   /** The number of shards in the keyspace modified by the deploy operation summary */
@@ -7926,8 +7269,8 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItem =
       state: PaginatedDeploymentDataItemDeployOperationSummariesItemState,
       syntax_highlighted_ddl: S.String,
       table_name: S.String,
-      table_recently_used_at: S.NullOr(S.String),
-      throttled_at: S.NullOr(S.String),
+      table_recently_used_at: S.String,
+      throttled_at: S.String,
       removed_foreign_key_names:
         PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList,
       shard_count: S.Number,
@@ -8000,15 +7343,22 @@ export const PaginatedDeploymentDataItemLookupVindexOperationsList =
     PaginatedDeploymentDataItemLookupVindexOperationsItemMap,
   ) as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsList>;
 
-/** Deployment throttling configurations. */
-export type PaginatedDeploymentDataItemThrottlerConfigurationsMap = {
+export type PaginatedDeploymentDataItemThrottlerConfigurationsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PaginatedDeploymentDataItemThrottlerConfigurationsMap =
+export const PaginatedDeploymentDataItemThrottlerConfigurationsItemMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsMap>;
+  ) as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsItemMap>;
+
+/** Deployment throttling configurations */
+export type PaginatedDeploymentDataItemThrottlerConfigurationsList =
+  Array<PaginatedDeploymentDataItemThrottlerConfigurationsItemMap>;
+export const PaginatedDeploymentDataItemThrottlerConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    PaginatedDeploymentDataItemThrottlerConfigurationsItemMap,
+  ) as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsList>;
 
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDeploymentDataItemDeploymentRevertRequestMap = {
@@ -8086,25 +7436,23 @@ export interface PaginatedDeploymentDataItem {
   /** When the deployment was created */
   created_at: string;
   /** When the cutover for the deployment was initiated */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the deployment cutover will expire soon */
   cutover_expiring: boolean;
-  /** Deploy check errors for the deployment. */
-  deploy_check_errors?: string | null;
+  /** Deploy check errors for the deployment */
+  deploy_check_errors: string;
   /** When the deployment was finished */
-  finished_at: string | null;
-  /** When force cutover was triggered for the deployment */
-  force_cutover_requested_at: string | null;
+  finished_at: string;
   /** When the deployment was queued */
-  queued_at: string | null;
+  queued_at: string;
   /** When the deployment was ready for cutover */
-  ready_to_cutover_at: string | null;
+  ready_to_cutover_at: string;
   /** When the deployment was started */
-  started_at: string | null;
+  started_at: string;
   /** The state the deployment is in */
   state: PaginatedDeploymentDataItemState;
   /** When the deployment was submitted */
-  submitted_at: string | null;
+  submitted_at: string;
   /** When the deployment was last updated */
   updated_at: string;
   /** The name of the base branch the deployment will be merged into */
@@ -8123,27 +7471,23 @@ export interface PaginatedDeploymentDataItem {
   sequential_diff_dependencies: PaginatedDeploymentDataItemSequentialDiffDependenciesList;
   /** Lookup Vitess index operations */
   lookup_vindex_operations: PaginatedDeploymentDataItemLookupVindexOperationsList;
-  /** Deployment throttling configurations. */
-  throttler_configurations?: PaginatedDeploymentDataItemThrottlerConfigurationsMap | null;
+  /** Deployment throttling configurations */
+  throttler_configurations: PaginatedDeploymentDataItemThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
-  deployment_revert_request: PaginatedDeploymentDataItemDeploymentRevertRequestMap | null;
-  actor?: PaginatedDeploymentDataItemActor | null;
-  cutover_actor?: PaginatedDeploymentDataItemCutoverActor | null;
-  cancelled_actor?: PaginatedDeploymentDataItemCancelledActor | null;
+  deployment_revert_request: PaginatedDeploymentDataItemDeploymentRevertRequestMap;
+  actor: PaginatedDeploymentDataItemActor;
+  cutover_actor: PaginatedDeploymentDataItemCutoverActor;
+  cancelled_actor: PaginatedDeploymentDataItemCancelledActor;
   /** When the schema was last updated for the deployment */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
   table_locked: boolean;
-  /** The name of the table that is locked by the deployment. */
-  locked_table_name?: string | null;
+  /** The name of he table that is locked by the deployment */
+  locked_table_name: string;
   /** Whether or not the deployment is an instant DDL deployment */
   instant_ddl: boolean;
   /** Whether or not the deployment is eligible for instant DDL */
   instant_ddl_eligible: boolean;
-  /** Whether the deploy queue for the target branch is currently paused */
-  queue_paused: boolean;
-  /** A human-readable reason the deploy queue is paused, if known */
-  queue_pause_reason: string | null;
 }
 export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8151,16 +7495,15 @@ export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
     auto_cutover: S.Boolean,
     auto_delete_branch: S.Boolean,
     created_at: S.String,
-    cutover_at: S.NullOr(S.String),
+    cutover_at: S.String,
     cutover_expiring: S.Boolean,
-    deploy_check_errors: S.optional(S.NullOr(S.String)),
-    finished_at: S.NullOr(S.String),
-    force_cutover_requested_at: S.NullOr(S.String),
-    queued_at: S.NullOr(S.String),
-    ready_to_cutover_at: S.NullOr(S.String),
-    started_at: S.NullOr(S.String),
+    deploy_check_errors: S.String,
+    finished_at: S.String,
+    queued_at: S.String,
+    ready_to_cutover_at: S.String,
+    started_at: S.String,
     state: PaginatedDeploymentDataItemState,
-    submitted_at: S.NullOr(S.String),
+    submitted_at: S.String,
     updated_at: S.String,
     into_branch: S.String,
     deploy_request_number: S.Number,
@@ -8174,26 +7517,18 @@ export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
       PaginatedDeploymentDataItemSequentialDiffDependenciesList,
     lookup_vindex_operations:
       PaginatedDeploymentDataItemLookupVindexOperationsList,
-    throttler_configurations: S.optional(
-      S.NullOr(PaginatedDeploymentDataItemThrottlerConfigurationsMap),
-    ),
-    deployment_revert_request: S.NullOr(
+    throttler_configurations:
+      PaginatedDeploymentDataItemThrottlerConfigurationsList,
+    deployment_revert_request:
       PaginatedDeploymentDataItemDeploymentRevertRequestMap,
-    ),
-    actor: S.optional(S.NullOr(PaginatedDeploymentDataItemActor)),
-    cutover_actor: S.optional(
-      S.NullOr(PaginatedDeploymentDataItemCutoverActor),
-    ),
-    cancelled_actor: S.optional(
-      S.NullOr(PaginatedDeploymentDataItemCancelledActor),
-    ),
-    schema_last_updated_at: S.NullOr(S.String),
+    actor: PaginatedDeploymentDataItemActor,
+    cutover_actor: PaginatedDeploymentDataItemCutoverActor,
+    cancelled_actor: PaginatedDeploymentDataItemCancelledActor,
+    schema_last_updated_at: S.String,
     table_locked: S.Boolean,
-    locked_table_name: S.optional(S.NullOr(S.String)),
+    locked_table_name: S.String,
     instant_ddl: S.Boolean,
     instant_ddl_eligible: S.Boolean,
-    queue_paused: S.Boolean,
-    queue_pause_reason: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "PaginatedDeploymentDataItem",
@@ -8205,23 +7540,20 @@ export const PaginatedDeploymentDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDeploymentDataList>;
 
 export interface PaginatedDeployment {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDeploymentDataList;
 }
 export const PaginatedDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -8305,7 +7637,7 @@ export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Invoice {
   /** The ID of the invoice */
   id: string;
-  /** The total amount of the invoice, as a stringified decimal to preserve precision */
+  /** The total amount of the invoice */
   total: string;
   /** Start of the billing period */
   billing_period_start: string;
@@ -8364,7 +7696,7 @@ export interface PaginatedLineItemDataItemResource {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedLineItemDataItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8372,7 +7704,7 @@ export const PaginatedLineItemDataItemResource = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "PaginatedLineItemDataItemResource",
@@ -8387,8 +7719,6 @@ export interface PaginatedLineItemDataItem {
   description: string;
   /** The name of the billable item */
   metric_name: string;
-  /** Whether the line item is billed through Cloudflare */
-  cloudflare_billed: boolean;
   /** The ID for the billed database */
   database_id: string;
   /** The name for the billed database */
@@ -8401,7 +7731,6 @@ export const PaginatedLineItemDataItem = /*@__PURE__*/ S.suspend(() =>
     subtotal: S.Number,
     description: S.String,
     metric_name: S.String,
-    cloudflare_billed: S.Boolean,
     database_id: S.String,
     database_name: S.String,
     resource: PaginatedLineItemDataItemResource,
@@ -8416,23 +7745,20 @@ export const PaginatedLineItemDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedLineItemDataList>;
 
 export interface PaginatedLineItem {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedLineItemDataList;
 }
 export const PaginatedLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -8642,19 +7968,15 @@ export interface BranchMaintenanceSchedule {
   /** Whether the maintenance schedule is enabled */
   enabled: boolean;
   /** When a one-time maintenance schedule expires */
-  expires_at: string | null;
+  expires_at: string;
   /** The deadline for a required maintenance schedule */
-  deadline_at: string | null;
+  deadline_at: string;
   /** Whether the maintenance schedule is required */
   required: boolean;
   /** Whether there is a pending Vitess version update */
   pending_vitess_version_update: boolean;
   /** The pending Vitess version, if any */
-  pending_vitess_version: string | null;
-  /** Whether there is a pending MySQL version update */
-  pending_mysql_version_update: boolean;
-  /** The pending MySQL version, if any */
-  pending_mysql_version: string | null;
+  pending_vitess_version: string;
 }
 export const BranchMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8671,13 +7993,11 @@ export const BranchMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
     frequency_value: S.Number,
     frequency_unit: BranchMaintenanceScheduleFrequencyUnit,
     enabled: S.Boolean,
-    expires_at: S.NullOr(S.String),
-    deadline_at: S.NullOr(S.String),
+    expires_at: S.String,
+    deadline_at: S.String,
     required: S.Boolean,
     pending_vitess_version_update: S.Boolean,
-    pending_vitess_version: S.NullOr(S.String),
-    pending_mysql_version_update: S.Boolean,
-    pending_mysql_version: S.NullOr(S.String),
+    pending_vitess_version: S.String,
   }),
 ).annotate({
   identifier: "BranchMaintenanceSchedule",
@@ -8703,6 +8023,12 @@ export const GetOauthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOauthApplicationRequest",
 }) as any as S.Schema<GetOauthApplicationRequest>;
+
+/** The scopes that the OAuth application requires on a user account */
+export type OauthApplicationScopesList = Array<string>;
+export const OauthApplicationScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OauthApplicationScopesList>;
 
 /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
 export type OauthApplicationScopesByResourceMap = {
@@ -8735,8 +8061,8 @@ export interface OauthApplication {
   created_at: string;
   /** When the OAuth application was last updated */
   updated_at: string;
-  /** The scopes that the OAuth application requires on a user account, as a space-separated string */
-  scopes: string;
+  /** The scopes that the OAuth application requires on a user account */
+  scopes: OauthApplicationScopesList;
   /** The image source for the OAuth application's avatar */
   avatar: string;
   /** The OAuth application's unique client id */
@@ -8747,8 +8073,6 @@ export interface OauthApplication {
   dcr: boolean;
   /** Whether the OAuth application is limited to authorizing a single organization */
   single_org_authorization: boolean;
-  /** Whether the OAuth application requires at least one organization to be authorized */
-  requires_org_scope: boolean;
   /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
   scopes_by_resource: OauthApplicationScopesByResourceMap;
   /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
@@ -8762,13 +8086,12 @@ export const OauthApplication = /*@__PURE__*/ S.suspend(() =>
     domain: S.String,
     created_at: S.String,
     updated_at: S.String,
-    scopes: S.String,
+    scopes: OauthApplicationScopesList,
     avatar: S.String,
     client_id: S.String,
     tokens: S.Number,
     dcr: S.Boolean,
     single_org_authorization: S.Boolean,
-    requires_org_scope: S.Boolean,
     scopes_by_resource: OauthApplicationScopesByResourceMap,
     all_scopes_by_resource: OauthApplicationAllScopesByResourceMap,
   }),
@@ -8844,12 +8167,12 @@ export interface Organization {
   single_tenancy: boolean;
   /** Whether or not the organization has managed tenancy enabled */
   managed_tenancy: boolean;
-  /** Whether or not the organization has past due billing invoices. */
-  has_past_due_invoices?: boolean | null;
+  /** Whether or not the organization has past due billing invoices */
+  has_past_due_invoices?: boolean;
   /** The number of databases in the organization */
   database_count: number;
-  /** The URL of the organization's SSO portal. */
-  sso_portal_url?: string | null;
+  /** The URL of the organization's SSO portal */
+  sso_portal_url?: string;
   /** Features that can be enabled on the organization */
   features: OrganizationFeaturesMap;
   /** Whether or not the IdP provider is be responsible for managing roles in PlanetScale */
@@ -8876,9 +8199,9 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     sso_directory: S.Boolean,
     single_tenancy: S.Boolean,
     managed_tenancy: S.Boolean,
-    has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
+    has_past_due_invoices: S.optional(S.Boolean),
     database_count: S.Number,
-    sso_portal_url: S.optional(S.NullOr(S.String)),
+    sso_portal_url: S.optional(S.String),
     features: OrganizationFeaturesMap,
     idp_managed_roles: S.Boolean,
     invoice_budget_amount: S.String,
@@ -8919,7 +8242,7 @@ export interface OrganizationMembershipUserDefaultOrganization {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const OrganizationMembershipUserDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -8928,7 +8251,7 @@ export const OrganizationMembershipUserDefaultOrganization =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "OrganizationMembershipUserDefaultOrganization",
@@ -8951,15 +8274,15 @@ export interface OrganizationMembershipUser {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: OrganizationMembershipUserDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization?: OrganizationMembershipUserDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso?: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed?: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed?: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified?: boolean;
 }
 export const OrganizationMembershipUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8972,12 +8295,12 @@ export const OrganizationMembershipUser = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
     default_organization: S.optional(
-      S.NullOr(OrganizationMembershipUserDefaultOrganization),
+      OrganizationMembershipUserDefaultOrganization,
     ),
-    sso: S.optional(S.NullOr(S.Boolean)),
-    managed: S.optional(S.NullOr(S.Boolean)),
-    directory_managed: S.optional(S.NullOr(S.Boolean)),
-    email_verified: S.optional(S.NullOr(S.Boolean)),
+    sso: S.optional(S.Boolean),
+    managed: S.optional(S.Boolean),
+    directory_managed: S.optional(S.Boolean),
+    email_verified: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "OrganizationMembershipUser",
@@ -9152,10 +8475,6 @@ export interface DatabaseBranchPasswordRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const DatabaseBranchPasswordRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9167,8 +8486,6 @@ export const DatabaseBranchPasswordRegion = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     slug: S.String,
     current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
   }),
 ).annotate({
   identifier: "DatabaseBranchPasswordRegion",
@@ -9230,11 +8547,11 @@ export interface DatabaseBranchPassword {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: DatabaseBranchPasswordAccessHostRegionalUrlsList;
-  actor: DatabaseBranchPasswordActor | null;
+  actor: DatabaseBranchPasswordActor;
   region: DatabaseBranchPasswordRegion;
   /** The username for the password */
   username: string;
-  /** The plaintext password. Null except in the response from the create endpoint. */
+  /** The plain text password, available only after create */
   plain_text: Redacted.Redacted<string> | null;
   /** Whether or not the password is for a read replica */
   replica: boolean;
@@ -9259,7 +8576,7 @@ export const DatabaseBranchPassword = /*@__PURE__*/ S.suspend(() =>
     access_host_url: S.String,
     access_host_regional_url: S.String,
     access_host_regional_urls: DatabaseBranchPasswordAccessHostRegionalUrlsList,
-    actor: S.NullOr(DatabaseBranchPasswordActor),
+    actor: DatabaseBranchPasswordActor,
     region: DatabaseBranchPasswordRegion,
     username: S.String,
     plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -9331,300 +8648,6 @@ export const GetQueryPatternsReportStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryPatternsReportStatusRequest",
 }) as any as S.Schema<GetQueryPatternsReportStatusRequest>;
-
-export interface GetQueryStatisticsRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The keyspace to filter by */
-  keyspace: string;
-  /** Start time for filtering query statistics (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering query statistics (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering query statistics (e.g., '1h', '24h') */
-  period?: string;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const GetQueryStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    fingerprint: S.String.pipe(T.Label()),
-    keyspace: S.String.pipe(T.Query()),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/{fingerprint}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetQueryStatisticsRequest",
-}) as any as S.Schema<GetQueryStatisticsRequest>;
-
-export interface GetQuerySummaryRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The keyspace to filter by */
-  keyspace: string;
-  /** Start time for filtering query statistics (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering query statistics (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering query statistics (e.g., '1h', '24h') */
-  period?: string;
-}
-export const GetQuerySummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    fingerprint: S.String.pipe(T.Label()),
-    keyspace: S.String.pipe(T.Query()),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/{fingerprint}/summary",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetQuerySummaryRequest",
-}) as any as S.Schema<GetQuerySummaryRequest>;
-
-/** Tables accessed by the query */
-export type QuerySummaryTablesList = Array<string>;
-export const QuerySummaryTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySummaryTablesList>;
-
-/** Fully qualified tables accessed by the query */
-export type QuerySummaryQualifiedTablesList = Array<string>;
-export const QuerySummaryQualifiedTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<QuerySummaryQualifiedTablesList>;
-
-export type QuerySummaryTableKeyspacesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const QuerySummaryTableKeyspacesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QuerySummaryTableKeyspacesItemMap>;
-
-/** Mapping of tables to their keyspaces */
-export type QuerySummaryTableKeyspacesList =
-  Array<QuerySummaryTableKeyspacesItemMap>;
-export const QuerySummaryTableKeyspacesList = /*@__PURE__*/ S.Array(
-  QuerySummaryTableKeyspacesItemMap,
-) as any as S.Schema<QuerySummaryTableKeyspacesList>;
-
-export type QuerySummaryIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const QuerySummaryIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QuerySummaryIndexUsagesItemMap>;
-
-/** Index usage information */
-export type QuerySummaryIndexUsagesList = Array<QuerySummaryIndexUsagesItemMap>;
-export const QuerySummaryIndexUsagesList = /*@__PURE__*/ S.Array(
-  QuerySummaryIndexUsagesItemMap,
-) as any as S.Schema<QuerySummaryIndexUsagesList>;
-
-export type QuerySummaryRoutingIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const QuerySummaryRoutingIndexUsagesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<QuerySummaryRoutingIndexUsagesItemMap>;
-
-/** Routing index usage information */
-export type QuerySummaryRoutingIndexUsagesList =
-  Array<QuerySummaryRoutingIndexUsagesItemMap>;
-export const QuerySummaryRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
-  QuerySummaryRoutingIndexUsagesItemMap,
-) as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
-
-export interface QuerySummary {
-  /** The ID of the query summary */
-  id: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The type of SQL statement */
-  statement_type: string;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** Whether the query is a multishard query */
-  multishard: boolean;
-  /** The number of times this query was executed */
-  query_count: number;
-  /** The number of times this query resulted in an error */
-  error_count: number;
-  /** Tables accessed by the query */
-  tables: QuerySummaryTablesList;
-  /** Fully qualified tables accessed by the query */
-  qualified_tables: QuerySummaryQualifiedTablesList;
-  /** Mapping of tables to their keyspaces */
-  table_keyspaces: QuerySummaryTableKeyspacesList;
-  /** Index usage information */
-  index_usages: QuerySummaryIndexUsagesList;
-  /** Routing index usage information */
-  routing_index_usages: QuerySummaryRoutingIndexUsagesList;
-  /** The total number of shard queries */
-  sum_shard_queries: number;
-  /** The maximum number of shard queries for a single execution */
-  max_shard_queries: number;
-  /** The average number of shard queries */
-  avg_shard_queries: number;
-  /** The total number of rows read */
-  sum_rows_read: number;
-  /** The total number of rows affected */
-  sum_rows_affected: number;
-  /** The total number of rows returned */
-  sum_rows_returned: number;
-  /** Average rows read per row returned */
-  rows_read_per_returned: number;
-  /** Average rows read per query */
-  rows_read_per_query: number;
-  /** Average rows returned per query */
-  rows_returned_per_query: number;
-  /** Average rows affected per query */
-  rows_affected_per_query: number;
-  /** Total duration in milliseconds across all executions */
-  sum_total_duration_millis: number;
-  /** Percentage of total query time */
-  sum_total_duration_percent: number;
-  /** Total CPU duration in milliseconds */
-  sum_cpu_duration_millis: number;
-  /** Percentage of total CPU time */
-  sum_cpu_duration_percent: number;
-  /** Total IO duration in milliseconds */
-  sum_io_duration_millis: number;
-  /** Percentage of total IO time */
-  sum_io_duration_percent: number;
-  /** When this query was last executed */
-  last_run_at: string | null;
-  /** Average time per query execution */
-  time_per_query: number;
-  /** 50th percentile latency */
-  p50_latency: number;
-  /** 99th percentile latency */
-  p99_latency: number;
-  /** Maximum latency observed */
-  max_latency: number;
-  /** Total egress bytes */
-  egress_bytes: number;
-  /** Average egress bytes per query */
-  egress_bytes_per_query: number;
-  /** Maximum egress bytes for a single execution */
-  max_egress_bytes: number;
-  /** Total ingress bytes */
-  ingress_bytes: number;
-  /** Average ingress bytes per query */
-  ingress_bytes_per_query: number;
-  /** Maximum ingress bytes for a single execution */
-  max_ingress_bytes: number;
-  /** Total blocks read from disk */
-  blocks_read: number;
-  /** Total blocks found in cache */
-  blocks_hit: number;
-  /** Cache hit ratio for blocks */
-  block_cache_hit_ratio: number;
-  /** Total blocks dirtied */
-  blocks_dirtied: number;
-  /** Total blocks written */
-  blocks_written: number;
-  /** The number of executions that triggered a traffic control warning */
-  traffic_control_warnings: number;
-  /** The number of executions throttled by traffic control */
-  traffic_control_throttled: number;
-  /** The number of executions checked by traffic control rules */
-  traffic_control_checked: number;
-}
-export const QuerySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    fingerprint: S.String,
-    statement_type: S.String,
-    keyspace: S.String,
-    normalized_sql: S.String,
-    syntax_highlighted_sql: S.String,
-    multishard: S.Boolean,
-    query_count: S.Number,
-    error_count: S.Number,
-    tables: QuerySummaryTablesList,
-    qualified_tables: QuerySummaryQualifiedTablesList,
-    table_keyspaces: QuerySummaryTableKeyspacesList,
-    index_usages: QuerySummaryIndexUsagesList,
-    routing_index_usages: QuerySummaryRoutingIndexUsagesList,
-    sum_shard_queries: S.Number,
-    max_shard_queries: S.Number,
-    avg_shard_queries: S.Number,
-    sum_rows_read: S.Number,
-    sum_rows_affected: S.Number,
-    sum_rows_returned: S.Number,
-    rows_read_per_returned: S.Number,
-    rows_read_per_query: S.Number,
-    rows_returned_per_query: S.Number,
-    rows_affected_per_query: S.Number,
-    sum_total_duration_millis: S.Number,
-    sum_total_duration_percent: S.Number,
-    sum_cpu_duration_millis: S.Number,
-    sum_cpu_duration_percent: S.Number,
-    sum_io_duration_millis: S.Number,
-    sum_io_duration_percent: S.Number,
-    last_run_at: S.NullOr(S.String),
-    time_per_query: S.Number,
-    p50_latency: S.Number,
-    p99_latency: S.Number,
-    max_latency: S.Number,
-    egress_bytes: S.Number,
-    egress_bytes_per_query: S.Number,
-    max_egress_bytes: S.Number,
-    ingress_bytes: S.Number,
-    ingress_bytes_per_query: S.Number,
-    max_ingress_bytes: S.Number,
-    blocks_read: S.Number,
-    blocks_hit: S.Number,
-    block_cache_hit_ratio: S.Number,
-    blocks_dirtied: S.Number,
-    blocks_written: S.Number,
-    traffic_control_warnings: S.Number,
-    traffic_control_throttled: S.Number,
-    traffic_control_checked: S.Number,
-  }),
-).annotate({ identifier: "QuerySummary" }) as any as S.Schema<QuerySummary>;
 
 export interface GetRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -9894,23 +8917,20 @@ export const PaginatedSchemaLintErrorDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedSchemaLintErrorDataList>;
 
 export interface PaginatedSchemaLintError {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedSchemaLintErrorDataList;
 }
 export const PaginatedSchemaLintError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -9962,21 +8982,21 @@ export interface PaginatedAuditLogEventDataItem {
   /** The ID for the audit log */
   id: string;
   /** The ID of the actor */
-  actor_id: string | null;
+  actor_id: string;
   /** The type of the actor. Such as 'User' or 'ServiceToken' */
-  actor_type: string | null;
+  actor_type: string;
   /** The ID of the auditable object */
-  auditable_id: string | null;
+  auditable_id: string;
   /** The type of the auditable. Such as 'Organization' or 'Database' */
-  auditable_type: string | null;
+  auditable_type: string;
   /** The ID of the target */
-  target_id: string | null;
+  target_id: string;
   /** The type of the target. Such as 'DatabaseBranch' or 'DatabaseBranchPassword' */
-  target_type: string | null;
+  target_type: string;
   /** The location of the actor based on their IP address */
   location: string | null;
   /** The name of the target */
-  target_display_name: string | null;
+  target_display_name: string;
   /** The action that was taken */
   audit_action: string;
   /** The action that was taken */
@@ -9992,19 +9012,19 @@ export interface PaginatedAuditLogEventDataItem {
   /** When the audit log was last updated */
   updated_at: string;
   /** Additional metadata containing details about the change */
-  metadata: PaginatedAuditLogEventDataItemMetadataMap | null;
+  metadata: PaginatedAuditLogEventDataItemMetadataMap;
 }
 export const PaginatedAuditLogEventDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    actor_id: S.NullOr(S.String),
-    actor_type: S.NullOr(S.String),
-    auditable_id: S.NullOr(S.String),
-    auditable_type: S.NullOr(S.String),
-    target_id: S.NullOr(S.String),
-    target_type: S.NullOr(S.String),
+    actor_id: S.String,
+    actor_type: S.String,
+    auditable_id: S.String,
+    auditable_type: S.String,
+    target_id: S.String,
+    target_type: S.String,
     location: S.NullOr(S.String),
-    target_display_name: S.NullOr(S.String),
+    target_display_name: S.String,
     audit_action: S.String,
     action: S.String,
     actor_display_name: S.String,
@@ -10012,7 +9032,7 @@ export const PaginatedAuditLogEventDataItem = /*@__PURE__*/ S.suspend(() =>
     remote_ip: S.NullOr(S.String),
     created_at: S.String,
     updated_at: S.String,
-    metadata: S.NullOr(PaginatedAuditLogEventDataItemMetadataMap),
+    metadata: PaginatedAuditLogEventDataItemMetadataMap,
   }),
 ).annotate({
   identifier: "PaginatedAuditLogEventDataItem",
@@ -10025,21 +9045,18 @@ export const PaginatedAuditLogEventDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedAuditLogEventDataList>;
 
 export interface PaginatedAuditLogEvent {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** Whether there is a next page of results */
   has_next: boolean;
   /** Whether there is a previous page of results */
   has_prev: boolean;
-  /** The ID of the first object in the current results, or null when there are no results */
+  /** The ID of the first object in the current results */
   cursor_start: string | null;
-  /** The ID of the last object in the current results, or null when there are no results */
+  /** The ID of the last object in the current results */
   cursor_end: string | null;
   data: PaginatedAuditLogEventDataList;
 }
 export const PaginatedAuditLogEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     has_next: S.Boolean,
     has_prev: S.Boolean,
     cursor_start: S.NullOr(S.String),
@@ -10101,17 +9118,17 @@ export interface PaginatedBackupPolicyDataItem {
   /** The time of day that the backup is scheduled, in HH:MM format */
   schedule_time: string;
   /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
-  schedule_day: number | null;
+  schedule_day: number;
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
-  schedule_week: number | null;
+  schedule_week: number;
   /** When the backup policy was created */
   created_at: string;
   /** When the backup policy was last updated */
   updated_at: string;
   /** When the backup was last run */
-  last_ran_at: string | null;
+  last_ran_at: string;
   /** When the backup will next run */
-  next_run_at: string | null;
+  next_run_at: string;
   /** Whether the policy is a required system backup */
   required: boolean;
 }
@@ -10126,12 +9143,12 @@ export const PaginatedBackupPolicyDataItem = /*@__PURE__*/ S.suspend(() =>
     frequency_value: S.Number,
     frequency_unit: S.String,
     schedule_time: S.String,
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
+    schedule_day: S.Number,
+    schedule_week: S.Number,
     created_at: S.String,
     updated_at: S.String,
-    last_ran_at: S.NullOr(S.String),
-    next_run_at: S.NullOr(S.String),
+    last_ran_at: S.String,
+    next_run_at: S.String,
     required: S.Boolean,
   }),
 ).annotate({
@@ -10145,28 +9162,25 @@ export const PaginatedBackupPolicyDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedBackupPolicyDataList>;
 
 export interface PaginatedBackupPolicy {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
+  /** The next page number */
+  next_page: number;
+  /** The next page of results */
+  next_page_url: string;
+  /** The previous page number */
+  prev_page: number;
+  /** The previous page of results */
+  prev_page_url: string;
   data: PaginatedBackupPolicyDataList;
 }
 export const PaginatedBackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
+    next_page: S.Number,
+    next_page_url: S.String,
+    prev_page: S.Number,
+    prev_page_url: S.String,
     data: PaginatedBackupPolicyDataList,
   }),
 ).annotate({
@@ -10319,9 +9333,9 @@ export interface PaginatedBackupDataItemBackupPolicy {
   /** The time of day that the backup is scheduled, in HH:MM format */
   schedule_time: string | null;
   /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
-  schedule_day: number | null;
+  schedule_day: number;
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
-  schedule_week: number | null;
+  schedule_week: number;
   /** When the backup policy was created */
   created_at: string;
   /** When the backup policy was last updated */
@@ -10344,8 +9358,8 @@ export const PaginatedBackupDataItemBackupPolicy = /*@__PURE__*/ S.suspend(() =>
     frequency_value: S.Number,
     frequency_unit: S.String,
     schedule_time: S.NullOr(S.String),
-    schedule_day: S.NullOr(S.Number),
-    schedule_week: S.NullOr(S.Number),
+    schedule_day: S.Number,
+    schedule_week: S.Number,
     created_at: S.String,
     updated_at: S.String,
     last_ran_at: S.NullOr(S.String),
@@ -10434,17 +9448,15 @@ export interface PaginatedBackupDataItem {
   deleted_at: string | null;
   /** Size of the PVC used for the backup */
   pvc_size: number;
-  /** The uncompressed (logical) size of the backup in bytes */
-  uncompressed_size: number;
   /** Whether or not the backup is protected from deletion */
   protected: boolean;
   /** Whether or not the backup policy is required */
   required: boolean;
   restored_branches: PaginatedBackupDataItemRestoredBranchesList;
-  actor: PaginatedBackupDataItemActor | null;
-  backup_policy?: PaginatedBackupDataItemBackupPolicy | null;
-  schema_snapshot?: PaginatedBackupDataItemSchemaSnapshot | null;
-  database_branch?: PaginatedBackupDataItemDatabaseBranch | null;
+  actor: PaginatedBackupDataItemActor;
+  backup_policy: PaginatedBackupDataItemBackupPolicy | null;
+  schema_snapshot: PaginatedBackupDataItemSchemaSnapshot;
+  database_branch: PaginatedBackupDataItemDatabaseBranch;
 }
 export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10460,18 +9472,13 @@ export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
     completed_at: S.NullOr(S.String),
     deleted_at: S.NullOr(S.String),
     pvc_size: S.Number,
-    uncompressed_size: S.Number,
     protected: S.Boolean,
     required: S.Boolean,
     restored_branches: PaginatedBackupDataItemRestoredBranchesList,
-    actor: S.NullOr(PaginatedBackupDataItemActor),
-    backup_policy: S.optional(S.NullOr(PaginatedBackupDataItemBackupPolicy)),
-    schema_snapshot: S.optional(
-      S.NullOr(PaginatedBackupDataItemSchemaSnapshot),
-    ),
-    database_branch: S.optional(
-      S.NullOr(PaginatedBackupDataItemDatabaseBranch),
-    ),
+    actor: PaginatedBackupDataItemActor,
+    backup_policy: S.NullOr(PaginatedBackupDataItemBackupPolicy),
+    schema_snapshot: PaginatedBackupDataItemSchemaSnapshot,
+    database_branch: PaginatedBackupDataItemDatabaseBranch,
   }),
 ).annotate({
   identifier: "PaginatedBackupDataItem",
@@ -10483,23 +9490,20 @@ export const PaginatedBackupDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedBackupDataList>;
 
 export interface PaginatedBackup {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedBackupDataList;
 }
 export const PaginatedBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -10601,7 +9605,7 @@ export interface PaginatedPostgresBouncerResizeRequestDataItemBouncer {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedPostgresBouncerResizeRequestDataItemBouncer =
   /*@__PURE__*/ S.suspend(() =>
@@ -10610,7 +9614,7 @@ export const PaginatedPostgresBouncerResizeRequestDataItemBouncer =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "PaginatedPostgresBouncerResizeRequestDataItemBouncer",
@@ -10680,9 +9684,9 @@ export interface PaginatedPostgresBouncerResizeRequestDataItem {
   /** The previous bouncer parameters */
   previous_parameters: PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap;
   /** The time the bouncer resize started */
-  started_at: string | null;
+  started_at: string;
   /** The time the bouncer resize completed */
-  completed_at: string | null;
+  completed_at: string;
   /** The time the bouncer resize was created */
   created_at: string;
   /** The time the bouncer resize was last updated */
@@ -10702,8 +9706,8 @@ export const PaginatedPostgresBouncerResizeRequestDataItem =
       previous_replicas_per_cell: S.Number,
       previous_parameters:
         PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap,
-      started_at: S.NullOr(S.String),
-      completed_at: S.NullOr(S.String),
+      started_at: S.String,
+      completed_at: S.String,
       created_at: S.String,
       updated_at: S.String,
       actor: PaginatedPostgresBouncerResizeRequestDataItemActor,
@@ -10723,24 +9727,21 @@ export const PaginatedPostgresBouncerResizeRequestDataList =
   ) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataList>;
 
 export interface PaginatedPostgresBouncerResizeRequest {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPostgresBouncerResizeRequestDataList;
 }
 export const PaginatedPostgresBouncerResizeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      type: S.String,
       current_page: S.Number,
       next_page: S.NullOr(S.Number),
       next_page_url: S.NullOr(S.String),
@@ -10842,7 +9843,7 @@ export interface PaginatedPostgresBouncerDataItemBranch {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedPostgresBouncerDataItemBranch = /*@__PURE__*/ S.suspend(
   () =>
@@ -10851,7 +9852,7 @@ export const PaginatedPostgresBouncerDataItemBranch = /*@__PURE__*/ S.suspend(
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedPostgresBouncerDataItemBranch",
@@ -10983,8 +9984,6 @@ export interface PaginatedPostgresBouncerDataItem {
   /** The name of the bouncer */
   name: string;
   sku: PaginatedPostgresBouncerDataItemSku;
-  /** The size of the bouncer as a SKU name (e.g., 'PGB_5') */
-  bouncer_size: string;
   /** The instance type the bouncer targets */
   target: PaginatedPostgresBouncerDataItemTarget;
   /** The count of replicas in each cell */
@@ -10994,7 +9993,7 @@ export interface PaginatedPostgresBouncerDataItem {
   /** When the bouncer was updated */
   updated_at: string;
   /** When the bouncer was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   actor: PaginatedPostgresBouncerDataItemActor;
   branch: PaginatedPostgresBouncerDataItemBranch;
   parameters: PaginatedPostgresBouncerDataItemParametersList;
@@ -11004,12 +10003,11 @@ export const PaginatedPostgresBouncerDataItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     sku: PaginatedPostgresBouncerDataItemSku,
-    bouncer_size: S.String,
     target: PaginatedPostgresBouncerDataItemTarget,
     replicas_per_cell: S.Number,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
     actor: PaginatedPostgresBouncerDataItemActor,
     branch: PaginatedPostgresBouncerDataItemBranch,
     parameters: PaginatedPostgresBouncerDataItemParametersList,
@@ -11025,23 +10023,20 @@ export const PaginatedPostgresBouncerDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedPostgresBouncerDataList>;
 
 export interface PaginatedPostgresBouncer {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPostgresBouncerDataList;
 }
 export const PaginatedPostgresBouncer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -11052,161 +10047,6 @@ export const PaginatedPostgresBouncer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedPostgresBouncer",
 }) as any as S.Schema<PaginatedPostgresBouncer>;
-
-export interface ListBranchAnomaliesRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** Start time for filtering anomalies (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering anomalies (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering anomalies (e.g., '1h', '24h') */
-  period?: string;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const ListBranchAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/anomalies",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListBranchAnomaliesRequest",
-}) as any as S.Schema<ListBranchAnomaliesRequest>;
-
-/** The tablet type the query ran against */
-export type PaginatedAnomalyDataItemCorrelationsItemTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const PaginatedAnomalyDataItemCorrelationsItemTabletType =
-  /*@__PURE__*/ S.String;
-
-export interface PaginatedAnomalyDataItemCorrelationsItem {
-  /** The ID of the correlation */
-  id: string;
-  /** The correlation coefficient between the query and the anomaly */
-  r: number;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** The tablet type the query ran against */
-  tablet_type: PaginatedAnomalyDataItemCorrelationsItemTabletType;
-}
-export const PaginatedAnomalyDataItemCorrelationsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      r: S.Number,
-      keyspace: S.String,
-      fingerprint: S.String,
-      normalized_sql: S.String,
-      syntax_highlighted_sql: S.String,
-      tablet_type: PaginatedAnomalyDataItemCorrelationsItemTabletType,
-    }),
-).annotate({
-  identifier: "PaginatedAnomalyDataItemCorrelationsItem",
-}) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsItem>;
-
-export type PaginatedAnomalyDataItemCorrelationsList =
-  Array<PaginatedAnomalyDataItemCorrelationsItem>;
-export const PaginatedAnomalyDataItemCorrelationsList = /*@__PURE__*/ S.Array(
-  PaginatedAnomalyDataItemCorrelationsItem,
-) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsList>;
-
-export interface PaginatedAnomalyDataItem {
-  /** The ID of the anomaly */
-  id: string;
-  /** When the anomaly started */
-  period_start: string;
-  /** When the anomaly ended */
-  period_end: string;
-  /** The number of minutes query latency was in violation of the expected baseline */
-  minutes_in_violation: number;
-  /** Whether the anomaly is ongoing */
-  active: boolean;
-  /** The duration of the anomaly in seconds */
-  duration: number;
-  /** Start of the metrics window surrounding the anomaly */
-  metrics_start: string;
-  /** End of the metrics window surrounding the anomaly */
-  metrics_end: string;
-  correlations?: PaginatedAnomalyDataItemCorrelationsList | null;
-}
-export const PaginatedAnomalyDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    period_start: S.String,
-    period_end: S.String,
-    minutes_in_violation: S.Number,
-    active: S.Boolean,
-    duration: S.Number,
-    metrics_start: S.String,
-    metrics_end: S.String,
-    correlations: S.optional(
-      S.NullOr(PaginatedAnomalyDataItemCorrelationsList),
-    ),
-  }),
-).annotate({
-  identifier: "PaginatedAnomalyDataItem",
-}) as any as S.Schema<PaginatedAnomalyDataItem>;
-
-export type PaginatedAnomalyDataList = Array<PaginatedAnomalyDataItem>;
-export const PaginatedAnomalyDataList = /*@__PURE__*/ S.Array(
-  PaginatedAnomalyDataItem,
-) as any as S.Schema<PaginatedAnomalyDataList>;
-
-export interface PaginatedAnomaly {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedAnomalyDataList;
-}
-export const PaginatedAnomaly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedAnomalyDataList,
-  }),
-).annotate({
-  identifier: "PaginatedAnomaly",
-}) as any as S.Schema<PaginatedAnomaly>;
 
 export interface ListBranchBouncerResizeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -11269,6 +10109,14 @@ export const ListBranchChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBranchChangeRequestsRequest",
 }) as any as S.Schema<ListBranchChangeRequestsRequest>;
 
+/** The ports requiring a restart when changes are applied */
+export type PaginatedPostgresClusterResizeRequestDataItemRestartList =
+  Array<number>;
+export const PaginatedPostgresClusterResizeRequestDataItemRestartList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemRestartList>;
+
 /** The state of the branch change request */
 export type PaginatedPostgresClusterResizeRequestDataItemState =
   | "queued"
@@ -11328,10 +10176,12 @@ export const PaginatedPostgresClusterResizeRequestDataItemStorageType =
 export interface PaginatedPostgresClusterResizeRequestDataItem {
   /** The ID of the branch change request */
   id: string;
+  /** The ports requiring a restart when changes are applied */
+  restart?: PaginatedPostgresClusterResizeRequestDataItemRestartList;
   /** The state of the branch change request */
   state: PaginatedPostgresClusterResizeRequestDataItemState;
   /** The time the branch change request started */
-  started_at: string | null;
+  started_at: string;
   /** The time the branch change request completed */
   completed_at?: string | null;
   /** The time the branch change request was created */
@@ -11392,8 +10242,11 @@ export const PaginatedPostgresClusterResizeRequestDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
+      restart: S.optional(
+        PaginatedPostgresClusterResizeRequestDataItemRestartList,
+      ),
       state: PaginatedPostgresClusterResizeRequestDataItemState,
-      started_at: S.NullOr(S.String),
+      started_at: S.String,
       completed_at: S.optional(S.NullOr(S.String)),
       created_at: S.String,
       updated_at: S.String,
@@ -11436,24 +10289,21 @@ export const PaginatedPostgresClusterResizeRequestDataList =
   ) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataList>;
 
 export interface PaginatedPostgresClusterResizeRequest {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPostgresClusterResizeRequestDataList;
 }
 export const PaginatedPostgresClusterResizeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      type: S.String,
       current_page: S.Number,
       next_page: S.NullOr(S.Number),
       next_page_url: S.NullOr(S.String),
@@ -11589,10 +10439,6 @@ export interface PaginatedDatabaseBranchDataItemRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedDatabaseBranchDataItemRegion = /*@__PURE__*/ S.suspend(
   () =>
@@ -11606,8 +10452,6 @@ export const PaginatedDatabaseBranchDataItemRegion = /*@__PURE__*/ S.suspend(
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
 ).annotate({
   identifier: "PaginatedDatabaseBranchDataItemRegion",
@@ -11637,7 +10481,7 @@ export interface PaginatedDatabaseBranchDataItem {
   /** When a user last marked a backup restore checklist as completed */
   restore_checklist_completed_at: string | null;
   /** When the schema for the branch was last updated */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** The kind of branch */
   kind: PaginatedDatabaseBranchDataItemKind;
   /** The MySQL address for the branch */
@@ -11670,11 +10514,9 @@ export interface PaginatedDatabaseBranchDataItem {
   sharded?: boolean;
   /** The number of shards in the branch */
   shard_count?: number;
-  /** The number of keyspaces in the branch */
-  keyspace_count?: number;
   /** Whether or not the branch has a stale schema */
   stale_schema: boolean;
-  actor: PaginatedDatabaseBranchDataItemActor | null;
+  actor: PaginatedDatabaseBranchDataItemActor;
   restored_from_branch: PaginatedDatabaseBranchDataItemRestoredFromBranch | null;
   /** True if private connections are enabled */
   private_edge_connectivity: boolean;
@@ -11701,7 +10543,7 @@ export const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     deleted_at: S.NullOr(S.String),
     restore_checklist_completed_at: S.NullOr(S.String),
-    schema_last_updated_at: S.NullOr(S.String),
+    schema_last_updated_at: S.String,
     kind: PaginatedDatabaseBranchDataItemKind,
     mysql_address: S.optional(S.String),
     mysql_edge_address: S.optional(S.String),
@@ -11718,9 +10560,8 @@ export const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ S.suspend(() =>
     safe_migrations: S.Boolean,
     sharded: S.optional(S.Boolean),
     shard_count: S.optional(S.Number),
-    keyspace_count: S.optional(S.Number),
     stale_schema: S.Boolean,
-    actor: S.NullOr(PaginatedDatabaseBranchDataItemActor),
+    actor: PaginatedDatabaseBranchDataItemActor,
     restored_from_branch: S.NullOr(
       PaginatedDatabaseBranchDataItemRestoredFromBranch,
     ),
@@ -11745,23 +10586,20 @@ export const PaginatedDatabaseBranchDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseBranchDataList>;
 
 export interface PaginatedDatabaseBranch {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchDataList;
 }
 export const PaginatedDatabaseBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -11772,1071 +10610,6 @@ export const PaginatedDatabaseBranch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedDatabaseBranch",
 }) as any as S.Schema<PaginatedDatabaseBranch>;
-
-export type ListBranchQueriesRequestSort =
-  | "keyspace"
-  | "query"
-  | "lastRun"
-  | "count"
-  | "errorCount"
-  | "rowsRead"
-  | "rowsAffected"
-  | "rowsReturned"
-  | "rowsReadPerReturned"
-  | "rowsReadPerQuery"
-  | "rowsReturnedPerQuery"
-  | "rowsAffectedPerQuery"
-  | "totalTime"
-  | "cpuTime"
-  | "ioTime"
-  | "sumShardQueries"
-  | "maxShardQueries"
-  | "avgShardQueries"
-  | "table"
-  | "qualifiedTable"
-  | "tableKeyspace"
-  | "indexes"
-  | "routingIndexes"
-  | "p50Latency"
-  | "p99Latency"
-  | "maxLatency"
-  | "percentTime"
-  | "percentCpuTime"
-  | "percentIoTime"
-  | "egressBytes"
-  | "egressBytesPerQuery"
-  | "maxEgressBytes"
-  | "ingressBytes"
-  | "ingressBytesPerQuery"
-  | "maxIngressBytes"
-  | "blocksRead"
-  | "blocksHit"
-  | "blockCacheHitRatio"
-  | "blocksDirtied"
-  | "blocksWritten"
-  | "trafficControlWarnings"
-  | "trafficControlThrottled"
-  | "trafficControlChecked"
-  | "trafficControlBudgetsUsed";
-export const ListBranchQueriesRequestSort = /*@__PURE__*/ S.String;
-
-export type ListBranchQueriesRequestDir = "asc" | "desc";
-export const ListBranchQueriesRequestDir = /*@__PURE__*/ S.String;
-
-export type ListBranchQueriesRequestTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const ListBranchQueriesRequestTabletType = /*@__PURE__*/ S.String;
-
-export type ListBranchQueriesRequestType =
-  | "SELECT"
-  | "INSERT"
-  | "UPDATE"
-  | "DELETE";
-export const ListBranchQueriesRequestType = /*@__PURE__*/ S.String;
-
-export type ListBranchQueriesRequestFieldsList = Array<string>;
-export const ListBranchQueriesRequestFieldsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchQueriesRequestFieldsList>;
-
-export interface ListBranchQueriesRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** Search query statistics by SQL pattern */
-  q?: string;
-  /** Start time for filtering query statistics (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering query statistics (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering query statistics (e.g., '1h', '24h') */
-  period?: string;
-  /** Field to sort by */
-  sort?: ListBranchQueriesRequestSort | (string & {});
-  /** Sort direction */
-  dir?: ListBranchQueriesRequestDir | (string & {});
-  /** Filter by tablet type */
-  tablet_type?: ListBranchQueriesRequestTabletType | (string & {});
-  /** Filter by statement type */
-  type?: ListBranchQueriesRequestType | (string & {});
-  /** Specific fields to include in the response */
-  fields?: ListBranchQueriesRequestFieldsList;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const ListBranchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    q: S.optional(S.String.pipe(T.Query())),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(ListBranchQueriesRequestSort.pipe(T.Query())),
-    dir: S.optional(ListBranchQueriesRequestDir.pipe(T.Query())),
-    tablet_type: S.optional(ListBranchQueriesRequestTabletType.pipe(T.Query())),
-    type: S.optional(ListBranchQueriesRequestType.pipe(T.Query())),
-    fields: S.optional(ListBranchQueriesRequestFieldsList.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListBranchQueriesRequest",
-}) as any as S.Schema<ListBranchQueriesRequest>;
-
-/** Tables accessed by the query */
-export type PaginatedQuerySummaryDataItemTablesList = Array<string>;
-export const PaginatedQuerySummaryDataItemTablesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
-
-/** Fully qualified tables accessed by the query */
-export type PaginatedQuerySummaryDataItemQualifiedTablesList = Array<string>;
-export const PaginatedQuerySummaryDataItemQualifiedTablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemQualifiedTablesList>;
-
-export type PaginatedQuerySummaryDataItemTableKeyspacesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedQuerySummaryDataItemTableKeyspacesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemTableKeyspacesItemMap>;
-
-/** Mapping of tables to their keyspaces */
-export type PaginatedQuerySummaryDataItemTableKeyspacesList =
-  Array<PaginatedQuerySummaryDataItemTableKeyspacesItemMap>;
-export const PaginatedQuerySummaryDataItemTableKeyspacesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedQuerySummaryDataItemTableKeyspacesItemMap,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemTableKeyspacesList>;
-
-export type PaginatedQuerySummaryDataItemIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedQuerySummaryDataItemIndexUsagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
-
-/** Index usage information */
-export type PaginatedQuerySummaryDataItemIndexUsagesList =
-  Array<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
-export const PaginatedQuerySummaryDataItemIndexUsagesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedQuerySummaryDataItemIndexUsagesItemMap,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesList>;
-
-export type PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-
-/** Routing index usage information */
-export type PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
-  Array<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-export const PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap,
-  ) as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesList>;
-
-export interface PaginatedQuerySummaryDataItem {
-  /** The ID of the query summary */
-  id: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** The type of SQL statement */
-  statement_type: string;
-  /** The keyspace the query ran against */
-  keyspace: string;
-  /** The normalized SQL statement */
-  normalized_sql: string;
-  /** Syntax highlighted SQL statement */
-  syntax_highlighted_sql: string;
-  /** Whether the query is a multishard query */
-  multishard: boolean;
-  /** The number of times this query was executed */
-  query_count: number;
-  /** The number of times this query resulted in an error */
-  error_count: number;
-  /** Tables accessed by the query */
-  tables: PaginatedQuerySummaryDataItemTablesList;
-  /** Fully qualified tables accessed by the query */
-  qualified_tables: PaginatedQuerySummaryDataItemQualifiedTablesList;
-  /** Mapping of tables to their keyspaces */
-  table_keyspaces: PaginatedQuerySummaryDataItemTableKeyspacesList;
-  /** Index usage information */
-  index_usages: PaginatedQuerySummaryDataItemIndexUsagesList;
-  /** Routing index usage information */
-  routing_index_usages: PaginatedQuerySummaryDataItemRoutingIndexUsagesList;
-  /** The total number of shard queries */
-  sum_shard_queries: number;
-  /** The maximum number of shard queries for a single execution */
-  max_shard_queries: number;
-  /** The average number of shard queries */
-  avg_shard_queries: number;
-  /** The total number of rows read */
-  sum_rows_read: number;
-  /** The total number of rows affected */
-  sum_rows_affected: number;
-  /** The total number of rows returned */
-  sum_rows_returned: number;
-  /** Average rows read per row returned */
-  rows_read_per_returned: number;
-  /** Average rows read per query */
-  rows_read_per_query: number;
-  /** Average rows returned per query */
-  rows_returned_per_query: number;
-  /** Average rows affected per query */
-  rows_affected_per_query: number;
-  /** Total duration in milliseconds across all executions */
-  sum_total_duration_millis: number;
-  /** Percentage of total query time */
-  sum_total_duration_percent: number;
-  /** Total CPU duration in milliseconds */
-  sum_cpu_duration_millis: number;
-  /** Percentage of total CPU time */
-  sum_cpu_duration_percent: number;
-  /** Total IO duration in milliseconds */
-  sum_io_duration_millis: number;
-  /** Percentage of total IO time */
-  sum_io_duration_percent: number;
-  /** When this query was last executed */
-  last_run_at: string | null;
-  /** Average time per query execution */
-  time_per_query: number;
-  /** 50th percentile latency */
-  p50_latency: number;
-  /** 99th percentile latency */
-  p99_latency: number;
-  /** Maximum latency observed */
-  max_latency: number;
-  /** Total egress bytes */
-  egress_bytes: number;
-  /** Average egress bytes per query */
-  egress_bytes_per_query: number;
-  /** Maximum egress bytes for a single execution */
-  max_egress_bytes: number;
-  /** Total ingress bytes */
-  ingress_bytes: number;
-  /** Average ingress bytes per query */
-  ingress_bytes_per_query: number;
-  /** Maximum ingress bytes for a single execution */
-  max_ingress_bytes: number;
-  /** Total blocks read from disk */
-  blocks_read: number;
-  /** Total blocks found in cache */
-  blocks_hit: number;
-  /** Cache hit ratio for blocks */
-  block_cache_hit_ratio: number;
-  /** Total blocks dirtied */
-  blocks_dirtied: number;
-  /** Total blocks written */
-  blocks_written: number;
-  /** The number of executions that triggered a traffic control warning */
-  traffic_control_warnings: number;
-  /** The number of executions throttled by traffic control */
-  traffic_control_throttled: number;
-  /** The number of executions checked by traffic control rules */
-  traffic_control_checked: number;
-}
-export const PaginatedQuerySummaryDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    fingerprint: S.String,
-    statement_type: S.String,
-    keyspace: S.String,
-    normalized_sql: S.String,
-    syntax_highlighted_sql: S.String,
-    multishard: S.Boolean,
-    query_count: S.Number,
-    error_count: S.Number,
-    tables: PaginatedQuerySummaryDataItemTablesList,
-    qualified_tables: PaginatedQuerySummaryDataItemQualifiedTablesList,
-    table_keyspaces: PaginatedQuerySummaryDataItemTableKeyspacesList,
-    index_usages: PaginatedQuerySummaryDataItemIndexUsagesList,
-    routing_index_usages: PaginatedQuerySummaryDataItemRoutingIndexUsagesList,
-    sum_shard_queries: S.Number,
-    max_shard_queries: S.Number,
-    avg_shard_queries: S.Number,
-    sum_rows_read: S.Number,
-    sum_rows_affected: S.Number,
-    sum_rows_returned: S.Number,
-    rows_read_per_returned: S.Number,
-    rows_read_per_query: S.Number,
-    rows_returned_per_query: S.Number,
-    rows_affected_per_query: S.Number,
-    sum_total_duration_millis: S.Number,
-    sum_total_duration_percent: S.Number,
-    sum_cpu_duration_millis: S.Number,
-    sum_cpu_duration_percent: S.Number,
-    sum_io_duration_millis: S.Number,
-    sum_io_duration_percent: S.Number,
-    last_run_at: S.NullOr(S.String),
-    time_per_query: S.Number,
-    p50_latency: S.Number,
-    p99_latency: S.Number,
-    max_latency: S.Number,
-    egress_bytes: S.Number,
-    egress_bytes_per_query: S.Number,
-    max_egress_bytes: S.Number,
-    ingress_bytes: S.Number,
-    ingress_bytes_per_query: S.Number,
-    max_ingress_bytes: S.Number,
-    blocks_read: S.Number,
-    blocks_hit: S.Number,
-    block_cache_hit_ratio: S.Number,
-    blocks_dirtied: S.Number,
-    blocks_written: S.Number,
-    traffic_control_warnings: S.Number,
-    traffic_control_throttled: S.Number,
-    traffic_control_checked: S.Number,
-  }),
-).annotate({
-  identifier: "PaginatedQuerySummaryDataItem",
-}) as any as S.Schema<PaginatedQuerySummaryDataItem>;
-
-export type PaginatedQuerySummaryDataList =
-  Array<PaginatedQuerySummaryDataItem>;
-export const PaginatedQuerySummaryDataList = /*@__PURE__*/ S.Array(
-  PaginatedQuerySummaryDataItem,
-) as any as S.Schema<PaginatedQuerySummaryDataList>;
-
-export interface PaginatedQuerySummary {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedQuerySummaryDataList;
-}
-export const PaginatedQuerySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedQuerySummaryDataList,
-  }),
-).annotate({
-  identifier: "PaginatedQuerySummary",
-}) as any as S.Schema<PaginatedQuerySummary>;
-
-export type ListBranchQueryErrorsRequestSort =
-  | "error"
-  | "lastRun"
-  | "count"
-  | "totalTime"
-  | "timePerQuery";
-export const ListBranchQueryErrorsRequestSort = /*@__PURE__*/ S.String;
-
-export type ListBranchQueryErrorsRequestDir = "asc" | "desc";
-export const ListBranchQueryErrorsRequestDir = /*@__PURE__*/ S.String;
-
-export type ListBranchQueryErrorsRequestTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const ListBranchQueryErrorsRequestTabletType = /*@__PURE__*/ S.String;
-
-export interface ListBranchQueryErrorsRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** Search query errors by error message */
-  q?: string;
-  /** Start time for filtering query errors (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering query errors (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering query errors (e.g., '1h', '24h') */
-  period?: string;
-  /** Field to sort by */
-  sort?: ListBranchQueryErrorsRequestSort | (string & {});
-  /** Sort direction */
-  dir?: ListBranchQueryErrorsRequestDir | (string & {});
-  /** Filter by tablet type */
-  tablet_type?: ListBranchQueryErrorsRequestTabletType | (string & {});
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const ListBranchQueryErrorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    q: S.optional(S.String.pipe(T.Query())),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(ListBranchQueryErrorsRequestSort.pipe(T.Query())),
-    dir: S.optional(ListBranchQueryErrorsRequestDir.pipe(T.Query())),
-    tablet_type: S.optional(
-      ListBranchQueryErrorsRequestTabletType.pipe(T.Query()),
-    ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/errors",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListBranchQueryErrorsRequest",
-}) as any as S.Schema<ListBranchQueryErrorsRequest>;
-
-export interface PaginatedErrorSummaryDataItem {
-  /** The ID of the error summary */
-  id: string;
-  /** The error fingerprint */
-  error_fingerprint: string;
-  /** When the error last occurred */
-  started_at: string;
-  /** Total duration in milliseconds across all failed executions */
-  total_duration_millis: number;
-  /** Average duration per failed execution in milliseconds */
-  time_per_query: number;
-  /** The number of times the error occurred */
-  error_count: number;
-  /** The error message */
-  error_message: string;
-}
-export const PaginatedErrorSummaryDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    error_fingerprint: S.String,
-    started_at: S.String,
-    total_duration_millis: S.Number,
-    time_per_query: S.Number,
-    error_count: S.Number,
-    error_message: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedErrorSummaryDataItem",
-}) as any as S.Schema<PaginatedErrorSummaryDataItem>;
-
-export type PaginatedErrorSummaryDataList =
-  Array<PaginatedErrorSummaryDataItem>;
-export const PaginatedErrorSummaryDataList = /*@__PURE__*/ S.Array(
-  PaginatedErrorSummaryDataItem,
-) as any as S.Schema<PaginatedErrorSummaryDataList>;
-
-export interface PaginatedErrorSummary {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedErrorSummaryDataList;
-}
-export const PaginatedErrorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedErrorSummaryDataList,
-  }),
-).annotate({
-  identifier: "PaginatedErrorSummary",
-}) as any as S.Schema<PaginatedErrorSummary>;
-
-export type ListBranchQueryTagsRequestTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const ListBranchQueryTagsRequestTabletType = /*@__PURE__*/ S.String;
-
-export interface ListBranchQueryTagsRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** Search tags by name */
-  q?: string;
-  /** Start time for filtering tags (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering tags (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering tags (e.g., '1h', '24h') */
-  period?: string;
-  /** Filter to tags on queries with this fingerprint */
-  fingerprint?: string;
-  /** Filter by keyspace */
-  keyspace?: string;
-  /** Filter by tablet type */
-  tablet_type?: ListBranchQueryTagsRequestTabletType | (string & {});
-  /** Maximum number of values returned per tag (1-100) */
-  values_limit?: number;
-  /** Only return literal tag values, excluding overflow and collapsed values */
-  literal_values_only?: boolean;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const ListBranchQueryTagsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    q: S.optional(S.String.pipe(T.Query())),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    fingerprint: S.optional(S.String.pipe(T.Query())),
-    keyspace: S.optional(S.String.pipe(T.Query())),
-    tablet_type: S.optional(
-      ListBranchQueryTagsRequestTabletType.pipe(T.Query()),
-    ),
-    values_limit: S.optional(S.Number.pipe(T.Query())),
-    literal_values_only: S.optional(S.Boolean.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/tags",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListBranchQueryTagsRequest",
-}) as any as S.Schema<ListBranchQueryTagsRequest>;
-
-/** The source of the tag */
-export type PaginatedQueryTagDataItemSource = "sql" | "system";
-export const PaginatedQueryTagDataItemSource = /*@__PURE__*/ S.String;
-
-/** The kind of tag value */
-export type PaginatedQueryTagDataItemValuesItemKind =
-  | "literal"
-  | "overflow"
-  | "collapsed";
-export const PaginatedQueryTagDataItemValuesItemKind = /*@__PURE__*/ S.String;
-
-export interface PaginatedQueryTagDataItemValuesItem {
-  /** The name of the tag value */
-  name: string;
-  /** The number of queries that have this tag value */
-  query_count: number;
-  /** The kind of tag value */
-  kind: PaginatedQueryTagDataItemValuesItemKind;
-}
-export const PaginatedQueryTagDataItemValuesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    query_count: S.Number,
-    kind: PaginatedQueryTagDataItemValuesItemKind,
-  }),
-).annotate({
-  identifier: "PaginatedQueryTagDataItemValuesItem",
-}) as any as S.Schema<PaginatedQueryTagDataItemValuesItem>;
-
-export type PaginatedQueryTagDataItemValuesList =
-  Array<PaginatedQueryTagDataItemValuesItem>;
-export const PaginatedQueryTagDataItemValuesList = /*@__PURE__*/ S.Array(
-  PaginatedQueryTagDataItemValuesItem,
-) as any as S.Schema<PaginatedQueryTagDataItemValuesList>;
-
-export interface PaginatedQueryTagDataItem {
-  /** The ID of the tag */
-  id: string;
-  /** The name of the tag */
-  name: string;
-  /** The source of the tag */
-  source: PaginatedQueryTagDataItemSource;
-  /** The number of queries that have this tag */
-  query_count: number;
-  values: PaginatedQueryTagDataItemValuesList;
-}
-export const PaginatedQueryTagDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    source: PaginatedQueryTagDataItemSource,
-    query_count: S.Number,
-    values: PaginatedQueryTagDataItemValuesList,
-  }),
-).annotate({
-  identifier: "PaginatedQueryTagDataItem",
-}) as any as S.Schema<PaginatedQueryTagDataItem>;
-
-export type PaginatedQueryTagDataList = Array<PaginatedQueryTagDataItem>;
-export const PaginatedQueryTagDataList = /*@__PURE__*/ S.Array(
-  PaginatedQueryTagDataItem,
-) as any as S.Schema<PaginatedQueryTagDataList>;
-
-export interface PaginatedQueryTag {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedQueryTagDataList;
-}
-export const PaginatedQueryTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedQueryTagDataList,
-  }),
-).annotate({
-  identifier: "PaginatedQueryTag",
-}) as any as S.Schema<PaginatedQueryTag>;
-
-export type ListBranchQueryTagSummariesRequestTagsList = Array<string>;
-export const ListBranchQueryTagSummariesRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
-
-export type ListBranchQueryTagSummariesRequestSort =
-  | "dimensions"
-  | "lastRun"
-  | "count"
-  | "errorCount"
-  | "rowsRead"
-  | "rowsAffected"
-  | "rowsReturned"
-  | "rowsReadPerReturned"
-  | "rowsReadPerQuery"
-  | "rowsReturnedPerQuery"
-  | "rowsAffectedPerQuery"
-  | "totalTime"
-  | "cpuTime"
-  | "ioTime"
-  | "sumShardQueries"
-  | "maxShardQueries"
-  | "avgShardQueries"
-  | "table"
-  | "qualifiedTable"
-  | "tableKeyspace"
-  | "indexes"
-  | "routingIndexes"
-  | "p50Latency"
-  | "p99Latency"
-  | "maxLatency"
-  | "percentTime"
-  | "percentCpuTime"
-  | "percentIoTime"
-  | "egressBytes"
-  | "egressBytesPerQuery"
-  | "maxEgressBytes"
-  | "ingressBytes"
-  | "ingressBytesPerQuery"
-  | "maxIngressBytes"
-  | "blocksRead"
-  | "blocksHit"
-  | "blockCacheHitRatio"
-  | "blocksDirtied"
-  | "blocksWritten"
-  | "trafficControlWarnings"
-  | "trafficControlThrottled"
-  | "trafficControlChecked"
-  | "trafficControlBudgetsUsed";
-export const ListBranchQueryTagSummariesRequestSort = /*@__PURE__*/ S.String;
-
-export type ListBranchQueryTagSummariesRequestDir = "asc" | "desc";
-export const ListBranchQueryTagSummariesRequestDir = /*@__PURE__*/ S.String;
-
-export type ListBranchQueryTagSummariesRequestTabletType =
-  | "primary"
-  | "replica"
-  | "rdonly";
-export const ListBranchQueryTagSummariesRequestTabletType =
-  /*@__PURE__*/ S.String;
-
-export type ListBranchQueryTagSummariesRequestType =
-  | "SELECT"
-  | "INSERT"
-  | "UPDATE"
-  | "DELETE";
-export const ListBranchQueryTagSummariesRequestType = /*@__PURE__*/ S.String;
-
-export type ListBranchQueryTagSummariesRequestFieldsList = Array<string>;
-export const ListBranchQueryTagSummariesRequestFieldsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListBranchQueryTagSummariesRequestFieldsList>;
-
-export interface ListBranchQueryTagSummariesRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** Tag ids returned by the tags list endpoint */
-  tags?: ListBranchQueryTagSummariesRequestTagsList;
-  /** Search query statistics by SQL pattern */
-  q?: string;
-  /** Start time for filtering query statistics (ISO 8601 timestamp) */
-  from?: string;
-  /** End time for filtering query statistics (ISO 8601 timestamp) */
-  to?: string;
-  /** Time period for filtering query statistics (e.g., '1h', '24h') */
-  period?: string;
-  /** Field to sort by */
-  sort?: ListBranchQueryTagSummariesRequestSort | (string & {});
-  /** Sort direction */
-  dir?: ListBranchQueryTagSummariesRequestDir | (string & {});
-  /** Filter by tablet type */
-  tablet_type?: ListBranchQueryTagSummariesRequestTabletType | (string & {});
-  /** Filter by statement type */
-  type?: ListBranchQueryTagSummariesRequestType | (string & {});
-  /** Specific fields to include in the response */
-  fields?: ListBranchQueryTagSummariesRequestFieldsList;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-}
-export const ListBranchQueryTagSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    tags: S.optional(
-      ListBranchQueryTagSummariesRequestTagsList.pipe(T.Query()),
-    ),
-    q: S.optional(S.String.pipe(T.Query())),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-    period: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(ListBranchQueryTagSummariesRequestSort.pipe(T.Query())),
-    dir: S.optional(ListBranchQueryTagSummariesRequestDir.pipe(T.Query())),
-    tablet_type: S.optional(
-      ListBranchQueryTagSummariesRequestTabletType.pipe(T.Query()),
-    ),
-    type: S.optional(ListBranchQueryTagSummariesRequestType.pipe(T.Query())),
-    fields: S.optional(
-      ListBranchQueryTagSummariesRequestFieldsList.pipe(T.Query()),
-    ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/tags/summaries",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListBranchQueryTagSummariesRequest",
-}) as any as S.Schema<ListBranchQueryTagSummariesRequest>;
-
-/** The tag names and values this summary is grouped by */
-export type PaginatedDimensionsQuerySummaryDataItemDimensionsMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedDimensionsQuerySummaryDataItemDimensionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
-
-/** Tables accessed by the query */
-export type PaginatedDimensionsQuerySummaryDataItemTablesList = Array<string>;
-export const PaginatedDimensionsQuerySummaryDataItemTablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTablesList>;
-
-/** Fully qualified tables accessed by the query */
-export type PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
-  Array<string>;
-export const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList>;
-
-export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap>;
-
-/** Mapping of tables to their keyspaces */
-export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
-  Array<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap>;
-export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList>;
-
-export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
-
-/** Index usage information */
-export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
-  Array<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
-export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesList>;
-
-export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-
-/** Routing index usage information */
-export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
-  Array<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
-export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap,
-  ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList>;
-
-export interface PaginatedDimensionsQuerySummaryDataItem {
-  /** The tag names and values this summary is grouped by */
-  dimensions: PaginatedDimensionsQuerySummaryDataItemDimensionsMap;
-  /** The number of times this query was executed */
-  query_count: number;
-  /** The number of times this query resulted in an error */
-  error_count: number;
-  /** Tables accessed by the query */
-  tables: PaginatedDimensionsQuerySummaryDataItemTablesList;
-  /** Fully qualified tables accessed by the query */
-  qualified_tables: PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList;
-  /** Mapping of tables to their keyspaces */
-  table_keyspaces: PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList;
-  /** Index usage information */
-  index_usages: PaginatedDimensionsQuerySummaryDataItemIndexUsagesList;
-  /** Routing index usage information */
-  routing_index_usages: PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList;
-  /** The total number of shard queries */
-  sum_shard_queries: number;
-  /** The maximum number of shard queries for a single execution */
-  max_shard_queries: number;
-  /** The average number of shard queries */
-  avg_shard_queries: number;
-  /** The total number of rows read */
-  sum_rows_read: number;
-  /** The total number of rows affected */
-  sum_rows_affected: number;
-  /** The total number of rows returned */
-  sum_rows_returned: number;
-  /** Average rows read per row returned */
-  rows_read_per_returned: number;
-  /** Average rows read per query */
-  rows_read_per_query: number;
-  /** Average rows returned per query */
-  rows_returned_per_query: number;
-  /** Average rows affected per query */
-  rows_affected_per_query: number;
-  /** Total duration in milliseconds across all executions */
-  sum_total_duration_millis: number;
-  /** Percentage of total query time */
-  sum_total_duration_percent: number;
-  /** Total CPU duration in milliseconds */
-  sum_cpu_duration_millis: number;
-  /** Percentage of total CPU time */
-  sum_cpu_duration_percent: number;
-  /** Total IO duration in milliseconds */
-  sum_io_duration_millis: number;
-  /** Percentage of total IO time */
-  sum_io_duration_percent: number;
-  /** When this query was last executed */
-  last_run_at: string | null;
-  /** Average time per query execution */
-  time_per_query: number;
-  /** 50th percentile latency */
-  p50_latency: number;
-  /** 99th percentile latency */
-  p99_latency: number;
-  /** Maximum latency observed */
-  max_latency: number;
-  /** Total egress bytes */
-  egress_bytes: number;
-  /** Average egress bytes per query */
-  egress_bytes_per_query: number;
-  /** Maximum egress bytes for a single execution */
-  max_egress_bytes: number;
-  /** Total ingress bytes */
-  ingress_bytes: number;
-  /** Average ingress bytes per query */
-  ingress_bytes_per_query: number;
-  /** Maximum ingress bytes for a single execution */
-  max_ingress_bytes: number;
-  /** Total blocks read from disk */
-  blocks_read: number;
-  /** Total blocks found in cache */
-  blocks_hit: number;
-  /** Cache hit ratio for blocks */
-  block_cache_hit_ratio: number;
-  /** Total blocks dirtied */
-  blocks_dirtied: number;
-  /** Total blocks written */
-  blocks_written: number;
-  /** The number of executions that triggered a traffic control warning */
-  traffic_control_warnings: number;
-  /** The number of executions throttled by traffic control */
-  traffic_control_throttled: number;
-  /** The number of executions checked by traffic control rules */
-  traffic_control_checked: number;
-}
-export const PaginatedDimensionsQuerySummaryDataItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dimensions: PaginatedDimensionsQuerySummaryDataItemDimensionsMap,
-      query_count: S.Number,
-      error_count: S.Number,
-      tables: PaginatedDimensionsQuerySummaryDataItemTablesList,
-      qualified_tables:
-        PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList,
-      table_keyspaces:
-        PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList,
-      index_usages: PaginatedDimensionsQuerySummaryDataItemIndexUsagesList,
-      routing_index_usages:
-        PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList,
-      sum_shard_queries: S.Number,
-      max_shard_queries: S.Number,
-      avg_shard_queries: S.Number,
-      sum_rows_read: S.Number,
-      sum_rows_affected: S.Number,
-      sum_rows_returned: S.Number,
-      rows_read_per_returned: S.Number,
-      rows_read_per_query: S.Number,
-      rows_returned_per_query: S.Number,
-      rows_affected_per_query: S.Number,
-      sum_total_duration_millis: S.Number,
-      sum_total_duration_percent: S.Number,
-      sum_cpu_duration_millis: S.Number,
-      sum_cpu_duration_percent: S.Number,
-      sum_io_duration_millis: S.Number,
-      sum_io_duration_percent: S.Number,
-      last_run_at: S.NullOr(S.String),
-      time_per_query: S.Number,
-      p50_latency: S.Number,
-      p99_latency: S.Number,
-      max_latency: S.Number,
-      egress_bytes: S.Number,
-      egress_bytes_per_query: S.Number,
-      max_egress_bytes: S.Number,
-      ingress_bytes: S.Number,
-      ingress_bytes_per_query: S.Number,
-      max_ingress_bytes: S.Number,
-      blocks_read: S.Number,
-      blocks_hit: S.Number,
-      block_cache_hit_ratio: S.Number,
-      blocks_dirtied: S.Number,
-      blocks_written: S.Number,
-      traffic_control_warnings: S.Number,
-      traffic_control_throttled: S.Number,
-      traffic_control_checked: S.Number,
-    }),
-).annotate({
-  identifier: "PaginatedDimensionsQuerySummaryDataItem",
-}) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItem>;
-
-export type PaginatedDimensionsQuerySummaryDataList =
-  Array<PaginatedDimensionsQuerySummaryDataItem>;
-export const PaginatedDimensionsQuerySummaryDataList = /*@__PURE__*/ S.Array(
-  PaginatedDimensionsQuerySummaryDataItem,
-) as any as S.Schema<PaginatedDimensionsQuerySummaryDataList>;
-
-export interface PaginatedDimensionsQuerySummary {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
-  /** The current page number */
-  current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
-  data: PaginatedDimensionsQuerySummaryDataList;
-}
-export const PaginatedDimensionsQuerySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
-    data: PaginatedDimensionsQuerySummaryDataList,
-  }),
-).annotate({
-  identifier: "PaginatedDimensionsQuerySummary",
-}) as any as S.Schema<PaginatedDimensionsQuerySummary>;
 
 export type ListClusterSizeSkusRequestEngine = "mysql" | "postgresql";
 export const ListClusterSizeSkusRequestEngine = /*@__PURE__*/ S.String;
@@ -12850,8 +10623,6 @@ export interface ListClusterSizeSkusRequest {
   rates?: boolean;
   /** The region slug to get rates for. If not specified, uses the organization's default region. */
   region?: string;
-  /** The database name to resolve rates for. When specified, database-level custom rates take precedence over organization rates. */
-  database?: string;
 }
 export const ListClusterSizeSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12859,7 +10630,6 @@ export const ListClusterSizeSkusRequest = /*@__PURE__*/ S.suspend(() =>
     engine: S.optional(ListClusterSizeSkusRequestEngine.pipe(T.Query())),
     rates: S.optional(S.Boolean.pipe(T.Query())),
     region: S.optional(S.String.pipe(T.Query())),
-    database: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -13008,7 +10778,7 @@ export interface PaginatedPostgresClusterCidrDataItem {
   /** When the entry was updated */
   updated_at: string;
   /** When the entry was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   actor: PaginatedPostgresClusterCidrDataItemActor;
 }
 export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
@@ -13020,7 +10790,7 @@ export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
       cidrs: PaginatedPostgresClusterCidrDataItemCidrsList,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
       actor: PaginatedPostgresClusterCidrDataItemActor,
     }),
 ).annotate({
@@ -13034,23 +10804,20 @@ export const PaginatedPostgresClusterCidrDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedPostgresClusterCidrDataList>;
 
 export interface PaginatedPostgresClusterCidr {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPostgresClusterCidrDataList;
 }
 export const PaginatedPostgresClusterCidr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -13114,10 +10881,6 @@ export interface PaginatedPlanetscaleRegionDataItem {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedPlanetscaleRegionDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13130,8 +10893,6 @@ export const PaginatedPlanetscaleRegionDataItem = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     slug: S.String,
     current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
   }),
 ).annotate({
   identifier: "PaginatedPlanetscaleRegionDataItem",
@@ -13144,23 +10905,20 @@ export const PaginatedPlanetscaleRegionDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedPlanetscaleRegionDataList>;
 
 export interface PaginatedPlanetscaleRegion {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPlanetscaleRegionDataList;
 }
 export const PaginatedPlanetscaleRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -13224,17 +10982,17 @@ export interface PaginatedDatabaseDataItemDataImport {
   /** Errors encountered during the import check */
   import_check_errors: string;
   /** When the import started */
-  started_at: string | null;
+  started_at: string;
   /** When the import finished */
-  finished_at: string | null;
+  finished_at: string;
   data_source: PaginatedDatabaseDataItemDataImportDataSource;
 }
 export const PaginatedDatabaseDataItemDataImport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.String,
     import_check_errors: S.String,
-    started_at: S.NullOr(S.String),
-    finished_at: S.NullOr(S.String),
+    started_at: S.String,
+    finished_at: S.String,
     data_source: PaginatedDatabaseDataItemDataImportDataSource,
   }),
 ).annotate({
@@ -13266,10 +11024,6 @@ export interface PaginatedDatabaseDataItemRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedDatabaseDataItemRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13281,8 +11035,6 @@ export const PaginatedDatabaseDataItemRegion = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     slug: S.String,
     current_default: S.Boolean,
-    mysql_supported: S.Boolean,
-    postgresql_supported: S.Boolean,
   }),
 ).annotate({
   identifier: "PaginatedDatabaseDataItemRegion",
@@ -13319,7 +11071,7 @@ export interface PaginatedDatabaseDataItem {
   /** The total number of database production branches */
   production_branches_count?: number;
   /** The total number of ongoing issues within a database */
-  issues_count?: number | null;
+  issues_count?: number;
   /** If the database requires multiple admins for deletion */
   multiple_admins_required_for_deletion?: boolean;
   /** If the database is ready to be used */
@@ -13360,7 +11112,7 @@ export interface PaginatedDatabaseDataItem {
   allow_data_branching?: boolean;
   /** Whether foreign key constraints are enabled */
   foreign_keys_enabled?: boolean;
-  /** Whether to automatically manage Rails migrations during deploy requests. */
+  /** Whether to automatically manage Rails migrations during deploy requests */
   automatic_migrations?: boolean | null;
   /** Whether to restrict branch creation to one region */
   restrict_branch_region?: boolean;
@@ -13372,16 +11124,16 @@ export interface PaginatedDatabaseDataItem {
   insights_enabled?: boolean;
   /** Whether web console is enabled for production branches */
   production_branch_web_console?: boolean;
-  /** Table name to use for copying schema migration data. */
+  /** Table name to use for copying schema migration data */
   migration_table_name?: string | null;
-  /** Framework used for applying migrations. */
+  /** Framework used for applying migrations */
   migration_framework?: string | null;
   /** When the database was created */
   created_at: string;
   /** When the database was last updated */
   updated_at: string;
   /** When the default branch schema was last changed. */
-  schema_last_updated_at?: string | null;
+  schema_last_updated_at?: string;
   /** The kind of database */
   kind: PaginatedDatabaseDataItemKind;
 }
@@ -13394,7 +11146,7 @@ export const PaginatedDatabaseDataItem = /*@__PURE__*/ S.suspend(() =>
     open_schema_recommendations_count: S.optional(S.Number),
     development_branches_count: S.optional(S.Number),
     production_branches_count: S.optional(S.Number),
-    issues_count: S.optional(S.NullOr(S.Number)),
+    issues_count: S.optional(S.Number),
     multiple_admins_required_for_deletion: S.optional(S.Boolean),
     ready: S.Boolean,
     at_backup_restore_branches_limit: S.optional(S.Boolean),
@@ -13426,7 +11178,7 @@ export const PaginatedDatabaseDataItem = /*@__PURE__*/ S.suspend(() =>
     migration_framework: S.optional(S.NullOr(S.String)),
     created_at: S.String,
     updated_at: S.String,
-    schema_last_updated_at: S.optional(S.NullOr(S.String)),
+    schema_last_updated_at: S.optional(S.String),
     kind: PaginatedDatabaseDataItemKind,
   }),
 ).annotate({
@@ -13439,23 +11191,20 @@ export const PaginatedDatabaseDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseDataList>;
 
 export interface PaginatedDatabase {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseDataList;
 }
 export const PaginatedDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -13527,11 +11276,11 @@ export interface PaginatedDeployOperationDataItem {
   /** The operation name of the deploy operation */
   operation_name: string;
   /** The estimated seconds until completion for the deploy operation */
-  eta_seconds: number | null;
+  eta_seconds: number;
   /** The percent completion for the deploy operation */
-  progress_percentage: number | null;
+  progress_percentage: number;
   /** A link to documentation explaining the deploy error, if present */
-  deploy_error_docs_url: string | null;
+  deploy_error_docs_url: string;
   /** The DDL statement for the deploy operation */
   ddl_statement: string;
   /** A syntax-highlighted DDL statement for the deploy operation */
@@ -13541,7 +11290,7 @@ export interface PaginatedDeployOperationDataItem {
   /** When the deploy operation was last updated */
   updated_at: string;
   /** When the deploy operation was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Whether or not the deploy operation is capable of dropping data */
   can_drop_data: boolean;
   /** Whether or not the table modified by the deploy operation is currently locked */
@@ -13549,11 +11298,11 @@ export interface PaginatedDeployOperationDataItem {
   /** Whether or not the table modified by the deploy operation was recently used */
   table_recently_used: boolean;
   /** When the table modified by the deploy operation was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** Names of foreign keys removed by this operation */
-  removed_foreign_key_names: PaginatedDeployOperationDataItemRemovedForeignKeyNamesList | null;
+  removed_foreign_key_names: PaginatedDeployOperationDataItemRemovedForeignKeyNamesList;
   /** Deploy errors for the deploy operation */
-  deploy_errors: string | null;
+  deploy_errors: string;
 }
 export const PaginatedDeployOperationDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13562,22 +11311,21 @@ export const PaginatedDeployOperationDataItem = /*@__PURE__*/ S.suspend(() =>
     keyspace_name: S.String,
     table_name: S.String,
     operation_name: S.String,
-    eta_seconds: S.NullOr(S.Number),
-    progress_percentage: S.NullOr(S.Number),
-    deploy_error_docs_url: S.NullOr(S.String),
+    eta_seconds: S.Number,
+    progress_percentage: S.Number,
+    deploy_error_docs_url: S.String,
     ddl_statement: S.String,
     syntax_highlighted_ddl: S.String,
     created_at: S.String,
     updated_at: S.String,
-    throttled_at: S.NullOr(S.String),
+    throttled_at: S.String,
     can_drop_data: S.Boolean,
     table_locked: S.Boolean,
     table_recently_used: S.Boolean,
-    table_recently_used_at: S.NullOr(S.String),
-    removed_foreign_key_names: S.NullOr(
+    table_recently_used_at: S.String,
+    removed_foreign_key_names:
       PaginatedDeployOperationDataItemRemovedForeignKeyNamesList,
-    ),
-    deploy_errors: S.NullOr(S.String),
+    deploy_errors: S.String,
   }),
 ).annotate({
   identifier: "PaginatedDeployOperationDataItem",
@@ -13590,23 +11338,20 @@ export const PaginatedDeployOperationDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDeployOperationDataList>;
 
 export interface PaginatedDeployOperation {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDeployOperationDataList;
 }
 export const PaginatedDeployOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -13710,23 +11455,20 @@ export const PaginatedDeployRequestReviewDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDeployRequestReviewDataList>;
 
 export interface PaginatedDeployRequestReview {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDeployRequestReviewDataList;
 }
 export const PaginatedDeployRequestReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -13934,11 +11676,11 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** The operation name of the deploy operation */
   operation_name: string;
   /** The estimated seconds until completion for the deploy operation */
-  eta_seconds: number | null;
+  eta_seconds: number;
   /** The percent completion for the deploy operation */
-  progress_percentage: number | null;
+  progress_percentage: number;
   /** A link to documentation explaining the deploy error, if present */
-  deploy_error_docs_url: string | null;
+  deploy_error_docs_url: string;
   /** The DDL statement for the deploy operation */
   ddl_statement: string;
   /** A syntax-highlighted DDL statement for the deploy operation */
@@ -13948,7 +11690,7 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** When the deploy operation was last updated */
   updated_at: string;
   /** When the deploy operation was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Whether or not the deploy operation is capable of dropping data */
   can_drop_data: boolean;
   /** Whether or not the table modified by the deploy operation is currently locked */
@@ -13956,11 +11698,11 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** Whether or not the table modified by the deploy operation was recently used */
   table_recently_used: boolean;
   /** When the table modified by the deploy operation was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** Names of foreign keys removed by this operation */
-  removed_foreign_key_names: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList | null;
+  removed_foreign_key_names: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList;
   /** Deploy errors for the deploy operation */
-  deploy_errors: string | null;
+  deploy_errors: string;
 }
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -13971,22 +11713,21 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsIte
       keyspace_name: S.String,
       table_name: S.String,
       operation_name: S.String,
-      eta_seconds: S.NullOr(S.Number),
-      progress_percentage: S.NullOr(S.Number),
-      deploy_error_docs_url: S.NullOr(S.String),
+      eta_seconds: S.Number,
+      progress_percentage: S.Number,
+      deploy_error_docs_url: S.String,
       ddl_statement: S.String,
       syntax_highlighted_ddl: S.String,
       created_at: S.String,
       updated_at: S.String,
-      throttled_at: S.NullOr(S.String),
+      throttled_at: S.String,
       can_drop_data: S.Boolean,
       table_locked: S.Boolean,
       table_recently_used: S.Boolean,
-      table_recently_used_at: S.NullOr(S.String),
-      removed_foreign_key_names: S.NullOr(
+      table_recently_used_at: S.String,
+      removed_foreign_key_names:
         PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList,
-      ),
-      deploy_errors: S.NullOr(S.String),
+      deploy_errors: S.String,
     }),
   ).annotate({
     identifier:
@@ -14086,9 +11827,9 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** The name of the table modifed by the deploy operation summary */
   table_name: string;
   /** When the table modified by the deploy operation summary was last used */
-  table_recently_used_at: string | null;
+  table_recently_used_at: string;
   /** When the deploy operation summary was last throttled */
-  throttled_at: string | null;
+  throttled_at: string;
   /** Names of foreign keys removed by this operation summary */
   removed_foreign_key_names: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList;
   /** The number of shards in the keyspace modified by the deploy operation summary */
@@ -14118,8 +11859,8 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
         PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState,
       syntax_highlighted_ddl: S.String,
       table_name: S.String,
-      table_recently_used_at: S.NullOr(S.String),
-      throttled_at: S.NullOr(S.String),
+      table_recently_used_at: S.String,
+      throttled_at: S.String,
       removed_foreign_key_names:
         PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
       shard_count: S.Number,
@@ -14191,14 +11932,21 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperati
     PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap,
   ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList>;
 
-/** Deployment throttling configurations. */
-export type PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap =
+export type PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsItemMap =
   { [key: string]: unknown | undefined };
-export const PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap =
+export const PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsItemMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap>;
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsItemMap>;
+
+/** Deployment throttling configurations */
+export type PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList =
+  Array<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsItemMap>;
+export const PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsItemMap,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList>;
 
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap =
@@ -14277,25 +12025,23 @@ export interface PaginatedDatabaseDeployRequestDataItemDeployment {
   /** When the deployment was created */
   created_at: string;
   /** When the cutover for the deployment was initiated */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the deployment cutover will expire soon */
   cutover_expiring: boolean;
-  /** Deploy check errors for the deployment. */
-  deploy_check_errors?: string | null;
+  /** Deploy check errors for the deployment */
+  deploy_check_errors: string;
   /** When the deployment was finished */
-  finished_at: string | null;
-  /** When force cutover was triggered for the deployment */
-  force_cutover_requested_at: string | null;
+  finished_at: string;
   /** When the deployment was queued */
-  queued_at: string | null;
+  queued_at: string;
   /** When the deployment was ready for cutover */
-  ready_to_cutover_at: string | null;
+  ready_to_cutover_at: string;
   /** When the deployment was started */
-  started_at: string | null;
+  started_at: string;
   /** The state the deployment is in */
   state: PaginatedDatabaseDeployRequestDataItemDeploymentState2;
   /** When the deployment was submitted */
-  submitted_at: string | null;
+  submitted_at: string;
   /** When the deployment was last updated */
   updated_at: string;
   /** The name of the base branch the deployment will be merged into */
@@ -14314,27 +12060,23 @@ export interface PaginatedDatabaseDeployRequestDataItemDeployment {
   sequential_diff_dependencies: PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList;
   /** Lookup Vitess index operations */
   lookup_vindex_operations: PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList;
-  /** Deployment throttling configurations. */
-  throttler_configurations?: PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap | null;
+  /** Deployment throttling configurations */
+  throttler_configurations: PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
-  deployment_revert_request: PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap | null;
-  actor?: PaginatedDatabaseDeployRequestDataItemDeploymentActor | null;
-  cutover_actor?: PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor | null;
-  cancelled_actor?: PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor | null;
+  deployment_revert_request: PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap;
+  actor: PaginatedDatabaseDeployRequestDataItemDeploymentActor;
+  cutover_actor: PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor;
+  cancelled_actor: PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor;
   /** When the schema was last updated for the deployment */
-  schema_last_updated_at: string | null;
+  schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
   table_locked: boolean;
-  /** The name of the table that is locked by the deployment. */
-  locked_table_name?: string | null;
+  /** The name of he table that is locked by the deployment */
+  locked_table_name: string;
   /** Whether or not the deployment is an instant DDL deployment */
   instant_ddl: boolean;
   /** Whether or not the deployment is eligible for instant DDL */
   instant_ddl_eligible: boolean;
-  /** Whether the deploy queue for the target branch is currently paused */
-  queue_paused: boolean;
-  /** A human-readable reason the deploy queue is paused, if known */
-  queue_pause_reason: string | null;
 }
 export const PaginatedDatabaseDeployRequestDataItemDeployment =
   /*@__PURE__*/ S.suspend(() =>
@@ -14343,16 +12085,15 @@ export const PaginatedDatabaseDeployRequestDataItemDeployment =
       auto_cutover: S.Boolean,
       auto_delete_branch: S.Boolean,
       created_at: S.String,
-      cutover_at: S.NullOr(S.String),
+      cutover_at: S.String,
       cutover_expiring: S.Boolean,
-      deploy_check_errors: S.optional(S.NullOr(S.String)),
-      finished_at: S.NullOr(S.String),
-      force_cutover_requested_at: S.NullOr(S.String),
-      queued_at: S.NullOr(S.String),
-      ready_to_cutover_at: S.NullOr(S.String),
-      started_at: S.NullOr(S.String),
+      deploy_check_errors: S.String,
+      finished_at: S.String,
+      queued_at: S.String,
+      ready_to_cutover_at: S.String,
+      started_at: S.String,
       state: PaginatedDatabaseDeployRequestDataItemDeploymentState2,
-      submitted_at: S.NullOr(S.String),
+      submitted_at: S.String,
       updated_at: S.String,
       into_branch: S.String,
       deploy_request_number: S.Number,
@@ -14369,32 +12110,20 @@ export const PaginatedDatabaseDeployRequestDataItemDeployment =
         PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList,
       lookup_vindex_operations:
         PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList,
-      throttler_configurations: S.optional(
-        S.NullOr(
-          PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap,
-        ),
-      ),
-      deployment_revert_request: S.NullOr(
+      throttler_configurations:
+        PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList,
+      deployment_revert_request:
         PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap,
-      ),
-      actor: S.optional(
-        S.NullOr(PaginatedDatabaseDeployRequestDataItemDeploymentActor),
-      ),
-      cutover_actor: S.optional(
-        S.NullOr(PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor),
-      ),
-      cancelled_actor: S.optional(
-        S.NullOr(
-          PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor,
-        ),
-      ),
-      schema_last_updated_at: S.NullOr(S.String),
+      actor: PaginatedDatabaseDeployRequestDataItemDeploymentActor,
+      cutover_actor:
+        PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor,
+      cancelled_actor:
+        PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor,
+      schema_last_updated_at: S.String,
       table_locked: S.Boolean,
-      locked_table_name: S.optional(S.NullOr(S.String)),
+      locked_table_name: S.String,
       instant_ddl: S.Boolean,
       instant_ddl_eligible: S.Boolean,
-      queue_paused: S.Boolean,
-      queue_pause_reason: S.NullOr(S.String),
     }),
   ).annotate({
     identifier: "PaginatedDatabaseDeployRequestDataItemDeployment",
@@ -14406,24 +12135,22 @@ export interface PaginatedDatabaseDeployRequestDataItem {
   /** The number of the deploy request */
   number: number;
   actor: PaginatedDatabaseDeployRequestDataItemActor;
-  closed_by?: PaginatedDatabaseDeployRequestDataItemClosedBy | null;
+  closed_by: PaginatedDatabaseDeployRequestDataItemClosedBy;
   /** The name of the branch the deploy request was created from */
   branch: string;
   /** The ID of the branch the deploy request was created from */
   branch_id: string;
   /** Whether or not the deploy request branch was deleted */
   branch_deleted: boolean;
-  branch_deleted_by?: PaginatedDatabaseDeployRequestDataItemBranchDeletedBy | null;
+  branch_deleted_by: PaginatedDatabaseDeployRequestDataItemBranchDeletedBy;
   /** When the deploy request branch was deleted */
-  branch_deleted_at: string | null;
+  branch_deleted_at: string;
   /** The name of the branch the deploy request will be merged into */
   into_branch: string;
   /** Whether or not the branch the deploy request will be merged into is sharded */
   into_branch_sharded: boolean;
   /** The number of shards the branch the deploy request will be merged into has */
   into_branch_shard_count: number;
-  /** The number of keyspaces the branch the deploy request will be merged into has */
-  into_branch_keyspace_count: number;
   /** Whether or not the deploy request is approved */
   approved: boolean;
   /** Whether the deploy request is open or closed */
@@ -14444,9 +12171,9 @@ export interface PaginatedDatabaseDeployRequestDataItem {
   /** When the deploy request was last updated */
   updated_at: string;
   /** When the deploy request was closed */
-  closed_at: string | null;
+  closed_at: string;
   /** When the deploy request was deployed */
-  deployed_at: string | null;
+  deployed_at: string;
 }
 export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -14454,20 +12181,15 @@ export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       number: S.Number,
       actor: PaginatedDatabaseDeployRequestDataItemActor,
-      closed_by: S.optional(
-        S.NullOr(PaginatedDatabaseDeployRequestDataItemClosedBy),
-      ),
+      closed_by: PaginatedDatabaseDeployRequestDataItemClosedBy,
       branch: S.String,
       branch_id: S.String,
       branch_deleted: S.Boolean,
-      branch_deleted_by: S.optional(
-        S.NullOr(PaginatedDatabaseDeployRequestDataItemBranchDeletedBy),
-      ),
-      branch_deleted_at: S.NullOr(S.String),
+      branch_deleted_by: PaginatedDatabaseDeployRequestDataItemBranchDeletedBy,
+      branch_deleted_at: S.String,
       into_branch: S.String,
       into_branch_sharded: S.Boolean,
       into_branch_shard_count: S.Number,
-      into_branch_keyspace_count: S.Number,
       approved: S.Boolean,
       state: PaginatedDatabaseDeployRequestDataItemState,
       deployment_state: PaginatedDatabaseDeployRequestDataItemDeploymentState,
@@ -14478,8 +12200,8 @@ export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
       html_body: S.String,
       created_at: S.String,
       updated_at: S.String,
-      closed_at: S.NullOr(S.String),
-      deployed_at: S.NullOr(S.String),
+      closed_at: S.String,
+      deployed_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedDatabaseDeployRequestDataItem",
@@ -14492,23 +12214,20 @@ export const PaginatedDatabaseDeployRequestDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseDeployRequestDataList>;
 
 export interface PaginatedDatabaseDeployRequest {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseDeployRequestDataList;
 }
 export const PaginatedDatabaseDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -14543,13 +12262,6 @@ export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExtensionsRequest",
 }) as any as S.Schema<ListExtensionsRequest>;
-
-/** How the extension is loaded */
-export type PostgresClusterExtensionLoader =
-  | "shared_preload_libraries"
-  | "session_preload_libraries"
-  | "create_extension";
-export const PostgresClusterExtensionLoader = /*@__PURE__*/ S.String;
 
 /** The namespace of the parameter */
 export type PostgresClusterExtensionParametersItemNamespace =
@@ -14686,8 +12398,8 @@ export interface PostgresClusterExtension {
   description: string;
   /** The internal state of the extension */
   internal: boolean;
-  /** How the extension is loaded */
-  loader: PostgresClusterExtensionLoader;
+  /** Whether the extension can be added to shared_preload_libraries */
+  shared_preload_allowed: boolean;
   /** The URL of the extension */
   url: string;
   /** Whether the extension is available on the current cluster image */
@@ -14702,7 +12414,7 @@ export const PostgresClusterExtension = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     description: S.String,
     internal: S.Boolean,
-    loader: PostgresClusterExtensionLoader,
+    shared_preload_allowed: S.Boolean,
     url: S.String,
     available: S.Boolean,
     unavailable_reason: S.String,
@@ -14793,7 +12505,7 @@ export interface PaginatedQueryPatternsDownloadDataItem {
   /** When the download was created */
   created_at: string;
   /** When the download was finished */
-  finished_at: string | null;
+  finished_at: string;
   /** The URL to access the query patterns download */
   url: string;
   /** The URL to download the query patterns file */
@@ -14806,7 +12518,7 @@ export const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       state: PaginatedQueryPatternsDownloadDataItemState,
       created_at: S.String,
-      finished_at: S.NullOr(S.String),
+      finished_at: S.String,
       url: S.String,
       download_url: S.String,
       actor: PaginatedQueryPatternsDownloadDataItemActor,
@@ -14822,25 +12534,22 @@ export const PaginatedQueryPatternsDownloadDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedQueryPatternsDownloadDataList>;
 
 export interface PaginatedQueryPatternsDownload {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** Whether there is a next page of results */
   has_next: boolean;
   /** Whether there is a previous page of results */
   has_prev: boolean;
-  /** The ID of the first object in the current results, or null when there are no results */
-  cursor_start: string | null;
-  /** The ID of the last object in the current results, or null when there are no results */
-  cursor_end: string | null;
+  /** The ID of the first object in the current results */
+  cursor_start: string;
+  /** The ID of the last object in the current results */
+  cursor_end: string;
   data: PaginatedQueryPatternsDownloadDataList;
 }
 export const PaginatedQueryPatternsDownload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     has_next: S.Boolean,
     has_prev: S.Boolean,
-    cursor_start: S.NullOr(S.String),
-    cursor_end: S.NullOr(S.String),
+    cursor_start: S.String,
+    cursor_end: S.String,
     data: PaginatedQueryPatternsDownloadDataList,
   }),
 ).annotate({
@@ -14874,7 +12583,7 @@ export const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedInvoiceDataItem {
   /** The ID of the invoice */
   id: string;
-  /** The total amount of the invoice, as a stringified decimal to preserve precision */
+  /** The total amount of the invoice */
   total: string;
   /** Start of the billing period */
   billing_period_start: string;
@@ -14904,23 +12613,20 @@ export const PaginatedInvoiceDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedInvoiceDataList>;
 
 export interface PaginatedInvoice {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedInvoiceDataList;
 }
 export const PaginatedInvoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -15046,15 +12752,13 @@ export const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstra
 
 export interface PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints {
   /** The replication durability strategy */
-  strategy?: PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy | null;
+  strategy?: PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy;
 }
 export const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       strategy: S.optional(
-        S.NullOr(
-          PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy,
-        ),
+        PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy,
       ),
     }),
   ).annotate({
@@ -15188,23 +12892,20 @@ export const PaginatedDatabaseBranchKeyspaceDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataList>;
 
 export interface PaginatedDatabaseBranchKeyspace {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchKeyspaceDataList;
 }
 export const PaginatedDatabaseBranchKeyspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -15280,19 +12981,15 @@ export interface PaginatedBranchMaintenanceScheduleDataItem {
   /** Whether the maintenance schedule is enabled */
   enabled: boolean;
   /** When a one-time maintenance schedule expires */
-  expires_at: string | null;
+  expires_at: string;
   /** The deadline for a required maintenance schedule */
-  deadline_at: string | null;
+  deadline_at: string;
   /** Whether the maintenance schedule is required */
   required: boolean;
   /** Whether there is a pending Vitess version update */
   pending_vitess_version_update: boolean;
   /** The pending Vitess version, if any */
-  pending_vitess_version: string | null;
-  /** Whether there is a pending MySQL version update */
-  pending_mysql_version_update: boolean;
-  /** The pending MySQL version, if any */
-  pending_mysql_version: string | null;
+  pending_vitess_version: string;
 }
 export const PaginatedBranchMaintenanceScheduleDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -15310,13 +13007,11 @@ export const PaginatedBranchMaintenanceScheduleDataItem =
       frequency_value: S.Number,
       frequency_unit: PaginatedBranchMaintenanceScheduleDataItemFrequencyUnit,
       enabled: S.Boolean,
-      expires_at: S.NullOr(S.String),
-      deadline_at: S.NullOr(S.String),
+      expires_at: S.String,
+      deadline_at: S.String,
       required: S.Boolean,
       pending_vitess_version_update: S.Boolean,
-      pending_vitess_version: S.NullOr(S.String),
-      pending_mysql_version_update: S.Boolean,
-      pending_mysql_version: S.NullOr(S.String),
+      pending_vitess_version: S.String,
     }),
   ).annotate({
     identifier: "PaginatedBranchMaintenanceScheduleDataItem",
@@ -15329,28 +13024,25 @@ export const PaginatedBranchMaintenanceScheduleDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataList>;
 
 export interface PaginatedBranchMaintenanceSchedule {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
+  /** The next page number */
+  next_page: number;
+  /** The next page of results */
+  next_page_url: string;
+  /** The previous page number */
+  prev_page: number;
+  /** The previous page of results */
+  prev_page_url: string;
   data: PaginatedBranchMaintenanceScheduleDataList;
 }
 export const PaginatedBranchMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
+    next_page: S.Number,
+    next_page_url: S.String,
+    prev_page: S.Number,
+    prev_page_url: S.String,
     data: PaginatedBranchMaintenanceScheduleDataList,
   }),
 ).annotate({
@@ -15395,9 +13087,9 @@ export interface PaginatedBranchMaintenanceWindowDataItem {
   /** When the maintenance window was last updated */
   updated_at: string;
   /** When the maintenance window started */
-  started_at: string | null;
+  started_at: string;
   /** When the maintenance window finished */
-  finished_at: string | null;
+  finished_at: string;
 }
 export const PaginatedBranchMaintenanceWindowDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -15405,8 +13097,8 @@ export const PaginatedBranchMaintenanceWindowDataItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       created_at: S.String,
       updated_at: S.String,
-      started_at: S.NullOr(S.String),
-      finished_at: S.NullOr(S.String),
+      started_at: S.String,
+      finished_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedBranchMaintenanceWindowDataItem",
@@ -15419,28 +13111,25 @@ export const PaginatedBranchMaintenanceWindowDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedBranchMaintenanceWindowDataList>;
 
 export interface PaginatedBranchMaintenanceWindow {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
+  /** The next page number */
+  next_page: number;
+  /** The next page of results */
+  next_page_url: string;
+  /** The previous page number */
+  prev_page: number;
+  /** The previous page of results */
+  prev_page_url: string;
   data: PaginatedBranchMaintenanceWindowDataList;
 }
 export const PaginatedBranchMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
+    next_page: S.Number,
+    next_page_url: S.String,
+    prev_page: S.Number,
+    prev_page_url: S.String,
     data: PaginatedBranchMaintenanceWindowDataList,
   }),
 ).annotate({
@@ -15470,6 +13159,13 @@ export const ListOauthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOauthApplicationsRequest",
 }) as any as S.Schema<ListOauthApplicationsRequest>;
+
+/** The scopes that the OAuth application requires on a user account */
+export type PaginatedOauthApplicationDataItemScopesList = Array<string>;
+export const PaginatedOauthApplicationDataItemScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PaginatedOauthApplicationDataItemScopesList>;
 
 /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
 export type PaginatedOauthApplicationDataItemScopesByResourceMap = {
@@ -15504,8 +13200,8 @@ export interface PaginatedOauthApplicationDataItem {
   created_at: string;
   /** When the OAuth application was last updated */
   updated_at: string;
-  /** The scopes that the OAuth application requires on a user account, as a space-separated string */
-  scopes: string;
+  /** The scopes that the OAuth application requires on a user account */
+  scopes: PaginatedOauthApplicationDataItemScopesList;
   /** The image source for the OAuth application's avatar */
   avatar: string;
   /** The OAuth application's unique client id */
@@ -15516,8 +13212,6 @@ export interface PaginatedOauthApplicationDataItem {
   dcr: boolean;
   /** Whether the OAuth application is limited to authorizing a single organization */
   single_org_authorization: boolean;
-  /** Whether the OAuth application requires at least one organization to be authorized */
-  requires_org_scope: boolean;
   /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
   scopes_by_resource: PaginatedOauthApplicationDataItemScopesByResourceMap;
   /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
@@ -15531,13 +13225,12 @@ export const PaginatedOauthApplicationDataItem = /*@__PURE__*/ S.suspend(() =>
     domain: S.String,
     created_at: S.String,
     updated_at: S.String,
-    scopes: S.String,
+    scopes: PaginatedOauthApplicationDataItemScopesList,
     avatar: S.String,
     client_id: S.String,
     tokens: S.Number,
     dcr: S.Boolean,
     single_org_authorization: S.Boolean,
-    requires_org_scope: S.Boolean,
     scopes_by_resource: PaginatedOauthApplicationDataItemScopesByResourceMap,
     all_scopes_by_resource:
       PaginatedOauthApplicationDataItemAllScopesByResourceMap,
@@ -15553,23 +13246,20 @@ export const PaginatedOauthApplicationDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedOauthApplicationDataList>;
 
 export interface PaginatedOauthApplication {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedOauthApplicationDataList;
 }
 export const PaginatedOauthApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -15618,7 +13308,7 @@ export interface PaginatedServiceTokenDataItemServiceTokenAccessesItemResource {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedServiceTokenDataItemServiceTokenAccessesItemResource =
   /*@__PURE__*/ S.suspend(() =>
@@ -15627,7 +13317,7 @@ export const PaginatedServiceTokenDataItemServiceTokenAccessesItemResource =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier: "PaginatedServiceTokenDataItemServiceTokenAccessesItemResource",
@@ -15985,13 +13675,13 @@ export interface PaginatedServiceTokenDataItem {
   /** When the service token was last used */
   last_used_at?: string | null;
   /** The ID of the actor on whose behalf the service token was created */
-  actor_id: string | null;
+  actor_id: string;
   /** The name of the actor on whose behalf the service token was created */
-  actor_display_name: string | null;
+  actor_display_name: string;
   /** The type of the actor on whose behalf the service token was created */
-  actor_type: string | null;
-  service_token_accesses?: PaginatedServiceTokenDataItemServiceTokenAccessesList | null;
-  oauth_accesses_by_resource?: PaginatedServiceTokenDataItemOauthAccessesByResource | null;
+  actor_type: string;
+  service_token_accesses?: PaginatedServiceTokenDataItemServiceTokenAccessesList;
+  oauth_accesses_by_resource?: PaginatedServiceTokenDataItemOauthAccessesByResource;
 }
 export const PaginatedServiceTokenDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16007,14 +13697,14 @@ export const PaginatedServiceTokenDataItem = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     expires_at: S.optional(S.NullOr(S.String)),
     last_used_at: S.optional(S.NullOr(S.String)),
-    actor_id: S.NullOr(S.String),
-    actor_display_name: S.NullOr(S.String),
-    actor_type: S.NullOr(S.String),
+    actor_id: S.String,
+    actor_display_name: S.String,
+    actor_type: S.String,
     service_token_accesses: S.optional(
-      S.NullOr(PaginatedServiceTokenDataItemServiceTokenAccessesList),
+      PaginatedServiceTokenDataItemServiceTokenAccessesList,
     ),
     oauth_accesses_by_resource: S.optional(
-      S.NullOr(PaginatedServiceTokenDataItemOauthAccessesByResource),
+      PaginatedServiceTokenDataItemOauthAccessesByResource,
     ),
   }),
 ).annotate({
@@ -16028,23 +13718,20 @@ export const PaginatedServiceTokenDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedServiceTokenDataList>;
 
 export interface PaginatedServiceToken {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedServiceTokenDataList;
 }
 export const PaginatedServiceToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -16093,7 +13780,7 @@ export interface PaginatedOrganizationMembershipDataItemUserDefaultOrganization 
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedOrganizationMembershipDataItemUserDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -16102,7 +13789,7 @@ export const PaginatedOrganizationMembershipDataItemUserDefaultOrganization =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier:
@@ -16126,15 +13813,15 @@ export interface PaginatedOrganizationMembershipDataItemUser {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: PaginatedOrganizationMembershipDataItemUserDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization?: PaginatedOrganizationMembershipDataItemUserDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso?: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed?: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed?: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified?: boolean;
 }
 export const PaginatedOrganizationMembershipDataItemUser =
   /*@__PURE__*/ S.suspend(() =>
@@ -16148,14 +13835,12 @@ export const PaginatedOrganizationMembershipDataItemUser =
       updated_at: S.String,
       two_factor_auth_configured: S.Boolean,
       default_organization: S.optional(
-        S.NullOr(
-          PaginatedOrganizationMembershipDataItemUserDefaultOrganization,
-        ),
+        PaginatedOrganizationMembershipDataItemUserDefaultOrganization,
       ),
-      sso: S.optional(S.NullOr(S.Boolean)),
-      managed: S.optional(S.NullOr(S.Boolean)),
-      directory_managed: S.optional(S.NullOr(S.Boolean)),
-      email_verified: S.optional(S.NullOr(S.Boolean)),
+      sso: S.optional(S.Boolean),
+      managed: S.optional(S.Boolean),
+      directory_managed: S.optional(S.Boolean),
+      email_verified: S.optional(S.Boolean),
     }),
   ).annotate({
     identifier: "PaginatedOrganizationMembershipDataItemUser",
@@ -16197,23 +13882,20 @@ export const PaginatedOrganizationMembershipDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedOrganizationMembershipDataList>;
 
 export interface PaginatedOrganizationMembership {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedOrganizationMembershipDataList;
 }
 export const PaginatedOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -16272,12 +13954,12 @@ export interface PaginatedOrganizationDataItem {
   single_tenancy: boolean;
   /** Whether or not the organization has managed tenancy enabled */
   managed_tenancy: boolean;
-  /** Whether or not the organization has past due billing invoices. */
-  has_past_due_invoices?: boolean | null;
+  /** Whether or not the organization has past due billing invoices */
+  has_past_due_invoices?: boolean;
   /** The number of databases in the organization */
   database_count: number;
-  /** The URL of the organization's SSO portal. */
-  sso_portal_url?: string | null;
+  /** The URL of the organization's SSO portal */
+  sso_portal_url?: string;
   /** Features that can be enabled on the organization */
   features: PaginatedOrganizationDataItemFeaturesMap;
   /** Whether or not the IdP provider is be responsible for managing roles in PlanetScale */
@@ -16304,9 +13986,9 @@ export const PaginatedOrganizationDataItem = /*@__PURE__*/ S.suspend(() =>
     sso_directory: S.Boolean,
     single_tenancy: S.Boolean,
     managed_tenancy: S.Boolean,
-    has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
+    has_past_due_invoices: S.optional(S.Boolean),
     database_count: S.Number,
-    sso_portal_url: S.optional(S.NullOr(S.String)),
+    sso_portal_url: S.optional(S.String),
     features: PaginatedOrganizationDataItemFeaturesMap,
     idp_managed_roles: S.Boolean,
     invoice_budget_amount: S.String,
@@ -16325,23 +14007,20 @@ export const PaginatedOrganizationDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedOrganizationDataList>;
 
 export interface PaginatedOrganization {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedOrganizationDataList;
 }
 export const PaginatedOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -16390,7 +14069,7 @@ export interface PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganizat
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -16399,7 +14078,7 @@ export const PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization 
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier:
@@ -16423,15 +14102,15 @@ export interface PaginatedOrganizationTeamMembershipDataItemUser {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization: PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified: boolean;
 }
 export const PaginatedOrganizationTeamMembershipDataItemUser =
   /*@__PURE__*/ S.suspend(() =>
@@ -16444,15 +14123,12 @@ export const PaginatedOrganizationTeamMembershipDataItemUser =
       created_at: S.String,
       updated_at: S.String,
       two_factor_auth_configured: S.Boolean,
-      default_organization: S.optional(
-        S.NullOr(
-          PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization,
-        ),
-      ),
-      sso: S.optional(S.NullOr(S.Boolean)),
-      managed: S.optional(S.NullOr(S.Boolean)),
-      directory_managed: S.optional(S.NullOr(S.Boolean)),
-      email_verified: S.optional(S.NullOr(S.Boolean)),
+      default_organization:
+        PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization,
+      sso: S.Boolean,
+      managed: S.Boolean,
+      directory_managed: S.Boolean,
+      email_verified: S.Boolean,
     }),
   ).annotate({
     identifier: "PaginatedOrganizationTeamMembershipDataItemUser",
@@ -16554,10 +14230,6 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion 
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion =
   /*@__PURE__*/ S.suspend(() =>
@@ -16571,8 +14243,6 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion =
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
   ).annotate({
     identifier:
@@ -16613,15 +14283,15 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   /** The role for the password */
   role: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole;
   /** List of IP addresses or CIDR ranges that can use this password */
-  cidrs: PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList | null;
+  cidrs: PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList;
   /** When the password was created */
   created_at: string;
   /** When the password was deleted */
-  deleted_at: string | null;
+  deleted_at: string;
   /** When the password will expire */
-  expires_at: string | null;
+  expires_at: string;
   /** When the password was last used to execute a query */
-  last_used_at: string | null;
+  last_used_at: string;
   /** True if the credentials are expired */
   expired: boolean;
   /** True if the credentials connect directly to a vtgate, bypassing load balancers */
@@ -16629,19 +14299,19 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   /** The list of hosts in each availability zone providing direct access to a vtgate */
   direct_vtgate_addresses: PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList;
   /** Time to live (in seconds) for the password. The password will be invalid when TTL has passed */
-  ttl_seconds: number | null;
+  ttl_seconds: number;
   /** The host URL for the password */
   access_host_url: string;
   /** The regional host URL */
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList;
-  actor: PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor | null;
+  actor: PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor;
   region: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion;
   /** The username for the password */
   username: string;
-  /** The plaintext password. Null except in the response from the create endpoint. */
-  plain_text: Redacted.Redacted<string> | null;
+  /** The plain text password, available only after create */
+  plain_text: Redacted.Redacted<string>;
   /** Whether or not the password is for a read replica */
   replica: boolean;
   /** Whether or not the password can be renewed */
@@ -16654,28 +14324,24 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItem =
       id: S.String,
       name: S.String,
       role: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole,
-      cidrs: S.NullOr(
-        PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList,
-      ),
+      cidrs: PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList,
       created_at: S.String,
-      deleted_at: S.NullOr(S.String),
-      expires_at: S.NullOr(S.String),
-      last_used_at: S.NullOr(S.String),
+      deleted_at: S.String,
+      expires_at: S.String,
+      last_used_at: S.String,
       expired: S.Boolean,
       direct_vtgate: S.Boolean,
       direct_vtgate_addresses:
         PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList,
-      ttl_seconds: S.NullOr(S.Number),
+      ttl_seconds: S.Number,
       access_host_url: S.String,
       access_host_regional_url: S.String,
       access_host_regional_urls:
         PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList,
-      actor: S.NullOr(
-        PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor,
-      ),
+      actor: PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor,
       region: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion,
       username: S.String,
-      plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+      plain_text: S.String.pipe(T.SensitiveValue({})),
       replica: S.Boolean,
       renewable: S.Boolean,
       database_branch:
@@ -16725,23 +14391,20 @@ export const PaginatedOrganizationTeamMembershipDataList =
   ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataList>;
 
 export interface PaginatedOrganizationTeamMembership {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedOrganizationTeamMembershipDataList;
 }
 export const PaginatedOrganizationTeamMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -16809,7 +14472,7 @@ export interface PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization =
   /*@__PURE__*/ S.suspend(() =>
@@ -16818,7 +14481,7 @@ export const PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization =
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
   ).annotate({
     identifier:
@@ -16842,15 +14505,15 @@ export interface PaginatedOrganizationTeamDataItemMembersItem {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization | null;
-  /** Whether or not the user is managed by SSO. */
-  sso?: boolean | null;
-  /** Whether or not the user is managed by an authentication provider. */
-  managed?: boolean | null;
-  /** Whether or not the user is managed by a SSO directory. */
-  directory_managed?: boolean | null;
-  /** Whether or not the user is verified by email. */
-  email_verified?: boolean | null;
+  default_organization: PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization;
+  /** Whether or not the user is managed by SSO */
+  sso: boolean;
+  /** Whether or not the user is managed by an authentication provider */
+  managed: boolean;
+  /** Whether or not the user is managed by a SSO directory */
+  directory_managed: boolean;
+  /** Whether or not the user is verified by email */
+  email_verified: boolean;
 }
 export const PaginatedOrganizationTeamDataItemMembersItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -16863,15 +14526,12 @@ export const PaginatedOrganizationTeamDataItemMembersItem =
       created_at: S.String,
       updated_at: S.String,
       two_factor_auth_configured: S.Boolean,
-      default_organization: S.optional(
-        S.NullOr(
-          PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization,
-        ),
-      ),
-      sso: S.optional(S.NullOr(S.Boolean)),
-      managed: S.optional(S.NullOr(S.Boolean)),
-      directory_managed: S.optional(S.NullOr(S.Boolean)),
-      email_verified: S.optional(S.NullOr(S.Boolean)),
+      default_organization:
+        PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization,
+      sso: S.Boolean,
+      managed: S.Boolean,
+      directory_managed: S.Boolean,
+      email_verified: S.Boolean,
     }),
   ).annotate({
     identifier: "PaginatedOrganizationTeamDataItemMembersItem",
@@ -16913,35 +14573,6 @@ export const PaginatedOrganizationTeamDataItemDatabasesList =
     PaginatedOrganizationTeamDataItemDatabasesItem,
   ) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesList>;
 
-export interface PaginatedOrganizationTeamDataItemAnalystDatabasesItem {
-  /** The ID of the database */
-  id: string;
-  /** The name of the database */
-  name: string;
-  /** The URL to the database API endpoint */
-  url: string;
-  /** The URL to retrieve this database's branches via the API */
-  branches_url: string;
-}
-export const PaginatedOrganizationTeamDataItemAnalystDatabasesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      url: S.String,
-      branches_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamDataItemAnalystDatabasesItem",
-  }) as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
-
-export type PaginatedOrganizationTeamDataItemAnalystDatabasesList =
-  Array<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
-export const PaginatedOrganizationTeamDataItemAnalystDatabasesList =
-  /*@__PURE__*/ S.Array(
-    PaginatedOrganizationTeamDataItemAnalystDatabasesItem,
-  ) as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesList>;
-
 export interface PaginatedOrganizationTeamDataItem {
   /** The ID of the team */
   id: string;
@@ -16950,7 +14581,6 @@ export interface PaginatedOrganizationTeamDataItem {
   creator: PaginatedOrganizationTeamDataItemCreator;
   members: PaginatedOrganizationTeamDataItemMembersList;
   databases: PaginatedOrganizationTeamDataItemDatabasesList;
-  analyst_databases: PaginatedOrganizationTeamDataItemAnalystDatabasesList;
   /** The name of the team */
   name: string;
   /** The slug of the team */
@@ -16960,7 +14590,7 @@ export interface PaginatedOrganizationTeamDataItem {
   /** When the team was last updated */
   updated_at: string;
   /** The description of the team */
-  description: string | null;
+  description: string;
   /** Whether the team is managed through SSO/directory services */
   managed: boolean;
 }
@@ -16971,12 +14601,11 @@ export const PaginatedOrganizationTeamDataItem = /*@__PURE__*/ S.suspend(() =>
     creator: PaginatedOrganizationTeamDataItemCreator,
     members: PaginatedOrganizationTeamDataItemMembersList,
     databases: PaginatedOrganizationTeamDataItemDatabasesList,
-    analyst_databases: PaginatedOrganizationTeamDataItemAnalystDatabasesList,
     name: S.String,
     slug: S.String,
     created_at: S.String,
     updated_at: S.String,
-    description: S.NullOr(S.String),
+    description: S.String,
     managed: S.Boolean,
   }),
 ).annotate({
@@ -16990,23 +14619,20 @@ export const PaginatedOrganizationTeamDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedOrganizationTeamDataList>;
 
 export interface PaginatedOrganizationTeam {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedOrganizationTeamDataList;
 }
 export const PaginatedOrganizationTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -17178,10 +14804,6 @@ export interface ListPasswordsRequest {
   branch: string;
   /** A read-only region of the database branch. If present, the password results will be filtered to only those in the region */
   read_only_region_id?: string;
-  /** Filter passwords by status */
-  status?: string;
-  /** Search passwords by name */
-  q?: string;
   /** If provided, specifies the page offset of returned results */
   page?: number;
   /** If provided, specifies the number of returned results */
@@ -17193,8 +14815,6 @@ export const ListPasswordsRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     read_only_region_id: S.optional(S.String.pipe(T.Query())),
-    status: S.optional(S.String.pipe(T.Query())),
-    q: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
@@ -17284,10 +14904,6 @@ export interface PaginatedDatabaseBranchPasswordDataItemRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedDatabaseBranchPasswordDataItemRegion =
   /*@__PURE__*/ S.suspend(() =>
@@ -17301,8 +14917,6 @@ export const PaginatedDatabaseBranchPasswordDataItemRegion =
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
   ).annotate({
     identifier: "PaginatedDatabaseBranchPasswordDataItemRegion",
@@ -17364,11 +14978,11 @@ export interface PaginatedDatabaseBranchPasswordDataItem {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList;
-  actor: PaginatedDatabaseBranchPasswordDataItemActor | null;
+  actor: PaginatedDatabaseBranchPasswordDataItemActor;
   region: PaginatedDatabaseBranchPasswordDataItemRegion;
   /** The username for the password */
   username: string;
-  /** The plaintext password. Null except in the response from the create endpoint. */
+  /** The plain text password, available only after create */
   plain_text: Redacted.Redacted<string> | null;
   /** Whether or not the password is for a read replica */
   replica: boolean;
@@ -17396,7 +15010,7 @@ export const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ S.suspend(
       access_host_regional_url: S.String,
       access_host_regional_urls:
         PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList,
-      actor: S.NullOr(PaginatedDatabaseBranchPasswordDataItemActor),
+      actor: PaginatedDatabaseBranchPasswordDataItemActor,
       region: PaginatedDatabaseBranchPasswordDataItemRegion,
       username: S.String,
       plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -17415,23 +15029,20 @@ export const PaginatedDatabaseBranchPasswordDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataList>;
 
 export interface PaginatedDatabaseBranchPassword {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchPasswordDataList;
 }
 export const PaginatedDatabaseBranchPassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -17506,24 +15117,21 @@ export const PaginatedPublicPlanetscaleRegionSerializerDataList =
   ) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataList>;
 
 export interface PaginatedPublicPlanetscaleRegionSerializer {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPublicPlanetscaleRegionSerializerDataList;
 }
 export const PaginatedPublicPlanetscaleRegionSerializer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      type: S.String,
       current_page: S.Number,
       next_page: S.NullOr(S.Number),
       next_page_url: S.NullOr(S.String),
@@ -17606,10 +15214,6 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItemRegion {
   slug: string;
   /** True if the region is the default for new branch creation */
   current_default: boolean;
-  /** Whether the region supports MySQL/Vitess databases */
-  mysql_supported: boolean;
-  /** Whether the region supports PostgreSQL databases */
-  postgresql_supported: boolean;
 }
 export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegion =
   /*@__PURE__*/ S.suspend(() =>
@@ -17623,8 +15227,6 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegion =
       location: S.String,
       slug: S.String,
       current_default: S.Boolean,
-      mysql_supported: S.Boolean,
-      postgresql_supported: S.Boolean,
     }),
   ).annotate({
     identifier: "PaginatedDatabaseBranchReadOnlyRegionDataItemRegion",
@@ -17640,7 +15242,7 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItem {
   /** When the read-only region was last updated */
   updated_at: string;
   /** When the read-only region was ready to serve queries */
-  ready_at: string | null;
+  ready_at: string;
   /** Whether or not the read-only region is ready to serve queries */
   ready: boolean;
   actor: PaginatedDatabaseBranchReadOnlyRegionDataItemActor;
@@ -17653,7 +15255,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItem =
       display_name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      ready_at: S.NullOr(S.String),
+      ready_at: S.String,
       ready: S.Boolean,
       actor: PaginatedDatabaseBranchReadOnlyRegionDataItemActor,
       region: PaginatedDatabaseBranchReadOnlyRegionDataItemRegion,
@@ -17670,24 +15272,21 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataList =
   ) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataList>;
 
 export interface PaginatedDatabaseBranchReadOnlyRegion {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchReadOnlyRegionDataList;
 }
 export const PaginatedDatabaseBranchReadOnlyRegion = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      type: S.String,
       current_page: S.Number,
       next_page: S.NullOr(S.Number),
       next_page_url: S.NullOr(S.String),
@@ -17734,10 +15333,6 @@ export interface ListRolesRequest {
   page?: number;
   /** If provided, specifies the number of returned results */
   per_page?: number;
-  /** Filter roles by status */
-  status?: string;
-  /** Search roles by name or username */
-  q?: string;
 }
 export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17746,8 +15341,6 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
     branch: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
-    status: S.optional(S.String.pipe(T.Query())),
-    q: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -17869,9 +15462,7 @@ export interface PaginatedPostgresRoleDataItem {
   private_connection_service_name: string;
   /** The database user name */
   username: string;
-  /** The base username without branch routing suffix */
-  base_username: string;
-  /** The plaintext password, available only after create */
+  /** The plain text password, available only after create */
   password: Redacted.Redacted<string> | null;
   /** The database name */
   database_name: string;
@@ -17897,8 +15488,6 @@ export interface PaginatedPostgresRoleDataItem {
   ttl: number | null;
   /** Database roles these credentials inherit */
   inherited_roles: PaginatedPostgresRoleDataItemInheritedRolesList;
-  /** Whether the role has the REPLICATION attribute */
-  with_replication: boolean;
   branch: PaginatedPostgresRoleDataItemBranch;
   actor: PaginatedPostgresRoleDataItemActor;
   query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings;
@@ -17911,7 +15500,6 @@ export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
     private_access_host_url: S.String,
     private_connection_service_name: S.String,
     username: S.String,
-    base_username: S.String,
     password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
     database_name: S.String,
     created_at: S.String,
@@ -17925,7 +15513,6 @@ export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
     default: S.Boolean,
     ttl: S.NullOr(S.Number),
     inherited_roles: PaginatedPostgresRoleDataItemInheritedRolesList,
-    with_replication: S.Boolean,
     branch: PaginatedPostgresRoleDataItemBranch,
     actor: PaginatedPostgresRoleDataItemActor,
     query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings,
@@ -17941,23 +15528,20 @@ export const PaginatedPostgresRoleDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedPostgresRoleDataList>;
 
 export interface PaginatedPostgresRole {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedPostgresRoleDataList;
 }
 export const PaginatedPostgresRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -18087,11 +15671,11 @@ export interface PaginatedSchemaRecommendationDataItem {
   /** When the recommendation was last updated */
   updated_at: string;
   /** When the recommendation was applied */
-  applied_at: string | null;
+  applied_at: string;
   /** When the recommendation was dismissed */
-  dismissed_at: string | null;
-  closed_by_deploy_request: PaginatedSchemaRecommendationDataItemClosedByDeployRequest | null;
-  dismissed_by: PaginatedSchemaRecommendationDataItemDismissedBy | null;
+  dismissed_at: string;
+  closed_by_deploy_request: PaginatedSchemaRecommendationDataItemClosedByDeployRequest;
+  dismissed_by: PaginatedSchemaRecommendationDataItemDismissedBy;
 }
 export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -18108,12 +15692,11 @@ export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
         PaginatedSchemaRecommendationDataItemRecommendationType,
       created_at: S.String,
       updated_at: S.String,
-      applied_at: S.NullOr(S.String),
-      dismissed_at: S.NullOr(S.String),
-      closed_by_deploy_request: S.NullOr(
+      applied_at: S.String,
+      dismissed_at: S.String,
+      closed_by_deploy_request:
         PaginatedSchemaRecommendationDataItemClosedByDeployRequest,
-      ),
-      dismissed_by: S.NullOr(PaginatedSchemaRecommendationDataItemDismissedBy),
+      dismissed_by: PaginatedSchemaRecommendationDataItemDismissedBy,
     }),
 ).annotate({
   identifier: "PaginatedSchemaRecommendationDataItem",
@@ -18126,23 +15709,20 @@ export const PaginatedSchemaRecommendationDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedSchemaRecommendationDataList>;
 
 export interface PaginatedSchemaRecommendation {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedSchemaRecommendationDataList;
 }
 export const PaginatedSchemaRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -18240,7 +15820,7 @@ export const PaginatedTrafficBudgetDataItemActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTrafficBudgetDataItemActor>;
 
 /** The kind of rule */
-export type PaginatedTrafficBudgetDataItemRulesItemKind = "match" | "each";
+export type PaginatedTrafficBudgetDataItemRulesItemKind = "match";
 export const PaginatedTrafficBudgetDataItemRulesItemKind =
   /*@__PURE__*/ S.String;
 
@@ -18306,9 +15886,9 @@ export interface PaginatedTrafficBudgetDataItemRulesItem {
   kind: PaginatedTrafficBudgetDataItemRulesItemKind;
   tags: PaginatedTrafficBudgetDataItemRulesItemTagsList;
   /** The query fingerprint targeted by this rule */
-  fingerprint?: string | null;
+  fingerprint?: string;
   /** The keyspace of the fingerprint */
-  keyspace?: string | null;
+  keyspace?: string;
   actor: PaginatedTrafficBudgetDataItemRulesItemActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
@@ -18323,8 +15903,8 @@ export const PaginatedTrafficBudgetDataItemRulesItem = /*@__PURE__*/ S.suspend(
       id: S.String,
       kind: PaginatedTrafficBudgetDataItemRulesItemKind,
       tags: PaginatedTrafficBudgetDataItemRulesItemTagsList,
-      fingerprint: S.optional(S.NullOr(S.String)),
-      keyspace: S.optional(S.NullOr(S.String)),
+      fingerprint: S.optional(S.String),
+      keyspace: S.optional(S.String),
       actor: PaginatedTrafficBudgetDataItemRulesItemActor,
       syntax_highlighted_sql: S.String,
       created_at: S.String,
@@ -18348,15 +15928,15 @@ export interface PaginatedTrafficBudgetDataItem {
   /** The mode of the budget */
   mode: PaginatedTrafficBudgetDataItemMode;
   /** The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
-  capacity?: number | null;
+  capacity?: number;
   /** The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set. */
-  rate?: number | null;
+  rate?: number;
   /** The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
-  burst?: number | null;
+  burst?: number;
   /** The percentage of available worker processes this policy can use (0-100). Unlimited when not set. */
-  concurrency?: number | null;
+  concurrency?: number;
   /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
-  warning_threshold?: number | null;
+  warning_threshold?: number;
   actor: PaginatedTrafficBudgetDataItemActor;
   rules: PaginatedTrafficBudgetDataItemRulesList;
   /** When the budget was created */
@@ -18369,11 +15949,11 @@ export const PaginatedTrafficBudgetDataItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     mode: PaginatedTrafficBudgetDataItemMode,
-    capacity: S.optional(S.NullOr(S.Number)),
-    rate: S.optional(S.NullOr(S.Number)),
-    burst: S.optional(S.NullOr(S.Number)),
-    concurrency: S.optional(S.NullOr(S.Number)),
-    warning_threshold: S.optional(S.NullOr(S.Number)),
+    capacity: S.optional(S.Number),
+    rate: S.optional(S.Number),
+    burst: S.optional(S.Number),
+    concurrency: S.optional(S.Number),
+    warning_threshold: S.optional(S.Number),
     actor: PaginatedTrafficBudgetDataItemActor,
     rules: PaginatedTrafficBudgetDataItemRulesList,
     created_at: S.String,
@@ -18390,69 +15970,30 @@ export const PaginatedTrafficBudgetDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedTrafficBudgetDataList>;
 
 export interface PaginatedTrafficBudget {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
-  next_page: number | null;
-  /** The next page of results, or null when this is the last page */
-  next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
-  prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
-  prev_page_url: string | null;
+  /** The next page number */
+  next_page: number;
+  /** The next page of results */
+  next_page_url: string;
+  /** The previous page number */
+  prev_page: number;
+  /** The previous page of results */
+  prev_page_url: string;
   data: PaginatedTrafficBudgetDataList;
 }
 export const PaginatedTrafficBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
-    next_page: S.NullOr(S.Number),
-    next_page_url: S.NullOr(S.String),
-    prev_page: S.NullOr(S.Number),
-    prev_page_url: S.NullOr(S.String),
+    next_page: S.Number,
+    next_page_url: S.String,
+    prev_page: S.Number,
+    prev_page_url: S.String,
     data: PaginatedTrafficBudgetDataList,
   }),
 ).annotate({
   identifier: "PaginatedTrafficBudget",
 }) as any as S.Schema<PaginatedTrafficBudget>;
-
-export interface ListTrafficBudgetsForQueryRequest {
-  /** Organization name slug from `list_organizations`. Example: `acme`. */
-  organization: string;
-  /** Database name slug from `list_databases`. Example: `app-db`. */
-  database: string;
-  /** Branch name from `list_branches`. Example: `main`. */
-  branch: string;
-  /** The query fingerprint */
-  fingerprint: string;
-  /** If provided, specifies the page offset of returned results */
-  page?: number;
-  /** If provided, specifies the number of returned results */
-  per_page?: number;
-  /** Optional keyspace filter */
-  keyspace?: string;
-}
-export const ListTrafficBudgetsForQueryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization: S.String.pipe(T.Label()),
-    database: S.String.pipe(T.Label()),
-    branch: S.String.pipe(T.Label()),
-    fingerprint: S.String.pipe(T.Label()),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-    keyspace: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/{fingerprint}/traffic/budgets",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListTrafficBudgetsForQueryRequest",
-}) as any as S.Schema<ListTrafficBudgetsForQueryRequest>;
 
 export interface ListWebhooksRequest {
   /** The name of the organization */
@@ -18557,23 +16098,20 @@ export const PaginatedDatabaseWebhookDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedDatabaseWebhookDataList>;
 
 export interface PaginatedDatabaseWebhook {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedDatabaseWebhookDataList;
 }
 export const PaginatedDatabaseWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -18846,7 +16384,7 @@ export interface PaginatedWorkflowDataItemBranch {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedWorkflowDataItemBranch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18854,7 +16392,7 @@ export const PaginatedWorkflowDataItemBranch = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "PaginatedWorkflowDataItemBranch",
@@ -18870,7 +16408,7 @@ export interface PaginatedWorkflowDataItemSourceKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedWorkflowDataItemSourceKeyspace = /*@__PURE__*/ S.suspend(
   () =>
@@ -18879,7 +16417,7 @@ export const PaginatedWorkflowDataItemSourceKeyspace = /*@__PURE__*/ S.suspend(
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedWorkflowDataItemSourceKeyspace",
@@ -18895,7 +16433,7 @@ export interface PaginatedWorkflowDataItemTargetKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedWorkflowDataItemTargetKeyspace = /*@__PURE__*/ S.suspend(
   () =>
@@ -18904,7 +16442,7 @@ export const PaginatedWorkflowDataItemTargetKeyspace = /*@__PURE__*/ S.suspend(
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedWorkflowDataItemTargetKeyspace",
@@ -18920,7 +16458,7 @@ export interface PaginatedWorkflowDataItemGlobalKeyspace {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PaginatedWorkflowDataItemGlobalKeyspace = /*@__PURE__*/ S.suspend(
   () =>
@@ -18929,7 +16467,7 @@ export const PaginatedWorkflowDataItemGlobalKeyspace = /*@__PURE__*/ S.suspend(
       name: S.String,
       created_at: S.String,
       updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
+      deleted_at: S.String,
     }),
 ).annotate({
   identifier: "PaginatedWorkflowDataItemGlobalKeyspace",
@@ -18949,29 +16487,29 @@ export interface PaginatedWorkflowDataItem {
   /** When the workflow was last updated */
   updated_at: string;
   /** When the workflow was started */
-  started_at: string | null;
+  started_at: string;
   /** When the workflow was completed */
-  completed_at: string | null;
+  completed_at: string;
   /** When the workflow was cancelled */
-  cancelled_at: string | null;
+  cancelled_at: string;
   /** When the workflow was reversed */
-  reversed_at: string | null;
+  reversed_at: string;
   /** When the workflow was retried */
-  retried_at: string | null;
+  retried_at: string;
   /** When the data copy was completed */
-  data_copy_completed_at: string | null;
+  data_copy_completed_at: string;
   /** When the cutover was completed */
-  cutover_at: string | null;
+  cutover_at: string;
   /** Whether or not the replicas have been switched */
   replicas_switched: boolean;
   /** Whether or not the primaries have been switched */
   primaries_switched: boolean;
   /** When the replicas were switched */
-  switch_replicas_at: string | null;
+  switch_replicas_at: string;
   /** When the primaries were switched */
-  switch_primaries_at: string | null;
+  switch_primaries_at: string;
   /** When the data was verified */
-  verify_data_at: string | null;
+  verify_data_at: string;
   /** The type of the workflow */
   workflow_type: PaginatedWorkflowDataItemWorkflowType;
   /** The subtype of the workflow */
@@ -19013,18 +16551,18 @@ export const PaginatedWorkflowDataItem = /*@__PURE__*/ S.suspend(() =>
     state: PaginatedWorkflowDataItemState,
     created_at: S.String,
     updated_at: S.String,
-    started_at: S.NullOr(S.String),
-    completed_at: S.NullOr(S.String),
-    cancelled_at: S.NullOr(S.String),
-    reversed_at: S.NullOr(S.String),
-    retried_at: S.NullOr(S.String),
-    data_copy_completed_at: S.NullOr(S.String),
-    cutover_at: S.NullOr(S.String),
+    started_at: S.String,
+    completed_at: S.String,
+    cancelled_at: S.String,
+    reversed_at: S.String,
+    retried_at: S.String,
+    data_copy_completed_at: S.String,
+    cutover_at: S.String,
     replicas_switched: S.Boolean,
     primaries_switched: S.Boolean,
-    switch_replicas_at: S.NullOr(S.String),
-    switch_primaries_at: S.NullOr(S.String),
-    verify_data_at: S.NullOr(S.String),
+    switch_replicas_at: S.String,
+    switch_primaries_at: S.String,
+    verify_data_at: S.String,
     workflow_type: PaginatedWorkflowDataItemWorkflowType,
     workflow_subtype: S.String,
     defer_secondary_keys: S.Boolean,
@@ -19059,23 +16597,20 @@ export const PaginatedWorkflowDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PaginatedWorkflowDataList>;
 
 export interface PaginatedWorkflow {
-  /** The response type. Always "list" for paginated responses. */
-  type: string;
   /** The current page number */
   current_page: number;
-  /** The next page number, or null when this is the last page */
+  /** The next page number */
   next_page: number | null;
-  /** The next page of results, or null when this is the last page */
+  /** The next page of results */
   next_page_url: string | null;
-  /** The previous page number, or null when this is the first page */
+  /** The previous page number */
   prev_page: number | null;
-  /** The previous page of results, or null when this is the first page */
+  /** The previous page of results */
   prev_page_url: string | null;
   data: PaginatedWorkflowDataList;
 }
 export const PaginatedWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.String,
     current_page: S.Number,
     next_page: S.NullOr(S.Number),
     next_page_url: S.NullOr(S.String),
@@ -19745,7 +17280,7 @@ export interface PostgresBouncerResizeRequestBouncer {
   /** When the resource was last updated */
   updated_at: string;
   /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
+  deleted_at: string;
 }
 export const PostgresBouncerResizeRequestBouncer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19753,7 +17288,7 @@ export const PostgresBouncerResizeRequestBouncer = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     created_at: S.String,
     updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
+    deleted_at: S.String,
   }),
 ).annotate({
   identifier: "PostgresBouncerResizeRequestBouncer",
@@ -19822,9 +17357,9 @@ export interface PostgresBouncerResizeRequest {
   /** The previous bouncer parameters */
   previous_parameters: PostgresBouncerResizeRequestPreviousParametersMap;
   /** The time the bouncer resize started */
-  started_at: string | null;
+  started_at: string;
   /** The time the bouncer resize completed */
-  completed_at: string | null;
+  completed_at: string;
   /** The time the bouncer resize was created */
   created_at: string;
   /** The time the bouncer resize was last updated */
@@ -19842,8 +17377,8 @@ export const PostgresBouncerResizeRequest = /*@__PURE__*/ S.suspend(() =>
     parameters: PostgresBouncerResizeRequestParametersMap,
     previous_replicas_per_cell: S.Number,
     previous_parameters: PostgresBouncerResizeRequestPreviousParametersMap,
-    started_at: S.NullOr(S.String),
-    completed_at: S.NullOr(S.String),
+    started_at: S.String,
+    completed_at: S.String,
     created_at: S.String,
     updated_at: S.String,
     actor: PostgresBouncerResizeRequestActor,
@@ -19892,31 +17427,6 @@ export const UpdateBranchChangeRequestRequestParametersMap =
     S.Unknown,
   ) as any as S.Schema<UpdateBranchChangeRequestRequestParametersMap>;
 
-export interface UpdateBranchChangeRequestRequestStorage {
-  /** The minimum storage size in bytes. */
-  minimum_storage_bytes?: number;
-  /** The maximum storage size in bytes for autoscaling. */
-  maximum_storage_bytes?: number;
-  /** Whether storage autoscaling is enabled. */
-  storage_autoscaling?: boolean;
-  /** The storage IOPS. */
-  storage_iops?: number;
-  /** The storage throughput in MiB/s. */
-  storage_throughput_mibs?: number;
-}
-export const UpdateBranchChangeRequestRequestStorage = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      minimum_storage_bytes: S.optional(S.Number),
-      maximum_storage_bytes: S.optional(S.Number),
-      storage_autoscaling: S.optional(S.Boolean),
-      storage_iops: S.optional(S.Number),
-      storage_throughput_mibs: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "UpdateBranchChangeRequestRequestStorage",
-}) as any as S.Schema<UpdateBranchChangeRequestRequestStorage>;
-
 export interface UpdateBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19930,7 +17440,6 @@ export interface UpdateBranchChangeRequestRequest {
   replicas?: number;
   /** Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'. */
   parameters?: UpdateBranchChangeRequestRequestParametersMap;
-  storage?: UpdateBranchChangeRequestRequestStorage;
 }
 export const UpdateBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19940,7 +17449,6 @@ export const UpdateBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
     cluster_size: S.optional(S.String),
     replicas: S.optional(S.Number),
     parameters: S.optional(UpdateBranchChangeRequestRequestParametersMap),
-    storage: S.optional(UpdateBranchChangeRequestRequestStorage),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -20016,7 +17524,7 @@ export const UpdateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
     cidrs: S.optional(UpdateDatabasePostgresCidrRequestCidrsList),
   }).pipe(
     T.Http({
-      method: "PATCH",
+      method: "PUT",
       uri: "/organizations/{organization}/databases/{database}/cidrs/{id}",
       code: 200,
     }),
@@ -21539,24 +19047,6 @@ export const enableSafeMigrations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ForceCutoverDeployRequestError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** Enable force cutover for a deploy request */
-export const forceCutoverDeployRequest: API.OperationMethod<
-  ForceCutoverDeployRequestRequest,
-  DatabaseDeployRequest,
-  ForceCutoverDeployRequestError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ForceCutoverDeployRequestRequest,
-  output: DatabaseDeployRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetBackupError = Forbidden | NotFound | PlanetScaleOpError;
 /** Get a backup */
 export const getBackup: API.OperationMethod<
@@ -21617,21 +19107,6 @@ export const getBranch: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetBranchAnomalyError = Forbidden | NotFound | PlanetScaleOpError;
-/** Retrieve a branch anomaly */
-export const getBranchAnomaly: API.OperationMethod<
-  GetBranchAnomalyRequest,
-  Anomaly,
-  GetBranchAnomalyError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchAnomalyRequest,
-  output: Anomaly,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetBranchChangeRequestError =
   | Forbidden
   | NotFound
@@ -21645,63 +19120,6 @@ export const getBranchChangeRequest: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetBranchChangeRequestRequest,
   output: PostgresClusterResizeRequest,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetBranchQueryError = Forbidden | NotFound | PlanetScaleOpError;
-/** Retrieve a branch query */
-export const getBranchQuery: API.OperationMethod<
-  GetBranchQueryRequest,
-  Query,
-  GetBranchQueryError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchQueryRequest,
-  output: Query,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetBranchQueryErrorError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List queries for an error fingerprint */
-export const getBranchQueryError: API.PaginatedOperationMethod<
-  GetBranchQueryErrorRequest,
-  PaginatedQuery,
-  GetBranchQueryErrorError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: GetBranchQueryErrorRequest,
-    output: PaginatedQuery,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type GetBranchQueryTagError = Forbidden | NotFound | PlanetScaleOpError;
-/** Retrieve a query tag */
-export const getBranchQueryTag: API.OperationMethod<
-  GetBranchQueryTagRequest,
-  QueryTag,
-  GetBranchQueryTagError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetBranchQueryTagRequest,
-  output: QueryTag,
   errors: [Forbidden, NotFound, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -22153,45 +19571,6 @@ export const getQueryPatternsReportStatus: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetQueryStatisticsError = Forbidden | NotFound | PlanetScaleOpError;
-/** Retrieve query statistics */
-export const getQueryStatistics: API.PaginatedOperationMethod<
-  GetQueryStatisticsRequest,
-  PaginatedQuery,
-  GetQueryStatisticsError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: GetQueryStatisticsRequest,
-    output: PaginatedQuery,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type GetQuerySummaryError = Forbidden | NotFound | PlanetScaleOpError;
-/** Retrieve a summary of query statistics */
-export const getQuerySummary: API.OperationMethod<
-  GetQuerySummaryRequest,
-  QuerySummary,
-  GetQuerySummaryError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetQuerySummaryRequest,
-  output: QuerySummary,
-  errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-  protocol: PlanetScaleProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetRoleError = Forbidden | NotFound | PlanetScaleOpError;
 /** Get a role */
 export const getRole: API.OperationMethod<
@@ -22423,33 +19802,6 @@ export const listBouncers: API.PaginatedOperationMethod<
   paginatePageNumber,
 );
 
-export type ListBranchAnomaliesError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List branch anomalies */
-export const listBranchAnomalies: API.PaginatedOperationMethod<
-  ListBranchAnomaliesRequest,
-  PaginatedAnomaly,
-  ListBranchAnomaliesError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListBranchAnomaliesRequest,
-    output: PaginatedAnomaly,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
 export type ListBranchBouncerResizeRequestsError =
   | Forbidden
   | NotFound
@@ -22515,111 +19867,6 @@ export const listBranches: API.PaginatedOperationMethod<
   () => ({
     input: ListBranchesRequest,
     output: PaginatedDatabaseBranch,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type ListBranchQueriesError = Forbidden | NotFound | PlanetScaleOpError;
-/** List branch queries */
-export const listBranchQueries: API.PaginatedOperationMethod<
-  ListBranchQueriesRequest,
-  PaginatedQuerySummary,
-  ListBranchQueriesError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListBranchQueriesRequest,
-    output: PaginatedQuerySummary,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type ListBranchQueryErrorsError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List branch query errors */
-export const listBranchQueryErrors: API.PaginatedOperationMethod<
-  ListBranchQueryErrorsRequest,
-  PaginatedErrorSummary,
-  ListBranchQueryErrorsError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListBranchQueryErrorsRequest,
-    output: PaginatedErrorSummary,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type ListBranchQueryTagsError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List query tags */
-export const listBranchQueryTags: API.PaginatedOperationMethod<
-  ListBranchQueryTagsRequest,
-  PaginatedQueryTag,
-  ListBranchQueryTagsError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListBranchQueryTagsRequest,
-    output: PaginatedQueryTag,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type ListBranchQueryTagSummariesError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List query statistics grouped by tag */
-export const listBranchQueryTagSummaries: API.PaginatedOperationMethod<
-  ListBranchQueryTagSummariesRequest,
-  PaginatedDimensionsQuerySummary,
-  ListBranchQueryTagSummariesError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListBranchQueryTagSummariesRequest,
-    output: PaginatedDimensionsQuerySummary,
     errors: [Forbidden, NotFound, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -23143,7 +20390,7 @@ export const listOrganizationTeams: API.PaginatedOperationMethod<
 );
 
 export type ListParametersError = Forbidden | NotFound | PlanetScaleOpError;
-/** List cluster parameters Returns the parameters for a branch. To update the parameters, use the "update_branch_change_request" endpoint. */
+/** List cluster parameters Returns the parameters for a branch. To update the parameters, use the "Upsert a change request" endpoint. */
 export const listParameters: API.OperationMethod<
   ListParametersRequest,
   ListParametersResponse,
@@ -23344,33 +20591,6 @@ export const listTrafficBudgets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: ListTrafficBudgetsRequest,
-    output: PaginatedTrafficBudget,
-    errors: [Forbidden, NotFound, UnknownPlanetScaleError],
-    protocol: PlanetScaleProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    } as const,
-  }),
-  paginatePageNumber,
-);
-
-export type ListTrafficBudgetsForQueryError =
-  | Forbidden
-  | NotFound
-  | PlanetScaleOpError;
-/** List traffic budgets affecting a query fingerprint */
-export const listTrafficBudgetsForQuery: API.PaginatedOperationMethod<
-  ListTrafficBudgetsForQueryRequest,
-  PaginatedTrafficBudget,
-  ListTrafficBudgetsForQueryError,
-  PlanetScaleOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListTrafficBudgetsForQueryRequest,
     output: PaginatedTrafficBudget,
     errors: [Forbidden, NotFound, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
@@ -23733,7 +20953,7 @@ export type UpdateBranchChangeRequestError =
   | Forbidden
   | NotFound
   | PlanetScaleOpError;
-/** Upsert a change request for cluster size, replicas, storage, or parameters */
+/** Upsert a change request */
 export const updateBranchChangeRequest: API.OperationMethod<
   UpdateBranchChangeRequestRequest,
   PostgresClusterResizeRequest,
@@ -24247,8 +21467,6 @@ export type DismissSchemaRecommendationInput =
 export type DismissSchemaRecommendationOutput = SchemaRecommendation;
 export type EnableSafeMigrationsInput = EnableSafeMigrationsRequest;
 export type EnableSafeMigrationsOutput = DatabaseBranch;
-export type ForceCutoverDeployRequestInput = ForceCutoverDeployRequestRequest;
-export type ForceCutoverDeployRequestOutput = DatabaseDeployRequest;
 export type GetBackupInput = GetBackupRequest;
 export type GetBackupOutput = Backup;
 export type GetBackupPolicyInput = GetBackupPolicyRequest;
@@ -24257,16 +21475,8 @@ export type GetBouncerInput = GetBouncerRequest;
 export type GetBouncerOutput = PostgresBouncer;
 export type GetBranchInput = GetBranchRequest;
 export type GetBranchOutput = DatabaseBranch;
-export type GetBranchAnomalyInput = GetBranchAnomalyRequest;
-export type GetBranchAnomalyOutput = Anomaly;
 export type GetBranchChangeRequestInput = GetBranchChangeRequestRequest;
 export type GetBranchChangeRequestOutput = PostgresClusterResizeRequest;
-export type GetBranchQueryInput = GetBranchQueryRequest;
-export type GetBranchQueryOutput = Query;
-export type GetBranchQueryErrorInput = GetBranchQueryErrorRequest;
-export type GetBranchQueryErrorOutput = PaginatedQuery;
-export type GetBranchQueryTagInput = GetBranchQueryTagRequest;
-export type GetBranchQueryTagOutput = QueryTag;
 export type GetBranchSchemaInput = GetBranchSchemaRequest;
 export type GetBranchSchemaOutput = GetBranchSchemaResponse;
 export type GetCurrentUserInput = GetCurrentUserRequest;
@@ -24318,10 +21528,6 @@ export type GetQueryPatternsReportOutput = GetQueryPatternsReportResponse;
 export type GetQueryPatternsReportStatusInput =
   GetQueryPatternsReportStatusRequest;
 export type GetQueryPatternsReportStatusOutput = QueryPatternsDownload;
-export type GetQueryStatisticsInput = GetQueryStatisticsRequest;
-export type GetQueryStatisticsOutput = PaginatedQuery;
-export type GetQuerySummaryInput = GetQuerySummaryRequest;
-export type GetQuerySummaryOutput = QuerySummary;
 export type GetRoleInput = GetRoleRequest;
 export type GetRoleOutput = PostgresRole;
 export type GetSchemaRecommendationInput = GetSchemaRecommendationRequest;
@@ -24347,8 +21553,6 @@ export type ListBouncerResizeRequestsOutput =
   PaginatedPostgresBouncerResizeRequest;
 export type ListBouncersInput = ListBouncersRequest;
 export type ListBouncersOutput = PaginatedPostgresBouncer;
-export type ListBranchAnomaliesInput = ListBranchAnomaliesRequest;
-export type ListBranchAnomaliesOutput = PaginatedAnomaly;
 export type ListBranchBouncerResizeRequestsInput =
   ListBranchBouncerResizeRequestsRequest;
 export type ListBranchBouncerResizeRequestsOutput =
@@ -24358,15 +21562,6 @@ export type ListBranchChangeRequestsOutput =
   PaginatedPostgresClusterResizeRequest;
 export type ListBranchesInput = ListBranchesRequest;
 export type ListBranchesOutput = PaginatedDatabaseBranch;
-export type ListBranchQueriesInput = ListBranchQueriesRequest;
-export type ListBranchQueriesOutput = PaginatedQuerySummary;
-export type ListBranchQueryErrorsInput = ListBranchQueryErrorsRequest;
-export type ListBranchQueryErrorsOutput = PaginatedErrorSummary;
-export type ListBranchQueryTagsInput = ListBranchQueryTagsRequest;
-export type ListBranchQueryTagsOutput = PaginatedQueryTag;
-export type ListBranchQueryTagSummariesInput =
-  ListBranchQueryTagSummariesRequest;
-export type ListBranchQueryTagSummariesOutput = PaginatedDimensionsQuerySummary;
 export type ListClusterSizeSkusInput = ListClusterSizeSkusRequest;
 export type ListClusterSizeSkusOutput = ListClusterSizeSkusResponse;
 export type ListDatabasePostgresCidrsInput = ListDatabasePostgresCidrsRequest;
@@ -24430,8 +21625,6 @@ export type ListServiceTokensInput = ListServiceTokensRequest;
 export type ListServiceTokensOutput = PaginatedServiceToken;
 export type ListTrafficBudgetsInput = ListTrafficBudgetsRequest;
 export type ListTrafficBudgetsOutput = PaginatedTrafficBudget;
-export type ListTrafficBudgetsForQueryInput = ListTrafficBudgetsForQueryRequest;
-export type ListTrafficBudgetsForQueryOutput = PaginatedTrafficBudget;
 export type ListWebhooksInput = ListWebhooksRequest;
 export type ListWebhooksOutput = PaginatedDatabaseWebhook;
 export type ListWorkflowsInput = ListWorkflowsRequest;

@@ -2118,23 +2118,9 @@ export const ImageRef = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageRef" }) as any as S.Schema<ImageRef>;
 
-export interface StrippedLease {
-  description?: string;
-  expires_at?: number;
-  owner?: string;
-}
-export const StrippedLease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    expires_at: S.optional(S.Number),
-    owner: S.optional(S.String),
-  }),
-).annotate({ identifier: "StrippedLease" }) as any as S.Schema<StrippedLease>;
-
 export interface Machine {
   checks?: MachineChecksList;
   config?: FlyMachineConfig;
-  cordoned?: boolean;
   created_at?: string;
   events?: MachineEventsList;
   host_status?: MachineHostStatus;
@@ -2143,7 +2129,6 @@ export interface Machine {
   incomplete_config?: FlyMachineConfig;
   /** InstanceID is unique for each version of the machine */
   instance_id?: string;
-  lease?: StrippedLease;
   name?: string;
   /** Nonce is only every returned on machine creation if a lease_duration was provided. */
   nonce?: string;
@@ -2157,7 +2142,6 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: S.optional(MachineChecksList),
     config: S.optional(FlyMachineConfig),
-    cordoned: S.optional(S.Boolean),
     created_at: S.optional(S.String),
     events: S.optional(MachineEventsList),
     host_status: S.optional(MachineHostStatus),
@@ -2165,7 +2149,6 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
     image_ref: S.optional(ImageRef),
     incomplete_config: S.optional(FlyMachineConfig),
     instance_id: S.optional(S.String),
-    lease: S.optional(StrippedLease),
     name: S.optional(S.String),
     nonce: S.optional(S.String),
     private_ip: S.optional(S.String),
@@ -2413,8 +2396,6 @@ export interface MachinesListRequest {
   app_name: string;
   /** Include deleted machines */
   include_deleted?: boolean;
-  /** Include machine leases */
-  include_leases?: boolean;
   /** Region filter */
   region?: string;
   /** comma separated list of states to filter (created, started, stopped, suspended) */
@@ -2426,7 +2407,6 @@ export const MachinesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     include_deleted: S.optional(S.Boolean.pipe(T.Query())),
-    include_leases: S.optional(S.Boolean.pipe(T.Query())),
     region: S.optional(S.String.pipe(T.Query())),
     state: S.optional(S.String.pipe(T.Query())),
     summary: S.optional(S.Boolean.pipe(T.Query())),
@@ -2856,14 +2836,11 @@ export interface MachinesShowRequest {
   app_name: string;
   /** Machine ID */
   machine_id: string;
-  /** Include machine lease */
-  include_leases?: boolean;
 }
 export const MachinesShowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_name: S.String.pipe(T.Label()),
     machine_id: S.String.pipe(T.Label()),
-    include_leases: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

@@ -439,8 +439,8 @@ export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
+export type ActionEnum = "add" | "remove" | "set";
+export const ActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList = Array<string>;
@@ -455,7 +455,7 @@ export interface FeatureFlagsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: FeatureFlagsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum | (string & {});
+  action?: ActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: FeatureFlagsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -464,7 +464,7 @@ export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       ids: S.optional(FeatureFlagsBulkUpdateTagsCreateRequestIdsList),
-      action: S.optional(BulkUpdateTagsActionEnum),
+      action: S.optional(ActionEnum),
       tags: S.optional(FeatureFlagsBulkUpdateTagsCreateRequestTagsList),
     }).pipe(
       T.Http({
@@ -1157,6 +1157,8 @@ export interface FeatureFlagOutput {
   experiment_set_metadata?: FeatureFlagOutputExperimentSetMetadataList;
   surveys?: FeatureFlagOutputSurveysMap;
   features?: FeatureFlagOutputFeaturesMap;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   can_edit?: boolean;
   tags?: FeatureFlagOutputTagsList;
   usage_dashboard?: number;
@@ -1175,8 +1177,6 @@ export interface FeatureFlagOutput {
   last_called_at?: string | null;
   /** Check if this feature flag is used in any team's session recording linked flag setting. */
   is_used_in_replay_settings?: boolean;
-  /** Whether this flag can back an experiment: multivariate with 2 to 20 variants. */
-  is_eligible_for_experiment?: boolean;
 }
 export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1199,6 +1199,8 @@ export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
     ),
     surveys: S.optional(FeatureFlagOutputSurveysMap),
     features: S.optional(FeatureFlagOutputFeaturesMap),
+    rollback_conditions: S.optional(S.Unknown),
+    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     can_edit: S.optional(S.Boolean),
     tags: S.optional(FeatureFlagOutputTagsList),
     usage_dashboard: S.optional(S.Number),
@@ -1216,7 +1218,6 @@ export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
     ),
     last_called_at: S.optional(S.NullOr(S.String)),
     is_used_in_replay_settings: S.optional(S.Boolean),
-    is_eligible_for_experiment: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "FeatureFlagOutput",
@@ -1290,6 +1291,8 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   tags?: FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList;
   evaluation_contexts?: FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList;
@@ -1323,6 +1326,8 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateRequest =
       created_at: S.optional(S.String),
       version: S.optional(S.Number),
       ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+      rollback_conditions: S.optional(S.Unknown),
+      performed_rollback: S.optional(S.NullOr(S.Boolean)),
       tags: S.optional(
         FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList,
       ),
@@ -1424,6 +1429,8 @@ export interface FeatureFlagsDashboardCreateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   tags?: FeatureFlagsDashboardCreateRequestTagsList;
   evaluation_contexts?: FeatureFlagsDashboardCreateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList;
@@ -1454,6 +1461,8 @@ export const FeatureFlagsDashboardCreateRequest = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     version: S.optional(S.Number),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+    rollback_conditions: S.optional(S.Unknown),
+    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(FeatureFlagsDashboardCreateRequestTagsList),
     evaluation_contexts: S.optional(
       FeatureFlagsDashboardCreateRequestEvaluationContextsList,
@@ -1634,6 +1643,8 @@ export interface FeatureFlagsEnrichUsageDashboardCreateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   tags?: FeatureFlagsEnrichUsageDashboardCreateRequestTagsList;
   evaluation_contexts?: FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList;
@@ -1667,6 +1678,8 @@ export const FeatureFlagsEnrichUsageDashboardCreateRequest =
       created_at: S.optional(S.String),
       version: S.optional(S.Number),
       ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+      rollback_conditions: S.optional(S.Unknown),
+      performed_rollback: S.optional(S.NullOr(S.Boolean)),
       tags: S.optional(FeatureFlagsEnrichUsageDashboardCreateRequestTagsList),
       evaluation_contexts: S.optional(
         FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList,
@@ -1708,20 +1721,11 @@ export const FeatureFlagsEnrichUsageDashboardCreateResponse =
     identifier: "FeatureFlagsEnrichUsageDashboardCreateResponse",
   }) as any as S.Schema<FeatureFlagsEnrichUsageDashboardCreateResponse>;
 
-export type FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
-  Array<string>;
-export const FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList>;
-
 export interface FeatureFlagsEvaluationReasonsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** User distinct ID */
   distinct_id: string;
-  /** Optional list of flag keys to scope the response to. When omitted, evaluation reasons are returned for every flag in the project, which can be a very large payload on projects with many flags. Pass the specific flag(s) you are debugging to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=["a","b"]). */
-  flag_keys?: FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList;
   /** Groups for feature flag evaluation (JSON object string) */
   groups?: string;
 }
@@ -1730,11 +1734,6 @@ export const FeatureFlagsEvaluationReasonsRetrieveRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       distinct_id: S.String.pipe(T.Query()),
-      flag_keys: S.optional(
-        FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList.pipe(
-          T.Query(),
-        ),
-      ),
       groups: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1758,10 +1757,6 @@ export const FeatureFlagsListRequestActive = /*@__PURE__*/ S.String;
 
 export type FeatureFlagsListRequestArchived = "false" | "true";
 export const FeatureFlagsListRequestArchived = /*@__PURE__*/ S.String;
-
-export type FeatureFlagsListRequestEligibleForExperiment = "true";
-export const FeatureFlagsListRequestEligibleForExperiment =
-  /*@__PURE__*/ S.String;
 
 export type FeatureFlagsListRequestEvaluationRuntime =
   | "all"
@@ -1788,10 +1783,6 @@ export interface FeatureFlagsListRequest {
   archived?: FeatureFlagsListRequestArchived | (string & {});
   /** Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them. */
   created_by_id?: string;
-  /** When 'true', only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored. */
-  eligible_for_experiment?:
-    | FeatureFlagsListRequestEligibleForExperiment
-    | (string & {});
   /** Filter feature flags by their evaluation runtime. */
   evaluation_runtime?: FeatureFlagsListRequestEvaluationRuntime | (string & {});
   /** JSON-encoded list of feature flag keys to exclude from the results. */
@@ -1802,8 +1793,6 @@ export interface FeatureFlagsListRequest {
   has_evaluation_contexts?:
     | FeatureFlagsListRequestHasEvaluationContexts
     | (string & {});
-  /** Filter by exact feature flag key match. Case insensitive. */
-  key?: string;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -1820,9 +1809,6 @@ export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
     active: S.optional(FeatureFlagsListRequestActive.pipe(T.Query())),
     archived: S.optional(FeatureFlagsListRequestArchived.pipe(T.Query())),
     created_by_id: S.optional(S.String.pipe(T.Query())),
-    eligible_for_experiment: S.optional(
-      FeatureFlagsListRequestEligibleForExperiment.pipe(T.Query()),
-    ),
     evaluation_runtime: S.optional(
       FeatureFlagsListRequestEvaluationRuntime.pipe(T.Query()),
     ),
@@ -1831,7 +1817,6 @@ export const FeatureFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
     has_evaluation_contexts: S.optional(
       FeatureFlagsListRequestHasEvaluationContexts.pipe(T.Query()),
     ),
-    key: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -2403,6 +2388,8 @@ export interface FeatureFlagsUpdateRequest {
   created_at?: string;
   version?: number;
   ensure_experience_continuity?: boolean | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   tags?: FeatureFlagsUpdateRequestTagsList;
   evaluation_contexts?: FeatureFlagsUpdateRequestEvaluationContextsList;
   analytics_dashboards?: FeatureFlagsUpdateRequestAnalyticsDashboardsList;
@@ -2433,6 +2420,8 @@ export const FeatureFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     version: S.optional(S.Number),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+    rollback_conditions: S.optional(S.Unknown),
+    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(FeatureFlagsUpdateRequestTagsList),
     evaluation_contexts: S.optional(
       FeatureFlagsUpdateRequestEvaluationContextsList,
@@ -2571,6 +2560,8 @@ export interface FeatureFlagVersionResponse {
   active?: boolean;
   deleted?: boolean;
   version?: number | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
   ensure_experience_continuity?: boolean | null;
   has_enriched_analytics?: boolean | null;
   is_remote_configuration?: boolean | null;
@@ -2598,6 +2589,8 @@ export const FeatureFlagVersionResponse = /*@__PURE__*/ S.suspend(() =>
     active: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
     version: S.optional(S.NullOr(S.Number)),
+    rollback_conditions: S.optional(S.Unknown),
+    performed_rollback: S.optional(S.NullOr(S.Boolean)),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
     has_enriched_analytics: S.optional(S.NullOr(S.Boolean)),
     is_remote_configuration: S.optional(S.NullOr(S.Boolean)),

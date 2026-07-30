@@ -61,32 +61,32 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export interface AcceptPromoofferRequest {
-  /** device android_id */
-  androidId?: string;
-  /** device product */
-  product?: string;
-  /** Volume id to exercise the offer */
-  volumeId?: string;
-  offerId?: string;
-  /** device manufacturer */
-  manufacturer?: string;
   /** device model */
   model?: string;
+  /** device android_id */
+  androidId?: string;
   /** device serial */
   serial?: string;
+  /** Volume id to exercise the offer */
+  volumeId?: string;
+  /** device product */
+  product?: string;
   /** device device */
   device?: string;
+  /** device manufacturer */
+  manufacturer?: string;
+  offerId?: string;
 }
 export const AcceptPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    androidId: S.optional(S.String.pipe(T.Query())),
-    product: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.optional(S.String.pipe(T.Query())),
-    offerId: S.optional(S.String.pipe(T.Query())),
-    manufacturer: S.optional(S.String.pipe(T.Query())),
     model: S.optional(S.String.pipe(T.Query())),
+    androidId: S.optional(S.String.pipe(T.Query())),
     serial: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
+    product: S.optional(S.String.pipe(T.Query())),
     device: S.optional(S.String.pipe(T.Query())),
+    manufacturer: S.optional(S.String.pipe(T.Query())),
+    offerId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -105,10 +105,10 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 }) as any as S.Schema<Empty>;
 
 export interface AddBookCloudloadingRequest {
-  /** A drive document id. The upload_client_token must not be set. */
-  drive_document_id?: string;
   /** The document MIME type. It can be set only if the drive_document_id is set. */
   mime_type?: string;
+  /** A drive document id. The upload_client_token must not be set. */
+  drive_document_id?: string;
   /** The document name. It can be set only if the drive_document_id is set. */
   name?: string;
   /** Scotty upload token. */
@@ -116,8 +116,8 @@ export interface AddBookCloudloadingRequest {
 }
 export const AddBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    drive_document_id: S.optional(S.String.pipe(T.Query())),
     mime_type: S.optional(S.String.pipe(T.Query())),
+    drive_document_id: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     upload_client_token: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -132,16 +132,16 @@ export const AddBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddBookCloudloadingRequest>;
 
 export interface BooksCloudloadingResource {
+  volumeId?: string;
   title?: string;
   author?: string;
-  volumeId?: string;
   processingState?: string;
 }
 export const BooksCloudloadingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    volumeId: S.optional(S.String),
     title: S.optional(S.String),
     author: S.optional(S.String),
-    volumeId: S.optional(S.String),
     processingState: S.optional(S.String),
   }),
 ).annotate({
@@ -156,24 +156,24 @@ export type AddVolumeMylibraryBookshelvesReasonEnum =
 export const AddVolumeMylibraryBookshelvesReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AddVolumeMylibraryBookshelvesRequest {
-  /** ID of bookshelf to which to add a volume. */
-  shelf: string;
   /** The reason for which the book is added to the library. */
   reason?: AddVolumeMylibraryBookshelvesReasonEnum | (string & {});
-  /** ID of volume to add. */
-  volumeId: string;
+  /** ID of bookshelf to which to add a volume. */
+  shelf: string;
   /** String to identify the originator of this request. */
   source?: string;
+  /** ID of volume to add. */
+  volumeId: string;
 }
 export const AddVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      shelf: S.String.pipe(T.Label()),
       reason: S.optional(
         AddVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query()),
       ),
-      volumeId: S.String.pipe(T.Query()),
+      shelf: S.String.pipe(T.Label()),
       source: S.optional(S.String.pipe(T.Query())),
+      volumeId: S.String.pipe(T.Query()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -247,30 +247,30 @@ export const DeleteMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMylibraryAnnotationsRequest>;
 
 export interface DismissPromoofferRequest {
+  /** device product */
+  product?: string;
+  /** device device */
+  device?: string;
   /** device manufacturer */
   manufacturer?: string;
   /** Offer to dimiss */
   offerId?: string;
-  /** device device */
-  device?: string;
   /** device model */
   model?: string;
-  /** device serial */
-  serial?: string;
   /** device android_id */
   androidId?: string;
-  /** device product */
-  product?: string;
+  /** device serial */
+  serial?: string;
 }
 export const DismissPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    product: S.optional(S.String.pipe(T.Query())),
+    device: S.optional(S.String.pipe(T.Query())),
     manufacturer: S.optional(S.String.pipe(T.Query())),
     offerId: S.optional(S.String.pipe(T.Query())),
-    device: S.optional(S.String.pipe(T.Query())),
     model: S.optional(S.String.pipe(T.Query())),
-    serial: S.optional(S.String.pipe(T.Query())),
     androidId: S.optional(S.String.pipe(T.Query())),
-    product: S.optional(S.String.pipe(T.Query())),
+    serial: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -283,17 +283,17 @@ export const DismissPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DismissPromoofferRequest>;
 
 export interface GetBookshelvesRequest {
-  /** ID of bookshelf to retrieve. */
-  shelf: string;
   /** ID of user for whom to retrieve bookshelves. */
   userId: string;
+  /** ID of bookshelf to retrieve. */
+  shelf: string;
   /** String to identify the originator of this request. */
   source?: string;
 }
 export const GetBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    shelf: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
+    shelf: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -307,39 +307,39 @@ export const GetBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBookshelvesRequest>;
 
 export interface Bookshelf {
-  /** Created time for this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  created?: string;
-  /** Last modified time of this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  updated?: string;
-  /** Title of this bookshelf. */
-  title?: string;
-  /** Resource type for bookshelf metadata. */
-  kind?: string;
-  /** Last time a volume was added or removed from this bookshelf (formatted UTC timestamp with millisecond resolution). */
-  volumesLastUpdated?: string;
-  /** URL to this resource. */
-  selfLink?: string;
-  /** Description of this bookshelf. */
-  description?: string;
-  /** Number of volumes in this bookshelf. */
-  volumeCount?: number;
-  /** Id of this bookshelf, only unique by user. */
-  id?: number;
   /** Whether this bookshelf is PUBLIC or PRIVATE. */
   access?: string;
+  /** Last modified time of this bookshelf (formatted UTC timestamp with millisecond resolution). */
+  updated?: string;
+  /** Resource type for bookshelf metadata. */
+  kind?: string;
+  /** Id of this bookshelf, only unique by user. */
+  id?: number;
+  /** Title of this bookshelf. */
+  title?: string;
+  /** Description of this bookshelf. */
+  description?: string;
+  /** Last time a volume was added or removed from this bookshelf (formatted UTC timestamp with millisecond resolution). */
+  volumesLastUpdated?: string;
+  /** Created time for this bookshelf (formatted UTC timestamp with millisecond resolution). */
+  created?: string;
+  /** Number of volumes in this bookshelf. */
+  volumeCount?: number;
+  /** URL to this resource. */
+  selfLink?: string;
 }
 export const Bookshelf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    created: S.optional(S.String),
-    updated: S.optional(S.String),
-    title: S.optional(S.String),
-    kind: S.optional(S.String),
-    volumesLastUpdated: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    description: S.optional(S.String),
-    volumeCount: S.optional(S.Number),
-    id: S.optional(S.Number),
     access: S.optional(S.String),
+    updated: S.optional(S.String),
+    kind: S.optional(S.String),
+    id: S.optional(S.Number),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    volumesLastUpdated: S.optional(S.String),
+    created: S.optional(S.String),
+    volumeCount: S.optional(S.Number),
+    selfLink: S.optional(S.String),
   }),
 ).annotate({ identifier: "Bookshelf" }) as any as S.Schema<Bookshelf>;
 
@@ -365,20 +365,20 @@ export interface FamilyInfoMembership {
   /** The age group of the user. */
   ageGroup?: string;
   isInFamily?: boolean;
-  /** Restrictions on user buying and acquiring content. */
-  acquirePermission?: string;
   /** The maximum allowed maturity rating for the user. */
   allowedMaturityRating?: string;
   /** The role of the user in the family. */
   role?: string;
+  /** Restrictions on user buying and acquiring content. */
+  acquirePermission?: string;
 }
 export const FamilyInfoMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ageGroup: S.optional(S.String),
     isInFamily: S.optional(S.Boolean),
-    acquirePermission: S.optional(S.String),
     allowedMaturityRating: S.optional(S.String),
     role: S.optional(S.String),
+    acquirePermission: S.optional(S.String),
   }),
 ).annotate({
   identifier: "FamilyInfoMembership",
@@ -398,10 +398,10 @@ export const FamilyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FamilyInfo" }) as any as S.Schema<FamilyInfo>;
 
 export interface GetLayersRequest {
-  /** String to identify the originator of this request. */
-  source?: string;
   /** The volume to retrieve layers for. */
   volumeId: string;
+  /** String to identify the originator of this request. */
+  source?: string;
   /** The ID for the layer to get the summary for. */
   summaryId: string;
   /** The content version for the requested volume. */
@@ -409,8 +409,8 @@ export interface GetLayersRequest {
 }
 export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    source: S.optional(S.String.pipe(T.Query())),
     volumeId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
     summaryId: S.String.pipe(T.Label()),
     contentVersion: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -430,85 +430,85 @@ export const StringList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StringList>;
 
 export interface Layersummary {
-  /** The link to get the annotations for this layer. */
-  annotationsLink?: string;
-  /** The volume id this resource is for. */
-  volumeId?: string;
-  /** Link to get data for this annotation. */
-  annotationsDataLink?: string;
-  /** Resource Type */
-  kind?: string;
   /** URL to this resource. */
   selfLink?: string;
-  /** Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC date-time format). */
-  updated?: string;
-  /** The number of annotations for this layer. */
-  annotationCount?: number;
-  /** The list of annotation types contained for this layer. */
-  annotationTypes?: StringList;
-  /** Unique id of this layer summary. */
-  id?: string;
-  /** The layer id for this summary. */
-  layerId?: string;
   /** The content version this resource is for. */
   contentVersion?: string;
-  /** The number of data items for this layer. */
-  dataCount?: number;
+  /** Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC date-time format). */
+  updated?: string;
+  /** The volume id this resource is for. */
+  volumeId?: string;
   /** The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately. */
   volumeAnnotationsVersion?: string;
+  /** The number of annotations for this layer. */
+  annotationCount?: number;
+  /** Resource Type */
+  kind?: string;
+  /** Unique id of this layer summary. */
+  id?: string;
+  /** The list of annotation types contained for this layer. */
+  annotationTypes?: StringList;
+  /** The number of data items for this layer. */
+  dataCount?: number;
+  /** Link to get data for this annotation. */
+  annotationsDataLink?: string;
+  /** The layer id for this summary. */
+  layerId?: string;
+  /** The link to get the annotations for this layer. */
+  annotationsLink?: string;
 }
 export const Layersummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotationsLink: S.optional(S.String),
-    volumeId: S.optional(S.String),
-    annotationsDataLink: S.optional(S.String),
-    kind: S.optional(S.String),
     selfLink: S.optional(S.String),
-    updated: S.optional(S.String),
-    annotationCount: S.optional(S.Number),
-    annotationTypes: S.optional(StringList),
-    id: S.optional(S.String),
-    layerId: S.optional(S.String),
     contentVersion: S.optional(S.String),
-    dataCount: S.optional(S.Number),
+    updated: S.optional(S.String),
+    volumeId: S.optional(S.String),
     volumeAnnotationsVersion: S.optional(S.String),
+    annotationCount: S.optional(S.Number),
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    annotationTypes: S.optional(StringList),
+    dataCount: S.optional(S.Number),
+    annotationsDataLink: S.optional(S.String),
+    layerId: S.optional(S.String),
+    annotationsLink: S.optional(S.String),
   }),
 ).annotate({ identifier: "Layersummary" }) as any as S.Schema<Layersummary>;
 
 export interface GetLayersAnnotationDataRequest {
-  /** The ID for the layer to get the annotations. */
-  layerId: string;
-  /** For the dictionary layer. Whether or not to allow web definitions. */
-  allowWebDefinitions?: boolean;
-  /** The requested scale for the image. */
-  scale?: number;
-  /** The volume to retrieve annotations for. */
-  volumeId: string;
-  /** The ID of the annotation data to retrieve. */
-  annotationDataId: string;
-  /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
-  locale?: string;
   /** String to identify the originator of this request. */
   source?: string;
-  /** The content version for the volume you are trying to retrieve. */
-  contentVersion: string;
-  /** The requested pixel height for any images. If height is provided width must also be provided. */
-  h?: number;
+  /** The ID of the annotation data to retrieve. */
+  annotationDataId: string;
+  /** For the dictionary layer. Whether or not to allow web definitions. */
+  allowWebDefinitions?: boolean;
   /** The requested pixel width for any images. If width is provided height must also be provided. */
   w?: number;
+  /** The content version for the volume you are trying to retrieve. */
+  contentVersion: string;
+  /** The volume to retrieve annotations for. */
+  volumeId: string;
+  /** The requested pixel height for any images. If height is provided width must also be provided. */
+  h?: number;
+  /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
+  locale?: string;
+  /** The requested scale for the image. */
+  scale?: number;
+  /** The ID for the layer to get the annotations. */
+  layerId: string;
 }
 export const GetLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    layerId: S.String.pipe(T.Label()),
-    allowWebDefinitions: S.optional(S.Boolean.pipe(T.Query())),
-    scale: S.optional(S.Number.pipe(T.Query())),
-    volumeId: S.String.pipe(T.Label()),
-    annotationDataId: S.String.pipe(T.Label()),
-    locale: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
-    contentVersion: S.String.pipe(T.Query()),
-    h: S.optional(S.Number.pipe(T.Query())),
+    annotationDataId: S.String.pipe(T.Label()),
+    allowWebDefinitions: S.optional(S.Boolean.pipe(T.Query())),
     w: S.optional(S.Number.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
+    volumeId: S.String.pipe(T.Label()),
+    h: S.optional(S.Number.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
+    scale: S.optional(S.Number.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -519,18 +519,6 @@ export const GetLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLayersAnnotationDataRequest",
 }) as any as S.Schema<GetLayersAnnotationDataRequest>;
-
-export interface DictlayerdataCommon {
-  /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  title?: string;
-}
-export const DictlayerdataCommon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DictlayerdataCommon",
-}) as any as S.Schema<DictlayerdataCommon>;
 
 export interface DictlayerdataDictSource {
   url?: string;
@@ -545,42 +533,53 @@ export const DictlayerdataDictSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictlayerdataDictSource",
 }) as any as S.Schema<DictlayerdataDictSource>;
 
-export interface DictlayerdataDictWordsItemSensesItemSynonymsItemSource {
+export interface DictlayerdataDictWordsItemSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemSource =
+export const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+    attribution: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictlayerdataDictWordsItemSource",
+}) as any as S.Schema<DictlayerdataDictWordsItemSource>;
+
+export interface DictlayerdataDictWordsItemDerivativesItemSource {
+  url?: string;
+  attribution?: string;
+}
+export const DictlayerdataDictWordsItemDerivativesItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       url: S.optional(S.String),
       attribution: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItemSource",
-  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemSource>;
+    identifier: "DictlayerdataDictWordsItemDerivativesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemSource>;
 
-export interface DictlayerdataDictWordsItemSensesItemSynonymsItem {
+export interface DictlayerdataDictWordsItemDerivativesItem {
+  source?: DictlayerdataDictWordsItemDerivativesItemSource;
   text?: string;
-  source?: DictlayerdataDictWordsItemSensesItemSynonymsItemSource;
 }
-export const DictlayerdataDictWordsItemSensesItemSynonymsItem =
+export const DictlayerdataDictWordsItemDerivativesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      source: S.optional(DictlayerdataDictWordsItemDerivativesItemSource),
       text: S.optional(S.String),
-      source: S.optional(
-        DictlayerdataDictWordsItemSensesItemSynonymsItemSource,
-      ),
     }),
   ).annotate({
-    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItem",
-  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
+    identifier: "DictlayerdataDictWordsItemDerivativesItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItem>;
 
-export type DictlayerdataDictWordsItemSensesItemSynonymsItemList =
-  Array<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemList =
+export type DictlayerdataDictWordsItemDerivativesItemList =
+  Array<DictlayerdataDictWordsItemDerivativesItem>;
+export const DictlayerdataDictWordsItemDerivativesItemList =
   /*@__PURE__*/ S.Array(
-    DictlayerdataDictWordsItemSensesItemSynonymsItem,
-  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemList>;
+    DictlayerdataDictWordsItemDerivativesItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource {
   url?: string;
@@ -598,16 +597,16 @@ export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSour
   }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem {
-  text?: string;
   source?: DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource;
+  text?: string;
 }
 export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      text: S.optional(S.String),
       source: S.optional(
         DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource,
       ),
+      text: S.optional(S.String),
     }),
   ).annotate({
     identifier:
@@ -644,20 +643,6 @@ export const DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
     DictlayerdataDictWordsItemSensesItemDefinitionsItem,
   ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemList>;
 
-export interface DictlayerdataDictWordsItemSensesItemSource {
-  url?: string;
-  attribution?: string;
-}
-export const DictlayerdataDictWordsItemSensesItemSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.optional(S.String),
-      attribution: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DictlayerdataDictWordsItemSensesItemSource",
-  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSource>;
-
 export interface DictlayerdataDictWordsItemSensesItemConjugationsItem {
   value?: string;
   type?: string;
@@ -679,33 +664,84 @@ export const DictlayerdataDictWordsItemSensesItemConjugationsItemList =
     DictlayerdataDictWordsItemSensesItemConjugationsItem,
   ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItemList>;
 
+export interface DictlayerdataDictWordsItemSensesItemSource {
+  url?: string;
+  attribution?: string;
+}
+export const DictlayerdataDictWordsItemSensesItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSource>;
+
+export interface DictlayerdataDictWordsItemSensesItemSynonymsItemSource {
+  url?: string;
+  attribution?: string;
+}
+export const DictlayerdataDictWordsItemSensesItemSynonymsItemSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.optional(S.String),
+      attribution: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItemSource",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemSource>;
+
+export interface DictlayerdataDictWordsItemSensesItemSynonymsItem {
+  source?: DictlayerdataDictWordsItemSensesItemSynonymsItemSource;
+  text?: string;
+}
+export const DictlayerdataDictWordsItemSensesItemSynonymsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      source: S.optional(
+        DictlayerdataDictWordsItemSensesItemSynonymsItemSource,
+      ),
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItem",
+  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
+
+export type DictlayerdataDictWordsItemSensesItemSynonymsItemList =
+  Array<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
+export const DictlayerdataDictWordsItemSensesItemSynonymsItemList =
+  /*@__PURE__*/ S.Array(
+    DictlayerdataDictWordsItemSensesItemSynonymsItem,
+  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemList>;
+
 export interface DictlayerdataDictWordsItemSensesItem {
-  syllabification?: string;
-  pronunciation?: string;
-  synonyms?: DictlayerdataDictWordsItemSensesItemSynonymsItemList;
-  pronunciationUrl?: string;
   definitions?: DictlayerdataDictWordsItemSensesItemDefinitionsItemList;
-  source?: DictlayerdataDictWordsItemSensesItemSource;
+  syllabification?: string;
   conjugations?: DictlayerdataDictWordsItemSensesItemConjugationsItemList;
   partOfSpeech?: string;
+  pronunciation?: string;
+  source?: DictlayerdataDictWordsItemSensesItemSource;
+  synonyms?: DictlayerdataDictWordsItemSensesItemSynonymsItemList;
+  pronunciationUrl?: string;
 }
 export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      syllabification: S.optional(S.String),
-      pronunciation: S.optional(S.String),
-      synonyms: S.optional(
-        DictlayerdataDictWordsItemSensesItemSynonymsItemList,
-      ),
-      pronunciationUrl: S.optional(S.String),
       definitions: S.optional(
         DictlayerdataDictWordsItemSensesItemDefinitionsItemList,
       ),
-      source: S.optional(DictlayerdataDictWordsItemSensesItemSource),
+      syllabification: S.optional(S.String),
       conjugations: S.optional(
         DictlayerdataDictWordsItemSensesItemConjugationsItemList,
       ),
       partOfSpeech: S.optional(S.String),
+      pronunciation: S.optional(S.String),
+      source: S.optional(DictlayerdataDictWordsItemSensesItemSource),
+      synonyms: S.optional(
+        DictlayerdataDictWordsItemSensesItemSynonymsItemList,
+      ),
+      pronunciationUrl: S.optional(S.String),
     }),
 ).annotate({
   identifier: "DictlayerdataDictWordsItemSensesItem",
@@ -751,67 +787,19 @@ export const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemExamplesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemList>;
 
-export interface DictlayerdataDictWordsItemSource {
-  url?: string;
-  attribution?: string;
-}
-export const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    attribution: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DictlayerdataDictWordsItemSource",
-}) as any as S.Schema<DictlayerdataDictWordsItemSource>;
-
-export interface DictlayerdataDictWordsItemDerivativesItemSource {
-  url?: string;
-  attribution?: string;
-}
-export const DictlayerdataDictWordsItemDerivativesItemSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.optional(S.String),
-      attribution: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DictlayerdataDictWordsItemDerivativesItemSource",
-  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemSource>;
-
-export interface DictlayerdataDictWordsItemDerivativesItem {
-  text?: string;
-  source?: DictlayerdataDictWordsItemDerivativesItemSource;
-}
-export const DictlayerdataDictWordsItemDerivativesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(S.String),
-      source: S.optional(DictlayerdataDictWordsItemDerivativesItemSource),
-    }),
-  ).annotate({
-    identifier: "DictlayerdataDictWordsItemDerivativesItem",
-  }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItem>;
-
-export type DictlayerdataDictWordsItemDerivativesItemList =
-  Array<DictlayerdataDictWordsItemDerivativesItem>;
-export const DictlayerdataDictWordsItemDerivativesItemList =
-  /*@__PURE__*/ S.Array(
-    DictlayerdataDictWordsItemDerivativesItem,
-  ) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemList>;
-
 export interface DictlayerdataDictWordsItem {
-  senses?: DictlayerdataDictWordsItemSensesItemList;
-  examples?: DictlayerdataDictWordsItemExamplesItemList;
   /** The words with different meanings but not related words, e.g. "go" (game) and "go" (verb). */
   source?: DictlayerdataDictWordsItemSource;
   derivatives?: DictlayerdataDictWordsItemDerivativesItemList;
+  senses?: DictlayerdataDictWordsItemSensesItemList;
+  examples?: DictlayerdataDictWordsItemExamplesItemList;
 }
 export const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    senses: S.optional(DictlayerdataDictWordsItemSensesItemList),
-    examples: S.optional(DictlayerdataDictWordsItemExamplesItemList),
     source: S.optional(DictlayerdataDictWordsItemSource),
     derivatives: S.optional(DictlayerdataDictWordsItemDerivativesItemList),
+    senses: S.optional(DictlayerdataDictWordsItemSensesItemList),
+    examples: S.optional(DictlayerdataDictWordsItemExamplesItemList),
   }),
 ).annotate({
   identifier: "DictlayerdataDictWordsItem",
@@ -836,50 +824,62 @@ export const DictlayerdataDict = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictlayerdataDict",
 }) as any as S.Schema<DictlayerdataDict>;
 
+export interface DictlayerdataCommon {
+  /** The display title and localized canonical name to use when searching for this entity on Google search. */
+  title?: string;
+}
+export const DictlayerdataCommon = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DictlayerdataCommon",
+}) as any as S.Schema<DictlayerdataCommon>;
+
 export interface Dictlayerdata {
   kind?: string;
-  common?: DictlayerdataCommon;
   dict?: DictlayerdataDict;
+  common?: DictlayerdataCommon;
 }
 export const Dictlayerdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    common: S.optional(DictlayerdataCommon),
     dict: S.optional(DictlayerdataDict),
+    common: S.optional(DictlayerdataCommon),
   }),
 ).annotate({ identifier: "Dictlayerdata" }) as any as S.Schema<Dictlayerdata>;
 
 export interface DictionaryAnnotationdata {
-  /** Base64 encoded data for this annotation data. */
-  encodedData?: string;
-  /** JSON encoded data for this dictionary annotation data. Emitted with name 'data' in JSON output. Either this or geo_data will be populated. */
-  data?: Dictlayerdata;
-  /** The volume id for this data. * */
-  volumeId?: string;
-  /** The type of annotation this data is for. */
-  annotationType?: string;
-  /** Unique id for this annotation data. */
-  id?: string;
-  /** The Layer id for this data. * */
-  layerId?: string;
-  /** Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format). */
-  updated?: string;
   /** URL for this resource. * */
   selfLink?: string;
+  /** JSON encoded data for this dictionary annotation data. Emitted with name 'data' in JSON output. Either this or geo_data will be populated. */
+  data?: Dictlayerdata;
+  /** Unique id for this annotation data. */
+  id?: string;
   /** Resource Type */
   kind?: string;
+  /** The Layer id for this data. * */
+  layerId?: string;
+  /** Base64 encoded data for this annotation data. */
+  encodedData?: string;
+  /** The volume id for this data. * */
+  volumeId?: string;
+  /** Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format). */
+  updated?: string;
+  /** The type of annotation this data is for. */
+  annotationType?: string;
 }
 export const DictionaryAnnotationdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    encodedData: S.optional(S.String),
-    data: S.optional(Dictlayerdata),
-    volumeId: S.optional(S.String),
-    annotationType: S.optional(S.String),
-    id: S.optional(S.String),
-    layerId: S.optional(S.String),
-    updated: S.optional(S.String),
     selfLink: S.optional(S.String),
+    data: S.optional(Dictlayerdata),
+    id: S.optional(S.String),
     kind: S.optional(S.String),
+    layerId: S.optional(S.String),
+    encodedData: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    updated: S.optional(S.String),
+    annotationType: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DictionaryAnnotationdata",
@@ -888,22 +888,22 @@ export const DictionaryAnnotationdata = /*@__PURE__*/ S.suspend(() =>
 export interface GetLayersVolumeAnnotationsRequest {
   /** The volume to retrieve annotations for. */
   volumeId: string;
-  /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
-  locale?: string;
   /** String to identify the originator of this request. */
   source?: string;
-  /** The ID for the layer to get the annotations. */
-  layerId: string;
+  /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
+  locale?: string;
   /** The ID of the volume annotation to retrieve. */
   annotationId: string;
+  /** The ID for the layer to get the annotations. */
+  layerId: string;
 }
 export const GetLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Label()),
-    locale: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
-    layerId: S.String.pipe(T.Label()),
+    locale: S.optional(S.String.pipe(T.Query())),
     annotationId: S.String.pipe(T.Label()),
+    layerId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -916,21 +916,21 @@ export const GetLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLayersVolumeAnnotationsRequest>;
 
 export interface BooksAnnotationsRange {
-  /** The starting position for the range. */
-  startPosition?: string;
-  /** The offset from the ending position. */
-  endOffset?: string;
   /** The offset from the starting position. */
   startOffset?: string;
   /** The ending position for the range. */
   endPosition?: string;
+  /** The starting position for the range. */
+  startPosition?: string;
+  /** The offset from the ending position. */
+  endOffset?: string;
 }
 export const BooksAnnotationsRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startPosition: S.optional(S.String),
-    endOffset: S.optional(S.String),
     startOffset: S.optional(S.String),
     endPosition: S.optional(S.String),
+    startPosition: S.optional(S.String),
+    endOffset: S.optional(S.String),
   }),
 ).annotate({
   identifier: "BooksAnnotationsRange",
@@ -939,70 +939,70 @@ export const BooksAnnotationsRange = /*@__PURE__*/ S.suspend(() =>
 export interface VolumeannotationContentRanges {
   /** Range in CFI format for this annotation for version above. */
   cfiRange?: BooksAnnotationsRange;
+  /** Content version applicable to ranges below. */
+  contentVersion?: string;
   /** Range in GB text format for this annotation for version above. */
   gbTextRange?: BooksAnnotationsRange;
   /** Range in GB image format for this annotation for version above. */
   gbImageRange?: BooksAnnotationsRange;
-  /** Content version applicable to ranges below. */
-  contentVersion?: string;
 }
 export const VolumeannotationContentRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cfiRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
     gbTextRange: S.optional(BooksAnnotationsRange),
     gbImageRange: S.optional(BooksAnnotationsRange),
-    contentVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "VolumeannotationContentRanges",
 }) as any as S.Schema<VolumeannotationContentRanges>;
 
 export interface Volumeannotation {
-  /** The type of annotation this is. */
-  annotationType?: string;
-  /** Indicates that this annotation is deleted. */
-  deleted?: boolean;
-  /** Data for this annotation. */
-  data?: string;
-  /** The annotation data id for this volume annotation. */
-  annotationDataId?: string;
   /** The Volume this annotation is for. */
   volumeId?: string;
-  /** URL to this resource. */
-  selfLink?: string;
-  /** Resource Type */
-  kind?: string;
-  /** Excerpt from the volume. */
-  selectedText?: string;
   /** Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-time format). */
   updated?: string;
+  /** Resource Type */
+  kind?: string;
+  /** Data for this annotation. */
+  data?: string;
+  /** Indicates that this annotation is deleted. */
+  deleted?: boolean;
   /** Link to get data for this annotation. */
   annotationDataLink?: string;
-  /** Unique id of this volume annotation. */
-  id?: string;
-  /** The Layer this annotation is for. */
-  layerId?: string;
-  /** The content ranges to identify the selected text. */
-  contentRanges?: VolumeannotationContentRanges;
+  /** URL to this resource. */
+  selfLink?: string;
   /** Pages the annotation spans. */
   pageIds?: StringList;
+  /** The type of annotation this is. */
+  annotationType?: string;
+  /** The Layer this annotation is for. */
+  layerId?: string;
+  /** Excerpt from the volume. */
+  selectedText?: string;
+  /** The content ranges to identify the selected text. */
+  contentRanges?: VolumeannotationContentRanges;
+  /** Unique id of this volume annotation. */
+  id?: string;
+  /** The annotation data id for this volume annotation. */
+  annotationDataId?: string;
 }
 export const Volumeannotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotationType: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    data: S.optional(S.String),
-    annotationDataId: S.optional(S.String),
     volumeId: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    kind: S.optional(S.String),
-    selectedText: S.optional(S.String),
     updated: S.optional(S.String),
+    kind: S.optional(S.String),
+    data: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
     annotationDataLink: S.optional(S.String),
-    id: S.optional(S.String),
-    layerId: S.optional(S.String),
-    contentRanges: S.optional(VolumeannotationContentRanges),
+    selfLink: S.optional(S.String),
     pageIds: S.optional(StringList),
+    annotationType: S.optional(S.String),
+    layerId: S.optional(S.String),
+    selectedText: S.optional(S.String),
+    contentRanges: S.optional(VolumeannotationContentRanges),
+    id: S.optional(S.String),
+    annotationDataId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "Volumeannotation",
@@ -1030,18 +1030,18 @@ export const GetMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMylibraryBookshelvesRequest>;
 
 export interface GetMylibraryReadingpositionsRequest {
-  /** String to identify the originator of this request. */
-  source?: string;
-  /** ID of volume for which to retrieve a reading position. */
-  volumeId: string;
   /** Volume content version for which this reading position is requested. */
   contentVersion?: string;
+  /** ID of volume for which to retrieve a reading position. */
+  volumeId: string;
+  /** String to identify the originator of this request. */
+  source?: string;
 }
 export const GetMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    source: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.String.pipe(T.Label()),
     contentVersion: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1054,48 +1054,48 @@ export const GetMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMylibraryReadingpositionsRequest>;
 
 export interface ReadingPosition {
-  /** Position in a volume for text-based content. */
-  gbTextPosition?: string;
-  /** Position in an EPUB as a CFI. */
-  epubCfiPosition?: string;
-  /** Resource type for a reading position. */
-  kind?: string;
   /** Volume id associated with this reading position. */
   volumeId?: string;
-  /** Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution). */
-  updated?: string;
   /** Position in a volume for image-based content. */
   gbImagePosition?: string;
+  /** Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution). */
+  updated?: string;
+  /** Position in a volume for text-based content. */
+  gbTextPosition?: string;
   /** Position in a PDF file. */
   pdfPosition?: string;
+  /** Resource type for a reading position. */
+  kind?: string;
+  /** Position in an EPUB as a CFI. */
+  epubCfiPosition?: string;
 }
 export const ReadingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    gbTextPosition: S.optional(S.String),
-    epubCfiPosition: S.optional(S.String),
-    kind: S.optional(S.String),
     volumeId: S.optional(S.String),
-    updated: S.optional(S.String),
     gbImagePosition: S.optional(S.String),
+    updated: S.optional(S.String),
+    gbTextPosition: S.optional(S.String),
     pdfPosition: S.optional(S.String),
+    kind: S.optional(S.String),
+    epubCfiPosition: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ReadingPosition",
 }) as any as S.Schema<ReadingPosition>;
 
 export interface GetNotificationRequest {
+  /** String to identify the originator of this request. */
+  source?: string;
   /** String to identify the notification. */
   notification_id: string;
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating notification title and body. */
   locale?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
 }
 export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    source: S.optional(S.String.pipe(T.Query())),
     notification_id: S.String.pipe(T.Query()),
     locale: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1108,43 +1108,43 @@ export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotificationRequest>;
 
 export interface Notification {
+  iconUrl?: string;
   /** The list of crm experiment ids. */
   crmExperimentIds?: StringList;
+  title?: string;
+  timeToExpireMs?: string;
+  doc_id?: string;
+  is_document_mature?: boolean;
+  doc_type?: string;
+  dont_show_notification?: boolean;
+  reason?: string;
   notification_type?: string;
   /** Resource type. */
   kind?: string;
+  show_notification_settings_action?: boolean;
   notificationGroup?: string;
-  timeToExpireMs?: string;
-  dont_show_notification?: boolean;
   body?: string;
   targetUrl?: string;
   pcampaign_id?: string;
-  doc_type?: string;
-  show_notification_settings_action?: boolean;
-  title?: string;
-  reason?: string;
-  iconUrl?: string;
-  is_document_mature?: boolean;
-  doc_id?: string;
 }
 export const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    iconUrl: S.optional(S.String),
     crmExperimentIds: S.optional(StringList),
+    title: S.optional(S.String),
+    timeToExpireMs: S.optional(S.String),
+    doc_id: S.optional(S.String),
+    is_document_mature: S.optional(S.Boolean),
+    doc_type: S.optional(S.String),
+    dont_show_notification: S.optional(S.Boolean),
+    reason: S.optional(S.String),
     notification_type: S.optional(S.String),
     kind: S.optional(S.String),
+    show_notification_settings_action: S.optional(S.Boolean),
     notificationGroup: S.optional(S.String),
-    timeToExpireMs: S.optional(S.String),
-    dont_show_notification: S.optional(S.Boolean),
     body: S.optional(S.String),
     targetUrl: S.optional(S.String),
     pcampaign_id: S.optional(S.String),
-    doc_type: S.optional(S.String),
-    show_notification_settings_action: S.optional(S.Boolean),
-    title: S.optional(S.String),
-    reason: S.optional(S.String),
-    iconUrl: S.optional(S.String),
-    is_document_mature: S.optional(S.Boolean),
-    doc_id: S.optional(S.String),
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
@@ -1156,22 +1156,22 @@ export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
 export interface GetPersonalizedstreamRequest {
-  /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
-  locale?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
   maxAllowedMaturityRating?:
     | GetPersonalizedstreamMaxAllowedMaturityRatingEnum
     | (string & {});
+  /** String to identify the originator of this request. */
+  source?: string;
+  /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
+  locale?: string;
 }
 export const GetPersonalizedstreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locale: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
     maxAllowedMaturityRating: S.optional(
       GetPersonalizedstreamMaxAllowedMaturityRatingEnum.pipe(T.Query()),
     ),
+    source: S.optional(S.String.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1195,135 +1195,149 @@ export const VolumeRecommendedInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeRecommendedInfo",
 }) as any as S.Schema<VolumeRecommendedInfo>;
 
-export interface VolumeSaleInfoOffersItemListPrice {
-  currencyCode?: string;
-  amountInMicros?: number;
+export interface VolumeSearchInfo {
+  /** A text snippet containing the search query. */
+  textSnippet?: string;
 }
-export const VolumeSaleInfoOffersItemListPrice = /*@__PURE__*/ S.suspend(() =>
+export const VolumeSearchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    currencyCode: S.optional(S.String),
-    amountInMicros: S.optional(S.Number),
+    textSnippet: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "VolumeSaleInfoOffersItemListPrice",
-}) as any as S.Schema<VolumeSaleInfoOffersItemListPrice>;
+  identifier: "VolumeSearchInfo",
+}) as any as S.Schema<VolumeSearchInfo>;
 
-export interface VolumeSaleInfoOffersItemRetailPrice {
-  currencyCode?: string;
-  amountInMicros?: number;
+export interface VolumeAccessInfoPdf {
+  /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
+  acsTokenLink?: string;
+  /** Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.) */
+  isAvailable?: boolean;
+  /** URL to download pdf. (In LITE projection.) */
+  downloadLink?: string;
 }
-export const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
+export const VolumeAccessInfoPdf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    currencyCode: S.optional(S.String),
-    amountInMicros: S.optional(S.Number),
+    acsTokenLink: S.optional(S.String),
+    isAvailable: S.optional(S.Boolean),
+    downloadLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "VolumeSaleInfoOffersItemRetailPrice",
-}) as any as S.Schema<VolumeSaleInfoOffersItemRetailPrice>;
+  identifier: "VolumeAccessInfoPdf",
+}) as any as S.Schema<VolumeAccessInfoPdf>;
 
-export interface VolumeSaleInfoOffersItemRentalDuration {
-  count?: number;
-  unit?: string;
+export interface DownloadAccessRestriction {
+  /** Client app identifier for verification. Download access and client-validation only. */
+  source?: string;
+  /** If deviceAllowed, whether access was just acquired with this request. */
+  justAcquired?: boolean;
+  /** Whether this volume has any download access restrictions. */
+  restricted?: boolean;
+  /** If restricted, whether access is granted for this (user, device, volume). */
+  deviceAllowed?: boolean;
+  /** Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS */
+  reasonCode?: string;
+  /** If restricted, the number of content download licenses already acquired (including the requesting client, if licensed). */
+  downloadsAcquired?: number;
+  /** Identifies the volume for which this entry applies. */
+  volumeId?: string;
+  /** Error/warning message. */
+  message?: string;
+  /** Resource type. */
+  kind?: string;
+  /** Client nonce for verification. Download access and client-validation only. */
+  nonce?: string;
+  /** If restricted, the maximum number of content download licenses for this volume. */
+  maxDownloadDevices?: number;
+  /** Response signature. */
+  signature?: string;
 }
-export const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.optional(S.Number),
-      unit: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "VolumeSaleInfoOffersItemRentalDuration",
-}) as any as S.Schema<VolumeSaleInfoOffersItemRentalDuration>;
-
-export interface VolumeSaleInfoOffersItem {
-  /** Offer list (=undiscounted) price in Micros. */
-  listPrice?: VolumeSaleInfoOffersItemListPrice;
-  /** Indicates whether the offer is giftable. */
-  giftable?: boolean;
-  /** Offer retail (=discounted) price in Micros */
-  retailPrice?: VolumeSaleInfoOffersItemRetailPrice;
-  /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
-  finskyOfferType?: number;
-  /** The rental duration (for rental offers only). */
-  rentalDuration?: VolumeSaleInfoOffersItemRentalDuration;
-}
-export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
+export const DownloadAccessRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    listPrice: S.optional(VolumeSaleInfoOffersItemListPrice),
-    giftable: S.optional(S.Boolean),
-    retailPrice: S.optional(VolumeSaleInfoOffersItemRetailPrice),
-    finskyOfferType: S.optional(S.Number),
-    rentalDuration: S.optional(VolumeSaleInfoOffersItemRentalDuration),
+    source: S.optional(S.String),
+    justAcquired: S.optional(S.Boolean),
+    restricted: S.optional(S.Boolean),
+    deviceAllowed: S.optional(S.Boolean),
+    reasonCode: S.optional(S.String),
+    downloadsAcquired: S.optional(S.Number),
+    volumeId: S.optional(S.String),
+    message: S.optional(S.String),
+    kind: S.optional(S.String),
+    nonce: S.optional(S.String),
+    maxDownloadDevices: S.optional(S.Number),
+    signature: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "VolumeSaleInfoOffersItem",
-}) as any as S.Schema<VolumeSaleInfoOffersItem>;
+  identifier: "DownloadAccessRestriction",
+}) as any as S.Schema<DownloadAccessRestriction>;
 
-export type VolumeSaleInfoOffersItemList = Array<VolumeSaleInfoOffersItem>;
-export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
-  VolumeSaleInfoOffersItem,
-) as any as S.Schema<VolumeSaleInfoOffersItemList>;
-
-export interface VolumeSaleInfoRetailPrice {
-  /** Amount in the currency listed below. (In LITE projection.) */
-  amount?: number;
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  currencyCode?: string;
+export interface VolumeAccessInfoEpub {
+  /** URL to download epub. (In LITE projection.) */
+  downloadLink?: string;
+  /** URL to retrieve ACS token for epub download. (In LITE projection.) */
+  acsTokenLink?: string;
+  /** Is a flowing text epub available either as public domain or for purchase. (In LITE projection.) */
+  isAvailable?: boolean;
 }
-export const VolumeSaleInfoRetailPrice = /*@__PURE__*/ S.suspend(() =>
+export const VolumeAccessInfoEpub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    amount: S.optional(S.Number),
-    currencyCode: S.optional(S.String),
+    downloadLink: S.optional(S.String),
+    acsTokenLink: S.optional(S.String),
+    isAvailable: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "VolumeSaleInfoRetailPrice",
-}) as any as S.Schema<VolumeSaleInfoRetailPrice>;
+  identifier: "VolumeAccessInfoEpub",
+}) as any as S.Schema<VolumeAccessInfoEpub>;
 
-export interface VolumeSaleInfoListPrice {
-  /** Amount in the currency listed below. (In LITE projection.) */
-  amount?: number;
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
-  currencyCode?: string;
-}
-export const VolumeSaleInfoListPrice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    currencyCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeSaleInfoListPrice",
-}) as any as S.Schema<VolumeSaleInfoListPrice>;
-
-export interface VolumeSaleInfo {
-  /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
-  isEbook?: boolean;
-  /** URL to purchase this volume on the Google Books site. (In LITE projection) */
-  buyLink?: string;
-  /** The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.) */
+export interface VolumeAccessInfo {
+  /** The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value depends on the country listed above. A value of PARTIAL means that the publisher has allowed some portion of the volume to be viewed publicly, without purchase. This can apply to eBooks as well as non-eBooks. Public domain books will always have a value of ALL_PAGES. */
+  viewability?: string;
+  /** Whether quote sharing is allowed for this volume. */
+  quoteSharingAllowed?: boolean;
+  /** Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.) */
+  accessViewStatus?: string;
+  /** Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it. */
+  explicitOfflineLicenseManagement?: boolean;
+  /** Information about pdf content. (In LITE projection.) */
+  pdf?: VolumeAccessInfoPdf;
+  /** Whether this volume can be embedded in a viewport using the Embedded Viewer API. */
+  embeddable?: boolean;
+  /** The two-letter ISO_3166-1 country code for which this access information is valid. (In LITE projection.) */
   country?: string;
-  /** Offers available for this volume (sales and rentals). */
-  offers?: VolumeSaleInfoOffersItemList;
-  /** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
-  retailPrice?: VolumeSaleInfoRetailPrice;
-  /** Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER. */
-  saleability?: string;
-  /** The date on which this book is available for sale. */
-  onSaleDate?: string;
-  /** Suggested retail price. (In LITE projection.) */
-  listPrice?: VolumeSaleInfoListPrice;
+  /** URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive. */
+  driveImportedContentLink?: string;
+  /** Information about a volume's download license access restrictions. */
+  downloadAccess?: DownloadAccessRestriction;
+  /** Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED. */
+  textToSpeechPermission?: string;
+  /** For ordered but not yet processed orders, we give a URL that can be used to go to the appropriate Google Wallet page. */
+  viewOrderUrl?: string;
+  /** Information about epub content. (In LITE projection.) */
+  epub?: VolumeAccessInfoEpub;
+  /** URL to read this volume on the Google Books site. Link will not allow users to read non-viewable volumes. */
+  webReaderLink?: string;
+  /** Whether or not this book is public domain in the country listed above. */
+  publicDomain?: boolean;
 }
-export const VolumeSaleInfo = /*@__PURE__*/ S.suspend(() =>
+export const VolumeAccessInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    isEbook: S.optional(S.Boolean),
-    buyLink: S.optional(S.String),
+    viewability: S.optional(S.String),
+    quoteSharingAllowed: S.optional(S.Boolean),
+    accessViewStatus: S.optional(S.String),
+    explicitOfflineLicenseManagement: S.optional(S.Boolean),
+    pdf: S.optional(VolumeAccessInfoPdf),
+    embeddable: S.optional(S.Boolean),
     country: S.optional(S.String),
-    offers: S.optional(VolumeSaleInfoOffersItemList),
-    retailPrice: S.optional(VolumeSaleInfoRetailPrice),
-    saleability: S.optional(S.String),
-    onSaleDate: S.optional(S.String),
-    listPrice: S.optional(VolumeSaleInfoListPrice),
+    driveImportedContentLink: S.optional(S.String),
+    downloadAccess: S.optional(DownloadAccessRestriction),
+    textToSpeechPermission: S.optional(S.String),
+    viewOrderUrl: S.optional(S.String),
+    epub: S.optional(VolumeAccessInfoEpub),
+    webReaderLink: S.optional(S.String),
+    publicDomain: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "VolumeSaleInfo" }) as any as S.Schema<VolumeSaleInfo>;
+).annotate({
+  identifier: "VolumeAccessInfo",
+}) as any as S.Schema<VolumeAccessInfo>;
 
 export interface VolumeLayerInfoLayersItem {
   /** The layer id of this layer (e.g. "geo"). */
@@ -1357,172 +1371,443 @@ export const VolumeLayerInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeLayerInfo",
 }) as any as S.Schema<VolumeLayerInfo>;
 
-export interface VolumeAccessInfoEpub {
-  /** URL to download epub. (In LITE projection.) */
-  downloadLink?: string;
-  /** URL to retrieve ACS token for epub download. (In LITE projection.) */
-  acsTokenLink?: string;
-  /** Is a flowing text epub available either as public domain or for purchase. (In LITE projection.) */
-  isAvailable?: boolean;
+export interface VolumeUserInfoRentalPeriod {
+  endUtcSec?: string;
+  startUtcSec?: string;
 }
-export const VolumeAccessInfoEpub = /*@__PURE__*/ S.suspend(() =>
+export const VolumeUserInfoRentalPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    downloadLink: S.optional(S.String),
-    acsTokenLink: S.optional(S.String),
-    isAvailable: S.optional(S.Boolean),
+    endUtcSec: S.optional(S.String),
+    startUtcSec: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "VolumeAccessInfoEpub",
-}) as any as S.Schema<VolumeAccessInfoEpub>;
+  identifier: "VolumeUserInfoRentalPeriod",
+}) as any as S.Schema<VolumeUserInfoRentalPeriod>;
 
-export interface VolumeAccessInfoPdf {
-  /** URL to download pdf. (In LITE projection.) */
-  downloadLink?: string;
-  /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
-  acsTokenLink?: string;
-  /** Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.) */
-  isAvailable?: boolean;
+export interface VolumeUserInfoCopy {
+  remainingCharacterCount?: number;
+  limitType?: string;
+  allowedCharacterCount?: number;
+  updated?: string;
 }
-export const VolumeAccessInfoPdf = /*@__PURE__*/ S.suspend(() =>
+export const VolumeUserInfoCopy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    downloadLink: S.optional(S.String),
-    acsTokenLink: S.optional(S.String),
-    isAvailable: S.optional(S.Boolean),
+    remainingCharacterCount: S.optional(S.Number),
+    limitType: S.optional(S.String),
+    allowedCharacterCount: S.optional(S.Number),
+    updated: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "VolumeAccessInfoPdf",
-}) as any as S.Schema<VolumeAccessInfoPdf>;
+  identifier: "VolumeUserInfoCopy",
+}) as any as S.Schema<VolumeUserInfoCopy>;
 
-export interface DownloadAccessRestriction {
-  /** Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS */
-  reasonCode?: string;
+export interface ReviewAuthor {
+  /** Name of this person. */
+  displayName?: string;
+}
+export const ReviewAuthor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({ identifier: "ReviewAuthor" }) as any as S.Schema<ReviewAuthor>;
+
+export interface ReviewSource {
+  /** Name of the source. */
+  description?: string;
+  /** URL of the source of the review. */
+  url?: string;
+  /** Extra text about the source of the review. */
+  extraDescription?: string;
+}
+export const ReviewSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    url: S.optional(S.String),
+    extraDescription: S.optional(S.String),
+  }),
+).annotate({ identifier: "ReviewSource" }) as any as S.Schema<ReviewSource>;
+
+export interface Review {
+  /** Date of this review. */
+  date?: string;
+  /** Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED. */
+  rating?: string;
+  /** Resource type for a review. */
+  kind?: string;
+  /** URL for the full review text, for reviews gathered from the web. */
+  fullTextUrl?: string;
+  /** Volume that this review is for. */
+  volumeId?: string;
+  /** Source type for this review. Possible values are EDITORIAL, WEB_USER or GOOGLE_USER. */
+  type?: string;
+  /** Title for this review. */
+  title?: string;
+  /** Author of this review. */
+  author?: ReviewAuthor;
+  /** Review text. */
+  content?: string;
+  /** Information regarding the source of this review, when the review is not from a Google Books user. */
+  source?: ReviewSource;
+}
+export const Review = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    date: S.optional(S.String),
+    rating: S.optional(S.String),
+    kind: S.optional(S.String),
+    fullTextUrl: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    type: S.optional(S.String),
+    title: S.optional(S.String),
+    author: S.optional(ReviewAuthor),
+    content: S.optional(S.String),
+    source: S.optional(ReviewSource),
+  }),
+).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
+
+export interface VolumeUserInfoFamilySharing {
+  /** The role of the user in the family. */
+  familyRole?: string;
+  /** Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action. */
+  isSharingAllowed?: boolean;
+  /** Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet. */
+  isSharingDisabledByFop?: boolean;
+}
+export const VolumeUserInfoFamilySharing = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    familyRole: S.optional(S.String),
+    isSharingAllowed: S.optional(S.Boolean),
+    isSharingDisabledByFop: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VolumeUserInfoFamilySharing",
+}) as any as S.Schema<VolumeUserInfoFamilySharing>;
+
+export interface VolumeUserInfoUserUploadedVolumeInfo {
+  processingState?: string;
+}
+export const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      processingState: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VolumeUserInfoUserUploadedVolumeInfo",
+}) as any as S.Schema<VolumeUserInfoUserUploadedVolumeInfo>;
+
+export interface VolumeUserInfo {
+  /** Whether this book is an active or an expired rental. */
+  rentalState?: string;
+  /** How this volume was acquired. */
+  acquisitionType?: number;
+  /** Whether or not the user shared this volume with the family. */
+  isFamilySharedFromUser?: boolean;
+  /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
+  isPreordered?: boolean;
+  /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
+  updated?: string;
+  /** Period during this book is/was a valid rental. */
+  rentalPeriod?: VolumeUserInfoRentalPeriod;
+  /** Copy/Paste accounting information. */
+  copy?: VolumeUserInfoCopy;
+  /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
+  readingPosition?: ReadingPosition;
+  /** This user's review of this volume, if one exists. */
+  review?: Review;
+  /** Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload, receiving family sharing, etc. */
+  acquiredTime?: string;
+  /** Deprecated: Replaced by familySharing. */
+  isFamilySharingAllowed?: boolean;
+  /** Whether this volume is purchased, sample, pd download etc. */
+  entitlementType?: number;
+  /** Whether or not this volume is currently in "my books." */
+  isInMyBooks?: boolean;
+  /** Information on the ability to share with the family. */
+  familySharing?: VolumeUserInfoFamilySharing;
+  /** Whether or not the user received this volume through family sharing. */
+  isFamilySharedToUser?: boolean;
+  /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
+  isPurchased?: boolean;
+  /** Deprecated: Replaced by familySharing. */
+  isFamilySharingDisabledByFop?: boolean;
+  /** Whether or not this volume was user uploaded. */
+  isUploaded?: boolean;
+  userUploadedVolumeInfo?: VolumeUserInfoUserUploadedVolumeInfo;
+}
+export const VolumeUserInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rentalState: S.optional(S.String),
+    acquisitionType: S.optional(S.Number),
+    isFamilySharedFromUser: S.optional(S.Boolean),
+    isPreordered: S.optional(S.Boolean),
+    updated: S.optional(S.String),
+    rentalPeriod: S.optional(VolumeUserInfoRentalPeriod),
+    copy: S.optional(VolumeUserInfoCopy),
+    readingPosition: S.optional(ReadingPosition),
+    review: S.optional(Review),
+    acquiredTime: S.optional(S.String),
+    isFamilySharingAllowed: S.optional(S.Boolean),
+    entitlementType: S.optional(S.Number),
+    isInMyBooks: S.optional(S.Boolean),
+    familySharing: S.optional(VolumeUserInfoFamilySharing),
+    isFamilySharedToUser: S.optional(S.Boolean),
+    isPurchased: S.optional(S.Boolean),
+    isFamilySharingDisabledByFop: S.optional(S.Boolean),
+    isUploaded: S.optional(S.Boolean),
+    userUploadedVolumeInfo: S.optional(VolumeUserInfoUserUploadedVolumeInfo),
+  }),
+).annotate({ identifier: "VolumeUserInfo" }) as any as S.Schema<VolumeUserInfo>;
+
+export interface VolumeSaleInfoRetailPrice {
+  /** Amount in the currency listed below. (In LITE projection.) */
+  amount?: number;
+  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+  currencyCode?: string;
+}
+export const VolumeSaleInfoRetailPrice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.optional(S.Number),
+    currencyCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoRetailPrice",
+}) as any as S.Schema<VolumeSaleInfoRetailPrice>;
+
+export interface VolumeSaleInfoOffersItemRentalDuration {
+  unit?: string;
+  count?: number;
+}
+export const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      unit: S.optional(S.String),
+      count: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemRentalDuration",
+}) as any as S.Schema<VolumeSaleInfoOffersItemRentalDuration>;
+
+export interface VolumeSaleInfoOffersItemRetailPrice {
+  currencyCode?: string;
+  amountInMicros?: number;
+}
+export const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amountInMicros: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemRetailPrice",
+}) as any as S.Schema<VolumeSaleInfoOffersItemRetailPrice>;
+
+export interface VolumeSaleInfoOffersItemListPrice {
+  currencyCode?: string;
+  amountInMicros?: number;
+}
+export const VolumeSaleInfoOffersItemListPrice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amountInMicros: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItemListPrice",
+}) as any as S.Schema<VolumeSaleInfoOffersItemListPrice>;
+
+export interface VolumeSaleInfoOffersItem {
+  /** Indicates whether the offer is giftable. */
+  giftable?: boolean;
+  /** The rental duration (for rental offers only). */
+  rentalDuration?: VolumeSaleInfoOffersItemRentalDuration;
+  /** Offer retail (=discounted) price in Micros */
+  retailPrice?: VolumeSaleInfoOffersItemRetailPrice;
+  /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
+  finskyOfferType?: number;
+  /** Offer list (=undiscounted) price in Micros. */
+  listPrice?: VolumeSaleInfoOffersItemListPrice;
+}
+export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    giftable: S.optional(S.Boolean),
+    rentalDuration: S.optional(VolumeSaleInfoOffersItemRentalDuration),
+    retailPrice: S.optional(VolumeSaleInfoOffersItemRetailPrice),
+    finskyOfferType: S.optional(S.Number),
+    listPrice: S.optional(VolumeSaleInfoOffersItemListPrice),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoOffersItem",
+}) as any as S.Schema<VolumeSaleInfoOffersItem>;
+
+export type VolumeSaleInfoOffersItemList = Array<VolumeSaleInfoOffersItem>;
+export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
+  VolumeSaleInfoOffersItem,
+) as any as S.Schema<VolumeSaleInfoOffersItemList>;
+
+export interface VolumeSaleInfoListPrice {
+  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+  currencyCode?: string;
+  /** Amount in the currency listed below. (In LITE projection.) */
+  amount?: number;
+}
+export const VolumeSaleInfoListPrice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    amount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeSaleInfoListPrice",
+}) as any as S.Schema<VolumeSaleInfoListPrice>;
+
+export interface VolumeSaleInfo {
+  /** The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.) */
+  retailPrice?: VolumeSaleInfoRetailPrice;
+  /** URL to purchase this volume on the Google Books site. (In LITE projection) */
+  buyLink?: string;
+  /** Offers available for this volume (sales and rentals). */
+  offers?: VolumeSaleInfoOffersItemList;
+  /** The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.) */
+  country?: string;
+  /** The date on which this book is available for sale. */
+  onSaleDate?: string;
+  /** Suggested retail price. (In LITE projection.) */
+  listPrice?: VolumeSaleInfoListPrice;
+  /** Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER. */
+  saleability?: string;
+  /** Whether or not this volume is an eBook (can be added to the My eBooks shelf). */
+  isEbook?: boolean;
+}
+export const VolumeSaleInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retailPrice: S.optional(VolumeSaleInfoRetailPrice),
+    buyLink: S.optional(S.String),
+    offers: S.optional(VolumeSaleInfoOffersItemList),
+    country: S.optional(S.String),
+    onSaleDate: S.optional(S.String),
+    listPrice: S.optional(VolumeSaleInfoListPrice),
+    saleability: S.optional(S.String),
+    isEbook: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "VolumeSaleInfo" }) as any as S.Schema<VolumeSaleInfo>;
+
+export interface VolumeVolumeInfoDimensions {
+  /** Thickness of this volume (in cm). */
+  thickness?: string;
+  /** Height or length of this volume (in cm). */
+  height?: string;
+  /** Width of this volume (in cm). */
+  width?: string;
+}
+export const VolumeVolumeInfoDimensions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thickness: S.optional(S.String),
+    height: S.optional(S.String),
+    width: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeVolumeInfoDimensions",
+}) as any as S.Schema<VolumeVolumeInfoDimensions>;
+
+export interface VolumeseriesinfoVolumeSeriesItemIssueItem {
+  issueOrderNumber?: number;
+  issueDisplayNumber?: string;
+}
+export const VolumeseriesinfoVolumeSeriesItemIssueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      issueOrderNumber: S.optional(S.Number),
+      issueDisplayNumber: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem",
+  }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItem>;
+
+export type VolumeseriesinfoVolumeSeriesItemIssueItemList =
+  Array<VolumeseriesinfoVolumeSeriesItemIssueItem>;
+export const VolumeseriesinfoVolumeSeriesItemIssueItemList =
+  /*@__PURE__*/ S.Array(
+    VolumeseriesinfoVolumeSeriesItemIssueItem,
+  ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItemList>;
+
+export interface VolumeseriesinfoVolumeSeriesItem {
+  /** The book type in the context of series. Examples - Single Issue, Collection Edition, etc. */
+  seriesBookType?: string;
+  /** List of issues. Applicable only for Collection Edition and Omnibus. */
+  issue?: VolumeseriesinfoVolumeSeriesItemIssueItemList;
+  /** The book order number in the series. */
+  orderNumber?: number;
+  /** The series id. */
+  seriesId?: string;
+}
+export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    seriesBookType: S.optional(S.String),
+    issue: S.optional(VolumeseriesinfoVolumeSeriesItemIssueItemList),
+    orderNumber: S.optional(S.Number),
+    seriesId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeseriesinfoVolumeSeriesItem",
+}) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
+
+export type VolumeseriesinfoVolumeSeriesItemList =
+  Array<VolumeseriesinfoVolumeSeriesItem>;
+export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
+  VolumeseriesinfoVolumeSeriesItem,
+) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
+
+export interface Volumeseriesinfo {
+  volumeSeries?: VolumeseriesinfoVolumeSeriesItemList;
+  /** The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber. */
+  bookDisplayNumber?: string;
   /** Resource type. */
   kind?: string;
-  /** If restricted, whether access is granted for this (user, device, volume). */
-  deviceAllowed?: boolean;
-  /** Client nonce for verification. Download access and client-validation only. */
-  nonce?: string;
-  /** Whether this volume has any download access restrictions. */
-  restricted?: boolean;
-  /** Response signature. */
-  signature?: string;
-  /** If deviceAllowed, whether access was just acquired with this request. */
-  justAcquired?: boolean;
-  /** If restricted, the maximum number of content download licenses for this volume. */
-  maxDownloadDevices?: number;
-  /** Client app identifier for verification. Download access and client-validation only. */
-  source?: string;
-  /** Identifies the volume for which this entry applies. */
-  volumeId?: string;
-  /** If restricted, the number of content download licenses already acquired (including the requesting client, if licensed). */
-  downloadsAcquired?: number;
-  /** Error/warning message. */
-  message?: string;
+  /** Short book title in the context of the series. */
+  shortSeriesBookTitle?: string;
 }
-export const DownloadAccessRestriction = /*@__PURE__*/ S.suspend(() =>
+export const Volumeseriesinfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reasonCode: S.optional(S.String),
+    volumeSeries: S.optional(VolumeseriesinfoVolumeSeriesItemList),
+    bookDisplayNumber: S.optional(S.String),
     kind: S.optional(S.String),
-    deviceAllowed: S.optional(S.Boolean),
-    nonce: S.optional(S.String),
-    restricted: S.optional(S.Boolean),
-    signature: S.optional(S.String),
-    justAcquired: S.optional(S.Boolean),
-    maxDownloadDevices: S.optional(S.Number),
-    source: S.optional(S.String),
-    volumeId: S.optional(S.String),
-    downloadsAcquired: S.optional(S.Number),
-    message: S.optional(S.String),
+    shortSeriesBookTitle: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DownloadAccessRestriction",
-}) as any as S.Schema<DownloadAccessRestriction>;
+  identifier: "Volumeseriesinfo",
+}) as any as S.Schema<Volumeseriesinfo>;
 
-export interface VolumeAccessInfo {
-  /** Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it. */
-  explicitOfflineLicenseManagement?: boolean;
-  /** For ordered but not yet processed orders, we give a URL that can be used to go to the appropriate Google Wallet page. */
-  viewOrderUrl?: string;
-  /** Information about epub content. (In LITE projection.) */
-  epub?: VolumeAccessInfoEpub;
-  /** The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value depends on the country listed above. A value of PARTIAL means that the publisher has allowed some portion of the volume to be viewed publicly, without purchase. This can apply to eBooks as well as non-eBooks. Public domain books will always have a value of ALL_PAGES. */
-  viewability?: string;
-  /** Whether quote sharing is allowed for this volume. */
-  quoteSharingAllowed?: boolean;
-  /** The two-letter ISO_3166-1 country code for which this access information is valid. (In LITE projection.) */
-  country?: string;
-  /** Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED. */
-  textToSpeechPermission?: string;
-  /** URL to read this volume on the Google Books site. Link will not allow users to read non-viewable volumes. */
-  webReaderLink?: string;
-  /** Whether or not this book is public domain in the country listed above. */
-  publicDomain?: boolean;
-  /** Whether this volume can be embedded in a viewport using the Embedded Viewer API. */
-  embeddable?: boolean;
-  /** Information about pdf content. (In LITE projection.) */
-  pdf?: VolumeAccessInfoPdf;
-  /** Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.) */
-  accessViewStatus?: string;
-  /** Information about a volume's download license access restrictions. */
-  downloadAccess?: DownloadAccessRestriction;
-  /** URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive. */
-  driveImportedContentLink?: string;
+export interface VolumeVolumeInfoReadingModes {
+  text?: boolean;
+  image?: boolean;
 }
-export const VolumeAccessInfo = /*@__PURE__*/ S.suspend(() =>
+export const VolumeVolumeInfoReadingModes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    explicitOfflineLicenseManagement: S.optional(S.Boolean),
-    viewOrderUrl: S.optional(S.String),
-    epub: S.optional(VolumeAccessInfoEpub),
-    viewability: S.optional(S.String),
-    quoteSharingAllowed: S.optional(S.Boolean),
-    country: S.optional(S.String),
-    textToSpeechPermission: S.optional(S.String),
-    webReaderLink: S.optional(S.String),
-    publicDomain: S.optional(S.Boolean),
-    embeddable: S.optional(S.Boolean),
-    pdf: S.optional(VolumeAccessInfoPdf),
-    accessViewStatus: S.optional(S.String),
-    downloadAccess: S.optional(DownloadAccessRestriction),
-    driveImportedContentLink: S.optional(S.String),
+    text: S.optional(S.Boolean),
+    image: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "VolumeAccessInfo",
-}) as any as S.Schema<VolumeAccessInfo>;
-
-export interface VolumeSearchInfo {
-  /** A text snippet containing the search query. */
-  textSnippet?: string;
-}
-export const VolumeSearchInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textSnippet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeSearchInfo",
-}) as any as S.Schema<VolumeSearchInfo>;
+  identifier: "VolumeVolumeInfoReadingModes",
+}) as any as S.Schema<VolumeVolumeInfoReadingModes>;
 
 export interface VolumeVolumeInfoImageLinks {
-  /** Image link for thumbnail size (width of ~128 pixels). (In LITE projection) */
-  thumbnail?: string;
-  /** Image link for medium size (width of ~575 pixels). (In LITE projection) */
-  medium?: string;
   /** Image link for large size (width of ~800 pixels). (In LITE projection) */
   large?: string;
-  /** Image link for extra large size (width of ~1280 pixels). (In LITE projection) */
-  extraLarge?: string;
-  /** Image link for small thumbnail size (width of ~80 pixels). (In LITE projection) */
-  smallThumbnail?: string;
+  /** Image link for medium size (width of ~575 pixels). (In LITE projection) */
+  medium?: string;
   /** Image link for small size (width of ~300 pixels). (In LITE projection) */
   small?: string;
+  /** Image link for small thumbnail size (width of ~80 pixels). (In LITE projection) */
+  smallThumbnail?: string;
+  /** Image link for thumbnail size (width of ~128 pixels). (In LITE projection) */
+  thumbnail?: string;
+  /** Image link for extra large size (width of ~1280 pixels). (In LITE projection) */
+  extraLarge?: string;
 }
 export const VolumeVolumeInfoImageLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    thumbnail: S.optional(S.String),
-    medium: S.optional(S.String),
     large: S.optional(S.String),
-    extraLarge: S.optional(S.String),
-    smallThumbnail: S.optional(S.String),
+    medium: S.optional(S.String),
     small: S.optional(S.String),
+    smallThumbnail: S.optional(S.String),
+    thumbnail: S.optional(S.String),
+    extraLarge: S.optional(S.String),
   }),
 ).annotate({
   identifier: "VolumeVolumeInfoImageLinks",
@@ -1551,438 +1836,153 @@ export const VolumeVolumeInfoIndustryIdentifiersItemList =
     VolumeVolumeInfoIndustryIdentifiersItem,
   ) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItemList>;
 
-export interface VolumeVolumeInfoReadingModes {
-  text?: boolean;
-  image?: boolean;
-}
-export const VolumeVolumeInfoReadingModes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.Boolean),
-    image: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VolumeVolumeInfoReadingModes",
-}) as any as S.Schema<VolumeVolumeInfoReadingModes>;
-
-export interface VolumeVolumeInfoDimensions {
-  /** Height or length of this volume (in cm). */
-  height?: string;
-  /** Thickness of this volume (in cm). */
-  thickness?: string;
-  /** Width of this volume (in cm). */
-  width?: string;
-}
-export const VolumeVolumeInfoDimensions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    height: S.optional(S.String),
-    thickness: S.optional(S.String),
-    width: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeVolumeInfoDimensions",
-}) as any as S.Schema<VolumeVolumeInfoDimensions>;
-
-export interface VolumeseriesinfoVolumeSeriesItemIssueItem {
-  issueDisplayNumber?: string;
-  issueOrderNumber?: number;
-}
-export const VolumeseriesinfoVolumeSeriesItemIssueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      issueDisplayNumber: S.optional(S.String),
-      issueOrderNumber: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem",
-  }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItem>;
-
-export type VolumeseriesinfoVolumeSeriesItemIssueItemList =
-  Array<VolumeseriesinfoVolumeSeriesItemIssueItem>;
-export const VolumeseriesinfoVolumeSeriesItemIssueItemList =
-  /*@__PURE__*/ S.Array(
-    VolumeseriesinfoVolumeSeriesItemIssueItem,
-  ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItemList>;
-
-export interface VolumeseriesinfoVolumeSeriesItem {
-  /** The series id. */
-  seriesId?: string;
-  /** The book type in the context of series. Examples - Single Issue, Collection Edition, etc. */
-  seriesBookType?: string;
-  /** The book order number in the series. */
-  orderNumber?: number;
-  /** List of issues. Applicable only for Collection Edition and Omnibus. */
-  issue?: VolumeseriesinfoVolumeSeriesItemIssueItemList;
-}
-export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    seriesId: S.optional(S.String),
-    seriesBookType: S.optional(S.String),
-    orderNumber: S.optional(S.Number),
-    issue: S.optional(VolumeseriesinfoVolumeSeriesItemIssueItemList),
-  }),
-).annotate({
-  identifier: "VolumeseriesinfoVolumeSeriesItem",
-}) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
-
-export type VolumeseriesinfoVolumeSeriesItemList =
-  Array<VolumeseriesinfoVolumeSeriesItem>;
-export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
-  VolumeseriesinfoVolumeSeriesItem,
-) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
-
-export interface Volumeseriesinfo {
-  /** Short book title in the context of the series. */
-  shortSeriesBookTitle?: string;
-  /** Resource type. */
-  kind?: string;
-  volumeSeries?: VolumeseriesinfoVolumeSeriesItemList;
-  /** The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber. */
-  bookDisplayNumber?: string;
-}
-export const Volumeseriesinfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shortSeriesBookTitle: S.optional(S.String),
-    kind: S.optional(S.String),
-    volumeSeries: S.optional(VolumeseriesinfoVolumeSeriesItemList),
-    bookDisplayNumber: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Volumeseriesinfo",
-}) as any as S.Schema<Volumeseriesinfo>;
-
 export interface VolumeVolumeInfoPanelizationSummary {
-  epubBubbleVersion?: string;
-  imageBubbleVersion?: string;
   containsEpubBubbles?: boolean;
   containsImageBubbles?: boolean;
+  epubBubbleVersion?: string;
+  imageBubbleVersion?: string;
 }
 export const VolumeVolumeInfoPanelizationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    epubBubbleVersion: S.optional(S.String),
-    imageBubbleVersion: S.optional(S.String),
     containsEpubBubbles: S.optional(S.Boolean),
     containsImageBubbles: S.optional(S.Boolean),
+    epubBubbleVersion: S.optional(S.String),
+    imageBubbleVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "VolumeVolumeInfoPanelizationSummary",
 }) as any as S.Schema<VolumeVolumeInfoPanelizationSummary>;
 
 export interface VolumeVolumeInfo {
+  /** Whether anonymous logging should be allowed. */
+  allowAnonLogging?: boolean;
+  /** Volume subtitle. (In LITE projection.) */
+  subtitle?: string;
+  maturityRating?: string;
+  /** The names of the authors and/or editors for this volume. (In LITE projection) */
+  authors?: StringList;
+  /** Total number of printed pages in generated pdf representation. */
+  printedPageCount?: number;
   /** Total number of pages as per publisher metadata. */
   pageCount?: number;
+  /** Physical dimensions of this volume. */
+  dimensions?: VolumeVolumeInfoDimensions;
+  /** Publisher of this volume. (In LITE projection.) */
+  publisher?: string;
+  /** The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight. */
+  mainCategory?: string;
+  /** Date of publication. (In LITE projection.) */
+  publishedDate?: string;
+  /** Best language for this volume (based on content). It is the two-letter ISO 639-1 code such as 'fr', 'en', etc. */
+  language?: string;
+  seriesInfo?: Volumeseriesinfo;
+  /** URL to view information about this volume on the Google Books site. (In LITE projection) */
+  infoLink?: string;
+  /** Total number of sample pages as per publisher metadata. */
+  samplePageCount?: number;
+  /** The mean review rating for this volume. (min = 1.0, max = 5.0) */
+  averageRating?: number;
+  /** The reading modes available for this volume. */
+  readingModes?: VolumeVolumeInfoReadingModes;
+  /** A list of subject categories, such as "Fiction", "Suspense", etc. */
+  categories?: StringList;
+  /** Type of publication of this volume. Possible values are BOOK or MAGAZINE. */
+  printType?: string;
+  /** URL to preview this volume on the Google Books site. */
+  previewLink?: string;
+  /** Volume title. (In LITE projection.) */
+  title?: string;
   /** A list of image links for all the sizes that are available. (In LITE projection.) */
   imageLinks?: VolumeVolumeInfoImageLinks;
   /** Whether the volume has comics content. */
   comicsContent?: boolean;
-  /** Whether anonymous logging should be allowed. */
-  allowAnonLogging?: boolean;
-  /** Publisher of this volume. (In LITE projection.) */
-  publisher?: string;
-  /** A list of subject categories, such as "Fiction", "Suspense", etc. */
-  categories?: StringList;
   /** Industry standard identifiers for this volume. */
   industryIdentifiers?: VolumeVolumeInfoIndustryIdentifiersItemList;
-  /** Volume subtitle. (In LITE projection.) */
-  subtitle?: string;
   /** An identifier for the version of the volume content (text & images). (In LITE projection) */
   contentVersion?: string;
-  /** A synopsis of the volume. The text of the description is formatted in HTML and includes simple formatting elements, such as b, i, and br tags. (In LITE projection.) */
-  description?: string;
-  /** The reading modes available for this volume. */
-  readingModes?: VolumeVolumeInfoReadingModes;
-  /** The names of the authors and/or editors for this volume. (In LITE projection) */
-  authors?: StringList;
-  /** The number of review ratings for this volume. */
-  ratingsCount?: number;
-  /** Volume title. (In LITE projection.) */
-  title?: string;
-  /** URL to view information about this volume on the Google Books site. (In LITE projection) */
-  infoLink?: string;
-  /** Type of publication of this volume. Possible values are BOOK or MAGAZINE. */
-  printType?: string;
-  /** Physical dimensions of this volume. */
-  dimensions?: VolumeVolumeInfoDimensions;
-  /** URL to preview this volume on the Google Books site. */
-  previewLink?: string;
-  /** Date of publication. (In LITE projection.) */
-  publishedDate?: string;
-  /** The mean review rating for this volume. (min = 1.0, max = 5.0) */
-  averageRating?: number;
   /** Canonical URL for a volume. (In LITE projection.) */
   canonicalVolumeLink?: string;
-  seriesInfo?: Volumeseriesinfo;
-  /** The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight. */
-  mainCategory?: string;
-  maturityRating?: string;
-  /** Best language for this volume (based on content). It is the two-letter ISO 639-1 code such as 'fr', 'en', etc. */
-  language?: string;
+  /** A synopsis of the volume. The text of the description is formatted in HTML and includes simple formatting elements, such as b, i, and br tags. (In LITE projection.) */
+  description?: string;
+  /** The number of review ratings for this volume. */
+  ratingsCount?: number;
   /** A top-level summary of the panelization info in this volume. */
   panelizationSummary?: VolumeVolumeInfoPanelizationSummary;
-  /** Total number of printed pages in generated pdf representation. */
-  printedPageCount?: number;
-  /** Total number of sample pages as per publisher metadata. */
-  samplePageCount?: number;
 }
 export const VolumeVolumeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    allowAnonLogging: S.optional(S.Boolean),
+    subtitle: S.optional(S.String),
+    maturityRating: S.optional(S.String),
+    authors: S.optional(StringList),
+    printedPageCount: S.optional(S.Number),
     pageCount: S.optional(S.Number),
+    dimensions: S.optional(VolumeVolumeInfoDimensions),
+    publisher: S.optional(S.String),
+    mainCategory: S.optional(S.String),
+    publishedDate: S.optional(S.String),
+    language: S.optional(S.String),
+    seriesInfo: S.optional(Volumeseriesinfo),
+    infoLink: S.optional(S.String),
+    samplePageCount: S.optional(S.Number),
+    averageRating: S.optional(S.Number),
+    readingModes: S.optional(VolumeVolumeInfoReadingModes),
+    categories: S.optional(StringList),
+    printType: S.optional(S.String),
+    previewLink: S.optional(S.String),
+    title: S.optional(S.String),
     imageLinks: S.optional(VolumeVolumeInfoImageLinks),
     comicsContent: S.optional(S.Boolean),
-    allowAnonLogging: S.optional(S.Boolean),
-    publisher: S.optional(S.String),
-    categories: S.optional(StringList),
     industryIdentifiers: S.optional(
       VolumeVolumeInfoIndustryIdentifiersItemList,
     ),
-    subtitle: S.optional(S.String),
     contentVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    readingModes: S.optional(VolumeVolumeInfoReadingModes),
-    authors: S.optional(StringList),
-    ratingsCount: S.optional(S.Number),
-    title: S.optional(S.String),
-    infoLink: S.optional(S.String),
-    printType: S.optional(S.String),
-    dimensions: S.optional(VolumeVolumeInfoDimensions),
-    previewLink: S.optional(S.String),
-    publishedDate: S.optional(S.String),
-    averageRating: S.optional(S.Number),
     canonicalVolumeLink: S.optional(S.String),
-    seriesInfo: S.optional(Volumeseriesinfo),
-    mainCategory: S.optional(S.String),
-    maturityRating: S.optional(S.String),
-    language: S.optional(S.String),
+    description: S.optional(S.String),
+    ratingsCount: S.optional(S.Number),
     panelizationSummary: S.optional(VolumeVolumeInfoPanelizationSummary),
-    printedPageCount: S.optional(S.Number),
-    samplePageCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "VolumeVolumeInfo",
 }) as any as S.Schema<VolumeVolumeInfo>;
 
-export interface VolumeUserInfoRentalPeriod {
-  startUtcSec?: string;
-  endUtcSec?: string;
-}
-export const VolumeUserInfoRentalPeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startUtcSec: S.optional(S.String),
-    endUtcSec: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeUserInfoRentalPeriod",
-}) as any as S.Schema<VolumeUserInfoRentalPeriod>;
-
-export interface VolumeUserInfoUserUploadedVolumeInfo {
-  processingState?: string;
-}
-export const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      processingState: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "VolumeUserInfoUserUploadedVolumeInfo",
-}) as any as S.Schema<VolumeUserInfoUserUploadedVolumeInfo>;
-
-export interface VolumeUserInfoFamilySharing {
-  /** Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action. */
-  isSharingAllowed?: boolean;
-  /** Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet. */
-  isSharingDisabledByFop?: boolean;
-  /** The role of the user in the family. */
-  familyRole?: string;
-}
-export const VolumeUserInfoFamilySharing = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isSharingAllowed: S.optional(S.Boolean),
-    isSharingDisabledByFop: S.optional(S.Boolean),
-    familyRole: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeUserInfoFamilySharing",
-}) as any as S.Schema<VolumeUserInfoFamilySharing>;
-
-export interface ReviewSource {
-  /** Extra text about the source of the review. */
-  extraDescription?: string;
-  /** Name of the source. */
-  description?: string;
-  /** URL of the source of the review. */
-  url?: string;
-}
-export const ReviewSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extraDescription: S.optional(S.String),
-    description: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReviewSource" }) as any as S.Schema<ReviewSource>;
-
-export interface ReviewAuthor {
-  /** Name of this person. */
-  displayName?: string;
-}
-export const ReviewAuthor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReviewAuthor" }) as any as S.Schema<ReviewAuthor>;
-
-export interface Review {
-  /** Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED. */
-  rating?: string;
-  /** Information regarding the source of this review, when the review is not from a Google Books user. */
-  source?: ReviewSource;
-  /** Volume that this review is for. */
-  volumeId?: string;
-  /** URL for the full review text, for reviews gathered from the web. */
-  fullTextUrl?: string;
-  /** Date of this review. */
-  date?: string;
-  /** Resource type for a review. */
-  kind?: string;
-  /** Author of this review. */
-  author?: ReviewAuthor;
-  /** Source type for this review. Possible values are EDITORIAL, WEB_USER or GOOGLE_USER. */
-  type?: string;
-  /** Title for this review. */
-  title?: string;
-  /** Review text. */
-  content?: string;
-}
-export const Review = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rating: S.optional(S.String),
-    source: S.optional(ReviewSource),
-    volumeId: S.optional(S.String),
-    fullTextUrl: S.optional(S.String),
-    date: S.optional(S.String),
-    kind: S.optional(S.String),
-    author: S.optional(ReviewAuthor),
-    type: S.optional(S.String),
-    title: S.optional(S.String),
-    content: S.optional(S.String),
-  }),
-).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
-
-export interface VolumeUserInfoCopy {
-  remainingCharacterCount?: number;
-  allowedCharacterCount?: number;
-  limitType?: string;
-  updated?: string;
-}
-export const VolumeUserInfoCopy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remainingCharacterCount: S.optional(S.Number),
-    allowedCharacterCount: S.optional(S.Number),
-    limitType: S.optional(S.String),
-    updated: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeUserInfoCopy",
-}) as any as S.Schema<VolumeUserInfoCopy>;
-
-export interface VolumeUserInfo {
-  /** Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.) */
-  isPreordered?: boolean;
-  /** Deprecated: Replaced by familySharing. */
-  isFamilySharingDisabledByFop?: boolean;
-  /** The user's current reading position in the volume, if one is available. (In LITE projection.) */
-  readingPosition?: ReadingPosition;
-  /** Whether or not the user received this volume through family sharing. */
-  isFamilySharedToUser?: boolean;
-  /** Period during this book is/was a valid rental. */
-  rentalPeriod?: VolumeUserInfoRentalPeriod;
-  /** Whether or not this volume was user uploaded. */
-  isUploaded?: boolean;
-  /** How this volume was acquired. */
-  acquisitionType?: number;
-  /** Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload, receiving family sharing, etc. */
-  acquiredTime?: string;
-  userUploadedVolumeInfo?: VolumeUserInfoUserUploadedVolumeInfo;
-  /** Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format). */
-  updated?: string;
-  /** Information on the ability to share with the family. */
-  familySharing?: VolumeUserInfoFamilySharing;
-  /** Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.) */
-  isPurchased?: boolean;
-  /** This user's review of this volume, if one exists. */
-  review?: Review;
-  /** Deprecated: Replaced by familySharing. */
-  isFamilySharingAllowed?: boolean;
-  /** Whether or not the user shared this volume with the family. */
-  isFamilySharedFromUser?: boolean;
-  /** Whether this book is an active or an expired rental. */
-  rentalState?: string;
-  /** Copy/Paste accounting information. */
-  copy?: VolumeUserInfoCopy;
-  /** Whether this volume is purchased, sample, pd download etc. */
-  entitlementType?: number;
-  /** Whether or not this volume is currently in "my books." */
-  isInMyBooks?: boolean;
-}
-export const VolumeUserInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isPreordered: S.optional(S.Boolean),
-    isFamilySharingDisabledByFop: S.optional(S.Boolean),
-    readingPosition: S.optional(ReadingPosition),
-    isFamilySharedToUser: S.optional(S.Boolean),
-    rentalPeriod: S.optional(VolumeUserInfoRentalPeriod),
-    isUploaded: S.optional(S.Boolean),
-    acquisitionType: S.optional(S.Number),
-    acquiredTime: S.optional(S.String),
-    userUploadedVolumeInfo: S.optional(VolumeUserInfoUserUploadedVolumeInfo),
-    updated: S.optional(S.String),
-    familySharing: S.optional(VolumeUserInfoFamilySharing),
-    isPurchased: S.optional(S.Boolean),
-    review: S.optional(Review),
-    isFamilySharingAllowed: S.optional(S.Boolean),
-    isFamilySharedFromUser: S.optional(S.Boolean),
-    rentalState: S.optional(S.String),
-    copy: S.optional(VolumeUserInfoCopy),
-    entitlementType: S.optional(S.Number),
-    isInMyBooks: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VolumeUserInfo" }) as any as S.Schema<VolumeUserInfo>;
-
 export interface Volume {
-  /** Resource type for a volume. (In LITE projection.) */
-  kind?: string;
-  /** URL to this resource. (In LITE projection.) */
-  selfLink?: string;
-  /** Recommendation related information for this volume. */
-  recommendedInfo?: VolumeRecommendedInfo;
   /** Opaque identifier for a specific version of a volume resource. (In LITE projection) */
   etag?: string;
-  /** Unique identifier for a volume. (In LITE projection.) */
-  id?: string;
-  /** Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries). */
-  saleInfo?: VolumeSaleInfo;
-  /** What layers exist in this volume and high level information about them. */
-  layerInfo?: VolumeLayerInfo;
-  /** Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.). */
-  accessInfo?: VolumeAccessInfo;
+  /** Recommendation related information for this volume. */
+  recommendedInfo?: VolumeRecommendedInfo;
   /** Search result information related to this volume. */
   searchInfo?: VolumeSearchInfo;
-  /** General volume information. */
-  volumeInfo?: VolumeVolumeInfo;
+  /** Resource type for a volume. (In LITE projection.) */
+  kind?: string;
+  /** Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.). */
+  accessInfo?: VolumeAccessInfo;
+  /** Unique identifier for a volume. (In LITE projection.) */
+  id?: string;
+  /** What layers exist in this volume and high level information about them. */
+  layerInfo?: VolumeLayerInfo;
   /** User specific information related to this volume. (e.g. page this user last read or whether they purchased this book) */
   userInfo?: VolumeUserInfo;
+  /** Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries). */
+  saleInfo?: VolumeSaleInfo;
+  /** General volume information. */
+  volumeInfo?: VolumeVolumeInfo;
+  /** URL to this resource. (In LITE projection.) */
+  selfLink?: string;
 }
 export const Volume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    selfLink: S.optional(S.String),
-    recommendedInfo: S.optional(VolumeRecommendedInfo),
     etag: S.optional(S.String),
-    id: S.optional(S.String),
-    saleInfo: S.optional(VolumeSaleInfo),
-    layerInfo: S.optional(VolumeLayerInfo),
-    accessInfo: S.optional(VolumeAccessInfo),
+    recommendedInfo: S.optional(VolumeRecommendedInfo),
     searchInfo: S.optional(VolumeSearchInfo),
-    volumeInfo: S.optional(VolumeVolumeInfo),
+    kind: S.optional(S.String),
+    accessInfo: S.optional(VolumeAccessInfo),
+    id: S.optional(S.String),
+    layerInfo: S.optional(VolumeLayerInfo),
     userInfo: S.optional(VolumeUserInfo),
+    saleInfo: S.optional(VolumeSaleInfo),
+    volumeInfo: S.optional(VolumeVolumeInfo),
+    selfLink: S.optional(S.String),
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
@@ -1993,44 +1993,44 @@ export const VolumeList = /*@__PURE__*/ S.Array(
 
 export interface DiscoveryclustersClustersItemBanner_with_content_container {
   moreButtonUrl?: string;
-  textColorArgb?: string;
   maskColorArgb?: string;
   imageUrl?: string;
-  fillColorArgb?: string;
   moreButtonText?: string;
+  fillColorArgb?: string;
+  textColorArgb?: string;
 }
 export const DiscoveryclustersClustersItemBanner_with_content_container =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       moreButtonUrl: S.optional(S.String),
-      textColorArgb: S.optional(S.String),
       maskColorArgb: S.optional(S.String),
       imageUrl: S.optional(S.String),
-      fillColorArgb: S.optional(S.String),
       moreButtonText: S.optional(S.String),
+      fillColorArgb: S.optional(S.String),
+      textColorArgb: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DiscoveryclustersClustersItemBanner_with_content_container",
   }) as any as S.Schema<DiscoveryclustersClustersItemBanner_with_content_container>;
 
 export interface DiscoveryclustersClustersItem {
+  subTitle?: string;
   volumes?: VolumeList;
-  totalVolumes?: number;
+  uid?: string;
   title?: string;
   banner_with_content_container?: DiscoveryclustersClustersItemBanner_with_content_container;
-  uid?: string;
-  subTitle?: string;
+  totalVolumes?: number;
 }
 export const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    subTitle: S.optional(S.String),
     volumes: S.optional(VolumeList),
-    totalVolumes: S.optional(S.Number),
+    uid: S.optional(S.String),
     title: S.optional(S.String),
     banner_with_content_container: S.optional(
       DiscoveryclustersClustersItemBanner_with_content_container,
     ),
-    uid: S.optional(S.String),
-    subTitle: S.optional(S.String),
+    totalVolumes: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "DiscoveryclustersClustersItem",
@@ -2059,27 +2059,27 @@ export const Discoveryclusters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Discoveryclusters>;
 
 export interface GetPromoofferRequest {
-  /** device device */
-  device?: string;
-  /** device model */
-  model?: string;
+  /** device android_id */
+  androidId?: string;
   /** device serial */
   serial?: string;
+  /** device model */
+  model?: string;
+  /** device device */
+  device?: string;
   /** device manufacturer */
   manufacturer?: string;
   /** device product */
   product?: string;
-  /** device android_id */
-  androidId?: string;
 }
 export const GetPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    device: S.optional(S.String.pipe(T.Query())),
-    model: S.optional(S.String.pipe(T.Query())),
+    androidId: S.optional(S.String.pipe(T.Query())),
     serial: S.optional(S.String.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
+    device: S.optional(S.String.pipe(T.Query())),
     manufacturer: S.optional(S.String.pipe(T.Query())),
     product: S.optional(S.String.pipe(T.Query())),
-    androidId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2092,21 +2092,21 @@ export const GetPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPromoofferRequest>;
 
 export interface OffersItemsItemItemsItem {
-  canonicalVolumeLink?: string;
-  coverUrl?: string;
   title?: string;
   author?: string;
-  volumeId?: string;
   description?: string;
+  volumeId?: string;
+  canonicalVolumeLink?: string;
+  coverUrl?: string;
 }
 export const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    canonicalVolumeLink: S.optional(S.String),
-    coverUrl: S.optional(S.String),
     title: S.optional(S.String),
     author: S.optional(S.String),
-    volumeId: S.optional(S.String),
     description: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    canonicalVolumeLink: S.optional(S.String),
+    coverUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "OffersItemsItemItemsItem",
@@ -2118,17 +2118,17 @@ export const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OffersItemsItemItemsItemList>;
 
 export interface OffersItemsItem {
+  artUrl?: string;
+  items?: OffersItemsItemItemsItemList;
   gservicesKey?: string;
   id?: string;
-  items?: OffersItemsItemItemsItemList;
-  artUrl?: string;
 }
 export const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    artUrl: S.optional(S.String),
+    items: S.optional(OffersItemsItemItemsItemList),
     gservicesKey: S.optional(S.String),
     id: S.optional(S.String),
-    items: S.optional(OffersItemsItemItemsItemList),
-    artUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "OffersItemsItem",
@@ -2170,58 +2170,58 @@ export const GetSeriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSeriesRequest",
 }) as any as S.Schema<GetSeriesRequest>;
 
-export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
+export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo {
   releaseNumber?: string;
-  releaseTime?: string;
   currencyCode?: string;
   amountInMicros?: number;
+  releaseTime?: string;
+}
+export const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      releaseNumber: S.optional(S.String),
+      currencyCode: S.optional(S.String),
+      amountInMicros: S.optional(S.Number),
+      releaseTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo",
+  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo>;
+
+export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
+  amountInMicros?: number;
+  releaseTime?: string;
+  releaseNumber?: string;
+  currencyCode?: string;
 }
 export const SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      releaseNumber: S.optional(S.String),
-      releaseTime: S.optional(S.String),
-      currencyCode: S.optional(S.String),
       amountInMicros: S.optional(S.Number),
+      releaseTime: S.optional(S.String),
+      releaseNumber: S.optional(S.String),
+      currencyCode: S.optional(S.String),
     }),
   ).annotate({
     identifier:
       "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo",
   }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo>;
 
-export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo {
-  releaseNumber?: string;
-  releaseTime?: string;
-  currencyCode?: string;
-  amountInMicros?: number;
-}
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      releaseNumber: S.optional(S.String),
-      releaseTime: S.optional(S.String),
-      currencyCode: S.optional(S.String),
-      amountInMicros: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo",
-  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo>;
-
 export interface SeriesSeriesItemSeriesSubscriptionReleaseInfo {
+  nextReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo;
   seriesSubscriptionType?: string;
   currentReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo;
-  nextReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo;
   cancelTime?: string;
 }
 export const SeriesSeriesItemSeriesSubscriptionReleaseInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      nextReleaseInfo: S.optional(
+        SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo,
+      ),
       seriesSubscriptionType: S.optional(S.String),
       currentReleaseInfo: S.optional(
         SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo,
-      ),
-      nextReleaseInfo: S.optional(
-        SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo,
       ),
       cancelTime: S.optional(S.String),
     }),
@@ -2230,31 +2230,31 @@ export const SeriesSeriesItemSeriesSubscriptionReleaseInfo =
   }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfo>;
 
 export interface SeriesSeriesItem {
-  subscriptionId?: string;
-  seriesSubscriptionReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfo;
-  bannerImageUrl?: string;
-  seriesId?: string;
-  title?: string;
   seriesType?: string;
-  imageUrl?: string;
-  isComplete?: boolean;
-  eligibleForSubscription?: boolean;
   seriesFormatType?: string;
+  bannerImageUrl?: string;
+  title?: string;
+  seriesId?: string;
+  eligibleForSubscription?: boolean;
+  subscriptionId?: string;
+  isComplete?: boolean;
+  seriesSubscriptionReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfo;
+  imageUrl?: string;
 }
 export const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    seriesType: S.optional(S.String),
+    seriesFormatType: S.optional(S.String),
+    bannerImageUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    seriesId: S.optional(S.String),
+    eligibleForSubscription: S.optional(S.Boolean),
     subscriptionId: S.optional(S.String),
+    isComplete: S.optional(S.Boolean),
     seriesSubscriptionReleaseInfo: S.optional(
       SeriesSeriesItemSeriesSubscriptionReleaseInfo,
     ),
-    bannerImageUrl: S.optional(S.String),
-    seriesId: S.optional(S.String),
-    title: S.optional(S.String),
-    seriesType: S.optional(S.String),
     imageUrl: S.optional(S.String),
-    isComplete: S.optional(S.Boolean),
-    eligibleForSubscription: S.optional(S.Boolean),
-    seriesFormatType: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SeriesSeriesItem",
@@ -2266,30 +2266,30 @@ export const SeriesSeriesItemList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SeriesSeriesItemList>;
 
 export interface Series {
-  series?: SeriesSeriesItemList;
   /** Resource type. */
   kind?: string;
+  series?: SeriesSeriesItemList;
 }
 export const Series = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    series: S.optional(SeriesSeriesItemList),
     kind: S.optional(S.String),
+    series: S.optional(SeriesSeriesItemList),
   }),
 ).annotate({ identifier: "Series" }) as any as S.Schema<Series>;
 
 export interface GetSeriesMembershipRequest {
-  /** The value of the nextToken from the previous page. */
-  page_token?: string;
-  /** String that identifies the series */
-  series_id: string;
   /** Number of maximum results per page to be included in the response. */
   page_size?: number;
+  /** String that identifies the series */
+  series_id: string;
+  /** The value of the nextToken from the previous page. */
+  page_token?: string;
 }
 export const GetSeriesMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    page_token: S.optional(S.String.pipe(T.Query())),
-    series_id: S.String.pipe(T.Query()),
     page_size: S.optional(S.Number.pipe(T.Query())),
+    series_id: S.String.pipe(T.Query()),
+    page_token: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2302,15 +2302,15 @@ export const GetSeriesMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSeriesMembershipRequest>;
 
 export interface Seriesmembership {
-  member?: VolumeList;
   nextPageToken?: string;
+  member?: VolumeList;
   /** Resorce type. */
   kind?: string;
 }
 export const Seriesmembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    member: S.optional(VolumeList),
     nextPageToken: S.optional(S.String),
+    member: S.optional(VolumeList),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -2335,29 +2335,18 @@ export const GetUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserSettingsMyconfigRequest",
 }) as any as S.Schema<GetUserSettingsMyconfigRequest>;
 
-export interface UsersettingsNotificationMatchMyInterests {
-  opted_state?: string;
+export interface UsersettingsNotesExport {
+  folderName?: string;
+  isEnabled?: boolean;
 }
-export const UsersettingsNotificationMatchMyInterests = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      opted_state: S.optional(S.String),
-    }),
+export const UsersettingsNotesExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    folderName: S.optional(S.String),
+    isEnabled: S.optional(S.Boolean),
+  }),
 ).annotate({
-  identifier: "UsersettingsNotificationMatchMyInterests",
-}) as any as S.Schema<UsersettingsNotificationMatchMyInterests>;
-
-export interface UsersettingsNotificationMoreFromAuthors {
-  opted_state?: string;
-}
-export const UsersettingsNotificationMoreFromAuthors = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      opted_state: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UsersettingsNotificationMoreFromAuthors",
-}) as any as S.Schema<UsersettingsNotificationMoreFromAuthors>;
+  identifier: "UsersettingsNotesExport",
+}) as any as S.Schema<UsersettingsNotesExport>;
 
 export interface UsersettingsNotificationMoreFromSeries {
   opted_state?: string;
@@ -2371,17 +2360,29 @@ export const UsersettingsNotificationMoreFromSeries = /*@__PURE__*/ S.suspend(
   identifier: "UsersettingsNotificationMoreFromSeries",
 }) as any as S.Schema<UsersettingsNotificationMoreFromSeries>;
 
-export interface UsersettingsNotificationRewardExpirations {
+export interface UsersettingsNotificationMoreFromAuthors {
   opted_state?: string;
 }
-export const UsersettingsNotificationRewardExpirations =
-  /*@__PURE__*/ S.suspend(() =>
+export const UsersettingsNotificationMoreFromAuthors = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       opted_state: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "UsersettingsNotificationRewardExpirations",
-  }) as any as S.Schema<UsersettingsNotificationRewardExpirations>;
+).annotate({
+  identifier: "UsersettingsNotificationMoreFromAuthors",
+}) as any as S.Schema<UsersettingsNotificationMoreFromAuthors>;
+
+export interface UsersettingsNotificationMatchMyInterests {
+  opted_state?: string;
+}
+export const UsersettingsNotificationMatchMyInterests = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UsersettingsNotificationMatchMyInterests",
+}) as any as S.Schema<UsersettingsNotificationMatchMyInterests>;
 
 export interface UsersettingsNotificationPriceDrop {
   opted_state?: string;
@@ -2394,50 +2395,49 @@ export const UsersettingsNotificationPriceDrop = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsersettingsNotificationPriceDrop",
 }) as any as S.Schema<UsersettingsNotificationPriceDrop>;
 
+export interface UsersettingsNotificationRewardExpirations {
+  opted_state?: string;
+}
+export const UsersettingsNotificationRewardExpirations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      opted_state: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UsersettingsNotificationRewardExpirations",
+  }) as any as S.Schema<UsersettingsNotificationRewardExpirations>;
+
 export interface UsersettingsNotification {
-  matchMyInterests?: UsersettingsNotificationMatchMyInterests;
-  moreFromAuthors?: UsersettingsNotificationMoreFromAuthors;
   moreFromSeries?: UsersettingsNotificationMoreFromSeries;
-  rewardExpirations?: UsersettingsNotificationRewardExpirations;
+  moreFromAuthors?: UsersettingsNotificationMoreFromAuthors;
+  matchMyInterests?: UsersettingsNotificationMatchMyInterests;
   priceDrop?: UsersettingsNotificationPriceDrop;
+  rewardExpirations?: UsersettingsNotificationRewardExpirations;
 }
 export const UsersettingsNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matchMyInterests: S.optional(UsersettingsNotificationMatchMyInterests),
-    moreFromAuthors: S.optional(UsersettingsNotificationMoreFromAuthors),
     moreFromSeries: S.optional(UsersettingsNotificationMoreFromSeries),
-    rewardExpirations: S.optional(UsersettingsNotificationRewardExpirations),
+    moreFromAuthors: S.optional(UsersettingsNotificationMoreFromAuthors),
+    matchMyInterests: S.optional(UsersettingsNotificationMatchMyInterests),
     priceDrop: S.optional(UsersettingsNotificationPriceDrop),
+    rewardExpirations: S.optional(UsersettingsNotificationRewardExpirations),
   }),
 ).annotate({
   identifier: "UsersettingsNotification",
 }) as any as S.Schema<UsersettingsNotification>;
 
-export interface UsersettingsNotesExport {
-  isEnabled?: boolean;
-  folderName?: string;
-}
-export const UsersettingsNotesExport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isEnabled: S.optional(S.Boolean),
-    folderName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsersettingsNotesExport",
-}) as any as S.Schema<UsersettingsNotesExport>;
-
 export interface Usersettings {
-  notification?: UsersettingsNotification;
   /** Resource type. */
   kind?: string;
   /** User settings in sub-objects, each for different purposes. */
   notesExport?: UsersettingsNotesExport;
+  notification?: UsersettingsNotification;
 }
 export const Usersettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    notification: S.optional(UsersettingsNotification),
     kind: S.optional(S.String),
     notesExport: S.optional(UsersettingsNotesExport),
+    notification: S.optional(UsersettingsNotification),
   }),
 ).annotate({ identifier: "Usersettings" }) as any as S.Schema<Usersettings>;
 
@@ -2445,29 +2445,29 @@ export type GetVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
 export const GetVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetVolumesRequest {
-  /** Restrict information returned to a set of selected fields. */
-  projection?: GetVolumesProjectionEnum | (string & {});
+  /** ISO-3166-1 code to override the IP-based location. */
+  country?: string;
   /** ID of volume to retrieve. */
   volumeId: string;
   /** string to identify the originator of this request. */
   source?: string;
   user_library_consistent_read?: boolean;
-  /** ISO-3166-1 code to override the IP-based location. */
-  country?: string;
-  /** Brand results for partner ID. */
-  partner?: string;
   /** Set to true to include non-comics series. Defaults to false. */
   includeNonComicsSeries?: boolean;
+  /** Brand results for partner ID. */
+  partner?: string;
+  /** Restrict information returned to a set of selected fields. */
+  projection?: GetVolumesProjectionEnum | (string & {});
 }
 export const GetVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    projection: S.optional(GetVolumesProjectionEnum.pipe(T.Query())),
+    country: S.optional(S.String.pipe(T.Query())),
     volumeId: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
     user_library_consistent_read: S.optional(S.Boolean.pipe(T.Query())),
-    country: S.optional(S.String.pipe(T.Query())),
-    partner: S.optional(S.String.pipe(T.Query())),
     includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
+    partner: S.optional(S.String.pipe(T.Query())),
+    projection: S.optional(GetVolumesProjectionEnum.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2479,147 +2479,147 @@ export const GetVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVolumesRequest",
 }) as any as S.Schema<GetVolumesRequest>;
 
-export interface AnnotationClientVersionRanges {
-  /** Range in GB text format for this annotation sent by client. */
-  gbTextRange?: BooksAnnotationsRange;
-  /** Range in CFI format for this annotation sent by client. */
-  cfiRange?: BooksAnnotationsRange;
-  /** Range in GB image format for this annotation sent by client. */
-  gbImageRange?: BooksAnnotationsRange;
-  /** Content version the client sent in. */
-  contentVersion?: string;
-  /** Range in image CFI format for this annotation sent by client. */
-  imageCfiRange?: BooksAnnotationsRange;
-}
-export const AnnotationClientVersionRanges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gbTextRange: S.optional(BooksAnnotationsRange),
-    cfiRange: S.optional(BooksAnnotationsRange),
-    gbImageRange: S.optional(BooksAnnotationsRange),
-    contentVersion: S.optional(S.String),
-    imageCfiRange: S.optional(BooksAnnotationsRange),
-  }),
-).annotate({
-  identifier: "AnnotationClientVersionRanges",
-}) as any as S.Schema<AnnotationClientVersionRanges>;
-
-export interface AnnotationCurrentVersionRanges {
-  /** Range in GB image format for this annotation for version above. */
-  gbImageRange?: BooksAnnotationsRange;
-  /** Content version applicable to ranges below. */
-  contentVersion?: string;
-  /** Range in image CFI format for this annotation for version above. */
-  imageCfiRange?: BooksAnnotationsRange;
-  /** Range in GB text format for this annotation for version above. */
-  gbTextRange?: BooksAnnotationsRange;
-  /** Range in CFI format for this annotation for version above. */
-  cfiRange?: BooksAnnotationsRange;
-}
-export const AnnotationCurrentVersionRanges = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gbImageRange: S.optional(BooksAnnotationsRange),
-    contentVersion: S.optional(S.String),
-    imageCfiRange: S.optional(BooksAnnotationsRange),
-    gbTextRange: S.optional(BooksAnnotationsRange),
-    cfiRange: S.optional(BooksAnnotationsRange),
-  }),
-).annotate({
-  identifier: "AnnotationCurrentVersionRanges",
-}) as any as S.Schema<AnnotationCurrentVersionRanges>;
-
 export interface AnnotationLayerSummary {
-  /** Type of limitation on this layer. "limited" or "unlimited" for the "copy" layer. */
-  limitType?: string;
   /** Remaining allowed characters on this layer, especially for the "copy" layer. */
   remainingCharacterCount?: number;
+  /** Type of limitation on this layer. "limited" or "unlimited" for the "copy" layer. */
+  limitType?: string;
   /** Maximum allowed characters on this layer, especially for the "copy" layer. */
   allowedCharacterCount?: number;
 }
 export const AnnotationLayerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    limitType: S.optional(S.String),
     remainingCharacterCount: S.optional(S.Number),
+    limitType: S.optional(S.String),
     allowedCharacterCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "AnnotationLayerSummary",
 }) as any as S.Schema<AnnotationLayerSummary>;
 
+export interface AnnotationCurrentVersionRanges {
+  /** Range in CFI format for this annotation for version above. */
+  cfiRange?: BooksAnnotationsRange;
+  /** Range in image CFI format for this annotation for version above. */
+  imageCfiRange?: BooksAnnotationsRange;
+  /** Range in GB image format for this annotation for version above. */
+  gbImageRange?: BooksAnnotationsRange;
+  /** Content version applicable to ranges below. */
+  contentVersion?: string;
+  /** Range in GB text format for this annotation for version above. */
+  gbTextRange?: BooksAnnotationsRange;
+}
+export const AnnotationCurrentVersionRanges = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cfiRange: S.optional(BooksAnnotationsRange),
+    imageCfiRange: S.optional(BooksAnnotationsRange),
+    gbImageRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
+    gbTextRange: S.optional(BooksAnnotationsRange),
+  }),
+).annotate({
+  identifier: "AnnotationCurrentVersionRanges",
+}) as any as S.Schema<AnnotationCurrentVersionRanges>;
+
+export interface AnnotationClientVersionRanges {
+  /** Range in CFI format for this annotation sent by client. */
+  cfiRange?: BooksAnnotationsRange;
+  /** Range in image CFI format for this annotation sent by client. */
+  imageCfiRange?: BooksAnnotationsRange;
+  /** Range in GB image format for this annotation sent by client. */
+  gbImageRange?: BooksAnnotationsRange;
+  /** Content version the client sent in. */
+  contentVersion?: string;
+  /** Range in GB text format for this annotation sent by client. */
+  gbTextRange?: BooksAnnotationsRange;
+}
+export const AnnotationClientVersionRanges = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cfiRange: S.optional(BooksAnnotationsRange),
+    imageCfiRange: S.optional(BooksAnnotationsRange),
+    gbImageRange: S.optional(BooksAnnotationsRange),
+    contentVersion: S.optional(S.String),
+    gbTextRange: S.optional(BooksAnnotationsRange),
+  }),
+).annotate({
+  identifier: "AnnotationClientVersionRanges",
+}) as any as S.Schema<AnnotationClientVersionRanges>;
+
 export interface Annotation {
-  /** Id of this annotation, in the form of a GUID. */
-  id?: string;
-  /** The layer this annotation is for. */
-  layerId?: string;
-  /** Selection ranges sent from the client. */
-  clientVersionRanges?: AnnotationClientVersionRanges;
-  /** Timestamp for the created time of this annotation. */
-  created?: string;
-  /** Pages that this annotation spans. */
-  pageIds?: StringList;
-  /** Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
-  afterSelectedText?: string;
-  /** User-created data for this annotation. */
-  data?: string;
-  /** Selection ranges for the most recent content version. */
-  currentVersionRanges?: AnnotationCurrentVersionRanges;
-  layerSummary?: AnnotationLayerSummary;
-  /** The volume that this annotation belongs to. */
-  volumeId?: string;
-  /** Indicates that this annotation is deleted. */
-  deleted?: boolean;
-  /** The highlight style for this annotation. */
-  highlightStyle?: string;
-  /** Excerpt from the volume. */
-  selectedText?: string;
-  /** Timestamp for the last time this annotation was modified. */
-  updated?: string;
-  /** Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
-  beforeSelectedText?: string;
-  /** Resource type. */
-  kind?: string;
   /** URL to this resource. */
   selfLink?: string;
+  /** Timestamp for the created time of this annotation. */
+  created?: string;
+  /** User-created data for this annotation. */
+  data?: string;
+  /** Indicates that this annotation is deleted. */
+  deleted?: boolean;
+  /** Resource type. */
+  kind?: string;
+  /** Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
+  beforeSelectedText?: string;
+  /** The volume that this annotation belongs to. */
+  volumeId?: string;
+  /** The highlight style for this annotation. */
+  highlightStyle?: string;
+  /** Timestamp for the last time this annotation was modified. */
+  updated?: string;
+  layerSummary?: AnnotationLayerSummary;
+  /** Id of this annotation, in the form of a GUID. */
+  id?: string;
+  /** Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
+  afterSelectedText?: string;
+  /** Excerpt from the volume. */
+  selectedText?: string;
+  /** The layer this annotation is for. */
+  layerId?: string;
+  /** Selection ranges for the most recent content version. */
+  currentVersionRanges?: AnnotationCurrentVersionRanges;
+  /** Pages that this annotation spans. */
+  pageIds?: StringList;
+  /** Selection ranges sent from the client. */
+  clientVersionRanges?: AnnotationClientVersionRanges;
 }
 export const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    layerId: S.optional(S.String),
-    clientVersionRanges: S.optional(AnnotationClientVersionRanges),
-    created: S.optional(S.String),
-    pageIds: S.optional(StringList),
-    afterSelectedText: S.optional(S.String),
-    data: S.optional(S.String),
-    currentVersionRanges: S.optional(AnnotationCurrentVersionRanges),
-    layerSummary: S.optional(AnnotationLayerSummary),
-    volumeId: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    highlightStyle: S.optional(S.String),
-    selectedText: S.optional(S.String),
-    updated: S.optional(S.String),
-    beforeSelectedText: S.optional(S.String),
-    kind: S.optional(S.String),
     selfLink: S.optional(S.String),
+    created: S.optional(S.String),
+    data: S.optional(S.String),
+    deleted: S.optional(S.Boolean),
+    kind: S.optional(S.String),
+    beforeSelectedText: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    highlightStyle: S.optional(S.String),
+    updated: S.optional(S.String),
+    layerSummary: S.optional(AnnotationLayerSummary),
+    id: S.optional(S.String),
+    afterSelectedText: S.optional(S.String),
+    selectedText: S.optional(S.String),
+    layerId: S.optional(S.String),
+    currentVersionRanges: S.optional(AnnotationCurrentVersionRanges),
+    pageIds: S.optional(StringList),
+    clientVersionRanges: S.optional(AnnotationClientVersionRanges),
   }),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export interface InsertMylibraryAnnotationsRequest {
-  /** The ID for the annotation to insert. */
-  annotationId?: string;
-  /** Requests that only the summary of the specified layer be provided in the response. */
-  showOnlySummaryInResponse?: boolean;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** ISO-3166-1 code to override the IP-based location. */
   country?: string;
+  /** String to identify the originator of this request. */
+  source?: string;
+  /** Requests that only the summary of the specified layer be provided in the response. */
+  showOnlySummaryInResponse?: boolean;
+  /** The ID for the annotation to insert. */
+  annotationId?: string;
   /** Request body */
   body?: Annotation;
 }
 export const InsertMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotationId: S.optional(S.String.pipe(T.Query())),
-    showOnlySummaryInResponse: S.optional(S.Boolean.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
     country: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    showOnlySummaryInResponse: S.optional(S.Boolean.pipe(T.Query())),
+    annotationId: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Annotation.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -2672,27 +2672,27 @@ export const Bookshelves = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bookshelves" }) as any as S.Schema<Bookshelves>;
 
 export interface ListBookshelvesVolumesRequest {
-  /** ID of bookshelf to retrieve volumes. */
-  shelf: string;
   /** Index of the first element to return (starts at 0) */
   startIndex?: number;
   /** ID of user for whom to retrieve bookshelf volumes. */
   userId: string;
-  /** String to identify the originator of this request. */
-  source?: string;
-  /** Maximum number of results to return */
-  maxResults?: number;
   /** Set to true to show pre-ordered books. Defaults to false. */
   showPreorders?: boolean;
+  /** ID of bookshelf to retrieve volumes. */
+  shelf: string;
+  /** Maximum number of results to return */
+  maxResults?: number;
+  /** String to identify the originator of this request. */
+  source?: string;
 }
 export const ListBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    shelf: S.String.pipe(T.Label()),
     startIndex: S.optional(S.Number.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
-    source: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
     showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+    shelf: S.String.pipe(T.Label()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2705,18 +2705,18 @@ export const ListBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBookshelvesVolumesRequest>;
 
 export interface Volumes {
-  /** Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated. */
-  totalItems?: number;
   /** Resource type. */
   kind?: string;
   /** A list of volumes. */
   items?: VolumeList;
+  /** Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated. */
+  totalItems?: number;
 }
 export const Volumes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalItems: S.optional(S.Number),
     kind: S.optional(S.String),
     items: S.optional(VolumeList),
+    totalItems: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Volumes" }) as any as S.Schema<Volumes>;
 
@@ -2739,15 +2739,15 @@ export const ListCategoriesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCategoriesOnboardingRequest>;
 
 export interface CategoryItemsItem {
+  categoryId?: string;
   name?: string;
   badgeUrl?: string;
-  categoryId?: string;
 }
 export const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    categoryId: S.optional(S.String),
     name: S.optional(S.String),
     badgeUrl: S.optional(S.String),
-    categoryId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CategoryItemsItem",
@@ -2779,31 +2779,31 @@ export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListCategoryVolumesOnboardingRequest {
+  /** Number of maximum results per page to be included in the response. */
+  pageSize?: number;
   /** List of category ids requested. */
   categoryId?: StringList;
-  /** The value of the nextToken from the previous page. */
-  pageToken?: string;
   /** The maximum allowed maturity rating of returned volumes. Books with a higher maturity rating are filtered out. */
   maxAllowedMaturityRating?:
     | ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum
     | (string & {});
-  /** Number of maximum results per page to be included in the response. */
-  pageSize?: number;
   /** ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset. */
   locale?: string;
+  /** The value of the nextToken from the previous page. */
+  pageToken?: string;
 }
 export const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       categoryId: S.optional(StringList.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       maxAllowedMaturityRating: S.optional(
         ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum.pipe(
           T.Query(),
         ),
       ),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       locale: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2816,39 +2816,39 @@ export const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCategoryVolumesOnboardingRequest>;
 
 export interface Volume2 {
-  /** Resource type. */
-  kind?: string;
   /** A list of volumes. */
   items: VolumeList;
   nextPageToken?: string;
+  /** Resource type. */
+  kind?: string;
 }
 export const Volume2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     items: VolumeList,
     nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "Volume2" }) as any as S.Schema<Volume2>;
 
 export interface ListLayersRequest {
-  /** The value of the nextToken from the previous page. */
-  pageToken?: string;
-  /** The volume to retrieve layers for. */
-  volumeId: string;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** The content version for the requested volume. */
   contentVersion?: string;
+  /** The volume to retrieve layers for. */
+  volumeId: string;
   /** Maximum number of results to return */
   maxResults?: number;
+  /** The value of the nextToken from the previous page. */
+  pageToken?: string;
+  /** String to identify the originator of this request. */
+  source?: string;
 }
 export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.String.pipe(T.Label()),
-    source: S.optional(S.String.pipe(T.Query())),
     contentVersion: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2866,64 +2866,64 @@ export const LayersummaryList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LayersummaryList>;
 
 export interface Layersummaries {
-  /** Resource type. */
-  kind?: string;
   /** A list of layer summary items. */
   items?: LayersummaryList;
   /** The total number of layer summaries found. */
   totalItems?: number;
+  /** Resource type. */
+  kind?: string;
 }
 export const Layersummaries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     items: S.optional(LayersummaryList),
     totalItems: S.optional(S.Number),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "Layersummaries" }) as any as S.Schema<Layersummaries>;
 
 export interface ListLayersAnnotationDataRequest {
   /** The requested pixel height for any images. If height is provided width must also be provided. */
   h?: number;
+  /** The ID for the layer to get the annotation data. */
+  layerId: string;
   /** The requested scale for the image. */
   scale?: number;
-  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
-  updatedMax?: string;
-  /** The volume to retrieve annotation data for. */
-  volumeId: string;
   /** The list of Annotation Data Ids to retrieve. Pagination is ignored if this is set. */
   annotationDataId?: StringList;
+  /** Maximum number of results to return */
+  maxResults?: number;
+  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
+  updatedMax?: string;
   /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
   locale?: string;
   /** RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive). */
   updatedMin?: string;
-  /** The requested pixel width for any images. If width is provided height must also be provided. */
-  w?: number;
-  /** The content version for the requested volume. */
-  contentVersion: string;
+  /** The volume to retrieve annotation data for. */
+  volumeId: string;
   /** The value of the nextToken from the previous page. */
   pageToken?: string;
   /** String to identify the originator of this request. */
   source?: string;
-  /** The ID for the layer to get the annotation data. */
-  layerId: string;
-  /** Maximum number of results to return */
-  maxResults?: number;
+  /** The content version for the requested volume. */
+  contentVersion: string;
+  /** The requested pixel width for any images. If width is provided height must also be provided. */
+  w?: number;
 }
 export const ListLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     h: S.optional(S.Number.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
     scale: S.optional(S.Number.pipe(T.Query())),
-    updatedMax: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.String.pipe(T.Label()),
     annotationDataId: S.optional(StringList.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
     locale: S.optional(S.String.pipe(T.Query())),
     updatedMin: S.optional(S.String.pipe(T.Query())),
-    w: S.optional(S.Number.pipe(T.Query())),
-    contentVersion: S.String.pipe(T.Query()),
+    volumeId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
-    layerId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
+    w: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2975,16 +2975,16 @@ export const GeolayerdataGeoViewport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeolayerdataGeoViewport>;
 
 export interface GeolayerdataGeo {
-  /** The country code of the location. */
-  countryCode?: string;
-  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https: //developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
-  zoom?: number;
-  /** The latitude of the location. */
-  latitude?: number;
   /** The longitude of the location. */
   longitude?: number;
   /** The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates. */
   boundary?: StringList;
+  /** The country code of the location. */
+  countryCode?: string;
+  /** The latitude of the location. */
+  latitude?: number;
+  /** The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https: //developers.google.com/maps/documentation/staticmaps/#Zoomlevels */
+  zoom?: number;
   /** The viewport for showing this location. This is a latitude, longitude rectangle. */
   viewport?: GeolayerdataGeoViewport;
   /** The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN */
@@ -2994,11 +2994,11 @@ export interface GeolayerdataGeo {
 }
 export const GeolayerdataGeo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    countryCode: S.optional(S.String),
-    zoom: S.optional(S.Number),
-    latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
     boundary: S.optional(StringList),
+    countryCode: S.optional(S.String),
+    latitude: S.optional(S.Number),
+    zoom: S.optional(S.Number),
     viewport: S.optional(GeolayerdataGeoViewport),
     mapType: S.optional(S.String),
     cachePolicy: S.optional(S.String),
@@ -3008,24 +3008,24 @@ export const GeolayerdataGeo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeolayerdataGeo>;
 
 export interface GeolayerdataCommon {
-  /** The language of the information url and description. */
-  lang?: string;
   /** The URL for the preview image information. */
   previewImageUrl?: string;
-  /** The display title and localized canonical name to use when searching for this entity on Google search. */
-  title?: string;
-  /** The description for this location. */
-  snippet?: string;
   /** The URL for information for this location. Ex: wikipedia link. */
   snippetUrl?: string;
+  /** The description for this location. */
+  snippet?: string;
+  /** The language of the information url and description. */
+  lang?: string;
+  /** The display title and localized canonical name to use when searching for this entity on Google search. */
+  title?: string;
 }
 export const GeolayerdataCommon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lang: S.optional(S.String),
     previewImageUrl: S.optional(S.String),
-    title: S.optional(S.String),
-    snippet: S.optional(S.String),
     snippetUrl: S.optional(S.String),
+    snippet: S.optional(S.String),
+    lang: S.optional(S.String),
+    title: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GeolayerdataCommon",
@@ -3045,36 +3045,36 @@ export const Geolayerdata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Geolayerdata" }) as any as S.Schema<Geolayerdata>;
 
 export interface GeoAnnotationdata {
-  /** URL for this resource. * */
-  selfLink?: string;
   /** Resource Type */
   kind?: string;
-  /** Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format). */
-  updated?: string;
-  /** The type of annotation this data is for. */
-  annotationType?: string;
-  /** Unique id for this annotation data. */
-  id?: string;
   /** The Layer id for this data. * */
   layerId?: string;
   /** Base64 encoded data for this annotation data. */
   encodedData?: string;
-  /** JSON encoded data for this geo annotation data. Emitted with name 'data' in JSON output. Either this or dict_data will be populated. */
-  data?: Geolayerdata;
   /** The volume id for this data. * */
   volumeId?: string;
+  /** Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format). */
+  updated?: string;
+  /** The type of annotation this data is for. */
+  annotationType?: string;
+  /** URL for this resource. * */
+  selfLink?: string;
+  /** JSON encoded data for this geo annotation data. Emitted with name 'data' in JSON output. Either this or dict_data will be populated. */
+  data?: Geolayerdata;
+  /** Unique id for this annotation data. */
+  id?: string;
 }
 export const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    selfLink: S.optional(S.String),
     kind: S.optional(S.String),
-    updated: S.optional(S.String),
-    annotationType: S.optional(S.String),
-    id: S.optional(S.String),
     layerId: S.optional(S.String),
     encodedData: S.optional(S.String),
-    data: S.optional(Geolayerdata),
     volumeId: S.optional(S.String),
+    updated: S.optional(S.String),
+    annotationType: S.optional(S.String),
+    selfLink: S.optional(S.String),
+    data: S.optional(Geolayerdata),
+    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GeoAnnotationdata",
@@ -3086,75 +3086,75 @@ export const GeoAnnotationdataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GeoAnnotationdataList>;
 
 export interface Annotationsdata {
-  /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
-  nextPageToken?: string;
-  /** Resource type */
-  kind?: string;
   /** A list of Annotation Data. */
   items: GeoAnnotationdataList;
   /** The total number of volume annotations found. */
   totalItems?: number;
+  /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
+  nextPageToken?: string;
+  /** Resource type */
+  kind?: string;
 }
 export const Annotationsdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
     items: GeoAnnotationdataList,
     totalItems: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "Annotationsdata",
 }) as any as S.Schema<Annotationsdata>;
 
 export interface ListLayersVolumeAnnotationsRequest {
-  /** The version of the volume annotations that you are requesting. */
-  volumeAnnotationsVersion?: string;
-  /** The content version for the requested volume. */
-  contentVersion: string;
+  /** Maximum number of results to return */
+  maxResults?: number;
+  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
+  updatedMax?: string;
   /** The end position to end retrieving data from. */
   endPosition?: string;
-  /** The end offset to end retrieving data from. */
-  endOffset?: string;
-  /** The value of the nextToken from the previous page. */
-  pageToken?: string;
+  /** The ID for the layer to get the annotations. */
+  layerId: string;
   /** Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false. */
   showDeleted?: boolean;
   /** String to identify the originator of this request. */
   source?: string;
-  /** Maximum number of results to return */
-  maxResults?: number;
-  /** The ID for the layer to get the annotations. */
-  layerId: string;
-  /** The start offset to start retrieving data from. */
-  startOffset?: string;
-  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
-  updatedMax?: string;
+  /** The content version for the requested volume. */
+  contentVersion: string;
   /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
   locale?: string;
-  /** The volume to retrieve annotations for. */
-  volumeId: string;
-  /** The start position to start retrieving data from. */
-  startPosition?: string;
+  /** The version of the volume annotations that you are requesting. */
+  volumeAnnotationsVersion?: string;
+  /** The start offset to start retrieving data from. */
+  startOffset?: string;
   /** RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive). */
   updatedMin?: string;
+  /** The volume to retrieve annotations for. */
+  volumeId: string;
+  /** The value of the nextToken from the previous page. */
+  pageToken?: string;
+  /** The start position to start retrieving data from. */
+  startPosition?: string;
+  /** The end offset to end retrieving data from. */
+  endOffset?: string;
 }
 export const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    volumeAnnotationsVersion: S.optional(S.String.pipe(T.Query())),
-    contentVersion: S.String.pipe(T.Query()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
     endPosition: S.optional(S.String.pipe(T.Query())),
-    endOffset: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    layerId: S.String.pipe(T.Label()),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
-    layerId: S.String.pipe(T.Label()),
-    startOffset: S.optional(S.String.pipe(T.Query())),
-    updatedMax: S.optional(S.String.pipe(T.Query())),
+    contentVersion: S.String.pipe(T.Query()),
     locale: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.String.pipe(T.Label()),
-    startPosition: S.optional(S.String.pipe(T.Query())),
+    volumeAnnotationsVersion: S.optional(S.String.pipe(T.Query())),
+    startOffset: S.optional(S.String.pipe(T.Query())),
     updatedMin: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    startPosition: S.optional(S.String.pipe(T.Query())),
+    endOffset: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3172,63 +3172,63 @@ export const VolumeannotationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VolumeannotationList>;
 
 export interface Volumeannotations {
-  /** The total number of volume annotations found. */
-  totalItems?: number;
-  /** The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book). */
-  version?: string;
-  /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
-  nextPageToken?: string;
-  /** Resource type */
-  kind?: string;
   /** A list of volume annotations. */
   items: VolumeannotationList;
+  /** The total number of volume annotations found. */
+  totalItems?: number;
+  /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
+  nextPageToken?: string;
+  /** The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book). */
+  version?: string;
+  /** Resource type */
+  kind?: string;
 }
 export const Volumeannotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalItems: S.optional(S.Number),
-    version: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
     items: VolumeannotationList,
+    totalItems: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+    version: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "Volumeannotations",
 }) as any as S.Schema<Volumeannotations>;
 
 export interface ListMylibraryAnnotationsRequest {
-  /** The content version for the requested volume. */
-  contentVersion?: string;
-  /** The volume to restrict annotations to. */
-  volumeId?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
-  /** The value of the nextToken from the previous page. */
-  pageToken?: string;
-  /** Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false. */
-  showDeleted?: boolean;
-  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
-  updatedMax?: string;
-  /** The layer ID to limit annotation by. */
-  layerId?: string;
-  /** The layer ID(s) to limit annotation by. */
-  layerIds?: StringList;
   /** Maximum number of results to return */
   maxResults?: number;
+  /** String to identify the originator of this request. */
+  source?: string;
+  /** Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false. */
+  showDeleted?: boolean;
+  /** The layer ID(s) to limit annotation by. */
+  layerIds?: StringList;
+  /** RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive). */
+  updatedMax?: string;
+  /** The content version for the requested volume. */
+  contentVersion?: string;
   /** RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive). */
   updatedMin?: string;
+  /** The value of the nextToken from the previous page. */
+  pageToken?: string;
+  /** The volume to restrict annotations to. */
+  volumeId?: string;
+  /** The layer ID to limit annotation by. */
+  layerId?: string;
 }
 export const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentVersion: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-    updatedMax: S.optional(S.String.pipe(T.Query())),
-    layerId: S.optional(S.String.pipe(T.Query())),
-    layerIds: S.optional(StringList.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    layerIds: S.optional(StringList.pipe(T.Query())),
+    updatedMax: S.optional(S.String.pipe(T.Query())),
+    contentVersion: S.optional(S.String.pipe(T.Query())),
     updatedMin: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
+    layerId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3246,21 +3246,21 @@ export const AnnotationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnnotationList>;
 
 export interface Annotations {
-  /** Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated. */
-  totalItems?: number;
-  /** Resource type. */
-  kind?: string;
   /** A list of annotations. */
   items: AnnotationList;
+  /** Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated. */
+  totalItems?: number;
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
   nextPageToken?: string;
+  /** Resource type. */
+  kind?: string;
 }
 export const Annotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalItems: S.optional(S.Number),
-    kind: S.optional(S.String),
     items: AnnotationList,
+    totalItems: S.optional(S.Number),
     nextPageToken: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "Annotations" }) as any as S.Schema<Annotations>;
 
@@ -3290,36 +3290,36 @@ export const ListMylibraryBookshelvesVolumesProjectionEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListMylibraryBookshelvesVolumesRequest {
-  /** ISO-3166-1 code to override the IP-based location. */
-  country?: string;
-  /** Full-text search query string in this bookshelf. */
-  q?: string;
   /** Maximum number of results to return */
   maxResults?: number;
-  /** Set to true to show pre-ordered books. Defaults to false. */
-  showPreorders?: boolean;
-  /** Restrict information returned to a set of selected fields. */
-  projection?: ListMylibraryBookshelvesVolumesProjectionEnum | (string & {});
-  /** The bookshelf ID or name retrieve volumes for. */
-  shelf: string;
-  /** Index of the first element to return (starts at 0) */
-  startIndex?: number;
   /** String to identify the originator of this request. */
   source?: string;
+  /** The bookshelf ID or name retrieve volumes for. */
+  shelf: string;
+  /** Full-text search query string in this bookshelf. */
+  q?: string;
+  /** Restrict information returned to a set of selected fields. */
+  projection?: ListMylibraryBookshelvesVolumesProjectionEnum | (string & {});
+  /** Set to true to show pre-ordered books. Defaults to false. */
+  showPreorders?: boolean;
+  /** ISO-3166-1 code to override the IP-based location. */
+  country?: string;
+  /** Index of the first element to return (starts at 0) */
+  startIndex?: number;
 }
 export const ListMylibraryBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      country: S.optional(S.String.pipe(T.Query())),
-      q: S.optional(S.String.pipe(T.Query())),
       maxResults: S.optional(S.Number.pipe(T.Query())),
-      showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+      source: S.optional(S.String.pipe(T.Query())),
+      shelf: S.String.pipe(T.Label()),
+      q: S.optional(S.String.pipe(T.Query())),
       projection: S.optional(
         ListMylibraryBookshelvesVolumesProjectionEnum.pipe(T.Query()),
       ),
-      shelf: S.String.pipe(T.Label()),
+      showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+      country: S.optional(S.String.pipe(T.Query())),
       startIndex: S.optional(S.Number.pipe(T.Query())),
-      source: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -3351,19 +3351,19 @@ export const ListOfflineMetadataDictionaryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOfflineMetadataDictionaryRequest>;
 
 export interface MetadataItemsItem {
+  language?: string;
+  encrypted_key?: string;
   version?: string;
   download_url?: string;
   size?: string;
-  encrypted_key?: string;
-  language?: string;
 }
 export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    language: S.optional(S.String),
+    encrypted_key: S.optional(S.String),
     version: S.optional(S.String),
     download_url: S.optional(S.String),
     size: S.optional(S.String),
-    encrypted_key: S.optional(S.String),
-    language: S.optional(S.String),
   }),
 ).annotate({
   identifier: "MetadataItemsItem",
@@ -3387,37 +3387,6 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
-export type ListVolumesPrintTypeEnum =
-  | "PRINT_TYPE_UNDEFINED"
-  | "ALL"
-  | "BOOKS"
-  | "MAGAZINES";
-export const ListVolumesPrintTypeEnum = /*@__PURE__*/ S.String;
-
-export type ListVolumesFilterEnum =
-  | "FILTER_UNDEFINED"
-  | "ebooks"
-  | "free-ebooks"
-  | "full"
-  | "paid-ebooks"
-  | "partial";
-export const ListVolumesFilterEnum = /*@__PURE__*/ S.String;
-
-export type ListVolumesOrderByEnum =
-  | "ORDER_BY_UNDEFINED"
-  | "newest"
-  | "relevance";
-export const ListVolumesOrderByEnum = /*@__PURE__*/ S.String;
-
-export type ListVolumesLibraryRestrictEnum =
-  | "LIBRARY_RESTRICT_UNDEFINED"
-  | "my-library"
-  | "no-restrict";
-export const ListVolumesLibraryRestrictEnum = /*@__PURE__*/ S.String;
-
-export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
-export const ListVolumesDownloadEnum = /*@__PURE__*/ S.String;
-
 export type ListVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
@@ -3430,55 +3399,86 @@ export type ListVolumesMaxAllowedMaturityRatingEnum =
   | "not-mature";
 export const ListVolumesMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
 
+export type ListVolumesPrintTypeEnum =
+  | "PRINT_TYPE_UNDEFINED"
+  | "ALL"
+  | "BOOKS"
+  | "MAGAZINES";
+export const ListVolumesPrintTypeEnum = /*@__PURE__*/ S.String;
+
+export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
+export const ListVolumesDownloadEnum = /*@__PURE__*/ S.String;
+
+export type ListVolumesFilterEnum =
+  | "FILTER_UNDEFINED"
+  | "ebooks"
+  | "free-ebooks"
+  | "full"
+  | "paid-ebooks"
+  | "partial";
+export const ListVolumesFilterEnum = /*@__PURE__*/ S.String;
+
+export type ListVolumesLibraryRestrictEnum =
+  | "LIBRARY_RESTRICT_UNDEFINED"
+  | "my-library"
+  | "no-restrict";
+export const ListVolumesLibraryRestrictEnum = /*@__PURE__*/ S.String;
+
+export type ListVolumesOrderByEnum =
+  | "ORDER_BY_UNDEFINED"
+  | "newest"
+  | "relevance";
+export const ListVolumesOrderByEnum = /*@__PURE__*/ S.String;
+
 export interface ListVolumesRequest {
-  /** Restrict to books or magazines. */
-  printType?: ListVolumesPrintTypeEnum | (string & {});
-  /** Restrict results to books with this language code. */
-  langRestrict?: string;
-  /** Set to true to show books available for preorder. Defaults to false. */
-  showPreorders?: boolean;
-  /** Filter search results. */
-  filter?: ListVolumesFilterEnum | (string & {});
-  /** Sort search results. */
-  orderBy?: ListVolumesOrderByEnum | (string & {});
-  /** Restrict search to this user's library. */
-  libraryRestrict?: ListVolumesLibraryRestrictEnum | (string & {});
-  /** Full-text search query string. */
-  q: string;
-  /** Restrict to volumes by download availability. */
-  download?: ListVolumesDownloadEnum | (string & {});
   /** String to identify the originator of this request. */
   source?: string;
   /** Restrict information returned to a set of selected fields. */
   projection?: ListVolumesProjectionEnum | (string & {});
-  /** Maximum number of results to return. */
-  maxResults?: number;
+  /** Set to true to show books available for preorder. Defaults to false. */
+  showPreorders?: boolean;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
   maxAllowedMaturityRating?:
     | ListVolumesMaxAllowedMaturityRatingEnum
     | (string & {});
+  /** Restrict results to books with this language code. */
+  langRestrict?: string;
   /** Index of the first result to return (starts at 0) */
   startIndex?: number;
+  /** Restrict to books or magazines. */
+  printType?: ListVolumesPrintTypeEnum | (string & {});
+  /** Restrict to volumes by download availability. */
+  download?: ListVolumesDownloadEnum | (string & {});
+  /** Filter search results. */
+  filter?: ListVolumesFilterEnum | (string & {});
+  /** Restrict search to this user's library. */
+  libraryRestrict?: ListVolumesLibraryRestrictEnum | (string & {});
+  /** Maximum number of results to return. */
+  maxResults?: number;
+  /** Full-text search query string. */
+  q: string;
+  /** Sort search results. */
+  orderBy?: ListVolumesOrderByEnum | (string & {});
   /** Restrict and brand results for partner ID. */
   partner?: string;
 }
 export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    printType: S.optional(ListVolumesPrintTypeEnum.pipe(T.Query())),
-    langRestrict: S.optional(S.String.pipe(T.Query())),
-    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
-    filter: S.optional(ListVolumesFilterEnum.pipe(T.Query())),
-    orderBy: S.optional(ListVolumesOrderByEnum.pipe(T.Query())),
-    libraryRestrict: S.optional(ListVolumesLibraryRestrictEnum.pipe(T.Query())),
-    q: S.String.pipe(T.Query()),
-    download: S.optional(ListVolumesDownloadEnum.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
     projection: S.optional(ListVolumesProjectionEnum.pipe(T.Query())),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
+    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
     maxAllowedMaturityRating: S.optional(
       ListVolumesMaxAllowedMaturityRatingEnum.pipe(T.Query()),
     ),
+    langRestrict: S.optional(S.String.pipe(T.Query())),
     startIndex: S.optional(S.Number.pipe(T.Query())),
+    printType: S.optional(ListVolumesPrintTypeEnum.pipe(T.Query())),
+    download: S.optional(ListVolumesDownloadEnum.pipe(T.Query())),
+    filter: S.optional(ListVolumesFilterEnum.pipe(T.Query())),
+    libraryRestrict: S.optional(ListVolumesLibraryRestrictEnum.pipe(T.Query())),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    q: S.String.pipe(T.Query()),
+    orderBy: S.optional(ListVolumesOrderByEnum.pipe(T.Query())),
     partner: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -3508,28 +3508,28 @@ export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
 export interface ListVolumesAssociatedRequest {
   /** Association type. */
   association?: ListVolumesAssociatedAssociationEnum | (string & {});
-  /** ID of the source volume. */
-  volumeId: string;
   /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
   maxAllowedMaturityRating?:
     | ListVolumesAssociatedMaxAllowedMaturityRatingEnum
     | (string & {});
-  /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
-  locale?: string;
+  /** ID of the source volume. */
+  volumeId: string;
   /** String to identify the originator of this request. */
   source?: string;
+  /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
+  locale?: string;
 }
 export const ListVolumesAssociatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     association: S.optional(
       ListVolumesAssociatedAssociationEnum.pipe(T.Query()),
     ),
-    volumeId: S.String.pipe(T.Label()),
     maxAllowedMaturityRating: S.optional(
       ListVolumesAssociatedMaxAllowedMaturityRatingEnum.pipe(T.Query()),
     ),
-    locale: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
+    locale: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3540,20 +3540,6 @@ export const ListVolumesAssociatedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVolumesAssociatedRequest",
 }) as any as S.Schema<ListVolumesAssociatedRequest>;
-
-export type ListVolumesMybooksProcessingStateEnum =
-  | "PROCESSING_STATE_UNDEFINED"
-  | "COMPLETED_FAILED"
-  | "COMPLETED_SUCCESS"
-  | "RUNNING";
-export const ListVolumesMybooksProcessingStateEnum = /*@__PURE__*/ S.String;
-
-export type ListVolumesMybooksProcessingStateEnumList = Array<
-  ListVolumesMybooksProcessingStateEnum | (string & {})
->;
-export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
-  ListVolumesMybooksProcessingStateEnum,
-) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
 
 export type ListVolumesMybooksAcquireMethodEnum =
   | "ACQUIRE_METHOD_UNDEFINED"
@@ -3574,35 +3560,49 @@ export const ListVolumesMybooksAcquireMethodEnumList = /*@__PURE__*/ S.Array(
   ListVolumesMybooksAcquireMethodEnum,
 ) as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
 
+export type ListVolumesMybooksProcessingStateEnum =
+  | "PROCESSING_STATE_UNDEFINED"
+  | "COMPLETED_FAILED"
+  | "COMPLETED_SUCCESS"
+  | "RUNNING";
+export const ListVolumesMybooksProcessingStateEnum = /*@__PURE__*/ S.String;
+
+export type ListVolumesMybooksProcessingStateEnumList = Array<
+  ListVolumesMybooksProcessingStateEnum | (string & {})
+>;
+export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
+  ListVolumesMybooksProcessingStateEnum,
+) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
+
 export interface ListVolumesMybooksRequest {
-  /** ISO-3166-1 code to override the IP-based location. */
-  country?: string;
-  /** The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod. */
-  processingState?: ListVolumesMybooksProcessingStateEnumList;
   /** Maximum number of results to return. */
   maxResults?: number;
-  /** Index of the first result to return (starts at 0) */
-  startIndex?: number;
+  /** String to identify the originator of this request. */
+  source?: string;
   /** How the book was acquired */
   acquireMethod?: ListVolumesMybooksAcquireMethodEnumList;
   /** ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for generating recommendations. */
   locale?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
+  /** ISO-3166-1 code to override the IP-based location. */
+  country?: string;
+  /** The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod. */
+  processingState?: ListVolumesMybooksProcessingStateEnumList;
+  /** Index of the first result to return (starts at 0) */
+  startIndex?: number;
 }
 export const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    country: S.optional(S.String.pipe(T.Query())),
-    processingState: S.optional(
-      ListVolumesMybooksProcessingStateEnumList.pipe(T.Query()),
-    ),
     maxResults: S.optional(S.Number.pipe(T.Query())),
-    startIndex: S.optional(S.Number.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
     acquireMethod: S.optional(
       ListVolumesMybooksAcquireMethodEnumList.pipe(T.Query()),
     ),
     locale: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
+    country: S.optional(S.String.pipe(T.Query())),
+    processingState: S.optional(
+      ListVolumesMybooksProcessingStateEnumList.pipe(T.Query()),
+    ),
+    startIndex: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3622,22 +3622,22 @@ export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListVolumesRecommendedRequest {
-  /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
-  maxAllowedMaturityRating?:
-    | ListVolumesRecommendedMaxAllowedMaturityRatingEnum
-    | (string & {});
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
   /** String to identify the originator of this request. */
   source?: string;
+  /** The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out. */
+  maxAllowedMaturityRating?:
+    | ListVolumesRecommendedMaxAllowedMaturityRatingEnum
+    | (string & {});
 }
 export const ListVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    locale: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
     maxAllowedMaturityRating: S.optional(
       ListVolumesRecommendedMaxAllowedMaturityRatingEnum.pipe(T.Query()),
     ),
-    locale: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3666,29 +3666,29 @@ export const ListVolumesUseruploadedProcessingStateEnumList =
   ) as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
 
 export interface ListVolumesUseruploadedRequest {
-  /** Maximum number of results to return. */
-  maxResults?: number;
-  /** The processing state of the user uploaded volumes to be returned. */
-  processingState?: ListVolumesUseruploadedProcessingStateEnumList;
-  /** Index of the first result to return (starts at 0) */
-  startIndex?: number;
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
+  /** Maximum number of results to return. */
+  maxResults?: number;
   /** String to identify the originator of this request. */
   source?: string;
   /** The ids of the volumes to be returned. If not specified all that match the processingState are returned. */
   volumeId?: StringList;
+  /** The processing state of the user uploaded volumes to be returned. */
+  processingState?: ListVolumesUseruploadedProcessingStateEnumList;
+  /** Index of the first result to return (starts at 0) */
+  startIndex?: number;
 }
 export const ListVolumesUseruploadedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    locale: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(StringList.pipe(T.Query())),
     processingState: S.optional(
       ListVolumesUseruploadedProcessingStateEnumList.pipe(T.Query()),
     ),
     startIndex: S.optional(S.Number.pipe(T.Query())),
-    locale: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
-    volumeId: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3701,22 +3701,22 @@ export const ListVolumesUseruploadedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVolumesUseruploadedRequest>;
 
 export interface MoveVolumeMylibraryBookshelvesRequest {
-  /** ID of volume to move. */
-  volumeId: string;
-  /** Position on shelf to move the item (0 puts the item before the current first item, 1 puts it between the first and the second and so on.) */
-  volumePosition: number;
   /** String to identify the originator of this request. */
   source?: string;
+  /** ID of volume to move. */
+  volumeId: string;
   /** ID of bookshelf with the volume. */
   shelf: string;
+  /** Position on shelf to move the item (0 puts the item before the current first item, 1 puts it between the first and the second and so on.) */
+  volumePosition: number;
 }
 export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      volumeId: S.String.pipe(T.Query()),
-      volumePosition: S.Number.pipe(T.Query()),
       source: S.optional(S.String.pipe(T.Query())),
+      volumeId: S.String.pipe(T.Query()),
       shelf: S.String.pipe(T.Label()),
+      volumePosition: S.Number.pipe(T.Query()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3735,21 +3735,21 @@ export type RateVolumesRecommendedRatingEnum =
 export const RateVolumesRecommendedRatingEnum = /*@__PURE__*/ S.String;
 
 export interface RateVolumesRecommendedRequest {
-  /** ID of the source volume. */
-  volumeId: string;
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
   /** Rating to be given to the volume. */
   rating: RateVolumesRecommendedRatingEnum | (string & {});
   /** String to identify the originator of this request. */
   source?: string;
+  /** ID of the source volume. */
+  volumeId: string;
 }
 export const RateVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    volumeId: S.String.pipe(T.Query()),
     locale: S.optional(S.String.pipe(T.Query())),
     rating: RateVolumesRecommendedRatingEnum.pipe(T.Query()),
     source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.String.pipe(T.Query()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3773,22 +3773,22 @@ export const BooksVolumesRecommendedRateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BooksVolumesRecommendedRateResponse>;
 
 export interface ReleaseDownloadAccessMyconfigRequest {
-  /** The device/version ID from which to release the restriction. */
-  cpksver: string;
   /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */
   locale?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** The volume(s) to release restrictions for. */
   volumeIds: StringList;
+  /** The device/version ID from which to release the restriction. */
+  cpksver: string;
+  /** String to identify the originator of this request. */
+  source?: string;
 }
 export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      cpksver: S.String.pipe(T.Query()),
       locale: S.optional(S.String.pipe(T.Query())),
-      source: S.optional(S.String.pipe(T.Query())),
       volumeIds: StringList.pipe(T.Query()),
+      cpksver: S.String.pipe(T.Query()),
+      source: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3806,15 +3806,15 @@ export const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DownloadAccessRestrictionList>;
 
 export interface DownloadAccesses {
-  /** Resource type. */
-  kind?: string;
   /** A list of download access responses. */
   downloadAccessList?: DownloadAccessRestrictionList;
+  /** Resource type. */
+  kind?: string;
 }
 export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     downloadAccessList: S.optional(DownloadAccessRestrictionList),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DownloadAccesses",
@@ -3827,24 +3827,24 @@ export const RemoveVolumeMylibraryBookshelvesReasonEnum =
   /*@__PURE__*/ S.String;
 
 export interface RemoveVolumeMylibraryBookshelvesRequest {
-  /** ID of bookshelf from which to remove a volume. */
-  shelf: string;
   /** The reason for which the book is removed from the library. */
   reason?: RemoveVolumeMylibraryBookshelvesReasonEnum | (string & {});
-  /** ID of volume to remove. */
-  volumeId: string;
+  /** ID of bookshelf from which to remove a volume. */
+  shelf: string;
   /** String to identify the originator of this request. */
   source?: string;
+  /** ID of volume to remove. */
+  volumeId: string;
 }
 export const RemoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      shelf: S.String.pipe(T.Label()),
       reason: S.optional(
         RemoveVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query()),
       ),
-      volumeId: S.String.pipe(T.Query()),
+      shelf: S.String.pipe(T.Label()),
       source: S.optional(S.String.pipe(T.Query())),
+      volumeId: S.String.pipe(T.Query()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3864,29 +3864,29 @@ export type RequestAccessMyconfigLicenseTypesEnum =
 export const RequestAccessMyconfigLicenseTypesEnum = /*@__PURE__*/ S.String;
 
 export interface RequestAccessMyconfigRequest {
-  /** The type of access license to request. If not specified, the default is BOTH. */
-  licenseTypes?: RequestAccessMyconfigLicenseTypesEnum | (string & {});
   /** The device/version ID from which to request the restrictions. */
   cpksver: string;
-  /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */
-  locale?: string;
   /** The client nonce value. */
   nonce: string;
   /** String to identify the originator of this request. */
   source: string;
   /** The volume to request concurrent/download restrictions for. */
   volumeId: string;
+  /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */
+  locale?: string;
+  /** The type of access license to request. If not specified, the default is BOTH. */
+  licenseTypes?: RequestAccessMyconfigLicenseTypesEnum | (string & {});
 }
 export const RequestAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    licenseTypes: S.optional(
-      RequestAccessMyconfigLicenseTypesEnum.pipe(T.Query()),
-    ),
     cpksver: S.String.pipe(T.Query()),
-    locale: S.optional(S.String.pipe(T.Query())),
     nonce: S.String.pipe(T.Query()),
     source: S.String.pipe(T.Query()),
     volumeId: S.String.pipe(T.Query()),
+    locale: S.optional(S.String.pipe(T.Query())),
+    licenseTypes: S.optional(
+      RequestAccessMyconfigLicenseTypesEnum.pipe(T.Query()),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3899,42 +3899,42 @@ export const RequestAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestAccessMyconfigRequest>;
 
 export interface ConcurrentAccessRestriction {
-  /** Response signature. */
-  signature?: string;
-  /** Identifies the volume for which this entry applies. */
-  volumeId?: string;
-  /** Client app identifier for verification. Download access and client-validation only. */
-  source?: string;
-  /** Error/warning message. */
-  message?: string;
-  /** Error/warning reason code. */
-  reasonCode?: string;
-  /** Resource type. */
-  kind?: string;
-  /** Whether access is granted for this (user, device, volume). */
-  deviceAllowed?: boolean;
-  /** Time in seconds for license auto-expiration. */
-  timeWindowSeconds?: number;
-  /** The maximum number of concurrent access licenses for this volume. */
-  maxConcurrentDevices?: number;
-  /** Client nonce for verification. Download access and client-validation only. */
-  nonce?: string;
   /** Whether this volume has any concurrent access restrictions. */
   restricted?: boolean;
+  /** Client app identifier for verification. Download access and client-validation only. */
+  source?: string;
+  /** Time in seconds for license auto-expiration. */
+  timeWindowSeconds?: number;
+  /** Whether access is granted for this (user, device, volume). */
+  deviceAllowed?: boolean;
+  /** Error/warning reason code. */
+  reasonCode?: string;
+  /** Identifies the volume for which this entry applies. */
+  volumeId?: string;
+  /** The maximum number of concurrent access licenses for this volume. */
+  maxConcurrentDevices?: number;
+  /** Response signature. */
+  signature?: string;
+  /** Client nonce for verification. Download access and client-validation only. */
+  nonce?: string;
+  /** Error/warning message. */
+  message?: string;
+  /** Resource type. */
+  kind?: string;
 }
 export const ConcurrentAccessRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    signature: S.optional(S.String),
-    volumeId: S.optional(S.String),
-    source: S.optional(S.String),
-    message: S.optional(S.String),
-    reasonCode: S.optional(S.String),
-    kind: S.optional(S.String),
-    deviceAllowed: S.optional(S.Boolean),
-    timeWindowSeconds: S.optional(S.Number),
-    maxConcurrentDevices: S.optional(S.Number),
-    nonce: S.optional(S.String),
     restricted: S.optional(S.Boolean),
+    source: S.optional(S.String),
+    timeWindowSeconds: S.optional(S.Number),
+    deviceAllowed: S.optional(S.Boolean),
+    reasonCode: S.optional(S.String),
+    volumeId: S.optional(S.String),
+    maxConcurrentDevices: S.optional(S.Number),
+    signature: S.optional(S.String),
+    nonce: S.optional(S.String),
+    message: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConcurrentAccessRestriction",
@@ -3943,16 +3943,16 @@ export const ConcurrentAccessRestriction = /*@__PURE__*/ S.suspend(() =>
 export interface RequestAccessData {
   /** A download access response. */
   downloadAccess?: DownloadAccessRestriction;
-  /** Resource type. */
-  kind?: string;
   /** A concurrent access response. */
   concurrentAccess?: ConcurrentAccessRestriction;
+  /** Resource type. */
+  kind?: string;
 }
 export const RequestAccessData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadAccess: S.optional(DownloadAccessRestriction),
-    kind: S.optional(S.String),
     concurrentAccess: S.optional(ConcurrentAccessRestriction),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "RequestAccessData",
@@ -3970,33 +3970,33 @@ export const SetPositionMylibraryReadingpositionsActionEnum =
   /*@__PURE__*/ S.String;
 
 export interface SetPositionMylibraryReadingpositionsRequest {
-  /** Action that caused this reading position to be set. */
-  action?: SetPositionMylibraryReadingpositionsActionEnum | (string & {});
-  /** Volume content version for which this reading position applies. */
-  contentVersion?: string;
-  /** RFC 3339 UTC format timestamp associated with this reading position. */
-  timestamp: string;
-  /** Random persistent device cookie optional on set position. */
-  deviceCookie?: string;
-  /** ID of volume for which to update the reading position. */
-  volumeId: string;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** Position string for the new volume reading position. */
   position: string;
+  /** ID of volume for which to update the reading position. */
+  volumeId: string;
+  /** Action that caused this reading position to be set. */
+  action?: SetPositionMylibraryReadingpositionsActionEnum | (string & {});
+  /** String to identify the originator of this request. */
+  source?: string;
+  /** Volume content version for which this reading position applies. */
+  contentVersion?: string;
+  /** Random persistent device cookie optional on set position. */
+  deviceCookie?: string;
+  /** RFC 3339 UTC format timestamp associated with this reading position. */
+  timestamp: string;
 }
 export const SetPositionMylibraryReadingpositionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      position: S.String.pipe(T.Query()),
+      volumeId: S.String.pipe(T.Label()),
       action: S.optional(
         SetPositionMylibraryReadingpositionsActionEnum.pipe(T.Query()),
       ),
-      contentVersion: S.optional(S.String.pipe(T.Query())),
-      timestamp: S.String.pipe(T.Query()),
-      deviceCookie: S.optional(S.String.pipe(T.Query())),
-      volumeId: S.String.pipe(T.Label()),
       source: S.optional(S.String.pipe(T.Query())),
-      position: S.String.pipe(T.Query()),
+      contentVersion: S.optional(S.String.pipe(T.Query())),
+      deviceCookie: S.optional(S.String.pipe(T.Query())),
+      timestamp: S.String.pipe(T.Query()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4009,18 +4009,18 @@ export const SetPositionMylibraryReadingpositionsRequest =
   }) as any as S.Schema<SetPositionMylibraryReadingpositionsRequest>;
 
 export interface ShareFamilysharingRequest {
-  /** The volume to share. */
-  volumeId?: string;
-  /** String to identify the originator of this request. */
-  source?: string;
   /** The docid to share. */
   docId?: string;
+  /** String to identify the originator of this request. */
+  source?: string;
+  /** The volume to share. */
+  volumeId?: string;
 }
 export const ShareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    volumeId: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.String.pipe(T.Query())),
     docId: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.String.pipe(T.Query())),
+    volumeId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4033,17 +4033,17 @@ export const ShareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareFamilysharingRequest>;
 
 export interface SummaryMylibraryAnnotationsRequest {
-  /** Volume id to get the summary for. */
-  volumeId: string;
   /** Array of layer IDs to get the summary for. */
   layerIds: StringList;
+  /** Volume id to get the summary for. */
+  volumeId: string;
   /** Optional. String to identify the originator of this request. */
   source?: string;
 }
 export const SummaryMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    volumeId: S.String.pipe(T.Query()),
     layerIds: StringList.pipe(T.Query()),
+    volumeId: S.String.pipe(T.Query()),
     source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -4057,19 +4057,19 @@ export const SummaryMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryMylibraryAnnotationsRequest>;
 
 export interface AnnotationsSummaryLayersItem {
+  layerId?: string;
   remainingCharacterCount?: number;
-  allowedCharacterCount?: number;
   updated?: string;
   limitType?: string;
-  layerId?: string;
+  allowedCharacterCount?: number;
 }
 export const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    layerId: S.optional(S.String),
     remainingCharacterCount: S.optional(S.Number),
-    allowedCharacterCount: S.optional(S.Number),
     updated: S.optional(S.String),
     limitType: S.optional(S.String),
-    layerId: S.optional(S.String),
+    allowedCharacterCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "AnnotationsSummaryLayersItem",
@@ -4082,13 +4082,13 @@ export const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AnnotationsSummaryLayersItemList>;
 
 export interface AnnotationsSummary {
-  layers?: AnnotationsSummaryLayersItemList;
   kind?: string;
+  layers?: AnnotationsSummaryLayersItemList;
 }
 export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    layers: S.optional(AnnotationsSummaryLayersItemList),
     kind: S.optional(S.String),
+    layers: S.optional(AnnotationsSummaryLayersItemList),
   }),
 ).annotate({
   identifier: "AnnotationsSummary",
@@ -4109,32 +4109,32 @@ export const SyncVolumeLicensesMyconfigFeaturesEnumList = /*@__PURE__*/ S.Array(
 export interface SyncVolumeLicensesMyconfigRequest {
   /** ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US. */
   locale?: string;
-  /** The client nonce value. */
-  nonce: string;
-  /** String to identify the originator of this request. */
-  source: string;
   /** The volume(s) to request download restrictions for. */
   volumeIds?: StringList;
-  /** List of features supported by the client, i.e., 'RENTALS' */
-  features?: SyncVolumeLicensesMyconfigFeaturesEnumList;
-  /** Set to true to show pre-ordered books. Defaults to false. */
-  showPreorders?: boolean;
   /** Set to true to include non-comics series. Defaults to false. */
   includeNonComicsSeries?: boolean;
+  /** Set to true to show pre-ordered books. Defaults to false. */
+  showPreorders?: boolean;
+  /** String to identify the originator of this request. */
+  source: string;
+  /** List of features supported by the client, i.e., 'RENTALS' */
+  features?: SyncVolumeLicensesMyconfigFeaturesEnumList;
+  /** The client nonce value. */
+  nonce: string;
   /** The device/version ID from which to release the restriction. */
   cpksver: string;
 }
 export const SyncVolumeLicensesMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
-    nonce: S.String.pipe(T.Query()),
-    source: S.String.pipe(T.Query()),
     volumeIds: S.optional(StringList.pipe(T.Query())),
+    includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
+    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
+    source: S.String.pipe(T.Query()),
     features: S.optional(
       SyncVolumeLicensesMyconfigFeaturesEnumList.pipe(T.Query()),
     ),
-    showPreorders: S.optional(S.Boolean.pipe(T.Query())),
-    includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
+    nonce: S.String.pipe(T.Query()),
     cpksver: S.String.pipe(T.Query()),
   }).pipe(
     T.Http({

@@ -96,6 +96,17 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
+/** The source of the Binding. */
+export interface Source {
+  /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
+  identifier?: string;
+}
+export const Source = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.optional(S.String),
+  }),
+).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
+
 /** The target of the Binding. */
 export interface Target {
   /** The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
@@ -131,54 +142,43 @@ export const AuthProviderBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthProviderBinding",
 }) as any as S.Schema<AuthProviderBinding>;
 
-/** The source of the Binding. */
-export interface Source {
-  /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
-  identifier?: string;
-}
-export const Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.optional(S.String),
-  }),
-).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
-
 /** Represents a user-defined Binding. */
 export interface Binding {
-  /** Output only. Timestamp when this binding was created. */
-  createTime?: string;
-  /** Required. The target Agent Registry Resource of the Binding. */
-  target?: Target;
-  /** Optional. User-defined description of a Binding. Can have a maximum length of `2048` characters. */
-  description?: string;
-  /** Output only. Timestamp when this binding was last updated. */
-  updateTime?: string;
-  /** The binding for AuthProvider. */
-  authProviderBinding?: AuthProviderBinding;
-  /** Required. Identifier. The resource name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
-  name?: string;
-  /** Optional. User-defined display name for the Binding. Can have a maximum length of `63` characters. */
-  displayName?: string;
   /** Required. The target Agent of the Binding. */
   source?: Source;
+  /** Optional. User-defined display name for the Binding. Can have a maximum length of `63` characters. */
+  displayName?: string;
+  /** Optional. User-defined description of a Binding. Can have a maximum length of `2048` characters. */
+  description?: string;
+  /** Required. The target Agent Registry Resource of the Binding. */
+  target?: Target;
+  /** Output only. Timestamp when this binding was last updated. */
+  updateTime?: string;
+  /** Required. Identifier. The resource name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
+  name?: string;
+  /** Output only. Timestamp when this binding was created. */
+  createTime?: string;
+  /** The binding for AuthProvider. */
+  authProviderBinding?: AuthProviderBinding;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    target: S.optional(Target),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    authProviderBinding: S.optional(AuthProviderBinding),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
     source: S.optional(Source),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    target: S.optional(Target),
+    updateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+    authProviderBinding: S.optional(AuthProviderBinding),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export interface CreateProjectsLocationsBindingsRequest {
-  /** Required. The ID to use for the binding, which will become the final component of the binding's resource name. This value should be 4-63 characters, and must conform to RFC-1034. Specifically, it must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. */
-  bindingId?: string;
   /** Required. The project and location to create the Binding in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
+  /** Required. The ID to use for the binding, which will become the final component of the binding's resource name. This value should be 4-63 characters, and must conform to RFC-1034. Specifically, it must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. */
+  bindingId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Request body */
@@ -187,8 +187,8 @@ export interface CreateProjectsLocationsBindingsRequest {
 export const CreateProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bindingId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      bindingId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Binding.pipe(T.HttpBody())),
     }).pipe(
@@ -215,43 +215,83 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    message: S.optional(S.String),
     code: S.optional(S.Number),
+    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(Status),
     done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+export type McpServerSpecTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NO_SPEC"
+  | "TOOL_SPEC";
+export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
+
+/** The spec of the MCP Server. */
+export interface McpServerSpec {
+  /** Required. The type of the MCP Server spec content. */
+  type?: McpServerSpecTypeEnum | (string & {});
+  /** Optional. The content of the MCP Server spec. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
+  content?: DocumentMap;
+}
+export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(McpServerSpecTypeEnum),
+    content: S.optional(DocumentMap),
+  }),
+).annotate({ identifier: "McpServerSpec" }) as any as S.Schema<McpServerSpec>;
+
+export type AgentSpecTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "NO_SPEC"
+  | "A2A_AGENT_CARD";
+export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
+
+/** The spec of the agent. */
+export interface AgentSpec {
+  /** Required. The type of the agent spec content. */
+  type?: AgentSpecTypeEnum | (string & {});
+  /** Optional. The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
+  content?: DocumentMap;
+}
+export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(AgentSpecTypeEnum),
+    content: S.optional(DocumentMap),
+  }),
+).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
 
 export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
 export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
@@ -269,26 +309,6 @@ export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "EndpointSpec" }) as any as S.Schema<EndpointSpec>;
-
-export type McpServerSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | "TOOL_SPEC";
-export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
-
-/** The spec of the MCP Server. */
-export interface McpServerSpec {
-  /** Optional. The content of the MCP Server spec. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
-  content?: DocumentMap;
-  /** Required. The type of the MCP Server spec content. */
-  type?: McpServerSpecTypeEnum | (string & {});
-}
-export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(McpServerSpecTypeEnum),
-  }),
-).annotate({ identifier: "McpServerSpec" }) as any as S.Schema<McpServerSpec>;
 
 export type InterfaceProtocolBindingEnum =
   | "PROTOCOL_BINDING_UNSPECIFIED"
@@ -316,80 +336,60 @@ export const InterfaceList = /*@__PURE__*/ S.Array(
   Interface,
 ) as any as S.Schema<InterfaceList>;
 
-export type AgentSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | "A2A_AGENT_CARD";
-export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
-
-/** The spec of the agent. */
-export interface AgentSpec {
-  /** Optional. The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type. The content size is limited to `10KB`. */
-  content?: DocumentMap;
-  /** Required. The type of the agent spec content. */
-  type?: AgentSpecTypeEnum | (string & {});
-}
-export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(DocumentMap),
-    type: S.optional(AgentSpecTypeEnum),
-  }),
-).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
-
 /** Represents a user-defined Service. */
 export interface Service {
-  /** Output only. Create time. */
-  createTime?: string;
-  /** Optional. The spec of the Endpoint. When `endpoint_spec` is set, the type of the service is Endpoint. */
-  endpointSpec?: EndpointSpec;
-  /** Output only. Update time. */
-  updateTime?: string;
-  /** Identifier. The resource name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
-  name?: string;
   /** Optional. The spec of the MCP Server. When `mcp_server_spec` is set, the type of the service is MCP Server. */
   mcpServerSpec?: McpServerSpec;
-  /** Optional. The connection details for the Service. */
-  interfaces?: InterfaceList;
-  /** Optional. The spec of the Agent. When `agent_spec` is set, the type of the service is Agent. */
-  agentSpec?: AgentSpec;
-  /** Optional. User-defined description of an Service. Can have a maximum length of `2048` characters. */
-  description?: string;
   /** Optional. User-defined display name for the Service. Can have a maximum length of `63` characters. */
   displayName?: string;
+  /** Identifier. The resource name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
+  name?: string;
+  /** Optional. The spec of the Agent. When `agent_spec` is set, the type of the service is Agent. */
+  agentSpec?: AgentSpec;
+  /** Optional. The spec of the Endpoint. When `endpoint_spec` is set, the type of the service is Endpoint. */
+  endpointSpec?: EndpointSpec;
+  /** Optional. User-defined description of an Service. Can have a maximum length of `2048` characters. */
+  description?: string;
   /** Output only. The resource name of the resulting Agent, MCP Server, or Endpoint. Format: * `projects/{project}/locations/{location}/mcpServers/{mcp_server}` * `projects/{project}/locations/{location}/agents/{agent}` * `projects/{project}/locations/{location}/endpoints/{endpoint}` */
   registryResource?: string;
+  /** Output only. Create time. */
+  createTime?: string;
+  /** Optional. The connection details for the Service. */
+  interfaces?: InterfaceList;
+  /** Output only. Update time. */
+  updateTime?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    endpointSpec: S.optional(EndpointSpec),
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
     mcpServerSpec: S.optional(McpServerSpec),
-    interfaces: S.optional(InterfaceList),
-    agentSpec: S.optional(AgentSpec),
-    description: S.optional(S.String),
     displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    agentSpec: S.optional(AgentSpec),
+    endpointSpec: S.optional(EndpointSpec),
+    description: S.optional(S.String),
     registryResource: S.optional(S.String),
+    createTime: S.optional(S.String),
+    interfaces: S.optional(InterfaceList),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export interface CreateProjectsLocationsServicesRequest {
-  /** Required. The project and location to create the Service in. Expected format: `projects/{project}/locations/{location}`. */
-  parent: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The ID to use for the service, which will become the final component of the service's resource name. This value should be 4-63 characters, and valid characters are `/a-z-/`. */
   serviceId?: string;
+  /** Required. The project and location to create the Service in. Expected format: `projects/{project}/locations/{location}`. */
+  parent: string;
   /** Request body */
   body?: Service;
 }
 export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
       serviceId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -401,234 +401,6 @@ export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateProjectsLocationsServicesRequest",
 }) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
-
-/** Direct write-only raw archive payload upload. */
-export interface ArchiveUploadSource {
-  /** Required. Input only. Write-only raw ZIP/TAR archive payload bytes containing the skill package. */
-  archiveContent?: string;
-}
-export const ArchiveUploadSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archiveContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArchiveUploadSource",
-}) as any as S.Schema<ArchiveUploadSource>;
-
-/** Specifications for Cloud Storage objects. */
-export interface GcsSource {
-  /** Required. Cloud Storage object URI. Format: `gs://{bucket_name}/{object_name}` */
-  uri?: string;
-  /** Optional. Cloud Storage object generation ID. If not specified, the latest generation is used. */
-  generation?: string;
-}
-export const GcsSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    generation: S.optional(S.String),
-  }),
-).annotate({ identifier: "GcsSource" }) as any as S.Schema<GcsSource>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-/** Structured metadata attributes extracted from the package's local SKILL.md frontmatter. */
-export interface Frontmatter {
-  /** Required. Functional description. */
-  description?: string;
-  /** Optional. Environmental dependencies or local sidecars. */
-  compatibility?: string;
-  /** Required. The name of the skill. */
-  name?: string;
-  /** Optional. Extensible flattened map mapping custom tags, authors, and version parameters. */
-  metadata?: StringMap;
-  /** Optional. License. */
-  license?: string;
-}
-export const Frontmatter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    compatibility: S.optional(S.String),
-    name: S.optional(S.String),
-    metadata: S.optional(StringMap),
-    license: S.optional(S.String),
-  }),
-).annotate({ identifier: "Frontmatter" }) as any as S.Schema<Frontmatter>;
-
-export type SkillRevisionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING";
-export const SkillRevisionStateEnum = /*@__PURE__*/ S.String;
-
-/** Represents an immutable, versioned snapshot of a Skill package. */
-export interface SkillRevision {
-  /** Optional. Immutable. Direct write-only raw archive upload source. */
-  archiveUploadSource?: ArchiveUploadSource;
-  /** Optional. Immutable. Cloud Storage object generation URI. */
-  gcsSource?: GcsSource;
-  /** Output only. Universally unique identifier (UUID4) for the skill revision. */
-  uid?: string;
-  /** Output only. Extracted YAML frontmatter configuration snapshot. */
-  frontmatter?: Frontmatter;
-  /** Output only. Size of the compiled zip payload in bytes (assists client download progress). */
-  sizeBytes?: string;
-  /** Output only. Revision creation timestamp. */
-  createTime?: string;
-  /** Identifier. Resource name of the SkillRevision. Format: `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}` */
-  name?: string;
-  /** Output only. Cryptographic SHA-256 integrity and deduplication digest of the payload zip. */
-  sha256Hash?: string;
-  /** Output only. The system-managed lifecycle state of this revision. */
-  state?: SkillRevisionStateEnum | (string & {});
-}
-export const SkillRevision = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    archiveUploadSource: S.optional(ArchiveUploadSource),
-    gcsSource: S.optional(GcsSource),
-    uid: S.optional(S.String),
-    frontmatter: S.optional(Frontmatter),
-    sizeBytes: S.optional(S.String),
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
-    sha256Hash: S.optional(S.String),
-    state: S.optional(SkillRevisionStateEnum),
-  }),
-).annotate({ identifier: "SkillRevision" }) as any as S.Schema<SkillRevision>;
-
-export type SkillTargetStateEnum =
-  | "TARGET_STATE_UNSPECIFIED"
-  | "TARGET_STATE_DRAFT"
-  | "TARGET_STATE_ACTIVE"
-  | "TARGET_STATE_DISABLED"
-  | "TARGET_STATE_DEPRECATED"
-  | "TARGET_STATE_DECOMMISSIONED";
-export const SkillTargetStateEnum = /*@__PURE__*/ S.String;
-
-export type SkillStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STATE_CREATING"
-  | "STATE_DRAFT"
-  | "STATE_ACTIVE"
-  | "STATE_DISABLED"
-  | "STATE_DEPRECATED"
-  | "STATE_DECOMMISSIONED"
-  | "STATE_DELETING";
-export const SkillStateEnum = /*@__PURE__*/ S.String;
-
-export type SkillTypeEnum = "TYPE_UNSPECIFIED" | "SIMPLE";
-export const SkillTypeEnum = /*@__PURE__*/ S.String;
-
-/** Represents an Executable Agent Skill or a Composite Tool Suite (Bundle). Sibling resource with Agent and McpServer under agentregistry.googleapis.com. */
-export interface Skill {
-  /** Optional. The full resource name of the revision currently served by default (floating track). Format: `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}` */
-  defaultRevision?: string;
-  /** Optional. Input only. Optional nested initial revision payload to support standard one-shot creation. The server processes this field on input during creation but must never return it in responses. */
-  initialRevision?: SkillRevision;
-  /** Output only. Create time. */
-  createTime?: string;
-  /** Optional. The publisher resource associated with this skill. Format: `projects/{project}/locations/{location}/publishers/{publisher}` The publisher dictates the allowed namespace prefixes for the skill's name and logical `skill_id` (e.g., Publisher `google` authorizes the `google-*` prefix). */
-  publisher?: string;
-  /** Output only. A stable, globally unique logical identifier for the skill. It is securely constructed by the backend by combining the associated `publisher`'s verified namespace and the skill's resource ID to enforce strict ownership. For example, the prefix `google-` is reserved exclusively for first-party Google publishers to prevent namespace squatting. Example: `urn:skill:google-workspace:create-docs` */
-  skillId?: string;
-  /** Required. User-managed target state of the skill. */
-  targetState?: SkillTargetStateEnum | (string & {});
-  /** Output only. Lightweight frontmatter metadata attributes copied from the default revision. */
-  frontmatter?: Frontmatter;
-  /** Output only. Universally unique identifier (UUID4) for the logical container. */
-  uid?: string;
-  /** Output only. Update time. */
-  updateTime?: string;
-  /** Output only. The system-managed state of the skill. */
-  state?: SkillStateEnum | (string & {});
-  /** Identifier. Resource name of the Skill. Format: `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the resource ID. If the skill is associated with a Publisher, this segment typically uses a hyphenated namespace prefix corresponding to the publisher (e.g., `google-workspace-create-docs`). */
-  name?: string;
-  /** Optional. Brief summary describing the capabilities of the skill. Maximum length is 2048 characters. */
-  description?: string;
-  /** Required. Human-readable display name of the skill. Maximum length is 128 characters. */
-  displayName?: string;
-  /** Required. Structural deployment type (SIMPLE leaf vs COMPOSITE bundle). */
-  type?: SkillTypeEnum | (string & {});
-}
-export const Skill = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultRevision: S.optional(S.String),
-    initialRevision: S.optional(SkillRevision),
-    createTime: S.optional(S.String),
-    publisher: S.optional(S.String),
-    skillId: S.optional(S.String),
-    targetState: S.optional(SkillTargetStateEnum),
-    frontmatter: S.optional(Frontmatter),
-    uid: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    state: S.optional(SkillStateEnum),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    displayName: S.optional(S.String),
-    type: S.optional(SkillTypeEnum),
-  }),
-).annotate({ identifier: "Skill" }) as any as S.Schema<Skill>;
-
-export interface CreateProjectsLocationsSkillsRequest {
-  /** Required. The project and location location to bootstrap. */
-  parent: string;
-  /** Optional. Signed UUID request idempotency token. */
-  requestId?: string;
-  /** Required. Custom, user-defined unique container identifier. Must be unique within the parent project and location. This value should be 4-63 characters, and valid characters are `/a-z-/`. */
-  skillId?: string;
-  /** Request body */
-  body?: Skill;
-}
-export const CreateProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      skillId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Skill.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/skills",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsLocationsSkillsRequest",
-}) as any as S.Schema<CreateProjectsLocationsSkillsRequest>;
-
-export interface CreateProjectsLocationsSkillsRevisionsRequest {
-  /** Required. Parent logical container name. */
-  parent: string;
-  /** Optional. Signed UUID request idempotency token. */
-  requestId?: string;
-  /** Optional. Custom, user-defined unique revision identifier. Format: 4-63 characters, matching regex `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$` */
-  skillRevisionId?: string;
-  /** Request body */
-  body?: SkillRevision;
-}
-export const CreateProjectsLocationsSkillsRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      skillRevisionId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(SkillRevision.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/revisions",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsSkillsRevisionsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsSkillsRevisionsRequest>;
 
 export interface DeleteProjectsLocationsBindingsRequest {
   /** Required. The name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
@@ -693,73 +465,26 @@ export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteProjectsLocationsServicesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
 
-export interface DeleteProjectsLocationsSkillsRequest {
-  /** Optional. If set to true, any child SkillRevisions under this Skill will also be deleted. Otherwise, the request will only succeed if the Skill has no child SkillRevisions. */
-  force?: boolean;
-  /** Required. Target Skill container name to remove. */
-  name: string;
-  /** Optional. Signed UUID request idempotency token. */
-  requestId?: string;
-}
-export const DeleteProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsLocationsSkillsRequest",
-}) as any as S.Schema<DeleteProjectsLocationsSkillsRequest>;
-
-export interface DeleteProjectsLocationsSkillsRevisionsRequest {
-  /** Required. Target revision name to remove. */
-  name: string;
-  /** Optional. Signed UUID request idempotency token. */
-  requestId?: string;
-}
-export const DeleteProjectsLocationsSkillsRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsSkillsRevisionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsSkillsRevisionsRequest>;
-
 export interface FetchAvailableProjectsLocationsBindingsRequest {
+  /** Optional. The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
+  targetIdentifier?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. Page size is 500 if unspecified and is capped at `500` even if a larger value is given. */
+  pageSize?: number;
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
   /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
   sourceIdentifier?: string;
   /** Required. The parent, in the format `projects/{project}/locations/{location}`. */
   parent: string;
-  /** Optional. The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
-  targetIdentifier?: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. Page size is 500 if unspecified and is capped at `500` even if a larger value is given. */
-  pageSize?: number;
 }
 export const FetchAvailableProjectsLocationsBindingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      targetIdentifier: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       sourceIdentifier: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      targetIdentifier: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -810,26 +535,32 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectsLocationsRequest",
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
     labels: S.optional(StringMap),
+    name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -850,6 +581,31 @@ export const GetProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProjectsLocationsAgentsRequest",
 }) as any as S.Schema<GetProjectsLocationsAgentsRequest>;
+
+export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
+export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
+
+/** Represents the protocol of an Agent. */
+export interface Protocol {
+  /** Output only. The type of the protocol. */
+  type?: ProtocolTypeEnum;
+  /** Output only. The version of the protocol, for example, the A2A Agent Card version. */
+  protocolVersion?: string;
+  /** Output only. The connection details for the Agent. */
+  interfaces?: InterfaceList;
+}
+export const Protocol = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ProtocolTypeEnum),
+    protocolVersion: S.optional(S.String),
+    interfaces: S.optional(InterfaceList),
+  }),
+).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
+
+export type ProtocolList = Array<Protocol>;
+export const ProtocolList = /*@__PURE__*/ S.Array(
+  Protocol,
+) as any as S.Schema<ProtocolList>;
 
 export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
 export const CardTypeEnum = /*@__PURE__*/ S.String;
@@ -874,35 +630,8 @@ export const DocumentMapMap = /*@__PURE__*/ S.Record(
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
 
-export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
-export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
-
-/** Represents the protocol of an Agent. */
-export interface Protocol {
-  /** Output only. The type of the protocol. */
-  type?: ProtocolTypeEnum;
-  /** Output only. The connection details for the Agent. */
-  interfaces?: InterfaceList;
-  /** Output only. The version of the protocol, for example, the A2A Agent Card version. */
-  protocolVersion?: string;
-}
-export const Protocol = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ProtocolTypeEnum),
-    interfaces: S.optional(InterfaceList),
-    protocolVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
-
-export type ProtocolList = Array<Protocol>;
-export const ProtocolList = /*@__PURE__*/ S.Array(
-  Protocol,
-) as any as S.Schema<ProtocolList>;
-
 /** Represents the skills of an Agent. */
 export interface A2ASkill {
-  /** Output only. Keywords describing the skill. */
-  tags?: StringList;
   /** Output only. A human-readable name for the agent's skill. */
   name?: string;
   /** Output only. Example prompts or scenarios this skill can handle. */
@@ -911,14 +640,16 @@ export interface A2ASkill {
   description?: string;
   /** Output only. A unique identifier for the agent's skill. */
   id?: string;
+  /** Output only. Keywords describing the skill. */
+  tags?: StringList;
 }
 export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    tags: S.optional(StringList),
     name: S.optional(S.String),
     examples: S.optional(StringList),
     description: S.optional(S.String),
     id: S.optional(S.String),
+    tags: S.optional(StringList),
   }),
 ).annotate({ identifier: "A2ASkill" }) as any as S.Schema<A2ASkill>;
 
@@ -929,48 +660,48 @@ export const A2ASkillList = /*@__PURE__*/ S.Array(
 
 /** Represents an Agent. "A2A" below refers to the Agent-to-Agent protocol. */
 export interface Agent {
-  /** Output only. Full Agent Card payload, when available. */
-  card?: Card;
-  /** Output only. A stable, globally unique identifier for agents. */
-  agentId?: string;
-  /** Output only. The display name of the agent, often obtained from the A2A Agent Card. */
-  displayName?: string;
-  /** Output only. The description of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no description. */
-  description?: string;
-  /** Output only. The version of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no version or agent is not an A2A Agent. */
-  version?: string;
-  /** Output only. Attributes of the Agent. Valid values: * `agentregistry.googleapis.com/system/Framework`: {"framework": "google-adk"} - the agent framework used to develop the Agent. Example values: "google-adk", "langchain", "custom". * `agentregistry.googleapis.com/system/RuntimeIdentity`: {"principal": "principal://..."} - the runtime identity associated with the Agent. * `agentregistry.googleapis.com/system/RuntimeReference`: {"uri": "//..."} - the URI of the underlying resource hosting the Agent, for example, the Reasoning Engine URI. */
-  attributes?: DocumentMapMap;
+  /** Output only. A universally unique identifier for the Agent. */
+  uid?: string;
   /** Identifier. The resource name of an Agent. Format: `projects/{project}/locations/{location}/agents/{agent}`. */
   name?: string;
+  /** Output only. The version of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no version or agent is not an A2A Agent. */
+  version?: string;
   /** Output only. The connection details for the Agent. */
   protocols?: ProtocolList;
+  /** Output only. A stable, globally unique identifier for agents. */
+  agentId?: string;
   /** Output only. Update time. */
   updateTime?: string;
   /** Output only. The location where agent is hosted. The value is defined by the hosting environment (i.e. cloud provider). */
   location?: string;
-  /** Output only. A universally unique identifier for the Agent. */
-  uid?: string;
-  /** Output only. Skills the agent possesses, often obtained from the A2A Agent Card. */
-  skills?: A2ASkillList;
+  /** Output only. Full Agent Card payload, when available. */
+  card?: Card;
+  /** Output only. The display name of the agent, often obtained from the A2A Agent Card. */
+  displayName?: string;
   /** Output only. Create time. */
   createTime?: string;
+  /** Output only. Attributes of the Agent. Valid values: * `agentregistry.googleapis.com/system/Framework`: {"framework": "google-adk"} - the agent framework used to develop the Agent. Example values: "google-adk", "langchain", "custom". * `agentregistry.googleapis.com/system/RuntimeIdentity`: {"principal": "principal://..."} - the runtime identity associated with the Agent. * `agentregistry.googleapis.com/system/RuntimeReference`: {"uri": "//..."} - the URI of the underlying resource hosting the Agent, for example, the Reasoning Engine URI. */
+  attributes?: DocumentMapMap;
+  /** Output only. Skills the agent possesses, often obtained from the A2A Agent Card. */
+  skills?: A2ASkillList;
+  /** Output only. The description of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no description. */
+  description?: string;
 }
 export const Agent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    card: S.optional(Card),
-    agentId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    version: S.optional(S.String),
-    attributes: S.optional(DocumentMapMap),
+    uid: S.optional(S.String),
     name: S.optional(S.String),
+    version: S.optional(S.String),
     protocols: S.optional(ProtocolList),
+    agentId: S.optional(S.String),
     updateTime: S.optional(S.String),
     location: S.optional(S.String),
-    uid: S.optional(S.String),
-    skills: S.optional(A2ASkillList),
+    card: S.optional(Card),
+    displayName: S.optional(S.String),
     createTime: S.optional(S.String),
+    attributes: S.optional(DocumentMapMap),
+    skills: S.optional(A2ASkillList),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
 
@@ -1013,32 +744,32 @@ export const GetProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
 
 /** Represents an Endpoint. */
 export interface Endpoint {
-  /** Output only. Create time. */
-  createTime?: string;
   /** Output only. Attributes of the Endpoint. Valid values: * `agentregistry.googleapis.com/system/RuntimeReference`: {"uri": "//..."} - the URI of the underlying resource hosting the Endpoint, for example, the GKE Deployment. */
   attributes?: DocumentMapMap;
-  /** Required. The connection details for the Endpoint. */
-  interfaces?: InterfaceList;
-  /** Output only. A stable, globally unique identifier for Endpoint. */
-  endpointId?: string;
-  /** Output only. Description of an Endpoint. */
-  description?: string;
-  /** Output only. Update time. */
-  updateTime?: string;
+  /** Output only. Create time. */
+  createTime?: string;
   /** Identifier. The resource name of the Endpoint. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
   name?: string;
+  /** Output only. A stable, globally unique identifier for Endpoint. */
+  endpointId?: string;
+  /** Required. The connection details for the Endpoint. */
+  interfaces?: InterfaceList;
+  /** Output only. Update time. */
+  updateTime?: string;
+  /** Output only. Description of an Endpoint. */
+  description?: string;
   /** Output only. Display name for the Endpoint. */
   displayName?: string;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
     attributes: S.optional(DocumentMapMap),
-    interfaces: S.optional(InterfaceList),
-    endpointId: S.optional(S.String),
-    description: S.optional(S.String),
-    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
     name: S.optional(S.String),
+    endpointId: S.optional(S.String),
+    interfaces: S.optional(InterfaceList),
+    updateTime: S.optional(S.String),
+    description: S.optional(S.String),
     displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
@@ -1066,39 +797,39 @@ export const GetProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
 export interface Annotations {
   /** Output only. If true, calling the tool repeatedly with the same arguments will have no additional effect on its environment. NOTE: This property is meaningful only when `read_only_hint == false` Default: false */
   idempotentHint?: boolean;
-  /** Output only. If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. NOTE: This property is meaningful only when `read_only_hint == false` Default: true */
-  destructiveHint?: boolean;
-  /** Output only. A human-readable title for the tool. */
-  title?: string;
   /** Output only. If true, this tool may interact with an "open world" of external entities. If false, the tool's domain of interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is not. Default: true */
   openWorldHint?: boolean;
+  /** Output only. A human-readable title for the tool. */
+  title?: string;
+  /** Output only. If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. NOTE: This property is meaningful only when `read_only_hint == false` Default: true */
+  destructiveHint?: boolean;
   /** Output only. If true, the tool does not modify its environment. Default: false */
   readOnlyHint?: boolean;
 }
 export const Annotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotentHint: S.optional(S.Boolean),
-    destructiveHint: S.optional(S.Boolean),
-    title: S.optional(S.String),
     openWorldHint: S.optional(S.Boolean),
+    title: S.optional(S.String),
+    destructiveHint: S.optional(S.Boolean),
     readOnlyHint: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Annotations" }) as any as S.Schema<Annotations>;
 
 /** Represents a single tool provided by an MCP Server. */
 export interface Tool {
+  /** Output only. Human-readable name of the tool. */
+  name?: string;
   /** Output only. Description of what the tool does. */
   description?: string;
   /** Output only. Annotations associated with the tool. */
   annotations?: Annotations;
-  /** Output only. Human-readable name of the tool. */
-  name?: string;
 }
 export const Tool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
     description: S.optional(S.String),
     annotations: S.optional(Annotations),
-    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
@@ -1109,36 +840,36 @@ export const ToolList = /*@__PURE__*/ S.Array(
 
 /** Represents an MCP (Model Context Protocol) Server. */
 export interface McpServer {
-  /** Output only. Tools provided by the MCP Server. */
-  tools?: ToolList;
   /** Identifier. The resource name of the MCP Server. Format: `projects/{project}/locations/{location}/mcpServers/{mcp_server}`. */
   name?: string;
-  /** Output only. Update time. */
-  updateTime?: string;
-  /** Output only. Create time. */
-  createTime?: string;
   /** Output only. The display name of the MCP Server. */
   displayName?: string;
-  /** Output only. The description of the MCP Server. */
-  description?: string;
+  /** Output only. Tools provided by the MCP Server. */
+  tools?: ToolList;
   /** Output only. The connection details for the MCP Server. */
   interfaces?: InterfaceList;
-  /** Output only. A stable, globally unique identifier for MCP Servers. */
-  mcpServerId?: string;
+  /** Output only. Update time. */
+  updateTime?: string;
   /** Output only. Attributes of the MCP Server. Valid values: * `agentregistry.googleapis.com/system/RuntimeIdentity`: {"principal": "principal://..."} - the runtime identity associated with the MCP Server. * `agentregistry.googleapis.com/system/RuntimeReference`: {"uri": "//..."} - the URI of the underlying resource hosting the MCP Server, for example, the GKE Deployment. */
   attributes?: DocumentMapMap;
+  /** Output only. A stable, globally unique identifier for MCP Servers. */
+  mcpServerId?: string;
+  /** Output only. Create time. */
+  createTime?: string;
+  /** Output only. The description of the MCP Server. */
+  description?: string;
 }
 export const McpServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    tools: S.optional(ToolList),
     name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    createTime: S.optional(S.String),
     displayName: S.optional(S.String),
-    description: S.optional(S.String),
+    tools: S.optional(ToolList),
     interfaces: S.optional(InterfaceList),
-    mcpServerId: S.optional(S.String),
+    updateTime: S.optional(S.String),
     attributes: S.optional(DocumentMapMap),
+    mcpServerId: S.optional(S.String),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "McpServer" }) as any as S.Schema<McpServer>;
 
@@ -1161,58 +892,6 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsOperationsRequest",
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
-export interface GetProjectsLocationsPublishersRequest {
-  /** Required. Target publisher resource name. Format: `projects/{project}/locations/{location}/publishers/{publisher}` */
-  name: string;
-}
-export const GetProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "GetProjectsLocationsPublishersRequest",
-}) as any as S.Schema<GetProjectsLocationsPublishersRequest>;
-
-export type PublisherPublisherTierEnum =
-  | "PUBLISHER_TIER_UNSPECIFIED"
-  | "FIRST_PARTY"
-  | "THIRD_PARTY"
-  | "PRIVATE";
-export const PublisherPublisherTierEnum = /*@__PURE__*/ S.String;
-
-/** Represents a verified Publisher of Skills. Prepopulated publishers include `publishers/cloud.google.com` and `publishers/workspace.google.com`. */
-export interface Publisher {
-  /** Optional. URI pointing to official publisher documentation. */
-  documentationUri?: string;
-  /** Optional. URI pointing to the support portal or email. */
-  supportUri?: string;
-  /** Identifier. Resource name of the publisher. Format: `projects/{project}/locations/{location}/publishers/{publisher}` */
-  name?: string;
-  /** Required. The verified prefix (e.g. "snowflake-", "google-") associated with this publisher. The system uses this prefix to enforce name-squatting rules during Skill registration. Must be globally unique across all publishers. */
-  verifiedPrefix?: string;
-  /** Optional. Human readable display name of the publisher. */
-  displayName?: string;
-  /** Output only. The curation tier of the publisher. */
-  publisherTier?: PublisherPublisherTierEnum;
-}
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentationUri: S.optional(S.String),
-    supportUri: S.optional(S.String),
-    name: S.optional(S.String),
-    verifiedPrefix: S.optional(S.String),
-    displayName: S.optional(S.String),
-    publisherTier: S.optional(PublisherPublisherTierEnum),
-  }),
-).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
-
 export interface GetProjectsLocationsServicesRequest {
   /** Required. The name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
   name: string;
@@ -1231,62 +910,25 @@ export const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectsLocationsServicesRequest",
 }) as any as S.Schema<GetProjectsLocationsServicesRequest>;
 
-export interface GetProjectsLocationsSkillsRequest {
-  /** Required. Target resource container name. */
-  name: string;
-}
-export const GetProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectsLocationsSkillsRequest",
-}) as any as S.Schema<GetProjectsLocationsSkillsRequest>;
-
-export interface GetProjectsLocationsSkillsRevisionsRequest {
-  /** Required. Target revision name. */
-  name: string;
-}
-export const GetProjectsLocationsSkillsRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsSkillsRevisionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsSkillsRevisionsRequest>;
-
 export interface ListProjectsLocationsRequest {
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1320,24 +962,24 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsAgentsRequest {
-  /** Required. Parent value for ListAgentsRequest */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Optional. Filtering results */
   filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
+  /** Required. Parent value for ListAgentsRequest */
+  parent: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
 }
 export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1371,25 +1013,25 @@ export const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAgentsResponse>;
 
 export interface ListProjectsLocationsBindingsRequest {
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
   /** Optional. A query string used to filter the list of bindings returned. The filter expression must follow AIP-160 syntax. */
   filter?: string;
-  /** Required. The project and location to list bindings in. Expected format: `projects/{project}/locations/{location}`. */
-  parent: string;
   /** Optional. Requested page size. Server may return fewer items than requested. Page size is 500 if unspecified and is capped at `500` even if a larger value is given. */
   pageSize?: number;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Required. The project and location to list bindings in. Expected format: `projects/{project}/locations/{location}`. */
+  parent: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
 }
 export const ListProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1467,25 +1109,25 @@ export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEndpointsResponse>;
 
 export interface ListProjectsLocationsMcpServersRequest {
-  /** Optional. Filtering results */
-  filter?: string;
   /** Required. Parent value for ListMcpServersRequest. Format: `projects/{project}/locations/{location}`. */
   parent: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Optional. Filtering results */
+  filter?: string;
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
 }
 export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1519,25 +1161,25 @@ export const ListMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMcpServersResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** The name of the operation's parent resource. */
   name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The standard list page size. */
-  pageSize?: number;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1556,86 +1198,40 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
-export interface ListProjectsLocationsPublishersRequest {
-  /** Required. Parent location to query. Format: `projects/{project}/locations/{location}` */
-  parent: string;
-  /** Optional. Page limit size. */
-  pageSize?: number;
-  /** Optional. Page offset token. */
-  pageToken?: string;
-}
-export const ListProjectsLocationsPublishersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/publishers",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectsLocationsPublishersRequest",
-}) as any as S.Schema<ListProjectsLocationsPublishersRequest>;
-
-export type PublisherList = Array<Publisher>;
-export const PublisherList = /*@__PURE__*/ S.Array(
-  Publisher,
-) as any as S.Schema<PublisherList>;
-
-/** Response listing Publishers. */
-export interface ListPublishersResponse {
-  /** The returned list of Publishers. */
-  publishers?: PublisherList;
-  /** Page offset continuation token. */
-  nextPageToken?: string;
-}
-export const ListPublishersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publishers: S.optional(PublisherList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPublishersResponse",
-}) as any as S.Schema<ListPublishersResponse>;
-
 export interface ListProjectsLocationsServicesRequest {
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Optional. A query string used to filter the list of services returned. The filter expression must follow AIP-160 syntax. Filtering is supported on the `name`, `display_name`, `description`, and `labels` fields. Some examples: * `name = "projects/p1/locations/l1/services/s1"` * `display_name = "my-service"` * `description : "myservice description"` * `labels.env = "prod"` */
-  filter?: string;
   /** Required. The project and location to list services in. Expected format: `projects/{project}/locations/{location}`. */
   parent: string;
+  /** Optional. A query string used to filter the list of services returned. The filter expression must follow AIP-160 syntax. Filtering is supported on the `name`, `display_name`, `description`, and `labels` fields. Some examples: * `name = "projects/p1/locations/l1/services/s1"` * `display_name = "my-service"` * `description : "myservice description"` * `labels.env = "prod"` */
+  filter?: string;
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1654,127 +1250,27 @@ export const ServiceList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing Services */
 export interface ListServicesResponse {
-  /** A token identifying a page of results the server should return. Used in page_token. */
-  nextPageToken?: string;
   /** The list of Service resources matching the parent and filter criteria in the request. Each Service resource follows the format: `projects/{project}/locations/{location}/services/{service}`. */
   services?: ServiceList;
+  /** A token identifying a page of results the server should return. Used in page_token. */
+  nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     services: S.optional(ServiceList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListServicesResponse",
 }) as any as S.Schema<ListServicesResponse>;
 
-export interface ListProjectsLocationsSkillsRequest {
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Optional. Use this field to specify filter criteria on list results. Filter expressions can be used to restrict results based upon filterable fields, where equality operators can be used. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`, and `()`. | Field | `=` | `<`, `>` | |--------------|-----|----------| | state | Yes | No | | targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes | Yes | Examples: * `state=ACTIVE` to restrict results to skills in the `ACTIVE` state. */
-  filter?: string;
-  /** Required. Parent value for ListSkillsRequest */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-}
-export const ListProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1alpha/{+parent}/skills",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectsLocationsSkillsRequest",
-}) as any as S.Schema<ListProjectsLocationsSkillsRequest>;
-
-export type SkillList = Array<Skill>;
-export const SkillList = /*@__PURE__*/ S.Array(
-  Skill,
-) as any as S.Schema<SkillList>;
-
-/** Response structure listing logical Skills. */
-export interface ListSkillsResponse {
-  /** Returned container list. */
-  skills?: SkillList;
-  /** Unreachable locations or failures. */
-  unreachable?: StringList;
-  /** Page continuation continuation token. */
-  nextPageToken?: string;
-}
-export const ListSkillsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skills: S.optional(SkillList),
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSkillsResponse",
-}) as any as S.Schema<ListSkillsResponse>;
-
-export interface ListProjectsLocationsSkillsRevisionsRequest {
-  /** Optional. Page offset token. */
-  pageToken?: string;
-  /** Required. Parent logical container name to query. */
-  parent: string;
-  /** Optional. Page limit size. */
-  pageSize?: number;
-}
-export const ListProjectsLocationsSkillsRevisionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/revisions",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSkillsRevisionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsSkillsRevisionsRequest>;
-
-export type SkillRevisionList = Array<SkillRevision>;
-export const SkillRevisionList = /*@__PURE__*/ S.Array(
-  SkillRevision,
-) as any as S.Schema<SkillRevisionList>;
-
-/** Response listing Revisions. */
-export interface ListSkillRevisionsResponse {
-  /** Returned version snapshot list. */
-  skillRevisions?: SkillRevisionList;
-  /** Page offset continuation token. */
-  nextPageToken?: string;
-}
-export const ListSkillRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skillRevisions: S.optional(SkillRevisionList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListSkillRevisionsResponse",
-}) as any as S.Schema<ListSkillRevisionsResponse>;
-
 export interface PatchProjectsLocationsBindingsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Binding resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Required. Identifier. The resource name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`. */
   name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: Binding;
 }
@@ -1782,8 +1278,8 @@ export const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Binding.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1797,10 +1293,10 @@ export const PatchProjectsLocationsBindingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchProjectsLocationsBindingsRequest>;
 
 export interface PatchProjectsLocationsServicesRequest {
-  /** Identifier. The resource name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
-  name: string;
   /** Optional. Field mask is used to specify the fields to be overwritten in the Service resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields present in the request will be overwritten. */
   updateMask?: string;
+  /** Identifier. The resource name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`. */
+  name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Request body */
@@ -1809,8 +1305,8 @@ export interface PatchProjectsLocationsServicesRequest {
 export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
@@ -1823,33 +1319,6 @@ export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PatchProjectsLocationsServicesRequest",
 }) as any as S.Schema<PatchProjectsLocationsServicesRequest>;
-
-export interface PatchProjectsLocationsSkillsRequest {
-  /** Identifier. Resource name of the Skill. Format: `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the resource ID. If the skill is associated with a Publisher, this segment typically uses a hyphenated namespace prefix corresponding to the publisher (e.g., `google-workspace-create-docs`). */
-  name: string;
-  /** Optional. Standard update target mask mapping relative fields. */
-  updateMask?: string;
-  /** Optional. Signed UUID request idempotency token. */
-  requestId?: string;
-  /** Request body */
-  body?: Skill;
-}
-export const PatchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-    updateMask: S.optional(S.String.pipe(T.Query())),
-    requestId: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(Skill.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "v1alpha/{+name}",
-      baseUrl: "https://agentregistry.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "PatchProjectsLocationsSkillsRequest",
-}) as any as S.Schema<PatchProjectsLocationsSkillsRequest>;
 
 /** Message for searching Agents */
 export interface SearchAgentsRequest {
@@ -1910,18 +1379,18 @@ export const SearchAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Message for searching MCP Servers */
 export interface SearchMcpServersRequest {
-  /** Optional. Search criteria used to select the MCP Servers to return. If no search criteria is specified then all accessible MCP Servers will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: * `mcpServerId="urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id"` to find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words `planner` or `booking`. * `mcpServerId:service-id AND (displayName:planner OR displayName:booking)` to find MCP Servers whose MCP Server ID contains `service-id` and whose display name contains `planner` or `booking`. */
-  searchString?: string;
   /** Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested. */
   pageSize?: number;
   /** Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call. */
   pageToken?: string;
+  /** Optional. Search criteria used to select the MCP Servers to return. If no search criteria is specified then all accessible MCP Servers will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: * `mcpServerId="urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id"` to find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words `planner` or `booking`. * `mcpServerId:service-id AND (displayName:planner OR displayName:booking)` to find MCP Servers whose MCP Server ID contains `service-id` and whose display name contains `planner` or `booking`. */
+  searchString?: string;
 }
 export const SearchMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    searchString: S.optional(S.String),
     pageSize: S.optional(S.Number),
     pageToken: S.optional(S.String),
+    searchString: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SearchMcpServersRequest",
@@ -1964,65 +1433,6 @@ export const SearchMcpServersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchMcpServersResponse",
 }) as any as S.Schema<SearchMcpServersResponse>;
-
-export type SearchProjectsLocationsSkillsSearchTypeEnum =
-  | "SEARCH_TYPE_UNSPECIFIED"
-  | "KEYWORD"
-  | "SEMANTIC";
-export const SearchProjectsLocationsSkillsSearchTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export interface SearchProjectsLocationsSkillsRequest {
-  /** Optional. The type of search. */
-  searchType?: SearchProjectsLocationsSkillsSearchTypeEnum | (string & {});
-  /** Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call. */
-  pageToken?: string;
-  /** Optional. Search criteria used to select the Skills to return. If no search criteria is specified then all accessible Skills will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |---------------------------|-----|-----|-----|----------------| | skillId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | | description | No | Yes | No | Included | | frontmatter.name | No | Yes | No | Included | | frontmatter.description | No | Yes | No | Included | | frontmatter.compatibility | No | Yes | No | Included | | frontmatter.license | No | Yes | No | Included | Examples: * `skillId="urn:skill:projects-1234:locations:global:private-important-skill"` to find the skill with the specified skill ID. * `name:important` to find skills whose name contains `important` as a word. * `displayName:works*` to find skills whose display name contains words that start with `works`. */
-  searchString?: string;
-  /** Required. Parent value for SearchSkillsRequest. Format: `projects/{project}/locations/{location}`. */
-  parent: string;
-  /** Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested. */
-  pageSize?: number;
-  /** Optional. Use this field to specify additional filter criteria on search results. Filter expressions can be used to restrict results based upon filterable fields, where equality operators can be used. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`, and `()`. | Field | `=` | `<`, `>` | |--------------|-----|----------| | state | Yes | No | | targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes | Yes | Examples: * `state=ACTIVE` to restrict results to skills in the `ACTIVE` state. */
-  filter?: string;
-}
-export const SearchProjectsLocationsSkillsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      searchType: S.optional(
-        SearchProjectsLocationsSkillsSearchTypeEnum.pipe(T.Query()),
-      ),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      searchString: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+parent}/skills:search",
-        baseUrl: "https://agentregistry.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "SearchProjectsLocationsSkillsRequest",
-}) as any as S.Schema<SearchProjectsLocationsSkillsRequest>;
-
-/** Response listing searched Skills. */
-export interface SearchSkillsResponse {
-  /** Matched Skills list. */
-  skills?: SkillList;
-  /** Query page offset continuation token. */
-  nextPageToken?: string;
-}
-export const SearchSkillsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skills: S.optional(SkillList),
-    nextPageToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SearchSkillsResponse",
-}) as any as S.Schema<SearchSkillsResponse>;
 
 export type CancelProjectsLocationsOperationsError =
   | NotFound
@@ -2084,46 +1494,6 @@ export const createProjectsLocationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsLocationsSkillsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** ========================================================================= # Skills Collection APIs Creates a Skill resource container, optionally publishing the initial SkillRevision inline in a single, atomic CRUD roundtrip. */
-export const createProjectsLocationsSkills: API.OperationMethod<
-  CreateProjectsLocationsSkillsRequest,
-  Operation,
-  CreateProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSkillsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreateProjectsLocationsSkillsRevisionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates a new immutable revision and triggers validation pipelines. */
-export const createProjectsLocationsSkillsRevisions: API.OperationMethod<
-  CreateProjectsLocationsSkillsRevisionsRequest,
-  Operation,
-  CreateProjectsLocationsSkillsRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSkillsRevisionsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DeleteProjectsLocationsBindingsError =
   | NotFound
   | Forbidden
@@ -2178,46 +1548,6 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsServicesRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeleteProjectsLocationsSkillsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes a Skill container along with all its revisions. */
-export const deleteProjectsLocationsSkills: API.OperationMethod<
-  DeleteProjectsLocationsSkillsRequest,
-  Operation,
-  DeleteProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSkillsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeleteProjectsLocationsSkillsRevisionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes a specific revision (restricted to admins to purge accidentally committed secrets). */
-export const deleteProjectsLocationsSkillsRevisions: API.OperationMethod<
-  DeleteProjectsLocationsSkillsRevisionsRequest,
-  Operation,
-  DeleteProjectsLocationsSkillsRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSkillsRevisionsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2348,24 +1678,6 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsLocationsPublishersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Fetches details of a specific Publisher. */
-export const getProjectsLocationsPublishers: API.OperationMethod<
-  GetProjectsLocationsPublishersRequest,
-  Publisher,
-  GetProjectsLocationsPublishersError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsPublishersRequest,
-  output: Publisher,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetProjectsLocationsServicesError =
   | NotFound
   | Forbidden
@@ -2379,39 +1691,6 @@ export const getProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsServicesRequest,
   output: Service,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetProjectsLocationsSkillsError = NotFound | Forbidden | GcpOpError;
-/** Fetches the active configuration and metadata of a Skill. */
-export const getProjectsLocationsSkills: API.OperationMethod<
-  GetProjectsLocationsSkillsRequest,
-  Skill,
-  GetProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSkillsRequest,
-  output: Skill,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetProjectsLocationsSkillsRevisionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets details of a single immutable Revision. */
-export const getProjectsLocationsSkillsRevisions: API.OperationMethod<
-  GetProjectsLocationsSkillsRevisionsRequest,
-  SkillRevision,
-  GetProjectsLocationsSkillsRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSkillsRevisionsRequest,
-  output: SkillRevision,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2546,28 +1825,6 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export type ListProjectsLocationsPublishersError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists all Publishers in a location. */
-export const listProjectsLocationsPublishers: API.PaginatedOperationMethod<
-  ListProjectsLocationsPublishersRequest,
-  ListPublishersResponse,
-  ListProjectsLocationsPublishersError,
-  GcpOpContext
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsPublishersRequest,
-  output: ListPublishersResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-}));
-
 export type ListProjectsLocationsServicesError =
   | NotFound
   | Forbidden
@@ -2581,50 +1838,6 @@ export const listProjectsLocationsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsServicesRequest,
   output: ListServicesResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-}));
-
-export type ListProjectsLocationsSkillsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists logical Skills available in a project. */
-export const listProjectsLocationsSkills: API.PaginatedOperationMethod<
-  ListProjectsLocationsSkillsRequest,
-  ListSkillsResponse,
-  ListProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSkillsRequest,
-  output: ListSkillsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-}));
-
-export type ListProjectsLocationsSkillsRevisionsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Lists all revisions belonging to a parent Skill. */
-export const listProjectsLocationsSkillsRevisions: API.PaginatedOperationMethod<
-  ListProjectsLocationsSkillsRevisionsRequest,
-  ListSkillRevisionsResponse,
-  ListProjectsLocationsSkillsRevisionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSkillsRevisionsRequest,
-  output: ListSkillRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2674,26 +1887,6 @@ export const patchProjectsLocationsServices: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchProjectsLocationsSkillsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates Skill metadata or overrides active pointers/state using REST standard PATCH. */
-export const patchProjectsLocationsSkills: API.OperationMethod<
-  PatchProjectsLocationsSkillsRequest,
-  Operation,
-  PatchProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSkillsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SearchProjectsLocationsAgentsError =
   | NotFound
   | Forbidden
@@ -2732,26 +1925,4 @@ export const searchProjectsLocationsMcpServers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
-}));
-
-export type SearchProjectsLocationsSkillsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Custom deep-search method to filter by frontmatter or query SKILL.md text blobs. */
-export const searchProjectsLocationsSkills: API.PaginatedOperationMethod<
-  SearchProjectsLocationsSkillsRequest,
-  SearchSkillsResponse,
-  SearchProjectsLocationsSkillsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchProjectsLocationsSkillsRequest,
-  output: SearchSkillsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
 }));

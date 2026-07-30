@@ -1417,13 +1417,6 @@
             "smithy.api#documentation": "Include deleted machines"
           }
         },
-        "include_leases": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "include_leases",
-            "smithy.api#documentation": "Include machine leases"
-          }
-        },
         "region": {
           "target": "smithy.api#String",
           "traits": {
@@ -1459,9 +1452,6 @@
         "config": {
           "target": "com.flyio.machines#FlyMachineConfig"
         },
-        "cordoned": {
-          "target": "smithy.api#Boolean"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
@@ -1485,9 +1475,6 @@
           "traits": {
             "smithy.api#documentation": "InstanceID is unique for each version of the machine"
           }
-        },
-        "lease": {
-          "target": "com.flyio.machines#StrippedLease"
         },
         "name": {
           "target": "smithy.api#String"
@@ -3362,21 +3349,6 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#StrippedLease": {
-      "type": "structure",
-      "members": {
-        "description": {
-          "target": "smithy.api#String"
-        },
-        "expires_at": {
-          "target": "smithy.api#Integer"
-        },
-        "owner": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
     "com.flyio.machines#MachinesListResponseBodyList": {
       "type": "list",
       "member": {
@@ -3518,13 +3490,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Machine ID"
-          }
-        },
-        "include_leases": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#httpQuery": "include_leases",
-            "smithy.api#documentation": "Include machine lease"
           }
         }
       },

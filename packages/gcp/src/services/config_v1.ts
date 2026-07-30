@@ -96,6 +96,23 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+export type DeploymentGroupStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED"
+  | "SUSPENDED"
+  | "DELETED";
+export const DeploymentGroupStateEnum = /*@__PURE__*/ S.String;
+
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
@@ -103,17 +120,17 @@ export const StringList = /*@__PURE__*/ S.Array(
 
 /** A DeploymentUnit is a container for a deployment and its dependencies. An existing deployment can be provided directly in the unit, or the unit can act as a placeholder to define the DAG, with the deployment specs supplied in a `provisionDeploymentRequest`. */
 export interface DeploymentUnit {
-  /** Optional. The name of the deployment to be provisioned. Format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
-  deployment?: string;
   /** The id of the deployment unit. Must be unique within the deployment group. */
   id?: string;
+  /** Optional. The name of the deployment to be provisioned. Format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
+  deployment?: string;
   /** Required. The IDs of the deployment units within the deployment group that this unit depends on. */
   dependencies?: StringList;
 }
 export const DeploymentUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deployment: S.optional(S.String),
     id: S.optional(S.String),
+    deployment: S.optional(S.String),
     dependencies: S.optional(StringList),
   }),
 ).annotate({ identifier: "DeploymentUnit" }) as any as S.Schema<DeploymentUnit>;
@@ -122,6 +139,16 @@ export type DeploymentUnitList = Array<DeploymentUnit>;
 export const DeploymentUnitList = /*@__PURE__*/ S.Array(
   DeploymentUnit,
 ) as any as S.Schema<DeploymentUnitList>;
+
+export type DeploymentGroupProvisioningStateEnum =
+  | "PROVISIONING_STATE_UNSPECIFIED"
+  | "PROVISIONING"
+  | "PROVISIONED"
+  | "FAILED_TO_PROVISION"
+  | "DEPROVISIONING"
+  | "DEPROVISIONED"
+  | "FAILED_TO_DEPROVISION";
+export const DeploymentGroupProvisioningStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -151,81 +178,54 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type DeploymentGroupProvisioningStateEnum =
-  | "PROVISIONING_STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "PROVISIONED"
-  | "FAILED_TO_PROVISION"
-  | "DEPROVISIONING"
-  | "DEPROVISIONED"
-  | "FAILED_TO_DEPROVISION";
-export const DeploymentGroupProvisioningStateEnum = /*@__PURE__*/ S.String;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-export type DeploymentGroupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "FAILED"
-  | "SUSPENDED"
-  | "DELETED";
-export const DeploymentGroupStateEnum = /*@__PURE__*/ S.String;
-
 /** A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like structure. */
 export interface DeploymentGroup {
-  /** Output only. Additional information regarding the current provisioning state. */
-  provisioningStateDescription?: string;
-  /** The deployment units of the deployment group in a DAG like structure. When a deployment group is being provisioned, the deployment units are deployed in a DAG order. The provided units must be in a DAG order, otherwise an error will be returned. */
-  deploymentUnits?: DeploymentUnitList;
-  /** Output only. The error status of the deployment group provisioning or deprovisioning. */
-  provisioningError?: Status;
-  /** Output only. The provisioning state of the deployment group. */
-  provisioningState?: DeploymentGroupProvisioningStateEnum | (string & {});
-  /** Output only. Time when the deployment group was last updated. */
-  updateTime?: string;
-  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
-  annotations?: StringMap;
-  /** Optional. User-defined metadata for the deployment group. */
-  labels?: StringMap;
-  /** Output only. Additional information regarding the current state. */
-  stateDescription?: string;
   /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
   name?: string;
-  /** Output only. Current state of the deployment group. */
-  state?: DeploymentGroupStateEnum | (string & {});
   /** Output only. Time when the deployment group was created. */
   createTime?: string;
+  /** Output only. Time when the deployment group was last updated. */
+  updateTime?: string;
+  /** Optional. User-defined metadata for the deployment group. */
+  labels?: StringMap;
+  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployment group during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
+  annotations?: StringMap;
+  /** Output only. Current state of the deployment group. */
+  state?: DeploymentGroupStateEnum | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  stateDescription?: string;
+  /** The deployment units of the deployment group in a DAG like structure. When a deployment group is being provisioned, the deployment units are deployed in a DAG order. The provided units must be in a DAG order, otherwise an error will be returned. */
+  deploymentUnits?: DeploymentUnitList;
+  /** Output only. The provisioning state of the deployment group. */
+  provisioningState?: DeploymentGroupProvisioningStateEnum | (string & {});
+  /** Output only. Additional information regarding the current provisioning state. */
+  provisioningStateDescription?: string;
+  /** Output only. The error status of the deployment group provisioning or deprovisioning. */
+  provisioningError?: Status;
 }
 export const DeploymentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    provisioningStateDescription: S.optional(S.String),
-    deploymentUnits: S.optional(DeploymentUnitList),
-    provisioningError: S.optional(Status),
-    provisioningState: S.optional(DeploymentGroupProvisioningStateEnum),
-    updateTime: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    labels: S.optional(StringMap),
-    stateDescription: S.optional(S.String),
     name: S.optional(S.String),
-    state: S.optional(DeploymentGroupStateEnum),
     createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    annotations: S.optional(StringMap),
+    state: S.optional(DeploymentGroupStateEnum),
+    stateDescription: S.optional(S.String),
+    deploymentUnits: S.optional(DeploymentUnitList),
+    provisioningState: S.optional(DeploymentGroupProvisioningStateEnum),
+    provisioningStateDescription: S.optional(S.String),
+    provisioningError: S.optional(Status),
   }),
 ).annotate({
   identifier: "DeploymentGroup",
 }) as any as S.Schema<DeploymentGroup>;
 
 export interface CreateProjectsLocationsDeploymentGroupsRequest {
-  /** Required. The deployment group ID. */
-  deploymentGroupId?: string;
   /** Required. The parent in whose context the Deployment Group is created. The parent value is in the format: 'projects/{project_id}/locations/{location}' */
   parent: string;
+  /** Required. The deployment group ID. */
+  deploymentGroupId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Request body */
@@ -234,8 +234,8 @@ export interface CreateProjectsLocationsDeploymentGroupsRequest {
 export const CreateProjectsLocationsDeploymentGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      deploymentGroupId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      deploymentGroupId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(DeploymentGroup.pipe(T.HttpBody())),
     }).pipe(
@@ -251,159 +251,41 @@ export const CreateProjectsLocationsDeploymentGroupsRequest =
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
     error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
     response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-/** Describes a Terraform output. */
-export interface TerraformOutput {
-  /** Identifies whether Terraform has set this output as a potential sensitive value. */
-  sensitive?: boolean;
-  /** Value of output. */
-  value?: unknown;
-}
-export const TerraformOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sensitive: S.optional(S.Boolean),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "TerraformOutput",
-}) as any as S.Schema<TerraformOutput>;
-
-export type TerraformOutputMap = { [key: string]: TerraformOutput | undefined };
-export const TerraformOutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  TerraformOutput,
-) as any as S.Schema<TerraformOutputMap>;
-
-/** Outputs and artifacts from applying a deployment. */
-export interface ApplyResults {
-  /** Location of artifacts (e.g. logs) in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
-  artifacts?: string;
-  /** Location of a blueprint copy and other manifests in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
-  content?: string;
-  /** Map of output name to output info. */
-  outputs?: TerraformOutputMap;
-}
-export const ApplyResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifacts: S.optional(S.String),
-    content: S.optional(S.String),
-    outputs: S.optional(TerraformOutputMap),
-  }),
-).annotate({ identifier: "ApplyResults" }) as any as S.Schema<ApplyResults>;
-
-/** Errors encountered during actuation using Terraform */
-export interface TerraformError {
-  /** Address of the resource associated with the error, e.g. `google_compute_network.vpc_network`. */
-  resourceAddress?: string;
-  /** A human-readable error description. */
-  errorDescription?: string;
-  /** HTTP response code returned from Google Cloud Platform APIs when Terraform fails to provision the resource. If unset or 0, no HTTP response code was returned by Terraform. */
-  httpResponseCode?: number;
-  /** Output only. Original error response from underlying Google API, if available. */
-  error?: Status;
-}
-export const TerraformError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceAddress: S.optional(S.String),
-    errorDescription: S.optional(S.String),
-    httpResponseCode: S.optional(S.Number),
-    error: S.optional(Status),
-  }),
-).annotate({ identifier: "TerraformError" }) as any as S.Schema<TerraformError>;
-
-export type TerraformErrorList = Array<TerraformError>;
-export const TerraformErrorList = /*@__PURE__*/ S.Array(
-  TerraformError,
-) as any as S.Schema<TerraformErrorList>;
-
-export type ProviderConfigSourceTypeEnum =
-  | "PROVIDER_SOURCE_UNSPECIFIED"
-  | "SERVICE_MAINTAINED";
-export const ProviderConfigSourceTypeEnum = /*@__PURE__*/ S.String;
-
-/** ProviderConfig contains the provider configurations. */
-export interface ProviderConfig {
-  /** Optional. ProviderSource specifies the source type of the provider. */
-  sourceType?: ProviderConfigSourceTypeEnum | (string & {});
-}
-export const ProviderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceType: S.optional(ProviderConfigSourceTypeEnum),
-  }),
-).annotate({ identifier: "ProviderConfig" }) as any as S.Schema<ProviderConfig>;
-
-export type DeploymentLockStateEnum =
-  | "LOCK_STATE_UNSPECIFIED"
-  | "LOCKED"
-  | "UNLOCKED"
-  | "LOCKING"
-  | "UNLOCKING"
-  | "LOCK_FAILED"
-  | "UNLOCK_FAILED";
-export const DeploymentLockStateEnum = /*@__PURE__*/ S.String;
-
-export type DeploymentStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "FAILED"
-  | "SUSPENDED"
-  | "DELETED";
-export const DeploymentStateEnum = /*@__PURE__*/ S.String;
-
-export type DeploymentQuotaValidationEnum =
-  | "QUOTA_VALIDATION_UNSPECIFIED"
-  | "ENABLED"
-  | "ENFORCED";
-export const DeploymentQuotaValidationEnum = /*@__PURE__*/ S.String;
-
-export type DeploymentErrorCodeEnum =
-  | "ERROR_CODE_UNSPECIFIED"
-  | "REVISION_FAILED"
-  | "CLOUD_BUILD_PERMISSION_DENIED"
-  | "DELETE_BUILD_API_FAILED"
-  | "DELETE_BUILD_RUN_FAILED"
-  | "BUCKET_CREATION_PERMISSION_DENIED"
-  | "BUCKET_CREATION_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
-export const DeploymentErrorCodeEnum = /*@__PURE__*/ S.String;
-
 /** A set of files in a Git repository. */
 export interface GitSource {
-  /** Git reference (e.g. branch or tag). */
-  ref?: string;
   /** Repository URL. Example: 'https://github.com/kubernetes/examples.git' */
   repo?: string;
   /** Subdirectory inside the repository. Example: 'staging/my-package' */
   directory?: string;
+  /** Git reference (e.g. branch or tag). */
+  ref?: string;
 }
 export const GitSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ref: S.optional(S.String),
     repo: S.optional(S.String),
     directory: S.optional(S.String),
+    ref: S.optional(S.String),
   }),
 ).annotate({ identifier: "GitSource" }) as any as S.Schema<GitSource>;
 
@@ -430,15 +312,15 @@ export const TerraformVariableMap = /*@__PURE__*/ S.Record(
 
 /** Configuration for a value sourced from a Deployment. */
 export interface DeploymentSource {
-  /** Required. The name of the output variable in the source deployment's latest successfully applied revision. */
-  outputName?: string;
   /** Required. The resource name of the source Deployment to import the output from. Format: projects/{project}/locations/{location}/deployments/{deployment} The source deployment must be in the same project and location. */
   deployment?: string;
+  /** Required. The name of the output variable in the source deployment's latest successfully applied revision. */
+  outputName?: string;
 }
 export const DeploymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    outputName: S.optional(S.String),
     deployment: S.optional(S.String),
+    outputName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DeploymentSource",
@@ -467,10 +349,10 @@ export const ExternalValueSourceMap = /*@__PURE__*/ S.Record(
 
 /** TerraformBlueprint describes the source of a Terraform root module which describes the resources and configs to be deployed. */
 export interface TerraformBlueprint {
-  /** URI of a public Git repo. */
-  gitSource?: GitSource;
   /** URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object version for zipped objects. Format: `gs://{bucket}/{object}#{version}` */
   gcsSource?: string;
+  /** URI of a public Git repo. */
+  gitSource?: GitSource;
   /** Optional. Input variable values for the Terraform blueprint. */
   inputValues?: TerraformVariableMap;
   /** Optional. Map of input variable names in this blueprint to configurations for importing values from external sources. */
@@ -478,8 +360,8 @@ export interface TerraformBlueprint {
 }
 export const TerraformBlueprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    gitSource: S.optional(GitSource),
     gcsSource: S.optional(S.String),
+    gitSource: S.optional(GitSource),
     inputValues: S.optional(TerraformVariableMap),
     externalValues: S.optional(ExternalValueSourceMap),
   }),
@@ -487,83 +369,201 @@ export const TerraformBlueprint = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerraformBlueprint",
 }) as any as S.Schema<TerraformBlueprint>;
 
+export type DeploymentStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED"
+  | "SUSPENDED"
+  | "DELETED";
+export const DeploymentStateEnum = /*@__PURE__*/ S.String;
+
+export type DeploymentErrorCodeEnum =
+  | "ERROR_CODE_UNSPECIFIED"
+  | "REVISION_FAILED"
+  | "CLOUD_BUILD_PERMISSION_DENIED"
+  | "DELETE_BUILD_API_FAILED"
+  | "DELETE_BUILD_RUN_FAILED"
+  | "BUCKET_CREATION_PERMISSION_DENIED"
+  | "BUCKET_CREATION_FAILED"
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
+export const DeploymentErrorCodeEnum = /*@__PURE__*/ S.String;
+
+/** Describes a Terraform output. */
+export interface TerraformOutput {
+  /** Identifies whether Terraform has set this output as a potential sensitive value. */
+  sensitive?: boolean;
+  /** Value of output. */
+  value?: unknown;
+}
+export const TerraformOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sensitive: S.optional(S.Boolean),
+    value: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "TerraformOutput",
+}) as any as S.Schema<TerraformOutput>;
+
+export type TerraformOutputMap = { [key: string]: TerraformOutput | undefined };
+export const TerraformOutputMap = /*@__PURE__*/ S.Record(
+  S.String,
+  TerraformOutput,
+) as any as S.Schema<TerraformOutputMap>;
+
+/** Outputs and artifacts from applying a deployment. */
+export interface ApplyResults {
+  /** Location of a blueprint copy and other manifests in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
+  content?: string;
+  /** Location of artifacts (e.g. logs) in Google Cloud Storage. Format: `gs://{bucket}/{object}` */
+  artifacts?: string;
+  /** Map of output name to output info. */
+  outputs?: TerraformOutputMap;
+}
+export const ApplyResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    artifacts: S.optional(S.String),
+    outputs: S.optional(TerraformOutputMap),
+  }),
+).annotate({ identifier: "ApplyResults" }) as any as S.Schema<ApplyResults>;
+
+/** Errors encountered during actuation using Terraform */
+export interface TerraformError {
+  /** Address of the resource associated with the error, e.g. `google_compute_network.vpc_network`. */
+  resourceAddress?: string;
+  /** HTTP response code returned from Google Cloud Platform APIs when Terraform fails to provision the resource. If unset or 0, no HTTP response code was returned by Terraform. */
+  httpResponseCode?: number;
+  /** A human-readable error description. */
+  errorDescription?: string;
+  /** Output only. Original error response from underlying Google API, if available. */
+  error?: Status;
+}
+export const TerraformError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceAddress: S.optional(S.String),
+    httpResponseCode: S.optional(S.Number),
+    errorDescription: S.optional(S.String),
+    error: S.optional(Status),
+  }),
+).annotate({ identifier: "TerraformError" }) as any as S.Schema<TerraformError>;
+
+export type TerraformErrorList = Array<TerraformError>;
+export const TerraformErrorList = /*@__PURE__*/ S.Array(
+  TerraformError,
+) as any as S.Schema<TerraformErrorList>;
+
+export type DeploymentLockStateEnum =
+  | "LOCK_STATE_UNSPECIFIED"
+  | "LOCKED"
+  | "UNLOCKED"
+  | "LOCKING"
+  | "UNLOCKING"
+  | "LOCK_FAILED"
+  | "UNLOCK_FAILED";
+export const DeploymentLockStateEnum = /*@__PURE__*/ S.String;
+
+export type DeploymentQuotaValidationEnum =
+  | "QUOTA_VALIDATION_UNSPECIFIED"
+  | "ENABLED"
+  | "ENFORCED";
+export const DeploymentQuotaValidationEnum = /*@__PURE__*/ S.String;
+
+export type ProviderConfigSourceTypeEnum =
+  | "PROVIDER_SOURCE_UNSPECIFIED"
+  | "SERVICE_MAINTAINED";
+export const ProviderConfigSourceTypeEnum = /*@__PURE__*/ S.String;
+
+/** ProviderConfig contains the provider configurations. */
+export interface ProviderConfig {
+  /** Optional. ProviderSource specifies the source type of the provider. */
+  sourceType?: ProviderConfigSourceTypeEnum | (string & {});
+}
+export const ProviderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceType: S.optional(ProviderConfigSourceTypeEnum),
+  }),
+).annotate({ identifier: "ProviderConfig" }) as any as S.Schema<ProviderConfig>;
+
 /** A Deployment is a group of resources and configs managed and provisioned by Infra Manager. */
 export interface Deployment {
-  /** Output only. Location of artifacts from a DeleteDeployment operation. */
-  deleteResults?: ApplyResults;
-  /** Output only. Additional information regarding the current state. */
-  stateDetail?: string;
-  /** Output only. Errors encountered when deleting this deployment. Errors are truncated to 10 entries, see `delete_results` and `error_logs` for full details. */
-  tfErrors?: TerraformErrorList;
-  /** Optional. This field specifies the provider configurations. */
-  providerConfig?: ProviderConfig;
-  /** Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`. */
-  errorLogs?: string;
-  /** By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically import the resource into the Terraform state (for supported resource types) and continue actuation. Not all resource types are supported, refer to documentation. */
-  importExistingResources?: boolean;
-  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployments during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
-  annotations?: StringMap;
-  /** Output only. Current lock state of the deployment. */
-  lockState?: DeploymentLockStateEnum | (string & {});
-  /** User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including changing its presence */
-  artifactsGcsBucket?: string;
-  /** Output only. Current state of the deployment. */
-  state?: DeploymentStateEnum | (string & {});
-  /** Output only. The current Terraform version set on the deployment. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
-  tfVersion?: string;
-  /** Required. User-specified Service Account (SA) credentials to be used when actuating resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
-  serviceAccount?: string;
-  /** The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
-  workerPool?: string;
-  /** Output only. Revision name that was most recently applied. Format: `projects/{project}/locations/{location}/deployments/{deployment}/ revisions/{revision}` */
-  latestRevision?: string;
-  /** Optional. Input to control quota checks for resources in terraform configuration files. There are limited resources on which quota validation applies. */
-  quotaValidation?: DeploymentQuotaValidationEnum | (string & {});
-  /** Output only. Cloud Build instance UUID associated with deleting this deployment. */
-  deleteBuild?: string;
-  /** Output only. Location of Cloud Build logs in Google Cloud Storage, populated when deleting this deployment. Format: `gs://{bucket}/{object}`. */
-  deleteLogs?: string;
-  /** Output only. Time when the deployment was last modified. */
-  updateTime?: string;
-  /** Optional. User-defined metadata for the deployment. */
-  labels?: StringMap;
-  /** Output only. Error code describing errors that may have occurred. */
-  errorCode?: DeploymentErrorCodeEnum | (string & {});
-  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
-  tfVersionConstraint?: string;
   /** A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
   terraformBlueprint?: TerraformBlueprint;
   /** Identifier. Resource name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
   name?: string;
   /** Output only. Time when the deployment was created. */
   createTime?: string;
+  /** Output only. Time when the deployment was last modified. */
+  updateTime?: string;
+  /** Optional. User-defined metadata for the deployment. */
+  labels?: StringMap;
+  /** Output only. Current state of the deployment. */
+  state?: DeploymentStateEnum | (string & {});
+  /** Output only. Revision name that was most recently applied. Format: `projects/{project}/locations/{location}/deployments/{deployment}/ revisions/{revision}` */
+  latestRevision?: string;
+  /** Output only. Additional information regarding the current state. */
+  stateDetail?: string;
+  /** Output only. Error code describing errors that may have occurred. */
+  errorCode?: DeploymentErrorCodeEnum | (string & {});
+  /** Output only. Location of artifacts from a DeleteDeployment operation. */
+  deleteResults?: ApplyResults;
+  /** Output only. Cloud Build instance UUID associated with deleting this deployment. */
+  deleteBuild?: string;
+  /** Output only. Location of Cloud Build logs in Google Cloud Storage, populated when deleting this deployment. Format: `gs://{bucket}/{object}`. */
+  deleteLogs?: string;
+  /** Output only. Errors encountered when deleting this deployment. Errors are truncated to 10 entries, see `delete_results` and `error_logs` for full details. */
+  tfErrors?: TerraformErrorList;
+  /** Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`. */
+  errorLogs?: string;
+  /** User-defined location of Cloud Build logs and artifacts in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty. Default bucket format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` - The field cannot be updated, including changing its presence */
+  artifactsGcsBucket?: string;
+  /** Required. User-specified Service Account (SA) credentials to be used when actuating resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
+  serviceAccount?: string;
+  /** By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically import the resource into the Terraform state (for supported resource types) and continue actuation. Not all resource types are supported, refer to documentation. */
+  importExistingResources?: boolean;
+  /** The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
+  workerPool?: string;
+  /** Output only. Current lock state of the deployment. */
+  lockState?: DeploymentLockStateEnum | (string & {});
+  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
+  tfVersionConstraint?: string;
+  /** Output only. The current Terraform version set on the deployment. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
+  tfVersion?: string;
+  /** Optional. Input to control quota checks for resources in terraform configuration files. There are limited resources on which quota validation applies. */
+  quotaValidation?: DeploymentQuotaValidationEnum | (string & {});
+  /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployments during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
+  annotations?: StringMap;
+  /** Optional. This field specifies the provider configurations. */
+  providerConfig?: ProviderConfig;
 }
 export const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deleteResults: S.optional(ApplyResults),
-    stateDetail: S.optional(S.String),
-    tfErrors: S.optional(TerraformErrorList),
-    providerConfig: S.optional(ProviderConfig),
-    errorLogs: S.optional(S.String),
-    importExistingResources: S.optional(S.Boolean),
-    annotations: S.optional(StringMap),
-    lockState: S.optional(DeploymentLockStateEnum),
-    artifactsGcsBucket: S.optional(S.String),
-    state: S.optional(DeploymentStateEnum),
-    tfVersion: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    workerPool: S.optional(S.String),
-    latestRevision: S.optional(S.String),
-    quotaValidation: S.optional(DeploymentQuotaValidationEnum),
-    deleteBuild: S.optional(S.String),
-    deleteLogs: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    errorCode: S.optional(DeploymentErrorCodeEnum),
-    tfVersionConstraint: S.optional(S.String),
     terraformBlueprint: S.optional(TerraformBlueprint),
     name: S.optional(S.String),
     createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    state: S.optional(DeploymentStateEnum),
+    latestRevision: S.optional(S.String),
+    stateDetail: S.optional(S.String),
+    errorCode: S.optional(DeploymentErrorCodeEnum),
+    deleteResults: S.optional(ApplyResults),
+    deleteBuild: S.optional(S.String),
+    deleteLogs: S.optional(S.String),
+    tfErrors: S.optional(TerraformErrorList),
+    errorLogs: S.optional(S.String),
+    artifactsGcsBucket: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    importExistingResources: S.optional(S.Boolean),
+    workerPool: S.optional(S.String),
+    lockState: S.optional(DeploymentLockStateEnum),
+    tfVersionConstraint: S.optional(S.String),
+    tfVersion: S.optional(S.String),
+    quotaValidation: S.optional(DeploymentQuotaValidationEnum),
+    annotations: S.optional(StringMap),
+    providerConfig: S.optional(ProviderConfig),
   }),
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
@@ -595,17 +595,6 @@ export const CreateProjectsLocationsDeploymentsRequest =
     identifier: "CreateProjectsLocationsDeploymentsRequest",
   }) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>;
 
-export type PreviewErrorCodeEnum =
-  | "ERROR_CODE_UNSPECIFIED"
-  | "CLOUD_BUILD_PERMISSION_DENIED"
-  | "BUCKET_CREATION_PERMISSION_DENIED"
-  | "BUCKET_CREATION_FAILED"
-  | "DEPLOYMENT_LOCK_ACQUIRE_FAILED"
-  | "PREVIEW_BUILD_API_FAILED"
-  | "PREVIEW_BUILD_RUN_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
-export const PreviewErrorCodeEnum = /*@__PURE__*/ S.String;
-
 export type PreviewStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -616,6 +605,23 @@ export type PreviewStateEnum =
   | "FAILED"
   | "DELETED";
 export const PreviewStateEnum = /*@__PURE__*/ S.String;
+
+export type PreviewPreviewModeEnum =
+  | "PREVIEW_MODE_UNSPECIFIED"
+  | "DEFAULT"
+  | "DELETE";
+export const PreviewPreviewModeEnum = /*@__PURE__*/ S.String;
+
+export type PreviewErrorCodeEnum =
+  | "ERROR_CODE_UNSPECIFIED"
+  | "CLOUD_BUILD_PERMISSION_DENIED"
+  | "BUCKET_CREATION_PERMISSION_DENIED"
+  | "BUCKET_CREATION_FAILED"
+  | "DEPLOYMENT_LOCK_ACQUIRE_FAILED"
+  | "PREVIEW_BUILD_API_FAILED"
+  | "PREVIEW_BUILD_RUN_FAILED"
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
+export const PreviewErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Artifacts created by preview. */
 export interface PreviewArtifacts {
@@ -633,99 +639,93 @@ export const PreviewArtifacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreviewArtifacts",
 }) as any as S.Schema<PreviewArtifacts>;
 
-export type PreviewPreviewModeEnum =
-  | "PREVIEW_MODE_UNSPECIFIED"
-  | "DEFAULT"
-  | "DELETE";
-export const PreviewPreviewModeEnum = /*@__PURE__*/ S.String;
-
 /** A preview represents a set of actions Infra Manager would perform to move the resources towards the desired state as specified in the configuration. */
 export interface Preview {
-  /** Output only. Additional information regarding the current state. */
-  errorStatus?: Status;
-  /** The user-specified Worker Pool resource in which the Cloud Build job will execute. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} If this field is unspecified, the default Cloud Build worker pool will be used. If omitted and deployment resource ref provided has worker_pool defined, that worker pool is used. */
-  workerPool?: string;
-  /** Required. User-specified Service Account (SA) credentials to be used when previewing resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
-  serviceAccount?: string;
-  /** Output only. Time the preview was created. */
-  createTime?: string;
   /** The terraform blueprint to preview. */
   terraformBlueprint?: TerraformBlueprint;
   /** Identifier. Resource name of the preview. Resource name can be user provided or server generated ID if unspecified. Format: `projects/{project}/locations/{location}/previews/{preview}` */
   name?: string;
-  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
-  tfVersionConstraint?: string;
-  /** Output only. Code describing any errors that may have occurred. */
-  errorCode?: PreviewErrorCodeEnum | (string & {});
+  /** Output only. Time the preview was created. */
+  createTime?: string;
   /** Optional. User-defined labels for the preview. */
   labels?: StringMap;
-  /** Output only. Cloud Build instance UUID associated with this preview. */
-  build?: string;
-  /** Output only. Link to tf-error.ndjson file, which contains the full list of the errors encountered during a Terraform preview. Format: `gs://{bucket}/{object}`. */
-  errorLogs?: string;
-  /** Output only. Location of preview logs in `gs://{bucket}/{object}` format. */
-  logs?: string;
-  /** Optional. This field specifies the provider configurations. */
-  providerConfig?: ProviderConfig;
-  /** Output only. Summary of errors encountered during Terraform preview. It has a size limit of 10, i.e. only top 10 errors will be summarized here. */
-  tfErrors?: TerraformErrorList;
-  /** Optional. Optional deployment reference. If specified, the preview will be performed using the provided deployment's current state and use any relevant fields from the deployment unless explicitly specified in the preview create request. */
-  deployment?: string;
-  /** Output only. The current Terraform version set on the preview. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
-  tfVersion?: string;
   /** Output only. Current state of the preview. */
   state?: PreviewStateEnum | (string & {});
-  /** Output only. Artifacts from preview. */
-  previewArtifacts?: PreviewArtifacts;
-  /** User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref provided has artifacts_gcs_bucket defined, that artifact bucket is used. */
-  artifactsGcsBucket?: string;
+  /** Optional. Optional deployment reference. If specified, the preview will be performed using the provided deployment's current state and use any relevant fields from the deployment unless explicitly specified in the preview create request. */
+  deployment?: string;
   /** Optional. Current mode of preview. */
   previewMode?: PreviewPreviewModeEnum | (string & {});
+  /** Required. User-specified Service Account (SA) credentials to be used when previewing resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
+  serviceAccount?: string;
+  /** User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format: `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the deployment - The path cannot be within the path of `gcs_source` If omitted and deployment resource ref provided has artifacts_gcs_bucket defined, that artifact bucket is used. */
+  artifactsGcsBucket?: string;
+  /** The user-specified Worker Pool resource in which the Cloud Build job will execute. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} If this field is unspecified, the default Cloud Build worker pool will be used. If omitted and deployment resource ref provided has worker_pool defined, that worker pool is used. */
+  workerPool?: string;
+  /** Output only. Code describing any errors that may have occurred. */
+  errorCode?: PreviewErrorCodeEnum | (string & {});
+  /** Output only. Additional information regarding the current state. */
+  errorStatus?: Status;
+  /** Output only. Cloud Build instance UUID associated with this preview. */
+  build?: string;
+  /** Output only. Summary of errors encountered during Terraform preview. It has a size limit of 10, i.e. only top 10 errors will be summarized here. */
+  tfErrors?: TerraformErrorList;
+  /** Output only. Link to tf-error.ndjson file, which contains the full list of the errors encountered during a Terraform preview. Format: `gs://{bucket}/{object}`. */
+  errorLogs?: string;
+  /** Output only. Artifacts from preview. */
+  previewArtifacts?: PreviewArtifacts;
+  /** Output only. Location of preview logs in `gs://{bucket}/{object}` format. */
+  logs?: string;
+  /** Output only. The current Terraform version set on the preview. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
+  tfVersion?: string;
+  /** The user-specified Terraform version constraint. Example: "=1.3.10". */
+  tfVersionConstraint?: string;
   /** Optional. Arbitrary key-value metadata storage e.g. to help client tools identify preview during automation. See https://google.aip.dev/148#annotations for details on format and size limitations. */
   annotations?: StringMap;
+  /** Optional. This field specifies the provider configurations. */
+  providerConfig?: ProviderConfig;
 }
 export const Preview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    errorStatus: S.optional(Status),
-    workerPool: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    createTime: S.optional(S.String),
     terraformBlueprint: S.optional(TerraformBlueprint),
     name: S.optional(S.String),
-    tfVersionConstraint: S.optional(S.String),
-    errorCode: S.optional(PreviewErrorCodeEnum),
+    createTime: S.optional(S.String),
     labels: S.optional(StringMap),
-    build: S.optional(S.String),
-    errorLogs: S.optional(S.String),
-    logs: S.optional(S.String),
-    providerConfig: S.optional(ProviderConfig),
-    tfErrors: S.optional(TerraformErrorList),
-    deployment: S.optional(S.String),
-    tfVersion: S.optional(S.String),
     state: S.optional(PreviewStateEnum),
-    previewArtifacts: S.optional(PreviewArtifacts),
-    artifactsGcsBucket: S.optional(S.String),
+    deployment: S.optional(S.String),
     previewMode: S.optional(PreviewPreviewModeEnum),
+    serviceAccount: S.optional(S.String),
+    artifactsGcsBucket: S.optional(S.String),
+    workerPool: S.optional(S.String),
+    errorCode: S.optional(PreviewErrorCodeEnum),
+    errorStatus: S.optional(Status),
+    build: S.optional(S.String),
+    tfErrors: S.optional(TerraformErrorList),
+    errorLogs: S.optional(S.String),
+    previewArtifacts: S.optional(PreviewArtifacts),
+    logs: S.optional(S.String),
+    tfVersion: S.optional(S.String),
+    tfVersionConstraint: S.optional(S.String),
     annotations: S.optional(StringMap),
+    providerConfig: S.optional(ProviderConfig),
   }),
 ).annotate({ identifier: "Preview" }) as any as S.Schema<Preview>;
 
 export interface CreateProjectsLocationsPreviewsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. The preview ID. */
-  previewId?: string;
   /** Required. The parent in whose context the Preview is created. The parent value is in the format: 'projects/{project_id}/locations/{location}'. */
   parent: string;
+  /** Optional. The preview ID. */
+  previewId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: Preview;
 }
 export const CreateProjectsLocationsPreviewsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      previewId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      previewId: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Preview.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -747,28 +747,28 @@ export const DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnu
   /*@__PURE__*/ S.String;
 
 export interface DeleteProjectsLocationsDeploymentGroupsRequest {
-  /** Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If unspecified, the default behavior is to fail the deletion if any deployments currently referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not deleted. */
-  deploymentReferencePolicy?:
-    | DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum
-    | (string & {});
   /** Required. The name of DeploymentGroup in the format projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup} */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Optional. If set to true, any revisions for this deployment group will also be deleted. (Otherwise, the request will only work if the deployment group has no revisions.) */
   force?: boolean;
+  /** Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If unspecified, the default behavior is to fail the deletion if any deployments currently referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not deleted. */
+  deploymentReferencePolicy?:
+    | DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum
+    | (string & {});
 }
 export const DeleteProjectsLocationsDeploymentGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      name: S.String.pipe(T.Label()),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      force: S.optional(S.Boolean.pipe(T.Query())),
       deploymentReferencePolicy: S.optional(
         DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum.pipe(
           T.Query(),
         ),
       ),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -965,25 +965,25 @@ export const ExportLockProjectsLocationsDeploymentsRequest =
 export interface LockInfo {
   /** Unique ID for the lock to be overridden with generation ID in the backend. */
   lockId?: string;
-  /** Extra information to store with the lock, provided by the caller. */
-  info?: string;
-  /** Time that the lock was taken. */
-  createTime?: string;
   /** Terraform operation, provided by the caller. */
   operation?: string;
+  /** Extra information to store with the lock, provided by the caller. */
+  info?: string;
   /** user@hostname when available */
   who?: string;
   /** Terraform version */
   version?: string;
+  /** Time that the lock was taken. */
+  createTime?: string;
 }
 export const LockInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lockId: S.optional(S.String),
-    info: S.optional(S.String),
-    createTime: S.optional(S.String),
     operation: S.optional(S.String),
+    info: S.optional(S.String),
     who: S.optional(S.String),
     version: S.optional(S.String),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "LockInfo" }) as any as S.Schema<LockInfo>;
 
@@ -1180,6 +1180,48 @@ export const GetIamPolicyProjectsLocationsDeploymentsRequest =
     identifier: "GetIamPolicyProjectsLocationsDeploymentsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsDeploymentsRequest>;
 
+/** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
+export interface Expr {
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+}
+export const Expr = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
+
+/** Associates `members`, or principals, with a `role`. */
+export interface Binding {
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: StringList;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
+}
+export const Binding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: S.optional(S.String),
+    members: S.optional(StringList),
+    condition: S.optional(Expr),
+  }),
+).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
+
+export type BindingList = Array<Binding>;
+export const BindingList = /*@__PURE__*/ S.Array(
+  Binding,
+) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
@@ -1189,15 +1231,15 @@ export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: StringList;
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: StringList;
 }
 export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
+    exemptedMembers: S.optional(StringList),
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
@@ -1225,65 +1267,23 @@ export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
 
-/** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
-export interface Expr {
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-}
-export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    location: S.optional(S.String),
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
-
-/** Associates `members`, or principals, with a `role`. */
-export interface Binding {
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: StringList;
-}
-export const Binding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.optional(S.String),
-    condition: S.optional(Expr),
-    members: S.optional(StringList),
-  }),
-).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
-
-export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(
-  Binding,
-) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: BindingList;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
+    bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
     etag: S.optional(S.String),
-    bindings: S.optional(BindingList),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
@@ -1307,24 +1307,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationId: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
-    labels: S.optional(StringMap),
+    locationId: S.optional(S.String),
     displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -1368,21 +1368,21 @@ export const GetProjectsLocationsDeploymentGroupsRevisionsRequest =
 
 /** A DeploymentGroupRevision represents a snapshot of a DeploymentGroup at a given point in time, created when a DeploymentGroup is provisioned or deprovisioned. */
 export interface DeploymentGroupRevision {
-  /** Output only. The snapshot of the deployment group at this revision. */
-  snapshot?: DeploymentGroup;
-  /** Output only. The alternative IDs of the deployment group revision. */
-  alternativeIds?: StringList;
-  /** Output only. Time when the deployment group revision was created. */
-  createTime?: string;
   /** Identifier. The name of the deployment group revision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. */
   name?: string;
+  /** Output only. The snapshot of the deployment group at this revision. */
+  snapshot?: DeploymentGroup;
+  /** Output only. Time when the deployment group revision was created. */
+  createTime?: string;
+  /** Output only. The alternative IDs of the deployment group revision. */
+  alternativeIds?: StringList;
 }
 export const DeploymentGroupRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    snapshot: S.optional(DeploymentGroup),
-    alternativeIds: S.optional(StringList),
-    createTime: S.optional(S.String),
     name: S.optional(S.String),
+    snapshot: S.optional(DeploymentGroup),
+    createTime: S.optional(S.String),
+    alternativeIds: S.optional(StringList),
   }),
 ).annotate({
   identifier: "DeploymentGroupRevision",
@@ -1433,11 +1433,12 @@ export type RevisionActionEnum =
   | "DELETE";
 export const RevisionActionEnum = /*@__PURE__*/ S.String;
 
-export type RevisionQuotaValidationEnum =
-  | "QUOTA_VALIDATION_UNSPECIFIED"
-  | "ENABLED"
-  | "ENFORCED";
-export const RevisionQuotaValidationEnum = /*@__PURE__*/ S.String;
+export type RevisionStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "APPLYING"
+  | "APPLIED"
+  | "FAILED";
+export const RevisionStateEnum = /*@__PURE__*/ S.String;
 
 export type RevisionErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
@@ -1448,27 +1449,14 @@ export type RevisionErrorCodeEnum =
   | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
 export const RevisionErrorCodeEnum = /*@__PURE__*/ S.String;
 
-export type RevisionStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "APPLYING"
-  | "APPLIED"
-  | "FAILED";
-export const RevisionStateEnum = /*@__PURE__*/ S.String;
+export type RevisionQuotaValidationEnum =
+  | "QUOTA_VALIDATION_UNSPECIFIED"
+  | "ENABLED"
+  | "ENFORCED";
+export const RevisionQuotaValidationEnum = /*@__PURE__*/ S.String;
 
 /** A child resource of a Deployment generated by a 'CreateDeployment' or 'UpdateDeployment' call. Each Revision contains metadata pertaining to a snapshot of a particular Deployment. */
 export interface Revision {
-  /** Output only. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
-  workerPool?: string;
-  /** Output only. The action which created this revision */
-  action?: RevisionActionEnum;
-  /** Output only. Cloud Storage path containing quota validation results. This field is set when a user sets Deployment.quota_validation field to ENABLED or ENFORCED. Format: `gs://{bucket}/{object}`. */
-  quotaValidationResults?: string;
-  /** Optional. Input to control quota checks for resources in terraform configuration files. There are limited resources on which quota validation applies. */
-  quotaValidation?: RevisionQuotaValidationEnum;
-  /** Output only. User-specified Service Account (SA) to be used as credential to manage resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
-  serviceAccount?: string;
-  /** Output only. The user-specified Terraform version constraint. Example: "=1.3.10". */
-  tfVersionConstraint?: string;
   /** Output only. A blueprint described using Terraform's HashiCorp Configuration Language as a root module. */
   terraformBlueprint?: TerraformBlueprint;
   /** Revision name. Format: `projects/{project}/locations/{location}/deployments/{deployment}/ revisions/{revision}` */
@@ -1477,52 +1465,64 @@ export interface Revision {
   createTime?: string;
   /** Output only. Time when the revision was last modified. */
   updateTime?: string;
-  /** Output only. Cloud Build instance UUID associated with this revision. */
-  build?: string;
-  /** Output only. Code describing any errors that may have occurred. */
-  errorCode?: RevisionErrorCodeEnum;
-  /** Output only. This field specifies the provider configurations. */
-  providerConfig?: ProviderConfig;
-  /** Output only. Location of Revision operation logs in `gs://{bucket}/{object}` format. */
-  logs?: string;
-  /** Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`. */
-  errorLogs?: string;
-  /** Output only. By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically import the resource into the Terraform state (for supported resource types) and continue actuation. Not all resource types are supported, refer to documentation. */
-  importExistingResources?: boolean;
+  /** Output only. The action which created this revision */
+  action?: RevisionActionEnum;
+  /** Output only. Current state of the revision. */
+  state?: RevisionStateEnum;
   /** Output only. Outputs and artifacts from applying a deployment. */
   applyResults?: ApplyResults;
   /** Output only. Additional info regarding the current state. */
   stateDetail?: string;
+  /** Output only. Code describing any errors that may have occurred. */
+  errorCode?: RevisionErrorCodeEnum;
+  /** Output only. Cloud Build instance UUID associated with this revision. */
+  build?: string;
+  /** Output only. Location of Revision operation logs in `gs://{bucket}/{object}` format. */
+  logs?: string;
   /** Output only. Errors encountered when creating or updating this deployment. Errors are truncated to 10 entries, see `delete_results` and `error_logs` for full details. */
   tfErrors?: TerraformErrorList;
-  /** Output only. Current state of the revision. */
-  state?: RevisionStateEnum;
+  /** Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`. */
+  errorLogs?: string;
+  /** Output only. User-specified Service Account (SA) to be used as credential to manage resources. Format: `projects/{projectID}/serviceAccounts/{serviceAccount}` */
+  serviceAccount?: string;
+  /** Output only. By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically import the resource into the Terraform state (for supported resource types) and continue actuation. Not all resource types are supported, refer to documentation. */
+  importExistingResources?: boolean;
+  /** Output only. The user-specified Cloud Build worker pool resource in which the Cloud Build job will execute. Format: `projects/{project}/locations/{location}/workerPools/{workerPoolId}`. If this field is unspecified, the default Cloud Build worker pool will be used. */
+  workerPool?: string;
+  /** Output only. The user-specified Terraform version constraint. Example: "=1.3.10". */
+  tfVersionConstraint?: string;
   /** Output only. The version of Terraform used to create the Revision. It is in the format of "Major.Minor.Patch", for example, "1.3.10". */
   tfVersion?: string;
+  /** Output only. Cloud Storage path containing quota validation results. This field is set when a user sets Deployment.quota_validation field to ENABLED or ENFORCED. Format: `gs://{bucket}/{object}`. */
+  quotaValidationResults?: string;
+  /** Optional. Input to control quota checks for resources in terraform configuration files. There are limited resources on which quota validation applies. */
+  quotaValidation?: RevisionQuotaValidationEnum;
+  /** Output only. This field specifies the provider configurations. */
+  providerConfig?: ProviderConfig;
 }
 export const Revision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    workerPool: S.optional(S.String),
-    action: S.optional(RevisionActionEnum),
-    quotaValidationResults: S.optional(S.String),
-    quotaValidation: S.optional(RevisionQuotaValidationEnum),
-    serviceAccount: S.optional(S.String),
-    tfVersionConstraint: S.optional(S.String),
     terraformBlueprint: S.optional(TerraformBlueprint),
     name: S.optional(S.String),
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
-    build: S.optional(S.String),
-    errorCode: S.optional(RevisionErrorCodeEnum),
-    providerConfig: S.optional(ProviderConfig),
-    logs: S.optional(S.String),
-    errorLogs: S.optional(S.String),
-    importExistingResources: S.optional(S.Boolean),
+    action: S.optional(RevisionActionEnum),
+    state: S.optional(RevisionStateEnum),
     applyResults: S.optional(ApplyResults),
     stateDetail: S.optional(S.String),
+    errorCode: S.optional(RevisionErrorCodeEnum),
+    build: S.optional(S.String),
+    logs: S.optional(S.String),
     tfErrors: S.optional(TerraformErrorList),
-    state: S.optional(RevisionStateEnum),
+    errorLogs: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
+    importExistingResources: S.optional(S.Boolean),
+    workerPool: S.optional(S.String),
+    tfVersionConstraint: S.optional(S.String),
     tfVersion: S.optional(S.String),
+    quotaValidationResults: S.optional(S.String),
+    quotaValidation: S.optional(RevisionQuotaValidationEnum),
+    providerConfig: S.optional(ProviderConfig),
   }),
 ).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
 
@@ -1544,6 +1544,25 @@ export const GetProjectsLocationsDeploymentsRevisionsResourcesRequest =
   ).annotate({
     identifier: "GetProjectsLocationsDeploymentsRevisionsResourcesRequest",
   }) as any as S.Schema<GetProjectsLocationsDeploymentsRevisionsResourcesRequest>;
+
+/** Terraform info of a Resource. */
+export interface ResourceTerraformInfo {
+  /** TF resource address that uniquely identifies this resource within this deployment. */
+  address?: string;
+  /** TF resource type */
+  type?: string;
+  /** ID attribute of the TF resource */
+  id?: string;
+}
+export const ResourceTerraformInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    type: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceTerraformInfo",
+}) as any as S.Schema<ResourceTerraformInfo>;
 
 /** CAI info of a Resource. */
 export interface ResourceCAIInfo {
@@ -1581,45 +1600,26 @@ export type ResourceStateEnum =
   | "FAILED";
 export const ResourceStateEnum = /*@__PURE__*/ S.String;
 
-/** Terraform info of a Resource. */
-export interface ResourceTerraformInfo {
-  /** TF resource address that uniquely identifies this resource within this deployment. */
-  address?: string;
-  /** TF resource type */
-  type?: string;
-  /** ID attribute of the TF resource */
-  id?: string;
-}
-export const ResourceTerraformInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    type: S.optional(S.String),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceTerraformInfo",
-}) as any as S.Schema<ResourceTerraformInfo>;
-
 /** Resource represents a Google Cloud Platform resource actuated by IM. Resources are child resources of Revisions. */
 export interface Resource {
+  /** Output only. Resource name. Format: `projects/{project}/locations/{location}/deployments/{deployment}/revisions/{revision}/resources/{resource}` */
+  name?: string;
+  /** Output only. Terraform-specific info if this resource was created using Terraform. */
+  terraformInfo?: ResourceTerraformInfo;
   /** Output only. Map of Cloud Asset Inventory (CAI) type to CAI info (e.g. CAI ID). CAI type format follows https://cloud.google.com/asset-inventory/docs/supported-asset-types */
   caiAssets?: ResourceCAIInfoMap;
   /** Output only. Intent of the resource. */
   intent?: ResourceIntentEnum;
-  /** Output only. Resource name. Format: `projects/{project}/locations/{location}/deployments/{deployment}/revisions/{revision}/resources/{resource}` */
-  name?: string;
   /** Output only. Current state of the resource. */
   state?: ResourceStateEnum;
-  /** Output only. Terraform-specific info if this resource was created using Terraform. */
-  terraformInfo?: ResourceTerraformInfo;
 }
 export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
+    terraformInfo: S.optional(ResourceTerraformInfo),
     caiAssets: S.optional(ResourceCAIInfoMap),
     intent: S.optional(ResourceIntentEnum),
-    name: S.optional(S.String),
     state: S.optional(ResourceStateEnum),
-    terraformInfo: S.optional(ResourceTerraformInfo),
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
@@ -1679,6 +1679,31 @@ export const GetProjectsLocationsPreviewsResourceChangesRequest =
     identifier: "GetProjectsLocationsPreviewsResourceChangesRequest",
   }) as any as S.Schema<GetProjectsLocationsPreviewsResourceChangesRequest>;
 
+/** Terraform info of a ResourceChange. */
+export interface ResourceChangeTerraformInfo {
+  /** Output only. TF resource address that uniquely identifies the resource. */
+  address?: string;
+  /** Output only. TF resource type. */
+  type?: string;
+  /** Output only. TF resource name. */
+  resourceName?: string;
+  /** Output only. TF resource provider. */
+  provider?: string;
+  /** Output only. TF resource actions. */
+  actions?: StringList;
+}
+export const ResourceChangeTerraformInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    type: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    provider: S.optional(S.String),
+    actions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ResourceChangeTerraformInfo",
+}) as any as S.Schema<ResourceChangeTerraformInfo>;
+
 export type ResourceChangeIntentEnum =
   | "INTENT_UNSPECIFIED"
   | "CREATE"
@@ -1688,51 +1713,26 @@ export type ResourceChangeIntentEnum =
   | "UNCHANGED";
 export const ResourceChangeIntentEnum = /*@__PURE__*/ S.String;
 
-/** Terraform info of a ResourceChange. */
-export interface ResourceChangeTerraformInfo {
-  /** Output only. TF resource address that uniquely identifies the resource. */
-  address?: string;
-  /** Output only. TF resource type. */
-  type?: string;
-  /** Output only. TF resource provider. */
-  provider?: string;
-  /** Output only. TF resource actions. */
-  actions?: StringList;
-  /** Output only. TF resource name. */
-  resourceName?: string;
-}
-export const ResourceChangeTerraformInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    type: S.optional(S.String),
-    provider: S.optional(S.String),
-    actions: S.optional(StringList),
-    resourceName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceChangeTerraformInfo",
-}) as any as S.Schema<ResourceChangeTerraformInfo>;
-
 /** A property change represents a change to a property in the state file. */
 export interface PropertyChange {
   /** Output only. The path of the property change. */
   path?: string;
   /** Output only. The paths of sensitive fields in `before`. Paths are relative to `path`. */
   beforeSensitivePaths?: StringList;
+  /** Output only. Representations of the object value before the actions. */
+  before?: unknown;
   /** Output only. The paths of sensitive fields in `after`. Paths are relative to `path`. */
   afterSensitivePaths?: StringList;
   /** Output only. Representations of the object value after the actions. */
   after?: unknown;
-  /** Output only. Representations of the object value before the actions. */
-  before?: unknown;
 }
 export const PropertyChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     beforeSensitivePaths: S.optional(StringList),
+    before: S.optional(S.Unknown),
     afterSensitivePaths: S.optional(StringList),
     after: S.optional(S.Unknown),
-    before: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "PropertyChange" }) as any as S.Schema<PropertyChange>;
 
@@ -1745,18 +1745,18 @@ export const PropertyChangeList = /*@__PURE__*/ S.Array(
 export interface ResourceChange {
   /** Identifier. The name of the resource change. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'. */
   name?: string;
-  /** Output only. The intent of the resource change. */
-  intent?: ResourceChangeIntentEnum;
   /** Output only. Terraform info of the resource change. */
   terraformInfo?: ResourceChangeTerraformInfo;
+  /** Output only. The intent of the resource change. */
+  intent?: ResourceChangeIntentEnum;
   /** Output only. The property changes of the resource change. */
   propertyChanges?: PropertyChangeList;
 }
 export const ResourceChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    intent: S.optional(ResourceChangeIntentEnum),
     terraformInfo: S.optional(ResourceChangeTerraformInfo),
+    intent: S.optional(ResourceChangeIntentEnum),
     propertyChanges: S.optional(PropertyChangeList),
   }),
 ).annotate({ identifier: "ResourceChange" }) as any as S.Schema<ResourceChange>;
@@ -1808,20 +1808,20 @@ export interface PropertyDrift {
   path?: string;
   /** Output only. The paths of sensitive fields in `before`. Paths are relative to `path`. */
   beforeSensitivePaths?: StringList;
+  /** Output only. Representations of the object value before the actions. */
+  before?: unknown;
   /** Output only. The paths of sensitive fields in `after`. Paths are relative to `path`. */
   afterSensitivePaths?: StringList;
   /** Output only. Representations of the object value after the actions. */
   after?: unknown;
-  /** Output only. Representations of the object value before the actions. */
-  before?: unknown;
 }
 export const PropertyDrift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     beforeSensitivePaths: S.optional(StringList),
+    before: S.optional(S.Unknown),
     afterSensitivePaths: S.optional(StringList),
     after: S.optional(S.Unknown),
-    before: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "PropertyDrift" }) as any as S.Schema<PropertyDrift>;
 
@@ -1832,17 +1832,17 @@ export const PropertyDriftList = /*@__PURE__*/ S.Array(
 
 /** A resource drift represents a drift to a resource in the state file. */
 export interface ResourceDrift {
-  /** Output only. Terraform info of the resource drift. */
-  terraformInfo?: ResourceDriftTerraformInfo;
   /** Identifier. The name of the resource drift. Format: 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'. */
   name?: string;
+  /** Output only. Terraform info of the resource drift. */
+  terraformInfo?: ResourceDriftTerraformInfo;
   /** Output only. The property drifts of the resource drift. */
   propertyDrifts?: PropertyDriftList;
 }
 export const ResourceDrift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    terraformInfo: S.optional(ResourceDriftTerraformInfo),
     name: S.optional(S.String),
+    terraformInfo: S.optional(ResourceDriftTerraformInfo),
     propertyDrifts: S.optional(PropertyDriftList),
   }),
 ).annotate({ identifier: "ResourceDrift" }) as any as S.Schema<ResourceDrift>;
@@ -1875,24 +1875,24 @@ export const TerraformVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A TerraformVersion represents the support state the corresponding Terraform version. */
 export interface TerraformVersion {
-  /** Output only. When the version is obsolete. */
-  obsoleteTime?: string;
   /** Identifier. The version name is in the format: 'projects/{project_id}/locations/{location}/terraformVersions/{terraform_version}'. */
   name?: string;
   /** Output only. The state of the version, ACTIVE, DEPRECATED or OBSOLETE. */
   state?: TerraformVersionStateEnum;
-  /** Output only. When the version is deprecated. */
-  deprecateTime?: string;
   /** Output only. When the version is supported. */
   supportTime?: string;
+  /** Output only. When the version is deprecated. */
+  deprecateTime?: string;
+  /** Output only. When the version is obsolete. */
+  obsoleteTime?: string;
 }
 export const TerraformVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    obsoleteTime: S.optional(S.String),
     name: S.optional(S.String),
     state: S.optional(TerraformVersionStateEnum),
-    deprecateTime: S.optional(S.String),
     supportTime: S.optional(S.String),
+    deprecateTime: S.optional(S.String),
+    obsoleteTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TerraformVersion",
@@ -1934,12 +1934,12 @@ export const ImportStateProjectsLocationsDeploymentsRequest =
   }) as any as S.Schema<ImportStateProjectsLocationsDeploymentsRequest>;
 
 export interface ListProjectsLocationsRequest {
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
@@ -1947,9 +1947,9 @@ export interface ListProjectsLocationsRequest {
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
@@ -1985,25 +1985,25 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsDeploymentGroupsRequest {
-  /** Optional. Field to use to sort the list. */
-  orderBy?: string;
   /** Required. The parent, which owns this collection of deployment groups. Format: 'projects/{project_id}/locations/{location}'. */
   parent: string;
-  /** Optional. Lists the DeploymentGroups that match the filter expression. A filter expression filters the deployment groups listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING */
-  filter?: string;
   /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
   /** Optional. Token returned by previous call to 'ListDeploymentGroups' which specifies the position in the list from where to continue listing the deployment groups. */
   pageToken?: string;
+  /** Optional. Lists the DeploymentGroups that match the filter expression. A filter expression filters the deployment groups listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING */
+  filter?: string;
+  /** Optional. Field to use to sort the list. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsDeploymentGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2024,16 +2024,16 @@ export const DeploymentGroupList = /*@__PURE__*/ S.Array(
 export interface ListDeploymentGroupsResponse {
   /** The deployment groups from the specified collection. */
   deploymentGroups?: DeploymentGroupList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** Token to be supplied to the next ListDeploymentGroups request via `page_token` to obtain the next set of results. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentGroups: S.optional(DeploymentGroupList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListDeploymentGroupsResponse",
@@ -2042,17 +2042,17 @@ export const ListDeploymentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsDeploymentGroupsRevisionsRequest {
   /** Required. The parent, which owns this collection of deployment group revisions. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
   parent: string;
-  /** Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies the position in the list from where to continue listing the deployment group revisions. All other parameters provided to `ListDeploymentGroupRevisions` must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, a sensible default will be used by the server. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies the position in the list from where to continue listing the deployment group revisions. All other parameters provided to `ListDeploymentGroupRevisions` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsDeploymentGroupsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2090,25 +2090,25 @@ export const ListDeploymentGroupRevisionsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDeploymentGroupRevisionsResponse>;
 
 export interface ListProjectsLocationsDeploymentsRequest {
-  /** Field to use to sort the list. */
-  orderBy?: string;
   /** Required. The parent in whose context the Deployments are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}'. */
   parent: string;
-  /** Lists the Deployments that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/bar - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - Deployments in CREATING state. state=CREATING */
-  filter?: string;
-  /** Token returned by previous call to 'ListDeployments' which specifies the position in the list from where to continue listing the resources. */
-  pageToken?: string;
   /** When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
+  /** Token returned by previous call to 'ListDeployments' which specifies the position in the list from where to continue listing the resources. */
+  pageToken?: string;
+  /** Lists the Deployments that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/bar - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - Deployments in CREATING state. state=CREATING */
+  filter?: string;
+  /** Field to use to sort the list. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2144,12 +2144,12 @@ export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDeploymentsResponse>;
 
 export interface ListProjectsLocationsDeploymentsRevisionsRequest {
+  /** Required. The parent in whose context the Revisions are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
+  parent: string;
   /** When requesting a page of resources, `page_size` specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
   /** Token returned by previous call to 'ListRevisions' which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
-  /** Required. The parent in whose context the Revisions are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/deployments/{deployment}'. */
-  parent: string;
   /** Lists the Revisions that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/dep/revisions/bar - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - Revisions in CREATING state. state=CREATING */
   filter?: string;
   /** Field to use to sort the list. */
@@ -2158,9 +2158,9 @@ export interface ListProjectsLocationsDeploymentsRevisionsRequest {
 export const ListProjectsLocationsDeploymentsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
@@ -2199,25 +2199,25 @@ export const ListRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRevisionsResponse>;
 
 export interface ListProjectsLocationsDeploymentsRevisionsResourcesRequest {
-  /** Field to use to sort the list. */
-  orderBy?: string;
   /** Required. The parent in whose context the Resources are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/deployments/{deployment}/revisions/{revision}'. */
   parent: string;
-  /** Lists the Resources that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/dep/revisions/bar/resources/baz */
-  filter?: string;
   /** When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
   /** Token returned by previous call to 'ListResources' which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
+  /** Lists the Resources that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/dep/revisions/bar/resources/baz */
+  filter?: string;
+  /** Field to use to sort the list. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsDeploymentsRevisionsResourcesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2238,41 +2238,41 @@ export const ResourceList = /*@__PURE__*/ S.Array(
 export interface ListResourcesResponse {
   /** List of Resources. */
   resources?: ResourceList;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** A token to request the next page of resources from the 'ListResources' method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(ResourceList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListResourcesResponse",
 }) as any as S.Schema<ListResourcesResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
   /** The name of the operation's parent resource. */
   name: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** The standard list page size. */
-  pageSize?: number;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2293,41 +2293,41 @@ export const OperationList = /*@__PURE__*/ S.Array(
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsPreviewsRequest {
-  /** Optional. Field to use to sort the list. */
-  orderBy?: string;
   /** Required. The parent in whose context the Previews are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}'. */
   parent: string;
-  /** Optional. Lists the Deployments that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/bar - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - Deployments in CREATING state. state=CREATING */
-  filter?: string;
   /** Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
   /** Optional. Token returned by previous call to 'ListDeployments' which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
+  /** Optional. Lists the Deployments that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deployments/bar - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - Deployments in CREATING state. state=CREATING */
+  filter?: string;
+  /** Optional. Field to use to sort the list. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsPreviewsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2346,18 +2346,18 @@ export const PreviewList = /*@__PURE__*/ S.Array(
 
 /** A response to a `ListPreviews` call. Contains a list of Previews. */
 export interface ListPreviewsResponse {
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** List of Previews. */
   previews?: PreviewList;
   /** Token to be supplied to the next ListPreviews request via `page_token` to obtain the next set of results. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
 }
 export const ListPreviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     previews: S.optional(PreviewList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListPreviewsResponse",
@@ -2366,23 +2366,23 @@ export const ListPreviewsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsPreviewsResourceChangesRequest {
   /** Required. The parent in whose context the ResourceChanges are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/previews/{preview}'. */
   parent: string;
-  /** Optional. Lists the resource changes that match the filter expression. A filter expression filters the resource changes listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/previews/dep/resourceChanges/baz */
-  filter?: string;
-  /** Optional. Field to use to sort the list. */
-  orderBy?: string;
   /** Optional. When requesting a page of resource changes, 'page_size' specifies number of resource changes to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
   pageSize?: number;
   /** Optional. Token returned by previous call to 'ListResourceChanges' which specifies the position in the list from where to continue listing the resource changes. */
   pageToken?: string;
+  /** Optional. Lists the resource changes that match the filter expression. A filter expression filters the resource changes listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/previews/dep/resourceChanges/baz */
+  filter?: string;
+  /** Optional. Field to use to sort the list. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsPreviewsResourceChangesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2403,16 +2403,16 @@ export const ResourceChangeList = /*@__PURE__*/ S.Array(
 export interface ListResourceChangesResponse {
   /** List of ResourceChanges. */
   resourceChanges?: ResourceChangeList;
-  /** Unreachable resources, if any. */
-  unreachable?: StringList;
   /** A token to request the next page of resources from the 'ListResourceChanges' method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
+  /** Unreachable resources, if any. */
+  unreachable?: StringList;
 }
 export const ListResourceChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceChanges: S.optional(ResourceChangeList),
-    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListResourceChangesResponse",
@@ -2421,23 +2421,23 @@ export const ListResourceChangesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsPreviewsResourceDriftsRequest {
   /** Required. The parent in whose context the ResourceDrifts are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}/previews/{preview}'. */
   parent: string;
+  /** Optional. When requesting a page of resource drifts, 'page_size' specifies number of resource drifts to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListResourceDrifts' which specifies the position in the list from where to continue listing the resource drifts. */
+  pageToken?: string;
   /** Optional. Lists the resource drifts that match the filter expression. A filter expression filters the resource drifts listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/previews/dep/resourceDrifts/baz */
   filter?: string;
   /** Optional. Field to use to sort the list. */
   orderBy?: string;
-  /** Optional. Token returned by previous call to 'ListResourceDrifts' which specifies the position in the list from where to continue listing the resource drifts. */
-  pageToken?: string;
-  /** Optional. When requesting a page of resource drifts, 'page_size' specifies number of resource drifts to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
-  pageSize?: number;
 }
 export const ListProjectsLocationsPreviewsResourceDriftsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2474,12 +2474,12 @@ export const ListResourceDriftsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceDriftsResponse>;
 
 export interface ListProjectsLocationsTerraformVersionsRequest {
-  /** Optional. Token returned by previous call to 'ListTerraformVersions' which specifies the position in the list from where to continue listing the terraform versions. */
-  pageToken?: string;
-  /** Optional. When requesting a page of terraform versions, 'page_size' specifies number of terraform versions to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
-  pageSize?: number;
   /** Required. The parent in whose context the TerraformVersions are listed. The parent value is in the format: 'projects/{project_id}/locations/{location}'. */
   parent: string;
+  /** Optional. When requesting a page of terraform versions, 'page_size' specifies number of terraform versions to return. If unspecified, at most 500 will be returned. The maximum value is 1000. */
+  pageSize?: number;
+  /** Optional. Token returned by previous call to 'ListTerraformVersions' which specifies the position in the list from where to continue listing the terraform versions. */
+  pageToken?: string;
   /** Optional. Lists the TerraformVersions that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. */
   filter?: string;
   /** Optional. Field to use to sort the list. */
@@ -2488,9 +2488,9 @@ export interface ListProjectsLocationsTerraformVersionsRequest {
 export const ListProjectsLocationsTerraformVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
@@ -2561,10 +2561,10 @@ export const LockProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
 export interface PatchProjectsLocationsDeploymentGroupsRequest {
   /** Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. */
   name: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Optional. Field mask used to specify the fields to be overwritten in the Deployment Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: DeploymentGroup;
 }
@@ -2572,8 +2572,8 @@ export const PatchProjectsLocationsDeploymentGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(DeploymentGroup.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -2587,10 +2587,10 @@ export const PatchProjectsLocationsDeploymentGroupsRequest =
   }) as any as S.Schema<PatchProjectsLocationsDeploymentGroupsRequest>;
 
 export interface PatchProjectsLocationsDeploymentsRequest {
-  /** Optional. Field mask used to specify the fields to be overwritten in the Deployment resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
   /** Identifier. Resource name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
   name: string;
+  /** Optional. Field mask used to specify the fields to be overwritten in the Deployment resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Request body */
@@ -2599,8 +2599,8 @@ export interface PatchProjectsLocationsDeploymentsRequest {
 export const PatchProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Deployment.pipe(T.HttpBody())),
     }).pipe(
@@ -2791,18 +2791,18 @@ export const UnlockProjectsLocationsDeploymentsRequest =
   }) as any as S.Schema<UnlockProjectsLocationsDeploymentsRequest>;
 
 export interface UpdateAutoMigrationConfigProjectsLocationsRequest {
-  /** Optional. The update mask applies to the resource. See google.protobuf.FieldMask. */
-  updateMask?: string;
   /** Identifier. The name of the AutoMigrationConfig. Format: 'projects/{project_id}/locations/{location}/AutoMigrationConfig'. */
   name: string;
+  /** Optional. The update mask applies to the resource. See google.protobuf.FieldMask. */
+  updateMask?: string;
   /** Request body */
   body?: AutoMigrationConfig;
 }
 export const UpdateAutoMigrationConfigProjectsLocationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(AutoMigrationConfig.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

@@ -332,7 +332,7 @@ export const BatchDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -526,7 +526,7 @@ export const BatchDeploymentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -564,7 +564,7 @@ export const BatchDeploymentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -693,7 +693,7 @@ export const BatchDeploymentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -868,7 +868,7 @@ export const BatchDeploymentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1124,7 +1124,7 @@ export const BatchEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1301,7 +1301,7 @@ export const BatchEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1336,7 +1336,7 @@ export const BatchEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1459,7 +1459,7 @@ export const BatchEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1601,7 +1601,7 @@ export const BatchEndpointsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/listkeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1680,7 +1680,7 @@ export const BatchEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -1855,7 +1855,9 @@ export interface CapabilityHostPropertiesInput {
   /** List of AI services connections. */
   aiServicesConnections?: CapabilityHostPropertiesInputAiServicesConnectionsList | null;
   /** Kind of this capability host. */
-  capabilityHostKind?: CapabilityHostPropertiesInputCapabilityHostKind;
+  capabilityHostKind?:
+    | CapabilityHostPropertiesInputCapabilityHostKind
+    | (string & {});
   /** Customer subnet info to help set up this capability host. */
   customerSubnet?: string | null;
   /** List of Storage connections. */
@@ -1921,7 +1923,7 @@ export const CapabilityHostsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -2105,7 +2107,7 @@ export const CapabilityHostsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2140,7 +2142,7 @@ export const CapabilityHostsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2235,7 +2237,7 @@ export const CodeContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2347,7 +2349,7 @@ export const CodeContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2382,7 +2384,7 @@ export const CodeContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2434,7 +2436,7 @@ export const CodeContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2531,7 +2533,7 @@ export const CodeVersionsCreateOrGetStartPendingUploadRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/startPendingUpload",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -2674,7 +2676,7 @@ export const CodeVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2729,7 +2731,7 @@ export const CodeVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2767,7 +2769,7 @@ export const CodeVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2834,7 +2836,7 @@ export const CodeVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -2921,7 +2923,7 @@ export const CodeVersionsPublishRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/publish",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3003,7 +3005,7 @@ export const ComponentContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -3105,7 +3107,7 @@ export const ComponentContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3140,7 +3142,7 @@ export const ComponentContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3204,7 +3206,7 @@ export const ComponentContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3338,7 +3340,7 @@ export const ComponentVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -3394,7 +3396,7 @@ export const ComponentVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3432,7 +3434,7 @@ export const ComponentVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3504,7 +3506,7 @@ export const ComponentVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3594,7 +3596,7 @@ export const ComponentVersionsPublishRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}/publish",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3729,7 +3731,7 @@ export const ComputeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -3978,7 +3980,7 @@ export const ComputeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4013,7 +4015,7 @@ export const ComputeGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4128,7 +4130,7 @@ export const ComputeListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4266,7 +4268,7 @@ export const ComputeListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4305,7 +4307,7 @@ export const ComputeListNodesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listNodes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4394,7 +4396,7 @@ export const ComputeRestartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4429,7 +4431,7 @@ export const ComputeStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4464,7 +4466,7 @@ export const ComputeStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4544,7 +4546,7 @@ export const ComputeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4711,7 +4713,7 @@ export const DataContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4813,7 +4815,7 @@ export const DataContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4848,7 +4850,7 @@ export const DataContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -4911,7 +4913,7 @@ export const DataContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5067,7 +5069,7 @@ export const DatastoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5163,7 +5165,7 @@ export const DatastoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5198,7 +5200,7 @@ export const DatastoresGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5273,7 +5275,7 @@ export const DatastoresListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5353,7 +5355,7 @@ export const DatastoresListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}/listSecrets",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5457,7 +5459,7 @@ export const DataVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5512,7 +5514,7 @@ export const DataVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5550,7 +5552,7 @@ export const DataVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5625,7 +5627,7 @@ export const DataVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5715,7 +5717,7 @@ export const DataVersionsPublishRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}/publish",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5798,7 +5800,7 @@ export const EnvironmentContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -5903,7 +5905,7 @@ export const EnvironmentContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -5938,7 +5940,7 @@ export const EnvironmentContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6002,7 +6004,7 @@ export const EnvironmentContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6219,7 +6221,7 @@ export const EnvironmentVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -6275,7 +6277,7 @@ export const EnvironmentVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6313,7 +6315,7 @@ export const EnvironmentVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6386,7 +6388,7 @@ export const EnvironmentVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6476,7 +6478,7 @@ export const EnvironmentVersionsPublishRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}/publish",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6558,7 +6560,7 @@ export const FeaturesetContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -6663,7 +6665,7 @@ export const FeaturesetContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6699,7 +6701,7 @@ export const FeaturesetContainersGetEntityRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -6779,7 +6781,7 @@ export const FeaturesetContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -6963,7 +6965,7 @@ export const FeaturesetVersionsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}/backfill",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7044,7 +7046,7 @@ export interface Webhook {
   /** Send callback on a specified notification event */
   eventType?: string | null;
   /** [Required] Specifies the type of service to send a callback */
-  webhookType: WebhookType;
+  webhookType: WebhookType | (string & {});
 }
 export const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7299,7 +7301,7 @@ export const FeaturesetVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -7355,7 +7357,7 @@ export const FeaturesetVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7393,7 +7395,7 @@ export const FeaturesetVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7480,7 +7482,7 @@ export const FeaturesetVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7564,7 +7566,7 @@ export const FeaturesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features/{featureName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7696,7 +7698,7 @@ export const FeaturesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -7820,7 +7822,7 @@ export const FeaturestoreEntityContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -7928,7 +7930,7 @@ export const FeaturestoreEntityContainersDeleteRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -7963,7 +7965,7 @@ export const FeaturestoreEntityContainersGetEntityRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -8046,7 +8048,7 @@ export const FeaturestoreEntityContainersListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -8223,7 +8225,7 @@ export const FeaturestoreEntityVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -8280,7 +8282,7 @@ export const FeaturestoreEntityVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -8319,7 +8321,7 @@ export const FeaturestoreEntityVersionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -8411,7 +8413,7 @@ export const FeaturestoreEntityVersionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -8489,7 +8491,7 @@ export const JobsCancelRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}/cancel",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -8549,7 +8551,7 @@ export const NodesValueType = /*@__PURE__*/ S.String;
 /** Abstract Nodes definition */
 export interface Nodes {
   /** [Required] Type of the Nodes value */
-  nodesValueType: NodesValueType;
+  nodesValueType: NodesValueType | (string & {});
 }
 export const Nodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8670,7 +8672,7 @@ export const JobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -8850,7 +8852,7 @@ export const JobsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -8885,7 +8887,7 @@ export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({ identifier: "JobsGetRequest" }) as any as S.Schema<JobsGetRequest>;
@@ -8950,7 +8952,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -9023,7 +9025,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/provisionManagedNetwork",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -9114,7 +9116,7 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -9195,7 +9197,7 @@ export const ManagedNetworkSettingsRuleDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -9231,7 +9233,7 @@ export const ManagedNetworkSettingsRuleGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -9282,7 +9284,7 @@ export const ManagedNetworkSettingsRuleListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -9374,7 +9376,7 @@ export const MarketplaceSubscriptionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -9482,7 +9484,7 @@ export const MarketplaceSubscriptionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -9517,7 +9519,7 @@ export const MarketplaceSubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -9569,7 +9571,7 @@ export const MarketplaceSubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -9693,7 +9695,7 @@ export const ModelContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -9794,7 +9796,7 @@ export const ModelContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -9829,7 +9831,7 @@ export const ModelContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -9895,7 +9897,7 @@ export const ModelContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10089,7 +10091,7 @@ export const ModelVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10144,7 +10146,7 @@ export const ModelVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10182,7 +10184,7 @@ export const ModelVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10272,7 +10274,7 @@ export const ModelVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10360,7 +10362,7 @@ export const ModelVersionsPublishRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}/publish",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10697,7 +10699,7 @@ export const OnlineDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -10824,7 +10826,7 @@ export const OnlineDeploymentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10862,7 +10864,7 @@ export const OnlineDeploymentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -10999,7 +11001,7 @@ export const OnlineDeploymentsGetLogsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/getLogs",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11046,7 +11048,7 @@ export const OnlineDeploymentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11199,7 +11201,7 @@ export const OnlineDeploymentsListSkusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/skus",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11353,7 +11355,7 @@ export const OnlineDeploymentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11621,7 +11623,7 @@ export const OnlineEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -11826,7 +11828,7 @@ export const OnlineEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11861,7 +11863,7 @@ export const OnlineEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -11981,7 +11983,7 @@ export const OnlineEndpointsGetTokenRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/token",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -12064,7 +12066,7 @@ export const OnlineEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -12206,7 +12208,7 @@ export const OnlineEndpointsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/listKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -12244,7 +12246,7 @@ export const OnlineEndpointsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/regenerateKeys",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -12294,7 +12296,7 @@ export const OnlineEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -12401,7 +12403,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.MachineLearningServices/operations",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -12623,7 +12625,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -12790,7 +12792,7 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -12826,7 +12828,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -12943,7 +12945,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -13079,7 +13081,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateLinkResources",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -13245,7 +13247,7 @@ export const QuotasListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/quotas",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -13327,7 +13329,7 @@ export interface QuotaBaseProperties {
   /** The maximum permitted quota of the resource. */
   limit?: number;
   /** An enum describing the unit of quota measurement. */
-  unit?: QuotaUnit;
+  unit?: QuotaUnit | (string & {});
 }
 export const QuotaBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13364,7 +13366,7 @@ export const QuotasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/updateQuotas",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -13810,7 +13812,7 @@ export const RegistriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14053,7 +14055,7 @@ export const RegistriesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14085,7 +14087,7 @@ export const RegistriesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14199,7 +14201,7 @@ export const RegistriesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14330,7 +14332,7 @@ export const RegistriesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/registries",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14421,7 +14423,7 @@ export const RegistriesRemoveRegionsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/removeRegions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14572,7 +14574,7 @@ export const RegistriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14696,7 +14698,7 @@ export const RegistryCodeContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -14749,7 +14751,7 @@ export const RegistryCodeContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14784,7 +14786,7 @@ export const RegistryCodeContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14836,7 +14838,7 @@ export const RegistryCodeContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -14884,7 +14886,7 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUploadRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}/startPendingUpload",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -14919,7 +14921,7 @@ export const RegistryCodeVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -14975,7 +14977,7 @@ export const RegistryCodeVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15013,7 +15015,7 @@ export const RegistryCodeVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15074,7 +15076,7 @@ export const RegistryCodeVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15106,7 +15108,7 @@ export const RegistryComponentContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15160,7 +15162,7 @@ export const RegistryComponentContainersDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -15195,7 +15197,7 @@ export const RegistryComponentContainersGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -15249,7 +15251,7 @@ export const RegistryComponentContainersListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -15284,7 +15286,7 @@ export const RegistryComponentVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15341,7 +15343,7 @@ export const RegistryComponentVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -15379,7 +15381,7 @@ export const RegistryComponentVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15442,7 +15444,7 @@ export const RegistryComponentVersionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -15474,7 +15476,7 @@ export const RegistryDataContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15527,7 +15529,7 @@ export const RegistryDataContainersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15562,7 +15564,7 @@ export const RegistryDataContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15626,7 +15628,7 @@ export const RegistryDataContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15664,7 +15666,7 @@ export const RegistryDataReferencesGetBlobReferenceSASRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/datareferences/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15766,7 +15768,7 @@ export const RegistryDataVersionsCreateOrGetStartPendingUploadRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}/startPendingUpload",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15801,7 +15803,7 @@ export const RegistryDataVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -15857,7 +15859,7 @@ export const RegistryDataVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15895,7 +15897,7 @@ export const RegistryDataVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -15971,7 +15973,7 @@ export const RegistryDataVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16003,7 +16005,7 @@ export const RegistryEnvironmentContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16057,7 +16059,7 @@ export const RegistryEnvironmentContainersDeleteRequest =
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16092,7 +16094,7 @@ export const RegistryEnvironmentContainersGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16160,7 +16162,7 @@ export const RegistryEnvironmentContainersListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16195,7 +16197,7 @@ export const RegistryEnvironmentVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16252,7 +16254,7 @@ export const RegistryEnvironmentVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16290,7 +16292,7 @@ export const RegistryEnvironmentVersionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16367,7 +16369,7 @@ export const RegistryEnvironmentVersionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16399,7 +16401,7 @@ export const RegistryModelContainersCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16453,7 +16455,7 @@ export const RegistryModelContainersDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -16488,7 +16490,7 @@ export const RegistryModelContainersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16552,7 +16554,7 @@ export const RegistryModelContainersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16600,7 +16602,7 @@ export const RegistryModelVersionsCreateOrGetStartPendingUploadRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}/startPendingUpload",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16635,7 +16637,7 @@ export const RegistryModelVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -16691,7 +16693,7 @@ export const RegistryModelVersionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16729,7 +16731,7 @@ export const RegistryModelVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16814,7 +16816,7 @@ export const RegistryModelVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16941,7 +16943,7 @@ export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -16993,7 +16995,7 @@ export const SchedulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17028,7 +17030,7 @@ export const SchedulesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17089,7 +17091,7 @@ export const SchedulesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17277,7 +17279,7 @@ export const ServerlessEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -17468,7 +17470,7 @@ export const ServerlessEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17503,7 +17505,7 @@ export const ServerlessEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17624,7 +17626,7 @@ export const ServerlessEndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17768,7 +17770,7 @@ export const ServerlessEndpointsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/listKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17803,7 +17805,7 @@ export const ServerlessEndpointsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/regenerateKeys",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -17849,7 +17851,7 @@ export const ServerlessEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -17965,7 +17967,7 @@ export const UsagesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18056,7 +18058,7 @@ export const VirtualMachineSizesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/vmSizes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18424,7 +18426,7 @@ export const WorkspaceConnectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18544,7 +18546,7 @@ export const WorkspaceConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18579,7 +18581,7 @@ export const WorkspaceConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18636,7 +18638,7 @@ export const WorkspaceConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18717,7 +18719,7 @@ export const WorkspaceConnectionsListSecretsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}/listsecrets",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -18772,7 +18774,7 @@ export const WorkspaceConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -18820,7 +18822,7 @@ export const WorkspaceFeaturesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/features",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -19298,7 +19300,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -19628,7 +19630,7 @@ export const WorkspacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -19801,7 +19803,7 @@ export const WorkspacesDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/diagnose",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -19961,7 +19963,7 @@ export const WorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20080,7 +20082,7 @@ export const WorkspacesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -20212,7 +20214,7 @@ export const WorkspacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/workspaces",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20237,7 +20239,7 @@ export const WorkspacesListKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20333,7 +20335,7 @@ export const WorkspacesListNotebookAccessTokenRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookAccessToken",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -20383,7 +20385,7 @@ export const WorkspacesListNotebookKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20409,7 +20411,7 @@ export const WorkspacesListOutboundNetworkDependenciesEndpointsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
   ).annotate({
@@ -20506,7 +20508,7 @@ export const WorkspacesListStorageAccountKeysRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listStorageAccountKeys",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-03-01",
       }),
     ),
 ).annotate({
@@ -20543,7 +20545,7 @@ export const WorkspacesPrepareNotebookRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/prepareNotebook",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20568,7 +20570,7 @@ export const WorkspacesResyncKeysRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/resyncKeys",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({
@@ -20736,7 +20738,7 @@ export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-03-01",
     }),
   ),
 ).annotate({

@@ -30,10 +30,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/regenerateKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).\n\nRegenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EndpointAuthKeys": {
@@ -143,10 +143,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/listKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List EndpointAuthKeys for an Endpoint using Key-based authentication.\n\nList EndpointAuthKeys for an Endpoint using Key-based authentication.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointsListKeysRequest": {
@@ -202,10 +202,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Serverless Endpoint (asynchronous).\n\nDelete Serverless Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointsDeleteRequest": {
@@ -261,10 +261,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update Serverless Endpoint (asynchronous).\n\nUpdate Serverless Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointsUpdateResponse": {
@@ -1099,10 +1099,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update Serverless Endpoint (asynchronous).\n\nCreate or update Serverless Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointsCreateOrUpdateResponse": {
@@ -1460,10 +1460,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get Serverless Endpoint.\n\nGet Serverless Endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointsGetResponse": {
@@ -1669,10 +1669,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Serverless Endpoints.\n\nList Serverless Endpoints.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ServerlessEndpointTrackedResourceArmPaginatedResult": {
@@ -1907,10 +1907,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete schedule.\n\nDelete schedule.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#SchedulesDeleteRequest": {
@@ -1966,10 +1966,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update schedule.\n\nCreate or update schedule.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#SchedulesCreateOrUpdateResponse": {
@@ -2287,10 +2287,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get schedule.\n\nGet schedule.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#SchedulesGetResponse": {
@@ -2385,10 +2385,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List schedules in specified workspace.\n\nList schedules in specified workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ScheduleResourceArmPaginatedResult": {
@@ -2543,10 +2543,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/resyncKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Resync all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry\n\nResync all the keys associated with this workspace.This includes keys for the storage account, app insights and password for container registry",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesResyncKeysRequest": {
@@ -2594,10 +2594,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/provisionManagedNetwork",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Provisions the managed network of a machine learning workspace.\n\nProvisions the managed network of a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ManagedNetworkProvisionStatus": {
@@ -2685,10 +2685,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by Client (Portal, CLI, etc) to get available \"private link resources\" for the workspace.\r\nEach \"private link resource\" is a connection endpoint (IP address) to the resource.\r\nPre single connection endpoint per workspace: the Data Plane IP address, returned by DNS resolution.\r\nOther RPs, such as Azure Storage, have multiple - one for Blobs, other for Queues, etc.\r\nDefined in the \"[NRP] Private Endpoint Design\" doc, topic \"GET API for GroupIds\".\n\nCalled by Client (Portal, CLI, etc) to get available \"private link resources\" for the workspace.\nEach \"private link resource\" is a connection endpoint (IP address) to the resource.\nPre single connection endpoint per workspace: the Data Plane IP address, returned by DNS resolution.\nOther RPs, such as Azure Storage, have multiple - one for Blobs, other for Queues, etc.\nDefined in the \"[NRP] Private Endpoint Design\" doc, topic \"GET API for GroupIds\".",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PrivateLinkResourceListResult": {
@@ -2943,10 +2943,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by end-users to delete a PE connection.\n\nCalled by end-users to delete a PE connection.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PrivateEndpointConnectionsDeleteRequest": {
@@ -3002,10 +3002,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by end-users to approve or reject a PE connection.\r\nThis method must validate and forward the call to NRP.\n\nCalled by end-users to approve or reject a PE connection.\nThis method must validate and forward the call to NRP.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PrivateEndpointConnectionsCreateOrUpdateResponse": {
@@ -3454,10 +3454,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by end-users to get a PE connection.\n\nCalled by end-users to get a PE connection.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PrivateEndpointConnectionsGetResponse": {
@@ -3650,10 +3650,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by end-users to get all PE connections.\n\nCalled by end-users to get all PE connections.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PrivateEndpointConnectionListResult": {
@@ -3864,10 +3864,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/prepareNotebook",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Prepare Azure Machine Learning Workspace's notebook resource\n\nPrepare Azure Machine Learning Workspace's notebook resource",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#NotebookResourceInfo": {
@@ -3951,10 +3951,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes an outbound rule from the managed network of a machine learning workspace.\n\nDeletes an outbound rule from the managed network of a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ManagedNetworkSettingsRuleDeleteRequest": {
@@ -4010,10 +4010,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates an outbound rule in the managed network of a machine learning workspace.\n\nCreates or updates an outbound rule in the managed network of a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ManagedNetworkSettingsRuleCreateOrUpdateResponse": {
@@ -4281,10 +4281,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets an outbound rule from the managed network of a machine learning workspace.\n\nGets an outbound rule from the managed network of a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ManagedNetworkSettingsRuleGetResponse": {
@@ -4379,10 +4379,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists the managed network outbound rules for a machine learning workspace.\n\nLists the managed network outbound rules for a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OutboundRuleListResult": {
@@ -4499,10 +4499,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Called by Client (Portal, CLI, etc) to get a list of all external outbound dependencies (FQDNs) programmatically.\n\nCalled by Client (Portal, CLI, etc) to get a list of all external outbound dependencies (FQDNs) programmatically.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ExternalFQDNResponse": {
@@ -4624,10 +4624,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/token",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Retrieve a valid AML token for an Endpoint using AMLToken-based authentication.\n\nRetrieve a valid AML token for an Endpoint using AMLToken-based authentication.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EndpointAuthToken": {
@@ -4718,10 +4718,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/regenerateKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Regenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).\n\nRegenerate EndpointAuthKeys for an Endpoint using Key-based authentication (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsRegenerateKeysRequest": {
@@ -4791,10 +4791,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/listKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List EndpointAuthKeys for an Endpoint using Key-based authentication.\n\nList EndpointAuthKeys for an Endpoint using Key-based authentication.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsListKeysRequest": {
@@ -4850,10 +4850,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/skus",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Inference Endpoint Deployment Skus.\n\nList Inference Endpoint Deployment Skus.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#SkuResourceArmPaginatedResult": {
@@ -5101,10 +5101,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/getLogs",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Polls an Endpoint operation.\n\nPolls an Endpoint operation.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DeploymentLogs": {
@@ -5214,10 +5214,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Inference Endpoint Deployment (asynchronous).\n\nDelete Inference Endpoint Deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineDeploymentsDeleteRequest": {
@@ -5281,10 +5281,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update Online Deployment (asynchronous).\n\nUpdate Online Deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineDeploymentsUpdateResponse": {
@@ -6041,10 +6041,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update Inference Endpoint Deployment (asynchronous).\n\nCreate or update Inference Endpoint Deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineDeploymentsCreateOrUpdateResponse": {
@@ -6364,10 +6364,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get Inference Deployment Deployment.\n\nGet Inference Deployment Deployment.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineDeploymentsGetResponse": {
@@ -6581,10 +6581,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Inference Endpoint Deployments.\n\nList Inference Endpoint Deployments.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineDeploymentTrackedResourceArmPaginatedResult": {
@@ -6841,10 +6841,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Online Endpoint (asynchronous).\n\nDelete Online Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsDeleteRequest": {
@@ -6900,10 +6900,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update Online Endpoint (asynchronous).\n\nUpdate Online Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsUpdateResponse": {
@@ -7298,10 +7298,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update Online Endpoint (asynchronous).\n\nCreate or update Online Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsCreateOrUpdateResponse": {
@@ -7732,10 +7732,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get Online Endpoint.\n\nGet Online Endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointsGetResponse": {
@@ -7941,10 +7941,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Online Endpoints.\n\nList Online Endpoints.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OnlineEndpointTrackedResourceArmPaginatedResult": {
@@ -8275,10 +8275,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}/publish",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Publish version asset into registry.\n\nPublish version asset into registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelVersionsPublishRequest": {
@@ -8363,10 +8363,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelVersionsDeleteRequest": {
@@ -8430,10 +8430,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelVersionsCreateOrUpdateResponse": {
@@ -8768,10 +8768,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelVersionsGetResponse": {
@@ -8874,10 +8874,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List model versions.\n\nList model versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelVersionResourceArmPaginatedResult": {
@@ -9096,10 +9096,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelContainersDeleteRequest": {
@@ -9155,10 +9155,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelContainersCreateOrUpdateResponse": {
@@ -9394,10 +9394,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelContainersGetResponse": {
@@ -9492,10 +9492,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List model containers.\n\nList model containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ModelContainerResourceArmPaginatedResult": {
@@ -9657,10 +9657,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Marketplace Subscription (asynchronous).\n\nDelete Marketplace Subscription (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#MarketplaceSubscriptionsDeleteRequest": {
@@ -9716,10 +9716,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update Marketplace Subscription (asynchronous).\n\nCreate or update Marketplace Subscription (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#MarketplaceSubscriptionsCreateOrUpdateResponse": {
@@ -9959,10 +9959,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#MarketplaceSubscriptionsGetResponse": {
@@ -10057,10 +10057,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List containers.\n\nList containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#MarketplaceSubscriptionResourceArmPaginatedResult": {
@@ -10184,10 +10184,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listStorageAccountKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists keys of Azure Machine Learning Workspace's storage account.\n\nLists keys of Azure Machine Learning Workspace's storage account.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListStorageAccountKeysResult": {
@@ -10247,10 +10247,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists keys of Azure Machine Learning Workspaces notebook.\n\nLists keys of Azure Machine Learning Workspaces notebook.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListNotebookKeysResult": {
@@ -10316,10 +10316,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookAccessToken",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get Azure Machine Learning Workspace notebook access token\n\nGet Azure Machine Learning Workspace notebook access token",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#NotebookAccessTokenResult": {
@@ -10403,10 +10403,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry.\n\nLists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListWorkspaceKeysResult": {
@@ -10524,10 +10524,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}/cancel",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Cancels a Job (asynchronous).\n\nCancels a Job (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#JobsCancelRequest": {
@@ -10583,10 +10583,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a Job (asynchronous).\n\nDeletes a Job (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#JobsDeleteRequest": {
@@ -10642,10 +10642,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.\n\nCreates and executes a Job.\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#JobsCreateOrUpdateResponse": {
@@ -11450,10 +11450,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets a Job by name/id.\n\nGets a Job by name/id.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#JobsGetResponse": {
@@ -11548,10 +11548,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists Jobs in the workspace.\n\nLists Jobs in the workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#JobBaseResourceArmPaginatedResult": {
@@ -11727,10 +11727,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityVersionsDeleteRequest": {
@@ -11794,10 +11794,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityVersionsCreateOrUpdateResponse": {
@@ -12078,10 +12078,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityVersionsGetResponse": {
@@ -12184,10 +12184,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityVersionResourceArmPaginatedResult": {
@@ -12399,10 +12399,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityContainersDeleteRequest": {
@@ -12458,10 +12458,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityContainersCreateOrUpdateResponse": {
@@ -12701,10 +12701,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityContainersGetEntityResponse": {
@@ -12799,10 +12799,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List featurestore entity containers.\n\nList featurestore entity containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturestoreEntityContainerResourceArmPaginatedResult": {
@@ -12992,10 +12992,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features/{featureName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get feature.\n\nGet feature.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesGetResponse": {
@@ -13228,10 +13228,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Features.\n\nList Features.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeatureResourceArmPaginatedResult": {
@@ -13430,10 +13430,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}/backfill",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Backfill.\n\nBackfill.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetVersionBackfillResponse": {
@@ -13688,10 +13688,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetVersionsDeleteRequest": {
@@ -13755,10 +13755,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetVersionsCreateOrUpdateResponse": {
@@ -14287,10 +14287,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetVersionsGetResponse": {
@@ -14393,10 +14393,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetVersionResourceArmPaginatedResult": {
@@ -14608,10 +14608,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetContainersDeleteRequest": {
@@ -14667,10 +14667,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetContainersCreateOrUpdateResponse": {
@@ -14910,10 +14910,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetContainersGetEntityResponse": {
@@ -15008,10 +15008,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List featurestore entity containers.\n\nList featurestore entity containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#FeaturesetContainerResourceArmPaginatedResult": {
@@ -15201,10 +15201,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/features",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all enabled features for a workspace",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListAmlUserFeatureResult": {
@@ -15308,10 +15308,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}/publish",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Publish version asset into registry.\n\nPublish version asset into registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentVersionsPublishRequest": {
@@ -15396,10 +15396,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentVersionsDeleteRequest": {
@@ -15463,10 +15463,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates an EnvironmentVersion.\n\nCreates or updates an EnvironmentVersion.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentVersionsCreateOrUpdateResponse": {
@@ -15828,10 +15828,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentVersionsGetResponse": {
@@ -15934,10 +15934,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentVersionResourceArmPaginatedResult": {
@@ -16114,10 +16114,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentContainersDeleteRequest": {
@@ -16173,10 +16173,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentContainersCreateOrUpdateResponse": {
@@ -16416,10 +16416,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentContainersGetResponse": {
@@ -16514,10 +16514,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List environment containers.\n\nList environment containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#EnvironmentContainerResourceArmPaginatedResult": {
@@ -16672,10 +16672,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/diagnose",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Diagnose workspace setup issue.\n\nDiagnose workspace setup issue.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DiagnoseResponseResult": {
@@ -17069,10 +17069,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}/listSecrets",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get datastore secrets.\n\nGet datastore secrets.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DatastoreSecrets": {
@@ -17187,10 +17187,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete datastore.\n\nDelete datastore.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DatastoresDeleteRequest": {
@@ -17246,10 +17246,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update datastore.\n\nCreate or update datastore.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DatastoresCreateOrUpdateResponse": {
@@ -17589,10 +17589,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get datastore.\n\nGet datastore.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DatastoresGetResponse": {
@@ -17687,10 +17687,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List datastores.\n\nList datastores.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DatastoreResourceArmPaginatedResult": {
@@ -17863,10 +17863,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}/publish",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Publish version asset into registry.\n\nPublish version asset into registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataVersionsPublishRequest": {
@@ -17951,10 +17951,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataVersionsDeleteRequest": {
@@ -18018,10 +18018,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataVersionsCreateOrUpdateResponse": {
@@ -18236,10 +18236,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataVersionsGetResponse": {
@@ -18342,10 +18342,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List data versions in the data container\n\nList data versions in the data container",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataVersionBaseResourceArmPaginatedResult": {
@@ -18529,10 +18529,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataContainersDeleteRequest": {
@@ -18588,10 +18588,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataContainersCreateOrUpdateResponse": {
@@ -18839,10 +18839,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataContainersGetResponse": {
@@ -18937,10 +18937,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List data containers.\n\nList data containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#DataContainerResourceArmPaginatedResult": {
@@ -19095,10 +19095,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}/listsecrets",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List all the secrets of a machine learning workspaces connections.\n\nList all the secrets of a machine learning workspaces connections.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionsListSecretsResponse": {
@@ -20220,10 +20220,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete machine learning workspaces connections by name.\n\nDelete machine learning workspaces connections by name.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionsDeleteRequest": {
@@ -20279,10 +20279,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update machine learning workspaces connections under the specified workspace.\n\nUpdate machine learning workspaces connections under the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionsUpdateResponse": {
@@ -20450,10 +20450,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update machine learning workspaces connections under the specified workspace.\n\nCreate or update machine learning workspaces connections under the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionsCreateResponse": {
@@ -20553,10 +20553,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists machine learning workspaces connections by name.\n\nLists machine learning workspaces connections by name.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionsGetResponse": {
@@ -20650,10 +20650,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List all the available machine learning workspaces connections under the specified workspace.\n\nLists all the available machine learning workspaces connections under the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceConnectionPropertiesV2BasicResourceArmPaginatedResult": {
@@ -20790,10 +20790,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Posts a stop action to a compute instance",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeStopRequest": {
@@ -20849,10 +20849,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Posts a start action to a compute instance",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeStartRequest": {
@@ -20908,10 +20908,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Posts a restart action to a compute instance",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeRestartRequest": {
@@ -20967,10 +20967,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listNodes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get the details (e.g IP address, port etc) of all the compute nodes in the compute.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#AmlComputeNodesInformation": {
@@ -21146,10 +21146,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets secrets related to Machine Learning compute (storage keys, service credentials, etc).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeSecrets": {
@@ -21288,10 +21288,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes specified Machine Learning compute.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeDeleteRequest": {
@@ -21373,10 +21373,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Updates properties of a compute. This call will overwrite a compute if it exists. This is a nonrecoverable operation.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeUpdateResponse": {
@@ -21854,10 +21854,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates compute. This call will overwrite a compute if it exists. This is a nonrecoverable operation. If your intent is to create a new compute, do a GET first to verify that it does not exist yet.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeCreateOrUpdateResponse": {
@@ -22196,10 +22196,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComputeGetResponse": {
@@ -22398,10 +22398,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets computes in specified workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PaginatedComputeResourcesList": {
@@ -22629,10 +22629,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}/publish",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Publish version asset into registry.\n\nPublish version asset into registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentVersionsPublishRequest": {
@@ -22717,10 +22717,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentVersionsDeleteRequest": {
@@ -22784,10 +22784,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentVersionsCreateOrUpdateResponse": {
@@ -22975,10 +22975,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentVersionsGetResponse": {
@@ -23081,10 +23081,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List component versions.\n\nList component versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentVersionResourceArmPaginatedResult": {
@@ -23261,10 +23261,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentContainersDeleteRequest": {
@@ -23320,10 +23320,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentContainersCreateOrUpdateResponse": {
@@ -23563,10 +23563,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentContainersGetResponse": {
@@ -23661,10 +23661,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List component containers.\n\nList component containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ComponentContainerResourceArmPaginatedResult": {
@@ -23819,10 +23819,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/startPendingUpload",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Generate a storage location and credential for the client to upload a code asset to.\n\nGenerate a storage location and credential for the client to upload a code asset to.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#PendingUploadResponseDto": {
@@ -24019,10 +24019,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/publish",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Publish version asset into registry.\n\nPublish version asset into registry.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeVersionsPublishRequest": {
@@ -24107,10 +24107,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeVersionsDeleteRequest": {
@@ -24174,10 +24174,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeVersionsCreateOrUpdateResponse": {
@@ -24365,10 +24365,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeVersionsGetResponse": {
@@ -24471,10 +24471,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeVersionResourceArmPaginatedResult": {
@@ -24634,10 +24634,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeContainersDeleteRequest": {
@@ -24693,10 +24693,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeContainersCreateOrUpdateResponse": {
@@ -24936,10 +24936,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get containers.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeContainersGetResponse": {
@@ -25034,10 +25034,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List containers.\n\nList containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CodeContainerResourceArmPaginatedResult": {
@@ -25161,10 +25161,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete capabilityHost.\n\nDelete capabilityHost.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CapabilityHostsDeleteRequest": {
@@ -25220,10 +25220,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update capabilityHost.\n\nCreate or update capabilityHost.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CapabilityHostsCreateOrUpdateResponse": {
@@ -25707,10 +25707,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get capabilityHost.\n\nGet capabilityHost.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#CapabilityHostsGetResponse": {
@@ -25805,10 +25805,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/listkeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists batch Inference Endpoint keys.\n\nLists batch Inference Endpoint keys.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointsListKeysRequest": {
@@ -25864,10 +25864,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Batch Inference deployment (asynchronous).\n\nDelete Batch Inference deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchDeploymentsDeleteRequest": {
@@ -25931,10 +25931,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update a batch inference deployment (asynchronous).\n\nUpdate a batch inference deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchDeploymentsUpdateResponse": {
@@ -26511,10 +26511,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates/updates a batch inference deployment (asynchronous).\n\nCreates/updates a batch inference deployment (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchDeploymentsCreateOrUpdateResponse": {
@@ -26834,10 +26834,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get batch inference deployment by id.\n\nGets a batch inference deployment by id.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchDeploymentsGetResponse": {
@@ -27051,10 +27051,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists Batch inference deployments in the workspace.\n\nLists Batch inference deployments in the workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchDeploymentTrackedResourceArmPaginatedResult": {
@@ -27311,10 +27311,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Batch Inference Endpoint (asynchronous).\n\nDelete Batch Inference Endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointsDeleteRequest": {
@@ -27370,10 +27370,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update a batch inference endpoint (asynchronous).\n\nUpdate a batch inference endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointsUpdateResponse": {
@@ -27693,10 +27693,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create a batch inference endpoint (asynchronous).\n\nCreates a batch inference endpoint (asynchronous).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointsCreateOrUpdateResponse": {
@@ -28063,10 +28063,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get batch inference endpoint by name.\n\nGets a batch inference endpoint by name.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointsGetResponse": {
@@ -28272,10 +28272,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists Batch inference endpoint in the workspace.\n\nLists Batch inference endpoint in the workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#BatchEndpointTrackedResourceArmPaginatedResult": {
@@ -28517,10 +28517,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Deletes a machine learning workspace.\n\nDeletes a machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesDeleteRequest": {
@@ -28575,10 +28575,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Updates a machine learning workspace with the specified parameters.\n\nUpdates a machine learning workspace with the specified parameters.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesUpdateResponse": {
@@ -29667,10 +29667,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Creates or updates a workspace with the specified parameters.\n\nCreates or updates a workspace with the specified parameters.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesCreateOrUpdateResponse": {
@@ -30112,10 +30112,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the properties of the specified machine learning workspace.\n\nGets the properties of the specified machine learning workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesGetResponse": {
@@ -30301,10 +30301,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the available machine learning workspaces under the specified resource group.\n\nLists all the available machine learning workspaces under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspaceListResult": {
@@ -30532,10 +30532,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/removeRegions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Remove regions from registry\n\nRemove regions from registry",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesRemoveRegionsResponse": {
@@ -31411,10 +31411,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}/startPendingUpload",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Generate a storage location and credential for the client to upload a model asset to.\n\nGenerate a storage location and credential for the client to upload a model asset to.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelVersionsCreateOrGetStartPendingUploadRequest": {
@@ -31511,10 +31511,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelVersionsDeleteRequest": {
@@ -31578,10 +31578,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelVersionsCreateOrUpdateResponse": {
@@ -31691,10 +31691,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelVersionsGetResponse": {
@@ -31797,10 +31797,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelVersionsListRequest": {
@@ -31936,10 +31936,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelContainersDeleteRequest": {
@@ -31995,10 +31995,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update model container.\n\nCreate or update model container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelContainersCreateOrUpdateResponse": {
@@ -32100,10 +32100,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelContainersGetResponse": {
@@ -32198,10 +32198,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List model containers.\n\nList model containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryModelContainersListRequest": {
@@ -32287,10 +32287,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentVersionsDeleteRequest": {
@@ -32354,10 +32354,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentVersionsCreateOrUpdateResponse": {
@@ -32467,10 +32467,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentVersionsGetResponse": {
@@ -32573,10 +32573,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentVersionsListRequest": {
@@ -32684,10 +32684,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentContainersDeleteRequest": {
@@ -32743,10 +32743,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentContainersCreateOrUpdateResponse": {
@@ -32848,10 +32848,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentContainersGetResponse": {
@@ -32946,10 +32946,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List environment containers.\n\nList environment containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryEnvironmentContainersListRequest": {
@@ -33035,10 +33035,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/datareferences/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get blob reference SAS Uri.\n\nGet blob reference SAS Uri.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#GetBlobReferenceSASResponseDto": {
@@ -33205,10 +33205,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}/startPendingUpload",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Generate a storage location and credential for the client to upload a data asset to.\n\nGenerate a storage location and credential for the client to upload a data asset to.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataVersionsCreateOrGetStartPendingUploadRequest": {
@@ -33305,10 +33305,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataVersionsDeleteRequest": {
@@ -33372,10 +33372,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataVersionsCreateOrUpdateResponse": {
@@ -33485,10 +33485,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataVersionsGetResponse": {
@@ -33591,10 +33591,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List data versions in the data container\n\nList data versions in the data container",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataVersionsListRequest": {
@@ -33709,10 +33709,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataContainersDeleteRequest": {
@@ -33768,10 +33768,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataContainersCreateOrUpdateResponse": {
@@ -33873,10 +33873,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataContainersGetResponse": {
@@ -33971,10 +33971,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List Data containers.\n\nList Data containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryDataContainersListRequest": {
@@ -34060,10 +34060,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentVersionsDeleteRequest": {
@@ -34127,10 +34127,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentVersionsCreateOrUpdateResponse": {
@@ -34240,10 +34240,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentVersionsGetResponse": {
@@ -34346,10 +34346,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentVersionsListRequest": {
@@ -34426,10 +34426,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete container.\n\nDelete container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentContainersDeleteRequest": {
@@ -34485,10 +34485,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update container.\n\nCreate or update container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentContainersCreateOrUpdateResponse": {
@@ -34590,10 +34590,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get container.\n\nGet container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentContainersGetResponse": {
@@ -34688,10 +34688,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List containers.\n\nList containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryComponentContainersListRequest": {
@@ -34746,10 +34746,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}/startPendingUpload",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Generate a storage location and credential for the client to upload a code asset to.\n\nGenerate a storage location and credential for the client to upload a code asset to.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeVersionsCreateOrGetStartPendingUploadRequest": {
@@ -34846,10 +34846,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete version.\n\nDelete version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeVersionsDeleteRequest": {
@@ -34913,10 +34913,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update version.\n\nCreate or update version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeVersionsCreateOrUpdateResponse": {
@@ -35026,10 +35026,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get version.\n\nGet version.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeVersionsGetResponse": {
@@ -35132,10 +35132,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List versions.\n\nList versions.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeVersionsListRequest": {
@@ -35212,10 +35212,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete Code container.\n\nDelete Code container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeContainersDeleteRequest": {
@@ -35271,10 +35271,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update Code container.\n\nCreate or update Code container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeContainersCreateOrUpdateResponse": {
@@ -35376,10 +35376,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get Code container.\n\nGet Code container.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeContainersGetResponse": {
@@ -35474,10 +35474,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List containers.\n\nList containers.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryCodeContainersListRequest": {
@@ -35532,10 +35532,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Delete registry\n\nDelete registry",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesDeleteRequest": {
@@ -35583,10 +35583,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update tags\n\nUpdate tags",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesUpdateResponse": {
@@ -35834,10 +35834,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Create or update registry\n\nCreate or update registry",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesCreateOrUpdateResponse": {
@@ -36141,10 +36141,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Get registry\n\nGet registry",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesGetResponse": {
@@ -36342,10 +36342,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List registries\n\nList registries",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistryTrackedResourceArmPaginatedResult": {
@@ -36565,10 +36565,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/workspaces",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all the available machine learning workspaces under the specified subscription.\n\nLists all the available machine learning workspaces under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#WorkspacesListBySubscriptionRequest": {
@@ -36620,10 +36620,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/registries",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "List registries by subscription\n\nList registries by subscription",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#RegistriesListBySubscriptionRequest": {
@@ -36655,10 +36655,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/vmSizes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Returns supported VM Sizes in a location",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#VirtualMachineSizeListResult": {
@@ -36945,10 +36945,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the current usage information as well as limits for AML resources for given subscription and location.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListUsagesResult": {
@@ -37102,10 +37102,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/updateQuotas",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Update quota for each VM family in workspace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#UpdateWorkspaceQuotasResult": {
@@ -37329,10 +37329,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/quotas",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Gets the currently assigned Workspace Quotas based on VMFamily.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#ListWorkspaceQuotas": {
@@ -37466,10 +37466,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.MachineLearningServices/operations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-03-01"
         },
         "smithy.api#documentation": "Lists all of the available Azure Machine Learning Workspaces REST API operations\n\nList the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
     "com.azure.machinelearningservices#OperationsListResponse": {

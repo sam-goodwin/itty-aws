@@ -1466,7 +1466,7 @@ export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
 /** Identity properties. */
 export interface IdentityPropertiesInput {
   /** Managed identity type. */
-  type?: ManagedIdentityTypes;
+  type?: ManagedIdentityTypes | (string & {});
 }
 export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

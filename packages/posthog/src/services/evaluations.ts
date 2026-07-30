@@ -126,25 +126,7 @@ export const EvaluationsCreateRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationsCreateRequestConditionsList>;
 
-/** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace";
-export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
-
-/** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-export interface EvaluationsCreateRequestTargetConfig {
-  /** For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight. */
-  window_seconds?: number;
-}
-export const EvaluationsCreateRequestTargetConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      window_seconds: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "EvaluationsCreateRequestTargetConfig",
-}) as any as S.Schema<EvaluationsCreateRequestTargetConfig>;
-
-/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub */
+/** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI */
 export type LLMProviderEnum =
   | "openai"
   | "anthropic"
@@ -152,16 +134,14 @@ export type LLMProviderEnum =
   | "openrouter"
   | "fireworks"
   | "azure_openai"
-  | "together_ai"
-  | "minimax"
-  | "zeabur";
+  | "together_ai";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** Nested serializer for model configuration. */
 export interface ModelConfigurationInput {
   provider?: LLMProviderEnum | (string & {});
   model?: string;
-  /** Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed. */
+  /** Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it. */
   provider_key_id?: string | null;
 }
 export const ModelConfigurationInput = /*@__PURE__*/ S.suspend(() =>
@@ -193,11 +173,6 @@ export interface EvaluationsCreateRequest {
   output_config?: EvaluationsCreateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsCreateRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum | (string & {});
-  /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-  target_config?: EvaluationsCreateRequestTargetConfig;
-  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
   model_configuration?: ModelConfigurationInput | null;
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
@@ -213,8 +188,6 @@ export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     output_type: S.optional(OutputTypeEnum),
     output_config: S.optional(EvaluationsCreateRequestOutputConfig),
     conditions: S.optional(EvaluationsCreateRequestConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(EvaluationsCreateRequestTargetConfig),
     model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
     deleted: S.optional(S.Boolean),
   }).pipe(
@@ -232,9 +205,10 @@ export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationStatusEnum = "active" | "paused" | "error";
 export const EvaluationStatusEnum = /*@__PURE__*/ S.String;
 
-/** * `provider_key_required` - No provider API key configured * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `hog_error` - Hog evaluation code failed */
+/** * `trial_limit_reached` - Trial evaluation limit reached * `model_not_allowed` - Model not available on the trial plan * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `hog_error` - Hog evaluation code failed */
 export type StatusReasonEnum =
-  | "provider_key_required"
+  | "trial_limit_reached"
+  | "model_not_allowed"
   | "provider_key_deleted"
   | "no_default_model"
   | "provider_key_invalid"
@@ -312,24 +286,11 @@ export const EvaluationConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationConditionsList>;
 
-/** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-export interface EvaluationTargetConfig {
-  /** For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight. */
-  window_seconds?: number;
-}
-export const EvaluationTargetConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EvaluationTargetConfig",
-}) as any as S.Schema<EvaluationTargetConfig>;
-
 /** Nested serializer for model configuration. */
 export interface ModelConfiguration {
   provider?: LLMProviderEnum;
   model?: string;
-  /** Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed. */
+  /** Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it. */
   provider_key_id?: string | null;
   provider_key_name?: string | null;
 }
@@ -416,11 +377,6 @@ export interface Evaluation {
   output_config?: EvaluationOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum;
-  /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-  target_config?: EvaluationTargetConfig;
-  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
   model_configuration?: ModelConfiguration | null;
   created_at?: string;
   updated_at?: string;
@@ -442,8 +398,6 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
     output_type: S.optional(OutputTypeEnum),
     output_config: S.optional(EvaluationOutputConfig),
     conditions: S.optional(EvaluationConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(EvaluationTargetConfig),
     model_configuration: S.optional(S.NullOr(ModelConfiguration)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -649,20 +603,6 @@ export const EvaluationsPartialUpdateRequestConditionsList =
     EvaluationCondition,
   ) as any as S.Schema<EvaluationsPartialUpdateRequestConditionsList>;
 
-/** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-export interface EvaluationsPartialUpdateRequestTargetConfig {
-  /** For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight. */
-  window_seconds?: number;
-}
-export const EvaluationsPartialUpdateRequestTargetConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      window_seconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "EvaluationsPartialUpdateRequestTargetConfig",
-  }) as any as S.Schema<EvaluationsPartialUpdateRequestTargetConfig>;
-
 export interface EvaluationsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -684,11 +624,6 @@ export interface EvaluationsPartialUpdateRequest {
   output_config?: EvaluationsPartialUpdateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsPartialUpdateRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum | (string & {});
-  /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-  target_config?: EvaluationsPartialUpdateRequestTargetConfig;
-  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
   model_configuration?: ModelConfigurationInput | null;
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
@@ -707,8 +642,6 @@ export const EvaluationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     output_type: S.optional(OutputTypeEnum),
     output_config: S.optional(EvaluationsPartialUpdateRequestOutputConfig),
     conditions: S.optional(EvaluationsPartialUpdateRequestConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(EvaluationsPartialUpdateRequestTargetConfig),
     model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
     deleted: S.optional(S.Boolean),
   }).pipe(
@@ -912,20 +845,6 @@ export const EvaluationsUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
   EvaluationCondition,
 ) as any as S.Schema<EvaluationsUpdateRequestConditionsList>;
 
-/** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-export interface EvaluationsUpdateRequestTargetConfig {
-  /** For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight. */
-  window_seconds?: number;
-}
-export const EvaluationsUpdateRequestTargetConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      window_seconds: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "EvaluationsUpdateRequestTargetConfig",
-}) as any as S.Schema<EvaluationsUpdateRequestTargetConfig>;
-
 export interface EvaluationsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -947,11 +866,6 @@ export interface EvaluationsUpdateRequest {
   output_config?: EvaluationsUpdateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsUpdateRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace. * `generation` - Generation * `trace` - Trace */
-  target?: EvaluationTargetEnum | (string & {});
-  /** Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'. */
-  target_config?: EvaluationsUpdateRequestTargetConfig;
-  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
   model_configuration?: ModelConfigurationInput | null;
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
@@ -968,8 +882,6 @@ export const EvaluationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     output_type: S.optional(OutputTypeEnum),
     output_config: S.optional(EvaluationsUpdateRequestOutputConfig),
     conditions: S.optional(EvaluationsUpdateRequestConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(EvaluationsUpdateRequestTargetConfig),
     model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
     deleted: S.optional(S.Boolean),
   }).pipe(

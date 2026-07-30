@@ -30,10 +30,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies/{vmFamilyName}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the properties of a VM family.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#VmFamiliesGetResponse": {
@@ -273,10 +273,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all VM families for the subscription at the specified location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#VmFamilyListResult": {
@@ -378,328 +378,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.computelimit#TrustedHostSubscriptionsDelete": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsDeleteRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-          "code": 200,
-          "apiVersion": "2026-07-31"
-        },
-        "smithy.api#documentation": "Removes a host subscription from the guest subscription's list of trusted hosts.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsDeleteRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "location": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the Azure region."
-          }
-        },
-        "hostSubscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the TrustedHostSubscription"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsCreateRequest"
-      },
-      "output": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsCreateResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-          "code": 200,
-          "apiVersion": "2026-07-31"
-        },
-        "smithy.api#documentation": "Adds a host subscription to the guest subscription's list of trusted hosts. A guest\nsubscription can trust multiple host subscriptions; this only establishes trust and\ndoes not check the guest in to the host. Guest-to-host association is determined at\ncheck-in time, where a subscription can be a guest of at most one host per region.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsCreateResponse": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the resource"
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
-          }
-        },
-        "systemData": {
-          "target": "com.azure.computelimit#SystemData",
-          "traits": {
-            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsCreateRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "location": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the Azure region."
-          }
-        },
-        "hostSubscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the TrustedHostSubscription"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsGet": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsGetRequest"
-      },
-      "output": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsGetResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions/{hostSubscriptionId}",
-          "code": 200,
-          "apiVersion": "2026-07-31"
-        },
-        "smithy.api#documentation": "Gets a host subscription that the guest subscription trusts.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsGetResponse": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the resource"
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
-          }
-        },
-        "systemData": {
-          "target": "com.azure.computelimit#SystemData",
-          "traits": {
-            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsGetRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "location": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the Azure region."
-          }
-        },
-        "hostSubscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the TrustedHostSubscription"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsListBySubscriptionLocationResource": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest"
-      },
-      "output": {
-        "target": "com.azure.computelimit#TrustedHostSubscriptionListResult"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions",
-          "code": 200,
-          "apiVersion": "2026-07-31"
-        },
-        "smithy.api#documentation": "Lists all host subscriptions that the guest subscription trusts in a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionListResult": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "com.azure.computelimit#TrustedHostSubscriptionListResultValueList",
-          "traits": {
-            "smithy.api#documentation": "The TrustedHostSubscription items on this page",
-            "smithy.api#required": {}
-          }
-        },
-        "nextLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The link to the next page of items"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response of a TrustedHostSubscription list operation."
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionListResultValueList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.computelimit#Resource"
-      },
-      "traits": {
-        "smithy.api#documentation": "The TrustedHostSubscription items on this page"
-      }
-    },
-    "com.azure.computelimit#Resource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the resource"
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
-          }
-        },
-        "systemData": {
-          "target": "com.azure.computelimit#SystemData",
-          "traits": {
-            "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Common fields that are returned in the response for all Azure Resource Manager resources"
-      }
-    },
-    "com.azure.computelimit#TrustedHostSubscriptionsListBySubscriptionLocationResourceRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "location": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the Azure region."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
     "com.azure.computelimit#SharedLimitsDelete": {
       "type": "operation",
       "input": {
@@ -713,10 +391,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Disables sharing of a compute limit by the host subscription with its guest subscriptions.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitsDeleteRequest": {
@@ -764,10 +442,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Enables sharing of a compute limit by the host subscription with its guest subscriptions.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitsCreateResponse": {
@@ -919,10 +597,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits/{name}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the properties of a compute limit shared by the host subscription with its guest subscriptions.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitsGetResponse": {
@@ -1008,10 +686,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all compute limits shared by the host subscription with its guest subscriptions.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitListResult": {
@@ -1119,10 +797,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/setMemberCapOverrides",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Replaces the full set of per-member cap overrides for this shared limit\ncap. The supplied array becomes the new complete set of overrides;\nsupplying an empty array clears all existing overrides.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SetMemberCapOverridesResult": {
@@ -1232,10 +910,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Removes the per-member cap override for a member subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#MemberCapOverridesDeleteRequest": {
@@ -1291,10 +969,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates or replaces the cap override for a single member subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#MemberCapOverridesCreateOrUpdateResponse": {
@@ -1430,10 +1108,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides/{memberSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the cap override configured for a single member subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#MemberCapOverridesGetResponse": {
@@ -1527,10 +1205,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all per-member cap overrides configured under a SharedLimitCap.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#MemberCapOverrideListResult": {
@@ -1646,10 +1324,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes the shared limit cap configuration for a VM family. The caller's subscription is treated as the host subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitCapsDeleteRequest": {
@@ -1697,10 +1375,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Creates or replaces the shared limit cap configuration for a VM family.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitCapsCreateOrUpdateResponse": {
@@ -1840,10 +1518,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the shared limit cap configuration for a VM family, as visible to the caller's subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitCapsGetResponse": {
@@ -1929,10 +1607,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all shared limit cap configurations visible to the caller's subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#SharedLimitCapListResult": {
@@ -2040,10 +1718,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Deletes a subscription as a guest to stop consuming the compute limits shared by the host subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#GuestSubscriptionsDeleteRequest": {
@@ -2091,10 +1769,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Adds a subscription as a guest to consume the compute limits shared by the host subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#GuestSubscriptionsCreateResponse": {
@@ -2207,10 +1885,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the properties of a guest subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#GuestSubscriptionsGetResponse": {
@@ -2296,10 +1974,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all guest subscriptions in a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#GuestSubscriptionListResult": {
@@ -2407,10 +2085,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
-        "smithy.api#documentation": "Enables a compute limit feature for the subscription at the specified location. Requires the Contributor role.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "smithy.api#documentation": "Enables a compute limit feature for the subscription at the specified location.",
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#FeaturesEnableResponse": {
@@ -2684,10 +2362,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
-        "smithy.api#documentation": "Disables a compute limit feature for the subscription at the specified location. Requires the Contributor role.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "smithy.api#documentation": "Disables a compute limit feature for the subscription at the specified location.",
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#FeaturesDisableResponse": {
@@ -2807,10 +2485,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Gets the properties of a compute limit feature.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#FeaturesGetResponse": {
@@ -2936,10 +2614,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "Lists all compute limit features for the subscription at the specified location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#FeatureListResult": {
@@ -3047,10 +2725,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ComputeLimit/operations",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
     "com.azure.computelimit#OperationsListResponse": {
@@ -3201,18 +2879,6 @@
         },
         {
           "target": "com.azure.computelimit#VmFamiliesListBySubscriptionLocationResource"
-        },
-        {
-          "target": "com.azure.computelimit#TrustedHostSubscriptionsDelete"
-        },
-        {
-          "target": "com.azure.computelimit#TrustedHostSubscriptionsCreate"
-        },
-        {
-          "target": "com.azure.computelimit#TrustedHostSubscriptionsGet"
-        },
-        {
-          "target": "com.azure.computelimit#TrustedHostSubscriptionsListBySubscriptionLocationResource"
         },
         {
           "target": "com.azure.computelimit#SharedLimitsDelete"

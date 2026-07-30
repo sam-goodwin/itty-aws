@@ -39,14 +39,7 @@
         "limited": {
           "target": "com.posthog.quota_limits#QuotaLimitsResponseLimitedMap",
           "traits": {
-            "smithy.api#documentation": "Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`.",
-            "smithy.api#required": {}
-          }
-        },
-        "code_usage_billing_active": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the team's organization pays for PostHog Code usage: billing grants the `posthog_code_usage` product feature only on the Code usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Code behavior on this; an org unknown to billing reads as not paying.",
+            "smithy.api#documentation": "Per-resource limit state keyed by `QuotaResource` value. Currently only `ai_credits` is reported; additional resources may be added.",
             "smithy.api#required": {}
           }
         }
@@ -62,22 +55,6 @@
             "smithy.api#documentation": "True when the team is currently over its quota for this resource and limits are in effect.",
             "smithy.api#required": {}
           }
-        },
-        "usage": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Units of this resource the organization has used so far this billing period, in the resource's native unit (credits for credit buckets). Null when billing hasn't synced usage for the resource.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The organization's limit for this resource in the same unit. Null when unlimited or unknown.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {}
@@ -91,7 +68,7 @@
         "target": "com.posthog.quota_limits#QuotaResourceLimit"
       },
       "traits": {
-        "smithy.api#documentation": "Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`."
+        "smithy.api#documentation": "Per-resource limit state keyed by `QuotaResource` value. Currently only `ai_credits` is reported; additional resources may be added."
       }
     },
     "com.posthog.quota_limits#QuotaLimitsListResponseBodyList": {

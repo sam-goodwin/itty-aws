@@ -60,6 +60,52 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+/** Details how to join the conference through a SIP gateway. */
+export interface GatewaySipAccess {
+  /** The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (with the future option to support using a Meet meeting code as well), and GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
+  uri?: string;
+  /** The permanent numeric code for manual entry on specially configured devices. */
+  sipAccessCode?: string;
+}
+export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    sipAccessCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GatewaySipAccess",
+}) as any as S.Schema<GatewaySipAccess>;
+
+export type GatewaySipAccessList = Array<GatewaySipAccess>;
+export const GatewaySipAccessList = /*@__PURE__*/ S.Array(
+  GatewaySipAccess,
+) as any as S.Schema<GatewaySipAccessList>;
+
+/** Phone access contains information required to dial into a conference using a regional phone number and a PIN that is specific to that phone number. */
+export interface PhoneAccess {
+  /** The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+' character. */
+  phoneNumber?: string;
+  /** The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French. */
+  languageCode?: string;
+  /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
+  regionCode?: string;
+  /** The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and the length may vary. */
+  pin?: string;
+}
+export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    phoneNumber: S.optional(S.String),
+    languageCode: S.optional(S.String),
+    regionCode: S.optional(S.String),
+    pin: S.optional(S.String),
+  }),
+).annotate({ identifier: "PhoneAccess" }) as any as S.Schema<PhoneAccess>;
+
+export type PhoneAccessList = Array<PhoneAccess>;
+export const PhoneAccessList = /*@__PURE__*/ S.Array(
+  PhoneAccess,
+) as any as S.Schema<PhoneAccessList>;
+
 /** Active conference. */
 export interface ActiveConference {
   /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
@@ -73,36 +119,69 @@ export const ActiveConference = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActiveConference",
 }) as any as S.Schema<ActiveConference>;
 
-export type SpaceConfigAttendanceReportGenerationTypeEnum =
-  | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
-  | "GENERATE_REPORT"
-  | "DO_NOT_GENERATE";
-export const SpaceConfigAttendanceReportGenerationTypeEnum =
+export type ModerationRestrictionsReactionRestrictionEnum =
+  | "RESTRICTION_TYPE_UNSPECIFIED"
+  | "HOSTS_ONLY"
+  | "NO_RESTRICTION";
+export const ModerationRestrictionsReactionRestrictionEnum =
   /*@__PURE__*/ S.String;
 
-export type TranscriptionConfigAutoTranscriptionGenerationEnum =
-  | "AUTO_GENERATION_TYPE_UNSPECIFIED"
+export type ModerationRestrictionsChatRestrictionEnum =
+  | "RESTRICTION_TYPE_UNSPECIFIED"
+  | "HOSTS_ONLY"
+  | "NO_RESTRICTION";
+export const ModerationRestrictionsChatRestrictionEnum = /*@__PURE__*/ S.String;
+
+export type ModerationRestrictionsPresentRestrictionEnum =
+  | "RESTRICTION_TYPE_UNSPECIFIED"
+  | "HOSTS_ONLY"
+  | "NO_RESTRICTION";
+export const ModerationRestrictionsPresentRestrictionEnum =
+  /*@__PURE__*/ S.String;
+
+export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
+  | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
-export const TranscriptionConfigAutoTranscriptionGenerationEnum =
+export const ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   /*@__PURE__*/ S.String;
 
-/** Configuration related to transcription in a meeting space. */
-export interface TranscriptionConfig {
-  /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
-  autoTranscriptionGeneration?:
-    | TranscriptionConfigAutoTranscriptionGenerationEnum
+/** Defines restrictions for features when the meeting is moderated. */
+export interface ModerationRestrictions {
+  /** Defines who has permission to send reactions in the meeting space. */
+  reactionRestriction?:
+    | ModerationRestrictionsReactionRestrictionEnum
+    | (string & {});
+  /** Defines who has permission to send chat messages in the meeting space. */
+  chatRestriction?: ModerationRestrictionsChatRestrictionEnum | (string & {});
+  /** Defines who has permission to share their screen in the meeting space. */
+  presentRestriction?:
+    | ModerationRestrictionsPresentRestrictionEnum
+    | (string & {});
+  /** Defines whether to restrict the default role assigned to users as viewer. */
+  defaultJoinAsViewerType?:
+    | ModerationRestrictionsDefaultJoinAsViewerTypeEnum
     | (string & {});
 }
-export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
+export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoTranscriptionGeneration: S.optional(
-      TranscriptionConfigAutoTranscriptionGenerationEnum,
+    reactionRestriction: S.optional(
+      ModerationRestrictionsReactionRestrictionEnum,
+    ),
+    chatRestriction: S.optional(ModerationRestrictionsChatRestrictionEnum),
+    presentRestriction: S.optional(
+      ModerationRestrictionsPresentRestrictionEnum,
+    ),
+    defaultJoinAsViewerType: S.optional(
+      ModerationRestrictionsDefaultJoinAsViewerTypeEnum,
     ),
   }),
 ).annotate({
-  identifier: "TranscriptionConfig",
-}) as any as S.Schema<TranscriptionConfig>;
+  identifier: "ModerationRestrictions",
+}) as any as S.Schema<ModerationRestrictions>;
+
+export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
+export const SpaceConfigModerationEnum = /*@__PURE__*/ S.String;
 
 export type RecordingConfigAutoRecordingGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
@@ -127,6 +206,30 @@ export const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordingConfig",
 }) as any as S.Schema<RecordingConfig>;
+
+export type TranscriptionConfigAutoTranscriptionGenerationEnum =
+  | "AUTO_GENERATION_TYPE_UNSPECIFIED"
+  | "ON"
+  | "OFF";
+export const TranscriptionConfigAutoTranscriptionGenerationEnum =
+  /*@__PURE__*/ S.String;
+
+/** Configuration related to transcription in a meeting space. */
+export interface TranscriptionConfig {
+  /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
+  autoTranscriptionGeneration?:
+    | TranscriptionConfigAutoTranscriptionGenerationEnum
+    | (string & {});
+}
+export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoTranscriptionGeneration: S.optional(
+      TranscriptionConfigAutoTranscriptionGenerationEnum,
+    ),
+  }),
+).annotate({
+  identifier: "TranscriptionConfig",
+}) as any as S.Schema<TranscriptionConfig>;
 
 export type SmartNotesConfigAutoSmartNotesGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
@@ -154,23 +257,20 @@ export const SmartNotesConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration related to meeting artifacts potentially generated by this meeting space. */
 export interface ArtifactConfig {
-  /** Configuration for auto-transcript. */
-  transcriptionConfig?: TranscriptionConfig;
   /** Configuration for recording. */
   recordingConfig?: RecordingConfig;
+  /** Configuration for auto-transcript. */
+  transcriptionConfig?: TranscriptionConfig;
   /** Configuration for auto-smart-notes. */
   smartNotesConfig?: SmartNotesConfig;
 }
 export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    transcriptionConfig: S.optional(TranscriptionConfig),
     recordingConfig: S.optional(RecordingConfig),
+    transcriptionConfig: S.optional(TranscriptionConfig),
     smartNotesConfig: S.optional(SmartNotesConfig),
   }),
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
-
-export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
-export const SpaceConfigModerationEnum = /*@__PURE__*/ S.String;
 
 export type SpaceConfigAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
@@ -179,175 +279,75 @@ export type SpaceConfigAccessTypeEnum =
   | "RESTRICTED";
 export const SpaceConfigAccessTypeEnum = /*@__PURE__*/ S.String;
 
-export type ModerationRestrictionsChatRestrictionEnum =
-  | "RESTRICTION_TYPE_UNSPECIFIED"
-  | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
-export const ModerationRestrictionsChatRestrictionEnum = /*@__PURE__*/ S.String;
-
-export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
-  | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
-  | "ON"
-  | "OFF";
-export const ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type ModerationRestrictionsReactionRestrictionEnum =
-  | "RESTRICTION_TYPE_UNSPECIFIED"
-  | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
-export const ModerationRestrictionsReactionRestrictionEnum =
-  /*@__PURE__*/ S.String;
-
-export type ModerationRestrictionsPresentRestrictionEnum =
-  | "RESTRICTION_TYPE_UNSPECIFIED"
-  | "HOSTS_ONLY"
-  | "NO_RESTRICTION";
-export const ModerationRestrictionsPresentRestrictionEnum =
-  /*@__PURE__*/ S.String;
-
-/** Defines restrictions for features when the meeting is moderated. */
-export interface ModerationRestrictions {
-  /** Defines who has permission to send chat messages in the meeting space. */
-  chatRestriction?: ModerationRestrictionsChatRestrictionEnum | (string & {});
-  /** Defines whether to restrict the default role assigned to users as viewer. */
-  defaultJoinAsViewerType?:
-    | ModerationRestrictionsDefaultJoinAsViewerTypeEnum
-    | (string & {});
-  /** Defines who has permission to send reactions in the meeting space. */
-  reactionRestriction?:
-    | ModerationRestrictionsReactionRestrictionEnum
-    | (string & {});
-  /** Defines who has permission to share their screen in the meeting space. */
-  presentRestriction?:
-    | ModerationRestrictionsPresentRestrictionEnum
-    | (string & {});
-}
-export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chatRestriction: S.optional(ModerationRestrictionsChatRestrictionEnum),
-    defaultJoinAsViewerType: S.optional(
-      ModerationRestrictionsDefaultJoinAsViewerTypeEnum,
-    ),
-    reactionRestriction: S.optional(
-      ModerationRestrictionsReactionRestrictionEnum,
-    ),
-    presentRestriction: S.optional(
-      ModerationRestrictionsPresentRestrictionEnum,
-    ),
-  }),
-).annotate({
-  identifier: "ModerationRestrictions",
-}) as any as S.Schema<ModerationRestrictions>;
-
 export type SpaceConfigEntryPointAccessEnum =
   | "ENTRY_POINT_ACCESS_UNSPECIFIED"
   | "ALL"
   | "CREATOR_APP_ONLY";
 export const SpaceConfigEntryPointAccessEnum = /*@__PURE__*/ S.String;
 
+export type SpaceConfigAttendanceReportGenerationTypeEnum =
+  | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
+  | "GENERATE_REPORT"
+  | "DO_NOT_GENERATE";
+export const SpaceConfigAttendanceReportGenerationTypeEnum =
+  /*@__PURE__*/ S.String;
+
 /** The configuration pertaining to a meeting space. */
 export interface SpaceConfig {
+  /** When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions. */
+  moderationRestrictions?: ModerationRestrictions;
+  /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
+  moderation?: SpaceConfigModerationEnum | (string & {});
+  /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
+  artifactConfig?: ArtifactConfig;
+  /** Access type of the meeting space that determines who can join without knocking. Default: The user's default access settings. Controlled by the user's admin for enterprise users or RESTRICTED. */
+  accessType?: SpaceConfigAccessTypeEnum | (string & {});
+  /** Defines the entry points that can be used to join meetings hosted in this meeting space. Default: EntryPointAccess.ALL */
+  entryPointAccess?: SpaceConfigEntryPointAccessEnum | (string & {});
   /** Whether attendance report is enabled for the meeting space. */
   attendanceReportGenerationType?:
     | SpaceConfigAttendanceReportGenerationTypeEnum
     | (string & {});
-  /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
-  artifactConfig?: ArtifactConfig;
-  /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
-  moderation?: SpaceConfigModerationEnum | (string & {});
-  /** Access type of the meeting space that determines who can join without knocking. Default: The user's default access settings. Controlled by the user's admin for enterprise users or RESTRICTED. */
-  accessType?: SpaceConfigAccessTypeEnum | (string & {});
-  /** When moderation.ON, these restrictions go into effect for the meeting. When moderation.OFF, will be reset to default ModerationRestrictions. */
-  moderationRestrictions?: ModerationRestrictions;
-  /** Defines the entry points that can be used to join meetings hosted in this meeting space. Default: EntryPointAccess.ALL */
-  entryPointAccess?: SpaceConfigEntryPointAccessEnum | (string & {});
 }
 export const SpaceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    moderationRestrictions: S.optional(ModerationRestrictions),
+    moderation: S.optional(SpaceConfigModerationEnum),
+    artifactConfig: S.optional(ArtifactConfig),
+    accessType: S.optional(SpaceConfigAccessTypeEnum),
+    entryPointAccess: S.optional(SpaceConfigEntryPointAccessEnum),
     attendanceReportGenerationType: S.optional(
       SpaceConfigAttendanceReportGenerationTypeEnum,
     ),
-    artifactConfig: S.optional(ArtifactConfig),
-    moderation: S.optional(SpaceConfigModerationEnum),
-    accessType: S.optional(SpaceConfigAccessTypeEnum),
-    moderationRestrictions: S.optional(ModerationRestrictions),
-    entryPointAccess: S.optional(SpaceConfigEntryPointAccessEnum),
   }),
 ).annotate({ identifier: "SpaceConfig" }) as any as S.Schema<SpaceConfig>;
 
-/** Phone access contains information required to dial into a conference using a regional phone number and a PIN that is specific to that phone number. */
-export interface PhoneAccess {
-  /** The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French. */
-  languageCode?: string;
-  /** The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+' character. */
-  phoneNumber?: string;
-  /** The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and the length may vary. */
-  pin?: string;
-  /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
-  regionCode?: string;
-}
-export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    pin: S.optional(S.String),
-    regionCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "PhoneAccess" }) as any as S.Schema<PhoneAccess>;
-
-export type PhoneAccessList = Array<PhoneAccess>;
-export const PhoneAccessList = /*@__PURE__*/ S.Array(
-  PhoneAccess,
-) as any as S.Schema<PhoneAccessList>;
-
-/** Details how to join the conference through a SIP gateway. */
-export interface GatewaySipAccess {
-  /** The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (with the future option to support using a Meet meeting code as well), and GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
-  uri?: string;
-  /** The permanent numeric code for manual entry on specially configured devices. */
-  sipAccessCode?: string;
-}
-export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    sipAccessCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GatewaySipAccess",
-}) as any as S.Schema<GatewaySipAccess>;
-
-export type GatewaySipAccessList = Array<GatewaySipAccess>;
-export const GatewaySipAccessList = /*@__PURE__*/ S.Array(
-  GatewaySipAccess,
-) as any as S.Schema<GatewaySipAccessList>;
-
 /** Virtual place where conferences are held. Only one active conference can be held in one space at any given time. */
 export interface Space {
-  /** Output only. URI used to join meetings consisting of `https://meet.google.com/` followed by the `meeting_code`. For example, `https://meet.google.com/abc-mnop-xyz`. */
-  meetingUri?: string;
-  /** Active conference, if it exists. */
-  activeConference?: ActiveConference;
   /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
   name?: string;
-  /** Configuration pertaining to the meeting space. */
-  config?: SpaceConfig;
-  /** Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space name to get the space. */
-  meetingCode?: string;
-  /** Output only. All regional phone access methods for this meeting space. Can be empty. */
-  phoneAccess?: PhoneAccessList;
   /** Output only. The SIP-based access methods that can be used to join the conference. Can be empty. */
   gatewaySipAccess?: GatewaySipAccessList;
+  /** Output only. All regional phone access methods for this meeting space. Can be empty. */
+  phoneAccess?: PhoneAccessList;
+  /** Active conference, if it exists. */
+  activeConference?: ActiveConference;
+  /** Configuration pertaining to the meeting space. */
+  config?: SpaceConfig;
+  /** Output only. URI used to join meetings consisting of `https://meet.google.com/` followed by the `meeting_code`. For example, `https://meet.google.com/abc-mnop-xyz`. */
+  meetingUri?: string;
+  /** Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space name to get the space. */
+  meetingCode?: string;
 }
 export const Space = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meetingUri: S.optional(S.String),
-    activeConference: S.optional(ActiveConference),
     name: S.optional(S.String),
-    config: S.optional(SpaceConfig),
-    meetingCode: S.optional(S.String),
-    phoneAccess: S.optional(PhoneAccessList),
     gatewaySipAccess: S.optional(GatewaySipAccessList),
+    phoneAccess: S.optional(PhoneAccessList),
+    activeConference: S.optional(ActiveConference),
+    config: S.optional(SpaceConfig),
+    meetingUri: S.optional(S.String),
+    meetingCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "Space" }) as any as S.Schema<Space>;
 
@@ -424,23 +424,23 @@ export const GetConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Single instance of a meeting held in a space. */
 export interface ConferenceRecord {
+  /** Output only. Timestamp when the conference started. Always set. */
+  startTime?: string;
   /** Identifier. Resource name of the conference record. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
   name?: string;
   /** Output only. Server enforced expiration time for when this conference record resource is deleted. The resource is deleted 30 days after the conference ends. */
   expireTime?: string;
   /** Output only. The space where the conference was held. */
   space?: string;
-  /** Output only. Timestamp when the conference started. Always set. */
-  startTime?: string;
   /** Output only. Timestamp when the conference ended. Set for past conferences. Unset if the conference is ongoing. */
   endTime?: string;
 }
 export const ConferenceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    startTime: S.optional(S.String),
     name: S.optional(S.String),
     expireTime: S.optional(S.String),
     space: S.optional(S.String),
-    startTime: S.optional(S.String),
     endTime: S.optional(S.String),
   }),
 ).annotate({
@@ -466,16 +466,16 @@ export const GetConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetConferenceRecordsParticipantsRequest",
 }) as any as S.Schema<GetConferenceRecordsParticipantsRequest>;
 
-/** User who joins anonymously (meaning not signed into a Google Account). */
-export interface AnonymousUser {
-  /** Output only. User provided name when they join a conference anonymously. */
+/** User dialing in from a phone where the user's identity is unknown because they haven't signed in with a Google Account. */
+export interface PhoneUser {
+  /** Output only. Partially redacted user's phone number when calling. */
   displayName?: string;
 }
-export const AnonymousUser = /*@__PURE__*/ S.suspend(() =>
+export const PhoneUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
-).annotate({ identifier: "AnonymousUser" }) as any as S.Schema<AnonymousUser>;
+).annotate({ identifier: "PhoneUser" }) as any as S.Schema<PhoneUser>;
 
 /** A signed-in user can be: a) An individual joining from a personal computer, mobile device, or through companion mode. b) A robot account used by conference room devices. */
 export interface SignedinUser {
@@ -491,39 +491,39 @@ export const SignedinUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignedinUser" }) as any as S.Schema<SignedinUser>;
 
-/** User dialing in from a phone where the user's identity is unknown because they haven't signed in with a Google Account. */
-export interface PhoneUser {
-  /** Output only. Partially redacted user's phone number when calling. */
+/** User who joins anonymously (meaning not signed into a Google Account). */
+export interface AnonymousUser {
+  /** Output only. User provided name when they join a conference anonymously. */
   displayName?: string;
 }
-export const PhoneUser = /*@__PURE__*/ S.suspend(() =>
+export const AnonymousUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
-).annotate({ identifier: "PhoneUser" }) as any as S.Schema<PhoneUser>;
+).annotate({ identifier: "AnonymousUser" }) as any as S.Schema<AnonymousUser>;
 
 /** User who attended or is attending a conference. */
 export interface Participant {
-  /** Anonymous user. */
-  anonymousUser?: AnonymousUser;
-  /** Output only. Resource name of the participant. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
-  name?: string;
-  /** Signed-in user. */
-  signedinUser?: SignedinUser;
-  /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
-  latestEndTime?: string;
   /** User calling from their phone. */
   phoneUser?: PhoneUser;
+  /** Signed-in user. */
+  signedinUser?: SignedinUser;
+  /** Output only. Resource name of the participant. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
+  name?: string;
+  /** Anonymous user. */
+  anonymousUser?: AnonymousUser;
+  /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
+  latestEndTime?: string;
   /** Output only. Time when the participant first joined the meeting. */
   earliestStartTime?: string;
 }
 export const Participant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    anonymousUser: S.optional(AnonymousUser),
-    name: S.optional(S.String),
-    signedinUser: S.optional(SignedinUser),
-    latestEndTime: S.optional(S.String),
     phoneUser: S.optional(PhoneUser),
+    signedinUser: S.optional(SignedinUser),
+    name: S.optional(S.String),
+    anonymousUser: S.optional(AnonymousUser),
+    latestEndTime: S.optional(S.String),
     earliestStartTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
@@ -549,18 +549,18 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
 
 /** Refers to each unique join or leave session when a user joins a conference from a device. Note that any time a user joins the conference a new unique ID is assigned. That means if a user joins a space multiple times from the same device, they're assigned different IDs, and are also be treated as different participant sessions. */
 export interface ParticipantSession {
-  /** Identifier. Session id. */
-  name?: string;
   /** Output only. Timestamp when the user session starts. */
   startTime?: string;
   /** Output only. Timestamp when the user session ends. Unset if the user session hasn’t ended. */
   endTime?: string;
+  /** Identifier. Session id. */
+  name?: string;
 }
 export const ParticipantSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ParticipantSession",
@@ -585,6 +585,13 @@ export const GetConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetConferenceRecordsRecordingsRequest",
 }) as any as S.Schema<GetConferenceRecordsRecordingsRequest>;
 
+export type RecordingStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "STARTED"
+  | "ENDED"
+  | "FILE_GENERATED";
+export const RecordingStateEnum = /*@__PURE__*/ S.String;
+
 /** Export location where a recording file is saved in Google Drive. */
 export interface DriveDestination {
   /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
@@ -601,33 +608,26 @@ export const DriveDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "DriveDestination",
 }) as any as S.Schema<DriveDestination>;
 
-export type RecordingStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "STARTED"
-  | "ENDED"
-  | "FILE_GENERATED";
-export const RecordingStateEnum = /*@__PURE__*/ S.String;
-
 /** Metadata about a recording created during a conference. */
 export interface Recording {
-  /** Output only. Timestamp when the recording started. */
-  startTime?: string;
   /** Output only. Timestamp when the recording ended. */
   endTime?: string;
-  /** Output only. Recording is saved to Google Drive as an MP4 file. The `drive_destination` includes the Drive `fileId` that can be used to download the file using the `files.get` method of the Drive API. */
-  driveDestination?: DriveDestination;
+  /** Output only. Timestamp when the recording started. */
+  startTime?: string;
   /** Output only. Resource name of the recording. Format: `conferenceRecords/{conference_record}/recordings/{recording}` where `{recording}` is a 1:1 mapping to each unique recording session during the conference. */
   name?: string;
   /** Output only. Current state. */
   state?: RecordingStateEnum;
+  /** Output only. Recording is saved to Google Drive as an MP4 file. The `drive_destination` includes the Drive `fileId` that can be used to download the file using the `files.get` method of the Drive API. */
+  driveDestination?: DriveDestination;
 }
 export const Recording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startTime: S.optional(S.String),
     endTime: S.optional(S.String),
-    driveDestination: S.optional(DriveDestination),
+    startTime: S.optional(S.String),
     name: S.optional(S.String),
     state: S.optional(RecordingStateEnum),
+    driveDestination: S.optional(DriveDestination),
   }),
 ).annotate({ identifier: "Recording" }) as any as S.Schema<Recording>;
 
@@ -659,15 +659,15 @@ export const SmartNoteStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Docs location where the transcript file is saved. */
 export interface DocsDestination {
-  /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
-  exportUri?: string;
   /** Output only. The document ID for the underlying Google Docs transcript file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use the `documents.get` method of the Google Docs API (https://developers.google.com/docs/api/reference/rest/v1/documents/get) to fetch the content. */
   document?: string;
+  /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
+  exportUri?: string;
 }
 export const DocsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exportUri: S.optional(S.String),
     document: S.optional(S.String),
+    exportUri: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DocsDestination",
@@ -675,23 +675,23 @@ export const DocsDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata for a smart note generated from a conference. It refers to the notes generated from Take Notes with Gemini during the conference. */
 export interface SmartNote {
-  /** Output only. Current state. */
-  state?: SmartNoteStateEnum;
   /** Output only. Identifier. Resource name of the smart notes. Format: `conferenceRecords/{conference_record}/smartNotes/{smart_note}`, where `{smart_note}` is a 1:1 mapping to each unique smart notes session of the conference. */
   name?: string;
-  /** Output only. The Google Doc destination where the smart notes are saved. */
-  docsDestination?: DocsDestination;
+  /** Output only. Current state. */
+  state?: SmartNoteStateEnum;
   /** Output only. Timestamp when the smart notes started. */
   startTime?: string;
+  /** Output only. The Google Doc destination where the smart notes are saved. */
+  docsDestination?: DocsDestination;
   /** Output only. Timestamp when the smart notes stopped. */
   endTime?: string;
 }
 export const SmartNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(SmartNoteStateEnum),
     name: S.optional(S.String),
-    docsDestination: S.optional(DocsDestination),
+    state: S.optional(SmartNoteStateEnum),
     startTime: S.optional(S.String),
+    docsDestination: S.optional(DocsDestination),
     endTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "SmartNote" }) as any as S.Schema<SmartNote>;
@@ -724,23 +724,23 @@ export const TranscriptStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for a transcript generated from a conference. It refers to the ASR (Automatic Speech Recognition) result of user's speech during the conference. */
 export interface Transcript {
+  /** Output only. Timestamp when the transcript stopped. */
+  endTime?: string;
+  /** Output only. Timestamp when the transcript started. */
+  startTime?: string;
   /** Output only. Resource name of the transcript. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}`, where `{transcript}` is a 1:1 mapping to each unique transcription session of the conference. */
   name?: string;
   /** Output only. Current state. */
   state?: TranscriptStateEnum;
-  /** Output only. Timestamp when the transcript started. */
-  startTime?: string;
-  /** Output only. Timestamp when the transcript stopped. */
-  endTime?: string;
   /** Output only. Where the Google Docs transcript is saved. */
   docsDestination?: DocsDestination;
 }
 export const Transcript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    endTime: S.optional(S.String),
+    startTime: S.optional(S.String),
     name: S.optional(S.String),
     state: S.optional(TranscriptStateEnum),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
     docsDestination: S.optional(DocsDestination),
   }),
 ).annotate({ identifier: "Transcript" }) as any as S.Schema<Transcript>;
@@ -766,14 +766,14 @@ export const GetConferenceRecordsTranscriptsEntriesRequest =
 
 /** Single entry for one user’s speech during a transcript session. */
 export interface TranscriptEntry {
-  /** Output only. Refers to the participant who speaks. */
-  participant?: string;
-  /** Output only. Timestamp when the transcript entry started. */
-  startTime?: string;
-  /** Output only. Timestamp when the transcript entry ended. */
-  endTime?: string;
   /** Output only. Resource name of the entry. Format: "conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}" */
   name?: string;
+  /** Output only. Timestamp when the transcript entry started. */
+  startTime?: string;
+  /** Output only. Refers to the participant who speaks. */
+  participant?: string;
+  /** Output only. Timestamp when the transcript entry ended. */
+  endTime?: string;
   /** Output only. The transcribed text of the participant's voice, at maximum 10K words. Note that the limit is subject to change. */
   text?: string;
   /** Output only. Language of spoken text, such as "en-US". IETF BCP 47 syntax (https://tools.ietf.org/html/bcp47) */
@@ -781,10 +781,10 @@ export interface TranscriptEntry {
 }
 export const TranscriptEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    participant: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
     name: S.optional(S.String),
+    startTime: S.optional(S.String),
+    participant: S.optional(S.String),
+    endTime: S.optional(S.String),
     text: S.optional(S.String),
     languageCode: S.optional(S.String),
   }),
@@ -811,18 +811,18 @@ export const GetSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSpacesRequest>;
 
 export interface ListConferenceRecordsRequest {
+  /** Optional. Page token returned from previous List Call. */
+  pageToken?: string;
   /** Optional. Maximum number of conference records to return. The service might return fewer than this value. If unspecified, at most 25 conference records are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `end_time` For example, consider the following filters: * `space.name = "spaces/NAME"` * `space.meeting_code = "abc-mnop-xyz"` * `start_time>="2024-01-01T00:00:00.000Z" AND start_time<="2024-01-02T00:00:00.000Z"` * `end_time IS NULL` */
   filter?: string;
-  /** Optional. Page token returned from previous List Call. */
-  pageToken?: string;
 }
 export const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -841,36 +841,36 @@ export const ConferenceRecordList = /*@__PURE__*/ S.Array(
 
 /** Response of ListConferenceRecords method. */
 export interface ListConferenceRecordsResponse {
-  /** List of conferences in one page. */
-  conferenceRecords?: ConferenceRecordList;
   /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
   nextPageToken?: string;
+  /** List of conferences in one page. */
+  conferenceRecords?: ConferenceRecordList;
 }
 export const ListConferenceRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    conferenceRecords: S.optional(ConferenceRecordList),
     nextPageToken: S.optional(S.String),
+    conferenceRecords: S.optional(ConferenceRecordList),
   }),
 ).annotate({
   identifier: "ListConferenceRecordsResponse",
 }) as any as S.Schema<ListConferenceRecordsResponse>;
 
 export interface ListConferenceRecordsParticipantsRequest {
+  /** Maximum number of participants to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
+  pageSize?: number;
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
   /** Page token returned from previous List Call. */
   pageToken?: string;
-  /** Maximum number of participants to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
-  pageSize?: number;
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `earliest_start_time` * `latest_end_time` For example, `latest_end_time IS NULL` returns active participants in the conference. */
   filter?: string;
 }
 export const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -890,40 +890,40 @@ export const ParticipantList = /*@__PURE__*/ S.Array(
 
 /** Response of ListParticipants method. */
 export interface ListParticipantsResponse {
-  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
-  nextPageToken?: string;
-  /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
-  totalSize?: number;
   /** List of participants in one page. */
   participants?: ParticipantList;
+  /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
+  totalSize?: number;
+  /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
+  nextPageToken?: string;
 }
 export const ListParticipantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    totalSize: S.optional(S.Number),
     participants: S.optional(ParticipantList),
+    totalSize: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListParticipantsResponse",
 }) as any as S.Schema<ListParticipantsResponse>;
 
 export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
+  /** Required. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
+  parent: string;
+  /** Optional. Page token returned from previous List Call. */
+  pageToken?: string;
   /** Optional. Maximum number of participant sessions to return. The service might return fewer than this value. If unspecified, at most 100 participants are returned. The maximum value is 250; values above 250 are coerced to 250. Maximum might change in the future. */
   pageSize?: number;
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `start_time` * `end_time` For example, `end_time IS NULL` returns active participant sessions in the conference record. */
   filter?: string;
-  /** Optional. Page token returned from previous List Call. */
-  pageToken?: string;
-  /** Required. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
-  parent: string;
 }
 export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -957,19 +957,19 @@ export const ListParticipantSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListParticipantSessionsResponse>;
 
 export interface ListConferenceRecordsRecordingsRequest {
-  /** Page token returned from previous List Call. */
-  pageToken?: string;
   /** Maximum number of recordings to return. The service might return fewer than this value. If unspecified, at most 10 recordings are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
+  /** Page token returned from previous List Call. */
+  pageToken?: string;
 }
 export const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -988,34 +988,34 @@ export const RecordingList = /*@__PURE__*/ S.Array(
 
 /** Response for ListRecordings method. */
 export interface ListRecordingsResponse {
-  /** Token to be circulated back for further List call if current List doesn't include all the recordings. Unset if all recordings are returned. */
-  nextPageToken?: string;
   /** List of recordings in one page. */
   recordings?: RecordingList;
+  /** Token to be circulated back for further List call if current List doesn't include all the recordings. Unset if all recordings are returned. */
+  nextPageToken?: string;
 }
 export const ListRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     recordings: S.optional(RecordingList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListRecordingsResponse",
 }) as any as S.Schema<ListRecordingsResponse>;
 
 export interface ListConferenceRecordsSmartNotesRequest {
-  /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
-  pageSize?: number;
-  /** Optional. Page token returned from previous List Call. */
-  pageToken?: string;
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
+  /** Optional. Page token returned from previous List Call. */
+  pageToken?: string;
+  /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
+  pageSize?: number;
 }
 export const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1095,18 +1095,18 @@ export const ListTranscriptsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTranscriptsResponse>;
 
 export interface ListConferenceRecordsTranscriptsEntriesRequest {
-  /** Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}` */
-  parent: string;
   /** Maximum number of entries to return. The service might return fewer than this value. If unspecified, at most 10 entries are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
+  /** Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}` */
+  parent: string;
   /** Page token returned from previous List Call. */
   pageToken?: string;
 }
 export const ListConferenceRecordsTranscriptsEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1141,17 +1141,17 @@ export const ListTranscriptEntriesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTranscriptEntriesResponse>;
 
 export interface PatchSpacesRequest {
-  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
-  name: string;
   /** Optional. Field mask used to specify the fields to be updated in the space. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. */
   updateMask?: string;
+  /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
+  name: string;
   /** Request body */
   body?: Space;
 }
 export const PatchSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     body: S.optional(Space.pipe(T.HttpBody())),
   }).pipe(
     T.Http({

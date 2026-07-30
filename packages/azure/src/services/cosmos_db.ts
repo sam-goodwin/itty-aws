@@ -4966,7 +4966,7 @@ export interface RestoreParameters {
   /** Specifies whether the restored account will have Time-To-Live disabled upon the successful restore. */
   restoreWithTtlDisabled?: boolean;
   /** Describes the mode of the restore. */
-  restoreMode?: RestoreMode;
+  restoreMode?: RestoreMode | (string & {});
   /** List of specific databases available for restore. */
   databasesToRestore?: RestoreParametersDatabasesToRestoreList;
   /** List of specific gremlin databases available for restore. */
@@ -5019,7 +5019,9 @@ export interface DatabaseAccountCreateUpdatePropertiesInput {
   /** An array that contains the georeplication locations enabled for the Cosmos DB account. */
   locations: DatabaseAccountCreateUpdatePropertiesInputLocationsList;
   /** The offer type for the Cosmos DB database account. */
-  databaseAccountOfferType: DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType;
+  databaseAccountOfferType:
+    | DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType
+    | (string & {});
   /** List of IpRules. */
   ipRules?: DatabaseAccountCreateUpdatePropertiesInputIpRulesList;
   /** Flag to indicate whether to enable/disable Virtual Network ACL rules. */
@@ -5035,7 +5037,7 @@ export interface DatabaseAccountCreateUpdatePropertiesInput {
   /** Enables the cassandra connector on the Cosmos DB C* account */
   enableCassandraConnector?: boolean;
   /** The cassandra connector offer type for the Cosmos DB database C* account. */
-  connectorOffer?: ConnectorOffer;
+  connectorOffer?: ConnectorOffer | (string & {});
   /** Disable write operations on metadata resources (databases, containers, throughput) via account keys */
   disableKeyBasedMetadataWriteAccess?: boolean;
   /** The URI of the key vault */
@@ -6399,7 +6401,7 @@ export interface DatabaseAccountUpdatePropertiesInput {
   /** Enables the cassandra connector on the Cosmos DB C* account */
   enableCassandraConnector?: boolean;
   /** The cassandra connector offer type for the Cosmos DB database C* account. */
-  connectorOffer?: ConnectorOffer;
+  connectorOffer?: ConnectorOffer | (string & {});
   /** Disable write operations on metadata resources (databases, containers, throughput) via account keys */
   disableKeyBasedMetadataWriteAccess?: boolean;
   /** The URI of the key vault */
@@ -7277,7 +7279,7 @@ export interface FleetspaceProperties {
   /** A provisioning state of the Fleetspace. */
   provisioningState?: Status | (string & {});
   /** The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL' */
-  fleetspaceApiKind?: FleetspacePropertiesFleetspaceApiKind;
+  fleetspaceApiKind?: FleetspacePropertiesFleetspaceApiKind | (string & {});
   /** Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region. */
   serviceTier?: FleetspacePropertiesServiceTier | (string & {});
   /** List of data regions assigned to the fleetspace. Eg [westus2] */
@@ -7568,13 +7570,6 @@ export const FleetspaceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetspaceUpdateResponse",
 }) as any as S.Schema<FleetspaceUpdateResponse>;
 
-/** Resource tags. */
-export type FleetUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FleetUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<FleetUpdateRequestTagsMap>;
-
 export interface FleetUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7582,8 +7577,6 @@ export interface FleetUpdateRequest {
   resourceGroupName: string;
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
-  /** Resource tags. */
-  tags?: FleetUpdateRequestTagsMap;
   /** Properties to update Azure Cosmos DB fleet resource. */
   properties?: FleetResourceProperties;
 }
@@ -7592,7 +7585,6 @@ export const FleetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
-    tags: S.optional(FleetUpdateRequestTagsMap),
     properties: S.optional(FleetResourceProperties),
   }).pipe(
     T.Http({
@@ -12908,7 +12900,9 @@ export interface NotebookWorkspacesCreateOrUpdateRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -12985,7 +12979,9 @@ export interface NotebookWorkspacesDeleteRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesDeleteRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesDeleteRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13025,7 +13021,9 @@ export interface NotebookWorkspacesGetRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesGetRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesGetRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13155,7 +13153,9 @@ export interface NotebookWorkspacesListConnectionInfoRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesListConnectionInfoRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesListConnectionInfoRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesListConnectionInfoRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13209,7 +13209,9 @@ export interface NotebookWorkspacesRegenerateAuthTokenRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesRegenerateAuthTokenRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesRegenerateAuthTokenRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesRegenerateAuthTokenRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13251,7 +13253,9 @@ export interface NotebookWorkspacesStartRequest {
   /** Cosmos DB database account name. */
   accountName: string;
   /** The name of the notebook workspace resource. */
-  notebookWorkspaceName: NotebookWorkspacesStartRequestNotebookWorkspaceName;
+  notebookWorkspaceName:
+    | NotebookWorkspacesStartRequestNotebookWorkspaceName
+    | (string & {});
 }
 export const NotebookWorkspacesStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

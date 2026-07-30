@@ -7,18 +7,18 @@
     "baseUrl": "https://playgrouping.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.playgrouping_v1alpha1#CreateOrUpdateTagsResponse": {
+    "com.gcp.playgrouping_v1alpha1#CreateOrUpdateTagsRequest": {
       "type": "structure",
       "members": {
         "tags": {
           "target": "com.gcp.playgrouping_v1alpha1#TagList",
           "traits": {
-            "smithy.api#documentation": "All requested tags are returned, including pre-existing ones."
+            "smithy.api#documentation": "Tags to be inserted or updated."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response message for CreateOrUpdateTags."
+        "smithy.api#documentation": "Request message for CreateOrUpdateTags. VerifyToken."
       }
     },
     "com.gcp.playgrouping_v1alpha1#TagList": {
@@ -37,10 +37,10 @@
     "com.gcp.playgrouping_v1alpha1#Tag": {
       "type": "structure",
       "members": {
-        "stringValue": {
+        "int64Value": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A string value of the tag."
+            "smithy.api#documentation": "A signed 64-bit integer value of the tag."
           }
         },
         "timeValue": {
@@ -49,27 +49,41 @@
             "smithy.api#documentation": "A time value of the tag."
           }
         },
-        "booleanValue": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "A boolean value of the tag."
-          }
-        },
         "key": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. Key for the tag."
           }
         },
-        "int64Value": {
+        "booleanValue": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value of the tag."
+          }
+        },
+        "stringValue": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A signed 64-bit integer value of the tag."
+            "smithy.api#documentation": "A string value of the tag."
           }
         }
       },
       "traits": {
         "smithy.api#documentation": "A tag is associated with exactly one package name and user."
+      }
+    },
+    "com.gcp.playgrouping_v1alpha1#CreateOrUpdateTagsResponse": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.gcp.playgrouping_v1alpha1#TagList",
+          "traits": {
+            "smithy.api#documentation": "All requested tags are returned, including pre-existing ones."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for CreateOrUpdateTags."
       }
     },
     "com.gcp.playgrouping_v1alpha1#VerifyTokenRequest": {
@@ -84,20 +98,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Request message for VerifyToken."
-      }
-    },
-    "com.gcp.playgrouping_v1alpha1#CreateOrUpdateTagsRequest": {
-      "type": "structure",
-      "members": {
-        "tags": {
-          "target": "com.gcp.playgrouping_v1alpha1#TagList",
-          "traits": {
-            "smithy.api#documentation": "Tags to be inserted or updated."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Request message for CreateOrUpdateTags. VerifyToken."
       }
     },
     "com.gcp.playgrouping_v1alpha1#VerifyAppsTokensRequest": {

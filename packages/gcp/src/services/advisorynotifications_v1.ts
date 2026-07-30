@@ -82,49 +82,14 @@ export const GetOrganizationsLocationsNotificationsRequest =
     identifier: "GetOrganizationsLocationsNotificationsRequest",
   }) as any as S.Schema<GetOrganizationsLocationsNotificationsRequest>;
 
-export type GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
-  | "LOCALIZATION_STATE_UNSPECIFIED"
-  | "LOCALIZATION_STATE_NOT_APPLICABLE"
-  | "LOCALIZATION_STATE_PENDING"
-  | "LOCALIZATION_STATE_COMPLETED";
-export const GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
+export type GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
+    | "NOTIFICATION_TYPE_UNSPECIFIED"
+    | "NOTIFICATION_TYPE_SECURITY_PRIVACY_ADVISORY"
+    | "NOTIFICATION_TYPE_SENSITIVE_ACTIONS"
+    | "NOTIFICATION_TYPE_SECURITY_MSA"
+    | "NOTIFICATION_TYPE_THREAT_HORIZONS";
+export const GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
   /*@__PURE__*/ S.String;
-
-/** A text object containing the English text and its localized copies. */
-export interface GoogleCloudAdvisorynotificationsV1Text {
-  /** Status of the localization. */
-  localizationState?: GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum;
-  /** The English copy. */
-  enText?: string;
-  /** The requested localized copy (if applicable). */
-  localizedText?: string;
-}
-export const GoogleCloudAdvisorynotificationsV1Text = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      localizationState: S.optional(
-        GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum,
-      ),
-      enText: S.optional(S.String),
-      localizedText: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudAdvisorynotificationsV1Text",
-}) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Text>;
-
-/** A subject line of a notification. */
-export interface GoogleCloudAdvisorynotificationsV1Subject {
-  /** The text content. */
-  text?: GoogleCloudAdvisorynotificationsV1Text;
-}
-export const GoogleCloudAdvisorynotificationsV1Subject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      text: S.optional(GoogleCloudAdvisorynotificationsV1Text),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Subject",
-  }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Subject>;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
@@ -154,16 +119,16 @@ export const GoogleCloudAdvisorynotificationsV1CsvCsvRowList =
 
 /** A representation of a CSV file attachment, as a list of column headers and a list of data rows. */
 export interface GoogleCloudAdvisorynotificationsV1Csv {
-  /** The list of headers for data columns in a CSV file. */
-  headers?: StringList;
   /** The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string. */
   dataRows?: GoogleCloudAdvisorynotificationsV1CsvCsvRowList;
+  /** The list of headers for data columns in a CSV file. */
+  headers?: StringList;
 }
 export const GoogleCloudAdvisorynotificationsV1Csv = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      headers: S.optional(StringList),
       dataRows: S.optional(GoogleCloudAdvisorynotificationsV1CsvCsvRowList),
+      headers: S.optional(StringList),
     }),
 ).annotate({
   identifier: "GoogleCloudAdvisorynotificationsV1Csv",
@@ -193,6 +158,36 @@ export const GoogleCloudAdvisorynotificationsV1AttachmentList =
     GoogleCloudAdvisorynotificationsV1Attachment,
   ) as any as S.Schema<GoogleCloudAdvisorynotificationsV1AttachmentList>;
 
+export type GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
+  | "LOCALIZATION_STATE_UNSPECIFIED"
+  | "LOCALIZATION_STATE_NOT_APPLICABLE"
+  | "LOCALIZATION_STATE_PENDING"
+  | "LOCALIZATION_STATE_COMPLETED";
+export const GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
+  /*@__PURE__*/ S.String;
+
+/** A text object containing the English text and its localized copies. */
+export interface GoogleCloudAdvisorynotificationsV1Text {
+  /** The requested localized copy (if applicable). */
+  localizedText?: string;
+  /** Status of the localization. */
+  localizationState?: GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum;
+  /** The English copy. */
+  enText?: string;
+}
+export const GoogleCloudAdvisorynotificationsV1Text = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      localizedText: S.optional(S.String),
+      localizationState: S.optional(
+        GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum,
+      ),
+      enText: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudAdvisorynotificationsV1Text",
+}) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Text>;
+
 /** A message body containing text. */
 export interface GoogleCloudAdvisorynotificationsV1MessageBody {
   /** The text content of the message body. */
@@ -209,22 +204,22 @@ export const GoogleCloudAdvisorynotificationsV1MessageBody =
 
 /** A message which contains notification details. */
 export interface GoogleCloudAdvisorynotificationsV1Message {
-  /** The attachments to download. */
-  attachments?: GoogleCloudAdvisorynotificationsV1AttachmentList;
   /** The Message creation timestamp. */
   createTime?: string;
-  /** Time when Message was localized */
-  localizationTime?: string;
+  /** The attachments to download. */
+  attachments?: GoogleCloudAdvisorynotificationsV1AttachmentList;
   /** The message content. */
   body?: GoogleCloudAdvisorynotificationsV1MessageBody;
+  /** Time when Message was localized */
+  localizationTime?: string;
 }
 export const GoogleCloudAdvisorynotificationsV1Message =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      attachments: S.optional(GoogleCloudAdvisorynotificationsV1AttachmentList),
       createTime: S.optional(S.String),
-      localizationTime: S.optional(S.String),
+      attachments: S.optional(GoogleCloudAdvisorynotificationsV1AttachmentList),
       body: S.optional(GoogleCloudAdvisorynotificationsV1MessageBody),
+      localizationTime: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1Message",
@@ -237,54 +232,59 @@ export const GoogleCloudAdvisorynotificationsV1MessageList =
     GoogleCloudAdvisorynotificationsV1Message,
   ) as any as S.Schema<GoogleCloudAdvisorynotificationsV1MessageList>;
 
-export type GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
-    | "NOTIFICATION_TYPE_UNSPECIFIED"
-    | "NOTIFICATION_TYPE_SECURITY_PRIVACY_ADVISORY"
-    | "NOTIFICATION_TYPE_SENSITIVE_ACTIONS"
-    | "NOTIFICATION_TYPE_SECURITY_MSA"
-    | "NOTIFICATION_TYPE_THREAT_HORIZONS";
-export const GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
-  /*@__PURE__*/ S.String;
+/** A subject line of a notification. */
+export interface GoogleCloudAdvisorynotificationsV1Subject {
+  /** The text content. */
+  text?: GoogleCloudAdvisorynotificationsV1Text;
+}
+export const GoogleCloudAdvisorynotificationsV1Subject =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      text: S.optional(GoogleCloudAdvisorynotificationsV1Text),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudAdvisorynotificationsV1Subject",
+  }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Subject>;
 
 /** A notification object for notifying customers about security and privacy issues. */
 export interface GoogleCloudAdvisorynotificationsV1Notification {
-  /** The subject line of the notification. */
-  subject?: GoogleCloudAdvisorynotificationsV1Subject;
-  /** A list of messages in the notification. */
-  messages?: GoogleCloudAdvisorynotificationsV1MessageList;
-  /** The resource name of the notification. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{project}/locations/{location}/notifications/{notification}. */
-  name?: string;
   /** Output only. Time the notification was created. */
   createTime?: string;
   /** Type of notification */
   notificationType?: GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum;
+  /** A list of messages in the notification. */
+  messages?: GoogleCloudAdvisorynotificationsV1MessageList;
+  /** The resource name of the notification. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{project}/locations/{location}/notifications/{notification}. */
+  name?: string;
+  /** The subject line of the notification. */
+  subject?: GoogleCloudAdvisorynotificationsV1Subject;
 }
 export const GoogleCloudAdvisorynotificationsV1Notification =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      subject: S.optional(GoogleCloudAdvisorynotificationsV1Subject),
-      messages: S.optional(GoogleCloudAdvisorynotificationsV1MessageList),
-      name: S.optional(S.String),
       createTime: S.optional(S.String),
       notificationType: S.optional(
         GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum,
       ),
+      messages: S.optional(GoogleCloudAdvisorynotificationsV1MessageList),
+      name: S.optional(S.String),
+      subject: S.optional(GoogleCloudAdvisorynotificationsV1Subject),
     }),
   ).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1Notification",
   }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Notification>;
 
 export interface GetProjectsLocationsNotificationsRequest {
-  /** Required. A name of the notification to retrieve. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{projects}/locations/{location}/notifications/{notification}. */
-  name: string;
   /** ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. */
   languageCode?: string;
+  /** Required. A name of the notification to retrieve. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{projects}/locations/{location}/notifications/{notification}. */
+  name: string;
 }
 export const GetProjectsLocationsNotificationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       languageCode: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -344,19 +344,19 @@ export const GoogleCloudAdvisorynotificationsV1NotificationSettingsMap =
 export interface GoogleCloudAdvisorynotificationsV1Settings {
   /** Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings. */
   name?: string;
-  /** Required. Fingerprint for optimistic concurrency returned in Get requests. Must be provided for Update requests. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle. */
-  etag?: string;
   /** Required. Map of each notification type and its settings to get/set all settings at once. The server will validate the value for each notification type. */
   notificationSettings?: GoogleCloudAdvisorynotificationsV1NotificationSettingsMap;
+  /** Required. Fingerprint for optimistic concurrency returned in Get requests. Must be provided for Update requests. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle. */
+  etag?: string;
 }
 export const GoogleCloudAdvisorynotificationsV1Settings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
-      etag: S.optional(S.String),
       notificationSettings: S.optional(
         GoogleCloudAdvisorynotificationsV1NotificationSettingsMap,
       ),
+      etag: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1Settings",
@@ -390,25 +390,25 @@ export const ListOrganizationsLocationsNotificationsViewEnum =
 export interface ListOrganizationsLocationsNotificationsRequest {
   /** Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". */
   parent: string;
-  /** Specifies which parts of the notification resource should be returned in the response. */
-  view?: ListOrganizationsLocationsNotificationsViewEnum | (string & {});
+  /** A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. */
+  pageToken?: string;
   /** ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. */
   languageCode?: string;
   /** The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. */
   pageSize?: number;
-  /** A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. */
-  pageToken?: string;
+  /** Specifies which parts of the notification resource should be returned in the response. */
+  view?: ListOrganizationsLocationsNotificationsViewEnum | (string & {});
 }
 export const ListOrganizationsLocationsNotificationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      languageCode: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       view: S.optional(
         ListOrganizationsLocationsNotificationsViewEnum.pipe(T.Query()),
       ),
-      languageCode: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -429,21 +429,21 @@ export const GoogleCloudAdvisorynotificationsV1NotificationList =
 
 /** Response of ListNotifications endpoint. */
 export interface GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
-  /** Estimation of a total number of notifications. */
-  totalSize?: number;
   /** List of notifications under a given parent. */
   notifications?: GoogleCloudAdvisorynotificationsV1NotificationList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** Estimation of a total number of notifications. */
+  totalSize?: number;
 }
 export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      totalSize: S.optional(S.Number),
       notifications: S.optional(
         GoogleCloudAdvisorynotificationsV1NotificationList,
       ),
       nextPageToken: S.optional(S.String),
+      totalSize: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1ListNotificationsResponse",
@@ -457,27 +457,27 @@ export const ListProjectsLocationsNotificationsViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsNotificationsRequest {
-  /** ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. */
-  languageCode?: string;
+  /** A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. */
+  pageToken?: string;
   /** Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". */
   parent: string;
   /** Specifies which parts of the notification resource should be returned in the response. */
   view?: ListProjectsLocationsNotificationsViewEnum | (string & {});
-  /** A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. */
-  pageToken?: string;
   /** The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. */
   pageSize?: number;
+  /** ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. */
+  languageCode?: string;
 }
 export const ListProjectsLocationsNotificationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      languageCode: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       view: S.optional(
         ListProjectsLocationsNotificationsViewEnum.pipe(T.Query()),
       ),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      languageCode: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",

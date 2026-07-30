@@ -254,12 +254,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "warehouse_origin": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only."
-          }
         }
       },
       "traits": {
@@ -785,7 +779,7 @@
         "smithy.api#documentation": "List of object IDs to update tags on."
       }
     },
-    "com.posthog.property_definitions#BulkUpdateTagsActionEnum": {
+    "com.posthog.property_definitions#ActionEnum": {
       "type": "enum",
       "members": {
         "ADD": {
@@ -838,7 +832,7 @@
           }
         },
         "action": {
-          "target": "com.posthog.property_definitions#BulkUpdateTagsActionEnum",
+          "target": "com.posthog.property_definitions#ActionEnum",
           "traits": {
             "smithy.api#documentation": "'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags.\n\n* `add` - add\n* `remove` - remove\n* `set` - set"
           }

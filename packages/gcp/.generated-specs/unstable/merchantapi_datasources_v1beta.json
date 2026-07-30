@@ -10,40 +10,10 @@
     "com.gcp.merchantapi_datasources_v1beta#FetchSettings": {
       "type": "structure",
       "members": {
-        "timeOfDay": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#TimeOfDay",
-          "traits": {
-            "smithy.api#documentation": "Optional. The hour of the day when the data source file should be fetched. Minutes and seconds are not supported and will be ignored."
-          }
-        },
-        "timeZone": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. [Time zone](https://cldr.unicode.org) used for schedule. UTC by default. For example, \"America/Los_Angeles\"."
-          }
-        },
-        "fetchUri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The URL where the data source file can be fetched. Google Merchant Center supports automatic scheduled uploads using the HTTP, HTTPS or SFTP protocols, so the value will need to be a valid link using one of those three protocols. Immutable for Google Sheets files."
-          }
-        },
-        "username": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. An optional user name for fetch_uri. Used for [submitting data sources through SFTP](https://support.google.com/merchants/answer/13813117)."
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Optional. Enables or pauses the fetch schedule."
-          }
-        },
-        "dayOfWeek": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettingsDayOfWeekEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. The day of the week when the data source file should be fetched. This field can only be set for weekly frequency."
           }
         },
         "dayOfMonth": {
@@ -52,16 +22,46 @@
             "smithy.api#documentation": "Optional. The day of the month when the data source file should be fetched (1-31). This field can only be set for monthly frequency."
           }
         },
-        "frequency": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettingsFrequencyEnum",
+        "username": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The frequency describing fetch schedule."
+            "smithy.api#documentation": "Optional. An optional user name for fetch_uri. Used for [submitting data sources through SFTP](https://support.google.com/merchants/answer/13813117)."
           }
         },
         "password": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional. An optional password for fetch_uri. Used for [submitting data sources through SFTP](https://support.google.com/merchants/answer/13813117)."
+          }
+        },
+        "fetchUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The URL where the data source file can be fetched. Google Merchant Center supports automatic scheduled uploads using the HTTP, HTTPS or SFTP protocols, so the value will need to be a valid link using one of those three protocols. Immutable for Google Sheets files."
+          }
+        },
+        "dayOfWeek": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettingsDayOfWeekEnum",
+          "traits": {
+            "smithy.api#documentation": "Optional. The day of the week when the data source file should be fetched. This field can only be set for weekly frequency."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. [Time zone](https://cldr.unicode.org) used for schedule. UTC by default. For example, \"America/Los_Angeles\"."
+          }
+        },
+        "timeOfDay": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#TimeOfDay",
+          "traits": {
+            "smithy.api#documentation": "Optional. The hour of the day when the data source file should be fetched. Minutes and seconds are not supported and will be ignored."
+          }
+        },
+        "frequency": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettingsFrequencyEnum",
+          "traits": {
+            "smithy.api#documentation": "Required. The frequency describing fetch schedule."
           }
         }
       },
@@ -151,11 +151,156 @@
         }
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#FetchDataSourceRequest": {
+    "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSource": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "countries": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#StringList",
+          "traits": {
+            "smithy.api#documentation": "Optional. The countries where the items may be displayed. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml)."
+          }
+        },
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction."
+          }
+        },
+        "destinations": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#DestinationList",
+          "traits": {
+            "smithy.api#documentation": "Optional. A list of destinations describing where products of the data source can be shown. When retrieving the data source, the list contains all the destinations that can be used for the data source, including the ones that are disabled for the data source but enabled for the account. Only destinations that are enabled on the account, for example through program participation, can be enabled on the data source. If unset, during creation, the destinations will be inherited based on the account level program participation. If set, during creation or update, the data source will be set only for the specified destinations. Updating this field requires at least one destination."
+          }
+        },
+        "channel": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSourceChannelEnum",
+          "traits": {
+            "smithy.api#documentation": "Optional. Immutable. Specifies the type of data source channel."
+          }
+        },
+        "defaultRule": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#DefaultRule",
+          "traits": {
+            "smithy.api#documentation": "Optional. Default rule management of the data source. If set, the linked data sources will be replaced. Warning: The update (patch) and create call replaces the entire default rule setup. It doesn't work as an addition or append. If `self` is missing from the list of `take_from_data_sources`, the API will ignore attributes from the primary data source itself."
+          }
+        },
+        "feedLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). For more information about feed label, see [Create a primary data source for products](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction."
+          }
+        }
+      },
       "traits": {
-        "smithy.api#documentation": "Request message for the FetchDataSource method."
+        "smithy.api#documentation": "The primary data source for local and online products."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DestinationList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#Destination"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSourceChannelEnum": {
+      "type": "enum",
+      "members": {
+        "CHANNEL_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_UNSPECIFIED"
+          }
+        },
+        "ONLINE_PRODUCTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ONLINE_PRODUCTS"
+          }
+        },
+        "LOCAL_PRODUCTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LOCAL_PRODUCTS"
+          }
+        },
+        "PRODUCTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCTS"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#Issue": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The title of the issue, for example, \"Item too big\"."
+          }
+        },
+        "count": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The number of occurrences of the error in the file upload."
+          }
+        },
+        "severity": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#IssueSeverityEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The severity of the issue."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The error description, for example, \"Your data source contains items which have too many attributes, or are too big. These items will be dropped\"."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Link to the documentation explaining the issue in more details, if available."
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The code of the error, for example, \"validation/invalid_value\". Returns \"?\" if the code is unknown."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An error occurring in the data source, like \"invalid price\"."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#IssueSeverityEnum": {
+      "type": "enum",
+      "members": {
+        "SEVERITY_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEVERITY_UNSPECIFIED"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WARNING"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERROR"
+          }
+        }
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#Destination": {
@@ -284,31 +429,496 @@
         }
       }
     },
+    "com.gcp.merchantapi_datasources_v1beta#RegionalInventoryDataSource": {
+      "type": "structure",
+      "members": {
+        "feedLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The feed label of the offers to which the regional inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-)."
+          }
+        },
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items to which the regional inventory is provided."
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#PromotionDataSource": {
+      "type": "structure",
+      "members": {
+        "targetCountry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected [countries](https://support.google.com/merchants/answer/4588460)."
+          }
+        },
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items in the data source."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The promotion data source."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#Empty": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#FetchDataSourceRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Request message for the FetchDataSource method."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#FileInput": {
+      "type": "structure",
+      "members": {
+        "fileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The file name of the data source. Required for `UPLOAD` file input type."
+          }
+        },
+        "fileInputType": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FileInputFileInputTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The type of file input."
+          }
+        },
+        "fetchSettings": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettings",
+          "traits": {
+            "smithy.api#documentation": "Optional. Fetch details to deliver the data source. It contains settings for `FETCH` and `GOOGLE_SHEETS` file input types. The required fields vary based on the frequency of fetching."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data specific for file data sources. This field is empty for other data source inputs."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#FileInputFileInputTypeEnum": {
+      "type": "enum",
+      "members": {
+        "FILE_INPUT_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FILE_INPUT_TYPE_UNSPECIFIED"
+          }
+        },
+        "UPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOAD"
+          }
+        },
+        "FETCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FETCH"
+          }
+        },
+        "GOOGLE_SHEETS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_SHEETS"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#TimeOfDay": {
+      "type": "structure",
+      "members": {
+        "nanos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999."
+          }
+        },
+        "minutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59."
+          }
+        },
+        "seconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds."
+          }
+        },
+        "hours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#SupplementalProductDataSource": {
+      "type": "structure",
+      "members": {
+        "feedLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. The fields must be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction."
+          }
+        },
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction."
+          }
+        },
+        "referencingPrimaryDataSources": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceReferenceList",
+          "traits": {
+            "smithy.api#documentation": "Output only. The (unordered and deduplicated) list of all primary data sources linked to this data source in either default or custom rules. Supplemental data source cannot be deleted before all links are removed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The [supplemental data source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#link-supplemental-data-source) for local and online products. After creation,you should make sure to link the supplemental product data source into one or more primary product data sources."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DataSourceReferenceList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceReference"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessage": {
+      "type": "structure",
+      "members": {
+        "resourceType": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageResourceTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
+          }
+        },
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
+          }
+        },
+        "attribute": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageAttributeEnum",
+          "traits": {
+            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
+          }
+        },
+        "expirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
+          }
+        },
+        "managingAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
+          }
+        },
+        "changes": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#ProductChangeList",
+          "traits": {
+            "smithy.api#documentation": "A message to describe the change that happened to the product"
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product id."
+          }
+        },
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageResourceTypeEnum": {
+      "type": "enum",
+      "members": {
+        "RESOURCE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
+          }
+        },
+        "PRODUCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCT"
+          }
+        },
+        "ACCOUNT_SERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ACCOUNT_SERVICE"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageAttributeEnum": {
+      "type": "enum",
+      "members": {
+        "ATTRIBUTE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STATUS"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#ProductChangeList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#ProductChange"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#LocalInventoryDataSource": {
+      "type": "structure",
+      "members": {
+        "feedLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The feed label of the offers to which the local inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-)."
+          }
+        },
+        "contentLanguage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items to which the local inventory is provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The local inventory data source type is only available for file inputs and can't be used to create API local inventory data sources."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DataSourceReference": {
+      "type": "structure",
+      "members": {
+        "self": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Self should be used to reference the primary data source itself."
+          }
+        },
+        "primaryDataSourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}`"
+          }
+        },
+        "supplementalDataSourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The name of the supplemental data source. Format: `accounts/{account}/dataSources/{datasource}`"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source reference can be used to manage related data sources within the data source service."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#ListDataSourcesResponse": {
+      "type": "structure",
+      "members": {
+        "dataSources": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceList",
+          "traits": {
+            "smithy.api#documentation": "The data sources from the specified account."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for the ListDataSources method."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DataSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#DataSource"
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DataSource": {
+      "type": "structure",
+      "members": {
+        "dataSourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The data source id."
+          }
+        },
+        "regionalInventoryDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#RegionalInventoryDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [regional inventory](https://support.google.com/merchants/answer/7439058) data source."
+          }
+        },
+        "productReviewDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#ProductReviewDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [product review](https://support.google.com/merchants/answer/7045996) data source."
+          }
+        },
+        "supplementalProductDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#SupplementalProductDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [supplemental data source](https://support.google.com/merchants/answer/7439058) for local and online products."
+          }
+        },
+        "promotionDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#PromotionDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [promotion](https://support.google.com/merchants/answer/2906014) data source."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The displayed data source name in the Merchant Center UI."
+          }
+        },
+        "fileInput": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FileInput",
+          "traits": {
+            "smithy.api#documentation": "Optional. The field is used only when data is managed through a file."
+          }
+        },
+        "primaryProductDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [primary data source](https://support.google.com/merchants/answer/7439058) for local and online products."
+          }
+        },
+        "input": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceInputEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. Determines the type of input to the data source. Based on the input some settings might not work. Only generic data sources can be created through the API."
+          }
+        },
+        "localInventoryDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#LocalInventoryDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [local inventory](https://support.google.com/merchants/answer/7023001) data source."
+          }
+        },
+        "merchantReviewDataSource": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#MerchantReviewDataSource",
+          "traits": {
+            "smithy.api#documentation": "The [merchant review](https://support.google.com/merchants/answer/7045996) data source."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DataSourceInputEnum": {
+      "type": "enum",
+      "members": {
+        "INPUT_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "INPUT_UNSPECIFIED"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FILE"
+          }
+        },
+        "UI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UI"
+          }
+        },
+        "AUTOFEED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUTOFEED"
+          }
+        }
+      }
+    },
     "com.gcp.merchantapi_datasources_v1beta#ProductChange": {
       "type": "structure",
       "members": {
-        "oldValue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``)"
-          }
-        },
         "newValue": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The new value of the changed resource or attribute. If empty, it means that the product was deleted. Will have one of these values : (`approved`, `pending`, `disapproved`, ``)"
           }
         },
-        "reportingContext": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#ProductChangeReportingContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)"
-          }
-        },
         "regionCode": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Countries that have the change (if applicable). Represented in the ISO 3166 format."
+          }
+        },
+        "oldValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``)"
+          }
+        },
+        "reportingContext": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#ProductChangeReportingContextEnum",
+          "traits": {
+            "smithy.api#documentation": "Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum)"
           }
         }
       },
@@ -441,144 +1051,6 @@
         }
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSource": {
-      "type": "structure",
-      "members": {
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). For more information about feed label, see [Create a primary data source for products](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction."
-          }
-        },
-        "countries": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#StringList",
-          "traits": {
-            "smithy.api#documentation": "Optional. The countries where the items may be displayed. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml)."
-          }
-        },
-        "destinations": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DestinationList",
-          "traits": {
-            "smithy.api#documentation": "Optional. A list of destinations describing where products of the data source can be shown. When retrieving the data source, the list contains all the destinations that can be used for the data source, including the ones that are disabled for the data source but enabled for the account. Only destinations that are enabled on the account, for example through program participation, can be enabled on the data source. If unset, during creation, the destinations will be inherited based on the account level program participation. If set, during creation or update, the data source will be set only for the specified destinations. Updating this field requires at least one destination."
-          }
-        },
-        "channel": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSourceChannelEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. Immutable. Specifies the type of data source channel."
-          }
-        },
-        "contentLanguage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction."
-          }
-        },
-        "defaultRule": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DefaultRule",
-          "traits": {
-            "smithy.api#documentation": "Optional. Default rule management of the data source. If set, the linked data sources will be replaced. Warning: The update (patch) and create call replaces the entire default rule setup. It doesn't work as an addition or append. If `self` is missing from the list of `take_from_data_sources`, the API will ignore attributes from the primary data source itself."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The primary data source for local and online products."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DestinationList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#Destination"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSourceChannelEnum": {
-      "type": "enum",
-      "members": {
-        "CHANNEL_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_UNSPECIFIED"
-          }
-        },
-        "ONLINE_PRODUCTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ONLINE_PRODUCTS"
-          }
-        },
-        "LOCAL_PRODUCTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LOCAL_PRODUCTS"
-          }
-        },
-        "PRODUCTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCTS"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#PromotionDataSource": {
-      "type": "structure",
-      "members": {
-        "contentLanguage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items in the data source."
-          }
-        },
-        "targetCountry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected [countries](https://support.google.com/merchants/answer/4588460)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The promotion data source."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#ProductReviewDataSource": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The product review data source."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DataSourceReference": {
-      "type": "structure",
-      "members": {
-        "self": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Self should be used to reference the primary data source itself."
-          }
-        },
-        "supplementalDataSourceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The name of the supplemental data source. Format: `accounts/{account}/dataSources/{datasource}`"
-          }
-        },
-        "primaryDataSourceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Deprecated: Use `self` instead to reference the primary data source. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}`"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Data source reference can be used to manage related data sources within the data source service."
-      }
-    },
     "com.gcp.merchantapi_datasources_v1beta#MerchantReviewDataSource": {
       "type": "structure",
       "members": {},
@@ -589,42 +1061,6 @@
     "com.gcp.merchantapi_datasources_v1beta#FileUpload": {
       "type": "structure",
       "members": {
-        "uploadTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The date at which the file of the data source was uploaded."
-          }
-        },
-        "itemsTotal": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The number of items in the data source that were processed."
-          }
-        },
-        "dataSourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The data source id."
-          }
-        },
-        "issues": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#IssueList",
-          "traits": {
-            "smithy.api#documentation": "Output only. The list of issues occurring in the data source."
-          }
-        },
-        "itemsUpdated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The number of items in the data source that were updated."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. The name of the data source file upload. Format: `{datasource.name=accounts/{account}/dataSources/{datasource}/fileUploads/{fileupload}}`"
-          }
-        },
         "processingState": {
           "target": "com.gcp.merchantapi_datasources_v1beta#FileUploadProcessingStateEnum",
           "traits": {
@@ -636,16 +1072,46 @@
           "traits": {
             "smithy.api#documentation": "Output only. The number of items in the data source that were created."
           }
+        },
+        "issues": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#IssueList",
+          "traits": {
+            "smithy.api#documentation": "Output only. The list of issues occurring in the data source."
+          }
+        },
+        "uploadTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The date at which the file of the data source was uploaded."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier. The name of the data source file upload. Format: `{datasource.name=accounts/{account}/dataSources/{datasource}/fileUploads/{fileupload}}`"
+          }
+        },
+        "dataSourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The data source id."
+          }
+        },
+        "itemsTotal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The number of items in the data source that were processed."
+          }
+        },
+        "itemsUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The number of items in the data source that were updated."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain timestamp computed asynchronously when the data source processing is finished. Only applicable to file data sources."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#IssueList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#Issue"
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#FileUploadProcessingStateEnum": {
@@ -677,332 +1143,10 @@
         }
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#Issue": {
-      "type": "structure",
-      "members": {
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The error description, for example, \"Your data source contains items which have too many attributes, or are too big. These items will be dropped\"."
-          }
-        },
-        "code": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The code of the error, for example, \"validation/invalid_value\". Returns \"?\" if the code is unknown."
-          }
-        },
-        "count": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The number of occurrences of the error in the file upload."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The title of the issue, for example, \"Item too big\"."
-          }
-        },
-        "severity": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#IssueSeverityEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The severity of the issue."
-          }
-        },
-        "documentationUri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Link to the documentation explaining the issue in more details, if available."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "An error occurring in the data source, like \"invalid price\"."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#IssueSeverityEnum": {
-      "type": "enum",
-      "members": {
-        "SEVERITY_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SEVERITY_UNSPECIFIED"
-          }
-        },
-        "WARNING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "WARNING"
-          }
-        },
-        "ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ERROR"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DataSource": {
-      "type": "structure",
-      "members": {
-        "regionalInventoryDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#RegionalInventoryDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [regional inventory](https://support.google.com/merchants/answer/7439058) data source."
-          }
-        },
-        "localInventoryDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#LocalInventoryDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [local inventory](https://support.google.com/merchants/answer/7023001) data source."
-          }
-        },
-        "dataSourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The data source id."
-          }
-        },
-        "fileInput": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FileInput",
-          "traits": {
-            "smithy.api#documentation": "Optional. The field is used only when data is managed through a file."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The displayed data source name in the Merchant Center UI."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`"
-          }
-        },
-        "productReviewDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#ProductReviewDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [product review](https://support.google.com/merchants/answer/7045996) data source."
-          }
-        },
-        "supplementalProductDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#SupplementalProductDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [supplemental data source](https://support.google.com/merchants/answer/7439058) for local and online products."
-          }
-        },
-        "input": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceInputEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Determines the type of input to the data source. Based on the input some settings might not work. Only generic data sources can be created through the API."
-          }
-        },
-        "merchantReviewDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#MerchantReviewDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [merchant review](https://support.google.com/merchants/answer/7045996) data source."
-          }
-        },
-        "primaryProductDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#PrimaryProductDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [primary data source](https://support.google.com/merchants/answer/7439058) for local and online products."
-          }
-        },
-        "promotionDataSource": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#PromotionDataSource",
-          "traits": {
-            "smithy.api#documentation": "The [promotion](https://support.google.com/merchants/answer/2906014) data source."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DataSourceInputEnum": {
-      "type": "enum",
-      "members": {
-        "INPUT_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "INPUT_UNSPECIFIED"
-          }
-        },
-        "API": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "API"
-          }
-        },
-        "FILE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FILE"
-          }
-        },
-        "UI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UI"
-          }
-        },
-        "AUTOFEED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AUTOFEED"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#LocalInventoryDataSource": {
-      "type": "structure",
-      "members": {
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The feed label of the offers to which the local inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-)."
-          }
-        },
-        "contentLanguage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items to which the local inventory is provided."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The local inventory data source type is only available for file inputs and can't be used to create API local inventory data sources."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#SupplementalProductDataSource": {
-      "type": "structure",
-      "members": {
-        "referencingPrimaryDataSources": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceReferenceList",
-          "traits": {
-            "smithy.api#documentation": "Output only. The (unordered and deduplicated) list of all primary data sources linked to this data source in either default or custom rules. Supplemental data source cannot be deleted before all links are removed."
-          }
-        },
-        "contentLanguage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction."
-          }
-        },
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. The fields must be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The [supplemental data source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#link-supplemental-data-source) for local and online products. After creation,you should make sure to link the supplemental product data source into one or more primary product data sources."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DataSourceReferenceList": {
+    "com.gcp.merchantapi_datasources_v1beta#IssueList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceReference"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#Empty": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#FileInput": {
-      "type": "structure",
-      "members": {
-        "fileInputType": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FileInputFileInputTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The type of file input."
-          }
-        },
-        "fetchSettings": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FetchSettings",
-          "traits": {
-            "smithy.api#documentation": "Optional. Fetch details to deliver the data source. It contains settings for `FETCH` and `GOOGLE_SHEETS` file input types. The required fields vary based on the frequency of fetching."
-          }
-        },
-        "fileName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The file name of the data source. Required for `UPLOAD` file input type."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The data specific for file data sources. This field is empty for other data source inputs."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#FileInputFileInputTypeEnum": {
-      "type": "enum",
-      "members": {
-        "FILE_INPUT_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FILE_INPUT_TYPE_UNSPECIFIED"
-          }
-        },
-        "UPLOAD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UPLOAD"
-          }
-        },
-        "FETCH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FETCH"
-          }
-        },
-        "GOOGLE_SHEETS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GOOGLE_SHEETS"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#TimeOfDay": {
-      "type": "structure",
-      "members": {
-        "hours": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
-          }
-        },
-        "seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds."
-          }
-        },
-        "minutes": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59."
-          }
-        },
-        "nanos": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`."
+        "target": "com.gcp.merchantapi_datasources_v1beta#Issue"
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#DefaultRule": {
@@ -1019,155 +1163,11 @@
         "smithy.api#documentation": "Default rule management of the data source."
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessage": {
+    "com.gcp.merchantapi_datasources_v1beta#ProductReviewDataSource": {
       "type": "structure",
-      "members": {
-        "resource": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product name. Format: `accounts/{account}/products/{product}`"
-          }
-        },
-        "account": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The target account that owns the entity that changed. Format : `accounts/{merchant_id}`"
-          }
-        },
-        "expirationTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event."
-          }
-        },
-        "resourceType": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "The resource that changed, in this case it will always be `Product`."
-          }
-        },
-        "changes": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#ProductChangeList",
-          "traits": {
-            "smithy.api#documentation": "A message to describe the change that happened to the product"
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The product id."
-          }
-        },
-        "attribute": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageAttributeEnum",
-          "traits": {
-            "smithy.api#documentation": "The attribute in the resource that changed, in this case it will be always `Status`."
-          }
-        },
-        "eventTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications."
-          }
-        },
-        "managingAccount": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}`"
-          }
-        }
-      },
+      "members": {},
       "traits": {
-        "smithy.api#documentation": "The message that the merchant will receive to notify about product status change event"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageResourceTypeEnum": {
-      "type": "enum",
-      "members": {
-        "RESOURCE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RESOURCE_UNSPECIFIED"
-          }
-        },
-        "PRODUCT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT"
-          }
-        },
-        "ACCOUNT_SERVICE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ACCOUNT_SERVICE"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#ProductChangeList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#ProductChange"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#ProductStatusChangeMessageAttributeEnum": {
-      "type": "enum",
-      "members": {
-        "ATTRIBUTE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ATTRIBUTE_UNSPECIFIED"
-          }
-        },
-        "STATUS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "STATUS"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#ListDataSourcesResponse": {
-      "type": "structure",
-      "members": {
-        "dataSources": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DataSourceList",
-          "traits": {
-            "smithy.api#documentation": "The data sources from the specified account."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for the ListDataSources method."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DataSourceList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#DataSource"
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#RegionalInventoryDataSource": {
-      "type": "structure",
-      "members": {
-        "feedLabel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The feed label of the offers to which the regional inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-)."
-          }
-        },
-        "contentLanguage": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Immutable. The two-letter ISO 639-1 language of the items to which the regional inventory is provided."
-          }
-        }
+        "smithy.api#documentation": "The product review data source."
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#GetAccountsDataSourcesRequest": {
@@ -1233,82 +1233,6 @@
         "smithy.api#documentation": "Retrieves the data source configuration for the given account."
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSourcesRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The account where this data source will be created. Format: `accounts/{account}`",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#DataSource",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#BadRequest": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 400,
-        "com.gcp.protocols#errorMatchers": [
-          {
-            "status": 400
-          }
-        ]
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#Conflict": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 409,
-        "com.gcp.protocols#errorMatchers": [
-          {
-            "status": 409
-          }
-        ]
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSources": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSourcesRequest"
-      },
-      "output": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#DataSource"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#NotFound"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#Forbidden"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#BadRequest"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "datasources/v1beta/{+parent}/dataSources"
-        },
-        "smithy.api#documentation": "Creates the new data source configuration for the given account. This method always creates a new data source."
-      }
-    },
     "com.gcp.merchantapi_datasources_v1beta#ListAccountsDataSourcesRequest": {
       "type": "structure",
       "members": {
@@ -1362,6 +1286,125 @@
           "inputToken": "pageToken",
           "outputToken": "nextPageToken"
         }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSourcesRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.gcp.protocols#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.gcp.protocols#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSourcesRequest"
+      },
+      "output": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#Empty"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#NotFound"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#Forbidden"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#BadRequest"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "datasources/v1beta/{+name}"
+        },
+        "smithy.api#documentation": "Deletes a data source from your Merchant Center account."
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSourcesRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}`",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.merchantapi_datasources_v1beta#FetchDataSourceRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSources": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSourcesRequest"
+      },
+      "output": {
+        "target": "com.gcp.merchantapi_datasources_v1beta#Empty"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#NotFound"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#Forbidden"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#BadRequest"
+        },
+        {
+          "target": "com.gcp.merchantapi_datasources_v1beta#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "datasources/v1beta/{+name}:fetch"
+        },
+        "smithy.api#documentation": "Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set."
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#PatchAccountsDataSourcesRequest": {
@@ -1421,19 +1464,19 @@
         "smithy.api#documentation": "Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted."
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSourcesRequest": {
+    "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSourcesRequest": {
       "type": "structure",
       "members": {
-        "name": {
+        "parent": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}`",
+            "smithy.api#documentation": "Required. The account where this data source will be created. Format: `accounts/{account}`",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         },
         "body": {
-          "target": "com.gcp.merchantapi_datasources_v1beta#FetchDataSourceRequest",
+          "target": "com.gcp.merchantapi_datasources_v1beta#DataSource",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -1441,13 +1484,13 @@
         }
       }
     },
-    "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSources": {
+    "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSources": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#FetchAccountsDataSourcesRequest"
+        "target": "com.gcp.merchantapi_datasources_v1beta#CreateAccountsDataSourcesRequest"
       },
       "output": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#Empty"
+        "target": "com.gcp.merchantapi_datasources_v1beta#DataSource"
       },
       "errors": [
         {
@@ -1466,52 +1509,9 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "datasources/v1beta/{+name}:fetch"
+          "uri": "datasources/v1beta/{+parent}/dataSources"
         },
-        "smithy.api#documentation": "Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set."
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSourcesRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSources": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#DeleteAccountsDataSourcesRequest"
-      },
-      "output": {
-        "target": "com.gcp.merchantapi_datasources_v1beta#Empty"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#NotFound"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#Forbidden"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#BadRequest"
-        },
-        {
-          "target": "com.gcp.merchantapi_datasources_v1beta#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "datasources/v1beta/{+name}"
-        },
-        "smithy.api#documentation": "Deletes a data source from your Merchant Center account."
+        "smithy.api#documentation": "Creates the new data source configuration for the given account. This method always creates a new data source."
       }
     },
     "com.gcp.merchantapi_datasources_v1beta#GetAccountsDataSourcesFileUploadsRequest": {

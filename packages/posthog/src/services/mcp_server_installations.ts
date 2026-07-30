@@ -90,26 +90,17 @@ export const McpServerInstallationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "McpServerInstallationsCreateRequest",
 }) as any as S.Schema<McpServerInstallationsCreateRequest>;
 
-/** * `personal` - Personal * `shared` - Shared */
-export type MCPServerInstallationScopeEnum = "personal" | "shared";
-export const MCPServerInstallationScopeEnum = /*@__PURE__*/ S.String;
-
 export interface MCPServerInstallation {
   id?: string;
   template_id?: string | null;
   name?: string;
-  /** Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template). */
+  /** Lowercase key from the linked template for brand icons. Empty if custom install (no template). */
   icon_key?: string;
-  /** Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template). */
-  icon_domain?: string;
   display_name?: string;
   url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
   is_enabled?: boolean;
-  scope?: MCPServerInstallationScopeEnum;
-  /** True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s. */
-  is_owner?: boolean;
   needs_reauth?: boolean;
   pending_oauth?: boolean;
   proxy_url?: string;
@@ -124,14 +115,11 @@ export const MCPServerInstallation = /*@__PURE__*/ S.suspend(() =>
     template_id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
     icon_key: S.optional(S.String),
-    icon_domain: S.optional(S.String),
     display_name: S.optional(S.String),
     url: S.optional(S.String),
     description: S.optional(S.String),
     auth_type: S.optional(MCPAuthTypeEnum),
     is_enabled: S.optional(S.Boolean),
-    scope: S.optional(MCPServerInstallationScopeEnum),
-    is_owner: S.optional(S.Boolean),
     needs_reauth: S.optional(S.Boolean),
     pending_oauth: S.optional(S.Boolean),
     proxy_url: S.optional(S.String),
@@ -180,10 +168,6 @@ export const InstallCustomAuthTypeEnum = /*@__PURE__*/ S.String;
 export type InstallSourceEnum = "posthog" | "posthog-code";
 export const InstallSourceEnum = /*@__PURE__*/ S.String;
 
-/** * `personal` - personal * `shared` - shared */
-export type MCPInstallationScopeEnum = "personal" | "shared";
-export const MCPInstallationScopeEnum = /*@__PURE__*/ S.String;
-
 export interface McpServerInstallationsInstallCustomCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -196,8 +180,6 @@ export interface McpServerInstallationsInstallCustomCreateRequest {
   client_secret?: string | Redacted.Redacted<string>;
   install_source?: InstallSourceEnum | (string & {});
   posthog_code_callback_url?: string;
-  /** 'personal' is per-user; 'shared' is team-wide (visible to all project members and sandbox agents). * `personal` - personal * `shared` - shared */
-  scope?: MCPInstallationScopeEnum | (string & {});
 }
 export const McpServerInstallationsInstallCustomCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -212,7 +194,6 @@ export const McpServerInstallationsInstallCustomCreateRequest =
       client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
       install_source: S.optional(InstallSourceEnum),
       posthog_code_callback_url: S.optional(S.String),
-      scope: S.optional(MCPInstallationScopeEnum),
     }).pipe(
       T.Http({
         method: "POST",
@@ -242,8 +223,6 @@ export interface McpServerInstallationsInstallTemplateCreateRequest {
   api_key?: string | Redacted.Redacted<string>;
   install_source?: InstallSourceEnum | (string & {});
   posthog_code_callback_url?: string;
-  /** 'personal' is per-user; 'shared' is team-wide (visible to all project members and sandbox agents). * `personal` - personal * `shared` - shared */
-  scope?: MCPInstallationScopeEnum | (string & {});
 }
 export const McpServerInstallationsInstallTemplateCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -253,7 +232,6 @@ export const McpServerInstallationsInstallTemplateCreateRequest =
       api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
       install_source: S.optional(InstallSourceEnum),
       posthog_code_callback_url: S.optional(S.String),
-      scope: S.optional(MCPInstallationScopeEnum),
     }).pipe(
       T.Http({
         method: "POST",
@@ -400,28 +378,6 @@ export const McpServerInstallationsRetrieveRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "McpServerInstallationsRetrieveRequest",
 }) as any as S.Schema<McpServerInstallationsRetrieveRequest>;
-
-export interface McpServerInstallationsShareCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp server installation. */
-  id: string;
-}
-export const McpServerInstallationsShareCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_server_installations/{id}/share/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpServerInstallationsShareCreateRequest",
-}) as any as S.Schema<McpServerInstallationsShareCreateRequest>;
 
 /** * `approved` - approved * `needs_approval` - needs_approval * `do_not_use` - do_not_use */
 export type ToolApprovalUpdateApprovalStateEnum =
@@ -571,28 +527,6 @@ export const McpServerInstallationsToolsRetrieveRequest =
   ).annotate({
     identifier: "McpServerInstallationsToolsRetrieveRequest",
   }) as any as S.Schema<McpServerInstallationsToolsRetrieveRequest>;
-
-export interface McpServerInstallationsUnshareCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp server installation. */
-  id: string;
-}
-export const McpServerInstallationsUnshareCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_server_installations/{id}/unshare/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpServerInstallationsUnshareCreateRequest",
-  }) as any as S.Schema<McpServerInstallationsUnshareCreateRequest>;
 
 export interface McpServerInstallationsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -752,21 +686,6 @@ export const mcpServerInstallationsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpServerInstallationsShareCreateError = PosthogOpError;
-/** Escalate a personal installation to a team-wide shared one. Owner-only AND admin-only: sharing exposes the owner's credential to every project member and all autonomous agents, so it carries the same gate as creating a shared install outright. */
-export const mcpServerInstallationsShareCreate: API.OperationMethod<
-  McpServerInstallationsShareCreateRequest,
-  MCPServerInstallation,
-  McpServerInstallationsShareCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpServerInstallationsShareCreateRequest,
-  output: MCPServerInstallation,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpServerInstallationsToolsPartialUpdateError = PosthogOpError;
 export const mcpServerInstallationsToolsPartialUpdate: API.OperationMethod<
   McpServerInstallationsToolsPartialUpdateRequest,
@@ -804,21 +723,6 @@ export const mcpServerInstallationsToolsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: McpServerInstallationsToolsRetrieveRequest,
   output: PaginatedMCPServerInstallationToolList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpServerInstallationsUnshareCreateError = PosthogOpError;
-/** De-escalate a shared installation back to personal. Allowed for the credential owner OR a project admin (the reclaim path for shared credentials). The row always stays owned by the ORIGINAL owner — an admin unsharing someone else's install must not capture their credential. */
-export const mcpServerInstallationsUnshareCreate: API.OperationMethod<
-  McpServerInstallationsUnshareCreateRequest,
-  MCPServerInstallation,
-  McpServerInstallationsUnshareCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpServerInstallationsUnshareCreateRequest,
-  output: MCPServerInstallation,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

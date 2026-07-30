@@ -110,21 +110,21 @@ export const GooglePlayDeveloperReportingV1alpha1ReleaseList =
 
 /** A representation of a Play release track. */
 export interface GooglePlayDeveloperReportingV1alpha1Track {
+  /** Readable identifier of the track. */
+  displayName?: string;
   /** The type of the track. */
   type?: string;
   /** Represents all active releases in the track. */
   servingReleases?: GooglePlayDeveloperReportingV1alpha1ReleaseList;
-  /** Readable identifier of the track. */
-  displayName?: string;
 }
 export const GooglePlayDeveloperReportingV1alpha1Track =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      displayName: S.optional(S.String),
       type: S.optional(S.String),
       servingReleases: S.optional(
         GooglePlayDeveloperReportingV1alpha1ReleaseList,
       ),
-      displayName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1Track",
@@ -169,11 +169,6 @@ export const GetVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVitalsAnrrateRequest",
 }) as any as S.Schema<GetVitalsAnrrateRequest>;
 
-export type GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
-  /*@__PURE__*/ S.String;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -192,55 +187,60 @@ export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface GoogleTypeDateTime {
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  year?: number;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  utcOffset?: string;
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   day?: number;
-  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
-  minutes?: number;
-  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
-  nanos?: number;
-  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  month?: number;
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
   /** Time zone. */
   timeZone?: GoogleTypeTimeZone;
+  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
+  nanos?: number;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  month?: number;
+  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
+  minutes?: number;
+  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
+  utcOffset?: string;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  year?: number;
 }
 export const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    year: S.optional(S.Number),
-    seconds: S.optional(S.Number),
-    utcOffset: S.optional(S.String),
     day: S.optional(S.Number),
-    minutes: S.optional(S.Number),
-    nanos: S.optional(S.Number),
-    hours: S.optional(S.Number),
-    month: S.optional(S.Number),
+    seconds: S.optional(S.Number),
     timeZone: S.optional(GoogleTypeTimeZone),
+    hours: S.optional(S.Number),
+    nanos: S.optional(S.Number),
+    month: S.optional(S.Number),
+    minutes: S.optional(S.Number),
+    utcOffset: S.optional(S.String),
+    year: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "GoogleTypeDateTime",
 }) as any as S.Schema<GoogleTypeDateTime>;
 
+export type GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum =
+  /*@__PURE__*/ S.String;
+
 /** Information about data freshness for a single aggregation period. */
 export interface GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness {
-  /** Aggregation period for which data is available. */
-  aggregationPeriod?: GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum;
   /** Latest end time for which data is available, for the aggregation period. The time is specified in the metric set's default timezone. *Note:* time ranges in TimelineSpec are represented as `start_time, end_time)`. For example, if the latest available timeline data point for a `DAILY` aggregation period is `2021-06-23 00:00:00 America/Los_Angeles`, the value of this field would be `2021-06-24 00:00:00 America/Los_Angeles` so it can be easily reused in [TimelineSpec.end_time. */
   latestEndTime?: GoogleTypeDateTime;
+  /** Aggregation period for which data is available. */
+  aggregationPeriod?: GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum;
 }
 export const GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      latestEndTime: S.optional(GoogleTypeDateTime),
       aggregationPeriod: S.optional(
         GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshnessAggregationPeriodEnum,
       ),
-      latestEndTime: S.optional(GoogleTypeDateTime),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1FreshnessInfoFreshness",
@@ -552,21 +552,21 @@ export const GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetr
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet>;
 
 export interface ListAnomaliesRequest {
-  /** Optional. Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
-  pageSize?: number;
-  /** Required. Parent app for which anomalies were detected. Format: apps/{app} */
-  parent: string;
   /** Optional. Filtering criteria for anomalies. For basic filter guidance, please check: https://google.aip.dev/160. **Supported functions:** * `activeBetween(startTime, endTime)`: If specified, only list anomalies that were active in between `startTime` (inclusive) and `endTime` (exclusive). Both parameters are expected to conform to an RFC-3339 formatted string (e.g. `2012-04-21T11:30:00-04:00`). UTC offsets are supported. Both `startTime` and `endTime` accept the special value `UNBOUNDED`, to signify intervals with no lower or upper bound, respectively. Examples: * `activeBetween("2021-04-21T11:30:00Z", "2021-07-21T00:00:00Z")` * `activeBetween(UNBOUNDED, "2021-11-21T00:00:00-04:00")` * `activeBetween("2021-07-21T00:00:00-04:00", UNBOUNDED)` */
   filter?: string;
   /** Optional. A page token, received from a previous `ListErrorReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListErrorReports` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
+  pageSize?: number;
+  /** Required. Parent app for which anomalies were detected. Format: apps/{app} */
+  parent: string;
 }
 export const ListAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -610,73 +610,44 @@ export const GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval =
 
 /** Represents the value of a metric. */
 export interface GooglePlayDeveloperReportingV1alpha1MetricValue {
-  /** Confidence interval of a value that is of type `type.Decimal`. */
-  decimalValueConfidenceInterval?: GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval;
   /** Name of the metric. */
   metric?: string;
   /** Actual value, represented as a decimal number. */
   decimalValue?: GoogleTypeDecimal;
+  /** Confidence interval of a value that is of type `type.Decimal`. */
+  decimalValueConfidenceInterval?: GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval;
 }
 export const GooglePlayDeveloperReportingV1alpha1MetricValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      metric: S.optional(S.String),
+      decimalValue: S.optional(GoogleTypeDecimal),
       decimalValueConfidenceInterval: S.optional(
         GooglePlayDeveloperReportingV1alpha1DecimalConfidenceInterval,
       ),
-      metric: S.optional(S.String),
-      decimalValue: S.optional(GoogleTypeDecimal),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1MetricValue",
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1MetricValue>;
 
-export type GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
-  /*@__PURE__*/ S.String;
-
-/** Specification of the time-related aggregation parameters of a timeline. Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines how events are aggregated in metrics. The points in a timeline are defined by the starting DateTime of the aggregation period. The duration is implicit in the AggregationPeriod. Hourly aggregation periods, when supported by a metric set, are always specified in UTC to avoid ambiguities around daylight saving time transitions, where an hour is skipped when adopting DST, and repeated when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC' or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a timezone which will determine the precise instants of the start and the end of the day. Not all metric sets support all timezones, so make sure to check which timezones are supported by the metric set you want to query. */
-export interface GooglePlayDeveloperReportingV1alpha1TimelineSpec {
-  /** Optional. Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as follows: * HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left unset (defaults to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result in a validation error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset. Different metric sets support different timezones. It can be left unset to use the default timezone specified by the metric set. The timezone of the end point must match the timezone of the start point. */
-  startTime?: GoogleTypeDateTime;
-  /** Optional. Type of the aggregation period of the datapoints in the timeline. Intervals are identified by the date and time at the start of the interval. */
-  aggregationPeriod?:
-    | GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum
-    | (string & {});
-  /** Optional. Ending datapoint of the timeline (exclusive). See start_time for restrictions. The timezone of the end point must match the timezone of the start point. */
-  endTime?: GoogleTypeDateTime;
-}
-export const GooglePlayDeveloperReportingV1alpha1TimelineSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(GoogleTypeDateTime),
-      aggregationPeriod: S.optional(
-        GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum,
-      ),
-      endTime: S.optional(GoogleTypeDateTime),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1alpha1TimelineSpec",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1TimelineSpec>;
-
 /** Represents the value of a single dimension. */
 export interface GooglePlayDeveloperReportingV1alpha1DimensionValue {
   /** Actual value, represented as an int64. */
   int64Value?: string;
+  /** Optional. Human-friendly label for the value, always in English. For example, 'Spain' for the 'ES' country code. Whereas the dimension value is stable, this value label is subject to change. Do not assume that the (value, value_label) relationship is stable. For example, the ISO country code 'MK' changed its name recently to 'North Macedonia'. */
+  valueLabel?: string;
   /** Actual value, represented as a string. */
   stringValue?: string;
   /** Name of the dimension. */
   dimension?: string;
-  /** Optional. Human-friendly label for the value, always in English. For example, 'Spain' for the 'ES' country code. Whereas the dimension value is stable, this value label is subject to change. Do not assume that the (value, value_label) relationship is stable. For example, the ISO country code 'MK' changed its name recently to 'North Macedonia'. */
-  valueLabel?: string;
 }
 export const GooglePlayDeveloperReportingV1alpha1DimensionValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       int64Value: S.optional(S.String),
+      valueLabel: S.optional(S.String),
       stringValue: S.optional(S.String),
       dimension: S.optional(S.String),
-      valueLabel: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1DimensionValue",
@@ -689,31 +660,60 @@ export const GooglePlayDeveloperReportingV1alpha1DimensionValueList =
     GooglePlayDeveloperReportingV1alpha1DimensionValue,
   ) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DimensionValueList>;
 
+export type GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+export const GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum =
+  /*@__PURE__*/ S.String;
+
+/** Specification of the time-related aggregation parameters of a timeline. Timelines have an aggregation period (`DAILY`, `HOURLY`, etc) which defines how events are aggregated in metrics. The points in a timeline are defined by the starting DateTime of the aggregation period. The duration is implicit in the AggregationPeriod. Hourly aggregation periods, when supported by a metric set, are always specified in UTC to avoid ambiguities around daylight saving time transitions, where an hour is skipped when adopting DST, and repeated when abandoning DST. For example, the timestamp '2021-11-07 01:00:00 America/Los_Angeles' is ambiguous since it can correspond to '2021-11-07 08:00:00 UTC' or '2021-11-07 09:00:00 UTC'. Daily aggregation periods require specifying a timezone which will determine the precise instants of the start and the end of the day. Not all metric sets support all timezones, so make sure to check which timezones are supported by the metric set you want to query. */
+export interface GooglePlayDeveloperReportingV1alpha1TimelineSpec {
+  /** Optional. Type of the aggregation period of the datapoints in the timeline. Intervals are identified by the date and time at the start of the interval. */
+  aggregationPeriod?:
+    | GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum
+    | (string & {});
+  /** Optional. Ending datapoint of the timeline (exclusive). See start_time for restrictions. The timezone of the end point must match the timezone of the start point. */
+  endTime?: GoogleTypeDateTime;
+  /** Optional. Starting datapoint of the timeline (inclusive). Must be aligned to the aggregation period as follows: * HOURLY: the 'minutes', 'seconds' and 'nanos' fields must be unset. The time_zone can be left unset (defaults to UTC) or set explicitly to "UTC". Setting any other utc_offset or timezone id will result in a validation error. * DAILY: the 'hours', 'minutes', 'seconds' and 'nanos' fields must be unset. Different metric sets support different timezones. It can be left unset to use the default timezone specified by the metric set. The timezone of the end point must match the timezone of the start point. */
+  startTime?: GoogleTypeDateTime;
+}
+export const GooglePlayDeveloperReportingV1alpha1TimelineSpec =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      aggregationPeriod: S.optional(
+        GooglePlayDeveloperReportingV1alpha1TimelineSpecAggregationPeriodEnum,
+      ),
+      endTime: S.optional(GoogleTypeDateTime),
+      startTime: S.optional(GoogleTypeDateTime),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1alpha1TimelineSpec",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1TimelineSpec>;
+
 /** Represents an anomaly detected in a dataset. Our anomaly detection systems flag datapoints in a time series that fall outside of and expected range derived from historical data. Although those expected ranges have an upper and a lower bound, we only flag anomalies when the data has become unexpectedly _worse_, which usually corresponds to the case where the metric crosses the upper bound. Multiple contiguous datapoints in a timeline outside of the expected range will be grouped into a single anomaly. Therefore, an anomaly represents effectively a segment of a metric's timeline. The information stored in the `timeline_spec`, `dimensions` and `metric` can be used to fetch a full timeline with extended ragne for context. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1alpha1Anomaly {
   /** Identifier. Name of the anomaly. Format: apps/{app}/anomalies/{anomaly} */
   name?: string;
   /** Metric where the anomaly was detected, together with the anomalous value. */
   metric?: GooglePlayDeveloperReportingV1alpha1MetricValue;
+  /** Combination of dimensions in which the anomaly was detected. */
+  dimensions?: GooglePlayDeveloperReportingV1alpha1DimensionValueList;
   /** Timeline specification that covers the anomaly period. */
   timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
   /** Metric set resource where the anomaly was detected. */
   metricSet?: string;
-  /** Combination of dimensions in which the anomaly was detected. */
-  dimensions?: GooglePlayDeveloperReportingV1alpha1DimensionValueList;
 }
 export const GooglePlayDeveloperReportingV1alpha1Anomaly =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
       metric: S.optional(GooglePlayDeveloperReportingV1alpha1MetricValue),
+      dimensions: S.optional(
+        GooglePlayDeveloperReportingV1alpha1DimensionValueList,
+      ),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
       metricSet: S.optional(S.String),
-      dimensions: S.optional(
-        GooglePlayDeveloperReportingV1alpha1DimensionValueList,
-      ),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1Anomaly",
@@ -750,18 +750,18 @@ export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequestUse
 
 /** Request message for QueryAnrRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest {
-  /** Optional. Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one user-perceived ANR. User-perceived ANRs are currently those of 'Input dispatching' type. * `userPerceivedAnrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not . supported in HOURLY granularity. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `anrRate` and `userPerceivedAnrRate` metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
-  metrics?: StringList;
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. */
   timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
+  /** Optional. Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `anrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one user-perceived ANR. User-perceived ANRs are currently those of 'Input dispatching' type. * `userPerceivedAnrRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedAnrRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedAnrRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not . supported in HOURLY granularity. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `anrRate` and `userPerceivedAnrRate` metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
+  metrics?: StringList;
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100,000; values above 100,000 will be coerced to 100,000. */
   pageSize?: number;
-  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
-  filter?: string;
   /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
+  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
+  filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. **Supported values:** * `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g., "T1B2.220916.004". */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequestUserCohortEnum
@@ -770,14 +770,14 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetReques
 export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      metrics: S.optional(StringList),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
-      pageToken: S.optional(S.String),
+      metrics: S.optional(StringList),
       pageSize: S.optional(S.Number),
-      filter: S.optional(S.String),
       dimensions: S.optional(StringList),
+      filter: S.optional(S.String),
+      pageToken: S.optional(S.String),
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequestUserCohortEnum,
       ),
@@ -812,6 +812,11 @@ export const QueryVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryVitalsAnrrateRequest",
 }) as any as S.Schema<QueryVitalsAnrrateRequest>;
 
+export type GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
+export const GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
+  /*@__PURE__*/ S.String;
+
 export type GooglePlayDeveloperReportingV1alpha1MetricValueList =
   Array<GooglePlayDeveloperReportingV1alpha1MetricValue>;
 export const GooglePlayDeveloperReportingV1alpha1MetricValueList =
@@ -819,33 +824,28 @@ export const GooglePlayDeveloperReportingV1alpha1MetricValueList =
     GooglePlayDeveloperReportingV1alpha1MetricValue,
   ) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1MetricValueList>;
 
-export type GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
-  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
-export const GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum =
-  /*@__PURE__*/ S.String;
-
 /** Represents a row of dimensions and metrics. */
 export interface GooglePlayDeveloperReportingV1alpha1MetricsRow {
   /** Optional. Starting date (and time for hourly aggregation) of the period covered by this row. */
   startTime?: GoogleTypeDateTime;
-  /** Optional. Metric columns in the row. */
-  metrics?: GooglePlayDeveloperReportingV1alpha1MetricValueList;
   /** Optional. Dimension columns in the row. */
   dimensions?: GooglePlayDeveloperReportingV1alpha1DimensionValueList;
   /** Optional. Granularity of the aggregation period of the row. */
   aggregationPeriod?: GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum;
+  /** Optional. Metric columns in the row. */
+  metrics?: GooglePlayDeveloperReportingV1alpha1MetricValueList;
 }
 export const GooglePlayDeveloperReportingV1alpha1MetricsRow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       startTime: S.optional(GoogleTypeDateTime),
-      metrics: S.optional(GooglePlayDeveloperReportingV1alpha1MetricValueList),
       dimensions: S.optional(
         GooglePlayDeveloperReportingV1alpha1DimensionValueList,
       ),
       aggregationPeriod: S.optional(
         GooglePlayDeveloperReportingV1alpha1MetricsRowAggregationPeriodEnum,
       ),
+      metrics: S.optional(GooglePlayDeveloperReportingV1alpha1MetricValueList),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1MetricsRow",
@@ -860,16 +860,16 @@ export const GooglePlayDeveloperReportingV1alpha1MetricsRowList =
 
 /** Response message for QueryAnrRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse {
-  /** Returned rows of data. */
-  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
+  /** Returned rows of data. */
+  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
 }
 export const GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
       nextPageToken: S.optional(S.String),
+      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
     }),
   ).annotate({
     identifier:
@@ -883,37 +883,37 @@ export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestU
 
 /** Request message for QueryCrashRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest {
+  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. */
+  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
+  /** Optional. Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `crashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash while they were actively using your app (a user-perceived crash). An app is considered to be in active use if it is displaying any activity or executing any foreground service. * `userPerceivedCrashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `crashRate` and `userPerceivedCrashRate` metrics. A user is counted in this metric if they used the app actively during the aggregation period. An app is considered to be in active use if it is displaying any activity or executing any foreground service. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
+  metrics?: StringList;
+  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100,000; values above 100,000 will be coerced to 100,000. */
+  pageSize?: number;
+  /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
+  dimensions?: StringList;
+  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
+  filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. **Supported values:** * `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g., "T1B2.220916.004". */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestUserCohortEnum
     | (string & {});
-  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
-  filter?: string;
-  /** Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
-  dimensions?: StringList;
-  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100,000; values above 100,000 will be coerced to 100,000. */
-  pageSize?: number;
-  /** Optional. Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash. * `crashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `crashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `crashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one crash while they were actively using your app (a user-perceived crash). An app is considered to be in active use if it is displaying any activity or executing any foreground service. * `userPerceivedCrashRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `userPerceivedCrashRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedCrashRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. Not supported in HOURLY granularity. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `crashRate` and `userPerceivedCrashRate` metrics. A user is counted in this metric if they used the app actively during the aggregation period. An app is considered to be in active use if it is displaying any activity or executing any foreground service. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
-  metrics?: StringList;
-  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only supported timezone is `America/Los_Angeles`. * HOURLY: metrics are aggregated in hourly intervals. The default and only supported timezone is `UTC`. */
-  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
 }
 export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      userCohort: S.optional(
-        GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestUserCohortEnum,
-      ),
-      filter: S.optional(S.String),
-      dimensions: S.optional(StringList),
-      pageSize: S.optional(S.Number),
-      metrics: S.optional(StringList),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
+      metrics: S.optional(StringList),
+      pageSize: S.optional(S.Number),
+      dimensions: S.optional(StringList),
+      filter: S.optional(S.String),
       pageToken: S.optional(S.String),
+      userCohort: S.optional(
+        GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequestUserCohortEnum,
+      ),
     }),
   ).annotate({
     identifier:
@@ -947,16 +947,16 @@ export const QueryVitalsCrashrateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for QueryCrashRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse {
-  /** Returned rows of data. */
-  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
+  /** Returned rows of data. */
+  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
 }
 export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
       nextPageToken: S.optional(S.String),
+      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
     }),
   ).annotate({
     identifier:
@@ -967,12 +967,12 @@ export const GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse
 export interface GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest {
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `reportType` (string): the type of error. The value should correspond to one of the possible values in ErrorType. * `issueId` (string): the id an error was assigned to. The value should correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions and: * `isUserPerceived` (string): denotes whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED. */
   filter?: string;
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. The default and only supported timezone is `America/Los_Angeles`. */
   timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.type.Decimal`): Absolute count of individual error reports that have been received for an app. * `distinctUsers` (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. This value is not rounded, however it may be an approximation. */
   metrics?: StringList;
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
@@ -982,11 +982,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dimensions: S.optional(StringList),
+      pageToken: S.optional(S.String),
       filter: S.optional(S.String),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
-      pageToken: S.optional(S.String),
       metrics: S.optional(StringList),
       pageSize: S.optional(S.Number),
     }),
@@ -1045,37 +1045,37 @@ export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricS
 
 /** Request message for QueryExcessiveWakeupRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest {
-  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
-  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
-  metrics?: StringList;
-  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
-  pageSize?: number;
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. The only supported value is `OS_PUBLIC`. */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum
     | (string & {});
+  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
+  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
+  /** Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `excessiveWakeupRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
+  metrics?: StringList;
+  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
+  pageSize?: number;
 }
 export const GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      timelineSpec: S.optional(
-        GooglePlayDeveloperReportingV1alpha1TimelineSpec,
-      ),
-      pageToken: S.optional(S.String),
-      metrics: S.optional(StringList),
-      pageSize: S.optional(S.Number),
       dimensions: S.optional(StringList),
       filter: S.optional(S.String),
+      pageToken: S.optional(S.String),
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum,
       ),
+      timelineSpec: S.optional(
+        GooglePlayDeveloperReportingV1alpha1TimelineSpec,
+      ),
+      metrics: S.optional(StringList),
+      pageSize: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -1137,14 +1137,14 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetReques
   dimensions?: StringList;
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. **Supported values:** * `OS_PUBLIC` To select data from all publicly released Android versions. This is the default. Supports all the above dimensions. * `APP_TESTERS` To select data from users who have opted in to be testers. Supports all the above dimensions. * `OS_BETA` To select data from beta android versions only, excluding data from released android versions. Only the following dimensions are supported: * `versionCode` (int64): version of the app that was running on the user's device. * `osBuild` (string): OS build of the user's device, e.g., "T1B2.220916.004". */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequestUserCohortEnum
     | (string & {});
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only supported timezone is `America/Los_Angeles`. */
   timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. Metrics to aggregate. **Supported metrics:** * `userPerceivedLmkRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that experienced at least one LMK while they were actively using your app (a user-perceived LMK). An app is considered to be in active use if it is displaying any activity or executing any foreground service. * `userPerceivedLmkRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `userPerceivedLmkRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `userPerceivedLmkRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `userPerceivedLmkRate` metrics. A user is counted in this metric if they used the app in the foreground during the aggregation period. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
   metrics?: StringList;
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100,000; values above 100,000 will be coerced to 100,000. */
@@ -1155,13 +1155,13 @@ export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequest =
     S.Struct({
       dimensions: S.optional(StringList),
       filter: S.optional(S.String),
+      pageToken: S.optional(S.String),
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetRequestUserCohortEnum,
       ),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
-      pageToken: S.optional(S.String),
       metrics: S.optional(StringList),
       pageSize: S.optional(S.Number),
     }),
@@ -1197,16 +1197,16 @@ export const QueryVitalsLmkrateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for QueryLmkRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse {
-  /** Returned rows of data. */
-  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
+  /** Returned rows of data. */
+  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
 }
 export const GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
       nextPageToken: S.optional(S.String),
+      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
     }),
   ).annotate({
     identifier:
@@ -1220,37 +1220,37 @@ export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSet
 
 /** Request message for QuerySlowRenderingRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest {
+  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
+  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
+  /** Optional. Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow rendering. * `slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
+  metrics?: StringList;
+  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
+  pageSize?: number;
+  /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
+  dimensions?: StringList;
+  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
+  filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. The only supported value is `OS_PUBLIC`. */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequestUserCohortEnum
     | (string & {});
-  /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
-  filter?: string;
-  /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
-  dimensions?: StringList;
-  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
-  pageSize?: number;
-  /** Optional. Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow rendering. * `slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowRenderingRate30Fps28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowRenderingRate30Fps` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowRenderingRate20Fps`/`slowRenderingRate30Fps` metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
-  metrics?: StringList;
-  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
-  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
 }
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      userCohort: S.optional(
-        GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequestUserCohortEnum,
-      ),
-      filter: S.optional(S.String),
-      dimensions: S.optional(StringList),
-      pageSize: S.optional(S.Number),
-      metrics: S.optional(StringList),
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
+      metrics: S.optional(StringList),
+      pageSize: S.optional(S.Number),
+      dimensions: S.optional(StringList),
+      filter: S.optional(S.String),
       pageToken: S.optional(S.String),
+      userCohort: S.optional(
+        GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequestUserCohortEnum,
+      ),
     }),
   ).annotate({
     identifier:
@@ -1307,37 +1307,37 @@ export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequ
 
 /** Request message for QuerySlowStartRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest {
-  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
-  pageSize?: number;
-  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
-  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
-  metrics?: StringList;
-  /** Optional. User view to select. The output data will correspond to the selected view. The only supported value is `OS_PUBLIC`. */
-  userCohort?:
-    | GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequestUserCohortEnum
-    | (string & {});
   /** Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. */
   dimensions?: StringList;
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. User view to select. The output data will correspond to the selected view. The only supported value is `OS_PUBLIC`. */
+  userCohort?:
+    | GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequestUserCohortEnum
+    | (string & {});
+  /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
+  timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
+  /** Optional. Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `slowStartRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `slowStartRate` metric. A user is counted in this metric if their app was launched in the device. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
+  metrics?: StringList;
+  /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
+  pageSize?: number;
 }
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number),
-      timelineSpec: S.optional(
-        GooglePlayDeveloperReportingV1alpha1TimelineSpec,
-      ),
+      dimensions: S.optional(StringList),
+      filter: S.optional(S.String),
       pageToken: S.optional(S.String),
-      metrics: S.optional(StringList),
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequestUserCohortEnum,
       ),
-      dimensions: S.optional(StringList),
-      filter: S.optional(S.String),
+      timelineSpec: S.optional(
+        GooglePlayDeveloperReportingV1alpha1TimelineSpec,
+      ),
+      metrics: S.optional(StringList),
+      pageSize: S.optional(S.Number),
     }),
   ).annotate({
     identifier:
@@ -1371,16 +1371,16 @@ export const QueryVitalsSlowstartrateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for QuerySlowStartRateMetricSet. */
 export interface GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse {
-  /** Returned rows of data. */
-  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
   /** Continuation token to fetch the next page of data. */
   nextPageToken?: string;
+  /** Returned rows of data. */
+  rows?: GooglePlayDeveloperReportingV1alpha1MetricsRowList;
 }
 export const GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
       nextPageToken: S.optional(S.String),
+      rows: S.optional(GooglePlayDeveloperReportingV1alpha1MetricsRowList),
     }),
   ).annotate({
     identifier:
@@ -1396,8 +1396,6 @@ export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRat
 export interface GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest {
   /** Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`. */
   timelineSpec?: GooglePlayDeveloperReportingV1alpha1TimelineSpec;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate` (`google.type.Decimal`): Percentage of distinct users in the aggregation period that had a wakelock held in the background for longer than 1 hour. * `stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 7 days. The daily values are weighted by the count of distinct users for the day. * `stuckBgWakelockRate28dUserWeighted` (`google.type.Decimal`): Rolling average value of `stuckBgWakelockRate` in the last 28 days. The daily values are weighted by the count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`): Count of distinct users in the aggregation period that were used as normalization value for the `stuckBgWakelockRate` metric. A user is counted in this metric if they app was doing any work on the device, i.e., not just active foreground usage but also background work. Care must be taken not to aggregate this count further, as it may result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value. */
   metrics?: StringList;
   /** Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum value is 100000; values above 100000 will be coerced to 100000. */
@@ -1406,6 +1404,8 @@ export interface GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakeloc
   dimensions?: StringList;
   /** Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160) standard and supports filtering by equality of all breakdown dimensions. */
   filter?: string;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. User view to select. The output data will correspond to the selected view. The only supported value is `OS_PUBLIC`. */
   userCohort?:
     | GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum
@@ -1417,11 +1417,11 @@ export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRat
       timelineSpec: S.optional(
         GooglePlayDeveloperReportingV1alpha1TimelineSpec,
       ),
-      pageToken: S.optional(S.String),
       metrics: S.optional(StringList),
       pageSize: S.optional(S.Number),
       dimensions: S.optional(StringList),
       filter: S.optional(S.String),
+      pageToken: S.optional(S.String),
       userCohort: S.optional(
         GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum,
       ),
@@ -1476,15 +1476,15 @@ export const GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRat
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse>;
 
 export interface SearchAppsRequest {
-  /** Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token. */
-  pageToken?: string;
   /** Optional. The maximum number of apps to return. The service may return fewer than this value. If unspecified, at most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Optional. A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token. */
+  pageToken?: string;
 }
 export const SearchAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1498,18 +1498,18 @@ export const SearchAppsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A representation of an app in the Play Store. */
 export interface GooglePlayDeveloperReportingV1alpha1App {
-  /** Identifier. The resource name. Format: apps/{app} */
-  name?: string;
   /** Title of the app. This is the latest title as set in the Play Console and may not yet have been reviewed, so might not match the Play Store. Example: `Google Maps`. */
   displayName?: string;
+  /** Identifier. The resource name. Format: apps/{app} */
+  name?: string;
   /** Package name of the app. Example: `com.example.app123`. */
   packageName?: string;
 }
 export const GooglePlayDeveloperReportingV1alpha1App = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.optional(S.String),
       displayName: S.optional(S.String),
+      name: S.optional(S.String),
       packageName: S.optional(S.String),
     }),
 ).annotate({
@@ -1525,16 +1525,16 @@ export const GooglePlayDeveloperReportingV1alpha1AppList =
 
 /** Response message for SearchAccessibleApps. */
 export interface GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse {
-  /** The apps accessible to the user calling the endpoint. */
-  apps?: GooglePlayDeveloperReportingV1alpha1AppList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The apps accessible to the user calling the endpoint. */
+  apps?: GooglePlayDeveloperReportingV1alpha1AppList;
 }
 export const GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      apps: S.optional(GooglePlayDeveloperReportingV1alpha1AppList),
       nextPageToken: S.optional(S.String),
+      apps: S.optional(GooglePlayDeveloperReportingV1alpha1AppList),
     }),
   ).annotate({
     identifier:
@@ -1542,87 +1542,87 @@ export const GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse>;
 
 export interface SearchVitalsErrorsIssuesRequest {
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  "interval.endTime.seconds"?: number;
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  "interval.startTime.seconds"?: number;
+  /** Required. Parent resource of the error issues, indicating the application for which they were received. Format: apps/{app} */
+  parent: string;
+  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
+  "interval.startTime.day"?: number;
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  "interval.endTime.timeZone.id"?: string;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  "interval.startTime.month"?: number;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  "interval.endTime.month"?: number;
+  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
+  "interval.endTime.day"?: number;
+  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
+  "interval.startTime.nanos"?: number;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  "interval.startTime.year"?: number;
+  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  "interval.endTime.hours"?: number;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  "interval.endTime.year"?: number;
   /** Optional. Specifies a field that will be used to order the results. ** Supported dimensions:** * `errorReportCount`: Orders issues by number of error reports. * `distinctUsers`: Orders issues by number of unique affected users. ** Supported operations:** * `asc` for ascending order. * `desc` for descending order. Format: A field and an operation, e.g., `errorReportCount desc` *Note:* currently only one field is supported at a time. */
   orderBy?: string;
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  "interval.endTime.utcOffset"?: string;
-  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  "interval.endTime.hours"?: number;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  "interval.endTime.timeZone.version"?: string;
-  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
-  "interval.endTime.day"?: number;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  "interval.startTime.seconds"?: number;
-  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
-  "interval.startTime.nanos"?: number;
+  "interval.startTime.utcOffset"?: string;
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
   "interval.endTime.nanos"?: number;
   /** Optional. A selection predicate to retrieve only a subset of the issues. Counts in the returned error issues will only reflect occurrences that matched the filter. For filtering basics, please check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches error issues that occurred in the requested Android versions (specified as the numeric API level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error issues that occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode = 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example: `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. * `deviceBrand`: Matches error issues that occurred in the requested device brands. Example: `deviceBrand = "Google". * `deviceType`: Matches error issues that occurred in the requested device types. Example: `deviceType = "PHONE"`. * `errorIssueType`: Matches error issues of the requested types only. Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `errorIssueType = CRASH OR errorIssueType = ANR`. * `appProcessState`: Matches error issues on the process state of an app, indicating whether an app runs in the foreground (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error issues that are user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported comparison operator is equality. The filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR errorIssueType = ANR` is not a valid filter. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)` */
   filter?: string;
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  "interval.startTime.utcOffset"?: string;
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  "interval.endTime.year"?: number;
-  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  "interval.startTime.hours"?: number;
-  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
-  "interval.endTime.minutes"?: number;
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  "interval.startTime.timeZone.id"?: string;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  "interval.endTime.month"?: number;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  "interval.startTime.month"?: number;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  "interval.startTime.timeZone.version"?: string;
-  /** Required. Parent resource of the error issues, indicating the application for which they were received. Format: apps/{app} */
-  parent: string;
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  "interval.endTime.timeZone.id"?: string;
-  /** Optional. The maximum number of error issues to return. The service may return fewer than this value. If unspecified, at most 50 error issues will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  "interval.endTime.seconds"?: number;
-  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
-  "interval.startTime.minutes"?: number;
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  "interval.startTime.year"?: number;
-  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
-  "interval.startTime.day"?: number;
+  "interval.endTime.utcOffset"?: string;
   /** Optional. Number of sample error reports to return per ErrorIssue. If unspecified, 0 will be used. *Note:* currently only 0 and 1 are supported. */
   sampleErrorReportLimit?: number;
+  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  "interval.startTime.hours"?: number;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  "interval.endTime.timeZone.version"?: string;
+  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
+  "interval.endTime.minutes"?: number;
+  /** Optional. The maximum number of error issues to return. The service may return fewer than this value. If unspecified, at most 50 error issues will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
+  "interval.startTime.minutes"?: number;
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  "interval.startTime.timeZone.id"?: string;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  "interval.startTime.timeZone.version"?: string;
 }
 export const SearchVitalsErrorsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    orderBy: S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.utcOffset": S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.hours": S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.day": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.seconds": S.optional(S.Number.pipe(T.Query())),
     "interval.startTime.seconds": S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    "interval.startTime.day": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.month": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.month": S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "interval.endTime.day": S.optional(S.Number.pipe(T.Query())),
     "interval.startTime.nanos": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.year": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.hours": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.year": S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.utcOffset": S.optional(S.String.pipe(T.Query())),
     "interval.endTime.nanos": S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    "interval.startTime.utcOffset": S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.year": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.hours": S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.minutes": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.month": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.month": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    "interval.endTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.seconds": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.minutes": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.year": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.day": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.utcOffset": S.optional(S.String.pipe(T.Query())),
     sampleErrorReportLimit: S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.hours": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
+    "interval.endTime.minutes": S.optional(S.Number.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.minutes": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1648,6 +1648,33 @@ export const GooglePlayDeveloperReportingV1alpha1AppVersion =
     identifier: "GooglePlayDeveloperReportingV1alpha1AppVersion",
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1AppVersion>;
 
+/** Representation of an annotation message for an issue. */
+export interface GooglePlayDeveloperReportingV1alpha1IssueAnnotation {
+  /** Title for the annotation. */
+  title?: string;
+  /** Contains the contents of the annotation message. */
+  body?: string;
+  /** Category that the annotation belongs to. An annotation will belong to a single category. Example categories: "Potential fix", "Insight". */
+  category?: string;
+}
+export const GooglePlayDeveloperReportingV1alpha1IssueAnnotation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      title: S.optional(S.String),
+      body: S.optional(S.String),
+      category: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1alpha1IssueAnnotation",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
+
+export type GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
+  Array<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
+export const GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
+  /*@__PURE__*/ S.Array(
+    GooglePlayDeveloperReportingV1alpha1IssueAnnotation,
+  ) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1IssueAnnotationList>;
+
 /** Representation of an OS version. */
 export interface GooglePlayDeveloperReportingV1alpha1OsVersion {
   /** Optional. Numeric version code of the OS - API level */
@@ -1670,90 +1697,63 @@ export type GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum =
 export const GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum =
   /*@__PURE__*/ S.String;
 
-/** Representation of an annotation message for an issue. */
-export interface GooglePlayDeveloperReportingV1alpha1IssueAnnotation {
-  /** Category that the annotation belongs to. An annotation will belong to a single category. Example categories: "Potential fix", "Insight". */
-  category?: string;
-  /** Title for the annotation. */
-  title?: string;
-  /** Contains the contents of the annotation message. */
-  body?: string;
-}
-export const GooglePlayDeveloperReportingV1alpha1IssueAnnotation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.optional(S.String),
-      title: S.optional(S.String),
-      body: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1alpha1IssueAnnotation",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
-
-export type GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
-  Array<GooglePlayDeveloperReportingV1alpha1IssueAnnotation>;
-export const GooglePlayDeveloperReportingV1alpha1IssueAnnotationList =
-  /*@__PURE__*/ S.Array(
-    GooglePlayDeveloperReportingV1alpha1IssueAnnotation,
-  ) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1IssueAnnotationList>;
-
 /** A group of related ErrorReports received for an app. Similar error reports are grouped together into issues with a likely identical root cause. **Please note:** this resource is currently in Alpha. There could be changes to the issue grouping that would result in similar but more recent error reports being assigned to different issues. This could also cause some issues disappearing entirely and being replaced by new ones. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1alpha1ErrorIssue {
-  /** Link to the issue in Android vitals in the Play Console. */
-  issueUri?: string;
-  /** The earliest (inclusive) app version appearing in this ErrorIssue in the requested time period (only considering occurrences matching the filters). */
-  firstAppVersion?: GooglePlayDeveloperReportingV1alpha1AppVersion;
+  /** Identifier. The resource name of the issue. Format: apps/{app}/{issue} */
+  name?: string;
+  /** Start of the hour during which the last error report in this issue occurred. */
+  lastErrorReportTime?: string;
   /** An estimate of the number of unique users who have experienced this issue (only considering occurrences matching the filters and within the requested time period). */
   distinctUsers?: string;
+  /** The earliest (inclusive) app version appearing in this ErrorIssue in the requested time period (only considering occurrences matching the filters). */
+  firstAppVersion?: GooglePlayDeveloperReportingV1alpha1AppVersion;
+  /** Cause of the issue. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the type of ANR that occurred, e.g., 'Input dispatching timed out'. * CRASH: for Java unhandled exception errors, the type of the innermost exception that was thrown, e.g., IllegalArgumentException. For signals in native code, the signal that was raised, e.g. SIGSEGV. */
+  cause?: string;
   /** Location where the issue happened. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the name of the activity or service that stopped responding. * CRASH: the likely method name that caused the error. */
   location?: string;
-  /** The smallest OS version in which this error cluster has occurred in the requested time period (only considering occurrences matching the filters and within the requested time period). */
-  firstOsVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
+  /** The latest (inclusive) app version appearing in this ErrorIssue in the requested time period (only considering occurrences matching the filters). */
+  lastAppVersion?: GooglePlayDeveloperReportingV1alpha1AppVersion;
+  /** Link to the issue in Android vitals in the Play Console. */
+  issueUri?: string;
+  /** List of annotations for an issue. Annotations provide additional information that may help in diagnosing and fixing the issue. */
+  annotations?: GooglePlayDeveloperReportingV1alpha1IssueAnnotationList;
+  /** An estimated percentage of users affected by any issue that are affected by this issue (only considering occurrences matching the filters and within the requested time period). */
+  distinctUsersPercent?: GoogleTypeDecimal;
+  /** The latest OS version in which this error cluster has occurred in the requested time period (only considering occurrences matching the filters and within the requested time period). */
+  lastOsVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
+  /** Output only. Sample error reports which belong to this ErrorIssue. *Note:* currently a maximum of 1 per ErrorIssue is supported. Format: "apps/{app}/{report}" */
+  sampleErrorReports?: StringList;
   /** Type of the errors grouped in this issue. */
   type?: GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum;
   /** The total number of error reports in this issue (only considering occurrences matching the filters and within the requested time period). */
   errorReportCount?: string;
-  /** Start of the hour during which the last error report in this issue occurred. */
-  lastErrorReportTime?: string;
-  /** An estimated percentage of users affected by any issue that are affected by this issue (only considering occurrences matching the filters and within the requested time period). */
-  distinctUsersPercent?: GoogleTypeDecimal;
-  /** List of annotations for an issue. Annotations provide additional information that may help in diagnosing and fixing the issue. */
-  annotations?: GooglePlayDeveloperReportingV1alpha1IssueAnnotationList;
-  /** Identifier. The resource name of the issue. Format: apps/{app}/{issue} */
-  name?: string;
-  /** Cause of the issue. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING: the type of ANR that occurred, e.g., 'Input dispatching timed out'. * CRASH: for Java unhandled exception errors, the type of the innermost exception that was thrown, e.g., IllegalArgumentException. For signals in native code, the signal that was raised, e.g. SIGSEGV. */
-  cause?: string;
-  /** The latest OS version in which this error cluster has occurred in the requested time period (only considering occurrences matching the filters and within the requested time period). */
-  lastOsVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
-  /** The latest (inclusive) app version appearing in this ErrorIssue in the requested time period (only considering occurrences matching the filters). */
-  lastAppVersion?: GooglePlayDeveloperReportingV1alpha1AppVersion;
-  /** Output only. Sample error reports which belong to this ErrorIssue. *Note:* currently a maximum of 1 per ErrorIssue is supported. Format: "apps/{app}/{report}" */
-  sampleErrorReports?: StringList;
+  /** The smallest OS version in which this error cluster has occurred in the requested time period (only considering occurrences matching the filters and within the requested time period). */
+  firstOsVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
 }
 export const GooglePlayDeveloperReportingV1alpha1ErrorIssue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      issueUri: S.optional(S.String),
+      name: S.optional(S.String),
+      lastErrorReportTime: S.optional(S.String),
+      distinctUsers: S.optional(S.String),
       firstAppVersion: S.optional(
         GooglePlayDeveloperReportingV1alpha1AppVersion,
       ),
-      distinctUsers: S.optional(S.String),
-      location: S.optional(S.String),
-      firstOsVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
-      type: S.optional(GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum),
-      errorReportCount: S.optional(S.String),
-      lastErrorReportTime: S.optional(S.String),
-      distinctUsersPercent: S.optional(GoogleTypeDecimal),
-      annotations: S.optional(
-        GooglePlayDeveloperReportingV1alpha1IssueAnnotationList,
-      ),
-      name: S.optional(S.String),
       cause: S.optional(S.String),
-      lastOsVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
+      location: S.optional(S.String),
       lastAppVersion: S.optional(
         GooglePlayDeveloperReportingV1alpha1AppVersion,
       ),
+      issueUri: S.optional(S.String),
+      annotations: S.optional(
+        GooglePlayDeveloperReportingV1alpha1IssueAnnotationList,
+      ),
+      distinctUsersPercent: S.optional(GoogleTypeDecimal),
+      lastOsVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
       sampleErrorReports: S.optional(StringList),
+      type: S.optional(GooglePlayDeveloperReportingV1alpha1ErrorIssueTypeEnum),
+      errorReportCount: S.optional(S.String),
+      firstOsVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1ErrorIssue",
@@ -1786,81 +1786,81 @@ export const GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse>;
 
 export interface SearchVitalsErrorsReportsRequest {
-  /** Optional. A selection predicate to retrieve only a subset of the reports. For filtering basics, please check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches error reports that occurred in the requested Android versions (specified as the numeric API level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error reports that occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode = 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example: `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. * `deviceBrand`: Matches error issues that occurred in the requested device brands. Example: `deviceBrand = "Google". * `deviceType`: Matches error reports that occurred in the requested device types. Example: `deviceType = "PHONE"`. * `errorIssueType`: Matches error reports of the requested types only. Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `errorIssueType = CRASH OR errorIssueType = ANR`. * `errorIssueId`: Matches error reports belonging to the requested error issue ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. * `errorReportId`: Matches error reports with the requested error report id. Example: `errorReportId = 1234 OR errorReportId = 4567`. * `appProcessState`: Matches error reports on the process state of an app, indicating whether an app runs in the foreground (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error reports that are user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported comparison operator is equality. The filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR versionCode = ANR`. The filter expression `versionCode = 123 OR errorIssueType = ANR` is not valid. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)` */
-  filter?: string;
-  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
-  "interval.endTime.nanos"?: number;
-  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
-  "interval.startTime.year"?: number;
-  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
-  "interval.startTime.day"?: number;
-  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
-  "interval.startTime.minutes"?: number;
-  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
-  "interval.startTime.nanos"?: number;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  "interval.endTime.seconds"?: number;
-  /** Optional. A page token, received from a previous `SearchErrorReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchErrorReports` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 50 reports will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
-  pageSize?: number;
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  "interval.endTime.timeZone.id"?: string;
-  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
-  "interval.startTime.seconds"?: number;
-  /** Required. Parent resource of the reports, indicating the application for which they were received. Format: apps/{app} */
-  parent: string;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  "interval.startTime.month"?: number;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  "interval.startTime.timeZone.version"?: string;
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   "interval.endTime.day"?: number;
-  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
-  "interval.endTime.month"?: number;
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  "interval.startTime.timeZone.id"?: string;
+  /** Optional. A page token, received from a previous `SearchErrorReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchErrorReports` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
+  "interval.startTime.minutes"?: number;
   /** Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0. */
   "interval.endTime.minutes"?: number;
-  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  "interval.startTime.hours"?: number;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  "interval.endTime.timeZone.version"?: string;
-  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
-  "interval.startTime.utcOffset"?: string;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  "interval.startTime.month"?: number;
+  /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
+  "interval.endTime.month"?: number;
+  /** Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 50 reports will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
+  pageSize?: number;
   /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
   "interval.endTime.year"?: number;
   /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   "interval.endTime.hours"?: number;
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
+  "interval.startTime.utcOffset"?: string;
+  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
+  "interval.startTime.nanos"?: number;
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  "interval.startTime.timeZone.id"?: string;
+  /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
+  "interval.startTime.year"?: number;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  "interval.startTime.timeZone.version"?: string;
+  /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
   "interval.endTime.utcOffset"?: string;
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  "interval.startTime.seconds"?: number;
+  /** Optional. A selection predicate to retrieve only a subset of the reports. For filtering basics, please check [AIP-160](https://google.aip.dev/160). ** Supported field names:** * `apiLevel`: Matches error reports that occurred in the requested Android versions (specified as the numeric API level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error reports that occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode = 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example: `deviceModel = "google/walleye" OR deviceModel = "google/marlin"`. * `deviceBrand`: Matches error issues that occurred in the requested device brands. Example: `deviceBrand = "Google". * `deviceType`: Matches error reports that occurred in the requested device types. Example: `deviceType = "PHONE"`. * `errorIssueType`: Matches error reports of the requested types only. Valid candidates: `CRASH`, `ANR`, `NON_FATAL`. Example: `errorIssueType = CRASH OR errorIssueType = ANR`. * `errorIssueId`: Matches error reports belonging to the requested error issue ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. * `errorReportId`: Matches error reports with the requested error report id. Example: `errorReportId = 1234 OR errorReportId = 4567`. * `appProcessState`: Matches error reports on the process state of an app, indicating whether an app runs in the foreground (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error reports that are user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported comparison operator is equality. The filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR versionCode = ANR`. The filter expression `versionCode = 123 OR errorIssueType = ANR` is not valid. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)` */
+  filter?: string;
+  /** Required. Parent resource of the reports, indicating the application for which they were received. Format: apps/{app} */
+  parent: string;
+  /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
+  "interval.endTime.seconds"?: number;
+  /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
+  "interval.endTime.nanos"?: number;
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  "interval.endTime.timeZone.id"?: string;
+  /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  "interval.startTime.hours"?: number;
+  /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
+  "interval.startTime.day"?: number;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  "interval.endTime.timeZone.version"?: string;
 }
 export const SearchVitalsErrorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    "interval.endTime.nanos": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.year": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.day": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.minutes": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.nanos": S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.seconds": S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
-    "interval.startTime.seconds": S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    "interval.startTime.month": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
     "interval.endTime.day": S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.month": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.minutes": S.optional(S.Number.pipe(T.Query())),
     "interval.endTime.minutes": S.optional(S.Number.pipe(T.Query())),
-    "interval.startTime.hours": S.optional(S.Number.pipe(T.Query())),
-    "interval.endTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
-    "interval.startTime.utcOffset": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.month": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.month": S.optional(S.Number.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     "interval.endTime.year": S.optional(S.Number.pipe(T.Query())),
     "interval.endTime.hours": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.utcOffset": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.nanos": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.year": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
     "interval.endTime.utcOffset": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.seconds": S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    "interval.endTime.seconds": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.nanos": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.timeZone.id": S.optional(S.String.pipe(T.Query())),
+    "interval.startTime.hours": S.optional(S.Number.pipe(T.Query())),
+    "interval.startTime.day": S.optional(S.Number.pipe(T.Query())),
+    "interval.endTime.timeZone.version": S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1872,43 +1872,6 @@ export const SearchVitalsErrorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchVitalsErrorsReportsRequest",
 }) as any as S.Schema<SearchVitalsErrorsReportsRequest>;
 
-/** Identifier of a device. */
-export interface GooglePlayDeveloperReportingV1alpha1DeviceId {
-  /** Value of Build.BRAND. */
-  buildBrand?: string;
-  /** Value of Build.DEVICE. */
-  buildDevice?: string;
-}
-export const GooglePlayDeveloperReportingV1alpha1DeviceId =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      buildBrand: S.optional(S.String),
-      buildDevice: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1alpha1DeviceId",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DeviceId>;
-
-/** Summary of a device */
-export interface GooglePlayDeveloperReportingV1alpha1DeviceModelSummary {
-  /** Display name of the device. */
-  marketingName?: string;
-  /** Identifier of the device. */
-  deviceId?: GooglePlayDeveloperReportingV1alpha1DeviceId;
-  /** Link to the device in Play Device Catalog. */
-  deviceUri?: string;
-}
-export const GooglePlayDeveloperReportingV1alpha1DeviceModelSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      marketingName: S.optional(S.String),
-      deviceId: S.optional(GooglePlayDeveloperReportingV1alpha1DeviceId),
-      deviceUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GooglePlayDeveloperReportingV1alpha1DeviceModelSummary",
-  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DeviceModelSummary>;
-
 export type GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
@@ -1917,41 +1880,78 @@ export type GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum =
 export const GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum =
   /*@__PURE__*/ S.String;
 
+/** Identifier of a device. */
+export interface GooglePlayDeveloperReportingV1alpha1DeviceId {
+  /** Value of Build.DEVICE. */
+  buildDevice?: string;
+  /** Value of Build.BRAND. */
+  buildBrand?: string;
+}
+export const GooglePlayDeveloperReportingV1alpha1DeviceId =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      buildDevice: S.optional(S.String),
+      buildBrand: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1alpha1DeviceId",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DeviceId>;
+
+/** Summary of a device */
+export interface GooglePlayDeveloperReportingV1alpha1DeviceModelSummary {
+  /** Link to the device in Play Device Catalog. */
+  deviceUri?: string;
+  /** Identifier of the device. */
+  deviceId?: GooglePlayDeveloperReportingV1alpha1DeviceId;
+  /** Display name of the device. */
+  marketingName?: string;
+}
+export const GooglePlayDeveloperReportingV1alpha1DeviceModelSummary =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deviceUri: S.optional(S.String),
+      deviceId: S.optional(GooglePlayDeveloperReportingV1alpha1DeviceId),
+      marketingName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GooglePlayDeveloperReportingV1alpha1DeviceModelSummary",
+  }) as any as S.Schema<GooglePlayDeveloperReportingV1alpha1DeviceModelSummary>;
+
 /** An error report received for an app. There reports are produced by the Android platform code when a (potentially fatal) error condition is detected. Identical reports from many users will be deduplicated and coalesced into a single ErrorReport. **Required permissions**: to access this resource, the calling user needs the _View app information (read-only)_ permission for the app. */
 export interface GooglePlayDeveloperReportingV1alpha1ErrorReport {
-  /** A device model on which an event in this error report occurred on. */
-  deviceModel?: GooglePlayDeveloperReportingV1alpha1DeviceModelSummary;
-  /** Start of the hour during which the latest event in this error report occurred. */
-  eventTime?: string;
-  /** Version control system information from BUNDLE-METADATA/version-control-info.textproto or META-INF/version-control-info.textproto of the app bundle or APK, respectively. */
-  vcsInformation?: string;
   /** Textual representation of the error report. These textual reports are produced by the platform. The reports are then sanitized and filtered to remove any potentially sensitive information. Although their format is fairly stable, they are not entirely meant for machine consumption and we cannot guarantee that there won't be subtle changes to the formatting that may break systems trying to parse information out of the reports. */
   reportText?: string;
   /** Identifier. The resource name of the report. Format: apps/{app}/{report} */
   name?: string;
-  /** Type of the error for which this report was generated. */
-  type?: GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum;
+  /** The OS version on which an event in this error report occurred on. */
+  osVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
   /** The issue this report was associated with. **Please note:** this resource is currently in Alpha. There could be changes to the issue grouping that would result in similar but more recent error reports being assigned to a different issue. */
   issue?: string;
   /** The app version on which an event in this error report occurred on. */
   appVersion?: GooglePlayDeveloperReportingV1alpha1AppVersion;
-  /** The OS version on which an event in this error report occurred on. */
-  osVersion?: GooglePlayDeveloperReportingV1alpha1OsVersion;
+  /** Version control system information from BUNDLE-METADATA/version-control-info.textproto or META-INF/version-control-info.textproto of the app bundle or APK, respectively. */
+  vcsInformation?: string;
+  /** Start of the hour during which the latest event in this error report occurred. */
+  eventTime?: string;
+  /** Type of the error for which this report was generated. */
+  type?: GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum;
+  /** A device model on which an event in this error report occurred on. */
+  deviceModel?: GooglePlayDeveloperReportingV1alpha1DeviceModelSummary;
 }
 export const GooglePlayDeveloperReportingV1alpha1ErrorReport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      reportText: S.optional(S.String),
+      name: S.optional(S.String),
+      osVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
+      issue: S.optional(S.String),
+      appVersion: S.optional(GooglePlayDeveloperReportingV1alpha1AppVersion),
+      vcsInformation: S.optional(S.String),
+      eventTime: S.optional(S.String),
+      type: S.optional(GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum),
       deviceModel: S.optional(
         GooglePlayDeveloperReportingV1alpha1DeviceModelSummary,
       ),
-      eventTime: S.optional(S.String),
-      vcsInformation: S.optional(S.String),
-      reportText: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(GooglePlayDeveloperReportingV1alpha1ErrorReportTypeEnum),
-      issue: S.optional(S.String),
-      appVersion: S.optional(GooglePlayDeveloperReportingV1alpha1AppVersion),
-      osVersion: S.optional(GooglePlayDeveloperReportingV1alpha1OsVersion),
     }),
   ).annotate({
     identifier: "GooglePlayDeveloperReportingV1alpha1ErrorReport",
@@ -1966,18 +1966,18 @@ export const GooglePlayDeveloperReportingV1alpha1ErrorReportList =
 
 /** Response with a paginated list of error reports matching the search query. */
 export interface GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse {
-  /** Error reports that were found. */
-  errorReports?: GooglePlayDeveloperReportingV1alpha1ErrorReportList;
   /** Page token to fetch the next page of reports. */
   nextPageToken?: string;
+  /** Error reports that were found. */
+  errorReports?: GooglePlayDeveloperReportingV1alpha1ErrorReportList;
 }
 export const GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      nextPageToken: S.optional(S.String),
       errorReports: S.optional(
         GooglePlayDeveloperReportingV1alpha1ErrorReportList,
       ),
-      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier:

@@ -70,30 +70,30 @@ export const SiteSummaryResponseAbusiveStatusEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetSiteSummary. */
 export interface SiteSummaryResponse {
-  /** The name of the reviewed site, e.g. `google.com`. */
-  reviewedSite?: string;
-  /** The site's [enforcement status](https://support.google.com/webtools/answer/7538608). */
-  filterStatus?: SiteSummaryResponseFilterStatusEnum;
-  /** The time at which the site's status last changed. */
-  lastChangeTime?: string;
-  /** The site's Abusive Experience Report status. */
-  abusiveStatus?: SiteSummaryResponseAbusiveStatusEnum;
-  /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
-  reportUrl?: string;
-  /** Whether the site is currently under review. */
-  underReview?: boolean;
   /** The time at which [enforcement](https://support.google.com/webtools/answer/7538608) against the site began or will begin. Not set when the filter_status is OFF. */
   enforcementTime?: string;
+  /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
+  reportUrl?: string;
+  /** The site's [enforcement status](https://support.google.com/webtools/answer/7538608). */
+  filterStatus?: SiteSummaryResponseFilterStatusEnum;
+  /** The name of the reviewed site, e.g. `google.com`. */
+  reviewedSite?: string;
+  /** The site's Abusive Experience Report status. */
+  abusiveStatus?: SiteSummaryResponseAbusiveStatusEnum;
+  /** Whether the site is currently under review. */
+  underReview?: boolean;
+  /** The time at which the site's status last changed. */
+  lastChangeTime?: string;
 }
 export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    reviewedSite: S.optional(S.String),
-    filterStatus: S.optional(SiteSummaryResponseFilterStatusEnum),
-    lastChangeTime: S.optional(S.String),
-    abusiveStatus: S.optional(SiteSummaryResponseAbusiveStatusEnum),
-    reportUrl: S.optional(S.String),
-    underReview: S.optional(S.Boolean),
     enforcementTime: S.optional(S.String),
+    reportUrl: S.optional(S.String),
+    filterStatus: S.optional(SiteSummaryResponseFilterStatusEnum),
+    reviewedSite: S.optional(S.String),
+    abusiveStatus: S.optional(SiteSummaryResponseAbusiveStatusEnum),
+    underReview: S.optional(S.Boolean),
+    lastChangeTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SiteSummaryResponse",

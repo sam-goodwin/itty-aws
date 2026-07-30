@@ -714,9 +714,7 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "Group"
   | "ServicePrincipal"
   | "ForeignGroup"
-  | "Device"
-  | "AgentUser"
-  | "AgentServicePrincipal";
+  | "Device";
 export const RoleAssignmentPropertiesInputPrincipalType =
   /*@__PURE__*/ S.String;
 
@@ -824,9 +822,7 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "Group"
   | "ServicePrincipal"
   | "ForeignGroup"
-  | "Device"
-  | "AgentUser"
-  | "AgentServicePrincipal";
+  | "Device";
 export const RoleAssignmentPropertiesPrincipalType = /*@__PURE__*/ S.String;
 
 /** Role assignment properties. */

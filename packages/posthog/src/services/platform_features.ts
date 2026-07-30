@@ -330,14 +330,11 @@ export interface ChangeRequestsApproveCreateRequest {
   project_id: string;
   /** A UUID string identifying this change request. */
   id: string;
-  /** Optional note recorded with the approval vote explaining the decision. */
-  reason?: string;
 }
 export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    reason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -349,8 +346,8 @@ export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestsApproveCreateRequest",
 }) as any as S.Schema<ChangeRequestsApproveCreateRequest>;
 
-/** * `valid` - Valid * `invalid` - Invalid * `stale` - Stale (resource changed) */
-export type ValidationStatusEnum = "valid" | "invalid" | "stale";
+/** * `valid` - Valid * `invalid` - Invalid * `expired` - Expired * `stale` - Stale (resource changed) */
+export type ValidationStatusEnum = "valid" | "invalid" | "expired" | "stale";
 export const ValidationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
@@ -435,27 +432,6 @@ export const ChangeRequest = /*@__PURE__*/ S.suspend(() =>
     user_decision: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "ChangeRequest" }) as any as S.Schema<ChangeRequest>;
-
-export interface ChangeRequestDecisionResponse {
-  /** The change request's resulting state after the vote (e.g. 'pending', 'approved', 'applied', 'rejected'). */
-  status: string;
-  /** Human-readable summary of what happened. */
-  message: string;
-  /** The change request after the vote was recorded. */
-  change_request: ChangeRequest;
-  /** Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version). */
-  result?: unknown;
-}
-export const ChangeRequestDecisionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-    message: S.String,
-    change_request: ChangeRequest,
-    result: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ChangeRequestDecisionResponse",
-}) as any as S.Schema<ChangeRequestDecisionResponse>;
 
 export interface ChangeRequestsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -545,14 +521,11 @@ export interface ChangeRequestsRejectCreateRequest {
   project_id: string;
   /** A UUID string identifying this change request. */
   id: string;
-  /** Reason for rejecting the change request. Required — recorded with the rejection vote and shown to the requester. */
-  reason: string;
 }
 export const ChangeRequestsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    reason: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -673,12 +646,12 @@ export type ChangeRequestsApproveCreateError = PosthogOpError;
 /** Approve a change request. If quorum is reached, automatically applies the change immediately. */
 export const changeRequestsApproveCreate: API.OperationMethod<
   ChangeRequestsApproveCreateRequest,
-  ChangeRequestDecisionResponse,
+  ChangeRequest,
   ChangeRequestsApproveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeRequestsApproveCreateRequest,
-  output: ChangeRequestDecisionResponse,
+  output: ChangeRequest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -717,12 +690,12 @@ export type ChangeRequestsRejectCreateError = PosthogOpError;
 /** Reject a change request. */
 export const changeRequestsRejectCreate: API.OperationMethod<
   ChangeRequestsRejectCreateRequest,
-  ChangeRequestDecisionResponse,
+  ChangeRequest,
   ChangeRequestsRejectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ChangeRequestsRejectCreateRequest,
-  output: ChangeRequestDecisionResponse,
+  output: ChangeRequest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

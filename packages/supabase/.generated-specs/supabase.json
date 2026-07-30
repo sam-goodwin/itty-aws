@@ -6461,12 +6461,6 @@
             "smithy.api#enumValue": "postgres_upgrade_required"
           }
         },
-        "SSL_ENFORCEMENT_REQUIRED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ssl_enforcement_required"
-          }
-        },
         "TEMPORARILY_UNAVAILABLE": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -7357,7 +7351,6 @@
         "root_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The pgsodium root key: 32 bytes, hex-encoded (64 characters).",
             "smithy.api#required": {}
           }
         }
@@ -7403,7 +7396,6 @@
         "root_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The pgsodium root key: 32 bytes, hex-encoded (64 characters).",
             "smithy.api#required": {}
           }
         }
@@ -7482,14 +7474,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "db_pool_acquisition_timeout": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "If `null`, the value is automatically configured to 10.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "jwt_secret": {
           "target": "smithy.api#String",
           "traits": {
@@ -7546,9 +7530,6 @@
         },
         "db_pool": {
           "target": "smithy.api#Integer"
-        },
-        "db_pool_acquisition_timeout": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -7580,14 +7561,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "If `null`, the value is automatically configured based on compute size.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "db_pool_acquisition_timeout": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "If `null`, the value is automatically configured to 10.",
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
@@ -17408,44 +17381,6 @@
         "smithy.api#documentation": "Gets a project's function combined statistics"
       }
     },
-    "com.supabase.api#V1ScrapeProjectMetricsRequest": {
-      "type": "structure",
-      "members": {
-        "ref": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ref"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.supabase.api#V1ScrapeProjectMetrics": {
-      "type": "operation",
-      "input": {
-        "target": "com.supabase.api#V1ScrapeProjectMetricsRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "errors": [
-        {
-          "target": "com.supabase.api#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/v1/projects/{ref}/analytics/endpoints/metrics",
-          "code": 200
-        },
-        "smithy.api#documentation": "Scrape a project's metrics\n\nPrometheus scrape endpoint. Returns metrics of a customer project in the Prometheus open exposition format."
-      }
-    },
     "com.supabase.api#V1CreateLoginRoleRequest": {
       "type": "structure",
       "members": {
@@ -21693,9 +21628,6 @@
         "max_locks_per_transaction": {
           "target": "smithy.api#Integer"
         },
-        "max_logical_replication_workers": {
-          "target": "smithy.api#Integer"
-        },
         "max_parallel_maintenance_workers": {
           "target": "smithy.api#Integer"
         },
@@ -21716,9 +21648,6 @@
         },
         "max_standby_streaming_delay": {
           "target": "smithy.api#String"
-        },
-        "max_sync_workers_per_subscription": {
-          "target": "smithy.api#Integer"
         },
         "max_wal_size": {
           "target": "smithy.api#String"
@@ -21912,9 +21841,6 @@
         "max_locks_per_transaction": {
           "target": "smithy.api#Integer"
         },
-        "max_logical_replication_workers": {
-          "target": "smithy.api#Integer"
-        },
         "max_parallel_maintenance_workers": {
           "target": "smithy.api#Integer"
         },
@@ -21935,9 +21861,6 @@
         },
         "max_standby_streaming_delay": {
           "target": "smithy.api#String"
-        },
-        "max_sync_workers_per_subscription": {
-          "target": "smithy.api#Integer"
         },
         "max_wal_size": {
           "target": "smithy.api#String"
@@ -22428,6 +22351,12 @@
     "com.supabase.api#ListProvidersResponseItemsItemSaml": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -22452,6 +22381,12 @@
     "com.supabase.api#ListProvidersResponseItemsItemDomainsItem": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -22806,6 +22741,12 @@
     "com.supabase.api#CreateProviderResponseSaml": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -22830,6 +22771,12 @@
     "com.supabase.api#CreateProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -23022,6 +22969,12 @@
     "com.supabase.api#GetProviderResponseSaml": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -23046,6 +22999,12 @@
     "com.supabase.api#GetProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -23355,6 +23314,12 @@
     "com.supabase.api#UpdateProviderResponseSaml": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -23379,6 +23344,12 @@
     "com.supabase.api#UpdateProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -23571,6 +23542,12 @@
     "com.supabase.api#DeleteProviderResponseSaml": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "entity_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -23595,6 +23572,12 @@
     "com.supabase.api#DeleteProviderResponseDomainsItem": {
       "type": "structure",
       "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "domain": {
           "target": "smithy.api#String"
         },
@@ -24604,12 +24587,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "observability.dashboard_advanced_metrics"
-          }
-        },
-        "API_MEMBERS_INVITATIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "api.members.invitations"
           }
         },
         "API_MEMBERS_ROLES": {
@@ -26458,9 +26435,6 @@
         },
         {
           "target": "com.supabase.api#V1GetProjectFunctionCombinedStats"
-        },
-        {
-          "target": "com.supabase.api#V1ScrapeProjectMetrics"
         },
         {
           "target": "com.supabase.api#V1CreateLoginRole"

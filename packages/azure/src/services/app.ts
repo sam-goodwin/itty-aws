@@ -3892,7 +3892,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5550,7 +5550,7 @@ export const OpenIdConnectClientCredentialMethod = /*@__PURE__*/ S.String;
 /** The authentication client credentials of the custom Open ID Connect provider. */
 export interface OpenIdConnectClientCredential {
   /** The method that should be used to authenticate the user. */
-  method?: OpenIdConnectClientCredentialMethod;
+  method?: OpenIdConnectClientCredentialMethod | (string & {});
   /** The app setting that contains the client secret for the custom Open ID Connect provider. */
   clientSecretSettingName?: string;
 }

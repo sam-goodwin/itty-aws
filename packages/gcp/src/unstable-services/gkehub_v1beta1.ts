@@ -96,6 +96,11 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
+export type MembershipMembershipTypeEnum =
+  | "MEMBERSHIP_TYPE_UNSPECIFIED"
+  | "LIGHTWEIGHT";
+export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
+
 export type MembershipStateCodeEnum =
   | "CODE_UNSPECIFIED"
   | "CREATING"
@@ -109,67 +114,57 @@ export const MembershipStateCodeEnum = /*@__PURE__*/ S.String;
 export interface MembershipState {
   /** This field is never set by the Hub Service. */
   description?: string;
-  /** This field is never set by the Hub Service. */
-  updateTime?: string;
   /** Output only. The current state of the Membership resource. */
   code?: MembershipStateCodeEnum | (string & {});
+  /** This field is never set by the Hub Service. */
+  updateTime?: string;
 }
 export const MembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
-    updateTime: S.optional(S.String),
     code: S.optional(MembershipStateCodeEnum),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "MembershipState",
 }) as any as S.Schema<MembershipState>;
 
+export type MembershipInfrastructureTypeEnum =
+  | "INFRASTRUCTURE_TYPE_UNSPECIFIED"
+  | "ON_PREM"
+  | "MULTI_CLOUD";
+export const MembershipInfrastructureTypeEnum = /*@__PURE__*/ S.String;
+
 /** MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics. */
 export interface MonitoringConfig {
-  /** Optional. Project used to report Metrics */
-  projectId?: string;
+  /** Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos. */
+  kubernetesMetricsPrefix?: string;
   /** Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1". */
   cluster?: string;
   /** Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID. */
   clusterHash?: string;
+  /** Optional. Project used to report Metrics */
+  projectId?: string;
   /** Optional. Location used to report Metrics */
   location?: string;
-  /** Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos. */
-  kubernetesMetricsPrefix?: string;
 }
 export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    projectId: S.optional(S.String),
+    kubernetesMetricsPrefix: S.optional(S.String),
     cluster: S.optional(S.String),
     clusterHash: S.optional(S.String),
+    projectId: S.optional(S.String),
     location: S.optional(S.String),
-    kubernetesMetricsPrefix: S.optional(S.String),
   }),
 ).annotate({
   identifier: "MonitoringConfig",
 }) as any as S.Schema<MonitoringConfig>;
-
-export type MembershipMembershipTypeEnum =
-  | "MEMBERSHIP_TYPE_UNSPECIFIED"
-  | "LIGHTWEIGHT";
-export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<StringMap>;
-
-/** EdgeCluster contains information specific to Google Edge Clusters. */
-export interface EdgeCluster {
-  /** Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster */
-  resourceLink?: string;
-}
-export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "EdgeCluster" }) as any as S.Schema<EdgeCluster>;
 
 /** ApplianceCluster contains information specific to GDC Edge Appliance Clusters. */
 export interface ApplianceCluster {
@@ -184,22 +179,36 @@ export const ApplianceCluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceCluster",
 }) as any as S.Schema<ApplianceCluster>;
 
+/** GkeCluster contains information specific to GKE clusters. */
+export interface GkeCluster {
+  /** Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane. */
+  clusterMissing?: boolean;
+  /** Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported. */
+  resourceLink?: string;
+}
+export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterMissing: S.optional(S.Boolean),
+    resourceLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "GkeCluster" }) as any as S.Schema<GkeCluster>;
+
 /** ResourceOptions represent options for Kubernetes resource generation. */
 export interface ResourceOptions {
+  /** Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected. */
+  connectVersion?: string;
   /** Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16. */
   v1beta1Crd?: boolean;
   /** Optional. Major and minor version of the Kubernetes cluster. This is only used to determine which version to use for the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`. */
   k8sVersion?: string;
-  /** Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected. */
-  connectVersion?: string;
   /** Optional. Git version of the Kubernetes cluster. This is only used to gate the Connect Agent migration to svc.id.goog on GDC-SO 1.33.100 patch and above. */
   k8sGitVersion?: string;
 }
 export const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    connectVersion: S.optional(S.String),
     v1beta1Crd: S.optional(S.Boolean),
     k8sVersion: S.optional(S.String),
-    connectVersion: S.optional(S.String),
     k8sGitVersion: S.optional(S.String),
   }),
 ).annotate({
@@ -229,10 +238,10 @@ export const ResourceManifestList = /*@__PURE__*/ S.Array(
 
 /** KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster. */
 export interface KubernetesResource {
-  /** Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership. */
-  membershipCrManifest?: string;
   /** Optional. Options for Kubernetes resource generation. */
   resourceOptions?: ResourceOptions;
+  /** Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership. */
+  membershipCrManifest?: string;
   /** Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
   membershipResources?: ResourceManifestList;
   /** Output only. The Kubernetes resources for installing the GKE Connect agent This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
@@ -240,56 +249,14 @@ export interface KubernetesResource {
 }
 export const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    membershipCrManifest: S.optional(S.String),
     resourceOptions: S.optional(ResourceOptions),
+    membershipCrManifest: S.optional(S.String),
     membershipResources: S.optional(ResourceManifestList),
     connectResources: S.optional(ResourceManifestList),
   }),
 ).annotate({
   identifier: "KubernetesResource",
 }) as any as S.Schema<KubernetesResource>;
-
-/** GkeCluster contains information specific to GKE clusters. */
-export interface GkeCluster {
-  /** Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane. */
-  clusterMissing?: boolean;
-  /** Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported. */
-  resourceLink?: string;
-}
-export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterMissing: S.optional(S.Boolean),
-    resourceLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "GkeCluster" }) as any as S.Schema<GkeCluster>;
-
-export type OnPremClusterClusterTypeEnum =
-  | "CLUSTERTYPE_UNSPECIFIED"
-  | "BOOTSTRAP"
-  | "HYBRID"
-  | "STANDALONE"
-  | "USER";
-export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
-
-/** OnPremCluster contains information specific to GKE On-Prem clusters. */
-export interface OnPremCluster {
-  /** Immutable. Whether the cluster is an admin cluster. */
-  adminCluster?: boolean;
-  /** Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists. */
-  clusterMissing?: boolean;
-  /** Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster */
-  resourceLink?: string;
-  /** Immutable. The on prem cluster's type. */
-  clusterType?: OnPremClusterClusterTypeEnum | (string & {});
-}
-export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminCluster: S.optional(S.Boolean),
-    clusterMissing: S.optional(S.Boolean),
-    resourceLink: S.optional(S.String),
-    clusterType: S.optional(OnPremClusterClusterTypeEnum),
-  }),
-).annotate({ identifier: "OnPremCluster" }) as any as S.Schema<OnPremCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
 export interface MultiCloudCluster {
@@ -309,58 +276,97 @@ export const MultiCloudCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters. */
 export interface KubernetesMetadata {
-  /** Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB. */
-  memoryMb?: number;
-  /** Output only. vCPU count as reported by Kubernetes nodes resources. */
-  vcpuCount?: number;
+  /** Output only. Node count as reported by Kubernetes nodes resources. */
+  nodeCount?: number;
   /** Output only. Kubernetes API server version string as reported by '/version'. */
   kubernetesApiServerVersion?: string;
+  /** Output only. vCPU count as reported by Kubernetes nodes resources. */
+  vcpuCount?: number;
+  /** Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB. */
+  memoryMb?: number;
   /** Output only. The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers. */
   updateTime?: string;
   /** Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-Google Cloud), the node_count will be zero and the node_provider_id will be empty. */
   nodeProviderId?: string;
-  /** Output only. Node count as reported by Kubernetes nodes resources. */
-  nodeCount?: number;
 }
 export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    memoryMb: S.optional(S.Number),
-    vcpuCount: S.optional(S.Number),
+    nodeCount: S.optional(S.Number),
     kubernetesApiServerVersion: S.optional(S.String),
+    vcpuCount: S.optional(S.Number),
+    memoryMb: S.optional(S.Number),
     updateTime: S.optional(S.String),
     nodeProviderId: S.optional(S.String),
-    nodeCount: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "KubernetesMetadata",
 }) as any as S.Schema<KubernetesMetadata>;
 
+export type OnPremClusterClusterTypeEnum =
+  | "CLUSTERTYPE_UNSPECIFIED"
+  | "BOOTSTRAP"
+  | "HYBRID"
+  | "STANDALONE"
+  | "USER";
+export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
+
+/** OnPremCluster contains information specific to GKE On-Prem clusters. */
+export interface OnPremCluster {
+  /** Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster */
+  resourceLink?: string;
+  /** Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists. */
+  clusterMissing?: boolean;
+  /** Immutable. The on prem cluster's type. */
+  clusterType?: OnPremClusterClusterTypeEnum | (string & {});
+  /** Immutable. Whether the cluster is an admin cluster. */
+  adminCluster?: boolean;
+}
+export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceLink: S.optional(S.String),
+    clusterMissing: S.optional(S.Boolean),
+    clusterType: S.optional(OnPremClusterClusterTypeEnum),
+    adminCluster: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "OnPremCluster" }) as any as S.Schema<OnPremCluster>;
+
+/** EdgeCluster contains information specific to Google Edge Clusters. */
+export interface EdgeCluster {
+  /** Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster */
+  resourceLink?: string;
+}
+export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "EdgeCluster" }) as any as S.Schema<EdgeCluster>;
+
 /** MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata. */
 export interface MembershipEndpoint {
-  /** Optional. Specific information for a Google Edge cluster. */
-  edgeCluster?: EdgeCluster;
   /** Optional. Specific information for a GDC Edge Appliance cluster. */
   applianceCluster?: ApplianceCluster;
-  /** Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features. */
-  kubernetesResource?: KubernetesResource;
   /** Optional. Specific information for a GKE-on-Google Cloud cluster. */
   gkeCluster?: GkeCluster;
-  /** Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead. */
-  onPremCluster?: OnPremCluster;
+  /** Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features. */
+  kubernetesResource?: KubernetesResource;
   /** Optional. Specific information for a GKE Multi-Cloud cluster. */
   multiCloudCluster?: MultiCloudCluster;
   /** Output only. Useful Kubernetes-specific metadata. */
   kubernetesMetadata?: KubernetesMetadata;
+  /** Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead. */
+  onPremCluster?: OnPremCluster;
+  /** Optional. Specific information for a Google Edge cluster. */
+  edgeCluster?: EdgeCluster;
 }
 export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    edgeCluster: S.optional(EdgeCluster),
     applianceCluster: S.optional(ApplianceCluster),
-    kubernetesResource: S.optional(KubernetesResource),
     gkeCluster: S.optional(GkeCluster),
-    onPremCluster: S.optional(OnPremCluster),
+    kubernetesResource: S.optional(KubernetesResource),
     multiCloudCluster: S.optional(MultiCloudCluster),
     kubernetesMetadata: S.optional(KubernetesMetadata),
+    onPremCluster: S.optional(OnPremCluster),
+    edgeCluster: S.optional(EdgeCluster),
   }),
 ).annotate({
   identifier: "MembershipEndpoint",
@@ -370,103 +376,97 @@ export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
 export interface Authority {
   /** Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity). */
   issuer?: string;
-  /** Output only. An identity provider that reflects the `issuer` in the workload identity pool. */
-  identityProvider?: string;
-  /** Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field. */
-  oidcJwks?: string;
-  /** Optional. Output only. The name of the scope-tenancy workload identity pool. This pool is set in the fleet-level feature. */
-  scopeTenancyWorkloadIdentityPool?: string;
   /** Optional. Output only. The identity provider for the scope-tenancy workload identity pool. */
   scopeTenancyIdentityProvider?: string;
   /** Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API. */
   workloadIdentityPool?: string;
+  /** Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field. */
+  oidcJwks?: string;
+  /** Optional. Output only. The name of the scope-tenancy workload identity pool. This pool is set in the fleet-level feature. */
+  scopeTenancyWorkloadIdentityPool?: string;
+  /** Output only. An identity provider that reflects the `issuer` in the workload identity pool. */
+  identityProvider?: string;
 }
 export const Authority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.optional(S.String),
-    identityProvider: S.optional(S.String),
-    oidcJwks: S.optional(S.String),
-    scopeTenancyWorkloadIdentityPool: S.optional(S.String),
     scopeTenancyIdentityProvider: S.optional(S.String),
     workloadIdentityPool: S.optional(S.String),
+    oidcJwks: S.optional(S.String),
+    scopeTenancyWorkloadIdentityPool: S.optional(S.String),
+    identityProvider: S.optional(S.String),
   }),
 ).annotate({ identifier: "Authority" }) as any as S.Schema<Authority>;
 
-export type MembershipInfrastructureTypeEnum =
-  | "INFRASTRUCTURE_TYPE_UNSPECIFIED"
-  | "ON_PREM"
-  | "MULTI_CLOUD";
-export const MembershipInfrastructureTypeEnum = /*@__PURE__*/ S.String;
-
 /** Membership contains information about a member cluster. */
 export interface Membership {
-  /** Output only. When the Membership was created. */
-  createTime?: string;
-  /** Output only. The full, unique name of this Membership resource in the format `projects/*\/locations/*\/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. */
-  name?: string;
+  /** Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object. */
+  externalId?: string;
+  /** Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id. */
+  uniqueId?: string;
+  /** Output only. The type of the membership. */
+  membershipType?: MembershipMembershipTypeEnum | (string & {});
   /** Output only. State of the Membership resource. */
   state?: MembershipState;
-  /** Optional. The monitoring config information for this membership. */
-  monitoringConfig?: MonitoringConfig;
+  /** Optional. The infrastructure type this Membership is running on. */
+  infrastructureType?: MembershipInfrastructureTypeEnum | (string & {});
+  /** Output only. When the Membership was last updated. */
+  updateTime?: string;
   /** Output only. When the Membership was deleted. */
   deleteTime?: string;
   /** Output only. For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset. */
   lastConnectionTime?: string;
-  /** Output only. The type of the membership. */
-  membershipType?: MembershipMembershipTypeEnum | (string & {});
+  /** Optional. The monitoring config information for this membership. */
+  monitoringConfig?: MonitoringConfig;
   /** Optional. Google Cloud labels for this membership. These labels are not leveraged by multi-cluster features, instead, we prefer cluster labels, which can be set on GKE cluster or other cluster types. */
   labels?: StringMap;
-  /** Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object. */
-  externalId?: string;
-  /** Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*` */
-  description?: string;
+  /** Output only. The full, unique name of this Membership resource in the format `projects/*\/locations/*\/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. */
+  name?: string;
   /** Optional. Endpoint information to reach this member. */
   endpoint?: MembershipEndpoint;
-  /** Output only. When the Membership was last updated. */
-  updateTime?: string;
   /** Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity */
   authority?: Authority;
-  /** Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id. */
-  uniqueId?: string;
-  /** Optional. The infrastructure type this Membership is running on. */
-  infrastructureType?: MembershipInfrastructureTypeEnum | (string & {});
+  /** Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*` */
+  description?: string;
+  /** Output only. When the Membership was created. */
+  createTime?: string;
 }
 export const Membership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    name: S.optional(S.String),
+    externalId: S.optional(S.String),
+    uniqueId: S.optional(S.String),
+    membershipType: S.optional(MembershipMembershipTypeEnum),
     state: S.optional(MembershipState),
-    monitoringConfig: S.optional(MonitoringConfig),
+    infrastructureType: S.optional(MembershipInfrastructureTypeEnum),
+    updateTime: S.optional(S.String),
     deleteTime: S.optional(S.String),
     lastConnectionTime: S.optional(S.String),
-    membershipType: S.optional(MembershipMembershipTypeEnum),
+    monitoringConfig: S.optional(MonitoringConfig),
     labels: S.optional(StringMap),
-    externalId: S.optional(S.String),
-    description: S.optional(S.String),
+    name: S.optional(S.String),
     endpoint: S.optional(MembershipEndpoint),
-    updateTime: S.optional(S.String),
     authority: S.optional(Authority),
-    uniqueId: S.optional(S.String),
-    infrastructureType: S.optional(MembershipInfrastructureTypeEnum),
+    description: S.optional(S.String),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
 export interface CreateProjectsLocationsMembershipsRequest {
-  /** Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*\/locations/*`. */
-  parent: string;
   /** Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. */
   membershipId?: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*\/locations/*`. */
+  parent: string;
   /** Request body */
   body?: Membership;
 }
 export const CreateProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       membershipId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Membership.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -511,23 +511,23 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
     error: S.optional(GoogleRpcStatus),
+    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
@@ -535,17 +535,17 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProjectsLocationsMembershipsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
-  name: string;
   /** Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. */
   force?: boolean;
+  /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
+  name: string;
 }
 export const DeleteProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -577,34 +577,34 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
-  /** Required. The Membership resource name the Agent will associate with, in the format `projects/*\/locations/*\/memberships/*`. */
-  name: string;
   /** Do not set. */
   "connectAgent.name"?: string;
-  /** Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. */
-  "connectAgent.namespace"?: string;
   /** Optional. If true, generate the resources for upgrade only. Some resources generated only for installation (e.g. secrets) will be excluded. */
   isUpgrade?: boolean;
-  /** Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. */
-  registry?: string;
-  /** Optional. The Connect agent version to use. Defaults to the most current version. */
-  version?: string;
-  /** Optional. The image pull secret content for the registry, if not public. */
-  imagePullSecretContent?: string;
   /** Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. */
   "connectAgent.proxy"?: string;
+  /** Optional. The Connect agent version to use. Defaults to the most current version. */
+  version?: string;
+  /** Required. The Membership resource name the Agent will associate with, in the format `projects/*\/locations/*\/memberships/*`. */
+  name: string;
+  /** Optional. The image pull secret content for the registry, if not public. */
+  imagePullSecretContent?: string;
+  /** Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. */
+  "connectAgent.namespace"?: string;
+  /** Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. */
+  registry?: string;
 }
 export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       "connectAgent.name": S.optional(S.String.pipe(T.Query())),
-      "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
       isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
-      registry: S.optional(S.String.pipe(T.Query())),
-      version: S.optional(S.String.pipe(T.Query())),
-      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
       "connectAgent.proxy": S.optional(S.String.pipe(T.Query())),
+      version: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
+      "connectAgent.namespace": S.optional(S.String.pipe(T.Query())),
+      registry: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -618,29 +618,29 @@ export const GenerateConnectManifestProjectsLocationsMembershipsRequest =
 
 /** TypeMeta is the type information needed for content unmarshalling of Kubernetes resources in the manifest. */
 export interface TypeMeta {
-  /** Kind of the resource (e.g. Deployment). */
-  kind?: string;
   /** APIVersion of the resource (e.g. v1). */
   apiVersion?: string;
+  /** Kind of the resource (e.g. Deployment). */
+  kind?: string;
 }
 export const TypeMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "TypeMeta" }) as any as S.Schema<TypeMeta>;
 
 /** ConnectAgentResource represents a Kubernetes resource manifest for Connect Agent deployment. */
 export interface ConnectAgentResource {
-  /** Kubernetes type of the resource. */
-  type?: TypeMeta;
   /** YAML manifest of the resource. */
   manifest?: string;
+  /** Kubernetes type of the resource. */
+  type?: TypeMeta;
 }
 export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(TypeMeta),
     manifest: S.optional(S.String),
+    type: S.optional(TypeMeta),
   }),
 ).annotate({
   identifier: "ConnectAgentResource",
@@ -665,19 +665,19 @@ export const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateConnectManifestResponse>;
 
 export interface GenerateExclusivityManifestProjectsLocationsMembershipsRequest {
+  /** Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. */
+  crManifest?: string;
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
   /** Optional. The YAML manifest of the membership CRD retrieved by `kubectl get customresourcedefinitions membership`. Leave empty if the resource does not exist. */
   crdManifest?: string;
-  /** Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. */
-  crManifest?: string;
 }
 export const GenerateExclusivityManifestProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      crManifest: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       crdManifest: S.optional(S.String.pipe(T.Query())),
-      crManifest: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -728,44 +728,44 @@ export const GetIamPolicyProjectsLocationsMembershipsRequest =
     identifier: "GetIamPolicyProjectsLocationsMembershipsRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsMembershipsRequest>;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    expression: S.optional(S.String),
     title: S.optional(S.String),
     description: S.optional(S.String),
     location: S.optional(S.String),
-    expression: S.optional(S.String),
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: StringList;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: StringList;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    members: S.optional(StringList),
     condition: S.optional(Expr),
+    members: S.optional(StringList),
     role: S.optional(S.String),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
@@ -803,15 +803,15 @@ export const AuditLogConfigList = /*@__PURE__*/ S.Array(
 
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
 }
 export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
+    service: S.optional(S.String),
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
@@ -822,20 +822,20 @@ export const AuditConfigList = /*@__PURE__*/ S.Array(
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    version: S.optional(S.Number),
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
+    version: S.optional(S.Number),
     etag: S.optional(S.String),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
@@ -860,24 +860,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationId: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
+    labels: S.optional(StringMap),
     name: S.optional(S.String),
     displayName: S.optional(S.String),
-    labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -924,20 +924,20 @@ export interface ListProjectsLocationsRequest {
   name: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -973,23 +973,23 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsMembershipsRequest {
   /** Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING */
   filter?: string;
-  /** Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. */
-  pageToken?: string;
+  /** Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*\/locations/*`. `projects/*\/locations/-` list memberships in all the regions. */
+  parent: string;
   /** Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. */
   orderBy?: string;
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
   pageSize?: number;
-  /** Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*\/locations/*`. `projects/*\/locations/-` list memberships in all the regions. */
-  parent: string;
+  /** Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       orderBy: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1008,17 +1008,17 @@ export const MembershipList = /*@__PURE__*/ S.Array(
 
 /** Response message for the `GkeHubMembershipService.ListMemberships` method. */
 export interface ListMembershipsResponse {
-  /** The list of matching Memberships. */
-  resources?: MembershipList;
   /** A token to request the next page of resources from the `ListMemberships` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
+  /** The list of matching Memberships. */
+  resources?: MembershipList;
   /** List of locations that could not be reached while fetching this list. */
   unreachable?: StringList;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resources: S.optional(MembershipList),
     nextPageToken: S.optional(S.String),
+    resources: S.optional(MembershipList),
     unreachable: S.optional(StringList),
   }),
 ).annotate({
@@ -1026,25 +1026,25 @@ export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMembershipsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The standard list page size. */
-  pageSize?: number;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list filter. */
   filter?: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1065,26 +1065,26 @@ export const OperationList = /*@__PURE__*/ S.Array(
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsMembershipsRequest {
-  /** Required. The membership resource name in the format: `projects/[project_id]/locations/global/memberships/[membership_id]` */
-  name: string;
   /** Required. Mask of fields to update. At least one field path must be specified in this mask. */
   updateMask?: string;
+  /** Required. The membership resource name in the format: `projects/[project_id]/locations/global/memberships/[membership_id]` */
+  name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Request body */
@@ -1093,8 +1093,8 @@ export interface PatchProjectsLocationsMembershipsRequest {
 export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Membership.pipe(T.HttpBody())),
     }).pipe(
@@ -1195,19 +1195,19 @@ export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
-  /** Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. */
-  crManifest?: string;
   /** Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*\/locations/*`. */
   parent: string;
   /** Required. The intended membership name under the `parent`. This method only does validation in anticipation of a CreateMembership call with the same name. */
   intendedMembership?: string;
+  /** Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. */
+  crManifest?: string;
 }
 export const ValidateExclusivityProjectsLocationsMembershipsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crManifest: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       intendedMembership: S.optional(S.String.pipe(T.Query())),
+      crManifest: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",

@@ -11,27 +11,14 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
-
 export interface DesktopFileSystemCanvasPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this file system. */
   id: string;
-  /** The complete single-file React source for the canvas. */
   code?: string;
-  /** Short description of the change, stored on the appended version history entry. */
   prompt?: string;
-  /** Optional new display name for the canvas (rewrites the leaf segment of its path). */
   name?: string;
-  /** Optimistic-concurrency guard: the currentVersionId the publisher based its edits on (null when it read a canvas with no versions yet). When provided and the canvas has since moved past it (a concurrent publish, or a user's undo) the publish is rejected with a 409 version_conflict instead of overwriting the newer head. Omit to publish unguarded. */
-  expected_current_version_id?: string | null;
 }
 export const DesktopFileSystemCanvasPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -41,7 +28,6 @@ export const DesktopFileSystemCanvasPartialUpdateRequest =
       code: S.optional(S.String),
       prompt: S.optional(S.String),
       name: S.optional(S.String),
-      expected_current_version_id: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -64,8 +50,6 @@ export interface FileSystem {
   shortcut?: boolean | null;
   created_at?: string;
   last_viewed_at?: string | null;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -79,7 +63,6 @@ export const FileSystem = /*@__PURE__*/ S.suspend(() =>
     shortcut: S.optional(S.NullOr(S.Boolean)),
     created_at: S.optional(S.String),
     last_viewed_at: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "FileSystem" }) as any as S.Schema<FileSystem>;
 
@@ -888,10 +871,8 @@ export const DesktopFileSystemUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DesktopFileSystemUpdateRequest",
 }) as any as S.Schema<DesktopFileSystemUpdateRequest>;
 
-export type DesktopFileSystemCanvasPartialUpdateError =
-  | Conflict
-  | PosthogOpError;
-/** Publish a new version of a freeform canvas's React source. Merges into the dashboard row's `meta` (never replaces it), so existing keys like `channelId`/`templateId` survive. Appends a full-file version snapshot and points `currentVersionId` at it — the server-side mirror of the app's dashboardsService.saveFreeform, including the linear-discard of any redo tail left behind by an undo. When the publisher passes `expected_current_version_id`, a publish based on a stale version is rejected with 409 `version_conflict` instead of overwriting the newer head. */
+export type DesktopFileSystemCanvasPartialUpdateError = PosthogOpError;
+/** Publish a new version of a freeform canvas's React source. Merges into the dashboard row's `meta` (never replaces it), so existing keys like `channelId`/`templateId` survive. Appends a full-file version snapshot and points `currentVersionId` at it — the server-side mirror of the app's dashboardsService.saveFreeform. */
 export const desktopFileSystemCanvasPartialUpdate: API.OperationMethod<
   DesktopFileSystemCanvasPartialUpdateRequest,
   FileSystem,
@@ -900,7 +881,7 @@ export const desktopFileSystemCanvasPartialUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DesktopFileSystemCanvasPartialUpdateRequest,
   output: FileSystem,
-  errors: [Conflict],
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

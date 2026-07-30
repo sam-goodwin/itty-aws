@@ -315,17 +315,11 @@ export type ConversationType =
   | "slack";
 export const ConversationType = /*@__PURE__*/ S.String;
 
-/** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi";
-export const RuntimeEnum = /*@__PURE__*/ S.String;
-
-export type ConversationTaskJsonSchemaMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationTaskJsonSchemaMap = /*@__PURE__*/ S.Record(
+export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
+export const TaskDetailDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<ConversationTaskJsonSchemaMap>;
+) as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = {
   [key: string]: unknown | undefined;
@@ -364,7 +358,7 @@ export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskUserBasicInfo>;
 
 /** Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested run detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id avoids presigning a log URL per conversation. Read access here follows the conversation (the share-by-link unit), not per-creator task visibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``. */
-export interface ConversationTask {
+export interface TaskDetailDTO {
   id: string;
   task_number: number | null;
   slug: string;
@@ -372,13 +366,11 @@ export interface ConversationTask {
   title_manually_set: boolean;
   description: string;
   origin_product: string;
-  /** Agent protocol and harness used for this task's runs. * `acp` - ACP * `pi` - Pi */
-  runtime: RuntimeEnum;
   repository: string | null;
   github_integration: number | null;
   github_user_integration: string | null;
   signal_report: string | null;
-  json_schema: ConversationTaskJsonSchemaMap | null;
+  json_schema: TaskDetailDTOJsonSchemaMap | null;
   internal: boolean;
   archived: boolean;
   archived_at: string | null;
@@ -389,7 +381,7 @@ export interface ConversationTask {
   created_by?: TaskUserBasicInfo | null;
   ci_prompt: string | null;
 }
-export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
+export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -398,12 +390,11 @@ export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
     title_manually_set: S.Boolean,
     description: S.String,
     origin_product: S.String,
-    runtime: RuntimeEnum,
     repository: S.NullOr(S.String),
     github_integration: S.NullOr(S.Number),
     github_user_integration: S.NullOr(S.String),
     signal_report: S.NullOr(S.String),
-    json_schema: S.NullOr(ConversationTaskJsonSchemaMap),
+    json_schema: S.NullOr(TaskDetailDTOJsonSchemaMap),
     internal: S.Boolean,
     archived: S.Boolean,
     archived_at: S.NullOr(S.String),
@@ -413,9 +404,7 @@ export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
     created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
     ci_prompt: S.NullOr(S.String),
   }),
-).annotate({
-  identifier: "ConversationTask",
-}) as any as S.Schema<ConversationTask>;
+).annotate({ identifier: "TaskDetailDTO" }) as any as S.Schema<TaskDetailDTO>;
 
 export interface ConversationMinimal {
   id?: string;
@@ -434,7 +423,7 @@ export interface ConversationMinimal {
   slack_thread_key?: string | null;
   /** Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com) */
   slack_workspace_domain?: string | null;
-  task?: ConversationTask | null;
+  task?: TaskDetailDTO | null;
 }
 export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -449,7 +438,7 @@ export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
     is_internal: S.optional(S.NullOr(S.Boolean)),
     slack_thread_key: S.optional(S.NullOr(S.String)),
     slack_workspace_domain: S.optional(S.NullOr(S.String)),
-    task: S.optional(S.NullOr(ConversationTask)),
+    task: S.optional(S.NullOr(TaskDetailDTO)),
   }),
 ).annotate({
   identifier: "ConversationMinimal",
@@ -491,7 +480,7 @@ export type SandboxAttachedContextItemTypeEnum =
   | "text";
 export const SandboxAttachedContextItemTypeEnum = /*@__PURE__*/ S.String;
 
-/** One typed attachment carried by a sandbox message. DEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
+/** One typed attachment carried by a sandbox message. */
 export interface SandboxAttachedContextItem {
   /** Attachment kind. Entity types carry `id` (+ optional `name`); `text` carries `value`. * `action` - action * `dashboard` - dashboard * `error_tracking_issue` - error_tracking_issue * `evaluation` - evaluation * `event` - event * `insight` - insight * `notebook` - notebook * `text` - text */
   type: SandboxAttachedContextItemTypeEnum | (string & {});
@@ -672,7 +661,7 @@ export interface Conversation {
   is_sandbox?: boolean;
   /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
   pending_approvals?: ConversationPendingApprovalsList;
-  task?: ConversationTask | null;
+  task?: TaskDetailDTO | null;
 }
 export const Conversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -693,7 +682,7 @@ export const Conversation = /*@__PURE__*/ S.suspend(() =>
     agent_runtime: S.optional(AgentRuntimeEnum),
     is_sandbox: S.optional(S.Boolean),
     pending_approvals: S.optional(ConversationPendingApprovalsList),
-    task: S.optional(S.NullOr(ConversationTask)),
+    task: S.optional(S.NullOr(TaskDetailDTO)),
   }),
 ).annotate({ identifier: "Conversation" }) as any as S.Schema<Conversation>;
 

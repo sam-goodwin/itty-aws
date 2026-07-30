@@ -166,13 +166,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "sensitive_session_expires_at": {
           "target": "smithy.api#String",
           "traits": {
@@ -4070,12 +4063,6 @@
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
         },
-        "members_can_see_org_members": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
-          }
-        },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
         },
@@ -4531,16 +4518,10 @@
           "traits": {
             "smithy.api#enumValue": "other"
           }
-        },
-        "PROVISIONED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "provisioned"
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `delegated` - Delegated to teammate\n* `later` - Skipped for later\n* `other` - Other\n* `provisioned` - Account provisioned by a partner"
+        "smithy.api#documentation": "* `delegated` - Delegated to teammate\n* `later` - Skipped for later\n* `other` - Other"
       }
     },
     "com.posthog.users#UserOutputActiveRealtimeNotificationTypesList": {
@@ -6087,58 +6068,13 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "GitHub repository numeric identifier."
-          }
+          "target": "smithy.api#Integer"
         },
         "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Repository short name (without the owner prefix)."
-          }
+          "target": "smithy.api#String"
         },
         "full_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully-qualified repository name as 'owner/repo'."
-          }
-        },
-        "private": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the repository is private."
-          }
-        },
-        "default_branch": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The repository's default branch (e.g. 'main')."
-          }
-        },
-        "language": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Primary programming language GitHub detected for the repository."
-          }
-        },
-        "pushed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ISO 8601 timestamp of the most recent push, useful for sorting by recent activity."
-          }
-        },
-        "archived": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the repository is archived."
-          }
-        },
-        "can_push": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the PostHog GitHub App has write access — required to open pull requests."
-          }
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -6732,7 +6668,7 @@
         "smithy.api#documentation": "Revoke every login session for the current user except the one making this request. Self-only.\n\nRequires recent auth (TimeSensitiveActionPermission) so a stolen cookie can't weaponize the\n\"log out everywhere else\" lock-out, and is blocked while impersonating."
       }
     },
-    "com.posthog.users#OnboardingSkipRequestReasonEnum": {
+    "com.posthog.users#ReasonEnum": {
       "type": "enum",
       "members": {
         "LATER": {
@@ -6763,7 +6699,7 @@
           }
         },
         "reason": {
-          "target": "com.posthog.users#OnboardingSkipRequestReasonEnum",
+          "target": "com.posthog.users#ReasonEnum",
           "traits": {
             "smithy.api#documentation": "Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically.\n\n* `later` - Later\n* `other` - Other",
             "smithy.api#required": {}

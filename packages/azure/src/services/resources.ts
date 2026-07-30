@@ -2096,7 +2096,7 @@ export interface DataBoundariesGetScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesGetScopeRequestDefault;
+  default: DataBoundariesGetScopeRequestDefault | (string & {});
 }
 export const DataBoundariesGetScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2216,7 +2216,7 @@ export const DataBoundariesGetTenantRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetTenantRequest {
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesGetTenantRequestDefault;
+  default: DataBoundariesGetTenantRequestDefault | (string & {});
 }
 export const DataBoundariesGetTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2262,7 +2262,7 @@ export const DataBoundariesPutRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesPutRequest {
   /** Default string modeled as parameter for auto generation to work correctly. */
-  default: DataBoundariesPutRequestDefault;
+  default: DataBoundariesPutRequestDefault | (string & {});
   /** Data boundary properties */
   properties?: DataBoundaryProperties;
 }
@@ -2319,7 +2319,7 @@ export const DataPolicyManifestsGetByPolicyModeRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/dataPolicyManifests/{policyMode}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -2639,7 +2639,7 @@ export const DataPolicyManifestsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/dataPolicyManifests",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -4774,7 +4774,7 @@ export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedServiceIdentityInput {
   /** Type of the managed identity. */
-  type?: ManagedServiceIdentityType;
+  type?: ManagedServiceIdentityType | (string & {});
   /** The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity. */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
@@ -12064,7 +12064,7 @@ export type SelectorKind =
   | "resourceType"
   | "resourceWithoutLocation"
   | "policyDefinitionReferenceId"
-  | "resourceRolloutPercentage"
+  | "resourcePercentage"
   | "userPrincipalId"
   | "groupPrincipalId";
 export const SelectorKind = /*@__PURE__*/ S.String;
@@ -12312,7 +12312,7 @@ export const PolicyAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12517,7 +12517,7 @@ export const PolicyAssignmentsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12572,7 +12572,7 @@ export const PolicyAssignmentsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12630,7 +12630,7 @@ export const PolicyAssignmentsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -12712,7 +12712,7 @@ export const PolicyAssignmentsListForManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -12756,7 +12756,7 @@ export const PolicyAssignmentsListForResourceRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -12788,7 +12788,7 @@ export const PolicyAssignmentsListForResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -12855,7 +12855,7 @@ export const PolicyAssignmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13085,7 +13085,7 @@ export const PolicyDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -13136,7 +13136,7 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13183,7 +13183,7 @@ export const PolicyDefinitionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13213,7 +13213,7 @@ export const PolicyDefinitionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13241,7 +13241,7 @@ export const PolicyDefinitionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13288,7 +13288,7 @@ export const PolicyDefinitionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13332,7 +13332,7 @@ export const PolicyDefinitionsGetBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13381,7 +13381,7 @@ export const PolicyDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13450,7 +13450,7 @@ export const PolicyDefinitionsListBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.Authorization/policyDefinitions",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13476,7 +13476,7 @@ export const PolicyDefinitionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13554,7 +13554,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13608,7 +13608,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13661,7 +13661,7 @@ export const PolicyDefinitionVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -13694,7 +13694,7 @@ export const PolicyDefinitionVersionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13725,7 +13725,7 @@ export const PolicyDefinitionVersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13775,7 +13775,7 @@ export const PolicyDefinitionVersionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13823,7 +13823,7 @@ export const PolicyDefinitionVersionsGetBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13873,7 +13873,7 @@ export const PolicyDefinitionVersionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -13941,7 +13941,7 @@ export const PolicyDefinitionVersionsListAllRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -13961,7 +13961,7 @@ export const PolicyDefinitionVersionsListAllAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13976,7 +13976,7 @@ export const PolicyDefinitionVersionsListAllBuiltinsRequest =
         method: "POST",
         uri: "/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -13999,7 +13999,7 @@ export const PolicyDefinitionVersionsListBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14025,7 +14025,7 @@ export const PolicyDefinitionVersionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14190,7 +14190,7 @@ export const PolicySetDefinitionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14358,7 +14358,7 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14405,7 +14405,7 @@ export const PolicySetDefinitionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -14435,7 +14435,7 @@ export const PolicySetDefinitionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14466,7 +14466,7 @@ export const PolicySetDefinitionsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -14516,7 +14516,7 @@ export const PolicySetDefinitionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14564,7 +14564,7 @@ export const PolicySetDefinitionsGetBuiltInRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -14617,7 +14617,7 @@ export const PolicySetDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -14690,7 +14690,7 @@ export const PolicySetDefinitionsListBuiltInRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -14719,7 +14719,7 @@ export const PolicySetDefinitionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14814,7 +14814,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14932,7 +14932,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
         method: "PUT",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -14985,7 +14985,7 @@ export const PolicySetDefinitionVersionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -15017,7 +15017,7 @@ export const PolicySetDefinitionVersionsDeleteAtManagementGroupRequest =
         method: "DELETE",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15052,7 +15052,7 @@ export const PolicySetDefinitionVersionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -15106,7 +15106,7 @@ export const PolicySetDefinitionVersionsGetAtManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15157,7 +15157,7 @@ export const PolicySetDefinitionVersionsGetBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15211,7 +15211,7 @@ export const PolicySetDefinitionVersionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
 ).annotate({
@@ -15281,7 +15281,7 @@ export const PolicySetDefinitionVersionsListAllRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15301,7 +15301,7 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15316,7 +15316,7 @@ export const PolicySetDefinitionVersionsListAllBuiltinsRequest =
         method: "POST",
         uri: "/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15342,7 +15342,7 @@ export const PolicySetDefinitionVersionsListBuiltInRequest =
         method: "GET",
         uri: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15371,7 +15371,7 @@ export const PolicySetDefinitionVersionsListByManagementGroupRequest =
         method: "GET",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
@@ -15415,7 +15415,7 @@ export const PolicyTokensAcquireRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/acquirePolicyToken",
       code: 200,
-      apiVersion: "2026-07-01",
+      apiVersion: "2026-06-01",
     }),
   ),
 ).annotate({
@@ -15506,20 +15506,6 @@ export const ExternalEndpointResult = /*@__PURE__*/ S.String;
 export type PolicyAction = "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
 export const PolicyAction = /*@__PURE__*/ S.String;
 
-/** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Partial, Conflict, NotApplicable, Compliant, Error, Unknown, Exempt, and Protected. */
-export type ComplianceState =
-  | "NotSpecified"
-  | "NonCompliant"
-  | "Partial"
-  | "Conflict"
-  | "NotApplicable"
-  | "Compliant"
-  | "Error"
-  | "Unknown"
-  | "Exempt"
-  | "Protected";
-export const ComplianceState = /*@__PURE__*/ S.String;
-
 /** The external evaluation endpoint invocation results. */
 export interface ExternalEvaluationEndpointInvocationResult {
   /** The details of the policy requiring the external endpoint invocation. */
@@ -15540,8 +15526,6 @@ export interface ExternalEvaluationEndpointInvocationResult {
   policyEvaluationDetails?: unknown;
   /** The endpoint specific metadata. */
   additionalInfo?: unknown;
-  /** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Conflict, NotApplicable, Compliant, Error, Unknown, and Exempt. */
-  complianceState?: ComplianceState;
   /** The expiration of the results. */
   expiration?: string;
 }
@@ -15557,7 +15541,6 @@ export const ExternalEvaluationEndpointInvocationResult =
       policyAction: S.optional(PolicyAction),
       policyEvaluationDetails: S.optional(S.Unknown),
       additionalInfo: S.optional(S.Unknown),
-      complianceState: S.optional(ComplianceState),
       expiration: S.optional(S.String),
     }),
   ).annotate({
@@ -15627,41 +15610,12 @@ export const PolicyTokensAcquireAtManagementGroupRequest =
         method: "POST",
         uri: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
         code: 200,
-        apiVersion: "2026-07-01",
+        apiVersion: "2026-06-01",
       }),
     ),
   ).annotate({
     identifier: "PolicyTokensAcquireAtManagementGroupRequest",
   }) as any as S.Schema<PolicyTokensAcquireAtManagementGroupRequest>;
-
-export interface PolicyTokensAcquireAtResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The resource operation to acquire a token for. */
-  operation: PolicyTokenOperation;
-  /** The change reference. */
-  changeReference?: string;
-}
-export const PolicyTokensAcquireAtResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      operation: PolicyTokenOperation,
-      changeReference: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyTokensAcquireAtResourceGroupRequest",
-  }) as any as S.Schema<PolicyTokensAcquireAtResourceGroupRequest>;
 
 export interface PrivateLinkAssociationDeleteRequest {
   /** The management group ID. */
@@ -16854,7 +16808,7 @@ export interface ResourceLinksListAtSourceScopeRequest {
   /** The fully qualified ID of the scope for getting the resource links. For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup. */
   scope: string;
   /** The filter to apply when getting resource links. To get links only at the specified scope (not below the scope), use Filter.atScope(). */
-  _filter?: ResourceLinksListAtSourceScopeRequestFilter;
+  _filter?: ResourceLinksListAtSourceScopeRequestFilter | (string & {});
 }
 export const ResourceLinksListAtSourceScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -17215,7 +17169,7 @@ export const ExtendedLocationType = /*@__PURE__*/ S.String;
 /** Resource extended location. */
 export interface ExtendedLocation {
   /** The extended location type. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
   /** The extended location name. */
   name?: string;
 }
@@ -19932,7 +19886,7 @@ export interface TemplateSpecsGetRequest {
   /** Name of the Template Spec. */
   templateSpecName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsGetRequestExpand;
+  _expand?: TemplateSpecsGetRequestExpand | (string & {});
 }
 export const TemplateSpecsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20046,7 +20000,7 @@ export interface TemplateSpecsGetBuiltInRequest {
   /** Name of the Template Spec. */
   templateSpecName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsGetBuiltInRequestExpand;
+  _expand?: TemplateSpecsGetBuiltInRequestExpand | (string & {});
 }
 export const TemplateSpecsGetBuiltInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20161,7 +20115,7 @@ export const TemplateSpecsListBuiltInsRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsListBuiltInsRequest {
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListBuiltInsRequestExpand;
+  _expand?: TemplateSpecsListBuiltInsRequestExpand | (string & {});
 }
 export const TemplateSpecsListBuiltInsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20292,7 +20246,7 @@ export interface TemplateSpecsListByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListByResourceGroupRequestExpand;
+  _expand?: TemplateSpecsListByResourceGroupRequestExpand | (string & {});
 }
 export const TemplateSpecsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -20322,7 +20276,7 @@ export interface TemplateSpecsListBySubscriptionRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
   /** Allows for expansion of additional Template Spec details in the response. Optional. */
-  _expand?: TemplateSpecsListBySubscriptionRequestExpand;
+  _expand?: TemplateSpecsListBySubscriptionRequestExpand | (string & {});
 }
 export const TemplateSpecsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -24326,21 +24280,6 @@ export const PolicyTokensAcquireAtManagementGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PolicyTokensAcquireAtManagementGroupRequest,
-  output: PolicyTokenResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PolicyTokensAcquireAtResourceGroupError = AzureOpError;
-/** Acquires a policy token at resource group level. This operation acquires a policy token in the given resource group for the given request body. */
-export const PolicyTokensAcquireAtResourceGroup: API.OperationMethod<
-  PolicyTokensAcquireAtResourceGroupRequest,
-  PolicyTokenResponse,
-  PolicyTokensAcquireAtResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PolicyTokensAcquireAtResourceGroupRequest,
   output: PolicyTokenResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,

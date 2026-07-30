@@ -13527,7 +13527,9 @@ export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** HypervMachine name */
   machineName: string;
   /** Default value. */
-  default: HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22889,7 +22891,9 @@ export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** A server machine name */
   machineName: string;
   /** Default value. */
-  default: ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -29830,7 +29834,9 @@ export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryR
   /** Machine name */
   machineName: string;
   /** Default value. */
-  default: VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault;
+  default:
+    | VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequestDefault
+    | (string & {});
 }
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>

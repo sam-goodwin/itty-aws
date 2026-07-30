@@ -1527,7 +1527,7 @@ export interface OperationsCheckNameAvailabilityRequest {
   /** The name to check for availability. */
   name: string;
   /** The resource type to check for name availability. */
-  type: OperationsCheckNameAvailabilityRequestType;
+  type: OperationsCheckNameAvailabilityRequestType | (string & {});
 }
 export const OperationsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1791,7 +1791,7 @@ export interface OperationsRegionalCheckNameAvailabilityRequest {
   /** The name to check for availability. */
   name: string;
   /** The resource type to check for name availability. */
-  type: OperationsRegionalCheckNameAvailabilityRequestType;
+  type: OperationsRegionalCheckNameAvailabilityRequestType | (string & {});
 }
 export const OperationsRegionalCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>

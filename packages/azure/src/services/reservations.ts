@@ -206,7 +206,7 @@ export interface Commitment {
   currencyCode?: string;
   amount?: number;
   /** Commitment grain. */
-  grain?: CommitmentGrain;
+  grain?: CommitmentGrain | (string & {});
 }
 export const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -225,7 +225,7 @@ export interface SavingsPlanPurchaseRequestProperties {
   /** Represent savings plan term in ISO 8601 format. */
   term?: SavingsPlanTerm | (string & {});
   /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
-  billingPlan?: BillingPlan;
+  billingPlan?: BillingPlan | (string & {});
   /** Type of the Applied Scope. */
   appliedScopeType?: AppliedScopeType | (string & {});
   /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */

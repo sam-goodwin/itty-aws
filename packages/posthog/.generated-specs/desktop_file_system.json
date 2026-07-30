@@ -125,13 +125,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {}
@@ -458,29 +451,13 @@
           }
         },
         "code": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The complete single-file React source for the canvas."
-          }
+          "target": "smithy.api#String"
         },
         "prompt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Short description of the change, stored on the appended version history entry."
-          }
+          "target": "smithy.api#String"
         },
         "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional new display name for the canvas (rewrites the leaf segment of its path)."
-          }
-        },
-        "expected_current_version_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optimistic-concurrency guard: the currentVersionId the publisher based its edits on (null when it read a canvas with no versions yet). When provided and the canvas has since moved past it (a concurrent publish, or a user's undo) the publish is rejected with a 409 version_conflict instead of overwriting the newer head. Omit to publish unguarded.",
-            "com.distilled.openapi#nullable": {}
-          }
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -495,18 +472,13 @@
       "output": {
         "target": "com.posthog.desktop_file_system#FileSystem"
       },
-      "errors": [
-        {
-          "target": "com.posthog.desktop_file_system#Conflict"
-        }
-      ],
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/api/projects/{project_id}/desktop_file_system/{id}/canvas/",
           "code": 200
         },
-        "smithy.api#documentation": "Publish a new version of a freeform canvas's React source.\n\nMerges into the dashboard row's `meta` (never replaces it), so existing\nkeys like `channelId`/`templateId` survive. Appends a full-file version\nsnapshot and points `currentVersionId` at it — the server-side mirror of\nthe app's dashboardsService.saveFreeform, including the linear-discard of\nany redo tail left behind by an undo. When the publisher passes\n`expected_current_version_id`, a publish based on a stale version is\nrejected with 409 `version_conflict` instead of overwriting the newer head."
+        "smithy.api#documentation": "Publish a new version of a freeform canvas's React source.\n\nMerges into the dashboard row's `meta` (never replaces it), so existing\nkeys like `channelId`/`templateId` survive. Appends a full-file version\nsnapshot and points `currentVersionId` at it — the server-side mirror of\nthe app's dashboardsService.saveFreeform."
       }
     },
     "com.posthog.desktop_file_system#DesktopFileSystemContextGenerationRetrieveRequest": {
@@ -1582,19 +1554,6 @@
           "code": 200
         },
         "smithy.api#documentation": "The file tree for the desktop product surface. Reuses all FileSystemViewSet behaviour but is\nscoped to the \"desktop\" surface, so its tree is fully isolated from the default \"web\" tree.\n\nAdds per-folder, versioned markdown instructions describing the contents of a folder."
-      }
-    },
-    "com.posthog.desktop_file_system#Conflict": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#error": "client",
-        "smithy.api#httpError": 409,
-        "com.distilled.openapi#errorMatchers": [
-          {
-            "status": 409
-          }
-        ]
       }
     },
     "com.posthog.desktop_file_system#DesktopFileSystem": {

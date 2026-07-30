@@ -256,22 +256,9 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
-        "target": {
-          "target": "com.posthog.evaluations#EvaluationTargetEnum",
-          "traits": {
-            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace.\n\n* `generation` - Generation\n* `trace` - Trace"
-          }
-        },
-        "target_config": {
-          "target": "com.posthog.evaluations#EvaluationTargetConfig",
-          "traits": {
-            "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-          }
-        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfiguration",
           "traits": {
-            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -325,10 +312,16 @@
     "com.posthog.evaluations#StatusReasonEnum": {
       "type": "enum",
       "members": {
-        "PROVIDER_KEY_REQUIRED": {
+        "TRIAL_LIMIT_REACHED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "provider_key_required"
+            "smithy.api#enumValue": "trial_limit_reached"
+          }
+        },
+        "MODEL_NOT_ALLOWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "model_not_allowed"
           }
         },
         "PROVIDER_KEY_DELETED": {
@@ -381,7 +374,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `provider_key_required` - No provider API key configured\n* `provider_key_deleted` - Provider API key was deleted\n* `no_default_model` - No default model available for the selected provider\n* `provider_key_invalid` - Provider API key is invalid\n* `provider_key_permission_denied` - Provider API key lacks model access\n* `provider_key_quota_exceeded` - Provider API key quota exceeded\n* `provider_key_rate_limited` - Provider API key is rate limited\n* `model_not_found` - Model not found\n* `hog_error` - Hog evaluation code failed"
+        "smithy.api#documentation": "* `trial_limit_reached` - Trial evaluation limit reached\n* `model_not_allowed` - Model not available on the trial plan\n* `provider_key_deleted` - Provider API key was deleted\n* `no_default_model` - No default model available for the selected provider\n* `provider_key_invalid` - Provider API key is invalid\n* `provider_key_permission_denied` - Provider API key lacks model access\n* `provider_key_quota_exceeded` - Provider API key quota exceeded\n* `provider_key_rate_limited` - Provider API key is rate limited\n* `model_not_found` - Model not found\n* `hog_error` - Hog evaluation code failed"
       }
     },
     "com.posthog.evaluations#EvaluationTypeEnum": {
@@ -568,40 +561,6 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
-    "com.posthog.evaluations#EvaluationTargetEnum": {
-      "type": "enum",
-      "members": {
-        "GENERATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "generation"
-          }
-        },
-        "TRACE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "trace"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `generation` - Generation\n* `trace` - Trace"
-      }
-    },
-    "com.posthog.evaluations#EvaluationTargetConfig": {
-      "type": "structure",
-      "members": {
-        "window_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-      }
-    },
     "com.posthog.evaluations#ModelConfiguration": {
       "type": "structure",
       "members": {
@@ -614,7 +573,7 @@
         "provider_key_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.",
+            "smithy.api#documentation": "Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -673,22 +632,10 @@
           "traits": {
             "smithy.api#enumValue": "together_ai"
           }
-        },
-        "MINIMAX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "minimax"
-          }
-        },
-        "ZEABUR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "zeabur"
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub"
+        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI"
       }
     },
     "com.posthog.evaluations#UserBasic": {
@@ -941,20 +888,6 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
-    "com.posthog.evaluations#EvaluationsCreateRequestTargetConfig": {
-      "type": "structure",
-      "members": {
-        "window_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-      }
-    },
     "com.posthog.evaluations#ModelConfigurationInput": {
       "type": "structure",
       "members": {
@@ -967,7 +900,7 @@
         "provider_key_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed.",
+            "smithy.api#documentation": "Team provider key to run this eval with (same provider as `provider`). Leave null only for brief pre-key testing; real evals should set it.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -1035,22 +968,9 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
-        "target": {
-          "target": "com.posthog.evaluations#EvaluationTargetEnum",
-          "traits": {
-            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace.\n\n* `generation` - Generation\n* `trace` - Trace"
-          }
-        },
-        "target_config": {
-          "target": "com.posthog.evaluations#EvaluationsCreateRequestTargetConfig",
-          "traits": {
-            "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-          }
-        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
-            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1213,20 +1133,6 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
-    "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfig": {
-      "type": "structure",
-      "members": {
-        "window_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-      }
-    },
     "com.posthog.evaluations#EvaluationsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1294,22 +1200,9 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
-        "target": {
-          "target": "com.posthog.evaluations#EvaluationTargetEnum",
-          "traits": {
-            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace.\n\n* `generation` - Generation\n* `trace` - Trace"
-          }
-        },
-        "target_config": {
-          "target": "com.posthog.evaluations#EvaluationsUpdateRequestTargetConfig",
-          "traits": {
-            "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-          }
-        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
-            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1432,20 +1325,6 @@
         "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
       }
     },
-    "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfig": {
-      "type": "structure",
-      "members": {
-        "window_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "For 'trace' target: seconds to wait after the first matching generation before evaluating the whole trace. Captured when the run is scheduled — editing it does not change trace runs already in flight."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-      }
-    },
     "com.posthog.evaluations#EvaluationsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1513,22 +1392,9 @@
             "smithy.api#documentation": "Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads."
           }
         },
-        "target": {
-          "target": "com.posthog.evaluations#EvaluationTargetEnum",
-          "traits": {
-            "smithy.api#documentation": "What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once: the first matching generation schedules a run that waits for the trace to settle, then evaluates all of its events together. Condition filters still match individual generations — a trace is evaluated when any of its generations matches, and sampling applies per trace.\n\n* `generation` - Generation\n* `trace` - Trace"
-          }
-        },
-        "target_config": {
-          "target": "com.posthog.evaluations#EvaluationsPartialUpdateRequestTargetConfig",
-          "traits": {
-            "smithy.api#documentation": "Target-specific config. For 'trace' target: {window_seconds}. Empty for 'generation'."
-          }
-        },
         "model_configuration": {
           "target": "com.posthog.evaluations#ModelConfigurationInput",
           "traits": {
-            "smithy.api#documentation": "Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.",
             "com.distilled.openapi#nullable": {}
           }
         },

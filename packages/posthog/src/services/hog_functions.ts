@@ -46,7 +46,7 @@ export type HogFunctionTypeEnum =
   | "transformation";
 export const HogFunctionTypeEnum = /*@__PURE__*/ S.String;
 
-/** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_multi` - integration_multi * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes * `customer_analytics_account_properties` - customer_analytics_account_properties * `customer_analytics_account_relationships` - customer_analytics_account_relationships */
+/** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes */
 export type InputsSchemaItemTypeEnum =
   | "string"
   | "number"
@@ -55,16 +55,13 @@ export type InputsSchemaItemTypeEnum =
   | "choice"
   | "json"
   | "integration"
-  | "integration_multi"
   | "integration_field"
   | "email"
   | "native_email"
   | "posthog_assignee"
   | "posthog_ticket_tags"
   | "posthog_business_hours"
-  | "non_failure_status_codes"
-  | "customer_analytics_account_properties"
-  | "customer_analytics_account_relationships";
+  | "non_failure_status_codes";
 export const InputsSchemaItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemChoicesItemMap = {
@@ -629,7 +626,7 @@ export interface HogFunctionOutput {
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
@@ -1055,7 +1052,7 @@ export interface HogFunctionMinimal {
   template?: HogFunctionTemplate;
   status?: HogFunctionStatus | null;
   execution_order?: number | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
@@ -1469,107 +1466,6 @@ export const HogFunctionsRearrangePartialUpdateResponse =
     identifier: "HogFunctionsRearrangePartialUpdateResponse",
   }) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponse>;
 
-/** * `running` - running * `succeeded` - succeeded * `failed` - failed */
-export type HogInvocationRerunFilterStatusEnum =
-  | "running"
-  | "succeeded"
-  | "failed";
-export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
-
-/** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-export type HogInvocationRerunFilterStatusList = Array<
-  HogInvocationRerunFilterStatusEnum | (string & {})
->;
-export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
-  HogInvocationRerunFilterStatusEnum,
-) as any as S.Schema<HogInvocationRerunFilterStatusList>;
-
-/** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-export type HogInvocationRerunFilterErrorKindList = Array<string>;
-export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
-
-/** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
-export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
-
-/** Filter shape for the rerun endpoint. `window_start`/`window_end` are required. */
-export interface HogInvocationRerunFilter {
-  /** Inclusive lower bound on `scheduled_at` (UTC). */
-  window_start: string;
-  /** Exclusive upper bound on `scheduled_at` (UTC). */
-  window_end: string;
-  /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
-  status?: HogInvocationRerunFilterStatusList;
-  /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-  error_kind?: HogInvocationRerunFilterErrorKindList;
-  /** Skip invocations that have already been attempted this many times or more. */
-  max_attempts?: number;
-  /** Maximum number of invocations to rerun in this request. Server-side cap is 10000. */
-  max_count?: number;
-  /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-  invocation_ids?: HogInvocationRerunFilterInvocationIdsList;
-}
-export const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window_start: S.String,
-    window_end: S.String,
-    status: S.optional(HogInvocationRerunFilterStatusList),
-    error_kind: S.optional(HogInvocationRerunFilterErrorKindList),
-    max_attempts: S.optional(S.Number),
-    max_count: S.optional(S.Number),
-    invocation_ids: S.optional(HogInvocationRerunFilterInvocationIdsList),
-  }),
-).annotate({
-  identifier: "HogInvocationRerunFilter",
-}) as any as S.Schema<HogInvocationRerunFilter>;
-
-export interface HogFunctionsRerunCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this hog function. */
-  id: string;
-  /** Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window. */
-  filter: HogInvocationRerunFilter;
-}
-export const HogFunctionsRerunCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    filter: HogInvocationRerunFilter,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsRerunCreateRequest",
-}) as any as S.Schema<HogFunctionsRerunCreateRequest>;
-
-/** Response from the rerun endpoint. The endpoint only enqueues a wrapper job onto the cyclotron `rerun` queue — the actual ClickHouse paging and re-enqueue work happens asynchronously in the `cdp-rerun-worker` service. Use `rerun_job_id` to look up progress on the wrapper job later. */
-export interface HogInvocationRerunResponse {
-  /** ID of the cyclotron wrapper job that will run the rerun. Use this to poll status. */
-  rerun_job_id: string;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
-  queued_count: number;
-  /** Always 0 — rerun runs asynchronously. Kept for response shape stability. */
-  skipped_count: number;
-}
-export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rerun_job_id: S.String,
-    queued_count: S.Number,
-    skipped_count: S.Number,
-  }),
-).annotate({
-  identifier: "HogInvocationRerunResponse",
-}) as any as S.Schema<HogInvocationRerunResponse>;
-
 export interface HogFunctionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1885,21 +1781,6 @@ export const hogFunctionsRearrangePartialUpdate: API.OperationMethod<
   input: HogFunctionsRearrangePartialUpdateRequest,
   output: HogFunctionsRearrangePartialUpdateResponse,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HogFunctionsRerunCreateError = BadRequest | PosthogOpError;
-/** Rerun past invocations of this hog function from their stored payloads. The CDP worker reads matching rows from the `hog_invocation_results` ClickHouse table, rehydrates the invocation from the stored `invocation_globals`, and re-enqueues onto cyclotron. Each rerun run reuses the original `invocation_id` with `is_retry=1` set on the new lifecycle row so the UI can surface that it was a rerun. Only types a cyclotron worker executes (`TYPES_THAT_CAN_RERUN`) can be rerun: rerun re-enqueues onto the cyclotron hog queue, and other types run elsewhere (source webhooks inline in the cdp-api HTTP handler, transformations during ingestion, `site_*` transpiled to client-side JS). A re-enqueued invocation of one of those would never drain and wedges the partition, so a rerun of a non-rerunnable type is rejected with a 400 here. Because rerun replays historical event/person/group data, it requires `person:read` and `group:read` on top of `hog_function:write`. */
-export const hogFunctionsRerunCreate: API.OperationMethod<
-  HogFunctionsRerunCreateRequest,
-  HogInvocationRerunResponse,
-  HogFunctionsRerunCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HogFunctionsRerunCreateRequest,
-  output: HogInvocationRerunResponse,
-  errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

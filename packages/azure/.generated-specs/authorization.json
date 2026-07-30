@@ -1145,18 +1145,6 @@
           "traits": {
             "smithy.api#enumValue": "Device"
           }
-        },
-        "AGENTUSER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AgentUser"
-          }
-        },
-        "AGENTSERVICEPRINCIPAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AgentServicePrincipal"
-          }
         }
       },
       "traits": {
@@ -1698,18 +1686,6 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Device"
-          }
-        },
-        "AGENTUSER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AgentUser"
-          }
-        },
-        "AGENTSERVICEPRINCIPAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AgentServicePrincipal"
           }
         }
       },

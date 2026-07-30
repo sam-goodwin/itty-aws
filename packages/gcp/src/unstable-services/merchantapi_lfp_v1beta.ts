@@ -106,29 +106,28 @@ export const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InventoryStats {
   /** Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google. */
   submittedEntries?: string;
-  /** Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google due to errors like missing product. */
-  unsubmittedEntries?: string;
-  /** Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog. */
-  submittedProducts?: string;
   /** Number of submitted in stock entries. */
   submittedInStockEntries?: string;
+  /** Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog. */
+  submittedProducts?: string;
+  /** Number of entries that were built based on provided inventories/sales and couldn't be submitted to Google due to errors like missing product. */
+  unsubmittedEntries?: string;
 }
 export const InventoryStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     submittedEntries: S.optional(S.String),
-    unsubmittedEntries: S.optional(S.String),
-    submittedProducts: S.optional(S.String),
     submittedInStockEntries: S.optional(S.String),
+    submittedProducts: S.optional(S.String),
+    unsubmittedEntries: S.optional(S.String),
   }),
 ).annotate({ identifier: "InventoryStats" }) as any as S.Schema<InventoryStats>;
 
-export type CountrySettingsInstockServingVerificationStateEnum =
-  | "VERIFICATION_STATE_UNSPECIFIED"
-  | "VERIFICATION_STATE_NOT_APPROVED"
-  | "VERIFICATION_STATE_IN_PROGRESS"
-  | "VERIFICATION_STATE_APPROVED";
-export const CountrySettingsInstockServingVerificationStateEnum =
-  /*@__PURE__*/ S.String;
+export type CountrySettingsProductPageTypeEnum =
+  | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
+  | "GOOGLE_HOSTED"
+  | "MERCHANT_HOSTED"
+  | "MERCHANT_HOSTED_STORE_SPECIFIC";
+export const CountrySettingsProductPageTypeEnum = /*@__PURE__*/ S.String;
 
 export type CountrySettingsPickupServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
@@ -136,6 +135,14 @@ export type CountrySettingsPickupServingVerificationStateEnum =
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
 export const CountrySettingsPickupServingVerificationStateEnum =
+  /*@__PURE__*/ S.String;
+
+export type CountrySettingsInstockServingVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFICATION_STATE_NOT_APPROVED"
+  | "VERIFICATION_STATE_IN_PROGRESS"
+  | "VERIFICATION_STATE_APPROVED";
+export const CountrySettingsInstockServingVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type CountrySettingsInventoryVerificationStateEnum =
@@ -146,45 +153,38 @@ export type CountrySettingsInventoryVerificationStateEnum =
 export const CountrySettingsInventoryVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
-export type CountrySettingsProductPageTypeEnum =
-  | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
-  | "GOOGLE_HOSTED"
-  | "MERCHANT_HOSTED"
-  | "MERCHANT_HOSTED_STORE_SPECIFIC";
-export const CountrySettingsProductPageTypeEnum = /*@__PURE__*/ S.String;
-
 /** Country-specific settings for the merchant. */
 export interface CountrySettings {
-  /** Output only. The verification state of this merchant's instock serving feature. */
-  instockServingVerificationState?: CountrySettingsInstockServingVerificationStateEnum;
-  /** True if this merchant has enabled local inventory ads in MC. */
-  localInventoryAdsEnabled?: boolean;
-  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined. */
-  regionCode?: string;
-  /** Output only. The verification state of this merchant's pickup serving feature. */
-  pickupServingVerificationState?: CountrySettingsPickupServingVerificationStateEnum;
-  /** True if this merchant has enabled free local listings in MC. */
-  freeLocalListingsEnabled?: boolean;
-  /** Output only. The verification state of this merchant's inventory check. */
-  inventoryVerificationState?: CountrySettingsInventoryVerificationStateEnum;
   /** Output only. The product page type selected by this merchant. */
   productPageType?: CountrySettingsProductPageTypeEnum;
+  /** Output only. The verification state of this merchant's pickup serving feature. */
+  pickupServingVerificationState?: CountrySettingsPickupServingVerificationStateEnum;
+  /** True if this merchant has enabled local inventory ads in MC. */
+  localInventoryAdsEnabled?: boolean;
+  /** Output only. The verification state of this merchant's instock serving feature. */
+  instockServingVerificationState?: CountrySettingsInstockServingVerificationStateEnum;
+  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country for which these settings are defined. */
+  regionCode?: string;
+  /** Output only. The verification state of this merchant's inventory check. */
+  inventoryVerificationState?: CountrySettingsInventoryVerificationStateEnum;
+  /** True if this merchant has enabled free local listings in MC. */
+  freeLocalListingsEnabled?: boolean;
 }
 export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    instockServingVerificationState: S.optional(
-      CountrySettingsInstockServingVerificationStateEnum,
-    ),
-    localInventoryAdsEnabled: S.optional(S.Boolean),
-    regionCode: S.optional(S.String),
+    productPageType: S.optional(CountrySettingsProductPageTypeEnum),
     pickupServingVerificationState: S.optional(
       CountrySettingsPickupServingVerificationStateEnum,
     ),
-    freeLocalListingsEnabled: S.optional(S.Boolean),
+    localInventoryAdsEnabled: S.optional(S.Boolean),
+    instockServingVerificationState: S.optional(
+      CountrySettingsInstockServingVerificationStateEnum,
+    ),
+    regionCode: S.optional(S.String),
     inventoryVerificationState: S.optional(
       CountrySettingsInventoryVerificationStateEnum,
     ),
-    productPageType: S.optional(CountrySettingsProductPageTypeEnum),
+    freeLocalListingsEnabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "CountrySettings",
@@ -225,24 +225,24 @@ export const LfpStoreStateList = /*@__PURE__*/ S.Array(
 
 /** The LFP state of a merchant. */
 export interface LfpMerchantState {
+  /** Number of [GBPs](https://www.google.com/business/) this merchant has access to. */
+  linkedGbps?: string;
   /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
   inventoryStats?: InventoryStats;
   /** Country-specific settings for the merchant. */
   countrySettings?: CountrySettingsList;
-  /** Number of [GBPs](https://www.google.com/business/) this merchant has access to. */
-  linkedGbps?: string;
-  /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
-  storeStates?: LfpStoreStateList;
   /** Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name?: string;
+  /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
+  storeStates?: LfpStoreStateList;
 }
 export const LfpMerchantState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    linkedGbps: S.optional(S.String),
     inventoryStats: S.optional(InventoryStats),
     countrySettings: S.optional(CountrySettingsList),
-    linkedGbps: S.optional(S.String),
-    storeStates: S.optional(LfpStoreStateList),
     name: S.optional(S.String),
+    storeStates: S.optional(LfpStoreStateList),
   }),
 ).annotate({
   identifier: "LfpMerchantState",
@@ -266,119 +266,119 @@ export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsLfpStoresRequest",
 }) as any as S.Schema<GetAccountsLfpStoresRequest>;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
 export type LfpStoreMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
   | "STORE_MATCHING_STATE_FAILED";
 export const LfpStoreMatchingStateEnum = /*@__PURE__*/ S.String;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
 /** A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used. */
 export interface LfpStore {
+  /** Optional. The merchant or store name. */
+  storeName?: string;
+  /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
+  matchingState?: LfpStoreMatchingStateEnum | (string & {});
   /** Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - "`linked-store-not-found`": There aren't any Google Business Profile stores available for matching. - "`store-match-not-found`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - "`store-match-unverified`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly. */
   matchingStateHint?: string;
   /** Required. Immutable. A store identifier that is unique for the target merchant. */
   storeCode?: string;
+  /** Required. The Merchant Center id of the merchant to submit the store for. */
+  targetAccount?: string;
+  /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
+  gcidCategory?: StringList;
+  /** Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
+  name?: string;
+  /** Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888` */
+  phoneNumber?: string;
   /** Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA. */
   storeAddress?: string;
   /** Optional. The website URL for the store or merchant. */
   websiteUri?: string;
-  /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
-  gcidCategory?: StringList;
   /** Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location. */
   placeId?: string;
-  /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
-  matchingState?: LfpStoreMatchingStateEnum | (string & {});
-  /** Output only. Identifier. The name of the `LfpStore` resource. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
-  name?: string;
-  /** Required. The Merchant Center id of the merchant to submit the store for. */
-  targetAccount?: string;
-  /** Optional. The store phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. Example: `+15556767888` */
-  phoneNumber?: string;
-  /** Optional. The merchant or store name. */
-  storeName?: string;
 }
 export const LfpStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    storeName: S.optional(S.String),
+    matchingState: S.optional(LfpStoreMatchingStateEnum),
     matchingStateHint: S.optional(S.String),
     storeCode: S.optional(S.String),
+    targetAccount: S.optional(S.String),
+    gcidCategory: S.optional(StringList),
+    name: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
     storeAddress: S.optional(S.String),
     websiteUri: S.optional(S.String),
-    gcidCategory: S.optional(StringList),
     placeId: S.optional(S.String),
-    matchingState: S.optional(LfpStoreMatchingStateEnum),
-    name: S.optional(S.String),
-    targetAccount: S.optional(S.String),
-    phoneNumber: S.optional(S.String),
-    storeName: S.optional(S.String),
   }),
 ).annotate({ identifier: "LfpStore" }) as any as S.Schema<LfpStore>;
 
 /** The price represented as a number and currency. */
 export interface Price {
-  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
-  amountMicros?: string;
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
+  /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
+  amountMicros?: string;
 }
 export const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
+    amountMicros: S.optional(S.String),
   }),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 /** Local Inventory for the merchant. */
 export interface LfpInventory {
-  /** Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
-  pickupSla?: string;
   /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
   regionCode?: string;
-  /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
-  quantity?: string;
-  /** Required. The Merchant Center ID of the merchant to submit the inventory for. */
-  targetAccount?: string;
-  /** Optional. The Global Trade Item Number of the product. */
-  gtin?: string;
-  /** Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted. */
-  collectionTime?: string;
-  /** Required. The two-letter ISO 639-1 language code for the item. */
-  contentLanguage?: string;
-  /** Required. The identifier of the merchant's store. Either the store code inserted through `InsertLfpStore` or the store code in the Business Profile. */
-  storeCode?: string;
-  /** Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
-  offerId?: string;
   /** Required. Availability of the product at this store. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342) */
   availability?: string;
   /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
   feedLabel?: string;
-  /** Optional. The current price of the product. */
-  price?: Price;
+  /** Optional. The time when the inventory is collected. If not set, it will be set to the time when the inventory is submitted. */
+  collectionTime?: string;
   /** Output only. Identifier. The name for the `LfpInventory` resource. Format: `accounts/{account}/lfpInventories/{target_merchant}~{store_code}~{offer}` */
   name?: string;
   /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
   pickupMethod?: string;
+  /** Required. The Merchant Center ID of the merchant to submit the inventory for. */
+  targetAccount?: string;
+  /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
+  quantity?: string;
+  /** Optional. The current price of the product. */
+  price?: Price;
+  /** Required. Immutable. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
+  offerId?: string;
+  /** Optional. The Global Trade Item Number of the product. */
+  gtin?: string;
+  /** Required. The identifier of the merchant's store. Either the store code inserted through `InsertLfpStore` or the store code in the Business Profile. */
+  storeCode?: string;
+  /** Required. The two-letter ISO 639-1 language code for the item. */
+  contentLanguage?: string;
+  /** Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
+  pickupSla?: string;
 }
 export const LfpInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pickupSla: S.optional(S.String),
     regionCode: S.optional(S.String),
-    quantity: S.optional(S.String),
-    targetAccount: S.optional(S.String),
-    gtin: S.optional(S.String),
-    collectionTime: S.optional(S.String),
-    contentLanguage: S.optional(S.String),
-    storeCode: S.optional(S.String),
-    offerId: S.optional(S.String),
     availability: S.optional(S.String),
     feedLabel: S.optional(S.String),
-    price: S.optional(Price),
+    collectionTime: S.optional(S.String),
     name: S.optional(S.String),
     pickupMethod: S.optional(S.String),
+    targetAccount: S.optional(S.String),
+    quantity: S.optional(S.String),
+    price: S.optional(Price),
+    offerId: S.optional(S.String),
+    gtin: S.optional(S.String),
+    storeCode: S.optional(S.String),
+    contentLanguage: S.optional(S.String),
+    pickupSla: S.optional(S.String),
   }),
 ).annotate({ identifier: "LfpInventory" }) as any as S.Schema<LfpInventory>;
 
@@ -405,45 +405,45 @@ export const InsertAccountsLfpInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A sale for the merchant. */
 export interface LfpSale {
-  /** Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}` */
-  name?: string;
-  /** Required. The Merchant Center ID of the merchant to submit the sale for. */
-  targetAccount?: string;
-  /** Required. The Global Trade Item Number of the sold product. */
-  gtin?: string;
-  /** Required. The unit price of the product. */
-  price?: Price;
-  /** Required. The relative change of the available quantity. Negative for items returned. */
-  quantity?: string;
-  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
-  regionCode?: string;
-  /** Required. The timestamp for the sale. */
-  saleTime?: string;
-  /** Output only. System generated globally unique ID for the `LfpSale`. */
-  uid?: string;
-  /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
-  feedLabel?: string;
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
+  /** Output only. System generated globally unique ID for the `LfpSale`. */
+  uid?: string;
+  /** Required. The Merchant Center ID of the merchant to submit the sale for. */
+  targetAccount?: string;
   /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in the Business Profile. */
   storeCode?: string;
+  /** Output only. Identifier. The name of the `LfpSale` resource. Format: `accounts/{account}/lfpSales/{sale}` */
+  name?: string;
+  /** Required. The Global Trade Item Number of the sold product. */
+  gtin?: string;
+  /** Required. The timestamp for the sale. */
+  saleTime?: string;
   /** Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
   offerId?: string;
+  /** Required. The unit price of the product. */
+  price?: Price;
+  /** Required. The [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) for the country where the product is sold. */
+  regionCode?: string;
+  /** Required. The relative change of the available quantity. Negative for items returned. */
+  quantity?: string;
+  /** Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the product. If this is not set, it will default to `regionCode`. */
+  feedLabel?: string;
 }
 export const LfpSale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    targetAccount: S.optional(S.String),
-    gtin: S.optional(S.String),
-    price: S.optional(Price),
-    quantity: S.optional(S.String),
-    regionCode: S.optional(S.String),
-    saleTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    feedLabel: S.optional(S.String),
     contentLanguage: S.optional(S.String),
+    uid: S.optional(S.String),
+    targetAccount: S.optional(S.String),
     storeCode: S.optional(S.String),
+    name: S.optional(S.String),
+    gtin: S.optional(S.String),
+    saleTime: S.optional(S.String),
     offerId: S.optional(S.String),
+    price: S.optional(Price),
+    regionCode: S.optional(S.String),
+    quantity: S.optional(S.String),
+    feedLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "LfpSale" }) as any as S.Schema<LfpSale>;
 
@@ -523,15 +523,15 @@ export const LfpStoreList = /*@__PURE__*/ S.Array(
 
 /** Response message for the ListLfpStores method. */
 export interface ListLfpStoresResponse {
-  /** The stores from the specified merchant. */
-  lfpStores?: LfpStoreList;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The stores from the specified merchant. */
+  lfpStores?: LfpStoreList;
 }
 export const ListLfpStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lfpStores: S.optional(LfpStoreList),
     nextPageToken: S.optional(S.String),
+    lfpStores: S.optional(LfpStoreList),
   }),
 ).annotate({
   identifier: "ListLfpStoresResponse",

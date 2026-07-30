@@ -40,25 +40,6 @@ export const OverallHealthEnum = /*@__PURE__*/ S.String;
 export type HealthEnum = "success" | "warning" | "danger";
 export const HealthEnum = /*@__PURE__*/ S.String;
 
-/** * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
-export type LibEnum =
-  | "web"
-  | "posthog-ios"
-  | "posthog-android"
-  | "posthog-java"
-  | "posthog-server"
-  | "posthog-node"
-  | "posthog-python"
-  | "posthog-php"
-  | "posthog-ruby"
-  | "posthog-go"
-  | "posthog-flutter"
-  | "posthog-react-native"
-  | "posthog-kmp"
-  | "posthog-dotnet"
-  | "posthog-elixir";
-export const LibEnum = /*@__PURE__*/ S.String;
-
 /** * `none` - none * `warning` - warning * `danger` - danger */
 export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
 export const SdkAssessmentSeverityEnum = /*@__PURE__*/ S.String;
@@ -146,8 +127,8 @@ export const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SdkAssessmentOutdatedTrafficAlertsList>;
 
 export interface SdkAssessment {
-  /** SDK identifier, e.g. 'web', 'posthog-python', 'posthog-node', 'posthog-ios'. * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
-  lib?: LibEnum;
+  /** SDK identifier, e.g. 'web', 'posthog-python', 'posthog-node', 'posthog-ios'. */
+  lib?: string;
   /** Human-readable SDK name matching the SDK Health UI (e.g. 'Python', 'Node.js', 'Web', 'iOS'). */
   readable_name?: string;
   /** Most recent published version of this SDK. */
@@ -158,8 +139,6 @@ export interface SdkAssessment {
   is_outdated?: boolean;
   /** True if the primary in-use version is flagged as old by age alone. */
   is_old?: boolean;
-  /** True when this SDK must be replaced by a supported successor rather than upgraded in place. */
-  migration_required?: boolean;
   /** UI severity badge — 'none' when healthy, 'warning' when outdated, 'danger' when the majority of team SDKs are outdated. * `none` - none * `warning` - warning * `danger` - danger */
   severity?: SdkAssessmentSeverityEnum;
   /** Per-SDK programmatic summary (used for ranking/filtering). For user-facing copy, prefer releases[].status_reason (badge tooltip) and banners (top-level alert text) — those match the UI exactly. */
@@ -173,13 +152,12 @@ export interface SdkAssessment {
 }
 export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lib: S.optional(LibEnum),
+    lib: S.optional(S.String),
     readable_name: S.optional(S.String),
     latest_version: S.optional(S.String),
     needs_updating: S.optional(S.Boolean),
     is_outdated: S.optional(S.Boolean),
     is_old: S.optional(S.Boolean),
-    migration_required: S.optional(S.Boolean),
     severity: S.optional(SdkAssessmentSeverityEnum),
     reason: S.optional(S.String),
     banners: S.optional(SdkAssessmentBannersList),

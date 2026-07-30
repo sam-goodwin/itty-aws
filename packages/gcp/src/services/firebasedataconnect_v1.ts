@@ -104,48 +104,48 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** A Firebase SQL Connect service. */
 export interface Service {
-  /** Identifier. The relative resource name of the Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` Note that the service ID is specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source connections. */
-  name?: string;
-  /** Output only. [Output only] Update time stamp. */
-  updateTime?: string;
-  /** Output only. System-assigned, unique identifier. */
-  uid?: string;
-  /** Optional. Labels as key value pairs. */
-  labels?: StringMap;
+  /** Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154) */
+  etag?: string;
   /** Optional. Mutable human-readable name. 63 character limit. */
   displayName?: string;
+  /** Optional. Stores small amounts of arbitrary data. */
+  annotations?: StringMap;
+  /** Output only. System-assigned, unique identifier. */
+  uid?: string;
+  /** Output only. [Output only] Update time stamp. */
+  updateTime?: string;
+  /** Optional. Labels as key value pairs. */
+  labels?: StringMap;
   /** Output only. [Output only] Create time stamp. */
   createTime?: string;
   /** Output only. A field that if true, indicates that the system is working update the service. */
   reconciling?: boolean;
-  /** Optional. Stores small amounts of arbitrary data. */
-  annotations?: StringMap;
-  /** Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154) */
-  etag?: string;
+  /** Identifier. The relative resource name of the Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` Note that the service ID is specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source connections. */
+  name?: string;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
-    labels: S.optional(StringMap),
+    etag: S.optional(S.String),
     displayName: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
     createTime: S.optional(S.String),
     reconciling: S.optional(S.Boolean),
-    annotations: S.optional(StringMap),
-    etag: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export interface CreateProjectsLocationsServicesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. The ID to use for the service, which will become the final component of the service's resource name. */
-  serviceId?: string;
-  /** Optional. If set, validate the request and preview the Service, but do not actually create it. */
-  validateOnly?: boolean;
   /** Required. Value of parent. */
   parent: string;
+  /** Optional. If set, validate the request and preview the Service, but do not actually create it. */
+  validateOnly?: boolean;
+  /** Required. The ID to use for the service, which will become the final component of the service's resource name. */
+  serviceId?: string;
   /** Request body */
   body?: Service;
 }
@@ -153,9 +153,9 @@ export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
-      serviceId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      serviceId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -181,55 +181,69 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
-    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
     error: S.optional(Status),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
+/** Client caching settings of a connector. */
+export interface ClientCache {
+  /** Optional. A field that, if true, enables stricter validation on the connector source code to make sure the operation response shapes are suitable for client-side caching. This can include additional errors and warnings. For example, using the same alias for different fields is disallowed, as it may cause conflicts or confusion with normalized caching. (This field is off by default for compatibility, but enabling it is highly recommended to catch common caching pitfalls.) */
+  strictValidationEnabled?: boolean;
+  /** Optional. A field that, if true, means that responses served by this connector will include entityIds in GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as "normalized caching", if caching is enabled on the client. Each entityId is a stable key based on primary key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not contain sensitive information. */
+  entityIdIncluded?: boolean;
+}
+export const ClientCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    strictValidationEnabled: S.optional(S.Boolean),
+    entityIdIncluded: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ClientCache" }) as any as S.Schema<ClientCache>;
+
 /** Individual files. */
 export interface File {
-  /** Required. The file name including folder path, if applicable. The path should be relative to a local workspace (e.g. dataconnect/(schema|connector)/*.gql) and not an absolute path (e.g. /absolute/path/(schema|connector)/*.gql). */
-  path?: string;
   /** Required. The file's textual content. */
   content?: string;
+  /** Required. The file name including folder path, if applicable. The path should be relative to a local workspace (e.g. dataconnect/(schema|connector)/*.gql) and not an absolute path (e.g. /absolute/path/(schema|connector)/*.gql). */
+  path?: string;
 }
 export const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    path: S.optional(S.String),
     content: S.optional(S.String),
+    path: S.optional(S.String),
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
@@ -249,68 +263,54 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-/** Client caching settings of a connector. */
-export interface ClientCache {
-  /** Optional. A field that, if true, enables stricter validation on the connector source code to make sure the operation response shapes are suitable for client-side caching. This can include additional errors and warnings. For example, using the same alias for different fields is disallowed, as it may cause conflicts or confusion with normalized caching. (This field is off by default for compatibility, but enabling it is highly recommended to catch common caching pitfalls.) */
-  strictValidationEnabled?: boolean;
-  /** Optional. A field that, if true, means that responses served by this connector will include entityIds in GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as "normalized caching", if caching is enabled on the client. Each entityId is a stable key based on primary key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not contain sensitive information. */
-  entityIdIncluded?: boolean;
-}
-export const ClientCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    strictValidationEnabled: S.optional(S.Boolean),
-    entityIdIncluded: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ClientCache" }) as any as S.Schema<ClientCache>;
-
 /** Connector consists of a set of operations, i.e. queries and mutations. */
 export interface Connector {
-  /** Optional. Stores small amounts of arbitrary data. */
-  annotations?: StringMap;
   /** Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154) */
   etag?: string;
   /** Optional. Mutable human-readable name. 63 character limit. */
   displayName?: string;
+  /** Optional. The client cache settings of the connector. */
+  clientCache?: ClientCache;
+  /** Optional. Stores small amounts of arbitrary data. */
+  annotations?: StringMap;
+  /** Output only. System-assigned, unique identifier. */
+  uid?: string;
+  /** Output only. [Output only] Update time stamp. */
+  updateTime?: string;
+  /** Optional. Labels as key value pairs. */
+  labels?: StringMap;
   /** Output only. [Output only] Create time stamp. */
   createTime?: string;
   /** Output only. A field that if true, indicates that the system is working to compile and deploy the connector. */
   reconciling?: boolean;
-  /** Optional. Labels as key value pairs. */
-  labels?: StringMap;
   /** Identifier. The relative resource name of the connector, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
   name?: string;
-  /** Output only. [Output only] Update time stamp. */
-  updateTime?: string;
-  /** Output only. System-assigned, unique identifier. */
-  uid?: string;
   /** Required. The source files that comprise the connector. */
   source?: Source;
-  /** Optional. The client cache settings of the connector. */
-  clientCache?: ClientCache;
 }
 export const Connector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotations: S.optional(StringMap),
     etag: S.optional(S.String),
     displayName: S.optional(S.String),
+    clientCache: S.optional(ClientCache),
+    annotations: S.optional(StringMap),
+    uid: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
     createTime: S.optional(S.String),
     reconciling: S.optional(S.Boolean),
-    labels: S.optional(StringMap),
     name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
     source: S.optional(Source),
-    clientCache: S.optional(ClientCache),
   }),
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
 export interface CreateProjectsLocationsServicesConnectorsRequest {
+  /** Optional. If set, validate the request and preview the Connector, but do not actually create it. */
+  validateOnly?: boolean;
   /** Required. The ID to use for the connector, which will become the final component of the connector's resource name. */
   connectorId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If set, validate the request and preview the Connector, but do not actually create it. */
-  validateOnly?: boolean;
   /** Required. Value for parent. */
   parent: string;
   /** Request body */
@@ -319,9 +319,9 @@ export interface CreateProjectsLocationsServicesConnectorsRequest {
 export const CreateProjectsLocationsServicesConnectorsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       connectorId: S.optional(S.String.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       body: S.optional(Connector.pipe(T.HttpBody())),
     }).pipe(
@@ -349,11 +349,6 @@ export const HttpGraphql = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpGraphql" }) as any as S.Schema<HttpGraphql>;
 
-export type PostgreSqlSchemaMigrationEnum =
-  | "SQL_SCHEMA_MIGRATION_UNSPECIFIED"
-  | "MIGRATE_COMPATIBLE";
-export const PostgreSqlSchemaMigrationEnum = /*@__PURE__*/ S.String;
-
 /** Settings for CloudSQL instance configuration. */
 export interface CloudSqlInstance {
   /** Required. Name of the CloudSQL instance, in the format: ``` projects/{project}/locations/{location}/instances/{instance} ``` */
@@ -374,32 +369,37 @@ export type PostgreSqlSchemaValidationEnum =
   | "COMPATIBLE";
 export const PostgreSqlSchemaValidationEnum = /*@__PURE__*/ S.String;
 
+export type PostgreSqlSchemaMigrationEnum =
+  | "SQL_SCHEMA_MIGRATION_UNSPECIFIED"
+  | "MIGRATE_COMPATIBLE";
+export const PostgreSqlSchemaMigrationEnum = /*@__PURE__*/ S.String;
+
 /** Settings for PostgreSQL data source. */
 export interface PostgreSql {
-  /** Optional. Configure how to perform automatic PostgreSQL schema migration before deploying the FDC schema. This is an additive-only operation. */
-  schemaMigration?: PostgreSqlSchemaMigrationEnum | (string & {});
-  /** Optional. User-configured PostgreSQL schema. Defaults to "public" if not specified. */
-  schema?: string;
-  /** No Postgres data source is linked. If set, don't allow `database` and `schema_validation` to be configured. */
-  unlinked?: boolean;
   /** Cloud SQL configurations. */
   cloudSql?: CloudSqlInstance;
+  /** No Postgres data source is linked. If set, don't allow `database` and `schema_validation` to be configured. */
+  unlinked?: boolean;
+  /** Output only. Ephemeral is true if this SQL Connect service is served from temporary in-memory emulation of Postgres. While Cloud SQL is being provisioned, the SQL Connect service provides the ephemeral service to help developers get started. Once the Cloud SQL is provisioned, SQL Connect service will transfer its data on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour. The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted to earlier versions. */
+  ephemeral?: boolean;
   /** Required. Name of the PostgreSQL database. */
   database?: string;
   /** Optional. Configure how much PostgreSQL schema validation to perform against the live database before deploying the FDC schema. */
   schemaValidation?: PostgreSqlSchemaValidationEnum | (string & {});
-  /** Output only. Ephemeral is true if this SQL Connect service is served from temporary in-memory emulation of Postgres. While Cloud SQL is being provisioned, the SQL Connect service provides the ephemeral service to help developers get started. Once the Cloud SQL is provisioned, SQL Connect service will transfer its data on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour. The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted to earlier versions. */
-  ephemeral?: boolean;
+  /** Optional. Configure how to perform automatic PostgreSQL schema migration before deploying the FDC schema. This is an additive-only operation. */
+  schemaMigration?: PostgreSqlSchemaMigrationEnum | (string & {});
+  /** Optional. User-configured PostgreSQL schema. Defaults to "public" if not specified. */
+  schema?: string;
 }
 export const PostgreSql = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    schemaMigration: S.optional(PostgreSqlSchemaMigrationEnum),
-    schema: S.optional(S.String),
-    unlinked: S.optional(S.Boolean),
     cloudSql: S.optional(CloudSqlInstance),
+    unlinked: S.optional(S.Boolean),
+    ephemeral: S.optional(S.Boolean),
     database: S.optional(S.String),
     schemaValidation: S.optional(PostgreSqlSchemaValidationEnum),
-    ephemeral: S.optional(S.Boolean),
+    schemaMigration: S.optional(PostgreSqlSchemaMigrationEnum),
+    schema: S.optional(S.String),
   }),
 ).annotate({ identifier: "PostgreSql" }) as any as S.Schema<PostgreSql>;
 
@@ -424,66 +424,66 @@ export const DatasourceList = /*@__PURE__*/ S.Array(
 
 /** The application schema of a Firebase SQL Connect service. */
 export interface Firebasedataconnect_Schema {
-  /** Identifier. The relative resource name of the schema, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` Right now, the only supported schema is "main". */
-  name?: string;
   /** Output only. [Output only] Update time stamp. */
   updateTime?: string;
-  /** Output only. System-assigned, unique identifier. */
-  uid?: string;
   /** Optional. Labels as key value pairs. */
   labels?: StringMap;
+  /** Optional. Stores small amounts of arbitrary data. */
+  annotations?: StringMap;
+  /** Required. The data sources linked in the schema. */
+  datasources?: DatasourceList;
+  /** Output only. System-assigned, unique identifier. */
+  uid?: string;
   /** Optional. Mutable human-readable name. 63 character limit. */
   displayName?: string;
+  /** Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154) */
+  etag?: string;
+  /** Required. The source files that comprise the application schema. */
+  source?: Source;
+  /** Identifier. The relative resource name of the schema, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` Right now, the only supported schema is "main". */
+  name?: string;
   /** Output only. [Output only] Create time stamp. */
   createTime?: string;
   /** Output only. A field that if true, indicates that the system is working to compile and deploy the schema. */
   reconciling?: boolean;
-  /** Optional. Stores small amounts of arbitrary data. */
-  annotations?: StringMap;
-  /** Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154) */
-  etag?: string;
-  /** Required. The data sources linked in the schema. */
-  datasources?: DatasourceList;
-  /** Required. The source files that comprise the application schema. */
-  source?: Source;
 }
 export const Firebasedataconnect_Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     updateTime: S.optional(S.String),
-    uid: S.optional(S.String),
     labels: S.optional(StringMap),
+    annotations: S.optional(StringMap),
+    datasources: S.optional(DatasourceList),
+    uid: S.optional(S.String),
     displayName: S.optional(S.String),
+    etag: S.optional(S.String),
+    source: S.optional(Source),
+    name: S.optional(S.String),
     createTime: S.optional(S.String),
     reconciling: S.optional(S.Boolean),
-    annotations: S.optional(StringMap),
-    etag: S.optional(S.String),
-    datasources: S.optional(DatasourceList),
-    source: S.optional(Source),
   }),
 ).annotate({
   identifier: "Firebasedataconnect_Schema",
 }) as any as S.Schema<Firebasedataconnect_Schema>;
 
 export interface CreateProjectsLocationsServicesSchemasRequest {
-  /** Required. The ID to use for the schema, which will become the final component of the schema's resource name. Currently, only `main` is supported and any other schema ID will result in an error. */
-  schemaId?: string;
-  /** Required. Value for parent. */
-  parent: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
+  /** Required. Value for parent. */
+  parent: string;
   /** Optional. If set, validate the request and preview the Schema, but do not actually update it. */
   validateOnly?: boolean;
+  /** Required. The ID to use for the schema, which will become the final component of the schema's resource name. Currently, only `main` is supported and any other schema ID will result in an error. */
+  schemaId?: string;
   /** Request body */
   body?: Firebasedataconnect_Schema;
 }
 export const CreateProjectsLocationsServicesSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      schemaId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      schemaId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Firebasedataconnect_Schema.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -516,28 +516,28 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
 
 export interface DeleteProjectsLocationsServicesRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If true and the Service is not found, the request will succeed but no action will be taken on the server. */
-  allowMissing?: boolean;
-  /** Required. The name of the service to delete, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` */
-  name: string;
   /** Optional. The etag of the Service. If this is provided, it must match the server's etag. */
   etag?: string;
-  /** Optional. If set, validate the request and preview the Service, but do not actually delete it. */
-  validateOnly?: boolean;
   /** Optional. If set to true, any child resources (i.e. Schema, SchemaRevisions, Connectors, and ConnectorRevisions) will also be deleted. Otherwise, the request will only work if the Service has no child resources. */
   force?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. The name of the service to delete, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` */
+  name: string;
+  /** Optional. If true and the Service is not found, the request will succeed but no action will be taken on the server. */
+  allowMissing?: boolean;
+  /** Optional. If set, validate the request and preview the Service, but do not actually delete it. */
+  validateOnly?: boolean;
 }
 export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       etag: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -550,28 +550,28 @@ export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
 
 export interface DeleteProjectsLocationsServicesConnectorsRequest {
-  /** Optional. If set, validate the request and preview the Connector, but do not actually delete it. */
-  validateOnly?: boolean;
   /** Optional. The etag of the Connector. If this is provided, it must match the server's etag. */
   etag?: string;
+  /** Required. The name of the connector to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
+  name: string;
+  /** Optional. If true and the Connector is not found, the request will succeed but no action will be taken on the server. */
+  allowMissing?: boolean;
+  /** Optional. If set, validate the request and preview the Connector, but do not actually delete it. */
+  validateOnly?: boolean;
   /** Optional. If set to true, any child resources (i.e. ConnectorRevisions) will also be deleted. Otherwise, the request will only work if the Connector has no child resources. */
   force?: boolean;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If true and the Connector is not found, the request will succeed but no action will be taken on the server. */
-  allowMissing?: boolean;
-  /** Required. The name of the connector to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
-  name: string;
 }
 export const DeleteProjectsLocationsServicesConnectorsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       force: S.optional(S.Boolean.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -586,26 +586,26 @@ export const DeleteProjectsLocationsServicesConnectorsRequest =
 export interface DeleteProjectsLocationsServicesSchemasRequest {
   /** Optional. The etag of the Schema. If this is provided, it must match the server's etag. */
   etag?: string;
+  /** Required. The name of the schema to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` */
+  name: string;
+  /** Optional. If true and the Schema is not found, the request will succeed but no action will be taken on the server. */
+  allowMissing?: boolean;
   /** Optional. If set, validate the request and preview the Schema, but do not actually delete it. */
   validateOnly?: boolean;
   /** Optional. If set to true, any child resources (i.e. SchemaRevisions) will also be deleted. */
   force?: boolean;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If true and the Schema is not found, the request will succeed but no action will be taken on the server. */
-  allowMissing?: boolean;
-  /** Required. The name of the schema to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` */
-  name: string;
 }
 export const DeleteProjectsLocationsServicesSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       force: S.optional(S.Boolean.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -621,16 +621,16 @@ export const DeleteProjectsLocationsServicesSchemasRequest =
 export interface Impersonation {
   /** Evaluate the auth policy with a customized JWT auth token. Should follow the Firebase Auth token format. https://firebase.google.com/docs/rules/rules-and-auth For example: a verified user may have auth_claims of {"sub": , "email_verified": true} */
   authClaims?: DocumentMap;
-  /** Optional. If set, include debug details in GraphQL error extensions. */
-  includeDebugDetails?: boolean;
   /** Evaluate the auth policy as an unauthenticated request. Can only be set to true. */
   unauthenticated?: boolean;
+  /** Optional. If set, include debug details in GraphQL error extensions. */
+  includeDebugDetails?: boolean;
 }
 export const Impersonation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authClaims: S.optional(DocumentMap),
-    includeDebugDetails: S.optional(S.Boolean),
     unauthenticated: S.optional(S.Boolean),
+    includeDebugDetails: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Impersonation" }) as any as S.Schema<Impersonation>;
 
@@ -649,21 +649,21 @@ export const GraphqlRequestExtensions = /*@__PURE__*/ S.suspend(() =>
 
 /** The GraphQL request to Firebase SQL Connect. It strives to match the GraphQL over HTTP spec. https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#post */
 export interface GraphqlRequest {
-  /** Optional. Values for GraphQL variables provided in this request. */
-  variables?: DocumentMap;
+  /** Optional. The name of the GraphQL operation name. Required only if `query` contains multiple operations. See https://graphql.org/learn/queries/#operation-name. */
+  operationName?: string;
   /** Optional. Additional GraphQL request information. */
   extensions?: GraphqlRequestExtensions;
   /** Required. The GraphQL query document source. */
   query?: string;
-  /** Optional. The name of the GraphQL operation name. Required only if `query` contains multiple operations. See https://graphql.org/learn/queries/#operation-name. */
-  operationName?: string;
+  /** Optional. Values for GraphQL variables provided in this request. */
+  variables?: DocumentMap;
 }
 export const GraphqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variables: S.optional(DocumentMap),
+    operationName: S.optional(S.String),
     extensions: S.optional(GraphqlRequestExtensions),
     query: S.optional(S.String),
-    operationName: S.optional(S.String),
+    variables: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "GraphqlRequest" }) as any as S.Schema<GraphqlRequest>;
 
@@ -689,6 +689,41 @@ export const ExecuteGraphqlProjectsLocationsServicesRequest =
     identifier: "ExecuteGraphqlProjectsLocationsServicesRequest",
   }) as any as S.Schema<ExecuteGraphqlProjectsLocationsServicesRequest>;
 
+export type DocumentList = Array<unknown>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
+
+/** Workaround provides suggestions to address errors and warnings. */
+export interface Workaround {
+  /** Why would this workaround address the error and warning. */
+  reason?: string;
+  /** A suggested code snippet to fix the error and warning. */
+  replace?: string;
+  /** Description of this workaround. */
+  description?: string;
+}
+export const Workaround = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reason: S.optional(S.String),
+    replace: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "Workaround" }) as any as S.Schema<Workaround>;
+
+export type WorkaroundList = Array<Workaround>;
+export const WorkaroundList = /*@__PURE__*/ S.Array(
+  Workaround,
+) as any as S.Schema<WorkaroundList>;
+
+export type GraphqlErrorExtensionsWarningLevelEnum =
+  | "WARNING_LEVEL_UNKNOWN"
+  | "LOG_ONLY"
+  | "INTERACTIVE_ACK"
+  | "REQUIRE_ACK"
+  | "REQUIRE_FORCE";
+export const GraphqlErrorExtensionsWarningLevelEnum = /*@__PURE__*/ S.String;
+
 export type GraphqlErrorExtensionsCodeEnum =
   | "OK"
   | "CANCELLED"
@@ -709,65 +744,30 @@ export type GraphqlErrorExtensionsCodeEnum =
   | "DATA_LOSS";
 export const GraphqlErrorExtensionsCodeEnum = /*@__PURE__*/ S.String;
 
-export type GraphqlErrorExtensionsWarningLevelEnum =
-  | "WARNING_LEVEL_UNKNOWN"
-  | "LOG_ONLY"
-  | "INTERACTIVE_ACK"
-  | "REQUIRE_ACK"
-  | "REQUIRE_FORCE";
-export const GraphqlErrorExtensionsWarningLevelEnum = /*@__PURE__*/ S.String;
-
-/** Workaround provides suggestions to address errors and warnings. */
-export interface Workaround {
-  /** Why would this workaround address the error and warning. */
-  reason?: string;
-  /** Description of this workaround. */
-  description?: string;
-  /** A suggested code snippet to fix the error and warning. */
-  replace?: string;
-}
-export const Workaround = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.optional(S.String),
-    description: S.optional(S.String),
-    replace: S.optional(S.String),
-  }),
-).annotate({ identifier: "Workaround" }) as any as S.Schema<Workaround>;
-
-export type WorkaroundList = Array<Workaround>;
-export const WorkaroundList = /*@__PURE__*/ S.Array(
-  Workaround,
-) as any as S.Schema<WorkaroundList>;
-
 /** GraphqlErrorExtensions contains additional information of `GraphqlError`. */
 export interface GraphqlErrorExtensions {
-  /** The source file name where the error occurred. Included only for `UpdateSchema` and `UpdateConnector`, it corresponds to `File.path` of the provided `Source`. */
-  file?: string;
-  /** Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`. */
-  code?: GraphqlErrorExtensionsCodeEnum;
-  /** Warning level describes the severity and required action to suppress this warning when Firebase CLI run into it. */
-  warningLevel?: GraphqlErrorExtensionsWarningLevelEnum;
   /** More detailed error message to assist debugging. It contains application business logic that are inappropriate to leak publicly. In the emulator, SQL Connect API always includes it to assist local development and debugging. In the backend, ConnectorService always hides it. GraphqlService without impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in with `include_debug_details` in `GraphqlRequestExtensions`. */
   debugDetails?: string;
   /** Workarounds provide suggestions to address the compile errors or warnings. */
   workarounds?: WorkaroundList;
+  /** Warning level describes the severity and required action to suppress this warning when Firebase CLI run into it. */
+  warningLevel?: GraphqlErrorExtensionsWarningLevelEnum;
+  /** The source file name where the error occurred. Included only for `UpdateSchema` and `UpdateConnector`, it corresponds to `File.path` of the provided `Source`. */
+  file?: string;
+  /** Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`. */
+  code?: GraphqlErrorExtensionsCodeEnum;
 }
 export const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    file: S.optional(S.String),
-    code: S.optional(GraphqlErrorExtensionsCodeEnum),
-    warningLevel: S.optional(GraphqlErrorExtensionsWarningLevelEnum),
     debugDetails: S.optional(S.String),
     workarounds: S.optional(WorkaroundList),
+    warningLevel: S.optional(GraphqlErrorExtensionsWarningLevelEnum),
+    file: S.optional(S.String),
+    code: S.optional(GraphqlErrorExtensionsCodeEnum),
   }),
 ).annotate({
   identifier: "GraphqlErrorExtensions",
 }) as any as S.Schema<GraphqlErrorExtensions>;
-
-export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
 
 /** SourceLocation references a location in a GraphQL source. */
 export interface SourceLocation {
@@ -790,20 +790,20 @@ export const SourceLocationList = /*@__PURE__*/ S.Array(
 
 /** GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/draft/#sec-Errors Firebase SQL Connect API surfaces `GraphqlError` in various APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return Code.Invalid_Argument with a list of `GraphqlError` in error details. - Upon query compile error, `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql` return Code.OK with a list of `GraphqlError` in response body. - Upon query execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`, `ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and `ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in response body. */
 export interface GraphqlError {
-  /** Additional error information. */
-  extensions?: GraphqlErrorExtensions;
-  /** The result field which could not be populated due to error. Clients can use path to identify whether a null result is intentional or caused by a runtime error. It should be a list of string or index from the root of GraphQL query document. */
-  path?: DocumentList;
   /** The detailed error message. The message should help developer understand the underlying problem without leaking internal data. */
   message?: string;
+  /** The result field which could not be populated due to error. Clients can use path to identify whether a null result is intentional or caused by a runtime error. It should be a list of string or index from the root of GraphQL query document. */
+  path?: DocumentList;
+  /** Additional error information. */
+  extensions?: GraphqlErrorExtensions;
   /** The source locations where the error occurred. Locations should help developers and toolings identify the source of error quickly. Included in admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access access the underlying GQL source. */
   locations?: SourceLocationList;
 }
 export const GraphqlError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    extensions: S.optional(GraphqlErrorExtensions),
-    path: S.optional(DocumentList),
     message: S.optional(S.String),
+    path: S.optional(DocumentList),
+    extensions: S.optional(GraphqlErrorExtensions),
     locations: S.optional(SourceLocationList),
   }),
 ).annotate({ identifier: "GraphqlError" }) as any as S.Schema<GraphqlError>;
@@ -822,19 +822,19 @@ export const StringList = /*@__PURE__*/ S.Array(
 export interface DataConnectProperties {
   /** The path under response.data where the rest of the fields apply. Each element may be a string (field name) or number (array index). The root of response.data is denoted by the empty list `[]`. */
   path?: DocumentList;
-  /** The server-suggested duration before data under path is considered stale. */
-  maxAge?: string;
   /** A single Entity ID. Set if the path points to a single entity. */
   entityId?: string;
   /** A list of Entity IDs. Set if the path points to an array of entities. An ID is present for each element of the array at the corresponding index. */
   entityIds?: StringList;
+  /** The server-suggested duration before data under path is considered stale. */
+  maxAge?: string;
 }
 export const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(DocumentList),
-    maxAge: S.optional(S.String),
     entityId: S.optional(S.String),
     entityIds: S.optional(StringList),
+    maxAge: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DataConnectProperties",
@@ -860,18 +860,18 @@ export const GraphqlResponseExtensions = /*@__PURE__*/ S.suspend(() =>
 
 /** The GraphQL response from Firebase SQL Connect. It strives to match the GraphQL over HTTP spec. Note: Firebase SQL Connect always responds with `Content-Type: application/json`. https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#body */
 export interface GraphqlResponse {
-  /** The result of the execution of the requested operation. If an error was raised before execution begins, the data entry should not be present in the result. (a request error: https://spec.graphql.org/draft/#sec-Errors.Request-Errors) If an error was raised during the execution that prevented a valid response, the data entry in the response should be null. (a field error: https://spec.graphql.org/draft/#sec-Errors.Error-Result-Format) */
-  data?: DocumentMap;
   /** Errors of this response. If the data entry in the response is not present, the errors entry must be present. It conforms to https://spec.graphql.org/draft/#sec-Errors . */
   errors?: GraphqlErrorList;
   /** Additional response information. It conforms to https://spec.graphql.org/draft/#sec-Extensions . */
   extensions?: GraphqlResponseExtensions;
+  /** The result of the execution of the requested operation. If an error was raised before execution begins, the data entry should not be present in the result. (a request error: https://spec.graphql.org/draft/#sec-Errors.Request-Errors) If an error was raised during the execution that prevented a valid response, the data entry in the response should be null. (a field error: https://spec.graphql.org/draft/#sec-Errors.Error-Result-Format) */
+  data?: DocumentMap;
 }
 export const GraphqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(DocumentMap),
     errors: S.optional(GraphqlErrorList),
     extensions: S.optional(GraphqlResponseExtensions),
+    data: S.optional(DocumentMap),
   }),
 ).annotate({
   identifier: "GraphqlResponse",
@@ -901,15 +901,15 @@ export const ExecuteGraphqlReadProjectsLocationsServicesRequest =
 
 /** The ExecuteMutation request to Firebase SQL Connect. */
 export interface ExecuteMutationRequest {
-  /** Optional. Values for GraphQL variables provided in this request. */
-  variables?: DocumentMap;
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
   operationName?: string;
+  /** Optional. Values for GraphQL variables provided in this request. */
+  variables?: DocumentMap;
 }
 export const ExecuteMutationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variables: S.optional(DocumentMap),
     operationName: S.optional(S.String),
+    variables: S.optional(DocumentMap),
   }),
 ).annotate({
   identifier: "ExecuteMutationRequest",
@@ -958,15 +958,15 @@ export const ExecuteMutationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The ExecuteQuery request to Firebase SQL Connect. */
 export interface ExecuteQueryRequest {
-  /** Optional. Values for GraphQL variables provided in this request. */
-  variables?: DocumentMap;
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
   operationName?: string;
+  /** Optional. Values for GraphQL variables provided in this request. */
+  variables?: DocumentMap;
 }
 export const ExecuteQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    variables: S.optional(DocumentMap),
     operationName: S.optional(S.String),
+    variables: S.optional(DocumentMap),
   }),
 ).annotate({
   identifier: "ExecuteQueryRequest",
@@ -1020,15 +1020,15 @@ export const Firebasedataconnect_SchemaList = /*@__PURE__*/ S.Array(
 
 /** Request message for GenerateQuery. */
 export interface GenerateQueryRequest {
-  /** Optional. The user's locally defined FDC Schema(s). If not defined, the backend will fetch the user's deployed schema. */
-  schemas?: Firebasedataconnect_SchemaList;
   /** Required. The natural language description of the desired query. Example: "Find all users who signed up in the last 7 days." */
   prompt?: string;
+  /** Optional. The user's locally defined FDC Schema(s). If not defined, the backend will fetch the user's deployed schema. */
+  schemas?: Firebasedataconnect_SchemaList;
 }
 export const GenerateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    schemas: S.optional(Firebasedataconnect_SchemaList),
     prompt: S.optional(S.String),
+    schemas: S.optional(Firebasedataconnect_SchemaList),
   }),
 ).annotate({
   identifier: "GenerateQueryRequest",
@@ -1056,6 +1056,45 @@ export const GenerateQueryProjectsLocationsServicesRequest =
     identifier: "GenerateQueryProjectsLocationsServicesRequest",
   }) as any as S.Schema<GenerateQueryProjectsLocationsServicesRequest>;
 
+/** A chunk of conversational text. */
+export interface TextChunk {
+  /** Required. The text content string. */
+  text?: string;
+}
+export const TextChunk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    text: S.optional(S.String),
+  }),
+).annotate({ identifier: "TextChunk" }) as any as S.Schema<TextChunk>;
+
+/** A chunk of code. */
+export interface CodeChunk {
+  /** Required. The code content string. */
+  code?: string;
+  /** Optional. Specifies the language if we expand support beyond GraphQL (e.g., SQL or JSON) The standard is BCP-47 language code. */
+  languageCode?: string;
+}
+export const CodeChunk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    languageCode: S.optional(S.String),
+  }),
+).annotate({ identifier: "CodeChunk" }) as any as S.Schema<CodeChunk>;
+
+/** Represents a chunk of content. */
+export interface Part {
+  /** Optional. A chunk of text. */
+  textChunk?: TextChunk;
+  /** Optional. A chunk of code. */
+  codeChunk?: CodeChunk;
+}
+export const Part = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    textChunk: S.optional(TextChunk),
+    codeChunk: S.optional(CodeChunk),
+  }),
+).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
+
 export type GenerationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ANALYZING_CODE"
@@ -1079,56 +1118,17 @@ export const GenerationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerationStatus",
 }) as any as S.Schema<GenerationStatus>;
 
-/** A chunk of code. */
-export interface CodeChunk {
-  /** Required. The code content string. */
-  code?: string;
-  /** Optional. Specifies the language if we expand support beyond GraphQL (e.g., SQL or JSON) The standard is BCP-47 language code. */
-  languageCode?: string;
-}
-export const CodeChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    languageCode: S.optional(S.String),
-  }),
-).annotate({ identifier: "CodeChunk" }) as any as S.Schema<CodeChunk>;
-
-/** A chunk of conversational text. */
-export interface TextChunk {
-  /** Required. The text content string. */
-  text?: string;
-}
-export const TextChunk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-  }),
-).annotate({ identifier: "TextChunk" }) as any as S.Schema<TextChunk>;
-
-/** Represents a chunk of content. */
-export interface Part {
-  /** Optional. A chunk of code. */
-  codeChunk?: CodeChunk;
-  /** Optional. A chunk of text. */
-  textChunk?: TextChunk;
-}
-export const Part = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeChunk: S.optional(CodeChunk),
-    textChunk: S.optional(TextChunk),
-  }),
-).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
-
 /** Output for streaming generate query requests */
 export interface GenerateQueryResponse {
-  /** Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step). */
-  status?: GenerationStatus;
   /** Required. The content from the current conversational turn. */
   part?: Part;
+  /** Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step). */
+  status?: GenerationStatus;
 }
 export const GenerateQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status: S.optional(GenerationStatus),
     part: S.optional(Part),
+    status: S.optional(GenerationStatus),
   }),
 ).annotate({
   identifier: "GenerateQueryResponse",
@@ -1171,15 +1171,15 @@ export const GenerateSchemaProjectsLocationsServicesRequest =
 
 /** Output for streaming generate schema requests */
 export interface GenerateSchemaResponse {
-  /** The content from the current conversational turn. */
-  part?: Part;
   /** Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step). */
   status?: GenerationStatus;
+  /** The content from the current conversational turn. */
+  part?: Part;
 }
 export const GenerateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    part: S.optional(Part),
     status: S.optional(GenerationStatus),
+    part: S.optional(Part),
   }),
 ).annotate({
   identifier: "GenerateSchemaResponse",
@@ -1205,24 +1205,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
+    locationId: S.optional(S.String),
     labels: S.optional(StringMap),
     name: S.optional(S.String),
-    locationId: S.optional(S.String),
-    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -1303,18 +1303,18 @@ export const GetProjectsLocationsServicesSchemasRequest =
 
 /** The Impersonate request to Firebase SQL Connect. */
 export interface ImpersonateRequest {
-  /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
-  operationName?: string;
   /** Optional. Values for GraphQL variables provided in this request. */
   variables?: DocumentMap;
   /** Optional. Additional GraphQL request information. */
   extensions?: GraphqlRequestExtensions;
+  /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
+  operationName?: string;
 }
 export const ImpersonateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operationName: S.optional(S.String),
     variables: S.optional(DocumentMap),
     extensions: S.optional(GraphqlRequestExtensions),
+    operationName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ImpersonateRequest",
@@ -1387,24 +1387,24 @@ export const IntrospectGraphqlProjectsLocationsServicesRequest =
   }) as any as S.Schema<IntrospectGraphqlProjectsLocationsServicesRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1423,40 +1423,40 @@ export const LocationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: LocationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
   }),
 ).annotate({
   identifier: "ListLocationsResponse",
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page token. */
+  pageToken?: string;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list page size. */
   pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The standard list filter. */
   filter?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1477,41 +1477,41 @@ export const OperationList = /*@__PURE__*/ S.Array(
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
-    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsServicesRequest {
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListServices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListServices` must match the call that provided the page token. */
-  pageToken?: string;
   /** Required. Value of parent. */
   parent: string;
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
+  /** Optional. A page token, received from a previous `ListServices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListServices` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Optional. Filtering results. */
   filter?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
 }
 export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1530,43 +1530,43 @@ export const ServiceList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing Services. */
 export interface ListServicesResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: StringList;
   /** The list of Services. */
   services?: ServiceList;
+  /** Locations that could not be reached. */
+  unreachable?: StringList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
     services: S.optional(ServiceList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListServicesResponse",
 }) as any as S.Schema<ListServicesResponse>;
 
 export interface ListProjectsLocationsServicesConnectorsRequest {
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
   /** Optional. Filtering results. */
   filter?: string;
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
-  /** Required. Value of parent. */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectors` must match the call that provided the page token. */
   pageToken?: string;
+  /** Required. Value of parent. */
+  parent: string;
 }
 export const ListProjectsLocationsServicesConnectorsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1585,43 +1585,43 @@ export const ConnectorList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing Connectors. By default, `connectors.source` will not be included in the response. To specify the fields included in the response, the response field mask can be provided by using the query parameter `$fields` or the header `X-Goog-FieldMask`. */
 export interface ListConnectorsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: StringList;
   /** The list of Connectors. */
   connectors?: ConnectorList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
     connectors: S.optional(ConnectorList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListConnectorsResponse",
 }) as any as S.Schema<ListConnectorsResponse>;
 
 export interface ListProjectsLocationsServicesSchemasRequest {
-  /** Optional. Filtering results. */
-  filter?: string;
-  /** Required. Value of parent. */
-  parent: string;
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** Optional. A page token, received from a previous `ListSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemas` must match the call that provided the page token. */
   pageToken?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Filtering results. */
+  filter?: string;
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+  /** Required. Value of parent. */
+  parent: string;
 }
 export const ListProjectsLocationsServicesSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1635,45 +1635,45 @@ export const ListProjectsLocationsServicesSchemasRequest =
 
 /** Message for response to listing Schemas. By default, `schemas.source` will not be included in the response. To specify the fields included in the response, the response field mask can be provided by using the query parameter `$fields` or the header `X-Goog-FieldMask`. */
 export interface ListSchemasResponse {
-  /** The list of Schemas. */
-  schemas?: Firebasedataconnect_SchemaList;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: StringList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** The list of Schemas. */
+  schemas?: Firebasedataconnect_SchemaList;
 }
 export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    schemas: S.optional(Firebasedataconnect_SchemaList),
-    nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
+    schemas: S.optional(Firebasedataconnect_SchemaList),
   }),
 ).annotate({
   identifier: "ListSchemasResponse",
 }) as any as S.Schema<ListSchemasResponse>;
 
 export interface PatchProjectsLocationsServicesRequest {
-  /** Optional. If set, validate the request and preview the Service, but do not actually update it. */
-  validateOnly?: boolean;
-  /** Identifier. The relative resource name of the Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` Note that the service ID is specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source connections. */
-  name: string;
   /** Optional. Field mask is used to specify the fields to be overwritten in the Service resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
+  /** Identifier. The relative resource name of the Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` Note that the service ID is specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source connections. */
+  name: string;
   /** Optional. If true and the Service is not found, a new Service will be created. In this case, `update_mask` is ignored. */
   allowMissing?: boolean;
+  /** Optional. If set, validate the request and preview the Service, but do not actually update it. */
+  validateOnly?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
   body?: Service;
 }
 export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Service.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1689,14 +1689,14 @@ export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 export interface PatchProjectsLocationsServicesConnectorsRequest {
   /** Identifier. The relative resource name of the connector, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
   name: string;
-  /** Optional. Field mask is used to specify the fields to be overwritten in the Connector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Optional. If true and the Connector is not found, a new Connector will be created. In this case, `update_mask` is ignored. */
   allowMissing?: boolean;
   /** Optional. If set, validate the request and preview the Connector, but do not actually update it. */
   validateOnly?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. Field mask is used to specify the fields to be overwritten in the Connector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
   /** Request body */
   body?: Connector;
 }
@@ -1704,10 +1704,10 @@ export const PatchProjectsLocationsServicesConnectorsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
       allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      requestId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Connector.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1721,27 +1721,27 @@ export const PatchProjectsLocationsServicesConnectorsRequest =
   }) as any as S.Schema<PatchProjectsLocationsServicesConnectorsRequest>;
 
 export interface PatchProjectsLocationsServicesSchemasRequest {
-  /** Optional. If set, validate the request and preview the Schema, but do not actually update it. */
-  validateOnly?: boolean;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Optional. If true and the Schema is not found, a new Schema will be created. In this case, `update_mask` is ignored. */
-  allowMissing?: boolean;
-  /** Optional. Field mask is used to specify the fields to be overwritten in the Schema resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
   /** Identifier. The relative resource name of the schema, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` Right now, the only supported schema is "main". */
   name: string;
+  /** Optional. If true and the Schema is not found, a new Schema will be created. In this case, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Optional. If set, validate the request and preview the Schema, but do not actually update it. */
+  validateOnly?: boolean;
+  /** Optional. Field mask is used to specify the fields to be overwritten in the Schema resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
   /** Request body */
   body?: Firebasedataconnect_Schema;
 }
 export const PatchProjectsLocationsServicesSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       requestId: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Firebasedataconnect_Schema.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

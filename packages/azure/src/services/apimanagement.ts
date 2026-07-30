@@ -660,7 +660,7 @@ export const SamplingSettingsSamplingType = /*@__PURE__*/ S.String;
 /** Sampling settings for Diagnostic. */
 export interface SamplingSettings {
   /** Sampling type. */
-  samplingType?: SamplingSettingsSamplingType;
+  samplingType?: SamplingSettingsSamplingType | (string & {});
   /** Rate of sampling for fixed-rate sampling. */
   percentage?: number;
 }
@@ -794,7 +794,7 @@ export const DiagnosticContractPropertiesOperationNameFormat =
 /** Diagnostic Entity Properties */
 export interface DiagnosticContractProperties {
   /** Specifies for what type of messages sampling settings should not apply. */
-  alwaysLog?: DiagnosticContractPropertiesAlwaysLog;
+  alwaysLog?: DiagnosticContractPropertiesAlwaysLog | (string & {});
   /** Resource Id of a target logger. */
   loggerId: string;
   /** Sampling settings for Diagnostic. */
@@ -7420,7 +7420,7 @@ export interface ApiOperationPolicyCreateOrUpdateRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: ApiOperationPolicyCreateOrUpdateRequestPolicyId;
+  policyId: ApiOperationPolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -7483,7 +7483,7 @@ export interface ApiOperationPolicyDeleteRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: ApiOperationPolicyDeleteRequestPolicyId;
+  policyId: ApiOperationPolicyDeleteRequestPolicyId | (string & {});
 }
 export const ApiOperationPolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7530,7 +7530,7 @@ export interface ApiOperationPolicyGetRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: ApiOperationPolicyGetRequestPolicyId;
+  policyId: ApiOperationPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: ApiOperationPolicyGetRequestFormat | (string & {});
 }
@@ -7775,7 +7775,7 @@ export interface ApiPolicyCreateOrUpdateRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: ApiPolicyCreateOrUpdateRequestPolicyId;
+  policyId: ApiPolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -7833,7 +7833,7 @@ export interface ApiPolicyDeleteRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: ApiPolicyDeleteRequestPolicyId;
+  policyId: ApiPolicyDeleteRequestPolicyId | (string & {});
 }
 export const ApiPolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7877,7 +7877,7 @@ export interface ApiPolicyGetRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: ApiPolicyGetRequestPolicyId;
+  policyId: ApiPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: ApiPolicyGetRequestFormat | (string & {});
 }
@@ -10219,7 +10219,9 @@ export const AuthorizationError = /*@__PURE__*/ S.suspend(() =>
 /** Authorization details. */
 export interface AuthorizationContractProperties {
   /** Authorization type options */
-  authorizationType?: AuthorizationContractPropertiesAuthorizationType;
+  authorizationType?:
+    | AuthorizationContractPropertiesAuthorizationType
+    | (string & {});
   /** OAuth2 grant type options */
   oauth2grantType?:
     | AuthorizationContractPropertiesOauth2grantType
@@ -14512,7 +14514,9 @@ export const GatewayApiCreateOrUpdateRequestPropertiesProvisioningState =
 /** Association entity contract properties. */
 export interface GatewayApiCreateOrUpdateRequestProperties {
   /** Provisioning state. */
-  provisioningState?: GatewayApiCreateOrUpdateRequestPropertiesProvisioningState;
+  provisioningState?:
+    | GatewayApiCreateOrUpdateRequestPropertiesProvisioningState
+    | (string & {});
 }
 export const GatewayApiCreateOrUpdateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -15538,8 +15542,9 @@ export const GatewayListDebugCredentialsRequestPurposesItem =
   /*@__PURE__*/ S.String;
 
 /** Purposes of debug credential. */
-export type GatewayListDebugCredentialsRequestPurposesList =
-  Array<GatewayListDebugCredentialsRequestPurposesItem>;
+export type GatewayListDebugCredentialsRequestPurposesList = Array<
+  GatewayListDebugCredentialsRequestPurposesItem | (string & {})
+>;
 export const GatewayListDebugCredentialsRequestPurposesList =
   /*@__PURE__*/ S.Array(
     GatewayListDebugCredentialsRequestPurposesItem,
@@ -16318,7 +16323,9 @@ export interface GraphQLApiResolverPolicyCreateOrUpdateRequest {
   /** Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance. */
   resolverId: string;
   /** The identifier of the Policy. */
-  policyId: GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId;
+  policyId:
+    | GraphQLApiResolverPolicyCreateOrUpdateRequestPolicyId
+    | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -16384,7 +16391,7 @@ export interface GraphQLApiResolverPolicyDeleteRequest {
   /** Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance. */
   resolverId: string;
   /** The identifier of the Policy. */
-  policyId: GraphQLApiResolverPolicyDeleteRequestPolicyId;
+  policyId: GraphQLApiResolverPolicyDeleteRequestPolicyId | (string & {});
 }
 export const GraphQLApiResolverPolicyDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -16433,7 +16440,7 @@ export interface GraphQLApiResolverPolicyGetRequest {
   /** Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance. */
   resolverId: string;
   /** The identifier of the Policy. */
-  policyId: GraphQLApiResolverPolicyGetRequestPolicyId;
+  policyId: GraphQLApiResolverPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: GraphQLApiResolverPolicyGetRequestFormat | (string & {});
 }
@@ -20466,7 +20473,9 @@ export interface PerformConnectivityCheckAsyncRequest {
   /** The connectivity check operation destination. */
   destination: PerformConnectivityCheckAsyncRequestDestination;
   /** The IP version to be used. Only IPv4 is supported for now. */
-  preferredIPVersion?: PerformConnectivityCheckAsyncRequestPreferredIPVersion;
+  preferredIPVersion?:
+    | PerformConnectivityCheckAsyncRequestPreferredIPVersion
+    | (string & {});
   /** The request's protocol. Specific protocol configuration can be available based on this selection. The specified destination address must be coherent with this value. */
   protocol?: PerformConnectivityCheckAsyncRequestProtocol | (string & {});
   /** Protocol-specific configuration. */
@@ -20656,7 +20665,7 @@ export interface PolicyCreateOrUpdateRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Policy. */
-  policyId: PolicyCreateOrUpdateRequestPolicyId;
+  policyId: PolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -20711,7 +20720,7 @@ export interface PolicyDeleteRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Policy. */
-  policyId: PolicyDeleteRequestPolicyId;
+  policyId: PolicyDeleteRequestPolicyId | (string & {});
 }
 export const PolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21210,7 +21219,7 @@ export interface PolicyGetRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Policy. */
-  policyId: PolicyGetRequestPolicyId;
+  policyId: PolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: PolicyGetRequestFormat | (string & {});
 }
@@ -23945,7 +23954,7 @@ export interface ProductPolicyCreateOrUpdateRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: ProductPolicyCreateOrUpdateRequestPolicyId;
+  policyId: ProductPolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -24003,7 +24012,7 @@ export interface ProductPolicyDeleteRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: ProductPolicyDeleteRequestPolicyId;
+  policyId: ProductPolicyDeleteRequestPolicyId | (string & {});
 }
 export const ProductPolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -24047,7 +24056,7 @@ export interface ProductPolicyGetRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: ProductPolicyGetRequestPolicyId;
+  policyId: ProductPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: ProductPolicyGetRequestFormat | (string & {});
 }
@@ -28311,7 +28320,9 @@ export interface TenantConfigurationDeployRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Git Configuration Operation. */
-  configurationName: TenantConfigurationDeployRequestConfigurationName;
+  configurationName:
+    | TenantConfigurationDeployRequestConfigurationName
+    | (string & {});
   /** Deploy Configuration Parameter contract properties. */
   properties?: DeployConfigurationParameterProperties;
 }
@@ -28370,7 +28381,9 @@ export interface TenantConfigurationGetSyncStateRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Git Configuration Operation. */
-  configurationName: TenantConfigurationGetSyncStateRequestConfigurationName;
+  configurationName:
+    | TenantConfigurationGetSyncStateRequestConfigurationName
+    | (string & {});
 }
 export const TenantConfigurationGetSyncStateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -28478,7 +28491,9 @@ export interface TenantConfigurationSaveRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Git Configuration Operation. */
-  configurationName: TenantConfigurationSaveRequestConfigurationName;
+  configurationName:
+    | TenantConfigurationSaveRequestConfigurationName
+    | (string & {});
   /** Properties of the Save Configuration Parameters. */
   properties?: SaveConfigurationParameterProperties;
 }
@@ -28537,7 +28552,9 @@ export interface TenantConfigurationValidateRequest {
   /** The name of the API Management service. */
   serviceName: string;
   /** The identifier of the Git Configuration Operation. */
-  configurationName: TenantConfigurationValidateRequestConfigurationName;
+  configurationName:
+    | TenantConfigurationValidateRequestConfigurationName
+    | (string & {});
   /** Deploy Configuration Parameter contract properties. */
   properties?: DeployConfigurationParameterProperties;
 }
@@ -29679,7 +29696,7 @@ export const DiagnosticContractUpdatePropertiesOperationNameFormat =
 /** Diagnostic Entity Properties */
 export interface DiagnosticContractUpdateProperties {
   /** Specifies for what type of messages sampling settings should not apply. */
-  alwaysLog?: DiagnosticContractUpdatePropertiesAlwaysLog;
+  alwaysLog?: DiagnosticContractUpdatePropertiesAlwaysLog | (string & {});
   /** Resource Id of a target logger. */
   loggerId?: string;
   /** Sampling settings for Diagnostic. */
@@ -30147,7 +30164,9 @@ export interface WorkspaceApiOperationPolicyCreateOrUpdateRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId;
+  policyId:
+    | WorkspaceApiOperationPolicyCreateOrUpdateRequestPolicyId
+    | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -30216,7 +30235,7 @@ export interface WorkspaceApiOperationPolicyDeleteRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiOperationPolicyDeleteRequestPolicyId;
+  policyId: WorkspaceApiOperationPolicyDeleteRequestPolicyId | (string & {});
 }
 export const WorkspaceApiOperationPolicyDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -30270,7 +30289,7 @@ export interface WorkspaceApiOperationPolicyGetRequest {
   /** Operation identifier within an API. Must be unique in the current API Management service instance. */
   operationId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiOperationPolicyGetRequestPolicyId;
+  policyId: WorkspaceApiOperationPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: WorkspaceApiOperationPolicyGetRequestFormat | (string & {});
 }
@@ -30459,7 +30478,7 @@ export interface WorkspaceApiPolicyCreateOrUpdateRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiPolicyCreateOrUpdateRequestPolicyId;
+  policyId: WorkspaceApiPolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -30522,7 +30541,7 @@ export interface WorkspaceApiPolicyDeleteRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiPolicyDeleteRequestPolicyId;
+  policyId: WorkspaceApiPolicyDeleteRequestPolicyId | (string & {});
 }
 export const WorkspaceApiPolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -30569,7 +30588,7 @@ export interface WorkspaceApiPolicyGetRequest {
   /** API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number. */
   apiId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceApiPolicyGetRequestPolicyId;
+  policyId: WorkspaceApiPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: WorkspaceApiPolicyGetRequestFormat | (string & {});
 }
@@ -34514,7 +34533,7 @@ export interface WorkspacePolicyCreateOrUpdateRequest {
   /** Workspace identifier. Must be unique in the current API Management service instance. */
   workspaceId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspacePolicyCreateOrUpdateRequestPolicyId;
+  policyId: WorkspacePolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -34574,7 +34593,7 @@ export interface WorkspacePolicyDeleteRequest {
   /** Workspace identifier. Must be unique in the current API Management service instance. */
   workspaceId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspacePolicyDeleteRequestPolicyId;
+  policyId: WorkspacePolicyDeleteRequestPolicyId | (string & {});
 }
 export const WorkspacePolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -34905,7 +34924,7 @@ export interface WorkspacePolicyGetRequest {
   /** Workspace identifier. Must be unique in the current API Management service instance. */
   workspaceId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspacePolicyGetRequestPolicyId;
+  policyId: WorkspacePolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: WorkspacePolicyGetRequestFormat | (string & {});
 }
@@ -35692,7 +35711,7 @@ export interface WorkspaceProductPolicyCreateOrUpdateRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceProductPolicyCreateOrUpdateRequestPolicyId;
+  policyId: WorkspaceProductPolicyCreateOrUpdateRequestPolicyId | (string & {});
   /** Properties of the Policy. */
   properties?: PolicyContractProperties;
 }
@@ -35758,7 +35777,7 @@ export interface WorkspaceProductPolicyDeleteRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceProductPolicyDeleteRequestPolicyId;
+  policyId: WorkspaceProductPolicyDeleteRequestPolicyId | (string & {});
 }
 export const WorkspaceProductPolicyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -35805,7 +35824,7 @@ export interface WorkspaceProductPolicyGetRequest {
   /** Product identifier. Must be unique in the current API Management service instance. */
   productId: string;
   /** The identifier of the Policy. */
-  policyId: WorkspaceProductPolicyGetRequestPolicyId;
+  policyId: WorkspaceProductPolicyGetRequestPolicyId | (string & {});
   /** Policy Export Format. */
   format?: WorkspaceProductPolicyGetRequestFormat | (string & {});
 }

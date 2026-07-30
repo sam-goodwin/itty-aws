@@ -760,7 +760,7 @@ export const LocalTimestampTimeZoneOffset = /*@__PURE__*/ S.suspend(() =>
 /** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
 export interface LocalTimestamp {
   /** An enum that represents the format of the local timestamp property that needs to be set. */
-  format?: LocalTimestampFormat;
+  format?: LocalTimestampFormat | (string & {});
   /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
   timeZoneOffset?: LocalTimestampTimeZoneOffset;
 }

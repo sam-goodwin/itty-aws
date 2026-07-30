@@ -53,7 +53,7 @@ export const DashboardPartMetadataType = /*@__PURE__*/ S.String;
 
 /** A dashboard part metadata. */
 export interface DashboardPartMetadata {
-  type: DashboardPartMetadataType;
+  type: DashboardPartMetadataType | (string & {});
 }
 export const DashboardPartMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

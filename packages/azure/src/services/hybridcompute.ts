@@ -584,7 +584,7 @@ export const GatewayPropertiesInputAllowedFeaturesList = /*@__PURE__*/ S.Array(
 /** Describes the properties of a Gateway Profile. */
 export interface GatewayPropertiesInput {
   /** The type of the Gateway resource. */
-  gatewayType?: GatewayType;
+  gatewayType?: GatewayType | (string & {});
   /** Specifies the list of features that are enabled for this Gateway. */
   allowedFeatures?: GatewayPropertiesInputAllowedFeaturesList;
 }
@@ -1328,7 +1328,9 @@ export interface LicenseProfilesCreateOrUpdateRequest {
   /** The name of the hybrid machine. */
   machineName: string;
   /** The name of the license profile. */
-  licenseProfileName: LicenseProfilesCreateOrUpdateRequestLicenseProfileName;
+  licenseProfileName:
+    | LicenseProfilesCreateOrUpdateRequestLicenseProfileName
+    | (string & {});
   /** Resource tags. */
   tags?: LicenseProfilesCreateOrUpdateRequestTagsMap;
   /** The geo-location where the resource lives */
@@ -1718,7 +1720,9 @@ export interface LicenseProfilesDeleteRequest {
   /** The name of the hybrid machine. */
   machineName: string;
   /** The name of the license profile. */
-  licenseProfileName: LicenseProfilesDeleteRequestLicenseProfileName;
+  licenseProfileName:
+    | LicenseProfilesDeleteRequestLicenseProfileName
+    | (string & {});
 }
 export const LicenseProfilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1759,7 +1763,9 @@ export interface LicenseProfilesGetRequest {
   /** The name of the hybrid machine. */
   machineName: string;
   /** The name of the license profile. */
-  licenseProfileName: LicenseProfilesGetRequestLicenseProfileName;
+  licenseProfileName:
+    | LicenseProfilesGetRequestLicenseProfileName
+    | (string & {});
 }
 export const LicenseProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2091,7 +2097,9 @@ export interface LicenseProfilesUpdateRequest {
   /** The name of the hybrid machine. */
   machineName: string;
   /** The name of the license profile. */
-  licenseProfileName: LicenseProfilesUpdateRequestLicenseProfileName;
+  licenseProfileName:
+    | LicenseProfilesUpdateRequestLicenseProfileName
+    | (string & {});
   /** Resource tags */
   tags?: LicenseProfilesUpdateRequestTagsMap;
   /** Describe the Update properties of a license profile. */
@@ -2282,7 +2290,7 @@ export interface LicensePropertiesInput {
   /** Describes the tenant id. */
   tenantId?: string;
   /** The type of the license resource. */
-  licenseType?: LicenseType;
+  licenseType?: LicenseType | (string & {});
   /** Describes the properties of a License. */
   licenseDetails?: LicenseDetailsInput;
 }
@@ -2652,7 +2660,7 @@ export const LicenseUpdatePropertiesLicenseDetails = /*@__PURE__*/ S.suspend(
 /** Describes the Update properties of a License Profile. */
 export interface LicenseUpdateProperties {
   /** The type of the license resource. */
-  licenseType?: LicenseType;
+  licenseType?: LicenseType | (string & {});
   licenseDetails?: LicenseUpdatePropertiesLicenseDetails;
 }
 export const LicenseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
@@ -4496,7 +4504,7 @@ export const MachinesCreateOrUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 /** Identity for the resource. */
 export interface MachinesCreateOrUpdateRequestIdentity {
   /** The identity type. */
-  type?: MachinesCreateOrUpdateRequestIdentityType;
+  type?: MachinesCreateOrUpdateRequestIdentityType | (string & {});
 }
 export const MachinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
   () =>
@@ -5432,7 +5440,7 @@ export interface MachinesGetRequest {
   /** The name of the hybrid machine. */
   machineName: string;
   /** The expand expression to apply on the operation. */
-  _expand?: MachinesGetRequestExpand;
+  _expand?: MachinesGetRequestExpand | (string & {});
 }
 export const MachinesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5978,7 +5986,7 @@ export const MachinesUpdateRequestIdentityType = /*@__PURE__*/ S.String;
 /** Identity for the resource. */
 export interface MachinesUpdateRequestIdentity {
   /** The identity type. */
-  type?: MachinesUpdateRequestIdentityType;
+  type?: MachinesUpdateRequestIdentityType | (string & {});
 }
 export const MachinesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

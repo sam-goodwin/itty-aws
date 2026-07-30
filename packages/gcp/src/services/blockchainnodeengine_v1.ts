@@ -104,18 +104,6 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type BlockchainNodeStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "DELETING"
-  | "RUNNING"
-  | "ERROR"
-  | "UPDATING"
-  | "REPAIRING"
-  | "RECONCILING"
-  | "SYNCING";
-export const BlockchainNodeStateEnum = /*@__PURE__*/ S.String;
-
 /** Contains endpoint information through which to interact with a blockchain node. */
 export interface EndpointInfo {
   /** Output only. The assigned URL for the node JSON-RPC API endpoint. */
@@ -132,52 +120,29 @@ export const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The connection information through which to interact with a blockchain node. */
 export interface ConnectionInfo {
-  /** Output only. The endpoint information through which to interact with a blockchain node. */
-  endpointInfo?: EndpointInfo;
   /** Output only. A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name} */
   serviceAttachment?: string;
+  /** Output only. The endpoint information through which to interact with a blockchain node. */
+  endpointInfo?: EndpointInfo;
 }
 export const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    endpointInfo: S.optional(EndpointInfo),
     serviceAttachment: S.optional(S.String),
+    endpointInfo: S.optional(EndpointInfo),
   }),
 ).annotate({ identifier: "ConnectionInfo" }) as any as S.Schema<ConnectionInfo>;
 
-export type BlockchainNodeBlockchainTypeEnum =
-  | "BLOCKCHAIN_TYPE_UNSPECIFIED"
-  | "ETHEREUM";
-export const BlockchainNodeBlockchainTypeEnum = /*@__PURE__*/ S.String;
-
-export type EthereumDetailsConsensusClientEnum =
-  | "CONSENSUS_CLIENT_UNSPECIFIED"
-  | "LIGHTHOUSE"
-  | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
-export const EthereumDetailsConsensusClientEnum = /*@__PURE__*/ S.String;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
-export interface ValidatorConfig {
-  /** Immutable. When true, deploys a GCP-managed validator client alongside the beacon client. */
-  managedValidatorClient?: boolean;
-  /** An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced. */
-  beaconFeeRecipient?: string;
-  /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
-  mevRelayUrls?: StringList;
-}
-export const ValidatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedValidatorClient: S.optional(S.Boolean),
-    beaconFeeRecipient: S.optional(S.String),
-    mevRelayUrls: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ValidatorConfig",
-}) as any as S.Schema<ValidatorConfig>;
+export type BlockchainNodeStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "CREATING"
+  | "DELETING"
+  | "RUNNING"
+  | "ERROR"
+  | "UPDATING"
+  | "REPAIRING"
+  | "RECONCILING"
+  | "SYNCING";
+export const BlockchainNodeStateEnum = /*@__PURE__*/ S.String;
 
 export type EthereumDetailsNodeTypeEnum =
   | "NODE_TYPE_UNSPECIFIED"
@@ -185,29 +150,6 @@ export type EthereumDetailsNodeTypeEnum =
   | "FULL"
   | "ARCHIVE";
 export const EthereumDetailsNodeTypeEnum = /*@__PURE__*/ S.String;
-
-export type EthereumDetailsExecutionClientEnum =
-  | "EXECUTION_CLIENT_UNSPECIFIED"
-  | "GETH"
-  | "ERIGON";
-export const EthereumDetailsExecutionClientEnum = /*@__PURE__*/ S.String;
-
-export type GethDetailsGarbageCollectionModeEnum =
-  | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
-  | "FULL"
-  | "ARCHIVE";
-export const GethDetailsGarbageCollectionModeEnum = /*@__PURE__*/ S.String;
-
-/** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
-export interface GethDetails {
-  /** Immutable. Blockchain garbage collection mode. */
-  garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum | (string & {});
-}
-export const GethDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    garbageCollectionMode: S.optional(GethDetailsGarbageCollectionModeEnum),
-  }),
-).annotate({ identifier: "GethDetails" }) as any as S.Schema<GethDetails>;
 
 export type EthereumDetailsNetworkEnum =
   | "NETWORK_UNSPECIFIED"
@@ -236,85 +178,143 @@ export const EthereumEndpoints = /*@__PURE__*/ S.suspend(() =>
   identifier: "EthereumEndpoints",
 }) as any as S.Schema<EthereumEndpoints>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
+export interface ValidatorConfig {
+  /** An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced. */
+  beaconFeeRecipient?: string;
+  /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
+  mevRelayUrls?: StringList;
+  /** Immutable. When true, deploys a GCP-managed validator client alongside the beacon client. */
+  managedValidatorClient?: boolean;
+}
+export const ValidatorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    beaconFeeRecipient: S.optional(S.String),
+    mevRelayUrls: S.optional(StringList),
+    managedValidatorClient: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ValidatorConfig",
+}) as any as S.Schema<ValidatorConfig>;
+
+export type GethDetailsGarbageCollectionModeEnum =
+  | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
+  | "FULL"
+  | "ARCHIVE";
+export const GethDetailsGarbageCollectionModeEnum = /*@__PURE__*/ S.String;
+
+/** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
+export interface GethDetails {
+  /** Immutable. Blockchain garbage collection mode. */
+  garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum | (string & {});
+}
+export const GethDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    garbageCollectionMode: S.optional(GethDetailsGarbageCollectionModeEnum),
+  }),
+).annotate({ identifier: "GethDetails" }) as any as S.Schema<GethDetails>;
+
+export type EthereumDetailsExecutionClientEnum =
+  | "EXECUTION_CLIENT_UNSPECIFIED"
+  | "GETH"
+  | "ERIGON";
+export const EthereumDetailsExecutionClientEnum = /*@__PURE__*/ S.String;
+
+export type EthereumDetailsConsensusClientEnum =
+  | "CONSENSUS_CLIENT_UNSPECIFIED"
+  | "LIGHTHOUSE"
+  | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
+export const EthereumDetailsConsensusClientEnum = /*@__PURE__*/ S.String;
+
 /** Ethereum-specific blockchain node details. */
 export interface EthereumDetails {
-  /** Immutable. The consensus client. */
-  consensusClient?: EthereumDetailsConsensusClientEnum | (string & {});
-  /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
-  validatorConfig?: ValidatorConfig;
   /** Immutable. The type of Ethereum node. */
   nodeType?: EthereumDetailsNodeTypeEnum | (string & {});
-  /** Immutable. The execution client */
-  executionClient?: EthereumDetailsExecutionClientEnum | (string & {});
   /** Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`. */
   apiEnableDebug?: boolean;
-  /** Details for the Geth execution client. */
-  gethDetails?: GethDetails;
-  /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
-  apiEnableAdmin?: boolean;
   /** Immutable. The Ethereum environment being accessed. */
   network?: EthereumDetailsNetworkEnum | (string & {});
   /** Output only. Ethereum-specific endpoint information. */
   additionalEndpoints?: EthereumEndpoints;
+  /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
+  validatorConfig?: ValidatorConfig;
+  /** Details for the Geth execution client. */
+  gethDetails?: GethDetails;
+  /** Immutable. The execution client */
+  executionClient?: EthereumDetailsExecutionClientEnum | (string & {});
+  /** Immutable. The consensus client. */
+  consensusClient?: EthereumDetailsConsensusClientEnum | (string & {});
+  /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
+  apiEnableAdmin?: boolean;
 }
 export const EthereumDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    consensusClient: S.optional(EthereumDetailsConsensusClientEnum),
-    validatorConfig: S.optional(ValidatorConfig),
     nodeType: S.optional(EthereumDetailsNodeTypeEnum),
-    executionClient: S.optional(EthereumDetailsExecutionClientEnum),
     apiEnableDebug: S.optional(S.Boolean),
-    gethDetails: S.optional(GethDetails),
-    apiEnableAdmin: S.optional(S.Boolean),
     network: S.optional(EthereumDetailsNetworkEnum),
     additionalEndpoints: S.optional(EthereumEndpoints),
+    validatorConfig: S.optional(ValidatorConfig),
+    gethDetails: S.optional(GethDetails),
+    executionClient: S.optional(EthereumDetailsExecutionClientEnum),
+    consensusClient: S.optional(EthereumDetailsConsensusClientEnum),
+    apiEnableAdmin: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "EthereumDetails",
 }) as any as S.Schema<EthereumDetails>;
 
+export type BlockchainNodeBlockchainTypeEnum =
+  | "BLOCKCHAIN_TYPE_UNSPECIFIED"
+  | "ETHEREUM";
+export const BlockchainNodeBlockchainTypeEnum = /*@__PURE__*/ S.String;
+
 /** A representation of a blockchain node. */
 export interface BlockchainNode {
-  /** Output only. The timestamp at which the blockchain node was first created. */
-  createTime?: string;
-  /** User-provided key-value pairs. */
-  labels?: StringMap;
-  /** Output only. A status representing the state of the node. */
-  state?: BlockchainNodeStateEnum | (string & {});
   /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name?: string;
-  /** Output only. The connection information used to interact with a blockchain node. */
-  connectionInfo?: ConnectionInfo;
-  /** Immutable. The blockchain type of the node. */
-  blockchainType?: BlockchainNodeBlockchainTypeEnum | (string & {});
   /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
   privateServiceConnectEnabled?: boolean;
-  /** Output only. The timestamp at which the blockchain node was last updated. */
-  updateTime?: string;
+  /** User-provided key-value pairs. */
+  labels?: StringMap;
+  /** Output only. The connection information used to interact with a blockchain node. */
+  connectionInfo?: ConnectionInfo;
+  /** Output only. A status representing the state of the node. */
+  state?: BlockchainNodeStateEnum | (string & {});
   /** Ethereum-specific blockchain node details. */
   ethereumDetails?: EthereumDetails;
+  /** Output only. The timestamp at which the blockchain node was last updated. */
+  updateTime?: string;
+  /** Immutable. The blockchain type of the node. */
+  blockchainType?: BlockchainNodeBlockchainTypeEnum | (string & {});
+  /** Output only. The timestamp at which the blockchain node was first created. */
+  createTime?: string;
 }
 export const BlockchainNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    state: S.optional(BlockchainNodeStateEnum),
     name: S.optional(S.String),
-    connectionInfo: S.optional(ConnectionInfo),
-    blockchainType: S.optional(BlockchainNodeBlockchainTypeEnum),
     privateServiceConnectEnabled: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    connectionInfo: S.optional(ConnectionInfo),
+    state: S.optional(BlockchainNodeStateEnum),
     ethereumDetails: S.optional(EthereumDetails),
+    updateTime: S.optional(S.String),
+    blockchainType: S.optional(BlockchainNodeBlockchainTypeEnum),
+    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "BlockchainNode" }) as any as S.Schema<BlockchainNode>;
 
 export interface CreateProjectsLocationsBlockchainNodesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. ID of the requesting object. */
-  blockchainNodeId?: string;
   /** Required. Value for parent. */
   parent: string;
+  /** Required. ID of the requesting object. */
+  blockchainNodeId?: string;
   /** Request body */
   body?: BlockchainNode;
 }
@@ -322,8 +322,8 @@ export const CreateProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
-      blockchainNodeId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      blockchainNodeId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(BlockchainNode.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -349,41 +349,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
-    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
     name: S.optional(S.String),
     error: S.optional(Status),
+    metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -448,24 +448,24 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationId: S.optional(S.String),
     name: S.optional(S.String),
+    locationId: S.optional(S.String),
+    labels: S.optional(StringMap),
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    labels: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -508,24 +508,24 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
-  /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
-  extraLocationTypes?: StringList;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
+  /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
+  extraLocationTypes?: StringList;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -544,15 +544,15 @@ export const LocationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: LocationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
   }),
 ).annotate({
   identifier: "ListLocationsResponse",
@@ -563,21 +563,21 @@ export interface ListProjectsLocationsBlockchainNodesRequest {
   pageToken?: string;
   /** Filtering results. */
   filter?: string;
+  /** Required. Parent value for `ListNodesRequest`. */
+  parent: string;
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
   /** Hint for how to order the results. */
   orderBy?: string;
-  /** Required. Parent value for `ListNodesRequest`. */
-  parent: string;
 }
 export const ListProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -596,18 +596,18 @@ export const BlockchainNodeList = /*@__PURE__*/ S.Array(
 
 /** Message for response to listing blockchain nodes. */
 export interface ListBlockchainNodesResponse {
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
   /** The list of nodes */
   blockchainNodes?: BlockchainNodeList;
   /** Locations that could not be reached. */
   unreachable?: StringList;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
 }
 export const ListBlockchainNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    nextPageToken: S.optional(S.String),
     blockchainNodes: S.optional(BlockchainNodeList),
     unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListBlockchainNodesResponse",
@@ -616,20 +616,20 @@ export const ListBlockchainNodesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -663,21 +663,21 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface PatchProjectsLocationsBlockchainNodesRequest {
+  /** Required. Field mask is used to specify the fields to be overwritten in the Blockchain node resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
+  updateMask?: string;
   /** Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the Blockchain node resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
-  updateMask?: string;
   /** Request body */
   body?: BlockchainNode;
 }
 export const PatchProjectsLocationsBlockchainNodesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(BlockchainNode.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

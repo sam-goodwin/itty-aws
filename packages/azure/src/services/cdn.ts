@@ -2400,7 +2400,7 @@ export interface ProfileScrubbingRules {
   /** The variable to be scrubbed from the logs. */
   matchVariable: ScrubbingRuleEntryMatchVariable | (string & {});
   /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
-  selectorMatchOperator: ScrubbingRuleEntryMatchOperator;
+  selectorMatchOperator: ScrubbingRuleEntryMatchOperator | (string & {});
   /** When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to. */
   selector?: string;
   /** Defines the state of a log scrubbing rule. Default value is enabled. */
@@ -3384,7 +3384,7 @@ export const KeyVaultSigningKeyParametersType = /*@__PURE__*/ S.String;
 
 /** Describes the parameters for using a user's KeyVault for URL Signing Key. */
 export interface KeyVaultSigningKeyParameters {
-  typeName: KeyVaultSigningKeyParametersType;
+  typeName: KeyVaultSigningKeyParametersType | (string & {});
   /** Subscription Id of the user's Key Vault containing the secret */
   subscriptionId: string;
   /** Resource group of the user's Key Vault containing the secret */
@@ -5345,8 +5345,9 @@ export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem =
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList =
-  Array<LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem>;
+export type LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList = Array<
+  LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsMetricsRequestMetricsItem,
@@ -5550,8 +5551,9 @@ export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem =
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem =
   /*@__PURE__*/ S.String;
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList =
-  Array<LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem>;
+export type LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList = Array<
+  LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem | (string & {})
+>;
 export const LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsGetWafLogAnalyticsRankingsRequestMetricsItem,
@@ -10491,7 +10493,7 @@ export const SecurityPolicyType = /*@__PURE__*/ S.String;
 /** The json object containing security policy parameters */
 export interface SecurityPolicyPropertiesParameters {
   /** The type of the Security policy to create. */
-  type: SecurityPolicyType;
+  type: SecurityPolicyType | (string & {});
 }
 export const SecurityPolicyPropertiesParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -60,35 +60,6 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-/** iOS related attributes to the Dynamic Link.. */
-export interface IosInfo {
-  /** Custom (destination) scheme to use for iOS. By default, we’ll use the bundle ID as the custom scheme. Developer can override this behavior using this param. */
-  iosCustomScheme?: string;
-  /** iOS minimum version. */
-  iosMinimumVersion?: string;
-  /** Link to open on iOS if the app is not installed. */
-  iosFallbackLink?: string;
-  /** iPad bundle ID of the app. */
-  iosIpadBundleId?: string;
-  /** iOS App Store ID. */
-  iosAppStoreId?: string;
-  /** iOS bundle ID of the app. */
-  iosBundleId?: string;
-  /** If specified, this overrides the ios_fallback_link value on iPads. */
-  iosIpadFallbackLink?: string;
-}
-export const IosInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iosCustomScheme: S.optional(S.String),
-    iosMinimumVersion: S.optional(S.String),
-    iosFallbackLink: S.optional(S.String),
-    iosIpadBundleId: S.optional(S.String),
-    iosAppStoreId: S.optional(S.String),
-    iosBundleId: S.optional(S.String),
-    iosIpadFallbackLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "IosInfo" }) as any as S.Schema<IosInfo>;
-
 /** Desktop related attributes to the Dynamic Link. */
 export interface DesktopInfo {
   /** Link to open on desktop. */
@@ -102,86 +73,22 @@ export const DesktopInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters for social meta tag params. Used to set meta tag data for link previews on social sites. */
 export interface SocialMetaTagInfo {
-  /** An image url string. Optional. */
-  socialImageLink?: string;
   /** A short description of the link. Optional. */
   socialDescription?: string;
   /** Title to be displayed. Optional. */
   socialTitle?: string;
+  /** An image url string. Optional. */
+  socialImageLink?: string;
 }
 export const SocialMetaTagInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    socialImageLink: S.optional(S.String),
     socialDescription: S.optional(S.String),
     socialTitle: S.optional(S.String),
+    socialImageLink: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SocialMetaTagInfo",
 }) as any as S.Schema<SocialMetaTagInfo>;
-
-/** Parameters for Google Play Campaign Measurements. [Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params) */
-export interface GooglePlayAnalytics {
-  /** Campaign medium; used to identify a medium such as email or cost-per-click. */
-  utmMedium?: string;
-  /** Campaign source; used to identify a search engine, newsletter, or other source. */
-  utmSource?: string;
-  /** Campaign content; used for A/B testing and content-targeted ads to differentiate ads or links that point to the same URL. */
-  utmContent?: string;
-  /** Deprecated; FDL SDK does not process nor log it. */
-  gclid?: string;
-  /** Campaign term; used with paid search to supply the keywords for ads. */
-  utmTerm?: string;
-  /** Campaign name; used for keyword analysis to identify a specific product promotion or strategic campaign. */
-  utmCampaign?: string;
-}
-export const GooglePlayAnalytics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    utmMedium: S.optional(S.String),
-    utmSource: S.optional(S.String),
-    utmContent: S.optional(S.String),
-    gclid: S.optional(S.String),
-    utmTerm: S.optional(S.String),
-    utmCampaign: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GooglePlayAnalytics",
-}) as any as S.Schema<GooglePlayAnalytics>;
-
-/** Parameters for iTunes Connect App Analytics. */
-export interface ITunesConnectAnalytics {
-  /** Provider token that enables analytics for Dynamic Links from within iTunes Connect. */
-  pt?: string;
-  /** Campaign text that developers can optionally add to any link in order to track sales from a specific marketing campaign. */
-  ct?: string;
-  /** iTune media types, including music, podcasts, audiobooks and so on. */
-  mt?: string;
-  /** Affiliate token used to create affiliate-coded links. */
-  at?: string;
-}
-export const ITunesConnectAnalytics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pt: S.optional(S.String),
-    ct: S.optional(S.String),
-    mt: S.optional(S.String),
-    at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ITunesConnectAnalytics",
-}) as any as S.Schema<ITunesConnectAnalytics>;
-
-/** Tracking parameters supported by Dynamic Link. */
-export interface AnalyticsInfo {
-  /** Google Play Campaign Measurements. */
-  googlePlayAnalytics?: GooglePlayAnalytics;
-  /** iTunes Connect App Analytics. */
-  itunesConnectAnalytics?: ITunesConnectAnalytics;
-}
-export const AnalyticsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    googlePlayAnalytics: S.optional(GooglePlayAnalytics),
-    itunesConnectAnalytics: S.optional(ITunesConnectAnalytics),
-  }),
-).annotate({ identifier: "AnalyticsInfo" }) as any as S.Schema<AnalyticsInfo>;
 
 /** Information of navigation behavior. */
 export interface NavigationInfo {
@@ -198,54 +105,147 @@ export const NavigationInfo = /*@__PURE__*/ S.suspend(() =>
 export interface AndroidInfo {
   /** Link to open on Android if the app is not installed. */
   androidFallbackLink?: string;
-  /** If specified, this overrides the ‘link’ parameter on Android. */
-  androidLink?: string;
   /** Android package name of the app. */
   androidPackageName?: string;
+  /** If specified, this overrides the ‘link’ parameter on Android. */
+  androidLink?: string;
   /** Minimum version code for the Android app. If the installed app’s version code is lower, then the user is taken to the Play Store. */
   androidMinPackageVersionCode?: string;
 }
 export const AndroidInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidFallbackLink: S.optional(S.String),
-    androidLink: S.optional(S.String),
     androidPackageName: S.optional(S.String),
+    androidLink: S.optional(S.String),
     androidMinPackageVersionCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "AndroidInfo" }) as any as S.Schema<AndroidInfo>;
 
+/** Parameters for iTunes Connect App Analytics. */
+export interface ITunesConnectAnalytics {
+  /** Affiliate token used to create affiliate-coded links. */
+  at?: string;
+  /** Campaign text that developers can optionally add to any link in order to track sales from a specific marketing campaign. */
+  ct?: string;
+  /** iTune media types, including music, podcasts, audiobooks and so on. */
+  mt?: string;
+  /** Provider token that enables analytics for Dynamic Links from within iTunes Connect. */
+  pt?: string;
+}
+export const ITunesConnectAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    at: S.optional(S.String),
+    ct: S.optional(S.String),
+    mt: S.optional(S.String),
+    pt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ITunesConnectAnalytics",
+}) as any as S.Schema<ITunesConnectAnalytics>;
+
+/** Parameters for Google Play Campaign Measurements. [Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params) */
+export interface GooglePlayAnalytics {
+  /** Campaign name; used for keyword analysis to identify a specific product promotion or strategic campaign. */
+  utmCampaign?: string;
+  /** Deprecated; FDL SDK does not process nor log it. */
+  gclid?: string;
+  /** Campaign term; used with paid search to supply the keywords for ads. */
+  utmTerm?: string;
+  /** Campaign medium; used to identify a medium such as email or cost-per-click. */
+  utmMedium?: string;
+  /** Campaign source; used to identify a search engine, newsletter, or other source. */
+  utmSource?: string;
+  /** Campaign content; used for A/B testing and content-targeted ads to differentiate ads or links that point to the same URL. */
+  utmContent?: string;
+}
+export const GooglePlayAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    utmCampaign: S.optional(S.String),
+    gclid: S.optional(S.String),
+    utmTerm: S.optional(S.String),
+    utmMedium: S.optional(S.String),
+    utmSource: S.optional(S.String),
+    utmContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GooglePlayAnalytics",
+}) as any as S.Schema<GooglePlayAnalytics>;
+
+/** Tracking parameters supported by Dynamic Link. */
+export interface AnalyticsInfo {
+  /** iTunes Connect App Analytics. */
+  itunesConnectAnalytics?: ITunesConnectAnalytics;
+  /** Google Play Campaign Measurements. */
+  googlePlayAnalytics?: GooglePlayAnalytics;
+}
+export const AnalyticsInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    itunesConnectAnalytics: S.optional(ITunesConnectAnalytics),
+    googlePlayAnalytics: S.optional(GooglePlayAnalytics),
+  }),
+).annotate({ identifier: "AnalyticsInfo" }) as any as S.Schema<AnalyticsInfo>;
+
+/** iOS related attributes to the Dynamic Link.. */
+export interface IosInfo {
+  /** iPad bundle ID of the app. */
+  iosIpadBundleId?: string;
+  /** iOS bundle ID of the app. */
+  iosBundleId?: string;
+  /** If specified, this overrides the ios_fallback_link value on iPads. */
+  iosIpadFallbackLink?: string;
+  /** iOS App Store ID. */
+  iosAppStoreId?: string;
+  /** iOS minimum version. */
+  iosMinimumVersion?: string;
+  /** Link to open on iOS if the app is not installed. */
+  iosFallbackLink?: string;
+  /** Custom (destination) scheme to use for iOS. By default, we’ll use the bundle ID as the custom scheme. Developer can override this behavior using this param. */
+  iosCustomScheme?: string;
+}
+export const IosInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iosIpadBundleId: S.optional(S.String),
+    iosBundleId: S.optional(S.String),
+    iosIpadFallbackLink: S.optional(S.String),
+    iosAppStoreId: S.optional(S.String),
+    iosMinimumVersion: S.optional(S.String),
+    iosFallbackLink: S.optional(S.String),
+    iosCustomScheme: S.optional(S.String),
+  }),
+).annotate({ identifier: "IosInfo" }) as any as S.Schema<IosInfo>;
+
 /** Information about a Dynamic Link. */
 export interface DynamicLinkInfo {
-  /** E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to dynamic_link_domain is this field is missing */
-  domainUriPrefix?: string;
-  /** iOS related information. See iOS related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
-  iosInfo?: IosInfo;
   /** Desktop related information. See desktop related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
   desktopInfo?: DesktopInfo;
   /** Parameters for social meta tag params. Used to set meta tag data for link previews on social sites. */
   socialMetaTagInfo?: SocialMetaTagInfo;
   /** The link your app will open, You can specify any URL your app can handle. This link must be a well-formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). Required. */
   link?: string;
-  /** Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain associated with your Firebase project. Required if missing domain_uri_prefix. */
-  dynamicLinkDomain?: string;
-  /** Parameters used for tracking. See all tracking parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
-  analyticsInfo?: AnalyticsInfo;
   /** Information of navigation behavior of a Firebase Dynamic Links. */
   navigationInfo?: NavigationInfo;
+  /** E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to dynamic_link_domain is this field is missing */
+  domainUriPrefix?: string;
   /** Android related information. See Android related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
   androidInfo?: AndroidInfo;
+  /** Parameters used for tracking. See all tracking parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
+  analyticsInfo?: AnalyticsInfo;
+  /** Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain associated with your Firebase project. Required if missing domain_uri_prefix. */
+  dynamicLinkDomain?: string;
+  /** iOS related information. See iOS related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). */
+  iosInfo?: IosInfo;
 }
 export const DynamicLinkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    domainUriPrefix: S.optional(S.String),
-    iosInfo: S.optional(IosInfo),
     desktopInfo: S.optional(DesktopInfo),
     socialMetaTagInfo: S.optional(SocialMetaTagInfo),
     link: S.optional(S.String),
-    dynamicLinkDomain: S.optional(S.String),
-    analyticsInfo: S.optional(AnalyticsInfo),
     navigationInfo: S.optional(NavigationInfo),
+    domainUriPrefix: S.optional(S.String),
     androidInfo: S.optional(AndroidInfo),
+    analyticsInfo: S.optional(AnalyticsInfo),
+    dynamicLinkDomain: S.optional(S.String),
+    iosInfo: S.optional(IosInfo),
   }),
 ).annotate({
   identifier: "DynamicLinkInfo",
@@ -260,38 +260,38 @@ export const SuffixOptionEnum = /*@__PURE__*/ S.String;
 
 /** Short Dynamic Link suffix. */
 export interface Suffix {
-  /** Only applies to Option.CUSTOM. */
-  customSuffix?: string;
   /** Suffix option. */
   option?: SuffixOptionEnum | (string & {});
+  /** Only applies to Option.CUSTOM. */
+  customSuffix?: string;
 }
 export const Suffix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customSuffix: S.optional(S.String),
     option: S.optional(SuffixOptionEnum),
+    customSuffix: S.optional(S.String),
   }),
 ).annotate({ identifier: "Suffix" }) as any as S.Schema<Suffix>;
 
 /** Request to create a managed Short Dynamic Link. */
 export interface CreateManagedShortLinkRequest {
-  /** Full long Dynamic Link URL with desired query parameters specified. For example, "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample", [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
-  longDynamicLink?: string;
   /** Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
   dynamicLinkInfo?: DynamicLinkInfo;
-  /** Short Dynamic Link suffix. Optional. */
-  suffix?: Suffix;
   /** Link name to associate with the link. It's used for marketer to identify manually-created links in the Firebase console (https://console.firebase.google.com/). Links must be named to be tracked. */
   name?: string;
   /** Google SDK version. Version takes the form "$major.$minor.$patch" */
   sdkVersion?: string;
+  /** Full long Dynamic Link URL with desired query parameters specified. For example, "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample", [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
+  longDynamicLink?: string;
+  /** Short Dynamic Link suffix. Optional. */
+  suffix?: Suffix;
 }
 export const CreateManagedShortLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    longDynamicLink: S.optional(S.String),
     dynamicLinkInfo: S.optional(DynamicLinkInfo),
-    suffix: S.optional(Suffix),
     name: S.optional(S.String),
     sdkVersion: S.optional(S.String),
+    longDynamicLink: S.optional(S.String),
+    suffix: S.optional(Suffix),
   }),
 ).annotate({
   identifier: "CreateManagedShortLinkRequest",
@@ -314,6 +314,53 @@ export const CreateManagedShortLinksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedShortLinksRequest",
 }) as any as S.Schema<CreateManagedShortLinksRequest>;
+
+export type ManagedShortLinkVisibilityEnum =
+  | "UNSPECIFIED_VISIBILITY"
+  | "UNARCHIVED"
+  | "ARCHIVED"
+  | "NEVER_SHOWN";
+export const ManagedShortLinkVisibilityEnum = /*@__PURE__*/ S.String;
+
+export type ManagedShortLinkFlaggedAttributeItemEnum =
+  | "UNSPECIFIED_ATTRIBUTE"
+  | "SPAM";
+export const ManagedShortLinkFlaggedAttributeItemEnum = /*@__PURE__*/ S.String;
+
+export type ManagedShortLinkFlaggedAttributeItemEnumList =
+  Array<ManagedShortLinkFlaggedAttributeItemEnum>;
+export const ManagedShortLinkFlaggedAttributeItemEnumList =
+  /*@__PURE__*/ S.Array(
+    ManagedShortLinkFlaggedAttributeItemEnum,
+  ) as any as S.Schema<ManagedShortLinkFlaggedAttributeItemEnumList>;
+
+/** Managed Short Link. */
+export interface ManagedShortLink {
+  /** Visibility status of link. */
+  visibility?: ManagedShortLinkVisibilityEnum;
+  /** Full Dyamic Link info */
+  info?: DynamicLinkInfo;
+  /** Short durable link url, for example, "https://sample.app.goo.gl/xyz123". Required. */
+  link?: string;
+  /** Attributes that have been flagged about this short url. */
+  flaggedAttribute?: ManagedShortLinkFlaggedAttributeItemEnumList;
+  /** Creation timestamp of the short link. */
+  creationTime?: string;
+  /** Link name defined by the creator. Required. */
+  linkName?: string;
+}
+export const ManagedShortLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    visibility: S.optional(ManagedShortLinkVisibilityEnum),
+    info: S.optional(DynamicLinkInfo),
+    link: S.optional(S.String),
+    flaggedAttribute: S.optional(ManagedShortLinkFlaggedAttributeItemEnumList),
+    creationTime: S.optional(S.String),
+    linkName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedShortLink",
+}) as any as S.Schema<ManagedShortLink>;
 
 export type DynamicLinkWarningWarningCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -372,66 +419,19 @@ export const DynamicLinkWarningList = /*@__PURE__*/ S.Array(
   DynamicLinkWarning,
 ) as any as S.Schema<DynamicLinkWarningList>;
 
-export type ManagedShortLinkFlaggedAttributeItemEnum =
-  | "UNSPECIFIED_ATTRIBUTE"
-  | "SPAM";
-export const ManagedShortLinkFlaggedAttributeItemEnum = /*@__PURE__*/ S.String;
-
-export type ManagedShortLinkFlaggedAttributeItemEnumList =
-  Array<ManagedShortLinkFlaggedAttributeItemEnum>;
-export const ManagedShortLinkFlaggedAttributeItemEnumList =
-  /*@__PURE__*/ S.Array(
-    ManagedShortLinkFlaggedAttributeItemEnum,
-  ) as any as S.Schema<ManagedShortLinkFlaggedAttributeItemEnumList>;
-
-export type ManagedShortLinkVisibilityEnum =
-  | "UNSPECIFIED_VISIBILITY"
-  | "UNARCHIVED"
-  | "ARCHIVED"
-  | "NEVER_SHOWN";
-export const ManagedShortLinkVisibilityEnum = /*@__PURE__*/ S.String;
-
-/** Managed Short Link. */
-export interface ManagedShortLink {
-  /** Creation timestamp of the short link. */
-  creationTime?: string;
-  /** Short durable link url, for example, "https://sample.app.goo.gl/xyz123". Required. */
-  link?: string;
-  /** Attributes that have been flagged about this short url. */
-  flaggedAttribute?: ManagedShortLinkFlaggedAttributeItemEnumList;
-  /** Full Dyamic Link info */
-  info?: DynamicLinkInfo;
-  /** Link name defined by the creator. Required. */
-  linkName?: string;
-  /** Visibility status of link. */
-  visibility?: ManagedShortLinkVisibilityEnum;
-}
-export const ManagedShortLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creationTime: S.optional(S.String),
-    link: S.optional(S.String),
-    flaggedAttribute: S.optional(ManagedShortLinkFlaggedAttributeItemEnumList),
-    info: S.optional(DynamicLinkInfo),
-    linkName: S.optional(S.String),
-    visibility: S.optional(ManagedShortLinkVisibilityEnum),
-  }),
-).annotate({
-  identifier: "ManagedShortLink",
-}) as any as S.Schema<ManagedShortLink>;
-
 /** Response to create a short Dynamic Link. */
 export interface CreateManagedShortLinkResponse {
-  /** Information about potential warnings on link creation. */
-  warning?: DynamicLinkWarningList;
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
   managedShortLink?: ManagedShortLink;
+  /** Information about potential warnings on link creation. */
+  warning?: DynamicLinkWarningList;
   /** Preview link to show the link flow chart. (debug info.) */
   previewLink?: string;
 }
 export const CreateManagedShortLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    warning: S.optional(DynamicLinkWarningList),
     managedShortLink: S.optional(ManagedShortLink),
+    warning: S.optional(DynamicLinkWarningList),
     previewLink: S.optional(S.String),
   }),
 ).annotate({
@@ -440,21 +440,21 @@ export const CreateManagedShortLinkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to create a short Dynamic Link. */
 export interface CreateShortDynamicLinkRequest {
-  /** Short Dynamic Link suffix. Optional. */
-  suffix?: Suffix;
-  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
-  sdkVersion?: string;
-  /** Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
-  dynamicLinkInfo?: DynamicLinkInfo;
   /** Full long Dynamic Link URL with desired query parameters specified. For example, "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample", [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
   longDynamicLink?: string;
+  /** Short Dynamic Link suffix. Optional. */
+  suffix?: Suffix;
+  /** Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener). */
+  dynamicLinkInfo?: DynamicLinkInfo;
+  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
+  sdkVersion?: string;
 }
 export const CreateShortDynamicLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    suffix: S.optional(Suffix),
-    sdkVersion: S.optional(S.String),
-    dynamicLinkInfo: S.optional(DynamicLinkInfo),
     longDynamicLink: S.optional(S.String),
+    suffix: S.optional(Suffix),
+    dynamicLinkInfo: S.optional(DynamicLinkInfo),
+    sdkVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateShortDynamicLinkRequest",
@@ -480,36 +480,36 @@ export const CreateShortLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response to create a short Dynamic Link. */
 export interface CreateShortDynamicLinkResponse {
-  /** Preview link to show the link flow chart. (debug info.) */
-  previewLink?: string;
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
   shortLink?: string;
   /** Information about potential warnings on link creation. */
   warning?: DynamicLinkWarningList;
+  /** Preview link to show the link flow chart. (debug info.) */
+  previewLink?: string;
 }
 export const CreateShortDynamicLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    previewLink: S.optional(S.String),
     shortLink: S.optional(S.String),
     warning: S.optional(DynamicLinkWarningList),
+    previewLink: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateShortDynamicLinkResponse",
 }) as any as S.Schema<CreateShortDynamicLinkResponse>;
 
 export interface GetLinkStatsV1Request {
-  /** The span of time requested in days. */
-  durationDays?: string;
-  /** Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz */
-  dynamicLink: string;
   /** Google SDK version. Version takes the form "$major.$minor.$patch" */
   sdkVersion?: string;
+  /** Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz */
+  dynamicLink: string;
+  /** The span of time requested in days. */
+  durationDays?: string;
 }
 export const GetLinkStatsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    durationDays: S.optional(S.String.pipe(T.Query())),
-    dynamicLink: S.String.pipe(T.Label()),
     sdkVersion: S.optional(S.String.pipe(T.Query())),
+    dynamicLink: S.String.pipe(T.Label()),
+    durationDays: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -564,15 +564,15 @@ export const DynamicLinkEventStatList = /*@__PURE__*/ S.Array(
 
 /** Analytics stats of a Dynamic Link for a given timeframe. */
 export interface DynamicLinkStats {
-  /** Dynamic Link event stats. */
-  linkEventStats?: DynamicLinkEventStatList;
   /** Optional warnings associated this API request. */
   warnings?: DynamicLinkWarningList;
+  /** Dynamic Link event stats. */
+  linkEventStats?: DynamicLinkEventStatList;
 }
 export const DynamicLinkStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    linkEventStats: S.optional(DynamicLinkEventStatList),
     warnings: S.optional(DynamicLinkWarningList),
+    linkEventStats: S.optional(DynamicLinkEventStatList),
   }),
 ).annotate({
   identifier: "DynamicLinkStats",
@@ -595,30 +595,30 @@ export const GetIosPostInstallAttributionRequestRetrievalMethodEnum =
 
 /** Signals associated with the device making the request. */
 export interface DeviceInfo {
-  /** Device display resolution height. */
-  screenResolutionHeight?: string;
-  /** Device language code setting obtained by executing JavaScript code in WebView. */
-  languageCodeFromWebview?: string;
   /** Device language code setting. */
   languageCode?: string;
-  /** Device model name. */
-  deviceModelName?: string;
+  /** Device display resolution width. */
+  screenResolutionWidth?: string;
+  /** Device language code setting obtained by executing JavaScript code in WebView. */
+  languageCodeFromWebview?: string;
+  /** Device display resolution height. */
+  screenResolutionHeight?: string;
   /** Device language code raw setting. iOS does returns language code in different format than iOS WebView. For example WebView returns en_US, but iOS returns en-US. Field below will return raw value returned by iOS. */
   languageCodeRaw?: string;
   /** Device timezone setting. */
   timezone?: string;
-  /** Device display resolution width. */
-  screenResolutionWidth?: string;
+  /** Device model name. */
+  deviceModelName?: string;
 }
 export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    screenResolutionHeight: S.optional(S.String),
-    languageCodeFromWebview: S.optional(S.String),
     languageCode: S.optional(S.String),
-    deviceModelName: S.optional(S.String),
+    screenResolutionWidth: S.optional(S.String),
+    languageCodeFromWebview: S.optional(S.String),
+    screenResolutionHeight: S.optional(S.String),
     languageCodeRaw: S.optional(S.String),
     timezone: S.optional(S.String),
-    screenResolutionWidth: S.optional(S.String),
+    deviceModelName: S.optional(S.String),
   }),
 ).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
 
@@ -626,8 +626,6 @@ export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GetIosPostInstallAttributionRequest {
   /** APP bundle ID. */
   bundleId?: string;
-  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
-  sdkVersion?: string;
   /** Strong match page information. Disambiguates between default UI and custom page to present when strong match succeeds/fails to find cookie. */
   visualStyle?:
     | GetIosPostInstallAttributionRequestVisualStyleEnum
@@ -636,27 +634,29 @@ export interface GetIosPostInstallAttributionRequest {
   retrievalMethod?:
     | GetIosPostInstallAttributionRequestRetrievalMethodEnum
     | (string & {});
-  /** App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for a more accurate weak match. */
-  appInstallationTime?: string;
-  /** Device information. */
-  device?: DeviceInfo;
   /** iOS version, ie: 9.3.5. Consider adding "build". */
   iosVersion?: string;
+  /** App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for a more accurate weak match. */
+  appInstallationTime?: string;
   /** Possible unique matched link that server need to check before performing device heuristics match. If passed link is short server need to expand the link. If link is long server need to vslidate the link. */
   uniqueMatchLinkToCheck?: string;
+  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
+  sdkVersion?: string;
+  /** Device information. */
+  device?: DeviceInfo;
 }
 export const GetIosPostInstallAttributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleId: S.optional(S.String),
-    sdkVersion: S.optional(S.String),
     visualStyle: S.optional(GetIosPostInstallAttributionRequestVisualStyleEnum),
     retrievalMethod: S.optional(
       GetIosPostInstallAttributionRequestRetrievalMethodEnum,
     ),
-    appInstallationTime: S.optional(S.String),
-    device: S.optional(DeviceInfo),
     iosVersion: S.optional(S.String),
+    appInstallationTime: S.optional(S.String),
     uniqueMatchLinkToCheck: S.optional(S.String),
+    sdkVersion: S.optional(S.String),
+    device: S.optional(DeviceInfo),
   }),
 ).annotate({
   identifier: "GetIosPostInstallAttributionRequest",
@@ -680,13 +680,6 @@ export const InstallAttributionV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstallAttributionV1Request",
 }) as any as S.Schema<InstallAttributionV1Request>;
 
-export type GetIosPostInstallAttributionResponseRequestIpVersionEnum =
-  | "UNKNOWN_IP_VERSION"
-  | "IP_V4"
-  | "IP_V6";
-export const GetIosPostInstallAttributionResponseRequestIpVersionEnum =
-  /*@__PURE__*/ S.String;
-
 export type GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
   | "UNKNOWN_ATTRIBUTION_CONFIDENCE"
   | "WEAK"
@@ -695,63 +688,70 @@ export type GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
 export const GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
   /*@__PURE__*/ S.String;
 
+export type GetIosPostInstallAttributionResponseRequestIpVersionEnum =
+  | "UNKNOWN_IP_VERSION"
+  | "IP_V4"
+  | "IP_V6";
+export const GetIosPostInstallAttributionResponseRequestIpVersionEnum =
+  /*@__PURE__*/ S.String;
+
 /** Response for iSDK to execute strong match flow for post-install attribution. Information of the resolved FDL link. */
 export interface GetIosPostInstallAttributionResponse {
-  /** Which IP version the request was made from. */
-  requestIpVersion?: GetIosPostInstallAttributionResponseRequestIpVersionEnum;
-  /** The link to navigate to update the app if min version is not met. This is either (in order): 1) fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3) the payload link (from required link= parameter). */
-  fallbackLink?: string;
-  /** Describes why match failed, ie: "discarded due to low confidence". This message will be publicly visible. */
-  matchMessage?: string;
-  /** Invitation ID attributed post-install via one of several techniques (device heuristics, copy unique). */
-  invitationId?: string;
-  /** The deep-link attributed post-install via one of several techniques (device heuristics, copy unique). */
-  deepLink?: string;
-  /** Scion medium value to be propagated by iSDK to Scion at post-install. */
-  utmMedium?: string;
-  /** The minimum version for app, specified by dev through ?imv= parameter. Return to iSDK to allow app to evaluate if current version meets this. */
-  appMinimumVersion?: string;
-  /** Scion term value to be propagated by iSDK to Scion at app-reopen. */
-  utmTerm?: string;
-  /** Instruction for iSDK to attemmpt to perform strong match. For instance, if browser does not support/allow cookie or outside of support browsers, this will be false. */
-  isStrongMatchExecutable?: boolean;
   /** Entire FDL (short or long) attributed post-install via one of several techniques (device heuristics, copy unique). */
   requestedLink?: string;
+  /** Invitation ID attributed post-install via one of several techniques (device heuristics, copy unique). */
+  invitationId?: string;
   /** Scion source value to be propagated by iSDK to Scion at post-install. */
   utmSource?: string;
-  /** Scion campaign value to be propagated by iSDK to Scion at post-install. */
-  utmCampaign?: string;
-  /** The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long. Parameters from this should not be used directly (ie: server can default utm_[campaign|medium|source] to a value when requested_link lack them, server determine the best fallback_link when requested_link specifies >1 fallback links). */
-  resolvedLink?: string;
   /** User-agent specific custom-scheme URIs for iSDK to open. This will be set according to the user-agent tha the click was originally made in. There is no Safari-equivalent custom-scheme open URLs. ie: googlechrome://www.example.com ie: firefox://open-url?url=http://www.example.com ie: opera-http://example.com */
   externalBrowserDestinationLink?: string;
-  /** Scion content value to be propagated by iSDK to Scion at app-reopen. */
-  utmContent?: string;
+  /** The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long. Parameters from this should not be used directly (ie: server can default utm_[campaign|medium|source] to a value when requested_link lack them, server determine the best fallback_link when requested_link specifies >1 fallback links). */
+  resolvedLink?: string;
   /** The confidence of the returned attribution. */
   attributionConfidence?: GetIosPostInstallAttributionResponseAttributionConfidenceEnum;
+  /** The minimum version for app, specified by dev through ?imv= parameter. Return to iSDK to allow app to evaluate if current version meets this. */
+  appMinimumVersion?: string;
+  /** Scion medium value to be propagated by iSDK to Scion at post-install. */
+  utmMedium?: string;
+  /** Describes why match failed, ie: "discarded due to low confidence". This message will be publicly visible. */
+  matchMessage?: string;
+  /** Instruction for iSDK to attemmpt to perform strong match. For instance, if browser does not support/allow cookie or outside of support browsers, this will be false. */
+  isStrongMatchExecutable?: boolean;
+  /** Scion content value to be propagated by iSDK to Scion at app-reopen. */
+  utmContent?: string;
+  /** The deep-link attributed post-install via one of several techniques (device heuristics, copy unique). */
+  deepLink?: string;
+  /** Scion term value to be propagated by iSDK to Scion at app-reopen. */
+  utmTerm?: string;
+  /** Scion campaign value to be propagated by iSDK to Scion at post-install. */
+  utmCampaign?: string;
+  /** The link to navigate to update the app if min version is not met. This is either (in order): 1) fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3) the payload link (from required link= parameter). */
+  fallbackLink?: string;
+  /** Which IP version the request was made from. */
+  requestIpVersion?: GetIosPostInstallAttributionResponseRequestIpVersionEnum;
 }
 export const GetIosPostInstallAttributionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      requestIpVersion: S.optional(
-        GetIosPostInstallAttributionResponseRequestIpVersionEnum,
-      ),
-      fallbackLink: S.optional(S.String),
-      matchMessage: S.optional(S.String),
-      invitationId: S.optional(S.String),
-      deepLink: S.optional(S.String),
-      utmMedium: S.optional(S.String),
-      appMinimumVersion: S.optional(S.String),
-      utmTerm: S.optional(S.String),
-      isStrongMatchExecutable: S.optional(S.Boolean),
       requestedLink: S.optional(S.String),
+      invitationId: S.optional(S.String),
       utmSource: S.optional(S.String),
-      utmCampaign: S.optional(S.String),
-      resolvedLink: S.optional(S.String),
       externalBrowserDestinationLink: S.optional(S.String),
-      utmContent: S.optional(S.String),
+      resolvedLink: S.optional(S.String),
       attributionConfidence: S.optional(
         GetIosPostInstallAttributionResponseAttributionConfidenceEnum,
+      ),
+      appMinimumVersion: S.optional(S.String),
+      utmMedium: S.optional(S.String),
+      matchMessage: S.optional(S.String),
+      isStrongMatchExecutable: S.optional(S.Boolean),
+      utmContent: S.optional(S.String),
+      deepLink: S.optional(S.String),
+      utmTerm: S.optional(S.String),
+      utmCampaign: S.optional(S.String),
+      fallbackLink: S.optional(S.String),
+      requestIpVersion: S.optional(
+        GetIosPostInstallAttributionResponseRequestIpVersionEnum,
       ),
     }),
 ).annotate({
@@ -760,18 +760,18 @@ export const GetIosPostInstallAttributionResponse = /*@__PURE__*/ S.suspend(
 
 /** Request for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is meant for only iOS requests. */
 export interface GetIosReopenAttributionRequest {
+  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
+  sdkVersion?: string;
   /** FDL link to be verified from an app universal link open. The FDL link can be one of: 1) short FDL. e.g. .page.link/, or 2) long FDL. e.g. .page.link/?{query params}, or 3) Invite FDL. e.g. .page.link/i/ */
   requestedLink?: string;
   /** APP bundle ID. */
   bundleId?: string;
-  /** Google SDK version. Version takes the form "$major.$minor.$patch" */
-  sdkVersion?: string;
 }
 export const GetIosReopenAttributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    sdkVersion: S.optional(S.String),
     requestedLink: S.optional(S.String),
     bundleId: S.optional(S.String),
-    sdkVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GetIosReopenAttributionRequest",
@@ -797,39 +797,39 @@ export const ReopenAttributionV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for iSDK to get reopen attribution for app universal link open deeplinking. This endpoint is meant for only iOS requests. */
 export interface GetIosReopenAttributionResponse {
-  /** Scion term value to be propagated by iSDK to Scion at app-reopen. */
-  utmTerm?: string;
-  /** FDL input value of the "&imv=" parameter, minimum app version to be returned to Google Firebase SDK running on iOS-9. */
-  iosMinAppVersion?: string;
-  /** Optional warnings associated this API request. */
-  warning?: DynamicLinkWarningList;
-  /** Scion content value to be propagated by iSDK to Scion at app-reopen. */
-  utmContent?: string;
-  /** Scion medium value to be propagated by iSDK to Scion at app-reopen. */
-  utmMedium?: string;
   /** The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long. */
   resolvedLink?: string;
-  /** The deep-link attributed the app universal link open. For both regular FDL links and invite FDL links. */
-  deepLink?: string;
+  /** Optional warnings associated this API request. */
+  warning?: DynamicLinkWarningList;
+  /** FDL input value of the "&imv=" parameter, minimum app version to be returned to Google Firebase SDK running on iOS-9. */
+  iosMinAppVersion?: string;
   /** Scion campaign value to be propagated by iSDK to Scion at app-reopen. */
   utmCampaign?: string;
-  /** Optional invitation ID, for only invite typed requested FDL links. */
-  invitationId?: string;
+  /** The deep-link attributed the app universal link open. For both regular FDL links and invite FDL links. */
+  deepLink?: string;
+  /** Scion term value to be propagated by iSDK to Scion at app-reopen. */
+  utmTerm?: string;
+  /** Scion content value to be propagated by iSDK to Scion at app-reopen. */
+  utmContent?: string;
   /** Scion source value to be propagated by iSDK to Scion at app-reopen. */
   utmSource?: string;
+  /** Scion medium value to be propagated by iSDK to Scion at app-reopen. */
+  utmMedium?: string;
+  /** Optional invitation ID, for only invite typed requested FDL links. */
+  invitationId?: string;
 }
 export const GetIosReopenAttributionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    utmTerm: S.optional(S.String),
-    iosMinAppVersion: S.optional(S.String),
-    warning: S.optional(DynamicLinkWarningList),
-    utmContent: S.optional(S.String),
-    utmMedium: S.optional(S.String),
     resolvedLink: S.optional(S.String),
-    deepLink: S.optional(S.String),
+    warning: S.optional(DynamicLinkWarningList),
+    iosMinAppVersion: S.optional(S.String),
     utmCampaign: S.optional(S.String),
-    invitationId: S.optional(S.String),
+    deepLink: S.optional(S.String),
+    utmTerm: S.optional(S.String),
+    utmContent: S.optional(S.String),
     utmSource: S.optional(S.String),
+    utmMedium: S.optional(S.String),
+    invitationId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GetIosReopenAttributionResponse",

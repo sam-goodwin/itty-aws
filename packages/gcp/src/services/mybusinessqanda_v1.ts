@@ -88,25 +88,25 @@ export const Author = /*@__PURE__*/ S.suspend(() =>
 export interface Answer {
   /** Output only. The number of upvotes for the answer. */
   upvoteCount?: number;
-  /** Required. The text of the answer. It should contain at least one non-whitespace character. The maximum length is 4096 characters. */
-  text?: string;
   /** Output only. The timestamp for when the answer was written. Only retrieved during ListResponse fetching. */
   createTime?: string;
   /** Output only. The timestamp for when the answer was last modified. */
   updateTime?: string;
-  /** Output only. The author of the answer. Will only be set during list operations. */
-  author?: Author;
   /** Output only. The unique name for the answer locations/*\/questions/*\/answers/* */
   name?: string;
+  /** Output only. The author of the answer. Will only be set during list operations. */
+  author?: Author;
+  /** Required. The text of the answer. It should contain at least one non-whitespace character. The maximum length is 4096 characters. */
+  text?: string;
 }
 export const Answer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upvoteCount: S.optional(S.Number),
-    text: S.optional(S.String),
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
-    author: S.optional(Author),
     name: S.optional(S.String),
+    author: S.optional(Author),
+    text: S.optional(S.String),
   }),
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
@@ -119,30 +119,30 @@ export const AnswerList = /*@__PURE__*/ S.Array(
 export interface Question {
   /** Immutable. The unique name for the question. locations/*\/questions/* This field will be ignored if set during question creation. */
   name?: string;
-  /** Output only. A list of answers to the question, sorted by upvotes. This may not be a complete list of answers depending on the request parameters (answers_per_question) */
-  topAnswers?: AnswerList;
   /** Output only. The author of the question. */
   author?: Author;
   /** Required. The text of the question. It should contain at least three words and the total length should be greater than or equal to 10 characters. The maximum length is 4096 characters. */
   text?: string;
-  /** Output only. The timestamp for when the question was written. */
-  createTime?: string;
   /** Output only. The timestamp for when the question was last modified. */
   updateTime?: string;
+  /** Output only. A list of answers to the question, sorted by upvotes. This may not be a complete list of answers depending on the request parameters (answers_per_question) */
+  topAnswers?: AnswerList;
   /** Output only. The number of upvotes for the question. */
   upvoteCount?: number;
+  /** Output only. The timestamp for when the question was written. */
+  createTime?: string;
   /** Output only. The total number of answers posted for this question. */
   totalAnswerCount?: number;
 }
 export const Question = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    topAnswers: S.optional(AnswerList),
     author: S.optional(Author),
     text: S.optional(S.String),
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    topAnswers: S.optional(AnswerList),
     upvoteCount: S.optional(S.Number),
+    createTime: S.optional(S.String),
     totalAnswerCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Question" }) as any as S.Schema<Question>;
@@ -212,27 +212,27 @@ export const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteLocationsQuestionsAnswersRequest>;
 
 export interface ListLocationsQuestionsRequest {
-  /** Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. */
-  answersPerQuestion?: number;
-  /** Optional. If specified, the next page of questions is retrieved. */
-  pageToken?: string;
+  /** Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" */
+  filter?: string;
   /** Required. The name of the location to fetch questions for. */
   parent: string;
+  /** Optional. If specified, the next page of questions is retrieved. */
+  pageToken?: string;
   /** Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'. */
   orderBy?: string;
   /** Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10. */
   pageSize?: number;
-  /** Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" */
-  filter?: string;
+  /** Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. */
+  answersPerQuestion?: number;
 }
 export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    answersPerQuestion: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
+    answersPerQuestion: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -251,39 +251,39 @@ export const QuestionList = /*@__PURE__*/ S.Array(
 
 /** Response message for QuestionsAndAnswers.ListQuestions */
 export interface ListQuestionsResponse {
-  /** The requested questions, */
-  questions?: QuestionList;
-  /** If the number of questions exceeds the requested max page size, this field is populated with a token to fetch the next page of questions on a subsequent call. If there are no more questions, this field is not present in the response. */
-  nextPageToken?: string;
   /** The total number of questions posted for this location across all pages. */
   totalSize?: number;
+  /** If the number of questions exceeds the requested max page size, this field is populated with a token to fetch the next page of questions on a subsequent call. If there are no more questions, this field is not present in the response. */
+  nextPageToken?: string;
+  /** The requested questions, */
+  questions?: QuestionList;
 }
 export const ListQuestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    questions: S.optional(QuestionList),
-    nextPageToken: S.optional(S.String),
     totalSize: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
+    questions: S.optional(QuestionList),
   }),
 ).annotate({
   identifier: "ListQuestionsResponse",
 }) as any as S.Schema<ListQuestionsResponse>;
 
 export interface ListLocationsQuestionsAnswersRequest {
+  /** Required. The name of the question to fetch answers for. */
+  parent: string;
   /** Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. */
   pageSize?: number;
   /** Optional. If specified, the next page of answers is retrieved. */
   pageToken?: string;
-  /** Required. The name of the question to fetch answers for. */
-  parent: string;
   /** Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. */
   orderBy?: string;
 }
 export const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
       orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -298,35 +298,35 @@ export const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(
 
 /** Response message for QuestionsAndAnswers.ListAnswers */
 export interface ListAnswersResponse {
-  /** The total number of answers posted for this question across all pages. */
-  totalSize?: number;
   /** The requested answers. */
   answers?: AnswerList;
   /** If the number of answers exceeds the requested max page size, this field is populated with a token to fetch the next page of answers on a subsequent call. If there are no more answers, this field is not present in the response. */
   nextPageToken?: string;
+  /** The total number of answers posted for this question across all pages. */
+  totalSize?: number;
 }
 export const ListAnswersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    totalSize: S.optional(S.Number),
     answers: S.optional(AnswerList),
     nextPageToken: S.optional(S.String),
+    totalSize: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ListAnswersResponse",
 }) as any as S.Schema<ListAnswersResponse>;
 
 export interface PatchLocationsQuestionsRequest {
-  /** Immutable. The unique name for the question. locations/*\/questions/* This field will be ignored if set during question creation. */
-  name: string;
   /** Required. The specific fields to update. Only question text can be updated. */
   updateMask?: string;
+  /** Immutable. The unique name for the question. locations/*\/questions/* This field will be ignored if set during question creation. */
+  name: string;
   /** Request body */
   body?: Question;
 }
 export const PatchLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     body: S.optional(Question.pipe(T.HttpBody())),
   }).pipe(
     T.Http({

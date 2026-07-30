@@ -38,12 +38,6 @@
             "smithy.api#enumValue": "draft"
           }
         },
-        "EXPOSURE_FROZEN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "exposure_frozen"
-          }
-        },
         "PAUSED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -143,7 +137,7 @@
           "target": "com.posthog.experiments#ExperimentsListRequestStatus",
           "traits": {
             "smithy.api#httpQuery": "status",
-            "smithy.api#documentation": "Filter by experiment status. \"running\", \"paused\", and \"exposure_frozen\" are mutually exclusive: \"running\" returns launched experiments with an active feature flag, \"paused\" returns launched experiments whose feature flag is deactivated, and \"exposure_frozen\" returns launched experiments whose exposure was frozen to the already-enrolled cohort while metrics keep flowing. \"complete\" is an alias for \"stopped\". \"all\" disables status filtering."
+            "smithy.api#documentation": "Filter by experiment status. \"running\" and \"paused\" are mutually exclusive: \"running\" returns launched experiments with an active feature flag, \"paused\" returns launched experiments whose feature flag is deactivated. \"complete\" is an alias for \"stopped\". \"all\" disables status filtering."
           }
         }
       },
@@ -245,7 +239,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -317,7 +311,7 @@
         "status": {
           "target": "com.posthog.experiments#ExperimentStatusEnum",
           "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended).",
+            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'stopped' (ended).",
             "smithy.api#required": {}
           }
         },
@@ -1353,10 +1347,24 @@
     "com.posthog.experiments#ExperimentParameters": {
       "type": "structure",
       "members": {
+        "feature_flag_variants": {
+          "target": "com.posthog.experiments#ExperimentParametersFeatureFlagVariantsList",
+          "traits": {
+            "smithy.api#documentation": "Experiment variants. If specified, must include a variant with key 'control' (lowercase). Defaults to a 50/50 control/test split when omitted. Minimum 2, maximum 20.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "minimum_detectable_effect": {
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20–30% for most experiments.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rollout_percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Overall rollout percentage (0-100). Controls what fraction of all users enter the experiment. Users outside the rollout never see any variant and are excluded from analysis. Default: 100.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1367,6 +1375,45 @@
             "com.distilled.openapi#nullable": {}
           }
         }
+      },
+      "traits": {}
+    },
+    "com.posthog.experiments#ExperimentVariant": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variant key. Exactly one variant in feature_flag_variants must use key 'control' (lowercase, exactly) — that is the baseline used for analysis and the special key the experiment runtime expects. Other variants use keys like 'test', 'variant_a', 'variant_b'. Map natural-language names ('original', 'A', 'baseline') to 'control'."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable variant name.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rollout_percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "split_percent": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of users assigned to this variant (0–100). All variants must sum to 100. One of split_percent (recommended) or rollout_percentage must be provided.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.experiments#ExperimentParametersFeatureFlagVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.experiments#ExperimentVariant"
       },
       "traits": {}
     },
@@ -1578,12 +1625,6 @@
             "smithy.api#enumValue": "paused"
           }
         },
-        "EXPOSURE_FROZEN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "exposure_frozen"
-          }
-        },
         "STOPPED": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1626,164 +1667,6 @@
           "code": 200
         },
         "smithy.api#documentation": "List experiments for the current project. Supports filtering by status and archival state."
-      }
-    },
-    "com.posthog.experiments#ExperimentFeatureFlagInput": {
-      "type": "structure",
-      "members": {
-        "filters": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagFilters",
-          "traits": {
-            "smithy.api#documentation": "Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed 'control' when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag's current state."
-          }
-        },
-        "ensure_experience_continuity": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the flag persists variant assignment across authentication steps.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Flag config for experiment create/update, sent through the linked feature flag's own shape.\n\nValidated both as the OpenAPI request field (via ``ExperimentWriteSerializer``) and at runtime\n(``ExperimentSerializer._normalize_feature_flag_input`` runs it against the raw feature_flag\nobject). Echoed read-only flag objects (carrying a non-null id) are handled upstream and never\nreach this validation."
-      }
-    },
-    "com.posthog.experiments#ExperimentFeatureFlagFilters": {
-      "type": "structure",
-      "members": {
-        "groups": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagFiltersGroupsList",
-          "traits": {
-            "smithy.api#documentation": "Overall rollout as a single group: [{\"properties\": [], \"rollout_percentage\": N}]."
-          }
-        },
-        "multivariate": {
-          "target": "com.posthog.experiments#ExperimentFlagMultivariate",
-          "traits": {
-            "smithy.api#documentation": "Multivariate variant configuration.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "aggregation_group_type_index": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Group type index for group-based feature flags.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "payloads": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagFiltersPayloadsMap",
-          "traits": {
-            "smithy.api#documentation": "Optional payload values keyed by variant key."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Feature-flag filters accepted by the experiment endpoints: the flag's own filters shape,\nminus the keys experiments don't apply."
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagRolloutGroup": {
-      "type": "structure",
-      "members": {
-        "rollout_percentage": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Percentage of users who enter the experiment (0-100).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "properties": {
-          "target": "com.posthog.experiments#ExperimentFlagRolloutGroupPropertiesList",
-          "traits": {
-            "smithy.api#documentation": "Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A single release-condition group carrying only the overall rollout percentage, the one\ngroups entry the experiment input applies."
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagRolloutGroupPropertiesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {
-        "smithy.api#documentation": "Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting."
-      }
-    },
-    "com.posthog.experiments#ExperimentFeatureFlagFiltersGroupsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentFlagRolloutGroup"
-      },
-      "traits": {
-        "smithy.api#documentation": "Overall rollout as a single group: [{\"properties\": [], \"rollout_percentage\": N}]."
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagMultivariate": {
-      "type": "structure",
-      "members": {
-        "variants": {
-          "target": "com.posthog.experiments#ExperimentFlagMultivariateVariantsList",
-          "traits": {
-            "smithy.api#documentation": "Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Multivariate config for the experiment's feature flag."
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagVariant": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique variant key. The baseline defaults to the variant keyed 'control' when present, else the first variant.",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable variant name."
-          }
-        },
-        "rollout_percentage": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Variant rollout percentage (0-100). Across variants these must sum to 100.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A single multivariate variant. Extra per-variant keys are dropped."
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagMultivariateVariantsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentFlagVariant"
-      },
-      "traits": {
-        "smithy.api#documentation": "Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant."
-      }
-    },
-    "com.posthog.experiments#ExperimentFeatureFlagFiltersPayloadsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Optional payload values keyed by variant key."
       }
     },
     "com.posthog.experiments#ExperimentsCreateRequestExcludedVariantsList": {
@@ -1856,7 +1739,7 @@
         "properties": {
           "target": "com.posthog.experiments#ExperimentApiExposureConfigPropertiesList",
           "traits": {
-            "smithy.api#documentation": "Property filters (event, person, and other supported types). Pass an empty array if no filters needed."
+            "smithy.api#documentation": "Event property filters. Pass an empty array if no filters needed."
           }
         }
       },
@@ -2163,1616 +2046,13 @@
       },
       "traits": {}
     },
-    "com.posthog.experiments#PersonPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Person properties"
-          }
-        },
-        "value": {
-          "target": "com.posthog.experiments#PersonPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#PersonPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#PersonPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonMetadataPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Top-level columns on the persons table (e.g. created_at), not properties JSON"
-          }
-        },
-        "value": {
-          "target": "com.posthog.experiments#PersonMetadataPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonMetadataPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonMetadataPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#PersonMetadataPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#PersonMetadataPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#PersonMetadataPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ElementPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "com.posthog.experiments#Key10"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#ElementPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#Key10": {
-      "type": "enum",
-      "members": {
-        "TAG_NAME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "tag_name"
-          }
-        },
-        "TEXT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "text"
-          }
-        },
-        "HREF": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "href"
-          }
-        },
-        "SELECTOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "selector"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ElementPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ElementPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ElementPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ElementPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#ElementPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#EventMetadataPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#EventMetadataPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#EventMetadataPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#EventMetadataPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#EventMetadataPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#EventMetadataPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#EventMetadataPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SessionPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#SessionPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SessionPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SessionPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#SessionPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SessionPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#SessionPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#CohortPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "cohort_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "smithy.api#Integer"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RecordingPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "com.posthog.experiments#RecordingPropertyFilterKey"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#RecordingPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DurationType": {
-      "type": "enum",
-      "members": {
-        "DURATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "duration"
-          }
-        },
-        "ACTIVE_SECONDS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "active_seconds"
-          }
-        },
-        "INACTIVE_SECONDS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "inactive_seconds"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RecordingPropertyFilterKey": {
-      "type": "union",
-      "members": {
-        "DurationType": {
-          "target": "com.posthog.experiments#DurationType"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RecordingPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RecordingPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#RecordingPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RecordingPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#RecordingPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogEntryPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#LogEntryPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogEntryPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogEntryPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#LogEntryPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogEntryPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#LogEntryPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#GroupPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "group_key_names": {
-          "target": "com.posthog.experiments#GroupPropertyFilterGroupKeyNamesMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "group_type_index": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#GroupPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#GroupPropertyFilterGroupKeyNamesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#GroupPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#GroupPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#GroupPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#GroupPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#GroupPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FeaturePropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Event property with \"$feature/\" prepended"
-          }
-        },
-        "value": {
-          "target": "com.posthog.experiments#FeaturePropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FeaturePropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FeaturePropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#FeaturePropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FeaturePropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#FeaturePropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FlagPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The key should be the flag ID"
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Only flag_evaluates_to operator is allowed for flag dependencies"
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Feature flag dependency"
-          }
-        },
-        "value": {
-          "target": "com.posthog.experiments#FlagPropertyFilterValue",
-          "traits": {
-            "smithy.api#documentation": "The value can be true, false, or a variant name"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#FlagPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Boolean"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The value can be true, false, or a variant name"
-      }
-    },
-    "com.posthog.experiments#HogQLPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#HogQLPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#HogQLPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#HogQLPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#HogQLPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#HogQLPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#HogQLPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#EmptyPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#DataWarehousePropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#DataWarehousePropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#DataWarehousePropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePersonPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#DataWarehousePersonPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePersonPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePersonPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#DataWarehousePersonPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#DataWarehousePersonPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#DataWarehousePersonPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ErrorTrackingIssueFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#ErrorTrackingIssueFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ErrorTrackingIssueFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ErrorTrackingIssueFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ErrorTrackingIssueFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ErrorTrackingIssueFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#ErrorTrackingIssueFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "com.posthog.experiments#LogPropertyFilterType"
-        },
-        "value": {
-          "target": "com.posthog.experiments#LogPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogPropertyFilterType": {
-      "type": "enum",
-      "members": {
-        "LOG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log"
-          }
-        },
-        "LOG_ATTRIBUTE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log_attribute"
-          }
-        },
-        "LOG_RESOURCE_ATTRIBUTE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log_resource_attribute"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#LogPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#LogPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#LogPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#MetricPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#MetricPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#MetricPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#MetricPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#MetricPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#MetricPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#MetricPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SpanPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "com.posthog.experiments#SpanPropertyFilterType"
-        },
-        "value": {
-          "target": "com.posthog.experiments#SpanPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SpanPropertyFilterType": {
-      "type": "enum",
-      "members": {
-        "SPAN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "span"
-          }
-        },
-        "SPAN_ATTRIBUTE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "span_attribute"
-          }
-        },
-        "SPAN_RESOURCE_ATTRIBUTE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "span_resource_attribute"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SpanPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SpanPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#SpanPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#SpanPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#SpanPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RevenueAnalyticsPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#RevenueAnalyticsPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RevenueAnalyticsPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RevenueAnalyticsPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#RevenueAnalyticsPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RevenueAnalyticsPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#RevenueAnalyticsPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#AccountCustomPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Customer analytics account custom property — the key is the property definition id"
-          }
-        },
-        "value": {
-          "target": "com.posthog.experiments#AccountCustomPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#AccountCustomPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#AccountCustomPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#AccountCustomPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#AccountCustomPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#AccountCustomPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#WorkflowVariablePropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.experiments#PropertyOperator"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.experiments#WorkflowVariablePropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#WorkflowVariablePropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#WorkflowVariablePropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#WorkflowVariablePropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#WorkflowVariablePropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.experiments#WorkflowVariablePropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ExperimentApiExposureConfigPropertiesItem": {
-      "type": "union",
-      "members": {
-        "EventPropertyFilter": {
-          "target": "com.posthog.experiments#EventPropertyFilter"
-        },
-        "PersonPropertyFilter": {
-          "target": "com.posthog.experiments#PersonPropertyFilter"
-        },
-        "PersonMetadataPropertyFilter": {
-          "target": "com.posthog.experiments#PersonMetadataPropertyFilter"
-        },
-        "ElementPropertyFilter": {
-          "target": "com.posthog.experiments#ElementPropertyFilter"
-        },
-        "EventMetadataPropertyFilter": {
-          "target": "com.posthog.experiments#EventMetadataPropertyFilter"
-        },
-        "SessionPropertyFilter": {
-          "target": "com.posthog.experiments#SessionPropertyFilter"
-        },
-        "CohortPropertyFilter": {
-          "target": "com.posthog.experiments#CohortPropertyFilter"
-        },
-        "RecordingPropertyFilter": {
-          "target": "com.posthog.experiments#RecordingPropertyFilter"
-        },
-        "LogEntryPropertyFilter": {
-          "target": "com.posthog.experiments#LogEntryPropertyFilter"
-        },
-        "GroupPropertyFilter": {
-          "target": "com.posthog.experiments#GroupPropertyFilter"
-        },
-        "FeaturePropertyFilter": {
-          "target": "com.posthog.experiments#FeaturePropertyFilter"
-        },
-        "FlagPropertyFilter": {
-          "target": "com.posthog.experiments#FlagPropertyFilter"
-        },
-        "HogQLPropertyFilter": {
-          "target": "com.posthog.experiments#HogQLPropertyFilter"
-        },
-        "EmptyPropertyFilter": {
-          "target": "com.posthog.experiments#EmptyPropertyFilter"
-        },
-        "DataWarehousePropertyFilter": {
-          "target": "com.posthog.experiments#DataWarehousePropertyFilter"
-        },
-        "DataWarehousePersonPropertyFilter": {
-          "target": "com.posthog.experiments#DataWarehousePersonPropertyFilter"
-        },
-        "ErrorTrackingIssueFilter": {
-          "target": "com.posthog.experiments#ErrorTrackingIssueFilter"
-        },
-        "LogPropertyFilter": {
-          "target": "com.posthog.experiments#LogPropertyFilter"
-        },
-        "MetricPropertyFilter": {
-          "target": "com.posthog.experiments#MetricPropertyFilter"
-        },
-        "SpanPropertyFilter": {
-          "target": "com.posthog.experiments#SpanPropertyFilter"
-        },
-        "RevenueAnalyticsPropertyFilter": {
-          "target": "com.posthog.experiments#RevenueAnalyticsPropertyFilter"
-        },
-        "AccountCustomPropertyFilter": {
-          "target": "com.posthog.experiments#AccountCustomPropertyFilter"
-        },
-        "WorkflowVariablePropertyFilter": {
-          "target": "com.posthog.experiments#WorkflowVariablePropertyFilter"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.experiments#ExperimentApiExposureConfigPropertiesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.experiments#ExperimentApiExposureConfigPropertiesItem"
+        "target": "com.posthog.experiments#EventPropertyFilter"
       },
       "traits": {
-        "smithy.api#documentation": "Property filters (event, person, and other supported types). Pass an empty array if no filters needed."
+        "smithy.api#documentation": "Event property filters. Pass an empty array if no filters needed."
       }
     },
     "com.posthog.experiments#MultipleVariantHandling": {
@@ -4284,8 +2564,7 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Name of the experiment.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the experiment."
           }
         },
         "description": {
@@ -4310,14 +2589,7 @@
         "feature_flag_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible.",
-            "smithy.api#required": {}
-          }
-        },
-        "feature_flag": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagInput",
-          "traits": {
-            "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
+            "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
         "holdout_id": {
@@ -4330,7 +2602,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4442,7 +2714,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -4509,7 +2781,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4615,13 +2887,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -4634,19 +2899,13 @@
         "status": {
           "target": "com.posthog.experiments#ExperimentStatusEnum",
           "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended)."
+            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'stopped' (ended)."
           }
         },
         "is_legacy": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project."
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions)."
           }
         },
         "user_access_level": {
@@ -4830,8 +3089,7 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Name of the experiment.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the experiment."
           }
         },
         "description": {
@@ -4856,14 +3114,7 @@
         "feature_flag_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible.",
-            "smithy.api#required": {}
-          }
-        },
-        "feature_flag": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagInput",
-          "traits": {
-            "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
+            "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
         "holdout_id": {
@@ -4876,7 +3127,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4988,7 +3239,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -5021,7 +3272,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsPartialUpdateRequestExcludedVariantsList": {
@@ -5092,12 +3343,6 @@
             "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
-        "feature_flag": {
-          "target": "com.posthog.experiments#ExperimentFeatureFlagInput",
-          "traits": {
-            "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
-          }
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -5108,7 +3353,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -5220,7 +3465,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -5253,7 +3498,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time. Feature-flag config (variants, rollout, payloads) is sent via the feature_flag object."
+        "smithy.api#documentation": "Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time."
       }
     },
     "com.posthog.experiments#ExperimentsDestroyRequest": {
@@ -5508,7 +3753,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -5620,7 +3865,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -5653,7 +3898,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/create_exposure_cohort_for_experiment/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsDuplicateCreateRequestExcludedVariantsList": {
@@ -5734,7 +3979,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -5846,7 +4091,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -5879,7 +4124,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/duplicate/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsEndCreateRequest": {
@@ -5914,12 +4159,6 @@
             "smithy.api#documentation": "Optional comment about the experiment conclusion.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "open_cleanup_pr": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Code (403 otherwise). Only acts for allowlisted teams; ignored otherwise."
-          }
         }
       },
       "traits": {
@@ -5952,174 +4191,6 @@
           "code": 200
         },
         "smithy.api#documentation": "End a running experiment without shipping a variant.\n\nSets end_date to now and marks the experiment as stopped. The feature\nflag is NOT modified — users continue to see their assigned variants\nand exposure events ($feature_flag_called) continue to be recorded.\nHowever, only data up to end_date is included in experiment results.\n\nUse this when:\n\n- You want to freeze the results window without changing which variant\n  users see.\n- A variant was already shipped manually via the feature flag UI and\n  the experiment just needs to be marked complete.\n\nThe end_date can be adjusted after ending via PATCH if it needs to be\nbackdated (e.g. to match when the flag was actually paused).\n\nOther options:\n- Use ship_variant to end the experiment AND roll out a single variant to 100%% of users.\n- Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results).\n\nReturns 400 if the experiment is not running."
-      }
-    },
-    "com.posthog.experiments#ExperimentsFlagCleanupTaskRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A unique integer value identifying this experiment."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.experiments#ExperimentFlagCleanupTask": {
-      "type": "structure",
-      "members": {
-        "task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the flag-cleanup Code task.",
-            "smithy.api#required": {}
-          }
-        },
-        "run_status": {
-          "target": "com.posthog.experiments#RunStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Status of the task's latest run.\n\n* `not_started` - not_started\n* `queued` - queued\n* `in_progress` - in_progress\n* `completed` - completed\n* `failed` - failed\n* `cancelled` - cancelled",
-            "smithy.api#required": {}
-          }
-        },
-        "is_terminal": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the run has finished (successfully or not). Stop polling once true.",
-            "smithy.api#required": {}
-          }
-        },
-        "pr_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "URL of the pull request the task opened, when it opened one.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "can_view_task": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the requesting user can open the task in PostHog Code. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#RunStatusEnum": {
-      "type": "enum",
-      "members": {
-        "NOT_STARTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "not_started"
-          }
-        },
-        "QUEUED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "queued"
-          }
-        },
-        "IN_PROGRESS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "in_progress"
-          }
-        },
-        "COMPLETED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "completed"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "failed"
-          }
-        },
-        "CANCELLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "cancelled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `not_started` - not_started\n* `queued` - queued\n* `in_progress` - in_progress\n* `completed` - completed\n* `failed` - failed\n* `cancelled` - cancelled"
-      }
-    },
-    "com.posthog.experiments#ExperimentsFlagCleanupTaskRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.experiments#ExperimentsFlagCleanupTaskRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.experiments#ExperimentFlagCleanupTask"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/experiments/{id}/flag_cleanup_task/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Status of the flag-cleanup Code task opened for this experiment.\n\nWhen an experiment was ended or shipped with open_cleanup_pr=true, a Code task\nremoves the experiment's feature-flag code and opens a draft pull request. This\nreturns that task's latest run status and the PR URL once one is opened. Poll\nuntil is_terminal is true. Returns 404 when no cleanup task was opened."
-      }
-    },
-    "com.posthog.experiments#ExperimentsFreezeExposureCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A unique integer value identifying this experiment."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.experiments#ExperimentsFreezeExposureCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.experiments#ExperimentsFreezeExposureCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.experiments#ExperimentOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/experiments/{id}/freeze_exposure/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Freeze exposure on a running experiment while metrics keep flowing.\n\nSnapshots the already-exposed users into a static cohort and narrows the\nlinked feature flag so only those users keep matching — new users can no\nlonger enter the experiment. ``end_date`` is left null so long-term metrics\n(revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep\ntheir assigned variant. The serialized status becomes 'exposure_frozen'.\n\nReturns 400 if the experiment is not running, exposure is already frozen,\nthe experiment is group-aggregated (group flags cannot be frozen with a\nperson cohort), or the exposed set is too large to snapshot synchronously."
       }
     },
     "com.posthog.experiments#ExperimentsLaunchCreateRequest": {
@@ -6168,7 +4239,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/launch/",
           "code": 200
         },
-        "smithy.api#documentation": "Launch a draft experiment.\n\nValidates the experiment is in draft state, activates its linked feature flag,\nsets start_date to the current server time, and transitions the experiment to running.\nReturns 400 if the experiment has already been launched or if the feature flag\nconfiguration is invalid (e.g. fewer than 2 variants)."
+        "smithy.api#documentation": "Launch a draft experiment.\n\nValidates the experiment is in draft state, activates its linked feature flag,\nsets start_date to the current server time, and transitions the experiment to running.\nReturns 400 if the experiment has already been launched or if the feature flag\nconfiguration is invalid (e.g. missing \"control\" variant or fewer than 2 variants)."
       }
     },
     "com.posthog.experiments#TriggerEnum": {
@@ -6275,7 +4346,7 @@
           }
         },
         "status": {
-          "target": "com.posthog.experiments#MetricsRecalculationStatusEnum",
+          "target": "com.posthog.experiments#ExperimentMetricsRecalculationStatusEnum",
           "traits": {
             "smithy.api#documentation": "Current status of the recalculation job\n\n* `pending` - Pending\n* `in_progress` - In Progress\n* `completed` - Completed\n* `failed` - Failed",
             "smithy.api#required": {}
@@ -6306,13 +4377,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Map of metric_uuid to error details",
-            "smithy.api#required": {}
-          }
-        },
-        "metric_retries": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale.",
             "smithy.api#required": {}
           }
         },
@@ -6361,14 +4425,6 @@
             "smithy.api#required": {}
           }
         },
-        "active_run": {
-          "target": "com.posthog.experiments#ActiveRecalculationRun",
-          "traits": {
-            "smithy.api#documentation": "Run currently executing for this experiment, if any; poll it by id for live progress",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "result_source": {
           "target": "com.posthog.experiments#ResultSourceEnum",
           "traits": {
@@ -6382,27 +4438,13 @@
             "smithy.api#documentation": "Per-metric results computed by this run, scoped by the run's recalc fingerprint",
             "smithy.api#required": {}
           }
-        },
-        "rows_read": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Rows read by the run's metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "estimated_rows_total": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ClickHouse's total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Serializer for metrics recalculation status responses."
       }
     },
-    "com.posthog.experiments#MetricsRecalculationStatusEnum": {
+    "com.posthog.experiments#ExperimentMetricsRecalculationStatusEnum": {
       "type": "enum",
       "members": {
         "PENDING": {
@@ -6432,28 +4474,6 @@
       },
       "traits": {
         "smithy.api#documentation": "* `pending` - Pending\n* `in_progress` - In Progress\n* `completed` - Completed\n* `failed` - Failed"
-      }
-    },
-    "com.posthog.experiments#ActiveRecalculationRun": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier of the run that is still executing",
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "com.posthog.experiments#MetricsRecalculationStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Status of the executing run (pending or in_progress)\n\n* `pending` - Pending\n* `in_progress` - In Progress\n* `completed` - Completed\n* `failed` - Failed",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results."
       }
     },
     "com.posthog.experiments#ResultSourceEnum": {
@@ -6615,7 +4635,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/{recalculation_id}/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsMetricsRecalculationLatestRetrieveRequest": {
@@ -6661,7 +4681,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/latest/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsPauseCreateRequest": {
@@ -6791,7 +4811,7 @@
         "parameters": {
           "target": "com.posthog.experiments#ExperimentParameters",
           "traits": {
-            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.",
+            "smithy.api#documentation": "Experiment parameters JSON. Supported keys include `feature_flag_variants`, `rollout_percentage`, `custom_exposure_filter`, and `variant_notes` (free-text notes per variant, keyed by variant key). Excluded variants live on the top-level `excluded_variants` field, not here.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -6903,7 +4923,7 @@
         "update_feature_flag_params": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
+            "smithy.api#documentation": "When true, sync feature flag configuration from parameters to the linked feature flag. Draft experiments always sync regardless of update_feature_flag_params, so only required for non-drafts."
           }
         }
       },
@@ -6936,7 +4956,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/recalculate_timeseries/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsResetCreateRequest": {
@@ -6985,7 +5005,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/reset/",
           "code": 200
         },
-        "smithy.api#documentation": "Reset an experiment back to draft state.\n\nClears start/end dates, conclusion, archived flag, and any flag-cleanup\ntask pointer. The feature flag is left unchanged — users continue to see\ntheir assigned variants.\n\nPreviously collected events still exist but won't be included in\nresults unless the start date is manually adjusted after re-launch.\n\nReturns 400 if the experiment is already in draft state."
+        "smithy.api#documentation": "Reset an experiment back to draft state.\n\nClears start/end dates, conclusion, and archived flag. The feature\nflag is left unchanged — users continue to see their assigned variants.\n\nPreviously collected events still exist but won't be included in\nresults unless the start date is manually adjusted after re-launch.\n\nReturns 400 if the experiment is already in draft state."
       }
     },
     "com.posthog.experiments#ExperimentsResumeCreateRequest": {
@@ -7068,12 +5088,6 @@
           "traits": {
             "smithy.api#documentation": "Optional comment about the experiment conclusion.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "open_cleanup_pr": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Code (403 otherwise). Only acts for allowlisted teams; ignored otherwise."
           }
         },
         "variant_key": {
@@ -7186,7 +5200,7 @@
           "uri": "/api/projects/{project_id}/experiments/{id}/timeseries_results/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsUnarchiveCreateRequest": {
@@ -7228,47 +5242,6 @@
           "code": 200
         },
         "smithy.api#documentation": "Unarchive an archived experiment.\n\nRestores the experiment to the default list view. Returns 400 if the\nexperiment is not currently archived."
-      }
-    },
-    "com.posthog.experiments#ExperimentsUnfreezeExposureCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A unique integer value identifying this experiment."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.experiments#ExperimentsUnfreezeExposureCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.experiments#ExperimentsUnfreezeExposureCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.experiments#ExperimentOutput"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/experiments/{id}/unfreeze_exposure/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Reopen enrollment on an exposure-frozen experiment.\n\nRemoves the snapshot-cohort condition and freeze markers from every release\ngroup, restoring the flag's original targeting: new users can enroll again\nand already-enrolled users keep their assigned variant. The snapshot cohort\nis soft-deleted. The serialized status returns to 'running'.\n\nReturns 400 if the experiment is not running or its exposure is not frozen."
       }
     },
     "com.posthog.experiments#MetricTypeEnum": {
@@ -7610,6 +5583,47 @@
         "smithy.api#documentation": "Create an experiment that compares N versions of an LLM prompt using a metric template.\n\nThe user picks 2+ versions of an existing LLMPrompt and 1+ metric templates\n(cost / latency / eval_pass_rate). The endpoint builds the matching variants\n(control + test-N, each named after its prompt version) and attaches one\nmetric per selected template, each scoped to the prompt's $ai_prompt_name.\nResulting experiment is in draft state."
       }
     },
+    "com.posthog.experiments#ExperimentsEligibleFeatureFlagsRetrieveRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.experiments#ExperimentsEligibleFeatureFlagsRetrieve": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.experiments#ExperimentsEligibleFeatureFlagsRetrieveRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.experiments#Forbidden"
+        },
+        {
+          "target": "com.posthog.experiments#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/experiments/eligible_feature_flags/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns a paginated list of feature flags eligible for use in experiments.\n\nEligible flags must:\n- Be multivariate with at least 2 variants\n- Have \"control\" as the first variant key\n\nQuery parameters:\n- search: Filter by flag key or name (case insensitive)\n- limit: Number of results per page (default: 20)\n- offset: Pagination offset (default: 0)\n- active: Filter by active status (\"true\" or \"false\")\n- created_by_id: Filter by creator user ID\n- order: Sort order field\n- evaluation_runtime: Filter by evaluation runtime\n- has_evaluation_contexts: Filter by presence of evaluation contexts (\"true\" or \"false\")"
+      }
+    },
     "com.posthog.experiments#ExperimentsPromptTemplatesRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -7689,7 +5703,7 @@
         "smithy.api#documentation": "List the LLM metric templates that can be passed to `create_from_prompt`."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionContextRetrieveRequest": {
+    "com.posthog.experiments#ExperimentsRequiresFlagImplementationRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7699,217 +5713,35 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "session_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "session_id",
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the session recording to resolve experiment context for."
-          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentSessionContextResponse": {
-      "type": "structure",
-      "members": {
-        "session_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the session recording the context was resolved for.",
-            "smithy.api#required": {}
-          }
-        },
-        "results": {
-          "target": "com.posthog.experiments#ExperimentSessionContextResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Experiment/variant context for a session recording."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionContextItem": {
-      "type": "structure",
-      "members": {
-        "experiment_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the experiment whose feature flag the session saw.",
-            "smithy.api#required": {}
-          }
-        },
-        "experiment_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the experiment.",
-            "smithy.api#required": {}
-          }
-        },
-        "flag_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Key of the experiment's feature flag.",
-            "smithy.api#required": {}
-          }
-        },
-        "variant": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Variant the session saw. Taken from the earliest event matching the experiment's exposure criteria when one exists, otherwise from the earliest flag evaluation in the session, otherwise from the $feature/<key> property stamped on the session's events.",
-            "smithy.api#required": {}
-          }
-        },
-        "variants_seen": {
-          "target": "com.posthog.experiments#ExperimentSessionContextItemVariantsSeenList",
-          "traits": {
-            "smithy.api#documentation": "All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias.",
-            "smithy.api#required": {}
-          }
-        },
-        "multiple_variants": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the session saw more than one variant of this flag.",
-            "smithy.api#required": {}
-          }
-        },
-        "first_exposure_timestamp": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the first event in the session matching the experiment's exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/<key> properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person's counted first exposure may lie in an earlier session.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "experiment_start_date": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the experiment was launched.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "experiment_end_date": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the experiment ended. Null while the experiment is still running.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "metrics_in_session": {
-          "target": "com.posthog.experiments#ExperimentSessionContextItemMetricsInSessionList",
-          "traits": {
-            "smithy.api#documentation": "This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "One experiment whose feature flag a session recording saw."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionContextItemVariantsSeenList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionMetricHit": {
-      "type": "structure",
-      "members": {
-        "metric_uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the experiment metric (inline primary/secondary or saved) whose events fired.",
-            "smithy.api#required": {}
-          }
-        },
-        "metric_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed.",
-            "smithy.api#required": {}
-          }
-        },
-        "event_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total number of events in the session matching any of the metric's event/action sources.",
-            "smithy.api#required": {}
-          }
-        },
-        "first_timestamp": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the first event in the session matching the metric.",
-            "smithy.api#required": {}
-          }
-        },
-        "timestamps": {
-          "target": "com.posthog.experiments#ExperimentSessionMetricHitTimestampsList",
-          "traits": {
-            "smithy.api#documentation": "Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "One experiment metric with at least one matching event in a session recording."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionMetricHitTimestampsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionContextItemMetricsInSessionList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentSessionMetricHit"
-      },
-      "traits": {
-        "smithy.api#documentation": "This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session."
-      }
-    },
-    "com.posthog.experiments#ExperimentSessionContextResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentSessionContextItem"
-      },
-      "traits": {
-        "smithy.api#documentation": "Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session."
-      }
-    },
-    "com.posthog.experiments#ExperimentsSessionContextRetrieve": {
+    "com.posthog.experiments#ExperimentsRequiresFlagImplementationRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsSessionContextRetrieveRequest"
+        "target": "com.posthog.experiments#ExperimentsRequiresFlagImplementationRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#ExperimentSessionContextResponse"
+        "target": "smithy.api#Unit"
       },
+      "errors": [
+        {
+          "target": "com.posthog.experiments#Forbidden"
+        },
+        {
+          "target": "com.posthog.experiments#NotFound"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/api/projects/{project_id}/experiments/session_context/",
+          "uri": "/api/projects/{project_id}/experiments/requires_flag_implementation/",
           "code": 200
         },
-        "smithy.api#documentation": "Resolve which experiments (and variants) a session recording saw. Variants come from the session's $feature_flag_called events and stamped $feature/<key> event properties — flag evaluation, which may differ from an experiment's exposure criteria."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#ExperimentsStatsRetrieveRequest": {
@@ -7950,7 +5782,7 @@
           "uri": "/api/projects/{project_id}/experiments/stats/",
           "code": 200
         },
-        "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
+        "smithy.api#documentation": "Mixin for ViewSets to handle ApprovalRequired exceptions from decorated serializers.\n\nThis mixin intercepts ApprovalRequired exceptions raised by the @approval_gate decorator\non serializer methods and converts them into proper HTTP 409 Conflict responses with\nchange request details."
       }
     },
     "com.posthog.experiments#BadRequest": {
@@ -8030,12 +5862,6 @@
           "target": "com.posthog.experiments#ExperimentsEndCreate"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsFlagCleanupTaskRetrieve"
-        },
-        {
-          "target": "com.posthog.experiments#ExperimentsFreezeExposureCreate"
-        },
-        {
           "target": "com.posthog.experiments#ExperimentsLaunchCreate"
         },
         {
@@ -8069,19 +5895,19 @@
           "target": "com.posthog.experiments#ExperimentsUnarchiveCreate"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsUnfreezeExposureCreate"
-        },
-        {
           "target": "com.posthog.experiments#ExperimentsCalculateRunningTimeCreate"
         },
         {
           "target": "com.posthog.experiments#ExperimentsCreateFromPromptCreate"
         },
         {
+          "target": "com.posthog.experiments#ExperimentsEligibleFeatureFlagsRetrieve"
+        },
+        {
           "target": "com.posthog.experiments#ExperimentsPromptTemplatesRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsSessionContextRetrieve"
+          "target": "com.posthog.experiments#ExperimentsRequiresFlagImplementationRetrieve"
         },
         {
           "target": "com.posthog.experiments#ExperimentsStatsRetrieve"

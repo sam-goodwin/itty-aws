@@ -17,46 +17,9 @@
     ]
   },
   "shapes": {
-    "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListRequestBucketMinutes": {
-      "type": "intEnum",
-      "members": {
-        "_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": 5
-          }
-        },
-        "_15": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": 15
-          }
-        },
-        "_30": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": 30
-          }
-        },
-        "_60": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": 60
-          }
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListRequest": {
       "type": "structure",
       "members": {
-        "bucket_minutes": {
-          "target": "com.posthog.ai_observability#LlmAnalyticsPersonalSpendListRequestBucketMinutes",
-          "traits": {
-            "smithy.api#httpQuery": "bucket_minutes",
-            "smithy.api#documentation": "When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets).\n\n* `5` - 5\n* `15` - 15\n* `30` - 30\n* `60` - 60"
-          }
-        },
         "date_from": {
           "target": "smithy.api#String",
           "traits": {
@@ -127,19 +90,6 @@
           "traits": {
             "smithy.api#documentation": "Spend grouped by `$ai_model`. Scoped to `product` when set.",
             "smithy.api#required": {}
-          }
-        },
-        "by_day": {
-          "target": "com.posthog.ai_observability#DayBreakdown",
-          "traits": {
-            "smithy.api#documentation": "Spend grouped by UTC day, ordered ascending. Scoped to `product`. Not subject to `limit`.",
-            "smithy.api#required": {}
-          }
-        },
-        "by_bucket": {
-          "target": "com.posthog.ai_observability#BucketBreakdown",
-          "traits": {
-            "smithy.api#documentation": "Spend grouped by UTC time bucket with per-bucket cost/token components, ordered ascending. Scoped to `product`. Only present when the request set `bucket_minutes`."
           }
         },
         "top_traces": {
@@ -408,181 +358,6 @@
         "smithy.api#documentation": "Rows of spend by model, ordered by cost descending."
       }
     },
-    "com.posthog.ai_observability#DayBreakdown": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.posthog.ai_observability#DayBreakdownItemsList",
-          "traits": {
-            "smithy.api#documentation": "One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series.",
-            "smithy.api#required": {}
-          }
-        },
-        "truncated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Effectively always false: `by_day` ignores `limit` because truncating a time series by cost would be meaningless, and the 90-day window cap already bounds the series length.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.ai_observability#DayBreakdownRow": {
-      "type": "structure",
-      "members": {
-        "day": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UTC calendar day the events fall on (`toDate(timestamp)`).",
-            "smithy.api#required": {}
-          }
-        },
-        "event_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of $ai_generation + $ai_embedding events on this day for the scoped product.",
-            "smithy.api#required": {}
-          }
-        },
-        "cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Total cost in USD on this day for the scoped product.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.ai_observability#DayBreakdownItemsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.ai_observability#DayBreakdownRow"
-      },
-      "traits": {
-        "smithy.api#documentation": "One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series."
-      }
-    },
-    "com.posthog.ai_observability#BucketBreakdown": {
-      "type": "structure",
-      "members": {
-        "items": {
-          "target": "com.posthog.ai_observability#BucketBreakdownItemsList",
-          "traits": {
-            "smithy.api#documentation": "One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series.",
-            "smithy.api#required": {}
-          }
-        },
-        "bucket_minutes": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Bucket size in minutes the series was computed at; echoes the request `bucket_minutes`.",
-            "smithy.api#required": {}
-          }
-        },
-        "truncated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Effectively always false: `by_bucket` ignores `limit` because truncating a time series by cost would be meaningless, and the 600-bucket window cap already bounds the series length.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.ai_observability#BucketBreakdownRow": {
-      "type": "structure",
-      "members": {
-        "bucket_start": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UTC start of the time bucket the events fall in (`toStartOfInterval(timestamp, ...)`).",
-            "smithy.api#required": {}
-          }
-        },
-        "event_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of $ai_generation + $ai_embedding events in this bucket for the scoped product.",
-            "smithy.api#required": {}
-          }
-        },
-        "cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Total cost in USD in this bucket (sum of `$ai_total_cost_usd`). Authoritative: the component columns below can sum to less than this when the cost breakdown was unavailable for some events; render any remainder as uncategorized rather than assuming the components reconcile.",
-            "smithy.api#required": {}
-          }
-        },
-        "input_cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Cost of uncached (full-price) input tokens in USD, derived per event as `$ai_input_cost_usd` minus the cache read/write costs (the stored input cost includes them), clamped at zero. The four component columns are disjoint: they sum to `cost_usd` when the full breakdown is present, so they can be stacked without double counting cache costs.",
-            "smithy.api#required": {}
-          }
-        },
-        "output_cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Cost of output tokens in USD (sum of `$ai_output_cost_usd`).",
-            "smithy.api#required": {}
-          }
-        },
-        "cache_read_cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Cost of prompt-cache reads in USD (sum of `$ai_cache_read_cost_usd`).",
-            "smithy.api#required": {}
-          }
-        },
-        "cache_creation_cost_usd": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Cost of prompt-cache writes in USD (sum of `$ai_cache_creation_cost_usd`). A spike here with near-zero cache reads is the signature of a cold session being revived: the full conversation context is re-written to the cache at the cache-write rate instead of being read back cheaply.",
-            "smithy.api#required": {}
-          }
-        },
-        "input_tokens": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Sum of `$ai_input_tokens` in this bucket. Whether cached tokens are included follows the provider's reporting (`$ai_cache_reporting_exclusive`): Anthropic-style events exclude them, OpenAI-style events include them, so don't stack this with the cache token sums.",
-            "smithy.api#required": {}
-          }
-        },
-        "output_tokens": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Sum of `$ai_output_tokens` in this bucket.",
-            "smithy.api#required": {}
-          }
-        },
-        "cache_read_input_tokens": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Sum of `$ai_cache_read_input_tokens` (prompt tokens served from cache) in this bucket.",
-            "smithy.api#required": {}
-          }
-        },
-        "cache_creation_input_tokens": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Sum of `$ai_cache_creation_input_tokens` (prompt tokens written to cache) in this bucket.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.ai_observability#BucketBreakdownItemsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.ai_observability#BucketBreakdownRow"
-      },
-      "traits": {
-        "smithy.api#documentation": "One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series."
-      }
-    },
     "com.posthog.ai_observability#TopTraces": {
       "type": "structure",
       "members": {
@@ -695,7 +470,7 @@
           "uri": "/api/llm_analytics/@me/spend/",
           "code": 200
         },
-        "smithy.api#documentation": "Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache."
+        "smithy.api#documentation": "Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache."
       }
     },
     "com.posthog.ai_observability#FilterEnum": {

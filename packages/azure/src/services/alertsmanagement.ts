@@ -1207,7 +1207,7 @@ export const AlertsMetaDataRequestIdentifier = /*@__PURE__*/ S.String;
 
 export interface AlertsMetaDataRequest {
   /** Identification of the information to be retrieved by API call. */
-  identifier: AlertsMetaDataRequestIdentifier;
+  identifier: AlertsMetaDataRequestIdentifier | (string & {});
 }
 export const AlertsMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

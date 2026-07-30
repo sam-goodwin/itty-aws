@@ -1070,18 +1070,6 @@ export const CommitStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CommitStats" }) as any as S.Schema<CommitStats>;
 
-export type CommitResponseIsolationLevelEnum =
-  | "ISOLATION_LEVEL_UNSPECIFIED"
-  | "SERIALIZABLE"
-  | "REPEATABLE_READ";
-export const CommitResponseIsolationLevelEnum = /*@__PURE__*/ S.String;
-
-export type CommitResponseReadLockModeEnum =
-  | "READ_LOCK_MODE_UNSPECIFIED"
-  | "PESSIMISTIC"
-  | "OPTIMISTIC";
-export const CommitResponseReadLockModeEnum = /*@__PURE__*/ S.String;
-
 /** The response for Commit. */
 export interface CommitResponse {
   /** The Cloud Spanner timestamp at which the transaction committed. */
@@ -1092,10 +1080,6 @@ export interface CommitResponse {
   precommitToken?: MultiplexedSessionPrecommitToken;
   /** If `TransactionOptions.isolation_level` is set to `IsolationLevel.REPEATABLE_READ`, then the snapshot timestamp is the timestamp at which all reads in the transaction ran. This timestamp is never returned. */
   snapshotTimestamp?: string;
-  /** The isolation level used for the read-write transaction. */
-  isolationLevel?: CommitResponseIsolationLevelEnum;
-  /** The read lock mode used for the read-write transaction. */
-  readLockMode?: CommitResponseReadLockModeEnum;
 }
 export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1103,8 +1087,6 @@ export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
     commitStats: S.optional(CommitStats),
     precommitToken: S.optional(MultiplexedSessionPrecommitToken),
     snapshotTimestamp: S.optional(S.String),
-    isolationLevel: S.optional(CommitResponseIsolationLevelEnum),
-    readLockMode: S.optional(CommitResponseReadLockModeEnum),
   }),
 ).annotate({ identifier: "CommitResponse" }) as any as S.Schema<CommitResponse>;
 
@@ -2040,9 +2022,9 @@ export interface InstancePartition {
   config?: string;
   /** Required. The descriptive name for this instance partition as it appears in UIs. Must be unique per project and between 4 and 30 characters in length. */
   displayName?: string;
-  /** The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify the target number of nodes allocated to the instance partition. If autoscaling is enabled, node_count is treated as an OUTPUT_ONLY field and reflects the current number of nodes allocated to the instance partition. This may be zero in API responses for instance partitions that are not yet in state `READY`. */
+  /** The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify the target number of nodes allocated to the instance partition. This may be zero in API responses for instance partitions that are not yet in state `READY`. */
   nodeCount?: number;
-  /** The number of processing units allocated to this instance partition. Users can set the `processing_units` field to specify the target number of processing units allocated to the instance partition. If autoscaling is enabled, processing_units is treated as an OUTPUT_ONLY field and reflects the current number of processing units allocated to the instance partition. This might be zero in API responses for instance partitions that are not yet in the `READY` state. */
+  /** The number of processing units allocated to this instance partition. Users can set the `processing_units` field to specify the target number of processing units allocated to the instance partition. This might be zero in API responses for instance partitions that are not yet in the `READY` state. */
   processingUnits?: number;
   /** Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, fields in compute_capacity are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance partition. */
   autoscalingConfig?: AutoscalingConfig;

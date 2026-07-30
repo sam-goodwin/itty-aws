@@ -155,41 +155,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(Status),
     name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -227,72 +227,72 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** Details for a Posture deployment on an organization, folder, or project. You can deploy at most one posture to each organization, folder, or project. The parent resource for a posture deployment is always the organization, even if the deployment applies to a folder or project. */
 export interface PostureDeployment {
-  /** Output only. The state of the posture deployment. */
-  state?: PostureDeploymentStateEnum | (string & {});
+  /** Output only. A description of why the posture deployment failed. Present only if the deployment is in a failed state. */
+  failureMessage?: string;
   /** Required. Identifier. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. */
   name?: string;
-  /** Output only. The posture ID that was specified for the deployment. Present only if the posture deployment is in a failed state. */
-  desiredPostureId?: string;
-  /** Output only. Whether the posture deployment is in the process of being updated. */
-  reconciling?: boolean;
-  /** Required. The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
-  targetResource?: string;
-  /** Output only. The time at which the posture deployment was last updated. */
-  updateTime?: string;
-  /** Required. The posture used in the deployment, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
-  postureId?: string;
-  /** Output only. The revision ID of the posture that was specified for the deployment. Present only if the deployment is in a failed state. */
-  desiredPostureRevisionId?: string;
+  /** Output only. The state of the posture deployment. */
+  state?: PostureDeploymentStateEnum | (string & {});
   /** Optional. A description of the posture deployment. */
   description?: string;
+  /** Required. The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
+  targetResource?: string;
+  /** Required. The posture used in the deployment, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
+  postureId?: string;
   /** Output only. The categories that the posture deployment belongs to, as determined by the Security Posture API. */
   categories?: PostureDeploymentCategoriesItemEnumList;
+  /** Output only. The time at which the posture deployment was last updated. */
+  updateTime?: string;
+  /** Output only. The posture ID that was specified for the deployment. Present only if the posture deployment is in a failed state. */
+  desiredPostureId?: string;
+  /** Output only. The revision ID of the posture that was specified for the deployment. Present only if the deployment is in a failed state. */
+  desiredPostureRevisionId?: string;
   /** Required. The revision ID of the posture used in the deployment. */
   postureRevisionId?: string;
   /** Optional. The user-specified annotations for the posture deployment. For details about the values you can use in an annotation, see [AIP-148: Standard fields](https://google.aip.dev/148#annotations). */
   annotations?: StringMap;
+  /** Output only. Whether the posture deployment is in the process of being updated. */
+  reconciling?: boolean;
   /** Optional. An opaque identifier for the current version of the posture deployment. To prevent concurrent updates from overwriting each other, always provide the `etag` when you update a posture deployment. You can also provide the `etag` when you delete a posture deployment, to help ensure that you're deleting the intended posture deployment. */
   etag?: string;
   /** Output only. The time at which the posture deployment was created. */
   createTime?: string;
-  /** Output only. A description of why the posture deployment failed. Present only if the deployment is in a failed state. */
-  failureMessage?: string;
 }
 export const PostureDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(PostureDeploymentStateEnum),
+    failureMessage: S.optional(S.String),
     name: S.optional(S.String),
-    desiredPostureId: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
-    targetResource: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    postureId: S.optional(S.String),
-    desiredPostureRevisionId: S.optional(S.String),
+    state: S.optional(PostureDeploymentStateEnum),
     description: S.optional(S.String),
+    targetResource: S.optional(S.String),
+    postureId: S.optional(S.String),
     categories: S.optional(PostureDeploymentCategoriesItemEnumList),
+    updateTime: S.optional(S.String),
+    desiredPostureId: S.optional(S.String),
+    desiredPostureRevisionId: S.optional(S.String),
     postureRevisionId: S.optional(S.String),
     annotations: S.optional(StringMap),
+    reconciling: S.optional(S.Boolean),
     etag: S.optional(S.String),
     createTime: S.optional(S.String),
-    failureMessage: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PostureDeployment",
 }) as any as S.Schema<PostureDeployment>;
 
 export interface CreateOrganizationsLocationsPostureDeploymentsRequest {
-  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
-  parent: string;
   /** Required. An identifier for the posture deployment. */
   postureDeploymentId?: string;
+  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
+  parent: string;
   /** Request body */
   body?: PostureDeployment;
 }
 export const CreateOrganizationsLocationsPostureDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       postureDeploymentId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(PostureDeployment.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -312,22 +312,58 @@ export type PostureStateEnum =
   | "ACTIVE";
 export const PostureStateEnum = /*@__PURE__*/ S.String;
 
+export type PostureCategoriesItemEnum =
+  | "CATEGORY_UNSPECIFIED"
+  | "AI"
+  | "AWS"
+  | "GCP"
+  | "AZURE";
+export const PostureCategoriesItemEnum = /*@__PURE__*/ S.String;
+
+export type PostureCategoriesItemEnumList = Array<
+  PostureCategoriesItemEnum | (string & {})
+>;
+export const PostureCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+  PostureCategoriesItemEnum,
+) as any as S.Schema<PostureCategoriesItemEnumList>;
+
+/** Information about a compliance standard that the policy helps enforce. */
+export interface ComplianceStandard {
+  /** Optional. The compliance standard that the policy helps enforce. For example, `NIST SP 800-53`. */
+  standard?: string;
+  /** Optional. The control in the compliance standard that the policy helps enforce. For example, `AC-3`. */
+  control?: string;
+}
+export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    standard: S.optional(S.String),
+    control: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComplianceStandard",
+}) as any as S.Schema<ComplianceStandard>;
+
+export type ComplianceStandardList = Array<ComplianceStandard>;
+export const ComplianceStandardList = /*@__PURE__*/ S.Array(
+  ComplianceStandard,
+) as any as S.Schema<ComplianceStandardList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    expression: S.optional(S.String),
-    description: S.optional(S.String),
     title: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
     location: S.optional(S.String),
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
@@ -394,25 +430,25 @@ export const CustomConfigSeverityEnum = /*@__PURE__*/ S.String;
 export interface CustomConfig {
   /** Optional. Definitions of custom source properties to include in findings. */
   customOutput?: CustomOutputSpec;
-  /** Required. The Common Expression Language (CEL) expression to evaluate. When the expression evaluates to `true` for a resource, a finding is generated. */
-  predicate?: Expr;
-  /** Required. An explanation of the steps that security teams can take to resolve the detected issue. The explanation appears in each finding. */
-  recommendation?: string;
-  /** Optional. A description of the vulnerability or misconfiguration that the custom module detects. The description appears in each finding. Provide enough information to help an investigator understand the finding. The value must be enclosed in quotation marks. */
-  description?: string;
   /** Required. The resource types that the custom module operates on. */
   resourceSelector?: ResourceSelector;
+  /** Required. The Common Expression Language (CEL) expression to evaluate. When the expression evaluates to `true` for a resource, a finding is generated. */
+  predicate?: Expr;
   /** Required. The severity of findings generated by the custom module. */
   severity?: CustomConfigSeverityEnum | (string & {});
+  /** Optional. A description of the vulnerability or misconfiguration that the custom module detects. The description appears in each finding. Provide enough information to help an investigator understand the finding. The value must be enclosed in quotation marks. */
+  description?: string;
+  /** Required. An explanation of the steps that security teams can take to resolve the detected issue. The explanation appears in each finding. */
+  recommendation?: string;
 }
 export const CustomConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customOutput: S.optional(CustomOutputSpec),
-    predicate: S.optional(Expr),
-    recommendation: S.optional(S.String),
-    description: S.optional(S.String),
     resourceSelector: S.optional(ResourceSelector),
+    predicate: S.optional(Expr),
     severity: S.optional(CustomConfigSeverityEnum),
+    description: S.optional(S.String),
+    recommendation: S.optional(S.String),
   }),
 ).annotate({ identifier: "CustomConfig" }) as any as S.Schema<CustomConfig>;
 
@@ -425,29 +461,111 @@ export const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
 
 /** A custom module for Security Health Analytics. */
 export interface SecurityHealthAnalyticsCustomModule {
+  /** Optional. The display name of the custom module. This value is used as the finding category for all the asset violation findings that the custom module returns. The display name must contain between 1 and 128 alphanumeric characters or underscores, and it must start with a lowercase letter. */
+  displayName?: string;
   /** Required. Configuration settings for the custom module. */
   config?: CustomConfig;
+  /** Output only. Immutable. The unique identifier for the custom module. Contains 1 to 20 digits. */
+  id?: string;
   /** Whether the custom module is enabled at a specified level of the resource hierarchy. */
   moduleEnablementState?:
     | SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum
     | (string & {});
-  /** Output only. Immutable. The unique identifier for the custom module. Contains 1 to 20 digits. */
-  id?: string;
-  /** Optional. The display name of the custom module. This value is used as the finding category for all the asset violation findings that the custom module returns. The display name must contain between 1 and 128 alphanumeric characters or underscores, and it must start with a lowercase letter. */
-  displayName?: string;
 }
 export const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    displayName: S.optional(S.String),
     config: S.optional(CustomConfig),
+    id: S.optional(S.String),
     moduleEnablementState: S.optional(
       SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum,
     ),
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SecurityHealthAnalyticsCustomModule",
 }) as any as S.Schema<SecurityHealthAnalyticsCustomModule>;
+
+/** The allowed and denied values for a list constraint. For all constraints, these fields can contain literal values. Optionally, you can add the `is:` prefix to these values. If the value contains a colon (`:`), then the `is:` prefix is required. Some constraints allow you to specify a portion of the resource hierarchy, known as a [_hierarchy subtree_](https://cloud.google.com/resource-manager/help/organization-policy/hierarchy-subtree), that the constraint applies to. To specify a hierarchy subtree, use the `under:` prefix, followed by a value with one of these formats: - `projects/{project_id}` (for example, `projects/tokyo-rain-123`) - `folders/{folder_id}` (for example, `folders/1234567890123`) - `organizations/{organization_id}` (for example, `organizations/123456789012`) A constraint's `supports_under` field indicates whether you can specify a hierarchy subtree. To learn which predefined constraints let you specify a hierarchy subtree, see the [constraints reference](https://cloud.google.com/resource-manager/help/organization-policy/constraints/reference). */
+export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
+  /** The allowed values for the constraint. */
+  allowedValues?: StringList;
+  /** The denied values for the constraint. */
+  deniedValues?: StringList;
+}
+export const GoogleCloudSecuritypostureV1PolicyRuleStringValues =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allowedValues: S.optional(StringList),
+      deniedValues: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
+  }) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues>;
+
+/** Set multiple resource types for one policy, for example: ``` resourceTypes: included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ``` Constraint definition contains an empty resource type in order to support multiple resource types in the policy. Only supports managed constraints. Method type is `GOVERN_TAGS`. */
+export interface ResourceTypes {
+  /** Optional. The resource types we support. */
+  included?: StringList;
+}
+export const ResourceTypes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    included: S.optional(StringList),
+  }),
+).annotate({ identifier: "ResourceTypes" }) as any as S.Schema<ResourceTypes>;
+
+/** A rule that defines the allowed and denied values for an organization policy constraint. */
+export interface GoogleCloudSecuritypostureV1PolicyRule {
+  /** Whether to enforce the constraint. Valid only for boolean constraints. */
+  enforce?: boolean;
+  /** Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: ``` { "allowedLocations": ["us-east1", "us-west1"], "allowAll": true } ``` */
+  parameters?: DocumentMap;
+  /** The allowed and denied values for a list constraint. Valid only for list constraints. */
+  values?: GoogleCloudSecuritypostureV1PolicyRuleStringValues;
+  /** A condition that determines whether this rule is used to evaluate the policy. When set, the google.type.Expr.expression field must contain 1 to 10 subexpressions, joined by the `||` or `&&` operators. Each subexpression must use the `resource.matchTag()`, `resource.matchTagId()`, `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression Language (CEL) function. The `resource.matchTag()` function takes the following arguments: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` * `value_name`: the short name of the tag value For example: `resource.matchTag('123456789012/environment, 'prod')` The `resource.matchTagId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value; for example, `tagValues/567890123456` For example: `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')` The `resource.hasTagKey()` function takes the following argument: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` For example: `resource.hasTagKey('123456789012/environment')` The `resource.hasTagKeyId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` For example: `resource.hasTagKeyId('tagKeys/123456789012')` */
+  condition?: Expr;
+  /** Whether to deny all values for a list constraint. Valid only for list constraints. */
+  denyAll?: boolean;
+  /** Optional. The resource types policies can support, only used for managed constraints. Method type is `GOVERN_TAGS`. */
+  resourceTypes?: ResourceTypes;
+  /** Whether to allow any value for a list constraint. Valid only for list constraints. */
+  allowAll?: boolean;
+}
+export const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enforce: S.optional(S.Boolean),
+      parameters: S.optional(DocumentMap),
+      values: S.optional(GoogleCloudSecuritypostureV1PolicyRuleStringValues),
+      condition: S.optional(Expr),
+      denyAll: S.optional(S.Boolean),
+      resourceTypes: S.optional(ResourceTypes),
+      allowAll: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "GoogleCloudSecuritypostureV1PolicyRule",
+}) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRule>;
+
+export type GoogleCloudSecuritypostureV1PolicyRuleList =
+  Array<GoogleCloudSecuritypostureV1PolicyRule>;
+export const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ S.Array(
+  GoogleCloudSecuritypostureV1PolicyRule,
+) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleList>;
+
+/** A predefined organization policy constraint. */
+export interface OrgPolicyConstraint {
+  /** Required. A unique identifier for the constraint. */
+  cannedConstraintId?: string;
+  /** Required. The rules enforced by the constraint. */
+  policyRules?: GoogleCloudSecuritypostureV1PolicyRuleList;
+}
+export const OrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cannedConstraintId: S.optional(S.String),
+    policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
+  }),
+).annotate({
+  identifier: "OrgPolicyConstraint",
+}) as any as S.Schema<OrgPolicyConstraint>;
 
 export type GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
@@ -478,20 +596,20 @@ export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList
 export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The name of the constraint, in the format `organizations/{organization_id}/customConstraints/custom.{custom_constraint_id}`. For example, `organizations/123456789012/customConstraints/custom.createOnlyE2TypeVms`. Must contain 1 to 62 characters, excluding the prefix `organizations/{organization_id}/customConstraints/custom.`. */
   name?: string;
+  /** Output only. The last time at which the constraint was updated or created. */
+  updateTime?: string;
+  /** A Common Expression Language (CEL) condition expression that must evaluate to `true` for the constraint to be enforced. The maximum length is 1000 characters. For example: + `resource.instanceName.matches('(production|test)_(.+_)?[\d]+')`: Evaluates to `true` if the resource's `instanceName` attribute contains the following: + The prefix `production` or `test` + An underscore (`_`) + Optional: One or more characters, followed by an underscore (`_`) + One or more digits + `resource.management.auto_upgrade == true`: Evaluates to `true` if the resource's `management.auto_upgrade` attribute is `true`. */
+  condition?: string;
   /** Whether to allow or deny the action. */
   actionType?:
     | GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum
     | (string & {});
-  /** Output only. The last time at which the constraint was updated or created. */
-  updateTime?: string;
-  /** The types of operations that the constraint applies to. */
-  methodTypes?: GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList;
-  /** A Common Expression Language (CEL) condition expression that must evaluate to `true` for the constraint to be enforced. The maximum length is 1000 characters. For example: + `resource.instanceName.matches('(production|test)_(.+_)?[\d]+')`: Evaluates to `true` if the resource's `instanceName` attribute contains the following: + The prefix `production` or `test` + An underscore (`_`) + Optional: One or more characters, followed by an underscore (`_`) + One or more digits + `resource.management.auto_upgrade == true`: Evaluates to `true` if the resource's `management.auto_upgrade` attribute is `true`. */
-  condition?: string;
-  /** A display name for the constraint. The maximum length is 200 characters. */
-  displayName?: string;
   /** Immutable. The resource type that the constraint applies to, in the format `{canonical_service_name}/{resource_type_name}`. For example, `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
+  /** The types of operations that the constraint applies to. */
+  methodTypes?: GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList;
+  /** A display name for the constraint. The maximum length is 200 characters. */
+  displayName?: string;
   /** A description of the constraint. The maximum length is 2000 characters. */
   description?: string;
 }
@@ -499,87 +617,21 @@ export const GoogleCloudSecuritypostureV1CustomConstraint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      condition: S.optional(S.String),
       actionType: S.optional(
         GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum,
       ),
-      updateTime: S.optional(S.String),
+      resourceTypes: S.optional(StringList),
       methodTypes: S.optional(
         GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList,
       ),
-      condition: S.optional(S.String),
       displayName: S.optional(S.String),
-      resourceTypes: S.optional(StringList),
       description: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudSecuritypostureV1CustomConstraint",
   }) as any as S.Schema<GoogleCloudSecuritypostureV1CustomConstraint>;
-
-/** Set multiple resource types for one policy, for example: ``` resourceTypes: included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ``` Constraint definition contains an empty resource type in order to support multiple resource types in the policy. Only supports managed constraints. Method type is `GOVERN_TAGS`. */
-export interface ResourceTypes {
-  /** Optional. The resource types we support. */
-  included?: StringList;
-}
-export const ResourceTypes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    included: S.optional(StringList),
-  }),
-).annotate({ identifier: "ResourceTypes" }) as any as S.Schema<ResourceTypes>;
-
-/** The allowed and denied values for a list constraint. For all constraints, these fields can contain literal values. Optionally, you can add the `is:` prefix to these values. If the value contains a colon (`:`), then the `is:` prefix is required. Some constraints allow you to specify a portion of the resource hierarchy, known as a [_hierarchy subtree_](https://cloud.google.com/resource-manager/help/organization-policy/hierarchy-subtree), that the constraint applies to. To specify a hierarchy subtree, use the `under:` prefix, followed by a value with one of these formats: - `projects/{project_id}` (for example, `projects/tokyo-rain-123`) - `folders/{folder_id}` (for example, `folders/1234567890123`) - `organizations/{organization_id}` (for example, `organizations/123456789012`) A constraint's `supports_under` field indicates whether you can specify a hierarchy subtree. To learn which predefined constraints let you specify a hierarchy subtree, see the [constraints reference](https://cloud.google.com/resource-manager/help/organization-policy/constraints/reference). */
-export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
-  /** The denied values for the constraint. */
-  deniedValues?: StringList;
-  /** The allowed values for the constraint. */
-  allowedValues?: StringList;
-}
-export const GoogleCloudSecuritypostureV1PolicyRuleStringValues =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deniedValues: S.optional(StringList),
-      allowedValues: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
-  }) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues>;
-
-/** A rule that defines the allowed and denied values for an organization policy constraint. */
-export interface GoogleCloudSecuritypostureV1PolicyRule {
-  /** Optional. The resource types policies can support, only used for managed constraints. Method type is `GOVERN_TAGS`. */
-  resourceTypes?: ResourceTypes;
-  /** Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: ``` { "allowedLocations": ["us-east1", "us-west1"], "allowAll": true } ``` */
-  parameters?: DocumentMap;
-  /** A condition that determines whether this rule is used to evaluate the policy. When set, the google.type.Expr.expression field must contain 1 to 10 subexpressions, joined by the `||` or `&&` operators. Each subexpression must use the `resource.matchTag()`, `resource.matchTagId()`, `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression Language (CEL) function. The `resource.matchTag()` function takes the following arguments: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` * `value_name`: the short name of the tag value For example: `resource.matchTag('123456789012/environment, 'prod')` The `resource.matchTagId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value; for example, `tagValues/567890123456` For example: `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')` The `resource.hasTagKey()` function takes the following argument: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` For example: `resource.hasTagKey('123456789012/environment')` The `resource.hasTagKeyId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` For example: `resource.hasTagKeyId('tagKeys/123456789012')` */
-  condition?: Expr;
-  /** Whether to deny all values for a list constraint. Valid only for list constraints. */
-  denyAll?: boolean;
-  /** The allowed and denied values for a list constraint. Valid only for list constraints. */
-  values?: GoogleCloudSecuritypostureV1PolicyRuleStringValues;
-  /** Whether to allow any value for a list constraint. Valid only for list constraints. */
-  allowAll?: boolean;
-  /** Whether to enforce the constraint. Valid only for boolean constraints. */
-  enforce?: boolean;
-}
-export const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceTypes: S.optional(ResourceTypes),
-      parameters: S.optional(DocumentMap),
-      condition: S.optional(Expr),
-      denyAll: S.optional(S.Boolean),
-      values: S.optional(GoogleCloudSecuritypostureV1PolicyRuleStringValues),
-      allowAll: S.optional(S.Boolean),
-      enforce: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GoogleCloudSecuritypostureV1PolicyRule",
-}) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRule>;
-
-export type GoogleCloudSecuritypostureV1PolicyRuleList =
-  Array<GoogleCloudSecuritypostureV1PolicyRule>;
-export const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ S.Array(
-  GoogleCloudSecuritypostureV1PolicyRule,
-) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleList>;
 
 /** A custom organization policy constraint. */
 export interface OrgPolicyConstraintCustom {
@@ -624,82 +676,45 @@ export const SecurityHealthAnalyticsModule = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecurityHealthAnalyticsModule",
 }) as any as S.Schema<SecurityHealthAnalyticsModule>;
 
-/** A predefined organization policy constraint. */
-export interface OrgPolicyConstraint {
-  /** Required. A unique identifier for the constraint. */
-  cannedConstraintId?: string;
-  /** Required. The rules enforced by the constraint. */
-  policyRules?: GoogleCloudSecuritypostureV1PolicyRuleList;
-}
-export const OrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cannedConstraintId: S.optional(S.String),
-    policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
-  }),
-).annotate({
-  identifier: "OrgPolicyConstraint",
-}) as any as S.Schema<OrgPolicyConstraint>;
-
 /** Metadata for a constraint in a Policy. */
 export interface Constraint {
   /** Optional. A custom module for Security Health Analytics. */
   securityHealthAnalyticsCustomModule?: SecurityHealthAnalyticsCustomModule;
+  /** Optional. A predefined organization policy constraint. */
+  orgPolicyConstraint?: OrgPolicyConstraint;
   /** Optional. A custom organization policy constraint. */
   orgPolicyConstraintCustom?: OrgPolicyConstraintCustom;
   /** Optional. A built-in detector for Security Health Analytics. */
   securityHealthAnalyticsModule?: SecurityHealthAnalyticsModule;
-  /** Optional. A predefined organization policy constraint. */
-  orgPolicyConstraint?: OrgPolicyConstraint;
 }
 export const Constraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityHealthAnalyticsCustomModule: S.optional(
       SecurityHealthAnalyticsCustomModule,
     ),
+    orgPolicyConstraint: S.optional(OrgPolicyConstraint),
     orgPolicyConstraintCustom: S.optional(OrgPolicyConstraintCustom),
     securityHealthAnalyticsModule: S.optional(SecurityHealthAnalyticsModule),
-    orgPolicyConstraint: S.optional(OrgPolicyConstraint),
   }),
 ).annotate({ identifier: "Constraint" }) as any as S.Schema<Constraint>;
 
-/** Information about a compliance standard that the policy helps enforce. */
-export interface ComplianceStandard {
-  /** Optional. The compliance standard that the policy helps enforce. For example, `NIST SP 800-53`. */
-  standard?: string;
-  /** Optional. The control in the compliance standard that the policy helps enforce. For example, `AC-3`. */
-  control?: string;
-}
-export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    standard: S.optional(S.String),
-    control: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ComplianceStandard",
-}) as any as S.Schema<ComplianceStandard>;
-
-export type ComplianceStandardList = Array<ComplianceStandard>;
-export const ComplianceStandardList = /*@__PURE__*/ S.Array(
-  ComplianceStandard,
-) as any as S.Schema<ComplianceStandardList>;
-
 /** The details of a policy, including the constraints that it includes. */
 export interface Policy {
-  /** Required. The constraints that the policy includes. */
-  constraint?: Constraint;
   /** Required. A user-specified identifier for the policy. In a PolicySet, each policy must have a unique identifier. */
   policyId?: string;
-  /** Optional. The compliance standards that the policy helps enforce. */
-  complianceStandards?: ComplianceStandardList;
   /** Optional. A description of the policy. */
   description?: string;
+  /** Optional. The compliance standards that the policy helps enforce. */
+  complianceStandards?: ComplianceStandardList;
+  /** Required. The constraints that the policy includes. */
+  constraint?: Constraint;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    constraint: S.optional(Constraint),
     policyId: S.optional(S.String),
-    complianceStandards: S.optional(ComplianceStandardList),
     description: S.optional(S.String),
+    complianceStandards: S.optional(ComplianceStandardList),
+    constraint: S.optional(Constraint),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
@@ -710,18 +725,18 @@ export const PolicyList = /*@__PURE__*/ S.Array(
 
 /** A group of one or more Policy resources. */
 export interface PolicySet {
-  /** Required. The Policy resources in the policy set. Each policy must have a policy_id that's unique within the policy set. */
-  policies?: PolicyList;
   /** Required. An identifier for the policy set. */
   policySetId?: string;
   /** Optional. A description of the policy set. */
   description?: string;
+  /** Required. The Policy resources in the policy set. Each policy must have a policy_id that's unique within the policy set. */
+  policies?: PolicyList;
 }
 export const PolicySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policies: S.optional(PolicyList),
     policySetId: S.optional(S.String),
     description: S.optional(S.String),
+    policies: S.optional(PolicyList),
   }),
 ).annotate({ identifier: "PolicySet" }) as any as S.Schema<PolicySet>;
 
@@ -730,75 +745,60 @@ export const PolicySetList = /*@__PURE__*/ S.Array(
   PolicySet,
 ) as any as S.Schema<PolicySetList>;
 
-export type PostureCategoriesItemEnum =
-  | "CATEGORY_UNSPECIFIED"
-  | "AI"
-  | "AWS"
-  | "GCP"
-  | "AZURE";
-export const PostureCategoriesItemEnum = /*@__PURE__*/ S.String;
-
-export type PostureCategoriesItemEnumList = Array<
-  PostureCategoriesItemEnum | (string & {})
->;
-export const PostureCategoriesItemEnumList = /*@__PURE__*/ S.Array(
-  PostureCategoriesItemEnum,
-) as any as S.Schema<PostureCategoriesItemEnumList>;
-
 /** The details of a posture. */
 export interface Posture {
-  /** Required. The state of the posture at the specified `revision_id`. */
-  state?: PostureStateEnum | (string & {});
-  /** Required. The PolicySet resources that the posture includes. */
-  policySets?: PolicySetList;
-  /** Output only. Immutable. An opaque eight-character string that identifies the revision of the posture. A posture can have multiple revisions; when you deploy a posture, you deploy a specific revision of the posture. */
-  revisionId?: string;
-  /** Output only. Whether the posture is in the process of being updated. */
-  reconciling?: boolean;
   /** Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name?: string;
-  /** Output only. The time at which the posture was last updated. */
-  updateTime?: string;
-  /** Optional. A description of the posture. */
-  description?: string;
-  /** Output only. The categories that the posture belongs to, as determined by the Security Posture API. */
-  categories?: PostureCategoriesItemEnumList;
-  /** Optional. The user-specified annotations for the posture. For details about the values you can use in an annotation, see [AIP-148: Standard fields](https://google.aip.dev/148#annotations). */
-  annotations?: StringMap;
+  /** Required. The state of the posture at the specified `revision_id`. */
+  state?: PostureStateEnum | (string & {});
+  /** Output only. Immutable. An opaque eight-character string that identifies the revision of the posture. A posture can have multiple revisions; when you deploy a posture, you deploy a specific revision of the posture. */
+  revisionId?: string;
   /** Output only. The time at which the posture was created. */
   createTime?: string;
+  /** Output only. The time at which the posture was last updated. */
+  updateTime?: string;
   /** Optional. An opaque identifier for the current version of the posture at the specified `revision_id`. To prevent concurrent updates from overwriting each other, always provide the `etag` when you update a posture. You can also provide the `etag` when you delete a posture, to help ensure that you're deleting the intended version of the posture. */
   etag?: string;
+  /** Output only. The categories that the posture belongs to, as determined by the Security Posture API. */
+  categories?: PostureCategoriesItemEnumList;
+  /** Output only. Whether the posture is in the process of being updated. */
+  reconciling?: boolean;
+  /** Optional. A description of the posture. */
+  description?: string;
+  /** Optional. The user-specified annotations for the posture. For details about the values you can use in an annotation, see [AIP-148: Standard fields](https://google.aip.dev/148#annotations). */
+  annotations?: StringMap;
+  /** Required. The PolicySet resources that the posture includes. */
+  policySets?: PolicySetList;
 }
 export const Posture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(PostureStateEnum),
-    policySets: S.optional(PolicySetList),
-    revisionId: S.optional(S.String),
-    reconciling: S.optional(S.Boolean),
     name: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    description: S.optional(S.String),
-    categories: S.optional(PostureCategoriesItemEnumList),
-    annotations: S.optional(StringMap),
+    state: S.optional(PostureStateEnum),
+    revisionId: S.optional(S.String),
     createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
     etag: S.optional(S.String),
+    categories: S.optional(PostureCategoriesItemEnumList),
+    reconciling: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    policySets: S.optional(PolicySetList),
   }),
 ).annotate({ identifier: "Posture" }) as any as S.Schema<Posture>;
 
 export interface CreateOrganizationsLocationsPosturesRequest {
-  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
-  parent: string;
   /** Required. An identifier for the posture. */
   postureId?: string;
+  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
+  parent: string;
   /** Request body */
   body?: Posture;
 }
 export const CreateOrganizationsLocationsPosturesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       postureId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Posture.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -831,16 +831,16 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   }) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
 export interface DeleteOrganizationsLocationsPostureDeploymentsRequest {
-  /** Required. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_id}`. */
-  name: string;
   /** Optional. An opaque identifier for the current version of the posture deployment. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture deployment is deleted regardless of its current `etag` value. */
   etag?: string;
+  /** Required. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_id}`. */
+  name: string;
 }
 export const DeleteOrganizationsLocationsPostureDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -853,16 +853,16 @@ export const DeleteOrganizationsLocationsPostureDeploymentsRequest =
   }) as any as S.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>;
 
 export interface DeleteOrganizationsLocationsPosturesRequest {
-  /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
-  name: string;
   /** Optional. An opaque identifier for the current version of the posture. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture is deleted regardless of its current `etag` value. */
   etag?: string;
+  /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
+  name: string;
 }
 export const DeleteOrganizationsLocationsPosturesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       etag: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -876,15 +876,15 @@ export const DeleteOrganizationsLocationsPosturesRequest =
 
 /** Request message for ExtractPosture. */
 export interface ExtractPostureRequest {
-  /** Required. An identifier for the posture. */
-  postureId?: string;
   /** Required. The organization, folder, or project from which policies are extracted. Must be within the organization defined in parent. Use one of the following formats: * `organization/{organization_number}` * `folder/{folder_number}` * `project/{project_number}` */
   workload?: string;
+  /** Required. An identifier for the posture. */
+  postureId?: string;
 }
 export const ExtractPostureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    postureId: S.optional(S.String),
     workload: S.optional(S.String),
+    postureId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ExtractPostureRequest",
@@ -951,16 +951,16 @@ export const GetOrganizationsLocationsPostureDeploymentsRequest =
   }) as any as S.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>;
 
 export interface GetOrganizationsLocationsPosturesRequest {
-  /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
-  name: string;
   /** Optional. The posture revision to retrieve. If not specified, the most recently updated revision is retrieved. */
   revisionId?: string;
+  /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
+  name: string;
 }
 export const GetOrganizationsLocationsPosturesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       revisionId: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -994,6 +994,12 @@ export const GetOrganizationsLocationsPostureTemplatesRequest =
     identifier: "GetOrganizationsLocationsPostureTemplatesRequest",
   }) as any as S.Schema<GetOrganizationsLocationsPostureTemplatesRequest>;
 
+export type PostureTemplateStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ACTIVE"
+  | "DEPRECATED";
+export const PostureTemplateStateEnum = /*@__PURE__*/ S.String;
+
 export type PostureTemplateCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
   | "AI"
@@ -1008,35 +1014,29 @@ export const PostureTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   PostureTemplateCategoriesItemEnum,
 ) as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
 
-export type PostureTemplateStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DEPRECATED";
-export const PostureTemplateStateEnum = /*@__PURE__*/ S.String;
-
 /** The details of a posture template. */
 export interface PostureTemplate {
-  /** Output only. A string that identifies the revision of the posture template. */
-  revisionId?: string;
   /** Output only. A description of the posture template. */
   description?: string;
-  /** Output only. The categories that the posture template belongs to, as determined by the Security Posture API. */
-  categories?: PostureTemplateCategoriesItemEnumList;
-  /** Output only. The state of the posture template at the specified `revision_id`. */
-  state?: PostureTemplateStateEnum;
   /** Output only. The PolicySet resources that the posture template includes. */
   policySets?: PolicySetList;
+  /** Output only. A string that identifies the revision of the posture template. */
+  revisionId?: string;
   /** Output only. Identifier. The name of the posture template, in the format `organizations/{organization}/locations/global/postureTemplates/{posture_template}`. */
   name?: string;
+  /** Output only. The state of the posture template at the specified `revision_id`. */
+  state?: PostureTemplateStateEnum;
+  /** Output only. The categories that the posture template belongs to, as determined by the Security Posture API. */
+  categories?: PostureTemplateCategoriesItemEnumList;
 }
 export const PostureTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    revisionId: S.optional(S.String),
     description: S.optional(S.String),
-    categories: S.optional(PostureTemplateCategoriesItemEnumList),
-    state: S.optional(PostureTemplateStateEnum),
     policySets: S.optional(PolicySetList),
+    revisionId: S.optional(S.String),
     name: S.optional(S.String),
+    state: S.optional(PostureTemplateStateEnum),
+    categories: S.optional(PostureTemplateCategoriesItemEnumList),
   }),
 ).annotate({
   identifier: "PostureTemplate",
@@ -1061,6 +1061,20 @@ export const GetOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetOrganizationsLocationsReportsRequest",
 }) as any as S.Schema<GetOrganizationsLocationsReportsRequest>;
 
+/** Details of a Cloud Asset Inventory asset that caused a violation. */
+export interface AssetDetails {
+  /** Information about the Cloud Asset Inventory asset that violated a policy. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
+  asset?: string;
+  /** The type of Cloud Asset Inventory asset. For a list of asset types, see [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). */
+  assetType?: string;
+}
+export const AssetDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    asset: S.optional(S.String),
+    assetType: S.optional(S.String),
+  }),
+).annotate({ identifier: "AssetDetails" }) as any as S.Schema<AssetDetails>;
+
 export type ViolationSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
@@ -1068,29 +1082,6 @@ export type ViolationSeverityEnum =
   | "MEDIUM"
   | "LOW";
 export const ViolationSeverityEnum = /*@__PURE__*/ S.String;
-
-/** Details of a posture deployment. */
-export interface PostureDetails {
-  /** The identifier for the PolicySet that the relevant policy belongs to. */
-  policySet?: string;
-  /** The revision ID of the posture used in the deployment. */
-  postureRevisionId?: string;
-  /** The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. */
-  postureDeployment?: string;
-  /** The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
-  postureDeploymentTargetResource?: string;
-  /** The posture used in the deployment, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
-  posture?: string;
-}
-export const PostureDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policySet: S.optional(S.String),
-    postureRevisionId: S.optional(S.String),
-    postureDeployment: S.optional(S.String),
-    postureDeploymentTargetResource: S.optional(S.String),
-    posture: S.optional(S.String),
-  }),
-).annotate({ identifier: "PostureDetails" }) as any as S.Schema<PostureDetails>;
 
 export type PolicyDetailsConstraintTypeEnum =
   | "CONSTRAINT_TYPE_UNSPECIFIED"
@@ -1103,64 +1094,73 @@ export const PolicyDetailsConstraintTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of a policy that was violated. */
 export interface PolicyDetails {
-  /** The compliance standards that the policy maps to. For example, `CIS-2.0 1.15`. */
-  complianceStandards?: StringList;
   /** A description of the policy. */
   description?: string;
   /** Information about the constraint that was violated. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   constraint?: string;
   /** The type of constraint that was violated. */
   constraintType?: PolicyDetailsConstraintTypeEnum;
+  /** The compliance standards that the policy maps to. For example, `CIS-2.0 1.15`. */
+  complianceStandards?: StringList;
 }
 export const PolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    complianceStandards: S.optional(StringList),
     description: S.optional(S.String),
     constraint: S.optional(S.String),
     constraintType: S.optional(PolicyDetailsConstraintTypeEnum),
+    complianceStandards: S.optional(StringList),
   }),
 ).annotate({ identifier: "PolicyDetails" }) as any as S.Schema<PolicyDetails>;
 
-/** Details of a Cloud Asset Inventory asset that caused a violation. */
-export interface AssetDetails {
-  /** The type of Cloud Asset Inventory asset. For a list of asset types, see [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). */
-  assetType?: string;
-  /** Information about the Cloud Asset Inventory asset that violated a policy. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
-  asset?: string;
+/** Details of a posture deployment. */
+export interface PostureDetails {
+  /** The identifier for the PolicySet that the relevant policy belongs to. */
+  policySet?: string;
+  /** The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. */
+  postureDeployment?: string;
+  /** The posture used in the deployment, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
+  posture?: string;
+  /** The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
+  postureDeploymentTargetResource?: string;
+  /** The revision ID of the posture used in the deployment. */
+  postureRevisionId?: string;
 }
-export const AssetDetails = /*@__PURE__*/ S.suspend(() =>
+export const PostureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    assetType: S.optional(S.String),
-    asset: S.optional(S.String),
+    policySet: S.optional(S.String),
+    postureDeployment: S.optional(S.String),
+    posture: S.optional(S.String),
+    postureDeploymentTargetResource: S.optional(S.String),
+    postureRevisionId: S.optional(S.String),
   }),
-).annotate({ identifier: "AssetDetails" }) as any as S.Schema<AssetDetails>;
+).annotate({ identifier: "PostureDetails" }) as any as S.Schema<PostureDetails>;
 
 /** Details of a violation. */
 export interface Violation {
-  /** The severity of the violation. */
-  severity?: ViolationSeverityEnum;
-  /** The full resource name of the asset that caused the violation. For details about the format of the full resource name for each asset type, see [Resource name format](https://cloud.google.com/asset-inventory/docs/resource-name-format). */
-  assetId?: string;
-  /** Details for the posture that was violated. This field is present only if the violated policy belongs to a deployed posture. */
-  violatedPosture?: PostureDetails;
   /** The policy that was violated. */
   policyId?: string;
-  /** Details of the policy that was violated. */
-  violatedPolicy?: PolicyDetails;
   /** Details of the Cloud Asset Inventory asset that caused the violation. */
   violatedAsset?: AssetDetails;
+  /** The full resource name of the asset that caused the violation. For details about the format of the full resource name for each asset type, see [Resource name format](https://cloud.google.com/asset-inventory/docs/resource-name-format). */
+  assetId?: string;
+  /** The severity of the violation. */
+  severity?: ViolationSeverityEnum;
   /** A description of the steps that you can take to fix the violation. */
   nextSteps?: string;
+  /** Details of the policy that was violated. */
+  violatedPolicy?: PolicyDetails;
+  /** Details for the posture that was violated. This field is present only if the violated policy belongs to a deployed posture. */
+  violatedPosture?: PostureDetails;
 }
 export const Violation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    severity: S.optional(ViolationSeverityEnum),
-    assetId: S.optional(S.String),
-    violatedPosture: S.optional(PostureDetails),
     policyId: S.optional(S.String),
-    violatedPolicy: S.optional(PolicyDetails),
     violatedAsset: S.optional(AssetDetails),
+    assetId: S.optional(S.String),
+    severity: S.optional(ViolationSeverityEnum),
     nextSteps: S.optional(S.String),
+    violatedPolicy: S.optional(PolicyDetails),
+    violatedPosture: S.optional(PostureDetails),
   }),
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
@@ -1171,15 +1171,15 @@ export const ViolationList = /*@__PURE__*/ S.Array(
 
 /** Details of an infrastructure-as-code (IaC) validation report. */
 export interface IaCValidationReport {
-  /** A list of every Violation found in the IaC configuration. */
-  violations?: ViolationList;
   /** Additional information about the report. */
   note?: string;
+  /** A list of every Violation found in the IaC configuration. */
+  violations?: ViolationList;
 }
 export const IaCValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    violations: S.optional(ViolationList),
     note: S.optional(S.String),
+    violations: S.optional(ViolationList),
   }),
 ).annotate({
   identifier: "IaCValidationReport",
@@ -1187,21 +1187,21 @@ export const IaCValidationReport = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of a report. */
 export interface Report {
-  /** Output only. The time at which the report was last updated. */
-  updateTime?: string;
-  /** Output only. An infrastructure-as-code (IaC) validation report. */
-  iacValidationReport?: IaCValidationReport;
-  /** Output only. The time at which the report was created. */
-  createTime?: string;
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
   name?: string;
+  /** Output only. The time at which the report was last updated. */
+  updateTime?: string;
+  /** Output only. The time at which the report was created. */
+  createTime?: string;
+  /** Output only. An infrastructure-as-code (IaC) validation report. */
+  iacValidationReport?: IaCValidationReport;
 }
 export const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateTime: S.optional(S.String),
-    iacValidationReport: S.optional(IaCValidationReport),
-    createTime: S.optional(S.String),
     name: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    iacValidationReport: S.optional(IaCValidationReport),
   }),
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
@@ -1225,47 +1225,47 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    displayName: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
     locationId: S.optional(S.String),
     labels: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export interface ListOrganizationsLocationsOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The name of the operation's parent resource. */
   name: string;
-  /** The standard list page token. */
-  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** The standard list filter. */
   filter?: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
 }
 export const ListOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1284,17 +1284,17 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
   }),
 ).annotate({
@@ -1302,21 +1302,21 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListOrganizationsLocationsPostureDeploymentsRequest {
-  /** Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. */
-  pageToken?: string;
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
   /** Optional. The maximum number of posture deployments to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
+  /** Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. */
+  pageToken?: string;
   /** Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
   filter?: string;
 }
 export const ListOrganizationsLocationsPostureDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -1336,40 +1336,40 @@ export const PostureDeploymentList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListPostureDeployments. */
 export interface ListPostureDeploymentsResponse {
-  /** A pagination token. To retrieve the next page of results, call the method again with this token. */
-  nextPageToken?: string;
-  /** The list of PostureDeployment resources. */
-  postureDeployments?: PostureDeploymentList;
   /** Locations that were temporarily unavailable and could not be reached. */
   unreachable?: StringList;
+  /** The list of PostureDeployment resources. */
+  postureDeployments?: PostureDeploymentList;
+  /** A pagination token. To retrieve the next page of results, call the method again with this token. */
+  nextPageToken?: string;
 }
 export const ListPostureDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    postureDeployments: S.optional(PostureDeploymentList),
     unreachable: S.optional(StringList),
+    postureDeployments: S.optional(PostureDeploymentList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListPostureDeploymentsResponse",
 }) as any as S.Schema<ListPostureDeploymentsResponse>;
 
 export interface ListOrganizationsLocationsPosturesRequest {
-  /** A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. */
-  pageToken?: string;
-  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
-  parent: string;
-  /** The maximum number of postures to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
-  pageSize?: number;
   /** Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
   filter?: string;
+  /** A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. */
+  pageToken?: string;
+  /** The maximum number of postures to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
+  pageSize?: number;
+  /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
+  parent: string;
 }
 export const ListOrganizationsLocationsPosturesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1388,18 +1388,18 @@ export const PostureList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListPostures. */
 export interface ListPosturesResponse {
-  /** Locations that were temporarily unavailable and could not be reached. */
-  unreachable?: StringList;
-  /** The list of Posture resources. */
-  postures?: PostureList;
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
+  /** The list of Posture resources. */
+  postures?: PostureList;
+  /** Locations that were temporarily unavailable and could not be reached. */
+  unreachable?: StringList;
 }
 export const ListPosturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
-    postures: S.optional(PostureList),
     nextPageToken: S.optional(S.String),
+    postures: S.optional(PostureList),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListPosturesResponse",
@@ -1410,18 +1410,18 @@ export interface ListOrganizationsLocationsPostureTemplatesRequest {
   parent: string;
   /** Optional. The maximum number of posture templates to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
-  /** Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
-  filter?: string;
   /** Optional. A pagination token returned from a previous request to list posture templates. Provide this token to retrieve the next page of results. */
   pageToken?: string;
+  /** Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
+  filter?: string;
 }
 export const ListOrganizationsLocationsPostureTemplatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1459,18 +1459,18 @@ export interface ListOrganizationsLocationsReportsRequest {
   parent: string;
   /** Optional. The maximum number of reports to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
-  /** Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
-  filter?: string;
   /** Optional. A pagination token returned from a previous request to list reports. Provide this token to retrieve the next page of results. */
   pageToken?: string;
+  /** Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
+  filter?: string;
 }
 export const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1489,42 +1489,42 @@ export const ReportList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListReports. */
 export interface ListReportsResponse {
-  /** Locations that were temporarily unavailable and could not be reached. */
-  unreachable?: StringList;
-  /** A pagination token. To retrieve the next page of results, call the method again with this token. */
-  nextPageToken?: string;
   /** The list of Report resources. */
   reports?: ReportList;
+  /** A pagination token. To retrieve the next page of results, call the method again with this token. */
+  nextPageToken?: string;
+  /** Locations that were temporarily unavailable and could not be reached. */
+  unreachable?: StringList;
 }
 export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unreachable: S.optional(StringList),
-    nextPageToken: S.optional(S.String),
     reports: S.optional(ReportList),
+    nextPageToken: S.optional(S.String),
+    unreachable: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ListReportsResponse",
 }) as any as S.Schema<ListReportsResponse>;
 
 export interface ListProjectsLocationsRequest {
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1558,19 +1558,19 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsResponse>;
 
 export interface ListRevisionsOrganizationsLocationsPosturesRequest {
+  /** Optional. A pagination token from a previous request to list posture revisions. Provide this token to retrieve the next page of results. */
+  pageToken?: string;
   /** Optional. The maximum number of posture revisions to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
   /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
-  /** Optional. A pagination token from a previous request to list posture revisions. Provide this token to retrieve the next page of results. */
-  pageToken?: string;
 }
 export const ListRevisionsOrganizationsLocationsPosturesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1624,21 +1624,21 @@ export const PatchOrganizationsLocationsPostureDeploymentsRequest =
   }) as any as S.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>;
 
 export interface PatchOrganizationsLocationsPosturesRequest {
-  /** Required. The fields in the Posture to update. You can update only the following fields: * Posture.description * Posture.policy_sets * Posture.state */
-  updateMask?: string;
-  /** Required. The revision ID of the posture to update. If the posture revision that you update is currently deployed, then a new revision of the posture is created. */
-  revisionId?: string;
   /** Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
+  /** Required. The revision ID of the posture to update. If the posture revision that you update is currently deployed, then a new revision of the posture is created. */
+  revisionId?: string;
+  /** Required. The fields in the Posture to update. You can update only the following fields: * Posture.description * Posture.policy_sets * Posture.state */
+  updateMask?: string;
   /** Request body */
   body?: Posture;
 }
 export const PatchOrganizationsLocationsPosturesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      revisionId: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
+      revisionId: S.optional(S.String.pipe(T.Query())),
+      updateMask: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Posture.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

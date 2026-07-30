@@ -500,36 +500,15 @@ export const UsersIntegrationsGithubReposRefreshCreateRequest =
   }) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>;
 
 export interface GitHubRepo {
-  /** GitHub repository numeric identifier. */
   id?: number;
-  /** Repository short name (without the owner prefix). */
   name?: string;
-  /** Fully-qualified repository name as 'owner/repo'. */
   full_name?: string;
-  /** Whether the repository is private. */
-  private?: boolean;
-  /** The repository's default branch (e.g. 'main'). */
-  default_branch?: string;
-  /** Primary programming language GitHub detected for the repository. */
-  language?: string;
-  /** ISO 8601 timestamp of the most recent push, useful for sorting by recent activity. */
-  pushed_at?: string;
-  /** Whether the repository is archived. */
-  archived?: boolean;
-  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
-  can_push?: boolean;
 }
 export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
     full_name: S.optional(S.String),
-    private: S.optional(S.Boolean),
-    default_branch: S.optional(S.String),
-    language: S.optional(S.String),
-    pushed_at: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    can_push: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
@@ -1621,8 +1600,6 @@ export interface Organization {
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
-  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
-  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
   member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
@@ -1668,7 +1645,6 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
-    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
     member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
@@ -1750,12 +1726,8 @@ export type UserOutputShortcutPosition = ShortcutPositionEnum | BlankEnum;
 export const UserOutputShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
 
-/** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other * `provisioned` - Account provisioned by a partner */
-export type OnboardingSkippedReasonEnum =
-  | "delegated"
-  | "later"
-  | "other"
-  | "provisioned";
+/** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other */
+export type OnboardingSkippedReasonEnum = "delegated" | "later" | "other";
 export const OnboardingSkippedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
@@ -1810,8 +1782,6 @@ export interface UserOutput {
   is_impersonated?: boolean | null;
   is_impersonated_until?: string | null;
   is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
   sensitive_session_expires_at?: string | null;
   team?: TeamBasic;
   organization?: Organization;
@@ -1865,7 +1835,6 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
     is_impersonated: S.optional(S.NullOr(S.Boolean)),
     is_impersonated_until: S.optional(S.NullOr(S.String)),
     is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
     sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
     team: S.optional(TeamBasic),
     organization: S.optional(Organization),
@@ -2044,20 +2013,20 @@ export const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOtherSessionsResponse>;
 
 /** * `later` - Later * `other` - Other */
-export type OnboardingSkipRequestReasonEnum = "later" | "other";
-export const OnboardingSkipRequestReasonEnum = /*@__PURE__*/ S.String;
+export type ReasonEnum = "later" | "other";
+export const ReasonEnum = /*@__PURE__*/ S.String;
 
 export interface UsersOnboardingSkipCreateRequest {
   uuid: string;
   /** Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here — use the delegate endpoint so the delegation invite is created atomically. * `later` - Later * `other` - Other */
-  reason: OnboardingSkipRequestReasonEnum | (string & {});
+  reason: ReasonEnum | (string & {});
   /** Onboarding step key the user was on when skipping, for analytics only. */
   step_at_skip?: string;
 }
 export const UsersOnboardingSkipCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    reason: OnboardingSkipRequestReasonEnum,
+    reason: ReasonEnum,
     step_at_skip: S.optional(S.String),
   }).pipe(
     T.Http({

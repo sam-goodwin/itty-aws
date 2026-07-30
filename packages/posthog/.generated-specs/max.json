@@ -137,7 +137,7 @@
           }
         },
         "task": {
-          "target": "com.posthog.max#ConversationTask",
+          "target": "com.posthog.max#TaskDetailDTO",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -400,7 +400,7 @@
         "smithy.api#documentation": "* `assistant` - Assistant\n* `tool_call` - Tool call\n* `deep_research` - Deep research\n* `slack` - Slack"
       }
     },
-    "com.posthog.max#ConversationTask": {
+    "com.posthog.max#TaskDetailDTO": {
       "type": "structure",
       "members": {
         "id": {
@@ -446,13 +446,6 @@
             "smithy.api#required": {}
           }
         },
-        "runtime": {
-          "target": "com.posthog.max#RuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Agent protocol and harness used for this task's runs.\n\n* `acp` - ACP\n* `pi` - Pi",
-            "smithy.api#required": {}
-          }
-        },
         "repository": {
           "target": "smithy.api#String",
           "traits": {
@@ -482,7 +475,7 @@
           }
         },
         "json_schema": {
-          "target": "com.posthog.max#ConversationTaskJsonSchemaMap",
+          "target": "com.posthog.max#TaskDetailDTOJsonSchemaMap",
           "traits": {
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
@@ -545,27 +538,7 @@
         "smithy.api#documentation": "Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested\nrun detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id\navoids presigning a log URL per conversation.\n\nRead access here follows the conversation (the share-by-link unit), not per-creator task\nvisibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``."
       }
     },
-    "com.posthog.max#RuntimeEnum": {
-      "type": "enum",
-      "members": {
-        "ACP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "acp"
-          }
-        },
-        "PI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "pi"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `acp` - ACP\n* `pi` - Pi"
-      }
-    },
-    "com.posthog.max#ConversationTaskJsonSchemaMap": {
+    "com.posthog.max#TaskDetailDTOJsonSchemaMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1000,7 +973,7 @@
           }
         },
         "task": {
-          "target": "com.posthog.max#ConversationTask",
+          "target": "com.posthog.max#TaskDetailDTO",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -1252,7 +1225,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "One typed attachment carried by a sandbox message.\n\nDEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in\n`context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it;\nthe live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`)."
+        "smithy.api#documentation": "One typed attachment carried by a sandbox message."
       }
     },
     "com.posthog.max#SandboxAttachedContextItemTypeEnum": {

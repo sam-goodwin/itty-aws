@@ -268,8 +268,6 @@ export type OperationAction =
   | "tenant_ignore"
   | "tenant_attach"
   | "tenant_detach"
-  | "tenant_detach_safekeepers"
-  | "tenant_attach_safekeepers"
   | "tenant_reattach"
   | "replace_safekeeper"
   | "disable_maintenance"
@@ -289,9 +287,7 @@ export type OperationAction =
   | "set_storage_non_dirty"
   | "swap_binding_id"
   | "finalize_migration"
-  | "mark_migration_prepared"
-  | "update_catalog"
-  | "epc_sync";
+  | "mark_migration_prepared";
 export const OperationAction = /*@__PURE__*/ S.String;
 
 /** The status of the operation */
@@ -533,92 +529,6 @@ export const NeonAuthCreateNewUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NeonAuthCreateNewUserResponse",
 }) as any as S.Schema<NeonAuthCreateNewUserResponse>;
-
-/** A single capability a credential may exercise. A credential is granted a set of these; it may only perform actions explicitly listed in its scopes. */
-export type CredentialScope =
-  | "storage:read"
-  | "storage:write"
-  | "ai_gateway:invoke"
-  | "functions:invoke";
-export const CredentialScope = /*@__PURE__*/ S.String;
-
-export type CreateCredentialRequestScopesList = Array<
-  CredentialScope | (string & {})
->;
-export const CreateCredentialRequestScopesList = /*@__PURE__*/ S.Array(
-  CredentialScope,
-) as any as S.Schema<CreateCredentialRequestScopesList>;
-
-/** Principal type for the credential. Only `user` is customer-managed and accepted here. `function` and `system` credentials are platform-internal (e.g. function-serve auto-mint, presign signer) and are never issued through the customer-facing API. */
-export type CreateCredentialRequestPrincipalType = "user";
-export const CreateCredentialRequestPrincipalType = /*@__PURE__*/ S.String;
-
-export interface CreateCredentialRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** Free-form customer label for the credential. */
-  name?: string;
-  scopes: CreateCredentialRequestScopesList;
-  /** Principal type for the credential. Only `user` is customer-managed and accepted here. `function` and `system` credentials are platform-internal (e.g. function-serve auto-mint, presign signer) and are never issued through the customer-facing API. */
-  principal_type: CreateCredentialRequestPrincipalType | (string & {});
-}
-export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    scopes: CreateCredentialRequestScopesList,
-    principal_type: CreateCredentialRequestPrincipalType,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/projects/{project_id}/branches/{branch_id}/credentials",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CreateCredentialRequest",
-}) as any as S.Schema<CreateCredentialRequest>;
-
-export type CreateCredentialResponseScopesList = Array<CredentialScope>;
-export const CreateCredentialResponseScopesList = /*@__PURE__*/ S.Array(
-  CredentialScope,
-) as any as S.Schema<CreateCredentialResponseScopesList>;
-
-export interface CreateCredentialResponse {
-  /** Opaque credential id (e.g. nak_live_<32hex>). */
-  token_id: string;
-  /** First 12 hex chars of token_id; safe to log. */
-  token_id_short: string;
-  /** Customer-supplied label, echoed back from the request. Absent when not provided. */
-  name?: string;
-  /** Bearer token; returned exactly once. */
-  api_token: string | Redacted.Redacted<string>;
-  /** nsk_live_<64 hex>; the AWS_SECRET_ACCESS_KEY, returned exactly once. */
-  s3_secret_access_key: string;
-  scopes: CreateCredentialResponseScopesList;
-  branch_id: string;
-  created_at: string;
-  /** When the credential expires; absent means never expires. */
-  expires_at?: string;
-}
-export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token_id: S.String,
-    token_id_short: S.String,
-    name: S.optional(S.String),
-    api_token: S.String.pipe(T.SensitiveValue({})),
-    s3_secret_access_key: S.String,
-    scopes: CreateCredentialResponseScopesList,
-    branch_id: S.String,
-    created_at: S.String,
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCredentialResponse",
-}) as any as S.Schema<CreateCredentialResponse>;
 
 export interface CreateNeonAuthRequest {
   /** The Neon project ID */
@@ -1094,8 +1004,8 @@ export const ProjectOwnerData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectOwnerData",
 }) as any as S.Schema<ProjectOwnerData>;
 
-/** The caller's effective permission for a project when per-project permissions are enabled. `VIEWER` grants read access, `EDITOR` adds update access, and `ADMIN` grants full management. Omitted for personal projects, flag-off organizations, and non-user subjects. */
-export type ProjectPermissionLevel = "VIEWER" | "EDITOR" | "ADMIN";
+/** The caller's effective permission for a project when per-project permissions are enabled. Values correspond to viewer, editor, and admin/manage project access levels. Omitted for personal projects, flag-off organizations, and non-user subjects. */
+export type ProjectPermissionLevel = "CAN_VIEW" | "CAN_EDIT" | "CAN_MANAGE";
 export const ProjectPermissionLevel = /*@__PURE__*/ S.String;
 
 export interface Project {
@@ -1907,68 +1817,6 @@ export const CreateProjectBranchAnonymizedResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectBranchAnonymizedResponse",
 }) as any as S.Schema<CreateProjectBranchAnonymizedResponse>;
 
-/** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
-export type CreateProjectBranchBucketRequestAccessLevel =
-  | "private"
-  | "public_read";
-export const CreateProjectBranchBucketRequestAccessLevel =
-  /*@__PURE__*/ S.String;
-
-export interface CreateProjectBranchBucketRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name. */
-  name: string;
-  /** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
-  access_level?: CreateProjectBranchBucketRequestAccessLevel | (string & {});
-}
-export const CreateProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    name: S.String,
-    access_level: S.optional(CreateProjectBranchBucketRequestAccessLevel),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/projects/{project_id}/branches/{branch_id}/buckets",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CreateProjectBranchBucketRequest",
-}) as any as S.Schema<CreateProjectBranchBucketRequest>;
-
-/** Controls anonymous access to objects in the bucket. - `private`: all reads and writes require authenticated requests (default). - `public_read`: anonymous `GetObject`/`HeadObject` requests succeed; listing, writes, and deletes still require authenticated requests. */
-export type BucketAccessLevel = "private" | "public_read";
-export const BucketAccessLevel = /*@__PURE__*/ S.String;
-
-export interface Bucket {
-  /** The bucket name (unique within a branch). */
-  name: string;
-  access_level: BucketAccessLevel;
-  /** When the bucket was created. For a bucket inherited from an ancestor branch this is the ancestor's creation time (the branch fork never re-creates the bucket). */
-  created_at: string;
-}
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    access_level: BucketAccessLevel,
-    created_at: S.String,
-  }),
-).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
-
-export interface BucketResponse {
-  bucket: Bucket;
-}
-export const BucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket: Bucket,
-  }),
-).annotate({ identifier: "BucketResponse" }) as any as S.Schema<BucketResponse>;
-
 /** The authentication provider to use for the Neon Data API */
 export type CreateProjectBranchDataAPIRequestAuthProvider =
   | "neon_auth"
@@ -2137,96 +1985,6 @@ export const CreateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectBranchDatabaseResponse",
 }) as any as S.Schema<CreateProjectBranchDatabaseResponse>;
-
-export type CreateProjectBranchFunctionDeploymentRequestRuntime = "nodejs24";
-export const CreateProjectBranchFunctionDeploymentRequestRuntime =
-  /*@__PURE__*/ S.String;
-
-export interface CreateProjectBranchFunctionDeploymentRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The function slug */
-  slug: string;
-  /** Optional ZIP archive of the function source code. Omit to reuse the latest version's bundle (a config-only change). Required for the first deployment of a function. */
-  zip?: string;
-  runtime?: CreateProjectBranchFunctionDeploymentRequestRuntime | (string & {});
-  /** Optional JSON object (a string-to-string map) of environment variables for the deployment, e.g. {"KEY":"VALUE"}. Carried as a JSON-encoded string because multipart form data does not support typed object parts. Values are write-only: they are encrypted at rest, and responses carry only the variable names (the `environment` array), never the values. */
-  environment?: string;
-}
-export const CreateProjectBranchFunctionDeploymentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch_id: S.String.pipe(T.Label()),
-      slug: S.String.pipe(T.Label()),
-      zip: S.optional(S.String),
-      runtime: S.optional(CreateProjectBranchFunctionDeploymentRequestRuntime),
-      environment: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/projects/{project_id}/branches/{branch_id}/functions/{slug}/deployments",
-        code: 200,
-        contentType: "multipart",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectBranchFunctionDeploymentRequest",
-  }) as any as S.Schema<CreateProjectBranchFunctionDeploymentRequest>;
-
-/** Build lifecycle status of the deployment. */
-export type NeonFunctionDeploymentStatus =
-  | "pending"
-  | "building"
-  | "completed"
-  | "failed";
-export const NeonFunctionDeploymentStatus = /*@__PURE__*/ S.String;
-
-/** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned — they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
-export type NeonFunctionDeploymentEnvironmentList = Array<string>;
-export const NeonFunctionDeploymentEnvironmentList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NeonFunctionDeploymentEnvironmentList>;
-
-export interface NeonFunctionDeployment {
-  /** The deployment id, which is the platform version number (monotonic per function). */
-  id: number;
-  /** Build lifecycle status of the deployment. */
-  status: NeonFunctionDeploymentStatus;
-  memory_mib: number;
-  runtime: string;
-  created_at: string;
-  /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned — they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
-  environment?: NeonFunctionDeploymentEnvironmentList;
-  /** Human-readable reason the deployment build failed. Present only when `status` is `failed`. */
-  error?: string;
-}
-export const NeonFunctionDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    status: NeonFunctionDeploymentStatus,
-    memory_mib: S.Number,
-    runtime: S.String,
-    created_at: S.String,
-    environment: S.optional(NeonFunctionDeploymentEnvironmentList),
-    error: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NeonFunctionDeployment",
-}) as any as S.Schema<NeonFunctionDeployment>;
-
-export interface NeonFunctionDeploymentResponse {
-  deployment: NeonFunctionDeployment;
-}
-export const NeonFunctionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployment: NeonFunctionDeployment,
-  }),
-).annotate({
-  identifier: "NeonFunctionDeploymentResponse",
-}) as any as S.Schema<NeonFunctionDeploymentResponse>;
 
 export interface CreateProjectBranchRoleRequestRole {
   /** The role name. Cannot exceed 63 bytes in length. */
@@ -2740,112 +2498,6 @@ export const DeleteProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectBranchResponse",
 }) as any as S.Schema<DeleteProjectBranchResponse>;
 
-export interface DeleteProjectBranchBucketRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-}
-export const DeleteProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    bucket_name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectBranchBucketRequest",
-}) as any as S.Schema<DeleteProjectBranchBucketRequest>;
-
-export interface DeleteProjectBranchBucketResponse {}
-export const DeleteProjectBranchBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchBucketResponse",
-}) as any as S.Schema<DeleteProjectBranchBucketResponse>;
-
-export interface DeleteProjectBranchBucketObjectRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-  /** The object key. Keys may contain `/`; the `/` characters of nested keys must be percent-encoded (`%2F`) in the path segment. */
-  object_key: string;
-}
-export const DeleteProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch_id: S.String.pipe(T.Label()),
-      bucket_name: S.String.pipe(T.Label()),
-      object_key: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectBranchBucketObjectRequest",
-}) as any as S.Schema<DeleteProjectBranchBucketObjectRequest>;
-
-export interface DeleteProjectBranchBucketObjectResponse {}
-export const DeleteProjectBranchBucketObjectResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchBucketObjectResponse",
-}) as any as S.Schema<DeleteProjectBranchBucketObjectResponse>;
-
-export interface DeleteProjectBranchBucketObjectsByPrefixRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-  /** The key prefix (folder) to delete. Must be non-empty and end with `/`. Every object on this branch whose key starts with this prefix is soft-deleted. */
-  prefix: string;
-}
-export const DeleteProjectBranchBucketObjectsByPrefixRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch_id: S.String.pipe(T.Label()),
-      bucket_name: S.String.pipe(T.Label()),
-      prefix: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects-by-prefix",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectBranchBucketObjectsByPrefixRequest",
-  }) as any as S.Schema<DeleteProjectBranchBucketObjectsByPrefixRequest>;
-
-export interface BucketObjectsDeletePrefixResponse {
-  /** The number of objects soft-deleted under the prefix. 0 when no live object matched the prefix on this branch. */
-  deleted: number;
-}
-export const BucketObjectsDeletePrefixResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.Number,
-  }),
-).annotate({
-  identifier: "BucketObjectsDeletePrefixResponse",
-}) as any as S.Schema<BucketObjectsDeletePrefixResponse>;
-
 export interface DeleteProjectBranchDataAPIRequest {
   /** The Neon project ID */
   project_id: string;
@@ -2920,37 +2572,6 @@ export const DeleteProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProjectBranchDatabaseResponse",
 }) as any as S.Schema<DeleteProjectBranchDatabaseResponse>;
-
-export interface DeleteProjectBranchFunctionRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The function slug */
-  slug: string;
-}
-export const DeleteProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    slug: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/projects/{project_id}/branches/{branch_id}/functions/{slug}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeleteProjectBranchFunctionRequest",
-}) as any as S.Schema<DeleteProjectBranchFunctionRequest>;
-
-export interface DeleteProjectBranchFunctionResponse {}
-export const DeleteProjectBranchFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProjectBranchFunctionResponse",
-}) as any as S.Schema<DeleteProjectBranchFunctionResponse>;
 
 export interface DeleteProjectBranchRoleRequest {
   /** The Neon project ID */
@@ -5055,76 +4676,6 @@ export const GetProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectBranchResponse",
 }) as any as S.Schema<GetProjectBranchResponse>;
 
-export interface GetProjectBranchAiGatewayRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-}
-export const GetProjectBranchAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/ai_gateway",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectBranchAiGatewayRequest",
-}) as any as S.Schema<GetProjectBranchAiGatewayRequest>;
-
-export interface BranchAiGateway {
-  /** Always `true` in 200 responses. Present for forward compatibility, mirroring BranchStorage.enabled. */
-  enabled: boolean;
-  /** The AI-gateway endpoint root for this branch — an OpenAI-compatible base URL. No dialect path is included; clients append the route (e.g. `/ai-gateway/openai/v1/responses`) themselves. */
-  base_url: string;
-}
-export const BranchAiGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    base_url: S.String,
-  }),
-).annotate({
-  identifier: "BranchAiGateway",
-}) as any as S.Schema<BranchAiGateway>;
-
-export interface GetProjectBranchBucketObjectRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-  /** The object key. Keys may contain `/`; the `/` characters of nested keys must be percent-encoded (`%2F`) in the path segment. */
-  object_key: string;
-}
-export const GetProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    bucket_name: S.String.pipe(T.Label()),
-    object_key: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/download",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectBranchBucketObjectRequest",
-}) as any as S.Schema<GetProjectBranchBucketObjectRequest>;
-
-export interface GetProjectBranchBucketObjectResponse {}
-export const GetProjectBranchBucketObjectResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "GetProjectBranchBucketObjectResponse",
-}) as any as S.Schema<GetProjectBranchBucketObjectResponse>;
-
 export interface GetProjectBranchDataAPIRequest {
   /** The Neon project ID */
   project_id: string;
@@ -5209,68 +4760,6 @@ export const DatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseResponse",
 }) as any as S.Schema<DatabaseResponse>;
-
-export interface GetProjectBranchFunctionRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The function slug */
-  slug: string;
-}
-export const GetProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    slug: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/functions/{slug}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectBranchFunctionRequest",
-}) as any as S.Schema<GetProjectBranchFunctionRequest>;
-
-export interface NeonFunction {
-  /** Opaque, stable function identifier. */
-  id: string;
-  /** Branch-unique, lowercase DNS-label. Forms the invocation URL's host together with the branch id. Immutable. */
-  slug: string;
-  /** Free-form display name. */
-  name: string;
-  /** URL at which the function is invoked. The host carries `<branch_id>-<slug>` as its first DNS label under a Neon-managed functions domain, and the URL ends with a trailing slash so paths concatenate onto it. Empty string when the function has no servable invoke host (e.g. a deployment without an invocation front-door). */
-  invocation_url: string;
-  /** The most recent deployment, regardless of build status. It may still be building or it may have failed. Omitted until the first deployment is created. */
-  current_deployment?: NeonFunctionDeployment;
-  /** The most recent deployment whose build completed successfully. This is the deployment that serves invocations. Omitted until a deployment succeeds. */
-  active_deployment?: NeonFunctionDeployment;
-  created_at: string;
-}
-export const NeonFunction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    slug: S.String,
-    name: S.String,
-    invocation_url: S.String,
-    current_deployment: S.optional(NeonFunctionDeployment),
-    active_deployment: S.optional(NeonFunctionDeployment),
-    created_at: S.String,
-  }),
-).annotate({ identifier: "NeonFunction" }) as any as S.Schema<NeonFunction>;
-
-export interface NeonFunctionResponse {
-  function: NeonFunction;
-}
-export const NeonFunctionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    function: NeonFunction,
-  }),
-).annotate({
-  identifier: "NeonFunctionResponse",
-}) as any as S.Schema<NeonFunctionResponse>;
 
 export interface GetProjectBranchRoleRequest {
   /** The Neon project ID */
@@ -5564,46 +5053,6 @@ export const BranchSchemaCompareResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BranchSchemaCompareResponse",
 }) as any as S.Schema<BranchSchemaCompareResponse>;
 
-export interface GetProjectBranchStorageRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-}
-export const GetProjectBranchStorageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/storage",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetProjectBranchStorageRequest",
-}) as any as S.Schema<GetProjectBranchStorageRequest>;
-
-export interface BranchStorage {
-  /** Always `true` in 200 responses. Present for forward compatibility: a future version may add intermediate states; callers should treat `true` as "storage is usable for this branch right now." */
-  enabled: boolean;
-  /** The S3-compatible endpoint URL for this branch. */
-  s3_endpoint: string;
-  /** The AWS region for this branch's storage. The platform normalizes the us-east-1 convention server-side: a non-empty region string is always returned in 200 responses (e.g. `"us-east-1"` for the S3 default region). */
-  region: string;
-  /** Whether the S3 client must use path-style addressing (bucket-in-path rather than virtual-hosted subdomain). Always true: the wildcard TLS cert covers one level of subdomain (*.storage.<suffix>), so the branch ID occupies that label and the bucket name must travel in the request path, not as a further subdomain. Callers must set the S3 SDK's ForcePathStyle (or equivalent) to true. */
-  force_path_style: boolean;
-}
-export const BranchStorage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    s3_endpoint: S.String,
-    region: S.String,
-    force_path_style: S.Boolean,
-  }),
-).annotate({ identifier: "BranchStorage" }) as any as S.Schema<BranchStorage>;
-
 export interface GetProjectEndpointRequest {
   /** The Neon project ID */
   project_id: string;
@@ -5721,7 +5170,7 @@ export const GetSnapshotScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSnapshotScheduleRequest>;
 
 export interface BackupScheduleItem {
-  /** How often to take snapshots. Must be one of the following values: - `daily` - `weekly` - `monthly` */
+  /** How often to take snapshots. Must be one of the following values: - `hourly` - `daily` - `weekly` - `monthly` - `yearly` */
   frequency: string;
   /** The hour of the day to take the snapshot (if applicable). */
   hour?: number;
@@ -5952,80 +5401,6 @@ export const NeonAuthRedirectURIWhitelistResponse = /*@__PURE__*/ S.suspend(
   identifier: "NeonAuthRedirectURIWhitelistResponse",
 }) as any as S.Schema<NeonAuthRedirectURIWhitelistResponse>;
 
-export interface ListCredentialsRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-}
-export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/credentials",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListCredentialsRequest",
-}) as any as S.Schema<ListCredentialsRequest>;
-
-export type CredentialMetaScopesList = Array<CredentialScope>;
-export const CredentialMetaScopesList = /*@__PURE__*/ S.Array(
-  CredentialScope,
-) as any as S.Schema<CredentialMetaScopesList>;
-
-export interface CredentialMeta {
-  /** Opaque credential id (e.g. nak_live_<32hex>). */
-  token_id: string;
-  token_id_short: string;
-  /** Customer-supplied label; absent when not provided at issuance. */
-  name?: string;
-  scopes: CredentialMetaScopesList;
-  branch_id?: string;
-  principal_type: string;
-  function_id?: string;
-  created_at: string;
-  last_used_at?: string;
-  revoked_at?: string;
-  /** When the credential expires; absent means never expires. The verifier refuses to authenticate after `expires_at <= now()`. */
-  expires_at?: string;
-}
-export const CredentialMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token_id: S.String,
-    token_id_short: S.String,
-    name: S.optional(S.String),
-    scopes: CredentialMetaScopesList,
-    branch_id: S.optional(S.String),
-    principal_type: S.String,
-    function_id: S.optional(S.String),
-    created_at: S.String,
-    last_used_at: S.optional(S.String),
-    revoked_at: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({ identifier: "CredentialMeta" }) as any as S.Schema<CredentialMeta>;
-
-export type ListCredentialsResponseCredentialsList = Array<CredentialMeta>;
-export const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
-  CredentialMeta,
-) as any as S.Schema<ListCredentialsResponseCredentialsList>;
-
-export interface ListCredentialsResponse {
-  credentials: ListCredentialsResponseCredentialsList;
-}
-export const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentials: ListCredentialsResponseCredentialsList,
-  }),
-).annotate({
-  identifier: "ListCredentialsResponse",
-}) as any as S.Schema<ListCredentialsResponse>;
-
 export interface ListOrganizationVPCEndpointsRequest {
   /** The Neon organization ID */
   org_id: string;
@@ -6190,135 +5565,6 @@ export const ListOrgApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrgApiKeysResponse",
 }) as any as S.Schema<ListOrgApiKeysResponse>;
 
-export interface ListProjectBranchBucketObjectsRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-  /** Only list objects whose key starts with this prefix. */
-  prefix?: string;
-  /** Collapse keys sharing a common prefix up to the first occurrence of this delimiter (typically `/`) into the `folders` array. */
-  delimiter?: string;
-  /** Opaque pagination cursor returned as `next_cursor` by a previous call. Resume listing after the last item of the previous page. */
-  cursor?: string;
-  /** Maximum number of items (objects + folders) to return. */
-  limit?: number;
-}
-export const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch_id: S.String.pipe(T.Label()),
-      bucket_name: S.String.pipe(T.Label()),
-      prefix: S.optional(S.String.pipe(T.Query())),
-      delimiter: S.optional(S.String.pipe(T.Query())),
-      cursor: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ListProjectBranchBucketObjectsRequest",
-}) as any as S.Schema<ListProjectBranchBucketObjectsRequest>;
-
-/** Common prefixes (folder names) collapsed under the requested `delimiter`. Empty when no `delimiter` was supplied. */
-export type BucketObjectsListResponseFoldersList = Array<string>;
-export const BucketObjectsListResponseFoldersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BucketObjectsListResponseFoldersList>;
-
-export interface BucketObject {
-  /** The full object key. */
-  key: string;
-  /** The object size in bytes. */
-  size: number;
-  /** The time the object was last modified. */
-  last_modified: string;
-  /** The object's entity tag (content hash). */
-  etag: string;
-}
-export const BucketObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    size: S.Number,
-    last_modified: S.String,
-    etag: S.String,
-  }),
-).annotate({ identifier: "BucketObject" }) as any as S.Schema<BucketObject>;
-
-/** Objects whose keys did not collapse into a folder. */
-export type BucketObjectsListResponseObjectsList = Array<BucketObject>;
-export const BucketObjectsListResponseObjectsList = /*@__PURE__*/ S.Array(
-  BucketObject,
-) as any as S.Schema<BucketObjectsListResponseObjectsList>;
-
-export interface BucketObjectsListResponse {
-  /** Common prefixes (folder names) collapsed under the requested `delimiter`. Empty when no `delimiter` was supplied. */
-  folders: BucketObjectsListResponseFoldersList;
-  /** Objects whose keys did not collapse into a folder. */
-  objects: BucketObjectsListResponseObjectsList;
-  /** The prefix that was applied to this listing (echoed back). */
-  prefix: string;
-  /** Pagination cursor to pass as `cursor` on the next request. Empty when the listing is not truncated. */
-  next_cursor?: string;
-  /** True when more results exist beyond this page. */
-  is_truncated: boolean;
-}
-export const BucketObjectsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    folders: BucketObjectsListResponseFoldersList,
-    objects: BucketObjectsListResponseObjectsList,
-    prefix: S.String,
-    next_cursor: S.optional(S.String),
-    is_truncated: S.Boolean,
-  }),
-).annotate({
-  identifier: "BucketObjectsListResponse",
-}) as any as S.Schema<BucketObjectsListResponse>;
-
-export interface ListProjectBranchBucketsRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-}
-export const ListProjectBranchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/buckets",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectBranchBucketsRequest",
-}) as any as S.Schema<ListProjectBranchBucketsRequest>;
-
-export type BucketsListResponseBucketsList = Array<Bucket>;
-export const BucketsListResponseBucketsList = /*@__PURE__*/ S.Array(
-  Bucket,
-) as any as S.Schema<BucketsListResponseBucketsList>;
-
-export interface BucketsListResponse {
-  buckets: BucketsListResponseBucketsList;
-}
-export const BucketsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buckets: BucketsListResponseBucketsList,
-  }),
-).annotate({
-  identifier: "BucketsListResponse",
-}) as any as S.Schema<BucketsListResponse>;
-
 export interface ListProjectBranchDatabasesRequest {
   /** The Neon project ID */
   project_id: string;
@@ -6465,53 +5711,6 @@ export const ListProjectBranchesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProjectBranchesResponse",
 }) as any as S.Schema<ListProjectBranchesResponse>;
-
-export interface ListProjectBranchFunctionsRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** A cursor to use in pagination. A cursor defines your place in the data list. Include `response.pagination.next` in subsequent API calls to fetch next page of the list. */
-  cursor?: string;
-  /** Specify a value from 1 to 1000 to limit number of functions in the response */
-  limit?: number;
-}
-export const ListProjectBranchFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/projects/{project_id}/branches/{branch_id}/functions",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ListProjectBranchFunctionsRequest",
-}) as any as S.Schema<ListProjectBranchFunctionsRequest>;
-
-export type ListProjectBranchFunctionsResponseFunctionsList =
-  Array<NeonFunction>;
-export const ListProjectBranchFunctionsResponseFunctionsList =
-  /*@__PURE__*/ S.Array(
-    NeonFunction,
-  ) as any as S.Schema<ListProjectBranchFunctionsResponseFunctionsList>;
-
-export interface ListProjectBranchFunctionsResponse {
-  functions: ListProjectBranchFunctionsResponseFunctionsList;
-  pagination?: CursorPagination;
-}
-export const ListProjectBranchFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functions: ListProjectBranchFunctionsResponseFunctionsList,
-    pagination: S.optional(CursorPagination),
-  }),
-).annotate({
-  identifier: "ListProjectBranchFunctionsResponse",
-}) as any as S.Schema<ListProjectBranchFunctionsResponse>;
 
 export interface ListProjectBranchRolesRequest {
   /** The Neon project ID */
@@ -6927,78 +6126,6 @@ export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotsResponse",
 }) as any as S.Schema<ListSnapshotsResponse>;
 
-/** The transfer direction. `upload` returns a presigned `PUT` URL; `download` returns a presigned `GET` URL. */
-export type PresignProjectBranchBucketObjectRequestOperation =
-  | "upload"
-  | "download";
-export const PresignProjectBranchBucketObjectRequestOperation =
-  /*@__PURE__*/ S.String;
-
-export interface PresignProjectBranchBucketObjectRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The bucket name */
-  bucket_name: string;
-  /** The object key. Keys may contain `/`; the `/` characters of nested keys must be percent-encoded (`%2F`) in the path segment. */
-  object_key: string;
-  /** The transfer direction. `upload` returns a presigned `PUT` URL; `download` returns a presigned `GET` URL. */
-  operation: PresignProjectBranchBucketObjectRequestOperation | (string & {});
-  /** The `Content-Type` to bind into the signed request. Only meaningful for `upload`: when set, the caller MUST send the same `Content-Type` header on the `PUT`, and the value is echoed back in the response `headers`. Ignored for `download`. */
-  content_type?: string;
-  /** How long the presigned URL stays valid, in seconds. Defaults to 900 (15 minutes); capped at 604800 (7 days). */
-  expires_in_seconds?: number;
-}
-export const PresignProjectBranchBucketObjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      branch_id: S.String.pipe(T.Label()),
-      bucket_name: S.String.pipe(T.Label()),
-      object_key: S.String.pipe(T.Label()),
-      operation: PresignProjectBranchBucketObjectRequestOperation,
-      content_type: S.optional(S.String),
-      expires_in_seconds: S.optional(S.Number),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/projects/{project_id}/branches/{branch_id}/buckets/{bucket_name}/objects/{object_key}/presign",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "PresignProjectBranchBucketObjectRequest",
-}) as any as S.Schema<PresignProjectBranchBucketObjectRequest>;
-
-/** Headers the caller MUST send verbatim on the request (e.g. `Content-Type` when it was signed on an upload). May be empty. */
-export type PresignResponseHeadersMap = { [key: string]: string | undefined };
-export const PresignResponseHeadersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PresignResponseHeadersMap>;
-
-export interface PresignResponse {
-  /** The presigned URL. Transfer the object bytes by issuing `method url` with the returned `headers`. */
-  url: string;
-  /** The HTTP method to use against `url`: `PUT` for an upload, `GET` for a download. */
-  method: string;
-  /** Headers the caller MUST send verbatim on the request (e.g. `Content-Type` when it was signed on an upload). May be empty. */
-  headers: PresignResponseHeadersMap;
-  /** When the presigned URL stops being valid. */
-  expires_at: string;
-}
-export const PresignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    method: S.String,
-    headers: PresignResponseHeadersMap,
-    expires_at: S.String,
-  }),
-).annotate({
-  identifier: "PresignResponse",
-}) as any as S.Schema<PresignResponse>;
-
 export interface RecoverProjectRequest {
   /** The Neon project ID */
   project_id: string;
@@ -7034,45 +6161,6 @@ export const RecoverProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecoverProjectResponse",
 }) as any as S.Schema<RecoverProjectResponse>;
-
-export interface RecoverProjectBranchRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The branch ID */
-  branch_id: string;
-}
-export const RecoverProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/projects/{project_id}/branches/{branch_id}/recover",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RecoverProjectBranchRequest",
-}) as any as S.Schema<RecoverProjectBranchRequest>;
-
-export type RecoverProjectBranchResponseEndpointsList = Array<Endpoint>;
-export const RecoverProjectBranchResponseEndpointsList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Schema<RecoverProjectBranchResponseEndpointsList>;
-
-export interface RecoverProjectBranchResponse {
-  branch: Branch;
-  endpoints?: RecoverProjectBranchResponseEndpointsList;
-}
-export const RecoverProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: Branch,
-    endpoints: S.optional(RecoverProjectBranchResponseEndpointsList),
-  }),
-).annotate({
-  identifier: "RecoverProjectBranchResponse",
-}) as any as S.Schema<RecoverProjectBranchResponse>;
 
 export interface RemoveOrganizationMemberRequest {
   /** The Neon organization ID */
@@ -7335,37 +6423,6 @@ export const ApiKeyRevokeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiKeyRevokeResponse",
 }) as any as S.Schema<ApiKeyRevokeResponse>;
-
-export interface RevokeCredentialRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The opaque credential id (e.g. nak_live_<32hex>). */
-  token_id: string;
-}
-export const RevokeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    token_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/projects/{project_id}/branches/{branch_id}/credentials/{token_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RevokeCredentialRequest",
-}) as any as S.Schema<RevokeCredentialRequest>;
-
-export interface RevokeCredentialResponse {}
-export const RevokeCredentialResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RevokeCredentialResponse",
-}) as any as S.Schema<RevokeCredentialResponse>;
 
 export interface RevokeOrgApiKeyRequest {
   /** The Neon organization ID */
@@ -8394,33 +7451,6 @@ export const UpdateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProjectBranchDatabaseResponse",
 }) as any as S.Schema<UpdateProjectBranchDatabaseResponse>;
 
-export interface UpdateProjectBranchFunctionRequest {
-  /** The Neon project ID */
-  project_id: string;
-  /** The Neon branch ID */
-  branch_id: string;
-  /** The function slug */
-  slug: string;
-  /** New display name for the function. `null` clears the display name; the function's `name` then falls back to its slug. Leading and trailing whitespace is trimmed; a whitespace-only name is rejected. */
-  name: string | null;
-}
-export const UpdateProjectBranchFunctionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    branch_id: S.String.pipe(T.Label()),
-    slug: S.String.pipe(T.Label()),
-    name: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/projects/{project_id}/branches/{branch_id}/functions/{slug}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UpdateProjectBranchFunctionRequest",
-}) as any as S.Schema<UpdateProjectBranchFunctionRequest>;
-
 export interface UpdateProjectEndpointRequestEndpoint {
   /** DEPRECATED: This field will be removed in a future release. The destination branch ID. The destination branch must not have an existing read-write endpoint. */
   branch_id?: string;
@@ -8505,13 +7535,10 @@ export const UpdateProjectEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface UpdateSnapshotRequestSnapshot {
   name?: string;
-  /** The date and time when the snapshot will expire. Omit to leave the current expiration unchanged. Send `null` to clear the expiration so the snapshot never expires. A future timestamp sets the absolute expiration. */
-  expires_at?: string | null;
 }
 export const UpdateSnapshotRequestSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    expires_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "UpdateSnapshotRequestSnapshot",
@@ -8686,21 +7713,6 @@ export const createBranchNeonAuthNewUser: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateCredentialError = NeonOpError;
-/** Issue a scoped credential on the branch Issues a new scoped service credential anchored to the specified branch. The response carries `api_token` and `s3_secret_access_key` exactly once — they are not stored server-side. **Note**: This endpoint is currently in Private Beta. */
-export const createCredential: API.OperationMethod<
-  CreateCredentialRequest,
-  CreateCredentialResponse,
-  CreateCredentialError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateCredentialRequest,
-  output: CreateCredentialResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateNeonAuthError = NeonOpError;
 /** Enable Neon Auth for the branch Enables Neon Auth for the specified branch by connecting it to an authentication provider. Creating the integration provisions the `neon_auth` schema in the branch database, which stores user identity data synchronized from the provider. */
 export const createNeonAuth: API.OperationMethod<
@@ -8806,21 +7818,6 @@ export const createProjectBranchAnonymized: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectBranchBucketError = NeonOpError;
-/** Create a bucket on the branch Creates a new branchable object-storage bucket on the specified branch. Buckets are managed by the Neon Platform branchable-storage service. **Note**: This endpoint is currently in Private Beta. */
-export const createProjectBranchBucket: API.OperationMethod<
-  CreateProjectBranchBucketRequest,
-  BucketResponse,
-  CreateProjectBranchBucketError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectBranchBucketRequest,
-  output: BucketResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateProjectBranchDataAPIError = NeonOpError;
 /** Create Neon Data API Creates a new instance of Neon Data API in the specified branch. The Data API exposes a REST interface over the branch database. The `database_name` path parameter determines which database the API serves. */
 export const createProjectBranchDataAPI: API.OperationMethod<
@@ -8858,21 +7855,6 @@ export const createProjectBranchDatabase: API.OperationMethod<
     UnprocessableEntity,
     UnknownNeonError,
   ],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreateProjectBranchFunctionDeploymentError = NeonOpError;
-/** Deploy code to a function Creates a deployment for the function. Supply any subset of zip, environment, and runtime; omitted fields inherit the function's latest version. At least one field must be supplied. The first deployment of a function must include zip. The newest deployment becomes active. **Note**: This endpoint is currently in Private Beta. */
-export const createProjectBranchFunctionDeployment: API.OperationMethod<
-  CreateProjectBranchFunctionDeploymentRequest,
-  NeonFunctionDeploymentResponse,
-  CreateProjectBranchFunctionDeploymentError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectBranchFunctionDeploymentRequest,
-  output: NeonFunctionDeploymentResponse,
-  errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
 }));
@@ -9045,53 +8027,6 @@ export const deleteProjectBranch: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectBranchBucketError = NotFound | NeonOpError;
-/** Delete a bucket on the branch Deletes the named bucket from the specified branch. **Note**: This endpoint is currently in Private Beta. */
-export const deleteProjectBranchBucket: API.OperationMethod<
-  DeleteProjectBranchBucketRequest,
-  DeleteProjectBranchBucketResponse,
-  DeleteProjectBranchBucketError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectBranchBucketRequest,
-  output: DeleteProjectBranchBucketResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeleteProjectBranchBucketObjectError = NotFound | NeonOpError;
-/** Delete an object in a bucket Deletes the named object from the bucket on the specified branch. Served by the user's session (no customer S3 credentials required). **Note**: This endpoint is currently in Private Beta. */
-export const deleteProjectBranchBucketObject: API.OperationMethod<
-  DeleteProjectBranchBucketObjectRequest,
-  DeleteProjectBranchBucketObjectResponse,
-  DeleteProjectBranchBucketObjectError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectBranchBucketObjectRequest,
-  output: DeleteProjectBranchBucketObjectResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeleteProjectBranchBucketObjectsByPrefixError =
-  | NotFound
-  | NeonOpError;
-/** Delete every object under a key prefix (folder) in a bucket Soft-deletes every object on the specified branch whose key starts with `prefix`, in a single call. Intended to back a "delete folder" action in an object browser: a `prefix` of `app/avatars/` removes every object beneath that folder. Served by the user's session (no customer S3 credentials required). `prefix` must be non-empty, end with `/`, be at most 1024 bytes, and contain no control characters - a partial-segment prefix cannot accidentally delete sibling keys. Returns the number of objects soft-deleted (`deleted`), which may be 0 when no live object matched the prefix on this branch. Only objects physically present on this branch are tombstoned; objects inherited from an ancestor branch via copy-on-write (not materialized on this branch) are out of scope. **Note**: This endpoint is currently in Private Beta. */
-export const deleteProjectBranchBucketObjectsByPrefix: API.OperationMethod<
-  DeleteProjectBranchBucketObjectsByPrefixRequest,
-  BucketObjectsDeletePrefixResponse,
-  DeleteProjectBranchBucketObjectsByPrefixError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectBranchBucketObjectsByPrefixRequest,
-  output: BucketObjectsDeletePrefixResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DeleteProjectBranchDataAPIError = NeonOpError;
 /** Delete Neon Data API Deletes the Neon Data API for the specified branch. Existing connections using the Data API endpoint will fail after deletion. */
 export const deleteProjectBranchDataAPI: API.OperationMethod<
@@ -9118,21 +8053,6 @@ export const deleteProjectBranchDatabase: API.OperationMethod<
   input: DeleteProjectBranchDatabaseRequest,
   output: DeleteProjectBranchDatabaseResponse,
   errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeleteProjectBranchFunctionError = NeonOpError;
-/** Delete a function on the branch Deletes the function identified by its slug. **Note**: This endpoint is currently in Private Beta. */
-export const deleteProjectBranchFunction: API.OperationMethod<
-  DeleteProjectBranchFunctionRequest,
-  DeleteProjectBranchFunctionResponse,
-  DeleteProjectBranchFunctionError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectBranchFunctionRequest,
-  output: DeleteProjectBranchFunctionResponse,
-  errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
 }));
@@ -9417,7 +8337,7 @@ export const getCurrentUserInfo: API.OperationMethod<
 }));
 
 export type GetCurrentUserOrganizationsError = NeonOpError;
-/** List organizations for the current user Retrieves the organizations that the currently authenticated user belongs to. When called with an organization- or project-scoped API key (which is not tied to a user), this returns the single organization that owns the key. */
+/** List organizations for the current user Retrieves the organizations that the currently authenticated user belongs to. */
 export const getCurrentUserOrganizations: API.OperationMethod<
   GetCurrentUserOrganizationsRequest,
   OrganizationsResponse,
@@ -9695,36 +8615,6 @@ export const getProjectBranch: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectBranchAiGatewayError = NotFound | NeonOpError;
-/** Get branch AI Gateway endpoint Returns the AI Gateway endpoint host for the specified branch, used to render code-snippet base URLs. A 200 response means the branch is registered and this region serves the AI gateway. A 404 response includes a `reason` field indicating why the gateway is unavailable. **Note**: This endpoint is currently in Private Beta. */
-export const getProjectBranchAiGateway: API.OperationMethod<
-  GetProjectBranchAiGatewayRequest,
-  BranchAiGateway,
-  GetProjectBranchAiGatewayError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectBranchAiGatewayRequest,
-  output: BranchAiGateway,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetProjectBranchBucketObjectError = NotFound | NeonOpError;
-/** Download an object's bytes Streams the raw bytes of the named object from the bucket on the specified branch, including objects inherited from ancestor branches. Served by the user's session (no customer S3 credentials required). The body is returned as `application/octet-stream` so a browser treats it as a download; the `Content-Length` and `ETag` response headers echo the stored object metadata. BINARY-STREAM EXCEPTION TO THE BUILD-GENERATED-TYPES RULE (#7029): the successful 200 body is the raw object stream, proxied verbatim from the platform storage admin endpoint. It is modeled as an `application/octet-stream` binary body (not a JSON response schema) and is streamed without buffering the whole object in memory. Error responses still use the generated `GeneralError` shape. **Note**: This endpoint is currently in Private Beta. */
-export const getProjectBranchBucketObject: API.OperationMethod<
-  GetProjectBranchBucketObjectRequest,
-  GetProjectBranchBucketObjectResponse,
-  GetProjectBranchBucketObjectError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectBranchBucketObjectRequest,
-  output: GetProjectBranchBucketObjectResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetProjectBranchDataAPIError = NeonOpError;
 /** Retrieve Neon Data API configuration Retrieves the Neon Data API configuration for the specified branch, including endpoint URL, enabled state, and database settings. */
 export const getProjectBranchDataAPI: API.OperationMethod<
@@ -9751,21 +8641,6 @@ export const getProjectBranchDatabase: API.OperationMethod<
   input: GetProjectBranchDatabaseRequest,
   output: DatabaseResponse,
   errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetProjectBranchFunctionError = NeonOpError;
-/** Get function details Returns the function identified by its slug. **Note**: This endpoint is currently in Private Beta. */
-export const getProjectBranchFunction: API.OperationMethod<
-  GetProjectBranchFunctionRequest,
-  NeonFunctionResponse,
-  GetProjectBranchFunctionError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectBranchFunctionRequest,
-  output: NeonFunctionResponse,
-  errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
 }));
@@ -9825,21 +8700,6 @@ export const getProjectBranchSchemaComparison: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectBranchSchemaComparisonRequest,
   output: BranchSchemaCompareResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetProjectBranchStorageError = NotFound | NeonOpError;
-/** Get branch storage state Returns whether branchable object-storage is usable for the specified branch. A 200 response means the branch is registered in the storage service and the S3 data plane will accept requests for it. A 404 response includes a `reason` field indicating why storage is unavailable. **Note**: This endpoint is currently in Private Beta. */
-export const getProjectBranchStorage: API.OperationMethod<
-  GetProjectBranchStorageRequest,
-  BranchStorage,
-  GetProjectBranchStorageError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectBranchStorageRequest,
-  output: BranchStorage,
   errors: [NotFound, UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
@@ -9965,21 +8825,6 @@ export const listBranchNeonAuthTrustedDomains: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListCredentialsError = NeonOpError;
-/** List credentials on the branch Returns metadata for customer-issued credentials on the branch. Secrets are never included. **Note**: This endpoint is currently in Private Beta. */
-export const listCredentials: API.OperationMethod<
-  ListCredentialsRequest,
-  ListCredentialsResponse,
-  ListCredentialsError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListCredentialsRequest,
-  output: ListCredentialsResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ListOrganizationVPCEndpointsError = NeonOpError;
 /** List VPC endpoints Retrieves the list of VPC endpoints for the specified Neon organization. */
 export const listOrganizationVPCEndpoints: API.OperationMethod<
@@ -10020,36 +8865,6 @@ export const listOrgApiKeys: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListOrgApiKeysRequest,
   output: ListOrgApiKeysResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListProjectBranchBucketObjectsError = NeonOpError;
-/** List objects in a bucket Lists objects visible in the named bucket on the specified branch, including those inherited from ancestor branches. Listing is served by the user's session (no customer S3 credentials required). When `delimiter` is supplied (typically `/`), keys are collapsed into common prefixes (`folders`) so callers can render a folder-style browser; keys that do not contain the delimiter after `prefix` are returned as `objects`. **Note**: This endpoint is currently in Private Beta. */
-export const listProjectBranchBucketObjects: API.OperationMethod<
-  ListProjectBranchBucketObjectsRequest,
-  BucketObjectsListResponse,
-  ListProjectBranchBucketObjectsError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectBranchBucketObjectsRequest,
-  output: BucketObjectsListResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListProjectBranchBucketsError = NeonOpError;
-/** List buckets on the branch Lists branchable object-storage buckets visible on the specified branch, including those inherited from ancestor branches. **Note**: This endpoint is currently in Private Beta. */
-export const listProjectBranchBuckets: API.OperationMethod<
-  ListProjectBranchBucketsRequest,
-  BucketsListResponse,
-  ListProjectBranchBucketsError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectBranchBucketsRequest,
-  output: BucketsListResponse,
   errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
@@ -10104,30 +8919,6 @@ export const listProjectBranches: API.PaginatedOperationMethod<
       inputToken: "cursor",
       outputToken: "pagination.next",
       items: "branches",
-    } as const,
-  }),
-  paginateCursor,
-);
-
-export type ListProjectBranchFunctionsError = NeonOpError;
-/** List functions on the branch Lists functions on the specified branch. **Note**: This endpoint is currently in Private Beta. */
-export const listProjectBranchFunctions: API.PaginatedOperationMethod<
-  ListProjectBranchFunctionsRequest,
-  ListProjectBranchFunctionsResponse,
-  ListProjectBranchFunctionsError,
-  NeonOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListProjectBranchFunctionsRequest,
-    output: ListProjectBranchFunctionsResponse,
-    errors: [UnknownNeonError],
-    protocol: NeonProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "cursor",
-      inputToken: "cursor",
-      outputToken: "pagination.next",
-      items: "functions",
     } as const,
   }),
   paginateCursor,
@@ -10280,21 +9071,6 @@ export const listSnapshots: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PresignProjectBranchBucketObjectError = NotFound | NeonOpError;
-/** Presign an upload or download for an object in a bucket Returns a presigned URL that transfers bytes directly to or from the object's bucket on the specified branch, without the caller ever handling S3 credentials. The `operation` field selects the direction: - `upload` returns a presigned `PUT` URL (the caller `PUT`s the file bytes straight to `url` with the returned `headers`). Authorized with project write access. - `download` returns a presigned `GET` URL (the caller `GET`s the bytes straight from `url`). Authorized with project read access. The platform mints a short-lived credential and builds the SigV4-signed URL against the branch's S3 data-plane host, returning it together with the HTTP method, any headers the caller must echo, and the URL's expiry. Served by the user's session (no customer S3 credentials required). **Note**: This endpoint is currently in Private Beta. */
-export const presignProjectBranchBucketObject: API.OperationMethod<
-  PresignProjectBranchBucketObjectRequest,
-  PresignResponse,
-  PresignProjectBranchBucketObjectError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PresignProjectBranchBucketObjectRequest,
-  output: PresignResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RecoverProjectError = NeonOpError;
 /** Recover a deleted project Recovers a deleted project within the 7-day deletion recovery period. Restores branches, endpoints, settings, and connection strings. Some integrations require manual reconfiguration after recovery. To list recoverable projects, use `GET /projects?recoverable=true`. */
 export const recoverProject: API.OperationMethod<
@@ -10305,21 +9081,6 @@ export const recoverProject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RecoverProjectRequest,
   output: RecoverProjectResponse,
-  errors: [UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RecoverProjectBranchError = NeonOpError;
-/** Recover a deleted branch Recovers a deleted branch within the 7-day deletion recovery period. The branch must have been soft deleted and not yet permanently deleted. Recovery restores the branch and its endpoints to an idle state. Connection strings remain valid after recovery. TTL branches become non-TTL branches after recovery. To list deleted branches available for recovery, use `GET /projects/{project_id}/branches?include_deleted=true`. */
-export const recoverProjectBranch: API.OperationMethod<
-  RecoverProjectBranchRequest,
-  RecoverProjectBranchResponse,
-  RecoverProjectBranchError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecoverProjectBranchRequest,
-  output: RecoverProjectBranchResponse,
   errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
@@ -10415,21 +9176,6 @@ export const revokeApiKey: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevokeCredentialError = NotFound | NeonOpError;
-/** Revoke a credential Soft-deletes the credential. Idempotent. **Note**: This endpoint is currently in Private Beta. */
-export const revokeCredential: API.OperationMethod<
-  RevokeCredentialRequest,
-  RevokeCredentialResponse,
-  RevokeCredentialError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RevokeCredentialRequest,
-  output: RevokeCredentialResponse,
-  errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RevokeOrgApiKeyError = NeonOpError;
 /** Revoke organization API key Revokes the specified organization API key. An API key that is no longer needed can be revoked. This action cannot be reversed. API keys can also be managed in the Neon Console. See [Manage API keys](https://neon.com/docs/manage/api-keys/). */
 export const revokeOrgApiKey: API.OperationMethod<
@@ -10506,7 +9252,7 @@ export const setOrganizationSpendingLimit: API.OperationMethod<
 }));
 
 export type SetSnapshotScheduleError = NeonOpError;
-/** Update backup schedule Updates the backup schedule for the specified branch. The schedule defines how often automatic snapshots are created (e.g., `daily`, `weekly`). **Note**: This endpoint is currently in Beta. */
+/** Update backup schedule Updates the backup schedule for the specified branch. The schedule defines how often automatic snapshots are created (e.g., `hourly`, `daily`). **Note**: This endpoint is currently in Beta. */
 export const setSnapshotSchedule: API.OperationMethod<
   SetSnapshotScheduleRequest,
   SetSnapshotScheduleResponse,
@@ -10833,21 +9579,6 @@ export const updateProjectBranchDatabase: API.OperationMethod<
   input: UpdateProjectBranchDatabaseRequest,
   output: UpdateProjectBranchDatabaseResponse,
   errors: [NotFound, UnknownNeonError],
-  protocol: NeonProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UpdateProjectBranchFunctionError = NeonOpError;
-/** Update a function Updates the function's mutable metadata — currently only the display `name`. A string sets the display name; `null` clears it, after which the function's `name` falls back to its slug. Leading and trailing whitespace is trimmed; a whitespace-only name is rejected. Acts only on a function owned by the branch: a slug that is only inherited from an ancestor branch returns 404 — rename it on the branch that owns it. Like every other change on a branch, a rename is isolated per branch: a branch forked before the rename keeps the name it had at fork time. **Note**: This endpoint is currently in Private Beta. */
-export const updateProjectBranchFunction: API.OperationMethod<
-  UpdateProjectBranchFunctionRequest,
-  NeonFunctionResponse,
-  UpdateProjectBranchFunctionError,
-  NeonOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectBranchFunctionRequest,
-  output: NeonFunctionResponse,
-  errors: [UnknownNeonError],
   protocol: NeonProtocol,
   retry: Retry.Retry,
 }));

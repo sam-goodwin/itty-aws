@@ -46,7 +46,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "search",
-            "smithy.api#documentation": "Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`."
+            "smithy.api#documentation": "Fuzzy match against product tour `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type."
           }
         }
       },
@@ -145,7 +145,7 @@
         "search_match_type": {
           "target": "com.posthog.product_tours#SearchMatchTypeEnum",
           "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
+            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -497,8 +497,7 @@
           "method": "GET",
           "uri": "/api/projects/{project_id}/product_tours/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnlyCreationContextEnum": {
@@ -659,8 +658,7 @@
           "method": "POST",
           "uri": "/api/projects/{project_id}/product_tours/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductToursRetrieveRequest": {
@@ -708,8 +706,7 @@
           "method": "GET",
           "uri": "/api/projects/{project_id}/product_tours/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductToursUpdateRequest": {
@@ -787,8 +784,7 @@
           "method": "PUT",
           "uri": "/api/projects/{project_id}/product_tours/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductToursPartialUpdateRequest": {
@@ -881,8 +877,7 @@
           "method": "PATCH",
           "uri": "/api/projects/{project_id}/product_tours/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductToursDestroyRequest": {
@@ -930,8 +925,7 @@
           "method": "DELETE",
           "uri": "/api/projects/{project_id}/product_tours/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
+        }
       }
     },
     "com.posthog.product_tours#ProductToursDiscardDraftDestroyRequest": {

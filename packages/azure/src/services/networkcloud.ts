@@ -5733,7 +5733,9 @@ export interface ClustersContinueUpdateVersionRequest {
   /** The name of the cluster. */
   clusterName: string;
   /** The mode by which the cluster will target the next grouping of servers to continue the update. */
-  machineGroupTargetingMode?: ClustersContinueUpdateVersionRequestMachineGroupTargetingMode;
+  machineGroupTargetingMode?:
+    | ClustersContinueUpdateVersionRequestMachineGroupTargetingMode
+    | (string & {});
   /** Specifies how safeguards are applied during the continue update version operation. Use All to run all pre‑operation validation checks. Use None to bypass safeguards. If not specified, the default is All. */
   safeguardMode?: ClusterContinueUpdateVersionSafeguardMode | (string & {});
 }
@@ -6906,8 +6908,9 @@ export type ClusterInspectAdditionalAction = "ResetHardware";
 export const ClusterInspectAdditionalAction = /*@__PURE__*/ S.String;
 
 /** Additional actions supplement the default non-disruptive cluster inspection. Additional actions may be disallowed if the cluster is in a deployed and running state. */
-export type ClustersInspectRequestAdditionalActionsList =
-  Array<ClusterInspectAdditionalAction>;
+export type ClustersInspectRequestAdditionalActionsList = Array<
+  ClusterInspectAdditionalAction | (string & {})
+>;
 export const ClustersInspectRequestAdditionalActionsList =
   /*@__PURE__*/ S.Array(
     ClusterInspectAdditionalAction,
@@ -14368,7 +14371,7 @@ export interface OsDisk {
   /** The strategy for creating the OS disk. */
   createOption?: OsDiskCreateOption | (string & {});
   /** The strategy for deleting the OS disk. */
-  deleteOption?: OsDiskDeleteOption;
+  deleteOption?: OsDiskDeleteOption | (string & {});
   /** The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes. */
   diskSizeGB: number;
 }

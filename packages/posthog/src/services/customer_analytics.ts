@@ -11,173 +11,6 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export class BadRequest extends T.applyErrorMatchers(
-  S.TaggedErrorClass<BadRequest>()("BadRequest", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 400 }],
-) {}
-
-export class Forbidden extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Forbidden>()("Forbidden", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 403 }],
-) {}
-
-export type AccountNotesListRequestAssignedToList = Array<number>;
-export const AccountNotesListRequestAssignedToList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AccountNotesListRequestAssignedToList>;
-
-export type AccountNotesListRequestCreatedByList = Array<number>;
-export const AccountNotesListRequestCreatedByList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<AccountNotesListRequestCreatedByList>;
-
-export interface AccountNotesListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Only return notes linked to this account. */
-  account_id?: string;
-  /** Only return notes on accounts assigned to these user IDs (the account's CSM or account executive; repeat the param per user). */
-  assigned_to?: AccountNotesListRequestAssignedToList;
-  /** Only return notes created by these user IDs (repeat the param per user). */
-  created_by?: AccountNotesListRequestCreatedByList;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Full-text search across note title and content, plus substring match on account name. */
-  search?: string;
-}
-export const AccountNotesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    account_id: S.optional(S.String.pipe(T.Query())),
-    assigned_to: S.optional(
-      AccountNotesListRequestAssignedToList.pipe(T.Query()),
-    ),
-    created_by: S.optional(
-      AccountNotesListRequestCreatedByList.pipe(T.Query()),
-    ),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/account_notes/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AccountNotesListRequest",
-}) as any as S.Schema<AccountNotesListRequest>;
-
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other";
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** A team-wide account note — an internal notebook linked to a Customer analytics account. */
-export interface AccountNote {
-  /** URL-safe short ID of the notebook. */
-  short_id: string;
-  /** Title of the note. */
-  title: string | null;
-  /** When the note was created. */
-  created_at: string;
-  /** When the note was last modified. */
-  last_modified_at: string;
-  /** UUID of the account this note is linked to. */
-  account_id: string;
-  /** Name of the account this note is linked to. */
-  account_name: string;
-  /** User who created the note, if known. */
-  created_by: UserBasic | null;
-}
-export const AccountNote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    short_id: S.String,
-    title: S.NullOr(S.String),
-    created_at: S.String,
-    last_modified_at: S.String,
-    account_id: S.String,
-    account_name: S.String,
-    created_by: S.NullOr(UserBasic),
-  }),
-).annotate({ identifier: "AccountNote" }) as any as S.Schema<AccountNote>;
-
-export type PaginatedAccountNoteListResultsList = Array<AccountNote>;
-export const PaginatedAccountNoteListResultsList = /*@__PURE__*/ S.Array(
-  AccountNote,
-) as any as S.Schema<PaginatedAccountNoteListResultsList>;
-
-export interface PaginatedAccountNoteList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedAccountNoteListResultsList;
-}
-export const PaginatedAccountNoteList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedAccountNoteListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedAccountNoteList",
-}) as any as S.Schema<PaginatedAccountNoteList>;
-
 /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, or text for text properties. */
 export type AccountsCustomPropertyValuesCreateRequestValue =
   | string
@@ -314,6 +147,56 @@ export const AccountsNotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccountsNotebooksCreateRequest",
 }) as any as S.Schema<AccountsNotebooksCreateRequest>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export interface AccountNotebook {
   id: string;
@@ -460,270 +343,6 @@ export const AccountsNotebooksRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsNotebooksRetrieveRequest",
 }) as any as S.Schema<AccountsNotebooksRetrieveRequest>;
 
-export interface AccountsRelationshipsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** UUID of the parent account. */
-  account_id: string;
-  /** Id of the relationship definition to assign. */
-  definition: string;
-  /** PostHog user id of the assignee. Must be a member of the account's organization. */
-  user: number;
-}
-export const AccountsRelationshipsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    account_id: S.String.pipe(T.Label()),
-    definition: S.String,
-    user: S.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AccountsRelationshipsCreateRequest",
-}) as any as S.Schema<AccountsRelationshipsCreateRequest>;
-
-/** A team-defined account relationship type (CSM, Onboarding manager, ...). */
-export interface AccountRelationshipDefinition {
-  /** Relationship definition UUID. */
-  id: string;
-  /** Human-readable name of the relationship. Unique within the team. */
-  name: string;
-  /** What this relationship means, e.g. 'The customer success manager responsible for this account'. */
-  description?: string | null;
-  /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
-  is_single_holder?: boolean;
-}
-export const AccountRelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    is_single_holder: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AccountRelationshipDefinition",
-}) as any as S.Schema<AccountRelationshipDefinition>;
-
-/** A user assigned to an account relationship (read shape). */
-export interface AccountAssignment {
-  /** PostHog user id of the assignee. */
-  id: number;
-  /** Email of the assignee. */
-  email: string;
-}
-export const AccountAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountAssignment",
-}) as any as S.Schema<AccountAssignment>;
-
-/** One assignment of a user to an account relationship, with its effective range. */
-export interface AccountRelationship {
-  /** Unique id of this assignment row. */
-  id: string;
-  /** The relationship type this assignment belongs to. */
-  definition: AccountRelationshipDefinition;
-  /** The assigned user; null when their account was deleted. */
-  user: AccountAssignment | null;
-  /** When this assignment became effective. */
-  started_at: string;
-  /** When this assignment ended; null while it is active. */
-  ended_at: string | null;
-}
-export const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    definition: AccountRelationshipDefinition,
-    user: S.NullOr(AccountAssignment),
-    started_at: S.String,
-    ended_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AccountRelationship",
-}) as any as S.Schema<AccountRelationship>;
-
-export interface AccountsRelationshipsEndCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** UUID of the parent account. */
-  account_id: string;
-  id: string;
-}
-export const AccountsRelationshipsEndCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      account_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/{id}/end/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "AccountsRelationshipsEndCreateRequest",
-}) as any as S.Schema<AccountsRelationshipsEndCreateRequest>;
-
-export interface AccountsRelationshipsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** UUID of the parent account. */
-  account_id: string;
-  /** Include ended assignments (the full timeline), not just active ones. */
-  include_history?: boolean;
-}
-export const AccountsRelationshipsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    account_id: S.String.pipe(T.Label()),
-    include_history: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AccountsRelationshipsListRequest",
-}) as any as S.Schema<AccountsRelationshipsListRequest>;
-
-export type AccountsRelationshipsListResponseBodyList =
-  Array<AccountRelationship>;
-export const AccountsRelationshipsListResponseBodyList = /*@__PURE__*/ S.Array(
-  AccountRelationship,
-) as any as S.Schema<AccountsRelationshipsListResponseBodyList>;
-
-export type AccountsRelationshipsListResponse =
-  AccountsRelationshipsListResponseBodyList;
-export const AccountsRelationshipsListResponse = /*@__PURE__*/ S.suspend(() =>
-  AccountsRelationshipsListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "AccountsRelationshipsListResponse",
-}) as any as S.Schema<AccountsRelationshipsListResponse>;
-
-export interface CustomerAnalyticsExternalAccountsRetrieveRequest {
-  /** When true, return only accounts with at least one active relationship assignment to a current member of the project's organization. */
-  assigned_only?: boolean;
-  /** Account UUID from `next_cursor` to continue listing from. Omit for the first page. */
-  cursor?: string;
-  /** Maximum number of accounts to return. Values below 1 are clamped to 1; values above 100 are clamped to 100. */
-  limit?: number;
-}
-export const CustomerAnalyticsExternalAccountsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assigned_only: S.optional(S.Boolean.pipe(T.Query())),
-      cursor: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/customer_analytics/external/accounts",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CustomerAnalyticsExternalAccountsRetrieveRequest",
-  }) as any as S.Schema<CustomerAnalyticsExternalAccountsRetrieveRequest>;
-
-export interface ExternalAccountListAssignment {
-  /** PostHog user id of the assigned user. */
-  user_id: number;
-  /** Current email address of the assigned user. */
-  email: string;
-  /** Current display name of the assigned user, or null when the user has no name set. */
-  name: string | null;
-}
-export const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_id: S.Number,
-    email: S.String,
-    name: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ExternalAccountListAssignment",
-}) as any as S.Schema<ExternalAccountListAssignment>;
-
-export type ExternalAccountListItemRelationshipsValueList =
-  Array<ExternalAccountListAssignment>;
-export const ExternalAccountListItemRelationshipsValueList =
-  /*@__PURE__*/ S.Array(
-    ExternalAccountListAssignment,
-  ) as any as S.Schema<ExternalAccountListItemRelationshipsValueList>;
-
-/** Active relationship assignments to current organization members, keyed by relationship definition name (e.g. 'CSM', 'Account executive'). Definitions with no active assignment are omitted. */
-export type ExternalAccountListItemRelationshipsMap = {
-  [key: string]: ExternalAccountListItemRelationshipsValueList | undefined;
-};
-export const ExternalAccountListItemRelationshipsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExternalAccountListItemRelationshipsValueList,
-) as any as S.Schema<ExternalAccountListItemRelationshipsMap>;
-
-export interface ExternalAccountListItem {
-  /** External account key used by downstream systems. */
-  external_id: string;
-  /** Human-readable account name. */
-  name: string;
-  /** Active relationship assignments to current organization members, keyed by relationship definition name (e.g. 'CSM', 'Account executive'). Definitions with no active assignment are omitted. */
-  relationships: ExternalAccountListItemRelationshipsMap;
-}
-export const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    external_id: S.String,
-    name: S.String,
-    relationships: ExternalAccountListItemRelationshipsMap,
-  }),
-).annotate({
-  identifier: "ExternalAccountListItem",
-}) as any as S.Schema<ExternalAccountListItem>;
-
-/** Accounts in this page, ordered by account id. */
-export type ExternalAccountListPageResultsList = Array<ExternalAccountListItem>;
-export const ExternalAccountListPageResultsList = /*@__PURE__*/ S.Array(
-  ExternalAccountListItem,
-) as any as S.Schema<ExternalAccountListPageResultsList>;
-
-export interface ExternalAccountListPage {
-  /** Accounts in this page, ordered by account id. */
-  results: ExternalAccountListPageResultsList;
-  /** Account UUID to pass as `cursor` for the next page, or null when the list is exhausted. */
-  next_cursor: string | null;
-}
-export const ExternalAccountListPage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: ExternalAccountListPageResultsList,
-    next_cursor: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ExternalAccountListPage",
-}) as any as S.Schema<ExternalAccountListPage>;
-
-export type AccountNotesListError = PosthogOpError;
-export const accountNotesList: API.OperationMethod<
-  AccountNotesListRequest,
-  PaginatedAccountNoteList,
-  AccountNotesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountNotesListRequest,
-  output: PaginatedAccountNoteList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AccountsCustomPropertyValuesCreateError = PosthogOpError;
 export const accountsCustomPropertyValuesCreate: API.OperationMethod<
   AccountsCustomPropertyValuesCreateRequest,
@@ -804,66 +423,6 @@ export const accountsNotebooksRetrieve: API.OperationMethod<
   input: AccountsNotebooksRetrieveRequest,
   output: AccountNotebook,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsRelationshipsCreateError = PosthogOpError;
-export const accountsRelationshipsCreate: API.OperationMethod<
-  AccountsRelationshipsCreateRequest,
-  AccountRelationship,
-  AccountsRelationshipsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsRelationshipsCreateRequest,
-  output: AccountRelationship,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsRelationshipsEndCreateError = PosthogOpError;
-export const accountsRelationshipsEndCreate: API.OperationMethod<
-  AccountsRelationshipsEndCreateRequest,
-  AccountRelationship,
-  AccountsRelationshipsEndCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsRelationshipsEndCreateRequest,
-  output: AccountRelationship,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccountsRelationshipsListError = PosthogOpError;
-export const accountsRelationshipsList: API.OperationMethod<
-  AccountsRelationshipsListRequest,
-  AccountsRelationshipsListResponse,
-  AccountsRelationshipsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountsRelationshipsListRequest,
-  output: AccountsRelationshipsListResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomerAnalyticsExternalAccountsRetrieveError =
-  | BadRequest
-  | Forbidden
-  | PosthogOpError;
-/** List external customer analytics accounts List accounts with external IDs and their active relationship assignments. Requires a project secret API key with the `account:read` scope. */
-export const customerAnalyticsExternalAccountsRetrieve: API.OperationMethod<
-  CustomerAnalyticsExternalAccountsRetrieveRequest,
-  ExternalAccountListPage,
-  CustomerAnalyticsExternalAccountsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomerAnalyticsExternalAccountsRetrieveRequest,
-  output: ExternalAccountListPage,
-  errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

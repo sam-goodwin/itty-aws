@@ -42,7 +42,7 @@ export const AssociationSubnet = /*@__PURE__*/ S.suspend(() =>
 /** Association Properties. */
 export interface AssociationPropertiesInput {
   /** Association Type */
-  associationType: AssociationType;
+  associationType: AssociationType | (string & {});
   /** Association Subnet */
   subnet?: AssociationSubnet;
 }
@@ -417,7 +417,7 @@ export const AssociationSubnetUpdate = /*@__PURE__*/ S.suspend(() =>
 /** The updatable properties of the Association. */
 export interface AssociationUpdateProperties {
   /** Association Type */
-  associationType?: AssociationType;
+  associationType?: AssociationType | (string & {});
   /** Association Subnet */
   subnet?: AssociationSubnetUpdate;
 }

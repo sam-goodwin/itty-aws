@@ -1105,7 +1105,7 @@ export interface ApplicationsUpdateUpgradeRequest {
   /** The name of the application, including the 'fabric:' URI scheme. */
   name: string;
   /** The kind of the upgrade. */
-  upgradeKind: RuntimeUpgradeKind;
+  upgradeKind: RuntimeUpgradeKind | (string & {});
   /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
   applicationHealthPolicy?: RuntimeApplicationHealthPolicy;
   /** Describes the parameters for updating a rolling upgrade of application or cluster and a monitoring policy. */
@@ -3389,7 +3389,9 @@ export interface ManagedClusterVersionGetByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. */
-  environment: ManagedClusterVersionGetByEnvironmentRequestEnvironment;
+  environment:
+    | ManagedClusterVersionGetByEnvironmentRequestEnvironment
+    | (string & {});
   /** The cluster code version. */
   clusterVersion: string;
 }
@@ -3461,7 +3463,9 @@ export interface ManagedClusterVersionListByEnvironmentRequest {
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
   /** The operating system of the cluster. */
-  environment: ManagedClusterVersionListByEnvironmentRequestEnvironment;
+  environment:
+    | ManagedClusterVersionListByEnvironmentRequestEnvironment
+    | (string & {});
 }
 export const ManagedClusterVersionListByEnvironmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3773,8 +3777,9 @@ export type VmssExtensionSetupOrder = "BeforeSFRuntime";
 export const VmssExtensionSetupOrder = /*@__PURE__*/ S.String;
 
 /** Indicates the setup order for the extension. */
-export type VMSSExtensionPropertiesInputSetupOrderList =
-  Array<VmssExtensionSetupOrder>;
+export type VMSSExtensionPropertiesInputSetupOrderList = Array<
+  VmssExtensionSetupOrder | (string & {})
+>;
 export const VMSSExtensionPropertiesInputSetupOrderList = /*@__PURE__*/ S.Array(
   VmssExtensionSetupOrder,
 ) as any as S.Schema<VMSSExtensionPropertiesInputSetupOrderList>;
@@ -6307,7 +6312,7 @@ export interface ServicesRestartReplicaRequest {
   /** The IDs of the replicas to be restarted. */
   replicaIds: ServicesRestartReplicaRequestReplicaIdsList;
   /** The kind of restart to perform. */
-  restartKind: RestartKind;
+  restartKind: RestartKind | (string & {});
   /** If true, the restart operation will be forced. Use this option with care, as it may cause data loss. */
   forceRestart?: boolean;
   /** The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. */

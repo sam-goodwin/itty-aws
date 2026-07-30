@@ -633,43 +633,17 @@ export const TaskRunArtifactPresignResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskRunArtifactPresignResponse",
 }) as any as S.Schema<TaskRunArtifactPresignResponse>;
 
-export interface TasksRunsCancelCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  task_id: string;
-  id: string;
-  /** Optional reason for the cancellation, recorded on the run and shown to run watchers. */
-  reason?: string | null;
-}
-export const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    task_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    reason: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/cancel/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TasksRunsCancelCreateRequest",
-}) as any as S.Schema<TasksRunsCancelCreateRequest>;
-
 /** * `2.0` - 2.0 */
 export type JsonrpcEnum = "2.0";
 export const JsonrpcEnum = /*@__PURE__*/ S.String;
 
-/** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
+/** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option */
 export type MethodEnum =
   | "user_message"
   | "cancel"
   | "close"
   | "permission_response"
-  | "set_config_option"
-  | "mcp_response";
+  | "set_config_option";
 export const MethodEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for the command */
@@ -688,7 +662,7 @@ export interface TasksRunsCommandCreateRequest {
   id: string;
   /** JSON-RPC version, must be '2.0' * `2.0` - 2.0 */
   jsonrpc?: JsonrpcEnum | (string & {});
-  /** Command method to execute on the agent server * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
+  /** Command method to execute on the agent server * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option */
   method?: MethodEnum | (string & {});
   /** Parameters for the command */
   params?: TasksRunsCommandCreateRequestParamsMap;
@@ -788,74 +762,6 @@ export const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionTokenResponse",
 }) as any as S.Schema<ConnectionTokenResponse>;
 
-/** * `http` - http * `sse` - sse */
-export type ImportedMcpServerTypeEnum = "http" | "sse";
-export const ImportedMcpServerTypeEnum = /*@__PURE__*/ S.String;
-
-export interface ImportedMcpServerHeader {
-  name: string;
-  value: string;
-}
-export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "ImportedMcpServerHeader",
-}) as any as S.Schema<ImportedMcpServerHeader>;
-
-export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
-export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
-  ImportedMcpServerHeader,
-) as any as S.Schema<ImportedMcpServerHeadersList>;
-
-/** One client-imported MCP server, in the agent server's --mcpServers entry shape. */
-export interface ImportedMcpServer {
-  type: ImportedMcpServerTypeEnum | (string & {});
-  name: string;
-  url: string;
-  headers?: ImportedMcpServerHeadersList;
-}
-export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportedMcpServerTypeEnum,
-    name: S.String,
-    url: S.String,
-    headers: S.optional(ImportedMcpServerHeadersList),
-  }),
-).annotate({
-  identifier: "ImportedMcpServer",
-}) as any as S.Schema<ImportedMcpServer>;
-
-/** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
-export type TasksRunsCreateRequestImportedMcpServersList =
-  Array<ImportedMcpServer>;
-export const TasksRunsCreateRequestImportedMcpServersList =
-  /*@__PURE__*/ S.Array(
-    ImportedMcpServer,
-  ) as any as S.Schema<TasksRunsCreateRequestImportedMcpServersList>;
-
-/** One desktop-only MCP server relayed into the run — a name only, never configuration. */
-export interface RelayedMcpServer {
-  name: string;
-}
-export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "RelayedMcpServer",
-}) as any as S.Schema<RelayedMcpServer>;
-
-/** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
-export type TasksRunsCreateRequestRelayedMcpServersList =
-  Array<RelayedMcpServer>;
-export const TasksRunsCreateRequestRelayedMcpServersList =
-  /*@__PURE__*/ S.Array(
-    RelayedMcpServer,
-  ) as any as S.Schema<TasksRunsCreateRequestRelayedMcpServersList>;
-
 /** * `local` - local * `cloud` - cloud */
 export type TaskRunBootstrapCreateRequestEnvironmentEnum = "local" | "cloud";
 export const TaskRunBootstrapCreateRequestEnvironmentEnum =
@@ -889,10 +795,6 @@ export interface TasksRunsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
-  /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
-  imported_mcp_servers?: TasksRunsCreateRequestImportedMcpServersList | null;
-  /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
-  relayed_mcp_servers?: TasksRunsCreateRequestRelayedMcpServersList | null;
   /** Execution environment for the new run. Use 'cloud' for remote sandbox runs and 'local' for desktop sessions. * `local` - local * `cloud` - cloud */
   environment?: TaskRunBootstrapCreateRequestEnvironmentEnum | (string & {});
   /** Execution mode: 'interactive' for user-connected runs, 'background' for autonomous runs * `interactive` - interactive * `background` - background */
@@ -901,12 +803,8 @@ export interface TasksRunsCreateRequest {
   branch?: string | null;
   /** Optional sandbox environment to apply for this cloud run. */
   sandbox_environment_id?: string;
-  /** Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image. */
-  custom_image_id?: string;
   /** Whether pull requests for this run should be authored by the user or the bot. * `user` - user * `bot` - bot */
   pr_authorship_mode?: PrAuthorshipModeEnum | (string & {});
-  /** When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask. */
-  auto_publish?: boolean | null;
   /** High-level source that triggered this run, used to distinguish manual and signal-based cloud runs. * `manual` - manual * `signal_report` - signal_report */
   run_source?: RunSourceEnum | (string & {});
   /** Optional signal report identifier when this run was started from Inbox. */
@@ -919,30 +817,22 @@ export interface TasksRunsCreateRequest {
   reasoning_effort?: ReasoningEffortEnum | (string & {});
   /** Ephemeral GitHub user token from PostHog Code for user-authored cloud pull requests. */
   github_user_token?: string;
-  /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
+  /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'auto' and 'read-only'. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?:
     | TaskRunBootstrapCreateRequestInitialPermissionModeEnum
     | (string & {});
-  /** Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out. */
-  rtk_enabled?: boolean | null;
+  /** Label of the Home-tab quick action that started this run (e.g. 'Fix CI'), surfaced on the workstream. */
+  home_quick_action?: string;
 }
 export const TasksRunsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
-    imported_mcp_servers: S.optional(
-      S.NullOr(TasksRunsCreateRequestImportedMcpServersList),
-    ),
-    relayed_mcp_servers: S.optional(
-      S.NullOr(TasksRunsCreateRequestRelayedMcpServersList),
-    ),
     environment: S.optional(TaskRunBootstrapCreateRequestEnvironmentEnum),
     mode: S.optional(TaskExecutionModeEnum),
     branch: S.optional(S.NullOr(S.String)),
     sandbox_environment_id: S.optional(S.String),
-    custom_image_id: S.optional(S.String),
     pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
-    auto_publish: S.optional(S.NullOr(S.Boolean)),
     run_source: S.optional(RunSourceEnum),
     signal_report_id: S.optional(S.String),
     runtime_adapter: S.optional(RuntimeAdapterEnum),
@@ -952,7 +842,7 @@ export const TasksRunsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     initial_permission_mode: S.optional(
       TaskRunBootstrapCreateRequestInitialPermissionModeEnum,
     ),
-    rtk_enabled: S.optional(S.NullOr(S.Boolean)),
+    home_quick_action: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1042,14 +932,14 @@ export const TasksRunsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsLogsRetrieveResponse>;
 
 /** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-export type RunStatusEnum =
+export type TaskRunUpdateStatusEnum =
   | "not_started"
   | "queued"
   | "in_progress"
   | "completed"
   | "failed"
   | "cancelled";
-export const RunStatusEnum = /*@__PURE__*/ S.String;
+export const TaskRunUpdateStatusEnum = /*@__PURE__*/ S.String;
 
 /** State keys to remove atomically before applying any state updates. */
 export type TasksRunsPartialUpdateRequestStateRemoveKeysList = Array<string>;
@@ -1068,7 +958,7 @@ export interface TasksRunsPartialUpdateRequest {
   task_id: string;
   id: string;
   /** Current execution status * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-  status?: RunStatusEnum | (string & {});
+  status?: TaskRunUpdateStatusEnum | (string & {});
   /** Git branch name to associate with the task */
   branch?: string | null;
   /** Current stage of the run (e.g. research, plan, build) */
@@ -1089,7 +979,7 @@ export const TasksRunsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    status: S.optional(RunStatusEnum),
+    status: S.optional(TaskRunUpdateStatusEnum),
     branch: S.optional(S.NullOr(S.String)),
     stage: S.optional(S.NullOr(S.String)),
     output: S.optional(S.Unknown),
@@ -1110,24 +1000,12 @@ export const TasksRunsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksRunsPartialUpdateRequest",
 }) as any as S.Schema<TasksRunsPartialUpdateRequest>;
 
-/** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
-export type TasksRunsRelayMessageCreateRequestTextPartsList = Array<string>;
-export const TasksRunsRelayMessageCreateRequestTextPartsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TasksRunsRelayMessageCreateRequestTextPartsList>;
-
 export interface TasksRunsRelayMessageCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
-  /** Joined message body. Used when text_parts is absent. */
   text?: string;
-  /** Id of the user message this turn answers, when the agent-server echoes it. */
-  message_id?: string | null;
-  /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
-  text_parts?: TasksRunsRelayMessageCreateRequestTextPartsList;
 }
 export const TasksRunsRelayMessageCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1135,8 +1013,6 @@ export const TasksRunsRelayMessageCreateRequest = /*@__PURE__*/ S.suspend(() =>
     task_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     text: S.optional(S.String),
-    message_id: S.optional(S.NullOr(S.String)),
-    text_parts: S.optional(TasksRunsRelayMessageCreateRequestTextPartsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1315,10 +1191,6 @@ export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksRunsStartCreateRequest",
 }) as any as S.Schema<TasksRunsStartCreateRequest>;
 
-/** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi";
-export const RuntimeEnum = /*@__PURE__*/ S.String;
-
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
 export const TaskDetailDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1361,7 +1233,7 @@ export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskUserBasicInfo",
 }) as any as S.Schema<TaskUserBasicInfo>;
 
-/** Detail response for a task. Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` / ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``. */
+/** Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested run detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id avoids presigning a log URL per conversation. Read access here follows the conversation (the share-by-link unit), not per-creator task visibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``. */
 export interface TaskDetailDTO {
   id: string;
   task_number: number | null;
@@ -1370,8 +1242,6 @@ export interface TaskDetailDTO {
   title_manually_set: boolean;
   description: string;
   origin_product: string;
-  /** Agent protocol and harness used for this task's runs. * `acp` - ACP * `pi` - Pi */
-  runtime: RuntimeEnum;
   repository: string | null;
   github_integration: number | null;
   github_user_integration: string | null;
@@ -1380,13 +1250,12 @@ export interface TaskDetailDTO {
   internal: boolean;
   archived: boolean;
   archived_at: string | null;
-  /** Latest run details for this task */
-  latest_run?: TaskRunDetailDTO | null;
+  /** Id of the latest TaskRun; null when the task has no runs. */
+  latest_run: string | null;
   created_at?: string | null;
   updated_at?: string | null;
   created_by?: TaskUserBasicInfo | null;
   ci_prompt: string | null;
-  channel?: string | null;
 }
 export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1397,7 +1266,6 @@ export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
     title_manually_set: S.Boolean,
     description: S.String,
     origin_product: S.String,
-    runtime: RuntimeEnum,
     repository: S.NullOr(S.String),
     github_integration: S.NullOr(S.Number),
     github_user_integration: S.NullOr(S.String),
@@ -1406,12 +1274,11 @@ export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
     internal: S.Boolean,
     archived: S.Boolean,
     archived_at: S.NullOr(S.String),
-    latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
+    latest_run: S.NullOr(S.String),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.NullOr(S.String)),
     created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
     ci_prompt: S.NullOr(S.String),
-    channel: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "TaskDetailDTO" }) as any as S.Schema<TaskDetailDTO>;
 
@@ -1599,27 +1466,12 @@ export const tasksRunsArtifactsPresignCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TasksRunsCancelCreateError = BadRequest | NotFound | PosthogOpError;
-/** Cancel task run Stop an active cloud run. Interrupts the agent, snapshots interactive sessions for later resume, tears down the sandbox, and marks the run cancelled. Idempotent: cancelling a finished run returns it unchanged. */
-export const tasksRunsCancelCreate: API.OperationMethod<
-  TasksRunsCancelCreateRequest,
-  TaskRunDetailDTO,
-  TasksRunsCancelCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsCancelCreateRequest,
-  output: TaskRunDetailDTO,
-  errors: [BadRequest, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type TasksRunsCommandCreateError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Send command to task run Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, set_config_option, and mcp_response commands. */
+/** Send command to task run Queue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, and set_config_option commands. */
 export const tasksRunsCommandCreate: API.OperationMethod<
   TasksRunsCommandCreateRequest,
   TaskRunCommandResponse,

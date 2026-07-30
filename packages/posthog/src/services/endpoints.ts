@@ -50,14 +50,6 @@ export const EndpointsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsCreateRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-export type EndpointsCreateRequestOptionalBreakdownPropertiesList =
-  Array<string>;
-export const EndpointsCreateRequestOptionalBreakdownPropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointsCreateRequestOptionalBreakdownPropertiesList>;
-
 export interface EndpointsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -83,8 +75,6 @@ export interface EndpointsCreateRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: EndpointsCreateRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-  optional_breakdown_properties?: EndpointsCreateRequestOptionalBreakdownPropertiesList | null;
 }
 export const EndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -102,9 +92,6 @@ export const EndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     deleted: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(S.NullOr(EndpointsCreateRequestTagsList)),
-    optional_breakdown_properties: S.optional(
-      S.NullOr(EndpointsCreateRequestOptionalBreakdownPropertiesList),
-    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -232,13 +219,6 @@ export const EndpointResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointResponseTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
-export type EndpointResponseOptionalBreakdownPropertiesList = Array<string>;
-export const EndpointResponseOptionalBreakdownPropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointResponseOptionalBreakdownPropertiesList>;
-
 /** Full endpoint representation returned by list/retrieve/create/update. */
 export interface EndpointResponse {
   /** Unique endpoint identifier (UUID). */
@@ -285,8 +265,6 @@ export interface EndpointResponse {
   columns?: EndpointResponseColumnsList;
   /** Tag names associated with this endpoint. */
   tags?: EndpointResponseTagsList;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
-  optional_breakdown_properties?: EndpointResponseOptionalBreakdownPropertiesList;
 }
 export const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -312,9 +290,6 @@ export const EndpointResponse = /*@__PURE__*/ S.suspend(() =>
     bucket_overrides: S.optional(S.NullOr(EndpointResponseBucketOverridesMap)),
     columns: S.optional(EndpointResponseColumnsList),
     tags: S.optional(EndpointResponseTagsList),
-    optional_breakdown_properties: S.optional(
-      EndpointResponseOptionalBreakdownPropertiesList,
-    ),
   }),
 ).annotate({
   identifier: "EndpointResponse",
@@ -406,8 +381,6 @@ export interface QueryStatus {
   end_time?: string | null;
   /** If the query failed, this will be set to true. More information can be found in the error_message field. */
   error?: boolean | null;
-  /** Stable machine-readable code for the error (the DRF exception code), when known. */
-  error_code?: string | null;
   error_message?: string | null;
   expiration_time?: string | null;
   id?: string;
@@ -430,7 +403,6 @@ export const QueryStatus = /*@__PURE__*/ S.suspend(() =>
     dashboard_id: S.optional(S.NullOr(S.Number)),
     end_time: S.optional(S.NullOr(S.String)),
     error: S.optional(S.NullOr(S.Boolean)),
-    error_code: S.optional(S.NullOr(S.String)),
     error_message: S.optional(S.NullOr(S.String)),
     expiration_time: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -552,41 +524,6 @@ export const EndpointsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsLogsRetrieveResponse",
 }) as any as S.Schema<EndpointsLogsRetrieveResponse>;
 
-export interface EndpointsMaterializationConditionsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const EndpointsMaterializationConditionsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/endpoints/materialization_conditions/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EndpointsMaterializationConditionsRetrieveRequest",
-  }) as any as S.Schema<EndpointsMaterializationConditionsRetrieveRequest>;
-
-/** The live materialization rules, for agents that want to rewrite a rejected query themselves. */
-export interface EndpointMaterializationConditions {
-  /** Python source code of the checks that decide whether an endpoint query can be materialized, read from the running system — always matches what this instance enforces. Reason from it to rewrite a rejected query into a form that passes every check. */
-  conditions_source: string;
-  /** Hard rules a rewrite must obey so it stays semantically equivalent to the original query (same results for all variable values, keep every variable placeholder unchanged). */
-  rewrite_contract: string;
-}
-export const EndpointMaterializationConditions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conditions_source: S.String,
-    rewrite_contract: S.String,
-  }),
-).annotate({
-  identifier: "EndpointMaterializationConditions",
-}) as any as S.Schema<EndpointMaterializationConditions>;
-
 /** Per-column bucket function overrides, e.g. {"timestamp": "hour"} */
 export type EndpointsMaterializationPreviewCreateRequestBucketOverridesMap = {
   [key: string]: string | undefined;
@@ -654,66 +591,6 @@ export const EndpointsMaterializationStatusRetrieveRequest =
     identifier: "EndpointsMaterializationStatusRetrieveRequest",
   }) as any as S.Schema<EndpointsMaterializationStatusRetrieveRequest>;
 
-export interface EndpointsMaterializationSuggestionCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  name: string;
-  /** Endpoint version to suggest a fix for. Defaults to the latest version. */
-  version?: number | null;
-}
-export const EndpointsMaterializationSuggestionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      version: S.optional(S.NullOr(S.Number)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/endpoints/{name}/materialization_suggestion/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EndpointsMaterializationSuggestionCreateRequest",
-  }) as any as S.Schema<EndpointsMaterializationSuggestionCreateRequest>;
-
-/** * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
-export type SuggestionStatusEnum =
-  | "ok"
-  | "cannot_fix"
-  | "invalid"
-  | "model_error";
-export const SuggestionStatusEnum = /*@__PURE__*/ S.String;
-
-/** AI-suggested query rewrite that would make the endpoint materializable. */
-export interface EndpointMaterializationSuggestion {
-  /** Outcome of the suggestion run: 'ok' — the suggested query passes the live materialization checks; 'cannot_fix' — no semantically equivalent rewrite exists; 'invalid' — a suggestion was produced but never passed validation (suggested_query carries the last attempt); 'model_error' — the model returned no usable response. * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
-  suggestion_status: SuggestionStatusEnum;
-  /** The complete rewritten SQL query, or null when no rewrite was produced. */
-  suggested_query: string | null;
-  /** User-facing explanation of what was changed and why, or why no fix exists. */
-  explanation: string | null;
-  /** How many suggest→validate rounds were used. */
-  attempts: number;
-  /** Last validation failure when the suggestion did not pass the checks. */
-  error: string | null;
-  /** The materialization blocker that triggered the suggestion. */
-  original_reason: string;
-}
-export const EndpointMaterializationSuggestion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestion_status: SuggestionStatusEnum,
-    suggested_query: S.NullOr(S.String),
-    explanation: S.NullOr(S.String),
-    attempts: S.Number,
-    error: S.NullOr(S.String),
-    original_reason: S.String,
-  }),
-).annotate({
-  identifier: "EndpointMaterializationSuggestion",
-}) as any as S.Schema<EndpointMaterializationSuggestion>;
-
 export interface EndpointsOpenapiSpecRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -760,14 +637,6 @@ export const EndpointsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsPartialUpdateRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-export type EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList =
-  Array<string>;
-export const EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList>;
-
 export interface EndpointsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -792,8 +661,6 @@ export interface EndpointsPartialUpdateRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: EndpointsPartialUpdateRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-  optional_breakdown_properties?: EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList | null;
 }
 export const EndpointsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -811,9 +678,6 @@ export const EndpointsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     deleted: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(S.NullOr(EndpointsPartialUpdateRequestTagsList)),
-    optional_breakdown_properties: S.optional(
-      S.NullOr(EndpointsPartialUpdateRequestOptionalBreakdownPropertiesList),
-    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -866,14 +730,6 @@ export const EndpointVersionResponseTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointVersionResponseTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
-export type EndpointVersionResponseOptionalBreakdownPropertiesList =
-  Array<string>;
-export const EndpointVersionResponseOptionalBreakdownPropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointVersionResponseOptionalBreakdownPropertiesList>;
-
 /** Extended endpoint representation when viewing a specific version. */
 export interface EndpointVersionResponse {
   /** Unique endpoint identifier (UUID). */
@@ -920,8 +776,6 @@ export interface EndpointVersionResponse {
   columns?: EndpointVersionResponseColumnsList;
   /** Tag names associated with this endpoint. */
   tags?: EndpointVersionResponseTagsList;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
-  optional_breakdown_properties?: EndpointVersionResponseOptionalBreakdownPropertiesList;
   /** Version number. */
   version?: number;
   /** Version unique identifier (UUID). */
@@ -961,9 +815,6 @@ export const EndpointVersionResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     columns: S.optional(EndpointVersionResponseColumnsList),
     tags: S.optional(EndpointVersionResponseTagsList),
-    optional_breakdown_properties: S.optional(
-      EndpointVersionResponseOptionalBreakdownPropertiesList,
-    ),
     version: S.optional(S.Number),
     version_id: S.optional(S.String),
     endpoint_is_active: S.optional(S.Boolean),
@@ -1070,17 +921,6 @@ export const BreakdownFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BreakdownFilter",
 }) as any as S.Schema<BreakdownFilter>;
-
-export type IntervalType =
-  | "second"
-  | "minute"
-  | "hour"
-  | "day"
-  | "week"
-  | "month"
-  | "quarter"
-  | "year";
-export const IntervalType = /*@__PURE__*/ S.String;
 
 export type PropertyOperator =
   | "exact"
@@ -1194,47 +1034,6 @@ export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PersonPropertyFilter",
 }) as any as S.Schema<PersonPropertyFilter>;
-
-export type PersonMetadataPropertyFilterValueCase0Item =
-  | string
-  | number
-  | boolean;
-export const PersonMetadataPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
-
-export type PersonMetadataPropertyFilterValueCase0List =
-  Array<PersonMetadataPropertyFilterValueCase0Item>;
-export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
-
-export type PersonMetadataPropertyFilterValue =
-  | PersonMetadataPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const PersonMetadataPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValue>;
-
-export interface PersonMetadataPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator | (string & {});
-  /** Top-level columns on the persons table (e.g. created_at), not properties JSON */
-  type?: string;
-  value?: PersonMetadataPropertyFilterValue | null;
-}
-export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "PersonMetadataPropertyFilter",
-}) as any as S.Schema<PersonMetadataPropertyFilter>;
 
 export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
@@ -1777,43 +1576,6 @@ export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogPropertyFilter",
 }) as any as S.Schema<LogPropertyFilter>;
 
-export type MetricPropertyFilterValueCase0Item = string | number | boolean;
-export const MetricPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
-
-export type MetricPropertyFilterValueCase0List =
-  Array<MetricPropertyFilterValueCase0Item>;
-export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  MetricPropertyFilterValueCase0Item,
-) as any as S.Schema<MetricPropertyFilterValueCase0List>;
-
-export type MetricPropertyFilterValue =
-  | MetricPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const MetricPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValue>;
-
-export interface MetricPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator | (string & {});
-  type?: string;
-  value?: MetricPropertyFilterValue | null;
-}
-export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(MetricPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "MetricPropertyFilter",
-}) as any as S.Schema<MetricPropertyFilter>;
-
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
@@ -1898,47 +1660,6 @@ export const RevenueAnalyticsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsPropertyFilter",
 }) as any as S.Schema<RevenueAnalyticsPropertyFilter>;
 
-export type AccountCustomPropertyFilterValueCase0Item =
-  | string
-  | number
-  | boolean;
-export const AccountCustomPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
-
-export type AccountCustomPropertyFilterValueCase0List =
-  Array<AccountCustomPropertyFilterValueCase0Item>;
-export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  AccountCustomPropertyFilterValueCase0Item,
-) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
-
-export type AccountCustomPropertyFilterValue =
-  | AccountCustomPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const AccountCustomPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValue>;
-
-export interface AccountCustomPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator | (string & {});
-  /** Customer analytics account custom property — the key is the property definition id */
-  type?: string;
-  value?: AccountCustomPropertyFilterValue | null;
-}
-export const AccountCustomPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(AccountCustomPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "AccountCustomPropertyFilter",
-}) as any as S.Schema<AccountCustomPropertyFilter>;
-
 export type WorkflowVariablePropertyFilterValueCase0Item =
   | string
   | number
@@ -1983,7 +1704,6 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type DashboardFilterPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -1999,10 +1719,8 @@ export type DashboardFilterPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const DashboardFilterPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
@@ -2018,10 +1736,6 @@ export interface DashboardFilter {
   date_from?: string | null;
   date_to?: string | null;
   explicitDate?: boolean | null;
-  /** Tri-state test-account override. Null/absent = inherit; true = force on; false = force off. */
-  filterTestAccounts?: boolean | null;
-  /** Time granularity forced onto every insight that supports one. Absent/null = inherit. */
-  interval?: IntervalType | (string & {}) | null;
   properties?: DashboardFilterPropertiesList | null;
 }
 export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
@@ -2030,8 +1744,6 @@ export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
     date_from: S.optional(S.NullOr(S.String)),
     date_to: S.optional(S.NullOr(S.String)),
     explicitDate: S.optional(S.NullOr(S.Boolean)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
     properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
   }),
 ).annotate({
@@ -2166,14 +1878,6 @@ export const EndpointsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsUpdateRequestTagsList>;
 
-/** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-export type EndpointsUpdateRequestOptionalBreakdownPropertiesList =
-  Array<string>;
-export const EndpointsUpdateRequestOptionalBreakdownPropertiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointsUpdateRequestOptionalBreakdownPropertiesList>;
-
 export interface EndpointsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2198,8 +1902,6 @@ export interface EndpointsUpdateRequest {
   deleted?: boolean | null;
   /** List of tag names to associate with this endpoint. Replaces any existing tags. */
   tags?: EndpointsUpdateRequestTagsList | null;
-  /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] — every breakdown variable is required. */
-  optional_breakdown_properties?: EndpointsUpdateRequestOptionalBreakdownPropertiesList | null;
 }
 export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2217,9 +1919,6 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     deleted: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(S.NullOr(EndpointsUpdateRequestTagsList)),
-    optional_breakdown_properties: S.optional(
-      S.NullOr(EndpointsUpdateRequestOptionalBreakdownPropertiesList),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2372,21 +2071,6 @@ export const endpointsLogsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EndpointsMaterializationConditionsRetrieveError = PosthogOpError;
-/** Get the source code of the live materialization checks, plus the rewrite contract. Lets an agent rewrite a rejected endpoint query itself: fetch these conditions, produce a semantically equivalent query that passes every check, update the endpoint with it, then confirm via materialization_status. The source is read from the running system, so it always matches the checks this instance enforces. */
-export const endpointsMaterializationConditionsRetrieve: API.OperationMethod<
-  EndpointsMaterializationConditionsRetrieveRequest,
-  EndpointMaterializationConditions,
-  EndpointsMaterializationConditionsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsMaterializationConditionsRetrieveRequest,
-  output: EndpointMaterializationConditions,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EndpointsMaterializationPreviewCreateError =
   | BadRequest
   | Forbidden
@@ -2420,21 +2104,6 @@ export const endpointsMaterializationStatusRetrieve: API.OperationMethod<
   input: EndpointsMaterializationStatusRetrieveRequest,
   output: EndpointMaterialization,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EndpointsMaterializationSuggestionCreateError = PosthogOpError;
-/** Ask AI to rewrite the endpoint's query into a semantically equivalent form that can be materialized. Only applicable to SQL (HogQL) endpoints that currently fail the materialization checks. The suggestion is validated against the live checks before being returned; nothing is saved. Requires the organization's AI data processing approval. */
-export const endpointsMaterializationSuggestionCreate: API.OperationMethod<
-  EndpointsMaterializationSuggestionCreateRequest,
-  EndpointMaterializationSuggestion,
-  EndpointsMaterializationSuggestionCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsMaterializationSuggestionCreateRequest,
-  output: EndpointMaterializationSuggestion,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

@@ -92,9 +92,9 @@ export const SkuTier = /*@__PURE__*/ S.String;
 /** Model representing SKU for Azure Dev Spaces Controller. */
 export interface Sku {
   /** The name of the SKU for Azure Dev Spaces Controller. */
-  name: SkuName;
+  name: SkuName | (string & {});
   /** The tier of the SKU for Azure Dev Spaces Controller. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -133,24 +133,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "custom_image_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "custom_image_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "custom_image_status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -375,13 +357,6 @@
           "traits": {
             "smithy.api#documentation": "If true, only the creator can see this environment; otherwise the whole team can."
           }
-        },
-        "custom_image_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -540,13 +515,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If true, only the creator can see this environment; otherwise the whole team can."
-          }
-        },
-        "custom_image_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

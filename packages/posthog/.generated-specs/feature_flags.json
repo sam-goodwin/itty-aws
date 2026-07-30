@@ -59,18 +59,6 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsListRequestEligibleForExperiment": {
-      "type": "enum",
-      "members": {
-        "TRUE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "true"
-          }
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.feature_flags#FeatureFlagsListRequestEvaluationRuntime": {
       "type": "enum",
       "members": {
@@ -174,13 +162,6 @@
             "smithy.api#documentation": "Filter by the user(s) who created the feature flag. Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them."
           }
         },
-        "eligible_for_experiment": {
-          "target": "com.posthog.feature_flags#FeatureFlagsListRequestEligibleForExperiment",
-          "traits": {
-            "smithy.api#httpQuery": "eligible_for_experiment",
-            "smithy.api#documentation": "When 'true', only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored."
-          }
-        },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsListRequestEvaluationRuntime",
           "traits": {
@@ -207,13 +188,6 @@
           "traits": {
             "smithy.api#httpQuery": "has_evaluation_contexts",
             "smithy.api#documentation": "Filter feature flags by presence of evaluation contexts. 'true' returns only flags with at least one evaluation context, 'false' returns only flags without."
-          }
-        },
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "key",
-            "smithy.api#documentation": "Filter by exact feature flag key match. Case insensitive."
           }
         },
         "limit": {
@@ -351,6 +325,15 @@
         "features": {
           "target": "com.posthog.feature_flags#FeatureFlagOutputFeaturesMap"
         },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "can_edit": {
           "target": "smithy.api#Boolean"
         },
@@ -416,12 +399,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
-          }
-        },
-        "is_eligible_for_experiment": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
           }
         }
       },
@@ -1877,6 +1854,15 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestTagsList"
         },
@@ -2487,6 +2473,15 @@
             "com.distilled.openapi#nullable": {}
           }
         },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList"
         },
@@ -2689,6 +2684,15 @@
           "target": "smithy.api#Integer"
         },
         "ensure_experience_continuity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
@@ -2991,6 +2995,15 @@
           "target": "smithy.api#Integer"
         },
         "ensure_experience_continuity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
@@ -3586,6 +3599,15 @@
         },
         "version": {
           "target": "smithy.api#Integer",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "rollback_conditions": {
+          "target": "smithy.api#Document"
+        },
+        "performed_rollback": {
+          "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -4230,7 +4252,7 @@
         "smithy.api#documentation": "List of object IDs to update tags on."
       }
     },
-    "com.posthog.feature_flags#BulkUpdateTagsActionEnum": {
+    "com.posthog.feature_flags#ActionEnum": {
       "type": "enum",
       "members": {
         "ADD": {
@@ -4283,7 +4305,7 @@
           }
         },
         "action": {
-          "target": "com.posthog.feature_flags#BulkUpdateTagsActionEnum",
+          "target": "com.posthog.feature_flags#ActionEnum",
           "traits": {
             "smithy.api#documentation": "'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags.\n\n* `add` - add\n* `remove` - remove\n* `set` - set"
           }
@@ -4384,13 +4406,6 @@
         "smithy.api#documentation": "Bulk update tags on multiple objects.\n\nPAT access: this action has no ``required_scopes=`` on the decorator —\ninheriting viewsets must add ``\"bulk_update_tags\"`` to their\n``scope_object_write_actions`` list to accept personal API keys.\nWithout that opt-in, ``APIScopePermission`` rejects PAT requests with\n\"This action does not support personal API key access\". Done per-viewset\nso granting ``<scope>:write`` for one resource doesn't leak access to\nsibling resources that share this mixin.\n\nAccepts:\n- {\"ids\": [...], \"action\": \"add\"|\"remove\"|\"set\", \"tags\": [\"tag1\", \"tag2\"]}\n\nActions:\n- \"add\": Add tags to existing tags on each object\n- \"remove\": Remove specific tags from each object\n- \"set\": Replace all tags on each object with the provided list"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -4408,13 +4423,6 @@
             "smithy.api#httpQuery": "distinct_id",
             "smithy.api#required": {},
             "smithy.api#documentation": "User distinct ID"
-          }
-        },
-        "flag_keys": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEvaluationReasonsRetrieveRequestFlagKeysList",
-          "traits": {
-            "smithy.api#httpQuery": "flag_keys",
-            "smithy.api#documentation": "Optional list of flag keys to scope the response to. When omitted, evaluation reasons are returned for every flag in the project, which can be a very large payload on projects with many flags. Pass the specific flag(s) you are debugging to keep the response small. Accepts either repeated query params (flag_keys=a&flag_keys=b) or a JSON array string (flag_keys=[\"a\",\"b\"])."
           }
         },
         "groups": {

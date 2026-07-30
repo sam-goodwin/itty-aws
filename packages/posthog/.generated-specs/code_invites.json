@@ -36,7 +36,7 @@
           "uri": "/api/code/invites/check-access/",
           "code": 200
         },
-        "smithy.api#documentation": "Check access\n\nCheck whether the authenticated user has access to PostHog Code and to Loops."
+        "smithy.api#documentation": "Check access\n\nCheck whether the authenticated user has access to PostHog Code."
       }
     },
     "com.posthog.code_invites#CodeInvitesRedeemCreateRequest": {

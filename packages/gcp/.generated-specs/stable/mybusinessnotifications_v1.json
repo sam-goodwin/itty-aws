@@ -10,12 +10,6 @@
     "com.gcp.mybusinessnotifications_v1#NotificationSetting": {
       "type": "structure",
       "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`."
-          }
-        },
         "notificationTypes": {
           "target": "com.gcp.mybusinessnotifications_v1#NotificationSettingNotificationTypesItemEnumList",
           "traits": {
@@ -26,6 +20,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional. The Google Pub/Sub topic that will receive notifications when locations managed by this account are updated. If unset, no notifications will be posted. The account mybusiness-api-pubsub@system.gserviceaccount.com must have at least Publish permissions on the Pub/Sub topic."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`."
           }
         }
       },

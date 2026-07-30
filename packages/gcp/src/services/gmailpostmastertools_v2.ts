@@ -109,38 +109,22 @@ export const MetricDefinitionList = /*@__PURE__*/ S.Array(
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Gmailpostmastertools_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
 export const Gmailpostmastertools_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    year: S.optional(S.Number),
     day: S.optional(S.Number),
+    year: S.optional(S.Number),
     month: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "Gmailpostmastertools_Date",
 }) as any as S.Schema<Gmailpostmastertools_Date>;
-
-export type Gmailpostmastertools_DateList = Array<Gmailpostmastertools_Date>;
-export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(
-  Gmailpostmastertools_Date,
-) as any as S.Schema<Gmailpostmastertools_DateList>;
-
-/** A set of specific dates. */
-export interface DateList {
-  /** Required. The list of specific dates for which to retrieve data. */
-  dates?: Gmailpostmastertools_DateList;
-}
-export const DateList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dates: S.optional(Gmailpostmastertools_DateList),
-  }),
-).annotate({ identifier: "DateList" }) as any as S.Schema<DateList>;
 
 /** A single date range defined by a start and end date. */
 export interface DateRange {
@@ -172,17 +156,33 @@ export const DateRanges = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DateRanges" }) as any as S.Schema<DateRanges>;
 
+export type Gmailpostmastertools_DateList = Array<Gmailpostmastertools_Date>;
+export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(
+  Gmailpostmastertools_Date,
+) as any as S.Schema<Gmailpostmastertools_DateList>;
+
+/** A set of specific dates. */
+export interface DateList {
+  /** Required. The list of specific dates for which to retrieve data. */
+  dates?: Gmailpostmastertools_DateList;
+}
+export const DateList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dates: S.optional(Gmailpostmastertools_DateList),
+  }),
+).annotate({ identifier: "DateList" }) as any as S.Schema<DateList>;
+
 /** The date ranges or specific dates for which you want to retrieve data. */
 export interface TimeQuery {
-  /** A list of specific dates. */
-  dateList?: DateList;
   /** A list of date ranges. */
   dateRanges?: DateRanges;
+  /** A list of specific dates. */
+  dateList?: DateList;
 }
 export const TimeQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dateList: S.optional(DateList),
     dateRanges: S.optional(DateRanges),
+    dateList: S.optional(DateList),
   }),
 ).annotate({ identifier: "TimeQuery" }) as any as S.Schema<TimeQuery>;
 
@@ -195,6 +195,8 @@ export const QueryDomainStatsRequestAggregationGranularityEnum =
 
 /** Request message for QueryDomainStats. */
 export interface QueryDomainStatsRequest {
+  /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
+  parent?: string;
   /** Optional. The maximum number of DomainStats resources to return in the response. The server may return fewer than this value. If unspecified, a default value of 10 will be used. The maximum value is 200. */
   pageSize?: number;
   /** Optional. The next_page_token value returned from a previous List request, if any. If the aggregation granularity is DAILY, the page token will be the encoded date + "/" + metric name. If the aggregation granularity is OVERALL, the page token will be the encoded metric name. */
@@ -207,11 +209,10 @@ export interface QueryDomainStatsRequest {
   aggregationGranularity?:
     | QueryDomainStatsRequestAggregationGranularityEnum
     | (string & {});
-  /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
-  parent?: string;
 }
 export const QueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    parent: S.optional(S.String),
     pageSize: S.optional(S.Number),
     pageToken: S.optional(S.String),
     metricDefinitions: S.optional(MetricDefinitionList),
@@ -219,7 +220,6 @@ export const QueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
     aggregationGranularity: S.optional(
       QueryDomainStatsRequestAggregationGranularityEnum,
     ),
-    parent: S.optional(S.String),
   }),
 ).annotate({
   identifier: "QueryDomainStatsRequest",
@@ -261,34 +261,6 @@ export const BatchQueryDomainStatsRequest_ = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchQueryDomainStatsRequest_",
 }) as any as S.Schema<BatchQueryDomainStatsRequest_>;
 
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
-
-export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
-
-/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
-}
-export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
-
 export type StringList_ = Array<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
@@ -309,42 +281,42 @@ export const StringList = /*@__PURE__*/ S.suspend(() =>
 export interface StatisticValue {
   /** Double value. */
   doubleValue?: number;
-  /** Integer value. */
-  intValue?: string;
+  /** List of string values. */
+  stringList?: StringList;
   /** String value. */
   stringValue?: string;
   /** Float value. */
   floatValue?: number;
-  /** List of string values. */
-  stringList?: StringList;
+  /** Integer value. */
+  intValue?: string;
 }
 export const StatisticValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleValue: S.optional(S.Number),
-    intValue: S.optional(S.String),
+    stringList: S.optional(StringList),
     stringValue: S.optional(S.String),
     floatValue: S.optional(S.Number),
-    stringList: S.optional(StringList),
+    intValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "StatisticValue" }) as any as S.Schema<StatisticValue>;
 
 /** Email statistics for a domain for a specified time period or date. */
 export interface DomainStat {
-  /** Optional. The specific date for these stats, if granularity is DAILY. This field is populated if the QueryDomainStatsRequest specified a DAILY aggregation granularity. */
-  date?: Gmailpostmastertools_Date;
   /** Output only. The resource name of the DomainStat resource. Format: domains/{domain}/domainStats/{domain_stat} The `{domain_stat}` segment is an opaque, server-generated ID. We recommend using the `metric` field to identify queried metrics instead of parsing the name. */
   name?: string;
-  /** The user-defined name from MetricDefinition.name in the request, used to correlate this result with the requested metric. */
-  metric?: string;
+  /** Optional. The specific date for these stats, if granularity is DAILY. This field is populated if the QueryDomainStatsRequest specified a DAILY aggregation granularity. */
+  date?: Gmailpostmastertools_Date;
   /** The value of the corresponding metric. */
   value?: StatisticValue;
+  /** The user-defined name from MetricDefinition.name in the request, used to correlate this result with the requested metric. */
+  metric?: string;
 }
 export const DomainStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    date: S.optional(Gmailpostmastertools_Date),
     name: S.optional(S.String),
-    metric: S.optional(S.String),
+    date: S.optional(Gmailpostmastertools_Date),
     value: S.optional(StatisticValue),
+    metric: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainStat" }) as any as S.Schema<DomainStat>;
 
@@ -369,17 +341,45 @@ export const QueryDomainStatsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDomainStatsResponse",
 }) as any as S.Schema<QueryDomainStatsResponse>;
 
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
+export type DocumentMapList = Array<DocumentMap>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
+
+/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
+}
+export const Status = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.Number),
+    message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
+
 /** Represents the result of a single QueryDomainStatsRequest within a batch. */
 export interface BatchQueryDomainStatsResult {
-  /** The error status if the individual query failed. */
-  error?: Status;
   /** The successful response for the individual query. */
   response?: QueryDomainStatsResponse;
+  /** The error status if the individual query failed. */
+  error?: Status;
 }
 export const BatchQueryDomainStatsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(Status),
     response: S.optional(QueryDomainStatsResponse),
+    error: S.optional(Status),
   }),
 ).annotate({
   identifier: "BatchQueryDomainStatsResult",
@@ -435,12 +435,6 @@ export const CreateDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDomainsRequest",
 }) as any as S.Schema<CreateDomainsRequest>;
 
-export type DomainVerificationStateEnum =
-  | "VERIFICATION_STATE_UNSPECIFIED"
-  | "UNVERIFIED"
-  | "VERIFIED";
-export const DomainVerificationStateEnum = /*@__PURE__*/ S.String;
-
 export type DomainPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
   | "READER"
@@ -449,26 +443,32 @@ export type DomainPermissionEnum =
   | "NONE";
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
+export type DomainVerificationStateEnum =
+  | "VERIFICATION_STATE_UNSPECIFIED"
+  | "UNVERIFIED"
+  | "VERIFIED";
+export const DomainVerificationStateEnum = /*@__PURE__*/ S.String;
+
 /** Information about a domain registered by the user. */
 export interface Domain {
-  /** Output only. Information about a user's verification history and properties for the domain. */
-  verificationState?: DomainVerificationStateEnum;
   /** Output only. User's permission of this domain. */
   permission?: DomainPermissionEnum;
+  /** Output only. Immutable. The timestamp at which the domain was added to the user's account. */
+  createTime?: string;
   /** The timestamp at which the domain was last verified by the user. */
   lastVerifyTime?: string;
   /** Identifier. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
   name?: string;
-  /** Output only. Immutable. The timestamp at which the domain was added to the user's account. */
-  createTime?: string;
+  /** Output only. Information about a user's verification history and properties for the domain. */
+  verificationState?: DomainVerificationStateEnum;
 }
 export const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    verificationState: S.optional(DomainVerificationStateEnum),
     permission: S.optional(DomainPermissionEnum),
+    createTime: S.optional(S.String),
     lastVerifyTime: S.optional(S.String),
     name: S.optional(S.String),
-    createTime: S.optional(S.String),
+    verificationState: S.optional(DomainVerificationStateEnum),
   }),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
@@ -482,15 +482,15 @@ export const CreateUserRequestPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateUser. */
 export interface CreateUserRequest {
-  /** Required. The user to create. */
-  userId?: string;
   /** Optional. Specifies the permission level to give the user for the specified domain. If not specified, the default value for this field is READER. */
   permission?: CreateUserRequestPermissionEnum | (string & {});
+  /** Required. The user to create. */
+  userId?: string;
 }
 export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    userId: S.optional(S.String),
     permission: S.optional(CreateUserRequestPermissionEnum),
+    userId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CreateUserRequest",
@@ -529,22 +529,22 @@ export const UserPermissionEnum = /*@__PURE__*/ S.String;
 export interface User {
   /** The user's email address. */
   user?: string;
-  /** Output only. The time the user was granted access. */
-  createTime?: string;
-  /** The permission level that the user has for the specified domain. */
-  permission?: UserPermissionEnum | (string & {});
-  /** Output only. The user that added the current user. */
-  accessGranter?: string;
   /** Identifier. The resource name of the user. Format: users/{user} Note: {user} is the user's email address. */
   name?: string;
+  /** The permission level that the user has for the specified domain. */
+  permission?: UserPermissionEnum | (string & {});
+  /** Output only. The time the user was granted access. */
+  createTime?: string;
+  /** Output only. The user that added the current user. */
+  accessGranter?: string;
 }
 export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String),
-    createTime: S.optional(S.String),
-    permission: S.optional(UserPermissionEnum),
-    accessGranter: S.optional(S.String),
     name: S.optional(S.String),
+    permission: S.optional(UserPermissionEnum),
+    createTime: S.optional(S.String),
+    accessGranter: S.optional(S.String),
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
@@ -608,6 +608,21 @@ export const GetComplianceStatusDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetComplianceStatusDomainsRequest",
 }) as any as S.Schema<GetComplianceStatusDomainsRequest>;
 
+export type ComplianceRowDataRequirementEnum =
+  | "COMPLIANCE_REQUIREMENT_UNSPECIFIED"
+  | "SPF"
+  | "DKIM"
+  | "SPF_AND_DKIM"
+  | "DMARC_POLICY"
+  | "DMARC_ALIGNMENT"
+  | "MESSAGE_FORMATTING"
+  | "DNS_RECORDS"
+  | "ENCRYPTION"
+  | "USER_REPORTED_SPAM_RATE"
+  | "ONE_CLICK_UNSUBSCRIBE"
+  | "HONOR_UNSUBSCRIBE";
+export const ComplianceRowDataRequirementEnum = /*@__PURE__*/ S.String;
+
 export type ComplianceStatusStatusEnum =
   | "STATE_UNSPECIFIED"
   | "COMPLIANT"
@@ -627,78 +642,17 @@ export const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceStatus",
 }) as any as S.Schema<ComplianceStatus>;
 
-export type OneClickUnsubscribeVerdictReasonEnum =
-  | "REASON_UNSPECIFIED"
-  | "NO_UNSUB_GENERAL"
-  | "NO_UNSUB_SPAM_REPORTS"
-  | "NO_UNSUB_PROMO_SPAM_REPORTS";
-export const OneClickUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
-
-/** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
-export interface OneClickUnsubscribeVerdict {
-  /** The compliance status. */
-  status?: ComplianceStatus;
-  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
-  reason?: OneClickUnsubscribeVerdictReasonEnum;
-}
-export const OneClickUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ComplianceStatus),
-    reason: S.optional(OneClickUnsubscribeVerdictReasonEnum),
-  }),
-).annotate({
-  identifier: "OneClickUnsubscribeVerdict",
-}) as any as S.Schema<OneClickUnsubscribeVerdict>;
-
-export type HonorUnsubscribeVerdictReasonEnum =
-  | "REASON_UNSPECIFIED"
-  | "NOT_HONORING"
-  | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
-  | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
-export const HonorUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
-
-/** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
-export interface HonorUnsubscribeVerdict {
-  /** The compliance status. */
-  status?: ComplianceStatus;
-  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
-  reason?: HonorUnsubscribeVerdictReasonEnum;
-}
-export const HonorUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(ComplianceStatus),
-    reason: S.optional(HonorUnsubscribeVerdictReasonEnum),
-  }),
-).annotate({
-  identifier: "HonorUnsubscribeVerdict",
-}) as any as S.Schema<HonorUnsubscribeVerdict>;
-
-export type ComplianceRowDataRequirementEnum =
-  | "COMPLIANCE_REQUIREMENT_UNSPECIFIED"
-  | "SPF"
-  | "DKIM"
-  | "SPF_AND_DKIM"
-  | "DMARC_POLICY"
-  | "DMARC_ALIGNMENT"
-  | "MESSAGE_FORMATTING"
-  | "DNS_RECORDS"
-  | "ENCRYPTION"
-  | "USER_REPORTED_SPAM_RATE"
-  | "ONE_CLICK_UNSUBSCRIBE"
-  | "HONOR_UNSUBSCRIBE";
-export const ComplianceRowDataRequirementEnum = /*@__PURE__*/ S.String;
-
 /** Data for a single row of the compliance status table. */
 export interface ComplianceRowData {
-  /** The compliance status for the requirement. */
-  status?: ComplianceStatus;
   /** The compliance requirement. */
   requirement?: ComplianceRowDataRequirementEnum;
+  /** The compliance status for the requirement. */
+  status?: ComplianceStatus;
 }
 export const ComplianceRowData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status: S.optional(ComplianceStatus),
     requirement: S.optional(ComplianceRowDataRequirementEnum),
+    status: S.optional(ComplianceStatus),
   }),
 ).annotate({
   identifier: "ComplianceRowData",
@@ -736,26 +690,72 @@ export const DeliverabilityStatusVerdict = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeliverabilityStatusVerdict",
 }) as any as S.Schema<DeliverabilityStatusVerdict>;
 
+export type HonorUnsubscribeVerdictReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "NOT_HONORING"
+  | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
+  | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
+export const HonorUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
+
+/** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
+export interface HonorUnsubscribeVerdict {
+  /** The compliance status. */
+  status?: ComplianceStatus;
+  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
+  reason?: HonorUnsubscribeVerdictReasonEnum;
+}
+export const HonorUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(ComplianceStatus),
+    reason: S.optional(HonorUnsubscribeVerdictReasonEnum),
+  }),
+).annotate({
+  identifier: "HonorUnsubscribeVerdict",
+}) as any as S.Schema<HonorUnsubscribeVerdict>;
+
+export type OneClickUnsubscribeVerdictReasonEnum =
+  | "REASON_UNSPECIFIED"
+  | "NO_UNSUB_GENERAL"
+  | "NO_UNSUB_SPAM_REPORTS"
+  | "NO_UNSUB_PROMO_SPAM_REPORTS";
+export const OneClickUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
+
+/** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
+export interface OneClickUnsubscribeVerdict {
+  /** The compliance status. */
+  status?: ComplianceStatus;
+  /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
+  reason?: OneClickUnsubscribeVerdictReasonEnum;
+}
+export const OneClickUnsubscribeVerdict = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(ComplianceStatus),
+    reason: S.optional(OneClickUnsubscribeVerdictReasonEnum),
+  }),
+).annotate({
+  identifier: "OneClickUnsubscribeVerdict",
+}) as any as S.Schema<OneClickUnsubscribeVerdict>;
+
 /** Compliance data for a given domain. */
 export interface DomainComplianceData {
-  /** One-click unsubscribe compliance verdict. */
-  oneClickUnsubscribeVerdict?: OneClickUnsubscribeVerdict;
-  /** Unsubscribe honoring compliance verdict. */
-  honorUnsubscribeVerdict?: HonorUnsubscribeVerdict;
   /** Data for each of the rows of the table. Each message contains all the data that backs a single row. */
   rowData?: ComplianceRowDataList;
   /** Output only. Deliverability status verdict. */
   deliverabilityStatusVerdict?: DeliverabilityStatusVerdict;
   /** Domain that this data is for. */
   domainId?: string;
+  /** Unsubscribe honoring compliance verdict. */
+  honorUnsubscribeVerdict?: HonorUnsubscribeVerdict;
+  /** One-click unsubscribe compliance verdict. */
+  oneClickUnsubscribeVerdict?: OneClickUnsubscribeVerdict;
 }
 export const DomainComplianceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    oneClickUnsubscribeVerdict: S.optional(OneClickUnsubscribeVerdict),
-    honorUnsubscribeVerdict: S.optional(HonorUnsubscribeVerdict),
     rowData: S.optional(ComplianceRowDataList),
     deliverabilityStatusVerdict: S.optional(DeliverabilityStatusVerdict),
     domainId: S.optional(S.String),
+    honorUnsubscribeVerdict: S.optional(HonorUnsubscribeVerdict),
+    oneClickUnsubscribeVerdict: S.optional(OneClickUnsubscribeVerdict),
   }),
 ).annotate({
   identifier: "DomainComplianceData",
@@ -763,18 +763,18 @@ export const DomainComplianceData = /*@__PURE__*/ S.suspend(() =>
 
 /** Compliance status for a domain. */
 export interface DomainComplianceStatus {
+  /** Identifier. The resource name of the domain's compliance status. Format: `domains/{domain_id}/complianceStatus`. */
+  name?: string;
   /** Compliance data for the registrable domain part of the domain in `name`. For example, if `name` is `domains/example.com/complianceStatus`, this field contains compliance data for `example.com`. */
   complianceData?: DomainComplianceData;
   /** Compliance data calculated specifically for the subdomain in `name`. This field is only populated if the domain in `name` is a subdomain that differs from its registrable domain (e.g., `sub.example.com`), and if compliance data is available for that specific subdomain. */
   subdomainComplianceData?: DomainComplianceData;
-  /** Identifier. The resource name of the domain's compliance status. Format: `domains/{domain_id}/complianceStatus`. */
-  name?: string;
 }
 export const DomainComplianceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
     complianceData: S.optional(DomainComplianceData),
     subdomainComplianceData: S.optional(DomainComplianceData),
-    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DomainComplianceStatus",
@@ -824,19 +824,19 @@ export const GetVerificationTokenDomainsVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
 export interface GetVerificationTokenDomainsRequest {
+  /** Required. The resource name of the verification token to retrieve. Format: `domains/{domain}/verificationToken` */
+  name: string;
   /** Required. The verification method used. Must be specified, i.e. TXT or CNAME. */
   verificationMethod?:
     | GetVerificationTokenDomainsVerificationMethodEnum
     | (string & {});
-  /** Required. The resource name of the verification token to retrieve. Format: `domains/{domain}/verificationToken` */
-  name: string;
 }
 export const GetVerificationTokenDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.String.pipe(T.Label()),
     verificationMethod: S.optional(
       GetVerificationTokenDomainsVerificationMethodEnum.pipe(T.Query()),
     ),
-    name: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -857,20 +857,20 @@ export const DomainVerificationTokenVerificationMethodEnum =
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): The DNS token a user can use to verify ownership of a domain. */
 export interface DomainVerificationToken {
+  /** The verification token. */
+  token?: string;
   /** The verification method used. */
   verificationMethod?: DomainVerificationTokenVerificationMethodEnum;
   /** Identifier. The resource name of the domain verification token. Format: domains/{domain}/verificationToken */
   name?: string;
-  /** The verification token. */
-  token?: string;
 }
 export const DomainVerificationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    token: S.optional(S.String),
     verificationMethod: S.optional(
       DomainVerificationTokenVerificationMethodEnum,
     ),
     name: S.optional(S.String),
-    token: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DomainVerificationToken",
@@ -919,18 +919,18 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainsResponse>;
 
 export interface ListDomainsUsersRequest {
-  /** Required. The parent resource name for which to list users. Format: `domains/{domain}` */
-  parent: string;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
   /** Optional. Requested page size. Server may return fewer users than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200. */
   pageSize?: number;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** Required. The parent resource name for which to list users. Format: `domains/{domain}` */
+  parent: string;
 }
 export const ListDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",

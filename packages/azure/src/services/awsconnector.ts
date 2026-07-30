@@ -8983,7 +8983,7 @@ export const CredentialProviderType = /*@__PURE__*/ S.String;
 /** Definition of CredentialProviderTypeEnumValue */
 export interface CredentialProviderTypeEnumValue {
   /** Property value */
-  value?: CredentialProviderType;
+  value?: CredentialProviderType | (string & {});
 }
 export const CredentialProviderTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9079,7 +9079,7 @@ export const FileSystemType = /*@__PURE__*/ S.String;
 /** Definition of FileSystemTypeEnumValue */
 export interface FileSystemTypeEnumValue {
   /** Property value */
-  value?: FileSystemType;
+  value?: FileSystemType | (string & {});
 }
 export const FileSystemTypeEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17374,7 +17374,7 @@ export const ImdsSupportValues = /*@__PURE__*/ S.String;
 /** Definition of ImdsSupportValuesEnumValue */
 export interface ImdsSupportValuesEnumValue {
   /** Property value */
-  value?: ImdsSupportValues;
+  value?: ImdsSupportValues | (string & {});
 }
 export const ImdsSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17391,7 +17391,7 @@ export const PlatformValues = /*@__PURE__*/ S.String;
 /** Definition of PlatformValuesEnumValue */
 export interface PlatformValuesEnumValue {
   /** Property value */
-  value?: PlatformValues;
+  value?: PlatformValues | (string & {});
 }
 export const PlatformValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17521,7 +17521,7 @@ export const TpmSupportValues = /*@__PURE__*/ S.String;
 /** Definition of TpmSupportValuesEnumValue */
 export interface TpmSupportValuesEnumValue {
   /** Property value */
-  value?: TpmSupportValues;
+  value?: TpmSupportValues | (string & {});
 }
 export const TpmSupportValuesEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20605,7 +20605,7 @@ export const StatusName = /*@__PURE__*/ S.String;
 /** Definition of StatusNameEnumValue */
 export interface StatusNameEnumValue {
   /** Property value */
-  value?: StatusName;
+  value?: StatusName | (string & {});
 }
 export const StatusNameEnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -52656,7 +52656,7 @@ export const StatefulRuleGroupOverrideAction = /*@__PURE__*/ S.String;
 /** Definition of StatefulRuleGroupOverride */
 export interface StatefulRuleGroupOverride {
   /** Property action */
-  action?: StatefulRuleGroupOverrideAction;
+  action?: StatefulRuleGroupOverrideAction | (string & {});
 }
 export const StatefulRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

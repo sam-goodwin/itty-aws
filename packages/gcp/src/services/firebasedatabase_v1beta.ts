@@ -77,43 +77,43 @@ export const DatabaseInstanceStateEnum = /*@__PURE__*/ S.String;
 export interface DatabaseInstance {
   /** Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted. */
   type?: DatabaseInstanceTypeEnum | (string & {});
+  /** Output only. The database's lifecycle state. Read-only. */
+  state?: DatabaseInstanceStateEnum | (string & {});
   /** The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. */
   name?: string;
   /** Output only. The resource name of the project this instance belongs to. For example: `projects/{project-number}`. */
   project?: string;
   /** Output only. Output Only. The globally unique hostname of the database. */
   databaseUrl?: string;
-  /** Output only. The database's lifecycle state. Read-only. */
-  state?: DatabaseInstanceStateEnum | (string & {});
 }
 export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DatabaseInstanceTypeEnum),
+    state: S.optional(DatabaseInstanceStateEnum),
     name: S.optional(S.String),
     project: S.optional(S.String),
     databaseUrl: S.optional(S.String),
-    state: S.optional(DatabaseInstanceStateEnum),
   }),
 ).annotate({
   identifier: "DatabaseInstance",
 }) as any as S.Schema<DatabaseInstance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
-  /** The globally unique identifier of the database instance. */
-  databaseId?: string;
   /** Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. */
   parent: string;
   /** When set to true, the request will be validated but not submitted. */
   validateOnly?: boolean;
+  /** The globally unique identifier of the database instance. */
+  databaseId?: string;
   /** Request body */
   body?: DatabaseInstance;
 }
 export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      databaseId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+      databaseId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(DatabaseInstance.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -195,22 +195,22 @@ export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
 
 export interface ListProjectsLocationsInstancesRequest {
-  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
-  pageSize?: number;
-  /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
-  showDeleted?: boolean;
   /** Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` */
   parent: string;
   /** Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of database instances to resume listing. */
   pageToken?: string;
+  /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
+  showDeleted?: boolean;
+  /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -229,15 +229,15 @@ export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
 
 /** The response from the ListDatabaseInstances method. */
 export interface ListDatabaseInstancesResponse {
-  /** List of each DatabaseInstance that is in the parent Firebase project. */
-  instances?: DatabaseInstanceList;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
+  /** List of each DatabaseInstance that is in the parent Firebase project. */
+  instances?: DatabaseInstanceList;
 }
 export const ListDatabaseInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    instances: S.optional(DatabaseInstanceList),
     nextPageToken: S.optional(S.String),
+    instances: S.optional(DatabaseInstanceList),
   }),
 ).annotate({
   identifier: "ListDatabaseInstancesResponse",

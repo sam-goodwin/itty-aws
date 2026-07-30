@@ -1263,7 +1263,9 @@ export const DiagnosticStoragePropertiesAuthenticationType =
 /** Customer-initiated diagnostic log collection storage properties */
 export interface DiagnosticStorageProperties {
   /** Authentication Type */
-  authenticationType: DiagnosticStoragePropertiesAuthenticationType;
+  authenticationType:
+    | DiagnosticStoragePropertiesAuthenticationType
+    | (string & {});
   /** ConnectionString of the diagnostic storage account */
   connectionString?: string | Redacted.Redacted<string>;
   /** ResourceId of the diagnostic storage account */

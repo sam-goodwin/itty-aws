@@ -33,7 +33,7 @@ export interface ActionsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -132,10 +132,10 @@ export interface ActionsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
+  /** ETag of the action. */
+  etag?: string;
   /** Action properties for get request */
   properties?: ActionResponseProperties;
-  /** Etag of the action. */
-  etag?: string;
 }
 export const ActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -143,8 +143,8 @@ export const ActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ActionResponseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ActionResponseProperties),
   }),
 ).annotate({
   identifier: "ActionsCreateOrUpdateResponse",
@@ -155,7 +155,7 @@ export interface ActionsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -193,7 +193,7 @@ export interface ActionsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -228,10 +228,10 @@ export interface ActionsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
+  /** ETag of the action. */
+  etag?: string;
   /** Action properties for get request */
   properties?: ActionResponseProperties;
-  /** Etag of the action. */
-  etag?: string;
 }
 export const ActionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -239,8 +239,8 @@ export const ActionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ActionResponseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ActionResponseProperties),
   }),
 ).annotate({
   identifier: "ActionsGetResponse",
@@ -251,7 +251,7 @@ export interface ActionsListByAlertRuleRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -284,10 +284,10 @@ export interface ActionResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
+  /** ETag of the action. */
+  etag?: string;
   /** Action properties for get request */
   properties?: ActionResponseProperties;
-  /** Etag of the action. */
-  etag?: string;
 }
 export const ActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -295,12 +295,12 @@ export const ActionResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ActionResponseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ActionResponseProperties),
   }),
 ).annotate({ identifier: "ActionResponse" }) as any as S.Schema<ActionResponse>;
 
-/** The ActionResponse items on this page */
+/** Array of actions. */
 export type ActionsListValueList = Array<ActionResponse>;
 export const ActionsListValueList = /*@__PURE__*/ S.Array(
   ActionResponse,
@@ -308,38 +308,38 @@ export const ActionsListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the actions. */
 export interface ActionsList {
-  /** The ActionResponse items on this page */
-  value: ActionsListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of actions. */
   nextLink?: string;
+  /** Array of actions. */
+  value: ActionsListValueList;
 }
 export const ActionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: ActionsListValueList,
     nextLink: S.optional(S.String),
+    value: ActionsListValueList,
   }),
 ).annotate({ identifier: "ActionsList" }) as any as S.Schema<ActionsList>;
 
 /** The kind of the alert rule */
-export type AlertRuleKind =
+export type AlertRuleKindEnum =
   | "Scheduled"
   | "MicrosoftSecurityIncidentCreation"
   | "Fusion";
-export const AlertRuleKind = /*@__PURE__*/ S.String;
+export const AlertRuleKindEnum = /*@__PURE__*/ S.String;
 
 export interface AlertRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind | (string & {});
   /** Etag of the azure resource */
   etag?: string;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum | (string & {});
 }
 export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -347,8 +347,8 @@ export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
-    kind: AlertRuleKind,
     etag: S.optional(S.String),
+    kind: AlertRuleKindEnum,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -370,10 +370,10 @@ export interface AlertRulesCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum;
 }
 export const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -381,8 +381,8 @@ export const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: AlertRuleKind,
     etag: S.optional(S.String),
+    kind: AlertRuleKindEnum,
   }),
 ).annotate({
   identifier: "AlertRulesCreateOrUpdateResponse",
@@ -393,7 +393,7 @@ export interface AlertRulesDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -428,7 +428,7 @@ export interface AlertRulesGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
@@ -460,10 +460,10 @@ export interface AlertRulesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum;
 }
 export const AlertRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -471,8 +471,8 @@ export const AlertRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: AlertRuleKind,
     etag: S.optional(S.String),
+    kind: AlertRuleKindEnum,
   }),
 ).annotate({
   identifier: "AlertRulesGetResponse",
@@ -483,7 +483,7 @@ export interface AlertRulesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const AlertRulesListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -513,10 +513,10 @@ export interface AlertRule {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum;
 }
 export const AlertRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -524,12 +524,12 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: AlertRuleKind,
     etag: S.optional(S.String),
+    kind: AlertRuleKindEnum,
   }),
 ).annotate({ identifier: "AlertRule" }) as any as S.Schema<AlertRule>;
 
-/** The AlertRule items on this page */
+/** Array of alert rules. */
 export type AlertRulesListValueList = Array<AlertRule>;
 export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
@@ -537,15 +537,15 @@ export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the alert rules. */
 export interface AlertRulesList {
-  /** The AlertRule items on this page */
-  value: AlertRulesListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of alert rules. */
   nextLink?: string;
+  /** Array of alert rules. */
+  value: AlertRulesListValueList;
 }
 export const AlertRulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: AlertRulesListValueList,
     nextLink: S.optional(S.String),
+    value: AlertRulesListValueList,
   }),
 ).annotate({ identifier: "AlertRulesList" }) as any as S.Schema<AlertRulesList>;
 
@@ -554,7 +554,7 @@ export interface AlertRuleTemplatesGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Alert rule template ID */
   alertRuleTemplateId: string;
@@ -586,8 +586,8 @@ export interface AlertRuleTemplatesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum;
 }
 export const AlertRuleTemplatesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -595,7 +595,7 @@ export const AlertRuleTemplatesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: AlertRuleKind,
+    kind: AlertRuleKindEnum,
   }),
 ).annotate({
   identifier: "AlertRuleTemplatesGetResponse",
@@ -606,7 +606,7 @@ export interface AlertRuleTemplatesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const AlertRuleTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -636,8 +636,8 @@ export interface AlertRuleTemplate {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: AlertRuleKind;
+  /** The alert rule kind */
+  kind: AlertRuleKindEnum;
 }
 export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -645,13 +645,13 @@ export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: AlertRuleKind,
+    kind: AlertRuleKindEnum,
   }),
 ).annotate({
   identifier: "AlertRuleTemplate",
 }) as any as S.Schema<AlertRuleTemplate>;
 
-/** The AlertRuleTemplate items on this page */
+/** Array of alert rule templates. */
 export type AlertRuleTemplatesListValueList = Array<AlertRuleTemplate>;
 export const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
   AlertRuleTemplate,
@@ -659,15 +659,15 @@ export const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the alert rule templates. */
 export interface AlertRuleTemplatesList {
-  /** The AlertRuleTemplate items on this page */
-  value: AlertRuleTemplatesListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of alert rule templates. */
   nextLink?: string;
+  /** Array of alert rule templates. */
+  value: AlertRuleTemplatesListValueList;
 }
 export const AlertRuleTemplatesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: AlertRuleTemplatesListValueList,
     nextLink: S.optional(S.String),
+    value: AlertRuleTemplatesListValueList,
   }),
 ).annotate({
   identifier: "AlertRuleTemplatesList",
@@ -737,7 +737,6 @@ export const ActionType = /*@__PURE__*/ S.String;
 /** Describes an automation rule action. */
 export interface AutomationRuleAction {
   order: number;
-  /** The type of the automation rule action. */
   actionType: ActionType | (string & {});
 }
 export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
@@ -756,16 +755,65 @@ export const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
   AutomationRuleAction,
 ) as any as S.Schema<AutomationRulePropertiesInputActionsList>;
 
+/** Information on the client (user or application) that made some action */
+export interface AutomationRulePropertiesInputLastModifiedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const AutomationRulePropertiesInputLastModifiedBy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AutomationRulePropertiesInputLastModifiedBy",
+  }) as any as S.Schema<AutomationRulePropertiesInputLastModifiedBy>;
+
+/** Information on the client (user or application) that made some action */
+export interface AutomationRulePropertiesInputCreatedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const AutomationRulePropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AutomationRulePropertiesInputCreatedBy",
+}) as any as S.Schema<AutomationRulePropertiesInputCreatedBy>;
+
 /** Automation rule properties */
 export interface AutomationRulePropertiesInput {
   /** The display name of the automation rule. */
   displayName: string;
   /** The order of execution of the automation rule. */
   order: number;
-  /** Describes automation rule triggering logic. */
   triggeringLogic: AutomationRuleTriggeringLogic;
   /** The actions to execute when the automation rule is triggered. */
   actions: AutomationRulePropertiesInputActionsList;
+  /** Information on the client (user or application) that made some action */
+  lastModifiedBy?: AutomationRulePropertiesInputLastModifiedBy;
+  /** Information on the client (user or application) that made some action */
+  createdBy?: AutomationRulePropertiesInputCreatedBy;
 }
 export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -773,6 +821,8 @@ export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     order: S.Number,
     triggeringLogic: AutomationRuleTriggeringLogic,
     actions: AutomationRulePropertiesInputActionsList,
+    lastModifiedBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
+    createdBy: S.optional(AutomationRulePropertiesInputCreatedBy),
   }),
 ).annotate({
   identifier: "AutomationRulePropertiesInput",
@@ -785,12 +835,11 @@ export interface AutomationRulesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  /** The automation rule ID. */
+  /** Automation rule ID */
   automationRuleId: string;
-  /** Automation rule properties */
-  properties: AutomationRulePropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  properties: AutomationRulePropertiesInput;
 }
 export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -799,8 +848,8 @@ export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       automationRuleId: S.String.pipe(T.Label()),
-      properties: AutomationRulePropertiesInput,
       etag: S.optional(S.String),
+      properties: AutomationRulePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -820,7 +869,7 @@ export const AutomationRulePropertiesActionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AutomationRulePropertiesActionsList>;
 
 /** Information on the client (user or application) that made some action */
-export interface ClientInfo {
+export interface AutomationRulePropertiesLastModifiedBy {
   /** The email of the client. */
   email?: string;
   /** The name of the client. */
@@ -830,14 +879,39 @@ export interface ClientInfo {
   /** The user principal name of the client. */
   userPrincipalName?: string;
 }
-export const ClientInfo = /*@__PURE__*/ S.suspend(() =>
+export const AutomationRulePropertiesLastModifiedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AutomationRulePropertiesLastModifiedBy",
+}) as any as S.Schema<AutomationRulePropertiesLastModifiedBy>;
+
+/** Information on the client (user or application) that made some action */
+export interface AutomationRulePropertiesCreatedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const AutomationRulePropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
     objectId: S.optional(S.String),
     userPrincipalName: S.optional(S.String),
   }),
-).annotate({ identifier: "ClientInfo" }) as any as S.Schema<ClientInfo>;
+).annotate({
+  identifier: "AutomationRulePropertiesCreatedBy",
+}) as any as S.Schema<AutomationRulePropertiesCreatedBy>;
 
 /** Automation rule properties */
 export interface AutomationRuleProperties {
@@ -845,7 +919,6 @@ export interface AutomationRuleProperties {
   displayName: string;
   /** The order of execution of the automation rule. */
   order: number;
-  /** Describes automation rule triggering logic. */
   triggeringLogic: AutomationRuleTriggeringLogic;
   /** The actions to execute when the automation rule is triggered. */
   actions: AutomationRulePropertiesActionsList;
@@ -854,9 +927,9 @@ export interface AutomationRuleProperties {
   /** The time the automation rule was created. */
   createdTimeUtc?: string;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: ClientInfo;
+  lastModifiedBy?: AutomationRulePropertiesLastModifiedBy;
   /** Information on the client (user or application) that made some action */
-  createdBy?: ClientInfo;
+  createdBy?: AutomationRulePropertiesCreatedBy;
 }
 export const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -866,8 +939,8 @@ export const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
     actions: AutomationRulePropertiesActionsList,
     lastModifiedTimeUtc: S.optional(S.String),
     createdTimeUtc: S.optional(S.String),
-    lastModifiedBy: S.optional(ClientInfo),
-    createdBy: S.optional(ClientInfo),
+    lastModifiedBy: S.optional(AutomationRulePropertiesLastModifiedBy),
+    createdBy: S.optional(AutomationRulePropertiesCreatedBy),
   }),
 ).annotate({
   identifier: "AutomationRuleProperties",
@@ -882,10 +955,9 @@ export interface AutomationRulesCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Automation rule properties */
-  properties: AutomationRuleProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: AutomationRuleProperties;
 }
 export const AutomationRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -894,8 +966,8 @@ export const AutomationRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: AutomationRuleProperties,
       etag: S.optional(S.String),
+      properties: AutomationRuleProperties,
     }),
 ).annotate({
   identifier: "AutomationRulesCreateOrUpdateResponse",
@@ -906,7 +978,7 @@ export interface AutomationRulesDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Automation rule ID */
   automationRuleId: string;
@@ -941,7 +1013,7 @@ export interface AutomationRulesGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Automation rule ID */
   automationRuleId: string;
@@ -973,10 +1045,9 @@ export interface AutomationRulesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Automation rule properties */
-  properties: AutomationRuleProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: AutomationRuleProperties;
 }
 export const AutomationRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -984,8 +1055,8 @@ export const AutomationRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: AutomationRuleProperties,
     etag: S.optional(S.String),
+    properties: AutomationRuleProperties,
   }),
 ).annotate({
   identifier: "AutomationRulesGetResponse",
@@ -996,7 +1067,7 @@ export interface AutomationRulesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const AutomationRulesListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1016,7 +1087,6 @@ export const AutomationRulesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomationRulesListRequest",
 }) as any as S.Schema<AutomationRulesListRequest>;
 
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface AutomationRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1026,10 +1096,9 @@ export interface AutomationRule {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Automation rule properties */
-  properties: AutomationRuleProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: AutomationRuleProperties;
 }
 export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1037,21 +1106,18 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: AutomationRuleProperties,
     etag: S.optional(S.String),
+    properties: AutomationRuleProperties,
   }),
 ).annotate({ identifier: "AutomationRule" }) as any as S.Schema<AutomationRule>;
 
-/** List of automation rules. */
 export type AutomationRulesListValueList = Array<AutomationRule>;
 export const AutomationRulesListValueList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRulesListValueList>;
 
 export interface AutomationRulesList {
-  /** List of automation rules. */
   value?: AutomationRulesListValueList;
-  /** The link to the next page of items */
   nextLink?: string;
 }
 export const AutomationRulesList = /*@__PURE__*/ S.suspend(() =>
@@ -1064,15 +1130,17 @@ export const AutomationRulesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationRulesList>;
 
 /** User information that made some action */
-export interface UserInfoInput {
+export interface BookmarkPropertiesInputCreatedBy {
   /** The object id of the user. */
   objectId?: string | null;
 }
-export const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
+export const BookmarkPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.NullOr(S.String)),
   }),
-).annotate({ identifier: "UserInfoInput" }) as any as S.Schema<UserInfoInput>;
+).annotate({
+  identifier: "BookmarkPropertiesInputCreatedBy",
+}) as any as S.Schema<BookmarkPropertiesInputCreatedBy>;
 
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesInputLabelsList = Array<string>;
@@ -1080,36 +1148,51 @@ export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
 
+/** User information that made some action */
+export interface BookmarkPropertiesInputUpdatedBy {
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const BookmarkPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "BookmarkPropertiesInputUpdatedBy",
+}) as any as S.Schema<BookmarkPropertiesInputUpdatedBy>;
+
 /** The severity of the incident */
-export type IncidentSeverity = "High" | "Medium" | "Low" | "Informational";
-export const IncidentSeverity = /*@__PURE__*/ S.String;
+export type IncidentSeverityEnum = "High" | "Medium" | "Low" | "Informational";
+export const IncidentSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Describes related incident information for the bookmark */
-export interface IncidentInfo {
+export interface BookmarkPropertiesInputIncidentInfo {
   /** Incident Id */
   incidentId?: string;
   /** The severity of the incident */
-  severity?: IncidentSeverity | (string & {});
+  severity?: IncidentSeverityEnum | (string & {});
   /** The title of the incident */
   title?: string;
   /** Relation Name */
   relationName?: string;
 }
-export const IncidentInfo = /*@__PURE__*/ S.suspend(() =>
+export const BookmarkPropertiesInputIncidentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentId: S.optional(S.String),
-    severity: S.optional(IncidentSeverity),
+    severity: S.optional(IncidentSeverityEnum),
     title: S.optional(S.String),
     relationName: S.optional(S.String),
   }),
-).annotate({ identifier: "IncidentInfo" }) as any as S.Schema<IncidentInfo>;
+).annotate({
+  identifier: "BookmarkPropertiesInputIncidentInfo",
+}) as any as S.Schema<BookmarkPropertiesInputIncidentInfo>;
 
 /** Describes bookmark properties */
 export interface BookmarkPropertiesInput {
   /** The time the bookmark was created */
   created?: string;
-  /** Describes a user that created the bookmark */
-  createdBy?: UserInfoInput;
+  /** User information that made some action */
+  createdBy?: BookmarkPropertiesInputCreatedBy;
   /** The display name of the bookmark */
   displayName: string;
   /** List of labels relevant to this bookmark */
@@ -1122,32 +1205,32 @@ export interface BookmarkPropertiesInput {
   queryResult?: string;
   /** The last time the bookmark was updated */
   updated?: string;
-  /** Describes a user that updated the bookmark */
-  updatedBy?: UserInfoInput;
+  /** User information that made some action */
+  updatedBy?: BookmarkPropertiesInputUpdatedBy;
   /** The bookmark event time */
   eventTime?: string;
   /** The start time for the query */
   queryStartTime?: string;
   /** The end time for the query */
   queryEndTime?: string;
-  /** Describes an incident that relates to bookmark */
-  incidentInfo?: IncidentInfo;
+  /** Describes related incident information for the bookmark */
+  incidentInfo?: BookmarkPropertiesInputIncidentInfo;
 }
 export const BookmarkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
-    createdBy: S.optional(UserInfoInput),
+    createdBy: S.optional(BookmarkPropertiesInputCreatedBy),
     displayName: S.String,
     labels: S.optional(BookmarkPropertiesInputLabelsList),
     notes: S.optional(S.String),
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(UserInfoInput),
+    updatedBy: S.optional(BookmarkPropertiesInputUpdatedBy),
     eventTime: S.optional(S.String),
     queryStartTime: S.optional(S.String),
     queryEndTime: S.optional(S.String),
-    incidentInfo: S.optional(IncidentInfo),
+    incidentInfo: S.optional(BookmarkPropertiesInputIncidentInfo),
   }),
 ).annotate({
   identifier: "BookmarkPropertiesInput",
@@ -1158,14 +1241,14 @@ export interface BookmarksCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Bookmark ID */
   bookmarkId: string;
-  /** Bookmark properties */
-  properties?: BookmarkPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Bookmark properties */
+  properties?: BookmarkPropertiesInput;
 }
 export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1173,8 +1256,8 @@ export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     bookmarkId: S.String.pipe(T.Label()),
-    properties: S.optional(BookmarkPropertiesInput),
     etag: S.optional(S.String),
+    properties: S.optional(BookmarkPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1188,7 +1271,7 @@ export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BookmarksCreateOrUpdateRequest>;
 
 /** User information that made some action */
-export interface UserInfo {
+export interface BookmarkPropertiesCreatedBy {
   /** The email of the user. */
   email?: string;
   /** The name of the user. */
@@ -1196,13 +1279,15 @@ export interface UserInfo {
   /** The object id of the user. */
   objectId?: string | null;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+export const BookmarkPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
     objectId: S.optional(S.NullOr(S.String)),
   }),
-).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
+).annotate({
+  identifier: "BookmarkPropertiesCreatedBy",
+}) as any as S.Schema<BookmarkPropertiesCreatedBy>;
 
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesLabelsList = Array<string>;
@@ -1210,12 +1295,53 @@ export const BookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BookmarkPropertiesLabelsList>;
 
+/** User information that made some action */
+export interface BookmarkPropertiesUpdatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const BookmarkPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "BookmarkPropertiesUpdatedBy",
+}) as any as S.Schema<BookmarkPropertiesUpdatedBy>;
+
+/** Describes related incident information for the bookmark */
+export interface BookmarkPropertiesIncidentInfo {
+  /** Incident Id */
+  incidentId?: string;
+  /** The severity of the incident */
+  severity?: IncidentSeverityEnum;
+  /** The title of the incident */
+  title?: string;
+  /** Relation Name */
+  relationName?: string;
+}
+export const BookmarkPropertiesIncidentInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    incidentId: S.optional(S.String),
+    severity: S.optional(IncidentSeverityEnum),
+    title: S.optional(S.String),
+    relationName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BookmarkPropertiesIncidentInfo",
+}) as any as S.Schema<BookmarkPropertiesIncidentInfo>;
+
 /** Describes bookmark properties */
 export interface BookmarkProperties {
   /** The time the bookmark was created */
   created?: string;
-  /** Describes a user that created the bookmark */
-  createdBy?: UserInfo;
+  /** User information that made some action */
+  createdBy?: BookmarkPropertiesCreatedBy;
   /** The display name of the bookmark */
   displayName: string;
   /** List of labels relevant to this bookmark */
@@ -1228,32 +1354,32 @@ export interface BookmarkProperties {
   queryResult?: string;
   /** The last time the bookmark was updated */
   updated?: string;
-  /** Describes a user that updated the bookmark */
-  updatedBy?: UserInfo;
+  /** User information that made some action */
+  updatedBy?: BookmarkPropertiesUpdatedBy;
   /** The bookmark event time */
   eventTime?: string;
   /** The start time for the query */
   queryStartTime?: string;
   /** The end time for the query */
   queryEndTime?: string;
-  /** Describes an incident that relates to bookmark */
-  incidentInfo?: IncidentInfo;
+  /** Describes related incident information for the bookmark */
+  incidentInfo?: BookmarkPropertiesIncidentInfo;
 }
 export const BookmarkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
-    createdBy: S.optional(UserInfo),
+    createdBy: S.optional(BookmarkPropertiesCreatedBy),
     displayName: S.String,
     labels: S.optional(BookmarkPropertiesLabelsList),
     notes: S.optional(S.String),
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(UserInfo),
+    updatedBy: S.optional(BookmarkPropertiesUpdatedBy),
     eventTime: S.optional(S.String),
     queryStartTime: S.optional(S.String),
     queryEndTime: S.optional(S.String),
-    incidentInfo: S.optional(IncidentInfo),
+    incidentInfo: S.optional(BookmarkPropertiesIncidentInfo),
   }),
 ).annotate({
   identifier: "BookmarkProperties",
@@ -1268,10 +1394,10 @@ export interface BookmarksCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Bookmark properties */
-  properties?: BookmarkProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Bookmark properties */
+  properties?: BookmarkProperties;
 }
 export const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1279,8 +1405,8 @@ export const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(BookmarkProperties),
     etag: S.optional(S.String),
+    properties: S.optional(BookmarkProperties),
   }),
 ).annotate({
   identifier: "BookmarksCreateOrUpdateResponse",
@@ -1291,7 +1417,7 @@ export interface BookmarksDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Bookmark ID */
   bookmarkId: string;
@@ -1326,7 +1452,7 @@ export interface BookmarksGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Bookmark ID */
   bookmarkId: string;
@@ -1358,10 +1484,10 @@ export interface BookmarksGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Bookmark properties */
-  properties?: BookmarkProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Bookmark properties */
+  properties?: BookmarkProperties;
 }
 export const BookmarksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1369,8 +1495,8 @@ export const BookmarksGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(BookmarkProperties),
     etag: S.optional(S.String),
+    properties: S.optional(BookmarkProperties),
   }),
 ).annotate({
   identifier: "BookmarksGetResponse",
@@ -1381,7 +1507,7 @@ export interface BookmarksListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const BookmarksListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1411,10 +1537,10 @@ export interface Bookmark {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Bookmark properties */
-  properties?: BookmarkProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Bookmark properties */
+  properties?: BookmarkProperties;
 }
 export const Bookmark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1422,12 +1548,12 @@ export const Bookmark = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(BookmarkProperties),
     etag: S.optional(S.String),
+    properties: S.optional(BookmarkProperties),
   }),
 ).annotate({ identifier: "Bookmark" }) as any as S.Schema<Bookmark>;
 
-/** The Bookmark items on this page */
+/** Array of bookmarks. */
 export type BookmarkListValueList = Array<Bookmark>;
 export const BookmarkListValueList = /*@__PURE__*/ S.Array(
   Bookmark,
@@ -1435,38 +1561,38 @@ export const BookmarkListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the bookmarks. */
 export interface BookmarkList {
-  /** The Bookmark items on this page */
-  value: BookmarkListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of cases. */
   nextLink?: string;
+  /** Array of bookmarks. */
+  value: BookmarkListValueList;
 }
 export const BookmarkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: BookmarkListValueList,
     nextLink: S.optional(S.String),
+    value: BookmarkListValueList,
   }),
 ).annotate({ identifier: "BookmarkList" }) as any as S.Schema<BookmarkList>;
 
 /** The package kind */
-export type PackageKind = "Solution" | "Standalone";
-export const PackageKind = /*@__PURE__*/ S.String;
+export type MetadataPackageKind = "Solution" | "Standalone";
+export const MetadataPackageKind = /*@__PURE__*/ S.String;
 
 /** The boolean value the metadata is for. */
-export type Flag = "true" | "false";
-export const Flag = /*@__PURE__*/ S.String;
+export type MetadataTrueFalseFlag = "true" | "false";
+export const MetadataTrueFalseFlag = /*@__PURE__*/ S.String;
 
 /** Source type of the content */
-export type SourceKind =
+export type MetadataSourceKind =
   | "LocalWorkspace"
   | "Community"
   | "Solution"
   | "SourceRepository";
-export const SourceKind = /*@__PURE__*/ S.String;
+export const MetadataSourceKind = /*@__PURE__*/ S.String;
 
 /** The original source of the content item, where it comes from. */
 export interface MetadataSource {
   /** Source type of the content */
-  kind: SourceKind | (string & {});
+  kind: MetadataSourceKind | (string & {});
   /** Name of the content source. The repo name, solution name, LA workspace name etc. */
   name?: string;
   /** ID of the content source. The solution ID, workspace ID, etc */
@@ -1474,7 +1600,7 @@ export interface MetadataSource {
 }
 export const MetadataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: SourceKind,
+    kind: MetadataSourceKind,
     name: S.optional(S.String),
     sourceId: S.optional(S.String),
   }),
@@ -1498,13 +1624,13 @@ export const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataAuthor" }) as any as S.Schema<MetadataAuthor>;
 
 /** Type of support for content item */
-export type SupportTier = "Microsoft" | "Partner" | "Community";
-export const SupportTier = /*@__PURE__*/ S.String;
+export type MetadataSupportTier = "Microsoft" | "Partner" | "Community";
+export const MetadataSupportTier = /*@__PURE__*/ S.String;
 
 /** Support information for the content item. */
 export interface MetadataSupport {
   /** Type of support for content item */
-  tier: SupportTier | (string & {});
+  tier: MetadataSupportTier | (string & {});
   /** Name of the support contact. Company or person. */
   name?: string;
   /** Email of support contact */
@@ -1514,7 +1640,7 @@ export interface MetadataSupport {
 }
 export const MetadataSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    tier: SupportTier,
+    tier: MetadataSupportTier,
     name: S.optional(S.String),
     email: S.optional(S.String),
     link: S.optional(S.String),
@@ -1523,34 +1649,9 @@ export const MetadataSupport = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataSupport",
 }) as any as S.Schema<MetadataSupport>;
 
-/** The kind of content the metadata is for. */
-export type Kind =
-  | "DataConnector"
-  | "DataType"
-  | "Workbook"
-  | "WorkbookTemplate"
-  | "Playbook"
-  | "PlaybookTemplate"
-  | "AnalyticsRuleTemplate"
-  | "AnalyticsRule"
-  | "HuntingQuery"
-  | "InvestigationQuery"
-  | "Parser"
-  | "Watchlist"
-  | "WatchlistTemplate"
-  | "Solution"
-  | "AzureFunction"
-  | "LogicAppsCustomConnector"
-  | "AutomationRule"
-  | "ResourcesDataConnector"
-  | "Notebook"
-  | "Standalone"
-  | "SummaryRule";
-export const Kind = /*@__PURE__*/ S.String;
-
 /** Operator used for list of dependencies in criteria array. */
-export type MetadataDependencyOperator = "AND" | "OR";
-export const MetadataDependencyOperator = /*@__PURE__*/ S.String;
+export type MetadataDependenciesOperator = "AND" | "OR";
+export const MetadataDependenciesOperator = /*@__PURE__*/ S.String;
 
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
 export type MetadataDependenciesCriteriaList = Array<MetadataDependencies>;
@@ -1563,34 +1664,34 @@ export interface MetadataDependencies {
   /** Id of the content item we depend on */
   contentId?: string;
   /** Type of the content item we depend on */
-  kind?: Kind | (string & {});
+  kind?: string;
   /** Version of the the content item we depend on. Can be blank, * or missing to indicate any version fulfills the dependency. If version does not match our defined numeric format then an exact match is required. */
   version?: string;
   /** Name of the content item */
   name?: string;
   /** Operator used for list of dependencies in criteria array. */
-  operator?: MetadataDependencyOperator | (string & {});
+  operator?: MetadataDependenciesOperator | (string & {});
   /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
   criteria?: MetadataDependenciesCriteriaList;
 }
 export const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
-    kind: S.optional(Kind),
+    kind: S.optional(S.String),
     version: S.optional(S.String),
     name: S.optional(S.String),
-    operator: S.optional(MetadataDependencyOperator),
+    operator: S.optional(MetadataDependenciesOperator),
     criteria: S.optional(MetadataDependenciesCriteriaList),
   }),
 ).annotate({
   identifier: "MetadataDependencies",
 }) as any as S.Schema<MetadataDependencies>;
 
-/** Providers for the package item */
-export type PackageBasePropertiesProvidersList = Array<string>;
-export const PackageBasePropertiesProvidersList = /*@__PURE__*/ S.Array(
+/** Providers for the solution content item */
+export type MetadataProviders = Array<string>;
+export const MetadataProviders = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<PackageBasePropertiesProvidersList>;
+) as any as S.Schema<MetadataProviders>;
 
 /** domain for the solution content item */
 export type MetadataCategoriesDomainsList = Array<string>;
@@ -1621,37 +1722,35 @@ export const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataCategories>;
 
 /** the tactics the resource covers */
-export type PackageBasePropertiesThreatAnalysisTacticsList = Array<string>;
-export const PackageBasePropertiesThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PackageBasePropertiesThreatAnalysisTacticsList>;
+export type MetadataThreatAnalysisTactics = Array<string>;
+export const MetadataThreatAnalysisTactics = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MetadataThreatAnalysisTactics>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type PackageBasePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const PackageBasePropertiesThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PackageBasePropertiesThreatAnalysisTechniquesList>;
+export type MetadataThreatAnalysisTechniques = Array<string>;
+export const MetadataThreatAnalysisTechniques = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MetadataThreatAnalysisTechniques>;
 
 /** Describes package properties */
-export interface PackageBaseProperties {
+export interface PackageProperties {
   /** The content id of the package */
   contentId?: string;
   /** Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package */
   contentProductId?: string;
   /** The package kind */
-  contentKind?: PackageKind | (string & {});
+  contentKind?: MetadataPackageKind | (string & {});
   /** The version of the content schema. */
   contentSchemaVersion?: string;
   /** Flag indicates if this is a newly published package. */
-  isNew?: Flag | (string & {});
+  isNew?: MetadataTrueFalseFlag | (string & {});
   /** Flag indicates if this package is in preview. */
-  isPreview?: Flag | (string & {});
+  isPreview?: MetadataTrueFalseFlag | (string & {});
   /** Flag indicates if this package is among the featured list. */
-  isFeatured?: Flag | (string & {});
+  isFeatured?: MetadataTrueFalseFlag | (string & {});
   /** Flag indicates if this template is deprecated */
-  isDeprecated?: Flag | (string & {});
+  isDeprecated?: MetadataTrueFalseFlag | (string & {});
   /** the latest version number of the package */
   version?: string;
   /** The display name of the package */
@@ -1669,7 +1768,7 @@ export interface PackageBaseProperties {
   /** The support tier of the package */
   dependencies?: MetadataDependencies;
   /** Providers for the package item */
-  providers?: PackageBasePropertiesProvidersList;
+  providers?: MetadataProviders;
   /** first publish date package item */
   firstPublishDate?: string;
   /** last publish date for the package item */
@@ -1677,22 +1776,22 @@ export interface PackageBaseProperties {
   /** The categories of the package */
   categories?: MetadataCategories;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: PackageBasePropertiesThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: PackageBasePropertiesThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
 }
-export const PackageBaseProperties = /*@__PURE__*/ S.suspend(() =>
+export const PackageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
-    contentKind: S.optional(PackageKind),
+    contentKind: S.optional(MetadataPackageKind),
     contentSchemaVersion: S.optional(S.String),
-    isNew: S.optional(Flag),
-    isPreview: S.optional(Flag),
-    isFeatured: S.optional(Flag),
-    isDeprecated: S.optional(Flag),
+    isNew: S.optional(MetadataTrueFalseFlag),
+    isPreview: S.optional(MetadataTrueFalseFlag),
+    isFeatured: S.optional(MetadataTrueFalseFlag),
+    isDeprecated: S.optional(MetadataTrueFalseFlag),
     version: S.optional(S.String),
     displayName: S.optional(S.String),
     description: S.optional(S.String),
@@ -1701,35 +1800,31 @@ export const PackageBaseProperties = /*@__PURE__*/ S.suspend(() =>
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
     dependencies: S.optional(MetadataDependencies),
-    providers: S.optional(PackageBasePropertiesProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     categories: S.optional(MetadataCategories),
-    threatAnalysisTactics: S.optional(
-      PackageBasePropertiesThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      PackageBasePropertiesThreatAnalysisTechniquesList,
-    ),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
     icon: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PackageBaseProperties",
-}) as any as S.Schema<PackageBaseProperties>;
+  identifier: "PackageProperties",
+}) as any as S.Schema<PackageProperties>;
 
 export interface ContentPackageInstallRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** package Id */
   packageId: string;
-  /** package properties */
-  properties?: PackageBaseProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: PackageProperties;
 }
 export const ContentPackageInstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1737,8 +1832,8 @@ export const ContentPackageInstallRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     packageId: S.String.pipe(T.Label()),
-    properties: S.optional(PackageBaseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(PackageProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1760,10 +1855,10 @@ export interface ContentPackageInstallResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** package properties */
-  properties?: PackageBaseProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: PackageProperties;
 }
 export const ContentPackageInstallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1771,8 +1866,8 @@ export const ContentPackageInstallResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(PackageBaseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(PackageProperties),
   }),
 ).annotate({
   identifier: "ContentPackageInstallResponse",
@@ -1783,7 +1878,7 @@ export interface ContentPackagesGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** package Id */
   packageId: string;
@@ -1815,10 +1910,10 @@ export interface ContentPackagesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** package properties */
-  properties?: PackageBaseProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: PackageProperties;
 }
 export const ContentPackagesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1826,8 +1921,8 @@ export const ContentPackagesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(PackageBaseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(PackageProperties),
   }),
 ).annotate({
   identifier: "ContentPackagesGetResponse",
@@ -1838,7 +1933,7 @@ export interface ContentPackagesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -1889,10 +1984,10 @@ export interface PackageModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** package properties */
-  properties?: PackageBaseProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: PackageProperties;
 }
 export const PackageModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1900,12 +1995,12 @@ export const PackageModel = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(PackageBaseProperties),
     etag: S.optional(S.String),
+    properties: S.optional(PackageProperties),
   }),
 ).annotate({ identifier: "PackageModel" }) as any as S.Schema<PackageModel>;
 
-/** The PackageModel items on this page */
+/** Array of packages. */
 export type PackageListValueList = Array<PackageModel>;
 export const PackageListValueList = /*@__PURE__*/ S.Array(
   PackageModel,
@@ -1913,15 +2008,15 @@ export const PackageListValueList = /*@__PURE__*/ S.Array(
 
 /** List available packages. */
 export interface PackageList {
-  /** The PackageModel items on this page */
-  value: PackageListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of packages. */
   nextLink?: string;
+  /** Array of packages. */
+  value: PackageListValueList;
 }
 export const PackageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: PackageListValueList,
     nextLink: S.optional(S.String),
+    value: PackageListValueList,
   }),
 ).annotate({ identifier: "PackageList" }) as any as S.Schema<PackageList>;
 
@@ -1930,7 +2025,7 @@ export interface ContentPackageUninstallRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** package Id */
   packageId: string;
@@ -1965,7 +2060,7 @@ export interface ContentTemplateDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** template Id */
   templateId: string;
@@ -2000,7 +2095,7 @@ export interface ContentTemplateGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** template Id */
   templateId: string;
@@ -2023,37 +2118,17 @@ export const ContentTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentTemplateGetRequest",
 }) as any as S.Schema<ContentTemplateGetRequest>;
 
-/** Providers for the content item */
-export type TemplatePropertiesProvidersList = Array<string>;
-export const TemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplatePropertiesProvidersList>;
-
-/** the tactics the resource covers */
-export type TemplatePropertiesThreatAnalysisTacticsList = Array<string>;
-export const TemplatePropertiesThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TemplatePropertiesThreatAnalysisTacticsList>;
-
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type TemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const TemplatePropertiesThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TemplatePropertiesThreatAnalysisTechniquesList>;
-
 /** preview image file names. These will be taken from the solution artifacts */
-export type TemplatePropertiesPreviewImagesList = Array<string>;
-export const TemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
+export type MetadataPreviewImages = Array<string>;
+export const MetadataPreviewImages = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<TemplatePropertiesPreviewImagesList>;
+) as any as S.Schema<MetadataPreviewImages>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type TemplatePropertiesPreviewImagesDarkList = Array<string>;
-export const TemplatePropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
+export type MetadataPreviewImagesDark = Array<string>;
+export const MetadataPreviewImagesDark = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<TemplatePropertiesPreviewImagesDarkList>;
+) as any as S.Schema<MetadataPreviewImagesDark>;
 
 /** Dependant templates. Expandable. */
 export type TemplatePropertiesDependantTemplatesList =
@@ -2065,19 +2140,19 @@ export const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
 /** Template property bag. */
 export interface TemplateProperties {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
-  contentId?: string;
+  contentId: string;
   /** Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template */
-  contentProductId?: string;
+  contentProductId: string;
   /** Version of the package. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
-  packageVersion?: string;
+  packageVersion: string;
   /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
-  version?: string;
+  version: string;
   /** The display name of the template */
-  displayName?: string;
+  displayName: string;
   /** The kind of content the template is for. */
-  contentKind?: Kind;
+  contentKind: string;
   /** Source of the content. This is where/how it was created. */
-  source?: MetadataSource;
+  source: MetadataSource;
   /** The creator of the content item. */
   author?: MetadataAuthor;
   /** Support information for the template - type, name, contact information */
@@ -2087,7 +2162,7 @@ export interface TemplateProperties {
   /** Categories for the item */
   categories?: MetadataCategories;
   /** Providers for the content item */
-  providers?: TemplatePropertiesProvidersList;
+  providers?: MetadataProviders;
   /** first publish date content item */
   firstPublishDate?: string;
   /** last publish date for the content item */
@@ -2099,21 +2174,21 @@ export interface TemplateProperties {
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: TemplatePropertiesThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: TemplatePropertiesThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** preview image file names. These will be taken from the solution artifacts */
-  previewImages?: TemplatePropertiesPreviewImagesList;
+  previewImages?: MetadataPreviewImages;
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-  previewImagesDark?: TemplatePropertiesPreviewImagesDarkList;
+  previewImagesDark?: MetadataPreviewImagesDark;
   /** the package Id contains this template */
-  packageId?: string;
+  packageId: string;
   /** the packageKind of the package contains this template */
-  packageKind?: PackageKind;
+  packageKind?: MetadataPackageKind;
   /** the name of the package contains this template */
   packageName?: string;
   /** Flag indicates if this template is deprecated */
-  isDeprecated?: Flag;
+  isDeprecated?: MetadataTrueFalseFlag;
   /** The JSON of the ARM template to deploy active content. Expandable. */
   mainTemplate?: unknown;
   /** Dependant templates. Expandable. */
@@ -2121,35 +2196,31 @@ export interface TemplateProperties {
 }
 export const TemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentId: S.optional(S.String),
-    contentProductId: S.optional(S.String),
-    packageVersion: S.optional(S.String),
-    version: S.optional(S.String),
-    displayName: S.optional(S.String),
-    contentKind: S.optional(Kind),
-    source: S.optional(MetadataSource),
+    contentId: S.String,
+    contentProductId: S.String,
+    packageVersion: S.String,
+    version: S.String,
+    displayName: S.String,
+    contentKind: S.String,
+    source: MetadataSource,
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
     dependencies: S.optional(MetadataDependencies),
     categories: S.optional(MetadataCategories),
-    providers: S.optional(TemplatePropertiesProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     customVersion: S.optional(S.String),
     contentSchemaVersion: S.optional(S.String),
     icon: S.optional(S.String),
-    threatAnalysisTactics: S.optional(
-      TemplatePropertiesThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      TemplatePropertiesThreatAnalysisTechniquesList,
-    ),
-    previewImages: S.optional(TemplatePropertiesPreviewImagesList),
-    previewImagesDark: S.optional(TemplatePropertiesPreviewImagesDarkList),
-    packageId: S.optional(S.String),
-    packageKind: S.optional(PackageKind),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
+    previewImages: S.optional(MetadataPreviewImages),
+    previewImagesDark: S.optional(MetadataPreviewImagesDark),
+    packageId: S.String,
+    packageKind: S.optional(MetadataPackageKind),
     packageName: S.optional(S.String),
-    isDeprecated: S.optional(Flag),
+    isDeprecated: S.optional(MetadataTrueFalseFlag),
     mainTemplate: S.optional(S.Unknown),
     dependantTemplates: S.optional(TemplatePropertiesDependantTemplatesList),
   }),
@@ -2166,10 +2237,10 @@ export interface ContentTemplateGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** template properties */
-  properties?: TemplateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: TemplateProperties;
 }
 export const ContentTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2177,62 +2248,29 @@ export const ContentTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(TemplateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(TemplateProperties),
   }),
 ).annotate({
   identifier: "ContentTemplateGetResponse",
 }) as any as S.Schema<ContentTemplateGetResponse>;
 
-/** Providers for the content item */
-export type TemplatePropertiesInputProvidersList = Array<string>;
-export const TemplatePropertiesInputProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplatePropertiesInputProvidersList>;
-
-/** the tactics the resource covers */
-export type TemplatePropertiesInputThreatAnalysisTacticsList = Array<string>;
-export const TemplatePropertiesInputThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTacticsList>;
-
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type TemplatePropertiesInputThreatAnalysisTechniquesList = Array<string>;
-export const TemplatePropertiesInputThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTechniquesList>;
-
-/** preview image file names. These will be taken from the solution artifacts */
-export type TemplatePropertiesInputPreviewImagesList = Array<string>;
-export const TemplatePropertiesInputPreviewImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplatePropertiesInputPreviewImagesList>;
-
-/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type TemplatePropertiesInputPreviewImagesDarkList = Array<string>;
-export const TemplatePropertiesInputPreviewImagesDarkList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TemplatePropertiesInputPreviewImagesDarkList>;
-
 /** Template property bag. */
 export interface TemplatePropertiesInput {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
-  contentId?: string;
+  contentId: string;
   /** Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template */
-  contentProductId?: string;
+  contentProductId: string;
   /** Version of the package. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
-  packageVersion?: string;
+  packageVersion: string;
   /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
-  version?: string;
+  version: string;
   /** The display name of the template */
-  displayName?: string;
+  displayName: string;
   /** The kind of content the template is for. */
-  contentKind?: Kind | (string & {});
+  contentKind: string;
   /** Source of the content. This is where/how it was created. */
-  source?: MetadataSource;
+  source: MetadataSource;
   /** The creator of the content item. */
   author?: MetadataAuthor;
   /** Support information for the template - type, name, contact information */
@@ -2242,7 +2280,7 @@ export interface TemplatePropertiesInput {
   /** Categories for the item */
   categories?: MetadataCategories;
   /** Providers for the content item */
-  providers?: TemplatePropertiesInputProvidersList;
+  providers?: MetadataProviders;
   /** first publish date content item */
   firstPublishDate?: string;
   /** last publish date for the content item */
@@ -2254,17 +2292,17 @@ export interface TemplatePropertiesInput {
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: TemplatePropertiesInputThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: TemplatePropertiesInputThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** preview image file names. These will be taken from the solution artifacts */
-  previewImages?: TemplatePropertiesInputPreviewImagesList;
+  previewImages?: MetadataPreviewImages;
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-  previewImagesDark?: TemplatePropertiesInputPreviewImagesDarkList;
+  previewImagesDark?: MetadataPreviewImagesDark;
   /** the package Id contains this template */
-  packageId?: string;
+  packageId: string;
   /** the packageKind of the package contains this template */
-  packageKind?: PackageKind | (string & {});
+  packageKind?: MetadataPackageKind | (string & {});
   /** the name of the package contains this template */
   packageName?: string;
   /** The JSON of the ARM template to deploy active content. Expandable. */
@@ -2272,33 +2310,29 @@ export interface TemplatePropertiesInput {
 }
 export const TemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentId: S.optional(S.String),
-    contentProductId: S.optional(S.String),
-    packageVersion: S.optional(S.String),
-    version: S.optional(S.String),
-    displayName: S.optional(S.String),
-    contentKind: S.optional(Kind),
-    source: S.optional(MetadataSource),
+    contentId: S.String,
+    contentProductId: S.String,
+    packageVersion: S.String,
+    version: S.String,
+    displayName: S.String,
+    contentKind: S.String,
+    source: MetadataSource,
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
     dependencies: S.optional(MetadataDependencies),
     categories: S.optional(MetadataCategories),
-    providers: S.optional(TemplatePropertiesInputProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     customVersion: S.optional(S.String),
     contentSchemaVersion: S.optional(S.String),
     icon: S.optional(S.String),
-    threatAnalysisTactics: S.optional(
-      TemplatePropertiesInputThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      TemplatePropertiesInputThreatAnalysisTechniquesList,
-    ),
-    previewImages: S.optional(TemplatePropertiesInputPreviewImagesList),
-    previewImagesDark: S.optional(TemplatePropertiesInputPreviewImagesDarkList),
-    packageId: S.optional(S.String),
-    packageKind: S.optional(PackageKind),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
+    previewImages: S.optional(MetadataPreviewImages),
+    previewImagesDark: S.optional(MetadataPreviewImagesDark),
+    packageId: S.String,
+    packageKind: S.optional(MetadataPackageKind),
     packageName: S.optional(S.String),
     mainTemplate: S.optional(S.Unknown),
   }),
@@ -2311,14 +2345,14 @@ export interface ContentTemplateInstallRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** template Id */
   templateId: string;
-  /** template properties */
-  properties?: TemplatePropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: TemplatePropertiesInput;
 }
 export const ContentTemplateInstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2326,8 +2360,8 @@ export const ContentTemplateInstallRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     templateId: S.String.pipe(T.Label()),
-    properties: S.optional(TemplatePropertiesInput),
     etag: S.optional(S.String),
+    properties: S.optional(TemplatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2349,10 +2383,10 @@ export interface ContentTemplateInstallResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** template properties */
-  properties?: TemplateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: TemplateProperties;
 }
 export const ContentTemplateInstallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2360,8 +2394,8 @@ export const ContentTemplateInstallResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(TemplateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(TemplateProperties),
   }),
 ).annotate({
   identifier: "ContentTemplateInstallResponse",
@@ -2372,7 +2406,7 @@ export interface ContentTemplatesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -2426,10 +2460,10 @@ export interface TemplateModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** template properties */
-  properties?: TemplateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: TemplateProperties;
 }
 export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2437,12 +2471,12 @@ export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(TemplateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(TemplateProperties),
   }),
 ).annotate({ identifier: "TemplateModel" }) as any as S.Schema<TemplateModel>;
 
-/** The TemplateModel items on this page */
+/** Array of templates. */
 export type TemplateListValueList = Array<TemplateModel>;
 export const TemplateListValueList = /*@__PURE__*/ S.Array(
   TemplateModel,
@@ -2450,9 +2484,9 @@ export const TemplateListValueList = /*@__PURE__*/ S.Array(
 
 /** List of all the template. */
 export interface TemplateList {
-  /** The TemplateModel items on this page */
+  /** Array of templates. */
   value: TemplateListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next page of template. */
   nextLink?: string;
 }
 export const TemplateList = /*@__PURE__*/ S.suspend(() =>
@@ -2471,14 +2505,14 @@ export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorDefinitionKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorDefinitionKind | (string & {});
 }
 export const DataConnectorDefinitionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2487,8 +2521,8 @@ export const DataConnectorDefinitionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       dataConnectorDefinitionName: S.String.pipe(T.Label()),
-      kind: DataConnectorDefinitionKind,
       etag: S.optional(S.String),
+      kind: DataConnectorDefinitionKind,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2510,10 +2544,10 @@ export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorDefinitionKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorDefinitionKind;
 }
 export const DataConnectorDefinitionsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -2522,8 +2556,8 @@ export const DataConnectorDefinitionsCreateOrUpdateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: DataConnectorDefinitionKind,
       etag: S.optional(S.String),
+      kind: DataConnectorDefinitionKind,
     }),
   ).annotate({
     identifier: "DataConnectorDefinitionsCreateOrUpdateResponse",
@@ -2534,7 +2568,7 @@ export interface DataConnectorDefinitionsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
@@ -2570,7 +2604,7 @@ export interface DataConnectorDefinitionsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
@@ -2602,10 +2636,10 @@ export interface DataConnectorDefinitionsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorDefinitionKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorDefinitionKind;
 }
 export const DataConnectorDefinitionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2613,8 +2647,8 @@ export const DataConnectorDefinitionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: DataConnectorDefinitionKind,
     etag: S.optional(S.String),
+    kind: DataConnectorDefinitionKind,
   }),
 ).annotate({
   identifier: "DataConnectorDefinitionsGetResponse",
@@ -2625,7 +2659,7 @@ export interface DataConnectorDefinitionsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const DataConnectorDefinitionsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2655,10 +2689,10 @@ export interface DataConnectorDefinition {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorDefinitionKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorDefinitionKind;
 }
 export const DataConnectorDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2666,14 +2700,13 @@ export const DataConnectorDefinition = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: DataConnectorDefinitionKind,
     etag: S.optional(S.String),
+    kind: DataConnectorDefinitionKind,
   }),
 ).annotate({
   identifier: "DataConnectorDefinition",
 }) as any as S.Schema<DataConnectorDefinition>;
 
-/** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList =
   Array<DataConnectorDefinition>;
 export const DataConnectorDefinitionArmCollectionWrapperValueList =
@@ -2683,9 +2716,7 @@ export const DataConnectorDefinitionArmCollectionWrapperValueList =
 
 /** Encapsulate the data connector definition object */
 export interface DataConnectorDefinitionArmCollectionWrapper {
-  /** List of data connector definitions. */
   value?: DataConnectorDefinitionArmCollectionWrapperValueList;
-  /** The link to the next page of items */
   nextLink?: string;
 }
 export const DataConnectorDefinitionArmCollectionWrapper =
@@ -2704,12 +2735,12 @@ export type DataConnectorKind =
   | "AzureSecurityCenter"
   | "MicrosoftCloudAppSecurity"
   | "ThreatIntelligence"
+  | "MicrosoftThreatIntelligence"
+  | "PremiumMicrosoftDefenderForThreatIntelligence"
   | "Office365"
   | "AmazonWebServicesCloudTrail"
   | "AzureAdvancedThreatProtection"
   | "MicrosoftDefenderAdvancedThreatProtection"
-  | "MicrosoftThreatIntelligence"
-  | "PremiumMicrosoftDefenderForThreatIntelligence"
   | "RestApiPoller";
 export const DataConnectorKind = /*@__PURE__*/ S.String;
 
@@ -2718,14 +2749,14 @@ export interface DataConnectorsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Connector ID */
   dataConnectorId: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorKind | (string & {});
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorKind | (string & {});
 }
 export const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2733,8 +2764,8 @@ export const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     dataConnectorId: S.String.pipe(T.Label()),
-    kind: DataConnectorKind,
     etag: S.optional(S.String),
+    kind: DataConnectorKind,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2756,10 +2787,10 @@ export interface DataConnectorsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorKind;
 }
 export const DataConnectorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -2768,8 +2799,8 @@ export const DataConnectorsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: DataConnectorKind,
       etag: S.optional(S.String),
+      kind: DataConnectorKind,
     }),
 ).annotate({
   identifier: "DataConnectorsCreateOrUpdateResponse",
@@ -2780,7 +2811,7 @@ export interface DataConnectorsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Connector ID */
   dataConnectorId: string;
@@ -2815,7 +2846,7 @@ export interface DataConnectorsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Connector ID */
   dataConnectorId: string;
@@ -2847,10 +2878,10 @@ export interface DataConnectorsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorKind;
 }
 export const DataConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2858,8 +2889,8 @@ export const DataConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: DataConnectorKind,
     etag: S.optional(S.String),
+    kind: DataConnectorKind,
   }),
 ).annotate({
   identifier: "DataConnectorsGetResponse",
@@ -2870,7 +2901,7 @@ export interface DataConnectorsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const DataConnectorsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2890,7 +2921,7 @@ export const DataConnectorsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataConnectorsListRequest",
 }) as any as S.Schema<DataConnectorsListRequest>;
 
-/** Data connector */
+/** Data connector. */
 export interface DataConnector {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2900,10 +2931,10 @@ export interface DataConnector {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DataConnectorKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The data connector kind */
+  kind: DataConnectorKind;
 }
 export const DataConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2911,12 +2942,12 @@ export const DataConnector = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: DataConnectorKind,
     etag: S.optional(S.String),
+    kind: DataConnectorKind,
   }),
 ).annotate({ identifier: "DataConnector" }) as any as S.Schema<DataConnector>;
 
-/** The DataConnector items on this page */
+/** Array of data connectors. */
 export type DataConnectorListValueList = Array<DataConnector>;
 export const DataConnectorListValueList = /*@__PURE__*/ S.Array(
   DataConnector,
@@ -2924,15 +2955,15 @@ export const DataConnectorListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the data connectors. */
 export interface DataConnectorList {
-  /** The DataConnector items on this page */
-  value: DataConnectorListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of data connectors. */
   nextLink?: string;
+  /** Array of data connectors. */
+  value: DataConnectorListValueList;
 }
 export const DataConnectorList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: DataConnectorListValueList,
     nextLink: S.optional(S.String),
+    value: DataConnectorListValueList,
   }),
 ).annotate({
   identifier: "DataConnectorList",
@@ -2945,9 +2976,9 @@ export interface EntitiesRunPlaybookRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  /** entity ID */
+  /** Entity ID */
   entityIdentifier: string;
-  /** Incident ARM id. */
+  /** The incident id to associate the entity with. */
   incidentArmId?: string;
   /** The tenant id of the playbook resource. */
   tenantId?: string;
@@ -2982,14 +3013,40 @@ export const EntitiesRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntitiesRunPlaybookResponse",
 }) as any as S.Schema<EntitiesRunPlaybookResponse>;
 
+/** Information on the client (user or application) that made some action */
+export interface IncidentCommentPropertiesInputAuthor {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentCommentPropertiesInputAuthor = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "IncidentCommentPropertiesInputAuthor",
+}) as any as S.Schema<IncidentCommentPropertiesInputAuthor>;
+
 /** Incident comment property bag. */
 export interface IncidentCommentPropertiesInput {
   /** The comment message */
   message: string;
+  /** Information on the client (user or application) that made some action */
+  author?: IncidentCommentPropertiesInputAuthor;
 }
 export const IncidentCommentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
+    author: S.optional(IncidentCommentPropertiesInputAuthor),
   }),
 ).annotate({
   identifier: "IncidentCommentPropertiesInput",
@@ -3000,16 +3057,16 @@ export interface IncidentCommentsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
   /** Incident comment ID */
   incidentCommentId: string;
-  /** Incident comment properties */
-  properties?: IncidentCommentPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident comment properties */
+  properties?: IncidentCommentPropertiesInput;
 }
 export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3019,8 +3076,8 @@ export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       workspaceName: S.String.pipe(T.Label()),
       incidentId: S.String.pipe(T.Label()),
       incidentCommentId: S.String.pipe(T.Label()),
-      properties: S.optional(IncidentCommentPropertiesInput),
       etag: S.optional(S.String),
+      properties: S.optional(IncidentCommentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3033,23 +3090,45 @@ export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "IncidentCommentsCreateOrUpdateRequest",
 }) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>;
 
+/** Information on the client (user or application) that made some action */
+export interface IncidentCommentPropertiesAuthor {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentCommentPropertiesAuthor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.String),
+    userPrincipalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IncidentCommentPropertiesAuthor",
+}) as any as S.Schema<IncidentCommentPropertiesAuthor>;
+
 /** Incident comment property bag. */
 export interface IncidentCommentProperties {
-  /** The comment message */
-  message: string;
   /** The time the comment was created */
   createdTimeUtc?: string;
   /** The time the comment was updated */
   lastModifiedTimeUtc?: string;
-  /** Describes the client that created the comment */
-  author?: ClientInfo;
+  /** The comment message */
+  message: string;
+  /** Information on the client (user or application) that made some action */
+  author?: IncidentCommentPropertiesAuthor;
 }
 export const IncidentCommentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    message: S.String,
     createdTimeUtc: S.optional(S.String),
     lastModifiedTimeUtc: S.optional(S.String),
-    author: S.optional(ClientInfo),
+    message: S.String,
+    author: S.optional(IncidentCommentPropertiesAuthor),
   }),
 ).annotate({
   identifier: "IncidentCommentProperties",
@@ -3064,10 +3143,10 @@ export interface IncidentCommentsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident comment properties */
-  properties?: IncidentCommentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident comment properties */
+  properties?: IncidentCommentProperties;
 }
 export const IncidentCommentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -3076,8 +3155,8 @@ export const IncidentCommentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(IncidentCommentProperties),
       etag: S.optional(S.String),
+      properties: S.optional(IncidentCommentProperties),
     }),
 ).annotate({
   identifier: "IncidentCommentsCreateOrUpdateResponse",
@@ -3088,7 +3167,7 @@ export interface IncidentCommentsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3126,7 +3205,7 @@ export interface IncidentCommentsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3161,10 +3240,10 @@ export interface IncidentCommentsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident comment properties */
-  properties?: IncidentCommentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident comment properties */
+  properties?: IncidentCommentProperties;
 }
 export const IncidentCommentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3172,8 +3251,8 @@ export const IncidentCommentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(IncidentCommentProperties),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentCommentProperties),
   }),
 ).annotate({
   identifier: "IncidentCommentsGetResponse",
@@ -3184,7 +3263,7 @@ export interface IncidentCommentsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3229,10 +3308,10 @@ export interface IncidentComment {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident comment properties */
-  properties?: IncidentCommentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident comment properties */
+  properties?: IncidentCommentProperties;
 }
 export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3240,14 +3319,14 @@ export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(IncidentCommentProperties),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentCommentProperties),
   }),
 ).annotate({
   identifier: "IncidentComment",
 }) as any as S.Schema<IncidentComment>;
 
-/** The IncidentComment items on this page */
+/** Array of comments. */
 export type IncidentCommentListValueList = Array<IncidentComment>;
 export const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
   IncidentComment,
@@ -3255,15 +3334,15 @@ export const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
 
 /** List of incident comments. */
 export interface IncidentCommentList {
-  /** The IncidentComment items on this page */
-  value: IncidentCommentListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of comments. */
   nextLink?: string;
+  /** Array of comments. */
+  value: IncidentCommentListValueList;
 }
 export const IncidentCommentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: IncidentCommentListValueList,
     nextLink: S.optional(S.String),
+    value: IncidentCommentListValueList,
   }),
 ).annotate({
   identifier: "IncidentCommentList",
@@ -3287,16 +3366,16 @@ export interface IncidentRelationsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
   /** Relation Name */
   relationName: string;
-  /** Relation properties */
-  properties?: RelationPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Relation properties */
+  properties?: RelationPropertiesInput;
 }
 export const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3306,8 +3385,8 @@ export const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       workspaceName: S.String.pipe(T.Label()),
       incidentId: S.String.pipe(T.Label()),
       relationName: S.String.pipe(T.Label()),
-      properties: S.optional(RelationPropertiesInput),
       etag: S.optional(S.String),
+      properties: S.optional(RelationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3351,10 +3430,10 @@ export interface IncidentRelationsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Relation properties */
-  properties?: RelationProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Relation properties */
+  properties?: RelationProperties;
 }
 export const IncidentRelationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -3363,8 +3442,8 @@ export const IncidentRelationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(RelationProperties),
       etag: S.optional(S.String),
+      properties: S.optional(RelationProperties),
     }),
 ).annotate({
   identifier: "IncidentRelationsCreateOrUpdateResponse",
@@ -3375,7 +3454,7 @@ export interface IncidentRelationsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3413,7 +3492,7 @@ export interface IncidentRelationsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3448,10 +3527,10 @@ export interface IncidentRelationsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Relation properties */
-  properties?: RelationProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Relation properties */
+  properties?: RelationProperties;
 }
 export const IncidentRelationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3459,8 +3538,8 @@ export const IncidentRelationsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(RelationProperties),
     etag: S.optional(S.String),
+    properties: S.optional(RelationProperties),
   }),
 ).annotate({
   identifier: "IncidentRelationsGetResponse",
@@ -3471,7 +3550,7 @@ export interface IncidentRelationsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3516,10 +3595,10 @@ export interface Relation {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Relation properties */
-  properties?: RelationProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Relation properties */
+  properties?: RelationProperties;
 }
 export const Relation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3527,12 +3606,12 @@ export const Relation = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(RelationProperties),
     etag: S.optional(S.String),
+    properties: S.optional(RelationProperties),
   }),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
-/** The Relation items on this page */
+/** Array of relations. */
 export type RelationListValueList = Array<Relation>;
 export const RelationListValueList = /*@__PURE__*/ S.Array(
   Relation,
@@ -3540,44 +3619,64 @@ export const RelationListValueList = /*@__PURE__*/ S.Array(
 
 /** List of relations. */
 export interface RelationList {
-  /** The Relation items on this page */
-  value: RelationListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of relations. */
   nextLink?: string;
+  /** Array of relations. */
+  value: RelationListValueList;
 }
 export const RelationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: RelationListValueList,
     nextLink: S.optional(S.String),
+    value: RelationListValueList,
   }),
 ).annotate({ identifier: "RelationList" }) as any as S.Schema<RelationList>;
 
-/** The status of the incident */
-export type IncidentStatus = "New" | "Active" | "Closed";
-export const IncidentStatus = /*@__PURE__*/ S.String;
-
 /** The reason the incident was closed */
-export type IncidentClassification =
+export type IncidentPropertiesInputClassification =
   | "Undetermined"
   | "TruePositive"
   | "BenignPositive"
   | "FalsePositive";
-export const IncidentClassification = /*@__PURE__*/ S.String;
+export const IncidentPropertiesInputClassification = /*@__PURE__*/ S.String;
 
 /** The classification reason the incident was closed with */
-export type IncidentClassificationReason =
+export type IncidentPropertiesInputClassificationReason =
   | "SuspiciousActivity"
   | "SuspiciousButExpected"
   | "IncorrectAlertLogic"
   | "InaccurateData";
-export const IncidentClassificationReason = /*@__PURE__*/ S.String;
+export const IncidentPropertiesInputClassificationReason =
+  /*@__PURE__*/ S.String;
 
-/** The type of the owner the hunt is assigned to. */
-export type OwnerType = "Unknown" | "User" | "Group";
-export const OwnerType = /*@__PURE__*/ S.String;
+/** Represents an incident label */
+export interface IncidentPropertiesInputLabelsItem {
+  /** The name of the label */
+  labelName: string;
+}
+export const IncidentPropertiesInputLabelsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labelName: S.String,
+  }),
+).annotate({
+  identifier: "IncidentPropertiesInputLabelsItem",
+}) as any as S.Schema<IncidentPropertiesInputLabelsItem>;
+
+/** List of labels relevant to this incident */
+export type IncidentPropertiesInputLabelsList =
+  Array<IncidentPropertiesInputLabelsItem>;
+export const IncidentPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
+  IncidentPropertiesInputLabelsItem,
+) as any as S.Schema<IncidentPropertiesInputLabelsList>;
+
+/** The type of the owner the incident is assigned to. */
+export type IncidentPropertiesInputOwnerOwnerType =
+  | "Unknown"
+  | "User"
+  | "Group";
+export const IncidentPropertiesInputOwnerOwnerType = /*@__PURE__*/ S.String;
 
 /** Information on the user an incident is assigned to */
-export interface IncidentOwnerInfo {
+export interface IncidentPropertiesInputOwner {
   /** The email of the user the incident is assigned to. */
   email?: string;
   /** The name of the user the incident is assigned to. */
@@ -3587,82 +3686,74 @@ export interface IncidentOwnerInfo {
   /** The user principal name of the user the incident is assigned to. */
   userPrincipalName?: string;
   /** The type of the owner the incident is assigned to. */
-  ownerType?: OwnerType | (string & {});
+  ownerType?: IncidentPropertiesInputOwnerOwnerType | (string & {});
 }
-export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
+export const IncidentPropertiesInputOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     assignedTo: S.optional(S.String),
     objectId: S.optional(S.String),
     userPrincipalName: S.optional(S.String),
-    ownerType: S.optional(OwnerType),
+    ownerType: S.optional(IncidentPropertiesInputOwnerOwnerType),
   }),
 ).annotate({
-  identifier: "IncidentOwnerInfo",
-}) as any as S.Schema<IncidentOwnerInfo>;
+  identifier: "IncidentPropertiesInputOwner",
+}) as any as S.Schema<IncidentPropertiesInputOwner>;
 
-/** The type of the label */
-export type IncidentLabelType = "User" | "AutoAssigned";
-export const IncidentLabelType = /*@__PURE__*/ S.String;
+/** The severity of the incident */
+export type IncidentPropertiesInputSeverity =
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Informational";
+export const IncidentPropertiesInputSeverity = /*@__PURE__*/ S.String;
 
-/** Represents an incident label */
-export interface IncidentLabel {
-  /** The name of the label */
-  labelName: string;
-  /** The type of the label */
-  labelType?: IncidentLabelType | (string & {});
-}
-export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    labelName: S.String,
-    labelType: S.optional(IncidentLabelType),
-  }),
-).annotate({ identifier: "IncidentLabel" }) as any as S.Schema<IncidentLabel>;
-
-/** List of labels relevant to this incident */
-export type IncidentPropertiesInputLabelsList = Array<IncidentLabel>;
-export const IncidentPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
-  IncidentLabel,
-) as any as S.Schema<IncidentPropertiesInputLabelsList>;
+/** The status of the incident */
+export type IncidentPropertiesInputStatus = "New" | "Active" | "Closed";
+export const IncidentPropertiesInputStatus = /*@__PURE__*/ S.String;
 
 /** Describes incident properties */
 export interface IncidentPropertiesInput {
-  /** The title of the incident */
-  title: string;
-  /** The description of the incident */
-  description?: string;
-  /** The severity of the incident */
-  severity: IncidentSeverity | (string & {});
-  /** The status of the incident */
-  status: IncidentStatus | (string & {});
   /** The reason the incident was closed */
-  classification?: IncidentClassification | (string & {});
-  /** The classification reason the incident was closed with */
-  classificationReason?: IncidentClassificationReason | (string & {});
+  classification?: IncidentPropertiesInputClassification | (string & {});
   /** Describes the reason the incident was closed */
   classificationComment?: string;
-  /** Describes a user that the incident is assigned to */
-  owner?: IncidentOwnerInfo;
-  /** List of labels relevant to this incident */
-  labels?: IncidentPropertiesInputLabelsList;
+  /** The classification reason the incident was closed with */
+  classificationReason?:
+    | IncidentPropertiesInputClassificationReason
+    | (string & {});
+  /** The description of the incident */
+  description?: string;
   /** The time of the first activity in the incident */
   firstActivityTimeUtc?: string;
+  /** List of labels relevant to this incident */
+  labels?: IncidentPropertiesInputLabelsList;
   /** The time of the last activity in the incident */
   lastActivityTimeUtc?: string;
+  /** Information on the user an incident is assigned to */
+  owner?: IncidentPropertiesInputOwner;
+  /** The severity of the incident */
+  severity: IncidentPropertiesInputSeverity | (string & {});
+  /** The status of the incident */
+  status: IncidentPropertiesInputStatus | (string & {});
+  /** The title of the incident */
+  title: string;
 }
 export const IncidentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    severity: IncidentSeverity,
-    status: IncidentStatus,
-    classification: S.optional(IncidentClassification),
-    classificationReason: S.optional(IncidentClassificationReason),
+    classification: S.optional(IncidentPropertiesInputClassification),
     classificationComment: S.optional(S.String),
-    owner: S.optional(IncidentOwnerInfo),
-    labels: S.optional(IncidentPropertiesInputLabelsList),
+    classificationReason: S.optional(
+      IncidentPropertiesInputClassificationReason,
+    ),
+    description: S.optional(S.String),
     firstActivityTimeUtc: S.optional(S.String),
+    labels: S.optional(IncidentPropertiesInputLabelsList),
     lastActivityTimeUtc: S.optional(S.String),
+    owner: S.optional(IncidentPropertiesInputOwner),
+    severity: IncidentPropertiesInputSeverity,
+    status: IncidentPropertiesInputStatus,
+    title: S.String,
   }),
 ).annotate({
   identifier: "IncidentPropertiesInput",
@@ -3673,14 +3764,14 @@ export interface IncidentsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
-  /** Incident properties */
-  properties?: IncidentPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident properties */
+  properties?: IncidentPropertiesInput;
 }
 export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3688,8 +3779,8 @@ export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     incidentId: S.String.pipe(T.Label()),
-    properties: S.optional(IncidentPropertiesInput),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3702,12 +3793,6 @@ export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentsCreateOrUpdateRequest",
 }) as any as S.Schema<IncidentsCreateOrUpdateRequest>;
 
-/** List of labels relevant to this incident */
-export type IncidentPropertiesLabelsList = Array<IncidentLabel>;
-export const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
-  IncidentLabel,
-) as any as S.Schema<IncidentPropertiesLabelsList>;
-
 /** List of product names of alerts in the incident */
 export type IncidentAdditionalDataAlertProductNamesList = Array<string>;
 export const IncidentAdditionalDataAlertProductNamesList =
@@ -3716,7 +3801,7 @@ export const IncidentAdditionalDataAlertProductNamesList =
   ) as any as S.Schema<IncidentAdditionalDataAlertProductNamesList>;
 
 /** The severity for alerts created by this alert rule. */
-export type AttackTactic =
+export type IncidentAdditionalDataTacticsItem =
   | "Reconnaissance"
   | "ResourceDevelopment"
   | "InitialAccess"
@@ -3734,12 +3819,13 @@ export type AttackTactic =
   | "PreAttack"
   | "ImpairProcessControl"
   | "InhibitResponseFunction";
-export const AttackTactic = /*@__PURE__*/ S.String;
+export const IncidentAdditionalDataTacticsItem = /*@__PURE__*/ S.String;
 
 /** The tactics associated with incident */
-export type IncidentAdditionalDataTacticsList = Array<AttackTactic>;
+export type IncidentAdditionalDataTacticsList =
+  Array<IncidentAdditionalDataTacticsItem>;
 export const IncidentAdditionalDataTacticsList = /*@__PURE__*/ S.Array(
-  AttackTactic,
+  IncidentAdditionalDataTacticsItem,
 ) as any as S.Schema<IncidentAdditionalDataTacticsList>;
 
 /** Incident additional data property bag. */
@@ -3770,6 +3856,76 @@ export const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentAdditionalData",
 }) as any as S.Schema<IncidentAdditionalData>;
 
+/** The reason the incident was closed */
+export type IncidentPropertiesClassification =
+  | "Undetermined"
+  | "TruePositive"
+  | "BenignPositive"
+  | "FalsePositive";
+export const IncidentPropertiesClassification = /*@__PURE__*/ S.String;
+
+/** The classification reason the incident was closed with */
+export type IncidentPropertiesClassificationReason =
+  | "SuspiciousActivity"
+  | "SuspiciousButExpected"
+  | "IncorrectAlertLogic"
+  | "InaccurateData";
+export const IncidentPropertiesClassificationReason = /*@__PURE__*/ S.String;
+
+/** The type of the label */
+export type IncidentLabelType = "User" | "AutoAssigned";
+export const IncidentLabelType = /*@__PURE__*/ S.String;
+
+/** Represents an incident label */
+export interface IncidentPropertiesLabelsItem {
+  /** The name of the label */
+  labelName: string;
+  labelType?: IncidentLabelType;
+}
+export const IncidentPropertiesLabelsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labelName: S.String,
+    labelType: S.optional(IncidentLabelType),
+  }),
+).annotate({
+  identifier: "IncidentPropertiesLabelsItem",
+}) as any as S.Schema<IncidentPropertiesLabelsItem>;
+
+/** List of labels relevant to this incident */
+export type IncidentPropertiesLabelsList = Array<IncidentPropertiesLabelsItem>;
+export const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
+  IncidentPropertiesLabelsItem,
+) as any as S.Schema<IncidentPropertiesLabelsList>;
+
+/** The type of the owner the incident is assigned to. */
+export type IncidentPropertiesOwnerOwnerType = "Unknown" | "User" | "Group";
+export const IncidentPropertiesOwnerOwnerType = /*@__PURE__*/ S.String;
+
+/** Information on the user an incident is assigned to */
+export interface IncidentPropertiesOwner {
+  /** The email of the user the incident is assigned to. */
+  email?: string;
+  /** The name of the user the incident is assigned to. */
+  assignedTo?: string;
+  /** The object id of the user the incident is assigned to. */
+  objectId?: string;
+  /** The user principal name of the user the incident is assigned to. */
+  userPrincipalName?: string;
+  /** The type of the owner the incident is assigned to. */
+  ownerType?: IncidentPropertiesOwnerOwnerType;
+}
+export const IncidentPropertiesOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    assignedTo: S.optional(S.String),
+    objectId: S.optional(S.String),
+    userPrincipalName: S.optional(S.String),
+    ownerType: S.optional(IncidentPropertiesOwnerOwnerType),
+  }),
+).annotate({
+  identifier: "IncidentPropertiesOwner",
+}) as any as S.Schema<IncidentPropertiesOwner>;
+
 /** List of resource ids of Analytic rules related to the incident */
 export type IncidentPropertiesRelatedAnalyticRuleIdsList = Array<string>;
 export const IncidentPropertiesRelatedAnalyticRuleIdsList =
@@ -3777,70 +3933,82 @@ export const IncidentPropertiesRelatedAnalyticRuleIdsList =
     S.String,
   ) as any as S.Schema<IncidentPropertiesRelatedAnalyticRuleIdsList>;
 
+/** The severity of the incident */
+export type IncidentPropertiesSeverity =
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Informational";
+export const IncidentPropertiesSeverity = /*@__PURE__*/ S.String;
+
+/** The status of the incident */
+export type IncidentPropertiesStatus = "New" | "Active" | "Closed";
+export const IncidentPropertiesStatus = /*@__PURE__*/ S.String;
+
 /** Describes incident properties */
 export interface IncidentProperties {
-  /** The title of the incident */
-  title: string;
-  /** The description of the incident */
-  description?: string;
-  /** The severity of the incident */
-  severity: IncidentSeverity;
-  /** The status of the incident */
-  status: IncidentStatus;
-  /** The reason the incident was closed */
-  classification?: IncidentClassification;
-  /** The classification reason the incident was closed with */
-  classificationReason?: IncidentClassificationReason;
-  /** Describes the reason the incident was closed */
-  classificationComment?: string;
-  /** Describes a user that the incident is assigned to */
-  owner?: IncidentOwnerInfo;
-  /** List of labels relevant to this incident */
-  labels?: IncidentPropertiesLabelsList;
-  /** The time of the first activity in the incident */
-  firstActivityTimeUtc?: string;
-  /** The time of the last activity in the incident */
-  lastActivityTimeUtc?: string;
-  /** The last time the incident was updated */
-  lastModifiedTimeUtc?: string;
-  /** The time the incident was created */
-  createdTimeUtc?: string;
-  /** A sequential number */
-  incidentNumber?: number;
   /** Additional data on the incident */
   additionalData?: IncidentAdditionalData;
-  /** List of resource ids of Analytic rules related to the incident */
-  relatedAnalyticRuleIds?: IncidentPropertiesRelatedAnalyticRuleIdsList;
+  /** The reason the incident was closed */
+  classification?: IncidentPropertiesClassification;
+  /** Describes the reason the incident was closed */
+  classificationComment?: string;
+  /** The classification reason the incident was closed with */
+  classificationReason?: IncidentPropertiesClassificationReason;
+  /** The time the incident was created */
+  createdTimeUtc?: string;
+  /** The description of the incident */
+  description?: string;
+  /** The time of the first activity in the incident */
+  firstActivityTimeUtc?: string;
   /** The deep-link url to the incident in Azure portal */
   incidentUrl?: string;
   /** The name of the source provider that generated the incident */
   providerName?: string;
   /** The incident ID assigned by the incident provider */
   providerIncidentId?: string;
+  /** A sequential number */
+  incidentNumber?: number;
+  /** List of labels relevant to this incident */
+  labels?: IncidentPropertiesLabelsList;
+  /** The time of the last activity in the incident */
+  lastActivityTimeUtc?: string;
+  /** The last time the incident was updated */
+  lastModifiedTimeUtc?: string;
+  /** Information on the user an incident is assigned to */
+  owner?: IncidentPropertiesOwner;
+  /** List of resource ids of Analytic rules related to the incident */
+  relatedAnalyticRuleIds?: IncidentPropertiesRelatedAnalyticRuleIdsList;
+  /** The severity of the incident */
+  severity: IncidentPropertiesSeverity;
+  /** The status of the incident */
+  status: IncidentPropertiesStatus;
+  /** The title of the incident */
+  title: string;
 }
 export const IncidentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    severity: IncidentSeverity,
-    status: IncidentStatus,
-    classification: S.optional(IncidentClassification),
-    classificationReason: S.optional(IncidentClassificationReason),
-    classificationComment: S.optional(S.String),
-    owner: S.optional(IncidentOwnerInfo),
-    labels: S.optional(IncidentPropertiesLabelsList),
-    firstActivityTimeUtc: S.optional(S.String),
-    lastActivityTimeUtc: S.optional(S.String),
-    lastModifiedTimeUtc: S.optional(S.String),
-    createdTimeUtc: S.optional(S.String),
-    incidentNumber: S.optional(S.Number),
     additionalData: S.optional(IncidentAdditionalData),
-    relatedAnalyticRuleIds: S.optional(
-      IncidentPropertiesRelatedAnalyticRuleIdsList,
-    ),
+    classification: S.optional(IncidentPropertiesClassification),
+    classificationComment: S.optional(S.String),
+    classificationReason: S.optional(IncidentPropertiesClassificationReason),
+    createdTimeUtc: S.optional(S.String),
+    description: S.optional(S.String),
+    firstActivityTimeUtc: S.optional(S.String),
     incidentUrl: S.optional(S.String),
     providerName: S.optional(S.String),
     providerIncidentId: S.optional(S.String),
+    incidentNumber: S.optional(S.Number),
+    labels: S.optional(IncidentPropertiesLabelsList),
+    lastActivityTimeUtc: S.optional(S.String),
+    lastModifiedTimeUtc: S.optional(S.String),
+    owner: S.optional(IncidentPropertiesOwner),
+    relatedAnalyticRuleIds: S.optional(
+      IncidentPropertiesRelatedAnalyticRuleIdsList,
+    ),
+    severity: IncidentPropertiesSeverity,
+    status: IncidentPropertiesStatus,
+    title: S.String,
   }),
 ).annotate({
   identifier: "IncidentProperties",
@@ -3855,10 +4023,10 @@ export interface IncidentsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident properties */
-  properties?: IncidentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident properties */
+  properties?: IncidentProperties;
 }
 export const IncidentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3866,8 +4034,8 @@ export const IncidentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(IncidentProperties),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentProperties),
   }),
 ).annotate({
   identifier: "IncidentsCreateOrUpdateResponse",
@@ -3878,7 +4046,7 @@ export interface IncidentsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3913,7 +4081,7 @@ export interface IncidentsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -3945,10 +4113,10 @@ export interface IncidentsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident properties */
-  properties?: IncidentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident properties */
+  properties?: IncidentProperties;
 }
 export const IncidentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3956,8 +4124,8 @@ export const IncidentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(IncidentProperties),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentProperties),
   }),
 ).annotate({
   identifier: "IncidentsGetResponse",
@@ -3968,7 +4136,7 @@ export interface IncidentsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -4010,10 +4178,10 @@ export interface Incident {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Incident properties */
-  properties?: IncidentProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Incident properties */
+  properties?: IncidentProperties;
 }
 export const Incident = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4021,12 +4189,12 @@ export const Incident = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(IncidentProperties),
     etag: S.optional(S.String),
+    properties: S.optional(IncidentProperties),
   }),
 ).annotate({ identifier: "Incident" }) as any as S.Schema<Incident>;
 
-/** The Incident items on this page */
+/** Array of incidents. */
 export type IncidentListValueList = Array<Incident>;
 export const IncidentListValueList = /*@__PURE__*/ S.Array(
   Incident,
@@ -4034,15 +4202,15 @@ export const IncidentListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the incidents. */
 export interface IncidentList {
-  /** The Incident items on this page */
-  value: IncidentListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of incidents. */
   nextLink?: string;
+  /** Array of incidents. */
+  value: IncidentListValueList;
 }
 export const IncidentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: IncidentListValueList,
     nextLink: S.optional(S.String),
+    value: IncidentListValueList,
   }),
 ).annotate({ identifier: "IncidentList" }) as any as S.Schema<IncidentList>;
 
@@ -4051,7 +4219,7 @@ export interface IncidentsListAlertsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4075,7 +4243,7 @@ export const IncidentsListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentsListAlertsRequest>;
 
 /** The kind of the entity */
-export type EntityKindEnum =
+export type EntityInnerKind =
   | "Account"
   | "Host"
   | "File"
@@ -4093,11 +4261,11 @@ export type EntityKindEnum =
   | "IoTDevice"
   | "SecurityAlert"
   | "Bookmark"
+  | "Mailbox"
   | "MailCluster"
   | "MailMessage"
-  | "Mailbox"
   | "SubmissionMail";
-export const EntityKindEnum = /*@__PURE__*/ S.String;
+export const EntityInnerKind = /*@__PURE__*/ S.String;
 
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
 export type SecurityAlertPropertiesAdditionalDataMap = {
@@ -4109,8 +4277,8 @@ export const SecurityAlertPropertiesAdditionalDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SecurityAlertPropertiesAdditionalDataMap>;
 
 /** The confidence level of this alert. */
-export type ConfidenceLevel = "Unknown" | "Low" | "High";
-export const ConfidenceLevel = /*@__PURE__*/ S.String;
+export type SecurityAlertPropertiesConfidenceLevel = "Unknown" | "Low" | "High";
+export const SecurityAlertPropertiesConfidenceLevel = /*@__PURE__*/ S.String;
 
 /** confidence reason item */
 export interface SecurityAlertPropertiesConfidenceReasonsItem {
@@ -4138,15 +4306,16 @@ export const SecurityAlertPropertiesConfidenceReasonsList =
   ) as any as S.Schema<SecurityAlertPropertiesConfidenceReasonsList>;
 
 /** The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. */
-export type ConfidenceScoreStatus =
+export type SecurityAlertPropertiesConfidenceScoreStatus =
   | "NotApplicable"
   | "InProcess"
   | "NotFinal"
   | "Final";
-export const ConfidenceScoreStatus = /*@__PURE__*/ S.String;
+export const SecurityAlertPropertiesConfidenceScoreStatus =
+  /*@__PURE__*/ S.String;
 
-/** The intent of the alert. */
-export type KillChainIntent =
+/** Holds the alert intent stage(s) mapping for this alert. */
+export type SecurityAlertPropertiesIntent =
   | "Unknown"
   | "Probing"
   | "Exploitation"
@@ -4161,7 +4330,7 @@ export type KillChainIntent =
   | "Exfiltration"
   | "CommandAndControl"
   | "Impact";
-export const KillChainIntent = /*@__PURE__*/ S.String;
+export const SecurityAlertPropertiesIntent = /*@__PURE__*/ S.String;
 
 /** Manual action items to take to remediate the alert. */
 export type SecurityAlertPropertiesRemediationStepsList = Array<string>;
@@ -4171,22 +4340,48 @@ export const SecurityAlertPropertiesRemediationStepsList =
   ) as any as S.Schema<SecurityAlertPropertiesRemediationStepsList>;
 
 /** The severity of the alert */
-export type AlertSeverity = "High" | "Medium" | "Low" | "Informational";
-export const AlertSeverity = /*@__PURE__*/ S.String;
+export type SecurityAlertPropertiesSeverity =
+  | "High"
+  | "Medium"
+  | "Low"
+  | "Informational";
+export const SecurityAlertPropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** The lifecycle status of the alert. */
-export type AlertStatus =
+export type SecurityAlertPropertiesStatus =
   | "Unknown"
   | "New"
   | "Resolved"
   | "Dismissed"
   | "InProgress";
-export const AlertStatus = /*@__PURE__*/ S.String;
+export const SecurityAlertPropertiesStatus = /*@__PURE__*/ S.String;
+
+/** The severity for alerts created by this alert rule. */
+export type SecurityAlertPropertiesTacticsItem =
+  | "Reconnaissance"
+  | "ResourceDevelopment"
+  | "InitialAccess"
+  | "Execution"
+  | "Persistence"
+  | "PrivilegeEscalation"
+  | "DefenseEvasion"
+  | "CredentialAccess"
+  | "Discovery"
+  | "LateralMovement"
+  | "Collection"
+  | "Exfiltration"
+  | "CommandAndControl"
+  | "Impact"
+  | "PreAttack"
+  | "ImpairProcessControl"
+  | "InhibitResponseFunction";
+export const SecurityAlertPropertiesTacticsItem = /*@__PURE__*/ S.String;
 
 /** The tactics of the alert */
-export type SecurityAlertPropertiesTacticsList = Array<AttackTactic>;
+export type SecurityAlertPropertiesTacticsList =
+  Array<SecurityAlertPropertiesTacticsItem>;
 export const SecurityAlertPropertiesTacticsList = /*@__PURE__*/ S.Array(
-  AttackTactic,
+  SecurityAlertPropertiesTacticsItem,
 ) as any as S.Schema<SecurityAlertPropertiesTacticsList>;
 
 /** The list of resource identifiers of the alert. */
@@ -4209,19 +4404,19 @@ export interface SecurityAlertProperties {
   /** Display name of the main entity being reported on. */
   compromisedEntity?: string;
   /** The confidence level of this alert. */
-  confidenceLevel?: ConfidenceLevel;
+  confidenceLevel?: SecurityAlertPropertiesConfidenceLevel;
   /** The confidence reasons */
   confidenceReasons?: SecurityAlertPropertiesConfidenceReasonsList;
   /** The confidence score of the alert. */
   confidenceScore?: number;
   /** The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. */
-  confidenceScoreStatus?: ConfidenceScoreStatus;
+  confidenceScoreStatus?: SecurityAlertPropertiesConfidenceScoreStatus;
   /** Alert description. */
   description?: string;
   /** The impact end time of the alert (the time of the last event contributing to the alert). */
   endTimeUtc?: string;
   /** Holds the alert intent stage(s) mapping for this alert. */
-  intent?: KillChainIntent;
+  intent?: SecurityAlertPropertiesIntent;
   /** The identifier of the alert inside the product which generated the alert. */
   providerAlertId?: string;
   /** The time the alert was made available for consumption. */
@@ -4235,11 +4430,11 @@ export interface SecurityAlertProperties {
   /** Manual action items to take to remediate the alert. */
   remediationSteps?: SecurityAlertPropertiesRemediationStepsList;
   /** The severity of the alert */
-  severity?: AlertSeverity;
+  severity?: SecurityAlertPropertiesSeverity;
   /** The impact start time of the alert (the time of the first event contributing to the alert). */
   startTimeUtc?: string;
   /** The lifecycle status of the alert. */
-  status?: AlertStatus;
+  status?: SecurityAlertPropertiesStatus;
   /** Holds the product identifier of the alert for the product. */
   systemAlertId?: string;
   /** The tactics of the alert */
@@ -4260,22 +4455,24 @@ export const SecurityAlertProperties = /*@__PURE__*/ S.suspend(() =>
     alertDisplayName: S.optional(S.String),
     alertType: S.optional(S.String),
     compromisedEntity: S.optional(S.String),
-    confidenceLevel: S.optional(ConfidenceLevel),
+    confidenceLevel: S.optional(SecurityAlertPropertiesConfidenceLevel),
     confidenceReasons: S.optional(SecurityAlertPropertiesConfidenceReasonsList),
     confidenceScore: S.optional(S.Number),
-    confidenceScoreStatus: S.optional(ConfidenceScoreStatus),
+    confidenceScoreStatus: S.optional(
+      SecurityAlertPropertiesConfidenceScoreStatus,
+    ),
     description: S.optional(S.String),
     endTimeUtc: S.optional(S.String),
-    intent: S.optional(KillChainIntent),
+    intent: S.optional(SecurityAlertPropertiesIntent),
     providerAlertId: S.optional(S.String),
     processingEndTime: S.optional(S.String),
     productComponentName: S.optional(S.String),
     productName: S.optional(S.String),
     productVersion: S.optional(S.String),
     remediationSteps: S.optional(SecurityAlertPropertiesRemediationStepsList),
-    severity: S.optional(AlertSeverity),
+    severity: S.optional(SecurityAlertPropertiesSeverity),
     startTimeUtc: S.optional(S.String),
-    status: S.optional(AlertStatus),
+    status: S.optional(SecurityAlertPropertiesStatus),
     systemAlertId: S.optional(S.String),
     tactics: S.optional(SecurityAlertPropertiesTacticsList),
     timeGenerated: S.optional(S.String),
@@ -4290,7 +4487,7 @@ export const SecurityAlertProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAlertProperties>;
 
 /** Represents a security alert entity. */
-export interface SecurityAlert {
+export interface IncidentAlertListValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4299,26 +4496,28 @@ export interface SecurityAlert {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: EntityKindEnum;
+  /** The kind of the entity. */
+  kind: EntityInnerKind;
   /** SecurityAlert entity properties */
   properties?: SecurityAlertProperties;
 }
-export const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
+export const IncidentAlertListValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: EntityKindEnum,
+    kind: EntityInnerKind,
     properties: S.optional(SecurityAlertProperties),
   }),
-).annotate({ identifier: "SecurityAlert" }) as any as S.Schema<SecurityAlert>;
+).annotate({
+  identifier: "IncidentAlertListValueItem",
+}) as any as S.Schema<IncidentAlertListValueItem>;
 
 /** Array of incident alerts. */
-export type IncidentAlertListValueList = Array<SecurityAlert>;
+export type IncidentAlertListValueList = Array<IncidentAlertListValueItem>;
 export const IncidentAlertListValueList = /*@__PURE__*/ S.Array(
-  SecurityAlert,
+  IncidentAlertListValueItem,
 ) as any as S.Schema<IncidentAlertListValueList>;
 
 /** List of incident alerts. */
@@ -4339,7 +4538,7 @@ export interface IncidentsListBookmarksRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4372,11 +4571,72 @@ export const HuntingBookmarkPropertiesAdditionalDataMap =
     S.Unknown,
   ) as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
 
+/** User information that made some action */
+export interface HuntingBookmarkPropertiesCreatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const HuntingBookmarkPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "HuntingBookmarkPropertiesCreatedBy",
+}) as any as S.Schema<HuntingBookmarkPropertiesCreatedBy>;
+
 /** List of labels relevant to this bookmark */
 export type HuntingBookmarkPropertiesLabelsList = Array<string>;
 export const HuntingBookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
+
+/** User information that made some action */
+export interface HuntingBookmarkPropertiesUpdatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const HuntingBookmarkPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "HuntingBookmarkPropertiesUpdatedBy",
+}) as any as S.Schema<HuntingBookmarkPropertiesUpdatedBy>;
+
+/** Describes related incident information for the bookmark */
+export interface HuntingBookmarkPropertiesIncidentInfo {
+  /** Incident Id */
+  incidentId?: string;
+  /** The severity of the incident */
+  severity?: IncidentSeverityEnum;
+  /** The title of the incident */
+  title?: string;
+  /** Relation Name */
+  relationName?: string;
+}
+export const HuntingBookmarkPropertiesIncidentInfo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      incidentId: S.optional(S.String),
+      severity: S.optional(IncidentSeverityEnum),
+      title: S.optional(S.String),
+      relationName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "HuntingBookmarkPropertiesIncidentInfo",
+}) as any as S.Schema<HuntingBookmarkPropertiesIncidentInfo>;
 
 /** Describes bookmark properties */
 export interface HuntingBookmarkProperties {
@@ -4386,8 +4646,8 @@ export interface HuntingBookmarkProperties {
   friendlyName?: string;
   /** The time the bookmark was created */
   created?: string;
-  /** Describes a user that created the bookmark */
-  createdBy?: UserInfo;
+  /** User information that made some action */
+  createdBy?: HuntingBookmarkPropertiesCreatedBy;
   /** The display name of the bookmark */
   displayName: string;
   /** The time of the event */
@@ -4402,17 +4662,17 @@ export interface HuntingBookmarkProperties {
   queryResult?: string;
   /** The last time the bookmark was updated */
   updated?: string;
-  /** Describes a user that updated the bookmark */
-  updatedBy?: UserInfo;
-  /** Describes an incident that relates to bookmark */
-  incidentInfo?: IncidentInfo;
+  /** User information that made some action */
+  updatedBy?: HuntingBookmarkPropertiesUpdatedBy;
+  /** Describes related incident information for the bookmark */
+  incidentInfo?: HuntingBookmarkPropertiesIncidentInfo;
 }
 export const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(HuntingBookmarkPropertiesAdditionalDataMap),
     friendlyName: S.optional(S.String),
     created: S.optional(S.String),
-    createdBy: S.optional(UserInfo),
+    createdBy: S.optional(HuntingBookmarkPropertiesCreatedBy),
     displayName: S.String,
     eventTime: S.optional(S.String),
     labels: S.optional(HuntingBookmarkPropertiesLabelsList),
@@ -4420,15 +4680,15 @@ export const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(UserInfo),
-    incidentInfo: S.optional(IncidentInfo),
+    updatedBy: S.optional(HuntingBookmarkPropertiesUpdatedBy),
+    incidentInfo: S.optional(HuntingBookmarkPropertiesIncidentInfo),
   }),
 ).annotate({
   identifier: "HuntingBookmarkProperties",
 }) as any as S.Schema<HuntingBookmarkProperties>;
 
 /** Represents a Hunting bookmark entity. */
-export interface HuntingBookmark {
+export interface IncidentBookmarkListValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4437,28 +4697,29 @@ export interface HuntingBookmark {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: EntityKindEnum;
+  /** The kind of the entity. */
+  kind: EntityInnerKind;
   /** HuntingBookmark entity properties */
   properties?: HuntingBookmarkProperties;
 }
-export const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
+export const IncidentBookmarkListValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: EntityKindEnum,
+    kind: EntityInnerKind,
     properties: S.optional(HuntingBookmarkProperties),
   }),
 ).annotate({
-  identifier: "HuntingBookmark",
-}) as any as S.Schema<HuntingBookmark>;
+  identifier: "IncidentBookmarkListValueItem",
+}) as any as S.Schema<IncidentBookmarkListValueItem>;
 
 /** Array of incident bookmarks. */
-export type IncidentBookmarkListValueList = Array<HuntingBookmark>;
+export type IncidentBookmarkListValueList =
+  Array<IncidentBookmarkListValueItem>;
 export const IncidentBookmarkListValueList = /*@__PURE__*/ S.Array(
-  HuntingBookmark,
+  IncidentBookmarkListValueItem,
 ) as any as S.Schema<IncidentBookmarkListValueList>;
 
 /** List of incident bookmarks. */
@@ -4479,7 +4740,7 @@ export interface IncidentsListEntitiesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4503,7 +4764,7 @@ export const IncidentsListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentsListEntitiesRequest>;
 
 /** Specific entity. */
-export interface Entity {
+export interface IncidentEntitiesResponseEntitiesItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4512,36 +4773,65 @@ export interface Entity {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: EntityKindEnum;
+  /** The kind of the entity. */
+  kind: EntityInnerKind;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: EntityKindEnum,
-  }),
-).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
+export const IncidentEntitiesResponseEntitiesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      kind: EntityInnerKind,
+    }),
+).annotate({
+  identifier: "IncidentEntitiesResponseEntitiesItem",
+}) as any as S.Schema<IncidentEntitiesResponseEntitiesItem>;
 
 /** Array of the incident related entities. */
-export type IncidentEntitiesResponseEntitiesList = Array<Entity>;
+export type IncidentEntitiesResponseEntitiesList =
+  Array<IncidentEntitiesResponseEntitiesItem>;
 export const IncidentEntitiesResponseEntitiesList = /*@__PURE__*/ S.Array(
-  Entity,
+  IncidentEntitiesResponseEntitiesItem,
 ) as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
+
+/** The kind of the entity */
+export type IncidentEntitiesResultsMetadataEntityKind =
+  | "Account"
+  | "Host"
+  | "File"
+  | "AzureResource"
+  | "CloudApplication"
+  | "DnsResolution"
+  | "FileHash"
+  | "Ip"
+  | "Malware"
+  | "Process"
+  | "RegistryKey"
+  | "RegistryValue"
+  | "SecurityGroup"
+  | "Url"
+  | "IoTDevice"
+  | "SecurityAlert"
+  | "Bookmark"
+  | "Mailbox"
+  | "MailCluster"
+  | "MailMessage"
+  | "SubmissionMail";
+export const IncidentEntitiesResultsMetadataEntityKind = /*@__PURE__*/ S.String;
 
 /** Information of a specific aggregation in the incident related entities result. */
 export interface IncidentEntitiesResultsMetadata {
-  /** The kind of the aggregated entity. */
-  entityKind: EntityKindEnum;
   /** Total number of aggregations of the given kind in the incident related entities result. */
   count: number;
+  /** The kind of the entity */
+  entityKind: IncidentEntitiesResultsMetadataEntityKind;
 }
 export const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    entityKind: EntityKindEnum,
     count: S.Number,
+    entityKind: IncidentEntitiesResultsMetadataEntityKind,
   }),
 ).annotate({
   identifier: "IncidentEntitiesResultsMetadata",
@@ -4577,10 +4867,11 @@ export interface IncidentsRunPlaybookRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  /** The incident identifier. */
+  /** Incident ID */
   incidentIdentifier: string;
+  /** The tenant id of the playbook resource. */
   tenantId?: string;
-  /** Related Analytic rule resource id */
+  /** The resource id of the playbook resource. */
   logicAppsResourceId: string;
 }
 export const IncidentsRunPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
@@ -4614,26 +4905,71 @@ export const IncidentsRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
 export type IncidentTaskStatus = "New" | "Completed";
 export const IncidentTaskStatus = /*@__PURE__*/ S.String;
 
+/** Information on the client (user or application) that made some action */
+export interface IncidentTaskPropertiesInputCreatedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentTaskPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "IncidentTaskPropertiesInputCreatedBy",
+}) as any as S.Schema<IncidentTaskPropertiesInputCreatedBy>;
+
+/** Information on the client (user or application) that made some action */
+export interface IncidentTaskPropertiesInputLastModifiedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentTaskPropertiesInputLastModifiedBy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "IncidentTaskPropertiesInputLastModifiedBy",
+  }) as any as S.Schema<IncidentTaskPropertiesInputLastModifiedBy>;
+
 /** Describes the properties of an incident task */
 export interface IncidentTaskPropertiesInput {
   /** The title of the task */
   title: string;
   /** The description of the task */
   description?: string;
-  /** The status of the task */
   status: IncidentTaskStatus | (string & {});
   /** Information on the client (user or application) that made some action */
-  createdBy?: ClientInfo;
+  createdBy?: IncidentTaskPropertiesInputCreatedBy;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: ClientInfo;
+  lastModifiedBy?: IncidentTaskPropertiesInputLastModifiedBy;
 }
 export const IncidentTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
     status: IncidentTaskStatus,
-    createdBy: S.optional(ClientInfo),
-    lastModifiedBy: S.optional(ClientInfo),
+    createdBy: S.optional(IncidentTaskPropertiesInputCreatedBy),
+    lastModifiedBy: S.optional(IncidentTaskPropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentTaskPropertiesInput",
@@ -4644,16 +4980,15 @@ export interface IncidentTasksCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
   /** Incident task ID */
   incidentTaskId: string;
-  /** Describes the properties of an incident task */
-  properties: IncidentTaskPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  properties: IncidentTaskPropertiesInput;
 }
 export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4662,8 +4997,8 @@ export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     incidentId: S.String.pipe(T.Label()),
     incidentTaskId: S.String.pipe(T.Label()),
-    properties: IncidentTaskPropertiesInput,
     etag: S.optional(S.String),
+    properties: IncidentTaskPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4676,22 +5011,66 @@ export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentTasksCreateOrUpdateRequest",
 }) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>;
 
+/** Information on the client (user or application) that made some action */
+export interface IncidentTaskPropertiesCreatedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentTaskPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.String),
+    userPrincipalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IncidentTaskPropertiesCreatedBy",
+}) as any as S.Schema<IncidentTaskPropertiesCreatedBy>;
+
+/** Information on the client (user or application) that made some action */
+export interface IncidentTaskPropertiesLastModifiedBy {
+  /** The email of the client. */
+  email?: string;
+  /** The name of the client. */
+  name?: string;
+  /** The object id of the client. */
+  objectId?: string;
+  /** The user principal name of the client. */
+  userPrincipalName?: string;
+}
+export const IncidentTaskPropertiesLastModifiedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      objectId: S.optional(S.String),
+      userPrincipalName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "IncidentTaskPropertiesLastModifiedBy",
+}) as any as S.Schema<IncidentTaskPropertiesLastModifiedBy>;
+
 /** Describes the properties of an incident task */
 export interface IncidentTaskProperties {
   /** The title of the task */
   title: string;
   /** The description of the task */
   description?: string;
-  /** The status of the task */
   status: IncidentTaskStatus;
   /** The time the task was created */
   createdTimeUtc?: string;
   /** The last time the task was updated */
   lastModifiedTimeUtc?: string;
   /** Information on the client (user or application) that made some action */
-  createdBy?: ClientInfo;
+  createdBy?: IncidentTaskPropertiesCreatedBy;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: ClientInfo;
+  lastModifiedBy?: IncidentTaskPropertiesLastModifiedBy;
 }
 export const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4700,8 +5079,8 @@ export const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
     status: IncidentTaskStatus,
     createdTimeUtc: S.optional(S.String),
     lastModifiedTimeUtc: S.optional(S.String),
-    createdBy: S.optional(ClientInfo),
-    lastModifiedBy: S.optional(ClientInfo),
+    createdBy: S.optional(IncidentTaskPropertiesCreatedBy),
+    lastModifiedBy: S.optional(IncidentTaskPropertiesLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentTaskProperties",
@@ -4716,10 +5095,9 @@ export interface IncidentTasksCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Describes the properties of an incident task */
-  properties: IncidentTaskProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: IncidentTaskProperties;
 }
 export const IncidentTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4727,8 +5105,8 @@ export const IncidentTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: IncidentTaskProperties,
     etag: S.optional(S.String),
+    properties: IncidentTaskProperties,
   }),
 ).annotate({
   identifier: "IncidentTasksCreateOrUpdateResponse",
@@ -4739,7 +5117,7 @@ export interface IncidentTasksDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4777,7 +5155,7 @@ export interface IncidentTasksGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4812,10 +5190,9 @@ export interface IncidentTasksGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Describes the properties of an incident task */
-  properties: IncidentTaskProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: IncidentTaskProperties;
 }
 export const IncidentTasksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4823,8 +5200,8 @@ export const IncidentTasksGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: IncidentTaskProperties,
     etag: S.optional(S.String),
+    properties: IncidentTaskProperties,
   }),
 ).annotate({
   identifier: "IncidentTasksGetResponse",
@@ -4835,7 +5212,7 @@ export interface IncidentTasksListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
@@ -4868,10 +5245,9 @@ export interface IncidentTask {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Describes the properties of an incident task */
-  properties: IncidentTaskProperties;
   /** Etag of the azure resource */
   etag?: string;
+  properties: IncidentTaskProperties;
 }
 export const IncidentTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4879,12 +5255,11 @@ export const IncidentTask = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: IncidentTaskProperties,
     etag: S.optional(S.String),
+    properties: IncidentTaskProperties,
   }),
 ).annotate({ identifier: "IncidentTask" }) as any as S.Schema<IncidentTask>;
 
-/** List of incident tasks. */
 export type IncidentTaskListValueList = Array<IncidentTask>;
 export const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
   IncidentTask,
@@ -4892,9 +5267,7 @@ export const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
 
 /** List of incident tasks */
 export interface IncidentTaskList {
-  /** List of incident tasks. */
   value?: IncidentTaskListValueList;
-  /** The link to the next page of items */
   nextLink?: string;
 }
 export const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
@@ -4906,41 +5279,48 @@ export const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentTaskList",
 }) as any as S.Schema<IncidentTaskList>;
 
-/** Providers for the solution content item */
-export type MetadataPropertiesProvidersList = Array<string>;
-export const MetadataPropertiesProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataPropertiesProvidersList>;
+/** Operator used for list of dependencies in criteria array. */
+export type MetadataPropertiesDependenciesOperator = "AND" | "OR";
+export const MetadataPropertiesDependenciesOperator = /*@__PURE__*/ S.String;
 
-/** the tactics the resource covers */
-export type MetadataPropertiesThreatAnalysisTacticsList = Array<string>;
-export const MetadataPropertiesThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetadataPropertiesThreatAnalysisTacticsList>;
+/** This is the list of dependencies we must fulfill, according to the AND/OR operator */
+export type MetadataPropertiesDependenciesCriteriaList =
+  Array<MetadataDependencies>;
+export const MetadataPropertiesDependenciesCriteriaList = /*@__PURE__*/ S.Array(
+  MetadataDependencies,
+) as any as S.Schema<MetadataPropertiesDependenciesCriteriaList>;
 
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type MetadataPropertiesThreatAnalysisTechniquesList = Array<string>;
-export const MetadataPropertiesThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetadataPropertiesThreatAnalysisTechniquesList>;
-
-/** preview image file names. These will be taken from the solution artifacts */
-export type MetadataPropertiesPreviewImagesList = Array<string>;
-export const MetadataPropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataPropertiesPreviewImagesList>;
-
-/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type MetadataPropertiesPreviewImagesDarkList = Array<string>;
-export const MetadataPropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataPropertiesPreviewImagesDarkList>;
+/** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
+export interface MetadataPropertiesDependencies {
+  /** Id of the content item we depend on */
+  contentId?: string;
+  /** Type of the content item we depend on */
+  kind?: string;
+  /** Version of the the content item we depend on. Can be blank, * or missing to indicate any version fulfills the dependency. If version does not match our defined numeric format then an exact match is required. */
+  version?: string;
+  /** Name of the content item */
+  name?: string;
+  /** Operator used for list of dependencies in criteria array. */
+  operator?: MetadataPropertiesDependenciesOperator | (string & {});
+  /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
+  criteria?: MetadataPropertiesDependenciesCriteriaList;
+}
+export const MetadataPropertiesDependencies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentId: S.optional(S.String),
+    kind: S.optional(S.String),
+    version: S.optional(S.String),
+    name: S.optional(S.String),
+    operator: S.optional(MetadataPropertiesDependenciesOperator),
+    criteria: S.optional(MetadataPropertiesDependenciesCriteriaList),
+  }),
+).annotate({
+  identifier: "MetadataPropertiesDependencies",
+}) as any as S.Schema<MetadataPropertiesDependencies>;
 
 /** Metadata property bag. */
 export interface MetadataProperties {
-  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies. If an active content item is made from a template, both will have the same contentId. */
+  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
   contentId?: string;
   /** Full parent resource ID of the content item the metadata is for. This is the full resource ID including the scope (subscription and resource group) */
   parentId: string;
@@ -4954,15 +5334,15 @@ export interface MetadataProperties {
   author?: MetadataAuthor;
   /** Support information for the metadata - type, name, contact information */
   support?: MetadataSupport;
-  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats. */
-  dependencies?: MetadataDependencies;
+  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
+  dependencies?: MetadataPropertiesDependencies;
   /** Categories for the solution content item */
   categories?: MetadataCategories;
   /** Providers for the solution content item */
-  providers?: MetadataPropertiesProvidersList;
-  /** first publish date of solution content item */
+  providers?: MetadataProviders;
+  /** first publish date solution content item */
   firstPublishDate?: string;
-  /** last publish date of solution content item */
+  /** last publish date for the solution content item */
   lastPublishDate?: string;
   /** The custom version of the content. A optional free text */
   customVersion?: string;
@@ -4971,13 +5351,13 @@ export interface MetadataProperties {
   /** the icon identifier. this id can later be fetched from the solution template */
   icon?: string;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: MetadataPropertiesThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: MetadataPropertiesThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** preview image file names. These will be taken from the solution artifacts */
-  previewImages?: MetadataPropertiesPreviewImagesList;
+  previewImages?: MetadataPreviewImages;
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-  previewImagesDark?: MetadataPropertiesPreviewImagesDarkList;
+  previewImagesDark?: MetadataPreviewImagesDark;
 }
 export const MetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4988,22 +5368,18 @@ export const MetadataProperties = /*@__PURE__*/ S.suspend(() =>
     source: S.optional(MetadataSource),
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
-    dependencies: S.optional(MetadataDependencies),
+    dependencies: S.optional(MetadataPropertiesDependencies),
     categories: S.optional(MetadataCategories),
-    providers: S.optional(MetadataPropertiesProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     customVersion: S.optional(S.String),
     contentSchemaVersion: S.optional(S.String),
     icon: S.optional(S.String),
-    threatAnalysisTactics: S.optional(
-      MetadataPropertiesThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      MetadataPropertiesThreatAnalysisTechniquesList,
-    ),
-    previewImages: S.optional(MetadataPropertiesPreviewImagesList),
-    previewImagesDark: S.optional(MetadataPropertiesPreviewImagesDarkList),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
+    previewImages: S.optional(MetadataPreviewImages),
+    previewImagesDark: S.optional(MetadataPreviewImagesDark),
   }),
 ).annotate({
   identifier: "MetadataProperties",
@@ -5014,14 +5390,14 @@ export interface MetadataCreateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Metadata name. */
   metadataName: string;
-  /** Metadata properties */
-  properties?: MetadataProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
 }
 export const MetadataCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5029,8 +5405,8 @@ export const MetadataCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     metadataName: S.String.pipe(T.Label()),
-    properties: S.optional(MetadataProperties),
     etag: S.optional(S.String),
+    properties: S.optional(MetadataProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5052,10 +5428,10 @@ export interface MetadataCreateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata properties */
-  properties?: MetadataProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
 }
 export const MetadataCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5063,8 +5439,8 @@ export const MetadataCreateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(MetadataProperties),
     etag: S.optional(S.String),
+    properties: S.optional(MetadataProperties),
   }),
 ).annotate({
   identifier: "MetadataCreateResponse",
@@ -5075,7 +5451,7 @@ export interface MetadataDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Metadata name. */
   metadataName: string;
@@ -5110,7 +5486,7 @@ export interface MetadataGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Metadata name. */
   metadataName: string;
@@ -5142,10 +5518,10 @@ export interface MetadataGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata properties */
-  properties?: MetadataProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
 }
 export const MetadataGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5153,8 +5529,8 @@ export const MetadataGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(MetadataProperties),
     etag: S.optional(S.String),
+    properties: S.optional(MetadataProperties),
   }),
 ).annotate({
   identifier: "MetadataGetResponse",
@@ -5165,7 +5541,7 @@ export interface MetadataListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -5207,10 +5583,10 @@ export interface MetadataModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata properties */
-  properties?: MetadataProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
 }
 export const MetadataModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5218,12 +5594,12 @@ export const MetadataModel = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(MetadataProperties),
     etag: S.optional(S.String),
+    properties: S.optional(MetadataProperties),
   }),
 ).annotate({ identifier: "MetadataModel" }) as any as S.Schema<MetadataModel>;
 
-/** The MetadataModel items on this page */
+/** Array of metadata. */
 export type MetadataListValueList = Array<MetadataModel>;
 export const MetadataListValueList = /*@__PURE__*/ S.Array(
   MetadataModel,
@@ -5231,9 +5607,9 @@ export const MetadataListValueList = /*@__PURE__*/ S.Array(
 
 /** List of all the metadata. */
 export interface MetadataList {
-  /** The MetadataModel items on this page */
+  /** Array of metadata. */
   value: MetadataListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next page of metadata. */
   nextLink?: string;
 }
 export const MetadataList = /*@__PURE__*/ S.suspend(() =>
@@ -5243,42 +5619,50 @@ export const MetadataList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataList" }) as any as S.Schema<MetadataList>;
 
-/** Providers for the solution content item */
-export type MetadataPropertiesPatchProvidersList = Array<string>;
-export const MetadataPropertiesPatchProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataPropertiesPatchProvidersList>;
+/** Operator used for list of dependencies in criteria array. */
+export type MetadataPropertiesPatchDependenciesOperator = "AND" | "OR";
+export const MetadataPropertiesPatchDependenciesOperator =
+  /*@__PURE__*/ S.String;
 
-/** the tactics the resource covers */
-export type MetadataPropertiesPatchThreatAnalysisTacticsList = Array<string>;
-export const MetadataPropertiesPatchThreatAnalysisTacticsList =
+/** This is the list of dependencies we must fulfill, according to the AND/OR operator */
+export type MetadataPropertiesPatchDependenciesCriteriaList =
+  Array<MetadataDependencies>;
+export const MetadataPropertiesPatchDependenciesCriteriaList =
   /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTacticsList>;
+    MetadataDependencies,
+  ) as any as S.Schema<MetadataPropertiesPatchDependenciesCriteriaList>;
 
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type MetadataPropertiesPatchThreatAnalysisTechniquesList = Array<string>;
-export const MetadataPropertiesPatchThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTechniquesList>;
-
-/** preview image file names. These will be taken from the solution artifacts */
-export type MetadataPropertiesPatchPreviewImagesList = Array<string>;
-export const MetadataPropertiesPatchPreviewImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetadataPropertiesPatchPreviewImagesList>;
-
-/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type MetadataPropertiesPatchPreviewImagesDarkList = Array<string>;
-export const MetadataPropertiesPatchPreviewImagesDarkList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetadataPropertiesPatchPreviewImagesDarkList>;
+/** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
+export interface MetadataPropertiesPatchDependencies {
+  /** Id of the content item we depend on */
+  contentId?: string;
+  /** Type of the content item we depend on */
+  kind?: string;
+  /** Version of the the content item we depend on. Can be blank, * or missing to indicate any version fulfills the dependency. If version does not match our defined numeric format then an exact match is required. */
+  version?: string;
+  /** Name of the content item */
+  name?: string;
+  /** Operator used for list of dependencies in criteria array. */
+  operator?: MetadataPropertiesPatchDependenciesOperator | (string & {});
+  /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
+  criteria?: MetadataPropertiesPatchDependenciesCriteriaList;
+}
+export const MetadataPropertiesPatchDependencies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentId: S.optional(S.String),
+    kind: S.optional(S.String),
+    version: S.optional(S.String),
+    name: S.optional(S.String),
+    operator: S.optional(MetadataPropertiesPatchDependenciesOperator),
+    criteria: S.optional(MetadataPropertiesPatchDependenciesCriteriaList),
+  }),
+).annotate({
+  identifier: "MetadataPropertiesPatchDependencies",
+}) as any as S.Schema<MetadataPropertiesPatchDependencies>;
 
 /** Metadata property bag for patch requests. This is the same as the MetadataProperties, but with nothing required */
 export interface MetadataPropertiesPatch {
-  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies. If an active content item is made from a template, both will have the same contentId. */
+  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
   contentId?: string;
   /** Full parent resource ID of the content item the metadata is for. This is the full resource ID including the scope (subscription and resource group) */
   parentId?: string;
@@ -5292,15 +5676,15 @@ export interface MetadataPropertiesPatch {
   author?: MetadataAuthor;
   /** Support information for the metadata - type, name, contact information */
   support?: MetadataSupport;
-  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats. */
-  dependencies?: MetadataDependencies;
+  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
+  dependencies?: MetadataPropertiesPatchDependencies;
   /** Categories for the solution content item */
   categories?: MetadataCategories;
   /** Providers for the solution content item */
-  providers?: MetadataPropertiesPatchProvidersList;
-  /** first publish date of solution content item */
+  providers?: MetadataProviders;
+  /** first publish date solution content item */
   firstPublishDate?: string;
-  /** last publish date of solution content item */
+  /** last publish date for the solution content item */
   lastPublishDate?: string;
   /** The custom version of the content. A optional free text */
   customVersion?: string;
@@ -5309,13 +5693,13 @@ export interface MetadataPropertiesPatch {
   /** the icon identifier. this id can later be fetched from the solution template */
   icon?: string;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: MetadataPropertiesPatchThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: MetadataPropertiesPatchThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** preview image file names. These will be taken from the solution artifacts */
-  previewImages?: MetadataPropertiesPatchPreviewImagesList;
+  previewImages?: MetadataPreviewImages;
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-  previewImagesDark?: MetadataPropertiesPatchPreviewImagesDarkList;
+  previewImagesDark?: MetadataPreviewImagesDark;
 }
 export const MetadataPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5326,22 +5710,18 @@ export const MetadataPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
     source: S.optional(MetadataSource),
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
-    dependencies: S.optional(MetadataDependencies),
+    dependencies: S.optional(MetadataPropertiesPatchDependencies),
     categories: S.optional(MetadataCategories),
-    providers: S.optional(MetadataPropertiesPatchProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     customVersion: S.optional(S.String),
     contentSchemaVersion: S.optional(S.String),
     icon: S.optional(S.String),
-    threatAnalysisTactics: S.optional(
-      MetadataPropertiesPatchThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      MetadataPropertiesPatchThreatAnalysisTechniquesList,
-    ),
-    previewImages: S.optional(MetadataPropertiesPatchPreviewImagesList),
-    previewImagesDark: S.optional(MetadataPropertiesPatchPreviewImagesDarkList),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
+    previewImages: S.optional(MetadataPreviewImages),
+    previewImagesDark: S.optional(MetadataPreviewImagesDark),
   }),
 ).annotate({
   identifier: "MetadataPropertiesPatch",
@@ -5352,7 +5732,7 @@ export interface MetadataUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Metadata name. */
   metadataName: string;
@@ -5390,10 +5770,10 @@ export interface MetadataUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata properties */
-  properties?: MetadataProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
 }
 export const MetadataUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5401,8 +5781,8 @@ export const MetadataUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(MetadataProperties),
     etag: S.optional(S.String),
+    properties: S.optional(MetadataProperties),
   }),
 ).annotate({
   identifier: "MetadataUpdateResponse",
@@ -5489,7 +5869,7 @@ export interface ProductPackageGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** package Id */
   packageId: string;
@@ -5512,49 +5892,28 @@ export const ProductPackageGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPackageGetRequest",
 }) as any as S.Schema<ProductPackageGetRequest>;
 
-/** Providers for the package item */
-export type ProductPackagePropertiesProvidersList = Array<string>;
-export const ProductPackagePropertiesProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductPackagePropertiesProvidersList>;
-
-/** the tactics the resource covers */
-export type ProductPackagePropertiesThreatAnalysisTacticsList = Array<string>;
-export const ProductPackagePropertiesThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductPackagePropertiesThreatAnalysisTacticsList>;
-
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type ProductPackagePropertiesThreatAnalysisTechniquesList =
-  Array<string>;
-export const ProductPackagePropertiesThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductPackagePropertiesThreatAnalysisTechniquesList>;
-
 /** Describes package properties */
 export interface ProductPackageProperties {
   /** The content id of the package */
-  contentId?: string;
+  contentId: string;
   /** Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package */
   contentProductId?: string;
   /** The package kind */
-  contentKind?: PackageKind;
+  contentKind: MetadataPackageKind;
   /** The version of the content schema. */
   contentSchemaVersion?: string;
   /** Flag indicates if this is a newly published package. */
-  isNew?: Flag;
+  isNew?: MetadataTrueFalseFlag;
   /** Flag indicates if this package is in preview. */
-  isPreview?: Flag;
+  isPreview?: MetadataTrueFalseFlag;
   /** Flag indicates if this package is among the featured list. */
-  isFeatured?: Flag;
+  isFeatured?: MetadataTrueFalseFlag;
   /** Flag indicates if this template is deprecated */
-  isDeprecated?: Flag;
+  isDeprecated?: MetadataTrueFalseFlag;
   /** the latest version number of the package */
-  version?: string;
+  version: string;
   /** The display name of the package */
-  displayName?: string;
+  displayName: string;
   /** The description of the package */
   description?: string;
   /** The publisher display name of the package */
@@ -5568,7 +5927,7 @@ export interface ProductPackageProperties {
   /** The support tier of the package */
   dependencies?: MetadataDependencies;
   /** Providers for the package item */
-  providers?: ProductPackagePropertiesProvidersList;
+  providers?: MetadataProviders;
   /** first publish date package item */
   firstPublishDate?: string;
   /** last publish date for the package item */
@@ -5576,12 +5935,12 @@ export interface ProductPackageProperties {
   /** The categories of the package */
   categories?: MetadataCategories;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: ProductPackagePropertiesThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: ProductPackagePropertiesThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
-  /** The version of the installed package, null or absent means not installed. */
+  /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices. Can also be any string, but then we cannot guarantee any version checks */
   installedVersion?: string;
   /** The metadata resource id. */
   metadataResourceId?: string;
@@ -5590,32 +5949,28 @@ export interface ProductPackageProperties {
 }
 export const ProductPackageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentId: S.optional(S.String),
+    contentId: S.String,
     contentProductId: S.optional(S.String),
-    contentKind: S.optional(PackageKind),
+    contentKind: MetadataPackageKind,
     contentSchemaVersion: S.optional(S.String),
-    isNew: S.optional(Flag),
-    isPreview: S.optional(Flag),
-    isFeatured: S.optional(Flag),
-    isDeprecated: S.optional(Flag),
-    version: S.optional(S.String),
-    displayName: S.optional(S.String),
+    isNew: S.optional(MetadataTrueFalseFlag),
+    isPreview: S.optional(MetadataTrueFalseFlag),
+    isFeatured: S.optional(MetadataTrueFalseFlag),
+    isDeprecated: S.optional(MetadataTrueFalseFlag),
+    version: S.String,
+    displayName: S.String,
     description: S.optional(S.String),
     publisherDisplayName: S.optional(S.String),
     source: S.optional(MetadataSource),
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
     dependencies: S.optional(MetadataDependencies),
-    providers: S.optional(ProductPackagePropertiesProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     categories: S.optional(MetadataCategories),
-    threatAnalysisTactics: S.optional(
-      ProductPackagePropertiesThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      ProductPackagePropertiesThreatAnalysisTechniquesList,
-    ),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
     icon: S.optional(S.String),
     installedVersion: S.optional(S.String),
     metadataResourceId: S.optional(S.String),
@@ -5634,10 +5989,10 @@ export interface ProductPackageGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** package properties */
-  properties?: ProductPackageProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: ProductPackageProperties;
 }
 export const ProductPackageGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5645,8 +6000,8 @@ export const ProductPackageGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ProductPackageProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ProductPackageProperties),
   }),
 ).annotate({
   identifier: "ProductPackageGetResponse",
@@ -5657,7 +6012,7 @@ export interface ProductPackagesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -5702,10 +6057,10 @@ export interface ProductPackageModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** package properties */
-  properties?: ProductPackageProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** package properties */
+  properties?: ProductPackageProperties;
 }
 export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5713,14 +6068,14 @@ export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ProductPackageProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ProductPackageProperties),
   }),
 ).annotate({
   identifier: "ProductPackageModel",
 }) as any as S.Schema<ProductPackageModel>;
 
-/** The ProductPackageModel items on this page */
+/** Array of packages. */
 export type ProductPackageListValueList = Array<ProductPackageModel>;
 export const ProductPackageListValueList = /*@__PURE__*/ S.Array(
   ProductPackageModel,
@@ -5728,15 +6083,15 @@ export const ProductPackageListValueList = /*@__PURE__*/ S.Array(
 
 /** List available packages. */
 export interface ProductPackageList {
-  /** The ProductPackageModel items on this page */
-  value: ProductPackageListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of packages. */
   nextLink?: string;
+  /** Array of packages. */
+  value: ProductPackageListValueList;
 }
 export const ProductPackageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: ProductPackageListValueList,
     nextLink: S.optional(S.String),
+    value: ProductPackageListValueList,
   }),
 ).annotate({
   identifier: "ProductPackageList",
@@ -5770,56 +6125,22 @@ export const ProductTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductTemplateGetRequest",
 }) as any as S.Schema<ProductTemplateGetRequest>;
 
-/** Providers for the content item */
-export type ProductTemplatePropertiesProvidersList = Array<string>;
-export const ProductTemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductTemplatePropertiesProvidersList>;
-
-/** the tactics the resource covers */
-export type ProductTemplatePropertiesThreatAnalysisTacticsList = Array<string>;
-export const ProductTemplatePropertiesThreatAnalysisTacticsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTacticsList>;
-
-/** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type ProductTemplatePropertiesThreatAnalysisTechniquesList =
-  Array<string>;
-export const ProductTemplatePropertiesThreatAnalysisTechniquesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTechniquesList>;
-
-/** preview image file names. These will be taken from the solution artifacts */
-export type ProductTemplatePropertiesPreviewImagesList = Array<string>;
-export const ProductTemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductTemplatePropertiesPreviewImagesList>;
-
-/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type ProductTemplatePropertiesPreviewImagesDarkList = Array<string>;
-export const ProductTemplatePropertiesPreviewImagesDarkList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProductTemplatePropertiesPreviewImagesDarkList>;
-
 /** Template property bag. */
 export interface ProductTemplateProperties {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
-  contentId?: string;
+  contentId: string;
   /** Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template */
   contentProductId?: string;
   /** Version of the package. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
   packageVersion?: string;
   /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
-  version?: string;
+  version: string;
   /** The display name of the template */
-  displayName?: string;
+  displayName: string;
   /** The kind of content the template is for. */
-  contentKind?: Kind;
+  contentKind: string;
   /** Source of the content. This is where/how it was created. */
-  source?: MetadataSource;
+  source: MetadataSource;
   /** The creator of the content item. */
   author?: MetadataAuthor;
   /** Support information for the template - type, name, contact information */
@@ -5829,7 +6150,7 @@ export interface ProductTemplateProperties {
   /** Categories for the item */
   categories?: MetadataCategories;
   /** Providers for the content item */
-  providers?: ProductTemplatePropertiesProvidersList;
+  providers?: MetadataProviders;
   /** first publish date content item */
   firstPublishDate?: string;
   /** last publish date for the content item */
@@ -5841,57 +6162,51 @@ export interface ProductTemplateProperties {
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
   /** the tactics the resource covers */
-  threatAnalysisTactics?: ProductTemplatePropertiesThreatAnalysisTacticsList;
+  threatAnalysisTactics?: MetadataThreatAnalysisTactics;
   /** the techniques the resource covers, these have to be aligned with the tactics being used */
-  threatAnalysisTechniques?: ProductTemplatePropertiesThreatAnalysisTechniquesList;
+  threatAnalysisTechniques?: MetadataThreatAnalysisTechniques;
   /** preview image file names. These will be taken from the solution artifacts */
-  previewImages?: ProductTemplatePropertiesPreviewImagesList;
+  previewImages?: MetadataPreviewImages;
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-  previewImagesDark?: ProductTemplatePropertiesPreviewImagesDarkList;
+  previewImagesDark?: MetadataPreviewImagesDark;
   /** the package Id contains this template */
   packageId?: string;
   /** the packageKind of the package contains this template */
-  packageKind?: PackageKind;
+  packageKind?: MetadataPackageKind;
   /** the name of the package contains this template */
   packageName?: string;
   /** Flag indicates if this template is deprecated */
-  isDeprecated?: Flag;
+  isDeprecated?: MetadataTrueFalseFlag;
   /** The json of the ARM template to deploy */
   packagedContent?: unknown;
 }
 export const ProductTemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentId: S.optional(S.String),
+    contentId: S.String,
     contentProductId: S.optional(S.String),
     packageVersion: S.optional(S.String),
-    version: S.optional(S.String),
-    displayName: S.optional(S.String),
-    contentKind: S.optional(Kind),
-    source: S.optional(MetadataSource),
+    version: S.String,
+    displayName: S.String,
+    contentKind: S.String,
+    source: MetadataSource,
     author: S.optional(MetadataAuthor),
     support: S.optional(MetadataSupport),
     dependencies: S.optional(MetadataDependencies),
     categories: S.optional(MetadataCategories),
-    providers: S.optional(ProductTemplatePropertiesProvidersList),
+    providers: S.optional(MetadataProviders),
     firstPublishDate: S.optional(S.String),
     lastPublishDate: S.optional(S.String),
     customVersion: S.optional(S.String),
     contentSchemaVersion: S.optional(S.String),
     icon: S.optional(S.String),
-    threatAnalysisTactics: S.optional(
-      ProductTemplatePropertiesThreatAnalysisTacticsList,
-    ),
-    threatAnalysisTechniques: S.optional(
-      ProductTemplatePropertiesThreatAnalysisTechniquesList,
-    ),
-    previewImages: S.optional(ProductTemplatePropertiesPreviewImagesList),
-    previewImagesDark: S.optional(
-      ProductTemplatePropertiesPreviewImagesDarkList,
-    ),
+    threatAnalysisTactics: S.optional(MetadataThreatAnalysisTactics),
+    threatAnalysisTechniques: S.optional(MetadataThreatAnalysisTechniques),
+    previewImages: S.optional(MetadataPreviewImages),
+    previewImagesDark: S.optional(MetadataPreviewImagesDark),
     packageId: S.optional(S.String),
-    packageKind: S.optional(PackageKind),
+    packageKind: S.optional(MetadataPackageKind),
     packageName: S.optional(S.String),
-    isDeprecated: S.optional(Flag),
+    isDeprecated: S.optional(MetadataTrueFalseFlag),
     packagedContent: S.optional(S.Unknown),
   }),
 ).annotate({
@@ -5907,10 +6222,10 @@ export interface ProductTemplateGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** template properties */
-  properties?: ProductTemplateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: ProductTemplateProperties;
 }
 export const ProductTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5918,8 +6233,8 @@ export const ProductTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ProductTemplateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ProductTemplateProperties),
   }),
 ).annotate({
   identifier: "ProductTemplateGetResponse",
@@ -5930,7 +6245,7 @@ export interface ProductTemplatesListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -5981,10 +6296,10 @@ export interface ProductTemplateModel {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** template properties */
-  properties?: ProductTemplateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** template properties */
+  properties?: ProductTemplateProperties;
 }
 export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5992,14 +6307,14 @@ export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(ProductTemplateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(ProductTemplateProperties),
   }),
 ).annotate({
   identifier: "ProductTemplateModel",
 }) as any as S.Schema<ProductTemplateModel>;
 
-/** The ProductTemplateModel items on this page */
+/** Array of templates. */
 export type ProductTemplateListValueList = Array<ProductTemplateModel>;
 export const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
   ProductTemplateModel,
@@ -6007,9 +6322,9 @@ export const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
 
 /** List of all the template. */
 export interface ProductTemplateList {
-  /** The ProductTemplateModel items on this page */
+  /** Array of templates. */
   value: ProductTemplateListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next page of template. */
   nextLink?: string;
 }
 export const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
@@ -6022,22 +6337,22 @@ export const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateList>;
 
 /** The kind of security ML analytics settings */
-export type SecurityMLAnalyticsSettingsKind = "Anomaly";
-export const SecurityMLAnalyticsSettingsKind = /*@__PURE__*/ S.String;
+export type SecurityMLAnalyticsSettingsKindEnum = "Anomaly";
+export const SecurityMLAnalyticsSettingsKindEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SecurityMLAnalyticsSettingsKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of security ML Analytics Settings */
+  kind: SecurityMLAnalyticsSettingsKindEnum | (string & {});
 }
 export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6046,8 +6361,8 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       settingsResourceName: S.String.pipe(T.Label()),
-      kind: SecurityMLAnalyticsSettingsKind,
       etag: S.optional(S.String),
+      kind: SecurityMLAnalyticsSettingsKindEnum,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6069,10 +6384,10 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SecurityMLAnalyticsSettingsKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of security ML Analytics Settings */
+  kind: SecurityMLAnalyticsSettingsKindEnum;
 }
 export const SecurityMLAnalyticsSettingsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -6081,8 +6396,8 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: SecurityMLAnalyticsSettingsKind,
       etag: S.optional(S.String),
+      kind: SecurityMLAnalyticsSettingsKindEnum,
     }),
   ).annotate({
     identifier: "SecurityMLAnalyticsSettingsCreateOrUpdateResponse",
@@ -6093,7 +6408,7 @@ export interface SecurityMLAnalyticsSettingsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
@@ -6128,7 +6443,7 @@ export interface SecurityMLAnalyticsSettingsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
@@ -6161,10 +6476,10 @@ export interface SecurityMLAnalyticsSettingsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SecurityMLAnalyticsSettingsKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of security ML Analytics Settings */
+  kind: SecurityMLAnalyticsSettingsKindEnum;
 }
 export const SecurityMLAnalyticsSettingsGetResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -6173,8 +6488,8 @@ export const SecurityMLAnalyticsSettingsGetResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: SecurityMLAnalyticsSettingsKind,
       etag: S.optional(S.String),
+      kind: SecurityMLAnalyticsSettingsKindEnum,
     }),
 ).annotate({
   identifier: "SecurityMLAnalyticsSettingsGetResponse",
@@ -6185,7 +6500,7 @@ export interface SecurityMLAnalyticsSettingsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const SecurityMLAnalyticsSettingsListRequest = /*@__PURE__*/ S.suspend(
@@ -6216,10 +6531,10 @@ export interface SecurityMLAnalyticsSetting {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: SecurityMLAnalyticsSettingsKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of security ML Analytics Settings */
+  kind: SecurityMLAnalyticsSettingsKindEnum;
 }
 export const SecurityMLAnalyticsSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6227,14 +6542,14 @@ export const SecurityMLAnalyticsSetting = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: SecurityMLAnalyticsSettingsKind,
     etag: S.optional(S.String),
+    kind: SecurityMLAnalyticsSettingsKindEnum,
   }),
 ).annotate({
   identifier: "SecurityMLAnalyticsSetting",
 }) as any as S.Schema<SecurityMLAnalyticsSetting>;
 
-/** The SecurityMLAnalyticsSetting items on this page */
+/** Array of SecurityMLAnalyticsSettings */
 export type SecurityMLAnalyticsSettingsListValueList =
   Array<SecurityMLAnalyticsSetting>;
 export const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
@@ -6243,15 +6558,15 @@ export const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the SecurityMLAnalyticsSettings */
 export interface SecurityMLAnalyticsSettingsList {
-  /** The SecurityMLAnalyticsSetting items on this page */
-  value: SecurityMLAnalyticsSettingsListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of SecurityMLAnalyticsSettings. */
   nextLink?: string;
+  /** Array of SecurityMLAnalyticsSettings */
+  value: SecurityMLAnalyticsSettingsListValueList;
 }
 export const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: SecurityMLAnalyticsSettingsListValueList,
     nextLink: S.optional(S.String),
+    value: SecurityMLAnalyticsSettingsListValueList,
   }),
 ).annotate({
   identifier: "SecurityMLAnalyticsSettingsList",
@@ -6279,10 +6594,10 @@ export interface SentinelOnboardingStatesCreateRequest {
   workspaceName: string;
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
-  /** The Sentinel onboarding state object */
-  properties?: SentinelOnboardingStateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** The Sentinel onboarding state object */
+  properties?: SentinelOnboardingStateProperties;
 }
 export const SentinelOnboardingStatesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6291,8 +6606,8 @@ export const SentinelOnboardingStatesCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       sentinelOnboardingStateName: S.String.pipe(T.Label()),
-      properties: S.optional(SentinelOnboardingStateProperties),
       etag: S.optional(S.String),
+      properties: S.optional(SentinelOnboardingStateProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6314,10 +6629,10 @@ export interface SentinelOnboardingStatesCreateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The Sentinel onboarding state object */
-  properties?: SentinelOnboardingStateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** The Sentinel onboarding state object */
+  properties?: SentinelOnboardingStateProperties;
 }
 export const SentinelOnboardingStatesCreateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -6326,8 +6641,8 @@ export const SentinelOnboardingStatesCreateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(SentinelOnboardingStateProperties),
       etag: S.optional(S.String),
+      properties: S.optional(SentinelOnboardingStateProperties),
     }),
 ).annotate({
   identifier: "SentinelOnboardingStatesCreateResponse",
@@ -6338,7 +6653,7 @@ export interface SentinelOnboardingStatesDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
@@ -6374,7 +6689,7 @@ export interface SentinelOnboardingStatesGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
@@ -6406,10 +6721,10 @@ export interface SentinelOnboardingStatesGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The Sentinel onboarding state object */
-  properties?: SentinelOnboardingStateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** The Sentinel onboarding state object */
+  properties?: SentinelOnboardingStateProperties;
 }
 export const SentinelOnboardingStatesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6417,8 +6732,8 @@ export const SentinelOnboardingStatesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(SentinelOnboardingStateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(SentinelOnboardingStateProperties),
   }),
 ).annotate({
   identifier: "SentinelOnboardingStatesGetResponse",
@@ -6459,10 +6774,10 @@ export interface SentinelOnboardingState {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The Sentinel onboarding state object */
-  properties?: SentinelOnboardingStateProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** The Sentinel onboarding state object */
+  properties?: SentinelOnboardingStateProperties;
 }
 export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6470,8 +6785,8 @@ export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(SentinelOnboardingStateProperties),
     etag: S.optional(S.String),
+    properties: S.optional(SentinelOnboardingStateProperties),
   }),
 ).annotate({
   identifier: "SentinelOnboardingState",
@@ -6597,7 +6912,7 @@ export const Repo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Repo" }) as any as S.Schema<Repo>;
 
-/** The Repo items on this page */
+/** Array of repositories. */
 export type RepoListValueList = Array<Repo>;
 export const RepoListValueList = /*@__PURE__*/ S.Array(
   Repo,
@@ -6605,15 +6920,15 @@ export const RepoListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the source controls. */
 export interface RepoList {
-  /** The Repo items on this page */
-  value: RepoListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of repositories. */
   nextLink?: string;
+  /** Array of repositories. */
+  value: RepoListValueList;
 }
 export const RepoList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: RepoListValueList,
     nextLink: S.optional(S.String),
+    value: RepoListValueList,
   }),
 ).annotate({ identifier: "RepoList" }) as any as S.Schema<RepoList>;
 
@@ -6735,14 +7050,14 @@ export interface SourceControlsCreateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Source control Id */
   sourceControlId: string;
-  /** source control properties */
-  properties: SourceControlPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** source control properties */
+  properties: SourceControlPropertiesInput;
 }
 export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6750,8 +7065,8 @@ export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     sourceControlId: S.String.pipe(T.Label()),
-    properties: SourceControlPropertiesInput,
     etag: S.optional(S.String),
+    properties: SourceControlPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7041,10 +7356,10 @@ export interface SourceControlsCreateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** source control properties */
-  properties: SourceControlProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** source control properties */
+  properties: SourceControlProperties;
 }
 export const SourceControlsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7052,8 +7367,8 @@ export const SourceControlsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: SourceControlProperties,
     etag: S.optional(S.String),
+    properties: SourceControlProperties,
   }),
 ).annotate({
   identifier: "SourceControlsCreateResponse",
@@ -7064,7 +7379,7 @@ export interface SourceControlsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Source control Id */
   sourceControlId: string;
@@ -7136,7 +7451,7 @@ export interface SourceControlsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Source control Id */
   sourceControlId: string;
@@ -7168,10 +7483,10 @@ export interface SourceControlsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** source control properties */
-  properties: SourceControlProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** source control properties */
+  properties: SourceControlProperties;
 }
 export const SourceControlsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7179,8 +7494,8 @@ export const SourceControlsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: SourceControlProperties,
     etag: S.optional(S.String),
+    properties: SourceControlProperties,
   }),
 ).annotate({
   identifier: "SourceControlsGetResponse",
@@ -7191,7 +7506,7 @@ export interface SourceControlsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const SourceControlsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -7221,10 +7536,10 @@ export interface SourceControl {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** source control properties */
-  properties: SourceControlProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** source control properties */
+  properties: SourceControlProperties;
 }
 export const SourceControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7232,12 +7547,12 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: SourceControlProperties,
     etag: S.optional(S.String),
+    properties: SourceControlProperties,
   }),
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
-/** The SourceControl items on this page */
+/** Array of source controls. */
 export type SourceControlListValueList = Array<SourceControl>;
 export const SourceControlListValueList = /*@__PURE__*/ S.Array(
   SourceControl,
@@ -7245,15 +7560,15 @@ export const SourceControlListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the source controls. */
 export interface SourceControlList {
-  /** The SourceControl items on this page */
-  value: SourceControlListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of source controls. */
   nextLink?: string;
+  /** Array of source controls. */
+  value: SourceControlListValueList;
 }
 export const SourceControlList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: SourceControlListValueList,
     nextLink: S.optional(S.String),
+    value: SourceControlListValueList,
   }),
 ).annotate({
   identifier: "SourceControlList",
@@ -7272,7 +7587,7 @@ export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
@@ -7634,14 +7949,14 @@ export interface ThreatIntelligenceIndicatorCreateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind | (string & {});
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
@@ -7652,8 +7967,8 @@ export const ThreatIntelligenceIndicatorCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
       properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
@@ -7676,10 +7991,10 @@ export interface ThreatIntelligenceIndicatorCreateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind;
 }
 export const ThreatIntelligenceIndicatorCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7688,8 +8003,8 @@ export const ThreatIntelligenceIndicatorCreateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
     }),
   ).annotate({
     identifier: "ThreatIntelligenceIndicatorCreateResponse",
@@ -7700,12 +8015,12 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind | (string & {});
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
@@ -7715,8 +8030,8 @@ export const ThreatIntelligenceIndicatorCreateIndicatorRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
       properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
@@ -7739,10 +8054,10 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind;
 }
 export const ThreatIntelligenceIndicatorCreateIndicatorResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7751,8 +8066,8 @@ export const ThreatIntelligenceIndicatorCreateIndicatorResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
     }),
   ).annotate({
     identifier: "ThreatIntelligenceIndicatorCreateIndicatorResponse",
@@ -7763,7 +8078,7 @@ export interface ThreatIntelligenceIndicatorDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
@@ -7798,7 +8113,7 @@ export interface ThreatIntelligenceIndicatorGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
@@ -7831,10 +8146,10 @@ export interface ThreatIntelligenceIndicatorGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind;
 }
 export const ThreatIntelligenceIndicatorGetResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -7843,8 +8158,8 @@ export const ThreatIntelligenceIndicatorGetResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
     }),
 ).annotate({
   identifier: "ThreatIntelligenceIndicatorGetResponse",
@@ -7855,7 +8170,7 @@ export interface ThreatIntelligenceIndicatorMetricsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
 }
 export const ThreatIntelligenceIndicatorMetricsListRequest =
@@ -8050,7 +8365,7 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Page size */
   pageSize?: number;
@@ -8130,10 +8445,10 @@ export interface ThreatIntelligenceInformation {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind;
 }
 export const ThreatIntelligenceInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8141,14 +8456,14 @@ export const ThreatIntelligenceInformation = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    kind: ThreatIntelligenceResourceInnerKind,
     etag: S.optional(S.String),
+    kind: ThreatIntelligenceResourceInnerKind,
   }),
 ).annotate({
   identifier: "ThreatIntelligenceInformation",
 }) as any as S.Schema<ThreatIntelligenceInformation>;
 
-/** The ThreatIntelligenceInformation items on this page */
+/** Array of threat intelligence information objects. */
 export type ThreatIntelligenceInformationListValueList =
   Array<ThreatIntelligenceInformation>;
 export const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
@@ -8157,15 +8472,15 @@ export const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
 
 /** List of all the threat intelligence information objects. */
 export interface ThreatIntelligenceInformationList {
-  /** The ThreatIntelligenceInformation items on this page */
-  value: ThreatIntelligenceInformationListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of information objects. */
   nextLink?: string;
+  /** Array of threat intelligence information objects. */
+  value: ThreatIntelligenceInformationListValueList;
 }
 export const ThreatIntelligenceInformationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: ThreatIntelligenceInformationListValueList,
     nextLink: S.optional(S.String),
+    value: ThreatIntelligenceInformationListValueList,
   }),
 ).annotate({
   identifier: "ThreatIntelligenceInformationList",
@@ -8176,14 +8491,14 @@ export interface ThreatIntelligenceIndicatorReplaceTagsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind | (string & {});
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
@@ -8194,8 +8509,8 @@ export const ThreatIntelligenceIndicatorReplaceTagsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
       properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
@@ -8218,10 +8533,10 @@ export interface ThreatIntelligenceIndicatorReplaceTagsResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: ThreatIntelligenceResourceInnerKind;
   /** Etag of the azure resource */
   etag?: string;
+  /** The kind of the entity. */
+  kind: ThreatIntelligenceResourceInnerKind;
 }
 export const ThreatIntelligenceIndicatorReplaceTagsResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -8230,8 +8545,8 @@ export const ThreatIntelligenceIndicatorReplaceTagsResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      kind: ThreatIntelligenceResourceInnerKind,
       etag: S.optional(S.String),
+      kind: ThreatIntelligenceResourceInnerKind,
     }),
   ).annotate({
     identifier: "ThreatIntelligenceIndicatorReplaceTagsResponse",
@@ -8242,7 +8557,7 @@ export interface ThreatIntelligenceIndicatorsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Filters the results, based on a Boolean condition. Optional. */
   _filter?: string;
@@ -8275,6 +8590,34 @@ export const ThreatIntelligenceIndicatorsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "ThreatIntelligenceIndicatorsListRequest",
 }) as any as S.Schema<ThreatIntelligenceIndicatorsListRequest>;
 
+/** User information that made some action */
+export interface WatchlistItemPropertiesInputCreatedBy {
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistItemPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectId: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "WatchlistItemPropertiesInputCreatedBy",
+}) as any as S.Schema<WatchlistItemPropertiesInputCreatedBy>;
+
+/** User information that made some action */
+export interface WatchlistItemPropertiesInputUpdatedBy {
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistItemPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectId: S.optional(S.NullOr(S.String)),
+    }),
+).annotate({
+  identifier: "WatchlistItemPropertiesInputUpdatedBy",
+}) as any as S.Schema<WatchlistItemPropertiesInputUpdatedBy>;
+
 /** Describes watchlist item properties */
 export interface WatchlistItemPropertiesInput {
   /** The type of the watchlist item */
@@ -8289,10 +8632,10 @@ export interface WatchlistItemPropertiesInput {
   created?: string;
   /** The last time the watchlist item was updated */
   updated?: string;
-  /** Describes a user that created the watchlist item */
-  createdBy?: UserInfoInput;
-  /** Describes a user that updated the watchlist item */
-  updatedBy?: UserInfoInput;
+  /** User information that made some action */
+  createdBy?: WatchlistItemPropertiesInputCreatedBy;
+  /** User information that made some action */
+  updatedBy?: WatchlistItemPropertiesInputUpdatedBy;
   /** key-value pairs for a watchlist item */
   itemsKeyValue: unknown;
   /** key-value pairs for a watchlist item entity mapping */
@@ -8306,8 +8649,8 @@ export const WatchlistItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     isDeleted: S.optional(S.Boolean),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(UserInfoInput),
-    updatedBy: S.optional(UserInfoInput),
+    createdBy: S.optional(WatchlistItemPropertiesInputCreatedBy),
+    updatedBy: S.optional(WatchlistItemPropertiesInputUpdatedBy),
     itemsKeyValue: S.Unknown,
     entityMapping: S.optional(S.Unknown),
   }),
@@ -8320,16 +8663,16 @@ export interface WatchlistItemsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
-  /** Watchlist Item properties */
-  properties?: WatchlistItemPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist Item properties */
+  properties?: WatchlistItemPropertiesInput;
 }
 export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8338,8 +8681,8 @@ export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     watchlistAlias: S.String.pipe(T.Label()),
     watchlistItemId: S.String.pipe(T.Label()),
-    properties: S.optional(WatchlistItemPropertiesInput),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistItemPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8351,6 +8694,44 @@ export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WatchlistItemsCreateOrUpdateRequest",
 }) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>;
+
+/** User information that made some action */
+export interface WatchlistItemPropertiesCreatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistItemPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistItemPropertiesCreatedBy",
+}) as any as S.Schema<WatchlistItemPropertiesCreatedBy>;
+
+/** User information that made some action */
+export interface WatchlistItemPropertiesUpdatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistItemPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistItemPropertiesUpdatedBy",
+}) as any as S.Schema<WatchlistItemPropertiesUpdatedBy>;
 
 /** Describes watchlist item properties */
 export interface WatchlistItemProperties {
@@ -8366,10 +8747,10 @@ export interface WatchlistItemProperties {
   created?: string;
   /** The last time the watchlist item was updated */
   updated?: string;
-  /** Describes a user that created the watchlist item */
-  createdBy?: UserInfo;
-  /** Describes a user that updated the watchlist item */
-  updatedBy?: UserInfo;
+  /** User information that made some action */
+  createdBy?: WatchlistItemPropertiesCreatedBy;
+  /** User information that made some action */
+  updatedBy?: WatchlistItemPropertiesUpdatedBy;
   /** key-value pairs for a watchlist item */
   itemsKeyValue: unknown;
   /** key-value pairs for a watchlist item entity mapping */
@@ -8383,8 +8764,8 @@ export const WatchlistItemProperties = /*@__PURE__*/ S.suspend(() =>
     isDeleted: S.optional(S.Boolean),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(UserInfo),
-    updatedBy: S.optional(UserInfo),
+    createdBy: S.optional(WatchlistItemPropertiesCreatedBy),
+    updatedBy: S.optional(WatchlistItemPropertiesUpdatedBy),
     itemsKeyValue: S.Unknown,
     entityMapping: S.optional(S.Unknown),
   }),
@@ -8401,10 +8782,10 @@ export interface WatchlistItemsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist Item properties */
-  properties?: WatchlistItemProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist Item properties */
+  properties?: WatchlistItemProperties;
 }
 export const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -8413,8 +8794,8 @@ export const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(WatchlistItemProperties),
       etag: S.optional(S.String),
+      properties: S.optional(WatchlistItemProperties),
     }),
 ).annotate({
   identifier: "WatchlistItemsCreateOrUpdateResponse",
@@ -8425,7 +8806,7 @@ export interface WatchlistItemsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
@@ -8463,7 +8844,7 @@ export interface WatchlistItemsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
@@ -8498,10 +8879,10 @@ export interface WatchlistItemsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist Item properties */
-  properties?: WatchlistItemProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist Item properties */
+  properties?: WatchlistItemProperties;
 }
 export const WatchlistItemsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8509,8 +8890,8 @@ export const WatchlistItemsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(WatchlistItemProperties),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistItemProperties),
   }),
 ).annotate({
   identifier: "WatchlistItemsGetResponse",
@@ -8521,7 +8902,7 @@ export interface WatchlistItemsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
@@ -8557,10 +8938,10 @@ export interface WatchlistItem {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist Item properties */
-  properties?: WatchlistItemProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist Item properties */
+  properties?: WatchlistItemProperties;
 }
 export const WatchlistItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8568,12 +8949,12 @@ export const WatchlistItem = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(WatchlistItemProperties),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistItemProperties),
   }),
 ).annotate({ identifier: "WatchlistItem" }) as any as S.Schema<WatchlistItem>;
 
-/** The WatchlistItem items on this page */
+/** Array of watchlist items. */
 export type WatchlistItemListValueList = Array<WatchlistItem>;
 export const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
   WatchlistItem,
@@ -8581,23 +8962,49 @@ export const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the watchlist items. */
 export interface WatchlistItemList {
-  /** The WatchlistItem items on this page */
-  value: WatchlistItemListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of watchlist items. */
   nextLink?: string;
+  /** Array of watchlist items. */
+  value: WatchlistItemListValueList;
 }
 export const WatchlistItemList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: WatchlistItemListValueList,
     nextLink: S.optional(S.String),
+    value: WatchlistItemListValueList,
   }),
 ).annotate({
   identifier: "WatchlistItemList",
 }) as any as S.Schema<WatchlistItemList>;
 
 /** The sourceType of the watchlist */
-export type SourceType = "Local" | "AzureStorage";
-export const SourceType = /*@__PURE__*/ S.String;
+export type WatchlistPropertiesInputSourceType = "Local" | "AzureStorage";
+export const WatchlistPropertiesInputSourceType = /*@__PURE__*/ S.String;
+
+/** User information that made some action */
+export interface WatchlistPropertiesInputCreatedBy {
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistPropertiesInputCreatedBy",
+}) as any as S.Schema<WatchlistPropertiesInputCreatedBy>;
+
+/** User information that made some action */
+export interface WatchlistPropertiesInputUpdatedBy {
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistPropertiesInputUpdatedBy",
+}) as any as S.Schema<WatchlistPropertiesInputUpdatedBy>;
 
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesInputLabelsList = Array<string>;
@@ -8616,15 +9023,15 @@ export interface WatchlistPropertiesInput {
   /** The filename of the watchlist, called 'source' */
   source?: string;
   /** The sourceType of the watchlist */
-  sourceType?: SourceType | (string & {});
+  sourceType?: WatchlistPropertiesInputSourceType | (string & {});
   /** The time the watchlist was created */
   created?: string;
   /** The last time the watchlist was updated */
   updated?: string;
-  /** Describes a user that created the watchlist */
-  createdBy?: UserInfoInput;
-  /** Describes a user that updated the watchlist */
-  updatedBy?: UserInfoInput;
+  /** User information that made some action */
+  createdBy?: WatchlistPropertiesInputCreatedBy;
+  /** User information that made some action */
+  updatedBy?: WatchlistPropertiesInputUpdatedBy;
   /** A description of the watchlist */
   description?: string;
   /** The type of the watchlist */
@@ -8656,11 +9063,11 @@ export const WatchlistPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     displayName: S.String,
     provider: S.String,
     source: S.optional(S.String),
-    sourceType: S.optional(SourceType),
+    sourceType: S.optional(WatchlistPropertiesInputSourceType),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(UserInfoInput),
-    updatedBy: S.optional(UserInfoInput),
+    createdBy: S.optional(WatchlistPropertiesInputCreatedBy),
+    updatedBy: S.optional(WatchlistPropertiesInputUpdatedBy),
     description: S.optional(S.String),
     watchlistType: S.optional(S.String),
     watchlistAlias: S.optional(S.String),
@@ -8683,14 +9090,14 @@ export interface WatchlistsCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
-  /** Watchlist properties */
-  properties?: WatchlistPropertiesInput;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist properties */
+  properties?: WatchlistPropertiesInput;
 }
 export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8698,8 +9105,8 @@ export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     watchlistAlias: S.String.pipe(T.Label()),
-    properties: S.optional(WatchlistPropertiesInput),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8712,14 +9119,56 @@ export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchlistsCreateOrUpdateRequest",
 }) as any as S.Schema<WatchlistsCreateOrUpdateRequest>;
 
+/** The sourceType of the watchlist */
+export type WatchlistPropertiesSourceType = "Local" | "AzureStorage";
+export const WatchlistPropertiesSourceType = /*@__PURE__*/ S.String;
+
+/** User information that made some action */
+export interface WatchlistPropertiesCreatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistPropertiesCreatedBy",
+}) as any as S.Schema<WatchlistPropertiesCreatedBy>;
+
+/** User information that made some action */
+export interface WatchlistPropertiesUpdatedBy {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const WatchlistPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "WatchlistPropertiesUpdatedBy",
+}) as any as S.Schema<WatchlistPropertiesUpdatedBy>;
+
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesLabelsList = Array<string>;
 export const WatchlistPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WatchlistPropertiesLabelsList>;
 
-/** The provisioning state of the watchlist */
-export type WatchlistProvisioningState =
+/** Describes provisioning state */
+export type ProvisioningState =
   | "New"
   | "InProgress"
   | "Uploading"
@@ -8727,7 +9176,7 @@ export type WatchlistProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const WatchlistProvisioningState = /*@__PURE__*/ S.String;
+export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes watchlist properties */
 export interface WatchlistProperties {
@@ -8740,15 +9189,15 @@ export interface WatchlistProperties {
   /** The filename of the watchlist, called 'source' */
   source?: string;
   /** The sourceType of the watchlist */
-  sourceType?: SourceType;
+  sourceType?: WatchlistPropertiesSourceType;
   /** The time the watchlist was created */
   created?: string;
   /** The last time the watchlist was updated */
   updated?: string;
-  /** Describes a user that created the watchlist */
-  createdBy?: UserInfo;
-  /** Describes a user that updated the watchlist */
-  updatedBy?: UserInfo;
+  /** User information that made some action */
+  createdBy?: WatchlistPropertiesCreatedBy;
+  /** User information that made some action */
+  updatedBy?: WatchlistPropertiesUpdatedBy;
   /** A description of the watchlist */
   description?: string;
   /** The type of the watchlist */
@@ -8773,8 +9222,7 @@ export interface WatchlistProperties {
   contentType?: string;
   /** The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted */
   uploadStatus?: string;
-  /** Describes provisioning state */
-  provisioningState?: WatchlistProvisioningState;
+  provisioningState?: ProvisioningState;
 }
 export const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8782,11 +9230,11 @@ export const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
     displayName: S.String,
     provider: S.String,
     source: S.optional(S.String),
-    sourceType: S.optional(SourceType),
+    sourceType: S.optional(WatchlistPropertiesSourceType),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(UserInfo),
-    updatedBy: S.optional(UserInfo),
+    createdBy: S.optional(WatchlistPropertiesCreatedBy),
+    updatedBy: S.optional(WatchlistPropertiesUpdatedBy),
     description: S.optional(S.String),
     watchlistType: S.optional(S.String),
     watchlistAlias: S.optional(S.String),
@@ -8799,7 +9247,7 @@ export const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
     itemsSearchKey: S.String,
     contentType: S.optional(S.String),
     uploadStatus: S.optional(S.String),
-    provisioningState: S.optional(WatchlistProvisioningState),
+    provisioningState: S.optional(ProvisioningState),
   }),
 ).annotate({
   identifier: "WatchlistProperties",
@@ -8814,10 +9262,10 @@ export interface WatchlistsCreateOrUpdateResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist properties */
-  properties?: WatchlistProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist properties */
+  properties?: WatchlistProperties;
 }
 export const WatchlistsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8825,8 +9273,8 @@ export const WatchlistsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(WatchlistProperties),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistProperties),
   }),
 ).annotate({
   identifier: "WatchlistsCreateOrUpdateResponse",
@@ -8837,7 +9285,7 @@ export interface WatchlistsDeleteRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
@@ -8872,7 +9320,7 @@ export interface WatchlistsGetRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
@@ -8904,10 +9352,10 @@ export interface WatchlistsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist properties */
-  properties?: WatchlistProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist properties */
+  properties?: WatchlistProperties;
 }
 export const WatchlistsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8915,8 +9363,8 @@ export const WatchlistsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(WatchlistProperties),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistProperties),
   }),
 ).annotate({
   identifier: "WatchlistsGetResponse",
@@ -8927,7 +9375,7 @@ export interface WatchlistsListRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** The name of the monitor workspace. */
+  /** The name of the workspace. */
   workspaceName: string;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
@@ -8960,10 +9408,10 @@ export interface Watchlist {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** Watchlist properties */
-  properties?: WatchlistProperties;
   /** Etag of the azure resource */
   etag?: string;
+  /** Watchlist properties */
+  properties?: WatchlistProperties;
 }
 export const Watchlist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8971,12 +9419,12 @@ export const Watchlist = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(WatchlistProperties),
     etag: S.optional(S.String),
+    properties: S.optional(WatchlistProperties),
   }),
 ).annotate({ identifier: "Watchlist" }) as any as S.Schema<Watchlist>;
 
-/** The Watchlist items on this page */
+/** Array of watchlist. */
 export type WatchlistListValueList = Array<Watchlist>;
 export const WatchlistListValueList = /*@__PURE__*/ S.Array(
   Watchlist,
@@ -8984,15 +9432,15 @@ export const WatchlistListValueList = /*@__PURE__*/ S.Array(
 
 /** List all the watchlists. */
 export interface WatchlistList {
-  /** The Watchlist items on this page */
-  value: WatchlistListValueList;
-  /** The link to the next page of items */
+  /** URL to fetch the next set of watchlists. */
   nextLink?: string;
+  /** Array of watchlist. */
+  value: WatchlistListValueList;
 }
 export const WatchlistList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: WatchlistListValueList,
     nextLink: S.optional(S.String),
+    value: WatchlistListValueList,
   }),
 ).annotate({ identifier: "WatchlistList" }) as any as S.Schema<WatchlistList>;
 
@@ -9552,7 +10000,7 @@ export const IncidentCommentsDelete: API.OperationMethod<
 }));
 
 export type IncidentCommentsGetError = AzureOpError;
-/** Gets an incident comment. */
+/** Gets a comment for a given incident. */
 export const IncidentCommentsGet: API.OperationMethod<
   IncidentCommentsGetRequest,
   IncidentCommentsGetResponse,
@@ -9582,7 +10030,7 @@ export const IncidentCommentsList: API.OperationMethod<
 }));
 
 export type IncidentRelationsCreateOrUpdateError = AzureOpError;
-/** Creates or updates the incident relation. */
+/** Creates or updates a relation for a given incident. */
 export const IncidentRelationsCreateOrUpdate: API.OperationMethod<
   IncidentRelationsCreateOrUpdateRequest,
   IncidentRelationsCreateOrUpdateResponse,

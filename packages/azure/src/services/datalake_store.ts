@@ -25,7 +25,7 @@ export interface AccountsCheckNameAvailabilityRequest {
   /** The Data Lake Store name to check availability for. */
   name: string;
   /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeStore/accounts */
-  type: AccountsCheckNameAvailabilityRequestType;
+  type: AccountsCheckNameAvailabilityRequestType | (string & {});
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -81,7 +81,7 @@ export const EncryptionIdentityInputType = /*@__PURE__*/ S.String;
 /** The encryption identity properties. */
 export interface EncryptionIdentityInput {
   /** The type of encryption being used. Currently the only supported type is 'SystemAssigned'. */
-  type: EncryptionIdentityInputType;
+  type: EncryptionIdentityInputType | (string & {});
 }
 export const EncryptionIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

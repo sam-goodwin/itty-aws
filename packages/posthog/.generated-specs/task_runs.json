@@ -497,112 +497,6 @@
         "smithy.api#documentation": "List task runs\n\nGet a list of runs for a specific task."
       }
     },
-    "com.posthog.task_runs#ImportedMcpServer": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.task_runs#ImportedMcpServerTypeEnum",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "headers": {
-          "target": "com.posthog.task_runs#ImportedMcpServerHeadersList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "One client-imported MCP server, in the agent server's --mcpServers entry shape."
-      }
-    },
-    "com.posthog.task_runs#ImportedMcpServerTypeEnum": {
-      "type": "enum",
-      "members": {
-        "HTTP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "http"
-          }
-        },
-        "SSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sse"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `http` - http\n* `sse` - sse"
-      }
-    },
-    "com.posthog.task_runs#ImportedMcpServerHeader": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.task_runs#ImportedMcpServerHeadersList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.task_runs#ImportedMcpServerHeader"
-      },
-      "traits": {}
-    },
-    "com.posthog.task_runs#TasksRunsCreateRequestImportedMcpServersList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.task_runs#ImportedMcpServer"
-      },
-      "traits": {
-        "smithy.api#documentation": "Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API."
-      }
-    },
-    "com.posthog.task_runs#RelayedMcpServer": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "One desktop-only MCP server relayed into the run — a name only, never configuration."
-      }
-    },
-    "com.posthog.task_runs#TasksRunsCreateRequestRelayedMcpServersList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.task_runs#RelayedMcpServer"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire."
-      }
-    },
     "com.posthog.task_runs#TaskRunBootstrapCreateRequestEnvironmentEnum": {
       "type": "enum",
       "members": {
@@ -751,20 +645,6 @@
             "smithy.api#required": {}
           }
         },
-        "imported_mcp_servers": {
-          "target": "com.posthog.task_runs#TasksRunsCreateRequestImportedMcpServersList",
-          "traits": {
-            "smithy.api#documentation": "Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "relayed_mcp_servers": {
-          "target": "com.posthog.task_runs#TasksRunsCreateRequestRelayedMcpServersList",
-          "traits": {
-            "smithy.api#documentation": "Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "environment": {
           "target": "com.posthog.task_runs#TaskRunBootstrapCreateRequestEnvironmentEnum",
           "traits": {
@@ -790,23 +670,10 @@
             "smithy.api#documentation": "Optional sandbox environment to apply for this cloud run."
           }
         },
-        "custom_image_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional custom base image for this cloud run's sandbox (Modal VM runtime only); takes precedence over the environment's image."
-          }
-        },
         "pr_authorship_mode": {
           "target": "com.posthog.task_runs#PrAuthorshipModeEnum",
           "traits": {
             "smithy.api#documentation": "Whether pull requests for this run should be authored by the user or the bot.\n\n* `user` - user\n* `bot` - bot"
-          }
-        },
-        "auto_publish": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "run_source": {
@@ -848,14 +715,13 @@
         "initial_permission_mode": {
           "target": "com.posthog.task_runs#TaskRunBootstrapCreateRequestInitialPermissionModeEnum",
           "traits": {
-            "smithy.api#documentation": "Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'.\n\n* `default` - default\n* `acceptEdits` - acceptEdits\n* `plan` - plan\n* `bypassPermissions` - bypassPermissions\n* `auto` - auto\n* `read-only` - read-only\n* `full-access` - full-access"
+            "smithy.api#documentation": "Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'auto' and 'read-only'.\n\n* `default` - default\n* `acceptEdits` - acceptEdits\n* `plan` - plan\n* `bypassPermissions` - bypassPermissions\n* `auto` - auto\n* `read-only` - read-only\n* `full-access` - full-access"
           }
         },
-        "rtk_enabled": {
-          "target": "smithy.api#Boolean",
+        "home_quick_action": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out.",
-            "com.distilled.openapi#nullable": {}
+            "smithy.api#documentation": "Label of the Home-tab quick action that started this run (e.g. 'Fix CI'), surfaced on the workstream."
           }
         }
       },
@@ -946,7 +812,7 @@
         "smithy.api#documentation": "Get task run\n\nRetrieve a single run for a specific task."
       }
     },
-    "com.posthog.task_runs#RunStatusEnum": {
+    "com.posthog.task_runs#TaskRunUpdateStatusEnum": {
       "type": "enum",
       "members": {
         "NOT_STARTED": {
@@ -1039,7 +905,7 @@
           }
         },
         "status": {
-          "target": "com.posthog.task_runs#RunStatusEnum",
+          "target": "com.posthog.task_runs#TaskRunUpdateStatusEnum",
           "traits": {
             "smithy.api#documentation": "Current execution status\n\n* `not_started` - not_started\n* `queued` - queued\n* `in_progress` - in_progress\n* `completed` - completed\n* `failed` - failed\n* `cancelled` - cancelled"
           }
@@ -1943,68 +1809,6 @@
         "smithy.api#documentation": "Generate presigned URL for an artifact\n\nReturns a temporary, signed URL that can be used to download a specific artifact."
       }
     },
-    "com.posthog.task_runs#TasksRunsCancelCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional reason for the cancellation, recorded on the run and shown to run watchers.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.task_runs#TasksRunsCancelCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.task_runs#TasksRunsCancelCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.task_runs#TaskRunDetailDTO"
-      },
-      "errors": [
-        {
-          "target": "com.posthog.task_runs#BadRequest"
-        },
-        {
-          "target": "com.posthog.task_runs#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/cancel/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Cancel task run\n\nStop an active cloud run. Interrupts the agent, snapshots interactive sessions for later resume, tears down the sandbox, and marks the run cancelled. Idempotent: cancelling a finished run returns it unchanged."
-      }
-    },
     "com.posthog.task_runs#JsonrpcEnum": {
       "type": "enum",
       "members": {
@@ -2051,16 +1855,10 @@
           "traits": {
             "smithy.api#enumValue": "set_config_option"
           }
-        },
-        "MCP_RESPONSE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "mcp_response"
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `user_message` - user_message\n* `cancel` - cancel\n* `close` - close\n* `permission_response` - permission_response\n* `set_config_option` - set_config_option\n* `mcp_response` - mcp_response"
+        "smithy.api#documentation": "* `user_message` - user_message\n* `cancel` - cancel\n* `close` - close\n* `permission_response` - permission_response\n* `set_config_option` - set_config_option"
       }
     },
     "com.posthog.task_runs#TasksRunsCommandCreateRequestParamsMap": {
@@ -2109,7 +1907,7 @@
         "method": {
           "target": "com.posthog.task_runs#MethodEnum",
           "traits": {
-            "smithy.api#documentation": "Command method to execute on the agent server\n\n* `user_message` - user_message\n* `cancel` - cancel\n* `close` - close\n* `permission_response` - permission_response\n* `set_config_option` - set_config_option\n* `mcp_response` - mcp_response"
+            "smithy.api#documentation": "Command method to execute on the agent server\n\n* `user_message` - user_message\n* `cancel` - cancel\n* `close` - close\n* `permission_response` - permission_response\n* `set_config_option` - set_config_option"
           }
         },
         "params": {
@@ -2204,7 +2002,7 @@
           "uri": "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/command/",
           "code": 200
         },
-        "smithy.api#documentation": "Send command to task run\n\nQueue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, set_config_option, and mcp_response commands."
+        "smithy.api#documentation": "Send command to task run\n\nQueue user_message JSON-RPC commands through the task workflow and forward sandbox control commands to the agent server. Supports user_message, cancel, close, permission_response, and set_config_option commands."
       }
     },
     "com.posthog.task_runs#TasksRunsConnectionTokenRetrieveRequest": {
@@ -2331,15 +2129,6 @@
         "smithy.api#documentation": "Get task run logs\n\nFetch the logs for a task run as JSONL. If the run resumes from another (state.resume_from_run_id), each ancestor's log is concatenated first (oldest ancestor → ... → this run) so resume consumers see a single continuous history and can find the most recent git_checkpoint event regardless of which run emitted it."
       }
     },
-    "com.posthog.task_runs#TasksRunsRelayMessageCreateRequestTextPartsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text."
-      }
-    },
     "com.posthog.task_runs#TasksRunsRelayMessageCreateRequest": {
       "type": "structure",
       "members": {
@@ -2366,23 +2155,7 @@
           }
         },
         "text": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Joined message body. Used when text_parts is absent."
-          }
-        },
-        "message_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Id of the user message this turn answers, when the agent-server echoes it.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "text_parts": {
-          "target": "com.posthog.task_runs#TasksRunsRelayMessageCreateRequestTextPartsList",
-          "traits": {
-            "smithy.api#documentation": "Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text."
-          }
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -2747,13 +2520,6 @@
             "smithy.api#required": {}
           }
         },
-        "runtime": {
-          "target": "com.posthog.task_runs#RuntimeEnum",
-          "traits": {
-            "smithy.api#documentation": "Agent protocol and harness used for this task's runs.\n\n* `acp` - ACP\n* `pi` - Pi",
-            "smithy.api#required": {}
-          }
-        },
         "repository": {
           "target": "smithy.api#String",
           "traits": {
@@ -2809,9 +2575,10 @@
           }
         },
         "latest_run": {
-          "target": "com.posthog.task_runs#TaskRunDetailDTO",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Latest run details for this task",
+            "smithy.api#documentation": "Id of the latest TaskRun; null when the task has no runs.",
+            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2839,36 +2606,10 @@
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "channel": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Detail response for a task.\n\nReads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` /\n``github_user_integration`` are integration ids, ``signal_report`` is the report id, and\n``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``."
-      }
-    },
-    "com.posthog.task_runs#RuntimeEnum": {
-      "type": "enum",
-      "members": {
-        "ACP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "acp"
-          }
-        },
-        "PI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "pi"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `acp` - ACP\n* `pi` - Pi"
+        "smithy.api#documentation": "Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested\nrun detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id\navoids presigning a log URL per conversation.\n\nRead access here follows the conversation (the share-by-link unit), not per-creator task\nvisibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``."
       }
     },
     "com.posthog.task_runs#TaskDetailDTOJsonSchemaMap": {
@@ -3190,9 +2931,6 @@
         },
         {
           "target": "com.posthog.task_runs#TasksRunsArtifactsPresignCreate"
-        },
-        {
-          "target": "com.posthog.task_runs#TasksRunsCancelCreate"
         },
         {
           "target": "com.posthog.task_runs#TasksRunsCommandCreate"

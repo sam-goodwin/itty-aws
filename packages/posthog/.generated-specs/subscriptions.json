@@ -84,25 +84,11 @@
             "smithy.api#documentation": "Filter by dashboard ID."
           }
         },
-        "dashboard_tiles": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "dashboard_tiles",
-            "smithy.api#documentation": "Filter to subscriptions on insights that are tiles of the given dashboard ID."
-          }
-        },
         "insight": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#httpQuery": "insight",
             "smithy.api#documentation": "Filter by insight ID."
-          }
-        },
-        "insights": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "insights",
-            "smithy.api#documentation": "Filter by a comma-separated list of insight IDs."
           }
         },
         "limit": {
@@ -152,7 +138,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#PaginatedSubscriptionListOutput": {
+    "com.posthog.subscriptions#PaginatedSubscriptionList": {
       "type": "structure",
       "members": {
         "count": {
@@ -171,12 +157,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.subscriptions#PaginatedSubscriptionListOutputResultsList"
+          "target": "com.posthog.subscriptions#PaginatedSubscriptionListResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#SubscriptionOutput": {
+    "com.posthog.subscriptions#Subscription": {
       "type": "structure",
       "members": {
         "id": {
@@ -215,7 +201,7 @@
           }
         },
         "dashboard_export_insights": {
-          "target": "com.posthog.subscriptions#SubscriptionOutputDashboardExportInsightsList",
+          "target": "com.posthog.subscriptions#SubscriptionDashboardExportInsightsList",
           "traits": {
             "smithy.api#documentation": "List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6."
           }
@@ -225,12 +211,6 @@
           "traits": {
             "smithy.api#documentation": "Free-text prompt that drives the AI-generated report. Required when resource_type is 'ai_prompt'. Max 4000 characters.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ai_prompt_config": {
-          "target": "com.posthog.subscriptions#AIPromptConfig",
-          "traits": {
-            "smithy.api#documentation": "Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes."
           }
         },
         "target_type": {
@@ -258,7 +238,7 @@
           }
         },
         "byweekday": {
-          "target": "com.posthog.subscriptions#SubscriptionOutputByweekdayList",
+          "target": "com.posthog.subscriptions#SubscriptionByweekdayList",
           "traits": {
             "smithy.api#documentation": "Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.",
             "com.distilled.openapi#nullable": {}
@@ -388,77 +368,13 @@
         "smithy.api#documentation": "* `insight` - Insight\n* `dashboard` - Dashboard\n* `ai_prompt` - AI prompt"
       }
     },
-    "com.posthog.subscriptions#SubscriptionOutputDashboardExportInsightsList": {
+    "com.posthog.subscriptions#SubscriptionDashboardExportInsightsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {
         "smithy.api#documentation": "List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6."
-      }
-    },
-    "com.posthog.subscriptions#AIPromptConfig": {
-      "type": "structure",
-      "members": {
-        "window": {
-          "target": "com.posthog.subscriptions#AIWindowConfig",
-          "traits": {
-            "smithy.api#documentation": "Analysis window for the report. Omitted = 'since_last_sent' (everything since the previous scheduled delivery)."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.subscriptions#AIWindowConfig": {
-      "type": "structure",
-      "members": {
-        "mode": {
-          "target": "com.posthog.subscriptions#AIWindowConfigModeEnum",
-          "traits": {
-            "smithy.api#documentation": "What the report analyzes each run:\n* `since_last_sent` (default) — everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor)\n* `last_n_days` — a fixed trailing window of start_days_ago days\n* `days_ago_range` — the explicit range from start_days_ago to end_days_ago days ago\n\n* `since_last_sent` - Since last report\n* `last_n_days` - Last N days\n* `days_ago_range` - Between X and Y days ago"
-          }
-        },
-        "start_days_ago": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Lower bound of the analysis window, in days before the run. Required for 'last_n_days' (the N) and 'days_ago_range'; ignored for 'since_last_sent'. 1-365.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "end_days_ago": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Upper bound of the analysis window, in days before the run (0 = now). Required for 'days_ago_range' and must be less than start_days_ago; ignored for other modes. 0-365.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.subscriptions#AIWindowConfigModeEnum": {
-      "type": "enum",
-      "members": {
-        "SINCE_LAST_SENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "since_last_sent"
-          }
-        },
-        "LAST_N_DAYS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "last_n_days"
-          }
-        },
-        "DAYS_AGO_RANGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "days_ago_range"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `since_last_sent` - Since last report\n* `last_n_days` - Last N days\n* `days_ago_range` - Between X and Y days ago"
       }
     },
     "com.posthog.subscriptions#TargetTypeEnum": {
@@ -513,7 +429,7 @@
         "smithy.api#documentation": "* `daily` - Daily\n* `weekly` - Weekly\n* `monthly` - Monthly\n* `yearly` - Yearly"
       }
     },
-    "com.posthog.subscriptions#SubscriptionOutputByweekdayItem": {
+    "com.posthog.subscriptions#SubscriptionByweekdayItem": {
       "type": "enum",
       "members": {
         "MONDAY": {
@@ -563,10 +479,10 @@
         "smithy.api#documentation": "* `monday` - Monday\n* `tuesday` - Tuesday\n* `wednesday` - Wednesday\n* `thursday` - Thursday\n* `friday` - Friday\n* `saturday` - Saturday\n* `sunday` - Sunday"
       }
     },
-    "com.posthog.subscriptions#SubscriptionOutputByweekdayList": {
+    "com.posthog.subscriptions#SubscriptionByweekdayList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.subscriptions#SubscriptionOutputByweekdayItem"
+        "target": "com.posthog.subscriptions#SubscriptionByweekdayItem"
       },
       "traits": {
         "smithy.api#documentation": "Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday."
@@ -707,10 +623,10 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#PaginatedSubscriptionListOutputResultsList": {
+    "com.posthog.subscriptions#PaginatedSubscriptionListResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.subscriptions#SubscriptionOutput"
+        "target": "com.posthog.subscriptions#Subscription"
       },
       "traits": {}
     },
@@ -720,7 +636,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsListRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#PaginatedSubscriptionListOutput"
+        "target": "com.posthog.subscriptions#PaginatedSubscriptionList"
       },
       "errors": [
         {
@@ -847,12 +763,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "ai_prompt_config": {
-          "target": "com.posthog.subscriptions#AIPromptConfig",
-          "traits": {
-            "smithy.api#documentation": "Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes."
-          }
-        },
         "target_type": {
           "target": "com.posthog.subscriptions#TargetTypeEnum",
           "traits": {
@@ -944,12 +854,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "send_test_now": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected."
-          }
-        },
         "summary_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -973,7 +877,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#SubscriptionOutput"
+        "target": "com.posthog.subscriptions#Subscription"
       },
       "errors": [
         {
@@ -1024,7 +928,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#SubscriptionOutput"
+        "target": "com.posthog.subscriptions#Subscription"
       },
       "errors": [
         {
@@ -1156,12 +1060,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "ai_prompt_config": {
-          "target": "com.posthog.subscriptions#AIPromptConfig",
-          "traits": {
-            "smithy.api#documentation": "Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes."
-          }
-        },
         "target_type": {
           "target": "com.posthog.subscriptions#TargetTypeEnum",
           "traits": {
@@ -1253,12 +1151,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "send_test_now": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected."
-          }
-        },
         "summary_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1282,7 +1174,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#SubscriptionOutput"
+        "target": "com.posthog.subscriptions#Subscription"
       },
       "errors": [
         {
@@ -1417,12 +1309,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "ai_prompt_config": {
-          "target": "com.posthog.subscriptions#AIPromptConfig",
-          "traits": {
-            "smithy.api#documentation": "Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is 'ai_prompt'. Replaced wholesale on writes."
-          }
-        },
         "target_type": {
           "target": "com.posthog.subscriptions#TargetTypeEnum",
           "traits": {
@@ -1514,12 +1400,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "send_test_now": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected."
-          }
-        },
         "summary_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1543,7 +1423,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#SubscriptionOutput"
+        "target": "com.posthog.subscriptions#Subscription"
       },
       "errors": [
         {
@@ -1856,27 +1736,6 @@
             "smithy.api#documentation": "AI-generated summary included in this delivery, when one was produced.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "ai_report": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "AI-generated report markdown delivered by this run. Null for non-AI deliveries or runs without a persisted report.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ai_report_diagnostics": {
-          "target": "com.posthog.subscriptions#SubscriptionDeliveryAiReportDiagnosticsList",
-          "traits": {
-            "smithy.api#documentation": "Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ai_report_prompt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The subscription's prompt as it was when this report was generated. Null for older deliveries and non-AI deliveries.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {}
@@ -1920,57 +1779,6 @@
       },
       "traits": {
         "smithy.api#documentation": "* `starting` - Starting\n* `completed` - Completed\n* `failed` - Failed\n* `skipped` - Skipped"
-      }
-    },
-    "com.posthog.subscriptions#AIReportQueryDiagnostic": {
-      "type": "structure",
-      "members": {
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "What this query step was meant to compute.",
-            "smithy.api#required": {}
-          }
-        },
-        "hogql": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The HogQL the assistant generated for this step.",
-            "smithy.api#required": {}
-          }
-        },
-        "ok": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the query ran successfully.",
-            "smithy.api#required": {}
-          }
-        },
-        "error_type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exception class name when the query failed; null on success.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "human_readable_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable failure reason, present only for query errors safe to surface to the subscription owner (e.g. an unresolved field name); null on success and for internal errors, which expose error_type only.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.subscriptions#SubscriptionDeliveryAiReportDiagnosticsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.subscriptions#AIReportQueryDiagnostic"
-      },
-      "traits": {
-        "smithy.api#documentation": "Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics."
       }
     },
     "com.posthog.subscriptions#PaginatedSubscriptionDeliveryListResultsList": {

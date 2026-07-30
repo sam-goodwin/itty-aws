@@ -549,82 +549,6 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#PersonMetadataPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.error_tracking#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Top-level columns on the persons table (e.g. created_at), not properties JSON"
-          }
-        },
-        "value": {
-          "target": "com.posthog.error_tracking#PersonMetadataPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#PersonMetadataPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#PersonMetadataPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.error_tracking#PersonMetadataPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#PersonMetadataPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.error_tracking#PersonMetadataPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.error_tracking#ElementPropertyFilter": {
       "type": "structure",
       "members": {
@@ -1633,79 +1557,6 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#MetricPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.error_tracking#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "value": {
-          "target": "com.posthog.error_tracking#MetricPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#MetricPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#MetricPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.error_tracking#MetricPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#MetricPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.error_tracking#MetricPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.error_tracking#SpanPropertyFilter": {
       "type": "structure",
       "members": {
@@ -1864,82 +1715,6 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#AccountCustomPropertyFilter": {
-      "type": "structure",
-      "members": {
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "operator": {
-          "target": "com.posthog.error_tracking#PropertyOperator",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Customer analytics account custom property — the key is the property definition id"
-          }
-        },
-        "value": {
-          "target": "com.posthog.error_tracking#AccountCustomPropertyFilterValue",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#AccountCustomPropertyFilterValueCase0Item": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#String"
-        },
-        "Case1": {
-          "target": "smithy.api#Double"
-        },
-        "Case2": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#AccountCustomPropertyFilterValueCase0List": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.error_tracking#AccountCustomPropertyFilterValueCase0Item"
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#AccountCustomPropertyFilterValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.posthog.error_tracking#AccountCustomPropertyFilterValueCase0List"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        },
-        "Case2": {
-          "target": "smithy.api#Double"
-        },
-        "Case3": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.error_tracking#WorkflowVariablePropertyFilter": {
       "type": "structure",
       "members": {
@@ -2019,9 +1794,6 @@
         "PersonPropertyFilter": {
           "target": "com.posthog.error_tracking#PersonPropertyFilter"
         },
-        "PersonMetadataPropertyFilter": {
-          "target": "com.posthog.error_tracking#PersonMetadataPropertyFilter"
-        },
         "ElementPropertyFilter": {
           "target": "com.posthog.error_tracking#ElementPropertyFilter"
         },
@@ -2067,17 +1839,11 @@
         "LogPropertyFilter": {
           "target": "com.posthog.error_tracking#LogPropertyFilter"
         },
-        "MetricPropertyFilter": {
-          "target": "com.posthog.error_tracking#MetricPropertyFilter"
-        },
         "SpanPropertyFilter": {
           "target": "com.posthog.error_tracking#SpanPropertyFilter"
         },
         "RevenueAnalyticsPropertyFilter": {
           "target": "com.posthog.error_tracking#RevenueAnalyticsPropertyFilter"
-        },
-        "AccountCustomPropertyFilter": {
-          "target": "com.posthog.error_tracking#AccountCustomPropertyFilter"
         },
         "WorkflowVariablePropertyFilter": {
           "target": "com.posthog.error_tracking#WorkflowVariablePropertyFilter"
@@ -2419,394 +2185,6 @@
         }
       }
     },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesListRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit",
-            "smithy.api#documentation": "Number of results to return per page."
-          }
-        },
-        "offset": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "offset",
-            "smithy.api#documentation": "The initial index from which to return the results."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#PaginatedErrorTrackingBypassRuleList": {
-      "type": "structure",
-      "members": {
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "next": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "previous": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "results": {
-          "target": "com.posthog.error_tracking#PaginatedErrorTrackingBypassRuleListResultsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRule": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier of the bypass rule.",
-            "smithy.api#required": {}
-          }
-        },
-        "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Property-group filters that define which incoming error events bypass rate limiting.",
-            "smithy.api#required": {}
-          }
-        },
-        "order_key": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Position of the rule in the team's ordered list. Rules are evaluated greedily in ascending order.",
-            "smithy.api#required": {}
-          }
-        },
-        "disabled_data": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Populated when the rule has been automatically disabled (for example, after its filters failed to evaluate during ingestion). Null while the rule is active.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the rule was created.",
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the rule was last updated.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#PaginatedErrorTrackingBypassRuleListResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRule"
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesList": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesListRequest"
-      },
-      "output": {
-        "target": "com.posthog.error_tracking#PaginatedErrorTrackingBypassRuleList"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "filters": {
-          "target": "com.posthog.error_tracking#PropertyGroupFilterValue",
-          "traits": {
-            "smithy.api#documentation": "Property-group filters that define which incoming error events bypass rate limiting. Must contain at least one filter — empty rules are rejected. To stop rate limiting entirely, adjust the rate limit settings instead of creating a match-all bypass rule.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRule"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRule"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "filters": {
-          "target": "com.posthog.error_tracking#PropertyGroupFilterValue",
-          "traits": {
-            "smithy.api#documentation": "Property-group filters that define which incoming error events bypass rate limiting. Must contain at least one filter. Omit to preserve the existing filters."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesUpdateRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesPartialUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "filters": {
-          "target": "com.posthog.error_tracking#PropertyGroupFilterValue",
-          "traits": {
-            "smithy.api#documentation": "Property-group filters that define which incoming error events bypass rate limiting. Must contain at least one filter. Omit to preserve the existing filters."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesPartialUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesPartialUpdateRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PATCH",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesDestroyRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesDestroy": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesDestroyRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesReorderPartialUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Property-group filters that define which incoming error events bypass rate limiting."
-          }
-        },
-        "order_key": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Position of the rule in the team's ordered list. Rules are evaluated greedily in ascending order."
-          }
-        },
-        "disabled_data": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Populated when the rule has been automatically disabled (for example, after its filters failed to evaluate during ingestion). Null while the rule is active."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingBypassRulesReorderPartialUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesReorderPartialUpdateRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PATCH",
-          "uri": "/api/projects/{project_id}/error_tracking/bypass_rules/reorder/",
-          "code": 200
-        }
-      }
-    },
     "com.posthog.error_tracking#ErrorTrackingExternalReferencesListRequest": {
       "type": "structure",
       "members": {
@@ -3137,28 +2515,16 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique ID of the fingerprint record."
-          }
+          "target": "smithy.api#String"
         },
         "fingerprint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The fingerprint value."
-          }
+          "target": "smithy.api#String"
         },
         "issue_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the issue this fingerprint currently belongs to."
-          }
+          "target": "smithy.api#String"
         },
         "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the fingerprint record was created."
-          }
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -3264,46 +2630,6 @@
           "code": 200
         },
         "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingFingerprintsResolveRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "fingerprint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "fingerprint",
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Fingerprint value to resolve to the issue it currently belongs to."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingFingerprintsResolveRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.error_tracking#ErrorTrackingFingerprintsResolveRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingFingerprint"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/error_tracking/fingerprints/resolve/",
-          "code": 200
-        }
       }
     },
     "com.posthog.error_tracking#ErrorTrackingGitProviderFileLinksResolveGithubRetrieveRequest": {
@@ -5588,12 +4914,6 @@
             "smithy.api#enumValue": "person"
           }
         },
-        "PERSON_METADATA": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "person_metadata"
-          }
-        },
         "COHORT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5696,12 +5016,6 @@
             "smithy.api#enumValue": "log_resource_attribute"
           }
         },
-        "METRIC_ATTRIBUTE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "metric_attribute"
-          }
-        },
         "SPAN": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5726,12 +5040,6 @@
             "smithy.api#enumValue": "revenue_analytics"
           }
         },
-        "ACCOUNT_CUSTOM_PROPERTY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account_custom_property"
-          }
-        },
         "FLAG": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -5746,7 +5054,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `event` - event\n* `event_metadata` - event_metadata\n* `feature` - feature\n* `person` - person\n* `person_metadata` - person_metadata\n* `cohort` - cohort\n* `element` - element\n* `static-cohort` - static-cohort\n* `dynamic-cohort` - dynamic-cohort\n* `precalculated-cohort` - precalculated-cohort\n* `group` - group\n* `recording` - recording\n* `log_entry` - log_entry\n* `behavioral` - behavioral\n* `session` - session\n* `hogql` - hogql\n* `data_warehouse` - data_warehouse\n* `data_warehouse_person_property` - data_warehouse_person_property\n* `error_tracking_issue` - error_tracking_issue\n* `log` - log\n* `log_attribute` - log_attribute\n* `log_resource_attribute` - log_resource_attribute\n* `metric_attribute` - metric_attribute\n* `span` - span\n* `span_attribute` - span_attribute\n* `span_resource_attribute` - span_resource_attribute\n* `revenue_analytics` - revenue_analytics\n* `account_custom_property` - account_custom_property\n* `flag` - flag\n* `workflow_variable` - workflow_variable"
+        "smithy.api#documentation": "* `event` - event\n* `event_metadata` - event_metadata\n* `feature` - feature\n* `person` - person\n* `cohort` - cohort\n* `element` - element\n* `static-cohort` - static-cohort\n* `dynamic-cohort` - dynamic-cohort\n* `precalculated-cohort` - precalculated-cohort\n* `group` - group\n* `recording` - recording\n* `log_entry` - log_entry\n* `behavioral` - behavioral\n* `session` - session\n* `hogql` - hogql\n* `data_warehouse` - data_warehouse\n* `data_warehouse_person_property` - data_warehouse_person_property\n* `error_tracking_issue` - error_tracking_issue\n* `log` - log\n* `log_attribute` - log_attribute\n* `log_resource_attribute` - log_resource_attribute\n* `span` - span\n* `span_attribute` - span_attribute\n* `span_resource_attribute` - span_resource_attribute\n* `revenue_analytics` - revenue_analytics\n* `flag` - flag\n* `workflow_variable` - workflow_variable"
       }
     },
     "com.posthog.error_tracking#PropertyItemType": {
@@ -5790,69 +5098,30 @@
         "smithy.api#documentation": "* `ASC` - ASC\n* `DESC` - DESC"
       }
     },
-    "com.posthog.error_tracking#IncludeEnum": {
+    "com.posthog.error_tracking#VerbosityEnum": {
       "type": "enum",
       "members": {
-        "EXCEPTION": {
+        "SUMMARY": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "exception"
+            "smithy.api#enumValue": "summary"
           }
         },
-        "STACKTRACE": {
+        "STACK": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "stacktrace"
+            "smithy.api#enumValue": "stack"
           }
         },
-        "CODE_VARIABLES": {
+        "RAW": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "code_variables"
-          }
-        },
-        "ENVIRONMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "environment"
-          }
-        },
-        "RELEASE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "release"
-          }
-        },
-        "NAVIGATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "navigation"
-          }
-        },
-        "CORRELATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "correlation"
-          }
-        },
-        "DIAGNOSTICS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "diagnostics"
+            "smithy.api#enumValue": "raw"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `exception` - exception\n* `stacktrace` - stacktrace\n* `code_variables` - code_variables\n* `environment` - environment\n* `release` - release\n* `navigation` - navigation\n* `correlation` - correlation\n* `diagnostics` - diagnostics"
-      }
-    },
-    "com.posthog.error_tracking#ErrorTrackingQueryIssueEventsCreateRequestIncludeList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.error_tracking#IncludeEnum"
-      },
-      "traits": {
-        "smithy.api#documentation": "Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace."
+        "smithy.api#documentation": "* `summary` - summary\n* `stack` - stack\n* `raw` - raw"
       }
     },
     "com.posthog.error_tracking#ErrorTrackingQueryIssueEventsCreateRequest": {
@@ -5915,10 +5184,10 @@
             "smithy.api#documentation": "Pagination offset."
           }
         },
-        "include": {
-          "target": "com.posthog.error_tracking#ErrorTrackingQueryIssueEventsCreateRequestIncludeList",
+        "verbosity": {
+          "target": "com.posthog.error_tracking#VerbosityEnum",
           "traits": {
-            "smithy.api#documentation": "Context groups to return. Defaults to exception, environment, navigation, and correlation. Request stacktrace for frames, code_variables for captured and SDK-masked frame variables, release for release metadata, or diagnostics for ingestion errors. code_variables implies stacktrace."
+            "smithy.api#documentation": "Controls exception detail size: summary, stack, or raw. Defaults to summary.\n\n* `summary` - summary\n* `stack` - stack\n* `raw` - raw"
           }
         },
         "onlyAppFrames": {
@@ -9041,27 +8310,6 @@
           "target": "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdate"
         },
         {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesList"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesCreate"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesRetrieve"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesUpdate"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesPartialUpdate"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesDestroy"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingBypassRulesReorderPartialUpdate"
-        },
-        {
           "target": "com.posthog.error_tracking#ErrorTrackingExternalReferencesList"
         },
         {
@@ -9081,9 +8329,6 @@
         },
         {
           "target": "com.posthog.error_tracking#ErrorTrackingFingerprintsDestroy"
-        },
-        {
-          "target": "com.posthog.error_tracking#ErrorTrackingFingerprintsResolveRetrieve"
         },
         {
           "target": "com.posthog.error_tracking#ErrorTrackingGitProviderFileLinksResolveGithubRetrieve"

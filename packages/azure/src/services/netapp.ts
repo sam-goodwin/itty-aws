@@ -68,7 +68,7 @@ export const AccountsChangeKeyVaultRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -362,7 +362,7 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -746,7 +746,7 @@ export const AccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -778,7 +778,7 @@ export const AccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -880,7 +880,7 @@ export const AccountsGetChangeKeyVaultInformationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/getKeyVaultStatus",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -947,7 +947,7 @@ export const AccountsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1063,7 +1063,7 @@ export const AccountsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1088,7 +1088,7 @@ export const AccountsRenewCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1126,7 +1126,7 @@ export const AccountsTransitionToCmkRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1206,7 +1206,7 @@ export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1352,7 +1352,7 @@ export const BackupPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1482,7 +1482,7 @@ export const BackupPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1517,7 +1517,7 @@ export const BackupPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1584,7 +1584,7 @@ export const BackupPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1691,7 +1691,7 @@ export const BackupPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1789,7 +1789,7 @@ export const BackupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1900,7 +1900,7 @@ export const BackupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1938,7 +1938,7 @@ export const BackupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1993,7 +1993,7 @@ export const BackupsGetLatestStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2072,7 +2072,7 @@ export const BackupsGetVolumeLatestRestoreStatusRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -2137,7 +2137,7 @@ export const BackupsListByVaultRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2209,7 +2209,7 @@ export const BackupsUnderAccountMigrateBackupsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/migrateBackups",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -2264,7 +2264,7 @@ export const BackupsUnderBackupVaultRestoreFilesRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}/restoreFiles",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -2305,7 +2305,7 @@ export const BackupsUnderVolumeMigrateBackupsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/migrateBackups",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -2359,7 +2359,7 @@ export const BackupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2437,7 +2437,7 @@ export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2517,7 +2517,7 @@ export const BackupVaultsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2552,7 +2552,7 @@ export const BackupVaultsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2617,7 +2617,7 @@ export const BackupVaultsListByNetAppAccountRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -2715,7 +2715,7 @@ export const BackupVaultsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -2930,7 +2930,7 @@ export const BucketsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3070,7 +3070,7 @@ export const BucketsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3115,7 +3115,7 @@ export const BucketsGenerateAkvCredentialsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateAkvCredentials",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -3159,7 +3159,7 @@ export const BucketsGenerateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateCredentials",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3212,7 +3212,7 @@ export const BucketsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3267,7 +3267,7 @@ export const BucketsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3344,7 +3344,7 @@ export const BucketsRefreshCertificateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/refreshCertificate",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3433,7 +3433,7 @@ export const BucketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -3751,7 +3751,7 @@ export const CachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4049,7 +4049,7 @@ export const CachesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4087,7 +4087,7 @@ export const CachesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4164,7 +4164,7 @@ export const CachesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4263,7 +4263,7 @@ export const CachesListPeeringPassphrasesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/listPeeringPassphrases",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4319,7 +4319,7 @@ export const CachesPoolChangeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/poolChange",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4401,7 +4401,7 @@ export const CachesResetSmbPasswordRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/resetSmbPassword",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4538,7 +4538,7 @@ export const CachesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4619,7 +4619,7 @@ export const NetAppResourceCheckFilePathAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkFilePathAvailability",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4684,7 +4684,7 @@ export const NetAppResourceCheckNameAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkNameAvailability",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4726,7 +4726,7 @@ export const NetAppResourceCheckQuotaAvailabilityRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkQuotaAvailability",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4755,7 +4755,7 @@ export const NetAppResourceQueryNetworkSiblingSetRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/queryNetworkSiblingSet",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4848,7 +4848,7 @@ export const NetAppResourceQueryRegionInfoRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -4928,7 +4928,7 @@ export const NetAppResourceQuotaLimitsAccountGetRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits/{quotaLimitName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4998,7 +4998,7 @@ export const NetAppResourceQuotaLimitsAccountListRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -5066,7 +5066,7 @@ export const NetAppResourceQuotaLimitsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5114,7 +5114,7 @@ export const NetAppResourceQuotaLimitsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -5136,7 +5136,7 @@ export const NetAppResourceRegionInfosGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5184,7 +5184,7 @@ export const NetAppResourceRegionInfosListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -5278,7 +5278,7 @@ export const NetAppResourceUpdateNetworkSiblingSetRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/updateNetworkSiblingSet",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -5303,7 +5303,7 @@ export const NetAppResourceUsagesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5375,7 +5375,7 @@ export const NetAppResourceUsagesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5411,7 +5411,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.NetApp/operations",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5727,7 +5727,7 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5852,7 +5852,7 @@ export const PoolsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5887,7 +5887,7 @@ export const PoolsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5952,7 +5952,7 @@ export const PoolsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6083,7 +6083,7 @@ export const PoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6175,7 +6175,7 @@ export const RansomwareReportsClearSuspectsRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -6216,7 +6216,7 @@ export const RansomwareReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6358,7 +6358,7 @@ export const RansomwareReportsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6561,7 +6561,7 @@ export const SnapshotPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6659,7 +6659,7 @@ export const SnapshotPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6694,7 +6694,7 @@ export const SnapshotPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6761,7 +6761,7 @@ export const SnapshotPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -6850,7 +6850,7 @@ export const SnapshotPoliciesListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7237,13 +7237,9 @@ export const VolumePropertiesPlacementRulesList = /*@__PURE__*/ S.Array(
   PlacementKeyValuePairs,
 ) as any as S.Schema<VolumePropertiesPlacementRulesList>;
 
-/** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
+/** Flag indicating whether subvolume operations are enabled on the volume */
 export type VolumePropertiesEnableSubvolumes = "Enabled" | "Disabled";
 export const VolumePropertiesEnableSubvolumes = /*@__PURE__*/ S.String;
-
-/** Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode, delivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature is available only in regions where it’s been configured and first-time users must finish onboarding prior to using Breakthrough Mode. */
-export type BreakthroughMode = "Enabled" | "Disabled";
-export const BreakthroughMode = /*@__PURE__*/ S.String;
 
 /** Volume properties */
 export interface VolumeProperties {
@@ -7353,7 +7349,7 @@ export interface VolumeProperties {
   encrypted?: boolean;
   /** Application specific placement rules for the particular volume */
   placementRules?: VolumePropertiesPlacementRulesList;
-  /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
+  /** Flag indicating whether subvolume operations are enabled on the volume */
   enableSubvolumes?: VolumePropertiesEnableSubvolumes;
   /** The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides. */
   provisionedAvailabilityZone?: string | null;
@@ -7363,8 +7359,6 @@ export interface VolumeProperties {
   originatingResourceId?: string | null;
   /** Space shared by short term clone volume with parent volume in bytes. */
   inheritedSizeInBytes?: number | null;
-  /** Specifies whether the volume operates in Breakthrough Mode. */
-  breakthroughMode?: BreakthroughMode;
 }
 export const VolumeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7430,7 +7424,6 @@ export const VolumeProperties = /*@__PURE__*/ S.suspend(() =>
     isLargeVolume: S.optional(S.Boolean),
     originatingResourceId: S.optional(S.NullOr(S.String)),
     inheritedSizeInBytes: S.optional(S.NullOr(S.Number)),
-    breakthroughMode: S.optional(BreakthroughMode),
   }),
 ).annotate({
   identifier: "VolumeProperties",
@@ -7538,7 +7531,7 @@ export const SnapshotPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7628,7 +7621,7 @@ export const SnapshotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7708,7 +7701,7 @@ export const SnapshotsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7749,7 +7742,7 @@ export const SnapshotsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7807,7 +7800,7 @@ export const SnapshotsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7899,7 +7892,7 @@ export const SnapshotsRestoreFilesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -7940,7 +7933,7 @@ export const SnapshotsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8023,7 +8016,7 @@ export const SubvolumesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8103,7 +8096,7 @@ export const SubvolumesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8144,7 +8137,7 @@ export const SubvolumesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8202,7 +8195,7 @@ export const SubvolumesGetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8293,14 +8286,14 @@ export const SubvolumesListByVolumeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
   identifier: "SubvolumesListByVolumeRequest",
 }) as any as S.Schema<SubvolumesListByVolumeRequest>;
 
-/** Subvolume Information properties Deprecated. This resource type will be removed in a future API version. */
+/** Subvolume Information properties */
 export interface SubvolumeInfo {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8389,7 +8382,7 @@ export const SubvolumesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8575,7 +8568,7 @@ export const VolumePropertiesInputPlacementRulesList = /*@__PURE__*/ S.Array(
   PlacementKeyValuePairs,
 ) as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
 
-/** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
+/** Flag indicating whether subvolume operations are enabled on the volume */
 export type VolumePropertiesInputEnableSubvolumes = "Enabled" | "Disabled";
 export const VolumePropertiesInputEnableSubvolumes = /*@__PURE__*/ S.String;
 
@@ -8659,12 +8652,10 @@ export interface VolumePropertiesInput {
   volumeSpecName?: string;
   /** Application specific placement rules for the particular volume */
   placementRules?: VolumePropertiesInputPlacementRulesList;
-  /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
+  /** Flag indicating whether subvolume operations are enabled on the volume */
   enableSubvolumes?: VolumePropertiesInputEnableSubvolumes | (string & {});
   /** Specifies whether volume is a Large Volume or Regular Volume. */
   isLargeVolume?: boolean;
-  /** Specifies whether the volume operates in Breakthrough Mode. */
-  breakthroughMode?: BreakthroughMode | (string & {});
 }
 export const VolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8709,7 +8700,6 @@ export const VolumePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     placementRules: S.optional(VolumePropertiesInputPlacementRulesList),
     enableSubvolumes: S.optional(VolumePropertiesInputEnableSubvolumes),
     isLargeVolume: S.optional(S.Boolean),
-    breakthroughMode: S.optional(BreakthroughMode),
   }),
 ).annotate({
   identifier: "VolumePropertiesInput",
@@ -8787,7 +8777,7 @@ export const VolumeGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8946,7 +8936,7 @@ export const VolumeGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8981,7 +8971,7 @@ export const VolumeGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9034,7 +9024,7 @@ export const VolumeGroupsListByNetAppAccountRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -9174,7 +9164,7 @@ export const VolumeQuotaRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9269,7 +9259,7 @@ export const VolumeQuotaRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9310,7 +9300,7 @@ export const VolumeQuotaRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9380,7 +9370,7 @@ export const VolumeQuotaRulesListByVolumeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9489,7 +9479,7 @@ export const VolumeQuotaRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9560,7 +9550,7 @@ export const VolumesAuthorizeExternalReplicationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9620,7 +9610,7 @@ export const VolumesAuthorizeReplicationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9664,7 +9654,7 @@ export const VolumesBreakFileLocksRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9705,7 +9695,7 @@ export const VolumesBreakReplicationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9770,7 +9760,7 @@ export const VolumesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9855,7 +9845,7 @@ export const VolumesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9893,7 +9883,7 @@ export const VolumesDeleteReplicationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9932,7 +9922,7 @@ export const VolumesFinalizeExternalReplicationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeExternalReplication",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9969,7 +9959,7 @@ export const VolumesFinalizeRelocationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10007,7 +9997,7 @@ export const VolumesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10084,7 +10074,7 @@ export const VolumesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10139,7 +10129,7 @@ export const VolumesListGetGroupIdListForLdapUserRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -10202,7 +10192,7 @@ export const VolumesListQuotaReportRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10301,7 +10291,7 @@ export const VolumesListReplicationsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10401,7 +10391,7 @@ export const VolumesPeerExternalClusterRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10463,7 +10453,7 @@ export const VolumesPerformReplicationTransferRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/performReplicationTransfer",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10503,7 +10493,7 @@ export const VolumesPoolChangeRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10542,7 +10532,7 @@ export const VolumesPopulateAvailabilityZoneRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10631,7 +10621,7 @@ export const VolumesReestablishReplicationRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10670,7 +10660,7 @@ export const VolumesReInitializeReplicationRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10711,7 +10701,7 @@ export const VolumesRelocateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10749,7 +10739,7 @@ export const VolumesReplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10805,7 +10795,7 @@ export const VolumesResetCifsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10843,7 +10833,7 @@ export const VolumesResyncReplicationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10884,7 +10874,7 @@ export const VolumesRevertRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10922,7 +10912,7 @@ export const VolumesRevertRelocationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10960,7 +10950,7 @@ export const VolumesSplitCloneFromParentRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11192,7 +11182,7 @@ export const VolumesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({

@@ -92,7 +92,7 @@ export const ResourcePropertiesObjectType = /*@__PURE__*/ S.String;
 /** Properties which are specific to datasource/datasourceSets */
 export interface BaseResourceProperties {
   /** Type of the specific object - used for deserializing */
-  objectType: ResourcePropertiesObjectType;
+  objectType: ResourcePropertiesObjectType | (string & {});
 }
 export const BaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1165,7 +1165,7 @@ export interface RestoreTargetInfoBase {
   /** Type of Datasource object, used to initialize the right inherited type */
   objectType: string;
   /** Recovery Option */
-  recoveryOption: RecoveryOption;
+  recoveryOption: RecoveryOption | (string & {});
   /** Target Restore region */
   restoreLocation?: string;
 }

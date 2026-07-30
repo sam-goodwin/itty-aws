@@ -389,8 +389,6 @@ export interface DashboardsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   format?: DashboardsCreateRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
   name?: string | null;
   description?: string;
   pinned?: boolean;
@@ -417,7 +415,6 @@ export const DashboardsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     format: S.optional(DashboardsCreateRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
     pinned: S.optional(S.Boolean),
@@ -667,23 +664,11 @@ export type TrendsQueryConversionGoal =
 export const TrendsQueryConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryConversionGoal>;
 
-export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export const DaysOfWeekEnum = /*@__PURE__*/ S.Number;
-
-export type DateRangeDaysOfWeekList = Array<DaysOfWeekEnum>;
-export const DateRangeDaysOfWeekList = /*@__PURE__*/ S.Array(
-  DaysOfWeekEnum,
-) as any as S.Schema<DateRangeDaysOfWeekList>;
-
 export interface DateRange {
   /** Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago), -1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year). */
   date_from?: string | null;
   /** End of the date range. Same format as date_from. Omit or null for "now". */
   date_to?: string | null;
-  /** Restrict the query to events occurring on these ISO days of week (1=Monday to 7=Sunday), evaluated in the project timezone. Omit or empty for all days. Only applied by insight queries. */
-  daysOfWeek?: DateRangeDaysOfWeekList | null;
-  /** Exclude the current, still-collecting period by clipping date_to to the end of the last complete interval (evaluated in the project timezone). No-op when the range contains no complete interval. Only applied by insight queries. */
-  excludeIncompletePeriods?: boolean | null;
   /** Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period. */
   explicitDate?: boolean | null;
 }
@@ -691,8 +676,6 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.NullOr(S.String)),
     date_to: S.optional(S.NullOr(S.String)),
-    daysOfWeek: S.optional(S.NullOr(DateRangeDaysOfWeekList)),
-    excludeIncompletePeriods: S.optional(S.NullOr(S.Boolean)),
     explicitDate: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
@@ -703,9 +686,7 @@ export type IntervalType =
   | "hour"
   | "day"
   | "week"
-  | "month"
-  | "quarter"
-  | "year";
+  | "month";
 export const IntervalType = /*@__PURE__*/ S.String;
 
 export type BounceRatePageViewMode =
@@ -1072,47 +1053,6 @@ export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PersonPropertyFilter",
 }) as any as S.Schema<PersonPropertyFilter>;
-
-export type PersonMetadataPropertyFilterValueCase0Item =
-  | string
-  | number
-  | boolean;
-export const PersonMetadataPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
-
-export type PersonMetadataPropertyFilterValueCase0List =
-  Array<PersonMetadataPropertyFilterValueCase0Item>;
-export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
-
-export type PersonMetadataPropertyFilterValue =
-  | PersonMetadataPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const PersonMetadataPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValue>;
-
-export interface PersonMetadataPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator;
-  /** Top-level columns on the persons table (e.g. created_at), not properties JSON */
-  type?: string;
-  value?: PersonMetadataPropertyFilterValue | null;
-}
-export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "PersonMetadataPropertyFilter",
-}) as any as S.Schema<PersonMetadataPropertyFilter>;
 
 export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
@@ -1655,43 +1595,6 @@ export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogPropertyFilter",
 }) as any as S.Schema<LogPropertyFilter>;
 
-export type MetricPropertyFilterValueCase0Item = string | number | boolean;
-export const MetricPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
-
-export type MetricPropertyFilterValueCase0List =
-  Array<MetricPropertyFilterValueCase0Item>;
-export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  MetricPropertyFilterValueCase0Item,
-) as any as S.Schema<MetricPropertyFilterValueCase0List>;
-
-export type MetricPropertyFilterValue =
-  | MetricPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const MetricPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValue>;
-
-export interface MetricPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator;
-  type?: string;
-  value?: MetricPropertyFilterValue | null;
-}
-export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(MetricPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "MetricPropertyFilter",
-}) as any as S.Schema<MetricPropertyFilter>;
-
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
@@ -1776,47 +1679,6 @@ export const RevenueAnalyticsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsPropertyFilter",
 }) as any as S.Schema<RevenueAnalyticsPropertyFilter>;
 
-export type AccountCustomPropertyFilterValueCase0Item =
-  | string
-  | number
-  | boolean;
-export const AccountCustomPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
-
-export type AccountCustomPropertyFilterValueCase0List =
-  Array<AccountCustomPropertyFilterValueCase0Item>;
-export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  AccountCustomPropertyFilterValueCase0Item,
-) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
-
-export type AccountCustomPropertyFilterValue =
-  | AccountCustomPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const AccountCustomPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValue>;
-
-export interface AccountCustomPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator;
-  /** Customer analytics account custom property — the key is the property definition id */
-  type?: string;
-  value?: AccountCustomPropertyFilterValue | null;
-}
-export const AccountCustomPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(AccountCustomPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "AccountCustomPropertyFilter",
-}) as any as S.Schema<AccountCustomPropertyFilter>;
-
 export type WorkflowVariablePropertyFilterValueCase0Item =
   | string
   | number
@@ -1861,7 +1723,6 @@ export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type TrendsQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -1877,10 +1738,8 @@ export type TrendsQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const TrendsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryPropertiesCase0Item>;
@@ -1895,7 +1754,6 @@ export type PropertyGroupFilterValueValuesItem =
   | PropertyGroupFilterValue
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -1911,10 +1769,8 @@ export type PropertyGroupFilterValueValuesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const PropertyGroupFilterValueValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
@@ -2027,8 +1883,6 @@ export interface QueryStatus {
   end_time?: string | null;
   /** If the query failed, this will be set to true. More information can be found in the error_message field. */
   error?: boolean | null;
-  /** Stable machine-readable code for the error (the DRF exception code), when known. */
-  error_code?: string | null;
   error_message?: string | null;
   expiration_time?: string | null;
   id?: string;
@@ -2051,7 +1905,6 @@ export const QueryStatus = /*@__PURE__*/ S.suspend(() =>
     dashboard_id: S.optional(S.NullOr(S.Number)),
     end_time: S.optional(S.NullOr(S.String)),
     error: S.optional(S.NullOr(S.Boolean)),
-    error_code: S.optional(S.NullOr(S.String)),
     error_message: S.optional(S.NullOr(S.String)),
     expiration_time: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -2112,31 +1965,6 @@ export const TrendsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TrendsQueryResponseTimingsList>;
 
-export interface DataWarehouseSourceUsage {
-  /** ExternalDataSource id */
-  id: string;
-  /** Connector type of the source (e.g. Stripe, Postgres), if known */
-  source_type?: string | null;
-  /** Warehouse table name that was referenced */
-  table_name: string;
-}
-export const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source_type: S.optional(S.NullOr(S.String)),
-    table_name: S.String,
-  }),
-).annotate({
-  identifier: "DataWarehouseSourceUsage",
-}) as any as S.Schema<DataWarehouseSourceUsage>;
-
-export type TrendsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const TrendsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<TrendsQueryResponseUsedDataWarehouseSourcesList>;
-
 export interface DataWarehouseSyncWarning {
   /** Human-readable warning shown to the user */
   message: string;
@@ -2150,8 +1978,6 @@ export interface DataWarehouseSyncWarning {
   status: string;
   /** Name of the warehouse table the warning refers to */
   table_name: string;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
 }
 export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2161,46 +1987,14 @@ export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
     source_type: S.String,
     status: S.String,
     table_name: S.String,
-    type: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DataWarehouseSyncWarning",
 }) as any as S.Schema<DataWarehouseSyncWarning>;
 
-/** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-export type AccessControlFilterWarningResourcesList = Array<string>;
-export const AccessControlFilterWarningResourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccessControlFilterWarningResourcesList>;
-
-export interface AccessControlFilterWarning {
-  /** Human-readable warning shown to the user */
-  message: string;
-  /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-  resources: AccessControlFilterWarningResourcesList;
-  /** Tells warning kinds apart in the shared `warnings` list */
-  type?: string;
-}
-export const AccessControlFilterWarning = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    resources: AccessControlFilterWarningResourcesList,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccessControlFilterWarning",
-}) as any as S.Schema<AccessControlFilterWarning>;
-
-export type TrendsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const TrendsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryResponseWarningsItem>;
-
-export type TrendsQueryResponseWarningsList =
-  Array<TrendsQueryResponseWarningsItem>;
+export type TrendsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const TrendsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  TrendsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<TrendsQueryResponseWarningsList>;
 
 export interface TrendsQueryResponse {
@@ -2222,9 +2016,7 @@ export interface TrendsQueryResponse {
   results?: TrendsQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: TrendsQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: TrendsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: TrendsQueryResponseWarningsList | null;
 }
 export const TrendsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -2241,19 +2033,15 @@ export const TrendsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(TrendsQueryResponseResultsList),
     timings: S.optional(S.NullOr(TrendsQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(TrendsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(TrendsQueryResponseWarningsList)),
   }),
 ).annotate({
   identifier: "TrendsQueryResponse",
 }) as any as S.Schema<TrendsQueryResponse>;
 
-export type EventsNodeFixedPropertiesItem =
+export type GroupNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2269,19 +2057,16 @@ export type EventsNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
-export const EventsNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeFixedPropertiesItem>;
+export const GroupNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeFixedPropertiesItem>;
 
-export type EventsNodeFixedPropertiesList =
-  Array<EventsNodeFixedPropertiesItem>;
-export const EventsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
-  EventsNodeFixedPropertiesItem,
-) as any as S.Schema<EventsNodeFixedPropertiesList>;
+export type GroupNodeFixedPropertiesList = Array<GroupNodeFixedPropertiesItem>;
+export const GroupNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
+  GroupNodeFixedPropertiesItem,
+) as any as S.Schema<GroupNodeFixedPropertiesList>;
 
 export type BaseMathType =
   | "total"
@@ -2337,7 +2122,7 @@ export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
 export type CalendarHeatmapMathType = "total" | "dau";
 export const CalendarHeatmapMathType = /*@__PURE__*/ S.String;
 
-export type EventsNodeMath =
+export type GroupNodeMath =
   | BaseMathType
   | FunnelMathType
   | PropertyMathType
@@ -2345,8 +2130,8 @@ export type EventsNodeMath =
   | ExperimentMetricMathType
   | CalendarHeatmapMathType
   | string;
-export const EventsNodeMath =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeMath>;
+export const GroupNodeMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeMath>;
 
 export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
 export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
@@ -2519,15 +2304,9 @@ export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueCurrencyPropertyConfig",
 }) as any as S.Schema<RevenueCurrencyPropertyConfig>;
 
-export type EventsNodeOrderByList = Array<string>;
-export const EventsNodeOrderByList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EventsNodeOrderByList>;
-
-export type EventsNodePropertiesItem =
+export type EventsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2543,10 +2322,54 @@ export type EventsNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
+  | WorkflowVariablePropertyFilter;
+export const EventsNodeFixedPropertiesItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeFixedPropertiesItem>;
+
+export type EventsNodeFixedPropertiesList =
+  Array<EventsNodeFixedPropertiesItem>;
+export const EventsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
+  EventsNodeFixedPropertiesItem,
+) as any as S.Schema<EventsNodeFixedPropertiesList>;
+
+export type EventsNodeMath =
+  | BaseMathType
+  | FunnelMathType
+  | PropertyMathType
+  | CountPerActorMathType
+  | ExperimentMetricMathType
+  | CalendarHeatmapMathType
+  | string;
+export const EventsNodeMath =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeMath>;
+
+export type EventsNodeOrderByList = Array<string>;
+export const EventsNodeOrderByList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EventsNodeOrderByList>;
+
+export type EventsNodePropertiesItem =
+  | EventPropertyFilter
+  | PersonPropertyFilter
+  | ElementPropertyFilter
+  | EventMetadataPropertyFilter
+  | SessionPropertyFilter
+  | CohortPropertyFilter
+  | RecordingPropertyFilter
+  | LogEntryPropertyFilter
+  | GroupPropertyFilter
+  | FeaturePropertyFilter
+  | FlagPropertyFilter
+  | HogQLPropertyFilter
+  | EmptyPropertyFilter
+  | DataWarehousePropertyFilter
+  | DataWarehousePersonPropertyFilter
+  | ErrorTrackingIssueFilter
+  | LogPropertyFilter
+  | SpanPropertyFilter
+  | RevenueAnalyticsPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const EventsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodePropertiesItem>;
@@ -2615,7 +2438,6 @@ export const EventsNode = /*@__PURE__*/ S.suspend(() =>
 export type ActionsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2631,10 +2453,8 @@ export type ActionsNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ActionsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodeFixedPropertiesItem>;
@@ -2659,7 +2479,6 @@ export const ActionsNodeMath =
 export type ActionsNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2675,10 +2494,8 @@ export type ActionsNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ActionsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodePropertiesItem>;
@@ -2741,7 +2558,6 @@ export const ActionsNode = /*@__PURE__*/ S.suspend(() =>
 export type DataWarehouseNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2757,10 +2573,8 @@ export type DataWarehouseNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const DataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodeFixedPropertiesItem>;
@@ -2785,7 +2599,6 @@ export const DataWarehouseNodeMath =
 export type DataWarehouseNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2801,10 +2614,8 @@ export type DataWarehouseNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const DataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodePropertiesItem>;
@@ -2879,49 +2690,6 @@ export const DataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataWarehouseNode",
 }) as any as S.Schema<DataWarehouseNode>;
 
-export type GroupNodeFixedPropertiesItem =
-  | EventPropertyFilter
-  | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
-  | ElementPropertyFilter
-  | EventMetadataPropertyFilter
-  | SessionPropertyFilter
-  | CohortPropertyFilter
-  | RecordingPropertyFilter
-  | LogEntryPropertyFilter
-  | GroupPropertyFilter
-  | FeaturePropertyFilter
-  | FlagPropertyFilter
-  | HogQLPropertyFilter
-  | EmptyPropertyFilter
-  | DataWarehousePropertyFilter
-  | DataWarehousePersonPropertyFilter
-  | ErrorTrackingIssueFilter
-  | LogPropertyFilter
-  | MetricPropertyFilter
-  | SpanPropertyFilter
-  | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
-  | WorkflowVariablePropertyFilter;
-export const GroupNodeFixedPropertiesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeFixedPropertiesItem>;
-
-export type GroupNodeFixedPropertiesList = Array<GroupNodeFixedPropertiesItem>;
-export const GroupNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
-  GroupNodeFixedPropertiesItem,
-) as any as S.Schema<GroupNodeFixedPropertiesList>;
-
-export type GroupNodeMath =
-  | BaseMathType
-  | FunnelMathType
-  | PropertyMathType
-  | CountPerActorMathType
-  | ExperimentMetricMathType
-  | CalendarHeatmapMathType
-  | string;
-export const GroupNodeMath =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeMath>;
-
 export type GroupNodeNodesItem = EventsNode | ActionsNode | DataWarehouseNode;
 export const GroupNodeNodesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeNodesItem>;
@@ -2940,7 +2708,6 @@ export const GroupNodeOrderByList = /*@__PURE__*/ S.Array(
 export type GroupNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -2956,10 +2723,8 @@ export type GroupNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const GroupNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodePropertiesItem>;
@@ -3029,10 +2794,10 @@ export const GroupNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupNode" }) as any as S.Schema<GroupNode>;
 
 export type TrendsQuerySeriesItem =
+  | GroupNode
   | EventsNode
   | ActionsNode
-  | DataWarehouseNode
-  | GroupNode;
+  | DataWarehouseNode;
 export const TrendsQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQuerySeriesItem>;
 
@@ -3062,25 +2827,11 @@ export type AggregationAxisFormat =
   | "numeric"
   | "duration"
   | "duration_ms"
-  | "duration_ns"
   | "percentage"
   | "percentage_scaled"
   | "currency"
   | "short";
 export const AggregationAxisFormat = /*@__PURE__*/ S.String;
-
-export type Curve = "linear" | "smooth";
-export const Curve = /*@__PURE__*/ S.String;
-
-export interface ChartStyle {
-  /** Line interpolation: straight segments or a smoothed curve through the points. */
-  curve?: Curve | null;
-}
-export const ChartStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    curve: S.optional(S.NullOr(Curve)),
-  }),
-).annotate({ identifier: "ChartStyle" }) as any as S.Schema<ChartStyle>;
 
 export type DetailedResultsAggregationType = "total" | "average" | "median";
 export const DetailedResultsAggregationType = /*@__PURE__*/ S.String;
@@ -3252,8 +3003,6 @@ export interface TrendsFilter {
   /** Literal prefix applied to every value (e.g. `$`). Use to pin a unit or currency symbol that does not depend on `aggregationAxisFormat` — for example, when values are denominated in a fixed currency regardless of the project's base currency. Include any trailing space yourself. */
   aggregationAxisPrefix?: string | null;
   breakdown_histogram_bin_count?: number | null;
-  /** Chart rendering style overrides (line shape). */
-  chartStyle?: ChartStyle | null;
   confidenceLevel?: number | null;
   /** Maximum number of decimal places shown. 1 or 2 is usually right for percentages and currency. */
   decimalPlaces?: number | null;
@@ -3316,7 +3065,6 @@ export const TrendsFilter = /*@__PURE__*/ S.suspend(() =>
     aggregationAxisPostfix: S.optional(S.NullOr(S.String)),
     aggregationAxisPrefix: S.optional(S.NullOr(S.String)),
     breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
-    chartStyle: S.optional(S.NullOr(ChartStyle)),
     confidenceLevel: S.optional(S.NullOr(S.Number)),
     decimalPlaces: S.optional(S.NullOr(S.Number)),
     detailedResultsAggregationType: S.optional(
@@ -3433,7 +3181,6 @@ export const BreakdownAttributionType = /*@__PURE__*/ S.String;
 export type FunnelExclusionEventsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3449,10 +3196,8 @@ export type FunnelExclusionEventsNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelExclusionEventsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodeFixedPropertiesItem>;
@@ -3483,7 +3228,6 @@ export const FunnelExclusionEventsNodeOrderByList = /*@__PURE__*/ S.Array(
 export type FunnelExclusionEventsNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3499,10 +3243,8 @@ export type FunnelExclusionEventsNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelExclusionEventsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodePropertiesItem>;
@@ -3582,7 +3324,6 @@ export const FunnelExclusionEventsNode = /*@__PURE__*/ S.suspend(() =>
 export type FunnelExclusionActionsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3598,10 +3339,8 @@ export type FunnelExclusionActionsNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelExclusionActionsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodeFixedPropertiesItem>;
@@ -3627,7 +3366,6 @@ export const FunnelExclusionActionsNodeMath =
 export type FunnelExclusionActionsNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3643,10 +3381,8 @@ export type FunnelExclusionActionsNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelExclusionActionsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodePropertiesItem>;
@@ -3773,8 +3509,6 @@ export interface FunnelsFilter {
   breakdownAttributionValue?: number | null;
   /** Breakdown table sorting. Format: 'column_key' or '-column_key' (descending) */
   breakdownSorting?: string | null;
-  /** Chart rendering style overrides (line shape). Only applies to historical-trends funnels. */
-  chartStyle?: ChartStyle | null;
   /** For data warehouse based funnel insights when the aggregation target can't be mapped to persons or groups. */
   customAggregationTarget?: boolean | null;
   exclusions?: FunnelsFilterExclusionsList | null;
@@ -3812,7 +3546,6 @@ export const FunnelsFilter = /*@__PURE__*/ S.suspend(() =>
     breakdownAttributionType: S.optional(S.NullOr(BreakdownAttributionType)),
     breakdownAttributionValue: S.optional(S.NullOr(S.Number)),
     breakdownSorting: S.optional(S.NullOr(S.String)),
-    chartStyle: S.optional(S.NullOr(ChartStyle)),
     customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
     exclusions: S.optional(S.NullOr(FunnelsFilterExclusionsList)),
     funnelAggregateByHogQL: S.optional(S.NullOr(S.String)),
@@ -3846,7 +3579,6 @@ export const FunnelsFilter = /*@__PURE__*/ S.suspend(() =>
 export type FunnelsQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3862,10 +3594,8 @@ export type FunnelsQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryPropertiesCase0Item>;
@@ -3888,23 +3618,9 @@ export const FunnelsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<FunnelsQueryResponseTimingsList>;
 
-export type FunnelsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const FunnelsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<FunnelsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type FunnelsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const FunnelsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryResponseWarningsItem>;
-
-export type FunnelsQueryResponseWarningsList =
-  Array<FunnelsQueryResponseWarningsItem>;
+export type FunnelsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const FunnelsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  FunnelsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<FunnelsQueryResponseWarningsList>;
 
 export interface FunnelsQueryResponse {
@@ -3925,9 +3641,7 @@ export interface FunnelsQueryResponse {
   timings?: FunnelsQueryResponseTimingsList | null;
   /** Median total conversion time across all completers, computed breakdown-agnostically for the Steps viz header. */
   total_median_conversion_time?: number | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: FunnelsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: FunnelsQueryResponseWarningsList | null;
 }
 export const FunnelsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -3943,9 +3657,6 @@ export const FunnelsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(FunnelsQueryResponseTimingsList)),
     total_median_conversion_time: S.optional(S.NullOr(S.Number)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(FunnelsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(FunnelsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -3955,7 +3666,6 @@ export const FunnelsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export type FunnelsDataWarehouseNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -3971,10 +3681,8 @@ export type FunnelsDataWarehouseNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelsDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodeFixedPropertiesItem>;
@@ -4000,7 +3708,6 @@ export const FunnelsDataWarehouseNodeMath =
 export type FunnelsDataWarehouseNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -4016,10 +3723,8 @@ export type FunnelsDataWarehouseNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelsDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodePropertiesItem>;
@@ -4097,10 +3802,10 @@ export const FunnelsDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunnelsDataWarehouseNode>;
 
 export type FunnelsQuerySeriesItem =
+  | GroupNode
   | EventsNode
   | ActionsNode
-  | FunnelsDataWarehouseNode
-  | GroupNode;
+  | FunnelsDataWarehouseNode;
 export const FunnelsQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQuerySeriesItem>;
 
@@ -4166,7 +3871,6 @@ export const FunnelsQuery = /*@__PURE__*/ S.suspend(() =>
 export type RetentionQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -4182,10 +3886,8 @@ export type RetentionQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const RetentionQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryPropertiesCase0Item>;
@@ -4254,23 +3956,10 @@ export const RetentionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<RetentionQueryResponseTimingsList>;
 
-export type RetentionQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RetentionQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RetentionQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RetentionQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RetentionQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryResponseWarningsItem>;
-
 export type RetentionQueryResponseWarningsList =
-  Array<RetentionQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RetentionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  RetentionQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<RetentionQueryResponseWarningsList>;
 
 export interface RetentionQueryResponse {
@@ -4289,9 +3978,7 @@ export interface RetentionQueryResponse {
   results?: RetentionQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: RetentionQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RetentionQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RetentionQueryResponseWarningsList | null;
 }
 export const RetentionQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4306,9 +3993,6 @@ export const RetentionQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(RetentionQueryResponseResultsList),
     timings: S.optional(S.NullOr(RetentionQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(RetentionQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(RetentionQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -4359,7 +4043,6 @@ export const RetentionEntityKind = /*@__PURE__*/ S.String;
 export type RetentionEntityPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -4375,10 +4058,8 @@ export type RetentionEntityPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const RetentionEntityPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionEntityPropertiesItem>;
@@ -4442,8 +4123,6 @@ export interface RetentionFilter {
   aggregationPropertyType?: AggregationPropertyType | null;
   /** The aggregation type to use for retention */
   aggregationType?: AggregationType | null;
-  /** Chart rendering style overrides (line shape). */
-  chartStyle?: ChartStyle | null;
   /** Starting index used when labeling cohort columns (e.g. 0 for D0/D1/D2, 1 for D1/D2/D3). Display-only — does not affect retention calculations. */
   cohortLabelStartIndex?: number | null;
   cumulative?: boolean | null;
@@ -4475,7 +4154,6 @@ export const RetentionFilter = /*@__PURE__*/ S.suspend(() =>
     aggregationProperty: S.optional(S.NullOr(S.String)),
     aggregationPropertyType: S.optional(S.NullOr(AggregationPropertyType)),
     aggregationType: S.optional(S.NullOr(AggregationType)),
-    chartStyle: S.optional(S.NullOr(ChartStyle)),
     cohortLabelStartIndex: S.optional(S.NullOr(S.Number)),
     cumulative: S.optional(S.NullOr(S.Boolean)),
     customAggregationTarget: S.optional(S.NullOr(S.Boolean)),
@@ -4651,7 +4329,6 @@ export const PathsFilter = /*@__PURE__*/ S.suspend(() =>
 export type PathsQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -4667,10 +4344,8 @@ export type PathsQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const PathsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryPropertiesCase0Item>;
@@ -4713,23 +4388,9 @@ export const PathsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<PathsQueryResponseTimingsList>;
 
-export type PathsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const PathsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<PathsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type PathsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const PathsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryResponseWarningsItem>;
-
-export type PathsQueryResponseWarningsList =
-  Array<PathsQueryResponseWarningsItem>;
+export type PathsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const PathsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  PathsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<PathsQueryResponseWarningsList>;
 
 export interface PathsQueryResponse {
@@ -4748,9 +4409,7 @@ export interface PathsQueryResponse {
   results?: PathsQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: PathsQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: PathsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: PathsQueryResponseWarningsList | null;
 }
 export const PathsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4765,9 +4424,6 @@ export const PathsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(PathsQueryResponseResultsList),
     timings: S.optional(S.NullOr(PathsQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(PathsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(PathsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -4821,7 +4477,6 @@ export const PathsQuery = /*@__PURE__*/ S.suspend(() =>
 export type StickinessQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -4837,10 +4492,8 @@ export type StickinessQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const StickinessQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryPropertiesCase0Item>;
@@ -4877,23 +4530,10 @@ export const StickinessQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<StickinessQueryResponseTimingsList>;
 
-export type StickinessQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const StickinessQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<StickinessQueryResponseUsedDataWarehouseSourcesList>;
-
-export type StickinessQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const StickinessQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryResponseWarningsItem>;
-
 export type StickinessQueryResponseWarningsList =
-  Array<StickinessQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const StickinessQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  StickinessQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<StickinessQueryResponseWarningsList>;
 
 export interface StickinessQueryResponse {
@@ -4912,9 +4552,7 @@ export interface StickinessQueryResponse {
   results?: StickinessQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: StickinessQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: StickinessQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: StickinessQueryResponseWarningsList | null;
 }
 export const StickinessQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -4929,9 +4567,6 @@ export const StickinessQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(StickinessQueryResponseResultsList),
     timings: S.optional(S.NullOr(StickinessQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(StickinessQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(StickinessQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -5001,8 +4636,6 @@ export const StickinessCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StickinessCriteria>;
 
 export interface StickinessFilter {
-  /** Chart rendering style overrides (line shape). */
-  chartStyle?: ChartStyle | null;
   computedAs?: StickinessComputationMode | null;
   display?: ChartDisplayType | null;
   hiddenLegendIndexes?: StickinessFilterHiddenLegendIndexesList | null;
@@ -5019,7 +4652,6 @@ export interface StickinessFilter {
 }
 export const StickinessFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    chartStyle: S.optional(S.NullOr(ChartStyle)),
     computedAs: S.optional(S.NullOr(StickinessComputationMode)),
     display: S.optional(S.NullOr(ChartDisplayType)),
     hiddenLegendIndexes: S.optional(
@@ -5127,7 +4759,6 @@ export const LifecycleFilter = /*@__PURE__*/ S.suspend(() =>
 export type LifecycleQueryPropertiesCase0Item =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -5143,10 +4774,8 @@ export type LifecycleQueryPropertiesCase0Item =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const LifecycleQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryPropertiesCase0Item>;
@@ -5183,23 +4812,10 @@ export const LifecycleQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<LifecycleQueryResponseTimingsList>;
 
-export type LifecycleQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const LifecycleQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<LifecycleQueryResponseUsedDataWarehouseSourcesList>;
-
-export type LifecycleQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const LifecycleQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryResponseWarningsItem>;
-
 export type LifecycleQueryResponseWarningsList =
-  Array<LifecycleQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const LifecycleQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  LifecycleQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<LifecycleQueryResponseWarningsList>;
 
 export interface LifecycleQueryResponse {
@@ -5218,9 +4834,7 @@ export interface LifecycleQueryResponse {
   results?: LifecycleQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: LifecycleQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: LifecycleQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: LifecycleQueryResponseWarningsList | null;
 }
 export const LifecycleQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5235,9 +4849,6 @@ export const LifecycleQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(LifecycleQueryResponseResultsList),
     timings: S.optional(S.NullOr(LifecycleQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(LifecycleQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(LifecycleQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -5247,7 +4858,6 @@ export const LifecycleQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export type LifecycleDataWarehouseNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -5263,10 +4873,8 @@ export type LifecycleDataWarehouseNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const LifecycleDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodeFixedPropertiesItem>;
@@ -5292,7 +4900,6 @@ export const LifecycleDataWarehouseNodeMath =
 export type LifecycleDataWarehouseNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -5308,10 +4915,8 @@ export type LifecycleDataWarehouseNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const LifecycleDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodePropertiesItem>;
@@ -5566,23 +5171,10 @@ export const WebStatsTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseTypesList>;
 
-export type WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<WebStatsTableQueryResponseUsedDataWarehouseSourcesList>;
-
-export type WebStatsTableQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const WebStatsTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryResponseWarningsItem>;
-
 export type WebStatsTableQueryResponseWarningsList =
-  Array<WebStatsTableQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const WebStatsTableQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  WebStatsTableQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<WebStatsTableQueryResponseWarningsList>;
 
 export interface WebStatsTableQueryResponse {
@@ -5596,8 +5188,6 @@ export interface WebStatsTableQueryResponse {
   /** Modifiers used when performing the query */
   modifiers?: HogQLQueryModifiers | null;
   offset?: number | null;
-  /** Whether a lazy-precompute read was served from expired-within-grace (stale) jobs instead of recomputing inline. */
-  preComputeStale?: boolean | null;
   preComputeStrategy?: WebAnalyticsPreComputeStrategy | null;
   /** Query status indicates whether next to the provided data, a query is still running. */
   query_status?: QueryStatus | null;
@@ -5610,9 +5200,7 @@ export interface WebStatsTableQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: WebStatsTableQueryResponseTimingsList | null;
   types?: WebStatsTableQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: WebStatsTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: WebStatsTableQueryResponseWarningsList | null;
 }
 export const WebStatsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5624,7 +5212,6 @@ export const WebStatsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
     limit: S.optional(S.NullOr(S.Number)),
     modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
     offset: S.optional(S.NullOr(S.Number)),
-    preComputeStale: S.optional(S.NullOr(S.Boolean)),
     preComputeStrategy: S.optional(S.NullOr(WebAnalyticsPreComputeStrategy)),
     query_status: S.optional(S.NullOr(QueryStatus)),
     resolved_compare_date_range: S.optional(
@@ -5635,9 +5222,6 @@ export const WebStatsTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(WebStatsTableQueryResponseTimingsList)),
     types: S.optional(S.NullOr(WebStatsTableQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(WebStatsTableQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(WebStatsTableQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -5796,23 +5380,10 @@ export const WebOverviewQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebOverviewQueryResponseTimingsList>;
 
-export type WebOverviewQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const WebOverviewQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<WebOverviewQueryResponseUsedDataWarehouseSourcesList>;
-
-export type WebOverviewQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const WebOverviewQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryResponseWarningsItem>;
-
 export type WebOverviewQueryResponseWarningsList =
-  Array<WebOverviewQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const WebOverviewQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  WebOverviewQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<WebOverviewQueryResponseWarningsList>;
 
 export interface WebOverviewQueryResponse {
@@ -5835,9 +5406,7 @@ export interface WebOverviewQueryResponse {
   samplingRate?: SamplingRate | null;
   /** Measured timings for different parts of the query generation process */
   timings?: WebOverviewQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: WebOverviewQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: WebOverviewQueryResponseWarningsList | null;
 }
 export const WebOverviewQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5856,9 +5425,6 @@ export const WebOverviewQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(WebOverviewQueryResponseResultsList),
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(WebOverviewQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(WebOverviewQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(WebOverviewQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -6083,21 +5649,9 @@ export const ResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResponseTypesList>;
 
-export type ResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const ResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<ResponseUsedDataWarehouseSourcesList>;
-
-export type ResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const ResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ResponseWarningsItem>;
-
-export type ResponseWarningsList = Array<ResponseWarningsItem>;
+export type ResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const ResponseWarningsList = /*@__PURE__*/ S.Array(
-  ResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<ResponseWarningsList>;
 
 export interface Response {
@@ -6123,9 +5677,7 @@ export interface Response {
   /** Measured timings for different parts of the query generation process */
   timings?: ResponseTimingsList | null;
   types?: ResponseTypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: ResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: ResponseWarningsList | null;
 }
 export const Response = /*@__PURE__*/ S.suspend(() =>
@@ -6146,9 +5698,6 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(ResponseResultsList),
     timings: S.optional(S.NullOr(ResponseTimingsList)),
     types: S.optional(ResponseTypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(ResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(ResponseWarningsList)),
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
@@ -6178,21 +5727,9 @@ export const Response1TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response1TypesList>;
 
-export type Response1UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response1UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response1UsedDataWarehouseSourcesList>;
-
-export type Response1WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response1WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response1WarningsItem>;
-
-export type Response1WarningsList = Array<Response1WarningsItem>;
+export type Response1WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response1WarningsList = /*@__PURE__*/ S.Array(
-  Response1WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response1WarningsList>;
 
 export interface Response1 {
@@ -6217,9 +5754,7 @@ export interface Response1 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response1TimingsList | null;
   types?: Response1TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response1UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response1WarningsList | null;
 }
 export const Response1 = /*@__PURE__*/ S.suspend(() =>
@@ -6240,9 +5775,6 @@ export const Response1 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response1ResultsList),
     timings: S.optional(S.NullOr(Response1TimingsList)),
     types: S.optional(S.NullOr(Response1TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response1UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response1WarningsList)),
   }),
 ).annotate({ identifier: "Response1" }) as any as S.Schema<Response1>;
@@ -6272,21 +5804,9 @@ export const Response2TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response2TypesList>;
 
-export type Response2UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response2UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response2UsedDataWarehouseSourcesList>;
-
-export type Response2WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response2WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response2WarningsItem>;
-
-export type Response2WarningsList = Array<Response2WarningsItem>;
+export type Response2WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response2WarningsList = /*@__PURE__*/ S.Array(
-  Response2WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response2WarningsList>;
 
 export interface Response2 {
@@ -6311,9 +5831,7 @@ export interface Response2 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response2TimingsList | null;
   types?: Response2TypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response2UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response2WarningsList | null;
 }
 export const Response2 = /*@__PURE__*/ S.suspend(() =>
@@ -6334,9 +5852,6 @@ export const Response2 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response2ResultsList),
     timings: S.optional(S.NullOr(Response2TimingsList)),
     types: S.optional(Response2TypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response2UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response2WarningsList)),
   }),
 ).annotate({ identifier: "Response2" }) as any as S.Schema<Response2>;
@@ -6434,21 +5949,9 @@ export const Response3TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3TypesList>;
 
-export type Response3UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response3UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response3UsedDataWarehouseSourcesList>;
-
-export type Response3WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response3WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response3WarningsItem>;
-
-export type Response3WarningsList = Array<Response3WarningsItem>;
+export type Response3WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response3WarningsList = /*@__PURE__*/ S.Array(
-  Response3WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response3WarningsList>;
 
 export interface Response3 {
@@ -6482,9 +5985,7 @@ export interface Response3 {
   timings?: Response3TimingsList | null;
   /** Types of returned columns */
   types?: Response3TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response3UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. */
   warnings?: Response3WarningsList | null;
 }
 export const Response3 = /*@__PURE__*/ S.suspend(() =>
@@ -6508,9 +6009,6 @@ export const Response3 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response3ResultsList),
     timings: S.optional(S.NullOr(Response3TimingsList)),
     types: S.optional(S.NullOr(Response3TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response3UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response3WarningsList)),
   }),
 ).annotate({ identifier: "Response3" }) as any as S.Schema<Response3>;
@@ -6525,21 +6023,9 @@ export const Response4TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response4TimingsList>;
 
-export type Response4UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response4UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response4UsedDataWarehouseSourcesList>;
-
-export type Response4WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response4WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response4WarningsItem>;
-
-export type Response4WarningsList = Array<Response4WarningsItem>;
+export type Response4WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response4WarningsList = /*@__PURE__*/ S.Array(
-  Response4WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response4WarningsList>;
 
 export interface Response4 {
@@ -6562,9 +6048,7 @@ export interface Response4 {
   samplingRate?: SamplingRate | null;
   /** Measured timings for different parts of the query generation process */
   timings?: Response4TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response4UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response4WarningsList | null;
 }
 export const Response4 = /*@__PURE__*/ S.suspend(() =>
@@ -6583,9 +6067,6 @@ export const Response4 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response4ResultsList),
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response4TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response4UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response4WarningsList)),
   }),
 ).annotate({ identifier: "Response4" }) as any as S.Schema<Response4>;
@@ -6610,21 +6091,9 @@ export const Response5TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5TypesList>;
 
-export type Response5UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response5UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response5UsedDataWarehouseSourcesList>;
-
-export type Response5WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response5WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response5WarningsItem>;
-
-export type Response5WarningsList = Array<Response5WarningsItem>;
+export type Response5WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response5WarningsList = /*@__PURE__*/ S.Array(
-  Response5WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response5WarningsList>;
 
 export interface Response5 {
@@ -6638,8 +6107,6 @@ export interface Response5 {
   /** Modifiers used when performing the query */
   modifiers?: HogQLQueryModifiers | null;
   offset?: number | null;
-  /** Whether a lazy-precompute read was served from expired-within-grace (stale) jobs instead of recomputing inline. */
-  preComputeStale?: boolean | null;
   preComputeStrategy?: WebAnalyticsPreComputeStrategy | null;
   /** Query status indicates whether next to the provided data, a query is still running. */
   query_status?: QueryStatus | null;
@@ -6652,9 +6119,7 @@ export interface Response5 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response5TimingsList | null;
   types?: Response5TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response5UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response5WarningsList | null;
 }
 export const Response5 = /*@__PURE__*/ S.suspend(() =>
@@ -6666,7 +6131,6 @@ export const Response5 = /*@__PURE__*/ S.suspend(() =>
     limit: S.optional(S.NullOr(S.Number)),
     modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
     offset: S.optional(S.NullOr(S.Number)),
-    preComputeStale: S.optional(S.NullOr(S.Boolean)),
     preComputeStrategy: S.optional(S.NullOr(WebAnalyticsPreComputeStrategy)),
     query_status: S.optional(S.NullOr(QueryStatus)),
     resolved_compare_date_range: S.optional(
@@ -6677,9 +6141,6 @@ export const Response5 = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response5TimingsList)),
     types: S.optional(S.NullOr(Response5TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response5UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response5WarningsList)),
   }),
 ).annotate({ identifier: "Response5" }) as any as S.Schema<Response5>;
@@ -6704,21 +6165,9 @@ export const Response6TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6TypesList>;
 
-export type Response6UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response6UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response6UsedDataWarehouseSourcesList>;
-
-export type Response6WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response6WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response6WarningsItem>;
-
-export type Response6WarningsList = Array<Response6WarningsItem>;
+export type Response6WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response6WarningsList = /*@__PURE__*/ S.Array(
-  Response6WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response6WarningsList>;
 
 export interface Response6 {
@@ -6743,9 +6192,7 @@ export interface Response6 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response6TimingsList | null;
   types?: Response6TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response6UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response6WarningsList | null;
 }
 export const Response6 = /*@__PURE__*/ S.suspend(() =>
@@ -6766,9 +6213,6 @@ export const Response6 = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response6TimingsList)),
     types: S.optional(S.NullOr(Response6TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response6UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response6WarningsList)),
   }),
 ).annotate({ identifier: "Response6" }) as any as S.Schema<Response6>;
@@ -6793,21 +6237,9 @@ export const Response7TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7TypesList>;
 
-export type Response7UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response7UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response7UsedDataWarehouseSourcesList>;
-
-export type Response7WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response7WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response7WarningsItem>;
-
-export type Response7WarningsList = Array<Response7WarningsItem>;
+export type Response7WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response7WarningsList = /*@__PURE__*/ S.Array(
-  Response7WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response7WarningsList>;
 
 export interface Response7 {
@@ -6833,9 +6265,7 @@ export interface Response7 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response7TimingsList | null;
   types?: Response7TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response7UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response7WarningsList | null;
 }
 export const Response7 = /*@__PURE__*/ S.suspend(() =>
@@ -6857,9 +6287,6 @@ export const Response7 = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response7TimingsList)),
     types: S.optional(S.NullOr(Response7TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response7UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response7WarningsList)),
   }),
 ).annotate({ identifier: "Response7" }) as any as S.Schema<Response7>;
@@ -6923,21 +6350,9 @@ export const Response8TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response8TimingsList>;
 
-export type Response8UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response8UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response8UsedDataWarehouseSourcesList>;
-
-export type Response8WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response8WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response8WarningsItem>;
-
-export type Response8WarningsList = Array<Response8WarningsItem>;
+export type Response8WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response8WarningsList = /*@__PURE__*/ S.Array(
-  Response8WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response8WarningsList>;
 
 export interface Response8 {
@@ -6957,9 +6372,7 @@ export interface Response8 {
   results?: Response8ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response8TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response8UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response8WarningsList | null;
 }
 export const Response8 = /*@__PURE__*/ S.suspend(() =>
@@ -6975,9 +6388,6 @@ export const Response8 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response8ResultsList),
     timings: S.optional(S.NullOr(Response8TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response8UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response8WarningsList)),
   }),
 ).annotate({ identifier: "Response8" }) as any as S.Schema<Response8>;
@@ -6997,21 +6407,9 @@ export const Response9TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response9TypesList>;
 
-export type Response9UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response9UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response9UsedDataWarehouseSourcesList>;
-
-export type Response9WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response9WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response9WarningsItem>;
-
-export type Response9WarningsList = Array<Response9WarningsItem>;
+export type Response9WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response9WarningsList = /*@__PURE__*/ S.Array(
-  Response9WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response9WarningsList>;
 
 export interface Response9 {
@@ -7035,9 +6433,7 @@ export interface Response9 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response9TimingsList | null;
   types?: Response9TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response9UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response9WarningsList | null;
 }
 export const Response9 = /*@__PURE__*/ S.suspend(() =>
@@ -7057,9 +6453,6 @@ export const Response9 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(Response9TimingsList)),
     types: S.optional(S.NullOr(Response9TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response9UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response9WarningsList)),
   }),
 ).annotate({ identifier: "Response9" }) as any as S.Schema<Response9>;
@@ -7089,21 +6482,9 @@ export const Response10TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response10TypesList>;
 
-export type Response10UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response10UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response10UsedDataWarehouseSourcesList>;
-
-export type Response10WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response10WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response10WarningsItem>;
-
-export type Response10WarningsList = Array<Response10WarningsItem>;
+export type Response10WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response10WarningsList = /*@__PURE__*/ S.Array(
-  Response10WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response10WarningsList>;
 
 export interface Response10 {
@@ -7127,9 +6508,7 @@ export interface Response10 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response10TimingsList | null;
   types?: Response10TypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response10UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response10WarningsList | null;
 }
 export const Response10 = /*@__PURE__*/ S.suspend(() =>
@@ -7149,9 +6528,6 @@ export const Response10 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response10ResultsList),
     timings: S.optional(S.NullOr(Response10TimingsList)),
     types: S.optional(Response10TypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response10UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response10WarningsList)),
   }),
 ).annotate({ identifier: "Response10" }) as any as S.Schema<Response10>;
@@ -7171,21 +6547,9 @@ export const Response11TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response11TimingsList>;
 
-export type Response11UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response11UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response11UsedDataWarehouseSourcesList>;
-
-export type Response11WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response11WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response11WarningsItem>;
-
-export type Response11WarningsList = Array<Response11WarningsItem>;
+export type Response11WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response11WarningsList = /*@__PURE__*/ S.Array(
-  Response11WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response11WarningsList>;
 
 export interface Response11 {
@@ -7205,9 +6569,7 @@ export interface Response11 {
   results?: Response11ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response11TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response11UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response11WarningsList | null;
 }
 export const Response11 = /*@__PURE__*/ S.suspend(() =>
@@ -7223,9 +6585,6 @@ export const Response11 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response11ResultsList),
     timings: S.optional(S.NullOr(Response11TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response11UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response11WarningsList)),
   }),
 ).annotate({ identifier: "Response11" }) as any as S.Schema<Response11>;
@@ -7240,21 +6599,9 @@ export const Response12TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response12TimingsList>;
 
-export type Response12UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response12UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response12UsedDataWarehouseSourcesList>;
-
-export type Response12WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response12WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response12WarningsItem>;
-
-export type Response12WarningsList = Array<Response12WarningsItem>;
+export type Response12WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response12WarningsList = /*@__PURE__*/ S.Array(
-  Response12WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response12WarningsList>;
 
 export interface Response12 {
@@ -7274,9 +6621,7 @@ export interface Response12 {
   results?: unknown;
   /** Measured timings for different parts of the query generation process */
   timings?: Response12TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response12UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response12WarningsList | null;
 }
 export const Response12 = /*@__PURE__*/ S.suspend(() =>
@@ -7292,9 +6637,6 @@ export const Response12 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(Response12TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response12UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response12WarningsList)),
   }),
 ).annotate({ identifier: "Response12" }) as any as S.Schema<Response12>;
@@ -7333,21 +6675,9 @@ export const Response13TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response13TimingsList>;
 
-export type Response13UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response13UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response13UsedDataWarehouseSourcesList>;
-
-export type Response13WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response13WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response13WarningsItem>;
-
-export type Response13WarningsList = Array<Response13WarningsItem>;
+export type Response13WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response13WarningsList = /*@__PURE__*/ S.Array(
-  Response13WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response13WarningsList>;
 
 export interface Response13 {
@@ -7367,9 +6697,7 @@ export interface Response13 {
   results?: Response13ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response13TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response13UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response13WarningsList | null;
 }
 export const Response13 = /*@__PURE__*/ S.suspend(() =>
@@ -7385,9 +6713,6 @@ export const Response13 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response13ResultsList),
     timings: S.optional(S.NullOr(Response13TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response13UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response13WarningsList)),
   }),
 ).annotate({ identifier: "Response13" }) as any as S.Schema<Response13>;
@@ -7421,21 +6746,9 @@ export const Response14TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response14TimingsList>;
 
-export type Response14UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response14UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response14UsedDataWarehouseSourcesList>;
-
-export type Response14WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response14WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response14WarningsItem>;
-
-export type Response14WarningsList = Array<Response14WarningsItem>;
+export type Response14WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response14WarningsList = /*@__PURE__*/ S.Array(
-  Response14WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response14WarningsList>;
 
 export interface Response14 {
@@ -7454,9 +6767,7 @@ export interface Response14 {
   results?: Response14ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response14TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response14UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response14WarningsList | null;
 }
 export const Response14 = /*@__PURE__*/ S.suspend(() =>
@@ -7471,9 +6782,6 @@ export const Response14 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response14ResultsList),
     timings: S.optional(S.NullOr(Response14TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response14UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response14WarningsList)),
   }),
 ).annotate({ identifier: "Response14" }) as any as S.Schema<Response14>;
@@ -7488,21 +6796,9 @@ export const Response15TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response15TimingsList>;
 
-export type Response15UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response15UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response15UsedDataWarehouseSourcesList>;
-
-export type Response15WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response15WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response15WarningsItem>;
-
-export type Response15WarningsList = Array<Response15WarningsItem>;
+export type Response15WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response15WarningsList = /*@__PURE__*/ S.Array(
-  Response15WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response15WarningsList>;
 
 export interface Response15 {
@@ -7522,9 +6818,7 @@ export interface Response15 {
   results?: unknown;
   /** Measured timings for different parts of the query generation process */
   timings?: Response15TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response15UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response15WarningsList | null;
 }
 export const Response15 = /*@__PURE__*/ S.suspend(() =>
@@ -7540,9 +6834,6 @@ export const Response15 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(Response15TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response15UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response15WarningsList)),
   }),
 ).annotate({ identifier: "Response15" }) as any as S.Schema<Response15>;
@@ -7562,21 +6853,9 @@ export const Response16TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response16TypesList>;
 
-export type Response16UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response16UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response16UsedDataWarehouseSourcesList>;
-
-export type Response16WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response16WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response16WarningsItem>;
-
-export type Response16WarningsList = Array<Response16WarningsItem>;
+export type Response16WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response16WarningsList = /*@__PURE__*/ S.Array(
-  Response16WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response16WarningsList>;
 
 export interface Response16 {
@@ -7600,9 +6879,7 @@ export interface Response16 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response16TimingsList | null;
   types?: Response16TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response16UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response16WarningsList | null;
 }
 export const Response16 = /*@__PURE__*/ S.suspend(() =>
@@ -7622,9 +6899,6 @@ export const Response16 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(Response16TimingsList)),
     types: S.optional(S.NullOr(Response16TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response16UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response16WarningsList)),
   }),
 ).annotate({ identifier: "Response16" }) as any as S.Schema<Response16>;
@@ -7685,21 +6959,9 @@ export const Response18TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response18TypesList>;
 
-export type Response18UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response18UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response18UsedDataWarehouseSourcesList>;
-
-export type Response18WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response18WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response18WarningsItem>;
-
-export type Response18WarningsList = Array<Response18WarningsItem>;
+export type Response18WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response18WarningsList = /*@__PURE__*/ S.Array(
-  Response18WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response18WarningsList>;
 
 export interface Response18 {
@@ -7724,9 +6986,7 @@ export interface Response18 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response18TimingsList | null;
   types?: Response18TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response18UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response18WarningsList | null;
 }
 export const Response18 = /*@__PURE__*/ S.suspend(() =>
@@ -7747,9 +7007,6 @@ export const Response18 = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response18TimingsList)),
     types: S.optional(S.NullOr(Response18TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response18UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response18WarningsList)),
   }),
 ).annotate({ identifier: "Response18" }) as any as S.Schema<Response18>;
@@ -7767,21 +7024,9 @@ export const Response19TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response19TimingsList>;
 
-export type Response19UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response19UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response19UsedDataWarehouseSourcesList>;
-
-export type Response19WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response19WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response19WarningsItem>;
-
-export type Response19WarningsList = Array<Response19WarningsItem>;
+export type Response19WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response19WarningsList = /*@__PURE__*/ S.Array(
-  Response19WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response19WarningsList>;
 
 export interface Response19 {
@@ -7801,9 +7046,7 @@ export interface Response19 {
   samplingRate?: SamplingRate | null;
   /** Measured timings for different parts of the query generation process */
   timings?: Response19TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response19UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response19WarningsList | null;
 }
 export const Response19 = /*@__PURE__*/ S.suspend(() =>
@@ -7819,9 +7062,6 @@ export const Response19 = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(Response19ResultsMap),
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response19TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response19UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response19WarningsList)),
   }),
 ).annotate({ identifier: "Response19" }) as any as S.Schema<Response19>;
@@ -7851,21 +7091,9 @@ export const Response20TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response20TypesList>;
 
-export type Response20UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response20UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response20UsedDataWarehouseSourcesList>;
-
-export type Response20WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response20WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response20WarningsItem>;
-
-export type Response20WarningsList = Array<Response20WarningsItem>;
+export type Response20WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response20WarningsList = /*@__PURE__*/ S.Array(
-  Response20WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response20WarningsList>;
 
 export interface Response20 {
@@ -7890,9 +7118,7 @@ export interface Response20 {
   /** Measured timings for different parts of the query generation process */
   timings?: Response20TimingsList | null;
   types?: Response20TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response20UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response20WarningsList | null;
 }
 export const Response20 = /*@__PURE__*/ S.suspend(() =>
@@ -7913,9 +7139,6 @@ export const Response20 = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(Response20TimingsList)),
     types: S.optional(S.NullOr(Response20TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response20UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response20WarningsList)),
   }),
 ).annotate({ identifier: "Response20" }) as any as S.Schema<Response20>;
@@ -8037,11 +7260,7 @@ export type IntegrationKind =
   | "customerio-app"
   | "customerio-webhook"
   | "customerio-track"
-  | "apns"
-  | "postgresql"
-  | "aws-s3"
-  | "s3-compatible"
-  | "snowflake";
+  | "postgresql";
 export const IntegrationKind = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingExternalReferenceIntegration {
@@ -8168,21 +7387,9 @@ export const Response21TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response21TimingsList>;
 
-export type Response21UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response21UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response21UsedDataWarehouseSourcesList>;
-
-export type Response21WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response21WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response21WarningsItem>;
-
-export type Response21WarningsList = Array<Response21WarningsItem>;
+export type Response21WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response21WarningsList = /*@__PURE__*/ S.Array(
-  Response21WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response21WarningsList>;
 
 export interface Response21 {
@@ -8205,9 +7412,7 @@ export interface Response21 {
   results?: Response21ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response21TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response21UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response21WarningsList | null;
 }
 export const Response21 = /*@__PURE__*/ S.suspend(() =>
@@ -8226,9 +7431,6 @@ export const Response21 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response21ResultsList),
     timings: S.optional(S.NullOr(Response21TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response21UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response21WarningsList)),
   }),
 ).annotate({ identifier: "Response21" }) as any as S.Schema<Response21>;
@@ -8307,21 +7509,9 @@ export const Response22TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response22TimingsList>;
 
-export type Response22UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response22UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response22UsedDataWarehouseSourcesList>;
-
-export type Response22WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response22WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response22WarningsItem>;
-
-export type Response22WarningsList = Array<Response22WarningsItem>;
+export type Response22WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response22WarningsList = /*@__PURE__*/ S.Array(
-  Response22WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response22WarningsList>;
 
 export interface Response22 {
@@ -8344,9 +7534,7 @@ export interface Response22 {
   results?: Response22ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response22TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response22UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response22WarningsList | null;
 }
 export const Response22 = /*@__PURE__*/ S.suspend(() =>
@@ -8365,9 +7553,6 @@ export const Response22 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response22ResultsList),
     timings: S.optional(S.NullOr(Response22TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response22UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response22WarningsList)),
   }),
 ).annotate({ identifier: "Response22" }) as any as S.Schema<Response22>;
@@ -8756,21 +7941,9 @@ export const Response25TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response25TimingsList>;
 
-export type Response25UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response25UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response25UsedDataWarehouseSourcesList>;
-
-export type Response25WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response25WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response25WarningsItem>;
-
-export type Response25WarningsList = Array<Response25WarningsItem>;
+export type Response25WarningsList = Array<DataWarehouseSyncWarning>;
 export const Response25WarningsList = /*@__PURE__*/ S.Array(
-  Response25WarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<Response25WarningsList>;
 
 export interface Response25 {
@@ -8793,9 +7966,7 @@ export interface Response25 {
   results?: Response25ResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: Response25TimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response25UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: Response25WarningsList | null;
 }
 export const Response25 = /*@__PURE__*/ S.suspend(() =>
@@ -8814,52 +7985,37 @@ export const Response25 = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(Response25ResultsList),
     timings: S.optional(S.NullOr(Response25TimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response25UsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(Response25WarningsList)),
   }),
 ).annotate({ identifier: "Response25" }) as any as S.Schema<Response25>;
 
-export type Response27ColumnsList = Array<unknown>;
-export const Response27ColumnsList = /*@__PURE__*/ S.Array(
+export type Response26ColumnsList = Array<unknown>;
+export const Response26ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<Response27ColumnsList>;
+) as any as S.Schema<Response26ColumnsList>;
 
-export type Response27ResultsList = Array<unknown>;
-export const Response27ResultsList = /*@__PURE__*/ S.Array(
+export type Response26ResultsList = Array<unknown>;
+export const Response26ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<Response27ResultsList>;
+) as any as S.Schema<Response26ResultsList>;
 
-export type Response27TimingsList = Array<QueryTiming>;
-export const Response27TimingsList = /*@__PURE__*/ S.Array(
+export type Response26TimingsList = Array<QueryTiming>;
+export const Response26TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
-) as any as S.Schema<Response27TimingsList>;
+) as any as S.Schema<Response26TimingsList>;
 
-export type Response27TypesList = Array<unknown>;
-export const Response27TypesList = /*@__PURE__*/ S.Array(
+export type Response26TypesList = Array<unknown>;
+export const Response26TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<Response27TypesList>;
+) as any as S.Schema<Response26TypesList>;
 
-export type Response27UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response27UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response27UsedDataWarehouseSourcesList>;
+export type Response26WarningsList = Array<DataWarehouseSyncWarning>;
+export const Response26WarningsList = /*@__PURE__*/ S.Array(
+  DataWarehouseSyncWarning,
+) as any as S.Schema<Response26WarningsList>;
 
-export type Response27WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response27WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response27WarningsItem>;
-
-export type Response27WarningsList = Array<Response27WarningsItem>;
-export const Response27WarningsList = /*@__PURE__*/ S.Array(
-  Response27WarningsItem,
-) as any as S.Schema<Response27WarningsList>;
-
-export interface Response27 {
-  columns?: Response27ColumnsList | null;
+export interface Response26 {
+  columns?: Response26ColumnsList | null;
   /** Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise. */
   error?: string | null;
   hasMore?: boolean | null;
@@ -8875,18 +8031,16 @@ export interface Response27 {
   resolved_compare_date_range?: ResolvedDateRangeResponse | null;
   /** The date range used for the query */
   resolved_date_range?: ResolvedDateRangeResponse | null;
-  results: Response27ResultsList;
+  results?: Response26ResultsList;
   /** Measured timings for different parts of the query generation process */
-  timings?: Response27TimingsList | null;
-  types?: Response27TypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response27UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
-  warnings?: Response27WarningsList | null;
+  timings?: Response26TimingsList | null;
+  types?: Response26TypesList | null;
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
+  warnings?: Response26WarningsList | null;
 }
-export const Response27 = /*@__PURE__*/ S.suspend(() =>
+export const Response26 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    columns: S.optional(S.NullOr(Response27ColumnsList)),
+    columns: S.optional(S.NullOr(Response26ColumnsList)),
     error: S.optional(S.NullOr(S.String)),
     hasMore: S.optional(S.NullOr(S.Boolean)),
     hogql: S.optional(S.NullOr(S.String)),
@@ -8898,65 +8052,50 @@ export const Response27 = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(ResolvedDateRangeResponse),
     ),
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-    results: Response27ResultsList,
-    timings: S.optional(S.NullOr(Response27TimingsList)),
-    types: S.optional(S.NullOr(Response27TypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response27UsedDataWarehouseSourcesList),
-    ),
-    warnings: S.optional(S.NullOr(Response27WarningsList)),
+    results: S.optional(Response26ResultsList),
+    timings: S.optional(S.NullOr(Response26TimingsList)),
+    types: S.optional(S.NullOr(Response26TypesList)),
+    warnings: S.optional(S.NullOr(Response26WarningsList)),
   }),
-).annotate({ identifier: "Response27" }) as any as S.Schema<Response27>;
+).annotate({ identifier: "Response26" }) as any as S.Schema<Response26>;
 
-export type Response28ColumnsList = Array<unknown>;
-export const Response28ColumnsList = /*@__PURE__*/ S.Array(
+export type Response27ColumnsList = Array<unknown>;
+export const Response27ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<Response28ColumnsList>;
+) as any as S.Schema<Response27ColumnsList>;
 
-export type Response28MetricsResultsList = Array<number>;
-export const Response28MetricsResultsList = /*@__PURE__*/ S.Array(
+export type Response27MetricsResultsList = Array<number>;
+export const Response27MetricsResultsList = /*@__PURE__*/ S.Array(
   S.Number,
-) as any as S.Schema<Response28MetricsResultsList>;
+) as any as S.Schema<Response27MetricsResultsList>;
 
-export type Response28ResultsItemList = Array<unknown>;
-export const Response28ResultsItemList = /*@__PURE__*/ S.Array(
+export type Response27ResultsItemList = Array<unknown>;
+export const Response27ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<Response28ResultsItemList>;
+) as any as S.Schema<Response27ResultsItemList>;
 
-export type Response28ResultsList = Array<Response28ResultsItemList>;
-export const Response28ResultsList = /*@__PURE__*/ S.Array(
-  Response28ResultsItemList,
-) as any as S.Schema<Response28ResultsList>;
+export type Response27ResultsList = Array<Response27ResultsItemList>;
+export const Response27ResultsList = /*@__PURE__*/ S.Array(
+  Response27ResultsItemList,
+) as any as S.Schema<Response27ResultsList>;
 
-export type Response28TimingsList = Array<QueryTiming>;
-export const Response28TimingsList = /*@__PURE__*/ S.Array(
+export type Response27TimingsList = Array<QueryTiming>;
+export const Response27TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
-) as any as S.Schema<Response28TimingsList>;
+) as any as S.Schema<Response27TimingsList>;
 
-export type Response28TypesList = Array<string>;
-export const Response28TypesList = /*@__PURE__*/ S.Array(
+export type Response27TypesList = Array<string>;
+export const Response27TypesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<Response28TypesList>;
+) as any as S.Schema<Response27TypesList>;
 
-export type Response28UsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const Response28UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
-  DataWarehouseSourceUsage,
-) as any as S.Schema<Response28UsedDataWarehouseSourcesList>;
+export type Response27WarningsList = Array<DataWarehouseSyncWarning>;
+export const Response27WarningsList = /*@__PURE__*/ S.Array(
+  DataWarehouseSyncWarning,
+) as any as S.Schema<Response27WarningsList>;
 
-export type Response28WarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const Response28WarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<Response28WarningsItem>;
-
-export type Response28WarningsList = Array<Response28WarningsItem>;
-export const Response28WarningsList = /*@__PURE__*/ S.Array(
-  Response28WarningsItem,
-) as any as S.Schema<Response28WarningsList>;
-
-export interface Response28 {
-  columns: Response28ColumnsList;
+export interface Response27 {
+  columns: Response27ColumnsList;
   /** Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise. */
   error?: string | null;
   hasMore?: boolean | null;
@@ -8965,7 +8104,7 @@ export interface Response28 {
   kind?: string;
   limit: number;
   /** When `metrics` is set on the query, the aggregated values in the same order. */
-  metricsResults?: Response28MetricsResultsList | null;
+  metricsResults?: Response27MetricsResultsList | null;
   /** Modifiers used when performing the query */
   modifiers?: HogQLQueryModifiers | null;
   offset: number;
@@ -8975,24 +8114,22 @@ export interface Response28 {
   resolved_compare_date_range?: ResolvedDateRangeResponse | null;
   /** The date range used for the query */
   resolved_date_range?: ResolvedDateRangeResponse | null;
-  results: Response28ResultsList;
+  results: Response27ResultsList;
   /** Measured timings for different parts of the query generation process */
-  timings?: Response28TimingsList | null;
-  types: Response28TypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: Response28UsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
-  warnings?: Response28WarningsList | null;
+  timings?: Response27TimingsList | null;
+  types: Response27TypesList;
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
+  warnings?: Response27WarningsList | null;
 }
-export const Response28 = /*@__PURE__*/ S.suspend(() =>
+export const Response27 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    columns: Response28ColumnsList,
+    columns: Response27ColumnsList,
     error: S.optional(S.NullOr(S.String)),
     hasMore: S.optional(S.NullOr(S.Boolean)),
     hogql: S.String,
     kind: S.optional(S.String),
     limit: S.Number,
-    metricsResults: S.optional(S.NullOr(Response28MetricsResultsList)),
+    metricsResults: S.optional(S.NullOr(Response27MetricsResultsList)),
     modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
     offset: S.Number,
     query_status: S.optional(S.NullOr(QueryStatus)),
@@ -9000,15 +8137,12 @@ export const Response28 = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(ResolvedDateRangeResponse),
     ),
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-    results: Response28ResultsList,
-    timings: S.optional(S.NullOr(Response28TimingsList)),
-    types: Response28TypesList,
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(Response28UsedDataWarehouseSourcesList),
-    ),
-    warnings: S.optional(S.NullOr(Response28WarningsList)),
+    results: Response27ResultsList,
+    timings: S.optional(S.NullOr(Response27TimingsList)),
+    types: Response27TypesList,
+    warnings: S.optional(S.NullOr(Response27WarningsList)),
   }),
-).annotate({ identifier: "Response28" }) as any as S.Schema<Response28>;
+).annotate({ identifier: "Response27" }) as any as S.Schema<Response27>;
 
 export type DataTableNodeResponse =
   | DataTableNodeResponseCase0Map
@@ -9037,8 +8171,8 @@ export type DataTableNodeResponse =
   | Response23
   | Response24
   | Response25
-  | Response27
-  | Response28;
+  | Response26
+  | Response27;
 export const DataTableNodeResponse =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataTableNodeResponse>;
 
@@ -9048,7 +8182,6 @@ export type TaxonomicFilterGroupType =
   | "cohorts"
   | "cohorts_with_all"
   | "data_warehouse"
-  | "data_warehouse_source_tables"
   | "data_warehouse_properties"
   | "data_warehouse_person_properties"
   | "elements"
@@ -9060,7 +8193,6 @@ export type TaxonomicFilterGroupType =
   | "event_metadata"
   | "numerical_event_properties"
   | "person_properties"
-  | "person_metadata"
   | "pageview_urls"
   | "pageview_events"
   | "screens"
@@ -9085,18 +8217,15 @@ export type TaxonomicFilterGroupType =
   | "logs"
   | "log_attributes"
   | "log_resource_attributes"
-  | "metric_attributes"
   | "spans"
   | "span_attributes"
   | "span_resource_attributes"
   | "replay"
   | "replay_saved_filters"
   | "revenue_analytics_properties"
-  | "account_custom_properties"
   | "resources"
   | "error_tracking_properties"
   | "activity_log_properties"
-  | "mcp_properties"
   | "max_ai_context"
   | "workflow_variables"
   | "suggested_filters"
@@ -9124,7 +8253,6 @@ export const HrefMatching = /*@__PURE__*/ S.String;
 export type EventsQueryActionStepPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9140,10 +8268,8 @@ export type EventsQueryActionStepPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const EventsQueryActionStepPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryActionStepPropertiesItem>;
@@ -9199,10 +8325,11 @@ export const EventsQueryEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryEventsList>;
 
-export type EventsQueryFixedPropertiesItemCase2 =
+export type EventsQueryFixedPropertiesItem =
+  | PropertyGroupFilter
+  | PropertyGroupFilterValue
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9218,18 +8345,9 @@ export type EventsQueryFixedPropertiesItemCase2 =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
-export const EventsQueryFixedPropertiesItemCase2 =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryFixedPropertiesItemCase2>;
-
-export type EventsQueryFixedPropertiesItem =
-  | PropertyGroupFilter
-  | PropertyGroupFilterValue
-  | EventsQueryFixedPropertiesItemCase2;
 export const EventsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryFixedPropertiesItem>;
 
@@ -9247,7 +8365,6 @@ export const EventsQueryOrderByList = /*@__PURE__*/ S.Array(
 export type EventsQueryPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9263,10 +8380,8 @@ export type EventsQueryPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const EventsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryPropertiesItem>;
@@ -9302,23 +8417,9 @@ export const EventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryResponseTypesList>;
 
-export type EventsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const EventsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<EventsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type EventsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const EventsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryResponseWarningsItem>;
-
-export type EventsQueryResponseWarningsList =
-  Array<EventsQueryResponseWarningsItem>;
+export type EventsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const EventsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  EventsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<EventsQueryResponseWarningsList>;
 
 export interface EventsQueryResponse {
@@ -9344,9 +8445,7 @@ export interface EventsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: EventsQueryResponseTimingsList | null;
   types?: EventsQueryResponseTypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: EventsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: EventsQueryResponseWarningsList | null;
 }
 export const EventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9367,9 +8466,6 @@ export const EventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(EventsQueryResponseResultsList),
     timings: S.optional(S.NullOr(EventsQueryResponseTimingsList)),
     types: S.optional(EventsQueryResponseTypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(EventsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(EventsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -9427,23 +8523,9 @@ export const ActorsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryResponseTypesList>;
 
-export type ActorsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const ActorsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<ActorsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type ActorsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const ActorsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryResponseWarningsItem>;
-
-export type ActorsQueryResponseWarningsList =
-  Array<ActorsQueryResponseWarningsItem>;
+export type ActorsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const ActorsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  ActorsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<ActorsQueryResponseWarningsList>;
 
 export interface ActorsQueryResponse {
@@ -9468,9 +8550,7 @@ export interface ActorsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: ActorsQueryResponseTimingsList | null;
   types?: ActorsQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: ActorsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: ActorsQueryResponseWarningsList | null;
 }
 export const ActorsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -9491,9 +8571,6 @@ export const ActorsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(ActorsQueryResponseResultsList),
     timings: S.optional(S.NullOr(ActorsQueryResponseTimingsList)),
     types: S.optional(S.NullOr(ActorsQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(ActorsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(ActorsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -9625,7 +8702,6 @@ export const EventsQuery = /*@__PURE__*/ S.suspend(() =>
 export type PersonsNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9641,10 +8717,8 @@ export type PersonsNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const PersonsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodeFixedPropertiesItem>;
@@ -9658,7 +8732,6 @@ export const PersonsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
 export type PersonsNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9674,10 +8747,8 @@ export type PersonsNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const PersonsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodePropertiesItem>;
@@ -9730,7 +8801,6 @@ export const PersonsNode = /*@__PURE__*/ S.suspend(() =>
 
 export type ActorsQueryFixedPropertiesItem =
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | CohortPropertyFilter
   | HogQLPropertyFilter
   | EmptyPropertyFilter;
@@ -9750,7 +8820,6 @@ export const ActorsQueryOrderByList = /*@__PURE__*/ S.Array(
 
 export type ActorsQueryPropertiesCase0Item =
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | CohortPropertyFilter
   | HogQLPropertyFilter
   | EmptyPropertyFilter;
@@ -9849,7 +8918,6 @@ export const FunnelCorrelationActorsQueryFunnelCorrelationPersonEntity =
 export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -9865,10 +8933,8 @@ export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
@@ -10003,23 +9069,10 @@ export const FunnelCorrelationResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseTypesList>;
 
-export type FunnelCorrelationResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const FunnelCorrelationResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<FunnelCorrelationResponseUsedDataWarehouseSourcesList>;
-
-export type FunnelCorrelationResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const FunnelCorrelationResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationResponseWarningsItem>;
-
 export type FunnelCorrelationResponseWarningsList =
-  Array<FunnelCorrelationResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const FunnelCorrelationResponseWarningsList = /*@__PURE__*/ S.Array(
-  FunnelCorrelationResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<FunnelCorrelationResponseWarningsList>;
 
 export interface FunnelCorrelationResponse {
@@ -10043,9 +9096,7 @@ export interface FunnelCorrelationResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: FunnelCorrelationResponseTimingsList | null;
   types?: FunnelCorrelationResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: FunnelCorrelationResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: FunnelCorrelationResponseWarningsList | null;
 }
 export const FunnelCorrelationResponse = /*@__PURE__*/ S.suspend(() =>
@@ -10065,9 +9116,6 @@ export const FunnelCorrelationResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(FunnelCorrelationResult),
     timings: S.optional(S.NullOr(FunnelCorrelationResponseTimingsList)),
     types: S.optional(S.NullOr(FunnelCorrelationResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(FunnelCorrelationResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(FunnelCorrelationResponseWarningsList)),
   }),
 ).annotate({
@@ -10154,7 +9202,6 @@ export const FunnelCorrelationActorsQuery = /*@__PURE__*/ S.suspend(() =>
 export type ExperimentEventExposureConfigPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -10170,10 +9217,8 @@ export type ExperimentEventExposureConfigPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ExperimentEventExposureConfigPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentEventExposureConfigPropertiesItem>;
@@ -10260,7 +9305,6 @@ export const ExperimentMeanMetricResponseMap = /*@__PURE__*/ S.Record(
 export type ExperimentDataWarehouseNodeFixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -10276,10 +9320,8 @@ export type ExperimentDataWarehouseNodeFixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ExperimentDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodeFixedPropertiesItem>;
@@ -10305,7 +9347,6 @@ export const ExperimentDataWarehouseNodeMath =
 export type ExperimentDataWarehouseNodePropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -10321,10 +9362,8 @@ export type ExperimentDataWarehouseNodePropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ExperimentDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodePropertiesItem>;
@@ -11261,7 +10300,6 @@ export const StickinessActorsQuery = /*@__PURE__*/ S.suspend(() =>
 export type HogQLFiltersPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -11277,10 +10315,8 @@ export type HogQLFiltersPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const HogQLFiltersPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLFiltersPropertiesItem>;
@@ -11328,23 +10364,9 @@ export const HogQLQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseTypesList>;
 
-export type HogQLQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const HogQLQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<HogQLQueryResponseUsedDataWarehouseSourcesList>;
-
-export type HogQLQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const HogQLQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLQueryResponseWarningsItem>;
-
-export type HogQLQueryResponseWarningsList =
-  Array<HogQLQueryResponseWarningsItem>;
+export type HogQLQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const HogQLQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  HogQLQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<HogQLQueryResponseWarningsList>;
 
 export interface HogQLQueryResponse {
@@ -11378,9 +10400,7 @@ export interface HogQLQueryResponse {
   timings?: HogQLQueryResponseTimingsList | null;
   /** Types of returned columns */
   types?: HogQLQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: HogQLQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. */
   warnings?: HogQLQueryResponseWarningsList | null;
 }
 export const HogQLQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11404,9 +10424,6 @@ export const HogQLQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(HogQLQueryResponseResultsList),
     timings: S.optional(S.NullOr(HogQLQueryResponseTimingsList)),
     types: S.optional(S.NullOr(HogQLQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(HogQLQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(HogQLQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -11443,7 +10460,7 @@ export const HogQLQueryVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogQLQueryVariablesMap>;
 
 export interface HogQLQuery {
-  /** Optional id of a direct-query-capable external data source to run against instead of ClickHouse — a pure-direct source, or a synced source with direct query enabled. */
+  /** Optional id of a direct external data source (access_method='direct') to run against instead of ClickHouse. Warehouse import sources are not valid here. */
   connectionId?: string | null;
   explain?: boolean | null;
   filters?: HogQLFilters | null;
@@ -11571,23 +10588,9 @@ export const GroupsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryResponseTypesList>;
 
-export type GroupsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const GroupsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<GroupsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type GroupsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const GroupsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GroupsQueryResponseWarningsItem>;
-
-export type GroupsQueryResponseWarningsList =
-  Array<GroupsQueryResponseWarningsItem>;
+export type GroupsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const GroupsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  GroupsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<GroupsQueryResponseWarningsList>;
 
 export interface GroupsQueryResponse {
@@ -11612,9 +10615,7 @@ export interface GroupsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: GroupsQueryResponseTimingsList | null;
   types?: GroupsQueryResponseTypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: GroupsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: GroupsQueryResponseWarningsList | null;
 }
 export const GroupsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11635,9 +10636,6 @@ export const GroupsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(GroupsQueryResponseResultsList),
     timings: S.optional(S.NullOr(GroupsQueryResponseTimingsList)),
     types: S.optional(GroupsQueryResponseTypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(GroupsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(GroupsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -11738,24 +10736,11 @@ export const WebExternalClicksTableQueryResponseTypesList =
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseTypesList>;
 
-export type WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList>;
-
-export type WebExternalClicksTableQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const WebExternalClicksTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryResponseWarningsItem>;
-
 export type WebExternalClicksTableQueryResponseWarningsList =
-  Array<WebExternalClicksTableQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const WebExternalClicksTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    WebExternalClicksTableQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseWarningsList>;
 
 export interface WebExternalClicksTableQueryResponse {
@@ -11780,9 +10765,7 @@ export interface WebExternalClicksTableQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: WebExternalClicksTableQueryResponseTimingsList | null;
   types?: WebExternalClicksTableQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: WebExternalClicksTableQueryResponseWarningsList | null;
 }
 export const WebExternalClicksTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11807,9 +10790,6 @@ export const WebExternalClicksTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(WebExternalClicksTableQueryResponseTimingsList),
     ),
     types: S.optional(S.NullOr(WebExternalClicksTableQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(
       S.NullOr(WebExternalClicksTableQueryResponseWarningsList),
     ),
@@ -11927,23 +10907,9 @@ export const WebGoalsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseTypesList>;
 
-export type WebGoalsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const WebGoalsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<WebGoalsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type WebGoalsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const WebGoalsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryResponseWarningsItem>;
-
-export type WebGoalsQueryResponseWarningsList =
-  Array<WebGoalsQueryResponseWarningsItem>;
+export type WebGoalsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const WebGoalsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  WebGoalsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<WebGoalsQueryResponseWarningsList>;
 
 export interface WebGoalsQueryResponse {
@@ -11969,9 +10935,7 @@ export interface WebGoalsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: WebGoalsQueryResponseTimingsList | null;
   types?: WebGoalsQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: WebGoalsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: WebGoalsQueryResponseWarningsList | null;
 }
 export const WebGoalsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -11993,9 +10957,6 @@ export const WebGoalsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     samplingRate: S.optional(S.NullOr(SamplingRate)),
     timings: S.optional(S.NullOr(WebGoalsQueryResponseTimingsList)),
     types: S.optional(S.NullOr(WebGoalsQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(WebGoalsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(WebGoalsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -12204,24 +11165,11 @@ export const WebVitalsPathBreakdownQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseTimingsList>;
 
-export type WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList>;
-
-export type WebVitalsPathBreakdownQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const WebVitalsPathBreakdownQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsItem>;
-
 export type WebVitalsPathBreakdownQueryResponseWarningsList =
-  Array<WebVitalsPathBreakdownQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const WebVitalsPathBreakdownQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    WebVitalsPathBreakdownQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsList>;
 
 export interface WebVitalsPathBreakdownQueryResponse {
@@ -12241,9 +11189,7 @@ export interface WebVitalsPathBreakdownQueryResponse {
   results?: WebVitalsPathBreakdownQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: WebVitalsPathBreakdownQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: WebVitalsPathBreakdownQueryResponseWarningsList | null;
 }
 export const WebVitalsPathBreakdownQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12260,9 +11206,6 @@ export const WebVitalsPathBreakdownQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(WebVitalsPathBreakdownQueryResponseResultsList),
     timings: S.optional(
       S.NullOr(WebVitalsPathBreakdownQueryResponseTimingsList),
-    ),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList),
     ),
     warnings: S.optional(
       S.NullOr(WebVitalsPathBreakdownQueryResponseWarningsList),
@@ -12392,24 +11335,11 @@ export const SessionAttributionExplorerQueryResponseTypesList =
     S.Unknown,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseTypesList>;
 
-export type SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList>;
-
-export type SessionAttributionExplorerQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const SessionAttributionExplorerQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsItem>;
-
 export type SessionAttributionExplorerQueryResponseWarningsList =
-  Array<SessionAttributionExplorerQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const SessionAttributionExplorerQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    SessionAttributionExplorerQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsList>;
 
 export interface SessionAttributionExplorerQueryResponse {
@@ -12433,9 +11363,7 @@ export interface SessionAttributionExplorerQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: SessionAttributionExplorerQueryResponseTimingsList | null;
   types?: SessionAttributionExplorerQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: SessionAttributionExplorerQueryResponseWarningsList | null;
 }
 export const SessionAttributionExplorerQueryResponse = /*@__PURE__*/ S.suspend(
@@ -12461,11 +11389,6 @@ export const SessionAttributionExplorerQueryResponse = /*@__PURE__*/ S.suspend(
       ),
       types: S.optional(
         S.NullOr(SessionAttributionExplorerQueryResponseTypesList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(SessionAttributionExplorerQueryResponseWarningsList),
@@ -12507,7 +11430,6 @@ export const SessionAttributionExplorerQuery = /*@__PURE__*/ S.suspend(() =>
 export type SessionsQueryEventPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -12523,10 +11445,8 @@ export type SessionsQueryEventPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const SessionsQueryEventPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryEventPropertiesItem>;
@@ -12537,10 +11457,11 @@ export const SessionsQueryEventPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryEventPropertiesItem,
 ) as any as S.Schema<SessionsQueryEventPropertiesList>;
 
-export type SessionsQueryFixedPropertiesItemCase2 =
+export type SessionsQueryFixedPropertiesItem =
+  | PropertyGroupFilter
+  | PropertyGroupFilterValue
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -12556,18 +11477,9 @@ export type SessionsQueryFixedPropertiesItemCase2 =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
-export const SessionsQueryFixedPropertiesItemCase2 =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryFixedPropertiesItemCase2>;
-
-export type SessionsQueryFixedPropertiesItem =
-  | PropertyGroupFilter
-  | PropertyGroupFilterValue
-  | SessionsQueryFixedPropertiesItemCase2;
 export const SessionsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryFixedPropertiesItem>;
 
@@ -12585,7 +11497,6 @@ export const SessionsQueryOrderByList = /*@__PURE__*/ S.Array(
 export type SessionsQueryPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -12601,10 +11512,8 @@ export type SessionsQueryPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const SessionsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryPropertiesItem>;
@@ -12640,23 +11549,9 @@ export const SessionsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryResponseTypesList>;
 
-export type SessionsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const SessionsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<SessionsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type SessionsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const SessionsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryResponseWarningsItem>;
-
-export type SessionsQueryResponseWarningsList =
-  Array<SessionsQueryResponseWarningsItem>;
+export type SessionsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const SessionsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  SessionsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<SessionsQueryResponseWarningsList>;
 
 export interface SessionsQueryResponse {
@@ -12680,9 +11575,7 @@ export interface SessionsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: SessionsQueryResponseTimingsList | null;
   types?: SessionsQueryResponseTypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: SessionsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: SessionsQueryResponseWarningsList | null;
 }
 export const SessionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -12702,9 +11595,6 @@ export const SessionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(SessionsQueryResponseResultsList),
     timings: S.optional(S.NullOr(SessionsQueryResponseTimingsList)),
     types: S.optional(SessionsQueryResponseTypesList),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(SessionsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(SessionsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -12834,24 +11724,11 @@ export const RevenueAnalyticsGrossRevenueQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseTimingsList>;
 
-export type RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
-
 export type RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
-  Array<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueAnalyticsGrossRevenueQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsList>;
 
 export interface RevenueAnalyticsGrossRevenueQueryResponse {
@@ -12871,9 +11748,7 @@ export interface RevenueAnalyticsGrossRevenueQueryResponse {
   results?: RevenueAnalyticsGrossRevenueQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueAnalyticsGrossRevenueQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueAnalyticsGrossRevenueQueryResponseWarningsList | null;
 }
 export const RevenueAnalyticsGrossRevenueQueryResponse =
@@ -12893,11 +11768,6 @@ export const RevenueAnalyticsGrossRevenueQueryResponse =
       results: S.optional(RevenueAnalyticsGrossRevenueQueryResponseResultsList),
       timings: S.optional(
         S.NullOr(RevenueAnalyticsGrossRevenueQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(RevenueAnalyticsGrossRevenueQueryResponseWarningsList),
@@ -12961,24 +11831,11 @@ export const RevenueAnalyticsMetricsQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseTimingsList>;
 
-export type RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueAnalyticsMetricsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueAnalyticsMetricsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
-
 export type RevenueAnalyticsMetricsQueryResponseWarningsList =
-  Array<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueAnalyticsMetricsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueAnalyticsMetricsQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsList>;
 
 export interface RevenueAnalyticsMetricsQueryResponse {
@@ -12998,9 +11855,7 @@ export interface RevenueAnalyticsMetricsQueryResponse {
   results?: unknown;
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueAnalyticsMetricsQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueAnalyticsMetricsQueryResponseWarningsList | null;
 }
 export const RevenueAnalyticsMetricsQueryResponse = /*@__PURE__*/ S.suspend(
@@ -13020,11 +11875,6 @@ export const RevenueAnalyticsMetricsQueryResponse = /*@__PURE__*/ S.suspend(
       results: S.optional(S.Unknown),
       timings: S.optional(
         S.NullOr(RevenueAnalyticsMetricsQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(RevenueAnalyticsMetricsQueryResponseWarningsList),
@@ -13094,24 +11944,11 @@ export const RevenueAnalyticsMRRQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseTimingsList>;
 
-export type RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueAnalyticsMRRQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueAnalyticsMRRQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsItem>;
-
 export type RevenueAnalyticsMRRQueryResponseWarningsList =
-  Array<RevenueAnalyticsMRRQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueAnalyticsMRRQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueAnalyticsMRRQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsList>;
 
 export interface RevenueAnalyticsMRRQueryResponse {
@@ -13131,9 +11968,7 @@ export interface RevenueAnalyticsMRRQueryResponse {
   results?: RevenueAnalyticsMRRQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueAnalyticsMRRQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueAnalyticsMRRQueryResponseWarningsList | null;
 }
 export const RevenueAnalyticsMRRQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13149,9 +11984,6 @@ export const RevenueAnalyticsMRRQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(RevenueAnalyticsMRRQueryResponseResultsList),
     timings: S.optional(S.NullOr(RevenueAnalyticsMRRQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(
       S.NullOr(RevenueAnalyticsMRRQueryResponseWarningsList),
     ),
@@ -13210,24 +12042,11 @@ export const RevenueAnalyticsOverviewQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseTimingsList>;
 
-export type RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueAnalyticsOverviewQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueAnalyticsOverviewQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
-
 export type RevenueAnalyticsOverviewQueryResponseWarningsList =
-  Array<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueAnalyticsOverviewQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueAnalyticsOverviewQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsList>;
 
 export interface RevenueAnalyticsOverviewQueryResponse {
@@ -13246,9 +12065,7 @@ export interface RevenueAnalyticsOverviewQueryResponse {
   results?: RevenueAnalyticsOverviewQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueAnalyticsOverviewQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueAnalyticsOverviewQueryResponseWarningsList | null;
 }
 export const RevenueAnalyticsOverviewQueryResponse = /*@__PURE__*/ S.suspend(
@@ -13265,11 +12082,6 @@ export const RevenueAnalyticsOverviewQueryResponse = /*@__PURE__*/ S.suspend(
       results: S.optional(RevenueAnalyticsOverviewQueryResponseResultsList),
       timings: S.optional(
         S.NullOr(RevenueAnalyticsOverviewQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(RevenueAnalyticsOverviewQueryResponseWarningsList),
@@ -13328,24 +12140,11 @@ export const RevenueAnalyticsTopCustomersQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseTimingsList>;
 
-export type RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
-
 export type RevenueAnalyticsTopCustomersQueryResponseWarningsList =
-  Array<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueAnalyticsTopCustomersQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueAnalyticsTopCustomersQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsList>;
 
 export interface RevenueAnalyticsTopCustomersQueryResponse {
@@ -13365,9 +12164,7 @@ export interface RevenueAnalyticsTopCustomersQueryResponse {
   results?: unknown;
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueAnalyticsTopCustomersQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueAnalyticsTopCustomersQueryResponseWarningsList | null;
 }
 export const RevenueAnalyticsTopCustomersQueryResponse =
@@ -13387,11 +12184,6 @@ export const RevenueAnalyticsTopCustomersQueryResponse =
       results: S.optional(S.Unknown),
       timings: S.optional(
         S.NullOr(RevenueAnalyticsTopCustomersQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(RevenueAnalyticsTopCustomersQueryResponseWarningsList),
@@ -13445,24 +12237,11 @@ export const RevenueExampleEventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RevenueExampleEventsQueryResponseTypesList>;
 
-export type RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueExampleEventsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueExampleEventsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleEventsQueryResponseWarningsItem>;
-
 export type RevenueExampleEventsQueryResponseWarningsList =
-  Array<RevenueExampleEventsQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueExampleEventsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueExampleEventsQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseWarningsList>;
 
 export interface RevenueExampleEventsQueryResponse {
@@ -13486,9 +12265,7 @@ export interface RevenueExampleEventsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueExampleEventsQueryResponseTimingsList | null;
   types?: RevenueExampleEventsQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueExampleEventsQueryResponseWarningsList | null;
 }
 export const RevenueExampleEventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -13508,9 +12285,6 @@ export const RevenueExampleEventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(S.Unknown),
     timings: S.optional(S.NullOr(RevenueExampleEventsQueryResponseTimingsList)),
     types: S.optional(S.NullOr(RevenueExampleEventsQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(
       S.NullOr(RevenueExampleEventsQueryResponseWarningsList),
     ),
@@ -13565,24 +12339,11 @@ export const RevenueExampleDataWarehouseTablesQueryResponseTypesList =
     S.Unknown,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseTypesList>;
 
-export type RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList>;
-
-export type RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
-
 export type RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
-  Array<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    RevenueExampleDataWarehouseTablesQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsList>;
 
 export interface RevenueExampleDataWarehouseTablesQueryResponse {
@@ -13606,9 +12367,7 @@ export interface RevenueExampleDataWarehouseTablesQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: RevenueExampleDataWarehouseTablesQueryResponseTimingsList | null;
   types?: RevenueExampleDataWarehouseTablesQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: RevenueExampleDataWarehouseTablesQueryResponseWarningsList | null;
 }
 export const RevenueExampleDataWarehouseTablesQueryResponse =
@@ -13634,11 +12393,6 @@ export const RevenueExampleDataWarehouseTablesQueryResponse =
       ),
       types: S.optional(
         S.NullOr(RevenueExampleDataWarehouseTablesQueryResponseTypesList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(RevenueExampleDataWarehouseTablesQueryResponseWarningsList),
@@ -13685,7 +12439,6 @@ export const MarketingAnalyticsTableQueryConversionGoal =
 export type ConversionGoalFilter1FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -13701,10 +12454,8 @@ export type ConversionGoalFilter1FixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter1FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
@@ -13734,7 +12485,6 @@ export const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
 export type ConversionGoalFilter1PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -13750,10 +12500,8 @@ export type ConversionGoalFilter1PropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter1PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
@@ -13847,7 +12595,6 @@ export const ConversionGoalFilter1 = /*@__PURE__*/ S.suspend(() =>
 export type ConversionGoalFilter2FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -13863,10 +12610,8 @@ export type ConversionGoalFilter2FixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter2FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
@@ -13891,7 +12636,6 @@ export const ConversionGoalFilter2Math =
 export type ConversionGoalFilter2PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -13907,10 +12651,8 @@ export type ConversionGoalFilter2PropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter2PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
@@ -13998,7 +12740,6 @@ export const ConversionGoalFilter2 = /*@__PURE__*/ S.suspend(() =>
 export type ConversionGoalFilter3FixedPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -14014,10 +12755,8 @@ export type ConversionGoalFilter3FixedPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter3FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
@@ -14042,7 +12781,6 @@ export const ConversionGoalFilter3Math =
 export type ConversionGoalFilter3PropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -14058,10 +12796,8 @@ export type ConversionGoalFilter3PropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const ConversionGoalFilter3PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
@@ -14263,24 +12999,11 @@ export const MarketingAnalyticsTableQueryResponseTypesList =
     S.Unknown,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
 
-export type MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList>;
-
-export type MarketingAnalyticsTableQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const MarketingAnalyticsTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
-
 export type MarketingAnalyticsTableQueryResponseWarningsList =
-  Array<MarketingAnalyticsTableQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const MarketingAnalyticsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    MarketingAnalyticsTableQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsList>;
 
 export interface MarketingAnalyticsTableQueryResponse {
@@ -14305,9 +13028,7 @@ export interface MarketingAnalyticsTableQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: MarketingAnalyticsTableQueryResponseTimingsList | null;
   types?: MarketingAnalyticsTableQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: MarketingAnalyticsTableQueryResponseWarningsList | null;
 }
 export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(
@@ -14334,11 +13055,6 @@ export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(
       ),
       types: S.optional(
         S.NullOr(MarketingAnalyticsTableQueryResponseTypesList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(MarketingAnalyticsTableQueryResponseWarningsList),
@@ -14476,24 +13192,11 @@ export const MarketingAnalyticsAggregatedQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseTimingsList>;
 
-export type MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList>;
-
-export type MarketingAnalyticsAggregatedQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const MarketingAnalyticsAggregatedQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
-
 export type MarketingAnalyticsAggregatedQueryResponseWarningsList =
-  Array<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const MarketingAnalyticsAggregatedQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    MarketingAnalyticsAggregatedQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsList>;
 
 export interface MarketingAnalyticsAggregatedQueryResponse {
@@ -14513,9 +13216,7 @@ export interface MarketingAnalyticsAggregatedQueryResponse {
   samplingRate?: SamplingRate | null;
   /** Measured timings for different parts of the query generation process */
   timings?: MarketingAnalyticsAggregatedQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: MarketingAnalyticsAggregatedQueryResponseWarningsList | null;
 }
 export const MarketingAnalyticsAggregatedQueryResponse =
@@ -14533,11 +13234,6 @@ export const MarketingAnalyticsAggregatedQueryResponse =
       samplingRate: S.optional(S.NullOr(SamplingRate)),
       timings: S.optional(
         S.NullOr(MarketingAnalyticsAggregatedQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(MarketingAnalyticsAggregatedQueryResponseWarningsList),
@@ -14704,24 +13400,11 @@ export const NonIntegratedConversionsTableQueryResponseTypesList =
     S.Unknown,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseTypesList>;
 
-export type NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList>;
-
-export type NonIntegratedConversionsTableQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const NonIntegratedConversionsTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsItem>;
-
 export type NonIntegratedConversionsTableQueryResponseWarningsList =
-  Array<NonIntegratedConversionsTableQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const NonIntegratedConversionsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    NonIntegratedConversionsTableQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsList>;
 
 export interface NonIntegratedConversionsTableQueryResponse {
@@ -14746,9 +13429,7 @@ export interface NonIntegratedConversionsTableQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: NonIntegratedConversionsTableQueryResponseTimingsList | null;
   types?: NonIntegratedConversionsTableQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: NonIntegratedConversionsTableQueryResponseWarningsList | null;
 }
 export const NonIntegratedConversionsTableQueryResponse =
@@ -14777,11 +13458,6 @@ export const NonIntegratedConversionsTableQueryResponse =
       ),
       types: S.optional(
         S.NullOr(NonIntegratedConversionsTableQueryResponseTypesList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(NonIntegratedConversionsTableQueryResponseWarningsList),
@@ -14936,23 +13612,10 @@ export const ErrorTrackingQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ErrorTrackingQueryResponseTimingsList>;
 
-export type ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<ErrorTrackingQueryResponseUsedDataWarehouseSourcesList>;
-
-export type ErrorTrackingQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const ErrorTrackingQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingQueryResponseWarningsItem>;
-
 export type ErrorTrackingQueryResponseWarningsList =
-  Array<ErrorTrackingQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const ErrorTrackingQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  ErrorTrackingQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<ErrorTrackingQueryResponseWarningsList>;
 
 export interface ErrorTrackingQueryResponse {
@@ -14975,9 +13638,7 @@ export interface ErrorTrackingQueryResponse {
   results?: ErrorTrackingQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: ErrorTrackingQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: ErrorTrackingQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: ErrorTrackingQueryResponseWarningsList | null;
 }
 export const ErrorTrackingQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -14996,9 +13657,6 @@ export const ErrorTrackingQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(ErrorTrackingQueryResponseResultsList),
     timings: S.optional(S.NullOr(ErrorTrackingQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(ErrorTrackingQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(ErrorTrackingQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -15110,24 +13768,11 @@ export const ErrorTrackingIssueCorrelationQueryResponseTimingsList =
     QueryTiming,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseTimingsList>;
 
-export type ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList>;
-
-export type ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
-
 export type ErrorTrackingIssueCorrelationQueryResponseWarningsList =
-  Array<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const ErrorTrackingIssueCorrelationQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    ErrorTrackingIssueCorrelationQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsList>;
 
 export interface ErrorTrackingIssueCorrelationQueryResponse {
@@ -15150,9 +13795,7 @@ export interface ErrorTrackingIssueCorrelationQueryResponse {
   results?: ErrorTrackingIssueCorrelationQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: ErrorTrackingIssueCorrelationQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: ErrorTrackingIssueCorrelationQueryResponseWarningsList | null;
 }
 export const ErrorTrackingIssueCorrelationQueryResponse =
@@ -15177,11 +13820,6 @@ export const ErrorTrackingIssueCorrelationQueryResponse =
       ),
       timings: S.optional(
         S.NullOr(ErrorTrackingIssueCorrelationQueryResponseTimingsList),
-      ),
-      used_data_warehouse_sources: S.optional(
-        S.NullOr(
-          ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList,
-        ),
       ),
       warnings: S.optional(
         S.NullOr(ErrorTrackingIssueCorrelationQueryResponseWarningsList),
@@ -15466,7 +14104,6 @@ export const ExperimentTrendsQuery = /*@__PURE__*/ S.suspend(() =>
 export type TracesQueryPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -15482,10 +14119,8 @@ export type TracesQueryPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const TracesQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryPropertiesItem>;
@@ -15510,23 +14145,9 @@ export const TracesQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TracesQueryResponseTimingsList>;
 
-export type TracesQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const TracesQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<TracesQueryResponseUsedDataWarehouseSourcesList>;
-
-export type TracesQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const TracesQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryResponseWarningsItem>;
-
-export type TracesQueryResponseWarningsList =
-  Array<TracesQueryResponseWarningsItem>;
+export type TracesQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const TracesQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  TracesQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<TracesQueryResponseWarningsList>;
 
 export interface TracesQueryResponse {
@@ -15549,9 +14170,7 @@ export interface TracesQueryResponse {
   results?: TracesQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: TracesQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: TracesQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: TracesQueryResponseWarningsList | null;
 }
 export const TracesQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -15570,9 +14189,6 @@ export const TracesQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(TracesQueryResponseResultsList),
     timings: S.optional(S.NullOr(TracesQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(TracesQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(TracesQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -15599,7 +14215,6 @@ export interface TracesQuery {
   /** Use random ordering instead of timestamp DESC. Useful for representative sampling to avoid recency bias. */
   randomOrder?: boolean | null;
   response?: TracesQueryResponse | null;
-  searchTerm?: string | null;
   showColumnConfigurator?: boolean | null;
   tags?: QueryLogTags | null;
   /** version of the node, used for schema migrations */
@@ -15621,7 +14236,6 @@ export const TracesQuery = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(S.NullOr(TracesQueryPropertiesList)),
     randomOrder: S.optional(S.NullOr(S.Boolean)),
     response: S.optional(S.NullOr(TracesQueryResponse)),
-    searchTerm: S.optional(S.NullOr(S.String)),
     showColumnConfigurator: S.optional(S.NullOr(S.Boolean)),
     tags: S.optional(S.NullOr(QueryLogTags)),
     version: S.optional(S.NullOr(S.Number)),
@@ -15631,7 +14245,6 @@ export const TracesQuery = /*@__PURE__*/ S.suspend(() =>
 export type TraceQueryPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
   | ElementPropertyFilter
   | EventMetadataPropertyFilter
   | SessionPropertyFilter
@@ -15647,10 +14260,8 @@ export type TraceQueryPropertiesItem =
   | DataWarehousePersonPropertyFilter
   | ErrorTrackingIssueFilter
   | LogPropertyFilter
-  | MetricPropertyFilter
   | SpanPropertyFilter
   | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter;
 export const TraceQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryPropertiesItem>;
@@ -15675,23 +14286,9 @@ export const TraceQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TraceQueryResponseTimingsList>;
 
-export type TraceQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const TraceQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<TraceQueryResponseUsedDataWarehouseSourcesList>;
-
-export type TraceQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const TraceQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryResponseWarningsItem>;
-
-export type TraceQueryResponseWarningsList =
-  Array<TraceQueryResponseWarningsItem>;
+export type TraceQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const TraceQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  TraceQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<TraceQueryResponseWarningsList>;
 
 export interface TraceQueryResponse {
@@ -15714,9 +14311,7 @@ export interface TraceQueryResponse {
   results?: TraceQueryResponseResultsList;
   /** Measured timings for different parts of the query generation process */
   timings?: TraceQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: TraceQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: TraceQueryResponseWarningsList | null;
 }
 export const TraceQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -15735,9 +14330,6 @@ export const TraceQueryResponse = /*@__PURE__*/ S.suspend(() =>
     resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     results: S.optional(TraceQueryResponseResultsList),
     timings: S.optional(S.NullOr(TraceQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(TraceQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(TraceQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -15772,120 +14364,6 @@ export const TraceQuery = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({ identifier: "TraceQuery" }) as any as S.Schema<TraceQuery>;
-
-export type SessionQueryResponseColumnsList = Array<string>;
-export const SessionQueryResponseColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SessionQueryResponseColumnsList>;
-
-export type SessionQueryResponseResultsList = Array<LLMTrace>;
-export const SessionQueryResponseResultsList = /*@__PURE__*/ S.Array(
-  LLMTrace,
-) as any as S.Schema<SessionQueryResponseResultsList>;
-
-export type SessionQueryResponseTimingsList = Array<QueryTiming>;
-export const SessionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
-  QueryTiming,
-) as any as S.Schema<SessionQueryResponseTimingsList>;
-
-export type SessionQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const SessionQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<SessionQueryResponseUsedDataWarehouseSourcesList>;
-
-export type SessionQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const SessionQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SessionQueryResponseWarningsItem>;
-
-export type SessionQueryResponseWarningsList =
-  Array<SessionQueryResponseWarningsItem>;
-export const SessionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  SessionQueryResponseWarningsItem,
-) as any as S.Schema<SessionQueryResponseWarningsList>;
-
-export interface SessionQueryResponse {
-  columns?: SessionQueryResponseColumnsList | null;
-  /** Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise. */
-  error?: string | null;
-  hasMore?: boolean | null;
-  /** Generated HogQL query. */
-  hogql?: string | null;
-  limit?: number | null;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  offset?: number | null;
-  /** Query status indicates whether next to the provided data, a query is still running. */
-  query_status?: QueryStatus | null;
-  /** The resolved previous/comparison period date range, when comparing against another period */
-  resolved_compare_date_range?: ResolvedDateRangeResponse | null;
-  /** The date range used for the query */
-  resolved_date_range?: ResolvedDateRangeResponse | null;
-  results: SessionQueryResponseResultsList;
-  /** Measured timings for different parts of the query generation process */
-  timings?: SessionQueryResponseTimingsList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: SessionQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
-  warnings?: SessionQueryResponseWarningsList | null;
-}
-export const SessionQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(S.NullOr(SessionQueryResponseColumnsList)),
-    error: S.optional(S.NullOr(S.String)),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    hogql: S.optional(S.NullOr(S.String)),
-    limit: S.optional(S.NullOr(S.Number)),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    offset: S.optional(S.NullOr(S.Number)),
-    query_status: S.optional(S.NullOr(QueryStatus)),
-    resolved_compare_date_range: S.optional(
-      S.NullOr(ResolvedDateRangeResponse),
-    ),
-    resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-    results: SessionQueryResponseResultsList,
-    timings: S.optional(S.NullOr(SessionQueryResponseTimingsList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(SessionQueryResponseUsedDataWarehouseSourcesList),
-    ),
-    warnings: S.optional(S.NullOr(SessionQueryResponseWarningsList)),
-  }),
-).annotate({
-  identifier: "SessionQueryResponse",
-}) as any as S.Schema<SessionQueryResponse>;
-
-export interface SessionQuery {
-  dateRange?: DateRange | null;
-  /** Include stored sentiment evaluation results for returned traces and generation events. */
-  includeSentiment?: boolean | null;
-  kind?: string;
-  limit?: number | null;
-  /** Modifiers used when performing the query */
-  modifiers?: HogQLQueryModifiers | null;
-  offset?: number | null;
-  response?: SessionQueryResponse | null;
-  sessionId: string;
-  tags?: QueryLogTags | null;
-  /** version of the node, used for schema migrations */
-  version?: number | null;
-}
-export const SessionQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(S.NullOr(DateRange)),
-    includeSentiment: S.optional(S.NullOr(S.Boolean)),
-    kind: S.optional(S.String),
-    limit: S.optional(S.NullOr(S.Number)),
-    modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
-    offset: S.optional(S.NullOr(S.Number)),
-    response: S.optional(S.NullOr(SessionQueryResponse)),
-    sessionId: S.String,
-    tags: S.optional(S.NullOr(QueryLogTags)),
-    version: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({ identifier: "SessionQuery" }) as any as S.Schema<SessionQuery>;
 
 export type EndpointsUsageBreakdown =
   | "Endpoint"
@@ -15948,24 +14426,11 @@ export const EndpointsUsageTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EndpointsUsageTableQueryResponseTypesList>;
 
-export type EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList>;
-
-export type EndpointsUsageTableQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const EndpointsUsageTableQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EndpointsUsageTableQueryResponseWarningsItem>;
-
 export type EndpointsUsageTableQueryResponseWarningsList =
-  Array<EndpointsUsageTableQueryResponseWarningsItem>;
+  Array<DataWarehouseSyncWarning>;
 export const EndpointsUsageTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
-    EndpointsUsageTableQueryResponseWarningsItem,
+    DataWarehouseSyncWarning,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseWarningsList>;
 
 export interface EndpointsUsageTableQueryResponse {
@@ -15989,9 +14454,7 @@ export interface EndpointsUsageTableQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: EndpointsUsageTableQueryResponseTimingsList | null;
   types?: EndpointsUsageTableQueryResponseTypesList | null;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: EndpointsUsageTableQueryResponseWarningsList | null;
 }
 export const EndpointsUsageTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -16011,9 +14474,6 @@ export const EndpointsUsageTableQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: S.optional(EndpointsUsageTableQueryResponseResultsList),
     timings: S.optional(S.NullOr(EndpointsUsageTableQueryResponseTimingsList)),
     types: S.optional(S.NullOr(EndpointsUsageTableQueryResponseTypesList)),
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(
       S.NullOr(EndpointsUsageTableQueryResponseWarningsList),
     ),
@@ -16107,23 +14567,9 @@ export const AccountsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryResponseTypesList>;
 
-export type AccountsQueryResponseUsedDataWarehouseSourcesList =
-  Array<DataWarehouseSourceUsage>;
-export const AccountsQueryResponseUsedDataWarehouseSourcesList =
-  /*@__PURE__*/ S.Array(
-    DataWarehouseSourceUsage,
-  ) as any as S.Schema<AccountsQueryResponseUsedDataWarehouseSourcesList>;
-
-export type AccountsQueryResponseWarningsItem =
-  | DataWarehouseSyncWarning
-  | AccessControlFilterWarning;
-export const AccountsQueryResponseWarningsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AccountsQueryResponseWarningsItem>;
-
-export type AccountsQueryResponseWarningsList =
-  Array<AccountsQueryResponseWarningsItem>;
+export type AccountsQueryResponseWarningsList = Array<DataWarehouseSyncWarning>;
 export const AccountsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
-  AccountsQueryResponseWarningsItem,
+  DataWarehouseSyncWarning,
 ) as any as S.Schema<AccountsQueryResponseWarningsList>;
 
 export interface AccountsQueryResponse {
@@ -16150,9 +14596,7 @@ export interface AccountsQueryResponse {
   /** Measured timings for different parts of the query generation process */
   timings?: AccountsQueryResponseTimingsList | null;
   types: AccountsQueryResponseTypesList;
-  /** Connector-synced data warehouse sources referenced by this query, if any. */
-  used_data_warehouse_sources?: AccountsQueryResponseUsedDataWarehouseSourcesList | null;
-  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
+  /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. */
   warnings?: AccountsQueryResponseWarningsList | null;
 }
 export const AccountsQueryResponse = /*@__PURE__*/ S.suspend(() =>
@@ -16176,9 +14620,6 @@ export const AccountsQueryResponse = /*@__PURE__*/ S.suspend(() =>
     results: AccountsQueryResponseResultsList,
     timings: S.optional(S.NullOr(AccountsQueryResponseTimingsList)),
     types: AccountsQueryResponseTypesList,
-    used_data_warehouse_sources: S.optional(
-      S.NullOr(AccountsQueryResponseUsedDataWarehouseSourcesList),
-    ),
     warnings: S.optional(S.NullOr(AccountsQueryResponseWarningsList)),
   }),
 ).annotate({
@@ -16196,9 +14637,8 @@ export const AccountsQueryTagNamesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AccountsQueryTagNamesList>;
 
 export interface AccountsQuery {
-  /** Match accounts with no active relationship of any definition. */
   allRolesUnassigned?: boolean | null;
-  /** Match accounts where any of these user ids actively holds any relationship (CSM, Account executive, or a custom definition). Drives the "My accounts" shortcut (the current user's id) and the shareable "Assigned to" filter — the ids are explicit so a shared URL resolves identically for every viewer. */
+  /** Match accounts where any of these user ids is the CSM or the account executive (OR over both roles). Drives the "My accounts" shortcut (the current user's id) and the shareable "Assigned to" filter — the ids are explicit so a shared URL resolves identically for every viewer. */
   assignedToUserIds?: AccountsQueryAssignedToUserIdsList | null;
   /** Optional HogQL boolean expression AND-ed into the WHERE clause. Used by the overview tile click-to-filter affordance. */
   filterExpression?: string | null;
@@ -16270,7 +14710,6 @@ export type DataTableNodeSource =
   | ExperimentTrendsQuery
   | TracesQuery
   | TraceQuery
-  | SessionQuery
   | EndpointsUsageTableQuery
   | AccountsQuery;
 export const DataTableNodeSource =
@@ -16595,7 +15034,6 @@ export interface ChartSettings {
   seriesBreakdownColumn?: string | null;
   showLegend?: boolean | null;
   showNullsAsZero?: boolean | null;
-  showPieTotal?: boolean | null;
   showTotalRow?: boolean | null;
   showValuesOnSeries?: boolean | null;
   showXAxisBorder?: boolean | null;
@@ -16622,7 +15060,6 @@ export const ChartSettings = /*@__PURE__*/ S.suspend(() =>
     seriesBreakdownColumn: S.optional(S.NullOr(S.String)),
     showLegend: S.optional(S.NullOr(S.Boolean)),
     showNullsAsZero: S.optional(S.NullOr(S.Boolean)),
-    showPieTotal: S.optional(S.NullOr(S.Boolean)),
     showTotalRow: S.optional(S.NullOr(S.Boolean)),
     showValuesOnSeries: S.optional(S.NullOr(S.Boolean)),
     showXAxisBorder: S.optional(S.NullOr(S.Boolean)),
@@ -16779,7 +15216,7 @@ export type InsightQuerySchema =
 export const InsightQuerySchema =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightQuerySchema>;
 
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. */
 export type InsightOutputDashboardsList = Array<number>;
 export const InsightOutputDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
@@ -16839,138 +15276,6 @@ export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputAlertsList>;
 
-export type DashboardFilterPropertiesItem =
-  | EventPropertyFilter
-  | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
-  | ElementPropertyFilter
-  | EventMetadataPropertyFilter
-  | SessionPropertyFilter
-  | CohortPropertyFilter
-  | RecordingPropertyFilter
-  | LogEntryPropertyFilter
-  | GroupPropertyFilter
-  | FeaturePropertyFilter
-  | FlagPropertyFilter
-  | HogQLPropertyFilter
-  | EmptyPropertyFilter
-  | DataWarehousePropertyFilter
-  | DataWarehousePersonPropertyFilter
-  | ErrorTrackingIssueFilter
-  | LogPropertyFilter
-  | MetricPropertyFilter
-  | SpanPropertyFilter
-  | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
-  | WorkflowVariablePropertyFilter;
-export const DashboardFilterPropertiesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
-
-export type DashboardFilterPropertiesList =
-  Array<DashboardFilterPropertiesItem>;
-export const DashboardFilterPropertiesList = /*@__PURE__*/ S.Array(
-  DashboardFilterPropertiesItem,
-) as any as S.Schema<DashboardFilterPropertiesList>;
-
-export interface DashboardFilter {
-  breakdown_filter?: BreakdownFilter | null;
-  date_from?: string | null;
-  date_to?: string | null;
-  explicitDate?: boolean | null;
-  /** Tri-state test-account override. Null/absent = inherit; true = force on; false = force off. */
-  filterTestAccounts?: boolean | null;
-  /** Time granularity forced onto every insight that supports one. Absent/null = inherit. */
-  interval?: IntervalType | null;
-  properties?: DashboardFilterPropertiesList | null;
-}
-export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
-    date_from: S.optional(S.NullOr(S.String)),
-    date_to: S.optional(S.NullOr(S.String)),
-    explicitDate: S.optional(S.NullOr(S.Boolean)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
-    properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
-  }),
-).annotate({
-  identifier: "DashboardFilter",
-}) as any as S.Schema<DashboardFilter>;
-
-export type TileFiltersPropertiesItem =
-  | EventPropertyFilter
-  | PersonPropertyFilter
-  | PersonMetadataPropertyFilter
-  | ElementPropertyFilter
-  | EventMetadataPropertyFilter
-  | SessionPropertyFilter
-  | CohortPropertyFilter
-  | RecordingPropertyFilter
-  | LogEntryPropertyFilter
-  | GroupPropertyFilter
-  | FeaturePropertyFilter
-  | FlagPropertyFilter
-  | HogQLPropertyFilter
-  | EmptyPropertyFilter
-  | DataWarehousePropertyFilter
-  | DataWarehousePersonPropertyFilter
-  | ErrorTrackingIssueFilter
-  | LogPropertyFilter
-  | MetricPropertyFilter
-  | SpanPropertyFilter
-  | RevenueAnalyticsPropertyFilter
-  | AccountCustomPropertyFilter
-  | WorkflowVariablePropertyFilter;
-export const TileFiltersPropertiesItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TileFiltersPropertiesItem>;
-
-export type TileFiltersPropertiesList = Array<TileFiltersPropertiesItem>;
-export const TileFiltersPropertiesList = /*@__PURE__*/ S.Array(
-  TileFiltersPropertiesItem,
-) as any as S.Schema<TileFiltersPropertiesList>;
-
-export interface TileFilters {
-  breakdown_filter?: BreakdownFilter | null;
-  date_from?: string | null;
-  date_to?: string | null;
-  explicitDate?: boolean | null;
-  filterTestAccounts?: boolean | null;
-  /** When true, this tile ignores every dashboard-level filter; the tile's own overrides still apply. */
-  ignoreDashboardFilters?: boolean | null;
-  interval?: IntervalType | null;
-  properties?: TileFiltersPropertiesList | null;
-}
-export const TileFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
-    date_from: S.optional(S.NullOr(S.String)),
-    date_to: S.optional(S.NullOr(S.String)),
-    explicitDate: S.optional(S.NullOr(S.Boolean)),
-    filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-    ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
-    interval: S.optional(S.NullOr(IntervalType)),
-    properties: S.optional(S.NullOr(TileFiltersPropertiesList)),
-  }),
-).annotate({ identifier: "TileFilters" }) as any as S.Schema<TileFilters>;
-
-export interface InsightFilterOverrideContext {
-  /** Dashboard filters that remain active after applying tile precedence. */
-  dashboard?: DashboardFilter | null;
-  /** Tile filters applied above the dashboard filters. */
-  tile?: TileFilters | null;
-  /** Dashboard filters replaced by the tile filters. */
-  overridden_dashboard?: DashboardFilter | null;
-}
-export const InsightFilterOverrideContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard: S.optional(S.NullOr(DashboardFilter)),
-    tile: S.optional(S.NullOr(TileFilters)),
-    overridden_dashboard: S.optional(S.NullOr(DashboardFilter)),
-  }),
-).annotate({
-  identifier: "InsightFilterOverrideContext",
-}) as any as S.Schema<InsightFilterOverrideContext>;
-
 export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
@@ -16983,7 +15288,7 @@ export interface InsightOutput {
   query?: InsightQuerySchema | null;
   order?: number | null;
   deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. */
   dashboards?: InsightOutputDashboardsList;
   /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
   dashboard_tiles?: InsightOutputDashboardTilesList;
@@ -17017,10 +15322,8 @@ export interface InsightOutput {
   types?: InsightOutputTypesList | null;
   resolved_date_range?: InsightOutputResolvedDateRange | null;
   alerts?: InsightOutputAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
   last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
@@ -17059,7 +15362,6 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
     types: S.optional(S.NullOr(InsightOutputTypesList)),
     resolved_date_range: S.optional(S.NullOr(InsightOutputResolvedDateRange)),
     alerts: S.optional(InsightOutputAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
     last_viewed_at: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }),
@@ -17191,56 +15493,6 @@ export const ActivityEventsListWidgetConfigWidgetFiltersMap =
     WidgetFilterEntry,
   ) as any as S.Schema<ActivityEventsListWidgetConfigWidgetFiltersMap>;
 
-export type ActivityEventsPropertyFilterType = "event" | "person";
-export const ActivityEventsPropertyFilterType = /*@__PURE__*/ S.String;
-
-export type ActivityEventsPropertyFilterValueCase0Item =
-  | string
-  | number
-  | boolean;
-export const ActivityEventsPropertyFilterValueCase0Item =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ActivityEventsPropertyFilterValueCase0Item>;
-
-export type ActivityEventsPropertyFilterValueCase0List =
-  Array<ActivityEventsPropertyFilterValueCase0Item>;
-export const ActivityEventsPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ActivityEventsPropertyFilterValueCase0Item,
-) as any as S.Schema<ActivityEventsPropertyFilterValueCase0List>;
-
-export type ActivityEventsPropertyFilterValue =
-  | ActivityEventsPropertyFilterValueCase0List
-  | string
-  | number
-  | boolean;
-export const ActivityEventsPropertyFilterValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ActivityEventsPropertyFilterValue>;
-
-export interface ActivityEventsPropertyFilter {
-  key: string;
-  label?: string | null;
-  operator: PropertyOperator | (string & {});
-  type: ActivityEventsPropertyFilterType | (string & {});
-  value?: ActivityEventsPropertyFilterValue | null;
-}
-export const ActivityEventsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: ActivityEventsPropertyFilterType,
-    value: S.optional(S.NullOr(ActivityEventsPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "ActivityEventsPropertyFilter",
-}) as any as S.Schema<ActivityEventsPropertyFilter>;
-
-export type ActivityEventsListWidgetConfigPropertiesList =
-  Array<ActivityEventsPropertyFilter>;
-export const ActivityEventsListWidgetConfigPropertiesList =
-  /*@__PURE__*/ S.Array(
-    ActivityEventsPropertyFilter,
-  ) as any as S.Schema<ActivityEventsListWidgetConfigPropertiesList>;
-
 export interface ActivityEventsListWidgetConfig {
   dateRange?: WidgetDateRange | null;
   filterTestAccounts?: boolean | null;
@@ -17249,8 +15501,6 @@ export interface ActivityEventsListWidgetConfig {
   limit?: number;
   /** Limit the feed to a single event name. Omit or null for all events. */
   eventName?: string | null;
-  /** Event and person property filters, matching Activity > Explore events. */
-  properties?: ActivityEventsListWidgetConfigPropertiesList | null;
 }
 export const ActivityEventsListWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17261,9 +15511,6 @@ export const ActivityEventsListWidgetConfig = /*@__PURE__*/ S.suspend(() =>
     ),
     limit: S.optional(S.Number),
     eventName: S.optional(S.NullOr(S.String)),
-    properties: S.optional(
-      S.NullOr(ActivityEventsListWidgetConfigPropertiesList),
-    ),
   }),
 ).annotate({
   identifier: "ActivityEventsListWidgetConfig",
@@ -17426,7 +15673,6 @@ export type ExperimentsListWidgetConfigStatus =
   | "draft"
   | "running"
   | "paused"
-  | "exposure_frozen"
   | "stopped"
   | "all";
 export const ExperimentsListWidgetConfigStatus = /*@__PURE__*/ S.String;
@@ -17466,24 +15712,6 @@ export const ExperimentResultsWidgetConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExperimentResultsWidgetConfig",
 }) as any as S.Schema<ExperimentResultsWidgetConfig>;
-
-export interface SurveyResultsWidgetConfig {
-  /** Null or omitted means all time (the survey's full lifetime). */
-  dateRange?: WidgetDateRange | null;
-  /** Survey to show performance stats and recent responses for. Null until the user picks one. */
-  surveyId?: string | null;
-  /** Maximum number of recent responses to return. */
-  limit?: number;
-}
-export const SurveyResultsWidgetConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dateRange: S.optional(S.NullOr(WidgetDateRange)),
-    surveyId: S.optional(S.NullOr(S.String)),
-    limit: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SurveyResultsWidgetConfig",
-}) as any as S.Schema<SurveyResultsWidgetConfig>;
 
 /** Sort by newest (latest) or oldest (earliest) first. */
 export type LogsListWidgetConfigOrderBy = "latest" | "earliest";
@@ -17554,7 +15782,6 @@ export type DashboardWidgetConfig =
   | SessionReplayListWidgetConfig
   | ExperimentsListWidgetConfig
   | ExperimentResultsWidgetConfig
-  | SurveyResultsWidgetConfig
   | LogsListWidgetConfig;
 export const DashboardWidgetConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardWidgetConfig>;
@@ -17708,7 +15935,7 @@ export interface DashboardsListRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Optional. Match against dashboard `name`, `description`, and tag names. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, transpositions, prefix-as-you-type) matches instead. Results are then ordered by relevance, then pinned status, then name; each result's `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error. */
+  /** Optional. Match against dashboard `name`, `description`, and tag names. Returns case-insensitive substring matches and fuzzy trigram matches (typos, transpositions, prefix-as-you-type) together, ordered exact-first, then pinned status, then name; each result's `search_match_type` is `exact` or `similar`. When omitted, dashboards are ordered by pinned status then alphabetical name. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
 export const DashboardsListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -17763,7 +15990,7 @@ export interface DashboardBasic {
   access_control_version?: string;
   last_refresh?: string | null;
   team_id?: number;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const DashboardBasic = /*@__PURE__*/ S.suspend(() =>
@@ -17890,21 +16117,20 @@ export const DashboardsPartialUpdateRequestQuickFilterIdsList =
     S.String,
   ) as any as S.Schema<DashboardsPartialUpdateRequestQuickFilterIdsList>;
 
-/** * `activity_events_list` - activity_events_list * `error_tracking_list` - error_tracking_list * `experiment_results` - experiment_results * `experiments_list` - experiments_list * `logs_list` - logs_list * `session_replay_list` - session_replay_list * `survey_results` - survey_results */
+/** * `activity_events_list` - activity_events_list * `error_tracking_list` - error_tracking_list * `experiment_results` - experiment_results * `experiments_list` - experiments_list * `logs_list` - logs_list * `session_replay_list` - session_replay_list */
 export type DashboardPatchWidgetOpenApiWidgetTypeEnum =
   | "activity_events_list"
   | "error_tracking_list"
   | "experiment_results"
   | "experiments_list"
   | "logs_list"
-  | "session_replay_list"
-  | "survey_results";
+  | "session_replay_list";
 export const DashboardPatchWidgetOpenApiWidgetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DashboardPatchWidgetOpenApi {
   /** Existing widget row ID when updating a widget tile via dashboard PATCH. */
   id?: string;
-  /** Widget type identifier (cannot be changed on update). * `activity_events_list` - activity_events_list * `error_tracking_list` - error_tracking_list * `experiment_results` - experiment_results * `experiments_list` - experiments_list * `logs_list` - logs_list * `session_replay_list` - session_replay_list * `survey_results` - survey_results */
+  /** Widget type identifier (cannot be changed on update). * `activity_events_list` - activity_events_list * `error_tracking_list` - error_tracking_list * `experiment_results` - experiment_results * `experiments_list` - experiments_list * `logs_list` - logs_list * `session_replay_list` - session_replay_list */
   widget_type?: DashboardPatchWidgetOpenApiWidgetTypeEnum | (string & {});
   /** Widget-specific configuration. Shape depends on the tile's widget_type. */
   config?: DashboardWidgetConfig;
@@ -17953,8 +16179,6 @@ export interface DashboardsPartialUpdateRequest {
   /** A unique integer value identifying this dashboard. */
   id: number;
   format?: DashboardsPartialUpdateRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
   name?: string | null;
   description?: string;
   pinned?: boolean;
@@ -17982,7 +16206,6 @@ export const DashboardsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
     format: S.optional(DashboardsPartialUpdateRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
     pinned: S.optional(S.Boolean),
@@ -18065,8 +16288,6 @@ export interface DashboardsRetrieveRequest {
   /** Object (or pre-encoded JSON string) to override dashboard filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged — pass the complete value for any key you override. Accepts the same keys as the dashboard filters schema (e.g., `date_from`, `date_to`, `properties`). Ignored when accessed via a sharing token. */
   filters_override?: string;
   format?: DashboardsRetrieveRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
   /** Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token. */
   variables_override?: string;
 }
@@ -18076,7 +16297,6 @@ export const DashboardsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.Number.pipe(T.Label()),
     filters_override: S.optional(S.String.pipe(T.Query())),
     format: S.optional(DashboardsRetrieveRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
     variables_override: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -18312,7 +16532,6 @@ export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
 
-/** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
   enabled?: boolean;
@@ -18320,8 +16539,6 @@ export interface SharingConfiguration {
   settings?: unknown;
   password_required?: boolean;
   share_passwords?: SharingConfigurationSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18331,7 +16548,6 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
     settings: S.optional(S.Unknown),
     password_required: S.optional(S.Boolean),
     share_passwords: S.optional(SharingConfigurationSharePasswordsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SharingConfiguration",
@@ -18485,48 +16701,6 @@ export const DashboardsStreamTilesRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "DashboardsStreamTilesRetrieveResponse",
 }) as any as S.Schema<DashboardsStreamTilesRetrieveResponse>;
 
-export type DashboardsSubscribeNudgeCreateRequestFormat = "json" | "txt";
-export const DashboardsSubscribeNudgeCreateRequestFormat =
-  /*@__PURE__*/ S.String;
-
-export interface DashboardsSubscribeNudgeCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this dashboard. */
-  id: number;
-  format?: DashboardsSubscribeNudgeCreateRequestFormat | (string & {});
-}
-export const DashboardsSubscribeNudgeCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      format: S.optional(
-        DashboardsSubscribeNudgeCreateRequestFormat.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/dashboards/{id}/subscribe_nudge/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DashboardsSubscribeNudgeCreateRequest",
-}) as any as S.Schema<DashboardsSubscribeNudgeCreateRequest>;
-
-export interface DashboardSubscribeNudgeResponse {
-  /** Whether a nudge notification was created. False when one was already sent recently for this user and dashboard, or when in-app notifications are unavailable. */
-  created: boolean;
-}
-export const DashboardSubscribeNudgeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.Boolean,
-  }),
-).annotate({
-  identifier: "DashboardSubscribeNudgeResponse",
-}) as any as S.Schema<DashboardSubscribeNudgeResponse>;
-
 export type DashboardsUpdateRequestFormat = "json" | "txt";
 export const DashboardsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
@@ -18547,8 +16721,6 @@ export interface DashboardsUpdateRequest {
   /** A unique integer value identifying this dashboard. */
   id: number;
   format?: DashboardsUpdateRequestFormat | (string & {});
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
   name?: string | null;
   description?: string;
   pinned?: boolean;
@@ -18576,7 +16748,6 @@ export const DashboardsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
     format: S.optional(DashboardsUpdateRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
     pinned: S.optional(S.Boolean),
@@ -18661,7 +16832,7 @@ export interface ActivityEventsListWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: ActivityEventsListWidgetTypeEnum | (string & {});
+  widget_type: ActivityEventsListWidgetTypeEnum;
   /** New configuration for the recent events widget. Omit to leave unchanged. */
   config?: ActivityEventsListWidgetConfig;
 }
@@ -18689,7 +16860,7 @@ export interface ErrorTrackingListWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: ErrorTrackingListWidgetTypeEnum | (string & {});
+  widget_type: ErrorTrackingListWidgetTypeEnum;
   /** New configuration for the top issues widget. Omit to leave unchanged. */
   config?: ErrorTrackingListWidgetConfig;
 }
@@ -18717,7 +16888,7 @@ export interface SessionReplayListWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: SessionReplayListWidgetTypeEnum | (string & {});
+  widget_type: SessionReplayListWidgetTypeEnum;
   /** New configuration for the recent recordings widget. Omit to leave unchanged. */
   config?: SessionReplayListWidgetConfig;
 }
@@ -18745,7 +16916,7 @@ export interface ExperimentsListWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: ExperimentsListWidgetTypeEnum | (string & {});
+  widget_type: ExperimentsListWidgetTypeEnum;
   /** New configuration for the experiments list widget. Omit to leave unchanged. */
   config?: ExperimentsListWidgetConfig;
 }
@@ -18773,7 +16944,7 @@ export interface ExperimentResultsWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: ExperimentResultsWidgetTypeEnum | (string & {});
+  widget_type: ExperimentResultsWidgetTypeEnum;
   /** New configuration for the experiment results widget. Omit to leave unchanged. */
   config?: ExperimentResultsWidgetConfig;
 }
@@ -18790,34 +16961,6 @@ export const ExperimentResultsWidgetUpdateRequestOpenApi =
     identifier: "ExperimentResultsWidgetUpdateRequestOpenApi",
   }) as any as S.Schema<ExperimentResultsWidgetUpdateRequestOpenApi>;
 
-/** * `survey_results` - survey_results */
-export type SurveyResultsWidgetTypeEnum = "survey_results";
-export const SurveyResultsWidgetTypeEnum = /*@__PURE__*/ S.String;
-
-export interface SurveyResultsWidgetUpdateRequestOpenApi {
-  /** ID of the widget tile to update. Use dashboard-get to look up widget tile IDs. */
-  tile_id: number;
-  /** New display name for the widget. Empty string or null clears it; omit to leave unchanged. */
-  name?: string | null;
-  /** New markdown description for the widget. Omit to leave unchanged. */
-  description?: string;
-  widget_type: SurveyResultsWidgetTypeEnum | (string & {});
-  /** New configuration for the survey results widget. Omit to leave unchanged. */
-  config?: SurveyResultsWidgetConfig;
-}
-export const SurveyResultsWidgetUpdateRequestOpenApi = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tile_id: S.Number,
-      name: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.String),
-      widget_type: SurveyResultsWidgetTypeEnum,
-      config: S.optional(SurveyResultsWidgetConfig),
-    }),
-).annotate({
-  identifier: "SurveyResultsWidgetUpdateRequestOpenApi",
-}) as any as S.Schema<SurveyResultsWidgetUpdateRequestOpenApi>;
-
 /** * `logs_list` - logs_list */
 export type LogsListWidgetTypeEnum = "logs_list";
 export const LogsListWidgetTypeEnum = /*@__PURE__*/ S.String;
@@ -18829,7 +16972,7 @@ export interface LogsListWidgetUpdateRequestOpenApi {
   name?: string | null;
   /** New markdown description for the widget. Omit to leave unchanged. */
   description?: string;
-  widget_type: LogsListWidgetTypeEnum | (string & {});
+  widget_type: LogsListWidgetTypeEnum;
   /** New configuration for the recent logs widget. Omit to leave unchanged. */
   config?: LogsListWidgetConfig;
 }
@@ -18851,7 +16994,6 @@ export type UpdateDashboardWidgetRequest =
   | SessionReplayListWidgetUpdateRequestOpenApi
   | ExperimentsListWidgetUpdateRequestOpenApi
   | ExperimentResultsWidgetUpdateRequestOpenApi
-  | SurveyResultsWidgetUpdateRequestOpenApi
   | LogsListWidgetUpdateRequestOpenApi;
 export const UpdateDashboardWidgetRequest =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDashboardWidgetRequest>;
@@ -19065,31 +17207,6 @@ export const ExperimentResultsWidgetCatalogEntryOpenApi =
     identifier: "ExperimentResultsWidgetCatalogEntryOpenApi",
   }) as any as S.Schema<ExperimentResultsWidgetCatalogEntryOpenApi>;
 
-export interface SurveyResultsWidgetCatalogEntryOpenApi {
-  widget_type: SurveyResultsWidgetTypeEnum;
-  group_id: string;
-  group_label: string;
-  label: string;
-  description: string;
-  /** OpenAPI config shape for this widget type (documentation; matches batch-add/PATCH schemas). */
-  config_schema: SurveyResultsWidgetConfig;
-  required_product_access?: string | null;
-}
-export const SurveyResultsWidgetCatalogEntryOpenApi = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      widget_type: SurveyResultsWidgetTypeEnum,
-      group_id: S.String,
-      group_label: S.String,
-      label: S.String,
-      description: S.String,
-      config_schema: SurveyResultsWidgetConfig,
-      required_product_access: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "SurveyResultsWidgetCatalogEntryOpenApi",
-}) as any as S.Schema<SurveyResultsWidgetCatalogEntryOpenApi>;
-
 export interface LogsListWidgetCatalogEntryOpenApi {
   widget_type: LogsListWidgetTypeEnum;
   group_id: string;
@@ -19120,7 +17237,6 @@ export type WidgetCatalogEntry =
   | SessionReplayListWidgetCatalogEntryOpenApi
   | ExperimentsListWidgetCatalogEntryOpenApi
   | ExperimentResultsWidgetCatalogEntryOpenApi
-  | SurveyResultsWidgetCatalogEntryOpenApi
   | LogsListWidgetCatalogEntryOpenApi;
 export const WidgetCatalogEntry =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WidgetCatalogEntry>;
@@ -19191,7 +17307,7 @@ export interface ActivityEventsListWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: ActivityEventsListWidgetTypeEnum | (string & {});
+  widget_type: ActivityEventsListWidgetTypeEnum;
   /** Configuration for the recent events widget. */
   config: ActivityEventsListWidgetConfig;
 }
@@ -19218,7 +17334,7 @@ export interface ErrorTrackingListWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: ErrorTrackingListWidgetTypeEnum | (string & {});
+  widget_type: ErrorTrackingListWidgetTypeEnum;
   /** Configuration for the top issues widget. */
   config: ErrorTrackingListWidgetConfig;
 }
@@ -19245,7 +17361,7 @@ export interface SessionReplayListWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: SessionReplayListWidgetTypeEnum | (string & {});
+  widget_type: SessionReplayListWidgetTypeEnum;
   /** Configuration for the recent recordings widget. */
   config: SessionReplayListWidgetConfig;
 }
@@ -19272,7 +17388,7 @@ export interface ExperimentsListWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: ExperimentsListWidgetTypeEnum | (string & {});
+  widget_type: ExperimentsListWidgetTypeEnum;
   /** Configuration for the experiments list widget. */
   config: ExperimentsListWidgetConfig;
 }
@@ -19299,7 +17415,7 @@ export interface ExperimentResultsWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: ExperimentResultsWidgetTypeEnum | (string & {});
+  widget_type: ExperimentResultsWidgetTypeEnum;
   /** Configuration for the experiment results widget. */
   config: ExperimentResultsWidgetConfig;
 }
@@ -19317,33 +17433,6 @@ export const ExperimentResultsWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
   identifier: "ExperimentResultsWidgetAddRequestOpenApi",
 }) as any as S.Schema<ExperimentResultsWidgetAddRequestOpenApi>;
 
-export interface SurveyResultsWidgetAddRequestOpenApi {
-  /** Optional custom display name for the widget tile. */
-  name?: string | null;
-  /** Optional markdown description shown when show_description is enabled. */
-  description?: string;
-  /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
-  /** Whether to show the description on the dashboard tile. */
-  show_description?: boolean;
-  widget_type: SurveyResultsWidgetTypeEnum | (string & {});
-  /** Configuration for the survey results widget. */
-  config: SurveyResultsWidgetConfig;
-}
-export const SurveyResultsWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
-      show_description: S.optional(S.Boolean),
-      widget_type: SurveyResultsWidgetTypeEnum,
-      config: SurveyResultsWidgetConfig,
-    }),
-).annotate({
-  identifier: "SurveyResultsWidgetAddRequestOpenApi",
-}) as any as S.Schema<SurveyResultsWidgetAddRequestOpenApi>;
-
 export interface LogsListWidgetAddRequestOpenApi {
   /** Optional custom display name for the widget tile. */
   name?: string | null;
@@ -19353,7 +17442,7 @@ export interface LogsListWidgetAddRequestOpenApi {
   layouts?: WidgetTileLayoutsOpenApi;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
-  widget_type: LogsListWidgetTypeEnum | (string & {});
+  widget_type: LogsListWidgetTypeEnum;
   /** Configuration for the recent logs widget. */
   config: LogsListWidgetConfig;
 }
@@ -19376,12 +17465,11 @@ export type AddDashboardWidgetRequest =
   | SessionReplayListWidgetAddRequestOpenApi
   | ExperimentsListWidgetAddRequestOpenApi
   | ExperimentResultsWidgetAddRequestOpenApi
-  | SurveyResultsWidgetAddRequestOpenApi
   | LogsListWidgetAddRequestOpenApi;
 export const AddDashboardWidgetRequest =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AddDashboardWidgetRequest>;
 
-/** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
+/** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
 export type DashboardsWidgetsBatchCreateRequestWidgetsList =
   Array<AddDashboardWidgetRequest>;
 export const DashboardsWidgetsBatchCreateRequestWidgetsList =
@@ -19395,7 +17483,7 @@ export interface DashboardsWidgetsBatchCreateRequest {
   /** A unique integer value identifying this dashboard. */
   id: number;
   format?: DashboardsWidgetsBatchCreateRequestFormat | (string & {});
-  /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
+  /** Widget tiles to add atomically. Supported widget_type values: activity_events_list, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request). */
   widgets: DashboardsWidgetsBatchCreateRequestWidgetsList;
 }
 export const DashboardsWidgetsBatchCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -19779,21 +17867,6 @@ export const dashboardsStreamTilesRetrieve: API.OperationMethod<
   input: DashboardsStreamTilesRetrieveRequest,
   output: DashboardsStreamTilesRetrieveResponse,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DashboardsSubscribeNudgeCreateError = PosthogOpError;
-/** Send the requesting user an in-app notification suggesting they subscribe to this dashboard. Deduplicated server-side: at most one notification per user and dashboard, ever, so repeat calls return 200 with created=false. */
-export const dashboardsSubscribeNudgeCreate: API.OperationMethod<
-  DashboardsSubscribeNudgeCreateRequest,
-  DashboardSubscribeNudgeResponse,
-  DashboardsSubscribeNudgeCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DashboardsSubscribeNudgeCreateRequest,
-  output: DashboardSubscribeNudgeResponse,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

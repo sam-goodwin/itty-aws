@@ -123,7 +123,7 @@ export interface WorkbooksCreateOrUpdateRequest {
   /** Identity used for BYOS */
   identity?: WorkbookResourceIdentityInput;
   /** The kind of workbook. Only valid value is shared. */
-  kind?: ApplicationInsightsCommonTypesWorkbookSharedTypeKind;
+  kind?: ApplicationInsightsCommonTypesWorkbookSharedTypeKind | (string & {});
   /** Resource etag */
   etag?: string;
 }
@@ -759,7 +759,7 @@ export interface WorkbooksUpdateRequest {
   /** Azure Resource Id that will fetch all linked workbooks. */
   sourceId?: string;
   /** The kind of workbook. Only valid value is shared. */
-  kind?: WorkbookUpdateSharedTypeKind;
+  kind?: WorkbookUpdateSharedTypeKind | (string & {});
   /** Resource tags. */
   tags?: WorkbooksUpdateRequestTagsMap;
   /** Metadata describing a workbook for an Azure resource. */

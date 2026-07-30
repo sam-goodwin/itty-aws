@@ -89,13 +89,7 @@
         "icon_key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
+            "smithy.api#documentation": "Lowercase key from the linked template for brand icons. Empty if custom install (no template)."
           }
         },
         "display_name": {
@@ -112,15 +106,6 @@
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
-        },
-        "is_owner": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
-          }
         },
         "needs_reauth": {
           "target": "smithy.api#Boolean"
@@ -167,26 +152,6 @@
       },
       "traits": {
         "smithy.api#documentation": "* `api_key` - API Key\n* `oauth` - OAuth"
-      }
-    },
-    "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum": {
-      "type": "enum",
-      "members": {
-        "PERSONAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "personal"
-          }
-        },
-        "SHARED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "shared"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `personal` - Personal\n* `shared` - Shared"
       }
     },
     "com.posthog.mcp_server_installations#PaginatedMCPServerInstallationListResultsList": {
@@ -498,47 +463,6 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this mcp server installation."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/share/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Escalate a personal installation to a team-wide shared one.\n\nOwner-only AND admin-only: sharing exposes the owner's credential to\nevery project member and all autonomous agents, so it carries the same\ngate as creating a shared install outright."
-      }
-    },
     "com.posthog.mcp_server_installations#McpServerInstallationsToolsRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -809,47 +733,6 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this mcp server installation."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/mcp_server_installations/{id}/unshare/",
-          "code": 200
-        },
-        "smithy.api#documentation": "De-escalate a shared installation back to personal.\n\nAllowed for the credential owner OR a project admin (the reclaim path\nfor shared credentials). The row always stays owned by the ORIGINAL\nowner — an admin unsharing someone else's install must not capture\ntheir credential."
-      }
-    },
     "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieveRequestInstallSource": {
       "type": "enum",
       "members": {
@@ -966,26 +849,6 @@
         "smithy.api#documentation": "* `posthog` - posthog\n* `posthog-code` - posthog-code"
       }
     },
-    "com.posthog.mcp_server_installations#MCPInstallationScopeEnum": {
-      "type": "enum",
-      "members": {
-        "PERSONAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "personal"
-          }
-        },
-        "SHARED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "shared"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `personal` - personal\n* `shared` - shared"
-      }
-    },
     "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreateRequest": {
       "type": "structure",
       "members": {
@@ -1029,12 +892,6 @@
         },
         "posthog_code_callback_url": {
           "target": "smithy.api#String"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPInstallationScopeEnum",
-          "traits": {
-            "smithy.api#documentation": "'personal' is per-user; 'shared' is team-wide (visible to all project members and sandbox agents).\n\n* `personal` - personal\n* `shared` - shared"
-          }
         }
       },
       "traits": {
@@ -1091,12 +948,6 @@
         },
         "posthog_code_callback_url": {
           "target": "smithy.api#String"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPInstallationScopeEnum",
-          "traits": {
-            "smithy.api#documentation": "'personal' is per-user; 'shared' is team-wide (visible to all project members and sandbox agents).\n\n* `personal` - personal\n* `shared` - shared"
-          }
         }
       },
       "traits": {
@@ -1145,9 +996,6 @@
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreate"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate"
-        },
-        {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRetrieve"
         },
         {
@@ -1155,9 +1003,6 @@
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreate"
-        },
-        {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieve"

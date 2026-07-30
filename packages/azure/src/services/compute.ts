@@ -768,7 +768,7 @@ export interface DiskAccessesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const DiskAccessesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -3176,7 +3176,7 @@ export interface DisksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const DisksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -4175,7 +4175,7 @@ export const CopyCompletionErrorReason = /*@__PURE__*/ S.String;
 /** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
 export interface CopyCompletionError {
   /** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
-  errorCode: CopyCompletionErrorReason;
+  errorCode: CopyCompletionErrorReason | (string & {});
   /** Indicates the error message if the background copy of a resource created via the CopyStart operation fails. */
   errorMessage: string;
 }
@@ -4274,7 +4274,7 @@ export interface SnapshotsCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const SnapshotsCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>

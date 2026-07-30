@@ -62,21 +62,21 @@ export class NotFound extends T.applyErrorMatchers(
 
 /** The SSH public key information associated with a Google account. */
 export interface SshPublicKey {
-  /** Output only. The SHA-256 fingerprint of the SSH public key. */
-  fingerprint?: string;
   /** Output only. The canonical resource name. */
   name?: string;
-  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
-  key?: string;
   /** An expiration time in microseconds since epoch. */
   expirationTimeUsec?: string;
+  /** Output only. The SHA-256 fingerprint of the SSH public key. */
+  fingerprint?: string;
+  /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
+  key?: string;
 }
 export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fingerprint: S.optional(S.String),
     name: S.optional(S.String),
-    key: S.optional(S.String),
     expirationTimeUsec: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    key: S.optional(S.String),
   }),
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
@@ -144,18 +144,18 @@ export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSshPublicKeysRequest>;
 
 export interface GetLoginProfileUsersRequest {
-  /** Required. The project ID of the Google Cloud Platform project. */
-  projectId?: string;
-  /** Optional. A system ID for filtering the results of the request. */
-  systemId?: string;
   /** Required. The unique ID for the user in format `users/{user}`. */
   name: string;
+  /** Optional. A system ID for filtering the results of the request. */
+  systemId?: string;
+  /** Required. The project ID of the Google Cloud Platform project. */
+  projectId?: string;
 }
 export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    projectId: S.optional(S.String.pipe(T.Query())),
-    systemId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    systemId: S.optional(S.String.pipe(T.Query())),
+    projectId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -167,6 +167,12 @@ export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLoginProfileUsersRequest",
 }) as any as S.Schema<GetLoginProfileUsersRequest>;
 
+export type SshPublicKeyMap = { [key: string]: SshPublicKey | undefined };
+export const SshPublicKeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  SshPublicKey,
+) as any as S.Schema<SshPublicKeyMap>;
+
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
@@ -175,42 +181,42 @@ export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */
 export interface PosixAccount {
-  /** The operating system type where this account applies. */
-  operatingSystemType?: PosixAccountOperatingSystemTypeEnum;
+  /** Output only. The canonical resource name. */
+  name?: string;
+  /** The user ID. */
+  uid?: string;
+  /** The path to the home directory for this account. */
+  homeDirectory?: string;
   /** Output only. A POSIX account identifier. */
   accountId?: string;
   /** The path to the logic shell for this account. */
   shell?: string;
   /** The GECOS (user information) entry for this account. */
   gecos?: string;
-  /** The default group ID. */
-  gid?: string;
-  /** Only one POSIX account can be marked as primary. */
-  primary?: boolean;
-  /** The path to the home directory for this account. */
-  homeDirectory?: string;
   /** System identifier for which account the username or uid applies to. By default, the empty value is used. */
   systemId?: string;
-  /** The user ID. */
-  uid?: string;
-  /** Output only. The canonical resource name. */
-  name?: string;
+  /** Only one POSIX account can be marked as primary. */
+  primary?: boolean;
+  /** The operating system type where this account applies. */
+  operatingSystemType?: PosixAccountOperatingSystemTypeEnum;
   /** The username of the POSIX account. */
   username?: string;
+  /** The default group ID. */
+  gid?: string;
 }
 export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    operatingSystemType: S.optional(PosixAccountOperatingSystemTypeEnum),
+    name: S.optional(S.String),
+    uid: S.optional(S.String),
+    homeDirectory: S.optional(S.String),
     accountId: S.optional(S.String),
     shell: S.optional(S.String),
     gecos: S.optional(S.String),
-    gid: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    homeDirectory: S.optional(S.String),
     systemId: S.optional(S.String),
-    uid: S.optional(S.String),
-    name: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    operatingSystemType: S.optional(PosixAccountOperatingSystemTypeEnum),
     username: S.optional(S.String),
+    gid: S.optional(S.String),
   }),
 ).annotate({ identifier: "PosixAccount" }) as any as S.Schema<PosixAccount>;
 
@@ -219,26 +225,20 @@ export const PosixAccountList = /*@__PURE__*/ S.Array(
   PosixAccount,
 ) as any as S.Schema<PosixAccountList>;
 
-export type SshPublicKeyMap = { [key: string]: SshPublicKey | undefined };
-export const SshPublicKeyMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SshPublicKey,
-) as any as S.Schema<SshPublicKeyMap>;
-
 /** The user profile information used for logging in to a virtual machine on Google Compute Engine. */
 export interface LoginProfile {
   /** Required. A unique user ID. */
   name?: string;
-  /** The list of POSIX accounts associated with the user. */
-  posixAccounts?: PosixAccountList;
   /** A map from SSH public key fingerprint to the associated key object. */
   sshPublicKeys?: SshPublicKeyMap;
+  /** The list of POSIX accounts associated with the user. */
+  posixAccounts?: PosixAccountList;
 }
 export const LoginProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    posixAccounts: S.optional(PosixAccountList),
     sshPublicKeys: S.optional(SshPublicKeyMap),
+    posixAccounts: S.optional(PosixAccountList),
   }),
 ).annotate({ identifier: "LoginProfile" }) as any as S.Schema<LoginProfile>;
 
@@ -266,20 +266,20 @@ export const StringList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StringList>;
 
 export interface ImportSshPublicKeyUsersRequest {
+  /** Required. The unique ID for the user in format `users/{user}`. */
+  parent: string;
   /** The project ID of the Google Cloud Platform project. */
   projectId?: string;
   /** Optional. The regions to which to assert that the key was written. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
   regions?: StringList;
-  /** Required. The unique ID for the user in format `users/{user}`. */
-  parent: string;
   /** Request body */
   body?: SshPublicKey;
 }
 export const ImportSshPublicKeyUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    parent: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
     regions: S.optional(StringList.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     body: S.optional(SshPublicKey.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -369,24 +369,24 @@ export const ProvisionPosixAccountUsersProjectsRequest =
 
 /** A request message for signing an SSH public key. */
 export interface SignSshPublicKeyRequest {
-  /** Required. The SSH public key to sign. */
-  sshPublicKey?: string;
-  /** Optional. The service account for the instance. If the instance in question does not have a service account, this field should be left empty. If the wrong service account is provided, this operation will return a signed certificate that will not be accepted by the VM. */
-  serviceAccount?: string;
-  /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
-  computeInstance?: string;
   /** The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance} */
   appEngineInstance?: string;
+  /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
+  computeInstance?: string;
+  /** Optional. The service account for the instance. If the instance in question does not have a service account, this field should be left empty. If the wrong service account is provided, this operation will return a signed certificate that will not be accepted by the VM. */
+  serviceAccount?: string;
   /** Optional. The Cloud Run resource to sign the SSH public key for. Expected formats: - `projects/{project}/locations/{location}/services/{service}` - `projects/{project}/locations/{location}/workerPools/{worker_pool}` - `projects/{project}/locations/{location}/jobs/{job}` - `projects/{project}/locations/{location}/instances/{instance}` */
   cloudRunResource?: string;
+  /** Required. The SSH public key to sign. */
+  sshPublicKey?: string;
 }
 export const SignSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sshPublicKey: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
-    computeInstance: S.optional(S.String),
     appEngineInstance: S.optional(S.String),
+    computeInstance: S.optional(S.String),
+    serviceAccount: S.optional(S.String),
     cloudRunResource: S.optional(S.String),
+    sshPublicKey: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SignSshPublicKeyRequest",

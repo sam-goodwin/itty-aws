@@ -19,14 +19,6 @@ export class BadRequest extends T.applyErrorMatchers(
   [{ status: 400 }],
 ) {}
 
-export class Conflict extends T.applyErrorMatchers(
-  S.TaggedErrorClass<Conflict>()("Conflict", {
-    code: S.Number,
-    message: S.String,
-  }),
-  [{ status: 409 }],
-) {}
-
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: S.Number,
@@ -158,9 +150,8 @@ export const SignalsProcessingPauseUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SignalsReportArtefactsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
-  /** The artefact type. One of: actionability_judgment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers) are latest-wins — appending a new version supersedes the previous one as the report's canonical status. */
+  /** The artefact type. One of: actionability_judgment, code_reference, commit, dismissal, note, priority_judgment, repo_selection, safety_judgment, signal_finding, suggested_reviewers, task_run. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers) are latest-wins — appending a new version supersedes the previous one as the report's canonical status. */
   artefact_type: string;
   /** The artefact payload as a JSON object or array; shape depends on artefact_type and is validated against its schema. */
   content: unknown;
@@ -216,7 +207,6 @@ export const SignalReportArtefactWriteResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SignalsReportArtefactsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
   /** A UUID string identifying this signal report artefact. */
   id: string;
@@ -248,7 +238,6 @@ export const SignalsReportArtefactsDestroyResponse = /*@__PURE__*/ S.suspend(
 export interface SignalsReportArtefactsDiffRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
   /** A UUID string identifying this signal report artefact. */
   id: string;
@@ -288,7 +277,6 @@ export const CommitDiffResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SignalsReportArtefactsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
   /** Number of results to return per page. */
   limit?: number;
@@ -312,7 +300,7 @@ export const SignalsReportArtefactsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsReportArtefactsListRequest",
 }) as any as S.Schema<SignalsReportArtefactsListRequest>;
 
-/** * `video_segment` - Video Segment * `safety_judgment` - Safety Judgment * `actionability_judgment` - Actionability Judgment * `priority_judgment` - Priority Judgment * `signal_finding` - Signal Finding * `repo_selection` - Repo Selection * `suggested_reviewers` - Suggested Reviewers * `dismissal` - Dismissal * `code_reference` - Code Reference * `commit` - Commit * `task_run` - Task Run * `note` - Note * `title_change` - Title Change * `summary_change` - Summary Change * `code_review` - Code Review * `related_to` - Related To */
+/** * `video_segment` - Video Segment * `safety_judgment` - Safety Judgment * `actionability_judgment` - Actionability Judgment * `priority_judgment` - Priority Judgment * `signal_finding` - Signal Finding * `repo_selection` - Repo Selection * `suggested_reviewers` - Suggested Reviewers * `dismissal` - Dismissal * `code_reference` - Code Reference * `commit` - Commit * `task_run` - Task Run * `note` - Note */
 export type SignalReportArtefactTypeEnum =
   | "video_segment"
   | "safety_judgment"
@@ -325,11 +313,7 @@ export type SignalReportArtefactTypeEnum =
   | "code_reference"
   | "commit"
   | "task_run"
-  | "note"
-  | "title_change"
-  | "summary_change"
-  | "code_review"
-  | "related_to";
+  | "note";
 export const SignalReportArtefactTypeEnum = /*@__PURE__*/ S.String;
 
 export type SignalReportArtefactContentCase0Map = {
@@ -420,7 +404,6 @@ export const PaginatedSignalReportArtefactList = /*@__PURE__*/ S.suspend(() =>
 export interface SignalsReportArtefactsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
   /** A UUID string identifying this signal report artefact. */
   id: string;
@@ -448,7 +431,6 @@ export const SignalsReportArtefactsPartialUpdateRequest =
 export interface SignalsReportArtefactsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the report whose artefacts you're addressing. This must be a report id (the report's own UUID), not a signal id such as `sig_praise` — a non-report id returns 404. */
   report_id: string;
   /** A UUID string identifying this signal report artefact. */
   id: string;
@@ -470,8 +452,8 @@ export const SignalsReportArtefactsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "SignalsReportArtefactsRetrieveRequest",
 }) as any as S.Schema<SignalsReportArtefactsRetrieveRequest>;
 
-/** * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
-export type SignalReportStateEnum = "suppressed" | "potential" | "resolved";
+/** * `suppressed` - suppressed * `potential` - potential */
+export type SignalReportStateEnum = "suppressed" | "potential";
 export const SignalReportStateEnum = /*@__PURE__*/ S.String;
 
 /** * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
@@ -494,9 +476,9 @@ export const SignalsReportsBulkStateCreateRequestIdsList =
 export interface SignalsReportsBulkStateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
+  /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, or 'potential' to snooze/reopen it for later review. * `suppressed` - suppressed * `potential` - potential */
   state: SignalReportStateEnum | (string & {});
-  /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' (the reason/note records why). Reserve 'already_fixed' with state='potential' (snooze/restore) for "fixed by something else / might recur" cases, so the report reappears if the issue comes back. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
+  /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. 'already_fixed' is a snooze, not a dismissal: pair it with state='potential' (restore) so the report reappears if the issue recurs. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
   dismissal_reason?: DismissalReasonEnum | (string & {});
   /** Optional free-form note explaining the dismissal. Capped at 4000 characters. */
   dismissal_note?: string;
@@ -582,8 +564,6 @@ export interface SignalsReportsListRequest {
   project_id: string;
   /** Filter reports by whether a shipped implementation pull request exists. 'true' keeps only reports with a PR; 'false' keeps only those without. Pair with limit=1 to count PR reports cheaply. */
   has_implementation_pr?: boolean;
-  /** When true, the list includes reports in every status with no default exclusions applied — currently that adds suppressed (dismissed) reports, which are otherwise hidden. Use it to see the full inbox state (e.g. deduplicating before creating a report) and read each row's status (plus dismissal_reason/dismissal_note on dismissed rows) before acting. Deleted reports are terminal and never returned. Defaults to false, which keeps the existing default exclusions. Ignored when an explicit 'status' filter is set — that filter alone decides which statuses are returned. */
-  include_all_statuses?: boolean;
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
@@ -592,8 +572,6 @@ export interface SignalsReportsListRequest {
   ordering?: string;
   /** Comma-separated list of priorities to include. Valid values: P0, P1, P2, P3, P4. Reports without a priority assignment are excluded when this filter is set. */
   priority?: string;
-  /** Comma-separated list of scout skill_name slugs (e.g. signals-scout-error-tracking). Reports are kept if at least one of their contributing signals was authored by one of these scouts. Combines with source_product as an AND. */
-  scout?: string;
   /** Case-insensitive substring match against report title and summary. */
   search?: string;
   /** Comma-separated list of source products to include. Reports are kept if at least one of their contributing signals comes from one of these products (e.g. error_tracking, session_replay). */
@@ -609,12 +587,10 @@ export const SignalsReportsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     has_implementation_pr: S.optional(S.Boolean.pipe(T.Query())),
-    include_all_statuses: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
     ordering: S.optional(S.String.pipe(T.Query())),
     priority: S.optional(S.String.pipe(T.Query())),
-    scout: S.optional(S.String.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
     source_product: S.optional(S.String.pipe(T.Query())),
     status: S.optional(S.String.pipe(T.Query())),
@@ -650,70 +626,6 @@ export const SignalReportSourceProductsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalReportSourceProductsList>;
 
-/** * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
-export type SignalReportRefundReasonEnum =
-  | "pr_incorrect"
-  | "pr_not_useful"
-  | "duplicate"
-  | "other";
-export const SignalReportRefundReasonEnum = /*@__PURE__*/ S.String;
-
-/** * `excluded` - Excluded * `credited` - Credited */
-export type BillingPathEnum = "excluded" | "credited";
-export const BillingPathEnum = /*@__PURE__*/ S.String;
-
-export interface SignalReportRefund {
-  id: string;
-  /** Why the user refunded this PR (feeds the refund review). * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
-  reason: SignalReportRefundReasonEnum;
-  /** Optional free-form note captured with the refund. */
-  note: string;
-  /** How the refund was executed, frozen at refund time: 'excluded' (same UTC day as the billable PR run — the report never reaches billing) or 'credited' (billing issues a Stripe customer-balance credit). * `excluded` - Excluded * `credited` - Credited */
-  billing_path: BillingPathEnum;
-  /** Signals credits refunded (flat per-PR charge snapshot; 1 credit = $0.01). */
-  credits: number;
-  /** The refunded implementation PR's GitHub URL, snapshotted at refund time. */
-  pr_url: string;
-  /** When the first billable PR run was created — the charge this reverses. */
-  pr_run_created_at: string;
-  /** USD amount the billing service credited (credited path only). Null until the sync completes; '0.00' is a legitimate outcome (e.g. the PR was inside the free tier). */
-  credit_amount_usd: string | null;
-  /** Whether the billing service has acknowledged this refund. Always relevant for the credited path (the Stripe credit is issued asynchronously); excluded-path refunds need no billing sync and report false. */
-  billing_synced: boolean;
-  /** When the refund was created. */
-  created_at: string;
-}
-export const SignalReportRefund = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    reason: SignalReportRefundReasonEnum,
-    note: S.String,
-    billing_path: BillingPathEnum,
-    credits: S.Number,
-    pr_url: S.String,
-    pr_run_created_at: S.String,
-    credit_amount_usd: S.NullOr(S.String),
-    billing_synced: S.Boolean,
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "SignalReportRefund",
-}) as any as S.Schema<SignalReportRefund>;
-
-export type RefundIneligibilityReasonEnum =
-  | "already_refunded"
-  | "billing_exempt"
-  | "no_billable_pr"
-  | "out_of_period";
-export const RefundIneligibilityReasonEnum = /*@__PURE__*/ S.String;
-
-/** * `posthog_health_check` - PostHog health check * `posthog_onboarding` - PostHog onboarding * `posthog_system` - PostHog system */
-export type BillingExemptReasonEnum =
-  | "posthog_health_check"
-  | "posthog_onboarding"
-  | "posthog_system";
-export const BillingExemptReasonEnum = /*@__PURE__*/ S.String;
-
 export interface SignalReport {
   id: string;
   title: string | null;
@@ -738,18 +650,8 @@ export interface SignalReport {
   is_suggested_reviewer: boolean;
   /** Distinct source products contributing signals to this report (from ClickHouse). */
   source_products: SignalReportSourceProductsList;
-  /** skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise. */
-  scout_name: string | null;
   /** PR URL from the latest implementation task run, if available. */
   implementation_pr_url: string | null;
-  /** Whether that implementation PR is merged, per the GitHub webhook. False when there is no PR or it hasn't merged. Report status doesn't imply this: a resolved report may have been resolved directly, without a merged PR. */
-  implementation_pr_merged: boolean;
-  /** The report's PR refund, when one exists. One refund per report, ever. */
-  refund: SignalReportRefund | null;
-  /** Why refunding this report's PR would be rejected right now, or null when a refund would be accepted (see the field's schema for the reason values). */
-  refund_ineligibility_reason: RefundIneligibilityReasonEnum | null;
-  /** Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged. * `posthog_health_check` - PostHog health check * `posthog_onboarding` - PostHog onboarding * `posthog_system` - PostHog system */
-  billing_exempt_reason: BillingExemptReasonEnum | null;
 }
 export const SignalReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -770,12 +672,7 @@ export const SignalReport = /*@__PURE__*/ S.suspend(() =>
     dismissal_note: S.NullOr(S.String),
     is_suggested_reviewer: S.Boolean,
     source_products: SignalReportSourceProductsList,
-    scout_name: S.NullOr(S.String),
     implementation_pr_url: S.NullOr(S.String),
-    implementation_pr_merged: S.Boolean,
-    refund: S.NullOr(SignalReportRefund),
-    refund_ineligibility_reason: S.NullOr(RefundIneligibilityReasonEnum),
-    billing_exempt_reason: S.NullOr(BillingExemptReasonEnum),
   }),
 ).annotate({ identifier: "SignalReport" }) as any as S.Schema<SignalReport>;
 
@@ -801,138 +698,6 @@ export const PaginatedSignalReportList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedSignalReportList",
 }) as any as S.Schema<PaginatedSignalReportList>;
 
-export interface SignalsReportsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this signal report. */
-  id: string;
-  /** New human-facing title for the report. Omit to leave the title unchanged. */
-  title?: string;
-  /** New summary (the report's description) explaining what the report is about. Omit to leave the summary unchanged. */
-  summary?: string;
-}
-export const SignalsReportsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    title: S.optional(S.String),
-    summary: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/signals/reports/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsReportsPartialUpdateRequest",
-}) as any as S.Schema<SignalsReportsPartialUpdateRequest>;
-
-export interface SignalsReportsRefundCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this signal report. */
-  id: string;
-  /** Why this PR is being refunded. One of: pr_incorrect (the PR doesn't address what the report promised), pr_not_useful (technically fine but not worth paying for), duplicate (covers work already charged elsewhere), other. Required — refund reviews key on it. * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
-  reason: SignalReportRefundReasonEnum | (string & {});
-  /** Optional free-form context for the refund; stored on the refund and echoed in the report's dismissal artefact. Capped at 4000 characters. */
-  note?: string;
-}
-export const SignalsReportsRefundCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    reason: SignalReportRefundReasonEnum,
-    note: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/signals/reports/{id}/refund/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsReportsRefundCreateRequest",
-}) as any as S.Schema<SignalsReportsRefundCreateRequest>;
-
-export interface SignalReportRefundResponse {
-  id: string;
-  /** Why the user refunded this PR (feeds the refund review). * `pr_incorrect` - PR incorrect * `pr_not_useful` - PR not useful * `duplicate` - Duplicate * `other` - Other */
-  reason: SignalReportRefundReasonEnum;
-  /** Optional free-form note captured with the refund. */
-  note: string;
-  /** How the refund was executed, frozen at refund time: 'excluded' (same UTC day as the billable PR run — the report never reaches billing) or 'credited' (billing issues a Stripe customer-balance credit). * `excluded` - Excluded * `credited` - Credited */
-  billing_path: BillingPathEnum;
-  /** Signals credits refunded (flat per-PR charge snapshot; 1 credit = $0.01). */
-  credits: number;
-  /** The refunded implementation PR's GitHub URL, snapshotted at refund time. */
-  pr_url: string;
-  /** When the first billable PR run was created — the charge this reverses. */
-  pr_run_created_at: string;
-  /** USD amount the billing service credited (credited path only). Null until the sync completes; '0.00' is a legitimate outcome (e.g. the PR was inside the free tier). */
-  credit_amount_usd: string | null;
-  /** Whether the billing service has acknowledged this refund. Always relevant for the credited path (the Stripe credit is issued asynchronously); excluded-path refunds need no billing sync and report false. */
-  billing_synced: boolean;
-  /** When the refund was created. */
-  created_at: string;
-  /** True when the report already had a refund and that existing refund is returned unchanged — refunds are one-per-report and repeat calls are idempotent. */
-  already_refunded: boolean;
-}
-export const SignalReportRefundResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    reason: SignalReportRefundReasonEnum,
-    note: S.String,
-    billing_path: BillingPathEnum,
-    credits: S.Number,
-    pr_url: S.String,
-    pr_run_created_at: S.String,
-    credit_amount_usd: S.NullOr(S.String),
-    billing_synced: S.Boolean,
-    created_at: S.String,
-    already_refunded: S.Boolean,
-  }),
-).annotate({
-  identifier: "SignalReportRefundResponse",
-}) as any as S.Schema<SignalReportRefundResponse>;
-
-export interface SignalsReportsRefundSummaryRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const SignalsReportsRefundSummaryRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/signals/reports/refund-summary/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SignalsReportsRefundSummaryRetrieveRequest",
-  }) as any as S.Schema<SignalsReportsRefundSummaryRetrieveRequest>;
-
-export interface SignalReportRefundSummaryResponse {
-  /** Number of credited-path refunds across the whole organization whose refunded PR run falls in the current billing period. Excluded-path refunds never reach billing usage, so they are deliberately absent. */
-  credited_refund_count: number;
-  /** Total signals credits those refunds returned (1 credit = $0.01). Divide by the flat per-PR charge to get the number of PRs to subtract from billing usage. */
-  credited_credits: number;
-  /** The organization's live billable signals credits for the current billing period, computed by the same rules as the nightly usage report — including PRs created today that billing hasn't recorded yet, and already excluding refund-excluded and billing-exempt reports. Take the max of this and billing's recorded usage for a live PR count that reacts to new PRs and same-day refunds immediately. */
-  period_billable_credits: number;
-}
-export const SignalReportRefundSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credited_refund_count: S.Number,
-    credited_credits: S.Number,
-    period_billable_credits: S.Number,
-  }),
-).annotate({
-  identifier: "SignalReportRefundSummaryResponse",
-}) as any as S.Schema<SignalReportRefundSummaryResponse>;
-
 export interface SignalsReportsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -954,1643 +719,14 @@ export const SignalsReportsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsReportsRetrieveRequest",
 }) as any as S.Schema<SignalsReportsRetrieveRequest>;
 
-export interface SignalsReportsSignalsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this signal report. */
-  id: string;
-}
-export const SignalsReportsSignalsRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/signals/reports/{id}/signals/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SignalsReportsSignalsRetrieveRequest",
-}) as any as S.Schema<SignalsReportsSignalsRetrieveRequest>;
-
-/** * `session_replay` - session_replay * `llm_analytics` - llm_analytics * `github` - github * `linear` - linear * `jira` - jira * `zendesk` - zendesk * `conversations` - conversations * `error_tracking` - error_tracking * `endpoints` - endpoints * `pganalyze` - pganalyze * `signals_scout` - signals_scout * `logs` - logs * `health_checks` - health_checks * `replay_vision` - replay_vision * `analytics` - analytics * `freshdesk` - freshdesk * `freshservice` - freshservice * `front` - front * `gorgias` - gorgias * `kustomer` - kustomer * `dixa` - dixa * `plain` - plain * `gitlab` - gitlab * `gitea` - gitea * `shortcut` - shortcut * `sentry` - sentry * `rollbar` - rollbar * `bugsnag` - bugsnag * `honeybadger` - honeybadger * `raygun` - raygun * `snyk` - snyk * `sonarqube` - sonarqube * `semgrep` - semgrep * `rapid7_insightvm` - rapid7_insightvm * `featurebase` - featurebase * `frill` - frill * `aha` - aha * `uservoice` - uservoice * `productboard` - productboard * `canny` - canny * `asknicely` - asknicely * `retently` - retently * `appfigures` - appfigures * `appfollow` - appfollow * `judgeme_reviews` - judgeme_reviews * `intercom` - intercom * `hubspot` - hubspot * `engineering_analytics` - engineering_analytics */
-export type SignalSourceProduct =
-  | "session_replay"
-  | "llm_analytics"
-  | "github"
-  | "linear"
-  | "jira"
-  | "zendesk"
-  | "conversations"
-  | "error_tracking"
-  | "endpoints"
-  | "pganalyze"
-  | "signals_scout"
-  | "logs"
-  | "health_checks"
-  | "replay_vision"
-  | "analytics"
-  | "freshdesk"
-  | "freshservice"
-  | "front"
-  | "gorgias"
-  | "kustomer"
-  | "dixa"
-  | "plain"
-  | "gitlab"
-  | "gitea"
-  | "shortcut"
-  | "sentry"
-  | "rollbar"
-  | "bugsnag"
-  | "honeybadger"
-  | "raygun"
-  | "snyk"
-  | "sonarqube"
-  | "semgrep"
-  | "rapid7_insightvm"
-  | "featurebase"
-  | "frill"
-  | "aha"
-  | "uservoice"
-  | "productboard"
-  | "canny"
-  | "asknicely"
-  | "retently"
-  | "appfigures"
-  | "appfollow"
-  | "judgeme_reviews"
-  | "intercom"
-  | "hubspot"
-  | "engineering_analytics";
-export const SignalSourceProduct = /*@__PURE__*/ S.String;
-
-/** * `session_analysis_cluster` - session_analysis_cluster * `session_problem` - session_problem * `evaluation` - evaluation * `evaluation_report` - evaluation_report * `issue` - issue * `ticket` - ticket * `issue_created` - issue_created * `issue_reopened` - issue_reopened * `issue_spiking` - issue_spiking * `endpoint_execution_failed` - endpoint_execution_failed * `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded * `cross_source_issue` - cross_source_issue * `alert_state_change` - alert_state_change * `health_issue` - health_issue * `scanner_finding` - scanner_finding * `anomaly_investigation` - anomaly_investigation * `feedback` - feedback * `review` - review * `ci_flaky_check` - ci_flaky_check * `ci_broken_default_branch` - ci_broken_default_branch * `ci_duration_regression` - ci_duration_regression */
-export type SignalSourceType =
-  | "session_analysis_cluster"
-  | "session_problem"
-  | "evaluation"
-  | "evaluation_report"
-  | "issue"
-  | "ticket"
-  | "issue_created"
-  | "issue_reopened"
-  | "issue_spiking"
-  | "endpoint_execution_failed"
-  | "endpoint_breakdown_limit_exceeded"
-  | "cross_source_issue"
-  | "alert_state_change"
-  | "health_issue"
-  | "scanner_finding"
-  | "anomaly_investigation"
-  | "feedback"
-  | "review"
-  | "ci_flaky_check"
-  | "ci_broken_default_branch"
-  | "ci_duration_regression";
-export const SignalSourceType = /*@__PURE__*/ S.String;
-
-export type ProblemTypeEnum =
-  | "confusion"
-  | "abandonment"
-  | "blocking_exception"
-  | "non_blocking_exception"
-  | "failure";
-export const ProblemTypeEnum = /*@__PURE__*/ S.String;
-
-export interface SessionProblemEventEntry {
-  event: string;
-  timestamp: string;
-  current_url?: string | null;
-  event_type?: string | null;
-  interaction_text?: string | null;
-}
-export const SessionProblemEventEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event: S.String,
-    timestamp: S.String,
-    current_url: S.optional(S.NullOr(S.String)),
-    event_type: S.optional(S.NullOr(S.String)),
-    interaction_text: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SessionProblemEventEntry",
-}) as any as S.Schema<SessionProblemEventEntry>;
-
-export type SessionProblemSignalExtraEventHistoryList =
-  Array<SessionProblemEventEntry>;
-export const SessionProblemSignalExtraEventHistoryList = /*@__PURE__*/ S.Array(
-  SessionProblemEventEntry,
-) as any as S.Schema<SessionProblemSignalExtraEventHistoryList>;
-
-export interface SessionProblemSignalExtra {
-  session_id: string;
-  segment_title: string;
-  start_time: string;
-  end_time: string;
-  problem_type: ProblemTypeEnum;
-  distinct_id: string;
-  session_start_time?: string | null;
-  session_end_time?: string | null;
-  session_duration?: number | null;
-  session_active_seconds?: number | null;
-  exported_asset_id?: number | null;
-  event_history?: SessionProblemSignalExtraEventHistoryList | null;
-}
-export const SessionProblemSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    segment_title: S.String,
-    start_time: S.String,
-    end_time: S.String,
-    problem_type: ProblemTypeEnum,
-    distinct_id: S.String,
-    session_start_time: S.optional(S.NullOr(S.String)),
-    session_end_time: S.optional(S.NullOr(S.String)),
-    session_duration: S.optional(S.NullOr(S.Number)),
-    session_active_seconds: S.optional(S.NullOr(S.Number)),
-    exported_asset_id: S.optional(S.NullOr(S.Number)),
-    event_history: S.optional(
-      S.NullOr(SessionProblemSignalExtraEventHistoryList),
-    ),
-  }),
-).annotate({
-  identifier: "SessionProblemSignalExtra",
-}) as any as S.Schema<SessionProblemSignalExtra>;
-
-export interface LlmEvalSignalExtra {
-  evaluation_id: string;
-  target_event_id?: string | null;
-  target_event_type?: string | null;
-  trace_id: string;
-  model?: string | null;
-  provider?: string | null;
-}
-export const LlmEvalSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluation_id: S.String,
-    target_event_id: S.optional(S.NullOr(S.String)),
-    target_event_type: S.optional(S.NullOr(S.String)),
-    trace_id: S.String,
-    model: S.optional(S.NullOr(S.String)),
-    provider: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "LlmEvalSignalExtra",
-}) as any as S.Schema<LlmEvalSignalExtra>;
-
-export interface LlmEvalReportSignalExtra {
-  evaluation_id: string;
-  evaluation_name: string;
-  evaluation_description: string;
-  report_id: string;
-  report_run_id: string;
-  period_start: string;
-  period_end: string;
-}
-export const LlmEvalReportSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluation_id: S.String,
-    evaluation_name: S.String,
-    evaluation_description: S.String,
-    report_id: S.String,
-    report_run_id: S.String,
-    period_start: S.String,
-    period_end: S.String,
-  }),
-).annotate({
-  identifier: "LlmEvalReportSignalExtra",
-}) as any as S.Schema<LlmEvalReportSignalExtra>;
-
-export type ZendeskTicketSignalExtraTagsList = Array<string>;
-export const ZendeskTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZendeskTicketSignalExtraTagsList>;
-
-export interface ZendeskTicketSignalExtra {
-  url: string;
-  type: string | null;
-  tags: ZendeskTicketSignalExtraTagsList;
-  created_at: string;
-  priority: string | null;
-  status: string;
-}
-export const ZendeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    type: S.NullOr(S.String),
-    tags: ZendeskTicketSignalExtraTagsList,
-    created_at: S.String,
-    priority: S.NullOr(S.String),
-    status: S.String,
-  }),
-).annotate({
-  identifier: "ZendeskTicketSignalExtra",
-}) as any as S.Schema<ZendeskTicketSignalExtra>;
-
-export type GithubIssueSignalExtraLabelsList = Array<string>;
-export const GithubIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GithubIssueSignalExtraLabelsList>;
-
-export interface GithubIssueSignalExtra {
-  html_url: string;
-  number: number;
-  labels: GithubIssueSignalExtraLabelsList;
-  created_at: string;
-  updated_at: string;
-  locked: boolean;
-  state: string;
-}
-export const GithubIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html_url: S.String,
-    number: S.Number,
-    labels: GithubIssueSignalExtraLabelsList,
-    created_at: S.String,
-    updated_at: S.String,
-    locked: S.Boolean,
-    state: S.String,
-  }),
-).annotate({
-  identifier: "GithubIssueSignalExtra",
-}) as any as S.Schema<GithubIssueSignalExtra>;
-
-export type LinearIssueSignalExtraLabelsList = Array<string>;
-export const LinearIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinearIssueSignalExtraLabelsList>;
-
-export interface LinearIssueSignalExtra {
-  url: string;
-  identifier: string;
-  number: number;
-  priority: number;
-  priority_label: string;
-  labels: LinearIssueSignalExtraLabelsList;
-  state_name: string | null;
-  state_type: string | null;
-  team_name: string | null;
-  created_at: string;
-  updated_at: string;
-}
-export const LinearIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    identifier: S.String,
-    number: S.Number,
-    priority: S.Number,
-    priority_label: S.String,
-    labels: LinearIssueSignalExtraLabelsList,
-    state_name: S.NullOr(S.String),
-    state_type: S.NullOr(S.String),
-    team_name: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "LinearIssueSignalExtra",
-}) as any as S.Schema<LinearIssueSignalExtra>;
-
-export type JiraIssueSignalExtraLabelsList = Array<string>;
-export const JiraIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<JiraIssueSignalExtraLabelsList>;
-
-export interface JiraIssueSignalExtra {
-  key: string;
-  url: string | null;
-  status: string | null;
-  priority: string | null;
-  assignee: string | null;
-  labels: JiraIssueSignalExtraLabelsList;
-  created: string | null;
-  updated: string | null;
-}
-export const JiraIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    url: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    assignee: S.NullOr(S.String),
-    labels: JiraIssueSignalExtraLabelsList,
-    created: S.NullOr(S.String),
-    updated: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "JiraIssueSignalExtra",
-}) as any as S.Schema<JiraIssueSignalExtra>;
-
-export interface ConversationsTicketSignalExtra {
-  ticket_number: number;
-  channel_source: string;
-  channel_detail: string | null;
-  status: string;
-  priority: string | null;
-  created_at: string;
-  email_subject: string | null;
-}
-export const ConversationsTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ticket_number: S.Number,
-    channel_source: S.String,
-    channel_detail: S.NullOr(S.String),
-    status: S.String,
-    priority: S.NullOr(S.String),
-    created_at: S.String,
-    email_subject: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ConversationsTicketSignalExtra",
-}) as any as S.Schema<ConversationsTicketSignalExtra>;
-
-export interface ErrorTrackingSignalExtra {
-  fingerprint: string;
-}
-export const ErrorTrackingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fingerprint: S.String,
-  }),
-).annotate({
-  identifier: "ErrorTrackingSignalExtra",
-}) as any as S.Schema<ErrorTrackingSignalExtra>;
-
-export interface PgAnalyzeIssueReference {
-  kind?: string | null;
-  name?: string | null;
-  url?: string | null;
-  queryText?: string | null;
-}
-export const PgAnalyzeIssueReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    url: S.optional(S.NullOr(S.String)),
-    queryText: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "PgAnalyzeIssueReference",
-}) as any as S.Schema<PgAnalyzeIssueReference>;
-
-export type PgAnalyzeIssueSignalExtraReferencesList =
-  Array<PgAnalyzeIssueReference>;
-export const PgAnalyzeIssueSignalExtraReferencesList = /*@__PURE__*/ S.Array(
-  PgAnalyzeIssueReference,
-) as any as S.Schema<PgAnalyzeIssueSignalExtraReferencesList>;
-
-export interface PgAnalyzeIssueSignalExtra {
-  severity: string | null;
-  references: PgAnalyzeIssueSignalExtraReferencesList;
-  database_id: string | null;
-  server_human_id: string | null;
-  server_name: string | null;
-  synced_at: string;
-}
-export const PgAnalyzeIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    references: PgAnalyzeIssueSignalExtraReferencesList,
-    database_id: S.NullOr(S.String),
-    server_human_id: S.NullOr(S.String),
-    server_name: S.NullOr(S.String),
-    synced_at: S.String,
-  }),
-).annotate({
-  identifier: "PgAnalyzeIssueSignalExtra",
-}) as any as S.Schema<PgAnalyzeIssueSignalExtra>;
-
-export interface EndpointExecutionFailedSignalExtra {
-  endpoint_name: string;
-  endpoint_version: number | null;
-  materialized: boolean;
-  saved_query_id: string | null;
-  error_class: string;
-  error_message: string;
-}
-export const EndpointExecutionFailedSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint_name: S.String,
-    endpoint_version: S.NullOr(S.Number),
-    materialized: S.Boolean,
-    saved_query_id: S.NullOr(S.String),
-    error_class: S.String,
-    error_message: S.String,
-  }),
-).annotate({
-  identifier: "EndpointExecutionFailedSignalExtra",
-}) as any as S.Schema<EndpointExecutionFailedSignalExtra>;
-
-export interface EndpointBreakdownLimitExceededSignalExtra {
-  endpoint_name: string;
-  breakdown_limit: number;
-}
-export const EndpointBreakdownLimitExceededSignalExtra =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endpoint_name: S.String,
-      breakdown_limit: S.Number,
-    }),
-  ).annotate({
-    identifier: "EndpointBreakdownLimitExceededSignalExtra",
-  }) as any as S.Schema<EndpointBreakdownLimitExceededSignalExtra>;
-
-export type ReportPriority = "P0" | "P1" | "P2" | "P3" | "P4";
-export const ReportPriority = /*@__PURE__*/ S.String;
-
-export interface SignalsScoutEvidenceEntry {
-  source_product: string;
-  entity_id?: string | null;
-  summary: string;
-}
-export const SignalsScoutEvidenceEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_product: S.String,
-    entity_id: S.optional(S.NullOr(S.String)),
-    summary: S.String,
-  }),
-).annotate({
-  identifier: "SignalsScoutEvidenceEntry",
-}) as any as S.Schema<SignalsScoutEvidenceEntry>;
-
-export type SignalsScoutSignalExtraEvidenceList =
-  Array<SignalsScoutEvidenceEntry>;
-export const SignalsScoutSignalExtraEvidenceList = /*@__PURE__*/ S.Array(
-  SignalsScoutEvidenceEntry,
-) as any as S.Schema<SignalsScoutSignalExtraEvidenceList>;
-
-export type SignalsScoutSignalExtraDedupeKeysList = Array<string>;
-export const SignalsScoutSignalExtraDedupeKeysList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalsScoutSignalExtraDedupeKeysList>;
-
-export type SignalsScoutSignalExtraTagsList = Array<string>;
-export const SignalsScoutSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalsScoutSignalExtraTagsList>;
-
-export interface SignalsScoutTimeRange {
-  date_from: string;
-  date_to: string;
-}
-export const SignalsScoutTimeRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date_from: S.String,
-    date_to: S.String,
-  }),
-).annotate({
-  identifier: "SignalsScoutTimeRange",
-}) as any as S.Schema<SignalsScoutTimeRange>;
-
-export interface SignalsScoutSignalExtra {
-  scout_run_id: string;
-  task_run_id: string;
-  task_id?: string | null;
-  finding_id: string;
-  skill_name: string;
-  skill_version: number;
-  confidence: number;
-  severity?: ReportPriority | null;
-  hypothesis?: string | null;
-  evidence: SignalsScoutSignalExtraEvidenceList;
-  dedupe_keys?: SignalsScoutSignalExtraDedupeKeysList | null;
-  tags?: SignalsScoutSignalExtraTagsList | null;
-  time_range?: SignalsScoutTimeRange | null;
-  mcp_trace_id?: string | null;
-}
-export const SignalsScoutSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scout_run_id: S.String,
-    task_run_id: S.String,
-    task_id: S.optional(S.NullOr(S.String)),
-    finding_id: S.String,
-    skill_name: S.String,
-    skill_version: S.Number,
-    confidence: S.Number,
-    severity: S.optional(S.NullOr(ReportPriority)),
-    hypothesis: S.optional(S.NullOr(S.String)),
-    evidence: SignalsScoutSignalExtraEvidenceList,
-    dedupe_keys: S.optional(S.NullOr(SignalsScoutSignalExtraDedupeKeysList)),
-    tags: S.optional(S.NullOr(SignalsScoutSignalExtraTagsList)),
-    time_range: S.optional(S.NullOr(SignalsScoutTimeRange)),
-    mcp_trace_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SignalsScoutSignalExtra",
-}) as any as S.Schema<SignalsScoutSignalExtra>;
-
-export type LogsAlertStateChangeSignalExtraActionEnum = "firing" | "broken";
-export const LogsAlertStateChangeSignalExtraActionEnum = /*@__PURE__*/ S.String;
-
-export type LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
-  | "above"
-  | "below";
-export const LogsAlertStateChangeSignalExtraThresholdOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-export type LogsAlertStateChangeSignalExtraFiltersMap = {
-  [key: string]: unknown | undefined;
-};
-export const LogsAlertStateChangeSignalExtraFiltersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogsAlertStateChangeSignalExtraFiltersMap>;
-
-export interface LogsAlertStateChangeSignalExtra {
-  alert_id: string;
-  alert_name: string;
-  action: LogsAlertStateChangeSignalExtraActionEnum;
-  threshold_count: number;
-  threshold_operator: LogsAlertStateChangeSignalExtraThresholdOperatorEnum;
-  window_minutes: number;
-  result_count: number | null;
-  consecutive_failures: number;
-  filters: LogsAlertStateChangeSignalExtraFiltersMap;
-  url: string;
-}
-export const LogsAlertStateChangeSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alert_id: S.String,
-    alert_name: S.String,
-    action: LogsAlertStateChangeSignalExtraActionEnum,
-    threshold_count: S.Number,
-    threshold_operator: LogsAlertStateChangeSignalExtraThresholdOperatorEnum,
-    window_minutes: S.Number,
-    result_count: S.NullOr(S.Number),
-    consecutive_failures: S.Number,
-    filters: LogsAlertStateChangeSignalExtraFiltersMap,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "LogsAlertStateChangeSignalExtra",
-}) as any as S.Schema<LogsAlertStateChangeSignalExtra>;
-
-export interface ReplayVisionScannerFindingSignalExtra {
-  scanner_id: string;
-  scanner_name: string;
-  scanner_type: string;
-  observation_id: string;
-  session_id: string;
-  confidence: number;
-  problem_type: string;
-  start_time: number;
-  end_time: number;
-  url: string;
-  exported_asset_id: number;
-  distinct_id?: string | null;
-  recording_start_time?: string | null;
-  recording_end_time?: string | null;
-  recording_duration?: number | null;
-  recording_active_seconds?: number | null;
-}
-export const ReplayVisionScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scanner_id: S.String,
-      scanner_name: S.String,
-      scanner_type: S.String,
-      observation_id: S.String,
-      session_id: S.String,
-      confidence: S.Number,
-      problem_type: S.String,
-      start_time: S.Number,
-      end_time: S.Number,
-      url: S.String,
-      exported_asset_id: S.Number,
-      distinct_id: S.optional(S.NullOr(S.String)),
-      recording_start_time: S.optional(S.NullOr(S.String)),
-      recording_end_time: S.optional(S.NullOr(S.String)),
-      recording_duration: S.optional(S.NullOr(S.Number)),
-      recording_active_seconds: S.optional(S.NullOr(S.Number)),
-    }),
-).annotate({
-  identifier: "ReplayVisionScannerFindingSignalExtra",
-}) as any as S.Schema<ReplayVisionScannerFindingSignalExtra>;
-
-/** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
-export type InvestigationVerdictEnum =
-  | "true_positive"
-  | "false_positive"
-  | "inconclusive";
-export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
-
-export type AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
-  Array<string>;
-export const AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList>;
-
-export interface AnalyticsAnomalyInvestigationSignalExtra {
-  alert_id: string;
-  alert_name: string;
-  alert_check_id: string;
-  insight_id: string;
-  detector_type: string;
-  verdict: InvestigationVerdictEnum;
-  url: string;
-  insight_name?: string | null;
-  insight_short_id?: string | null;
-  triggered_dates?: AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList | null;
-  notebook_short_id?: string | null;
-}
-export const AnalyticsAnomalyInvestigationSignalExtra = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      alert_id: S.String,
-      alert_name: S.String,
-      alert_check_id: S.String,
-      insight_id: S.String,
-      detector_type: S.String,
-      verdict: InvestigationVerdictEnum,
-      url: S.String,
-      insight_name: S.optional(S.NullOr(S.String)),
-      insight_short_id: S.optional(S.NullOr(S.String)),
-      triggered_dates: S.optional(
-        S.NullOr(AnalyticsAnomalyInvestigationSignalExtraTriggeredDatesList),
-      ),
-      notebook_short_id: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AnalyticsAnomalyInvestigationSignalExtra",
-}) as any as S.Schema<AnalyticsAnomalyInvestigationSignalExtra>;
-
-export type HealthCheckSignalExtraSeverityEnum =
-  | "critical"
-  | "warning"
-  | "info";
-export const HealthCheckSignalExtraSeverityEnum = /*@__PURE__*/ S.String;
-
-export type HealthCheckSignalExtraPayloadMap = {
-  [key: string]: unknown | undefined;
-};
-export const HealthCheckSignalExtraPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HealthCheckSignalExtraPayloadMap>;
-
-export interface HealthCheckSignalExtra {
-  kind: string;
-  severity: HealthCheckSignalExtraSeverityEnum;
-  issue_id: string;
-  title: string;
-  summary: string;
-  link: string;
-  url: string;
-  payload: HealthCheckSignalExtraPayloadMap;
-}
-export const HealthCheckSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    severity: HealthCheckSignalExtraSeverityEnum,
-    issue_id: S.String,
-    title: S.String,
-    summary: S.String,
-    link: S.String,
-    url: S.String,
-    payload: HealthCheckSignalExtraPayloadMap,
-  }),
-).annotate({
-  identifier: "HealthCheckSignalExtra",
-}) as any as S.Schema<HealthCheckSignalExtra>;
-
-/** One immutable flaky observation: failed then passed on a later attempt of the same run, so only non-determinism can explain the flip. */
-export interface EngineeringAnalyticsCIFlakyCheckSignalExtra {
-  repo_owner: string;
-  repo_name: string;
-  workflow_name: string;
-  job_name: string;
-  run_id: number;
-  head_sha: string;
-  failed_attempt: number;
-  passed_attempt: number;
-  flaky_count: number;
-  window_days: number;
-}
-export const EngineeringAnalyticsCIFlakyCheckSignalExtra =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repo_owner: S.String,
-      repo_name: S.String,
-      workflow_name: S.String,
-      job_name: S.String,
-      run_id: S.Number,
-      head_sha: S.String,
-      failed_attempt: S.Number,
-      passed_attempt: S.Number,
-      flaky_count: S.Number,
-      window_days: S.Number,
-    }),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCIFlakyCheckSignalExtra",
-  }) as any as S.Schema<EngineeringAnalyticsCIFlakyCheckSignalExtra>;
-
-export interface EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra {
-  repo_owner: string;
-  repo_name: string;
-  workflow_name: string;
-  branch: string;
-  conclusive_success_rate: number;
-  conclusive_run_count: number;
-  latest_conclusion: string;
-  window_hours: number;
-}
-export const EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repo_owner: S.String,
-      repo_name: S.String,
-      workflow_name: S.String,
-      branch: S.String,
-      conclusive_success_rate: S.Number,
-      conclusive_run_count: S.Number,
-      latest_conclusion: S.String,
-      window_hours: S.Number,
-    }),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra",
-  }) as any as S.Schema<EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra>;
-
-export interface EngineeringAnalyticsCIDurationRegressionSignalExtra {
-  repo_owner: string;
-  repo_name: string;
-  workflow_name: string;
-  current_p95_seconds: number;
-  baseline_p95_seconds: number;
-  pct_increase: number;
-  current_p50_seconds: number;
-  baseline_p50_seconds: number;
-  window_days: number;
-}
-export const EngineeringAnalyticsCIDurationRegressionSignalExtra =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      repo_owner: S.String,
-      repo_name: S.String,
-      workflow_name: S.String,
-      current_p95_seconds: S.Number,
-      baseline_p95_seconds: S.Number,
-      pct_increase: S.Number,
-      current_p50_seconds: S.Number,
-      baseline_p50_seconds: S.Number,
-      window_days: S.Number,
-    }),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCIDurationRegressionSignalExtra",
-  }) as any as S.Schema<EngineeringAnalyticsCIDurationRegressionSignalExtra>;
-
-export type FreshdeskTicketSignalExtraTagsList = Array<unknown>;
-export const FreshdeskTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FreshdeskTicketSignalExtraTagsList>;
-
-export interface FreshdeskTicketSignalExtra {
-  status: string | null;
-  priority: string | null;
-  type: string | null;
-  tags: FreshdeskTicketSignalExtraTagsList;
-  created_at: string | null;
-}
-export const FreshdeskTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    tags: FreshdeskTicketSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FreshdeskTicketSignalExtra",
-}) as any as S.Schema<FreshdeskTicketSignalExtra>;
-
-export type FreshserviceTicketSignalExtraTagsList = Array<unknown>;
-export const FreshserviceTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FreshserviceTicketSignalExtraTagsList>;
-
-export interface FreshserviceTicketSignalExtra {
-  status: string | null;
-  priority: string | null;
-  type: string | null;
-  category: string | null;
-  tags: FreshserviceTicketSignalExtraTagsList;
-  created_at: string | null;
-}
-export const FreshserviceTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    category: S.NullOr(S.String),
-    tags: FreshserviceTicketSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FreshserviceTicketSignalExtra",
-}) as any as S.Schema<FreshserviceTicketSignalExtra>;
-
-export type FrontConversationSignalExtraTagsList = Array<unknown>;
-export const FrontConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FrontConversationSignalExtraTagsList>;
-
-export interface FrontConversationSignalExtra {
-  status: string | null;
-  tags: FrontConversationSignalExtraTagsList;
-  created_at: string | null;
-}
-export const FrontConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: FrontConversationSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FrontConversationSignalExtra",
-}) as any as S.Schema<FrontConversationSignalExtra>;
-
-export type GorgiasTicketSignalExtraTagsList = Array<unknown>;
-export const GorgiasTicketSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GorgiasTicketSignalExtraTagsList>;
-
-export interface GorgiasTicketSignalExtra {
-  status: string | null;
-  priority: string | null;
-  channel: string | null;
-  tags: GorgiasTicketSignalExtraTagsList;
-  created_datetime: string | null;
-}
-export const GorgiasTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    channel: S.NullOr(S.String),
-    tags: GorgiasTicketSignalExtraTagsList,
-    created_datetime: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GorgiasTicketSignalExtra",
-}) as any as S.Schema<GorgiasTicketSignalExtra>;
-
-export type KustomerConversationSignalExtraTagsList = Array<unknown>;
-export const KustomerConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<KustomerConversationSignalExtraTagsList>;
-
-export interface KustomerConversationSignalExtra {
-  status: string | null;
-  priority: string | null;
-  tags: KustomerConversationSignalExtraTagsList;
-  createdAt: string | null;
-}
-export const KustomerConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    tags: KustomerConversationSignalExtraTagsList,
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "KustomerConversationSignalExtra",
-}) as any as S.Schema<KustomerConversationSignalExtra>;
-
-export type DixaConversationSignalExtraTagsList = Array<unknown>;
-export const DixaConversationSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DixaConversationSignalExtraTagsList>;
-
-export interface DixaConversationSignalExtra {
-  status: string | null;
-  channel: string | null;
-  tags: DixaConversationSignalExtraTagsList;
-  created_at: string | null;
-}
-export const DixaConversationSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    channel: S.NullOr(S.String),
-    tags: DixaConversationSignalExtraTagsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DixaConversationSignalExtra",
-}) as any as S.Schema<DixaConversationSignalExtra>;
-
-export type PlainThreadSignalExtraLabelsList = Array<unknown>;
-export const PlainThreadSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PlainThreadSignalExtraLabelsList>;
-
-export interface PlainThreadSignalExtra {
-  status: string | null;
-  priority: string | null;
-  labels: PlainThreadSignalExtraLabelsList;
-  createdAt: string | null;
-}
-export const PlainThreadSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    labels: PlainThreadSignalExtraLabelsList,
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "PlainThreadSignalExtra",
-}) as any as S.Schema<PlainThreadSignalExtra>;
-
-export type GitlabIssueSignalExtraLabelsList = Array<unknown>;
-export const GitlabIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GitlabIssueSignalExtraLabelsList>;
-
-export interface GitlabIssueSignalExtra {
-  state: string | null;
-  labels: GitlabIssueSignalExtraLabelsList;
-  iid: string | null;
-  project_id: string | null;
-  created_at: string | null;
-}
-export const GitlabIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    labels: GitlabIssueSignalExtraLabelsList,
-    iid: S.NullOr(S.String),
-    project_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GitlabIssueSignalExtra",
-}) as any as S.Schema<GitlabIssueSignalExtra>;
-
-export type GiteaIssueSignalExtraLabelsList = Array<unknown>;
-export const GiteaIssueSignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GiteaIssueSignalExtraLabelsList>;
-
-export interface GiteaIssueSignalExtra {
-  state: string | null;
-  labels: GiteaIssueSignalExtraLabelsList;
-  html_url: string | null;
-  number: string | null;
-  created_at: string | null;
-}
-export const GiteaIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    labels: GiteaIssueSignalExtraLabelsList,
-    html_url: S.NullOr(S.String),
-    number: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GiteaIssueSignalExtra",
-}) as any as S.Schema<GiteaIssueSignalExtra>;
-
-export type ShortcutStorySignalExtraLabelsList = Array<unknown>;
-export const ShortcutStorySignalExtraLabelsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ShortcutStorySignalExtraLabelsList>;
-
-export interface ShortcutStorySignalExtra {
-  story_type: string | null;
-  labels: ShortcutStorySignalExtraLabelsList;
-  workflow_state_id: string | null;
-  created_at: string | null;
-}
-export const ShortcutStorySignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    story_type: S.NullOr(S.String),
-    labels: ShortcutStorySignalExtraLabelsList,
-    workflow_state_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ShortcutStorySignalExtra",
-}) as any as S.Schema<ShortcutStorySignalExtra>;
-
-export interface SentryIssueSignalExtra {
-  level: string | null;
-  status: string | null;
-  permalink: string | null;
-  shortId: string | null;
-  firstSeen: string | null;
-}
-export const SentryIssueSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    permalink: S.NullOr(S.String),
-    shortId: S.NullOr(S.String),
-    firstSeen: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SentryIssueSignalExtra",
-}) as any as S.Schema<SentryIssueSignalExtra>;
-
-export interface RollbarItemSignalExtra {
-  level: string | null;
-  status: string | null;
-  environment: string | null;
-  framework: string | null;
-  last_occurrence_timestamp: string | null;
-}
-export const RollbarItemSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    environment: S.NullOr(S.String),
-    framework: S.NullOr(S.String),
-    last_occurrence_timestamp: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "RollbarItemSignalExtra",
-}) as any as S.Schema<RollbarItemSignalExtra>;
-
-export interface BugsnagErrorSignalExtra {
-  severity: string | null;
-  status: string | null;
-  context: string | null;
-  first_seen: string | null;
-  last_seen: string | null;
-}
-export const BugsnagErrorSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    context: S.NullOr(S.String),
-    first_seen: S.NullOr(S.String),
-    last_seen: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "BugsnagErrorSignalExtra",
-}) as any as S.Schema<BugsnagErrorSignalExtra>;
-
-export type HoneybadgerFaultSignalExtraTagsList = Array<unknown>;
-export const HoneybadgerFaultSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<HoneybadgerFaultSignalExtraTagsList>;
-
-export interface HoneybadgerFaultSignalExtra {
-  environment: string | null;
-  component: string | null;
-  action: string | null;
-  tags: HoneybadgerFaultSignalExtraTagsList;
-  url: string | null;
-  created_at: string | null;
-}
-export const HoneybadgerFaultSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environment: S.NullOr(S.String),
-    component: S.NullOr(S.String),
-    action: S.NullOr(S.String),
-    tags: HoneybadgerFaultSignalExtraTagsList,
-    url: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "HoneybadgerFaultSignalExtra",
-}) as any as S.Schema<HoneybadgerFaultSignalExtra>;
-
-export interface RaygunErrorGroupSignalExtra {
-  status: string | null;
-  applicationUrl: string | null;
-  lastOccurredAt: string | null;
-  createdAt: string | null;
-}
-export const RaygunErrorGroupSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    applicationUrl: S.NullOr(S.String),
-    lastOccurredAt: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "RaygunErrorGroupSignalExtra",
-}) as any as S.Schema<RaygunErrorGroupSignalExtra>;
-
-export interface SnykScannerFindingSignalExtra {
-  effective_severity_level: string | null;
-  status: string | null;
-  type: string | null;
-  created_at: string | null;
-}
-export const SnykScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effective_severity_level: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SnykScannerFindingSignalExtra",
-}) as any as S.Schema<SnykScannerFindingSignalExtra>;
-
-export interface SonarqubeScannerFindingSignalExtra {
-  severity: string | null;
-  type: string | null;
-  status: string | null;
-  component: string | null;
-  rule: string | null;
-  creationDate: string | null;
-}
-export const SonarqubeScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    type: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    component: S.NullOr(S.String),
-    rule: S.NullOr(S.String),
-    creationDate: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SonarqubeScannerFindingSignalExtra",
-}) as any as S.Schema<SonarqubeScannerFindingSignalExtra>;
-
-export interface SemgrepScannerFindingSignalExtra {
-  severity: string | null;
-  confidence: string | null;
-  status: string | null;
-  state: string | null;
-  created_at: string | null;
-}
-export const SemgrepScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severity: S.NullOr(S.String),
-    confidence: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    state: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "SemgrepScannerFindingSignalExtra",
-}) as any as S.Schema<SemgrepScannerFindingSignalExtra>;
-
-export interface Rapid7InsightvmScannerFindingSignalExtra {
-  severity: string | null;
-  cvss_v3_score: string | null;
-  published: string | null;
-  added: string | null;
-}
-export const Rapid7InsightvmScannerFindingSignalExtra = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      severity: S.NullOr(S.String),
-      cvss_v3_score: S.NullOr(S.String),
-      published: S.NullOr(S.String),
-      added: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "Rapid7InsightvmScannerFindingSignalExtra",
-}) as any as S.Schema<Rapid7InsightvmScannerFindingSignalExtra>;
-
-export type FeaturebaseFeedbackSignalExtraTagsList = Array<unknown>;
-export const FeaturebaseFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FeaturebaseFeedbackSignalExtraTagsList>;
-
-export interface FeaturebaseFeedbackSignalExtra {
-  status: string | null;
-  tags: FeaturebaseFeedbackSignalExtraTagsList;
-  upvotes: string | null;
-  createdAt: string | null;
-}
-export const FeaturebaseFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: FeaturebaseFeedbackSignalExtraTagsList,
-    upvotes: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FeaturebaseFeedbackSignalExtra",
-}) as any as S.Schema<FeaturebaseFeedbackSignalExtra>;
-
-export type FrillFeedbackSignalExtraTopicsList = Array<unknown>;
-export const FrillFeedbackSignalExtraTopicsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FrillFeedbackSignalExtraTopicsList>;
-
-export interface FrillFeedbackSignalExtra {
-  status: string | null;
-  vote_count: string | null;
-  topics: FrillFeedbackSignalExtraTopicsList;
-  created_at: string | null;
-}
-export const FrillFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    vote_count: S.NullOr(S.String),
-    topics: FrillFeedbackSignalExtraTopicsList,
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FrillFeedbackSignalExtra",
-}) as any as S.Schema<FrillFeedbackSignalExtra>;
-
-export interface AhaFeedbackSignalExtra {
-  workflow_status: string | null;
-  score: string | null;
-  votes: string | null;
-  url: string | null;
-  created_at: string | null;
-}
-export const AhaFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflow_status: S.NullOr(S.String),
-    score: S.NullOr(S.String),
-    votes: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AhaFeedbackSignalExtra",
-}) as any as S.Schema<AhaFeedbackSignalExtra>;
-
-export interface UservoiceFeedbackSignalExtra {
-  state: string | null;
-  vote_count: string | null;
-  category_name: string | null;
-  created_at: string | null;
-}
-export const UservoiceFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    vote_count: S.NullOr(S.String),
-    category_name: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UservoiceFeedbackSignalExtra",
-}) as any as S.Schema<UservoiceFeedbackSignalExtra>;
-
-export type ProductboardFeedbackSignalExtraTagsList = Array<unknown>;
-export const ProductboardFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ProductboardFeedbackSignalExtraTagsList>;
-
-export interface ProductboardFeedbackSignalExtra {
-  state: string | null;
-  tags: ProductboardFeedbackSignalExtraTagsList;
-  displayUrl: string | null;
-  createdAt: string | null;
-}
-export const ProductboardFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    tags: ProductboardFeedbackSignalExtraTagsList,
-    displayUrl: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ProductboardFeedbackSignalExtra",
-}) as any as S.Schema<ProductboardFeedbackSignalExtra>;
-
-export type CannyFeedbackSignalExtraTagsList = Array<unknown>;
-export const CannyFeedbackSignalExtraTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CannyFeedbackSignalExtraTagsList>;
-
-export interface CannyFeedbackSignalExtra {
-  status: string | null;
-  tags: CannyFeedbackSignalExtraTagsList;
-  score: string | null;
-  voteCount: string | null;
-  url: string | null;
-  created: string | null;
-}
-export const CannyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.NullOr(S.String),
-    tags: CannyFeedbackSignalExtraTagsList,
-    score: S.NullOr(S.String),
-    voteCount: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-    created: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "CannyFeedbackSignalExtra",
-}) as any as S.Schema<CannyFeedbackSignalExtra>;
-
-export interface AsknicelyFeedbackSignalExtra {
-  score: string | null;
-  status: string | null;
-  question_type: string | null;
-  segment: string | null;
-  created: string | null;
-}
-export const AsknicelyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    question_type: S.NullOr(S.String),
-    segment: S.NullOr(S.String),
-    created: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AsknicelyFeedbackSignalExtra",
-}) as any as S.Schema<AsknicelyFeedbackSignalExtra>;
-
-export type RetentlyFeedbackSignalExtraFeedbackTopicsList = Array<unknown>;
-export const RetentlyFeedbackSignalExtraFeedbackTopicsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<RetentlyFeedbackSignalExtraFeedbackTopicsList>;
-
-export interface RetentlyFeedbackSignalExtra {
-  score: string | null;
-  ratingCategory: string | null;
-  feedbackTopics: RetentlyFeedbackSignalExtraFeedbackTopicsList;
-  resolved: string | null;
-  createdDate: string | null;
-}
-export const RetentlyFeedbackSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.NullOr(S.String),
-    ratingCategory: S.NullOr(S.String),
-    feedbackTopics: RetentlyFeedbackSignalExtraFeedbackTopicsList,
-    resolved: S.NullOr(S.String),
-    createdDate: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "RetentlyFeedbackSignalExtra",
-}) as any as S.Schema<RetentlyFeedbackSignalExtra>;
-
-export interface AppfiguresReviewSignalExtra {
-  stars: string | null;
-  version: string | null;
-  product: string | null;
-  date: string | null;
-}
-export const AppfiguresReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stars: S.NullOr(S.String),
-    version: S.NullOr(S.String),
-    product: S.NullOr(S.String),
-    date: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AppfiguresReviewSignalExtra",
-}) as any as S.Schema<AppfiguresReviewSignalExtra>;
-
-export interface AppfollowReviewSignalExtra {
-  rating: string | null;
-  store: string | null;
-  app_version: string | null;
-  date: string | null;
-}
-export const AppfollowReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rating: S.NullOr(S.String),
-    store: S.NullOr(S.String),
-    app_version: S.NullOr(S.String),
-    date: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AppfollowReviewSignalExtra",
-}) as any as S.Schema<AppfollowReviewSignalExtra>;
-
-export interface JudgemeReviewsReviewSignalExtra {
-  rating: string | null;
-  product_title: string | null;
-  verified: string | null;
-  created_at: string | null;
-}
-export const JudgemeReviewsReviewSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rating: S.NullOr(S.String),
-    product_title: S.NullOr(S.String),
-    verified: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "JudgemeReviewsReviewSignalExtra",
-}) as any as S.Schema<JudgemeReviewsReviewSignalExtra>;
-
-export interface IntercomTicketSignalExtra {
-  state: string | null;
-  priority: string | null;
-  admin_assignee_id: string | null;
-  created_at: string | null;
-}
-export const IntercomTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.NullOr(S.String),
-    priority: S.NullOr(S.String),
-    admin_assignee_id: S.NullOr(S.String),
-    created_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "IntercomTicketSignalExtra",
-}) as any as S.Schema<IntercomTicketSignalExtra>;
-
-export interface HubspotTicketSignalExtra {
-  hs_ticket_priority: string | null;
-  hs_pipeline_stage: string | null;
-  hs_ticket_category: string | null;
-  createdate: string | null;
-}
-export const HubspotTicketSignalExtra = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hs_ticket_priority: S.NullOr(S.String),
-    hs_pipeline_stage: S.NullOr(S.String),
-    hs_ticket_category: S.NullOr(S.String),
-    createdate: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "HubspotTicketSignalExtra",
-}) as any as S.Schema<HubspotTicketSignalExtra>;
-
-export type SignalExtra =
-  | SessionProblemSignalExtra
-  | LlmEvalSignalExtra
-  | LlmEvalReportSignalExtra
-  | ZendeskTicketSignalExtra
-  | GithubIssueSignalExtra
-  | LinearIssueSignalExtra
-  | JiraIssueSignalExtra
-  | ConversationsTicketSignalExtra
-  | ErrorTrackingSignalExtra
-  | PgAnalyzeIssueSignalExtra
-  | EndpointExecutionFailedSignalExtra
-  | EndpointBreakdownLimitExceededSignalExtra
-  | SignalsScoutSignalExtra
-  | LogsAlertStateChangeSignalExtra
-  | ReplayVisionScannerFindingSignalExtra
-  | AnalyticsAnomalyInvestigationSignalExtra
-  | HealthCheckSignalExtra
-  | EngineeringAnalyticsCIFlakyCheckSignalExtra
-  | EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra
-  | EngineeringAnalyticsCIDurationRegressionSignalExtra
-  | FreshdeskTicketSignalExtra
-  | FreshserviceTicketSignalExtra
-  | FrontConversationSignalExtra
-  | GorgiasTicketSignalExtra
-  | KustomerConversationSignalExtra
-  | DixaConversationSignalExtra
-  | PlainThreadSignalExtra
-  | GitlabIssueSignalExtra
-  | GiteaIssueSignalExtra
-  | ShortcutStorySignalExtra
-  | SentryIssueSignalExtra
-  | RollbarItemSignalExtra
-  | BugsnagErrorSignalExtra
-  | HoneybadgerFaultSignalExtra
-  | RaygunErrorGroupSignalExtra
-  | SnykScannerFindingSignalExtra
-  | SonarqubeScannerFindingSignalExtra
-  | SemgrepScannerFindingSignalExtra
-  | Rapid7InsightvmScannerFindingSignalExtra
-  | FeaturebaseFeedbackSignalExtra
-  | FrillFeedbackSignalExtra
-  | AhaFeedbackSignalExtra
-  | UservoiceFeedbackSignalExtra
-  | ProductboardFeedbackSignalExtra
-  | CannyFeedbackSignalExtra
-  | AsknicelyFeedbackSignalExtra
-  | RetentlyFeedbackSignalExtra
-  | AppfiguresReviewSignalExtra
-  | AppfollowReviewSignalExtra
-  | JudgemeReviewsReviewSignalExtra
-  | IntercomTicketSignalExtra
-  | HubspotTicketSignalExtra;
-export const SignalExtra =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SignalExtra>;
-
-export interface SpecificityMetadata {
-  /** Title of the PR the specificity gate evaluated. */
-  pr_title: string;
-  /** Whether the report passed the PR-specificity gate. */
-  specific_enough: boolean;
-  /** The gate's reasoning. */
-  reason: string;
-}
-export const SpecificityMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pr_title: S.String,
-    specific_enough: S.Boolean,
-    reason: S.String,
-  }),
-).annotate({
-  identifier: "SpecificityMetadata",
-}) as any as S.Schema<SpecificityMetadata>;
-
-export interface MatchedMetadata {
-  /** Signal already in the report that this one matched. */
-  parent_signal_id: string;
-  /** Query used to find the parent signal. */
-  match_query: string;
-  /** Why the signals were judged to describe the same issue. */
-  reason: string;
-  /** PR-specificity gate result, when the gate ran. */
-  specificity?: SpecificityMetadata | null;
-}
-export const MatchedMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent_signal_id: S.String,
-    match_query: S.String,
-    reason: S.String,
-    specificity: S.optional(S.NullOr(SpecificityMetadata)),
-  }),
-).annotate({
-  identifier: "MatchedMetadata",
-}) as any as S.Schema<MatchedMetadata>;
-
-/** Candidate signals that were considered and rejected. */
-export type NoMatchMetadataRejectedSignalIdsList = Array<string>;
-export const NoMatchMetadataRejectedSignalIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NoMatchMetadataRejectedSignalIdsList>;
-
-export interface NoMatchMetadata {
-  /** Why no existing report matched. */
-  reason: string;
-  /** Candidate signals that were considered and rejected. */
-  rejected_signal_ids: NoMatchMetadataRejectedSignalIdsList;
-  /** PR-specificity gate result that caused a rejection, when present. */
-  specificity_rejection?: SpecificityMetadata | null;
-}
-export const NoMatchMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.String,
-    rejected_signal_ids: NoMatchMetadataRejectedSignalIdsList,
-    specificity_rejection: S.optional(S.NullOr(SpecificityMetadata)),
-  }),
-).annotate({
-  identifier: "NoMatchMetadata",
-}) as any as S.Schema<NoMatchMetadata>;
-
-export type SignalMatchMetadata = MatchedMetadata | NoMatchMetadata;
-export const SignalMatchMetadata =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SignalMatchMetadata>;
-
-export interface SignalNode {
-  /** ClickHouse document id of the signal. */
-  signal_id: string;
-  /** The signal's human-readable description. */
-  content: string;
-  /** Product that emitted the signal. * `session_replay` - session_replay * `llm_analytics` - llm_analytics * `github` - github * `linear` - linear * `jira` - jira * `zendesk` - zendesk * `conversations` - conversations * `error_tracking` - error_tracking * `endpoints` - endpoints * `pganalyze` - pganalyze * `signals_scout` - signals_scout * `logs` - logs * `health_checks` - health_checks * `replay_vision` - replay_vision * `analytics` - analytics * `freshdesk` - freshdesk * `freshservice` - freshservice * `front` - front * `gorgias` - gorgias * `kustomer` - kustomer * `dixa` - dixa * `plain` - plain * `gitlab` - gitlab * `gitea` - gitea * `shortcut` - shortcut * `sentry` - sentry * `rollbar` - rollbar * `bugsnag` - bugsnag * `honeybadger` - honeybadger * `raygun` - raygun * `snyk` - snyk * `sonarqube` - sonarqube * `semgrep` - semgrep * `rapid7_insightvm` - rapid7_insightvm * `featurebase` - featurebase * `frill` - frill * `aha` - aha * `uservoice` - uservoice * `productboard` - productboard * `canny` - canny * `asknicely` - asknicely * `retently` - retently * `appfigures` - appfigures * `appfollow` - appfollow * `judgeme_reviews` - judgeme_reviews * `intercom` - intercom * `hubspot` - hubspot * `engineering_analytics` - engineering_analytics */
-  source_product: SignalSourceProduct;
-  /** Signal type within the source product. * `session_analysis_cluster` - session_analysis_cluster * `session_problem` - session_problem * `evaluation` - evaluation * `evaluation_report` - evaluation_report * `issue` - issue * `ticket` - ticket * `issue_created` - issue_created * `issue_reopened` - issue_reopened * `issue_spiking` - issue_spiking * `endpoint_execution_failed` - endpoint_execution_failed * `endpoint_breakdown_limit_exceeded` - endpoint_breakdown_limit_exceeded * `cross_source_issue` - cross_source_issue * `alert_state_change` - alert_state_change * `health_issue` - health_issue * `scanner_finding` - scanner_finding * `anomaly_investigation` - anomaly_investigation * `feedback` - feedback * `review` - review * `ci_flaky_check` - ci_flaky_check * `ci_broken_default_branch` - ci_broken_default_branch * `ci_duration_regression` - ci_duration_regression */
-  source_type: SignalSourceType;
-  /** Emitter-scoped id of the underlying object (issue, ticket, ...). */
-  source_id: string;
-  /** Signal weight in [0, 1]; drives report ranking. */
-  weight: number;
-  /** Emission timestamp. */
-  timestamp: string;
-  /** Product-specific payload; shape depends on (source_product, source_type). */
-  extra: SignalExtra;
-  /** Clustering match/no-match metadata, when present. */
-  match_metadata?: SignalMatchMetadata | null;
-}
-export const SignalNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    signal_id: S.String,
-    content: S.String,
-    source_product: SignalSourceProduct,
-    source_type: SignalSourceType,
-    source_id: S.String,
-    weight: S.Number,
-    timestamp: S.String,
-    extra: SignalExtra,
-    match_metadata: S.optional(S.NullOr(SignalMatchMetadata)),
-  }),
-).annotate({ identifier: "SignalNode" }) as any as S.Schema<SignalNode>;
-
-/** All signals contributing to the report. */
-export type ReportSignalsResponseSignalsList = Array<SignalNode>;
-export const ReportSignalsResponseSignalsList = /*@__PURE__*/ S.Array(
-  SignalNode,
-) as any as S.Schema<ReportSignalsResponseSignalsList>;
-
-/** Response body for GET /api/projects/:id/signals/reports/:id/signals/. */
-export interface ReportSignalsResponse {
-  /** The report these signals were clustered into. */
-  report: SignalReport;
-  /** All signals contributing to the report. */
-  signals: ReportSignalsResponseSignalsList;
-}
-export const ReportSignalsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report: SignalReport,
-    signals: ReportSignalsResponseSignalsList,
-  }),
-).annotate({
-  identifier: "ReportSignalsResponse",
-}) as any as S.Schema<ReportSignalsResponse>;
-
 export interface SignalsReportsStateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this signal report. */
   id: string;
-  /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, 'potential' to snooze/reopen it for later review, or 'resolved' when the work this report asked for has been done. Resolving is only allowed from a researched status (ready or pending_input) or a suppressed report; other statuses return 409 (skipped in bulk). * `suppressed` - suppressed * `potential` - potential * `resolved` - resolved */
+  /** Target state for the report. Use 'suppressed' to dismiss the report from the inbox, or 'potential' to snooze/reopen it for later review. * `suppressed` - suppressed * `potential` - potential */
   state: SignalReportStateEnum | (string & {});
-  /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. When the work this report asked for is done, the honest transition is state='resolved' (the reason/note records why). Reserve 'already_fixed' with state='potential' (snooze/restore) for "fixed by something else / might recur" cases, so the report reappears if the issue comes back. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
+  /** Optional canonical reason code for the dismissal. Must be one of: already_fixed, report_unclear, analysis_wrong, wontfix_intentional, wontfix_irrelevant, other — these match the inbox UI so the rationale renders as a labelled chip rather than a raw code. 'already_fixed' is a snooze, not a dismissal: pair it with state='potential' (restore) so the report reappears if the issue recurs. Use 'other' together with a dismissal_note for anything that doesn't fit a code. * `already_fixed` - Already fixed * `report_unclear` - Report is unclear to me * `analysis_wrong` - Agent's analysis is wrong * `wontfix_intentional` - Won't fix - intentional behavior * `wontfix_irrelevant` - Won't fix - issue is real but insignificant * `other` - Something else… */
   dismissal_reason?: DismissalReasonEnum | (string & {});
   /** Optional free-form note explaining the dismissal. Capped at 4000 characters. */
   dismissal_note?: string;
@@ -2616,33 +752,6 @@ export const SignalsReportsStateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsReportsStateCreateRequest",
 }) as any as S.Schema<SignalsReportsStateCreateRequest>;
 
-export interface SignalScoutSlackDestination {
-  /** ID of the Slack integration whose bot posts this scout's findings and reports. */
-  integration_id: number;
-  /** Slack channel target in the channel picker's `channel_id|#channel-name` format. Null while choosing a channel; no messages are sent until it is set. */
-  channel?: string | null;
-}
-export const SignalScoutSlackDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integration_id: S.Number,
-    channel: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SignalScoutSlackDestination",
-}) as any as S.Schema<SignalScoutSlackDestination>;
-
-export interface SignalScoutOutputDestinations {
-  /** Slack destination for each emitted scout finding or report. Null or omitted disables Slack delivery. */
-  slack?: SignalScoutSlackDestination | null;
-}
-export const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    slack: S.optional(S.NullOr(SignalScoutSlackDestination)),
-  }),
-).annotate({
-  identifier: "SignalScoutOutputDestinations",
-}) as any as S.Schema<SignalScoutOutputDestinations>;
-
 export interface SignalsScoutConfigCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2654,10 +763,6 @@ export interface SignalsScoutConfigCreateRequest {
   emit?: boolean;
   /** Minutes between runs (30–43200). Defaults to 1440 (every 24 hours). */
   run_interval_minutes?: number;
-  /** Destinations that receive each finding or report this scout emits. Empty by default. */
-  output_destinations?: SignalScoutOutputDestinations;
-  /** Optional five-field cron expression, e.g. '30 9 * * *' (daily at 09:30), '0 9,17 * * *' (twice daily), or '0 9 * * 1-5' (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. */
-  run_cron_schedule?: string | null;
 }
 export const SignalsScoutConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2666,8 +771,6 @@ export const SignalsScoutConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     emit: S.optional(S.Boolean),
     run_interval_minutes: S.optional(S.Number),
-    output_destinations: S.optional(SignalScoutOutputDestinations),
-    run_cron_schedule: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2682,7 +785,7 @@ export const SignalsScoutConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type ScoutOriginEnum = "canonical" | "custom";
 export const ScoutOriginEnum = /*@__PURE__*/ S.String;
 
-/** Read shape for a per-(team, skill) scout config. One row per `signals-scout-*` skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
+/** Per-(team, skill) scout config: schedule, enablement, and emit posture. One row per `signals-scout-*` skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
 export interface SignalScoutConfig {
   id: string;
   /** The `signals-scout-*` skill this config controls. Set at creation, not editable. */
@@ -2692,15 +795,11 @@ export interface SignalScoutConfig {
   /** Where this scout came from: `canonical` for a scout PostHog ships and maintains (seeded from `products/signals/skills/`), or `custom` for one a team hand-authored on this project. Use it to badge built-in vs custom scouts instead of a hardcoded name list. Defaults to `custom` if the skill is not currently present on the team. */
   scout_origin: ScoutOriginEnum;
   /** Whether this scout runs on its schedule. Disabled scouts are skipped by the coordinator. */
-  enabled: boolean;
+  enabled?: boolean;
   /** Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. */
-  emit: boolean;
+  emit?: boolean;
   /** Minutes between runs (30–43200). The scout runs once this interval has elapsed since its last run. */
-  run_interval_minutes: number;
-  /** Optional five-field cron expression evaluated in the project timezone, e.g. '30 9 * * *'. Takes precedence over `run_interval_minutes` when set. Null means the rolling interval schedule. */
-  run_cron_schedule: string | null;
-  /** Destinations that receive each finding or report this scout emits. Empty when none is configured. */
-  output_destinations: SignalScoutOutputDestinations;
+  run_interval_minutes?: number;
   /** When the coordinator last dispatched this scout. Null if it has never run. */
   last_run_at: string | null;
   created_at: string;
@@ -2711,45 +810,15 @@ export const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
     skill_name: S.String,
     description: S.String,
     scout_origin: ScoutOriginEnum,
-    enabled: S.Boolean,
-    emit: S.Boolean,
-    run_interval_minutes: S.Number,
-    run_cron_schedule: S.NullOr(S.String),
-    output_destinations: SignalScoutOutputDestinations,
+    enabled: S.optional(S.Boolean),
+    emit: S.optional(S.Boolean),
+    run_interval_minutes: S.optional(S.Number),
     last_run_at: S.NullOr(S.String),
     created_at: S.String,
   }),
 ).annotate({
   identifier: "SignalScoutConfig",
 }) as any as S.Schema<SignalScoutConfig>;
-
-export interface SignalsScoutConfigDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this Signal scout config. */
-  id: string;
-}
-export const SignalsScoutConfigDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/signals/scout/configs/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutConfigDestroyRequest",
-}) as any as S.Schema<SignalsScoutConfigDestroyRequest>;
-
-export interface SignalsScoutConfigDestroyResponse {}
-export const SignalsScoutConfigDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SignalsScoutConfigDestroyResponse",
-}) as any as S.Schema<SignalsScoutConfigDestroyResponse>;
 
 export interface SignalsScoutConfigListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2781,34 +850,6 @@ export const SignalsScoutConfigListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignalsScoutConfigListResponse",
 }) as any as S.Schema<SignalsScoutConfigListResponse>;
-
-export interface SignalsScoutConfigRunRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this Signal scout config. */
-  id: string;
-}
-export const SignalsScoutConfigRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/signals/scout/configs/{id}/run/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutConfigRunRequest",
-}) as any as S.Schema<SignalsScoutConfigRunRequest>;
-
-export interface SignalsScoutConfigRunResponse {}
-export const SignalsScoutConfigRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SignalsScoutConfigRunResponse",
-}) as any as S.Schema<SignalsScoutConfigRunResponse>;
 
 export interface SignalsScoutConfigSyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2850,12 +891,8 @@ export interface SignalsScoutConfigUpdateRequest {
   enabled?: boolean;
   /** Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing. */
   emit?: boolean;
-  /** Minutes between runs (30–43200). Use 1440 for a daily schedule. */
+  /** Minutes between runs (30–43200). The scout runs once this interval has elapsed since its last run. */
   run_interval_minutes?: number;
-  /** Optional five-field cron expression, e.g. '30 9 * * *' (daily at 09:30), '0 9,17 * * *' (twice daily), or '0 9 * * 1-5' (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. Set null to return to the rolling interval schedule. */
-  run_cron_schedule?: string | null;
-  /** Destinations that receive each finding or report this scout emits. Pass an empty object to disable delivery. */
-  output_destinations?: SignalScoutOutputDestinations;
 }
 export const SignalsScoutConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2864,8 +901,6 @@ export const SignalsScoutConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     emit: S.optional(S.Boolean),
     run_interval_minutes: S.optional(S.Number),
-    run_cron_schedule: S.optional(S.NullOr(S.String)),
-    output_destinations: S.optional(SignalScoutOutputDestinations),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2876,33 +911,6 @@ export const SignalsScoutConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignalsScoutConfigUpdateRequest",
 }) as any as S.Schema<SignalsScoutConfigUpdateRequest>;
-
-/** One suggested reviewer — identified by `github_login`, `user_uuid`, or both. The server canonicalizes each entry to a lowercased GitHub login: a `user_uuid` is resolved to the org member's linked GitHub login (and wins over a supplied `github_login` when both are given). A `user_uuid` that isn't an org member of this team with a linked GitHub identity is rejected — so a reviewer is never silently dropped. */
-export interface SuggestedReviewer {
-  /** GitHub login (case-insensitive, stored lowercased) — e.g. `octocat`, no `@`, no display name. Resolve one via `scout-members-list` (each member row carries a resolved `github_login`) or git history when you only have a name. */
-  github_login?: string;
-  /** PostHog user UUID (e.g. from `scout-members-list`, or an entity's `created_by`). Resolved server-side to the member's linked GitHub login — use this when you know the PostHog user but not their GitHub handle. Must be a concrete UUID; the `@me` alias is not valid here. */
-  user_uuid?: string;
-  /** One sentence of evidence for WHY this person: what ties them to the affected surface (e.g. 'authored 4 of the last 10 commits touching products/tracing/mcp/', 'human correction routed the prior tracing report to them'). Persisted on the report so the routing is auditable — always set it when you can name the evidence; 'precedent' alone is weak, prefer code-derived ownership. */
-  reason?: string | null;
-}
-export const SuggestedReviewer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    github_login: S.optional(S.String),
-    user_uuid: S.optional(S.String),
-    reason: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SuggestedReviewer",
-}) as any as S.Schema<SuggestedReviewer>;
-
-/** Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared). */
-export type SignalsScoutEditReportRequestSuggestedReviewersList =
-  Array<SuggestedReviewer>;
-export const SignalsScoutEditReportRequestSuggestedReviewersList =
-  /*@__PURE__*/ S.Array(
-    SuggestedReviewer,
-  ) as any as S.Schema<SignalsScoutEditReportRequestSuggestedReviewersList>;
 
 export interface SignalsScoutEditReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2917,8 +925,6 @@ export interface SignalsScoutEditReportRequest {
   summary?: string | null;
   /** Optional free-form note to append to the report's work log (attributed to this scout). */
   append_note?: string | null;
-  /** Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list is a no-op (existing reviewers are left untouched, never cleared). */
-  suggested_reviewers?: SignalsScoutEditReportRequestSuggestedReviewersList;
 }
 export const SignalsScoutEditReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2928,9 +934,6 @@ export const SignalsScoutEditReportRequest = /*@__PURE__*/ S.suspend(() =>
     title: S.optional(S.NullOr(S.String)),
     summary: S.optional(S.NullOr(S.String)),
     append_note: S.optional(S.NullOr(S.String)),
-    suggested_reviewers: S.optional(
-      SignalsScoutEditReportRequestSuggestedReviewersList,
-    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2955,15 +958,12 @@ export interface EditReportResponse {
   updated_fields: EditReportResponseUpdatedFieldsList;
   /** Whether a note artefact was appended. */
   note_appended: boolean;
-  /** Whether the report's suggested reviewers were replaced. */
-  reviewers_set: boolean;
 }
 export const EditReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.String,
     updated_fields: EditReportResponseUpdatedFieldsList,
     note_appended: S.Boolean,
-    reviewers_set: S.Boolean,
   }),
 ).annotate({
   identifier: "EditReportResponse",
@@ -3003,12 +1003,11 @@ export const ActionabilityEnum = /*@__PURE__*/ S.String;
 export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
 export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
-/** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
-export type SignalsScoutEmitReportRequestSuggestedReviewersList =
-  Array<SuggestedReviewer>;
+/** Optional GitHub logins to consider as reviewers for autostart. Autostart only opens a PR if at least one clears their autonomy threshold; omit to skip the PR path. */
+export type SignalsScoutEmitReportRequestSuggestedReviewersList = Array<string>;
 export const SignalsScoutEmitReportRequestSuggestedReviewersList =
   /*@__PURE__*/ S.Array(
-    SuggestedReviewer,
+    S.String,
   ) as any as S.Schema<SignalsScoutEmitReportRequestSuggestedReviewersList>;
 
 export interface SignalsScoutEmitReportRequest {
@@ -3034,7 +1033,7 @@ export interface SignalsScoutEmitReportRequest {
   priority?: AutonomyPriorityEnum | (string & {}) | null;
   /** 2-3 sentence justification for `priority`. Required when `priority` is set. */
   priority_explanation?: string | null;
-  /** Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer's own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. */
+  /** Optional GitHub logins to consider as reviewers for autostart. Autostart only opens a PR if at least one clears their autonomy threshold; omit to skip the PR path. */
   suggested_reviewers?: SignalsScoutEmitReportRequestSuggestedReviewersList;
 }
 export const SignalsScoutEmitReportRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3075,8 +1074,6 @@ export interface EmitReportResponse {
   skipped_reason: string | null;
   /** When the safety judge suppressed the report, why; null when safe. */
   safety_explanation: string | null;
-  /** One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when the report was authored or the skip isn't something the scout can act on. */
-  remediation: string | null;
 }
 export const EmitReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3085,7 +1082,6 @@ export const EmitReportResponse = /*@__PURE__*/ S.suspend(() =>
     emitted: S.Boolean,
     skipped_reason: S.NullOr(S.String),
     safety_explanation: S.NullOr(S.String),
-    remediation: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "EmitReportResponse",
@@ -3198,76 +1194,16 @@ export interface EmitFindingResponse {
   emitted: boolean;
   /** `ai_processing_not_approved` | `source_disabled` | null when emitted normally. */
   skipped_reason: string | null;
-  /** One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when emitted normally or the skip isn't something the scout can act on. */
-  remediation: string | null;
 }
 export const EmitFindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finding_id: S.String,
     emitted: S.Boolean,
     skipped_reason: S.NullOr(S.String),
-    remediation: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "EmitFindingResponse",
 }) as any as S.Schema<EmitFindingResponse>;
-
-export interface SignalsScoutMembersListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Case-insensitive substring filter over member email and first/last name. Use it to narrow a large project's roster to the owner you're trying to match instead of pulling every member. */
-  search?: string;
-}
-export const SignalsScoutMembersListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/signals/scout/members/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutMembersListRequest",
-}) as any as S.Schema<SignalsScoutMembersListRequest>;
-
-/** One project member's routing identity, for picking a `suggested_reviewers` entry on a report. */
-export interface ScoutMember {
-  /** The member's stable PostHog user UUID — the same id that appears as `created_by.uuid` on entities they own. A durable handle for this person across runs. */
-  user_uuid: string;
-  /** The member's email — use to match a finding's owner by name/email. */
-  email: string;
-  /** The member's first name (may be empty). */
-  first_name: string;
-  /** The member's last name (may be empty). */
-  last_name: string;
-  /** The member's resolved GitHub login (lowercased), already resolved server-side — put this value in a report's `suggested_reviewers` once you've matched the finding's owner to this row. Null when the member has no linked GitHub identity: a null-login member can't be routed to at all (neither a login nor a uuid resolves), so pick a different owner or leave `suggested_reviewers` empty. */
-  github_login: string | null;
-}
-export const ScoutMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_uuid: S.String,
-    email: S.String,
-    first_name: S.String,
-    last_name: S.String,
-    github_login: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "ScoutMember" }) as any as S.Schema<ScoutMember>;
-
-export type SignalsScoutMembersListResponseBodyList = Array<ScoutMember>;
-export const SignalsScoutMembersListResponseBodyList = /*@__PURE__*/ S.Array(
-  ScoutMember,
-) as any as S.Schema<SignalsScoutMembersListResponseBodyList>;
-
-export type SignalsScoutMembersListResponse =
-  SignalsScoutMembersListResponseBodyList;
-export const SignalsScoutMembersListResponse = /*@__PURE__*/ S.suspend(() =>
-  SignalsScoutMembersListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SignalsScoutMembersListResponse",
-}) as any as S.Schema<SignalsScoutMembersListResponse>;
 
 export interface SignalsScoutMetadataGetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3323,138 +1259,6 @@ export const ScoutMetadata = /*@__PURE__*/ S.suspend(() =>
     limits: ScoutLimits,
   }),
 ).annotate({ identifier: "ScoutMetadata" }) as any as S.Schema<ScoutMetadata>;
-
-export interface SignalsScoutNotesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** The note's prose — feedback, a pointer, or a nudge for the scout(s) to weigh on their next runs (e.g. 'we shipped a new checkout on Tuesday, watch conversion closely', 'stop flagging the staging traffic spike'). Write it in Markdown; scouts read it verbatim. */
-  content: string;
-  /** Address the note to one scout by its skill name (`signals-scout-*`, exact match against an existing scout skill on the project — check `scout-config-list` for the roster). Omit or leave blank for a general note every scout sees. */
-  skill_name?: string;
-  /** Optional ISO-8601 expiry. After this time the note drops out of the default list view, so time-boxed steering ('watch closely this week') retires itself. Omit for a note that stays active until deleted. */
-  expires_at?: string | null;
-}
-export const SignalsScoutNotesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    content: S.String,
-    skill_name: S.optional(S.String),
-    expires_at: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/signals/scout/notes/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutNotesCreateRequest",
-}) as any as S.Schema<SignalsScoutNotesCreateRequest>;
-
-/** `SignalScoutNote` projection used by `notes-list` and `notes-create`. */
-export interface ScoutNote {
-  /** Note UUID. Pass to `scout-notes-delete` to retire the note. */
-  id: string;
-  /** Target scout skill (`signals-scout-*`), or blank for a general note addressed to every scout on the fleet. */
-  skill_name: string;
-  /** The note's prose, read verbatim by scout runs. */
-  content: string;
-  /** ISO-8601 creation timestamp. */
-  created_at: string | null;
-  /** ISO-8601 expiry, or null for a note that stays active until deleted. */
-  expires_at: string | null;
-  /** Display name of the user who left the note, or null when unavailable. */
-  created_by_name: string | null;
-}
-export const ScoutNote = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    skill_name: S.String,
-    content: S.String,
-    created_at: S.NullOr(S.String),
-    expires_at: S.NullOr(S.String),
-    created_by_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "ScoutNote" }) as any as S.Schema<ScoutNote>;
-
-export interface SignalsScoutNotesDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-}
-export const SignalsScoutNotesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/signals/scout/notes/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutNotesDestroyRequest",
-}) as any as S.Schema<SignalsScoutNotesDestroyRequest>;
-
-export interface SignalsScoutNotesDestroyResponse {}
-export const SignalsScoutNotesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SignalsScoutNotesDestroyResponse",
-}) as any as S.Schema<SignalsScoutNotesDestroyResponse>;
-
-export interface SignalsScoutNotesListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Truncate each note's `content` to the first N characters (a preview). Omit for the full body — use this on wide scans so stacked notes can't dominate your context. */
-  content_max_chars?: number;
-  /** ISO-8601 inclusive lower bound on `created_at`. Omit to skip the lower bound. */
-  date_from?: string;
-  /** ISO-8601 exclusive upper bound on `created_at`. Pass the `created_at` of the oldest note from the prior page to walk back past the result cap. */
-  date_to?: string;
-  /** Include notes whose `expires_at` has passed. Off by default so time-boxed steering retires itself. */
-  include_expired?: boolean;
-  /** Only meaningful with `skill_name`: when false, exclude the general fleet-wide notes and return the skill's own notes only. */
-  include_general?: boolean;
-  /** Max rows to return (default 20, hard cap 500). */
-  limit?: number;
-  /** Return the notes addressed to this scout (`signals-scout-*`) plus the general (blank-target) notes for the whole fleet. Omit to browse every note on the project. */
-  skill_name?: string;
-}
-export const SignalsScoutNotesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    content_max_chars: S.optional(S.Number.pipe(T.Query())),
-    date_from: S.optional(S.String.pipe(T.Query())),
-    date_to: S.optional(S.String.pipe(T.Query())),
-    include_expired: S.optional(S.Boolean.pipe(T.Query())),
-    include_general: S.optional(S.Boolean.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    skill_name: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/signals/scout/notes/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SignalsScoutNotesListRequest",
-}) as any as S.Schema<SignalsScoutNotesListRequest>;
-
-export type SignalsScoutNotesListResponseBodyList = Array<ScoutNote>;
-export const SignalsScoutNotesListResponseBodyList = /*@__PURE__*/ S.Array(
-  ScoutNote,
-) as any as S.Schema<SignalsScoutNotesListResponseBodyList>;
-
-export type SignalsScoutNotesListResponse =
-  SignalsScoutNotesListResponseBodyList;
-export const SignalsScoutNotesListResponse = /*@__PURE__*/ S.suspend(() =>
-  SignalsScoutNotesListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "SignalsScoutNotesListResponse",
-}) as any as S.Schema<SignalsScoutNotesListResponse>;
 
 export interface SignalsScoutProjectProfileGetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3562,10 +1366,6 @@ export interface ExternalDataSourceEntry {
   prefix: string;
   /** ISO-8601 timestamp the source was connected. */
   created_at: string | null;
-  /** ISO-8601 timestamp of the most recent completed sync job, or null if this source has never completed a sync. Use this to tell a healthy source apart from one stuck in `Running` that has imported zero rows — `status` alone conflates the two. */
-  last_run_at: string | null;
-  /** Newest schema-level sync error for this source, or null if no schema is erroring. */
-  latest_error: string | null;
 }
 export const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3573,8 +1373,6 @@ export const ExternalDataSourceEntry = /*@__PURE__*/ S.suspend(() =>
     status: S.String,
     prefix: S.String,
     created_at: S.NullOr(S.String),
-    last_run_at: S.NullOr(S.String),
-    latest_error: S.NullOr(S.String),
   }),
 ).annotate({
   identifier: "ExternalDataSourceEntry",
@@ -3633,28 +1431,6 @@ export const SignalSourceConfigsBuckets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignalSourceConfigsBuckets",
 }) as any as S.Schema<SignalSourceConfigsBuckets>;
-
-/** `inventory.emit_eligibility` — whether scout findings can reach the inbox for this team. */
-export interface EmitEligibility {
-  /** Whether the organization has approved AI data processing (an org-level gate on all scout emits). */
-  ai_processing_approved: boolean;
-  /** Whether the `signals_scout` signal source is enabled for this team. */
-  source_enabled: boolean;
-  /** True only when both team/org-level gates pass, so scout findings (signal and report channels alike) actually reach the inbox. When False, every emit is silently dropped — quick-close instead of doing throwaway investigation. Does not account for a scout's own dry-run `emit` toggle, which is per-config, not team-wide. */
-  can_emit: boolean;
-  /** One-line next step to unblock emits when `can_emit` is False; null when emits can flow. */
-  remediation: string | null;
-}
-export const EmitEligibility = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ai_processing_approved: S.Boolean,
-    source_enabled: S.Boolean,
-    can_emit: S.Boolean,
-    remediation: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "EmitEligibility",
-}) as any as S.Schema<EmitEligibility>;
 
 /** One bucket in `inventory.existing_inbox_reports.by_status`. */
 export interface InboxReportStatusBucket {
@@ -3735,66 +1511,6 @@ export const RecentActivity = /*@__PURE__*/ S.suspend(() =>
     by_scope: RecentActivityByScopeList,
   }),
 ).annotate({ identifier: "RecentActivity" }) as any as S.Schema<RecentActivity>;
-
-/** GitHub logins on the report before the human edit (lowercased). */
-export type ReviewerCorrectionEntryBeforeList = Array<string>;
-export const ReviewerCorrectionEntryBeforeList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewerCorrectionEntryBeforeList>;
-
-/** GitHub logins on the report after the human edit (lowercased). */
-export type ReviewerCorrectionEntryAfterList = Array<string>;
-export const ReviewerCorrectionEntryAfterList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReviewerCorrectionEntryAfterList>;
-
-/** One row in `inventory.recent_reviewer_corrections.corrections`. */
-export interface ReviewerCorrectionEntry {
-  /** UUID of the report whose reviewers a human edited. */
-  report_id: string;
-  /** Report title at the time of the edit. */
-  report_title: string | null;
-  /** GitHub logins on the report before the human edit (lowercased). */
-  before: ReviewerCorrectionEntryBeforeList;
-  /** GitHub logins on the report after the human edit (lowercased). */
-  after: ReviewerCorrectionEntryAfterList;
-  /** ISO-8601 timestamp of the edit. */
-  at: string | null;
-}
-export const ReviewerCorrectionEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    report_id: S.String,
-    report_title: S.NullOr(S.String),
-    before: ReviewerCorrectionEntryBeforeList,
-    after: ReviewerCorrectionEntryAfterList,
-    at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ReviewerCorrectionEntry",
-}) as any as S.Schema<ReviewerCorrectionEntry>;
-
-/** Human reviewer edits, newest first. A human swapping a report's suggested reviewers is authoritative ownership precedent — route to who they chose. */
-export type RecentReviewerCorrectionsCorrectionsList =
-  Array<ReviewerCorrectionEntry>;
-export const RecentReviewerCorrectionsCorrectionsList = /*@__PURE__*/ S.Array(
-  ReviewerCorrectionEntry,
-) as any as S.Schema<RecentReviewerCorrectionsCorrectionsList>;
-
-/** `inventory.recent_reviewer_corrections` — human edits to report reviewer lists. */
-export interface RecentReviewerCorrections {
-  /** Lookback window in days the corrections cover. */
-  window_days: number;
-  /** Human reviewer edits, newest first. A human swapping a report's suggested reviewers is authoritative ownership precedent — route to who they chose. */
-  corrections: RecentReviewerCorrectionsCorrectionsList;
-}
-export const RecentReviewerCorrections = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window_days: S.Number,
-    corrections: RecentReviewerCorrectionsCorrectionsList,
-  }),
-).annotate({
-  identifier: "RecentReviewerCorrections",
-}) as any as S.Schema<RecentReviewerCorrections>;
 
 /** One row in `inventory.recent_dashboards`. */
 export interface RecentDashboardEntry {
@@ -4256,37 +1972,34 @@ export const RecentActions = /*@__PURE__*/ S.suspend(() =>
 
 /** One row in `inventory.top_events`. */
 export interface TopEventEntry {
-  /** Rolling lookback window (in days) that every count and timestamp on this row is measured over — these are windowed figures, NOT lifetime totals. A capture gap can collapse a real, high-volume project's in-window counts to near-zero, so a thin `count` here does not by itself mean the project is low-volume: rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before closing out a surface as unused. */
-  window_days: number;
   /** Event name as captured. */
   event: string;
-  /** Number of occurrences within the last `window_days` (windowed, not lifetime). */
+  /** Number of occurrences in the lookback window (last 7 days). */
   count: number;
   /** `uniq(person_id)` over the window — reach. Distinguishes a high-count event firing on one power user from one firing on many users. */
   distinct_users: number;
-  /** Count in just the last 24 hours. Compare to `count / window_days` to spot bursts: a ratio well above `1 / window_days` means the event is concentrated in the last day. */
+  /** Count in just the last 24 hours. Compare to `count / 7` to spot bursts: a ratio well above 1/7 means the event is concentrated in the last day. */
   recent_24h_count: number;
   /** `uniq(person_id)` over just the last 24 hours. A burst across many users is qualitatively different from one user in a loop. */
   recent_24h_users: number;
-  /** ISO-8601 timestamp of the earliest occurrence within the `window_days` window. Compare to the window start to spot new event types: close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can't tell you when the event *truly* first appeared). */
-  first_seen_in_window: string | null;
-  /** ISO-8601 timestamp of the most recent occurrence within the `window_days` window. */
-  last_seen_in_window: string | null;
+  /** ISO-8601 timestamp of the earliest occurrence within the lookback window. Compare to the window start to spot new event types: `first_seen` close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can't tell you when the event *truly* first appeared). */
+  first_seen: string | null;
+  /** ISO-8601 timestamp of the most recent occurrence within the lookback window. */
+  last_seen: string | null;
 }
 export const TopEventEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    window_days: S.Number,
     event: S.String,
     count: S.Number,
     distinct_users: S.Number,
     recent_24h_count: S.Number,
     recent_24h_users: S.Number,
-    first_seen_in_window: S.NullOr(S.String),
-    last_seen_in_window: S.NullOr(S.String),
+    first_seen: S.NullOr(S.String),
+    last_seen: S.NullOr(S.String),
   }),
 ).annotate({ identifier: "TopEventEntry" }) as any as S.Schema<TopEventEntry>;
 
-/** Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts. */
+/** Top ~50 events by count over the last 7 days, with first/last seen timestamps within the window. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen` and `now` to spot new event types or recent bursts. */
 export type ProjectProfileInventoryTopEventsList = Array<TopEventEntry>;
 export const ProjectProfileInventoryTopEventsList = /*@__PURE__*/ S.Array(
   TopEventEntry,
@@ -4306,14 +2019,10 @@ export interface ProjectProfileInventory {
   external_data_sources: ProjectProfileInventoryExternalDataSourcesList;
   /** Signal source configs split into enabled / disabled buckets. */
   signal_source_configs: SignalSourceConfigsBuckets;
-  /** Whether scout findings can actually reach the inbox for this team — the org-level AI data-processing consent gate and the `signals_scout` source toggle, plus a one-line remediation pointer. Read at cold start to quick-close before doing throwaway work. */
-  emit_eligibility: EmitEligibility;
   /** Counts of reports already in the inbox, grouped by status. */
   existing_inbox_reports: ExistingInboxReports;
-  /** Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `advanced-activity-logs-list`. */
+  /** Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `activity-log-list`. */
   recent_activity: RecentActivity;
-  /** Recent human edits to report reviewer lists (before/after GitHub logins). The strongest ownership precedent available — check it before setting `suggested_reviewers` and fold what it shows into `reviewer:` memory keys. */
-  recent_reviewer_corrections: RecentReviewerCorrections;
   /** Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don't have per-dashboard view counts in Postgres, only the timestamp of the most recent access. */
   recent_dashboards: ProjectProfileInventoryRecentDashboardsList;
   /** Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at. */
@@ -4334,7 +2043,7 @@ export interface ProjectProfileInventory {
   recent_cohorts: RecentCohorts;
   /** Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction. */
   recent_actions: RecentActions;
-  /** Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts. */
+  /** Top ~50 events by count over the last 7 days, with first/last seen timestamps within the window. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen` and `now` to spot new event types or recent bursts. */
   top_events: ProjectProfileInventoryTopEventsList | null;
 }
 export const ProjectProfileInventory = /*@__PURE__*/ S.suspend(() =>
@@ -4345,10 +2054,8 @@ export const ProjectProfileInventory = /*@__PURE__*/ S.suspend(() =>
     integrations: ProjectProfileInventoryIntegrationsList,
     external_data_sources: ProjectProfileInventoryExternalDataSourcesList,
     signal_source_configs: SignalSourceConfigsBuckets,
-    emit_eligibility: EmitEligibility,
     existing_inbox_reports: ExistingInboxReports,
     recent_activity: RecentActivity,
-    recent_reviewer_corrections: RecentReviewerCorrections,
     recent_dashboards: ProjectProfileInventoryRecentDashboardsList,
     recent_surveys: RecentSurveys,
     recent_feature_flags: RecentFeatureFlags,
@@ -4552,7 +2259,7 @@ export const SignalScoutEmissionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutEmissionTagsList>;
 
-/** One finding a scout run emitted to the inbox — the persisted, queryable record of *what* the run surfaced, returned by `scout-runs-emissions-list`. The emitted text lives in `description`; `source_id` is the join key (`run:<run_id>:finding:<finding_id>`) back into the underlying signal store. */
+/** One finding a scout run emitted to the inbox — the persisted, queryable record of *what* the run surfaced, returned by `signals-scout-runs-emissions-list`. The emitted text lives in `description`; `source_id` is the join key (`run:<run_id>:finding:<finding_id>`) back into the underlying signal store. */
 export interface SignalScoutEmission {
   id: string;
   /** UUID of the `SignalScoutRun` that emitted this finding. */
@@ -4650,53 +2357,6 @@ export const SignalsScoutRunsEmissionsBatchResponse = /*@__PURE__*/ S.suspend(
   identifier: "SignalsScoutRunsEmissionsBatchResponse",
 }) as any as S.Schema<SignalsScoutRunsEmissionsBatchResponse>;
 
-export interface SignalsScoutRunsFindingsSummaryRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Lookback window in hours over runs' `created_at` (default 72, hard cap 168). */
-  window_hours?: number;
-}
-export const SignalsScoutRunsFindingsSummaryRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      window_hours: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/signals/scout/runs/findings/summary/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SignalsScoutRunsFindingsSummaryRequest",
-}) as any as S.Schema<SignalsScoutRunsFindingsSummaryRequest>;
-
-/** Fleet-wide tally of recent scout output — legacy `emit_signal` findings plus reports authored/edited via the report channel. Backs the "Scout findings" callout so it renders from one cheap query instead of the client walking the whole paginated runs window. */
-export interface FleetFindingsSummary {
-  /** Total findings the fleet emitted in the window — the sum of each run's `emitted_count`, over the most recent 120 runs that produced output. */
-  count: number;
-  /** Number of distinct scouts (skills) that produced output in the window — emitted a finding, or authored/edited an inbox report that survives the 50-report cap (a report-only scout whose touched reports all fell outside the cap is not counted, matching the findings page's scout filter). */
-  scout_count: number;
-  /** Number of distinct inbox reports scouts authored via `emit_report`, deduped across runs, over the same most-recent-120-output-runs set as `count`, capped to the 50 most recently touched reports (the same slice the findings page lists). */
-  authored_report_count: number;
-  /** Number of distinct inbox reports scouts edited via `edit_report`, deduped across runs, over the same most-recent-120-output-runs set as `count`, capped to the 50 most recently touched reports (the same slice the findings page lists) and excluding reports also authored within that set (authoring supersedes an edit; a report whose authoring run falls outside the cap counts as edited). */
-  edited_report_count: number;
-  /** ISO-8601 timestamp of the most recent output run (TaskRun completion, falling back to run creation), or null when nothing was produced in the window. */
-  latest_at: string | null;
-}
-export const FleetFindingsSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    scout_count: S.Number,
-    authored_report_count: S.Number,
-    edited_report_count: S.Number,
-    latest_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FleetFindingsSummary",
-}) as any as S.Schema<FleetFindingsSummary>;
-
 export interface SignalsScoutRunsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -4736,16 +2396,6 @@ export const SignalsScoutRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsScoutRunsListRequest",
 }) as any as S.Schema<SignalsScoutRunsListRequest>;
 
-/** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-export type RunStatusEnum =
-  | "not_started"
-  | "queued"
-  | "in_progress"
-  | "completed"
-  | "failed"
-  | "cancelled";
-export const RunStatusEnum = /*@__PURE__*/ S.String;
-
 /** The `finding_id`s behind `emitted_count`, in emit order. Each maps to a `Signal` with `source_id = run:<run_id>:finding:<finding_id>`. Empty for non-emitting runs. */
 export type SignalScoutRunSummaryEmittedFindingIdsList = Array<string>;
 export const SignalScoutRunSummaryEmittedFindingIdsList = /*@__PURE__*/ S.Array(
@@ -4764,15 +2414,6 @@ export const SignalScoutRunSummaryEditedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunSummaryEditedReportIdsList>;
 
-/** Scout-owned per-run context stamped at run start. Known keys today: `model`, `runtime_adapter`, and `reasoning_effort` — the triple the run was routed on when the `scouts-model-selection` gate (or a runtime pin) overrode the agent-server default. Empty object when the run rode the default model, or for runs predating the field. */
-export type SignalScoutRunSummaryMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const SignalScoutRunSummaryMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SignalScoutRunSummaryMetadataMap>;
-
 /** Lightweight projection of a `SignalScoutRun` row used by `search-recent-runs`. Status and timestamps flow from the linked `tasks.TaskRun`. */
 export interface SignalScoutRunSummary {
   /** UUID of the bridge row. */
@@ -4781,8 +2422,8 @@ export interface SignalScoutRunSummary {
   skill_name: string;
   /** Skill version snapshotted at run start. */
   skill_version: number;
-  /** Status from the linked TaskRun. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-  status: RunStatusEnum;
+  /** Status from the linked TaskRun: not_started | queued | in_progress | completed | failed | cancelled. */
+  status: string;
   /** ISO-8601 timestamp the bridge row was created — the field `date_from` / `date_to` filter and order on. Use this (not `started_at`) as the `date_to` cursor when walking past the 100-row cap, so runs created in the gap between a boundary run's TaskRun and its bridge row aren't skipped. */
   created_at: string;
   /** ISO-8601 timestamp the TaskRun was created. */
@@ -4809,15 +2450,13 @@ export interface SignalScoutRunSummary {
   emitted_report_ids: SignalScoutRunSummaryEmittedReportIdsList;
   /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
   edited_report_ids: SignalScoutRunSummaryEditedReportIdsList;
-  /** Scout-owned per-run context stamped at run start. Known keys today: `model`, `runtime_adapter`, and `reasoning_effort` — the triple the run was routed on when the `scouts-model-selection` gate (or a runtime pin) overrode the agent-server default. Empty object when the run rode the default model, or for runs predating the field. */
-  metadata: SignalScoutRunSummaryMetadataMap;
 }
 export const SignalScoutRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     skill_name: S.String,
     skill_version: S.Number,
-    status: RunStatusEnum,
+    status: S.String,
     created_at: S.String,
     started_at: S.String,
     completed_at: S.NullOr(S.String),
@@ -4831,7 +2470,6 @@ export const SignalScoutRunSummary = /*@__PURE__*/ S.suspend(() =>
     emitted_finding_ids: SignalScoutRunSummaryEmittedFindingIdsList,
     emitted_report_ids: SignalScoutRunSummaryEmittedReportIdsList,
     edited_report_ids: SignalScoutRunSummaryEditedReportIdsList,
-    metadata: SignalScoutRunSummaryMetadataMap,
   }),
 ).annotate({
   identifier: "SignalScoutRunSummary",
@@ -4935,15 +2573,6 @@ export const SignalScoutRunDetailEditedReportIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SignalScoutRunDetailEditedReportIdsList>;
 
-/** Scout-owned per-run context stamped at run start. Known keys today: `model`, `runtime_adapter`, and `reasoning_effort` — the triple the run was routed on when the `scouts-model-selection` gate (or a runtime pin) overrode the agent-server default. Empty object when the run rode the default model, or for runs predating the field. */
-export type SignalScoutRunDetailMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const SignalScoutRunDetailMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SignalScoutRunDetailMetadataMap>;
-
 /** Full `SignalScoutRun` projection used by `get-run`. Same shape as the summary today; kept distinct so future detail-only extensions (linked Signal rows, LLMA token-cost join) can land here without bloating the list response. */
 export interface SignalScoutRunDetail {
   /** UUID of the bridge row. */
@@ -4952,8 +2581,8 @@ export interface SignalScoutRunDetail {
   skill_name: string;
   /** Skill version snapshotted at run start. */
   skill_version: number;
-  /** Status from the linked TaskRun. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
-  status: RunStatusEnum;
+  /** Status from the linked TaskRun: not_started | queued | in_progress | completed | failed | cancelled. */
+  status: string;
   /** ISO-8601 timestamp the bridge row was created — the field `date_from` / `date_to` filter and order on. Use this (not `started_at`) as the `date_to` cursor when walking past the 100-row cap, so runs created in the gap between a boundary run's TaskRun and its bridge row aren't skipped. */
   created_at: string;
   /** ISO-8601 timestamp the TaskRun was created. */
@@ -4980,15 +2609,13 @@ export interface SignalScoutRunDetail {
   emitted_report_ids: SignalScoutRunDetailEmittedReportIdsList;
   /** The `SignalReport` ids this run mutated via the `edit_report` channel (rewrote title/summary and/or appended a note), deduped. Distinct from `emitted_report_ids`: edit can target any inbox report, so these are generally not reports the run authored. Empty for runs that edited no report. */
   edited_report_ids: SignalScoutRunDetailEditedReportIdsList;
-  /** Scout-owned per-run context stamped at run start. Known keys today: `model`, `runtime_adapter`, and `reasoning_effort` — the triple the run was routed on when the `scouts-model-selection` gate (or a runtime pin) overrode the agent-server default. Empty object when the run rode the default model, or for runs predating the field. */
-  metadata: SignalScoutRunDetailMetadataMap;
 }
 export const SignalScoutRunDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     skill_name: S.String,
     skill_version: S.Number,
-    status: RunStatusEnum,
+    status: S.String,
     created_at: S.String,
     started_at: S.String,
     completed_at: S.NullOr(S.String),
@@ -5002,7 +2629,6 @@ export const SignalScoutRunDetail = /*@__PURE__*/ S.suspend(() =>
     emitted_finding_ids: SignalScoutRunDetailEmittedFindingIdsList,
     emitted_report_ids: SignalScoutRunDetailEmittedReportIdsList,
     edited_report_ids: SignalScoutRunDetailEditedReportIdsList,
-    metadata: SignalScoutRunDetailMetadataMap,
   }),
 ).annotate({
   identifier: "SignalScoutRunDetail",
@@ -5107,11 +2733,9 @@ export interface SignalsScoutScratchpadSearchRequest {
   date_from?: string;
   /** ISO-8601 exclusive upper bound on `updated_at`. Pass to walk back past the result cap on subsequent calls (cursor-style: set to the `updated_at` of the oldest entry from the prior page). */
   date_to?: string;
-  /** Exact key match — returns the single entry with this key, or nothing. Use this to re-read a known entry; `text` searches key *and* content, so it can push the row you asked for past the limit. */
-  key?: string;
   /** When true, blank each entry's `content` and return only keys + metadata. Use to scan which memories exist without pulling their (potentially large) bodies, then re-query the ones worth a full read. Takes precedence over `content_max_chars`. */
   keys_only?: boolean;
-  /** Max rows to return (default 20, hard cap 1000). */
+  /** Max rows to return (default 20, hard cap 500). */
   limit?: number;
   /** ILIKE substring match against `content`. Omit to return the most recent entries. */
   text?: string;
@@ -5122,7 +2746,6 @@ export const SignalsScoutScratchpadSearchRequest = /*@__PURE__*/ S.suspend(() =>
     content_max_chars: S.optional(S.Number.pipe(T.Query())),
     date_from: S.optional(S.String.pipe(T.Query())),
     date_to: S.optional(S.String.pipe(T.Query())),
-    key: S.optional(S.String.pipe(T.Query())),
     keys_only: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     text: S.optional(S.String.pipe(T.Query())),
@@ -5152,13 +2775,12 @@ export const SignalsScoutScratchpadSearchResponse = /*@__PURE__*/ S.suspend(
   identifier: "SignalsScoutScratchpadSearchResponse",
 }) as any as S.Schema<SignalsScoutScratchpadSearchResponse>;
 
-/** * `session_replay` - Session replay * `llm_analytics` - LLM analytics * `github` - GitHub * `linear` - Linear * `jira` - Jira * `zendesk` - Zendesk * `conversations` - Conversations * `error_tracking` - Error tracking * `pganalyze` - pganalyze * `signals_scout` - Signals scout * `logs` - Logs * `health_checks` - Health checks * `endpoints` - Endpoints * `replay_vision` - Replay Vision * `analytics` - Product analytics * `freshdesk` - Freshdesk * `freshservice` - Freshservice * `front` - Front * `gorgias` - Gorgias * `kustomer` - Kustomer * `dixa` - Dixa * `plain` - Plain * `gitlab` - GitLab * `gitea` - Gitea * `shortcut` - Shortcut * `sentry` - Sentry * `rollbar` - Rollbar * `bugsnag` - Bugsnag * `honeybadger` - Honeybadger * `raygun` - Raygun * `snyk` - Snyk * `sonarqube` - SonarQube * `semgrep` - Semgrep * `rapid7_insightvm` - Rapid7 InsightVM * `featurebase` - Featurebase * `frill` - Frill * `aha` - Aha * `uservoice` - UserVoice * `productboard` - Productboard * `canny` - Canny * `asknicely` - AskNicely * `retently` - Retently * `appfigures` - Appfigures * `appfollow` - AppFollow * `judgeme_reviews` - Judge.me * `intercom` - Intercom * `hubspot` - HubSpot * `engineering_analytics` - Engineering analytics */
-export type SignalSourceConfigSourceProductEnum =
+/** * `session_replay` - Session replay * `llm_analytics` - LLM analytics * `github` - GitHub * `linear` - Linear * `zendesk` - Zendesk * `conversations` - Conversations * `error_tracking` - Error tracking * `pganalyze` - pganalyze * `signals_scout` - Signals scout * `logs` - Logs * `health_checks` - Health checks * `endpoints` - Endpoints * `replay_vision` - Replay Vision */
+export type SourceProductEnum =
   | "session_replay"
   | "llm_analytics"
   | "github"
   | "linear"
-  | "jira"
   | "zendesk"
   | "conversations"
   | "error_tracking"
@@ -5167,48 +2789,13 @@ export type SignalSourceConfigSourceProductEnum =
   | "logs"
   | "health_checks"
   | "endpoints"
-  | "replay_vision"
-  | "analytics"
-  | "freshdesk"
-  | "freshservice"
-  | "front"
-  | "gorgias"
-  | "kustomer"
-  | "dixa"
-  | "plain"
-  | "gitlab"
-  | "gitea"
-  | "shortcut"
-  | "sentry"
-  | "rollbar"
-  | "bugsnag"
-  | "honeybadger"
-  | "raygun"
-  | "snyk"
-  | "sonarqube"
-  | "semgrep"
-  | "rapid7_insightvm"
-  | "featurebase"
-  | "frill"
-  | "aha"
-  | "uservoice"
-  | "productboard"
-  | "canny"
-  | "asknicely"
-  | "retently"
-  | "appfigures"
-  | "appfollow"
-  | "judgeme_reviews"
-  | "intercom"
-  | "hubspot"
-  | "engineering_analytics";
-export const SignalSourceConfigSourceProductEnum = /*@__PURE__*/ S.String;
+  | "replay_vision";
+export const SourceProductEnum = /*@__PURE__*/ S.String;
 
-/** * `session_analysis_cluster` - Session analysis cluster * `evaluation` - Evaluation * `evaluation_report` - Evaluation report * `issue` - Issue * `ticket` - Ticket * `issue_created` - Issue created * `issue_reopened` - Issue reopened * `issue_spiking` - Issue spiking * `cross_source_issue` - Cross source issue * `alert_state_change` - Alert state change * `health_issue` - Health issue * `endpoint_execution_failed` - Endpoint execution failed * `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded * `scanner_finding` - Scanner finding * `anomaly_investigation` - Anomaly investigation * `ci_flaky_check` - CI flaky check * `ci_broken_default_branch` - CI broken default branch * `ci_duration_regression` - CI duration regression */
+/** * `session_analysis_cluster` - Session analysis cluster * `evaluation` - Evaluation * `issue` - Issue * `ticket` - Ticket * `issue_created` - Issue created * `issue_reopened` - Issue reopened * `issue_spiking` - Issue spiking * `cross_source_issue` - Cross source issue * `alert_state_change` - Alert state change * `health_issue` - Health issue * `endpoint_execution_failed` - Endpoint execution failed * `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded * `scanner_finding` - Scanner finding */
 export type SignalSourceConfigSourceTypeEnum =
   | "session_analysis_cluster"
   | "evaluation"
-  | "evaluation_report"
   | "issue"
   | "ticket"
   | "issue_created"
@@ -5219,17 +2806,13 @@ export type SignalSourceConfigSourceTypeEnum =
   | "health_issue"
   | "endpoint_execution_failed"
   | "endpoint_breakdown_limit_exceeded"
-  | "scanner_finding"
-  | "anomaly_investigation"
-  | "ci_flaky_check"
-  | "ci_broken_default_branch"
-  | "ci_duration_regression";
+  | "scanner_finding";
 export const SignalSourceConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SignalsSourceConfigsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_product?: SourceProductEnum | (string & {});
   source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
@@ -5237,7 +2820,7 @@ export interface SignalsSourceConfigsCreateRequest {
 export const SignalsSourceConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    source_product: S.optional(SignalSourceConfigSourceProductEnum),
+    source_product: S.optional(SourceProductEnum),
     source_type: S.optional(SignalSourceConfigSourceTypeEnum),
     enabled: S.optional(S.Boolean),
     config: S.optional(S.Unknown),
@@ -5254,7 +2837,7 @@ export const SignalsSourceConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface SignalSourceConfig {
   id?: string;
-  source_product?: SignalSourceConfigSourceProductEnum;
+  source_product?: SourceProductEnum;
   source_type?: SignalSourceConfigSourceTypeEnum;
   enabled?: boolean;
   config?: unknown;
@@ -5265,7 +2848,7 @@ export interface SignalSourceConfig {
 export const SignalSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    source_product: S.optional(SignalSourceConfigSourceProductEnum),
+    source_product: S.optional(SourceProductEnum),
     source_type: S.optional(SignalSourceConfigSourceTypeEnum),
     enabled: S.optional(S.Boolean),
     config: S.optional(S.Unknown),
@@ -5357,7 +2940,7 @@ export interface SignalsSourceConfigsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this signal source config. */
   id: string;
-  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_product?: SourceProductEnum | (string & {});
   source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
@@ -5367,7 +2950,7 @@ export const SignalsSourceConfigsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      source_product: S.optional(SignalSourceConfigSourceProductEnum),
+      source_product: S.optional(SourceProductEnum),
       source_type: S.optional(SignalSourceConfigSourceTypeEnum),
       enabled: S.optional(S.Boolean),
       config: S.optional(S.Unknown),
@@ -5408,7 +2991,7 @@ export interface SignalsSourceConfigsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this signal source config. */
   id: string;
-  source_product?: SignalSourceConfigSourceProductEnum | (string & {});
+  source_product?: SourceProductEnum | (string & {});
   source_type?: SignalSourceConfigSourceTypeEnum | (string & {});
   enabled?: boolean;
   config?: unknown;
@@ -5417,7 +3000,7 @@ export const SignalsSourceConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    source_product: S.optional(SignalSourceConfigSourceProductEnum),
+    source_product: S.optional(SourceProductEnum),
     source_type: S.optional(SignalSourceConfigSourceTypeEnum),
     enabled: S.optional(S.Boolean),
     config: S.optional(S.Unknown),
@@ -5616,59 +3199,6 @@ export const signalsReportsList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignalsReportsPartialUpdateError =
-  | BadRequest
-  | NotFound
-  | PosthogOpError;
-/** Edit a report's title or summary Edit the human-facing title and/or summary (description) of a signal report, addressed by id. Both fields are optional — supply only the ones you want to change; at least one is required. Every other report field (status, weights, judgments) is managed by the signals pipeline and cannot be set here. Returns the full updated report. */
-export const signalsReportsPartialUpdate: API.OperationMethod<
-  SignalsReportsPartialUpdateRequest,
-  SignalReport,
-  SignalsReportsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsReportsPartialUpdateRequest,
-  output: SignalReport,
-  errors: [BadRequest, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsReportsRefundCreateError =
-  | BadRequest
-  | NotFound
-  | PosthogOpError;
-/** Refund a report's implementation PR Refund the flat charge for this report's implementation PR and archive the report. Refunds auto-approve: the charge is either excluded from usage before it is ever reported to billing (refund on the same UTC day as the PR run) or returned as a Stripe customer-balance credit on the next invoice. A refunded PR does not count toward the free monthly PR allowance. One refund per report, ever — repeat calls return the existing refund with already_refunded=true. The report is archived as part of the refund (a resolved report stays resolved) and can't be restored afterwards. */
-export const signalsReportsRefundCreate: API.OperationMethod<
-  SignalsReportsRefundCreateRequest,
-  SignalReportRefundResponse,
-  SignalsReportsRefundCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsReportsRefundCreateRequest,
-  output: SignalReportRefundResponse,
-  errors: [BadRequest, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsReportsRefundSummaryRetrieveError =
-  | NotFound
-  | PosthogOpError;
-/** Summarize credited PR refunds for the billing period Aggregate credited-path refunds across the whole organization for the current billing period — counts only, no per-team detail. The billing usage widget needs this because billing usage is org-wide while reports (and their refunds) are team-scoped: subtract the refunded credits from billing usage to show the net PR count. Excluded-path refunds never reach billing usage, so no adjustment is needed for them. Also carries the org's live billable credits for the period (billing's recorded usage lags by up to a day), so the widget can count just-created PRs and react to same-day refunds. */
-export const signalsReportsRefundSummaryRetrieve: API.OperationMethod<
-  SignalsReportsRefundSummaryRetrieveRequest,
-  SignalReportRefundSummaryResponse,
-  SignalsReportsRefundSummaryRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsReportsRefundSummaryRetrieveRequest,
-  output: SignalReportRefundSummaryResponse,
-  errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SignalsReportsRetrieveError = PosthogOpError;
 export const signalsReportsRetrieve: API.OperationMethod<
   SignalsReportsRetrieveRequest,
@@ -5683,23 +3213,8 @@ export const signalsReportsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignalsReportsSignalsRetrieveError = PosthogOpError;
-/** List a report's signals Fetch all signals for a report from ClickHouse, including full metadata. */
-export const signalsReportsSignalsRetrieve: API.OperationMethod<
-  SignalsReportsSignalsRetrieveRequest,
-  ReportSignalsResponse,
-  SignalsReportsSignalsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsReportsSignalsRetrieveRequest,
-  output: ReportSignalsResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SignalsReportsStateCreateError = PosthogOpError;
-/** Transition a report to a new state. The model validates allowed transitions. The request body is validated by SignalReportStateRequestSerializer — only the fields it declares (state, dismissal_reason, dismissal_note, snooze_for) are read, and only snooze_for is ever forwarded to transition_to. Any other key is ignored, so internal transition_to kwargs (reset_weight, error, ...) can't be injected. Body: { "state": "suppressed" | "potential" | "resolved", # Optional dismissal feedback (honored when state == "suppressed", "potential", or "resolved"): "dismissal_reason": "<canonical reason code, see SIGNAL_REPORT_DISMISSAL_REASON_CHOICES>", "dismissal_note": "free-form text", # Optional, only honored for state == "potential": "snooze_for": <number of additional signals before re-promotion>, } */
+/** Transition a report to a new state. The model validates allowed transitions. The request body is validated by SignalReportStateRequestSerializer — only the fields it declares (state, dismissal_reason, dismissal_note, snooze_for) are read, and only snooze_for is ever forwarded to transition_to. Any other key is ignored, so internal transition_to kwargs (reset_weight, error, ...) can't be injected. Body: { "state": "suppressed" | "potential", # Optional dismissal feedback (honored when state == "suppressed" or "potential"): "dismissal_reason": "<canonical reason code, see SIGNAL_REPORT_DISMISSAL_REASON_CHOICES>", "dismissal_note": "free-form text", # Optional, only honored for state == "potential": "snooze_for": <number of additional signals before re-promotion>, } */
 export const signalsReportsStateCreate: API.OperationMethod<
   SignalsReportsStateCreateRequest,
   SignalReport,
@@ -5714,7 +3229,7 @@ export const signalsReportsStateCreate: API.OperationMethod<
 }));
 
 export type SignalsScoutConfigCreateError = BadRequest | PosthogOpError;
-/** Create a scout config Register the config for a `signals-scout-*` skill immediately, without waiting for the coordinator to auto-register it. The same call can optionally set `run_interval_minutes`, a cron `run_cron_schedule`, `enabled`, `emit`, and output destinations. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it. */
+/** Create a scout config Register the config for a `signals-scout-*` skill immediately, without waiting for the coordinator to auto-register it — optionally setting `run_interval_minutes`, `enabled`, and `emit` in the same call. The skill must already exist on this project. Upsert: if a config already exists for the skill, the provided fields are applied to it. */
 export const signalsScoutConfigCreate: API.OperationMethod<
   SignalsScoutConfigCreateRequest,
   SignalScoutConfig,
@@ -5728,23 +3243,8 @@ export const signalsScoutConfigCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignalsScoutConfigDestroyError = NotFound | PosthogOpError;
-/** Delete a scout config Delete one scout config by its `id`, removing the per-(team, skill) schedule/emit row outright. The point is cleaning up an orphaned config whose `signals-scout-*` skill was archived or deleted — it lingers in `list` with an empty `description`, never runs (the coordinator skips it and the skill can't load), but can't otherwise be removed over the API. Deletion is activity-logged. Note: if the skill still exists, the coordinator re-creates a default-schedule config on its next tick — to retire a live scout, archive its skill (or set `enabled=false` to make it inert) rather than deleting the config. */
-export const signalsScoutConfigDestroy: API.OperationMethod<
-  SignalsScoutConfigDestroyRequest,
-  SignalsScoutConfigDestroyResponse,
-  SignalsScoutConfigDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutConfigDestroyRequest,
-  output: SignalsScoutConfigDestroyResponse,
-  errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SignalsScoutConfigListError = PosthogOpError;
-/** List scout configs List the per-(team, skill) scout configs for this project. Each row includes its schedule (rolling `run_interval_minutes`, or a project-local `run_cron_schedule` when set), `enabled`, and `emit` posture. A freshly authored scout skill appears here once its config is registered, either explicitly via create or by the coordinator's next tick. */
+/** List scout configs List the per-(team, skill) scout configs for this project — schedule (`run_interval_minutes`), `enabled`, and `emit` posture per scout. A freshly authored scout skill appears here once its config is registered, either explicitly via create or by the coordinator's next tick. */
 export const signalsScoutConfigList: API.OperationMethod<
   SignalsScoutConfigListRequest,
   SignalsScoutConfigListResponse,
@@ -5754,25 +3254,6 @@ export const signalsScoutConfigList: API.OperationMethod<
   input: SignalsScoutConfigListRequest,
   output: SignalsScoutConfigListResponse,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsScoutConfigRunError =
-  | Forbidden
-  | NotFound
-  | Conflict
-  | PosthogOpError;
-/** Run a scout now Dispatch one on-demand run of this scout immediately, regardless of its schedule. Useful to test a scout right after authoring it, or to refresh its findings on demand. The run executes asynchronously on the worker and inherits every guard the scheduled path has: it is forbidden if scouts are not enabled for the project (403), and skipped if the project is over its Signals credits quota or daily run budget (429) or a run for this scout is already in progress (409). A manual run counts against the same daily run budget as scheduled runs, so repeated manual runs of the same scout can exhaust the project's daily allowance. A manual run does not change the scout's schedule or `last_run_at`. A disabled scout can still be run this way (to test before enabling). Returns immediately with the workflow id — poll the scout's runs for the result. */
-export const signalsScoutConfigRun: API.OperationMethod<
-  SignalsScoutConfigRunRequest,
-  SignalsScoutConfigRunResponse,
-  SignalsScoutConfigRunError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutConfigRunRequest,
-  output: SignalsScoutConfigRunResponse,
-  errors: [Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -5796,7 +3277,7 @@ export type SignalsScoutConfigUpdateError =
   | BadRequest
   | NotFound
   | PosthogOpError;
-/** Update a scout config Tune one scout: change its schedule (rolling `run_interval_minutes`, or a cron `run_cron_schedule` that takes precedence when set), `enabled`, or `emit` (dry-run) posture, or output destinations. `skill_name` is fixed. Enabling records `enabled_by` and is activity-logged since it drives spend. */
+/** Update a scout config Tune one scout: change its schedule (`run_interval_minutes`), `enabled`, or `emit` (dry-run) posture. `skill_name` is fixed. Enabling records `enabled_by` and is activity-logged since it drives spend. */
 export const signalsScoutConfigUpdate: API.OperationMethod<
   SignalsScoutConfigUpdateRequest,
   SignalScoutConfig,
@@ -5814,7 +3295,7 @@ export type SignalsScoutEditReportError =
   | BadRequest
   | NotFound
   | PosthogOpError;
-/** Edit an existing report for a run Rewrite a report's title/summary, append a note, and/or set its suggested reviewers. Can target ANY of the project's inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Setting reviewers is how you rescue a report that surfaced routed to no one: it replaces the reviewer list and re-runs autostart, so a report missing a qualifying reviewer can open a draft PR. Title/summary edits are best-effort: the pipeline may later re-research them. */
+/** Edit an existing report for a run Rewrite a report's title/summary and/or append a note. Can target ANY of the project's inbox reports, not just scout-authored ones — so the edit is attributed to this scout. Title/summary edits are best-effort: the pipeline may later re-research and overwrite them. */
 export const signalsScoutEditReport: API.OperationMethod<
   SignalsScoutEditReportRequest,
   EditReportResponse,
@@ -5864,21 +3345,6 @@ export const signalsScoutEmitSignal: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SignalsScoutMembersListError = PosthogOpError;
-/** List project members for reviewer routing Return the people who can review work on this project — one row per member with access to it, each with their `user_uuid`, `email`, `first_name`/`last_name`, and resolved GitHub `login` (null when they have no linked GitHub identity). The cold-start reviewer-routing path: when a finding's owner can't be read off a fetched entity's `created_by` and there's no cached `reviewer:<area>` memory or inbox precedent, list members, match the owner by email/name, then put their resolved `github_login` in `suggested_reviewers` on `emit-report` / `edit-report`. Pass `search` to narrow a large roster; the result is capped at 200. Strictly team-scoped. */
-export const signalsScoutMembersList: API.OperationMethod<
-  SignalsScoutMembersListRequest,
-  SignalsScoutMembersListResponse,
-  SignalsScoutMembersListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutMembersListRequest,
-  output: SignalsScoutMembersListResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SignalsScoutMetadataGetError = PosthogOpError;
 /** Get scout metadata Return the project's scout metadata: whether it is enrolled, the current announcement banner (e.g. an alpha run-limit notice, or null when unset), and the enforced run limits with current usage. Limits reflect what the coordinator actually applies at dispatch, so a user can see the real throttle rather than what they assume they set. All values come from the `signals-scout` flag payload, so the banner and caps can change with no deploy. */
 export const signalsScoutMetadataGet: API.OperationMethod<
@@ -5889,51 +3355,6 @@ export const signalsScoutMetadataGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalsScoutMetadataGetRequest,
   output: ScoutMetadata,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsScoutNotesCreateError = BadRequest | PosthogOpError;
-/** Leave a note for the scouts Leave a steering note the scout fleet reads on its next runs. Address it to one scout via `skill_name` (`signals-scout-*`), or omit it for a general note every scout sees. Each call creates a new note (no upsert); delete retires one. Attributed to the authenticated user. */
-export const signalsScoutNotesCreate: API.OperationMethod<
-  SignalsScoutNotesCreateRequest,
-  ScoutNote,
-  SignalsScoutNotesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutNotesCreateRequest,
-  output: ScoutNote,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsScoutNotesDestroyError = NotFound | PosthogOpError;
-/** Delete a scout note Delete one note by its `id`, retiring it from every scout's view. Use this when a note has been acted on or no longer applies; time-boxed notes can instead carry an `expires_at` and retire themselves. */
-export const signalsScoutNotesDestroy: API.OperationMethod<
-  SignalsScoutNotesDestroyRequest,
-  SignalsScoutNotesDestroyResponse,
-  SignalsScoutNotesDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutNotesDestroyRequest,
-  output: SignalsScoutNotesDestroyResponse,
-  errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsScoutNotesListError = PosthogOpError;
-/** List scout notes Return the steering notes left for this project's scouts, newest first. Pass `skill_name` to get the notes addressed to one scout plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`>= date_from`, `< date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Results capped at 500. */
-export const signalsScoutNotesList: API.OperationMethod<
-  SignalsScoutNotesListRequest,
-  SignalsScoutNotesListResponse,
-  SignalsScoutNotesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutNotesListRequest,
-  output: SignalsScoutNotesListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6009,21 +3430,6 @@ export const signalsScoutRunsEmissionsBatch: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalsScoutRunsEmissionsBatchRequest,
   output: SignalsScoutRunsEmissionsBatchResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SignalsScoutRunsFindingsSummaryError = PosthogOpError;
-/** Summarise recent scout output across the fleet Return a cheap fleet-wide tally of the output the scout troop produced in the recent window — the finding count, the distinct reports authored/edited via the report channel, the number of distinct scouts behind them, and the latest output time. Backs the 'Scout findings' callout so it renders from one query instead of the client paging through the whole runs window. Counts runs that emitted at least one finding (`emitted_count > 0`) or authored/edited an inbox report within the last `window_hours` (default 72), capped to the most recent 120 such runs so the count matches what the findings list renders. Strictly team-scoped. */
-export const signalsScoutRunsFindingsSummary: API.OperationMethod<
-  SignalsScoutRunsFindingsSummaryRequest,
-  FleetFindingsSummary,
-  SignalsScoutRunsFindingsSummaryError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SignalsScoutRunsFindingsSummaryRequest,
-  output: FleetFindingsSummary,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6105,7 +3511,7 @@ export const signalsScoutScratchpadRemember: API.OperationMethod<
 }));
 
 export type SignalsScoutScratchpadSearchError = PosthogOpError;
-/** Search the scout scratchpad Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`; pass `key` instead for an exact single-entry lookup. `date_from` / `date_to` are a half-open window on `updated_at` (`>= date_from`, `< date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry's full prose. Results capped at 1000. */
+/** Search the scout scratchpad Return `SignalScratchpad` entries for this project, newest-first. ILIKE matches on `content` and `key`. `date_from` / `date_to` are a half-open window on `updated_at` (`>= date_from`, `< date_to`); pass `date_to` (the `updated_at` of the oldest entry seen) on subsequent calls to walk past the cap. Pass `keys_only=true` to scan keys without pulling entry bodies, or `content_max_chars` to cap each `content` to a preview — both keep a wide orientation scan from returning every entry's full prose. Results capped at 500. */
 export const signalsScoutScratchpadSearch: API.OperationMethod<
   SignalsScoutScratchpadSearchRequest,
   SignalsScoutScratchpadSearchResponse,

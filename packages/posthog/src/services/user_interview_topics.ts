@@ -919,68 +919,6 @@ export const PaginatedInterviewInviteResultList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedInterviewInviteResultList",
 }) as any as S.Schema<PaginatedInterviewInviteResultList>;
 
-export interface UserInterviewTopicsSharedLinkCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this user interview topic. */
-  id: string;
-}
-export const UserInterviewTopicsSharedLinkCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/user_interview_topics/{id}/shared_link/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UserInterviewTopicsSharedLinkCreateRequest",
-  }) as any as S.Schema<UserInterviewTopicsSharedLinkCreateRequest>;
-
-export interface SharedInterviewLink {
-  /** Public, unauthenticated URL any respondent can open to start a new interview for this topic. Backed by a topic-level SharingConfiguration access token — not tied to any specific interviewee. Each visit is a new anonymous respondent who self-identifies with a name; `distinct_id` and `session_id` query params on the URL are captured as best-effort person/session linkage. */
-  interview_url: string;
-}
-export const SharedInterviewLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interview_url: S.String,
-  }),
-).annotate({
-  identifier: "SharedInterviewLink",
-}) as any as S.Schema<SharedInterviewLink>;
-
-export interface UserInterviewTopicsSharedLinkDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this user interview topic. */
-  id: string;
-}
-export const UserInterviewTopicsSharedLinkDestroyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/projects/{project_id}/user_interview_topics/{id}/shared_link/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UserInterviewTopicsSharedLinkDestroyRequest",
-  }) as any as S.Schema<UserInterviewTopicsSharedLinkDestroyRequest>;
-
-export interface UserInterviewTopicsSharedLinkDestroyResponse {}
-export const UserInterviewTopicsSharedLinkDestroyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UserInterviewTopicsSharedLinkDestroyResponse",
-  }) as any as S.Schema<UserInterviewTopicsSharedLinkDestroyResponse>;
-
 export interface UserInterviewTopicsTestLinkRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1370,36 +1308,6 @@ export const userInterviewTopicsSendInvitesCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UserInterviewTopicsSendInvitesCreateRequest,
   output: PaginatedInterviewInviteResultList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserInterviewTopicsSharedLinkCreateError = PosthogOpError;
-/** Get-or-create a single non-personalised (shared) interview link for this topic. Unlike generate_links, the returned URL is not tied to a specific interviewee — every visitor becomes a new anonymous respondent who self-identifies with a name. Idempotent: repeated calls return the same active link. `distinct_id` and `session_id` query params appended to the URL are captured as best-effort person/session linkage. */
-export const userInterviewTopicsSharedLinkCreate: API.OperationMethod<
-  UserInterviewTopicsSharedLinkCreateRequest,
-  SharedInterviewLink,
-  UserInterviewTopicsSharedLinkCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewTopicsSharedLinkCreateRequest,
-  output: SharedInterviewLink,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserInterviewTopicsSharedLinkDestroyError = PosthogOpError;
-/** Revoke this topic's shared (non-personalised) interview link so an already-distributed URL can no longer start interviews. Idempotent — a no-op when no active shared link exists. A subsequent shared_link POST mints a fresh link (rotation). */
-export const userInterviewTopicsSharedLinkDestroy: API.OperationMethod<
-  UserInterviewTopicsSharedLinkDestroyRequest,
-  UserInterviewTopicsSharedLinkDestroyResponse,
-  UserInterviewTopicsSharedLinkDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserInterviewTopicsSharedLinkDestroyRequest,
-  output: UserInterviewTopicsSharedLinkDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

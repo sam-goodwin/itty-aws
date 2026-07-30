@@ -58,8 +58,6 @@ export interface FileSystemShortcut {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
   created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemShortcut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70,7 +68,6 @@ export const FileSystemShortcut = /*@__PURE__*/ S.suspend(() =>
     href: S.optional(S.NullOr(S.String)),
     order: S.optional(S.Number),
     created_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "FileSystemShortcut",

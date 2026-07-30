@@ -35,7 +35,7 @@ export const AgentPoolsAbortLatestOperationRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -550,42 +550,14 @@ export const ScaleProfileManualList = /*@__PURE__*/ S.Array(
   ManualScaleProfile,
 ) as any as S.Schema<ScaleProfileManualList>;
 
-/** Specifications on auto-scaling. */
-export interface AutoScaleProfile {
-  /** VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'. */
-  size?: string;
-  /** The minimum number of nodes of the specified sizes. */
-  minCount?: number;
-  /** The maximum number of nodes of the specified sizes. */
-  maxCount?: number;
-}
-export const AutoScaleProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    size: S.optional(S.String),
-    minCount: S.optional(S.Number),
-    maxCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoScaleProfile",
-}) as any as S.Schema<AutoScaleProfile>;
-
-/** Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Each profile targets a specific VM SKU and is evaluated independently. Scaling decisions across profiles are governed by the cluster autoscaler expander, configurable via `ManagedCluster.properties.autoScalerProfile.expander`. */
-export type ScaleProfileAutoscaleList = Array<AutoScaleProfile>;
-export const ScaleProfileAutoscaleList = /*@__PURE__*/ S.Array(
-  AutoScaleProfile,
-) as any as S.Schema<ScaleProfileAutoscaleList>;
-
 /** Specifications on how to scale a VirtualMachines agent pool. */
 export interface ScaleProfile {
   /** Specifications on how to scale the VirtualMachines agent pool to a fixed size. */
   manual?: ScaleProfileManualList;
-  /** Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Each profile targets a specific VM SKU and is evaluated independently. Scaling decisions across profiles are governed by the cluster autoscaler expander, configurable via `ManagedCluster.properties.autoScalerProfile.expander`. */
-  autoscale?: ScaleProfileAutoscaleList;
 }
 export const ScaleProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manual: S.optional(ScaleProfileManualList),
-    autoscale: S.optional(ScaleProfileAutoscaleList),
   }),
 ).annotate({ identifier: "ScaleProfile" }) as any as S.Schema<ScaleProfile>;
 
@@ -959,7 +931,7 @@ export const AgentPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1417,7 +1389,7 @@ export const AgentPoolsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1462,7 +1434,7 @@ export const AgentPoolsDeleteMachinesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1497,7 +1469,7 @@ export const AgentPoolsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1547,7 +1519,7 @@ export const AgentPoolsGetAvailableAgentPoolVersionsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/availableAgentPoolVersions",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -1641,7 +1613,7 @@ export const AgentPoolsGetUpgradeProfileRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1773,7 +1745,7 @@ export const AgentPoolsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -1847,7 +1819,7 @@ export const AgentPoolsUpgradeNodeImageVersionRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeNodeImageVersion",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -4155,7 +4127,7 @@ export const IdentityBindingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -4276,7 +4248,7 @@ export const IdentityBindingsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4311,7 +4283,7 @@ export const IdentityBindingsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4364,7 +4336,7 @@ export const IdentityBindingsListByManagedClusterRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4445,7 +4417,7 @@ export const MachinesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines/{machineName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4561,7 +4533,7 @@ export const MachinesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -4861,7 +4833,7 @@ export const MaintenanceConfigurationsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -4915,7 +4887,7 @@ export const MaintenanceConfigurationsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -4950,7 +4922,7 @@ export const MaintenanceConfigurationsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -5001,7 +4973,7 @@ export const MaintenanceConfigurationsListByManagedClusterRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -5076,7 +5048,7 @@ export const ManagedClustersAbortLatestOperationRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -5981,7 +5953,7 @@ export interface ContainerServiceNetworkProfileInput {
   /** Network plugin used for building the Kubernetes network. */
   networkPlugin?: NetworkPlugin | (string & {});
   /** The mode the network plugin should use. */
-  networkPluginMode?: NetworkPluginMode;
+  networkPluginMode?: NetworkPluginMode | (string & {});
   /** Network policy used for building the Kubernetes network. */
   networkPolicy?: NetworkPolicy | (string & {});
   /** The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'. */
@@ -6393,61 +6365,12 @@ export const ManagedClusterSecurityProfileDefenderSecurityMonitoring =
     identifier: "ManagedClusterSecurityProfileDefenderSecurityMonitoring",
   }) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityMonitoring>;
 
-/** Identity mapping used by Defender security gating for registry access. */
-export interface ManagedClusterSecurityProfileDefenderSecurityGatingIdentity {
-  /** The container registry for which the identity will be used; the identity specified here should have a federated identity credential attached to it. */
-  azureContainerRegistry?: string;
-  /** The identity object used to access the registry */
-  identity?: UserAssignedIdentity;
-}
-export const ManagedClusterSecurityProfileDefenderSecurityGatingIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      azureContainerRegistry: S.optional(S.String),
-      identity: S.optional(UserAssignedIdentity),
-    }),
-  ).annotate({
-    identifier: "ManagedClusterSecurityProfileDefenderSecurityGatingIdentity",
-  }) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
-
-/** List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code. */
-export type ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList =
-  Array<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
-export const ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    ManagedClusterSecurityProfileDefenderSecurityGatingIdentity,
-  ) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList>;
-
-/** Microsoft Defender settings for security gating. This validates container image eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. */
-export interface ManagedClusterSecurityProfileDefenderSecurityGating {
-  /** Whether to enable Defender security gating. When enabled, the gating feature scans container images and audits or blocks deployment of images that do not meet security standards according to configured security rules. For more information, see https://aka.ms/KubernetesDefenderAuditRule. */
-  enabled?: boolean;
-  /** List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code. */
-  identities?: ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList;
-  /** In use only while registry access is granted by secret rather than managed identity. Sets whether to grant the Defender gating agent access to cluster secrets for pulling images from registries. If secret access is denied and the registry requires pull secrets, the add-on will not perform image validation. Default value is false. */
-  allowSecretAccess?: boolean;
-}
-export const ManagedClusterSecurityProfileDefenderSecurityGating =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      identities: S.optional(
-        ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList,
-      ),
-      allowSecretAccess: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ManagedClusterSecurityProfileDefenderSecurityGating",
-  }) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGating>;
-
 /** Microsoft Defender settings for the security profile. */
 export interface ManagedClusterSecurityProfileDefender {
   /** Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty. */
   logAnalyticsWorkspaceResourceId?: string;
   /** Microsoft Defender threat detection for Cloud settings for the security profile. */
   securityMonitoring?: ManagedClusterSecurityProfileDefenderSecurityMonitoring;
-  /** Microsoft Defender settings for security gating. This validates container images eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. For more information, see https://aka.ms/KubernetesDefenderAuditRule. */
-  securityGating?: ManagedClusterSecurityProfileDefenderSecurityGating;
 }
 export const ManagedClusterSecurityProfileDefender = /*@__PURE__*/ S.suspend(
   () =>
@@ -6455,9 +6378,6 @@ export const ManagedClusterSecurityProfileDefender = /*@__PURE__*/ S.suspend(
       logAnalyticsWorkspaceResourceId: S.optional(S.String),
       securityMonitoring: S.optional(
         ManagedClusterSecurityProfileDefenderSecurityMonitoring,
-      ),
-      securityGating: S.optional(
-        ManagedClusterSecurityProfileDefenderSecurityGating,
       ),
     }),
 ).annotate({
@@ -7166,36 +7086,6 @@ export const ManagedClusterAIToolchainOperatorProfile = /*@__PURE__*/ S.suspend(
   identifier: "ManagedClusterAIToolchainOperatorProfile",
 }) as any as S.Schema<ManagedClusterAIToolchainOperatorProfile>;
 
-/** The config customization mode for this scheduler instance. */
-export type SchedulerConfigMode = "Default" | "ManagedByCRD";
-export const SchedulerConfigMode = /*@__PURE__*/ S.String;
-
-/** Profile with settings related to a specific instance of an AKS-managed scheduler. */
-export interface SchedulerInstanceProfile {
-  /** The configuration mode to be used by the AKS-managed scheduler. */
-  schedulerConfigMode?: SchedulerConfigMode | (string & {});
-}
-export const SchedulerInstanceProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schedulerConfigMode: S.optional(SchedulerConfigMode),
-  }),
-).annotate({
-  identifier: "SchedulerInstanceProfile",
-}) as any as S.Schema<SchedulerInstanceProfile>;
-
-/** Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile. */
-export interface SchedulerProfile {
-  /** Profile with settings related to upstream variant of kube-scheduler (https://github.com/kubernetes/kubernetes/tree/master/pkg/scheduler). */
-  upstream?: SchedulerInstanceProfile;
-}
-export const SchedulerProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upstream: S.optional(SchedulerInstanceProfile),
-  }),
-).annotate({
-  identifier: "SchedulerProfile",
-}) as any as S.Schema<SchedulerProfile>;
-
 /** Settings for hosted system addons. */
 export interface ManagedClusterHostedSystemProfile {
   /** Whether to enable hosted system addons for the cluster. */
@@ -7309,8 +7199,6 @@ export interface ManagedClusterPropertiesInput {
   bootstrapProfile?: ManagedClusterBootstrapProfile;
   /** AI toolchain operator settings that apply to the whole cluster. */
   aiToolchainOperatorProfile?: ManagedClusterAIToolchainOperatorProfile;
-  /** Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile. */
-  schedulerProfile?: SchedulerProfile;
   /** Settings for hosted system addons. For more information, see https://aka.ms/aks/automatic/systemcomponents. */
   hostedSystemProfile?: ManagedClusterHostedSystemProfile;
   /** Contains read-only information about the Managed Cluster. */
@@ -7366,7 +7254,6 @@ export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     aiToolchainOperatorProfile: S.optional(
       ManagedClusterAIToolchainOperatorProfile,
     ),
-    schedulerProfile: S.optional(SchedulerProfile),
     hostedSystemProfile: S.optional(ManagedClusterHostedSystemProfile),
     status: S.optional(ManagedClusterStatusInput),
   }),
@@ -7407,7 +7294,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7537,7 +7424,7 @@ export const ManagedClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -8352,8 +8239,6 @@ export interface ManagedClusterProperties {
   bootstrapProfile?: ManagedClusterBootstrapProfile;
   /** AI toolchain operator settings that apply to the whole cluster. */
   aiToolchainOperatorProfile?: ManagedClusterAIToolchainOperatorProfile;
-  /** Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile. */
-  schedulerProfile?: SchedulerProfile;
   /** Settings for hosted system addons. For more information, see https://aka.ms/aks/automatic/systemcomponents. */
   hostedSystemProfile?: ManagedClusterHostedSystemProfile;
   /** Contains read-only information about the Managed Cluster. */
@@ -8415,7 +8300,6 @@ export const ManagedClusterProperties = /*@__PURE__*/ S.suspend(() =>
     aiToolchainOperatorProfile: S.optional(
       ManagedClusterAIToolchainOperatorProfile,
     ),
-    schedulerProfile: S.optional(SchedulerProfile),
     hostedSystemProfile: S.optional(ManagedClusterHostedSystemProfile),
     status: S.optional(ManagedClusterStatus),
   }),
@@ -8574,7 +8458,7 @@ export const ManagedClustersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8606,7 +8490,7 @@ export const ManagedClustersGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -8689,7 +8573,7 @@ export const ManagedClustersGetCommandResultRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -8759,7 +8643,7 @@ export const ManagedClustersGetMeshRevisionProfileRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles/{mode}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -8885,7 +8769,7 @@ export const ManagedClustersGetMeshUpgradeProfileRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles/{mode}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -8936,7 +8820,7 @@ export const ManagedClustersGetUpgradeProfileRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -9057,7 +8941,7 @@ export const ManagedClustersListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9153,7 +9037,7 @@ export const ManagedClustersListByResourceGroupRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9182,7 +9066,7 @@ export const ManagedClustersListClusterAdminCredentialsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9246,7 +9130,7 @@ export const ManagedClustersListClusterMonitoringUserCredentialsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterMonitoringUserCredential",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9288,7 +9172,7 @@ export const ManagedClustersListClusterUserCredentialsRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9311,7 +9195,7 @@ export const ManagedClustersListKubernetesVersionsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/kubernetesVersions",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9427,7 +9311,7 @@ export const ManagedClustersListMeshRevisionProfilesRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9500,7 +9384,7 @@ export const ManagedClustersListMeshUpgradeProfilesRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9573,7 +9457,7 @@ export const ManagedClustersListOutboundNetworkDependenciesEndpointsRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9696,7 +9580,7 @@ export const ManagedClustersResetServicePrincipalProfileRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9728,7 +9612,7 @@ export const ManagedClustersRotateClusterCertificatesRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9760,7 +9644,7 @@ export const ManagedClustersRotateServiceAccountSigningKeysRequest =
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateServiceAccountSigningKeys",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -9800,7 +9684,7 @@ export const ManagedClustersRunCommandRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9825,7 +9709,7 @@ export const ManagedClustersStartRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9857,7 +9741,7 @@ export const ManagedClustersStopRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -9901,7 +9785,7 @@ export const ManagedClustersUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10107,7 +9991,7 @@ export const ManagedNamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10241,7 +10125,7 @@ export const ManagedNamespacesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10276,7 +10160,7 @@ export const ManagedNamespacesGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10344,7 +10228,7 @@ export const ManagedNamespacesListByManagedClusterRequest =
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -10436,7 +10320,7 @@ export const ManagedNamespacesListCredentialRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10476,7 +10360,7 @@ export const ManagedNamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10532,7 +10416,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.ContainerService/operations",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10622,7 +10506,7 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10658,7 +10542,7 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10775,7 +10659,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10870,7 +10754,7 @@ export const PrivateEndpointConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -10920,7 +10804,7 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -10991,7 +10875,7 @@ export const ResolvePrivateLinkServiceIdPOSTRequest = /*@__PURE__*/ S.suspend(
         method: "POST",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -11016,7 +10900,7 @@ export interface SnapshotPropertiesInput {
   /** CreationData to be used to specify the source agent pool resource ID to create this snapshot. */
   creationData?: CreationData;
   /** The type of a snapshot. The default is NodePool. */
-  snapshotType?: SnapshotPropertiesInputSnapshotType;
+  snapshotType?: SnapshotPropertiesInputSnapshotType | (string & {});
 }
 export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11054,7 +10938,7 @@ export const SnapshotsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11160,7 +11044,7 @@ export const SnapshotsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11192,7 +11076,7 @@ export const SnapshotsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11248,7 +11132,7 @@ export const SnapshotsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/snapshots",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11328,7 +11212,7 @@ export const SnapshotsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11365,7 +11249,7 @@ export const SnapshotsUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11460,7 +11344,7 @@ export const TrustedAccessRoleBindingsCreateOrUpdateRequest =
         method: "PUT",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
   ).annotate({
@@ -11549,7 +11433,7 @@ export const TrustedAccessRoleBindingsDeleteRequest = /*@__PURE__*/ S.suspend(
         method: "DELETE",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -11584,7 +11468,7 @@ export const TrustedAccessRoleBindingsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({
@@ -11635,7 +11519,7 @@ export const TrustedAccessRoleBindingsListRequest = /*@__PURE__*/ S.suspend(
         method: "GET",
         uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
         code: 200,
-        apiVersion: "2026-05-01",
+        apiVersion: "2026-04-01",
       }),
     ),
 ).annotate({
@@ -11706,7 +11590,7 @@ export const TrustedAccessRolesListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
       code: 200,
-      apiVersion: "2026-05-01",
+      apiVersion: "2026-04-01",
     }),
   ),
 ).annotate({

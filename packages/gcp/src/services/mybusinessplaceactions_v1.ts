@@ -60,12 +60,6 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type PlaceActionLinkProviderTypeEnum =
-  | "PROVIDER_TYPE_UNSPECIFIED"
-  | "MERCHANT"
-  | "AGGREGATOR_3P";
-export const PlaceActionLinkProviderTypeEnum = /*@__PURE__*/ S.String;
-
 export type PlaceActionLinkPlaceActionTypeEnum =
   | "PLACE_ACTION_TYPE_UNSPECIFIED"
   | "APPOINTMENT"
@@ -78,35 +72,41 @@ export type PlaceActionLinkPlaceActionTypeEnum =
   | "SOLOPRENEUR_APPOINTMENT";
 export const PlaceActionLinkPlaceActionTypeEnum = /*@__PURE__*/ S.String;
 
+export type PlaceActionLinkProviderTypeEnum =
+  | "PROVIDER_TYPE_UNSPECIFIED"
+  | "MERCHANT"
+  | "AGGREGATOR_3P";
+export const PlaceActionLinkProviderTypeEnum = /*@__PURE__*/ S.String;
+
 /** Represents a place action link and its attributes. */
 export interface PlaceActionLink {
-  /** Output only. Specifies the provider type. */
-  providerType?: PlaceActionLinkProviderTypeEnum | (string & {});
-  /** Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location). */
-  uri?: string;
-  /** Required. The type of place action that can be performed using this link. */
-  placeActionType?: PlaceActionLinkPlaceActionTypeEnum | (string & {});
   /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
   name?: string;
-  /** Output only. Indicates whether this link can be edited by the client. */
-  isEditable?: boolean;
-  /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
-  isPreferred?: boolean;
-  /** Output only. The time when the place action link was last modified. */
-  updateTime?: string;
   /** Output only. The time when the place action link was created. */
   createTime?: string;
+  /** Output only. The time when the place action link was last modified. */
+  updateTime?: string;
+  /** Output only. Indicates whether this link can be edited by the client. */
+  isEditable?: boolean;
+  /** Required. The type of place action that can be performed using this link. */
+  placeActionType?: PlaceActionLinkPlaceActionTypeEnum | (string & {});
+  /** Output only. Specifies the provider type. */
+  providerType?: PlaceActionLinkProviderTypeEnum | (string & {});
+  /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
+  isPreferred?: boolean;
+  /** Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location). */
+  uri?: string;
 }
 export const PlaceActionLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerType: S.optional(PlaceActionLinkProviderTypeEnum),
-    uri: S.optional(S.String),
-    placeActionType: S.optional(PlaceActionLinkPlaceActionTypeEnum),
     name: S.optional(S.String),
-    isEditable: S.optional(S.Boolean),
-    isPreferred: S.optional(S.Boolean),
-    updateTime: S.optional(S.String),
     createTime: S.optional(S.String),
+    updateTime: S.optional(S.String),
+    isEditable: S.optional(S.Boolean),
+    placeActionType: S.optional(PlaceActionLinkPlaceActionTypeEnum),
+    providerType: S.optional(PlaceActionLinkProviderTypeEnum),
+    isPreferred: S.optional(S.Boolean),
+    uri: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PlaceActionLink",
@@ -178,22 +178,22 @@ export const GetLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLocationsPlaceActionLinksRequest>;
 
 export interface ListLocationsPlaceActionLinksRequest {
-  /** Required. The name of the location whose place action links will be listed. `locations/{location_id}`. */
-  parent: string;
-  /** Optional. If specified, returns the next page of place action links. */
-  pageToken?: string;
   /** Optional. A filter constraining the place action links to return. The response includes entries that match the filter. We support only the following filter: 1. place_action_type=XYZ where XYZ is a valid PlaceActionType. */
   filter?: string;
   /** Optional. How many place action links to return per page. Default of 10. The minimum is 1. */
   pageSize?: number;
+  /** Optional. If specified, returns the next page of place action links. */
+  pageToken?: string;
+  /** Required. The name of the location whose place action links will be listed. `locations/{location_id}`. */
+  parent: string;
 }
 export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -227,21 +227,21 @@ export const ListPlaceActionLinksResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlaceActionLinksResponse>;
 
 export interface ListPlaceActionTypeMetadataRequest {
-  /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
-  languageCode?: string;
-  /** Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned. */
-  filter?: string;
   /** Optional. How many action types to include per page. Default is 10, minimum is 1. */
   pageSize?: number;
   /** Optional. If specified, the next page of place action type metadata is retrieved. The `pageToken` is returned when a call to `placeActionTypeMetadata.list` returns more results than can fit into the requested page size. */
   pageToken?: string;
+  /** Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned. */
+  filter?: string;
+  /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
+  languageCode?: string;
 }
 export const ListPlaceActionTypeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -268,15 +268,15 @@ export const PlaceActionTypeMetadataPlaceActionTypeEnum =
 
 /** Metadata for supported place action types. */
 export interface PlaceActionTypeMetadata {
-  /** The place action type. */
-  placeActionType?: PlaceActionTypeMetadataPlaceActionTypeEnum;
   /** The localized display name for the attribute, if available; otherwise, the English display name. */
   displayName?: string;
+  /** The place action type. */
+  placeActionType?: PlaceActionTypeMetadataPlaceActionTypeEnum;
 }
 export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    placeActionType: S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
     displayName: S.optional(S.String),
+    placeActionType: S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
   }),
 ).annotate({
   identifier: "PlaceActionTypeMetadata",

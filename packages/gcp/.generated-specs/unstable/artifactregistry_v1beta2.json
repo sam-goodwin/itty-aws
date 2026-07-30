@@ -7,44 +7,53 @@
     "baseUrl": "https://artifactregistry.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.artifactregistry_v1beta2#ListLocationsResponse": {
+    "com.gcp.artifactregistry_v1beta2#Hash": {
       "type": "structure",
       "members": {
-        "nextPageToken": {
+        "value": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The standard List next-page token."
+            "smithy.api#documentation": "The hash value."
           }
         },
-        "locations": {
-          "target": "com.gcp.artifactregistry_v1beta2#LocationList",
+        "type": {
+          "target": "com.gcp.artifactregistry_v1beta2#HashTypeEnum",
           "traits": {
-            "smithy.api#documentation": "A list of locations that matches the specified filter in the request."
+            "smithy.api#documentation": "The algorithm used to compute the hash value."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The response message for Locations.ListLocations."
+        "smithy.api#documentation": "A hash of file content."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#LocationList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Location"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadAptArtifactRequest": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The request to upload an artifact."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsMetadata": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The operation metadata for importing artifacts."
+    "com.gcp.artifactregistry_v1beta2#HashTypeEnum": {
+      "type": "enum",
+      "members": {
+        "HASH_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HASH_TYPE_UNSPECIFIED"
+          }
+        },
+        "SHA256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SHA256"
+          }
+        },
+        "MD5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MD5"
+          }
+        },
+        "DIRSUM_SHA256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DIRSUM_SHA256"
+          }
+        }
       }
     },
     "com.gcp.artifactregistry_v1beta2#UploadAptArtifactMetadata": {
@@ -54,27 +63,60 @@
         "smithy.api#documentation": "The operation metadata for uploading artifacts."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#SetIamPolicyRequest": {
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource": {
       "type": "structure",
       "members": {
-        "policy": {
-          "target": "com.gcp.artifactregistry_v1beta2#Policy",
+        "uris": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
           "traits": {
-            "smithy.api#documentation": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them."
+            "smithy.api#documentation": "Cloud Storage paths URI (e.g., gs://my_bucket//my_object)."
+          }
+        },
+        "useWildcards": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Supports URI wildcards for matching multiple objects from a single URI."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Request message for `SetIamPolicy` method."
+        "smithy.api#documentation": "Google Cloud Storage location where the artifacts currently reside."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadAptArtifactRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The request to upload an artifact."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#TestIamPermissionsRequest": {
+      "type": "structure",
+      "members": {
+        "permissions": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
+          "traits": {
+            "smithy.api#documentation": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request message for `TestIamPermissions` method."
       }
     },
     "com.gcp.artifactregistry_v1beta2#Location": {
       "type": "structure",
       "members": {
-        "name": {
+        "displayName": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+            "smithy.api#documentation": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."
           }
         },
         "labels": {
@@ -95,10 +137,10 @@
             "smithy.api#documentation": "Service-specific metadata. For example the available capacity at the given location."
           }
         },
-        "displayName": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."
+            "smithy.api#documentation": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
           }
         }
       },
@@ -124,594 +166,19 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.gcp.artifactregistry_v1beta2#AptArtifact": {
-      "type": "structure",
-      "members": {
-        "controlFile": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Contents of the artifact's control metadata file."
-          }
-        },
-        "packageType": {
-          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactPackageTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. An artifact is a binary or source package."
-          }
-        },
-        "architecture": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Operating system architecture of the artifact."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The Artifact Registry resource name of the artifact."
-          }
-        },
-        "packageName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The Apt package name of the artifact."
-          }
-        },
-        "component": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Repository component of the artifact."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A detailed representation of an Apt artifact. Information in the record is derived from the archive's control file. See https://www.debian.org/doc/debian-policy/ch-controlfields.html"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#AptArtifactPackageTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PACKAGE_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PACKAGE_TYPE_UNSPECIFIED"
-          }
-        },
-        "BINARY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "BINARY"
-          }
-        },
-        "SOURCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SOURCE"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "gcsSource": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource",
-          "traits": {
-            "smithy.api#documentation": "Google Cloud Storage location where input content is located."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The request to import new yum artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfig": {
-      "type": "structure",
-      "members": {
-        "allowSnapshotOverwrites": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "The repository with this flag will allow publishing the same snapshot versions."
-          }
-        },
-        "versionPolicy": {
-          "target": "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfigVersionPolicyEnum",
-          "traits": {
-            "smithy.api#documentation": "Version policy defines the versions that the registry will accept."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfigVersionPolicyEnum": {
-      "type": "enum",
-      "members": {
-        "VERSION_POLICY_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "VERSION_POLICY_UNSPECIFIED"
-          }
-        },
-        "RELEASE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RELEASE"
-          }
-        },
-        "SNAPSHOT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SNAPSHOT"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Tag": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the tag, for example: \"projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1\". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\\-._~:@], anything else must be URL encoded."
-          }
-        },
-        "version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the version the tag refers to, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the package or version ID parts contain slashes, the slashes are escaped."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Tags point to a version and represent an alternative name that can be used to access the version."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Package": {
-      "type": "structure",
-      "members": {
-        "createTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time when the package was created."
-          }
-        },
-        "updateTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time when the package was last updated. This includes publishing a new version of the package."
-          }
-        },
-        "displayName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The display name of the package."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped."
-          }
-        },
-        "annotations": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringMap",
-          "traits": {
-            "smithy.api#documentation": "Optional. Client specified annotations."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Packages are named collections of versions."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Expr": {
-      "type": "structure",
-      "members": {
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."
-          }
-        },
-        "expression": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Textual representation of an expression in Common Expression Language syntax."
-          }
-        },
-        "location": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."
-          }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() < 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMetadata": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The operation metadata for uploading artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsResponse": {
-      "type": "structure",
-      "members": {
-        "yumArtifacts": {
-          "target": "com.gcp.artifactregistry_v1beta2#YumArtifactList",
-          "traits": {
-            "smithy.api#documentation": "The yum artifacts imported."
-          }
-        },
-        "errors": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfoList",
-          "traits": {
-            "smithy.api#documentation": "Detailed error info for packages that were not imported."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response message from importing YUM artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#YumArtifactList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#YumArtifact"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfoList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfo"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListFilesResponse": {
-      "type": "structure",
-      "members": {
-        "files": {
-          "target": "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2FileList",
-          "traits": {
-            "smithy.api#documentation": "The files returned."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The token to retrieve the next page of files, or empty if there are no more files to return."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response from listing files."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2FileList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2File"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsMetadata": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The operation metadata for importing artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfo": {
-      "type": "structure",
-      "members": {
-        "gcsSource": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource",
-          "traits": {
-            "smithy.api#documentation": "Google Cloud Storage location requested."
-          }
-        },
-        "error": {
-          "target": "com.gcp.artifactregistry_v1beta2#Status",
-          "traits": {
-            "smithy.api#documentation": "The detailed error status."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Error information explaining why a package was not imported."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Empty": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "gcsSource": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource",
-          "traits": {
-            "smithy.api#documentation": "Google Cloud Storage location where input content is located."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The request to import new apt artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListPackagesResponse": {
-      "type": "structure",
-      "members": {
-        "packages": {
-          "target": "com.gcp.artifactregistry_v1beta2#PackageList",
-          "traits": {
-            "smithy.api#documentation": "The packages returned."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The token to retrieve the next page of packages, or empty if there are no more packages to return."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response from listing packages."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#PackageList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Package"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#OperationMetadata": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "Metadata type for longrunning-operations, currently empty."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#DownloadFileResponse": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The response to download a file."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Status": {
-      "type": "structure",
-      "members": {
-        "details": {
-          "target": "com.gcp.artifactregistry_v1beta2#DocumentMapList",
-          "traits": {
-            "smithy.api#documentation": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
-          }
-        },
-        "code": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The status code, which should be an enum value of google.rpc.Code."
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#DocumentMapList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#DocumentMap"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListTagsResponse": {
-      "type": "structure",
-      "members": {
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The token to retrieve the next page of tags, or empty if there are no more tags to return."
-          }
-        },
-        "tags": {
-          "target": "com.gcp.artifactregistry_v1beta2#TagList",
-          "traits": {
-            "smithy.api#documentation": "The tags returned."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response from listing tags."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#TagList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Tag"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListVersionsResponse": {
-      "type": "structure",
-      "members": {
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The token to retrieve the next page of versions, or empty if there are no more versions to return."
-          }
-        },
-        "versions": {
-          "target": "com.gcp.artifactregistry_v1beta2#VersionList",
-          "traits": {
-            "smithy.api#documentation": "The versions returned."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response from listing versions."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#VersionList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Version"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListRepositoriesResponse": {
-      "type": "structure",
-      "members": {
-        "repositories": {
-          "target": "com.gcp.artifactregistry_v1beta2#RepositoryList",
-          "traits": {
-            "smithy.api#documentation": "The repositories returned."
-          }
-        },
-        "nextPageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The token to retrieve the next page of repositories, or empty if there are no more repositories to return."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response from listing repositories."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#RepositoryList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Repository"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#Operation": {
-      "type": "structure",
-      "members": {
-        "response": {
-          "target": "com.gcp.artifactregistry_v1beta2#DocumentMap",
-          "traits": {
-            "smithy.api#documentation": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
-          }
-        },
-        "done": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
-          }
-        },
-        "metadata": {
-          "target": "com.gcp.artifactregistry_v1beta2#DocumentMap",
-          "traits": {
-            "smithy.api#documentation": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
-          }
-        },
-        "error": {
-          "target": "com.gcp.artifactregistry_v1beta2#Status",
-          "traits": {
-            "smithy.api#documentation": "The error result of the operation in case of failure or cancellation."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "This resource represents a long-running operation that is the result of a network API call."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadAptArtifactResponse": {
-      "type": "structure",
-      "members": {
-        "aptArtifacts": {
-          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactList",
-          "traits": {
-            "smithy.api#documentation": "The Apt artifacts updated."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response of the completed artifact upload operation. This response is contained in the Operation and available to users."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#AptArtifactList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#AptArtifact"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#TestIamPermissionsResponse": {
-      "type": "structure",
-      "members": {
-        "permissions": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
-          "traits": {
-            "smithy.api#documentation": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response message for `TestIamPermissions` method."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource": {
-      "type": "structure",
-      "members": {
-        "useWildcards": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Supports URI wildcards for matching multiple objects from a single URI."
-          }
-        },
-        "uris": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Cloud Storage paths URI (e.g., gs://my_bucket//my_object)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Google Cloud Storage location where the artifacts currently reside."
-      }
-    },
     "com.gcp.artifactregistry_v1beta2#ProjectSettings": {
       "type": "structure",
       "members": {
-        "pullPercent": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The percentage of pull traffic to redirect from GCR to AR when using partial redirection."
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set"
+          }
+        },
+        "pullPercent": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The percentage of pull traffic to redirect from GCR to AR when using partial redirection."
           }
         },
         "legacyRedirectionState": {
@@ -766,169 +233,77 @@
         }
       }
     },
-    "com.gcp.artifactregistry_v1beta2#TestIamPermissionsRequest": {
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsResponse": {
       "type": "structure",
       "members": {
-        "permissions": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
+        "errors": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfoList",
           "traits": {
-            "smithy.api#documentation": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Request message for `TestIamPermissions` method."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#YumArtifact": {
-      "type": "structure",
-      "members": {
-        "architecture": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Operating system architecture of the artifact."
+            "smithy.api#documentation": "Detailed error info for packages that were not imported."
           }
         },
-        "packageType": {
-          "target": "com.gcp.artifactregistry_v1beta2#YumArtifactPackageTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. An artifact is a binary or source package."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The Artifact Registry resource name of the artifact."
-          }
-        },
-        "packageName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The yum package name of the artifact."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A detailed representation of a Yum artifact."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#YumArtifactPackageTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PACKAGE_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PACKAGE_TYPE_UNSPECIFIED"
-          }
-        },
-        "BINARY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "BINARY"
-          }
-        },
-        "SOURCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SOURCE"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfo": {
-      "type": "structure",
-      "members": {
-        "gcsSource": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource",
-          "traits": {
-            "smithy.api#documentation": "Google Cloud Storage location requested."
-          }
-        },
-        "error": {
-          "target": "com.gcp.artifactregistry_v1beta2#Status",
-          "traits": {
-            "smithy.api#documentation": "The detailed error status."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Error information explaining why a package was not imported."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactRequest": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "The request to upload an artifact."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactResponse": {
-      "type": "structure",
-      "members": {
         "yumArtifacts": {
           "target": "com.gcp.artifactregistry_v1beta2#YumArtifactList",
           "traits": {
-            "smithy.api#documentation": "The Yum artifacts updated."
+            "smithy.api#documentation": "The yum artifacts imported."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The response of the completed artifact upload operation. This response is contained in the Operation and available to users."
+        "smithy.api#documentation": "The response message from importing YUM artifacts."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#Binding": {
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfo"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#YumArtifactList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#YumArtifact"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListPackagesResponse": {
       "type": "structure",
       "members": {
-        "role": {
+        "packages": {
+          "target": "com.gcp.artifactregistry_v1beta2#PackageList",
+          "traits": {
+            "smithy.api#documentation": "The packages returned."
+          }
+        },
+        "nextPageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles)."
-          }
-        },
-        "members": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`."
-          }
-        },
-        "condition": {
-          "target": "com.gcp.artifactregistry_v1beta2#Expr",
-          "traits": {
-            "smithy.api#documentation": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
+            "smithy.api#documentation": "The token to retrieve the next page of packages, or empty if there are no more packages to return."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Associates `members`, or principals, with a `role`."
+        "smithy.api#documentation": "The response from listing packages."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMediaResponse": {
-      "type": "structure",
-      "members": {
-        "operation": {
-          "target": "com.gcp.artifactregistry_v1beta2#Operation",
-          "traits": {
-            "smithy.api#documentation": "Operation to be returned to the user."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response to upload an artifact."
+    "com.gcp.artifactregistry_v1beta2#PackageList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Package"
       }
     },
     "com.gcp.artifactregistry_v1beta2#Policy": {
       "type": "structure",
       "members": {
-        "bindings": {
-          "target": "com.gcp.artifactregistry_v1beta2#BindingList",
-          "traits": {
-            "smithy.api#documentation": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`."
-          }
-        },
         "version": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
+          }
+        },
+        "bindings": {
+          "target": "com.gcp.artifactregistry_v1beta2#BindingList",
+          "traits": {
+            "smithy.api#documentation": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`."
           }
         },
         "etag": {
@@ -948,202 +323,95 @@
         "target": "com.gcp.artifactregistry_v1beta2#Binding"
       }
     },
-    "com.gcp.artifactregistry_v1beta2#Version": {
+    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMetadata": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The operation metadata for uploading artifacts."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Operation": {
       "type": "structure",
       "members": {
-        "createTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time when the version was created."
-          }
-        },
-        "updateTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time when the version was last updated."
-          }
-        },
-        "relatedTags": {
-          "target": "com.gcp.artifactregistry_v1beta2#TagList",
-          "traits": {
-            "smithy.api#documentation": "Output only. A list of related tags. Will contain up to 100 tags that reference this version."
-          }
-        },
         "metadata": {
           "target": "com.gcp.artifactregistry_v1beta2#DocumentMap",
           "traits": {
-            "smithy.api#documentation": "Output only. Repository-specific Metadata stored against this version. The fields returned are defined by the underlying repository-specific resource. Currently, the resources could be: DockerImage MavenArtifact"
+            "smithy.api#documentation": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
           }
         },
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped."
+            "smithy.api#documentation": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
           }
         },
-        "description": {
-          "target": "smithy.api#String",
+        "error": {
+          "target": "com.gcp.artifactregistry_v1beta2#Status",
           "traits": {
-            "smithy.api#documentation": "Optional. Description of the version, as specified in its metadata."
+            "smithy.api#documentation": "The error result of the operation in case of failure or cancellation."
+          }
+        },
+        "response": {
+          "target": "com.gcp.artifactregistry_v1beta2#DocumentMap",
+          "traits": {
+            "smithy.api#documentation": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
+          }
+        },
+        "done": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes."
+        "smithy.api#documentation": "This resource represents a long-running operation that is the result of a network API call."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2File": {
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource": {
       "type": "structure",
       "members": {
-        "name": {
-          "target": "smithy.api#String",
+        "uris": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
           "traits": {
-            "smithy.api#documentation": "The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped."
+            "smithy.api#documentation": "Cloud Storage paths URI (e.g., gs://my_bucket//my_object)."
           }
         },
-        "hashes": {
-          "target": "com.gcp.artifactregistry_v1beta2#HashList",
+        "useWildcards": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "The hashes of the file content."
-          }
-        },
-        "owner": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the Package or Version that owns this file, if any."
-          }
-        },
-        "sizeBytes": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The size of the File in bytes."
-          }
-        },
-        "createTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time when the File was created."
-          }
-        },
-        "updateTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time when the File was last updated."
+            "smithy.api#documentation": "Supports URI wildcards for matching multiple objects from a single URI."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Files store content that is potentially associated with Packages or Versions."
+        "smithy.api#documentation": "Google Cloud Storage location where the artifacts currently reside."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#HashList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#Hash"
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsMetadata": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The operation metadata for importing artifacts."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#Hash": {
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsRequest": {
       "type": "structure",
       "members": {
-        "type": {
-          "target": "com.gcp.artifactregistry_v1beta2#HashTypeEnum",
+        "gcsSource": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource",
           "traits": {
-            "smithy.api#documentation": "The algorithm used to compute the hash value."
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The hash value."
+            "smithy.api#documentation": "Google Cloud Storage location where input content is located."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "A hash of file content."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#HashTypeEnum": {
-      "type": "enum",
-      "members": {
-        "HASH_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "HASH_TYPE_UNSPECIFIED"
-          }
-        },
-        "SHA256": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SHA256"
-          }
-        },
-        "MD5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MD5"
-          }
-        },
-        "DIRSUM_SHA256": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DIRSUM_SHA256"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsResponse": {
-      "type": "structure",
-      "members": {
-        "aptArtifacts": {
-          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactList",
-          "traits": {
-            "smithy.api#documentation": "The Apt artifacts imported."
-          }
-        },
-        "errors": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfoList",
-          "traits": {
-            "smithy.api#documentation": "Detailed error info for packages that were not imported."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response message from importing APT artifacts."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfoList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfo"
+        "smithy.api#documentation": "The request to import new yum artifacts."
       }
     },
     "com.gcp.artifactregistry_v1beta2#Repository": {
       "type": "structure",
       "members": {
-        "kmsKeyName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created."
-          }
-        },
-        "sizeBytes": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs."
-          }
-        },
-        "createTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time when the repository was created."
-          }
-        },
-        "format": {
-          "target": "com.gcp.artifactregistry_v1beta2#RepositoryFormatEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. The format of packages that are stored in the repository."
-          }
-        },
         "labels": {
           "target": "com.gcp.artifactregistry_v1beta2#StringMap",
           "traits": {
@@ -1156,10 +424,34 @@
             "smithy.api#documentation": "Output only. Whether or not this repository satisfies PZS."
           }
         },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique."
+          }
+        },
+        "kmsKeyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created."
+          }
+        },
         "satisfiesPzi": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Output only. Whether or not this repository satisfies PZI."
+          }
+        },
+        "mavenConfig": {
+          "target": "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfig",
+          "traits": {
+            "smithy.api#documentation": "Maven repository config contains repository level configuration for the repositories of maven type."
+          }
+        },
+        "createTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The time when the repository was created."
           }
         },
         "updateTime": {
@@ -1168,22 +460,22 @@
             "smithy.api#documentation": "Output only. The time when the repository was last updated."
           }
         },
-        "name": {
+        "format": {
+          "target": "com.gcp.artifactregistry_v1beta2#RepositoryFormatEnum",
+          "traits": {
+            "smithy.api#documentation": "Optional. The format of packages that are stored in the repository."
+          }
+        },
+        "sizeBytes": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique."
+            "smithy.api#documentation": "Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs."
           }
         },
         "description": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The user-provided description of the repository."
-          }
-        },
-        "mavenConfig": {
-          "target": "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfig",
-          "traits": {
-            "smithy.api#documentation": "Maven repository config contains repository level configuration for the repositories of maven type."
           }
         }
       },
@@ -1244,24 +536,413 @@
         }
       }
     },
-    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource": {
+    "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2File": {
       "type": "structure",
       "members": {
-        "useWildcards": {
-          "target": "smithy.api#Boolean",
+        "hashes": {
+          "target": "com.gcp.artifactregistry_v1beta2#HashList",
           "traits": {
-            "smithy.api#documentation": "Supports URI wildcards for matching multiple objects from a single URI."
+            "smithy.api#documentation": "The hashes of the file content."
           }
         },
-        "uris": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
+        "createTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Cloud Storage paths URI (e.g., gs://my_bucket//my_object)."
+            "smithy.api#documentation": "Output only. The time when the File was created."
+          }
+        },
+        "updateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The time when the File was last updated."
+          }
+        },
+        "sizeBytes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size of the File in bytes."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped."
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Package or Version that owns this file, if any."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Google Cloud Storage location where the artifacts currently reside."
+        "smithy.api#documentation": "Files store content that is potentially associated with Packages or Versions."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#HashList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Hash"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsErrorInfo": {
+      "type": "structure",
+      "members": {
+        "gcsSource": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsGcsSource",
+          "traits": {
+            "smithy.api#documentation": "Google Cloud Storage location requested."
+          }
+        },
+        "error": {
+          "target": "com.gcp.artifactregistry_v1beta2#Status",
+          "traits": {
+            "smithy.api#documentation": "The detailed error status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error information explaining why a package was not imported."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Status": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+          }
+        },
+        "code": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The status code, which should be an enum value of google.rpc.Code."
+          }
+        },
+        "details": {
+          "target": "com.gcp.artifactregistry_v1beta2#DocumentMapList",
+          "traits": {
+            "smithy.api#documentation": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#DocumentMapList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#DocumentMap"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "versions": {
+          "target": "com.gcp.artifactregistry_v1beta2#VersionList",
+          "traits": {
+            "smithy.api#documentation": "The versions returned."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token to retrieve the next page of versions, or empty if there are no more versions to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response from listing versions."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#VersionList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Version"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Tag": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the version the tag refers to, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the package or version ID parts contain slashes, the slashes are escaped."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the tag, for example: \"projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1\". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\\-._~:@], anything else must be URL encoded."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags point to a version and represent an alternative name that can be used to access the version."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#DownloadFileResponse": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The response to download a file."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsMetadata": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The operation metadata for importing artifacts."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactResponse": {
+      "type": "structure",
+      "members": {
+        "yumArtifacts": {
+          "target": "com.gcp.artifactregistry_v1beta2#YumArtifactList",
+          "traits": {
+            "smithy.api#documentation": "The Yum artifacts updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of the completed artifact upload operation. This response is contained in the Operation and available to users."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The request to upload an artifact."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Binding": {
+      "type": "structure",
+      "members": {
+        "role": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles)."
+          }
+        },
+        "members": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`."
+          }
+        },
+        "condition": {
+          "target": "com.gcp.artifactregistry_v1beta2#Expr",
+          "traits": {
+            "smithy.api#documentation": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Associates `members`, or principals, with a `role`."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListFilesResponse": {
+      "type": "structure",
+      "members": {
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token to retrieve the next page of files, or empty if there are no more files to return."
+          }
+        },
+        "files": {
+          "target": "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2FileList",
+          "traits": {
+            "smithy.api#documentation": "The files returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response from listing files."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2FileList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#GoogleDevtoolsArtifactregistryV1beta2File"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#AptArtifact": {
+      "type": "structure",
+      "members": {
+        "architecture": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Operating system architecture of the artifact."
+          }
+        },
+        "controlFile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Contents of the artifact's control metadata file."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The Artifact Registry resource name of the artifact."
+          }
+        },
+        "component": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Repository component of the artifact."
+          }
+        },
+        "packageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The Apt package name of the artifact."
+          }
+        },
+        "packageType": {
+          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactPackageTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. An artifact is a binary or source package."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A detailed representation of an Apt artifact. Information in the record is derived from the archive's control file. See https://www.debian.org/doc/debian-policy/ch-controlfields.html"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#AptArtifactPackageTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PACKAGE_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PACKAGE_TYPE_UNSPECIFIED"
+          }
+        },
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BINARY"
+          }
+        },
+        "SOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SOURCE"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListLocationsResponse": {
+      "type": "structure",
+      "members": {
+        "locations": {
+          "target": "com.gcp.artifactregistry_v1beta2#LocationList",
+          "traits": {
+            "smithy.api#documentation": "A list of locations that matches the specified filter in the request."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The standard List next-page token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response message for Locations.ListLocations."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#LocationList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Location"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfig": {
+      "type": "structure",
+      "members": {
+        "versionPolicy": {
+          "target": "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfigVersionPolicyEnum",
+          "traits": {
+            "smithy.api#documentation": "Version policy defines the versions that the registry will accept."
+          }
+        },
+        "allowSnapshotOverwrites": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The repository with this flag will allow publishing the same snapshot versions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#MavenRepositoryConfigVersionPolicyEnum": {
+      "type": "enum",
+      "members": {
+        "VERSION_POLICY_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VERSION_POLICY_UNSPECIFIED"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        },
+        "SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SNAPSHOT"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Package": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped."
+          }
+        },
+        "annotations": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringMap",
+          "traits": {
+            "smithy.api#documentation": "Optional. Client specified annotations."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the package."
+          }
+        },
+        "createTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time when the package was created."
+          }
+        },
+        "updateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time when the package was last updated. This includes publishing a new version of the package."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Packages are named collections of versions."
       }
     },
     "com.gcp.artifactregistry_v1beta2#UploadAptArtifactMediaResponse": {
@@ -1276,6 +957,325 @@
       },
       "traits": {
         "smithy.api#documentation": "The response to upload an artifact."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMediaResponse": {
+      "type": "structure",
+      "members": {
+        "operation": {
+          "target": "com.gcp.artifactregistry_v1beta2#Operation",
+          "traits": {
+            "smithy.api#documentation": "Operation to be returned to the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response to upload an artifact."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListTagsResponse": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.gcp.artifactregistry_v1beta2#TagList",
+          "traits": {
+            "smithy.api#documentation": "The tags returned."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token to retrieve the next page of tags, or empty if there are no more tags to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response from listing tags."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#TagList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Tag"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadAptArtifactResponse": {
+      "type": "structure",
+      "members": {
+        "aptArtifacts": {
+          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactList",
+          "traits": {
+            "smithy.api#documentation": "The Apt artifacts updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of the completed artifact upload operation. This response is contained in the Operation and available to users."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#AptArtifactList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#AptArtifact"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Empty": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "gcsSource": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource",
+          "traits": {
+            "smithy.api#documentation": "Google Cloud Storage location where input content is located."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The request to import new apt artifacts."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#TestIamPermissionsResponse": {
+      "type": "structure",
+      "members": {
+        "permissions": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
+          "traits": {
+            "smithy.api#documentation": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response message for `TestIamPermissions` method."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Version": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.gcp.artifactregistry_v1beta2#DocumentMap",
+          "traits": {
+            "smithy.api#documentation": "Output only. Repository-specific Metadata stored against this version. The fields returned are defined by the underlying repository-specific resource. Currently, the resources could be: DockerImage MavenArtifact"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Description of the version, as specified in its metadata."
+          }
+        },
+        "createTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time when the version was created."
+          }
+        },
+        "updateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time when the version was last updated."
+          }
+        },
+        "relatedTags": {
+          "target": "com.gcp.artifactregistry_v1beta2#TagList",
+          "traits": {
+            "smithy.api#documentation": "Output only. A list of related tags. Will contain up to 100 tags that reference this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#SetIamPolicyRequest": {
+      "type": "structure",
+      "members": {
+        "policy": {
+          "target": "com.gcp.artifactregistry_v1beta2#Policy",
+          "traits": {
+            "smithy.api#documentation": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request message for `SetIamPolicy` method."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsResponse": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfoList",
+          "traits": {
+            "smithy.api#documentation": "Detailed error info for packages that were not imported."
+          }
+        },
+        "aptArtifacts": {
+          "target": "com.gcp.artifactregistry_v1beta2#AptArtifactList",
+          "traits": {
+            "smithy.api#documentation": "The Apt artifacts imported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response message from importing APT artifacts."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfo"
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsErrorInfo": {
+      "type": "structure",
+      "members": {
+        "gcsSource": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsGcsSource",
+          "traits": {
+            "smithy.api#documentation": "Google Cloud Storage location requested."
+          }
+        },
+        "error": {
+          "target": "com.gcp.artifactregistry_v1beta2#Status",
+          "traits": {
+            "smithy.api#documentation": "The detailed error status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error information explaining why a package was not imported."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#Expr": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Textual representation of an expression in Common Expression Language syntax."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() < 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#YumArtifact": {
+      "type": "structure",
+      "members": {
+        "packageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The yum package name of the artifact."
+          }
+        },
+        "packageType": {
+          "target": "com.gcp.artifactregistry_v1beta2#YumArtifactPackageTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. An artifact is a binary or source package."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The Artifact Registry resource name of the artifact."
+          }
+        },
+        "architecture": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Operating system architecture of the artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A detailed representation of a Yum artifact."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#YumArtifactPackageTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PACKAGE_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PACKAGE_TYPE_UNSPECIFIED"
+          }
+        },
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BINARY"
+          }
+        },
+        "SOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SOURCE"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#OperationMetadata": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Metadata type for longrunning-operations, currently empty."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListRepositoriesResponse": {
+      "type": "structure",
+      "members": {
+        "repositories": {
+          "target": "com.gcp.artifactregistry_v1beta2#RepositoryList",
+          "traits": {
+            "smithy.api#documentation": "The repositories returned."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token to retrieve the next page of repositories, or empty if there are no more repositories to return."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response from listing repositories."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#RepositoryList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.artifactregistry_v1beta2#Repository"
       }
     },
     "com.gcp.artifactregistry_v1beta2#GetProjectSettingsProjectsRequest": {
@@ -1434,13 +1434,6 @@
             "smithy.api#httpQuery": "pageToken"
           }
         },
-        "extraLocationTypes": {
-          "target": "com.gcp.artifactregistry_v1beta2#StringList",
-          "traits": {
-            "smithy.api#documentation": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
-            "smithy.api#httpQuery": "extraLocationTypes"
-          }
-        },
         "pageSize": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -1448,11 +1441,11 @@
             "smithy.api#httpQuery": "pageSize"
           }
         },
-        "filter": {
-          "target": "smithy.api#String",
+        "extraLocationTypes": {
+          "target": "com.gcp.artifactregistry_v1beta2#StringList",
           "traits": {
-            "smithy.api#documentation": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-            "smithy.api#httpQuery": "filter"
+            "smithy.api#documentation": "Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.",
+            "smithy.api#httpQuery": "extraLocationTypes"
           }
         },
         "name": {
@@ -1461,6 +1454,13 @@
             "smithy.api#documentation": "The resource that owns the locations collection, if applicable.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+            "smithy.api#httpQuery": "filter"
           }
         }
       }
@@ -1567,56 +1567,6 @@
         "smithy.api#documentation": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositoriesRequest": {
-      "type": "structure",
-      "members": {
-        "resource": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#SetIamPolicyRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositories": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositoriesRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Policy"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+resource}:setIamPolicy"
-        },
-        "smithy.api#documentation": "Updates the IAM policy for a given resource."
-      }
-    },
     "com.gcp.artifactregistry_v1beta2#GetIamPolicyProjectsLocationsRepositoriesRequest": {
       "type": "structure",
       "members": {
@@ -1659,162 +1609,6 @@
           "uri": "v1beta2/{+resource}:getIamPolicy"
         },
         "smithy.api#documentation": "Gets the IAM policy for a given resource."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the parent resource where the repository will be created.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "repositoryId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The repository id to use for this repository.",
-            "smithy.api#httpQuery": "repositoryId"
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#Repository",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositories": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Operation"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/repositories"
-        },
-        "smithy.api#documentation": "Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the parent resource whose repositories will be listed.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "orderBy": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. The field to order the results by.",
-            "smithy.api#httpQuery": "orderBy"
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of repositories to return. Maximum page size is 1,000.",
-            "smithy.api#httpQuery": "pageSize"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositories": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#ListRepositoriesResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v1beta2/{+parent}/repositories"
-        },
-        "smithy.api#documentation": "Lists repositories.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken"
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the repository to retrieve.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositories": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Repository"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v1beta2/{+name}"
-        },
-        "smithy.api#documentation": "Gets a repository."
       }
     },
     "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesRequest": {
@@ -1917,6 +1711,105 @@
         "smithy.api#documentation": "Updates a repository."
       }
     },
+    "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "orderBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The field to order the results by.",
+            "smithy.api#httpQuery": "orderBy"
+          }
+        },
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of repositories to return. Maximum page size is 1,000.",
+            "smithy.api#httpQuery": "pageSize"
+          }
+        },
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the parent resource whose repositories will be listed.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
+            "smithy.api#httpQuery": "pageToken"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#ListRepositoriesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v1beta2/{+parent}/repositories"
+        },
+        "smithy.api#documentation": "Lists repositories.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken"
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the repository to retrieve.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Repository"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v1beta2/{+name}"
+        },
+        "smithy.api#documentation": "Gets a repository."
+      }
+    },
     "com.gcp.artifactregistry_v1beta2#TestIamPermissionsProjectsLocationsRepositoriesRequest": {
       "type": "structure",
       "members": {
@@ -1967,22 +1860,329 @@
         "smithy.api#documentation": "Tests if the caller has a list of permissions on a resource."
       }
     },
+    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the parent resource where the repository will be created.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "repositoryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The repository id to use for this repository.",
+            "smithy.api#httpQuery": "repositoryId"
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#Repository",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Operation"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/repositories"
+        },
+        "smithy.api#documentation": "Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#SetIamPolicyRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#SetIamPolicyProjectsLocationsRepositoriesRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Policy"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+resource}:setIamPolicy"
+        },
+        "smithy.api#documentation": "Updates the IAM policy for a given resource."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent resource where the artifacts will be uploaded.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#UploadAptArtifactRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifactsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#UploadAptArtifactMediaResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/aptArtifacts:create"
+        },
+        "smithy.api#documentation": "Directly uploads an Apt artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent resource where the artifacts will be imported.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifactsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Operation"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/aptArtifacts:import"
+        },
+        "smithy.api#documentation": "Imports Apt artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent resource where the artifacts will be imported.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifactsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Operation"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/yumArtifacts:import"
+        },
+        "smithy.api#documentation": "Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifactsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent resource where the artifacts will be uploaded.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#UploadYumArtifactRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifacts": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifactsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMediaResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/yumArtifacts:create"
+        },
+        "smithy.api#documentation": "Directly uploads a Yum artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored."
+      }
+    },
     "com.gcp.artifactregistry_v1beta2#PatchProjectsLocationsRepositoriesPackagesRequest": {
       "type": "structure",
       "members": {
-        "updateMask": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
-            "smithy.api#httpQuery": "updateMask"
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "updateMask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+            "smithy.api#httpQuery": "updateMask"
           }
         },
         "body": {
@@ -2022,6 +2222,49 @@
           "uri": "v1beta2/{+name}"
         },
         "smithy.api#documentation": "Updates a package."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the package to delete.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackages": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Operation"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "v1beta2/{+name}"
+        },
+        "smithy.api#documentation": "Deletes a package and all of its versions and tags. The returned operation will complete once the package has been deleted."
       }
     },
     "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesPackagesRequest": {
@@ -2123,49 +2366,6 @@
         "smithy.api#documentation": "Gets a package."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the package to delete.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackages": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Operation"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "v1beta2/{+name}"
-        },
-        "smithy.api#documentation": "Deletes a package and all of its versions and tags. The returned operation will complete once the package has been deleted."
-      }
-    },
     "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesPackagesVersionsViewEnum": {
       "type": "enum",
       "members": {
@@ -2192,19 +2392,19 @@
     "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesPackagesVersionsRequest": {
       "type": "structure",
       "members": {
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of versions to return. Maximum page size is 1,000.",
+            "smithy.api#httpQuery": "pageSize"
+          }
+        },
         "parent": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name of the parent resource whose versions will be listed.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
-            "smithy.api#httpQuery": "pageToken"
           }
         },
         "orderBy": {
@@ -2214,18 +2414,18 @@
             "smithy.api#httpQuery": "orderBy"
           }
         },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of versions to return. Maximum page size is 1,000.",
-            "smithy.api#httpQuery": "pageSize"
-          }
-        },
         "view": {
           "target": "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesPackagesVersionsViewEnum",
           "traits": {
             "smithy.api#documentation": "The view that should be returned in the response.",
             "smithy.api#httpQuery": "view"
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
+            "smithy.api#httpQuery": "pageToken"
           }
         }
       }
@@ -2284,19 +2484,19 @@
     "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesPackagesVersionsRequest": {
       "type": "structure",
       "members": {
+        "view": {
+          "target": "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesPackagesVersionsViewEnum",
+          "traits": {
+            "smithy.api#documentation": "The view that should be returned in the response.",
+            "smithy.api#httpQuery": "view"
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name of the version to retrieve.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "view": {
-          "target": "com.gcp.artifactregistry_v1beta2#GetProjectsLocationsRepositoriesPackagesVersionsViewEnum",
-          "traits": {
-            "smithy.api#documentation": "The view that should be returned in the response.",
-            "smithy.api#httpQuery": "view"
           }
         }
       }
@@ -2328,19 +2528,19 @@
     "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesVersionsRequest": {
       "type": "structure",
       "members": {
-        "force": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted.",
-            "smithy.api#httpQuery": "force"
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name of the version to delete.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted.",
+            "smithy.api#httpQuery": "force"
           }
         }
       }
@@ -2373,63 +2573,6 @@
           "uri": "v1beta2/{+name}"
         },
         "smithy.api#documentation": "Deletes a version and all of its content. The returned operation will complete once the version has been deleted."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTagsRequest": {
-      "type": "structure",
-      "members": {
-        "tagId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The tag id to use for this repository.",
-            "smithy.api#httpQuery": "tagId"
-          }
-        },
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the parent resource where the tag will be created.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#Tag",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTags": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTagsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Tag"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/tags"
-        },
-        "smithy.api#documentation": "Creates a tag."
       }
     },
     "com.gcp.artifactregistry_v1beta2#PatchProjectsLocationsRepositoriesPackagesTagsRequest": {
@@ -2489,9 +2632,123 @@
         "smithy.api#documentation": "Updates a tag."
       }
     },
+    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTagsRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the tag to delete.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTagsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Empty"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "v1beta2/{+name}"
+        },
+        "smithy.api#documentation": "Deletes a tag."
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTagsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent resource where the tag will be created.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "tagId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tag id to use for this repository.",
+            "smithy.api#httpQuery": "tagId"
+          }
+        },
+        "body": {
+          "target": "com.gcp.artifactregistry_v1beta2#Tag",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTags": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.artifactregistry_v1beta2#CreateProjectsLocationsRepositoriesPackagesTagsRequest"
+      },
+      "output": {
+        "target": "com.gcp.artifactregistry_v1beta2#Tag"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
+        },
+        {
+          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1beta2/{+parent}/tags"
+        },
+        "smithy.api#documentation": "Creates a tag."
+      }
+    },
     "com.gcp.artifactregistry_v1beta2#ListProjectsLocationsRepositoriesPackagesTagsRequest": {
       "type": "structure",
       "members": {
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project \"`y-project` in the us-central region, append the following filter expression to your request: * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag\"` You can also use wildcards to match any number of characters before or after the value: * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*\"` * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag\"` * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*\"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0\"`",
+            "smithy.api#httpQuery": "filter"
+          }
+        },
+        "pageSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of tags to return. Maximum page size is 1,000.",
+            "smithy.api#httpQuery": "pageSize"
+          }
+        },
         "parent": {
           "target": "smithy.api#String",
           "traits": {
@@ -2500,25 +2757,11 @@
             "smithy.api#required": {}
           }
         },
-        "filter": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project \"`y-project` in the us-central region, append the following filter expression to your request: * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag\"` You can also use wildcards to match any number of characters before or after the value: * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*\"` * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag\"` * `name=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*\"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version=\"projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0\"`",
-            "smithy.api#httpQuery": "filter"
-          }
-        },
         "pageToken": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
             "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of tags to return. Maximum page size is 1,000.",
-            "smithy.api#httpQuery": "pageSize"
           }
         }
       }
@@ -2588,149 +2831,6 @@
         "smithy.api#documentation": "Gets a tag."
       }
     },
-    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTagsRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the tag to delete.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTags": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#DeleteProjectsLocationsRepositoriesPackagesTagsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Empty"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "v1beta2/{+name}"
-        },
-        "smithy.api#documentation": "Deletes a tag."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the parent resource where the artifacts will be uploaded.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#UploadYumArtifactRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifacts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesYumArtifactsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#UploadYumArtifactMediaResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/yumArtifacts:create"
-        },
-        "smithy.api#documentation": "Directly uploads a Yum artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the parent resource where the artifacts will be imported.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportYumArtifactsRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifacts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesYumArtifactsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Operation"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/yumArtifacts:import"
-        },
-        "smithy.api#documentation": "Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored."
-      }
-    },
     "com.gcp.artifactregistry_v1beta2#DownloadProjectsLocationsRepositoriesFilesRequest": {
       "type": "structure",
       "members": {
@@ -2778,19 +2878,19 @@
             "smithy.api#httpQuery": "pageSize"
           }
         },
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
         "parent": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. The name of the repository whose files will be listed. For example: \"projects/p1/locations/us-central1/repositories/repo1",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "pageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The next_page_token value returned from a previous list request, if any.",
+            "smithy.api#httpQuery": "pageToken"
           }
         },
         "filter": {
@@ -2865,106 +2965,6 @@
           "uri": "v1beta2/{+name}"
         },
         "smithy.api#documentation": "Gets a file."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the parent resource where the artifacts will be uploaded.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#UploadAptArtifactRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifacts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#UploadProjectsLocationsRepositoriesAptArtifactsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#UploadAptArtifactMediaResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/aptArtifacts:create"
-        },
-        "smithy.api#documentation": "Directly uploads an Apt artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored."
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifactsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the parent resource where the artifacts will be imported.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.artifactregistry_v1beta2#ImportAptArtifactsRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifacts": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.artifactregistry_v1beta2#ImportProjectsLocationsRepositoriesAptArtifactsRequest"
-      },
-      "output": {
-        "target": "com.gcp.artifactregistry_v1beta2#Operation"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#NotFound"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Forbidden"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#BadRequest"
-        },
-        {
-          "target": "com.gcp.artifactregistry_v1beta2#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1beta2/{+parent}/aptArtifacts:import"
-        },
-        "smithy.api#documentation": "Imports Apt artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored."
       }
     }
   }

@@ -103,18 +103,18 @@ export const DetectDetectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectDetectionsRequest>;
 
 export interface DetectionsResourceItem {
+  /** The language we detected. */
+  language?: string;
   /** The confidence of the detection result of this language. */
   confidence?: number;
   /** A boolean to indicate is the language detection result reliable. */
   isReliable?: boolean;
-  /** The language we detected. */
-  language?: string;
 }
 export const DetectionsResourceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    language: S.optional(S.String),
     confidence: S.optional(S.Number),
     isReliable: S.optional(S.Boolean),
-    language: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DetectionsResourceItem",
@@ -195,15 +195,15 @@ export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLanguagesRequest>;
 
 export interface LanguagesResource {
-  /** Human readable name of the language localized to the target language. */
-  name?: string;
   /** Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') */
   language?: string;
+  /** Human readable name of the language localized to the target language. */
+  name?: string;
 }
 export const LanguagesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     language: S.optional(S.String),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LanguagesResource",
@@ -234,14 +234,14 @@ export interface ListTranslationsRequest {
   bearer_token?: string;
   /** Pretty-print response. */
   pp?: boolean;
-  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
-  format?: ListTranslationsFormatEnum | (string & {});
-  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
-  model?: string;
   /** The customization id for translate */
   cid?: StringList;
   /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
   source?: string;
+  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
+  format?: ListTranslationsFormatEnum | (string & {});
+  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
+  model?: string;
   /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
   q: StringList;
   /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
@@ -251,10 +251,10 @@ export const ListTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bearer_token: S.optional(S.String.pipe(T.Query())),
     pp: S.optional(S.Boolean.pipe(T.Query())),
-    format: S.optional(ListTranslationsFormatEnum.pipe(T.Query())),
-    model: S.optional(S.String.pipe(T.Query())),
     cid: S.optional(StringList.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
+    format: S.optional(ListTranslationsFormatEnum.pipe(T.Query())),
+    model: S.optional(S.String.pipe(T.Query())),
     q: StringList.pipe(T.Query()),
     target: S.String.pipe(T.Query()),
   }).pipe(
@@ -271,16 +271,16 @@ export const ListTranslationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TranslationsResource {
   /** The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be empty. */
   detectedSourceLanguage?: string;
-  /** The `model` type used for this translation. Valid values are listed in public documentation. Can be different from requested `model`. Present only if specific model type was explicitly requested. */
-  model?: string;
   /** Text translated into the target language. */
   translatedText?: string;
+  /** The `model` type used for this translation. Valid values are listed in public documentation. Can be different from requested `model`. Present only if specific model type was explicitly requested. */
+  model?: string;
 }
 export const TranslationsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedSourceLanguage: S.optional(S.String),
-    model: S.optional(S.String),
     translatedText: S.optional(S.String),
+    model: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TranslationsResource",
@@ -306,24 +306,24 @@ export const TranslationsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The main translation request message for the Cloud Translation API. */
 export interface TranslateTextRequest {
+  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
+  model?: string;
+  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
+  format?: string;
+  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
+  source?: string;
   /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
   target?: string;
   /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
   q?: StringList;
-  /** The language of the source text, set to one of the language codes listed in Language Support. If the source language is not specified, the API will attempt to identify the source language automatically and return it within the response. */
-  source?: string;
-  /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
-  format?: string;
-  /** The `model` type requested for this translation. Valid values are listed in public documentation. */
-  model?: string;
 }
 export const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    model: S.optional(S.String),
+    format: S.optional(S.String),
+    source: S.optional(S.String),
     target: S.optional(S.String),
     q: S.optional(StringList),
-    source: S.optional(S.String),
-    format: S.optional(S.String),
-    model: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TranslateTextRequest",

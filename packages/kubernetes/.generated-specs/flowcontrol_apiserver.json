@@ -451,8 +451,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1FlowSchemaSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -1079,14 +1078,13 @@
         "status": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "`status` is the status of the condition. Should be specified and set to one of True, False, Unknown."
+            "smithy.api#documentation": "`status` is the status of the condition. Can be True, False, Unknown. Required."
           }
         },
         "type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "`type` is the type of the condition. Required.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`type` is the type of the condition. Required."
           }
         }
       },
@@ -1234,8 +1232,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1FlowSchemaSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -1691,8 +1688,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1FlowSchemaSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -2028,8 +2024,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1FlowSchemaSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -2299,8 +2294,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -2379,8 +2373,7 @@
         "limitResponse": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1LimitResponse",
           "traits": {
-            "smithy.api#documentation": "`limitResponse` indicates what to do with requests that can not be executed right now",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`limitResponse` indicates what to do with requests that can not be executed right now"
           }
         },
         "nominalConcurrencyShares": {
@@ -2479,14 +2472,13 @@
         "status": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "`status` is the status of the condition. Should be specified and set to one of True, False, Unknown."
+            "smithy.api#documentation": "`status` is the status of the condition. Can be True, False, Unknown. Required."
           }
         },
         "type": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "`type` is the type of the condition. Required.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`type` is the type of the condition. Required."
           }
         }
       },
@@ -2581,8 +2573,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -2883,8 +2874,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {
@@ -3220,8 +3210,7 @@
         "spec": {
           "target": "com.kubernetes.flowcontrol_apiserver#IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec",
           "traits": {
-            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "`spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
           }
         },
         "status": {

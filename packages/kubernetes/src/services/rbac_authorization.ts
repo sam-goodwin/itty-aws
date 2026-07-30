@@ -105,7 +105,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector =
     identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
   }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
 
-/** clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
+/** ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
 export type IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
 export const IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
@@ -115,7 +115,7 @@ export const IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
 
 /** AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole */
 export interface IoK8sApiRbacV1AggregationRule {
-  /** clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
+  /** ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
   clusterRoleSelectors?: IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList;
 }
 export const IoK8sApiRbacV1AggregationRule = /*@__PURE__*/ S.suspend(() =>
@@ -297,32 +297,32 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
   identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
-/** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
+/** APIGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
 export type IoK8sApiRbacV1PolicyRuleApiGroupsList = Array<string>;
 export const IoK8sApiRbacV1PolicyRuleApiGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleApiGroupsList>;
 
-/** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
+/** NonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
 export type IoK8sApiRbacV1PolicyRuleNonResourceURLsList = Array<string>;
 export const IoK8sApiRbacV1PolicyRuleNonResourceURLsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleNonResourceURLsList>;
 
-/** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
+/** ResourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiRbacV1PolicyRuleResourceNamesList = Array<string>;
 export const IoK8sApiRbacV1PolicyRuleResourceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourceNamesList>;
 
-/** resources is a list of resources this rule applies to. '*' represents all resources. */
+/** Resources is a list of resources this rule applies to. '*' represents all resources. */
 export type IoK8sApiRbacV1PolicyRuleResourcesList = Array<string>;
 export const IoK8sApiRbacV1PolicyRuleResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourcesList>;
 
-/** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
+/** Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
 export type IoK8sApiRbacV1PolicyRuleVerbsList = Array<string>;
 export const IoK8sApiRbacV1PolicyRuleVerbsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -330,15 +330,15 @@ export const IoK8sApiRbacV1PolicyRuleVerbsList = /*@__PURE__*/ S.Array(
 
 /** PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to. */
 export interface IoK8sApiRbacV1PolicyRule {
-  /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
+  /** APIGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
   apiGroups?: IoK8sApiRbacV1PolicyRuleApiGroupsList;
-  /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
+  /** NonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
   nonResourceURLs?: IoK8sApiRbacV1PolicyRuleNonResourceURLsList;
-  /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
+  /** ResourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
   resourceNames?: IoK8sApiRbacV1PolicyRuleResourceNamesList;
-  /** resources is a list of resources this rule applies to. '*' represents all resources. */
+  /** Resources is a list of resources this rule applies to. '*' represents all resources. */
   resources?: IoK8sApiRbacV1PolicyRuleResourcesList;
-  /** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
+  /** Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
   verbs: IoK8sApiRbacV1PolicyRuleVerbsList;
 }
 export const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
@@ -353,7 +353,7 @@ export const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "IoK8sApiRbacV1PolicyRule",
 }) as any as S.Schema<IoK8sApiRbacV1PolicyRule>;
 
-/** rules holds all the PolicyRules for this ClusterRole */
+/** Rules holds all the PolicyRules for this ClusterRole */
 export type CreateRbacAuthorizationV1ClusterRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
 export const CreateRbacAuthorizationV1ClusterRoleRequestRulesList =
@@ -370,15 +370,15 @@ export interface CreateRbacAuthorizationV1ClusterRoleRequest {
   fieldManager?: string;
   /** fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. */
   fieldValidation?: string;
-  /** aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
+  /** AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
   aggregationRule?: IoK8sApiRbacV1AggregationRule;
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this ClusterRole */
+  /** Rules holds all the PolicyRules for this ClusterRole */
   rules?: CreateRbacAuthorizationV1ClusterRoleRequestRulesList;
 }
 export const CreateRbacAuthorizationV1ClusterRoleRequest =
@@ -404,7 +404,7 @@ export const CreateRbacAuthorizationV1ClusterRoleRequest =
     identifier: "CreateRbacAuthorizationV1ClusterRoleRequest",
   }) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleRequest>;
 
-/** rules holds all the PolicyRules for this ClusterRole */
+/** Rules holds all the PolicyRules for this ClusterRole */
 export type IoK8sApiRbacV1ClusterRoleRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
 export const IoK8sApiRbacV1ClusterRoleRulesList = /*@__PURE__*/ S.Array(
@@ -413,15 +413,15 @@ export const IoK8sApiRbacV1ClusterRoleRulesList = /*@__PURE__*/ S.Array(
 
 /** ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. */
 export interface IoK8sApiRbacV1ClusterRole {
-  /** aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
+  /** AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
   aggregationRule?: IoK8sApiRbacV1AggregationRule;
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this ClusterRole */
+  /** Rules holds all the PolicyRules for this ClusterRole */
   rules?: IoK8sApiRbacV1ClusterRoleRulesList;
 }
 export const IoK8sApiRbacV1ClusterRole = /*@__PURE__*/ S.suspend(() =>
@@ -438,11 +438,11 @@ export const IoK8sApiRbacV1ClusterRole = /*@__PURE__*/ S.suspend(() =>
 
 /** RoleRef contains information that points to the role being used */
 export interface IoK8sApiRbacV1RoleRef {
-  /** apiGroup is the group for the resource being referenced */
+  /** APIGroup is the group for the resource being referenced */
   apiGroup?: string;
-  /** kind is the type of resource being referenced */
+  /** Kind is the type of resource being referenced */
   kind: string;
-  /** name is the name of resource being referenced */
+  /** Name is the name of resource being referenced */
   name: string;
 }
 export const IoK8sApiRbacV1RoleRef = /*@__PURE__*/ S.suspend(() =>
@@ -457,13 +457,13 @@ export const IoK8sApiRbacV1RoleRef = /*@__PURE__*/ S.suspend(() =>
 
 /** Subject contains a reference to the object or user identities a role binding applies to. This can either hold a direct API object reference, or a value for non-objects such as user and group names. */
 export interface IoK8sApiRbacV1Subject {
-  /** apiGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and Group subjects. */
+  /** APIGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and Group subjects. */
   apiGroup?: string;
-  /** kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error. */
+  /** Kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error. */
   kind: string;
-  /** name of the object being referenced. */
+  /** Name of the object being referenced. */
   name: string;
-  /** namespace of the referenced object. If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error. */
+  /** Namespace of the referenced object. If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error. */
   namespace?: string;
 }
 export const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
@@ -477,7 +477,7 @@ export const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
   identifier: "IoK8sApiRbacV1Subject",
 }) as any as S.Schema<IoK8sApiRbacV1Subject>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
@@ -498,11 +498,11 @@ export interface CreateRbacAuthorizationV1ClusterRoleBindingRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList;
 }
 export const CreateRbacAuthorizationV1ClusterRoleBindingRequest =
@@ -530,7 +530,7 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingRequest =
     identifier: "CreateRbacAuthorizationV1ClusterRoleBindingRequest",
   }) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleBindingRequest>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
@@ -544,11 +544,11 @@ export interface IoK8sApiRbacV1ClusterRoleBinding {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: IoK8sApiRbacV1ClusterRoleBindingSubjectsList;
 }
 export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
@@ -563,7 +563,7 @@ export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "IoK8sApiRbacV1ClusterRoleBinding",
 }) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>;
 
-/** rules holds all the PolicyRules for this Role */
+/** Rules holds all the PolicyRules for this Role */
 export type CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
 export const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
@@ -586,9 +586,9 @@ export interface CreateRbacAuthorizationV1NamespacedRoleRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this Role */
+  /** Rules holds all the PolicyRules for this Role */
   rules?: CreateRbacAuthorizationV1NamespacedRoleRequestRulesList;
 }
 export const CreateRbacAuthorizationV1NamespacedRoleRequest =
@@ -616,7 +616,7 @@ export const CreateRbacAuthorizationV1NamespacedRoleRequest =
     identifier: "CreateRbacAuthorizationV1NamespacedRoleRequest",
   }) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequest>;
 
-/** rules holds all the PolicyRules for this Role */
+/** Rules holds all the PolicyRules for this Role */
 export type IoK8sApiRbacV1RoleRulesList = Array<IoK8sApiRbacV1PolicyRule>;
 export const IoK8sApiRbacV1RoleRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1PolicyRule,
@@ -628,9 +628,9 @@ export interface IoK8sApiRbacV1Role {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this Role */
+  /** Rules holds all the PolicyRules for this Role */
   rules?: IoK8sApiRbacV1RoleRulesList;
 }
 export const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
@@ -644,7 +644,7 @@ export const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
   identifier: "IoK8sApiRbacV1Role",
 }) as any as S.Schema<IoK8sApiRbacV1Role>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
@@ -667,11 +667,11 @@ export interface CreateRbacAuthorizationV1NamespacedRoleBindingRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList;
 }
 export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest =
@@ -700,7 +700,7 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest =
     identifier: "CreateRbacAuthorizationV1NamespacedRoleBindingRequest",
   }) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequest>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1RoleBindingSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const IoK8sApiRbacV1RoleBindingSubjectsList = /*@__PURE__*/ S.Array(
@@ -713,11 +713,11 @@ export interface IoK8sApiRbacV1RoleBinding {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: IoK8sApiRbacV1RoleBindingSubjectsList;
 }
 export const IoK8sApiRbacV1RoleBinding = /*@__PURE__*/ S.suspend(() =>
@@ -2254,7 +2254,7 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingRequest =
     identifier: "ReadRbacAuthorizationV1NamespacedRoleBindingRequest",
   }) as any as S.Schema<ReadRbacAuthorizationV1NamespacedRoleBindingRequest>;
 
-/** rules holds all the PolicyRules for this ClusterRole */
+/** Rules holds all the PolicyRules for this ClusterRole */
 export type ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
 export const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
@@ -2273,15 +2273,15 @@ export interface ReplaceRbacAuthorizationV1ClusterRoleRequest {
   fieldManager?: string;
   /** fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered. */
   fieldValidation?: string;
-  /** aggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
+  /** AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller. */
   aggregationRule?: IoK8sApiRbacV1AggregationRule;
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this ClusterRole */
+  /** Rules holds all the PolicyRules for this ClusterRole */
   rules?: ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList;
 }
 export const ReplaceRbacAuthorizationV1ClusterRoleRequest =
@@ -2308,7 +2308,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleRequest =
     identifier: "ReplaceRbacAuthorizationV1ClusterRoleRequest",
   }) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequest>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
@@ -2331,11 +2331,11 @@ export interface ReplaceRbacAuthorizationV1ClusterRoleBindingRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList;
 }
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest =
@@ -2364,7 +2364,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest =
     identifier: "ReplaceRbacAuthorizationV1ClusterRoleBindingRequest",
   }) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequest>;
 
-/** rules holds all the PolicyRules for this Role */
+/** Rules holds all the PolicyRules for this Role */
 export type ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
 export const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
@@ -2389,9 +2389,9 @@ export interface ReplaceRbacAuthorizationV1NamespacedRoleRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** rules holds all the PolicyRules for this Role */
+  /** Rules holds all the PolicyRules for this Role */
   rules?: ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList;
 }
 export const ReplaceRbacAuthorizationV1NamespacedRoleRequest =
@@ -2420,7 +2420,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleRequest =
     identifier: "ReplaceRbacAuthorizationV1NamespacedRoleRequest",
   }) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequest>;
 
-/** subjects holds references to the objects the role applies to. */
+/** Subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
@@ -2445,11 +2445,11 @@ export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest {
   apiVersion?: string;
   /** Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   kind?: string;
-  /** metadata is the standard object's metadata. */
+  /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
-  /** roleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
+  /** RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable. */
   roleRef: IoK8sApiRbacV1RoleRef;
-  /** subjects holds references to the objects the role applies to. */
+  /** Subjects holds references to the objects the role applies to. */
   subjects?: ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList;
 }
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest =

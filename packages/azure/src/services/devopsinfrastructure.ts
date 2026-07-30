@@ -30,7 +30,7 @@ export const ImageVersionsListByImageRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/images/{imageName}/versions",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -144,7 +144,7 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/providers/Microsoft.DevOpsInfrastructure/operations",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -236,7 +236,7 @@ export interface PoolsCheckNameAvailabilityRequest {
   /** The name of the resource. */
   name: string;
   /** The type of resource that is used as the scope of the availability check. */
-  type: DevOpsInfrastructureResourceType;
+  type: DevOpsInfrastructureResourceType | (string & {});
 }
 export const PoolsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -248,7 +248,7 @@ export const PoolsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/checkNameAvailability",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -389,7 +389,7 @@ export interface PoolProperties {
   /** Defines the type of fabric the agent will run on. */
   fabricProfile: FabricProfile;
   /** The resource id of the DevCenter Project the pool belongs to. */
-  devCenterProjectResourceId?: string;
+  devCenterProjectResourceId: string;
   /** The runtime configuration of the pool. */
   runtimeConfiguration?: RuntimeConfiguration;
 }
@@ -400,7 +400,7 @@ export const PoolProperties = /*@__PURE__*/ S.suspend(() =>
     organizationProfile: OrganizationProfile,
     agentProfile: AgentProfile,
     fabricProfile: FabricProfile,
-    devCenterProjectResourceId: S.optional(S.String),
+    devCenterProjectResourceId: S.String,
     runtimeConfiguration: S.optional(RuntimeConfiguration),
   }),
 ).annotate({ identifier: "PoolProperties" }) as any as S.Schema<PoolProperties>;
@@ -478,7 +478,7 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -594,7 +594,7 @@ export const PoolsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
       method: "DELETE",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -635,7 +635,7 @@ export const PoolsDeleteResourcesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "POST",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -667,7 +667,7 @@ export const PoolsGetRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -762,7 +762,7 @@ export const PoolsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -868,7 +868,7 @@ export const PoolsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/pools",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -967,7 +967,7 @@ export const PoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       method: "PATCH",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -1065,7 +1065,7 @@ export const ResourceDetailsListByPoolRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}/resources",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -1169,7 +1169,7 @@ export const SkuListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{locationName}/skus",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({
@@ -1440,7 +1440,7 @@ export const SubscriptionUsagesUsagesRequest = /*@__PURE__*/ S.suspend(() =>
       method: "GET",
       uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
       code: 200,
-      apiVersion: "2026-06-02",
+      apiVersion: "2025-09-20",
     }),
   ),
 ).annotate({

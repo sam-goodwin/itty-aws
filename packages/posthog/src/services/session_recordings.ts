@@ -78,7 +78,6 @@ export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
 
-/** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
   enabled?: boolean;
@@ -86,8 +85,6 @@ export interface SharingConfiguration {
   settings?: unknown;
   password_required?: boolean;
   share_passwords?: SharingConfigurationSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -97,7 +94,6 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
     settings: S.optional(S.Unknown),
     password_required: S.optional(S.Boolean),
     share_passwords: S.optional(SharingConfigurationSharePasswordsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "SharingConfiguration",

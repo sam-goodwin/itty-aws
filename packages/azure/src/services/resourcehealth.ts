@@ -499,7 +499,7 @@ export const EmergingIssuesGetRequestIssueName = /*@__PURE__*/ S.String;
 
 export interface EmergingIssuesGetRequest {
   /** The name of the emerging issue. */
-  issueName: EmergingIssuesGetRequestIssueName;
+  issueName: EmergingIssuesGetRequestIssueName | (string & {});
 }
 export const EmergingIssuesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

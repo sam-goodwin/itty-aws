@@ -142,12 +142,6 @@
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
         },
-        "members_can_see_org_members": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
-          }
-        },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
         },
@@ -463,12 +457,6 @@
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
         },
-        "members_can_see_org_members": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
-          }
-        },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
         },
@@ -630,12 +618,6 @@
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
         },
-        "members_can_see_org_members": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
-          }
-        },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
         },
@@ -759,12 +741,6 @@
         },
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
-        },
-        "members_can_see_org_members": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When False, members (below admin) only see themselves in the members list and only project members in access control."
-          }
         },
         "allow_publicly_shared_resources": {
           "target": "smithy.api#Boolean"
@@ -1435,13 +1411,40 @@
             "smithy.api#documentation": "Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places)."
           }
         },
+        "saml_entity_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
         "has_scim": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Returns whether SCIM is configured and enabled for this domain."
           }
         },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
         "scim_base_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_bearer_token": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
@@ -1453,15 +1456,37 @@
             "smithy.api#documentation": "Returns whether ID-JAG (XAA) is configured for this domain."
           }
         },
-        "identity_provider_config": {
+        "id_jag_issuer_url": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.",
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#OrganizationDomainIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
           }
         }
       },
       "traits": {}
+    },
+    "com.posthog.organizations#OrganizationDomainIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
     },
     "com.posthog.organizations#PaginatedOrganizationDomainListResultsList": {
       "type": "list",
@@ -1497,6 +1522,15 @@
         }
       }
     },
+    "com.posthog.organizations#DomainsCreateRequestIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
+    },
     "com.posthog.organizations#DomainsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1517,11 +1551,45 @@
         "sso_enforcement": {
           "target": "smithy.api#String"
         },
-        "identity_provider_config": {
+        "saml_entity_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "id_jag_issuer_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#DomainsCreateRequestIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
           }
         }
       },
@@ -1604,6 +1672,15 @@
         }
       }
     },
+    "com.posthog.organizations#DomainsUpdateRequestIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
+    },
     "com.posthog.organizations#DomainsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1632,11 +1709,45 @@
         "sso_enforcement": {
           "target": "smithy.api#String"
         },
-        "identity_provider_config": {
+        "saml_entity_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "id_jag_issuer_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#DomainsUpdateRequestIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
           }
         }
       },
@@ -1671,6 +1782,15 @@
         }
       }
     },
+    "com.posthog.organizations#DomainsPartialUpdateRequestIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
+    },
     "com.posthog.organizations#DomainsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1699,11 +1819,45 @@
         "sso_enforcement": {
           "target": "smithy.api#String"
         },
-        "identity_provider_config": {
+        "saml_entity_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "id_jag_issuer_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#DomainsPartialUpdateRequestIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
           }
         }
       },
@@ -1834,6 +1988,126 @@
         }
       }
     },
+    "com.posthog.organizations#DomainsScimTokenCreateRequestIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
+    },
+    "com.posthog.organizations#DomainsScimTokenCreateRequest": {
+      "type": "structure",
+      "members": {
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "A UUID string identifying this domain."
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "jit_provisioning_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "sso_enforcement": {
+          "target": "smithy.api#String"
+        },
+        "saml_entity_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "id_jag_issuer_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#DomainsScimTokenCreateRequestIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.organizations#DomainsScimTokenCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.organizations#DomainsScimTokenCreateRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.organizations#BadRequest"
+        },
+        {
+          "target": "com.posthog.organizations#Forbidden"
+        },
+        {
+          "target": "com.posthog.organizations#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/organizations/{organization_id}/domains/{id}/scim/token/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Regenerate SCIM bearer token."
+      }
+    },
+    "com.posthog.organizations#DomainsVerifyCreateRequestIdJagAllowedClientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
+      }
+    },
     "com.posthog.organizations#DomainsVerifyCreateRequest": {
       "type": "structure",
       "members": {
@@ -1862,11 +2136,45 @@
         "sso_enforcement": {
           "target": "smithy.api#String"
         },
-        "identity_provider_config": {
+        "saml_entity_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_acs_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "saml_x509_cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scim_enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "id_jag_issuer_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_jwks_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id_jag_allowed_clients": {
+          "target": "com.posthog.organizations#DomainsVerifyCreateRequestIdJagAllowedClientsList",
+          "traits": {
+            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
           }
         }
       },
@@ -1899,643 +2207,6 @@
           "uri": "/api/organizations/{organization_id}/domains/{id}/verify/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsListRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit",
-            "smithy.api#documentation": "Number of results to return per page."
-          }
-        },
-        "offset": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "offset",
-            "smithy.api#documentation": "The initial index from which to return the results."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#PaginatedIdentityProviderConfigList": {
-      "type": "structure",
-      "members": {
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "next": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "previous": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "results": {
-          "target": "com.posthog.organizations#PaginatedIdentityProviderConfigListResultsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.organizations#IdentityProviderConfig": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for this IdP configuration (e.g. 'Okta production')."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "has_saml": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SAML is fully configured on this config.",
-            "smithy.api#required": {}
-          }
-        },
-        "saml_entity_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP entity ID (issuer).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_acs_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML single sign-on (ACS) URL the IdP redirects to.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_x509_cert": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP X.509 signing certificate (PEM).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_scim": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM is enabled and a bearer token is set on this config.",
-            "smithy.api#required": {}
-          }
-        },
-        "scim_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token."
-          }
-        },
-        "scim_bearer_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_id_jag": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether ID-JAG (XAA) is configured on this config.",
-            "smithy.api#required": {}
-          }
-        },
-        "id_jag_issuer_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_jwks_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_allowed_clients": {
-          "target": "com.posthog.organizations#IdentityProviderConfigIdJagAllowedClientsList",
-          "traits": {
-            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.organizations#IdentityProviderConfigIdJagAllowedClientsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-      }
-    },
-    "com.posthog.organizations#PaginatedIdentityProviderConfigListResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.organizations#IdentityProviderConfig"
-      },
-      "traits": {}
-    },
-    "com.posthog.organizations#IdentityProviderConfigsList": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsListRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#PaginatedIdentityProviderConfigList"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsCreateRequestIdJagAllowedClientsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsCreateRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for this IdP configuration (e.g. 'Okta production')."
-          }
-        },
-        "saml_entity_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP entity ID (issuer).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_acs_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML single sign-on (ACS) URL the IdP redirects to.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_x509_cert": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP X.509 signing certificate (PEM).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "scim_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token."
-          }
-        },
-        "id_jag_issuer_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_jwks_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_allowed_clients": {
-          "target": "com.posthog.organizations#IdentityProviderConfigsCreateRequestIdJagAllowedClientsList",
-          "traits": {
-            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#IdentityProviderConfig"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this identity provider config."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#IdentityProviderConfig"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this identity provider config."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for this IdP configuration (e.g. 'Okta production')."
-          }
-        },
-        "saml_entity_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP entity ID (issuer).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_acs_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML single sign-on (ACS) URL the IdP redirects to.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_x509_cert": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP X.509 signing certificate (PEM).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "scim_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token."
-          }
-        },
-        "id_jag_issuer_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_jwks_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_allowed_clients": {
-          "target": "com.posthog.organizations#IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList",
-          "traits": {
-            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsUpdateRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#IdentityProviderConfig"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this identity provider config."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for this IdP configuration (e.g. 'Okta production')."
-          }
-        },
-        "saml_entity_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP entity ID (issuer).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_acs_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML single sign-on (ACS) URL the IdP redirects to.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "saml_x509_cert": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "SAML IdP X.509 signing certificate (PEM).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "scim_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token."
-          }
-        },
-        "id_jag_issuer_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_jwks_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Override JWKS URL. Defaults to OIDC discovery on the issuer URL.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "id_jag_allowed_clients": {
-          "target": "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList",
-          "traits": {
-            "smithy.api#documentation": "Allowed ID-JAG client IDs. Empty list allows any client_id."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsPartialUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsPartialUpdateRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#IdentityProviderConfig"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PATCH",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsDestroyRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this identity provider config."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsDestroy": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsDestroyRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.organizations#IdentityProviderConfigsScimTokenCreateRequest": {
-      "type": "structure",
-      "members": {
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "A UUID string identifying this identity provider config."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.organizations#SCIMTokenResponse": {
-      "type": "structure",
-      "members": {
-        "scim_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether SCIM is enabled for this config.",
-            "smithy.api#required": {}
-          }
-        },
-        "scim_bearer_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Newly generated plaintext SCIM bearer token. Only returned once.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.organizations#IdentityProviderConfigsScimTokenCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.organizations#IdentityProviderConfigsScimTokenCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.organizations#SCIMTokenResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/organizations/{organization_id}/identity_provider_configs/{id}/scim/token/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Regenerate the SCIM bearer token for this IdP config."
       }
     },
     "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdateRequest": {
@@ -3460,7 +3131,7 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "search",
-            "smithy.api#documentation": "Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters."
+            "smithy.api#documentation": "Match against member `first_name`, `last_name`, and `email`. Returns case-insensitive substring matches and fuzzy trigram matches (typos, prefix-as-you-type) together, ordered exact-first; each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters."
           }
         }
       },
@@ -3525,7 +3196,7 @@
         "search_match_type": {
           "target": "com.posthog.organizations#SearchMatchTypeEnum",
           "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
+            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -15606,7 +15277,7 @@
           "uri": "/api/organizations/{organization_id}/projects/{id}/logs_config/",
           "code": 200
         },
-        "smithy.api#documentation": "Manage logs product configuration for this project's canonical environment.\nMembers can read; writing requires project admin, matching the admin-only\nsettings UI. Mirrors the env-router action so /api/projects/:id/logs_config/\nresolves alongside the legacy /api/environments/:id/logs_config/ alias."
+        "smithy.api#documentation": "Manage logs product configuration for this project's canonical environment.\nMirrors the env-router action so /api/projects/:id/logs_config/ resolves\nalongside the legacy /api/environments/:id/logs_config/ alias."
       }
     },
     "com.posthog.organizations#OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList": {
@@ -16068,7 +15739,7 @@
           "uri": "/api/organizations/{organization_id}/projects/{id}/logs_config/",
           "code": 200
         },
-        "smithy.api#documentation": "Manage logs product configuration for this project's canonical environment.\nMembers can read; writing requires project admin, matching the admin-only\nsettings UI. Mirrors the env-router action so /api/projects/:id/logs_config/\nresolves alongside the legacy /api/environments/:id/logs_config/ alias."
+        "smithy.api#documentation": "Manage logs product configuration for this project's canonical environment.\nMirrors the env-router action so /api/projects/:id/logs_config/ resolves\nalongside the legacy /api/environments/:id/logs_config/ alias."
       }
     },
     "com.posthog.organizations#OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList": {
@@ -17549,8 +17220,7 @@
           "method": "GET",
           "uri": "/api/organizations/{organization_id}/roles/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesCreateRequest": {
@@ -17596,8 +17266,7 @@
           "method": "POST",
           "uri": "/api/organizations/{organization_id}/roles/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesRetrieveRequest": {
@@ -17645,8 +17314,7 @@
           "method": "GET",
           "uri": "/api/organizations/{organization_id}/roles/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesUpdateRequest": {
@@ -17700,8 +17368,7 @@
           "method": "PUT",
           "uri": "/api/organizations/{organization_id}/roles/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesPartialUpdateRequest": {
@@ -17755,8 +17422,7 @@
           "method": "PATCH",
           "uri": "/api/organizations/{organization_id}/roles/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesDestroyRequest": {
@@ -17804,8 +17470,7 @@
           "method": "DELETE",
           "uri": "/api/organizations/{organization_id}/roles/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesRoleMembershipsListRequest": {
@@ -17927,8 +17592,7 @@
           "method": "GET",
           "uri": "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesRoleMembershipsCreateRequest": {
@@ -17981,8 +17645,7 @@
           "method": "POST",
           "uri": "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesRoleMembershipsRetrieveRequest": {
@@ -18037,8 +17700,7 @@
           "method": "GET",
           "uri": "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#RolesRoleMembershipsDestroyRequest": {
@@ -18093,8 +17755,7 @@
           "method": "DELETE",
           "uri": "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/{id}/",
           "code": 200
-        },
-        "smithy.api#documentation": "Role endpoints disclose member records, so they scope them the same way the members list\ndoes when the org restricts member list visibility."
+        }
       }
     },
     "com.posthog.organizations#WelcomeCurrentRetrieveRequest": {
@@ -18441,28 +18102,10 @@
           "target": "com.posthog.organizations#DomainsScimLogsRetrieve"
         },
         {
+          "target": "com.posthog.organizations#DomainsScimTokenCreate"
+        },
+        {
           "target": "com.posthog.organizations#DomainsVerifyCreate"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsList"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsCreate"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsRetrieve"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsUpdate"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsPartialUpdate"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsDestroy"
-        },
-        {
-          "target": "com.posthog.organizations#IdentityProviderConfigsScimTokenCreate"
         },
         {
           "target": "com.posthog.organizations#IntegrationsEnvironmentMappingPartialUpdate"

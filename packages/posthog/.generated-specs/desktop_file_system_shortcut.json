@@ -111,13 +111,6 @@
         },
         "created_at": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {}

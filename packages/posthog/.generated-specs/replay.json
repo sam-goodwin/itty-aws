@@ -1528,105 +1528,6 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Session IDs of the recordings to delete (max 100 per call)."
-      }
-    },
-    "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "session_recording_ids": {
-          "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList",
-          "traits": {
-            "smithy.api#documentation": "Session IDs of the recordings to delete (max 100 per call).",
-            "smithy.api#required": {}
-          }
-        },
-        "date_from": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Earliest start time of the recordings, as an ISO date or a relative offset like '-30d'. Providing this narrows the lookup and speeds up the request; defaults to the project's recording retention period.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.replay#SessionRecordingBulkDeleteResponse": {
-      "type": "structure",
-      "members": {
-        "success": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips.",
-            "smithy.api#required": {}
-          }
-        },
-        "deleted_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of recordings that were deleted.",
-            "smithy.api#required": {}
-          }
-        },
-        "total_requested": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of session recording IDs in the request.",
-            "smithy.api#required": {}
-          }
-        },
-        "failed_ids": {
-          "target": "com.posthog.replay#SessionRecordingBulkDeleteResponseFailedIdsList",
-          "traits": {
-            "smithy.api#documentation": "Session IDs that were found but could not be deleted. These can be retried.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingBulkDeleteResponseFailedIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Session IDs that were found but could not be deleted. These can be retried."
-      }
-    },
-    "com.posthog.replay#SessionRecordingsBulkDeleteCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.replay#SessionRecordingBulkDeleteResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/session_recordings/bulk_delete/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Delete a batch of session recordings by session ID. Deletion is permanent and cannot be undone. IDs that don't match an existing recording are skipped and counted in `total_requested` but not `deleted_count`."
-      }
-    },
     "com.posthog.replay#CreateSessionSummariesIndividuallyRequestSessionIdsList": {
       "type": "list",
       "member": {
@@ -1792,9 +1693,6 @@
         },
         {
           "target": "com.posthog.replay#SessionRecordingsDestroy"
-        },
-        {
-          "target": "com.posthog.replay#SessionRecordingsBulkDeleteCreate"
         },
         {
           "target": "com.posthog.replay#CreateSessionSummariesIndividually"

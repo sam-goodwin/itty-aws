@@ -419,7 +419,7 @@
           "uri": "/v1/apps",
           "code": 200
         },
-        "smithy.api#documentation": "Create app\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nCreates a new app under the specified project. The `projectId` is required in the request body. The app is placed in the given region, or the project's default region if omitted (falling back to us-east-1). Returns `409 Conflict` with the existing app's id, name, and branch if an app with the same name already exists on the resolved branch."
+        "smithy.api#documentation": "Create app\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nCreates a new app under the specified project. The `projectId` is required in the request body. The app is placed in the given region (or the default region if omitted). Returns `409 Conflict` with the existing app's id, name, and branch if an app with the same name already exists on the resolved branch."
       }
     },
     "com.prisma.postgres#GetV1AppsByAppIdRequest": {
@@ -1840,7 +1840,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
+        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
       }
     },
     "com.prisma.postgres#GetV1ProjectsByProjectIdBranchesResponseDataItem": {
@@ -1897,7 +1897,7 @@
         "project": {
           "target": "com.prisma.postgres#GetV1ProjectsByProjectIdBranchesResponseDataItemProject",
           "traits": {
-            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
+            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
             "smithy.api#required": {}
           }
         }
@@ -2040,7 +2040,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
+        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
       }
     },
     "com.prisma.postgres#PostV1ProjectsByProjectIdBranchesResponseData": {
@@ -2097,7 +2097,7 @@
         "project": {
           "target": "com.prisma.postgres#PostV1ProjectsByProjectIdBranchesResponseDataProject",
           "traits": {
-            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
+            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
             "smithy.api#required": {}
           }
         }
@@ -2202,7 +2202,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
+        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
       }
     },
     "com.prisma.postgres#GetV1BranchesByBranchIdResponseData": {
@@ -2259,7 +2259,7 @@
         "project": {
           "target": "com.prisma.postgres#GetV1BranchesByBranchIdResponseDataProject",
           "traits": {
-            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
+            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
             "smithy.api#required": {}
           }
         }
@@ -2299,7 +2299,7 @@
           "uri": "/v1/branches/{branchId}",
           "code": 200
         },
-        "smithy.api#documentation": "Get a branch\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nReturns a single Branch by ID. Member resources are not inlined — list them via /v1/databases?branchId= and /v1/apps?branchId=."
+        "smithy.api#documentation": "Get a branch\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nReturns a single Branch by ID. Member resources are not inlined — list them via /v1/databases?branchId= and /v1/compute-services?branchId=."
       }
     },
     "com.prisma.postgres#PatchV1BranchesByBranchIdRequest": {
@@ -2364,7 +2364,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
+        "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\")."
       }
     },
     "com.prisma.postgres#PatchV1BranchesByBranchIdResponseData": {
@@ -2421,7 +2421,7 @@
         "project": {
           "target": "com.prisma.postgres#PatchV1BranchesByBranchIdResponseDataProject",
           "traits": {
-            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
+            "smithy.api#documentation": "Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles \"Flat and Hierarchical Coexistence\").",
             "smithy.api#required": {}
           }
         }
@@ -2508,901 +2508,6 @@
           "code": 200
         },
         "smithy.api#documentation": "Soft-delete a branch\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nSoft-deletes a Branch (sets deletedAt). Refuses if the Branch is the Project's current default, the Project's production Branch, or has live members."
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsRequest": {
-      "type": "structure",
-      "members": {
-        "cursor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "cursor"
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit"
-          }
-        },
-        "projectId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "projectId"
-          }
-        },
-        "branchId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "branchId"
-          }
-        },
-        "branchGitName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "branchGitName"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsResponseDataItemProject": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsResponseDataItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "providerName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "project": {
-          "target": "com.prisma.postgres#GetV1BucketsResponseDataItemProject",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "branchId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsResponseDataList": {
-      "type": "list",
-      "member": {
-        "target": "com.prisma.postgres#GetV1BucketsResponseDataItem"
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsResponsePagination": {
-      "type": "structure",
-      "members": {
-        "nextCursor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next cursor to continue pagination",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hasMore": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether there are more items to paginate",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsResponse": {
-      "type": "structure",
-      "members": {
-        "data": {
-          "target": "com.prisma.postgres#GetV1BucketsResponseDataList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "pagination": {
-          "target": "com.prisma.postgres#GetV1BucketsResponsePagination",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.prisma.postgres#GetV1Buckets": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#GetV1BucketsRequest"
-      },
-      "output": {
-        "target": "com.prisma.postgres#GetV1BucketsResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/v1/buckets",
-          "code": 200
-        },
-        "smithy.api#documentation": "List buckets\n\nReturns all object-store buckets the token has access to. Optionally filter by project ID."
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsRequest": {
-      "type": "structure",
-      "members": {
-        "projectId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the project to create the bucket in",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for the bucket. Generated if omitted."
-          }
-        },
-        "branchId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the branch to associate the bucket with. Mutually exclusive with branchGitName."
-          }
-        },
-        "branchGitName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Git name of the branch to associate the bucket with. Mutually exclusive with branchId."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsResponseDataProject": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#PostV1BucketsResponseData": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "providerName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "project": {
-          "target": "com.prisma.postgres#PostV1BucketsResponseDataProject",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "branchId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#PostV1BucketsResponse": {
-      "type": "structure",
-      "members": {
-        "data": {
-          "target": "com.prisma.postgres#PostV1BucketsResponseData",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.prisma.postgres#PostV1Buckets": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#PostV1BucketsRequest"
-      },
-      "output": {
-        "target": "com.prisma.postgres#PostV1BucketsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#BadRequest"
-        },
-        {
-          "target": "com.prisma.postgres#Forbidden"
-        },
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/v1/buckets",
-          "code": 200
-        },
-        "smithy.api#documentation": "Create bucket\n\nCreates a new object-store bucket in the specified project."
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdRequest": {
-      "type": "structure",
-      "members": {
-        "bucketId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdResponseDataProject": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdResponseData": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "providerName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "project": {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdResponseDataProject",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "branchId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdResponse": {
-      "type": "structure",
-      "members": {
-        "data": {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdResponseData",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketId": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#GetV1BucketsByBucketIdRequest"
-      },
-      "output": {
-        "target": "com.prisma.postgres#GetV1BucketsByBucketIdResponse"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/v1/buckets/{bucketId}",
-          "code": 200
-        },
-        "smithy.api#documentation": "Get bucket\n\nReturns the bucket with the given ID."
-      }
-    },
-    "com.prisma.postgres#DeleteV1BucketsByBucketIdRequest": {
-      "type": "structure",
-      "members": {
-        "bucketId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#DeleteV1BucketsByBucketId": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#DeleteV1BucketsByBucketIdRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/v1/buckets/{bucketId}",
-          "code": 200
-        },
-        "smithy.api#documentation": "Delete bucket\n\nPermanently deletes the bucket with the given ID, all objects stored in it, and all its access keys. This action cannot be undone."
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysRequest": {
-      "type": "structure",
-      "members": {
-        "bucketId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "cursor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "cursor"
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataItemRole": {
-      "type": "enum",
-      "members": {
-        "READ": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read"
-          }
-        },
-        "READ_WRITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read_write"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataItem": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "valueHint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "role": {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataItemRole",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataList": {
-      "type": "list",
-      "member": {
-        "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataItem"
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponsePagination": {
-      "type": "structure",
-      "members": {
-        "nextCursor": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next cursor to continue pagination",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hasMore": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether there are more items to paginate",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponse": {
-      "type": "structure",
-      "members": {
-        "data": {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponseDataList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "pagination": {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponsePagination",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.prisma.postgres#GetV1BucketsByBucketIdKeys": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysRequest"
-      },
-      "output": {
-        "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeysResponse"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/v1/buckets/{bucketId}/keys",
-          "code": 200
-        },
-        "smithy.api#documentation": "List bucket keys\n\nReturns all access keys for the given bucket."
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeysRequestRole": {
-      "type": "enum",
-      "members": {
-        "READ": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read"
-          }
-        },
-        "READ_WRITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read_write"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Access role for the key: \"read\" or \"read_write\"."
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeysRequest": {
-      "type": "structure",
-      "members": {
-        "bucketId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name for the key. Generated if omitted."
-          }
-        },
-        "role": {
-          "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeysRequestRole",
-          "traits": {
-            "smithy.api#documentation": "Access role for the key: \"read\" or \"read_write\".",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponseDataRole": {
-      "type": "enum",
-      "members": {
-        "READ": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read"
-          }
-        },
-        "READ_WRITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "read_write"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponseData": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "valueHint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "role": {
-          "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponseDataRole",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "secretAccessKey": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#sensitive": {}
-          }
-        },
-        "accessKeyId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#sensitive": {}
-          }
-        },
-        "endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "bucketName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponse": {
-      "type": "structure",
-      "members": {
-        "data": {
-          "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponseData",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.prisma.postgres#PostV1BucketsByBucketIdKeys": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeysRequest"
-      },
-      "output": {
-        "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeysResponse"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#BadRequest"
-        },
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/v1/buckets/{bucketId}/keys",
-          "code": 200
-        },
-        "smithy.api#documentation": "Create bucket key\n\nCreates a new access key for the given bucket. The `secretAccessKey` field is returned exactly once in this response and is never stored — copy it immediately."
-      }
-    },
-    "com.prisma.postgres#DeleteV1BucketsByBucketIdKeysByKeyIdRequest": {
-      "type": "structure",
-      "members": {
-        "bucketId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "keyId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.prisma.postgres#DeleteV1BucketsByBucketIdKeysByKeyId": {
-      "type": "operation",
-      "input": {
-        "target": "com.prisma.postgres#DeleteV1BucketsByBucketIdKeysByKeyIdRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "errors": [
-        {
-          "target": "com.prisma.postgres#NotFound"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/v1/buckets/{bucketId}/keys/{keyId}",
-          "code": 200
-        },
-        "smithy.api#documentation": "Delete bucket key\n\nRevokes and deletes the bucket key with the given ID."
       }
     },
     "com.prisma.postgres#GetV1BuildsByBuildIdLogsRequestFollow": {
@@ -10642,6 +9747,404 @@
         "smithy.api#documentation": "Transfer project\n\nTransfer the project with the given ID to the new owner's workspace"
       }
     },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "branchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "latestVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serviceEndpointDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataItem"
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponsePagination": {
+      "type": "structure",
+      "members": {
+        "nextCursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Next cursor to continue pagination",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "hasMore": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether there are more items to paginate",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesRequest"
+      },
+      "output": {
+        "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServicesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.prisma.postgres#Forbidden"
+        },
+        {
+          "target": "com.prisma.postgres#NotFound"
+        },
+        {
+          "target": "com.prisma.postgres#UnprocessableEntity"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectId}/compute-services",
+          "code": 200
+        },
+        "smithy.api#documentation": "List compute services for a project\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nReturns all compute services belonging to a project, ordered by creation time (oldest first). Supports cursor-based pagination."
+      }
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesRequestRegionId": {
+      "type": "enum",
+      "members": {
+        "US_EAST_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east-1"
+          }
+        },
+        "US_WEST_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west-1"
+          }
+        },
+        "EU_WEST_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu-west-3"
+          }
+        },
+        "EU_CENTRAL_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eu-central-1"
+          }
+        },
+        "AP_NORTHEAST_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ap-northeast-1"
+          }
+        },
+        "AP_SOUTHEAST_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ap-southeast-1"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "regionId": {
+          "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesRequestRegionId"
+        },
+        "branchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "branchGitName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponseDataRegion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponseData": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponseDataRegion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "branchId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "latestVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serviceEndpointDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponseData",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesRequest"
+      },
+      "output": {
+        "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServicesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.prisma.postgres#Forbidden"
+        },
+        {
+          "target": "com.prisma.postgres#NotFound"
+        },
+        {
+          "target": "com.prisma.postgres#Conflict"
+        },
+        {
+          "target": "com.prisma.postgres#UnprocessableEntity"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/projects/{projectId}/compute-services",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create compute service\n\n⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️\n\nCreates a new compute service under the specified project. The service is placed in the given region (or the default region if omitted). Returns `409 Conflict` with the existing service's id, name, and branch if a service with the same name already exists on the resolved branch."
+      }
+    },
     "com.prisma.postgres#GetV1ProjectsByProjectIdDatabasesRequest": {
       "type": "structure",
       "members": {
@@ -15258,27 +14761,6 @@
           "target": "com.prisma.postgres#DeleteV1BranchesByBranchId"
         },
         {
-          "target": "com.prisma.postgres#GetV1Buckets"
-        },
-        {
-          "target": "com.prisma.postgres#PostV1Buckets"
-        },
-        {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketId"
-        },
-        {
-          "target": "com.prisma.postgres#DeleteV1BucketsByBucketId"
-        },
-        {
-          "target": "com.prisma.postgres#GetV1BucketsByBucketIdKeys"
-        },
-        {
-          "target": "com.prisma.postgres#PostV1BucketsByBucketIdKeys"
-        },
-        {
-          "target": "com.prisma.postgres#DeleteV1BucketsByBucketIdKeysByKeyId"
-        },
-        {
           "target": "com.prisma.postgres#GetV1BuildsByBuildIdLogs"
         },
         {
@@ -15367,6 +14849,12 @@
         },
         {
           "target": "com.prisma.postgres#PostV1ProjectsByIdTransfer"
+        },
+        {
+          "target": "com.prisma.postgres#GetV1ProjectsByProjectIdComputeServices"
+        },
+        {
+          "target": "com.prisma.postgres#PostV1ProjectsByProjectIdComputeServices"
         },
         {
           "target": "com.prisma.postgres#GetV1ProjectsByProjectIdDatabases"

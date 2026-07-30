@@ -212,8 +212,12 @@ interface Ctx {
    * result (cycle-safe; mutated in place).
    */
   readonly refs: Map<string, { target: string; nullable: boolean }>;
-  /** Memo for {@link dirSensitive}: `"<dir>:<ref>"` → sensitivity. */
-  readonly dirSensitivity: Map<string, boolean>;
+  /**
+   * Per-direction set of `$ref` pointers whose reachable schema graph
+   * contains the direction's excluded flag (see {@link dirSensitive}).
+   * Built lazily, once per direction, by {@link buildDirSensitiveRefs}.
+   */
+  readonly dirSensitiveRefs: Map<Dir, ReadonlySet<string>>;
   readonly sensitivePatterns: readonly RegExp[];
 }
 
@@ -294,6 +298,11 @@ const flattenObject = (ctx: Ctx, def: any, depth = 0): FlatObject => {
     required: new Set(),
     isObject: false,
   };
+  // Revisiting a `$ref` under the same flags merges nothing new (property
+  // merge is first-wins) — dedupe so shared/cyclic allOf bases are walked
+  // once per flag combination instead of exponentially (MongoDB Atlas's
+  // polymorphic allOf/oneOf graph never finished under the bare depth cap).
+  const seen = new Set<string>();
   const visit = (
     d: any,
     dep: number,
@@ -301,6 +310,11 @@ const flattenObject = (ctx: Ctx, def: any, depth = 0): FlatObject => {
     inUnion: boolean,
   ): void => {
     if (dep > MAX_SCHEMA_DEPTH) return;
+    if (d && typeof d === "object" && typeof d.$ref === "string") {
+      const key = `${d.$ref}|${inAllOf}|${inUnion}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+    }
     const r = deref(ctx, d);
     if (!r || typeof r !== "object") return;
     if (Array.isArray(r.allOf)) {
@@ -379,6 +393,96 @@ const dirExcluded = (ctx: Ctx, prop: any, dir: Dir): boolean => {
   return !!r && typeof r === "object" && r[flag] === true;
 };
 
+/** Child schema slots the direction-sensitivity walk descends through. */
+const schemaChildren = (d: any): any[] => [
+  ...(Array.isArray(d.allOf) ? d.allOf : []),
+  ...(Array.isArray(d.oneOf) ? d.oneOf : []),
+  ...(Array.isArray(d.anyOf) ? d.anyOf : []),
+  ...(d.properties && typeof d.properties === "object"
+    ? Object.values(d.properties)
+    : []),
+  ...(d.items ? [d.items] : []),
+  ...(d.additionalProperties && typeof d.additionalProperties === "object"
+    ? [d.additionalProperties]
+    : []),
+];
+
+/**
+ * Walk an INLINE schema subtree (stopping at `$ref` nodes, which are
+ * appended to `refs` instead of followed). Returns whether the flag
+ * appears inline. Inline subtrees are JSON trees — no cycles.
+ */
+const scanInlineForFlag = (d: any, flag: string, refs: string[]): boolean => {
+  if (!d || typeof d !== "object") return false;
+  if (typeof d.$ref === "string") {
+    refs.push(d.$ref);
+    return false;
+  }
+  if (d[flag] === true) return true;
+  for (const sub of schemaChildren(d)) {
+    if (scanInlineForFlag(sub, flag, refs)) return true;
+  }
+  return false;
+};
+
+/**
+ * Compute, for the WHOLE document at once, the set of `$ref` pointers that
+ * are direction-sensitive: the flag appears somewhere in the schema graph
+ * reachable from the ref's target. One inline scan per distinct ref target
+ * (local flag + outgoing ref edges), then reverse propagation from the
+ * locally-flagged nodes — linear in spec size, and cycles / diamond-shared
+ * refs cost nothing. (This replaces a per-call DFS whose memoization was
+ * disabled by ANY re-encountered ref; on large specs where every schema
+ * shares refs — e.g. MongoDB Atlas's ubiquitous `links` — that re-walked
+ * the graph for each of thousands of `$ref` sites and never finished.)
+ */
+const buildDirSensitiveRefs = (ctx: Ctx, dir: Dir): ReadonlySet<string> => {
+  const flag = dir === "in" ? "readOnly" : "writeOnly";
+
+  // Every distinct `$ref` pointer in the document.
+  const allRefs = new Set<string>();
+  const collect = (d: any): void => {
+    if (Array.isArray(d)) {
+      for (const v of d) collect(v);
+      return;
+    }
+    if (!d || typeof d !== "object") return;
+    if (typeof d.$ref === "string") allRefs.add(d.$ref);
+    for (const v of Object.values(d)) collect(v);
+  };
+  collect(ctx.spec);
+
+  // ref → refs reachable in one hop; refs whose target carries the flag inline.
+  const reverse = new Map<string, string[]>();
+  const flagged: string[] = [];
+  for (const ref of allRefs) {
+    const outgoing: string[] = [];
+    if (scanInlineForFlag(resolvePointer(ctx.spec, ref), flag, outgoing)) {
+      flagged.push(ref);
+      continue; // already sensitive; its edges can't add anything
+    }
+    for (const to of outgoing) {
+      let from = reverse.get(to);
+      if (!from) reverse.set(to, (from = []));
+      from.push(ref);
+    }
+  }
+
+  // Sensitivity propagates from flagged targets to every ref that reaches them.
+  const sensitive = new Set<string>(flagged);
+  const queue = [...flagged];
+  while (queue.length > 0) {
+    const next = queue.pop()!;
+    for (const from of reverse.get(next) ?? []) {
+      if (!sensitive.has(from)) {
+        sensitive.add(from);
+        queue.push(from);
+      }
+    }
+  }
+  return sensitive;
+};
+
 /**
  * Whether a schema subtree is direction-sensitive — contains
  * `readOnly: true` (request direction) or `writeOnly: true` (response
@@ -387,47 +491,16 @@ const dirExcluded = (ctx: Ctx, prop: any, dir: Dir): boolean => {
  * (`<Name>Input`/`<Name>Output`); everything else is shared.
  */
 const dirSensitive = (ctx: Ctx, def: any, dir: Dir): boolean => {
-  const flag = dir === "in" ? "readOnly" : "writeOnly";
-  const seenRefs = new Set<string>();
-  // Memoizing `false` is only sound when the walk below a ref completed
-  // without skipping an already-seen ref (a skip means the result may
-  // depend on a node whose evaluation is still in progress).
-  let skips = 0;
-  const visit = (d: any, dep: number): boolean => {
-    if (dep > MAX_SCHEMA_DEPTH || !d || typeof d !== "object") return false;
-    if (typeof d.$ref === "string") {
-      const memoKey = `${dir}:${d.$ref}`;
-      const memo = ctx.dirSensitivity.get(memoKey);
-      if (memo !== undefined) return memo;
-      if (seenRefs.has(d.$ref)) {
-        skips++;
-        return false;
-      }
-      seenRefs.add(d.$ref);
-      const before = skips;
-      const res = visit(resolvePointer(ctx.spec, d.$ref), dep + 1);
-      if (res || skips === before) ctx.dirSensitivity.set(memoKey, res);
-      return res;
-    }
-    if (d[flag] === true) return true;
-    const subs = [
-      ...(Array.isArray(d.allOf) ? d.allOf : []),
-      ...(Array.isArray(d.oneOf) ? d.oneOf : []),
-      ...(Array.isArray(d.anyOf) ? d.anyOf : []),
-      ...(d.properties && typeof d.properties === "object"
-        ? Object.values(d.properties)
-        : []),
-      ...(d.items ? [d.items] : []),
-      ...(d.additionalProperties && typeof d.additionalProperties === "object"
-        ? [d.additionalProperties]
-        : []),
-    ];
-    for (const sub of subs) {
-      if (visit(sub, dep + 1)) return true;
-    }
-    return false;
-  };
-  return visit(def, 0);
+  let sensitiveRefs = ctx.dirSensitiveRefs.get(dir);
+  if (sensitiveRefs === undefined) {
+    sensitiveRefs = buildDirSensitiveRefs(ctx, dir);
+    ctx.dirSensitiveRefs.set(dir, sensitiveRefs);
+  }
+  const refs: string[] = [];
+  if (scanInlineForFlag(def, dir === "in" ? "readOnly" : "writeOnly", refs)) {
+    return true;
+  }
+  return refs.some((ref) => sensitiveRefs.has(ref));
 };
 
 /** Single non-array type from a possibly 3.1-style `type` value. */
@@ -1049,7 +1122,7 @@ export const convertOpenApiToSmithy = (
     shapes: {},
     names: new Set(),
     refs: new Map(),
-    dirSensitivity: new Map(),
+    dirSensitiveRefs: new Map(),
     sensitivePatterns: options.sensitivePatterns ?? SENSITIVE_FIELD_PATTERNS,
   };
   const statusToErrorClass =

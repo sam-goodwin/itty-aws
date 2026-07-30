@@ -106,6 +106,12 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). */
 export interface OidcToken {
   /** Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used. */
@@ -120,26 +126,20 @@ export const OidcToken = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OidcToken" }) as any as S.Schema<OidcToken>;
 
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
 /** Configuration for a push delivery endpoint. */
 export interface PushConfig {
+  /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
+  attributes?: StringMap;
   /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
   pushEndpoint?: string;
   /** If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message. */
   oidcToken?: OidcToken;
-  /** Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. */
-  attributes?: StringMap;
 }
 export const PushConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    attributes: S.optional(StringMap),
     pushEndpoint: S.optional(S.String),
     oidcToken: S.optional(OidcToken),
-    attributes: S.optional(StringMap),
   }),
 ).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
 
@@ -276,21 +276,21 @@ export const GetIamPolicyProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
 }
 export const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    expression: S.optional(S.String),
     title: S.optional(S.String),
-    description: S.optional(S.String),
     location: S.optional(S.String),
+    expression: S.optional(S.String),
+    description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
@@ -391,17 +391,17 @@ export const GetProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsTopicsRequest>;
 
 export interface ListProjectsSubscriptionsRequest {
-  /** The name of the cloud project that subscriptions belong to. */
-  project: string;
   /** Maximum number of subscriptions to return. */
   pageSize?: number;
+  /** The name of the cloud project that subscriptions belong to. */
+  project: string;
   /** The value returned by the last `ListSubscriptionsResponse`; indicates that this is a continuation of a prior `ListSubscriptions` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
 export const ListProjectsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    project: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    project: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -421,33 +421,33 @@ export const SubscriptionList = /*@__PURE__*/ S.Array(
 
 /** Response for the `ListSubscriptions` method. */
 export interface ListSubscriptionsResponse {
-  /** The subscriptions that match the request. */
-  subscriptions?: SubscriptionList;
   /** If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListSubscriptionsRequest` to get more subscriptions. */
   nextPageToken?: string;
+  /** The subscriptions that match the request. */
+  subscriptions?: SubscriptionList;
 }
 export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    subscriptions: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
+    subscriptions: S.optional(SubscriptionList),
   }),
 ).annotate({
   identifier: "ListSubscriptionsResponse",
 }) as any as S.Schema<ListSubscriptionsResponse>;
 
 export interface ListProjectsTopicsRequest {
-  /** The value returned by the last `ListTopicsResponse`; indicates that this is a continuation of a prior `ListTopics` call, and that the system should return the next page of data. */
-  pageToken?: string;
   /** Maximum number of topics to return. */
   pageSize?: number;
   /** The name of the cloud project that topics belong to. */
   project: string;
+  /** The value returned by the last `ListTopicsResponse`; indicates that this is a continuation of a prior `ListTopics` call, and that the system should return the next page of data. */
+  pageToken?: string;
 }
 export const ListProjectsTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     project: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -481,18 +481,18 @@ export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTopicsResponse>;
 
 export interface ListProjectsTopicsSubscriptionsRequest {
-  /** The name of the topic that subscriptions are attached to. */
-  topic: string;
   /** The value returned by the last `ListTopicSubscriptionsResponse`; indicates that this is a continuation of a prior `ListTopicSubscriptions` call, and that the system should return the next page of data. */
   pageToken?: string;
+  /** The name of the topic that subscriptions are attached to. */
+  topic: string;
   /** Maximum number of subscription names to return. */
   pageSize?: number;
 }
 export const ListProjectsTopicsSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      topic: S.String.pipe(T.Label()),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      topic: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -525,16 +525,16 @@ export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyAckDeadlineRequest {
   /** The acknowledgment ID. Either this or ack_ids must be populated, but not both. */
   ackId?: string;
-  /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another pull request. */
-  ackDeadlineSeconds?: number;
   /** List of acknowledgment IDs. */
   ackIds?: StringList;
+  /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another pull request. */
+  ackDeadlineSeconds?: number;
 }
 export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackId: S.optional(S.String),
-    ackDeadlineSeconds: S.optional(S.Number),
     ackIds: S.optional(StringList),
+    ackDeadlineSeconds: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "ModifyAckDeadlineRequest",
@@ -599,21 +599,21 @@ export const ModifyPushConfigProjectsSubscriptionsRequest =
 
 /** A message data and its attributes. The message payload must not be empty; it must contain either a non-empty data field, or at least one attribute. */
 export interface PubsubMessage {
+  /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
+  publishTime?: string;
   /** Optional attributes for this message. */
   attributes?: StringMap;
   /** ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push delivery. It must not be populated by the publisher in a `Publish` call. */
   messageId?: string;
   /** The message payload. For JSON requests, the value of this field must be [base64-encoded](https://tools.ietf.org/html/rfc4648). */
   data?: string;
-  /** The time at which the message was published, populated by the server when it receives the `Publish` call. It must not be populated by the publisher in a `Publish` call. */
-  publishTime?: string;
 }
 export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    publishTime: S.optional(S.String),
     attributes: S.optional(StringMap),
     messageId: S.optional(S.String),
     data: S.optional(S.String),
-    publishTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 

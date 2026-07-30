@@ -1121,7 +1121,7 @@ export interface RegistrationsCreateOrUpdateRequest {
   /** Properties of the Azure Stack registration resource */
   properties: RegistrationParameterProperties;
   /** Location of the resource. */
-  location: RegistrationsCreateOrUpdateRequestLocation;
+  location: RegistrationsCreateOrUpdateRequestLocation | (string & {});
 }
 export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1495,7 +1495,7 @@ export interface RegistrationsUpdateRequest {
   /** Properties of the Azure Stack registration resource */
   properties: RegistrationParameterProperties;
   /** Location of the resource. */
-  location: RegistrationsUpdateRequestLocation;
+  location: RegistrationsUpdateRequestLocation | (string & {});
 }
 export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

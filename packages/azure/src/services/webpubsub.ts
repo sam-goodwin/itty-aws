@@ -1780,7 +1780,7 @@ export const EventListenerFilterType = /*@__PURE__*/ S.String;
 
 /** A base class for event filter which determines whether an event should be sent to an event listener. */
 export interface EventListenerFilter {
-  type: EventListenerFilterType;
+  type: EventListenerFilterType | (string & {});
 }
 export const EventListenerFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1795,7 +1795,7 @@ export const EventListenerEndpointType = /*@__PURE__*/ S.String;
 
 /** An endpoint specifying where Web PubSub should send events to. */
 export interface EventListenerEndpoint {
-  type: EventListenerEndpointType;
+  type: EventListenerEndpointType | (string & {});
 }
 export const EventListenerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

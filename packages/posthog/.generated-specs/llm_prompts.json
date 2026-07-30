@@ -137,13 +137,6 @@
         "version": {
           "target": "smithy.api#Integer"
         },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_by": {
           "target": "com.posthog.llm_prompts#UserBasic",
           "traits": {
@@ -174,26 +167,11 @@
         "outline": {
           "target": "com.posthog.llm_prompts#LLMPromptListOutlineList"
         },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LLMPromptListLabelsList",
-          "traits": {
-            "smithy.api#documentation": "Names of the labels currently pointing at this version."
-          }
-        },
-        "activity_item_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters."
-          }
-        },
         "prompt_preview": {
           "target": "smithy.api#String"
         },
         "prompt_size_bytes": {
           "target": "smithy.api#Integer"
-        },
-        "all_labels": {
-          "target": "com.posthog.llm_prompts#LLMPromptListAllLabelsList"
         }
       },
       "traits": {}
@@ -358,42 +336,6 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_prompts#LLMPromptListLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of the labels currently pointing at this version."
-      }
-    },
-    "com.posthog.llm_prompts#LLMPromptLabelSummary": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Label name, e.g. 'production'.",
-            "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Prompt version this label currently points to.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_prompts#LLMPromptListAllLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_prompts#LLMPromptLabelSummary"
-      },
-      "traits": {}
-    },
     "com.posthog.llm_prompts#PaginatedLLMPromptListListResultsList": {
       "type": "list",
       "member": {
@@ -439,13 +381,6 @@
           "traits": {
             "smithy.api#documentation": "Prompt payload as JSON or string data."
           }
-        },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -472,13 +407,6 @@
         },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "created_by": {
           "target": "com.posthog.llm_prompts#UserBasic",
@@ -509,18 +437,6 @@
         },
         "outline": {
           "target": "com.posthog.llm_prompts#LLMPromptOutlineList"
-        },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LLMPromptLabelsList",
-          "traits": {
-            "smithy.api#documentation": "Names of the labels currently pointing at this version."
-          }
-        },
-        "activity_item_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters."
-          }
         }
       },
       "traits": {}
@@ -531,15 +447,6 @@
         "target": "com.posthog.llm_prompts#LLMPromptOutlineEntry"
       },
       "traits": {}
-    },
-    "com.posthog.llm_prompts#LLMPromptLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of the labels currently pointing at this version."
-      }
     },
     "com.posthog.llm_prompts#LlmPromptsCreate": {
       "type": "operation",
@@ -606,13 +513,6 @@
             "smithy.api#documentation": "Controls how much prompt content is included in the response. 'full' includes the full prompt, 'preview' includes a short prompt_preview, and 'none' omits prompt content entirely. The outline field is always included.\n\n* `full` - full\n* `preview` - preview\n* `none` - none"
           }
         },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "label",
-            "smithy.api#documentation": "Fetch the version this label currently points to, e.g. 'production'. Lowercase letters, numbers, dots, hyphens and underscores. Mutually exclusive with version."
-          }
-        },
         "version": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -654,12 +554,6 @@
         },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "label": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The label this prompt was fetched by. Only present when fetching with the label parameter."
-          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -772,12 +666,6 @@
           "traits": {
             "smithy.api#documentation": "Latest version you are editing from. Used for optimistic concurrency checks."
           }
-        },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional note describing what changed in this version. Shown in the version history."
-          }
         }
       },
       "traits": {
@@ -828,13 +716,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Prompt payload as JSON or string data."
-          }
-        },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -899,155 +780,6 @@
         "smithy.api#http": {
           "method": "POST",
           "uri": "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/duplicate/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "prompt_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "label_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Prompt version this label should point to. If the label already exists on another version of the prompt, it is moved there.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.llm_prompts#LLMPromptLabel": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Label name, e.g. 'production'. Points to exactly one version of the prompt.",
-            "smithy.api#required": {}
-          }
-        },
-        "prompt_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the prompt this label belongs to.",
-            "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdateRequest"
-      },
-      "output": {
-        "target": "com.posthog.llm_prompts#LLMPromptLabel"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/labels/{label_name}/",
-          "code": 200
-        }
-      }
-    },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsDestroyRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "prompt_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "label_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.llm_prompts#LlmPromptsNameLabelsDestroy": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsDestroyRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/api/projects/{project_id}/llm_prompts/name/{prompt_name}/labels/{label_name}/",
           "code": 200
         }
       }
@@ -1121,12 +853,6 @@
         },
         "has_more": {
           "target": "smithy.api#Boolean"
-        },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LLMPromptResolveResponseLabelsList",
-          "traits": {
-            "smithy.api#documentation": "All labels on this prompt with the version each one currently points to, across all versions (not just the returned page)."
-          }
         }
       },
       "traits": {}
@@ -1140,12 +866,6 @@
         "version": {
           "target": "smithy.api#Integer"
         },
-        "version_description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_by": {
           "target": "com.posthog.llm_prompts#UserBasic",
           "traits": {
@@ -1157,24 +877,9 @@
         },
         "is_latest": {
           "target": "smithy.api#Boolean"
-        },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LLMPromptVersionSummaryLabelsList",
-          "traits": {
-            "smithy.api#documentation": "Names of the labels currently pointing at this version."
-          }
         }
       },
       "traits": {}
-    },
-    "com.posthog.llm_prompts#LLMPromptVersionSummaryLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of the labels currently pointing at this version."
-      }
     },
     "com.posthog.llm_prompts#LLMPromptResolveResponseVersionsList": {
       "type": "list",
@@ -1182,15 +887,6 @@
         "target": "com.posthog.llm_prompts#LLMPromptVersionSummary"
       },
       "traits": {}
-    },
-    "com.posthog.llm_prompts#LLMPromptResolveResponseLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_prompts#LLMPromptLabel"
-      },
-      "traits": {
-        "smithy.api#documentation": "All labels on this prompt with the version each one currently points to, across all versions (not just the returned page)."
-      }
     },
     "com.posthog.llm_prompts#LlmPromptsResolveNameRetrieve": {
       "type": "operation",
@@ -1229,12 +925,6 @@
         },
         {
           "target": "com.posthog.llm_prompts#LlmPromptsNameDuplicateCreate"
-        },
-        {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsUpdate"
-        },
-        {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameLabelsDestroy"
         },
         {
           "target": "com.posthog.llm_prompts#LlmPromptsResolveNameRetrieve"

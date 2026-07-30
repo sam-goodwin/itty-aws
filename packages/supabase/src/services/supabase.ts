@@ -433,9 +433,13 @@ export const V1ApplyProjectAddonRequestAddonVariantCase3 =
 
 export type V1ApplyProjectAddonRequestAddonVariant =
   | V1ApplyProjectAddonRequestAddonVariantCase0
+  | (string & {})
   | V1ApplyProjectAddonRequestAddonVariantCase1
+  | (string & {})
   | V1ApplyProjectAddonRequestAddonVariantCase2
-  | V1ApplyProjectAddonRequestAddonVariantCase3;
+  | (string & {})
+  | V1ApplyProjectAddonRequestAddonVariantCase3
+  | (string & {});
 export const V1ApplyProjectAddonRequestAddonVariant =
   /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
 
@@ -1159,7 +1163,7 @@ export const V1CreateAProjectRequestRegionSelectionCase0Code =
   /*@__PURE__*/ S.String;
 
 export interface V1CreateAProjectRequestRegionSelectionCase0 {
-  type: V1CreateAProjectRequestRegionSelectionCase0Type | (string & {});
+  type: V1CreateAProjectRequestRegionSelectionCase0Type;
   /** Specific region code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
   code: V1CreateAProjectRequestRegionSelectionCase0Code | (string & {});
 }
@@ -1186,7 +1190,7 @@ export const V1CreateAProjectRequestRegionSelectionCase1Code =
   /*@__PURE__*/ S.String;
 
 export interface V1CreateAProjectRequestRegionSelectionCase1 {
-  type: V1CreateAProjectRequestRegionSelectionCase1Type | (string & {});
+  type: V1CreateAProjectRequestRegionSelectionCase1Type;
   /** The Smart Region Group's code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
   code: V1CreateAProjectRequestRegionSelectionCase1Code | (string & {});
 }
@@ -1507,6 +1511,7 @@ export type CreateProviderResponseSamlNameIdFormat =
 export const CreateProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface CreateProviderResponseSaml {
+  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -1515,6 +1520,7 @@ export interface CreateProviderResponseSaml {
 }
 export const CreateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -1526,12 +1532,14 @@ export const CreateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProviderResponseSaml>;
 
 export interface CreateProviderResponseDomainsItem {
+  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
 export const CreateProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     domain: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -1810,10 +1818,10 @@ export interface V1CreateProjectSigningKeyRequestPrivateJwkCase0 {
   use?: V1CreateProjectSigningKeyRequestPrivateJwkCase0Use | (string & {});
   key_ops?: V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList;
   ext?: boolean;
-  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty | (string & {});
+  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty;
   alg?: V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg | (string & {});
   n: string;
-  e: V1CreateProjectSigningKeyRequestPrivateJwkCase0E | (string & {});
+  e: V1CreateProjectSigningKeyRequestPrivateJwkCase0E;
   d: string;
   p: string;
   q: string;
@@ -1880,9 +1888,9 @@ export interface V1CreateProjectSigningKeyRequestPrivateJwkCase1 {
   use?: V1CreateProjectSigningKeyRequestPrivateJwkCase1Use | (string & {});
   key_ops?: V1CreateProjectSigningKeyRequestPrivateJwkCase1KeyOpsList;
   ext?: boolean;
-  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty | (string & {});
+  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase1Kty;
   alg?: V1CreateProjectSigningKeyRequestPrivateJwkCase1Alg | (string & {});
-  crv: V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv | (string & {});
+  crv: V1CreateProjectSigningKeyRequestPrivateJwkCase1Crv;
   x: string;
   y: string;
   d: string;
@@ -1942,9 +1950,9 @@ export interface V1CreateProjectSigningKeyRequestPrivateJwkCase2 {
   use?: V1CreateProjectSigningKeyRequestPrivateJwkCase2Use | (string & {});
   key_ops?: V1CreateProjectSigningKeyRequestPrivateJwkCase2KeyOpsList;
   ext?: boolean;
-  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty | (string & {});
+  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase2Kty;
   alg?: V1CreateProjectSigningKeyRequestPrivateJwkCase2Alg | (string & {});
-  crv: V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv | (string & {});
+  crv: V1CreateProjectSigningKeyRequestPrivateJwkCase2Crv;
   x: string;
   d: string;
 }
@@ -1998,7 +2006,7 @@ export interface V1CreateProjectSigningKeyRequestPrivateJwkCase3 {
   use?: V1CreateProjectSigningKeyRequestPrivateJwkCase3Use | (string & {});
   key_ops?: V1CreateProjectSigningKeyRequestPrivateJwkCase3KeyOpsList;
   ext?: boolean;
-  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty | (string & {});
+  kty: V1CreateProjectSigningKeyRequestPrivateJwkCase3Kty;
   alg?: V1CreateProjectSigningKeyRequestPrivateJwkCase3Alg | (string & {});
   k: string;
 }
@@ -2368,6 +2376,7 @@ export type DeleteProviderResponseSamlNameIdFormat =
 export const DeleteProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface DeleteProviderResponseSaml {
+  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -2376,6 +2385,7 @@ export interface DeleteProviderResponseSaml {
 }
 export const DeleteProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -2387,12 +2397,14 @@ export const DeleteProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProviderResponseSaml>;
 
 export interface DeleteProviderResponseDomainsItem {
+  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
 export const DeleteProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     domain: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -3769,6 +3781,7 @@ export type GetProviderResponseSamlNameIdFormat =
 export const GetProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface GetProviderResponseSaml {
+  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -3777,6 +3790,7 @@ export interface GetProviderResponseSaml {
 }
 export const GetProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -3788,12 +3802,14 @@ export const GetProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProviderResponseSaml>;
 
 export interface GetProviderResponseDomainsItem {
+  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
 export const GetProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     domain: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -4884,7 +4900,6 @@ export const JitStateResponseCase1State = /*@__PURE__*/ S.String;
 
 export type JitStateResponseCase1UnavailableReason =
   | "postgres_upgrade_required"
-  | "ssl_enforcement_required"
   | "temporarily_unavailable";
 export const JitStateResponseCase1UnavailableReason = /*@__PURE__*/ S.String;
 
@@ -5126,7 +5141,6 @@ export type V1ListEntitlementsResponseEntitlementsItemFeatureKey =
   | "integrations.github_connections"
   | "dedicated_pooler"
   | "observability.dashboard_advanced_metrics"
-  | "api.members.invitations"
   | "api.members.roles";
 export const V1ListEntitlementsResponseEntitlementsItemFeatureKey =
   /*@__PURE__*/ S.String;
@@ -5458,7 +5472,6 @@ export const V1GetPgsodiumConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V1GetPgsodiumConfigRequest>;
 
 export interface PgsodiumConfigResponse {
-  /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
 export const PgsodiumConfigResponse = /*@__PURE__*/ S.suspend(() =>
@@ -5584,7 +5597,6 @@ export interface PostgresConfigResponse {
   track_activity_query_size?: string;
   max_connections?: number;
   max_locks_per_transaction?: number;
-  max_logical_replication_workers?: number;
   max_parallel_maintenance_workers?: number;
   max_parallel_workers?: number;
   max_parallel_workers_per_gather?: number;
@@ -5592,7 +5604,6 @@ export interface PostgresConfigResponse {
   max_slot_wal_keep_size?: string;
   max_standby_archive_delay?: string;
   max_standby_streaming_delay?: string;
-  max_sync_workers_per_subscription?: number;
   max_wal_size?: string;
   max_wal_senders?: number;
   max_worker_processes?: number;
@@ -5630,7 +5641,6 @@ export const PostgresConfigResponse = /*@__PURE__*/ S.suspend(() =>
     track_activity_query_size: S.optional(S.String),
     max_connections: S.optional(S.Number),
     max_locks_per_transaction: S.optional(S.Number),
-    max_logical_replication_workers: S.optional(S.Number),
     max_parallel_maintenance_workers: S.optional(S.Number),
     max_parallel_workers: S.optional(S.Number),
     max_parallel_workers_per_gather: S.optional(S.Number),
@@ -5638,7 +5648,6 @@ export const PostgresConfigResponse = /*@__PURE__*/ S.suspend(() =>
     max_slot_wal_keep_size: S.optional(S.String),
     max_standby_archive_delay: S.optional(S.String),
     max_standby_streaming_delay: S.optional(S.String),
-    max_sync_workers_per_subscription: S.optional(S.Number),
     max_wal_size: S.optional(S.String),
     max_wal_senders: S.optional(S.Number),
     max_worker_processes: S.optional(S.Number),
@@ -5678,8 +5687,6 @@ export interface PostgrestConfigWithJWTSecretResponse {
   db_extra_search_path: string;
   /** If `null`, the value is automatically configured based on compute size. */
   db_pool: number | null;
-  /** If `null`, the value is automatically configured to 10. */
-  db_pool_acquisition_timeout: number | null;
   jwt_secret?: T.Sensitive;
 }
 export const PostgrestConfigWithJWTSecretResponse = /*@__PURE__*/ S.suspend(
@@ -5689,7 +5696,6 @@ export const PostgrestConfigWithJWTSecretResponse = /*@__PURE__*/ S.suspend(
       max_rows: S.Number,
       db_extra_search_path: S.String,
       db_pool: S.NullOr(S.Number),
-      db_pool_acquisition_timeout: S.NullOr(S.Number),
       jwt_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
     }),
 ).annotate({
@@ -8394,6 +8400,7 @@ export const ListProvidersResponseItemsItemSamlNameIdFormat =
   /*@__PURE__*/ S.String;
 
 export interface ListProvidersResponseItemsItemSaml {
+  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -8402,6 +8409,7 @@ export interface ListProvidersResponseItemsItemSaml {
 }
 export const ListProvidersResponseItemsItemSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -8415,6 +8423,7 @@ export const ListProvidersResponseItemsItemSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProvidersResponseItemsItemSaml>;
 
 export interface ListProvidersResponseItemsItemDomainsItem {
+  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
@@ -8422,6 +8431,7 @@ export interface ListProvidersResponseItemsItemDomainsItem {
 export const ListProvidersResponseItemsItemDomainsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      id: S.String,
       domain: S.optional(S.String),
       created_at: S.optional(S.String),
       updated_at: S.optional(S.String),
@@ -9310,7 +9320,7 @@ export interface V1ModifyDatabaseDiskRequestAttributesCase0 {
   iops: number;
   size_gb: number;
   throughput_mibps?: number;
-  type: V1ModifyDatabaseDiskRequestAttributesCase0Type | (string & {});
+  type: V1ModifyDatabaseDiskRequestAttributesCase0Type;
 }
 export const V1ModifyDatabaseDiskRequestAttributesCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -9331,7 +9341,7 @@ export const V1ModifyDatabaseDiskRequestAttributesCase1Type =
 export interface V1ModifyDatabaseDiskRequestAttributesCase1 {
   iops: number;
   size_gb: number;
-  type: V1ModifyDatabaseDiskRequestAttributesCase1Type | (string & {});
+  type: V1ModifyDatabaseDiskRequestAttributesCase1Type;
 }
 export const V1ModifyDatabaseDiskRequestAttributesCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -10055,31 +10065,6 @@ export const V1RunAQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1RunAQueryResponse",
 }) as any as S.Schema<V1RunAQueryResponse>;
 
-export interface V1ScrapeProjectMetricsRequest {
-  /** Project ref */
-  ref: string;
-}
-export const V1ScrapeProjectMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/v1/projects/{ref}/analytics/endpoints/metrics",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "V1ScrapeProjectMetricsRequest",
-}) as any as S.Schema<V1ScrapeProjectMetricsRequest>;
-
-export interface V1ScrapeProjectMetricsResponse {}
-export const V1ScrapeProjectMetricsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "V1ScrapeProjectMetricsResponse",
-}) as any as S.Schema<V1ScrapeProjectMetricsResponse>;
-
 /** Region you want your read replica to reside in */
 export type V1SetupAReadReplicaRequestReadReplicaRegion =
   | "us-east-1"
@@ -10566,6 +10551,7 @@ export type UpdateProviderResponseSamlNameIdFormat =
 export const UpdateProviderResponseSamlNameIdFormat = /*@__PURE__*/ S.String;
 
 export interface UpdateProviderResponseSaml {
+  id: string;
   entity_id: string;
   metadata_url?: string;
   metadata_xml?: string;
@@ -10574,6 +10560,7 @@ export interface UpdateProviderResponseSaml {
 }
 export const UpdateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     entity_id: S.String,
     metadata_url: S.optional(S.String),
     metadata_xml: S.optional(S.String),
@@ -10585,12 +10572,14 @@ export const UpdateProviderResponseSaml = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProviderResponseSaml>;
 
 export interface UpdateProviderResponseDomainsItem {
+  id: string;
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
 export const UpdateProviderResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    id: S.String,
     domain: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -11493,7 +11482,6 @@ export const V1UpdateNetworkRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V1UpdatePgsodiumConfigRequest {
   /** Project ref */
   ref: string;
-  /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
 export const V1UpdatePgsodiumConfigRequest = /*@__PURE__*/ S.suspend(() =>
@@ -11576,7 +11564,6 @@ export interface V1UpdatePostgresConfigRequest {
   track_activity_query_size?: string;
   max_connections?: number;
   max_locks_per_transaction?: number;
-  max_logical_replication_workers?: number;
   max_parallel_maintenance_workers?: number;
   max_parallel_workers?: number;
   max_parallel_workers_per_gather?: number;
@@ -11584,7 +11571,6 @@ export interface V1UpdatePostgresConfigRequest {
   max_slot_wal_keep_size?: string;
   max_standby_archive_delay?: string;
   max_standby_streaming_delay?: string;
-  max_sync_workers_per_subscription?: number;
   max_wal_size?: string;
   max_wal_senders?: number;
   max_worker_processes?: number;
@@ -11626,7 +11612,6 @@ export const V1UpdatePostgresConfigRequest = /*@__PURE__*/ S.suspend(() =>
     track_activity_query_size: S.optional(S.String),
     max_connections: S.optional(S.Number),
     max_locks_per_transaction: S.optional(S.Number),
-    max_logical_replication_workers: S.optional(S.Number),
     max_parallel_maintenance_workers: S.optional(S.Number),
     max_parallel_workers: S.optional(S.Number),
     max_parallel_workers_per_gather: S.optional(S.Number),
@@ -11634,7 +11619,6 @@ export const V1UpdatePostgresConfigRequest = /*@__PURE__*/ S.suspend(() =>
     max_slot_wal_keep_size: S.optional(S.String),
     max_standby_archive_delay: S.optional(S.String),
     max_standby_streaming_delay: S.optional(S.String),
-    max_sync_workers_per_subscription: S.optional(S.Number),
     max_wal_size: S.optional(S.String),
     max_wal_senders: S.optional(S.Number),
     max_worker_processes: S.optional(S.Number),
@@ -11668,7 +11652,6 @@ export interface V1UpdatePostgrestServiceConfigRequest {
   db_schema?: string;
   max_rows?: number;
   db_pool?: number;
-  db_pool_acquisition_timeout?: number;
 }
 export const V1UpdatePostgrestServiceConfigRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11678,7 +11661,6 @@ export const V1UpdatePostgrestServiceConfigRequest = /*@__PURE__*/ S.suspend(
       db_schema: S.optional(S.String),
       max_rows: S.optional(S.Number),
       db_pool: S.optional(S.Number),
-      db_pool_acquisition_timeout: S.optional(S.Number),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -11696,8 +11678,6 @@ export interface V1PostgrestConfigResponse {
   db_extra_search_path: string;
   /** If `null`, the value is automatically configured based on compute size. */
   db_pool: number | null;
-  /** If `null`, the value is automatically configured to 10. */
-  db_pool_acquisition_timeout: number | null;
 }
 export const V1PostgrestConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11705,7 +11685,6 @@ export const V1PostgrestConfigResponse = /*@__PURE__*/ S.suspend(() =>
     max_rows: S.Number,
     db_extra_search_path: S.String,
     db_pool: S.NullOr(S.Number),
-    db_pool_acquisition_timeout: S.NullOr(S.Number),
   }),
 ).annotate({
   identifier: "V1PostgrestConfigResponse",
@@ -14425,21 +14404,6 @@ export const v1RunAQuery: API.OperationMethod<
   input: V1RunAQueryRequest,
   output: V1RunAQueryResponse,
   errors: [BadRequest, Forbidden],
-  protocol: SupabaseProtocol,
-  retry: Retry.Retry,
-}));
-
-export type V1ScrapeProjectMetricsError = Forbidden | SupabaseOpError;
-/** Scrape a project's metrics Prometheus scrape endpoint. Returns metrics of a customer project in the Prometheus open exposition format. */
-export const v1ScrapeProjectMetrics: API.OperationMethod<
-  V1ScrapeProjectMetricsRequest,
-  V1ScrapeProjectMetricsResponse,
-  V1ScrapeProjectMetricsError,
-  SupabaseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: V1ScrapeProjectMetricsRequest,
-  output: V1ScrapeProjectMetricsResponse,
-  errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
 }));

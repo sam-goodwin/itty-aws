@@ -93,16 +93,7 @@
           "target": "com.posthog.mcp_servers#MCPAuthTypeEnum"
         },
         "icon_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key for clients that still render bundled icon assets."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The vendor's brand domain (e.g. 'linear.app'), resolved to an icon at render time via the logo.dev proxy endpoint. Empty when no brand icon is known."
-          }
+          "target": "smithy.api#String"
         },
         "category": {
           "target": "com.posthog.mcp_servers#MCPServerTemplateCategoryEnum"

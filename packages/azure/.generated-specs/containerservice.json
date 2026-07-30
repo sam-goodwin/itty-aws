@@ -30,10 +30,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotsDeleteRequest": {
@@ -81,10 +81,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates tags on a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotsUpdateTagsResponse": {
@@ -493,10 +493,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotsCreateOrUpdateResponse": {
@@ -672,10 +672,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a snapshot.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotsGetResponse": {
@@ -786,10 +786,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists snapshots in the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotListResult": {
@@ -922,10 +922,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the upgrade profile of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetUpgradeProfileResponse": {
@@ -1126,10 +1126,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a trusted access role binding.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsDeleteRequest": {
@@ -1185,10 +1185,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or update a trusted access role binding",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsCreateOrUpdateResponse": {
@@ -1396,10 +1396,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a trusted access role binding.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsGetResponse": {
@@ -1494,10 +1494,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List trusted access role bindings.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingListResult": {
@@ -1614,10 +1614,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Stops a Managed Cluster\n\nThis can only be performed on Azure Virtual Machine Scale set backed clusters. Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state. A cluster does not accrue charges while it is stopped. See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersStopRequest": {
@@ -1665,10 +1665,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Starts a previously stopped Managed Cluster\n\nSee [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersStartRequest": {
@@ -1716,10 +1716,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Submits a command to run against the Managed Cluster.\n\nAKS will create a pod to run the command. This is primarily useful for private clusters. For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#RunCommandResult": {
@@ -1850,10 +1850,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateServiceAccountSigningKeys",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Rotates the service account signing keys of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersRotateServiceAccountSigningKeysRequest": {
@@ -1901,10 +1901,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Rotates the certificates of a managed cluster.\n\nSee [Certificate rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for more details about rotating managed cluster certificates.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersRotateClusterCertificatesRequest": {
@@ -1952,10 +1952,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resolvePrivateLinkServiceId",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the private link service ID for the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateLinkResource": {
@@ -2095,10 +2095,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Reset the Service Principal Profile of a managed cluster.\n\nThis action cannot be performed on a cluster that is not using a service principal",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersResetServicePrincipalProfileRequest": {
@@ -2160,10 +2160,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of private link resources in the specified managed cluster.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateLinkResourcesListResult": {
@@ -2234,10 +2234,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes a private endpoint connection.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsDeleteRequest": {
@@ -2293,10 +2293,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates a private endpoint connection.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsUpdateResponse": {
@@ -2548,10 +2548,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the specified private endpoint connection.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsGetResponse": {
@@ -2645,10 +2645,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of private endpoint connections in the specified managed cluster.\n\nTo learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionListResult": {
@@ -2757,10 +2757,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.\n\nGets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#OutboundEnvironmentEndpointCollection": {
@@ -2928,10 +2928,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles/{mode}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets available upgrades for a service mesh in a cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetMeshUpgradeProfileResponse": {
@@ -3098,10 +3098,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists available upgrades for all service meshes in a specific cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MeshUpgradeProfileList": {
@@ -3217,10 +3217,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}/listCredential",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists the credentials of a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#CredentialResults": {
@@ -3319,10 +3319,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesDeleteRequest": {
@@ -3378,10 +3378,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates tags on a managed namespace.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesUpdateResponse": {
@@ -3798,10 +3798,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a namespace managed by ARM for the specified managed cluster. Users can configure aspects like resource quotas, network ingress/egress policies, and more. See aka.ms/aks/managed-namespaces for more details.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesCreateOrUpdateResponse": {
@@ -4025,10 +4025,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the specified namespace of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedNamespacesGetResponse": {
@@ -4153,10 +4153,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of managed namespaces in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedNamespaceListResult": {
@@ -4303,10 +4303,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes a maintenance configuration.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsDeleteRequest": {
@@ -4362,10 +4362,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a maintenance configuration in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsCreateOrUpdateResponse": {
@@ -4844,10 +4844,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations/{configName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the specified maintenance configuration of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationsGetResponse": {
@@ -4941,10 +4941,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of maintenance configurations in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MaintenanceConfigurationListResult": {
@@ -5060,10 +5060,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists the user credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterUserCredentialsRequest": {
@@ -5143,10 +5143,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterMonitoringUserCredential",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists the cluster monitoring user credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterMonitoringUserCredentialsRequest": {
@@ -5201,10 +5201,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists the admin credentials of a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListClusterAdminCredentialsRequest": {
@@ -5259,10 +5259,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes an identity binding in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsDeleteRequest": {
@@ -5318,10 +5318,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates an identity binding in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsCreateOrUpdateResponse": {
@@ -5575,10 +5575,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings/{identityBindingName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the specified Identity Binding.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#IdentityBindingsGetResponse": {
@@ -5678,10 +5678,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of identity bindings in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#IdentityBindingListResult": {
@@ -5803,10 +5803,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the results of a command which has been run on the Managed Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetCommandResultRequest": {
@@ -5862,10 +5862,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/availableAgentPoolVersions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of supported Kubernetes versions for the specified agent pool.\n\nSee [supported Kubernetes versions](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) for more details about the version lifecycle.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolAvailableVersions": {
@@ -5995,10 +5995,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the upgrade profile for an agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsGetUpgradeProfileResponse": {
@@ -6217,10 +6217,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeNodeImageVersion",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Upgrades the node image version of an agent pool to the latest.\n\nUpgrading the node image version of an agent pool applies the newest OS and runtime updates to the nodes. AKS provides one new image per week with the latest updates. For more details on node image versions, see: https://docs.microsoft.com/azure/aks/node-image-upgrade",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsUpgradeNodeImageVersionRequest": {
@@ -6276,10 +6276,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines/{machineName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a specific machine in the specified agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MachinesGetResponse": {
@@ -6479,10 +6479,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of machines in the specified agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MachineListResult": {
@@ -6621,10 +6621,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes specific machines in an agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsDeleteMachinesRequest": {
@@ -6696,10 +6696,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Aborts last operation running on agent pool.\n\nAborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsAbortLatestOperationRequest": {
@@ -6755,10 +6755,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes an agent pool in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsDeleteRequest": {
@@ -6821,10 +6821,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates an agent pool in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsCreateOrUpdateResponse": {
@@ -7670,51 +7670,10 @@
           "traits": {
             "smithy.api#documentation": "Specifications on how to scale the VirtualMachines agent pool to a fixed size."
           }
-        },
-        "autoscale": {
-          "target": "com.azure.containerservice#ScaleProfileAutoscaleList",
-          "traits": {
-            "smithy.api#documentation": "Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range.\nEach profile targets a specific VM SKU and is evaluated independently.\nScaling decisions across profiles are governed by the cluster autoscaler expander,\nconfigurable via `ManagedCluster.properties.autoScalerProfile.expander`."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Specifications on how to scale a VirtualMachines agent pool."
-      }
-    },
-    "com.azure.containerservice#ScaleProfileAutoscaleList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.containerservice#AutoScaleProfile"
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range.\nEach profile targets a specific VM SKU and is evaluated independently.\nScaling decisions across profiles are governed by the cluster autoscaler expander,\nconfigurable via `ManagedCluster.properties.autoScalerProfile.expander`."
-      }
-    },
-    "com.azure.containerservice#AutoScaleProfile": {
-      "type": "structure",
-      "members": {
-        "size": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'."
-          }
-        },
-        "minCount": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The minimum number of nodes of the specified sizes."
-          }
-        },
-        "maxCount": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The maximum number of nodes of the specified sizes."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifications on auto-scaling."
       }
     },
     "com.azure.containerservice#ScaleProfileManualList": {
@@ -9179,10 +9138,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the specified managed cluster agent pool.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolsGetResponse": {
@@ -9276,10 +9235,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of agent pools in the specified managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#AgentPoolListResult": {
@@ -9395,10 +9354,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Aborts last operation running on managed cluster.\n\nAborts the currently running operation on the managed cluster. The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersAbortLatestOperationRequest": {
@@ -9446,10 +9405,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersDeleteRequest": {
@@ -9497,10 +9456,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates tags on a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersUpdateTagsResponse": {
@@ -10091,12 +10050,6 @@
             "smithy.api#documentation": "AI toolchain operator settings that apply to the whole cluster."
           }
         },
-        "schedulerProfile": {
-          "target": "com.azure.containerservice#SchedulerProfile",
-          "traits": {
-            "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
-          }
-        },
         "hostedSystemProfile": {
           "target": "com.azure.containerservice#ManagedClusterHostedSystemProfile",
           "traits": {
@@ -10208,54 +10161,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Settings for hosted system addons."
-      }
-    },
-    "com.azure.containerservice#SchedulerProfile": {
-      "type": "structure",
-      "members": {
-        "upstream": {
-          "target": "com.azure.containerservice#SchedulerInstanceProfile",
-          "traits": {
-            "smithy.api#documentation": "Profile with settings related to upstream variant of kube-scheduler (https://github.com/kubernetes/kubernetes/tree/master/pkg/scheduler)."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
-      }
-    },
-    "com.azure.containerservice#SchedulerInstanceProfile": {
-      "type": "structure",
-      "members": {
-        "schedulerConfigMode": {
-          "target": "com.azure.containerservice#SchedulerConfigMode",
-          "traits": {
-            "smithy.api#documentation": "The configuration mode to be used by the AKS-managed scheduler."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Profile with settings related to a specific instance of an AKS-managed scheduler."
-      }
-    },
-    "com.azure.containerservice#SchedulerConfigMode": {
-      "type": "enum",
-      "members": {
-        "DEFAULT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Default"
-          }
-        },
-        "MANAGEDBYCRD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ManagedByCRD"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The config customization mode for this scheduler instance."
       }
     },
     "com.azure.containerservice#ManagedClusterAIToolchainOperatorProfile": {
@@ -11303,71 +11208,10 @@
           "traits": {
             "smithy.api#documentation": "Microsoft Defender threat detection for Cloud settings for the security profile."
           }
-        },
-        "securityGating": {
-          "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGating",
-          "traits": {
-            "smithy.api#documentation": "Microsoft Defender settings for security gating. This validates container images eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. For more information, see https://aka.ms/KubernetesDefenderAuditRule."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Microsoft Defender settings for the security profile."
-      }
-    },
-    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGating": {
-      "type": "structure",
-      "members": {
-        "enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to enable Defender security gating. When enabled, the gating feature scans container images and audits or blocks deployment of images that do not meet security standards according to configured security rules. For more information, see https://aka.ms/KubernetesDefenderAuditRule."
-          }
-        },
-        "identities": {
-          "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList",
-          "traits": {
-            "smithy.api#documentation": "List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code."
-          }
-        },
-        "allowSecretAccess": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "In use only while registry access is granted by secret rather than managed identity. Sets whether to grant the Defender gating agent access to cluster secrets for pulling images from registries. If secret access is denied and the registry requires pull secrets, the add-on will not perform image validation. Default value is false."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Microsoft Defender settings for security gating. This validates container image eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards."
-      }
-    },
-    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentity"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code."
-      }
-    },
-    "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityGatingIdentity": {
-      "type": "structure",
-      "members": {
-        "azureContainerRegistry": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The container registry for which the identity will be used; the identity specified here should have a federated identity credential attached to it."
-          }
-        },
-        "identity": {
-          "target": "com.azure.containerservice#UserAssignedIdentity",
-          "traits": {
-            "smithy.api#documentation": "The identity object used to access the registry"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Identity mapping used by Defender security gating for registry access."
       }
     },
     "com.azure.containerservice#ManagedClusterSecurityProfileDefenderSecurityMonitoring": {
@@ -13659,10 +13503,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersCreateOrUpdateResponse": {
@@ -14139,12 +13983,6 @@
           "target": "com.azure.containerservice#ManagedClusterAIToolchainOperatorProfile",
           "traits": {
             "smithy.api#documentation": "AI toolchain operator settings that apply to the whole cluster."
-          }
-        },
-        "schedulerProfile": {
-          "target": "com.azure.containerservice#SchedulerProfile",
-          "traits": {
-            "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
           }
         },
         "hostedSystemProfile": {
@@ -15101,10 +14939,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a managed cluster.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetResponse": {
@@ -15245,10 +15083,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists managed clusters in the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClusterListResult": {
@@ -15411,10 +15249,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/snapshots",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of snapshots in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#SnapshotsListRequest": {
@@ -15446,10 +15284,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of managed clusters in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersListRequest": {
@@ -15481,10 +15319,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List supported trusted access roles.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#TrustedAccessRoleListResult": {
@@ -15672,10 +15510,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles/{mode}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a mesh revision profile for a specified mesh in the specified location.\n\nContains extra metadata on the revision, including supported revisions, cluster compatibility and available upgrades",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#ManagedClustersGetMeshRevisionProfileResponse": {
@@ -15784,10 +15622,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Lists mesh revision profiles for all meshes in the specified location.\n\nContains extra metadata on each revision, including supported revisions, cluster compatibility and available upgrades",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#MeshRevisionProfileList": {
@@ -15895,10 +15733,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/kubernetesVersions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of supported Kubernetes versions in the specified subscription.\n\nContains extra metadata on the version, including supported patch versions, capabilities, available upgrades, and details on preview status of the version",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#KubernetesVersionListResult": {
@@ -16057,10 +15895,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ContainerService/operations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of operations.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.containerservice#OperationListResult": {

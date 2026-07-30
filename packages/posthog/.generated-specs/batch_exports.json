@@ -258,7 +258,7 @@
         "config": {
           "target": "com.posthog.batch_exports#BatchExportDestinationConfig",
           "traits": {
-            "smithy.api#documentation": "Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses."
+            "smithy.api#documentation": "Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses."
           }
         },
         "integration": {
@@ -270,7 +270,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Serializer for an BatchExportDestination model.\n\nThe `config` field is polymorphic and typed only for destinations that keep\ncredentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres,\nAwsS3, S3Compatible, Snowflake). Other destination types accept the same JSON shape but without a\ntyped OpenAPI schema. Secret fields are stripped from `config` on read."
+        "smithy.api#documentation": "Serializer for an BatchExportDestination model.\n\nThe `config` field is polymorphic and typed only for destinations that keep\ncredentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres,\nAwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed\nOpenAPI schema. Secret fields are stripped from `config` on read."
       }
     },
     "com.posthog.batch_exports#BatchExportDestinationTypeEnum": {
@@ -379,9 +379,6 @@
         },
         "S3CompatibleDestinationConfig": {
           "target": "com.posthog.batch_exports#S3CompatibleDestinationConfig"
-        },
-        "SnowflakeDestinationConfig": {
-          "target": "com.posthog.batch_exports#SnowflakeDestinationConfig"
         }
       },
       "traits": {}
@@ -709,48 +706,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Typed configuration for an S3-compatible batch-export destination (Cloudflare R2,\nDigitalOcean Spaces, etc.).\n\nCredentials and the provider `endpoint_url` live in the linked s3-compatible Integration.\nMirrors the non-credential fields of `S3CompatibleBatchExportInputs` in\n`products/batch_exports/backend/service.py`."
-      }
-    },
-    "com.posthog.batch_exports#SnowflakeDestinationConfig": {
-      "type": "structure",
-      "members": {
-        "database": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Snowflake database to write to.",
-            "smithy.api#required": {}
-          }
-        },
-        "warehouse": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Snowflake compute warehouse to use.",
-            "smithy.api#required": {}
-          }
-        },
-        "schema": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Schema inside the database containing the destination table.",
-            "smithy.api#required": {}
-          }
-        },
-        "table_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Destination table name."
-          }
-        },
-        "role": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional Snowflake role to assume for the session.",
-            "com.distilled.openapi#nullable": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Typed configuration for a Snowflake batch-export destination.\n\nAccount, user, authentication type and credentials may live in a linked Integration (when one is\nprovided) or inline in this config (legacy). Mirrors the non-credential fields of\n`SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`."
       }
     },
     "com.posthog.batch_exports#BatchExportIntervalEnum": {
@@ -4618,9 +4573,6 @@
         },
         "S3CompatibleDestinationRequest": {
           "target": "com.posthog.batch_exports#S3CompatibleDestinationRequest"
-        },
-        "SnowflakeDestinationRequest": {
-          "target": "com.posthog.batch_exports#SnowflakeDestinationRequest"
         }
       },
       "traits": {}
@@ -4869,46 +4821,6 @@
         "smithy.api#documentation": "* `S3Compatible` - S3Compatible"
       }
     },
-    "com.posthog.batch_exports#SnowflakeDestinationRequest": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.batch_exports#SnowflakeDestinationRequestTypeEnum",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "integration_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of a snowflake-kind Integration providing the account, user and credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one."
-          }
-        },
-        "config": {
-          "target": "com.posthog.batch_exports#SnowflakeDestinationConfig",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Request shape for creating or updating a Snowflake batch-export destination."
-      }
-    },
-    "com.posthog.batch_exports#SnowflakeDestinationRequestTypeEnum": {
-      "type": "enum",
-      "members": {
-        "SNOWFLAKE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Snowflake"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `Snowflake` - Snowflake"
-      }
-    },
     "com.posthog.batch_exports#BatchExportsCreateRequest": {
       "type": "structure",
       "members": {
@@ -4960,10 +4872,7 @@
           }
         },
         "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {\"key\": \"$browser\", \"operator\": \"exact\", \"type\": \"event\", \"value\": [\"Firefox\"]})."
-          }
+          "target": "smithy.api#Document"
         },
         "timezone": {
           "target": "smithy.api#String",
@@ -6185,10 +6094,7 @@
           }
         },
         "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {\"key\": \"$browser\", \"operator\": \"exact\", \"type\": \"event\", \"value\": [\"Firefox\"]})."
-          }
+          "target": "smithy.api#Document"
         },
         "timezone": {
           "target": "smithy.api#String",
@@ -6299,10 +6205,7 @@
           }
         },
         "filters": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {\"key\": \"$browser\", \"operator\": \"exact\", \"type\": \"event\", \"value\": [\"Firefox\"]})."
-          }
+          "target": "smithy.api#Document"
         },
         "timezone": {
           "target": "smithy.api#String",
@@ -6524,7 +6427,7 @@
         "config": {
           "target": "com.posthog.batch_exports#BatchExportDestinationConfig",
           "traits": {
-            "smithy.api#documentation": "Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses."
+            "smithy.api#documentation": "Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses."
           }
         },
         "integration": {
@@ -6537,13 +6440,13 @@
         "integration_id": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, and BigQuery destinations; optional for AwsS3, S3Compatible and Snowflake (inline credentials remain supported); unused for other types.",
+            "smithy.api#documentation": "ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, and BigQuery destinations; optional for AwsS3 and S3Compatible (inline credentials remain supported); unused for other types.",
             "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Serializer for an BatchExportDestination model.\n\nThe `config` field is polymorphic and typed only for destinations that keep\ncredentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres,\nAwsS3, S3Compatible, Snowflake). Other destination types accept the same JSON shape but without a\ntyped OpenAPI schema. Secret fields are stripped from `config` on read."
+        "smithy.api#documentation": "Serializer for an BatchExportDestination model.\n\nThe `config` field is polymorphic and typed only for destinations that keep\ncredentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres,\nAwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed\nOpenAPI schema. Secret fields are stripped from `config` on read."
       }
     },
     "com.posthog.batch_exports#BatchExportsPauseCreateRequest": {

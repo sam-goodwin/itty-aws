@@ -314,7 +314,7 @@ export const DatabricksDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating a Databricks batch-export destination. */
 export interface DatabricksDestinationRequest {
-  type: DatabricksDestinationRequestTypeEnum | (string & {});
+  type: DatabricksDestinationRequestTypeEnum;
   /** ID of a databricks-kind Integration. Use the integrations-list MCP tool to find one. */
   integration_id: number;
   config: DatabricksDestinationConfig;
@@ -368,7 +368,7 @@ export const AzureBlobDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating an Azure Blob Storage batch-export destination. */
 export interface AzureBlobDestinationRequest {
-  type: AzureBlobDestinationRequestTypeEnum | (string & {});
+  type: AzureBlobDestinationRequestTypeEnum;
   /** ID of an azure-blob-kind Integration. Use the integrations-list MCP tool to find one. */
   integration_id: number;
   config: AzureBlobDestinationConfig;
@@ -408,7 +408,7 @@ export const BigQueryDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating a BigQuery batch-export destination. */
 export interface BigQueryDestinationRequest {
-  type: BigQueryDestinationRequestTypeEnum | (string & {});
+  type: BigQueryDestinationRequestTypeEnum;
   /** ID of a google-cloud-service-account-kind Integration. Use the integrations-list MCP tool to find one. */
   integration_id: number;
   config: BigQueryDestinationConfig;
@@ -451,7 +451,7 @@ export const PostgresDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating a PostgreSQL batch-export destination. */
 export interface PostgresDestinationRequest {
-  type: PostgresDestinationRequestTypeEnum | (string & {});
+  type: PostgresDestinationRequestTypeEnum;
   /** ID of a postgresql-kind Integration providing connection credentials. Required when creating a batch export. Use the integrations-list MCP tool to find one. */
   integration_id: number;
   config: PostgresDestinationConfig;
@@ -506,7 +506,7 @@ export const AwsS3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating an AWS S3 batch-export destination. */
 export interface AwsS3DestinationRequest {
-  type: AwsS3DestinationRequestTypeEnum | (string & {});
+  type: AwsS3DestinationRequestTypeEnum;
   /** ID of an aws-s3-kind Integration providing AWS credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
   integration_id?: number;
   config: AwsS3DestinationConfig;
@@ -558,7 +558,7 @@ export const S3CompatibleDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Request shape for creating or updating an S3-compatible batch-export destination. */
 export interface S3CompatibleDestinationRequest {
-  type: S3CompatibleDestinationRequestTypeEnum | (string & {});
+  type: S3CompatibleDestinationRequestTypeEnum;
   /** ID of an s3-compatible-kind Integration providing credentials and the provider endpoint URL. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
   integration_id?: number;
   config: S3CompatibleDestinationConfig;
@@ -573,60 +573,13 @@ export const S3CompatibleDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3CompatibleDestinationRequest",
 }) as any as S.Schema<S3CompatibleDestinationRequest>;
 
-/** * `Snowflake` - Snowflake */
-export type SnowflakeDestinationRequestTypeEnum = "Snowflake";
-export const SnowflakeDestinationRequestTypeEnum = /*@__PURE__*/ S.String;
-
-/** Typed configuration for a Snowflake batch-export destination. Account, user, authentication type and credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`. */
-export interface SnowflakeDestinationConfig {
-  /** Snowflake database to write to. */
-  database: string;
-  /** Snowflake compute warehouse to use. */
-  warehouse: string;
-  /** Schema inside the database containing the destination table. */
-  schema: string;
-  /** Destination table name. */
-  table_name?: string;
-  /** Optional Snowflake role to assume for the session. */
-  role?: string | null;
-}
-export const SnowflakeDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    warehouse: S.String,
-    schema: S.String,
-    table_name: S.optional(S.String),
-    role: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SnowflakeDestinationConfig",
-}) as any as S.Schema<SnowflakeDestinationConfig>;
-
-/** Request shape for creating or updating a Snowflake batch-export destination. */
-export interface SnowflakeDestinationRequest {
-  type: SnowflakeDestinationRequestTypeEnum | (string & {});
-  /** ID of a snowflake-kind Integration providing the account, user and credentials. Preferred over inline credentials. Use the integrations-list MCP tool to find one. */
-  integration_id?: number;
-  config: SnowflakeDestinationConfig;
-}
-export const SnowflakeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SnowflakeDestinationRequestTypeEnum,
-    integration_id: S.optional(S.Number),
-    config: SnowflakeDestinationConfig,
-  }),
-).annotate({
-  identifier: "SnowflakeDestinationRequest",
-}) as any as S.Schema<SnowflakeDestinationRequest>;
-
 export type BatchExportDestinationRequest =
   | DatabricksDestinationRequest
   | AzureBlobDestinationRequest
   | BigQueryDestinationRequest
   | PostgresDestinationRequest
   | AwsS3DestinationRequest
-  | S3CompatibleDestinationRequest
-  | SnowflakeDestinationRequest;
+  | S3CompatibleDestinationRequest;
 export const BatchExportDestinationRequest =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
 
@@ -654,7 +607,6 @@ export interface BatchExportsCreateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
-  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -718,16 +670,15 @@ export type BatchExportDestinationConfig =
   | BigQueryDestinationConfig
   | PostgresDestinationConfig
   | AwsS3DestinationConfig
-  | S3CompatibleDestinationConfig
-  | SnowflakeDestinationConfig;
+  | S3CompatibleDestinationConfig;
 export const BatchExportDestinationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
 
-/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
+/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestinationOutput {
   /** A choice of supported BatchExportDestination types. * `S3` - S3 * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum;
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;
@@ -1620,7 +1571,6 @@ export interface BatchExportsPartialUpdateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
-  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -1659,15 +1609,15 @@ export type BatchExportsPauseCreateRequestModel = ModelEnum | BlankEnum;
 export const BatchExportsPauseCreateRequestModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BatchExportsPauseCreateRequestModel>;
 
-/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
+/** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestination {
   /** A choice of supported BatchExportDestination types. * `S3` - S3 * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
   type?: BatchExportDestinationTypeEnum | (string & {});
-  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
+  /** Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses. */
   config?: BatchExportDestinationConfig;
   /** The integration for this destination. */
   integration?: number | null;
-  /** ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, and BigQuery destinations; optional for AwsS3, S3Compatible and Snowflake (inline credentials remain supported); unused for other types. */
+  /** ID of a team-scoped Integration providing credentials. Required when creating Databricks, AzureBlob, and BigQuery destinations; optional for AwsS3 and S3Compatible (inline credentials remain supported); unused for other types. */
   integration_id?: number | null;
 }
 export const BatchExportDestination = /*@__PURE__*/ S.suspend(() =>
@@ -2273,7 +2223,6 @@ export interface BatchExportsUpdateRequest {
   paused?: boolean;
   /** Optional HogQL SELECT defining a custom model schema. Only recommended in advanced use cases. */
   hogql_query?: string;
-  /** Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a 'type' of one of: 'event', 'hogql', 'person' (e.g. {"key": "$browser", "operator": "exact", "type": "event", "value": ["Firefox"]}). */
   filters?: unknown;
   /** IANA timezone name (e.g. 'America/New_York', 'Europe/London', 'UTC') controlling daily and weekly interval boundaries. */
   timezone?: string | null;
@@ -2408,7 +2357,7 @@ export const FileDownloadEventsRequestExcludeList = /*@__PURE__*/ S.Array(
 /** Typed configuration for the events model. */
 export interface FileDownloadEventsRequest {
   file: FileDownloadDestinationFileConfig;
-  model: FileDownloadEventsRequestModelEnum | (string & {});
+  model: FileDownloadEventsRequestModelEnum;
   include?: FileDownloadEventsRequestIncludeList;
   exclude?: FileDownloadEventsRequestExcludeList;
   data_interval_start: string;
@@ -2434,7 +2383,7 @@ export const FileDownloadPersonsRequestModelEnum = /*@__PURE__*/ S.String;
 /** Typed configuration for the persons model. */
 export interface FileDownloadPersonsRequest {
   file: FileDownloadDestinationFileConfig;
-  model: FileDownloadPersonsRequestModelEnum | (string & {});
+  model: FileDownloadPersonsRequestModelEnum;
   data_interval_start: string;
   data_interval_end: string;
 }
@@ -2456,7 +2405,7 @@ export const FileDownloadSessionsRequestModelEnum = /*@__PURE__*/ S.String;
 /** Typed configuration for the sessions model. */
 export interface FileDownloadSessionsRequest {
   file: FileDownloadDestinationFileConfig;
-  model: FileDownloadSessionsRequestModelEnum | (string & {});
+  model: FileDownloadSessionsRequestModelEnum;
   data_interval_start: string;
   data_interval_end: string;
 }

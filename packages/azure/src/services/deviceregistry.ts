@@ -6584,7 +6584,7 @@ export interface NamespacesMigrateRequest {
   /** The name of the namespace. */
   namespaceName: string;
   /** Scope of the migrate resources operation. */
-  scope?: Scope;
+  scope?: Scope | (string & {});
   /** List of asset resources to be migrated. */
   resourceIds?: NamespacesMigrateRequestResourceIdsList;
 }
@@ -7600,7 +7600,7 @@ export interface SchemaPropertiesInput {
   /** Format of the schema. */
   format: Format | (string & {});
   /** Type of the schema. */
-  schemaType: SchemaType;
+  schemaType: SchemaType | (string & {});
   /** Schema tags. */
   tags?: SchemaPropertiesInputTagsMap;
 }

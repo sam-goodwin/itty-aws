@@ -53,312 +53,6 @@ export class UnprocessableEntity extends T.applyErrorMatchers(
   [{ status: 422 }],
 ) {}
 
-export interface AgentAdminControllerGetRegistrationRequest {
-  /** The unique ID of the agent registration. */
-  id: string;
-}
-export const AgentAdminControllerGetRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/agents/registrations/{id}", code: 200 }),
-    ),
-  ).annotate({
-    identifier: "AgentAdminControllerGetRegistrationRequest",
-  }) as any as S.Schema<AgentAdminControllerGetRegistrationRequest>;
-
-/** The agent identity associated with this registration. */
-export interface AgentRegistrationAgentIdentity {
-  /** Unique identifier of the agent identity. */
-  id: string;
-  /** Identifier of the AuthKit user the agent identity is bound to, or `null` when the agent is not associated with a user. */
-  userland_user_id: string | null;
-  /** The timestamp when the agent identity was created. */
-  created_at: string;
-  /** The timestamp when the agent identity was last updated. */
-  updated_at: string;
-}
-export const AgentRegistrationAgentIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    userland_user_id: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "AgentRegistrationAgentIdentity",
-}) as any as S.Schema<AgentRegistrationAgentIdentity>;
-
-/** The current verification status of the registration. */
-export type AgentRegistrationStatus =
-  | "unverified"
-  | "verified"
-  | "expired"
-  | "revoked";
-export const AgentRegistrationStatus = /*@__PURE__*/ S.String;
-
-/** The kind of agent registration. */
-export type AgentRegistrationKind =
-  | "anonymous"
-  | "service_auth"
-  | "identity_assertion";
-export const AgentRegistrationKind = /*@__PURE__*/ S.String;
-
-export interface AgentRegistrationClaimClaimCompletion {
-  /** Unique identifier of the claim completion. */
-  id: string;
-  /** The timestamp when the claim completion was created. */
-  created_at: string;
-  /** The timestamp when the claim completion was last updated. */
-  updated_at: string;
-  /** The timestamp when the claim completion expires. */
-  expires_at: string;
-  /** The timestamp when the claim was completed. */
-  claimed_at: string;
-}
-export const AgentRegistrationClaimClaimCompletion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      expires_at: S.String,
-      claimed_at: S.String,
-    }),
-).annotate({
-  identifier: "AgentRegistrationClaimClaimCompletion",
-}) as any as S.Schema<AgentRegistrationClaimClaimCompletion>;
-
-export interface AgentRegistrationClaim {
-  /** Unique identifier of the claim. */
-  id: string;
-  /** The completion record for the claim, or `null` if the claim has not been completed. */
-  claim_completion: AgentRegistrationClaimClaimCompletion | null;
-  /** The timestamp when the claim was created. */
-  created_at: string;
-  /** The timestamp when the claim was last updated. */
-  updated_at: string;
-  /** The timestamp when the claim expires. */
-  expires_at: string;
-}
-export const AgentRegistrationClaim = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    claim_completion: S.NullOr(AgentRegistrationClaimClaimCompletion),
-    created_at: S.String,
-    updated_at: S.String,
-    expires_at: S.String,
-  }),
-).annotate({
-  identifier: "AgentRegistrationClaim",
-}) as any as S.Schema<AgentRegistrationClaim>;
-
-export interface AgentRegistration {
-  /** Unique identifier of the agent registration. */
-  id: string;
-  /** The agent identity associated with this registration. */
-  agent_identity: AgentRegistrationAgentIdentity;
-  /** Identifier of the organization the agent is registered to. */
-  organization_id: string;
-  /** The current verification status of the registration. */
-  status: AgentRegistrationStatus;
-  /** The kind of agent registration. */
-  kind: AgentRegistrationKind;
-  /** The claim associated with this registration, or `null` if the registration has no claim. */
-  claim: AgentRegistrationClaim | null;
-  /** The timestamp when the registration was created. */
-  created_at: string;
-  /** The timestamp when the registration was last updated. */
-  updated_at: string;
-}
-export const AgentRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    agent_identity: AgentRegistrationAgentIdentity,
-    organization_id: S.String,
-    status: AgentRegistrationStatus,
-    kind: AgentRegistrationKind,
-    claim: S.NullOr(AgentRegistrationClaim),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "AgentRegistration",
-}) as any as S.Schema<AgentRegistration>;
-
-/** The user to attach to the claim attempt, identified by email and external ID. */
-export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser {
-  /** The email address of the user. */
-  email: string;
-  /** The external ID of the user. */
-  external_id: string;
-}
-export const AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      external_id: S.String,
-    }),
-  ).annotate({
-    identifier: "AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser",
-  }) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>;
-
-export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequest {
-  /** The operation to perform on the claim attempt. Currently only `link_external_user` is supported. */
-  type: string;
-  /** The token identifying the claim attempt. */
-  claim_attempt_token: string;
-  /** The user to attach to the claim attempt, identified by email and external ID. */
-  user: AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser;
-  /** The organization to place the agent in. Required when the user belongs to more than one organization. */
-  organization_id?: string;
-}
-export const AgentAdminControllerLinkClaimAttemptToExternalUserRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      claim_attempt_token: S.String,
-      user: AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser,
-      organization_id: S.optional(S.String),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "/agents/claims/attempts", code: 200 }),
-    ),
-  ).annotate({
-    identifier: "AgentAdminControllerLinkClaimAttemptToExternalUserRequest",
-  }) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequest>;
-
-/** Current status of the agent registration. */
-export type ClaimViewResponseStatus =
-  | "unverified"
-  | "verified"
-  | "expired"
-  | "revoked";
-export const ClaimViewResponseStatus = /*@__PURE__*/ S.String;
-
-export interface ClaimViewResponseOrganizationsItem {
-  /** The organization ID. */
-  id: string;
-  /** The organization name. */
-  name: string;
-}
-export const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ClaimViewResponseOrganizationsItem",
-}) as any as S.Schema<ClaimViewResponseOrganizationsItem>;
-
-/** Organizations the user belongs to, offered as placement choices. */
-export type ClaimViewResponseOrganizationsList =
-  Array<ClaimViewResponseOrganizationsItem>;
-export const ClaimViewResponseOrganizationsList = /*@__PURE__*/ S.Array(
-  ClaimViewResponseOrganizationsItem,
-) as any as S.Schema<ClaimViewResponseOrganizationsList>;
-
-export interface ClaimViewResponse {
-  /** The agent registration ID. */
-  id: string;
-  /** Current status of the agent registration. */
-  status: ClaimViewResponseStatus;
-  /** The user code the agent needs to complete the claim. */
-  user_code: string;
-  /** Organizations the user belongs to, offered as placement choices. */
-  organizations: ClaimViewResponseOrganizationsList;
-}
-export const ClaimViewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: ClaimViewResponseStatus,
-    user_code: S.String,
-    organizations: ClaimViewResponseOrganizationsList,
-  }),
-).annotate({
-  identifier: "ClaimViewResponse",
-}) as any as S.Schema<ClaimViewResponse>;
-
-export interface AgentAdminControllerValidateCredentialRequestBodyCase0 {
-  /** The kind of credential being validated — an agent API key or an agent access token. */
-  type: string;
-  /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
-  credential: string;
-}
-export const AgentAdminControllerValidateCredentialRequestBodyCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      credential: S.String,
-    }),
-  ).annotate({
-    identifier: "AgentAdminControllerValidateCredentialRequestBodyCase0",
-  }) as any as S.Schema<AgentAdminControllerValidateCredentialRequestBodyCase0>;
-
-export interface AgentAdminControllerValidateCredentialRequestBodyCase1 {
-  /** The kind of credential being validated — an agent API key or an agent access token. */
-  type: string;
-  /** The credential value to validate: the API key value for `api_key`, or the access token (JWT) for `access_token`. */
-  credential: string;
-  /** When provided, the access token's `aud` claim is verified against this value. Tokens issued for a different resource are rejected. */
-  audience?: string;
-}
-export const AgentAdminControllerValidateCredentialRequestBodyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      credential: S.String,
-      audience: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentAdminControllerValidateCredentialRequestBodyCase1",
-  }) as any as S.Schema<AgentAdminControllerValidateCredentialRequestBodyCase1>;
-
-/** The agent credential to validate. Either an `api_key` or an `access_token`, discriminated by `type`. */
-export type AgentAdminControllerValidateCredentialRequestBody =
-  | AgentAdminControllerValidateCredentialRequestBodyCase0
-  | AgentAdminControllerValidateCredentialRequestBodyCase1;
-export const AgentAdminControllerValidateCredentialRequestBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AgentAdminControllerValidateCredentialRequestBody>;
-
-export interface AgentAdminControllerValidateCredentialRequest {
-  body: AgentAdminControllerValidateCredentialRequestBody;
-}
-export const AgentAdminControllerValidateCredentialRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      body: AgentAdminControllerValidateCredentialRequestBody.pipe(
-        T.HttpBody(),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/agents/credentials/validate",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "AgentAdminControllerValidateCredentialRequest",
-  }) as any as S.Schema<AgentAdminControllerValidateCredentialRequest>;
-
-export interface AgentCredentialValidation {
-  /** Whether the presented credential is valid. */
-  valid: boolean;
-  /** Identifier of the agent registration the credential belongs to, or `null` when the credential is invalid. */
-  registration_id: string | null;
-  /** The timestamp when the credential expires, or `null` when the credential is invalid. */
-  expires_at: string | null;
-}
-export const AgentCredentialValidation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valid: S.Boolean,
-    registration_id: S.NullOr(S.String),
-    expires_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "AgentCredentialValidation",
-}) as any as S.Schema<AgentCredentialValidation>;
-
 export interface ApiKeysControllerDeleteRequest {
   /** The unique ID of the API key. */
   id: string;
@@ -491,13 +185,10 @@ export const ApiKeysControllerValidateApiKeyRequest = /*@__PURE__*/ S.suspend(
 
 export interface ApiKeyValidationResponse {
   api_key?: ApiKey | null;
-  /** The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration. */
-  agent_registration_id?: string;
 }
 export const ApiKeyValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_key: S.optional(S.NullOr(ApiKey)),
-    agent_registration_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ApiKeyValidationResponse",
@@ -956,20 +647,6 @@ export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
 export type PaginationOrder = "normal" | "desc" | "asc";
 export const PaginationOrder = /*@__PURE__*/ S.String;
 
-export type ApplicationsControllerListRequestRegistrationTypesItem =
-  | "dynamic"
-  | "authenticated";
-export const ApplicationsControllerListRequestRegistrationTypesItem =
-  /*@__PURE__*/ S.String;
-
-export type ApplicationsControllerListRequestRegistrationTypesList = Array<
-  ApplicationsControllerListRequestRegistrationTypesItem | (string & {})
->;
-export const ApplicationsControllerListRequestRegistrationTypesList =
-  /*@__PURE__*/ S.Array(
-    ApplicationsControllerListRequestRegistrationTypesItem,
-  ) as any as S.Schema<ApplicationsControllerListRequestRegistrationTypesList>;
-
 export interface ApplicationsControllerListRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -979,8 +656,6 @@ export interface ApplicationsControllerListRequest {
   limit?: number;
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
   order?: PaginationOrder | (string & {});
-  /** Filter Connect Applications by registration type. Specify multiple as a comma-separated list (e.g. `registration_types=dynamic,authenticated`). Defaults to `authenticated` only when not specified. */
-  registration_types?: ApplicationsControllerListRequestRegistrationTypesList;
   /** Filter Connect Applications by organization ID. */
   organization_id?: string;
 }
@@ -990,9 +665,6 @@ export const ApplicationsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
     after: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(PaginationOrder.pipe(T.Query())),
-    registration_types: S.optional(
-      ApplicationsControllerListRequestRegistrationTypesList.pipe(T.Query()),
-    ),
     organization_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/connect/applications", code: 200 })),
 ).annotate({
@@ -4209,26 +3881,6 @@ export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserRoleAssignmentResource",
 }) as any as S.Schema<UserRoleAssignmentResource>;
 
-/** Whether the role was assigned directly or derived from a group. */
-export type UserRoleAssignmentSourceType = "direct" | "group";
-export const UserRoleAssignmentSourceType = /*@__PURE__*/ S.String;
-
-/** The origin of the role assignment. */
-export interface UserRoleAssignmentSource {
-  /** Whether the role was assigned directly or derived from a group. */
-  type: UserRoleAssignmentSourceType;
-  /** The ID of the group role assignment the role was derived from, or null if direct. */
-  group_role_assignment_id: string | null;
-}
-export const UserRoleAssignmentSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UserRoleAssignmentSourceType,
-    group_role_assignment_id: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UserRoleAssignmentSource",
-}) as any as S.Schema<UserRoleAssignmentSource>;
-
 export interface UserRoleAssignment {
   /** Distinguishes the role assignment object. */
   object: string;
@@ -4240,8 +3892,6 @@ export interface UserRoleAssignment {
   role: SlimRole;
   /** The resource the role is assigned on. */
   resource: UserRoleAssignmentResource;
-  /** The origin of the role assignment. */
-  source: UserRoleAssignmentSource;
   /** An ISO 8601 timestamp. */
   created_at: string;
   /** An ISO 8601 timestamp. */
@@ -4254,7 +3904,6 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
     organization_membership_id: S.String,
     role: SlimRole,
     resource: UserRoleAssignmentResource,
-    source: UserRoleAssignmentSource,
     created_at: S.String,
     updated_at: S.String,
   }),
@@ -5116,6 +4765,19 @@ export const ConnectionDomainsList = /*@__PURE__*/ S.Array(
   ConnectionDomainsItem,
 ) as any as S.Schema<ConnectionDomainsList>;
 
+/** Configuration options for SAML connections. Only present for SAML connection types. */
+export interface ConnectionOptions {
+  /** The signing certificate of the SAML connection. */
+  signing_cert: string | null;
+}
+export const ConnectionOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    signing_cert: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionOptions",
+}) as any as S.Schema<ConnectionOptions>;
+
 export interface Connection {
   /** Distinguishes the Connection object. */
   object?: string;
@@ -5133,8 +4795,8 @@ export interface Connection {
   status?: ConnectionStatus;
   /** List of Organization Domains. */
   domains?: ConnectionDomainsList;
-  /** The immutable callback endpoint for this Connection. For SAML connections this is the ACS URL; for OIDC connections this is the redirect URI. */
-  callback_endpoint?: string;
+  /** Configuration options for SAML connections. Only present for SAML connection types. */
+  options?: ConnectionOptions;
   /** An ISO 8601 timestamp. */
   created_at?: string;
   /** An ISO 8601 timestamp. */
@@ -5150,7 +4812,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(ConnectionState),
     status: S.optional(ConnectionStatus),
     domains: S.optional(ConnectionDomainsList),
-    callback_endpoint: S.optional(S.String),
+    options: S.optional(ConnectionOptions),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
   }),
@@ -5326,71 +4988,6 @@ export const CorsOriginResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CorsOriginResponse",
 }) as any as S.Schema<CorsOriginResponse>;
 
-export interface CorsOriginsControllerListRequest {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
-  before?: string;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`. */
-  after?: string;
-  /** Upper limit on the number of objects to return, between `1` and `100`. */
-  limit?: number;
-  /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder | (string & {});
-}
-export const CorsOriginsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.String.pipe(T.Query())),
-    after: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    order: S.optional(PaginationOrder.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/user_management/cors_origins", code: 200 }),
-  ),
-).annotate({
-  identifier: "CorsOriginsControllerListRequest",
-}) as any as S.Schema<CorsOriginsControllerListRequest>;
-
-/** Pagination cursors for navigating between pages of results. */
-export interface CorsOriginsControllerListResponseListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const CorsOriginsControllerListResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "CorsOriginsControllerListResponseListMetadata",
-  }) as any as S.Schema<CorsOriginsControllerListResponseListMetadata>;
-
-/** The list of records for the current page. */
-export type CorsOriginsControllerListResponseDataList =
-  Array<CorsOriginResponse>;
-export const CorsOriginsControllerListResponseDataList = /*@__PURE__*/ S.Array(
-  CorsOriginResponse,
-) as any as S.Schema<CorsOriginsControllerListResponseDataList>;
-
-export interface CorsOriginsControllerListResponse {
-  /** Indicates this is a list response. */
-  object?: string;
-  /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: CorsOriginsControllerListResponseListMetadata;
-  /** The list of records for the current page. */
-  data?: CorsOriginsControllerListResponseDataList;
-}
-export const CorsOriginsControllerListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    list_metadata: S.optional(CorsOriginsControllerListResponseListMetadata),
-    data: S.optional(CorsOriginsControllerListResponseDataList),
-  }),
-).annotate({
-  identifier: "CorsOriginsControllerListResponse",
-}) as any as S.Schema<CorsOriginsControllerListResponse>;
-
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest {
   /** The slug identifier of the provider (e.g., `github`, `slack`, `notion`). */
   slug: string;
@@ -5554,890 +5151,6 @@ export const DataIntegrationsControllerGetUserlandUserTokenResponse =
     identifier: "DataIntegrationsControllerGetUserlandUserTokenResponse",
   }) as any as S.Schema<DataIntegrationsControllerGetUserlandUserTokenResponse>;
 
-export interface DataIntegrationsControllerUpsertApiKeyRequest {
-  /** The identifier of the integration. */
-  slug: string;
-  /** A [User](/reference/authkit/user) identifier. */
-  user_id: string;
-  /** An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. */
-  organization_id?: string;
-  /** The API key secret to store for this integration. */
-  secret: string | Redacted.Redacted<string>;
-}
-export const DataIntegrationsControllerUpsertApiKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-      secret: S.String.pipe(T.SensitiveValue({})),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/data-integrations/{slug}/api-key",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DataIntegrationsControllerUpsertApiKeyRequest",
-  }) as any as S.Schema<DataIntegrationsControllerUpsertApiKeyRequest>;
-
-/** The OAuth scopes granted for this connection. */
-export type ConnectedAccountScopesList = Array<string>;
-export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectedAccountScopesList>;
-
-/** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
-export type ConnectedAccountAuthMethod = "oauth" | "api_key";
-export const ConnectedAccountAuthMethod = /*@__PURE__*/ S.String;
-
-/** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
-export type ConnectedAccountState =
-  | "connected"
-  | "needs_reauthorization"
-  | "disconnected";
-export const ConnectedAccountState = /*@__PURE__*/ S.String;
-
-export interface ConnectedAccount {
-  /** Distinguishes the connected account object. */
-  object?: string;
-  /** The unique identifier of the connected account. */
-  id?: string;
-  /** The [User](/reference/authkit/user) identifier associated with this connection. */
-  user_id?: string | null;
-  /** The [Organization](/reference/organization) identifier associated with this connection, or `null` if not scoped to an organization. */
-  organization_id?: string | null;
-  /** The OAuth scopes granted for this connection. */
-  scopes?: ConnectedAccountScopesList;
-  /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
-  auth_method?: ConnectedAccountAuthMethod;
-  /** The last four characters of the API key, or `null` for OAuth connections. */
-  api_key_last_4?: string | null;
-  /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
-  state?: ConnectedAccountState;
-  /** The timestamp when the connection was created. */
-  created_at?: string;
-  /** The timestamp when the connection was last updated. */
-  updated_at?: string;
-}
-export const ConnectedAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    id: S.optional(S.String),
-    user_id: S.optional(S.NullOr(S.String)),
-    organization_id: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(ConnectedAccountScopesList),
-    auth_method: S.optional(ConnectedAccountAuthMethod),
-    api_key_last_4: S.optional(S.NullOr(S.String)),
-    state: S.optional(ConnectedAccountState),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectedAccount",
-}) as any as S.Schema<ConnectedAccount>;
-
-export interface DataIntegrationsControllerVendCredentialsRequest {
-  /** The identifier of the integration. */
-  slug: string;
-  /** A [User](/reference/authkit/user) identifier. */
-  user_id: string;
-  /** An [Organization](/reference/organization) identifier. Optional parameter to scope the connection to a specific organization. */
-  organization_id?: string;
-}
-export const DataIntegrationsControllerVendCredentialsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-      user_id: S.String,
-      organization_id: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/data-integrations/{slug}/credentials",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DataIntegrationsControllerVendCredentialsRequest",
-  }) as any as S.Schema<DataIntegrationsControllerVendCredentialsRequest>;
-
-/** The scopes granted to the access token. */
-export type DataIntegrationCredentialsResponseCase0CredentialScopesList =
-  Array<string>;
-export const DataIntegrationCredentialsResponseCase0CredentialScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationCredentialsResponseCase0CredentialScopesList>;
-
-/** If the integration has requested scopes that aren't present on the access token, they're listed here. */
-export type DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
-  Array<string>;
-export const DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationCredentialsResponseCase0CredentialMissingScopesList>;
-
-/** The credential object containing the vended secret. */
-export interface DataIntegrationCredentialsResponseCase0Credential {
-  /** Distinguishes the credential object. */
-  object: string;
-  /** The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully. */
-  auth_method: string;
-  /** The OAuth access token. */
-  value: string;
-  /** The ISO-8601 formatted timestamp indicating when the credential expires. */
-  expires_at: string | null;
-  /** The scopes granted to the access token. */
-  scopes: DataIntegrationCredentialsResponseCase0CredentialScopesList;
-  /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
-  missing_scopes: DataIntegrationCredentialsResponseCase0CredentialMissingScopesList;
-}
-export const DataIntegrationCredentialsResponseCase0Credential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.String,
-      auth_method: S.String,
-      value: S.String,
-      expires_at: S.NullOr(S.String),
-      scopes: DataIntegrationCredentialsResponseCase0CredentialScopesList,
-      missing_scopes:
-        DataIntegrationCredentialsResponseCase0CredentialMissingScopesList,
-    }),
-  ).annotate({
-    identifier: "DataIntegrationCredentialsResponseCase0Credential",
-  }) as any as S.Schema<DataIntegrationCredentialsResponseCase0Credential>;
-
-export interface DataIntegrationCredentialsResponseCase0 {
-  /** Indicates credentials are available. */
-  active: boolean;
-  /** The credential object containing the vended secret. */
-  credential: DataIntegrationCredentialsResponseCase0Credential;
-}
-export const DataIntegrationCredentialsResponseCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      active: S.Boolean,
-      credential: DataIntegrationCredentialsResponseCase0Credential,
-    }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponseCase0",
-}) as any as S.Schema<DataIntegrationCredentialsResponseCase0>;
-
-/** The credential object containing the vended secret. */
-export interface DataIntegrationCredentialsResponseCase1Credential {
-  /** Distinguishes the credential object. */
-  object: string;
-  /** The authentication method for this credential. Additional values may be added in the future; handle unknown values gracefully. */
-  auth_method: string;
-  /** The API key secret. */
-  value: string;
-}
-export const DataIntegrationCredentialsResponseCase1Credential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.String,
-      auth_method: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "DataIntegrationCredentialsResponseCase1Credential",
-  }) as any as S.Schema<DataIntegrationCredentialsResponseCase1Credential>;
-
-export interface DataIntegrationCredentialsResponseCase1 {
-  /** Indicates credentials are available. */
-  active: boolean;
-  /** The credential object containing the vended secret. */
-  credential: DataIntegrationCredentialsResponseCase1Credential;
-}
-export const DataIntegrationCredentialsResponseCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      active: S.Boolean,
-      credential: DataIntegrationCredentialsResponseCase1Credential,
-    }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponseCase1",
-}) as any as S.Schema<DataIntegrationCredentialsResponseCase1>;
-
-/** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
-export type DataIntegrationCredentialsResponseCase2Error =
-  | "not_installed"
-  | "needs_reauthorization";
-export const DataIntegrationCredentialsResponseCase2Error =
-  /*@__PURE__*/ S.String;
-
-export interface DataIntegrationCredentialsResponseCase2 {
-  /** Indicates credentials are not available. */
-  active: boolean;
-  /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
-  error: DataIntegrationCredentialsResponseCase2Error;
-}
-export const DataIntegrationCredentialsResponseCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      active: S.Boolean,
-      error: DataIntegrationCredentialsResponseCase2Error,
-    }),
-).annotate({
-  identifier: "DataIntegrationCredentialsResponseCase2",
-}) as any as S.Schema<DataIntegrationCredentialsResponseCase2>;
-
-export type DataIntegrationCredentialsResponse =
-  | DataIntegrationCredentialsResponseCase0
-  | DataIntegrationCredentialsResponseCase1
-  | DataIntegrationCredentialsResponseCase2;
-export const DataIntegrationCredentialsResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<DataIntegrationCredentialsResponse>;
-
-export type DataIntegrationsControllerVendCredentialsResponse =
-  DataIntegrationCredentialsResponse;
-export const DataIntegrationsControllerVendCredentialsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    DataIntegrationCredentialsResponse.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "DataIntegrationsControllerVendCredentialsResponse",
-  }) as any as S.Schema<DataIntegrationsControllerVendCredentialsResponse>;
-
-/** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
-export type DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
-  Array<string>;
-export const DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList>;
-
-export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
-  "oauth" | "api_key";
-export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
-  /*@__PURE__*/ S.String;
-
-/** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). */
-export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
-  Array<
-    | DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem
-    | (string & {})
-  >;
-export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
-  /*@__PURE__*/ S.Array(
-    DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem,
-  ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList>;
-
-/** Provider-specific config values (e.g. a Snowflake `account_identifier`), keyed by the config field. Only fields the built-in provider declares are accepted. */
-export type DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap =
-  { [key: string]: string | undefined };
-export const DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap>;
-
-/** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-export type DataIntegrationCredentialsDtoType = "custom" | "organization";
-export const DataIntegrationCredentialsDtoType = /*@__PURE__*/ S.String;
-
-export interface DataIntegrationCredentialsDto {
-  /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-  type: DataIntegrationCredentialsDtoType | (string & {});
-  /** OAuth client ID for the provider app. Required when `type` is `custom`; omit for `organization`. */
-  client_id?: string;
-  /** OAuth client secret for the provider app. Required when `type` is `custom`; omit for `organization`. */
-  client_secret?: string | Redacted.Redacted<string>;
-}
-export const DataIntegrationCredentialsDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DataIntegrationCredentialsDtoType,
-    client_id: S.optional(S.String),
-    client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "DataIntegrationCredentialsDto",
-}) as any as S.Schema<DataIntegrationCredentialsDto>;
-
-export interface ApiKeyInstallationDto {
-  /** The API key secret to store for the tenant. */
-  secret: string | Redacted.Redacted<string>;
-  /** The User identifier the API key is installed for. */
-  user_id: string;
-  /** An Organization identifier to scope the installation to a specific organization. */
-  organization_id?: string;
-}
-export const ApiKeyInstallationDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secret: S.String.pipe(T.SensitiveValue({})),
-    user_id: S.String,
-    organization_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiKeyInstallationDto",
-}) as any as S.Schema<ApiKeyInstallationDto>;
-
-/** Additional static query parameters appended to the authorization request. */
-export type CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
-  [key: string]: string | undefined;
-};
-export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
-
-/** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-export type CustomProviderDefinitionDtoAuthenticateVia =
-  | "request_body"
-  | "basic_auth_header";
-export const CustomProviderDefinitionDtoAuthenticateVia =
-  /*@__PURE__*/ S.String;
-
-export interface CustomProviderDefinitionDto {
-  /** A descriptive name for the custom provider. */
-  name: string;
-  /** The provider's OAuth authorization endpoint. */
-  authorization_url: string;
-  /** The provider's OAuth token endpoint. */
-  token_url: string;
-  /** The endpoint used to refresh tokens, if different from the token endpoint. */
-  refresh_token_url?: string | null;
-  /** Whether PKCE is used during the authorization code flow. Defaults to `true`. */
-  pkce_enabled?: boolean;
-  /** The separator used to join requested scopes. Defaults to a space. */
-  request_scope_separator?: string;
-  /** Whether at least one scope must be selected when connecting an account. Defaults to `false`. */
-  scopes_required?: boolean;
-  /** Whether a client secret is required for this provider. Defaults to `true`. */
-  client_secret_required?: boolean;
-  /** Additional static query parameters appended to the authorization request. */
-  additional_authorization_parameters?: CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap;
-  /** The Content-Type used when exchanging the token request. */
-  token_body_content_type?: string;
-  /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-  authenticate_via?: CustomProviderDefinitionDtoAuthenticateVia | (string & {});
-}
-export const CustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    authorization_url: S.String,
-    token_url: S.String,
-    refresh_token_url: S.optional(S.NullOr(S.String)),
-    pkce_enabled: S.optional(S.Boolean),
-    request_scope_separator: S.optional(S.String),
-    scopes_required: S.optional(S.Boolean),
-    client_secret_required: S.optional(S.Boolean),
-    additional_authorization_parameters: S.optional(
-      CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap,
-    ),
-    token_body_content_type: S.optional(S.String),
-    authenticate_via: S.optional(CustomProviderDefinitionDtoAuthenticateVia),
-  }),
-).annotate({
-  identifier: "CustomProviderDefinitionDto",
-}) as any as S.Schema<CustomProviderDefinitionDto>;
-
-export interface DataIntegrationsManagementControllerCreateDataIntegrationRequest {
-  /** The provider to create a Data Integration for. For a built-in provider use its slug (e.g. `github`, `slack`). For a custom provider, this is the new provider slug and `custom_provider` must be supplied. A custom provider slug cannot shadow an existing global provider slug. */
-  provider: string;
-  /** An optional description of the Data Integration. */
-  description?: string | null;
-  /** Whether the Data Integration is enabled. Defaults to `false`. */
-  enabled?: boolean;
-  /** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
-  scopes?: DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList | null;
-  /** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). */
-  auth_methods?: DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList;
-  /** Provider-specific config values (e.g. a Snowflake `account_identifier`), keyed by the config field. Only fields the built-in provider declares are accepted. */
-  config?: DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap;
-  /** The OAuth credentials to configure for the Data Integration. Required for OAuth integrations; omit when `auth_methods` is `["api_key"]`. */
-  credentials?: DataIntegrationCredentialsDto;
-  /** An optional API key to install for the first tenant on an `api_key` integration. Omit to declare a keyless integration; tenants can be added later via the per-installation API key path. */
-  api_key?: ApiKeyInstallationDto;
-  /** The OAuth definition for a custom provider. Supply this to define a custom provider; omit it to create an integration for a built-in provider. */
-  custom_provider?: CustomProviderDefinitionDto;
-}
-export const DataIntegrationsManagementControllerCreateDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      provider: S.String,
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.Boolean),
-      scopes: S.optional(
-        S.NullOr(
-          DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList,
-        ),
-      ),
-      auth_methods: S.optional(
-        DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList,
-      ),
-      config: S.optional(
-        DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap,
-      ),
-      credentials: S.optional(DataIntegrationCredentialsDto),
-      api_key: S.optional(ApiKeyInstallationDto),
-      custom_provider: S.optional(CustomProviderDefinitionDto),
-    }).pipe(T.Http({ method: "POST", uri: "/data-integrations", code: 200 })),
-  ).annotate({
-    identifier:
-      "DataIntegrationsManagementControllerCreateDataIntegrationRequest",
-  }) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequest>;
-
-/** The state of the Data Integration. */
-export type DataIntegrationState = "valid" | "invalid" | "requested";
-export const DataIntegrationState = /*@__PURE__*/ S.String;
-
-export type DataIntegrationScopesList = Array<string>;
-export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataIntegrationScopesList>;
-
-export type DataIntegrationAuthMethodsItem = "oauth" | "api_key";
-export const DataIntegrationAuthMethodsItem = /*@__PURE__*/ S.String;
-
-/** How accounts authenticate with the provider for this Data Integration. */
-export type DataIntegrationAuthMethodsList =
-  Array<DataIntegrationAuthMethodsItem>;
-export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
-  DataIntegrationAuthMethodsItem,
-) as any as S.Schema<DataIntegrationAuthMethodsList>;
-
-/** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
-export type DataIntegrationCredentialsType = "custom" | "organization";
-export const DataIntegrationCredentialsType = /*@__PURE__*/ S.String;
-
-/** The credentials configured for the Data Integration. */
-export interface DataIntegrationCredentials {
-  /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
-  type: DataIntegrationCredentialsType;
-  /** The OAuth client ID configured for the provider app. Null for `organization` credentials. */
-  client_id: string | null;
-  /** The last four characters of the OAuth client secret. The full secret is never returned. Null for `organization` credentials. */
-  redacted_client_secret: string | Redacted.Redacted<string> | null;
-}
-export const DataIntegrationCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DataIntegrationCredentialsType,
-    client_id: S.NullOr(S.String),
-    redacted_client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "DataIntegrationCredentials",
-}) as any as S.Schema<DataIntegrationCredentials>;
-
-export interface DataIntegrationInstallation {
-  /** Unique identifier of the installation. */
-  id: string;
-  /** The User the API key was installed for. */
-  user_id: string;
-  /** The Organization the installation is scoped to, or null when unscoped. */
-  organization_id: string | null;
-  /** The last four characters of the stored API key. The full key is never returned. */
-  api_key_last_4: string | null;
-}
-export const DataIntegrationInstallation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    user_id: S.String,
-    organization_id: S.NullOr(S.String),
-    api_key_last_4: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DataIntegrationInstallation",
-}) as any as S.Schema<DataIntegrationInstallation>;
-
-/** Provider-specific config values set on the Data Integration (e.g. a Snowflake `account_identifier`), keyed by config field. Only fields the provider declares are accepted. */
-export type DataIntegrationConfigMap = { [key: string]: string | undefined };
-export const DataIntegrationConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataIntegrationConfigMap>;
-
-/** Additional static query parameters appended to the authorization request. */
-export type DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
-  { [key: string]: string | undefined };
-export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DataIntegrationCustomProviderAdditionalAuthorizationParametersMap>;
-
-/** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-export type DataIntegrationCustomProviderAuthenticateVia =
-  | "request_body"
-  | "basic_auth_header";
-export const DataIntegrationCustomProviderAuthenticateVia =
-  /*@__PURE__*/ S.String;
-
-export interface DataIntegrationCustomProvider {
-  /** A descriptive name for the custom provider. */
-  name: string;
-  /** The provider's OAuth authorization endpoint. */
-  authorization_url: string | null;
-  /** The provider's OAuth token endpoint. */
-  token_url: string | null;
-  /** The endpoint used to refresh tokens, if different from the token endpoint. */
-  refresh_token_url: string | null;
-  /** Whether PKCE is used during the authorization code flow. */
-  pkce_enabled: boolean;
-  /** The separator used to join requested scopes. */
-  request_scope_separator: string;
-  /** Whether at least one scope must be selected when connecting an account. */
-  scopes_required: boolean;
-  /** Whether a client secret is required for this provider. */
-  client_secret_required: boolean;
-  /** Additional static query parameters appended to the authorization request. */
-  additional_authorization_parameters: DataIntegrationCustomProviderAdditionalAuthorizationParametersMap;
-  /** The Content-Type used when exchanging the token request. */
-  token_body_content_type: string;
-  /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-  authenticate_via: DataIntegrationCustomProviderAuthenticateVia;
-}
-export const DataIntegrationCustomProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    authorization_url: S.NullOr(S.String),
-    token_url: S.NullOr(S.String),
-    refresh_token_url: S.NullOr(S.String),
-    pkce_enabled: S.Boolean,
-    request_scope_separator: S.String,
-    scopes_required: S.Boolean,
-    client_secret_required: S.Boolean,
-    additional_authorization_parameters:
-      DataIntegrationCustomProviderAdditionalAuthorizationParametersMap,
-    token_body_content_type: S.String,
-    authenticate_via: DataIntegrationCustomProviderAuthenticateVia,
-  }),
-).annotate({
-  identifier: "DataIntegrationCustomProvider",
-}) as any as S.Schema<DataIntegrationCustomProvider>;
-
-export interface DataIntegration {
-  /** Distinguishes the Data Integration object. */
-  object: string;
-  /** Unique identifier of the Data Integration. */
-  id: string;
-  /** The provider slug for this Data Integration. */
-  slug: string;
-  /** The integration type derived from the provider. */
-  integration_type: string;
-  /** An optional description of the Data Integration. */
-  description: string | null;
-  /** Whether the Data Integration is enabled. */
-  enabled: boolean;
-  /** The state of the Data Integration. */
-  state: DataIntegrationState;
-  /** The OAuth scopes configured for the Data Integration. `null` when the provider's configured scopes are used. */
-  scopes: DataIntegrationScopesList | null;
-  /** The OAuth redirect URI to register with the provider when configuring the custom application. */
-  redirect_uri: string;
-  /** How accounts authenticate with the provider for this Data Integration. */
-  auth_methods: DataIntegrationAuthMethodsList;
-  /** The credentials configured for the Data Integration. */
-  credentials: DataIntegrationCredentials;
-  /** The tenant installation created when an API key was supplied at creation time; `null` otherwise. Not populated on list/get responses. */
-  installation: DataIntegrationInstallation | null;
-  /** Provider-specific config values set on the Data Integration (e.g. a Snowflake `account_identifier`), keyed by config field. Only fields the provider declares are accepted. */
-  config: DataIntegrationConfigMap;
-  /** The OAuth definition when this is a custom provider; `null` for built-in providers. */
-  custom_provider: DataIntegrationCustomProvider | null;
-  /** An ISO 8601 timestamp. */
-  created_at: string;
-  /** An ISO 8601 timestamp. */
-  updated_at: string;
-}
-export const DataIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    slug: S.String,
-    integration_type: S.String,
-    description: S.NullOr(S.String),
-    enabled: S.Boolean,
-    state: DataIntegrationState,
-    scopes: S.NullOr(DataIntegrationScopesList),
-    redirect_uri: S.String,
-    auth_methods: DataIntegrationAuthMethodsList,
-    credentials: DataIntegrationCredentials,
-    installation: S.NullOr(DataIntegrationInstallation),
-    config: DataIntegrationConfigMap,
-    custom_provider: S.NullOr(DataIntegrationCustomProvider),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "DataIntegration",
-}) as any as S.Schema<DataIntegration>;
-
-export interface DataIntegrationsManagementControllerDeleteDataIntegrationRequest {
-  /** The slug identifier of the data integration. */
-  slug: string;
-}
-export const DataIntegrationsManagementControllerDeleteDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "/data-integrations/{slug}", code: 200 }),
-    ),
-  ).annotate({
-    identifier:
-      "DataIntegrationsManagementControllerDeleteDataIntegrationRequest",
-  }) as any as S.Schema<DataIntegrationsManagementControllerDeleteDataIntegrationRequest>;
-
-export interface DataIntegrationsManagementControllerDeleteDataIntegrationResponse {}
-export const DataIntegrationsManagementControllerDeleteDataIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "DataIntegrationsManagementControllerDeleteDataIntegrationResponse",
-  }) as any as S.Schema<DataIntegrationsManagementControllerDeleteDataIntegrationResponse>;
-
-export interface DataIntegrationsManagementControllerGetDataIntegrationRequest {
-  /** The slug identifier of the data integration. */
-  slug: string;
-}
-export const DataIntegrationsManagementControllerGetDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/data-integrations/{slug}", code: 200 }),
-    ),
-  ).annotate({
-    identifier: "DataIntegrationsManagementControllerGetDataIntegrationRequest",
-  }) as any as S.Schema<DataIntegrationsManagementControllerGetDataIntegrationRequest>;
-
-export interface DataIntegrationsManagementControllerListDataIntegrationsRequest {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
-  before?: string;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`. */
-  after?: string;
-  /** Upper limit on the number of objects to return, between `1` and `100`. */
-  limit?: number;
-  /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder | (string & {});
-}
-export const DataIntegrationsManagementControllerListDataIntegrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.optional(S.String.pipe(T.Query())),
-      after: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      order: S.optional(PaginationOrder.pipe(T.Query())),
-    }).pipe(T.Http({ method: "GET", uri: "/data-integrations", code: 200 })),
-  ).annotate({
-    identifier:
-      "DataIntegrationsManagementControllerListDataIntegrationsRequest",
-  }) as any as S.Schema<DataIntegrationsManagementControllerListDataIntegrationsRequest>;
-
-/** The list of records for the current page. */
-export type DataIntegrationListDataList = Array<DataIntegration>;
-export const DataIntegrationListDataList = /*@__PURE__*/ S.Array(
-  DataIntegration,
-) as any as S.Schema<DataIntegrationListDataList>;
-
-/** Pagination cursors for navigating between pages of results. */
-export interface DataIntegrationListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const DataIntegrationListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DataIntegrationListListMetadata",
-}) as any as S.Schema<DataIntegrationListListMetadata>;
-
-export interface DataIntegrationList {
-  /** Indicates this is a list response. */
-  object: string;
-  /** The list of records for the current page. */
-  data: DataIntegrationListDataList;
-  /** Pagination cursors for navigating between pages of results. */
-  list_metadata: DataIntegrationListListMetadata;
-}
-export const DataIntegrationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    data: DataIntegrationListDataList,
-    list_metadata: DataIntegrationListListMetadata,
-  }),
-).annotate({
-  identifier: "DataIntegrationList",
-}) as any as S.Schema<DataIntegrationList>;
-
-/** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
-export type DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
-  Array<string>;
-export const DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList>;
-
-/** Additional static query parameters appended to the authorization request. */
-export type UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  { [key: string]: string | undefined };
-export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
-
-/** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-export type UpdateCustomProviderDefinitionDtoAuthenticateVia =
-  | "request_body"
-  | "basic_auth_header";
-export const UpdateCustomProviderDefinitionDtoAuthenticateVia =
-  /*@__PURE__*/ S.String;
-
-export interface UpdateCustomProviderDefinitionDto {
-  /** A descriptive name for the custom provider. */
-  name?: string;
-  /** The provider's OAuth authorization endpoint. */
-  authorization_url?: string;
-  /** The provider's OAuth token endpoint. */
-  token_url?: string;
-  /** The endpoint used to refresh tokens, if different from the token endpoint. */
-  refresh_token_url?: string | null;
-  /** Whether PKCE is used during the authorization code flow. */
-  pkce_enabled?: boolean;
-  /** The separator used to join requested scopes. */
-  request_scope_separator?: string;
-  /** Whether at least one scope must be selected when connecting an account. */
-  scopes_required?: boolean;
-  /** Whether a client secret is required for this provider. */
-  client_secret_required?: boolean;
-  /** Additional static query parameters appended to the authorization request. */
-  additional_authorization_parameters?: UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap;
-  /** The Content-Type used when exchanging the token request. */
-  token_body_content_type?: string;
-  /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
-  authenticate_via?:
-    | UpdateCustomProviderDefinitionDtoAuthenticateVia
-    | (string & {});
-}
-export const UpdateCustomProviderDefinitionDto = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    authorization_url: S.optional(S.String),
-    token_url: S.optional(S.String),
-    refresh_token_url: S.optional(S.NullOr(S.String)),
-    pkce_enabled: S.optional(S.Boolean),
-    request_scope_separator: S.optional(S.String),
-    scopes_required: S.optional(S.Boolean),
-    client_secret_required: S.optional(S.Boolean),
-    additional_authorization_parameters: S.optional(
-      UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap,
-    ),
-    token_body_content_type: S.optional(S.String),
-    authenticate_via: S.optional(
-      UpdateCustomProviderDefinitionDtoAuthenticateVia,
-    ),
-  }),
-).annotate({
-  identifier: "UpdateCustomProviderDefinitionDto",
-}) as any as S.Schema<UpdateCustomProviderDefinitionDto>;
-
-export interface DataIntegrationsManagementControllerUpdateDataIntegrationRequest {
-  /** The slug identifier of the data integration. */
-  slug: string;
-  /** An optional description of the Data Integration. */
-  description?: string | null;
-  /** Whether the Data Integration is enabled. */
-  enabled?: boolean;
-  /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
-  scopes?: DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList | null;
-  /** New OAuth credentials for the Data Integration. When provided, rotates the stored client secret. Mutually exclusive with `api_key`. */
-  credentials?: DataIntegrationCredentialsDto;
-  /** An API key to install or rotate for a tenant on an `api_key` integration. Upserts the tenant installation identified by `user_id` (and optional `organization_id`). */
-  api_key?: ApiKeyInstallationDto;
-  /** Updates to a custom provider's OAuth definition. Only valid for custom-provider integrations. */
-  custom_provider?: UpdateCustomProviderDefinitionDto;
-}
-export const DataIntegrationsManagementControllerUpdateDataIntegrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      slug: S.String.pipe(T.Label()),
-      description: S.optional(S.NullOr(S.String)),
-      enabled: S.optional(S.Boolean),
-      scopes: S.optional(
-        S.NullOr(
-          DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList,
-        ),
-      ),
-      credentials: S.optional(DataIntegrationCredentialsDto),
-      api_key: S.optional(ApiKeyInstallationDto),
-      custom_provider: S.optional(UpdateCustomProviderDefinitionDto),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "/data-integrations/{slug}", code: 200 }),
-    ),
-  ).annotate({
-    identifier:
-      "DataIntegrationsManagementControllerUpdateDataIntegrationRequest",
-  }) as any as S.Schema<DataIntegrationsManagementControllerUpdateDataIntegrationRequest>;
-
-/** The OAuth scopes granted for this connection. */
-export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
-  Array<string>;
-export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList>;
-
-/** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization";
-export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
-  /*@__PURE__*/ S.String;
-
-export interface DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest {
-  /** A [User](/reference/authkit/user) identifier. */
-  user_id: string;
-  /** The slug identifier of the provider (e.g., `github`, `slack`, `notion`). */
-  slug: string;
-  /** An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization. */
-  organization_id?: string;
-  /** The OAuth access token for the connected account. */
-  access_token?: string | Redacted.Redacted<string>;
-  /** The OAuth refresh token for the connected account. */
-  refresh_token?: string | Redacted.Redacted<string>;
-  /** The ISO-8601 timestamp when the access token expires. Required when `access_token` is provided for tokens that expire. */
-  expires_at?: string;
-  /** The OAuth scopes granted for this connection. */
-  scopes?: DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList;
-  /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-  state?:
-    | DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState
-    | (string & {});
-}
-export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      user_id: S.String.pipe(T.Label()),
-      slug: S.String.pipe(T.Label()),
-      organization_id: S.optional(S.String.pipe(T.Query())),
-      access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      expires_at: S.optional(S.String),
-      scopes: S.optional(
-        DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList,
-      ),
-      state: S.optional(
-        DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/user_management/users/{user_id}/connected_accounts/{slug}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest",
-  }) as any as S.Schema<DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest>;
-
 export interface DataIntegrationsUserManagementControllerDeleteUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
   user_id: string;
@@ -6496,6 +5209,62 @@ export const DataIntegrationsUserManagementControllerGetUserDataInstallationRequ
     identifier:
       "DataIntegrationsUserManagementControllerGetUserDataInstallationRequest",
   }) as any as S.Schema<DataIntegrationsUserManagementControllerGetUserDataInstallationRequest>;
+
+/** The OAuth scopes granted for this connection. */
+export type ConnectedAccountScopesList = Array<string>;
+export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectedAccountScopesList>;
+
+/** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
+export type ConnectedAccountAuthMethod = "oauth" | "api_key";
+export const ConnectedAccountAuthMethod = /*@__PURE__*/ S.String;
+
+/** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
+export type ConnectedAccountState =
+  | "connected"
+  | "needs_reauthorization"
+  | "disconnected";
+export const ConnectedAccountState = /*@__PURE__*/ S.String;
+
+export interface ConnectedAccount {
+  /** Distinguishes the connected account object. */
+  object?: string;
+  /** The unique identifier of the connected account. */
+  id?: string;
+  /** The [User](/reference/authkit/user) identifier associated with this connection. */
+  user_id?: string | null;
+  /** The [Organization](/reference/organization) identifier associated with this connection, or `null` if not scoped to an organization. */
+  organization_id?: string | null;
+  /** The OAuth scopes granted for this connection. */
+  scopes?: ConnectedAccountScopesList;
+  /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
+  auth_method?: ConnectedAccountAuthMethod;
+  /** The last four characters of the API key, or `null` for OAuth connections. */
+  api_key_last_4?: string | null;
+  /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
+  state?: ConnectedAccountState;
+  /** The timestamp when the connection was created. */
+  created_at?: string;
+  /** The timestamp when the connection was last updated. */
+  updated_at?: string;
+}
+export const ConnectedAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    object: S.optional(S.String),
+    id: S.optional(S.String),
+    user_id: S.optional(S.NullOr(S.String)),
+    organization_id: S.optional(S.NullOr(S.String)),
+    scopes: S.optional(ConnectedAccountScopesList),
+    auth_method: S.optional(ConnectedAccountAuthMethod),
+    api_key_last_4: S.optional(S.NullOr(S.String)),
+    state: S.optional(ConnectedAccountState),
+    created_at: S.optional(S.String),
+    updated_at: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectedAccount",
+}) as any as S.Schema<ConnectedAccount>;
 
 export interface DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest {
   /** A [User](/reference/authkit/user) identifier to list providers and connected accounts for. */
@@ -6710,67 +5479,6 @@ export const DataIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataIntegrationsListResponse",
 }) as any as S.Schema<DataIntegrationsListResponse>;
-
-/** The OAuth scopes granted for this connection. */
-export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
-  Array<string>;
-export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList>;
-
-/** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization";
-export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
-  /*@__PURE__*/ S.String;
-
-export interface DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest {
-  /** A [User](/reference/authkit/user) identifier. */
-  user_id: string;
-  /** The slug identifier of the provider (e.g., `github`, `slack`, `notion`). */
-  slug: string;
-  /** An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization. */
-  organization_id?: string;
-  /** The OAuth access token for the connected account. */
-  access_token?: string | Redacted.Redacted<string>;
-  /** The OAuth refresh token for the connected account. */
-  refresh_token?: string | Redacted.Redacted<string>;
-  /** The ISO-8601 timestamp when the access token expires. Required when `access_token` is provided for tokens that expire. */
-  expires_at?: string;
-  /** The OAuth scopes granted for this connection. */
-  scopes?: DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList;
-  /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
-  state?:
-    | DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState
-    | (string & {});
-}
-export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      user_id: S.String.pipe(T.Label()),
-      slug: S.String.pipe(T.Label()),
-      organization_id: S.optional(S.String.pipe(T.Query())),
-      access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      expires_at: S.optional(S.String),
-      scopes: S.optional(
-        DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList,
-      ),
-      state: S.optional(
-        DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/user_management/users/{user_id}/connected_accounts/{slug}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest",
-  }) as any as S.Schema<DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest>;
 
 export interface DirectoriesControllerDeleteDirectoryRequest {
   /** Unique identifier for the Directory. */
@@ -9047,117 +7755,6 @@ export const OrganizationApiKeyList = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationApiKeyList",
 }) as any as S.Schema<OrganizationApiKeyList>;
 
-export interface OrganizationAuthorizedApplicationsControllerListRequest {
-  /** The ID of the organization. */
-  organization_id: string;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
-  before?: string;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`. */
-  after?: string;
-  /** Upper limit on the number of objects to return, between `1` and `100`. */
-  limit?: number;
-  /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder | (string & {});
-}
-export const OrganizationAuthorizedApplicationsControllerListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      before: S.optional(S.String.pipe(T.Query())),
-      after: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      order: S.optional(PaginationOrder.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/organizations/{organization_id}/authorized_applications",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "OrganizationAuthorizedApplicationsControllerListRequest",
-  }) as any as S.Schema<OrganizationAuthorizedApplicationsControllerListRequest>;
-
-/** The scopes granted by the user to the application. */
-export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  Array<string>;
-export const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList>;
-
-export interface OrganizationAuthorizedConnectApplicationListDataItem {
-  /** Distinguishes the authorized connect application object. */
-  object: string;
-  /** The unique ID of the authorized connect application. */
-  id: string;
-  /** The scopes granted by the user to the application. */
-  granted_scopes: OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList;
-  /** The OAuth resource associated with the authorized connect application, if one was requested. */
-  oauth_resource?: string;
-  application: ConnectApplication;
-  /** The ID of the user who authorized the application. */
-  user_id: string;
-}
-export const OrganizationAuthorizedConnectApplicationListDataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.String,
-      id: S.String,
-      granted_scopes:
-        OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList,
-      oauth_resource: S.optional(S.String),
-      application: ConnectApplication,
-      user_id: S.String,
-    }),
-  ).annotate({
-    identifier: "OrganizationAuthorizedConnectApplicationListDataItem",
-  }) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItem>;
-
-/** The list of records for the current page. */
-export type OrganizationAuthorizedConnectApplicationListDataList =
-  Array<OrganizationAuthorizedConnectApplicationListDataItem>;
-export const OrganizationAuthorizedConnectApplicationListDataList =
-  /*@__PURE__*/ S.Array(
-    OrganizationAuthorizedConnectApplicationListDataItem,
-  ) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataList>;
-
-/** Pagination cursors for navigating between pages of results. */
-export interface OrganizationAuthorizedConnectApplicationListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const OrganizationAuthorizedConnectApplicationListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "OrganizationAuthorizedConnectApplicationListListMetadata",
-  }) as any as S.Schema<OrganizationAuthorizedConnectApplicationListListMetadata>;
-
-export interface OrganizationAuthorizedConnectApplicationList {
-  /** Indicates this is a list response. */
-  object: string;
-  /** The list of records for the current page. */
-  data: OrganizationAuthorizedConnectApplicationListDataList;
-  /** Pagination cursors for navigating between pages of results. */
-  list_metadata: OrganizationAuthorizedConnectApplicationListListMetadata;
-}
-export const OrganizationAuthorizedConnectApplicationList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.String,
-      data: OrganizationAuthorizedConnectApplicationListDataList,
-      list_metadata: OrganizationAuthorizedConnectApplicationListListMetadata,
-    }),
-  ).annotate({
-    identifier: "OrganizationAuthorizedConnectApplicationList",
-  }) as any as S.Schema<OrganizationAuthorizedConnectApplicationList>;
-
 export interface OrganizationDomainsControllerCreateRequest {
   /** The domain to add to the organization. */
   domain?: string;
@@ -9885,6 +8482,46 @@ export type PortalSessionsControllerCreateRequestIntent =
 export const PortalSessionsControllerCreateRequestIntent =
   /*@__PURE__*/ S.String;
 
+export interface SsoIntentOptions {
+  /** The bookmark slug to use for SSO. */
+  bookmark_slug?: string;
+  /** The SSO provider type to configure. */
+  provider_type?: string;
+}
+export const SsoIntentOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bookmark_slug: S.optional(S.String),
+    provider_type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SsoIntentOptions",
+}) as any as S.Schema<SsoIntentOptions>;
+
+export interface DomainVerificationIntentOptions {
+  /** The domain name to verify. When provided, the domain verification flow will skip the domain entry form and go directly to the verification step. */
+  domain_name?: string;
+}
+export const DomainVerificationIntentOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain_name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainVerificationIntentOptions",
+}) as any as S.Schema<DomainVerificationIntentOptions>;
+
+export interface IntentOptions {
+  /** SSO-specific options for the Admin Portal. */
+  sso?: SsoIntentOptions;
+  /** Domain verification-specific options for the Admin Portal. */
+  domain_verification?: DomainVerificationIntentOptions;
+}
+export const IntentOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sso: S.optional(SsoIntentOptions),
+    domain_verification: S.optional(DomainVerificationIntentOptions),
+  }),
+).annotate({ identifier: "IntentOptions" }) as any as S.Schema<IntentOptions>;
+
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
 export type PortalSessionsControllerCreateRequestItContactEmailsList =
   Array<string>;
@@ -9902,6 +8539,8 @@ export interface PortalSessionsControllerCreateRequest {
   organization?: string;
   /** The intent of the Admin Portal. - `sso` - Launch Admin Portal for creating SSO connections - `dsync` - Launch Admin Portal for creating Directory Sync connections - `audit_logs` - Launch Admin Portal for viewing Audit Logs - `log_streams` - Launch Admin Portal for creating Log Streams - `domain_verification` - Launch Admin Portal for Domain Verification - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key */
   intent?: PortalSessionsControllerCreateRequestIntent | (string & {});
+  /** Options to configure the Admin Portal based on the intent. */
+  intent_options?: IntentOptions;
   /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
   it_contact_emails?: PortalSessionsControllerCreateRequestItContactEmailsList;
 }
@@ -9912,6 +8551,7 @@ export const PortalSessionsControllerCreateRequest = /*@__PURE__*/ S.suspend(
       success_url: S.optional(S.String),
       organization: S.optional(S.String),
       intent: S.optional(PortalSessionsControllerCreateRequestIntent),
+      intent_options: S.optional(IntentOptions),
       it_contact_emails: S.optional(
         PortalSessionsControllerCreateRequestItContactEmailsList,
       ),
@@ -9987,7 +8627,7 @@ export type DataIntegrationCredentialsCredentialsType =
 export const DataIntegrationCredentialsCredentialsType = /*@__PURE__*/ S.String;
 
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
-export interface DataIntegrationCredentials2 {
+export interface DataIntegrationCredentials {
   /** The credentials type for this integration (e.g., `shared`, `custom`, or `organization`). */
   credentials_type: DataIntegrationCredentialsCredentialsType;
   /** Whether the organization has supplied OAuth credentials for this integration. */
@@ -9999,7 +8639,7 @@ export interface DataIntegrationCredentials2 {
   /** The redirect URI to register with the provider when configuring the organization-managed OAuth application. */
   redirect_uri: string;
 }
-export const DataIntegrationCredentials2 = /*@__PURE__*/ S.suspend(() =>
+export const DataIntegrationCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials_type: DataIntegrationCredentialsCredentialsType,
     has_credentials: S.Boolean,
@@ -10008,8 +8648,8 @@ export const DataIntegrationCredentials2 = /*@__PURE__*/ S.suspend(() =>
     redirect_uri: S.String,
   }),
 ).annotate({
-  identifier: "DataIntegrationCredentials2",
-}) as any as S.Schema<DataIntegrationCredentials2>;
+  identifier: "DataIntegrationCredentials",
+}) as any as S.Schema<DataIntegrationCredentials>;
 
 export interface DataIntegrationConfigurationResponse {
   /** Distinguishes the data integration configuration object. */
@@ -10030,7 +8670,7 @@ export interface DataIntegrationConfigurationResponse {
   created_at: string;
   /** The timestamp when the configuration was last updated. */
   updated_at: string;
-  credentials?: DataIntegrationCredentials2;
+  credentials?: DataIntegrationCredentials;
 }
 export const DataIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -10044,7 +8684,7 @@ export const DataIntegrationConfigurationResponse = /*@__PURE__*/ S.suspend(
       scopes: S.NullOr(DataIntegrationConfigurationResponseScopesList),
       created_at: S.String,
       updated_at: S.String,
-      credentials: S.optional(DataIntegrationCredentials2),
+      credentials: S.optional(DataIntegrationCredentials),
     }),
 ).annotate({
   identifier: "DataIntegrationConfigurationResponse",
@@ -10093,105 +8733,6 @@ export const DataIntegrationConfigurationListResponse = /*@__PURE__*/ S.suspend(
   identifier: "DataIntegrationConfigurationListResponse",
 }) as any as S.Schema<DataIntegrationConfigurationListResponse>;
 
-export interface PublicRadarChallengesControllerGetRequest {
-  /** The unique ID of the Radar Challenge. */
-  id: string;
-}
-export const PublicRadarChallengesControllerGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/user_management/radar_challenges/{id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "PublicRadarChallengesControllerGetRequest",
-  }) as any as S.Schema<PublicRadarChallengesControllerGetRequest>;
-
-export interface RadarChallenge {
-  /** Distinguishes the Radar Challenge object. */
-  object: string;
-  /** The unique ID of the Radar Challenge. */
-  id: string;
-  /** The type of the Radar challenge. */
-  type: string;
-  /** The unique ID of the user. */
-  user_id: string;
-  /** The email address of the user. */
-  email: string;
-  /** The timestamp when the Radar Challenge code expires. */
-  expires_at: string;
-  /** An ISO 8601 timestamp. */
-  created_at: string;
-  /** An ISO 8601 timestamp. */
-  updated_at: string;
-  /** The code used to verify the Radar Challenge. */
-  code: string;
-}
-export const RadarChallenge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    type: S.String,
-    user_id: S.String,
-    email: S.String,
-    expires_at: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    code: S.String,
-  }),
-).annotate({ identifier: "RadarChallenge" }) as any as S.Schema<RadarChallenge>;
-
-export interface PublicRadarChallengesControllerSendRadarSmsChallengeRequest {
-  /** The ID of the user to send the SMS challenge to. */
-  user_id: string;
-  /** The pending authentication token from a previous authentication attempt that triggered the Radar challenge. */
-  pending_authentication_token: string;
-  /** The phone number to send the SMS verification code to. */
-  phone_number: string;
-  /** The IP address of the user's request. */
-  ip_address?: string;
-  /** The user agent string from the user's request. */
-  user_agent?: string;
-}
-export const PublicRadarChallengesControllerSendRadarSmsChallengeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      user_id: S.String,
-      pending_authentication_token: S.String,
-      phone_number: S.String,
-      ip_address: S.optional(S.String),
-      user_agent: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/user_management/radar_challenges",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "PublicRadarChallengesControllerSendRadarSmsChallengeRequest",
-  }) as any as S.Schema<PublicRadarChallengesControllerSendRadarSmsChallengeRequest>;
-
-export interface SendRadarSmsChallengeResponse {
-  /** The ID of the SMS verification. Pass this to the authenticate endpoint to verify the code. */
-  verification_id: string;
-  /** The phone number the verification code was sent to. */
-  phone_number: string;
-}
-export const SendRadarSmsChallengeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verification_id: S.String,
-    phone_number: S.String,
-  }),
-).annotate({
-  identifier: "SendRadarSmsChallengeResponse",
-}) as any as S.Schema<SendRadarSmsChallengeResponse>;
-
 /** The authentication method being used. */
 export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Password"
@@ -10223,8 +8764,6 @@ export interface RadarStandaloneControllerAssessRequest {
   auth_method: RadarStandaloneControllerAssessRequestAuthMethod | (string & {});
   /** The action being performed. */
   action: RadarStandaloneControllerAssessRequestAction | (string & {});
-  /** An optional Radar signals ID for the request. */
-  signals_id?: string;
 }
 export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10234,7 +8773,6 @@ export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(
       email: S.String,
       auth_method: RadarStandaloneControllerAssessRequestAuthMethod,
       action: RadarStandaloneControllerAssessRequestAction,
-      signals_id: S.optional(S.String),
     }).pipe(T.Http({ method: "POST", uri: "/radar/attempts", code: 200 })),
 ).annotate({
   identifier: "RadarStandaloneControllerAssessRequest",
@@ -10471,95 +9009,6 @@ export const RedirectUri = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RedirectUri" }) as any as S.Schema<RedirectUri>;
 
-export interface RedirectUrisControllerDeleteRequest {
-  /** The ID of the redirect URI to delete. */
-  id: string;
-}
-export const RedirectUrisControllerDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/user_management/redirect_uris/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RedirectUrisControllerDeleteRequest",
-}) as any as S.Schema<RedirectUrisControllerDeleteRequest>;
-
-export interface RedirectUrisControllerDeleteResponse {}
-export const RedirectUrisControllerDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "RedirectUrisControllerDeleteResponse",
-}) as any as S.Schema<RedirectUrisControllerDeleteResponse>;
-
-export interface RedirectUrisControllerListRequest {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
-  before?: string;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`. */
-  after?: string;
-  /** Upper limit on the number of objects to return, between `1` and `100`. */
-  limit?: number;
-  /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). */
-  order?: PaginationOrder | (string & {});
-}
-export const RedirectUrisControllerListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.String.pipe(T.Query())),
-    after: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    order: S.optional(PaginationOrder.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/user_management/redirect_uris", code: 200 }),
-  ),
-).annotate({
-  identifier: "RedirectUrisControllerListRequest",
-}) as any as S.Schema<RedirectUrisControllerListRequest>;
-
-/** Pagination cursors for navigating between pages of results. */
-export interface RedirectUrisControllerListResponseListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const RedirectUrisControllerListResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "RedirectUrisControllerListResponseListMetadata",
-  }) as any as S.Schema<RedirectUrisControllerListResponseListMetadata>;
-
-/** The list of records for the current page. */
-export type RedirectUrisControllerListResponseDataList = Array<RedirectUri>;
-export const RedirectUrisControllerListResponseDataList = /*@__PURE__*/ S.Array(
-  RedirectUri,
-) as any as S.Schema<RedirectUrisControllerListResponseDataList>;
-
-export interface RedirectUrisControllerListResponse {
-  /** Indicates this is a list response. */
-  object?: string;
-  /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: RedirectUrisControllerListResponseListMetadata;
-  /** The list of records for the current page. */
-  data?: RedirectUrisControllerListResponseDataList;
-}
-export const RedirectUrisControllerListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(S.String),
-    list_metadata: S.optional(RedirectUrisControllerListResponseListMetadata),
-    data: S.optional(RedirectUrisControllerListResponseDataList),
-  }),
-).annotate({
-  identifier: "RedirectUrisControllerListResponse",
-}) as any as S.Schema<RedirectUrisControllerListResponse>;
-
 export type SsoControllerAuthorizeRequestProviderScopesList = Array<string>;
 export const SsoControllerAuthorizeRequestProviderScopesList =
   /*@__PURE__*/ S.Array(
@@ -10618,8 +9067,6 @@ export interface SsoControllerAuthorizeRequest {
   login_hint?: string;
   /** A random string generated by the client that is used to mitigate replay attacks. */
   nonce?: string;
-  /** If set to `login`, forces re-authentication at the identity provider. For SAML connections this sets `ForceAuthn="true"` in the SAML request. */
-  prompt?: string;
 }
 export const SsoControllerAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10640,7 +9087,6 @@ export const SsoControllerAuthorizeRequest = /*@__PURE__*/ S.suspend(() =>
     domain_hint: S.optional(S.String.pipe(T.Query())),
     login_hint: S.optional(S.String.pipe(T.Query())),
     nonce: S.optional(S.String.pipe(T.Query())),
-    prompt: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/sso/authorize", code: 200 })),
 ).annotate({
   identifier: "SsoControllerAuthorizeRequest",
@@ -11278,67 +9724,18 @@ export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest {
   email?: string;
   /** The invitation token to associate with this magic code. */
   invitation_token?: string;
-  /** The IP address of the user's request. */
-  ip_address?: string;
-  /** The user agent string from the user's request. */
-  user_agent?: string;
-  /** The ID of an existing Radar authentication attempt to associate with this request. */
-  radar_auth_attempt_id?: string;
-  /** An optional Radar signals ID to correlate client-side signals with this request. */
-  signals_id?: string;
 }
 export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       email: S.optional(S.String),
       invitation_token: S.optional(S.String),
-      ip_address: S.optional(S.String),
-      user_agent: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
-      signals_id: S.optional(S.String),
     }).pipe(
       T.Http({ method: "POST", uri: "/user_management/magic_auth", code: 200 }),
     ),
   ).annotate({
     identifier: "UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest",
   }) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest>;
-
-export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse {
-  /** Distinguishes the Magic Auth object. */
-  object?: string;
-  /** The unique ID of the Magic Auth code. */
-  id?: string;
-  /** The unique ID of the user. */
-  user_id?: string;
-  /** The email address of the user. */
-  email?: string;
-  /** The timestamp when the Magic Auth code expires. */
-  expires_at?: string;
-  /** An ISO 8601 timestamp. */
-  created_at?: string;
-  /** An ISO 8601 timestamp. */
-  updated_at?: string;
-  /** The code used to verify the Magic Auth code. */
-  code?: string;
-  /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
-  radar_auth_attempt_id?: string;
-}
-export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      object: S.optional(S.String),
-      id: S.optional(S.String),
-      user_id: S.optional(S.String),
-      email: S.optional(S.String),
-      expires_at: S.optional(S.String),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      code: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse",
-  }) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse>;
 
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase0 {
   /** The client ID of the application. */
@@ -11358,8 +9755,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase0 {
   device_id?: string;
   /** The user agent string from the user's browser. */
   user_agent?: string;
-  /** An optional Radar signals ID to correlate client-side signals with this authentication attempt. */
-  signals_id?: string;
 }
 export const UserlandSessionsControllerAuthenticate0RequestBodyCase0 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11373,7 +9768,6 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase0 =
       ip_address: S.optional(S.String),
       device_id: S.optional(S.String),
       user_agent: S.optional(S.String),
-      signals_id: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase0",
@@ -11397,10 +9791,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase1 {
   device_id?: string;
   /** The user agent string from the user's browser. */
   user_agent?: string;
-  /** An optional Radar signals ID to correlate client-side signals with this authentication attempt. */
-  signals_id?: string;
-  /** The ID of an existing Radar authentication attempt to associate with this authentication. */
-  radar_auth_attempt_id?: string;
 }
 export const UserlandSessionsControllerAuthenticate0RequestBodyCase1 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11414,8 +9804,6 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase1 =
       ip_address: S.optional(S.String),
       device_id: S.optional(S.String),
       user_agent: S.optional(S.String),
-      signals_id: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase1",
@@ -11472,8 +9860,6 @@ export interface UserlandSessionsControllerAuthenticate0RequestBodyCase3 {
   device_id?: string;
   /** The user agent string from the user's browser. */
   user_agent?: string;
-  /** The ID of an existing Radar authentication attempt to associate with this authentication. */
-  radar_auth_attempt_id?: string;
 }
 export const UserlandSessionsControllerAuthenticate0RequestBodyCase3 =
   /*@__PURE__*/ S.suspend(() =>
@@ -11487,7 +9873,6 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase3 =
       ip_address: S.optional(S.String),
       device_id: S.optional(S.String),
       user_agent: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase3",
@@ -11598,15 +9983,9 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase6 =
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase7 {
   /** The client ID of the application. */
   client_id: string;
-  /** The client secret of the application. */
-  client_secret: string | Redacted.Redacted<string>;
   grant_type: string;
-  /** The one-time code from the Radar email challenge. */
-  code: string;
-  /** The ID of the Radar email challenge being verified. */
-  radar_challenge_id: string;
-  /** The pending authentication token from a previous authentication attempt. */
-  pending_authentication_token: string;
+  /** The device verification code. */
+  device_code: string;
   /** The IP address of the user's request. */
   ip_address?: string;
   /** A unique identifier for the device. */
@@ -11618,75 +9997,6 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase7 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       client_id: S.String,
-      client_secret: S.String.pipe(T.SensitiveValue({})),
-      grant_type: S.String,
-      code: S.String,
-      radar_challenge_id: S.String,
-      pending_authentication_token: S.String,
-      ip_address: S.optional(S.String),
-      device_id: S.optional(S.String),
-      user_agent: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase7",
-  }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase7>;
-
-export interface UserlandSessionsControllerAuthenticate0RequestBodyCase8 {
-  /** The client ID of the application. */
-  client_id: string;
-  /** The client secret of the application. */
-  client_secret: string | Redacted.Redacted<string>;
-  grant_type: string;
-  /** The one-time code from the Radar SMS challenge. */
-  code: string;
-  /** The ID of the Radar SMS verification being confirmed. */
-  verification_id: string;
-  /** The phone number the Radar SMS challenge was sent to. */
-  phone_number: string;
-  /** The pending authentication token from a previous authentication attempt. */
-  pending_authentication_token: string;
-  /** The IP address of the user's request. */
-  ip_address?: string;
-  /** A unique identifier for the device. */
-  device_id?: string;
-  /** The user agent string from the user's browser. */
-  user_agent?: string;
-}
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      client_id: S.String,
-      client_secret: S.String.pipe(T.SensitiveValue({})),
-      grant_type: S.String,
-      code: S.String,
-      verification_id: S.String,
-      phone_number: S.String,
-      pending_authentication_token: S.String,
-      ip_address: S.optional(S.String),
-      device_id: S.optional(S.String),
-      user_agent: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase8",
-  }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase8>;
-
-export interface UserlandSessionsControllerAuthenticate0RequestBodyCase9 {
-  /** The client ID of the application. */
-  client_id: string;
-  grant_type: string;
-  /** The device verification code. */
-  device_code: string;
-  /** The IP address of the user's request. */
-  ip_address?: string;
-  /** A unique identifier for the device. */
-  device_id?: string;
-  /** The user agent string from the user's browser. */
-  user_agent?: string;
-}
-export const UserlandSessionsControllerAuthenticate0RequestBodyCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      client_id: S.String,
       grant_type: S.String,
       device_code: S.String,
       ip_address: S.optional(S.String),
@@ -11694,8 +10004,8 @@ export const UserlandSessionsControllerAuthenticate0RequestBodyCase9 =
       user_agent: S.optional(S.String),
     }),
   ).annotate({
-    identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase9",
-  }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase9>;
+    identifier: "UserlandSessionsControllerAuthenticate0RequestBodyCase7",
+  }) as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBodyCase7>;
 
 export type UserlandSessionsControllerAuthenticate0RequestBody =
   | UserlandSessionsControllerAuthenticate0RequestBodyCase0
@@ -11705,9 +10015,7 @@ export type UserlandSessionsControllerAuthenticate0RequestBody =
   | UserlandSessionsControllerAuthenticate0RequestBodyCase4
   | UserlandSessionsControllerAuthenticate0RequestBodyCase5
   | UserlandSessionsControllerAuthenticate0RequestBodyCase6
-  | UserlandSessionsControllerAuthenticate0RequestBodyCase7
-  | UserlandSessionsControllerAuthenticate0RequestBodyCase8
-  | UserlandSessionsControllerAuthenticate0RequestBodyCase9;
+  | UserlandSessionsControllerAuthenticate0RequestBodyCase7;
 export const UserlandSessionsControllerAuthenticate0RequestBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBody>;
 
@@ -11952,8 +10260,6 @@ export interface UserlandSsoControllerAuthorizeRequest {
   provider_scopes?: UserlandSsoControllerAuthorizeRequestProviderScopesList;
   /** A token representing a user invitation to redeem during authentication. */
   invitation_token?: string;
-  /** Maximum allowable elapsed time, in seconds, since the user last actively authenticated. If the last authentication is older than this value, the user is prompted to re-authenticate; a value of `0` forces re-authentication. Only supported when the provider is `authkit`. */
-  max_age?: number;
   /** Used to specify which screen to display when the provider is `authkit`. */
   screen_hint?: UserlandSsoControllerAuthorizeRequestScreenHint | (string & {});
   /** A hint to the authorization server about the login identifier the user might use. */
@@ -11989,7 +10295,6 @@ export const UserlandSsoControllerAuthorizeRequest = /*@__PURE__*/ S.suspend(
         UserlandSsoControllerAuthorizeRequestProviderScopesList.pipe(T.Query()),
       ),
       invitation_token: S.optional(S.String.pipe(T.Query())),
-      max_age: S.optional(S.Number.pipe(T.Query())),
       screen_hint: S.optional(
         UserlandSsoControllerAuthorizeRequestScreenHint.pipe(T.Query()),
       ),
@@ -13505,7 +11810,6 @@ export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "bcrypt"
   | "firebase-scrypt"
   | "ssha"
-  | "ssha256"
   | "scrypt"
   | "pbkdf2"
   | "argon2";
@@ -13527,12 +11831,6 @@ export interface UserlandUsersControllerCreate0Request {
   metadata?: UserlandUsersControllerCreate0RequestMetadataMap | null;
   /** The external ID of the user. */
   external_id?: string | null;
-  /** The IP address of the user's request. */
-  ip_address?: string | null;
-  /** The user agent string from the user's request. */
-  user_agent?: string | null;
-  /** An optional Radar signals ID to correlate client-side signals with this request. */
-  signals_id?: string;
   /** The password to set for the user. Mutually exclusive with `password_hash` and `password_hash_type`. */
   password?: string | Redacted.Redacted<string> | null;
   /** The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`. */
@@ -13554,9 +11852,6 @@ export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(
         S.NullOr(UserlandUsersControllerCreate0RequestMetadataMap),
       ),
       external_id: S.optional(S.NullOr(S.String)),
-      ip_address: S.optional(S.NullOr(S.String)),
-      user_agent: S.optional(S.NullOr(S.String)),
-      signals_id: S.optional(S.String),
       password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
       password_hash: S.optional(S.String.pipe(T.SensitiveValue({}))),
       password_hash_type: S.optional(
@@ -13568,71 +11863,6 @@ export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UserlandUsersControllerCreate0Request",
 }) as any as S.Schema<UserlandUsersControllerCreate0Request>;
-
-/** Object containing metadata key/value pairs associated with the user. */
-export type UserlandUsersControllerCreate0ResponseMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const UserlandUsersControllerCreate0ResponseMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<UserlandUsersControllerCreate0ResponseMetadataMap>;
-
-export interface UserlandUsersControllerCreate0Response {
-  /** Distinguishes the user object. */
-  object?: string;
-  /** The unique ID of the user. */
-  id?: string;
-  /** The first name of the user. */
-  first_name?: string | null;
-  /** The last name of the user. */
-  last_name?: string | null;
-  /** The user's full name. */
-  name?: string | null;
-  /** A URL reference to an image representing the user. */
-  profile_picture_url?: string | null;
-  /** The email address of the user. */
-  email?: string;
-  /** Whether the user's email has been verified. */
-  email_verified?: boolean;
-  /** The external ID of the user. */
-  external_id?: string | null;
-  /** Object containing metadata key/value pairs associated with the user. */
-  metadata?: UserlandUsersControllerCreate0ResponseMetadataMap;
-  /** The timestamp when the user last signed in. */
-  last_sign_in_at?: string | null;
-  /** The user's preferred locale. */
-  locale?: string | null;
-  /** An ISO 8601 timestamp. */
-  created_at?: string;
-  /** An ISO 8601 timestamp. */
-  updated_at?: string;
-  /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
-  radar_auth_attempt_id?: string;
-}
-export const UserlandUsersControllerCreate0Response = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      object: S.optional(S.String),
-      id: S.optional(S.String),
-      first_name: S.optional(S.NullOr(S.String)),
-      last_name: S.optional(S.NullOr(S.String)),
-      name: S.optional(S.NullOr(S.String)),
-      profile_picture_url: S.optional(S.NullOr(S.String)),
-      email: S.optional(S.String),
-      email_verified: S.optional(S.Boolean),
-      external_id: S.optional(S.NullOr(S.String)),
-      metadata: S.optional(UserlandUsersControllerCreate0ResponseMetadataMap),
-      last_sign_in_at: S.optional(S.NullOr(S.String)),
-      locale: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      radar_auth_attempt_id: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UserlandUsersControllerCreate0Response",
-}) as any as S.Schema<UserlandUsersControllerCreate0Response>;
 
 export interface UserlandUsersControllerCreatePasswordResetTokenRequest {
   /** The email address of the user requesting a password reset. */
@@ -14041,7 +12271,6 @@ export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "bcrypt"
   | "firebase-scrypt"
   | "ssha"
-  | "ssha256"
   | "scrypt"
   | "pbkdf2"
   | "argon2";
@@ -14272,14 +12501,6 @@ export const UserlandUserSessionsControllerListResponse =
   }) as any as S.Schema<UserlandUserSessionsControllerListResponse>;
 
 export type WebhookEndpointsControllerCreateRequestEventsItem =
-  | "agent.registration.created"
-  | "agent.registration.claim.attempt.created"
-  | "agent.registration.claim.completed"
-  | "agent.registration.credential.issued"
-  | "agent.registration.deleted"
-  | "agent.registration.expired"
-  | "agent.registration.organization.switched"
-  | "agent.registration.revoked"
   | "authentication.email_verification_succeeded"
   | "authentication.magic_auth_failed"
   | "authentication.magic_auth_succeeded"
@@ -14294,9 +12515,7 @@ export type WebhookEndpointsControllerCreateRequestEventsItem =
   | "authentication.sso_started"
   | "authentication.sso_succeeded"
   | "authentication.sso_timed_out"
-  | "radar.challenge_created"
   | "authentication.radar_risk_detected"
-  | "authentication.reauthentication_succeeded"
   | "api_key.created"
   | "api_key.revoked"
   | "api_key.updated"
@@ -14360,6 +12579,7 @@ export type WebhookEndpointsControllerCreateRequestEventsItem =
   | "pipes.connected_account.disconnected"
   | "pipes.connected_account.reauthorization_needed"
   | "session.created"
+  | "session.reauthenticated"
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
@@ -14527,14 +12747,6 @@ export const WebhookEndpointsControllerUpdateRequestStatus =
   /*@__PURE__*/ S.String;
 
 export type WebhookEndpointsControllerUpdateRequestEventsItem =
-  | "agent.registration.created"
-  | "agent.registration.claim.attempt.created"
-  | "agent.registration.claim.completed"
-  | "agent.registration.credential.issued"
-  | "agent.registration.deleted"
-  | "agent.registration.expired"
-  | "agent.registration.organization.switched"
-  | "agent.registration.revoked"
   | "authentication.email_verification_succeeded"
   | "authentication.magic_auth_failed"
   | "authentication.magic_auth_succeeded"
@@ -14549,9 +12761,7 @@ export type WebhookEndpointsControllerUpdateRequestEventsItem =
   | "authentication.sso_started"
   | "authentication.sso_succeeded"
   | "authentication.sso_timed_out"
-  | "radar.challenge_created"
   | "authentication.radar_risk_detected"
-  | "authentication.reauthentication_succeeded"
   | "api_key.created"
   | "api_key.revoked"
   | "api_key.updated"
@@ -14615,6 +12825,7 @@ export type WebhookEndpointsControllerUpdateRequestEventsItem =
   | "pipes.connected_account.disconnected"
   | "pipes.connected_account.reauthorization_needed"
   | "session.created"
+  | "session.reauthenticated"
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
@@ -14678,7 +12889,7 @@ export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
   ) as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList>;
 
 export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
-  /** The ID of the organization to scope the widget session to. Required when scopes are provided. Optional when issuing a token for user-only widgets (e.g. `UserProfile`, `UserSecurity`) that do not require organization context. */
+  /** The ID of the organization to scope the widget session to. */
   organization_id?: string;
   /** The ID of the user to issue the widget session token for. */
   user_id?: string;
@@ -14709,57 +12920,6 @@ export const WidgetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WidgetSessionTokenResponse",
 }) as any as S.Schema<WidgetSessionTokenResponse>;
-
-export type AgentAdminControllerGetRegistrationError = NotFound | WorkosOpError;
-/** Get an agent registration Retrieve the details of an agent registration by ID. The registration is scoped to the environment of the API key used to authenticate the request. */
-export const AgentAdminControllerGetRegistration: API.OperationMethod<
-  AgentAdminControllerGetRegistrationRequest,
-  AgentRegistration,
-  AgentAdminControllerGetRegistrationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentAdminControllerGetRegistrationRequest,
-  output: AgentRegistration,
-  errors: [NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentAdminControllerLinkClaimAttemptToExternalUserError =
-  | BadRequest
-  | Forbidden
-  | Conflict
-  | WorkosOpError;
-/** Link a claim attempt to an external user Link an external user to a claim attempt and retrieve the code needed for the agent to complete the claim. The user is looked up by external ID; if no user exists, one is created. When the user belongs to multiple organizations, an explicit organization must be provided. */
-export const AgentAdminControllerLinkClaimAttemptToExternalUser: API.OperationMethod<
-  AgentAdminControllerLinkClaimAttemptToExternalUserRequest,
-  ClaimViewResponse,
-  AgentAdminControllerLinkClaimAttemptToExternalUserError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentAdminControllerLinkClaimAttemptToExternalUserRequest,
-  output: ClaimViewResponse,
-  errors: [BadRequest, Forbidden, Conflict, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AgentAdminControllerValidateCredentialError =
-  | BadRequest
-  | WorkosOpError;
-/** Validate an agent credential Validate an agent credential — an API key or access token — against the environment of the API key used to authenticate the request. This is a read-only check: it never consumes or mutates the credential. */
-export const AgentAdminControllerValidateCredential: API.OperationMethod<
-  AgentAdminControllerValidateCredentialRequest,
-  AgentCredentialValidation,
-  AgentAdminControllerValidateCredentialError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentAdminControllerValidateCredentialRequest,
-  output: AgentCredentialValidation,
-  errors: [BadRequest, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
 
 export type ApiKeysControllerDeleteError = NotFound | WorkosOpError;
 /** Delete an API key Permanently deletes an API key. This action cannot be undone. Once deleted, any requests using this API key will fail authentication. */
@@ -16219,7 +14379,7 @@ export type CorsOriginsControllerCreateCorsOriginError =
   | Conflict
   | UnprocessableEntity
   | WorkosOpError;
-/** Create a CORS origin Creates a new CORS origin for the API key's application. CORS origins allow browser-based applications to make requests to the WorkOS API. */
+/** Create a CORS origin Creates a new CORS origin for the current environment. CORS origins allow browser-based applications to make requests to the WorkOS API. */
 export const CorsOriginsControllerCreateCorsOrigin: API.OperationMethod<
   CorsOriginsControllerCreateCorsOriginRequest,
   CorsOriginResponse,
@@ -16229,21 +14389,6 @@ export const CorsOriginsControllerCreateCorsOrigin: API.OperationMethod<
   input: CorsOriginsControllerCreateCorsOriginRequest,
   output: CorsOriginResponse,
   errors: [Conflict, UnprocessableEntity, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CorsOriginsControllerListError = WorkosOpError;
-/** List CORS origins Lists the CORS origins for the current environment. */
-export const CorsOriginsControllerList: API.OperationMethod<
-  CorsOriginsControllerListRequest,
-  CorsOriginsControllerListResponse,
-  CorsOriginsControllerListError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CorsOriginsControllerListRequest,
-  output: CorsOriginsControllerListResponse,
-  errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
 }));
@@ -16282,171 +14427,6 @@ export const DataIntegrationsControllerGetUserlandUserToken: API.OperationMethod
   input: DataIntegrationsControllerGetUserlandUserTokenRequest,
   output: DataIntegrationsControllerGetUserlandUserTokenResponse,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsControllerUpsertApiKeyError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | WorkosOpError;
-/** Upsert an API key for a connected account Creates or updates an API-key-based installation for the specified integration and user. If an installation already exists, the stored API key is rotated to the new value. */
-export const DataIntegrationsControllerUpsertApiKey: API.OperationMethod<
-  DataIntegrationsControllerUpsertApiKeyRequest,
-  ConnectedAccount,
-  DataIntegrationsControllerUpsertApiKeyError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsControllerUpsertApiKeyRequest,
-  output: ConnectedAccount,
-  errors: [
-    BadRequest,
-    Forbidden,
-    NotFound,
-    UnprocessableEntity,
-    UnknownWorkosError,
-  ],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsControllerVendCredentialsError =
-  | BadRequest
-  | NotFound
-  | WorkosOpError;
-/** Vend credentials for a connected account Returns credentials for a user's connected account. Branches on the installation's `auth_method`: OAuth installations return an access token (refreshed if needed); API-key installations return the stored secret. */
-export const DataIntegrationsControllerVendCredentials: API.OperationMethod<
-  DataIntegrationsControllerVendCredentialsRequest,
-  DataIntegrationsControllerVendCredentialsResponse,
-  DataIntegrationsControllerVendCredentialsError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsControllerVendCredentialsRequest,
-  output: DataIntegrationsControllerVendCredentialsResponse,
-  errors: [BadRequest, NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsManagementControllerCreateDataIntegrationError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | Conflict
-  | UnprocessableEntity
-  | WorkosOpError;
-/** Create a data integration Creates a data integration for a provider. Set `credentials.type` to `custom` to use your own OAuth app credentials or `organization` to have each organization supply its own. Set `auth_methods` to `["api_key"]` to create an API key integration; you may optionally supply an `api_key` block to install a first tenant in the same call. For a built-in provider, pass its slug as `provider`. For a custom provider, pass a new slug plus a `custom_provider` definition. */
-export const DataIntegrationsManagementControllerCreateDataIntegration: API.OperationMethod<
-  DataIntegrationsManagementControllerCreateDataIntegrationRequest,
-  DataIntegration,
-  DataIntegrationsManagementControllerCreateDataIntegrationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsManagementControllerCreateDataIntegrationRequest,
-  output: DataIntegration,
-  errors: [
-    BadRequest,
-    Forbidden,
-    NotFound,
-    Conflict,
-    UnprocessableEntity,
-    UnknownWorkosError,
-  ],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsManagementControllerDeleteDataIntegrationError =
-  | NotFound
-  | WorkosOpError;
-/** Delete a data integration Deletes a data integration and all of its connected installations. For a custom provider, also deletes the custom provider definition. */
-export const DataIntegrationsManagementControllerDeleteDataIntegration: API.OperationMethod<
-  DataIntegrationsManagementControllerDeleteDataIntegrationRequest,
-  DataIntegrationsManagementControllerDeleteDataIntegrationResponse,
-  DataIntegrationsManagementControllerDeleteDataIntegrationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsManagementControllerDeleteDataIntegrationRequest,
-  output: DataIntegrationsManagementControllerDeleteDataIntegrationResponse,
-  errors: [NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsManagementControllerGetDataIntegrationError =
-  | NotFound
-  | WorkosOpError;
-/** Get a data integration Retrieves a data integration by its slug. */
-export const DataIntegrationsManagementControllerGetDataIntegration: API.OperationMethod<
-  DataIntegrationsManagementControllerGetDataIntegrationRequest,
-  DataIntegration,
-  DataIntegrationsManagementControllerGetDataIntegrationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsManagementControllerGetDataIntegrationRequest,
-  output: DataIntegration,
-  errors: [NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsManagementControllerListDataIntegrationsError =
-  WorkosOpError;
-/** List data integrations Lists the environment's data integrations configured with `custom` or `organization` credentials, including custom providers and API key integrations. */
-export const DataIntegrationsManagementControllerListDataIntegrations: API.OperationMethod<
-  DataIntegrationsManagementControllerListDataIntegrationsRequest,
-  DataIntegrationList,
-  DataIntegrationsManagementControllerListDataIntegrationsError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsManagementControllerListDataIntegrationsRequest,
-  output: DataIntegrationList,
-  errors: [UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsManagementControllerUpdateDataIntegrationError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | UnprocessableEntity
-  | WorkosOpError;
-/** Update a data integration Updates the description, enabled state, or custom credentials of a data integration. For custom providers, `custom_provider` updates the OAuth definition. */
-export const DataIntegrationsManagementControllerUpdateDataIntegration: API.OperationMethod<
-  DataIntegrationsManagementControllerUpdateDataIntegrationRequest,
-  DataIntegration,
-  DataIntegrationsManagementControllerUpdateDataIntegrationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsManagementControllerUpdateDataIntegrationRequest,
-  output: DataIntegration,
-  errors: [
-    BadRequest,
-    Forbidden,
-    NotFound,
-    UnprocessableEntity,
-    UnknownWorkosError,
-  ],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsUserManagementControllerCreateUserDataInstallationError =
-  NotFound | Conflict | UnprocessableEntity | WorkosOpError;
-/** Import a connected account Imports a [connected account](/reference/pipes/connected-account) for a user by providing OAuth tokens directly. Use this to migrate existing connections or set up connections without going through the OAuth flow. */
-export const DataIntegrationsUserManagementControllerCreateUserDataInstallation: API.OperationMethod<
-  DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest,
-  ConnectedAccount,
-  DataIntegrationsUserManagementControllerCreateUserDataInstallationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    DataIntegrationsUserManagementControllerCreateUserDataInstallationRequest,
-  output: ConnectedAccount,
-  errors: [NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
 }));
@@ -16496,23 +14476,6 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrations: AP
 > = /*@__PURE__*/ API.make(() => ({
   input: DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest,
   output: DataIntegrationsListResponse,
-  errors: [NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationError =
-  NotFound | WorkosOpError;
-/** Update a connected account Updates a user's [connected account](/reference/pipes/connected-account) tokens, scopes, or state for a specific provider. */
-export const DataIntegrationsUserManagementControllerUpdateUserDataInstallation: API.OperationMethod<
-  DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest,
-  ConnectedAccount,
-  DataIntegrationsUserManagementControllerUpdateUserDataInstallationError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequest,
-  output: ConnectedAccount,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -17206,24 +15169,6 @@ export const OrganizationApiKeysControllerList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OrganizationAuthorizedApplicationsControllerListError =
-  | NotFound
-  | UnprocessableEntity
-  | WorkosOpError;
-/** List authorized applications Get a list of all Connect applications that users in the organization have authorized. */
-export const OrganizationAuthorizedApplicationsControllerList: API.OperationMethod<
-  OrganizationAuthorizedApplicationsControllerListRequest,
-  OrganizationAuthorizedConnectApplicationList,
-  OrganizationAuthorizedApplicationsControllerListError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationAuthorizedApplicationsControllerListRequest,
-  output: OrganizationAuthorizedConnectApplicationList,
-  errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
 export type OrganizationDomainsControllerCreateError = Conflict | WorkosOpError;
 /** Create an Organization Domain Creates a new Organization Domain. */
 export const OrganizationDomainsControllerCreate: API.OperationMethod<
@@ -17513,37 +15458,6 @@ export const ProviderControllerListForOrganization: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PublicRadarChallengesControllerGetError = NotFound | WorkosOpError;
-/** Get Radar Challenge details Get the details of an existing Radar Challenge, including the OTP code. */
-export const PublicRadarChallengesControllerGet: API.OperationMethod<
-  PublicRadarChallengesControllerGetRequest,
-  RadarChallenge,
-  PublicRadarChallengesControllerGetError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PublicRadarChallengesControllerGetRequest,
-  output: RadarChallenge,
-  errors: [NotFound, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PublicRadarChallengesControllerSendRadarSmsChallengeError =
-  WorkosOpError;
-/** Send a Radar SMS challenge Sends a one-time verification code over SMS to a user as part of a Radar challenge. Use the returned `verification_id` to authenticate the user with the `urn:workos:oauth:grant-type:radar-sms-challenge:code` grant type. */
-export const PublicRadarChallengesControllerSendRadarSmsChallenge: API.OperationMethod<
-  PublicRadarChallengesControllerSendRadarSmsChallengeRequest,
-  SendRadarSmsChallengeResponse,
-  PublicRadarChallengesControllerSendRadarSmsChallengeError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PublicRadarChallengesControllerSendRadarSmsChallengeRequest,
-  output: SendRadarSmsChallengeResponse,
-  errors: [UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RadarStandaloneControllerAssessError = BadRequest | WorkosOpError;
 /** Create an attempt Assess a request for risk using the Radar engine and receive a verdict. */
 export const RadarStandaloneControllerAssess: API.OperationMethod<
@@ -17626,39 +15540,6 @@ export const RedirectUrisControllerCreate: API.OperationMethod<
   input: RedirectUrisControllerCreateRequest,
   output: RedirectUri,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RedirectUrisControllerDeleteError =
-  | NotFound
-  | Conflict
-  | WorkosOpError;
-/** Delete a redirect URI Deletes a redirect URI from an application. */
-export const RedirectUrisControllerDelete: API.OperationMethod<
-  RedirectUrisControllerDeleteRequest,
-  RedirectUrisControllerDeleteResponse,
-  RedirectUrisControllerDeleteError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RedirectUrisControllerDeleteRequest,
-  output: RedirectUrisControllerDeleteResponse,
-  errors: [NotFound, Conflict, UnknownWorkosError],
-  protocol: WorkosProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RedirectUrisControllerListError = WorkosOpError;
-/** List redirect URIs Lists the redirect URIs for an environment. */
-export const RedirectUrisControllerList: API.OperationMethod<
-  RedirectUrisControllerListRequest,
-  RedirectUrisControllerListResponse,
-  RedirectUrisControllerListError,
-  WorkosOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RedirectUrisControllerListRequest,
-  output: RedirectUrisControllerListResponse,
-  errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
 }));
@@ -17816,12 +15697,12 @@ export type UserlandMagicAuthControllerSendMagicAuthCodeAndReturnError =
 /** Create a Magic Auth code Creates a one-time authentication code that can be sent to the user's email address. The code expires in 10 minutes. To verify the code, [authenticate the user with Magic Auth](/reference/authkit/authentication/magic-auth). */
 export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturn: API.OperationMethod<
   UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest,
-  UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse,
+  MagicAuth,
   UserlandMagicAuthControllerSendMagicAuthCodeAndReturnError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest,
-  output: UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse,
+  output: MagicAuth,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -18270,12 +16151,12 @@ export type UserlandUsersControllerCreate0Error =
 /** Create a user Create a new user in the current environment. */
 export const UserlandUsersControllerCreate0: API.OperationMethod<
   UserlandUsersControllerCreate0Request,
-  UserlandUsersControllerCreate0Response,
+  UserlandUser,
   UserlandUsersControllerCreate0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UserlandUsersControllerCreate0Request,
-  output: UserlandUsersControllerCreate0Response,
+  output: UserlandUser,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -18588,7 +16469,7 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenError =
   | NotFound
   | UnprocessableEntity
   | WorkosOpError;
-/** Generate a widget token Generate a widget token for a user, optionally scoped to an organization. When an organization is specified, org-scoped widgets are enabled; omitting it issues a user-only token for widgets like `UserProfile` and `UserSecurity`. */
+/** Generate a widget token Generate a widget token scoped to an organization and user with the specified scopes. */
 export const WidgetsPublicControllerIssueWidgetSessionToken: API.OperationMethod<
   WidgetsPublicControllerIssueWidgetSessionTokenRequest,
   WidgetSessionTokenResponse,

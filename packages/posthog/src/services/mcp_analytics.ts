@@ -500,157 +500,6 @@ export const McpAnalyticsMissingCapabilitiesListRequest =
     identifier: "McpAnalyticsMissingCapabilitiesListRequest",
   }) as any as S.Schema<McpAnalyticsMissingCapabilitiesListRequest>;
 
-export interface McpAnalyticsSessionsActivityOverviewRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const McpAnalyticsSessionsActivityOverviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/mcp_analytics/sessions/activity_overview/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpAnalyticsSessionsActivityOverviewRequest",
-  }) as any as S.Schema<McpAnalyticsSessionsActivityOverviewRequest>;
-
-export interface MCPActivityStats {
-  /** $mcp_tool_call events captured in the last 30 days. */
-  total_calls: number;
-  /** Distinct tools ($mcp_tool_name) called in the window. */
-  distinct_tools: number;
-  /** Distinct $session_ids seen on tool calls in the window. */
-  distinct_sessions: number;
-  /** Distinct agent clients ($mcp_client_name) seen in the window. */
-  distinct_clients: number;
-  /** Tool calls that carried an $mcp_intent, for intent-coverage checks. */
-  calls_with_intent: number;
-  /** Tool calls flagged as errors ($mcp_is_error) in the window. */
-  error_calls: number;
-  /** $mcp_missing_capability events captured in the window. */
-  missing_capability_reports: number;
-}
-export const MCPActivityStats = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total_calls: S.Number,
-    distinct_tools: S.Number,
-    distinct_sessions: S.Number,
-    distinct_clients: S.Number,
-    calls_with_intent: S.Number,
-    error_calls: S.Number,
-    missing_capability_reports: S.Number,
-  }),
-).annotate({
-  identifier: "MCPActivityStats",
-}) as any as S.Schema<MCPActivityStats>;
-
-export interface MCPActivityToolRow {
-  /** MCP tool name ($mcp_tool_name). */
-  tool: string;
-  /** Tool calls in the window. */
-  calls: number;
-  /** Of those calls, how many errored. */
-  errors: number;
-}
-export const MCPActivityToolRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tool: S.String,
-    calls: S.Number,
-    errors: S.Number,
-  }),
-).annotate({
-  identifier: "MCPActivityToolRow",
-}) as any as S.Schema<MCPActivityToolRow>;
-
-/** Most-called tools in the window, top 5 by call count. */
-export type MCPActivityOverviewTopToolsList = Array<MCPActivityToolRow>;
-export const MCPActivityOverviewTopToolsList = /*@__PURE__*/ S.Array(
-  MCPActivityToolRow,
-) as any as S.Schema<MCPActivityOverviewTopToolsList>;
-
-export interface MCPActivityClientRow {
-  /** Agent client name ($mcp_client_name). Empty when the SDK did not capture it. */
-  client: string;
-  /** Tool calls from this client in the window. */
-  calls: number;
-}
-export const MCPActivityClientRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client: S.String,
-    calls: S.Number,
-  }),
-).annotate({
-  identifier: "MCPActivityClientRow",
-}) as any as S.Schema<MCPActivityClientRow>;
-
-/** Agent clients in the window, top 6 by call count. */
-export type MCPActivityOverviewClientsList = Array<MCPActivityClientRow>;
-export const MCPActivityOverviewClientsList = /*@__PURE__*/ S.Array(
-  MCPActivityClientRow,
-) as any as S.Schema<MCPActivityOverviewClientsList>;
-
-export interface MCPActivityRecentCall {
-  /** When the tool call was captured. */
-  timestamp: string;
-  /** Tool that was invoked ($mcp_tool_name). */
-  tool: string;
-  /** Agent intent for this tool call ($mcp_intent). Null when the SDK did not capture context. */
-  intent: string | null;
-  /** Whether the tool call resulted in an error. */
-  is_error: boolean;
-  /** Human-readable error extracted from the tool's response when is_error is true, otherwise null. */
-  error_message: string | null;
-  /** Duration of the tool call in milliseconds when captured. */
-  duration_ms: number | null;
-  /** Agent client name ($mcp_client_name) when captured. */
-  client_name: string | null;
-}
-export const MCPActivityRecentCall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.String,
-    tool: S.String,
-    intent: S.NullOr(S.String),
-    is_error: S.Boolean,
-    error_message: S.NullOr(S.String),
-    duration_ms: S.NullOr(S.Number),
-    client_name: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "MCPActivityRecentCall",
-}) as any as S.Schema<MCPActivityRecentCall>;
-
-/** The 20 most recent tool calls, newest first. */
-export type MCPActivityOverviewRecentCallsList = Array<MCPActivityRecentCall>;
-export const MCPActivityOverviewRecentCallsList = /*@__PURE__*/ S.Array(
-  MCPActivityRecentCall,
-) as any as S.Schema<MCPActivityOverviewRecentCallsList>;
-
-export interface MCPActivityOverview {
-  /** Aggregate counters over the last 30 days. */
-  stats: MCPActivityStats;
-  /** Most-called tools in the window, top 5 by call count. */
-  top_tools: MCPActivityOverviewTopToolsList;
-  /** Agent clients in the window, top 6 by call count. */
-  clients: MCPActivityOverviewClientsList;
-  /** The 20 most recent tool calls, newest first. */
-  recent_calls: MCPActivityOverviewRecentCallsList;
-}
-export const MCPActivityOverview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stats: MCPActivityStats,
-    top_tools: MCPActivityOverviewTopToolsList,
-    clients: MCPActivityOverviewClientsList,
-    recent_calls: MCPActivityOverviewRecentCallsList,
-  }),
-).annotate({
-  identifier: "MCPActivityOverview",
-}) as any as S.Schema<MCPActivityOverview>;
-
 export interface McpAnalyticsSessionsGenerateIntentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -691,40 +540,6 @@ export const MCPSessionIntent = /*@__PURE__*/ S.suspend(() =>
   identifier: "MCPSessionIntent",
 }) as any as S.Schema<MCPSessionIntent>;
 
-export interface McpAnalyticsSessionsIntentDigestRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const McpAnalyticsSessionsIntentDigestRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_analytics/sessions/intent_digest/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpAnalyticsSessionsIntentDigestRequest",
-}) as any as S.Schema<McpAnalyticsSessionsIntentDigestRequest>;
-
-export interface MCPIntentDigest {
-  /** LLM-generated digest (at most three sentences) of what agents are trying to do with this MCP server, derived from the most recent recorded $mcp_intents across all sessions. Null when the project has no recorded intents yet. */
-  digest: string | null;
-  /** How many recorded intents (the most recent, capped at 100) the digest was derived from. */
-  intent_count: number;
-}
-export const MCPIntentDigest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digest: S.NullOr(S.String),
-    intent_count: S.Number,
-  }),
-).annotate({
-  identifier: "MCPIntentDigest",
-}) as any as S.Schema<MCPIntentDigest>;
-
 export interface McpAnalyticsSessionsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -732,9 +547,9 @@ export interface McpAnalyticsSessionsListRequest {
   date_from?: string;
   /** End of the window. PostHog date string or absolute ISO timestamp. Defaults to now. */
   date_to?: string;
-  /** Maximum number of sessions to return per page. Defaults to 100; values above 500 are rejected. */
+  /** Number of results to return per page. */
   limit?: number;
-  /** Number of sessions to skip before returning results. Combine with limit to page through sessions; the response's has_next flag indicates whether more remain. */
+  /** The initial index from which to return the results. */
   offset?: number;
   /** Sort column. Allowed: session_id, session_start, session_end, duration_seconds, tool_call_count, mcp_client_name, distinct_id. Prefix with '-' for descending. Defaults to '-session_start' (newest sessions first). */
   order_by?: string;
@@ -831,11 +646,11 @@ export interface McpAnalyticsSessionsToolCallsRequest {
   project_id: string;
   /** A UUID string identifying this mcp analytics submission. */
   id: string;
-  /** Absolute ISO timestamp lower bound for the event scan — pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted or unparseable. */
+  /** Absolute ISO timestamp lower bound for the event scan — pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted. */
   date_from?: string;
-  /** Maximum tool calls to return per page (1–500). Defaults to 500 — the whole page — so a session's calls come back in one request; pass a smaller value for a lighter response. Values above the cap are rejected. */
+  /** Number of results to return per page. */
   limit?: number;
-  /** Number of tool calls to skip before returning results. Combine with limit to page through a session's calls; the response's has_next flag indicates whether more remain. */
+  /** The initial index from which to return the results. */
   offset?: number;
 }
 export const McpAnalyticsSessionsToolCallsRequest = /*@__PURE__*/ S.suspend(
@@ -994,21 +809,6 @@ export const mcpAnalyticsMissingCapabilitiesList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpAnalyticsSessionsActivityOverviewError = PosthogOpError;
-/** Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard's activity view; always computed fresh so polling callers watch data arrive. */
-export const mcpAnalyticsSessionsActivityOverview: API.OperationMethod<
-  McpAnalyticsSessionsActivityOverviewRequest,
-  MCPActivityOverview,
-  McpAnalyticsSessionsActivityOverviewError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpAnalyticsSessionsActivityOverviewRequest,
-  output: MCPActivityOverview,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpAnalyticsSessionsGenerateIntentError = PosthogOpError;
 /** Generate (or return the cached) LLM summary of the agent's goal for a session, derived from its recorded $mcp_intents. The first call summarises and persists the result; subsequent calls return the stored summary. */
 export const mcpAnalyticsSessionsGenerateIntent: API.OperationMethod<
@@ -1019,21 +819,6 @@ export const mcpAnalyticsSessionsGenerateIntent: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: McpAnalyticsSessionsGenerateIntentRequest,
   output: MCPSessionIntent,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpAnalyticsSessionsIntentDigestError = PosthogOpError;
-/** Generate (or return the cached) LLM digest of what agents are trying to do with this MCP server, derived from the most recent recorded $mcp_intents across all sessions. Content-addressed cache: only regenerates when new intents arrive. Powers the dashboard's low-volume activity stage. */
-export const mcpAnalyticsSessionsIntentDigest: API.OperationMethod<
-  McpAnalyticsSessionsIntentDigestRequest,
-  MCPIntentDigest,
-  McpAnalyticsSessionsIntentDigestError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpAnalyticsSessionsIntentDigestRequest,
-  output: MCPIntentDigest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1055,7 +840,7 @@ export const mcpAnalyticsSessionsList: API.OperationMethod<
 }));
 
 export type McpAnalyticsSessionsToolCallsError = PosthogOpError;
-/** List a page of the $mcp_tool_call events that belong to a given $session_id, in chronological order. */
+/** List all $mcp_tool_call events that belong to a given $session_id, in chronological order. */
 export const mcpAnalyticsSessionsToolCalls: API.OperationMethod<
   McpAnalyticsSessionsToolCallsRequest,
   PaginatedMCPToolCallList,

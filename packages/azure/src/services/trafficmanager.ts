@@ -481,7 +481,7 @@ export interface HeatMapGetRequest {
   /** The name of the Traffic Manager profile. */
   profileName: string;
   /** The type of the heatmap. */
-  heatMapType: HeatMapGetRequestHeatMapType;
+  heatMapType: HeatMapGetRequestHeatMapType | (string & {});
   /** The top left latitude,longitude pair of the rectangular viewport to query for. */
   topLeft?: HeatMapGetRequestTopLeftList;
   /** The bottom right latitude,longitude pair of the rectangular viewport to query for. */

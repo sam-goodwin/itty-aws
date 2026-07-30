@@ -60,6 +60,27 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** An SSL certificate obtained from a certificate authority. */
+export interface CertificateRawData {
+  /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
+  publicCertificate?: string;
+  /** Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly */
+  privateKey?: string;
+}
+export const CertificateRawData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicCertificate: S.optional(S.String),
+    privateKey: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificateRawData",
+}) as any as S.Schema<CertificateRawData>;
+
 export type ManagedCertificateStatusEnum =
   | "UNSPECIFIED_STATUS"
   | "OK"
@@ -87,59 +108,38 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedCertificate",
 }) as any as S.Schema<ManagedCertificate>;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** An SSL certificate obtained from a certificate authority. */
-export interface CertificateRawData {
-  /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
-  publicCertificate?: string;
-  /** Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly */
-  privateKey?: string;
-}
-export const CertificateRawData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicCertificate: S.optional(S.String),
-    privateKey: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CertificateRawData",
-}) as any as S.Schema<CertificateRawData>;
-
 /** An SSL certificate that a user has been authorized to administer. A user is authorized to administer any certificate that applies to one of their authorized domains. */
 export interface AuthorizedCertificate {
-  /** Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly */
-  managedCertificate?: ManagedCertificate;
-  /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  visibleDomainMappings?: StringList;
-  /** The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly */
-  expireTime?: string;
-  /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
-  certificateRawData?: CertificateRawData;
-  /** Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  domainMappingsCount?: number;
   /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
   displayName?: string;
+  /** Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
+  domainMappingsCount?: number;
+  /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
+  visibleDomainMappings?: StringList;
+  /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
+  certificateRawData?: CertificateRawData;
   /** Output only. Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource creation. Example: 12345.@OutputOnly */
   id?: string;
-  /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
-  name?: string;
   /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
   domainNames?: StringList;
+  /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
+  name?: string;
+  /** Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly */
+  managedCertificate?: ManagedCertificate;
+  /** The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly */
+  expireTime?: string;
 }
 export const AuthorizedCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    managedCertificate: S.optional(ManagedCertificate),
-    visibleDomainMappings: S.optional(StringList),
-    expireTime: S.optional(S.String),
-    certificateRawData: S.optional(CertificateRawData),
-    domainMappingsCount: S.optional(S.Number),
     displayName: S.optional(S.String),
+    domainMappingsCount: S.optional(S.Number),
+    visibleDomainMappings: S.optional(StringList),
+    certificateRawData: S.optional(CertificateRawData),
     id: S.optional(S.String),
-    name: S.optional(S.String),
     domainNames: S.optional(StringList),
+    name: S.optional(S.String),
+    managedCertificate: S.optional(ManagedCertificate),
+    expireTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuthorizedCertificate",
@@ -174,6 +174,31 @@ export type CreateAppsDomainMappingsOverrideStrategyEnum =
 export const CreateAppsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
+export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
+export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
+
+/** A DNS resource record. */
+export interface ResourceRecord {
+  /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
+  name?: string;
+  /** Resource record type. Example: AAAA. */
+  type?: ResourceRecordTypeEnum | (string & {});
+  /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
+  rrdata?: string;
+}
+export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(ResourceRecordTypeEnum),
+    rrdata: S.optional(S.String),
+  }),
+).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
+
+export type ResourceRecordList = Array<ResourceRecord>;
+export const ResourceRecordList = /*@__PURE__*/ S.Array(
+  ResourceRecord,
+) as any as S.Schema<ResourceRecordList>;
+
 /** SSL configuration for a DomainMapping resource. */
 export interface SslSettings {
   /** ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345. */
@@ -188,56 +213,31 @@ export const SslSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslSettings" }) as any as S.Schema<SslSettings>;
 
-export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
-export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
-
-/** A DNS resource record. */
-export interface ResourceRecord {
-  /** Resource record type. Example: AAAA. */
-  type?: ResourceRecordTypeEnum | (string & {});
-  /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
-  name?: string;
-  /** Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
-  rrdata?: string;
-}
-export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ResourceRecordTypeEnum),
-    name: S.optional(S.String),
-    rrdata: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
-
-export type ResourceRecordList = Array<ResourceRecord>;
-export const ResourceRecordList = /*@__PURE__*/ S.Array(
-  ResourceRecord,
-) as any as S.Schema<ResourceRecordList>;
-
 /** A domain serving an App Engine application. */
 export interface DomainMapping {
-  /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
-  name?: string;
   /** Relative name of the domain serving the application. Example: example.com. */
   id?: string;
-  /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
-  sslSettings?: SslSettings;
   /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
   resourceRecords?: ResourceRecordList;
+  /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
+  sslSettings?: SslSettings;
+  /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
+  name?: string;
 }
 export const DomainMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
     id: S.optional(S.String),
-    sslSettings: S.optional(SslSettings),
     resourceRecords: S.optional(ResourceRecordList),
+    sslSettings: S.optional(SslSettings),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainMapping" }) as any as S.Schema<DomainMapping>;
 
 export interface CreateAppsDomainMappingsRequest {
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  appsId: string;
   /** Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. */
   noManagedCertificate?: boolean;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  appsId: string;
   /** Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. */
   overrideStrategy?:
     | CreateAppsDomainMappingsOverrideStrategyEnum
@@ -247,8 +247,8 @@ export interface CreateAppsDomainMappingsRequest {
 }
 export const CreateAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    appsId: S.String.pipe(T.Label()),
     noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+    appsId: S.String.pipe(T.Label()),
     overrideStrategy: S.optional(
       CreateAppsDomainMappingsOverrideStrategyEnum.pipe(T.Query()),
     ),
@@ -279,16 +279,16 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
-    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
@@ -296,30 +296,30 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
-  response?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
-  name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
   done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    name: S.optional(S.String),
-    error: S.optional(Status),
     done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
   /** Part of `parent`. See documentation of `projectsId`. */
   applicationsId: string;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
   /** Part of `parent`. See documentation of `projectsId`. */
   locationsId: string;
   /** Request body */
@@ -328,8 +328,8 @@ export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesReques
 export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      projectsId: S.String.pipe(T.Label()),
       applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
       locationsId: S.String.pipe(T.Label()),
       body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
     }).pipe(
@@ -418,15 +418,15 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 }) as any as S.Schema<Empty>;
 
 export interface DeleteAppsDomainMappingsRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  domainMappingsId: string;
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
   appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  domainMappingsId: string;
 }
 export const DeleteAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    domainMappingsId: S.String.pipe(T.Label()),
     appsId: S.String.pipe(T.Label()),
+    domainMappingsId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -440,21 +440,21 @@ export const DeleteAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
   /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
+  authorizedCertificatesId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
   /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. */
   projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  authorizedCertificatesId: string;
+  locationsId: string;
 }
 export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      locationsId: S.String.pipe(T.Label()),
+      authorizedCertificatesId: S.String.pipe(T.Label()),
       applicationsId: S.String.pipe(T.Label()),
       projectsId: S.String.pipe(T.Label()),
-      authorizedCertificatesId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -468,22 +468,22 @@ export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
+  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
+  projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  domainMappingsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
-  /** Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. */
-  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  domainMappingsId: string;
 }
 export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      locationsId: S.String.pipe(T.Label()),
-      domainMappingsId: S.String.pipe(T.Label()),
-      applicationsId: S.String.pipe(T.Label()),
       projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
+      domainMappingsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -526,15 +526,15 @@ export const GetAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>;
 
 export interface GetAppsDomainMappingsRequest {
-  /** Part of `name`. See documentation of `appsId`. */
-  domainMappingsId: string;
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   appsId: string;
+  /** Part of `name`. See documentation of `appsId`. */
+  domainMappingsId: string;
 }
 export const GetAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    domainMappingsId: S.String.pipe(T.Label()),
     appsId: S.String.pipe(T.Label()),
+    domainMappingsId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -575,24 +575,24 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
-  name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: StringMap;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
   /** The canonical id for this location. For example: "us-east1". */
   locationId?: string;
+  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
+  name?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: StringMap;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-    displayName: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
+    name: S.optional(S.String),
+    metadata: S.optional(DocumentMap),
+    displayName: S.optional(S.String),
+    labels: S.optional(StringMap),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
@@ -645,31 +645,31 @@ export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
-  projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
   authorizedCertificatesId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
+  /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. */
+  projectsId: string;
   /** Controls the set of fields returned in the GET response. */
   view?:
     | GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
     | (string & {});
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
 }
 export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      projectsId: S.String.pipe(T.Label()),
-      locationsId: S.String.pipe(T.Label()),
       authorizedCertificatesId: S.String.pipe(T.Label()),
-      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
       view: S.optional(
         GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
           T.Query(),
         ),
       ),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -683,21 +683,21 @@ export const GetProjectsLocationsApplicationsAuthorizedCertificatesRequest =
 
 export interface GetProjectsLocationsApplicationsDomainMappingsRequest {
   /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   domainMappingsId: string;
   /** Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
 }
 export const GetProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      applicationsId: S.String.pipe(T.Label()),
-      locationsId: S.String.pipe(T.Label()),
       domainMappingsId: S.String.pipe(T.Label()),
       projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -713,16 +713,16 @@ export interface GetProjectsLocationsOperationsRequest {
   /** Part of `name`. The name of the operation resource. */
   projectsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  operationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  operationsId: string;
 }
 export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       projectsId: S.String.pipe(T.Label()),
-      operationsId: S.String.pipe(T.Label()),
       locationsId: S.String.pipe(T.Label()),
+      operationsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -742,20 +742,20 @@ export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 export interface ListAppsAuthorizedCertificatesRequest {
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   appsId: string;
+  /** Controls the set of fields returned in the LIST response. */
+  view?: ListAppsAuthorizedCertificatesViewEnum | (string & {});
   /** Maximum results to return per page. */
   pageSize?: number;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
-  /** Controls the set of fields returned in the LIST response. */
-  view?: ListAppsAuthorizedCertificatesViewEnum | (string & {});
 }
 export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       appsId: S.String.pipe(T.Label()),
+      view: S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(ListAppsAuthorizedCertificatesViewEnum.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -814,15 +814,15 @@ export const ListAppsAuthorizedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via Search Console (https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
-  /** Fully qualified domain name of the domain authorized for use. Example: example.com. */
-  id?: string;
   /** Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly */
   name?: string;
+  /** Fully qualified domain name of the domain authorized for use. Example: example.com. */
+  id?: string;
 }
 export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
     name: S.optional(S.String),
+    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AuthorizedDomain",
@@ -835,33 +835,33 @@ export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
 
 /** Response message for AuthorizedDomains.ListAuthorizedDomains. */
 export interface ListAuthorizedDomainsResponse {
-  /** Continuation token for fetching the next page of results. */
-  nextPageToken?: string;
   /** The authorized domains belonging to the user. */
   domains?: AuthorizedDomainList;
+  /** Continuation token for fetching the next page of results. */
+  nextPageToken?: string;
 }
 export const ListAuthorizedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     domains: S.optional(AuthorizedDomainList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListAuthorizedDomainsResponse",
 }) as any as S.Schema<ListAuthorizedDomainsResponse>;
 
 export interface ListAppsDomainMappingsRequest {
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  appsId: string;
   /** Maximum results to return per page. */
   pageSize?: number;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  appsId: string;
 }
 export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    appsId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    appsId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -895,23 +895,23 @@ export const ListDomainMappingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainMappingsResponse>;
 
 export interface ListAppsLocationsRequest {
+  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
   /** Part of `name`. The resource that owns the locations collection, if applicable. */
   appsId: string;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
   filter?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
-  /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
 export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
     appsId: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -931,15 +931,15 @@ export const LocationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: LocationList;
   /** The standard List next-page token. */
   nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: LocationList;
 }
 export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
+    locations: S.optional(LocationList),
   }),
 ).annotate({
   identifier: "ListLocationsResponse",
@@ -948,22 +948,22 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAppsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** The standard list page size. */
-  pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
-  /** The standard list filter. */
-  filter?: string;
+  /** The standard list page size. */
+  pageSize?: number;
   /** Part of `name`. The name of the operation's parent resource. */
   appsId: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     appsId: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -982,41 +982,41 @@ export const OperationList = /*@__PURE__*/ S.Array(
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: StringList;
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
+  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: StringList;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
+    unreachable: S.optional(StringList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListProjectsLocationsRequest {
-  /** Part of `name`. The resource that owns the locations collection, if applicable. */
-  projectsId: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: StringList;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** Part of `name`. The resource that owns the locations collection, if applicable. */
+  projectsId: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: StringList;
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
   filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    projectsId: S.String.pipe(T.Label()),
-    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    projectsId: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1036,34 +1036,34 @@ export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
   /** Maximum results to return per page. */
   pageSize?: number;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
   /** Controls the set of fields returned in the LIST response. */
   view?:
     | ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum
     | (string & {});
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
 }
 export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      projectsId: S.String.pipe(T.Label()),
-      locationsId: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
       view: S.optional(
         ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum.pipe(
           T.Query(),
         ),
       ),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1077,25 +1077,25 @@ export const ListProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
-  /** Continuation token for fetching the next page of results. */
-  pageToken?: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
   /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
   projectsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Continuation token for fetching the next page of results. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      applicationsId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      locationsId: S.String.pipe(T.Label()),
       projectsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1108,25 +1108,25 @@ export const ListProjectsLocationsApplicationsAuthorizedDomainsRequest =
   }) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>;
 
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
-  /** Part of `parent`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
-  projectsId: string;
-  /** Part of `parent`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Maximum results to return per page. */
-  pageSize?: number;
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  applicationsId: string;
+  /** Part of `parent`. See documentation of `projectsId`. */
+  locationsId: string;
+  /** Maximum results to return per page. */
+  pageSize?: number;
+  /** Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. */
+  projectsId: string;
 }
 export const ListProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      locationsId: S.String.pipe(T.Label()),
-      projectsId: S.String.pipe(T.Label()),
-      applicationsId: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1139,28 +1139,28 @@ export const ListProjectsLocationsApplicationsDomainMappingsRequest =
   }) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
+  /** The standard list page token. */
+  pageToken?: string;
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
-  /** Part of `name`. The name of the operation's parent resource. */
-  projectsId: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  locationsId: string;
   /** The standard list filter. */
   filter?: string;
   /** The standard list page size. */
   pageSize?: number;
-  /** The standard list page token. */
-  pageToken?: string;
+  /** Part of `name`. The name of the operation's parent resource. */
+  projectsId: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      locationsId: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      projectsId: S.String.pipe(T.Label()),
+      locationsId: S.String.pipe(T.Label()),
       filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
+      projectsId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1173,21 +1173,21 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export interface PatchAppsAuthorizedCertificatesRequest {
+  /** Part of `name`. See documentation of `appsId`. */
+  authorizedCertificatesId: string;
   /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
   updateMask?: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
   appsId: string;
-  /** Part of `name`. See documentation of `appsId`. */
-  authorizedCertificatesId: string;
   /** Request body */
   body?: AuthorizedCertificate;
 }
 export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      authorizedCertificatesId: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
       appsId: S.String.pipe(T.Label()),
-      authorizedCertificatesId: S.String.pipe(T.Label()),
       body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1201,12 +1201,12 @@ export const PatchAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>;
 
 export interface PatchAppsDomainMappingsRequest {
+  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
+  appsId: string;
   /** Part of `name`. See documentation of `appsId`. */
   domainMappingsId: string;
   /** Required. Standard field mask for the set of fields to be updated. */
   updateMask?: string;
-  /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
-  appsId: string;
   /** Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. */
   noManagedCertificate?: boolean;
   /** Request body */
@@ -1214,9 +1214,9 @@ export interface PatchAppsDomainMappingsRequest {
 }
 export const PatchAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    appsId: S.String.pipe(T.Label()),
     domainMappingsId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
-    appsId: S.String.pipe(T.Label()),
     noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(DomainMapping.pipe(T.HttpBody())),
   }).pipe(
@@ -1231,27 +1231,27 @@ export const PatchAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAppsDomainMappingsRequest>;
 
 export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  authorizedCertificatesId: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. */
   projectsId: string;
+  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
+  updateMask?: string;
   /** Part of `name`. See documentation of `projectsId`. */
   locationsId: string;
   /** Part of `name`. See documentation of `projectsId`. */
-  authorizedCertificatesId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
   applicationsId: string;
-  /** Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. */
-  updateMask?: string;
   /** Request body */
   body?: AuthorizedCertificate;
 }
 export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      projectsId: S.String.pipe(T.Label()),
-      locationsId: S.String.pipe(T.Label()),
       authorizedCertificatesId: S.String.pipe(T.Label()),
-      applicationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      locationsId: S.String.pipe(T.Label()),
+      applicationsId: S.String.pipe(T.Label()),
       body: S.optional(AuthorizedCertificate.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1266,30 +1266,30 @@ export const PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
+  /** Part of `name`. See documentation of `projectsId`. */
+  domainMappingsId: string;
+  /** Required. Standard field mask for the set of fields to be updated. */
+  updateMask?: string;
+  /** Part of `name`. See documentation of `projectsId`. */
+  applicationsId: string;
   /** Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. */
   noManagedCertificate?: boolean;
   /** Part of `name`. See documentation of `projectsId`. */
-  applicationsId: string;
-  /** Required. Standard field mask for the set of fields to be updated. */
-  updateMask?: string;
+  locationsId: string;
   /** Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. */
   projectsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  locationsId: string;
-  /** Part of `name`. See documentation of `projectsId`. */
-  domainMappingsId: string;
   /** Request body */
   body?: DomainMapping;
 }
 export const PatchProjectsLocationsApplicationsDomainMappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-      applicationsId: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      projectsId: S.String.pipe(T.Label()),
-      locationsId: S.String.pipe(T.Label()),
       domainMappingsId: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      applicationsId: S.String.pipe(T.Label()),
+      noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+      locationsId: S.String.pipe(T.Label()),
+      projectsId: S.String.pipe(T.Label()),
       body: S.optional(DomainMapping.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

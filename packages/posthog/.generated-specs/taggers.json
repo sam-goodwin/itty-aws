@@ -408,7 +408,7 @@
         "provider": {
           "target": "com.posthog.taggers#LLMProviderEnum",
           "traits": {
-            "smithy.api#documentation": "LLM provider to use for this tagger.\n\n* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub",
+            "smithy.api#documentation": "LLM provider to use for this tagger.\n\n* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI",
             "smithy.api#required": {}
           }
         },
@@ -482,22 +482,10 @@
           "traits": {
             "smithy.api#enumValue": "together_ai"
           }
-        },
-        "MINIMAX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "minimax"
-          }
-        },
-        "ZEABUR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "zeabur"
-          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub"
+        "smithy.api#documentation": "* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI"
       }
     },
     "com.posthog.taggers#UserBasic": {
@@ -673,7 +661,7 @@
         "provider": {
           "target": "com.posthog.taggers#LLMProviderEnum",
           "traits": {
-            "smithy.api#documentation": "LLM provider to use for this tagger.\n\n* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI\n* `minimax` - MiniMax\n* `zeabur` - Zeabur AI Hub",
+            "smithy.api#documentation": "LLM provider to use for this tagger.\n\n* `openai` - Openai\n* `anthropic` - Anthropic\n* `gemini` - Gemini\n* `openrouter` - Openrouter\n* `fireworks` - Fireworks\n* `azure_openai` - Azure OpenAI\n* `together_ai` - Together AI",
             "smithy.api#required": {}
           }
         },

@@ -270,8 +270,6 @@ export interface CreateRequest {
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
-  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
-  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
@@ -291,7 +289,6 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
-    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -373,8 +370,6 @@ export interface Organization {
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
-  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
-  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
   member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
@@ -420,7 +415,6 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
-    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
     member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
@@ -458,14 +452,29 @@ export const DestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestroyResponse",
 }) as any as S.Schema<DestroyResponse>;
 
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type DomainsCreateRequestIdJagAllowedClientsList = Array<string>;
+export const DomainsCreateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DomainsCreateRequestIdJagAllowedClientsList>;
+
 export interface DomainsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
-  identity_provider_config?: string | null;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: DomainsCreateRequestIdJagAllowedClientsList;
 }
 export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -473,7 +482,15 @@ export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    identity_provider_config: S.optional(S.NullOr(S.String)),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    scim_enabled: S.optional(S.Boolean),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      DomainsCreateRequestIdJagAllowedClientsList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -484,6 +501,12 @@ export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainsCreateRequest",
 }) as any as S.Schema<DomainsCreateRequest>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type OrganizationDomainIdJagAllowedClientsList = Array<string>;
+export const OrganizationDomainIdJagAllowedClientsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OrganizationDomainIdJagAllowedClientsList>;
 
 export interface OrganizationDomain {
   id?: string;
@@ -496,13 +519,22 @@ export interface OrganizationDomain {
   sso_enforcement?: string;
   /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
   has_saml?: boolean;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
   /** Returns whether SCIM is configured and enabled for this domain. */
   has_scim?: boolean;
+  scim_enabled?: boolean;
   scim_base_url?: string | null;
+  scim_bearer_token?: string | null;
   /** Returns whether ID-JAG (XAA) is configured for this domain. */
   has_id_jag?: boolean;
-  /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
-  identity_provider_config?: string | null;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: OrganizationDomainIdJagAllowedClientsList;
 }
 export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -514,10 +546,19 @@ export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
     has_saml: S.optional(S.Boolean),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
     has_scim: S.optional(S.Boolean),
+    scim_enabled: S.optional(S.Boolean),
     scim_base_url: S.optional(S.NullOr(S.String)),
+    scim_bearer_token: S.optional(S.NullOr(S.String)),
     has_id_jag: S.optional(S.Boolean),
-    identity_provider_config: S.optional(S.NullOr(S.String)),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      OrganizationDomainIdJagAllowedClientsList,
+    ),
   }),
 ).annotate({
   identifier: "OrganizationDomain",
@@ -598,6 +639,13 @@ export const PaginatedOrganizationDomainList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedOrganizationDomainList",
 }) as any as S.Schema<PaginatedOrganizationDomainList>;
 
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type DomainsPartialUpdateRequestIdJagAllowedClientsList = Array<string>;
+export const DomainsPartialUpdateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DomainsPartialUpdateRequestIdJagAllowedClientsList>;
+
 export interface DomainsPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -606,8 +654,16 @@ export interface DomainsPartialUpdateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
-  identity_provider_config?: string | null;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: DomainsPartialUpdateRequestIdJagAllowedClientsList;
 }
 export const DomainsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -616,7 +672,15 @@ export const DomainsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    identity_provider_config: S.optional(S.NullOr(S.String)),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    scim_enabled: S.optional(S.Boolean),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      DomainsPartialUpdateRequestIdJagAllowedClientsList,
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -677,6 +741,74 @@ export const DomainsScimLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsScimLogsRetrieveResponse",
 }) as any as S.Schema<DomainsScimLogsRetrieveResponse>;
 
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type DomainsScimTokenCreateRequestIdJagAllowedClientsList =
+  Array<string>;
+export const DomainsScimTokenCreateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DomainsScimTokenCreateRequestIdJagAllowedClientsList>;
+
+export interface DomainsScimTokenCreateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A UUID string identifying this domain. */
+  id: string;
+  domain?: string;
+  jit_provisioning_enabled?: boolean;
+  sso_enforcement?: string;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: DomainsScimTokenCreateRequestIdJagAllowedClientsList;
+}
+export const DomainsScimTokenCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    domain: S.optional(S.String),
+    jit_provisioning_enabled: S.optional(S.Boolean),
+    sso_enforcement: S.optional(S.String),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    scim_enabled: S.optional(S.Boolean),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      DomainsScimTokenCreateRequestIdJagAllowedClientsList,
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/organizations/{organization_id}/domains/{id}/scim/token/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DomainsScimTokenCreateRequest",
+}) as any as S.Schema<DomainsScimTokenCreateRequest>;
+
+export interface DomainsScimTokenCreateResponse {}
+export const DomainsScimTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DomainsScimTokenCreateResponse",
+}) as any as S.Schema<DomainsScimTokenCreateResponse>;
+
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type DomainsUpdateRequestIdJagAllowedClientsList = Array<string>;
+export const DomainsUpdateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DomainsUpdateRequestIdJagAllowedClientsList>;
+
 export interface DomainsUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -685,8 +817,16 @@ export interface DomainsUpdateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
-  identity_provider_config?: string | null;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: DomainsUpdateRequestIdJagAllowedClientsList;
 }
 export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -695,7 +835,15 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    identity_provider_config: S.optional(S.NullOr(S.String)),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    scim_enabled: S.optional(S.Boolean),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      DomainsUpdateRequestIdJagAllowedClientsList,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -707,6 +855,13 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsUpdateRequest",
 }) as any as S.Schema<DomainsUpdateRequest>;
 
+/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+export type DomainsVerifyCreateRequestIdJagAllowedClientsList = Array<string>;
+export const DomainsVerifyCreateRequestIdJagAllowedClientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DomainsVerifyCreateRequestIdJagAllowedClientsList>;
+
 export interface DomainsVerifyCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -715,8 +870,16 @@ export interface DomainsVerifyCreateRequest {
   domain?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
-  identity_provider_config?: string | null;
+  saml_entity_id?: string | null;
+  saml_acs_url?: string | null;
+  saml_x509_cert?: string | null;
+  scim_enabled?: boolean;
+  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG on this domain. */
+  id_jag_issuer_url?: string | null;
+  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
+  id_jag_jwks_url?: string | null;
+  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
+  id_jag_allowed_clients?: DomainsVerifyCreateRequestIdJagAllowedClientsList;
 }
 export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -725,7 +888,15 @@ export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     domain: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    identity_provider_config: S.optional(S.NullOr(S.String)),
+    saml_entity_id: S.optional(S.NullOr(S.String)),
+    saml_acs_url: S.optional(S.NullOr(S.String)),
+    saml_x509_cert: S.optional(S.NullOr(S.String)),
+    scim_enabled: S.optional(S.Boolean),
+    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+    id_jag_allowed_clients: S.optional(
+      DomainsVerifyCreateRequestIdJagAllowedClientsList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -743,367 +914,6 @@ export const DomainsVerifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainsVerifyCreateResponse",
 }) as any as S.Schema<DomainsVerifyCreateResponse>;
-
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
-  Array<string>;
-export const IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentityProviderConfigsCreateRequestIdJagAllowedClientsList>;
-
-export interface IdentityProviderConfigsCreateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** Display name for this IdP configuration (e.g. 'Okta production'). */
-  name?: string;
-  /** SAML IdP entity ID (issuer). */
-  saml_entity_id?: string | null;
-  /** SAML single sign-on (ACS) URL the IdP redirects to. */
-  saml_acs_url?: string | null;
-  /** SAML IdP X.509 signing certificate (PEM). */
-  saml_x509_cert?: string | null;
-  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: IdentityProviderConfigsCreateRequestIdJagAllowedClientsList;
-}
-export const IdentityProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      saml_entity_id: S.optional(S.NullOr(S.String)),
-      saml_acs_url: S.optional(S.NullOr(S.String)),
-      saml_x509_cert: S.optional(S.NullOr(S.String)),
-      scim_enabled: S.optional(S.Boolean),
-      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-      id_jag_allowed_clients: S.optional(
-        IdentityProviderConfigsCreateRequestIdJagAllowedClientsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "IdentityProviderConfigsCreateRequest",
-}) as any as S.Schema<IdentityProviderConfigsCreateRequest>;
-
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigIdJagAllowedClientsList = Array<string>;
-export const IdentityProviderConfigIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentityProviderConfigIdJagAllowedClientsList>;
-
-export interface IdentityProviderConfig {
-  id: string;
-  /** Display name for this IdP configuration (e.g. 'Okta production'). */
-  name?: string;
-  created_at: string;
-  updated_at: string;
-  /** Whether SAML is fully configured on this config. */
-  has_saml: boolean;
-  /** SAML IdP entity ID (issuer). */
-  saml_entity_id?: string | null;
-  /** SAML single sign-on (ACS) URL the IdP redirects to. */
-  saml_acs_url?: string | null;
-  /** SAML IdP X.509 signing certificate (PEM). */
-  saml_x509_cert?: string | null;
-  /** Whether SCIM is enabled and a bearer token is set on this config. */
-  has_scim: boolean;
-  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
-  scim_enabled?: boolean;
-  /** Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise. */
-  scim_bearer_token: string | null;
-  /** Whether ID-JAG (XAA) is configured on this config. */
-  has_id_jag: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: IdentityProviderConfigIdJagAllowedClientsList;
-}
-export const IdentityProviderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    has_saml: S.Boolean,
-    saml_entity_id: S.optional(S.NullOr(S.String)),
-    saml_acs_url: S.optional(S.NullOr(S.String)),
-    saml_x509_cert: S.optional(S.NullOr(S.String)),
-    has_scim: S.Boolean,
-    scim_enabled: S.optional(S.Boolean),
-    scim_bearer_token: S.NullOr(S.String),
-    has_id_jag: S.Boolean,
-    id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-    id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-    id_jag_allowed_clients: S.optional(
-      IdentityProviderConfigIdJagAllowedClientsList,
-    ),
-  }),
-).annotate({
-  identifier: "IdentityProviderConfig",
-}) as any as S.Schema<IdentityProviderConfig>;
-
-export interface IdentityProviderConfigsDestroyRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this identity provider config. */
-  id: string;
-}
-export const IdentityProviderConfigsDestroyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "IdentityProviderConfigsDestroyRequest",
-}) as any as S.Schema<IdentityProviderConfigsDestroyRequest>;
-
-export interface IdentityProviderConfigsDestroyResponse {}
-export const IdentityProviderConfigsDestroyResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "IdentityProviderConfigsDestroyResponse",
-}) as any as S.Schema<IdentityProviderConfigsDestroyResponse>;
-
-export interface IdentityProviderConfigsListRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const IdentityProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/organizations/{organization_id}/identity_provider_configs/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IdentityProviderConfigsListRequest",
-}) as any as S.Schema<IdentityProviderConfigsListRequest>;
-
-export type PaginatedIdentityProviderConfigListResultsList =
-  Array<IdentityProviderConfig>;
-export const PaginatedIdentityProviderConfigListResultsList =
-  /*@__PURE__*/ S.Array(
-    IdentityProviderConfig,
-  ) as any as S.Schema<PaginatedIdentityProviderConfigListResultsList>;
-
-export interface PaginatedIdentityProviderConfigList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedIdentityProviderConfigListResultsList;
-}
-export const PaginatedIdentityProviderConfigList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedIdentityProviderConfigListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedIdentityProviderConfigList",
-}) as any as S.Schema<PaginatedIdentityProviderConfigList>;
-
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
-  Array<string>;
-export const IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList>;
-
-export interface IdentityProviderConfigsPartialUpdateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this identity provider config. */
-  id: string;
-  /** Display name for this IdP configuration (e.g. 'Okta production'). */
-  name?: string;
-  /** SAML IdP entity ID (issuer). */
-  saml_entity_id?: string | null;
-  /** SAML single sign-on (ACS) URL the IdP redirects to. */
-  saml_acs_url?: string | null;
-  /** SAML IdP X.509 signing certificate (PEM). */
-  saml_x509_cert?: string | null;
-  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList;
-}
-export const IdentityProviderConfigsPartialUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      saml_entity_id: S.optional(S.NullOr(S.String)),
-      saml_acs_url: S.optional(S.NullOr(S.String)),
-      saml_x509_cert: S.optional(S.NullOr(S.String)),
-      scim_enabled: S.optional(S.Boolean),
-      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-      id_jag_allowed_clients: S.optional(
-        IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "IdentityProviderConfigsPartialUpdateRequest",
-  }) as any as S.Schema<IdentityProviderConfigsPartialUpdateRequest>;
-
-export interface IdentityProviderConfigsRetrieveRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this identity provider config. */
-  id: string;
-}
-export const IdentityProviderConfigsRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "IdentityProviderConfigsRetrieveRequest",
-}) as any as S.Schema<IdentityProviderConfigsRetrieveRequest>;
-
-export interface IdentityProviderConfigsScimTokenCreateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this identity provider config. */
-  id: string;
-}
-export const IdentityProviderConfigsScimTokenCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/scim/token/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "IdentityProviderConfigsScimTokenCreateRequest",
-  }) as any as S.Schema<IdentityProviderConfigsScimTokenCreateRequest>;
-
-export interface SCIMTokenResponse {
-  /** Whether SCIM is enabled for this config. */
-  scim_enabled: boolean;
-  /** Newly generated plaintext SCIM bearer token. Only returned once. */
-  scim_bearer_token: string;
-}
-export const SCIMTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scim_enabled: S.Boolean,
-    scim_bearer_token: S.String,
-  }),
-).annotate({
-  identifier: "SCIMTokenResponse",
-}) as any as S.Schema<SCIMTokenResponse>;
-
-/** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
-  Array<string>;
-export const IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList>;
-
-export interface IdentityProviderConfigsUpdateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A UUID string identifying this identity provider config. */
-  id: string;
-  /** Display name for this IdP configuration (e.g. 'Okta production'). */
-  name?: string;
-  /** SAML IdP entity ID (issuer). */
-  saml_entity_id?: string | null;
-  /** SAML single sign-on (ACS) URL the IdP redirects to. */
-  saml_acs_url?: string | null;
-  /** SAML IdP X.509 signing certificate (PEM). */
-  saml_x509_cert?: string | null;
-  /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
-  scim_enabled?: boolean;
-  /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
-  id_jag_issuer_url?: string | null;
-  /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
-  id_jag_jwks_url?: string | null;
-  /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-  id_jag_allowed_clients?: IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList;
-}
-export const IdentityProviderConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organization_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      saml_entity_id: S.optional(S.NullOr(S.String)),
-      saml_acs_url: S.optional(S.NullOr(S.String)),
-      saml_x509_cert: S.optional(S.NullOr(S.String)),
-      scim_enabled: S.optional(S.Boolean),
-      id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-      id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-      id_jag_allowed_clients: S.optional(
-        IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "IdentityProviderConfigsUpdateRequest",
-}) as any as S.Schema<IdentityProviderConfigsUpdateRequest>;
 
 export interface IntegrationsEnvironmentMappingPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -1667,7 +1477,7 @@ export interface MembersListRequest {
   offset?: number;
   /** Sort order. Defaults to `-joined_at`. */
   order?: MembersListRequestOrder | (string & {});
-  /** Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
+  /** Match against member `first_name`, `last_name`, and `email`. Returns case-insensitive substring matches and fuzzy trigram matches (typos, prefix-as-you-type) together, ordered exact-first; each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
   search?: string;
 }
 export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1700,7 +1510,7 @@ export interface OrganizationMember {
   is_2fa_enabled?: boolean;
   has_social_auth?: boolean;
   last_login?: string;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const OrganizationMember = /*@__PURE__*/ S.suspend(() =>
@@ -7618,8 +7428,6 @@ export interface PartialUpdateRequest {
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
-  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
-  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
@@ -7640,7 +7448,6 @@ export const PartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
-    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -8245,8 +8052,6 @@ export interface UpdateRequest {
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
   members_can_create_projects?: boolean | null;
   members_can_use_personal_api_keys?: boolean;
-  /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
-  members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
@@ -8267,7 +8072,6 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
-    members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -8629,6 +8433,25 @@ export const domainsScimLogsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DomainsScimTokenCreateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Regenerate SCIM bearer token. */
+export const domainsScimTokenCreate: API.OperationMethod<
+  DomainsScimTokenCreateRequest,
+  DomainsScimTokenCreateResponse,
+  DomainsScimTokenCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DomainsScimTokenCreateRequest,
+  output: DomainsScimTokenCreateResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DomainsUpdateError =
   | BadRequest
   | Forbidden
@@ -8661,105 +8484,6 @@ export const domainsVerifyCreate: API.OperationMethod<
   input: DomainsVerifyCreateRequest,
   output: DomainsVerifyCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsCreateError = PosthogOpError;
-export const identityProviderConfigsCreate: API.OperationMethod<
-  IdentityProviderConfigsCreateRequest,
-  IdentityProviderConfig,
-  IdentityProviderConfigsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsCreateRequest,
-  output: IdentityProviderConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsDestroyError = PosthogOpError;
-export const identityProviderConfigsDestroy: API.OperationMethod<
-  IdentityProviderConfigsDestroyRequest,
-  IdentityProviderConfigsDestroyResponse,
-  IdentityProviderConfigsDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsDestroyRequest,
-  output: IdentityProviderConfigsDestroyResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsListError = PosthogOpError;
-export const identityProviderConfigsList: API.OperationMethod<
-  IdentityProviderConfigsListRequest,
-  PaginatedIdentityProviderConfigList,
-  IdentityProviderConfigsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsListRequest,
-  output: PaginatedIdentityProviderConfigList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsPartialUpdateError = PosthogOpError;
-export const identityProviderConfigsPartialUpdate: API.OperationMethod<
-  IdentityProviderConfigsPartialUpdateRequest,
-  IdentityProviderConfig,
-  IdentityProviderConfigsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsPartialUpdateRequest,
-  output: IdentityProviderConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsRetrieveError = PosthogOpError;
-export const identityProviderConfigsRetrieve: API.OperationMethod<
-  IdentityProviderConfigsRetrieveRequest,
-  IdentityProviderConfig,
-  IdentityProviderConfigsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsRetrieveRequest,
-  output: IdentityProviderConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsScimTokenCreateError = PosthogOpError;
-/** Regenerate the SCIM bearer token for this IdP config. */
-export const identityProviderConfigsScimTokenCreate: API.OperationMethod<
-  IdentityProviderConfigsScimTokenCreateRequest,
-  SCIMTokenResponse,
-  IdentityProviderConfigsScimTokenCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsScimTokenCreateRequest,
-  output: SCIMTokenResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IdentityProviderConfigsUpdateError = PosthogOpError;
-export const identityProviderConfigsUpdate: API.OperationMethod<
-  IdentityProviderConfigsUpdateRequest,
-  IdentityProviderConfig,
-  IdentityProviderConfigsUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IdentityProviderConfigsUpdateRequest,
-  output: IdentityProviderConfig,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -9429,7 +9153,7 @@ export const organizationsProjectsList: API.OperationMethod<
 }));
 
 export type OrganizationsProjectsLogsConfigPartialUpdateError = PosthogOpError;
-/** Manage logs product configuration for this project's canonical environment. Members can read; writing requires project admin, matching the admin-only settings UI. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
+/** Manage logs product configuration for this project's canonical environment. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
 export const organizationsProjectsLogsConfigPartialUpdate: API.OperationMethod<
   OrganizationsProjectsLogsConfigPartialUpdateRequest,
   ProjectBackwardCompat,
@@ -9444,7 +9168,7 @@ export const organizationsProjectsLogsConfigPartialUpdate: API.OperationMethod<
 }));
 
 export type OrganizationsProjectsLogsConfigRetrieveError = PosthogOpError;
-/** Manage logs product configuration for this project's canonical environment. Members can read; writing requires project admin, matching the admin-only settings UI. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
+/** Manage logs product configuration for this project's canonical environment. Mirrors the env-router action so /api/projects/:id/logs_config/ resolves alongside the legacy /api/environments/:id/logs_config/ alias. */
 export const organizationsProjectsLogsConfigRetrieve: API.OperationMethod<
   OrganizationsProjectsLogsConfigRetrieveRequest,
   ProjectBackwardCompat,
@@ -9690,7 +9414,6 @@ export type RolesCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesCreate: API.OperationMethod<
   RolesCreateRequest,
   Role,
@@ -9705,7 +9428,6 @@ export const rolesCreate: API.OperationMethod<
 }));
 
 export type RolesDestroyError = Forbidden | NotFound | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesDestroy: API.OperationMethod<
   RolesDestroyRequest,
   RolesDestroyResponse,
@@ -9720,7 +9442,6 @@ export const rolesDestroy: API.OperationMethod<
 }));
 
 export type RolesListError = BadRequest | Forbidden | NotFound | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesList: API.OperationMethod<
   RolesListRequest,
   PaginatedRoleList,
@@ -9739,7 +9460,6 @@ export type RolesPartialUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesPartialUpdate: API.OperationMethod<
   RolesPartialUpdateRequest,
   Role,
@@ -9754,7 +9474,6 @@ export const rolesPartialUpdate: API.OperationMethod<
 }));
 
 export type RolesRetrieveError = Forbidden | NotFound | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRetrieve: API.OperationMethod<
   RolesRetrieveRequest,
   Role,
@@ -9773,7 +9492,6 @@ export type RolesRoleMembershipsCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsCreate: API.OperationMethod<
   RolesRoleMembershipsCreateRequest,
   RoleMembershipOutput,
@@ -9791,7 +9509,6 @@ export type RolesRoleMembershipsDestroyError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsDestroy: API.OperationMethod<
   RolesRoleMembershipsDestroyRequest,
   RolesRoleMembershipsDestroyResponse,
@@ -9810,7 +9527,6 @@ export type RolesRoleMembershipsListError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsList: API.OperationMethod<
   RolesRoleMembershipsListRequest,
   PaginatedRoleMembershipListOutput,
@@ -9828,7 +9544,6 @@ export type RolesRoleMembershipsRetrieveError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsRetrieve: API.OperationMethod<
   RolesRoleMembershipsRetrieveRequest,
   RoleMembershipOutput,
@@ -9847,7 +9562,6 @@ export type RolesUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesUpdate: API.OperationMethod<
   RolesUpdateRequest,
   Role,

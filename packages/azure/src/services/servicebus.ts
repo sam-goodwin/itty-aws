@@ -713,7 +713,9 @@ export interface MigrationConfigsCompleteMigrationRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsCompleteMigrationRequestConfigName;
+  configName:
+    | MigrationConfigsCompleteMigrationRequestConfigName
+    | (string & {});
 }
 export const MigrationConfigsCompleteMigrationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -772,7 +774,9 @@ export interface MigrationConfigsCreateAndStartMigrationRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsCreateAndStartMigrationRequestConfigName;
+  configName:
+    | MigrationConfigsCreateAndStartMigrationRequestConfigName
+    | (string & {});
   /** Properties required to the Create Migration Configuration */
   properties?: MigrationConfigPropertiesPropertiesInput;
 }
@@ -862,7 +866,7 @@ export interface MigrationConfigsDeleteRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsDeleteRequestConfigName;
+  configName: MigrationConfigsDeleteRequestConfigName | (string & {});
 }
 export const MigrationConfigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -900,7 +904,7 @@ export interface MigrationConfigsGetRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsGetRequestConfigName;
+  configName: MigrationConfigsGetRequestConfigName | (string & {});
 }
 export const MigrationConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1034,7 +1038,7 @@ export interface MigrationConfigsRevertRequest {
   /** The namespace name */
   namespaceName: string;
   /** The configuration name. Should always be $default. */
-  configName: MigrationConfigsRevertRequestConfigName;
+  configName: MigrationConfigsRevertRequestConfigName | (string & {});
 }
 export const MigrationConfigsRevertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1145,7 +1149,7 @@ export interface Encryption {
   /** Properties of KeyVault */
   keyVaultProperties?: EncryptionKeyVaultPropertiesList;
   /** Enumerates the possible value of keySource for Encryption */
-  keySource?: EncryptionKeySource;
+  keySource?: EncryptionKeySource | (string & {});
   /** Enable Infrastructure Encryption (Double Encryption) */
   requireInfrastructureEncryption?: boolean;
 }
@@ -1781,7 +1785,7 @@ export interface NWRuleSetIpRules {
   /** IP Mask */
   ipMask?: string;
   /** The IP Filter Action */
-  action?: NWRuleSetIpRulesAction;
+  action?: NWRuleSetIpRulesAction | (string & {});
 }
 export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

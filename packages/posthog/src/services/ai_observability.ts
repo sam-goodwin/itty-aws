@@ -218,19 +218,7 @@ export const OfflineExperimentItemsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OfflineExperimentItemsResponse",
 }) as any as S.Schema<OfflineExperimentItemsResponse>;
 
-export type LlmAnalyticsPersonalSpendListRequestBucketMinutes =
-  | 5
-  | 15
-  | 30
-  | 60;
-export const LlmAnalyticsPersonalSpendListRequestBucketMinutes =
-  /*@__PURE__*/ S.Number;
-
 export interface LlmAnalyticsPersonalSpendListRequest {
-  /** When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets). * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
-  bucket_minutes?:
-    | LlmAnalyticsPersonalSpendListRequestBucketMinutes
-    | (number & {});
   /** Start of the spend window. Accepts absolute dates (`2026-04-23`) or relative strings (`-7d`, `-1m`, etc.) — same parser used elsewhere in PostHog. Defaults to `-30d`. The window between `date_from` and `date_to` cannot exceed 90 days. */
   date_from?: string;
   /** End of the spend window. Accepts the same formats as `date_from`. Defaults to `now` when omitted. */
@@ -245,9 +233,6 @@ export interface LlmAnalyticsPersonalSpendListRequest {
 export const LlmAnalyticsPersonalSpendListRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      bucket_minutes: S.optional(
-        LlmAnalyticsPersonalSpendListRequestBucketMinutes.pipe(T.Query()),
-      ),
       date_from: S.optional(S.String.pipe(T.Query())),
       date_to: S.optional(S.String.pipe(T.Query())),
       limit: S.optional(S.Number.pipe(T.Query())),
@@ -417,109 +402,6 @@ export const ModelBreakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ModelBreakdown" }) as any as S.Schema<ModelBreakdown>;
 
-export interface DayBreakdownRow {
-  /** UTC calendar day the events fall on (`toDate(timestamp)`). */
-  day: string;
-  /** Number of $ai_generation + $ai_embedding events on this day for the scoped product. */
-  event_count: number;
-  /** Total cost in USD on this day for the scoped product. */
-  cost_usd: number;
-}
-export const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    day: S.String,
-    event_count: S.Number,
-    cost_usd: S.Number,
-  }),
-).annotate({
-  identifier: "DayBreakdownRow",
-}) as any as S.Schema<DayBreakdownRow>;
-
-/** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series. */
-export type DayBreakdownItemsList = Array<DayBreakdownRow>;
-export const DayBreakdownItemsList = /*@__PURE__*/ S.Array(
-  DayBreakdownRow,
-) as any as S.Schema<DayBreakdownItemsList>;
-
-export interface DayBreakdown {
-  /** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted — zero-fill client-side when rendering a continuous series. */
-  items: DayBreakdownItemsList;
-  /** Effectively always false: `by_day` ignores `limit` because truncating a time series by cost would be meaningless, and the 90-day window cap already bounds the series length. */
-  truncated: boolean;
-}
-export const DayBreakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: DayBreakdownItemsList,
-    truncated: S.Boolean,
-  }),
-).annotate({ identifier: "DayBreakdown" }) as any as S.Schema<DayBreakdown>;
-
-export interface BucketBreakdownRow {
-  /** UTC start of the time bucket the events fall in (`toStartOfInterval(timestamp, ...)`). */
-  bucket_start: string;
-  /** Number of $ai_generation + $ai_embedding events in this bucket for the scoped product. */
-  event_count: number;
-  /** Total cost in USD in this bucket (sum of `$ai_total_cost_usd`). Authoritative: the component columns below can sum to less than this when the cost breakdown was unavailable for some events; render any remainder as uncategorized rather than assuming the components reconcile. */
-  cost_usd: number;
-  /** Cost of uncached (full-price) input tokens in USD, derived per event as `$ai_input_cost_usd` minus the cache read/write costs (the stored input cost includes them), clamped at zero. The four component columns are disjoint: they sum to `cost_usd` when the full breakdown is present, so they can be stacked without double counting cache costs. */
-  input_cost_usd: number;
-  /** Cost of output tokens in USD (sum of `$ai_output_cost_usd`). */
-  output_cost_usd: number;
-  /** Cost of prompt-cache reads in USD (sum of `$ai_cache_read_cost_usd`). */
-  cache_read_cost_usd: number;
-  /** Cost of prompt-cache writes in USD (sum of `$ai_cache_creation_cost_usd`). A spike here with near-zero cache reads is the signature of a cold session being revived: the full conversation context is re-written to the cache at the cache-write rate instead of being read back cheaply. */
-  cache_creation_cost_usd: number;
-  /** Sum of `$ai_input_tokens` in this bucket. Whether cached tokens are included follows the provider's reporting (`$ai_cache_reporting_exclusive`): Anthropic-style events exclude them, OpenAI-style events include them, so don't stack this with the cache token sums. */
-  input_tokens: number;
-  /** Sum of `$ai_output_tokens` in this bucket. */
-  output_tokens: number;
-  /** Sum of `$ai_cache_read_input_tokens` (prompt tokens served from cache) in this bucket. */
-  cache_read_input_tokens: number;
-  /** Sum of `$ai_cache_creation_input_tokens` (prompt tokens written to cache) in this bucket. */
-  cache_creation_input_tokens: number;
-}
-export const BucketBreakdownRow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_start: S.String,
-    event_count: S.Number,
-    cost_usd: S.Number,
-    input_cost_usd: S.Number,
-    output_cost_usd: S.Number,
-    cache_read_cost_usd: S.Number,
-    cache_creation_cost_usd: S.Number,
-    input_tokens: S.Number,
-    output_tokens: S.Number,
-    cache_read_input_tokens: S.Number,
-    cache_creation_input_tokens: S.Number,
-  }),
-).annotate({
-  identifier: "BucketBreakdownRow",
-}) as any as S.Schema<BucketBreakdownRow>;
-
-/** One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series. */
-export type BucketBreakdownItemsList = Array<BucketBreakdownRow>;
-export const BucketBreakdownItemsList = /*@__PURE__*/ S.Array(
-  BucketBreakdownRow,
-) as any as S.Schema<BucketBreakdownItemsList>;
-
-export interface BucketBreakdown {
-  /** One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series. */
-  items: BucketBreakdownItemsList;
-  /** Bucket size in minutes the series was computed at; echoes the request `bucket_minutes`. */
-  bucket_minutes: number;
-  /** Effectively always false: `by_bucket` ignores `limit` because truncating a time series by cost would be meaningless, and the 600-bucket window cap already bounds the series length. */
-  truncated: boolean;
-}
-export const BucketBreakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: BucketBreakdownItemsList,
-    bucket_minutes: S.Number,
-    truncated: S.Boolean,
-  }),
-).annotate({
-  identifier: "BucketBreakdown",
-}) as any as S.Schema<BucketBreakdown>;
-
 export interface TopTraceRow {
   /** `$ai_trace_id` of the session — opaque string scoped to the originating product. Format is not stable: most are UUIDs but some SDK wrappers emit JSON-shaped strings like `{"device_id":"...","session_id":"..."}`. Callers should treat this as an opaque identifier (URL-encode before linking to a trace view). */
   trace_id: string | null;
@@ -568,10 +450,6 @@ export interface PersonalSpendAnalysisResponse {
   by_tool: ToolBreakdown;
   /** Spend grouped by `$ai_model`. Scoped to `product` when set. */
   by_model: ModelBreakdown;
-  /** Spend grouped by UTC day, ordered ascending. Scoped to `product`. Not subject to `limit`. */
-  by_day: DayBreakdown;
-  /** Spend grouped by UTC time bucket with per-bucket cost/token components, ordered ascending. Scoped to `product`. Only present when the request set `bucket_minutes`. */
-  by_bucket?: BucketBreakdown;
   /** Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren't actionable in the UI. Kept in the response shape so existing consumers don't crash; remove your rendering of this field and we'll drop it from the response entirely in a follow-up. */
   top_traces: TopTraces;
 }
@@ -581,8 +459,6 @@ export const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
     by_product: ProductBreakdown,
     by_tool: ToolBreakdown,
     by_model: ModelBreakdown,
-    by_day: DayBreakdown,
-    by_bucket: S.optional(BucketBreakdown),
     top_traces: TopTraces,
   }),
 ).annotate({
@@ -952,7 +828,7 @@ export type LlmAnalyticsPersonalSpendListError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / day / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. `by_day` returns a day-ascending spend series for the scoped product. Pass `bucket_minutes` (5, 15, 30, or 60; the window may span at most 600 buckets) to additionally get `by_bucket`, a time-ascending series with per-bucket cost split into uncached input / output / cache read / cache creation components. Use `refresh=true` to bypass the 5-minute response cache. */
+/** Return a structured personal LLM spend analysis for the requesting user. Pass `date_from` / `date_to` (absolute like `2026-04-23` or relative like `-7d`) to bound the window — defaults to the last 30 days, max 90 days. The `product=<ai_product>` query param is required and scopes the tool / model / trace breakdowns to a single product; supported values: posthog_code. `by_product` is always returned for cross-product visibility. Use `refresh=true` to bypass the 5-minute response cache. */
 export const llmAnalyticsPersonalSpendList: API.OperationMethod<
   LlmAnalyticsPersonalSpendListRequest,
   LlmAnalyticsPersonalSpendListResponse,

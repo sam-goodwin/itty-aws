@@ -75,23 +75,6 @@ export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
 export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   /*@__PURE__*/ S.String;
 
-/** A Cloud Storage location. */
-export interface GoogleCloudAssetV1p7beta1GcsDestination {
-  /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. */
-  uri?: string;
-  /** The URI prefix of all generated Cloud Storage objects. Example: "gs://bucket_name/object_name_prefix". Each object URI is in format: "gs://bucket_name/object_name_prefix/{ASSET_TYPE}/{SHARD_NUMBER} and only contains assets for that type. starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output objects containing all compute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be returned if file with the same name "gs://bucket_name/object_name_prefix" already exists. */
-  uriPrefix?: string;
-}
-export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uri: S.optional(S.String),
-      uriPrefix: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudAssetV1p7beta1GcsDestination",
-}) as any as S.Schema<GoogleCloudAssetV1p7beta1GcsDestination>;
-
 export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
@@ -125,10 +108,10 @@ export interface GoogleCloudAssetV1p7beta1BigQueryDestination {
   separateTablesPerAssetType?: boolean;
   /** Required. The BigQuery table to which the snapshot result should be written. If this table does not exist, a new table with the given name will be created. */
   table?: string;
-  /** Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the snapshot result should be exported. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
-  dataset?: string;
   /** If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error. */
   force?: boolean;
+  /** Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the snapshot result should be exported. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
+  dataset?: string;
 }
 export const GoogleCloudAssetV1p7beta1BigQueryDestination =
   /*@__PURE__*/ S.suspend(() =>
@@ -136,27 +119,44 @@ export const GoogleCloudAssetV1p7beta1BigQueryDestination =
       partitionSpec: S.optional(GoogleCloudAssetV1p7beta1PartitionSpec),
       separateTablesPerAssetType: S.optional(S.Boolean),
       table: S.optional(S.String),
-      dataset: S.optional(S.String),
       force: S.optional(S.Boolean),
+      dataset: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudAssetV1p7beta1BigQueryDestination",
   }) as any as S.Schema<GoogleCloudAssetV1p7beta1BigQueryDestination>;
 
+/** A Cloud Storage location. */
+export interface GoogleCloudAssetV1p7beta1GcsDestination {
+  /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. */
+  uri?: string;
+  /** The URI prefix of all generated Cloud Storage objects. Example: "gs://bucket_name/object_name_prefix". Each object URI is in format: "gs://bucket_name/object_name_prefix/{ASSET_TYPE}/{SHARD_NUMBER} and only contains assets for that type. starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output objects containing all compute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be returned if file with the same name "gs://bucket_name/object_name_prefix" already exists. */
+  uriPrefix?: string;
+}
+export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uri: S.optional(S.String),
+      uriPrefix: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudAssetV1p7beta1GcsDestination",
+}) as any as S.Schema<GoogleCloudAssetV1p7beta1GcsDestination>;
+
 /** Output configuration for export assets destination. */
 export interface GoogleCloudAssetV1p7beta1OutputConfig {
-  /** Destination on Cloud Storage. */
-  gcsDestination?: GoogleCloudAssetV1p7beta1GcsDestination;
   /** Destination on BigQuery. The output table stores the fields in asset proto as columns in BigQuery. */
   bigqueryDestination?: GoogleCloudAssetV1p7beta1BigQueryDestination;
+  /** Destination on Cloud Storage. */
+  gcsDestination?: GoogleCloudAssetV1p7beta1GcsDestination;
 }
 export const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      gcsDestination: S.optional(GoogleCloudAssetV1p7beta1GcsDestination),
       bigqueryDestination: S.optional(
         GoogleCloudAssetV1p7beta1BigQueryDestination,
       ),
+      gcsDestination: S.optional(GoogleCloudAssetV1p7beta1GcsDestination),
     }),
 ).annotate({
   identifier: "GoogleCloudAssetV1p7beta1OutputConfig",
@@ -164,29 +164,29 @@ export const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(
 
 /** Export asset request. */
 export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
-  /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
-  assetTypes?: StringList;
+  /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. If specified, it will snapshot [asset_types]' specified relationships, or give errors if any relationship_types' supported types are not in [asset_types]. If not specified, it will snapshot all [asset_types]' supported relationships. An unspecified [asset_types] field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
+  relationshipTypes?: StringList;
   /** Asset content type. If not specified, no content but the asset name will be returned. */
   contentType?:
     | GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum
     | (string & {});
-  /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
-  readTime?: string;
-  /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. If specified, it will snapshot [asset_types]' specified relationships, or give errors if any relationship_types' supported types are not in [asset_types]. If not specified, it will snapshot all [asset_types]' supported relationships. An unspecified [asset_types] field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: StringList;
   /** Required. Output configuration indicating where the results will be output to. */
   outputConfig?: GoogleCloudAssetV1p7beta1OutputConfig;
+  /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
+  assetTypes?: StringList;
+  /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
+  readTime?: string;
 }
 export const GoogleCloudAssetV1p7beta1ExportAssetsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      assetTypes: S.optional(StringList),
+      relationshipTypes: S.optional(StringList),
       contentType: S.optional(
         GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum,
       ),
-      readTime: S.optional(S.String),
-      relationshipTypes: S.optional(StringList),
       outputConfig: S.optional(GoogleCloudAssetV1p7beta1OutputConfig),
+      assetTypes: S.optional(StringList),
+      readTime: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleCloudAssetV1p7beta1ExportAssetsRequest",
@@ -228,41 +228,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    message: S.optional(S.String),
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    done: S.optional(S.Boolean),
     error: S.optional(Status),
-    response: S.optional(DocumentMap),
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
+    response: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 

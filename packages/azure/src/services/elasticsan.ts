@@ -34,7 +34,7 @@ export interface Sku {
   /** The sku name. */
   name: SkuName | (string & {});
   /** The sku tier. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1366,7 +1366,7 @@ export interface VirtualNetworkRule {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
   id: string;
   /** The action of virtual network rule. */
-  action?: VirtualNetworkRuleAction;
+  action?: VirtualNetworkRuleAction | (string & {});
 }
 export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

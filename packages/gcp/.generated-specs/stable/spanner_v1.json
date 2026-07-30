@@ -1818,13 +1818,13 @@
         "nodeCount": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify the target number of nodes allocated to the instance partition. If autoscaling is enabled, node_count is treated as an OUTPUT_ONLY field and reflects the current number of nodes allocated to the instance partition. This may be zero in API responses for instance partitions that are not yet in state `READY`."
+            "smithy.api#documentation": "The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify the target number of nodes allocated to the instance partition. This may be zero in API responses for instance partitions that are not yet in state `READY`."
           }
         },
         "processingUnits": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "The number of processing units allocated to this instance partition. Users can set the `processing_units` field to specify the target number of processing units allocated to the instance partition. If autoscaling is enabled, processing_units is treated as an OUTPUT_ONLY field and reflects the current number of processing units allocated to the instance partition. This might be zero in API responses for instance partitions that are not yet in the `READY` state."
+            "smithy.api#documentation": "The number of processing units allocated to this instance partition. Users can set the `processing_units` field to specify the target number of processing units allocated to the instance partition. This might be zero in API responses for instance partitions that are not yet in the `READY` state."
           }
         },
         "autoscalingConfig": {
@@ -5323,68 +5323,10 @@
           "traits": {
             "smithy.api#documentation": "If `TransactionOptions.isolation_level` is set to `IsolationLevel.REPEATABLE_READ`, then the snapshot timestamp is the timestamp at which all reads in the transaction ran. This timestamp is never returned."
           }
-        },
-        "isolationLevel": {
-          "target": "com.gcp.spanner_v1#CommitResponseIsolationLevelEnum",
-          "traits": {
-            "smithy.api#documentation": "The isolation level used for the read-write transaction."
-          }
-        },
-        "readLockMode": {
-          "target": "com.gcp.spanner_v1#CommitResponseReadLockModeEnum",
-          "traits": {
-            "smithy.api#documentation": "The read lock mode used for the read-write transaction."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "The response for Commit."
-      }
-    },
-    "com.gcp.spanner_v1#CommitResponseIsolationLevelEnum": {
-      "type": "enum",
-      "members": {
-        "ISOLATION_LEVEL_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ISOLATION_LEVEL_UNSPECIFIED"
-          }
-        },
-        "SERIALIZABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SERIALIZABLE"
-          }
-        },
-        "REPEATABLE_READ": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REPEATABLE_READ"
-          }
-        }
-      }
-    },
-    "com.gcp.spanner_v1#CommitResponseReadLockModeEnum": {
-      "type": "enum",
-      "members": {
-        "READ_LOCK_MODE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "READ_LOCK_MODE_UNSPECIFIED"
-          }
-        },
-        "PESSIMISTIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PESSIMISTIC"
-          }
-        },
-        "OPTIMISTIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OPTIMISTIC"
-          }
-        }
       }
     },
     "com.gcp.spanner_v1#CommitStats": {

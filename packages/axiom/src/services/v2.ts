@@ -699,7 +699,7 @@ export const TimeSeriesChartQuery =
 
 export interface TimeSeriesChart {
   id: string;
-  type: TimeSeriesChartType | (string & {});
+  type: TimeSeriesChartType;
   name?: string;
   query: TimeSeriesChartQuery;
 }
@@ -769,7 +769,7 @@ export const HeatmapChartQuery =
 
 export interface HeatmapChart {
   id: string;
-  type: HeatmapChartType | (string & {});
+  type: HeatmapChartType;
   name?: string;
   query: HeatmapChartQuery;
 }
@@ -871,7 +871,7 @@ export const TableSettings = /*@__PURE__*/ S.suspend(() =>
 
 export interface LogStreamChart {
   id: string;
-  type: LogStreamChartType | (string & {});
+  type: LogStreamChartType;
   name?: string;
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
@@ -891,7 +891,7 @@ export const PieChartType = /*@__PURE__*/ S.String;
 
 export interface PieChart {
   id: string;
-  type: PieChartType | (string & {});
+  type: PieChartType;
   name?: string;
   query: SimpleChartQuery;
 }
@@ -909,7 +909,7 @@ export const ScatterChartType = /*@__PURE__*/ S.String;
 
 export interface ScatterChart {
   id: string;
-  type: ScatterChartType | (string & {});
+  type: ScatterChartType;
   name?: string;
   query: SimpleChartQuery;
 }
@@ -927,7 +927,7 @@ export const TableChartType = /*@__PURE__*/ S.String;
 
 export interface TableChart {
   id: string;
-  type: TableChartType | (string & {});
+  type: TableChartType;
   name?: string;
   query: SimpleChartQuery;
   tableSettings?: TableSettings;
@@ -947,7 +947,7 @@ export const TopKChartType = /*@__PURE__*/ S.String;
 
 export interface TopKChart {
   id: string;
-  type: TopKChartType | (string & {});
+  type: TopKChartType;
   name?: string;
   query: SimpleChartQuery;
 }
@@ -1019,7 +1019,7 @@ export const StatisticChartColorProps = /*@__PURE__*/ S.suspend(() =>
 
 export interface StatisticChart {
   id: string;
-  type: StatisticChartType | (string & {});
+  type: StatisticChartType;
   name?: string;
   query: SimpleChartQuery;
   colorScheme?: StatisticChartColorScheme | (string & {});
@@ -1074,7 +1074,7 @@ export const NoteChartVariant = /*@__PURE__*/ S.String;
 
 export interface NoteChart {
   id: string;
-  type: NoteChartType | (string & {});
+  type: NoteChartType;
   text: string;
   variant?: NoteChartVariant | (string & {});
 }
@@ -1116,7 +1116,7 @@ export const MonitorListColumns = /*@__PURE__*/ S.suspend(() =>
 
 export interface MonitorListChart {
   id: string;
-  type: MonitorListChartType | (string & {});
+  type: MonitorListChartType;
   name?: string;
   selectedMonitors: MonitorListChartSelectedMonitorsList;
   columns: MonitorListColumns;
@@ -1143,7 +1143,7 @@ export interface SmartFilterSearch {
   id: string;
   name: string;
   active?: boolean;
-  type: SmartFilterSearchType | (string & {});
+  type: SmartFilterSearchType;
 }
 export const SmartFilterSearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1198,8 +1198,8 @@ export interface SmartFilterSelectList {
   name: string;
   active?: boolean;
   options?: SmartFilterOptions | null;
-  type: SmartFilterSelectListType | (string & {});
-  selectType: SmartFilterSelectListSelectType | (string & {});
+  type: SmartFilterSelectListType;
+  selectType: SmartFilterSelectListSelectType;
 }
 export const SmartFilterSelectList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1268,8 +1268,8 @@ export interface SmartFilterSelectQuery {
   active?: boolean;
   /** Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an "All" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results. */
   options?: SmartFilterSelectQueryOptions | null;
-  type: SmartFilterSelectQueryType | (string & {});
-  selectType: SmartFilterSelectQuerySelectType | (string & {});
+  type: SmartFilterSelectQueryType;
+  selectType: SmartFilterSelectQuerySelectType;
   query?: SmartFilterQuery;
 }
 export const SmartFilterSelectQuery = /*@__PURE__*/ S.suspend(() =>
@@ -1301,7 +1301,7 @@ export const SmartFilterChartFiltersList = /*@__PURE__*/ S.Array(
 
 export interface SmartFilterChart {
   id: string;
-  type: SmartFilterChartType | (string & {});
+  type: SmartFilterChartType;
   name?: string;
   filters: SmartFilterChartFiltersList;
   logo?: string;
@@ -1325,7 +1325,7 @@ export const SpacerChartType = /*@__PURE__*/ S.String;
 
 export interface SpacerChart {
   id: string;
-  type: SpacerChartType | (string & {});
+  type: SpacerChartType;
   name?: string;
 }
 export const SpacerChart = /*@__PURE__*/ S.suspend(() =>

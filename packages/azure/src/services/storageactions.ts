@@ -208,9 +208,9 @@ export interface StorageTaskOperation {
   /** Key-value parameters for the operation. */
   parameters?: StorageTaskOperationParametersMap;
   /** Action to be taken when the operation is successful for a object. */
-  onSuccess?: OnSuccess;
+  onSuccess?: OnSuccess | (string & {});
   /** Action to be taken when the operation fails for a object. */
-  onFailure?: OnFailure;
+  onFailure?: OnFailure | (string & {});
 }
 export const StorageTaskOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

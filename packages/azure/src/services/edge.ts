@@ -11161,7 +11161,7 @@ export interface SolutionTemplateVersionPropertiesInput {
   /** App components spec */
   specification: SolutionTemplateVersionPropertiesInputSpecificationMap;
   /** Orchestrator type */
-  orchestratorType?: OrchestratorType;
+  orchestratorType?: OrchestratorType | (string & {});
 }
 export const SolutionTemplateVersionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -12182,7 +12182,7 @@ export interface SolutionTemplateVersionPropertiesUpdate {
   /** App components spec */
   specification?: SolutionTemplateVersionPropertiesUpdateSpecificationMap;
   /** Orchestrator type */
-  orchestratorType?: OrchestratorType;
+  orchestratorType?: OrchestratorType | (string & {});
 }
 export const SolutionTemplateVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(
   () =>

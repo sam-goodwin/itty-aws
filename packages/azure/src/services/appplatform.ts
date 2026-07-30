@@ -1783,7 +1783,7 @@ export const CustomPersistentDiskPropertiesMountOptionsList =
 /** Custom persistent disk resource payload. */
 export interface CustomPersistentDiskProperties {
   /** The type of the underlying resource to mount as a persistent disk. */
-  type: CustomPersistentDiskPropertiesType;
+  type: CustomPersistentDiskPropertiesType | (string & {});
   /** The mount path of the persistent disk. */
   mountPath: string;
   /** Indicates whether the persistent disk is a readOnly one. */
@@ -12813,7 +12813,7 @@ export const StoragePropertiesStorageType = /*@__PURE__*/ S.String;
 /** Storage resource payload. */
 export interface StorageProperties {
   /** The type of the storage. */
-  storageType: StoragePropertiesStorageType;
+  storageType: StoragePropertiesStorageType | (string & {});
 }
 export const StorageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

@@ -89,82 +89,164 @@ export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BenignProjectsAlertsRequest",
 }) as any as S.Schema<BenignProjectsAlertsRequest>;
 
+export type AlertStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "NEW"
+  | "READ"
+  | "TRIAGED"
+  | "ESCALATED"
+  | "RESOLVED"
+  | "DUPLICATE"
+  | "FALSE_POSITIVE"
+  | "NOT_ACTIONABLE"
+  | "BENIGN"
+  | "TRACKED_EXTERNALLY";
+export const AlertStateEnum = /*@__PURE__*/ S.String;
+
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** Captures the specific details of InsiderThreat alert. */
-export interface InsiderThreatAlertDetail {
-  /** Required. The severity of the Insider Threat alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
-  severity?: string;
-  /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: StringList;
+export type PriorityAnalysisPriorityLevelEnum =
+  | "PRIORITY_LEVEL_UNSPECIFIED"
+  | "PRIORITY_LEVEL_LOW"
+  | "PRIORITY_LEVEL_MEDIUM"
+  | "PRIORITY_LEVEL_HIGH"
+  | "PRIORITY_LEVEL_CRITICAL";
+export const PriorityAnalysisPriorityLevelEnum = /*@__PURE__*/ S.String;
+
+export type PriorityAnalysisConfidenceEnum =
+  | "CONFIDENCE_LEVEL_UNSPECIFIED"
+  | "CONFIDENCE_LEVEL_LOW"
+  | "CONFIDENCE_LEVEL_MEDIUM"
+  | "CONFIDENCE_LEVEL_HIGH";
+export const PriorityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
+
+/** Structured priority analysis for a threat. */
+export interface PriorityAnalysis {
+  /** The level of Priority. */
+  priorityLevel?: PriorityAnalysisPriorityLevelEnum;
+  /** The level of confidence in the given verdict. */
+  confidence?: PriorityAnalysisConfidenceEnum;
+  /** Human-readable explanation from the model, detailing why a particular result is considered to have a certain priority. */
+  reasoning?: string;
 }
-export const InsiderThreatAlertDetail = /*@__PURE__*/ S.suspend(() =>
+export const PriorityAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
+    priorityLevel: S.optional(PriorityAnalysisPriorityLevelEnum),
+    confidence: S.optional(PriorityAnalysisConfidenceEnum),
+    reasoning: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "InsiderThreatAlertDetail",
-}) as any as S.Schema<InsiderThreatAlertDetail>;
+  identifier: "PriorityAnalysis",
+}) as any as S.Schema<PriorityAnalysis>;
 
-/** Captures the specific details of InitialAccessBroker (IAB) alert. */
-export interface InitialAccessBrokerAlertDetail {
-  /** Required. The severity of the Initial Access Broker (IAB) alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
-  severity?: string;
-  /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: StringList;
+export type RelevanceAnalysisRelevanceLevelEnum =
+  | "RELEVANCE_LEVEL_UNSPECIFIED"
+  | "RELEVANCE_LEVEL_LOW"
+  | "RELEVANCE_LEVEL_MEDIUM"
+  | "RELEVANCE_LEVEL_HIGH";
+export const RelevanceAnalysisRelevanceLevelEnum = /*@__PURE__*/ S.String;
+
+export type RelevanceAnalysisConfidenceEnum =
+  | "CONFIDENCE_LEVEL_UNSPECIFIED"
+  | "CONFIDENCE_LEVEL_LOW"
+  | "CONFIDENCE_LEVEL_MEDIUM"
+  | "CONFIDENCE_LEVEL_HIGH";
+export const RelevanceAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
+
+/** Details the evidence used to determine the relevance verdict. */
+export interface Evidence {
+  /** A list of semantic themes or concepts found to be common, related, or aligned between the sources, supporting the verdict. */
+  commonThemes?: StringList;
+  /** A list of semantic themes or descriptions unique to one source or semantically distant. */
+  distinctThemes?: StringList;
 }
-export const InitialAccessBrokerAlertDetail = /*@__PURE__*/ S.suspend(() =>
+export const Evidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
+    commonThemes: S.optional(StringList),
+    distinctThemes: S.optional(StringList),
+  }),
+).annotate({ identifier: "Evidence" }) as any as S.Schema<Evidence>;
+
+/** Structured relevance analysis for a threat. */
+export interface RelevanceAnalysis {
+  /** The level of relevance. */
+  relevanceLevel?: RelevanceAnalysisRelevanceLevelEnum;
+  /** The level of confidence in the given verdict. */
+  confidence?: RelevanceAnalysisConfidenceEnum;
+  /** Human-readable explanation from the matcher, detailing why a particular result is considered relevant or not relevant. */
+  reasoning?: string;
+  /** Indicates whether the threat is considered relevant. */
+  relevant?: boolean;
+  /** Evidence supporting the verdict, including matched and unmatched items. */
+  evidence?: Evidence;
+}
+export const RelevanceAnalysis = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relevanceLevel: S.optional(RelevanceAnalysisRelevanceLevelEnum),
+    confidence: S.optional(RelevanceAnalysisConfidenceEnum),
+    reasoning: S.optional(S.String),
+    relevant: S.optional(S.Boolean),
+    evidence: S.optional(Evidence),
   }),
 ).annotate({
-  identifier: "InitialAccessBrokerAlertDetail",
-}) as any as S.Schema<InitialAccessBrokerAlertDetail>;
+  identifier: "RelevanceAnalysis",
+}) as any as S.Schema<RelevanceAnalysis>;
 
-/** Captures the specific details of Data Leak alert. */
-export interface DataLeakAlertDetail {
-  /** Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
-  severity?: string;
-  /** Required. Array of ids to accommodate multiple discovery documents */
-  discoveryDocumentIds?: StringList;
+/** Tracks basic CRUD facts. */
+export interface Audit {
+  /** Output only. Time of creation or last update. */
+  updateTime?: string;
+  /** Output only. Time of creation. */
+  createTime?: string;
+  /** Output only. Agent that created or updated the record, could be a UserId or a JobId. */
+  creator?: string;
+  /** Output only. Agent that last updated the record, could be a UserId or a JobId. */
+  updater?: string;
 }
-export const DataLeakAlertDetail = /*@__PURE__*/ S.suspend(() =>
+export const Audit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    severity: S.optional(S.String),
-    discoveryDocumentIds: S.optional(StringList),
+    updateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    creator: S.optional(S.String),
+    updater: S.optional(S.String),
+  }),
+).annotate({ identifier: "Audit" }) as any as S.Schema<Audit>;
+
+export type SeverityAnalysisConfidenceEnum =
+  | "CONFIDENCE_LEVEL_UNSPECIFIED"
+  | "CONFIDENCE_LEVEL_LOW"
+  | "CONFIDENCE_LEVEL_MEDIUM"
+  | "CONFIDENCE_LEVEL_HIGH";
+export const SeverityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
+
+export type SeverityAnalysisSeverityLevelEnum =
+  | "SEVERITY_LEVEL_UNSPECIFIED"
+  | "SEVERITY_LEVEL_LOW"
+  | "SEVERITY_LEVEL_MEDIUM"
+  | "SEVERITY_LEVEL_HIGH";
+export const SeverityAnalysisSeverityLevelEnum = /*@__PURE__*/ S.String;
+
+/** Structured severity analysis for a threat. */
+export interface SeverityAnalysis {
+  /** The level of confidence in the given verdict. */
+  confidence?: SeverityAnalysisConfidenceEnum;
+  /** Human-readable explanation from the model, detailing why a particular result is considered to have a certain severity. */
+  reasoning?: string;
+  /** The level of severity. */
+  severityLevel?: SeverityAnalysisSeverityLevelEnum;
+}
+export const SeverityAnalysis = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    confidence: S.optional(SeverityAnalysisConfidenceEnum),
+    reasoning: S.optional(S.String),
+    severityLevel: S.optional(SeverityAnalysisSeverityLevelEnum),
   }),
 ).annotate({
-  identifier: "DataLeakAlertDetail",
-}) as any as S.Schema<DataLeakAlertDetail>;
-
-export type VulnerabilityMatchExploitationConsequencesItemEnum =
-  | "EXPLOITATION_CONSEQUENCE_UNSPECIFIED"
-  | "CODE_EXECUTION"
-  | "COMMAND_EXECUTION"
-  | "DATA_LOSS"
-  | "DATA_MANIPULATION"
-  | "DENIAL_OF_SERVICE"
-  | "INFORMATION_DISCLOSURE"
-  | "UNAUTHORIZED_ACCESS"
-  | "PRIVILEGE_ESCALATION"
-  | "SANDBOX_ESCAPE"
-  | "SECURITY_BYPASS"
-  | "CONTAINER_ESCAPE"
-  | "SPOOFING";
-export const VulnerabilityMatchExploitationConsequencesItemEnum =
-  /*@__PURE__*/ S.String;
-
-export type VulnerabilityMatchExploitationConsequencesItemEnumList =
-  Array<VulnerabilityMatchExploitationConsequencesItemEnum>;
-export const VulnerabilityMatchExploitationConsequencesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VulnerabilityMatchExploitationConsequencesItemEnum,
-  ) as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
+  identifier: "SeverityAnalysis",
+}) as any as S.Schema<SeverityAnalysis>;
 
 export type VulnerabilityMatchExploitationVectorsItemEnum =
   | "EXPLOITATION_VECTOR_UNSPECIFIED"
@@ -195,14 +277,38 @@ export const VulnerabilityMatchExploitationVectorsItemEnumList =
     VulnerabilityMatchExploitationVectorsItemEnum,
   ) as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
 
-export type VulnerabilityMatchExploitationStateEnum =
-  | "EXPLOITATION_STATE_UNSPECIFIED"
-  | "EXPLOITATION_STATE_NO_KNOWN"
-  | "EXPLOITATION_STATE_REPORTED"
-  | "EXPLOITATION_STATE_SUSPECTED"
-  | "EXPLOITATION_STATE_CONFIRMED"
-  | "EXPLOITATION_STATE_WIDESPREAD";
-export const VulnerabilityMatchExploitationStateEnum = /*@__PURE__*/ S.String;
+export type VulnerabilityMatchRiskRatingEnum =
+  | "RISK_RATING_UNSPECIFIED"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL"
+  | "UNRATED";
+export const VulnerabilityMatchRiskRatingEnum = /*@__PURE__*/ S.String;
+
+export type VulnerabilityMatchExploitationConsequencesItemEnum =
+  | "EXPLOITATION_CONSEQUENCE_UNSPECIFIED"
+  | "CODE_EXECUTION"
+  | "COMMAND_EXECUTION"
+  | "DATA_LOSS"
+  | "DATA_MANIPULATION"
+  | "DENIAL_OF_SERVICE"
+  | "INFORMATION_DISCLOSURE"
+  | "UNAUTHORIZED_ACCESS"
+  | "PRIVILEGE_ESCALATION"
+  | "SANDBOX_ESCAPE"
+  | "SECURITY_BYPASS"
+  | "CONTAINER_ESCAPE"
+  | "SPOOFING";
+export const VulnerabilityMatchExploitationConsequencesItemEnum =
+  /*@__PURE__*/ S.String;
+
+export type VulnerabilityMatchExploitationConsequencesItemEnumList =
+  Array<VulnerabilityMatchExploitationConsequencesItemEnum>;
+export const VulnerabilityMatchExploitationConsequencesItemEnumList =
+  /*@__PURE__*/ S.Array(
+    VulnerabilityMatchExploitationConsequencesItemEnum,
+  ) as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
 
 export type VulnerabilityMatchPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
@@ -213,32 +319,71 @@ export type VulnerabilityMatchPriorityEnum =
   | "P4";
 export const VulnerabilityMatchPriorityEnum = /*@__PURE__*/ S.String;
 
-export type VulnerabilityMatchRiskRatingEnum =
-  | "RISK_RATING_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | "UNRATED";
-export const VulnerabilityMatchRiskRatingEnum = /*@__PURE__*/ S.String;
+export type PublicExploitExploitGradeEnum =
+  | "EXPLOIT_GRADE_UNSPECIFIED"
+  | "UNEVALUATED"
+  | "PROOF_OF_CONCEPT"
+  | "NON_WEAPONIZED"
+  | "WEAPONIZED"
+  | "SCANNER"
+  | "FAKE";
+export const PublicExploitExploitGradeEnum = /*@__PURE__*/ S.String;
+
+export type PublicExploitExploitReliabilityEnum =
+  | "EXPLOIT_RELIABILITY_UNSPECIFIED"
+  | "UNREVIEWED"
+  | "REVIEWED"
+  | "TESTED";
+export const PublicExploitExploitReliabilityEnum = /*@__PURE__*/ S.String;
+
+/** Contains details about a public exploit. */
+export interface PublicExploit {
+  /** Optional. The URI of the exploit. */
+  uri?: string;
+  /** Optional. The grade of the exploit. Ex: "non-weaponized". */
+  exploitGrade?: PublicExploitExploitGradeEnum;
+  /** Required. The name of the exploit. Ex: "Magentounauth.php.txt". */
+  exploitName?: string;
+  /** Optional. The release time of the exploit. */
+  releaseTime?: string;
+  /** Optional. The reliability of the exploit. Ex: "Unreviewed". */
+  exploitReliability?: PublicExploitExploitReliabilityEnum;
+  /** Optional. The size of the exploit. */
+  sizeBytes?: string;
+}
+export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    exploitGrade: S.optional(PublicExploitExploitGradeEnum),
+    exploitName: S.optional(S.String),
+    releaseTime: S.optional(S.String),
+    exploitReliability: S.optional(PublicExploitExploitReliabilityEnum),
+    sizeBytes: S.optional(S.String),
+  }),
+).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
+
+export type PublicExploitList = Array<PublicExploit>;
+export const PublicExploitList = /*@__PURE__*/ S.Array(
+  PublicExploit,
+) as any as S.Schema<PublicExploitList>;
 
 /** Contains details about a product fix. */
 export interface ProductFix {
-  /** Optional. The URI of the fix. */
-  uri?: string;
-  /** Required. The source ID of the fix. Ex: "APPSEC-1420". */
-  sourceId?: string;
-  /** Optional. The published time of the fix. */
-  publishTime?: string;
   /** Required. The name of the fix. Ex: "Magento". */
   displayName?: string;
+  /** Required. The source ID of the fix. Ex: "APPSEC-1420". */
+  sourceId?: string;
+  /** Optional. The URI of the fix. */
+  uri?: string;
+  /** Optional. The published time of the fix. */
+  publishTime?: string;
 }
 export const ProductFix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    uri: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    publishTime: S.optional(S.String),
     displayName: S.optional(S.String),
+    sourceId: S.optional(S.String),
+    uri: S.optional(S.String),
+    publishTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "ProductFix" }) as any as S.Schema<ProductFix>;
 
@@ -260,15 +405,15 @@ export const AssociationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an association with a vulnerability. */
 export interface Association {
-  /** Required. The type of the association. */
-  type?: AssociationTypeEnum;
   /** Required. The ID of the association. */
   id?: string;
+  /** Required. The type of the association. */
+  type?: AssociationTypeEnum;
 }
 export const Association = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(AssociationTypeEnum),
     id: S.optional(S.String),
+    type: S.optional(AssociationTypeEnum),
   }),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
@@ -277,114 +422,75 @@ export const AssociationList = /*@__PURE__*/ S.Array(
   Association,
 ) as any as S.Schema<AssociationList>;
 
-export type PublicExploitExploitReliabilityEnum =
-  | "EXPLOIT_RELIABILITY_UNSPECIFIED"
-  | "UNREVIEWED"
-  | "REVIEWED"
-  | "TESTED";
-export const PublicExploitExploitReliabilityEnum = /*@__PURE__*/ S.String;
-
-export type PublicExploitExploitGradeEnum =
-  | "EXPLOIT_GRADE_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "PROOF_OF_CONCEPT"
-  | "NON_WEAPONIZED"
-  | "WEAPONIZED"
-  | "SCANNER"
-  | "FAKE";
-export const PublicExploitExploitGradeEnum = /*@__PURE__*/ S.String;
-
-/** Contains details about a public exploit. */
-export interface PublicExploit {
-  /** Optional. The size of the exploit. */
-  sizeBytes?: string;
-  /** Optional. The URI of the exploit. */
-  uri?: string;
-  /** Optional. The reliability of the exploit. Ex: "Unreviewed". */
-  exploitReliability?: PublicExploitExploitReliabilityEnum;
-  /** Optional. The grade of the exploit. Ex: "non-weaponized". */
-  exploitGrade?: PublicExploitExploitGradeEnum;
-  /** Optional. The release time of the exploit. */
-  releaseTime?: string;
-  /** Required. The name of the exploit. Ex: "Magentounauth.php.txt". */
-  exploitName?: string;
-}
-export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sizeBytes: S.optional(S.String),
-    uri: S.optional(S.String),
-    exploitReliability: S.optional(PublicExploitExploitReliabilityEnum),
-    exploitGrade: S.optional(PublicExploitExploitGradeEnum),
-    releaseTime: S.optional(S.String),
-    exploitName: S.optional(S.String),
-  }),
-).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
-
-export type PublicExploitList = Array<PublicExploit>;
-export const PublicExploitList = /*@__PURE__*/ S.Array(
-  PublicExploit,
-) as any as S.Schema<PublicExploitList>;
+export type VulnerabilityMatchExploitationStateEnum =
+  | "EXPLOITATION_STATE_UNSPECIFIED"
+  | "EXPLOITATION_STATE_NO_KNOWN"
+  | "EXPLOITATION_STATE_REPORTED"
+  | "EXPLOITATION_STATE_SUSPECTED"
+  | "EXPLOITATION_STATE_CONFIRMED"
+  | "EXPLOITATION_STATE_WIDESPREAD";
+export const VulnerabilityMatchExploitationStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about a vulnerability match. */
 export interface VulnerabilityMatch {
-  /** Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-9876". */
-  collectionId?: string;
   /** Optional. The specific technologies from the configured watchlist that triggered the match. Ex: "Apache Struts". */
   matchedTechnologies?: StringList;
-  /** Optional. The disclosure time of the vulnerability. */
-  disclosureTime?: string;
-  /** Optional. List of exploitation consequences for the vulnerability. */
-  exploitationConsequences?: VulnerabilityMatchExploitationConsequencesItemEnumList;
   /** Optional. List of exploitation vectors for the vulnerability. */
   exploitationVectors?: VulnerabilityMatchExploitationVectorsItemEnumList;
+  /** Required. A description of the vulnerability. */
+  description?: string;
   /** Required. All technologies affected by the vulnerability. Ex: "Apache Struts". */
   technologies?: StringList;
+  /** Required. The risk rating of the vulnerability. */
+  riskRating?: VulnerabilityMatchRiskRatingEnum;
+  /** Optional. List of exploitation consequences for the vulnerability. */
+  exploitationConsequences?: VulnerabilityMatchExploitationConsequencesItemEnumList;
+  /** Output only. Whether a publicly available exploit exists. */
+  publiclyAvailableExploit?: boolean;
+  /** Optional. The disclosure time of the vulnerability. */
+  disclosureTime?: string;
+  /** Optional. The priority level of the vulnerability data. Ex: "P1". */
+  priority?: VulnerabilityMatchPriorityEnum;
+  /** Optional. List of public exploits. */
+  publicExploits?: PublicExploitList;
+  /** Optional. List of product fixes for the vulnerability. */
+  productFixes?: ProductFixList;
+  /** Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://www.cve.org/ for more information. */
+  cveId?: string;
+  /** Optional. Associated threat actors, malware, etc. This is embedded as a snapshot because the details of the association at the time of the vulnerability match are important for context and reporting. */
+  associations?: AssociationList;
+  /** Required. The collection ID of the vulnerability. Ex: "vulnerability--cve-2025-9876". */
+  collectionId?: string;
   /** Required. The CVSS score of the vulnerability. Evaluates to CVSS v3 when available with a fallback to v2 and v4. Example: 6.4. */
   cvss3Score?: number;
   /** Required. The exploitation state of the vulnerability. */
   exploitationState?: VulnerabilityMatchExploitationStateEnum;
-  /** Optional. The priority level of the vulnerability data. Ex: "P1". */
-  priority?: VulnerabilityMatchPriorityEnum;
-  /** Output only. Whether a publicly available exploit exists. */
-  publiclyAvailableExploit?: boolean;
-  /** Required. The CVE ID of the vulnerability. Ex: "CVE-2025-9876". See https://www.cve.org/ for more information. */
-  cveId?: string;
-  /** Required. The risk rating of the vulnerability. */
-  riskRating?: VulnerabilityMatchRiskRatingEnum;
   /** Optional. The EPSS score, representing the probability of exploitation. Example: 0.87. */
   epssScore?: number;
-  /** Optional. List of product fixes for the vulnerability. */
-  productFixes?: ProductFixList;
-  /** Optional. Associated threat actors, malware, etc. This is embedded as a snapshot because the details of the association at the time of the vulnerability match are important for context and reporting. */
-  associations?: AssociationList;
-  /** Optional. List of public exploits. */
-  publicExploits?: PublicExploitList;
-  /** Required. A description of the vulnerability. */
-  description?: string;
 }
 export const VulnerabilityMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    collectionId: S.optional(S.String),
     matchedTechnologies: S.optional(StringList),
-    disclosureTime: S.optional(S.String),
-    exploitationConsequences: S.optional(
-      VulnerabilityMatchExploitationConsequencesItemEnumList,
-    ),
     exploitationVectors: S.optional(
       VulnerabilityMatchExploitationVectorsItemEnumList,
     ),
+    description: S.optional(S.String),
     technologies: S.optional(StringList),
+    riskRating: S.optional(VulnerabilityMatchRiskRatingEnum),
+    exploitationConsequences: S.optional(
+      VulnerabilityMatchExploitationConsequencesItemEnumList,
+    ),
+    publiclyAvailableExploit: S.optional(S.Boolean),
+    disclosureTime: S.optional(S.String),
+    priority: S.optional(VulnerabilityMatchPriorityEnum),
+    publicExploits: S.optional(PublicExploitList),
+    productFixes: S.optional(ProductFixList),
+    cveId: S.optional(S.String),
+    associations: S.optional(AssociationList),
+    collectionId: S.optional(S.String),
     cvss3Score: S.optional(S.Number),
     exploitationState: S.optional(VulnerabilityMatchExploitationStateEnum),
-    priority: S.optional(VulnerabilityMatchPriorityEnum),
-    publiclyAvailableExploit: S.optional(S.Boolean),
-    cveId: S.optional(S.String),
-    riskRating: S.optional(VulnerabilityMatchRiskRatingEnum),
     epssScore: S.optional(S.Number),
-    productFixes: S.optional(ProductFixList),
-    associations: S.optional(AssociationList),
-    publicExploits: S.optional(PublicExploitList),
-    description: S.optional(S.String),
   }),
 ).annotate({
   identifier: "VulnerabilityMatch",
@@ -403,236 +509,130 @@ export const TargetTechnologyAlertDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetTechnologyAlertDetail",
 }) as any as S.Schema<TargetTechnologyAlertDetail>;
 
+/** Captures the specific details of InitialAccessBroker (IAB) alert. */
+export interface InitialAccessBrokerAlertDetail {
+  /** Required. The severity of the Initial Access Broker (IAB) alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
+  severity?: string;
+  /** Required. Array of ids to accommodate multiple discovery documents */
+  discoveryDocumentIds?: StringList;
+}
+export const InitialAccessBrokerAlertDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    severity: S.optional(S.String),
+    discoveryDocumentIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "InitialAccessBrokerAlertDetail",
+}) as any as S.Schema<InitialAccessBrokerAlertDetail>;
+
+/** Captures the specific details of InsiderThreat alert. */
+export interface InsiderThreatAlertDetail {
+  /** Required. The severity of the Insider Threat alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
+  severity?: string;
+  /** Required. Array of ids to accommodate multiple discovery documents */
+  discoveryDocumentIds?: StringList;
+}
+export const InsiderThreatAlertDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    severity: S.optional(S.String),
+    discoveryDocumentIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "InsiderThreatAlertDetail",
+}) as any as S.Schema<InsiderThreatAlertDetail>;
+
+/** Captures the specific details of Data Leak alert. */
+export interface DataLeakAlertDetail {
+  /** Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
+  severity?: string;
+  /** Required. Array of ids to accommodate multiple discovery documents */
+  discoveryDocumentIds?: StringList;
+}
+export const DataLeakAlertDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    severity: S.optional(S.String),
+    discoveryDocumentIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DataLeakAlertDetail",
+}) as any as S.Schema<DataLeakAlertDetail>;
+
 /** Container for different types of alert details. */
 export interface AlertDetail {
-  /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
-  detailType?: string;
-  /** Insider Threat alert detail type. */
-  insiderThreat?: InsiderThreatAlertDetail;
-  /** Initial Access Broker alert detail type. */
-  initialAccessBroker?: InitialAccessBrokerAlertDetail;
-  /** Data Leak alert detail type. */
-  dataLeak?: DataLeakAlertDetail;
   /** Technology Watchlist alert detail type. */
   targetTechnology?: TargetTechnologyAlertDetail;
+  /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
+  detailType?: string;
+  /** Initial Access Broker alert detail type. */
+  initialAccessBroker?: InitialAccessBrokerAlertDetail;
+  /** Insider Threat alert detail type. */
+  insiderThreat?: InsiderThreatAlertDetail;
+  /** Data Leak alert detail type. */
+  dataLeak?: DataLeakAlertDetail;
 }
 export const AlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    detailType: S.optional(S.String),
-    insiderThreat: S.optional(InsiderThreatAlertDetail),
-    initialAccessBroker: S.optional(InitialAccessBrokerAlertDetail),
-    dataLeak: S.optional(DataLeakAlertDetail),
     targetTechnology: S.optional(TargetTechnologyAlertDetail),
+    detailType: S.optional(S.String),
+    initialAccessBroker: S.optional(InitialAccessBrokerAlertDetail),
+    insiderThreat: S.optional(InsiderThreatAlertDetail),
+    dataLeak: S.optional(DataLeakAlertDetail),
   }),
 ).annotate({ identifier: "AlertDetail" }) as any as S.Schema<AlertDetail>;
 
-/** Details the evidence used to determine the relevance verdict. */
-export interface Evidence {
-  /** A list of semantic themes or concepts found to be common, related, or aligned between the sources, supporting the verdict. */
-  commonThemes?: StringList;
-  /** A list of semantic themes or descriptions unique to one source or semantically distant. */
-  distinctThemes?: StringList;
-}
-export const Evidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commonThemes: S.optional(StringList),
-    distinctThemes: S.optional(StringList),
-  }),
-).annotate({ identifier: "Evidence" }) as any as S.Schema<Evidence>;
-
-export type RelevanceAnalysisRelevanceLevelEnum =
-  | "RELEVANCE_LEVEL_UNSPECIFIED"
-  | "RELEVANCE_LEVEL_LOW"
-  | "RELEVANCE_LEVEL_MEDIUM"
-  | "RELEVANCE_LEVEL_HIGH";
-export const RelevanceAnalysisRelevanceLevelEnum = /*@__PURE__*/ S.String;
-
-export type RelevanceAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH";
-export const RelevanceAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
-
-/** Structured relevance analysis for a threat. */
-export interface RelevanceAnalysis {
-  /** Indicates whether the threat is considered relevant. */
-  relevant?: boolean;
-  /** Evidence supporting the verdict, including matched and unmatched items. */
-  evidence?: Evidence;
-  /** The level of relevance. */
-  relevanceLevel?: RelevanceAnalysisRelevanceLevelEnum;
-  /** Human-readable explanation from the matcher, detailing why a particular result is considered relevant or not relevant. */
-  reasoning?: string;
-  /** The level of confidence in the given verdict. */
-  confidence?: RelevanceAnalysisConfidenceEnum;
-}
-export const RelevanceAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relevant: S.optional(S.Boolean),
-    evidence: S.optional(Evidence),
-    relevanceLevel: S.optional(RelevanceAnalysisRelevanceLevelEnum),
-    reasoning: S.optional(S.String),
-    confidence: S.optional(RelevanceAnalysisConfidenceEnum),
-  }),
-).annotate({
-  identifier: "RelevanceAnalysis",
-}) as any as S.Schema<RelevanceAnalysis>;
-
-export type PriorityAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH";
-export const PriorityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
-
-export type PriorityAnalysisPriorityLevelEnum =
-  | "PRIORITY_LEVEL_UNSPECIFIED"
-  | "PRIORITY_LEVEL_LOW"
-  | "PRIORITY_LEVEL_MEDIUM"
-  | "PRIORITY_LEVEL_HIGH"
-  | "PRIORITY_LEVEL_CRITICAL";
-export const PriorityAnalysisPriorityLevelEnum = /*@__PURE__*/ S.String;
-
-/** Structured priority analysis for a threat. */
-export interface PriorityAnalysis {
-  /** Human-readable explanation from the model, detailing why a particular result is considered to have a certain priority. */
-  reasoning?: string;
-  /** The level of confidence in the given verdict. */
-  confidence?: PriorityAnalysisConfidenceEnum;
-  /** The level of Priority. */
-  priorityLevel?: PriorityAnalysisPriorityLevelEnum;
-}
-export const PriorityAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reasoning: S.optional(S.String),
-    confidence: S.optional(PriorityAnalysisConfidenceEnum),
-    priorityLevel: S.optional(PriorityAnalysisPriorityLevelEnum),
-  }),
-).annotate({
-  identifier: "PriorityAnalysis",
-}) as any as S.Schema<PriorityAnalysis>;
-
-/** Tracks basic CRUD facts. */
-export interface Audit {
-  /** Output only. Time of creation. */
-  createTime?: string;
-  /** Output only. Agent that last updated the record, could be a UserId or a JobId. */
-  updater?: string;
-  /** Output only. Time of creation or last update. */
-  updateTime?: string;
-  /** Output only. Agent that created or updated the record, could be a UserId or a JobId. */
-  creator?: string;
-}
-export const Audit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createTime: S.optional(S.String),
-    updater: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    creator: S.optional(S.String),
-  }),
-).annotate({ identifier: "Audit" }) as any as S.Schema<Audit>;
-
-export type AlertStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "NEW"
-  | "READ"
-  | "TRIAGED"
-  | "ESCALATED"
-  | "RESOLVED"
-  | "DUPLICATE"
-  | "FALSE_POSITIVE"
-  | "NOT_ACTIONABLE"
-  | "BENIGN"
-  | "TRACKED_EXTERNALLY";
-export const AlertStateEnum = /*@__PURE__*/ S.String;
-
-export type SeverityAnalysisSeverityLevelEnum =
-  | "SEVERITY_LEVEL_UNSPECIFIED"
-  | "SEVERITY_LEVEL_LOW"
-  | "SEVERITY_LEVEL_MEDIUM"
-  | "SEVERITY_LEVEL_HIGH";
-export const SeverityAnalysisSeverityLevelEnum = /*@__PURE__*/ S.String;
-
-export type SeverityAnalysisConfidenceEnum =
-  | "CONFIDENCE_LEVEL_UNSPECIFIED"
-  | "CONFIDENCE_LEVEL_LOW"
-  | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH";
-export const SeverityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
-
-/** Structured severity analysis for a threat. */
-export interface SeverityAnalysis {
-  /** The level of severity. */
-  severityLevel?: SeverityAnalysisSeverityLevelEnum;
-  /** The level of confidence in the given verdict. */
-  confidence?: SeverityAnalysisConfidenceEnum;
-  /** Human-readable explanation from the model, detailing why a particular result is considered to have a certain severity. */
-  reasoning?: string;
-}
-export const SeverityAnalysis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    severityLevel: S.optional(SeverityAnalysisSeverityLevelEnum),
-    confidence: S.optional(SeverityAnalysisConfidenceEnum),
-    reasoning: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SeverityAnalysis",
-}) as any as S.Schema<SeverityAnalysis>;
-
 /** Stateful object representing a group of Findings. Key feature to an Alert is that it expresses the user's intent towards the findings of that group, even those that haven't occurred yet. */
 export interface Alert {
-  /** Output only. Details object for the alert, not all alerts will have a details object. */
-  detail?: AlertDetail;
-  /** Output only. alert names of the alerts that are duplicates of this alert. Format: projects/{project}/alerts/{alert} */
-  duplicatedBy?: StringList;
-  /** Output only. High-Precision Relevance Analysis verdict for the alert. */
-  relevanceAnalysis?: RelevanceAnalysis;
-  /** Output only. High-Precision Priority Analysis for the alert. */
-  priorityAnalysis?: PriorityAnalysis;
-  /** Identifier. Server generated name for the alert. format is projects/{project}/alerts/{alert} */
-  name?: string;
-  /** Output only. The resource names of the Configurations bound to this alert. Format: projects/{project}/configurations/{configuration} */
-  configurations?: StringList;
-  /** Output only. Findings that are covered by this alert. */
-  findings?: StringList;
-  /** Output only. Audit information for the alert. */
-  audit?: Audit;
-  /** Output only. alert name of the alert this alert is a duplicate of. Format: projects/{project}/alerts/{alert} */
-  duplicateOf?: string;
   /** Output only. State of the alert. */
   state?: AlertStateEnum;
-  /** Optional. If included when updating an alert, this should be set to the current etag of the alert. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
-  etag?: string;
+  /** Output only. Findings that are covered by this alert. */
+  findings?: StringList;
+  /** Output only. A short title for the alert. */
+  displayName?: string;
+  /** Optional. AI summary of the alert. */
+  aiSummary?: string;
+  /** Output only. External ID for the alert. This is used internally to provide protection against out of order updates. */
+  externalId?: string;
+  /** Output only. High-Precision Priority Analysis for the alert. */
+  priorityAnalysis?: PriorityAnalysis;
+  /** Output only. High-Precision Relevance Analysis verdict for the alert. */
+  relevanceAnalysis?: RelevanceAnalysis;
+  /** Output only. alert name of the alert this alert is a duplicate of. Format: projects/{project}/alerts/{alert} */
+  duplicateOf?: string;
+  /** Output only. Audit information for the alert. */
+  audit?: Audit;
   /** Output only. High-Precision Severity Analysis for the alert. */
   severityAnalysis?: SeverityAnalysis;
   /** Output only. The number of findings associated with this alert. */
   findingCount?: string;
-  /** Output only. External ID for the alert. This is used internally to provide protection against out of order updates. */
-  externalId?: string;
-  /** Optional. AI summary of the alert. */
-  aiSummary?: string;
-  /** Output only. A short title for the alert. */
-  displayName?: string;
+  /** Identifier. Server generated name for the alert. format is projects/{project}/alerts/{alert} */
+  name?: string;
+  /** Optional. If included when updating an alert, this should be set to the current etag of the alert. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
+  etag?: string;
+  /** Output only. The resource names of the Configurations bound to this alert. Format: projects/{project}/configurations/{configuration} */
+  configurations?: StringList;
+  /** Output only. alert names of the alerts that are duplicates of this alert. Format: projects/{project}/alerts/{alert} */
+  duplicatedBy?: StringList;
+  /** Output only. Details object for the alert, not all alerts will have a details object. */
+  detail?: AlertDetail;
 }
 export const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    detail: S.optional(AlertDetail),
-    duplicatedBy: S.optional(StringList),
-    relevanceAnalysis: S.optional(RelevanceAnalysis),
-    priorityAnalysis: S.optional(PriorityAnalysis),
-    name: S.optional(S.String),
-    configurations: S.optional(StringList),
-    findings: S.optional(StringList),
-    audit: S.optional(Audit),
-    duplicateOf: S.optional(S.String),
     state: S.optional(AlertStateEnum),
-    etag: S.optional(S.String),
+    findings: S.optional(StringList),
+    displayName: S.optional(S.String),
+    aiSummary: S.optional(S.String),
+    externalId: S.optional(S.String),
+    priorityAnalysis: S.optional(PriorityAnalysis),
+    relevanceAnalysis: S.optional(RelevanceAnalysis),
+    duplicateOf: S.optional(S.String),
+    audit: S.optional(Audit),
     severityAnalysis: S.optional(SeverityAnalysis),
     findingCount: S.optional(S.String),
-    externalId: S.optional(S.String),
-    aiSummary: S.optional(S.String),
-    displayName: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
+    configurations: S.optional(StringList),
+    duplicatedBy: S.optional(StringList),
+    detail: S.optional(AlertDetail),
   }),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
@@ -671,16 +671,16 @@ export const DuplicateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateProjectsAlertsRequest>;
 
 export interface EnumerateFacetsProjectsAlertsRequest {
-  /** Optional. Filter on what alerts will be enumerated. */
-  filter?: string;
   /** Required. Parent of the alerts. */
   parent: string;
+  /** Optional. Filter on what alerts will be enumerated. */
+  filter?: string;
 }
 export const EnumerateFacetsProjectsAlertsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -713,27 +713,27 @@ export const FacetCountList = /*@__PURE__*/ S.Array(
 
 /** Facet represents a sub element of a resource for filtering. The results from this method are used to populate the filterable facets in the UI. */
 export interface Facet {
-  /** Max value of the facet stringified based on type. Will be populated and formatted the same as min_value. */
-  maxValue?: string;
+  /** List of counts for the facet (if categorical). */
+  facetCounts?: FacetCountList;
+  /** The type of the facet. Options include "string", "int", "float", "bool", "enum", "timestamp", "user" and are useful to show the right sort of UI controls when building a AIP-160 style filtering string. */
+  facetType?: string;
   /** Name of the facet. This is also the string that needs to be used in the filtering expression. */
   facet?: string;
   /** Total number of records that contain this facet with ANY value. */
   totalCount?: string;
-  /** The type of the facet. Options include "string", "int", "float", "bool", "enum", "timestamp", "user" and are useful to show the right sort of UI controls when building a AIP-160 style filtering string. */
-  facetType?: string;
-  /** List of counts for the facet (if categorical). */
-  facetCounts?: FacetCountList;
   /** Min value of the facet stringified based on type. This is only populated for facets that have a clear ordering, for types like enum it will be left empty. Timestamps will be formatted using RFC3339. */
   minValue?: string;
+  /** Max value of the facet stringified based on type. Will be populated and formatted the same as min_value. */
+  maxValue?: string;
 }
 export const Facet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    maxValue: S.optional(S.String),
+    facetCounts: S.optional(FacetCountList),
+    facetType: S.optional(S.String),
     facet: S.optional(S.String),
     totalCount: S.optional(S.String),
-    facetType: S.optional(S.String),
-    facetCounts: S.optional(FacetCountList),
     minValue: S.optional(S.String),
+    maxValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
@@ -815,16 +815,16 @@ export const FalsePositiveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for GenerateOrgProfileConfiguration. */
 export interface GenerateOrgProfileConfigurationRequest {
-  /** Required. The display name of the organization to generate the profile for. */
-  displayName?: string;
   /** Required. The domain of the organization to generate the profile for. */
   domain?: string;
+  /** Required. The display name of the organization to generate the profile for. */
+  displayName?: string;
 }
 export const GenerateOrgProfileConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      displayName: S.optional(S.String),
       domain: S.optional(S.String),
+      displayName: S.optional(S.String),
     }),
 ).annotate({
   identifier: "GenerateOrgProfileConfigurationRequest",
@@ -864,61 +864,43 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    message: S.optional(S.String),
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
-    message: S.optional(S.String),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    response: S.optional(DocumentMap),
-    error: S.optional(Status),
     name: S.optional(S.String),
-    done: S.optional(S.Boolean),
     metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-export interface GetPasswordProjectsAlertsRequest {
-  /** Required. Name of the alert to get. Format: projects/{project}/alerts/{alert} */
-  name: string;
-}
-export const GetPasswordProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1beta/{+name}:GetPassword",
-      baseUrl: "https://threatintelligence.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "GetPasswordProjectsAlertsRequest",
-}) as any as S.Schema<GetPasswordProjectsAlertsRequest>;
 
 export interface GetProjectsAlertsRequest {
   /** Required. Name of the alert to get. Format: projects/{project}/alerts/{alert} */
@@ -974,48 +956,48 @@ export const AlertDocumentTranslation = /*@__PURE__*/ S.suspend(() =>
 
 /** A document that is associated with an alert. */
 export interface AlertDocument {
-  /** Output only. AI summary of the document. */
-  aiSummary?: string;
-  /** Output only. The content of the document. */
-  content?: string;
-  /** Output only. URI of the intel item from the source. */
-  sourceUri?: string;
-  /** Output only. Time when the intel was last updated by the source. */
-  sourceUpdateTime?: string;
   /** Output only. The language code of the document. */
   languageCode?: string;
-  /** Output only. The author of the document. */
-  author?: string;
-  /** Output only. The timestamp of the original external publication of the document. */
-  createTime?: string;
+  /** Output only. AI summary of the document. */
+  aiSummary?: string;
   /** Output only. Time when GTI received the intel. */
   ingestTime?: string;
-  /** Identifier. Server generated name for the alert document. format is projects/{project}/alerts/{alert}/documents/{document} */
-  name?: string;
-  /** Output only. Time when the origin source collected the intel. */
-  collectionTime?: string;
   /** Output only. Source of the intel item, e.g. DarkMarket. */
   source?: string;
-  /** Output only. The translation of the document, if available. */
-  translation?: AlertDocumentTranslation;
+  /** Output only. Time when the origin source collected the intel. */
+  collectionTime?: string;
+  /** Output only. The author of the document. */
+  author?: string;
+  /** Output only. The content of the document. */
+  content?: string;
   /** Output only. The title of the document, if available. */
   title?: string;
+  /** Output only. The translation of the document, if available. */
+  translation?: AlertDocumentTranslation;
+  /** Identifier. Server generated name for the alert document. format is projects/{project}/alerts/{alert}/documents/{document} */
+  name?: string;
+  /** Output only. Time when the intel was last updated by the source. */
+  sourceUpdateTime?: string;
+  /** Output only. The timestamp of the original external publication of the document. */
+  createTime?: string;
+  /** Output only. URI of the intel item from the source. */
+  sourceUri?: string;
 }
 export const AlertDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    aiSummary: S.optional(S.String),
-    content: S.optional(S.String),
-    sourceUri: S.optional(S.String),
-    sourceUpdateTime: S.optional(S.String),
     languageCode: S.optional(S.String),
-    author: S.optional(S.String),
-    createTime: S.optional(S.String),
+    aiSummary: S.optional(S.String),
     ingestTime: S.optional(S.String),
-    name: S.optional(S.String),
-    collectionTime: S.optional(S.String),
     source: S.optional(S.String),
-    translation: S.optional(AlertDocumentTranslation),
+    collectionTime: S.optional(S.String),
+    author: S.optional(S.String),
+    content: S.optional(S.String),
     title: S.optional(S.String),
+    translation: S.optional(AlertDocumentTranslation),
+    name: S.optional(S.String),
+    sourceUpdateTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    sourceUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "AlertDocument" }) as any as S.Schema<AlertDocument>;
 
@@ -1037,115 +1019,10 @@ export const GetProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectsConfigurationsRequest",
 }) as any as S.Schema<GetProjectsConfigurationsRequest>;
 
-export type ConfigurationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | "DEPRECATED";
-export const ConfigurationStateEnum = /*@__PURE__*/ S.String;
-
-/** A string with citation ids. */
-export interface CustomerProfileCitedString {
-  /** Required. The value of the string. */
-  value?: string;
-  /** Optional. The citation ids for the string. */
-  citationIds?: StringList;
-}
-export const CustomerProfileCitedString = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    citationIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CustomerProfileCitedString",
-}) as any as S.Schema<CustomerProfileCitedString>;
-
-/** A summarized version of the customer profile. Generated by the backend. */
-export interface CustomerProfileSummary {
-  /** Optional. A narrative summary of products. */
-  productsSummary?: CustomerProfileCitedString;
-  /** Optional. A narrative summary of key people. */
-  keyPeopleSummary?: CustomerProfileCitedString;
-  /** Optional. A narrative summary of services. */
-  servicesSummary?: CustomerProfileCitedString;
-  /** Optional. The parent company of the customer. */
-  parentCompany?: CustomerProfileCitedString;
-  /** Optional. The official name of the customer. */
-  title?: CustomerProfileCitedString;
-  /** Optional. The industry the customer is in. */
-  industry?: CustomerProfileCitedString;
-  /** Optional. The entity type of the customer. */
-  entityType?: CustomerProfileCitedString;
-  /** Optional. The date the customer was founded. */
-  founded?: CustomerProfileCitedString;
-  /** Optional. The headquarters of the customer. */
-  headquarters?: CustomerProfileCitedString;
-  /** Optional. The area the customer serves. */
-  areaServed?: CustomerProfileCitedString;
-  /** Optional. A narrative summary of brands. */
-  brands?: CustomerProfileCitedString;
-  /** Optional. The primary website of the customer. */
-  primaryWebsite?: CustomerProfileCitedString;
-}
-export const CustomerProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    productsSummary: S.optional(CustomerProfileCitedString),
-    keyPeopleSummary: S.optional(CustomerProfileCitedString),
-    servicesSummary: S.optional(CustomerProfileCitedString),
-    parentCompany: S.optional(CustomerProfileCitedString),
-    title: S.optional(CustomerProfileCitedString),
-    industry: S.optional(CustomerProfileCitedString),
-    entityType: S.optional(CustomerProfileCitedString),
-    founded: S.optional(CustomerProfileCitedString),
-    headquarters: S.optional(CustomerProfileCitedString),
-    areaServed: S.optional(CustomerProfileCitedString),
-    brands: S.optional(CustomerProfileCitedString),
-    primaryWebsite: S.optional(CustomerProfileCitedString),
-  }),
-).annotate({
-  identifier: "CustomerProfileSummary",
-}) as any as S.Schema<CustomerProfileSummary>;
-
-/** Industry information for the customer profile. */
-export interface CustomerProfileIndustry {
-  /** Required. The name of the industry. */
-  industry?: string;
-  /** Optional. The citation ids for the industry. */
-  citationIds?: StringList;
-}
-export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    industry: S.optional(S.String),
-    citationIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CustomerProfileIndustry",
-}) as any as S.Schema<CustomerProfileIndustry>;
-
-export type CustomerProfileIndustryList = Array<CustomerProfileIndustry>;
-export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
-  CustomerProfileIndustry,
-) as any as S.Schema<CustomerProfileIndustryList>;
-
-/** Security considerations for the customer profile. */
-export interface CustomerProfileSecurityConsiderations {
-  /** Optional. A note about the security considerations. */
-  note?: string;
-  /** Optional. A series of considerations for the security of the organization, such as "high risk of compromise" or "vulnerable to cyberbullying". */
-  considerations?: StringList;
-}
-export const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      note: S.optional(S.String),
-      considerations: S.optional(StringList),
-    }),
-).annotate({
-  identifier: "CustomerProfileSecurityConsiderations",
-}) as any as S.Schema<CustomerProfileSecurityConsiderations>;
-
 /** Citation information for the customer profile. */
 export interface CustomerProfileCitation {
+  /** Required. The source of the citation. */
+  source?: string;
   /** Required. The name of the document the citation is from. */
   document?: string;
   /** Optional. The url of the citation. */
@@ -1154,16 +1031,14 @@ export interface CustomerProfileCitation {
   retrievalTime?: string;
   /** Required. The citation id for the citation. Should be unique within the profile. */
   citationId?: string;
-  /** Required. The source of the citation. */
-  source?: string;
 }
 export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    source: S.optional(S.String),
     document: S.optional(S.String),
     uri: S.optional(S.String),
     retrievalTime: S.optional(S.String),
     citationId: S.optional(S.String),
-    source: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CustomerProfileCitation",
@@ -1173,6 +1048,60 @@ export type CustomerProfileCitationList = Array<CustomerProfileCitation>;
 export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
   CustomerProfileCitation,
 ) as any as S.Schema<CustomerProfileCitationList>;
+
+/** Company information for the customer profile. */
+export interface CustomerProfileCompany {
+  /** Required. The name of the company. */
+  company?: string;
+  /** Optional. The citation ids for the company. */
+  citationIds?: StringList;
+}
+export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    company: S.optional(S.String),
+    citationIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomerProfileCompany",
+}) as any as S.Schema<CustomerProfileCompany>;
+
+export type CustomerProfileCompanyList = Array<CustomerProfileCompany>;
+export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
+  CustomerProfileCompany,
+) as any as S.Schema<CustomerProfileCompanyList>;
+
+/** Contact information for the customer profile. */
+export interface CustomerProfileContactInfo {
+  /** The address of the contact. */
+  address?: string;
+  /** The email address of the contact. */
+  email?: string;
+  /** Optional. The name of the contact. */
+  label?: string;
+  /** The phone number of the contact. */
+  phone?: string;
+  /** The other contact information. */
+  other?: string;
+  /** Optional. The citation ids for the contact information. */
+  citationIds?: StringList;
+}
+export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    email: S.optional(S.String),
+    label: S.optional(S.String),
+    phone: S.optional(S.String),
+    other: S.optional(S.String),
+    citationIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomerProfileContactInfo",
+}) as any as S.Schema<CustomerProfileContactInfo>;
+
+export type CustomerProfileContactInfoList = Array<CustomerProfileContactInfo>;
+export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
+  CustomerProfileContactInfo,
+) as any as S.Schema<CustomerProfileContactInfoList>;
 
 /** Web presence information for the customer profile. */
 export interface CustomerProfileWebPresence {
@@ -1195,41 +1124,41 @@ export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
   CustomerProfileWebPresence,
 ) as any as S.Schema<CustomerProfileWebPresenceList>;
 
-/** Company information for the customer profile. */
-export interface CustomerProfileCompany {
-  /** Optional. The citation ids for the company. */
+/** Industry information for the customer profile. */
+export interface CustomerProfileIndustry {
+  /** Required. The name of the industry. */
+  industry?: string;
+  /** Optional. The citation ids for the industry. */
   citationIds?: StringList;
-  /** Required. The name of the company. */
-  company?: string;
 }
-export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
+export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    industry: S.optional(S.String),
     citationIds: S.optional(StringList),
-    company: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CustomerProfileCompany",
-}) as any as S.Schema<CustomerProfileCompany>;
+  identifier: "CustomerProfileIndustry",
+}) as any as S.Schema<CustomerProfileIndustry>;
 
-export type CustomerProfileCompanyList = Array<CustomerProfileCompany>;
-export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
-  CustomerProfileCompany,
-) as any as S.Schema<CustomerProfileCompanyList>;
+export type CustomerProfileIndustryList = Array<CustomerProfileIndustry>;
+export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
+  CustomerProfileIndustry,
+) as any as S.Schema<CustomerProfileIndustryList>;
 
 /** Person information for the customer profile. */
 export interface CustomerProfilePerson {
-  /** Required. The name of the person. */
-  name?: string;
-  /** Optional. The citation ids for the person. */
-  citationIds?: StringList;
   /** Optional. The title of the person. */
   title?: string;
+  /** Optional. The citation ids for the person. */
+  citationIds?: StringList;
+  /** Required. The name of the person. */
+  name?: string;
 }
 export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    citationIds: S.optional(StringList),
     title: S.optional(S.String),
+    citationIds: S.optional(StringList),
+    name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CustomerProfilePerson",
@@ -1240,19 +1169,98 @@ export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
   CustomerProfilePerson,
 ) as any as S.Schema<CustomerProfilePersonList>;
 
+/** Security considerations for the customer profile. */
+export interface CustomerProfileSecurityConsiderations {
+  /** Optional. A note about the security considerations. */
+  note?: string;
+  /** Optional. A series of considerations for the security of the organization, such as "high risk of compromise" or "vulnerable to cyberbullying". */
+  considerations?: StringList;
+}
+export const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      note: S.optional(S.String),
+      considerations: S.optional(StringList),
+    }),
+).annotate({
+  identifier: "CustomerProfileSecurityConsiderations",
+}) as any as S.Schema<CustomerProfileSecurityConsiderations>;
+
+/** A string with citation ids. */
+export interface CustomerProfileCitedString {
+  /** Required. The value of the string. */
+  value?: string;
+  /** Optional. The citation ids for the string. */
+  citationIds?: StringList;
+}
+export const CustomerProfileCitedString = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    citationIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CustomerProfileCitedString",
+}) as any as S.Schema<CustomerProfileCitedString>;
+
+/** A summarized version of the customer profile. Generated by the backend. */
+export interface CustomerProfileSummary {
+  /** Optional. The primary website of the customer. */
+  primaryWebsite?: CustomerProfileCitedString;
+  /** Optional. A narrative summary of key people. */
+  keyPeopleSummary?: CustomerProfileCitedString;
+  /** Optional. A narrative summary of brands. */
+  brands?: CustomerProfileCitedString;
+  /** Optional. The area the customer serves. */
+  areaServed?: CustomerProfileCitedString;
+  /** Optional. The industry the customer is in. */
+  industry?: CustomerProfileCitedString;
+  /** Optional. A narrative summary of products. */
+  productsSummary?: CustomerProfileCitedString;
+  /** Optional. The date the customer was founded. */
+  founded?: CustomerProfileCitedString;
+  /** Optional. A narrative summary of services. */
+  servicesSummary?: CustomerProfileCitedString;
+  /** Optional. The parent company of the customer. */
+  parentCompany?: CustomerProfileCitedString;
+  /** Optional. The headquarters of the customer. */
+  headquarters?: CustomerProfileCitedString;
+  /** Optional. The official name of the customer. */
+  title?: CustomerProfileCitedString;
+  /** Optional. The entity type of the customer. */
+  entityType?: CustomerProfileCitedString;
+}
+export const CustomerProfileSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryWebsite: S.optional(CustomerProfileCitedString),
+    keyPeopleSummary: S.optional(CustomerProfileCitedString),
+    brands: S.optional(CustomerProfileCitedString),
+    areaServed: S.optional(CustomerProfileCitedString),
+    industry: S.optional(CustomerProfileCitedString),
+    productsSummary: S.optional(CustomerProfileCitedString),
+    founded: S.optional(CustomerProfileCitedString),
+    servicesSummary: S.optional(CustomerProfileCitedString),
+    parentCompany: S.optional(CustomerProfileCitedString),
+    headquarters: S.optional(CustomerProfileCitedString),
+    title: S.optional(CustomerProfileCitedString),
+    entityType: S.optional(CustomerProfileCitedString),
+  }),
+).annotate({
+  identifier: "CustomerProfileSummary",
+}) as any as S.Schema<CustomerProfileSummary>;
+
 /** Product information for the customer profile. */
 export interface CustomerProfileProduct {
-  /** Required. The brand of the product. */
-  brand?: string;
   /** Optional. The citation ids for the product. */
   citationIds?: StringList;
+  /** Required. The brand of the product. */
+  brand?: string;
   /** Required. The name of the product. */
   product?: string;
 }
 export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    brand: S.optional(S.String),
     citationIds: S.optional(StringList),
+    brand: S.optional(S.String),
     product: S.optional(S.String),
   }),
 ).annotate({
@@ -1266,21 +1274,21 @@ export const CustomerProfileProductList = /*@__PURE__*/ S.Array(
 
 /** Location information for the customer profile. */
 export interface CustomerProfileLocation {
-  /** Required. The brand of the location. */
-  brand?: string;
-  /** Optional. The citation ids for the location. */
-  citationIds?: StringList;
   /** Optional. The type of location. */
   facilityType?: string;
   /** Required. The address of the location. */
   address?: string;
+  /** Optional. The citation ids for the location. */
+  citationIds?: StringList;
+  /** Required. The brand of the location. */
+  brand?: string;
 }
 export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    brand: S.optional(S.String),
-    citationIds: S.optional(StringList),
     facilityType: S.optional(S.String),
     address: S.optional(S.String),
+    citationIds: S.optional(StringList),
+    brand: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CustomerProfileLocation",
@@ -1291,87 +1299,64 @@ export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
   CustomerProfileLocation,
 ) as any as S.Schema<CustomerProfileLocationList>;
 
-/** Contact information for the customer profile. */
-export interface CustomerProfileContactInfo {
-  /** Optional. The citation ids for the contact information. */
-  citationIds?: StringList;
-  /** The email address of the contact. */
-  email?: string;
-  /** Optional. The name of the contact. */
-  label?: string;
-  /** The phone number of the contact. */
-  phone?: string;
-  /** The address of the contact. */
-  address?: string;
-  /** The other contact information. */
-  other?: string;
-}
-export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    citationIds: S.optional(StringList),
-    email: S.optional(S.String),
-    label: S.optional(S.String),
-    phone: S.optional(S.String),
-    address: S.optional(S.String),
-    other: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomerProfileContactInfo",
-}) as any as S.Schema<CustomerProfileContactInfo>;
-
-export type CustomerProfileContactInfoList = Array<CustomerProfileContactInfo>;
-export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
-  CustomerProfileContactInfo,
-) as any as S.Schema<CustomerProfileContactInfoList>;
-
 /** CustomerProfileConfig is the configuration for the customer profile. */
 export interface CustomerProfileConfig {
-  /** Required. The name of the organization. */
-  org?: string;
-  /** Optional. A summarized version of the customer profile. */
-  summary?: CustomerProfileSummary;
-  /** Optional. The industries the organization is involved in. */
-  industries?: CustomerProfileIndustryList;
-  /** Optional. Security considerations for the organization. */
-  securityConsiderations?: CustomerProfileSecurityConsiderations;
   /** Optional. Citations for the organization profile. */
   citations?: CustomerProfileCitationList;
-  /** Optional. Web presence of the organization. */
-  webPresences?: CustomerProfileWebPresenceList;
   /** Optional. The parent companies of the organization. */
   parentCompanies?: CustomerProfileCompanyList;
+  /** Optional. Contact information for the organization. */
+  contactInfo?: CustomerProfileContactInfoList;
+  /** Optional. Web presence of the organization. */
+  webPresences?: CustomerProfileWebPresenceList;
+  /** Required. The name of the organization. */
+  org?: string;
+  /** Optional. The industries the organization is involved in. */
+  industries?: CustomerProfileIndustryList;
   /** Optional. A summary of the organization. */
   orgSummary?: string;
-  /** Optional. Executives of the organization. */
-  executives?: CustomerProfilePersonList;
   /** Optional. Technology presence of the organization. */
   technologyPresence?: string;
+  /** Optional. Executives of the organization. */
+  executives?: CustomerProfilePersonList;
+  /** Optional. Security considerations for the organization. */
+  securityConsiderations?: CustomerProfileSecurityConsiderations;
+  /** Optional. A summarized version of the customer profile. */
+  summary?: CustomerProfileSummary;
   /** Optional. Product information for the organization. */
   products?: CustomerProfileProductList;
   /** Optional. Locations the organization is present or conducts business in. */
   locations?: CustomerProfileLocationList;
-  /** Optional. Contact information for the organization. */
-  contactInfo?: CustomerProfileContactInfoList;
 }
 export const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    org: S.optional(S.String),
-    summary: S.optional(CustomerProfileSummary),
-    industries: S.optional(CustomerProfileIndustryList),
-    securityConsiderations: S.optional(CustomerProfileSecurityConsiderations),
     citations: S.optional(CustomerProfileCitationList),
-    webPresences: S.optional(CustomerProfileWebPresenceList),
     parentCompanies: S.optional(CustomerProfileCompanyList),
+    contactInfo: S.optional(CustomerProfileContactInfoList),
+    webPresences: S.optional(CustomerProfileWebPresenceList),
+    org: S.optional(S.String),
+    industries: S.optional(CustomerProfileIndustryList),
     orgSummary: S.optional(S.String),
-    executives: S.optional(CustomerProfilePersonList),
     technologyPresence: S.optional(S.String),
+    executives: S.optional(CustomerProfilePersonList),
+    securityConsiderations: S.optional(CustomerProfileSecurityConsiderations),
+    summary: S.optional(CustomerProfileSummary),
     products: S.optional(CustomerProfileProductList),
     locations: S.optional(CustomerProfileLocationList),
-    contactInfo: S.optional(CustomerProfileContactInfoList),
   }),
 ).annotate({
   identifier: "CustomerProfileConfig",
 }) as any as S.Schema<CustomerProfileConfig>;
+
+export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
+  | "PRIORITY_UNSPECIFIED"
+  | "P0"
+  | "P1"
+  | "P2"
+  | "P3"
+  | "P4";
+export const TechnologyWatchListAlertThresholdPriorityMinimumEnum =
+  /*@__PURE__*/ S.String;
 
 export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   | "EXPLOITATION_STATE_UNSPECIFIED"
@@ -1392,16 +1377,6 @@ export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
     TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
   ) as any as S.Schema<TechnologyWatchListAlertThresholdExploitationStatesItemEnumList>;
 
-export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
-  | "PRIORITY_UNSPECIFIED"
-  | "P0"
-  | "P1"
-  | "P2"
-  | "P3"
-  | "P4";
-export const TechnologyWatchListAlertThresholdPriorityMinimumEnum =
-  /*@__PURE__*/ S.String;
-
 export type TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
   | "RISK_RATING_UNSPECIFIED"
   | "LOW"
@@ -1414,16 +1389,16 @@ export const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
 
 /** TechnologyWatchListAlertThreshold contains the thresholds for alerting. */
 export interface TechnologyWatchListAlertThreshold {
-  /** Optional. The minimum CVSS score for the alert. Evaluates to CVSS v3 when available with a fallback to v2 and v4. Ex: 7.0. Valid range is [0.0, 10.0]. */
-  cvssScoreMinimum?: number;
-  /** Optional. The exploitation states of the alert. */
-  exploitationStates?: TechnologyWatchListAlertThresholdExploitationStatesItemEnumList;
   /** Optional. The minimum priority for the alert. */
   priorityMinimum?:
     | TechnologyWatchListAlertThresholdPriorityMinimumEnum
     | (string & {});
   /** Optional. The minimum epss score for the alert. Ex: 0.8. Valid range is [0.0, 1.0]. */
   epssScoreMinimum?: number;
+  /** Optional. The exploitation states of the alert. */
+  exploitationStates?: TechnologyWatchListAlertThresholdExploitationStatesItemEnumList;
+  /** Optional. The minimum CVSS score for the alert. Evaluates to CVSS v3 when available with a fallback to v2 and v4. Ex: 7.0. Valid range is [0.0, 10.0]. */
+  cvssScoreMinimum?: number;
   /** Optional. The minimum risk rating for the alert. */
   riskRatingMinimum?:
     | TechnologyWatchListAlertThresholdRiskRatingMinimumEnum
@@ -1431,14 +1406,14 @@ export interface TechnologyWatchListAlertThreshold {
 }
 export const TechnologyWatchListAlertThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cvssScoreMinimum: S.optional(S.Number),
-    exploitationStates: S.optional(
-      TechnologyWatchListAlertThresholdExploitationStatesItemEnumList,
-    ),
     priorityMinimum: S.optional(
       TechnologyWatchListAlertThresholdPriorityMinimumEnum,
     ),
     epssScoreMinimum: S.optional(S.Number),
+    exploitationStates: S.optional(
+      TechnologyWatchListAlertThresholdExploitationStatesItemEnumList,
+    ),
+    cvssScoreMinimum: S.optional(S.Number),
     riskRatingMinimum: S.optional(
       TechnologyWatchListAlertThresholdRiskRatingMinimumEnum,
     ),
@@ -1467,53 +1442,60 @@ export const TechnologyWatchListConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigurationDetail {
   /** Customer Profile detail config. */
   customerProfile?: CustomerProfileConfig;
-  /** Technology Watchlist detail config. */
-  technologyWatchlist?: TechnologyWatchListConfig;
   /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
   detailType?: string;
+  /** Technology Watchlist detail config. */
+  technologyWatchlist?: TechnologyWatchListConfig;
 }
 export const ConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerProfile: S.optional(CustomerProfileConfig),
-    technologyWatchlist: S.optional(TechnologyWatchListConfig),
     detailType: S.optional(S.String),
+    technologyWatchlist: S.optional(TechnologyWatchListConfig),
   }),
 ).annotate({
   identifier: "ConfigurationDetail",
 }) as any as S.Schema<ConfigurationDetail>;
 
+export type ConfigurationStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED"
+  | "DEPRECATED";
+export const ConfigurationStateEnum = /*@__PURE__*/ S.String;
+
 /** A configuration represents a behavior an engine should follow when producing new findings. */
 export interface Configuration {
-  /** Output only. Audit information for the configuration. */
-  audit?: Audit;
-  /** Optional. A description of the configuration. */
-  description?: string;
-  /** If included when updating a configuration, this should be set to the current etag of the configuration. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
-  etag?: string;
-  /** Optional. State of the configuration. */
-  state?: ConfigurationStateEnum | (string & {});
   /** Required. Domain specific details for the configuration. */
   detail?: ConfigurationDetail;
-  /** Identifier. Server generated name for the configuration. format is projects/{project}/configurations/{configuration} */
-  name?: string;
-  /** Output only. Human readable name for the configuration. */
-  displayName?: string;
+  /** Optional. A description of the configuration. */
+  description?: string;
   /** Required. Name of the service that provides the configuration. */
   provider?: string;
+  /** Identifier. Server generated name for the configuration. format is projects/{project}/configurations/{configuration} */
+  name?: string;
+  /** If included when updating a configuration, this should be set to the current etag of the configuration. If the etags do not match, the update will be rejected and an ABORTED error will be returned. */
+  etag?: string;
   /** Optional. A user-manipulatable version. Does not adhere to a specific format */
   version?: string;
+  /** Output only. Human readable name for the configuration. */
+  displayName?: string;
+  /** Output only. Audit information for the configuration. */
+  audit?: Audit;
+  /** Optional. State of the configuration. */
+  state?: ConfigurationStateEnum | (string & {});
 }
 export const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audit: S.optional(Audit),
-    description: S.optional(S.String),
-    etag: S.optional(S.String),
-    state: S.optional(ConfigurationStateEnum),
     detail: S.optional(ConfigurationDetail),
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
+    description: S.optional(S.String),
     provider: S.optional(S.String),
+    name: S.optional(S.String),
+    etag: S.optional(S.String),
     version: S.optional(S.String),
+    displayName: S.optional(S.String),
+    audit: S.optional(Audit),
+    state: S.optional(ConfigurationStateEnum),
   }),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
@@ -1534,6 +1516,34 @@ export const GetProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProjectsFindingsRequest",
 }) as any as S.Schema<GetProjectsFindingsRequest>;
+
+export type InitialAccessBrokerFindingDetailSeverityEnum =
+  | "SEVERITY_UNSPECIFIED"
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL";
+export const InitialAccessBrokerFindingDetailSeverityEnum =
+  /*@__PURE__*/ S.String;
+
+/** A detail object for an Initial Access Broker (IAB) finding. */
+export interface InitialAccessBrokerFindingDetail {
+  /** Required. Reference to the match score of the IAB finding. This is a float value between 0 and 1 calculated by the matching engine based on the similarity of the document and the user provided configurations. */
+  matchScore?: number;
+  /** Required. The unique identifier of the document that triggered the IAB finding. This ID can be used to retrieve the content of the document for further analysis. */
+  documentId?: string;
+  /** Required. The severity of the IAB finding. This indicates the potential impact of the threat. */
+  severity?: InitialAccessBrokerFindingDetailSeverityEnum;
+}
+export const InitialAccessBrokerFindingDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matchScore: S.optional(S.Number),
+    documentId: S.optional(S.String),
+    severity: S.optional(InitialAccessBrokerFindingDetailSeverityEnum),
+  }),
+).annotate({
+  identifier: "InitialAccessBrokerFindingDetail",
+}) as any as S.Schema<InitialAccessBrokerFindingDetail>;
 
 /** Contains details for a technology watchlist finding. */
 export interface TargetTechnologyFindingDetail {
@@ -1575,34 +1585,6 @@ export const DataLeakFindingDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataLeakFindingDetail",
 }) as any as S.Schema<DataLeakFindingDetail>;
 
-export type InitialAccessBrokerFindingDetailSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL";
-export const InitialAccessBrokerFindingDetailSeverityEnum =
-  /*@__PURE__*/ S.String;
-
-/** A detail object for an Initial Access Broker (IAB) finding. */
-export interface InitialAccessBrokerFindingDetail {
-  /** Required. Reference to the match score of the IAB finding. This is a float value between 0 and 1 calculated by the matching engine based on the similarity of the document and the user provided configurations. */
-  matchScore?: number;
-  /** Required. The severity of the IAB finding. This indicates the potential impact of the threat. */
-  severity?: InitialAccessBrokerFindingDetailSeverityEnum;
-  /** Required. The unique identifier of the document that triggered the IAB finding. This ID can be used to retrieve the content of the document for further analysis. */
-  documentId?: string;
-}
-export const InitialAccessBrokerFindingDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matchScore: S.optional(S.Number),
-    severity: S.optional(InitialAccessBrokerFindingDetailSeverityEnum),
-    documentId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InitialAccessBrokerFindingDetail",
-}) as any as S.Schema<InitialAccessBrokerFindingDetail>;
-
 export type InsiderThreatFindingDetailSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "LOW"
@@ -1613,17 +1595,17 @@ export const InsiderThreatFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for a InsiderThreat finding. */
 export interface InsiderThreatFindingDetail {
-  /** Required. Reference to the match score of the InsiderThreat finding. This is a float value greater than 0 and less than or equal to 1 calculated by the matching engine based on the similarity of the document and the user provided configurations. */
-  matchScore?: number;
   /** Required. The severity of the InsiderThreat finding. This indicates the potential impact of the threat. */
   severity?: InsiderThreatFindingDetailSeverityEnum;
+  /** Required. Reference to the match score of the InsiderThreat finding. This is a float value greater than 0 and less than or equal to 1 calculated by the matching engine based on the similarity of the document and the user provided configurations. */
+  matchScore?: number;
   /** Required. The unique identifier of the document that triggered the InsiderThreat finding. This ID can be used to retrieve the content of the document for further analysis. */
   documentId?: string;
 }
 export const InsiderThreatFindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    matchScore: S.optional(S.Number),
     severity: S.optional(InsiderThreatFindingDetailSeverityEnum),
+    matchScore: S.optional(S.Number),
     documentId: S.optional(S.String),
   }),
 ).annotate({
@@ -1632,90 +1614,90 @@ export const InsiderThreatFindingDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Wrapper class that contains the union struct for all the various findings detail specific classes. */
 export interface FindingDetail {
+  /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
+  detailType?: string;
+  /** Initial Access Broker finding detail type. */
+  initialAccessBroker?: InitialAccessBrokerFindingDetail;
   /** Technology Watchlist finding detail type. */
   targetTechnology?: TargetTechnologyFindingDetail;
   /** Data Leak finding detail type. */
   dataLeak?: DataLeakFindingDetail;
-  /** Initial Access Broker finding detail type. */
-  initialAccessBroker?: InitialAccessBrokerFindingDetail;
   /** Insider Threat finding detail type. */
   insiderThreat?: InsiderThreatFindingDetail;
-  /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
-  detailType?: string;
 }
 export const FindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    detailType: S.optional(S.String),
+    initialAccessBroker: S.optional(InitialAccessBrokerFindingDetail),
     targetTechnology: S.optional(TargetTechnologyFindingDetail),
     dataLeak: S.optional(DataLeakFindingDetail),
-    initialAccessBroker: S.optional(InitialAccessBrokerFindingDetail),
     insiderThreat: S.optional(InsiderThreatFindingDetail),
-    detailType: S.optional(S.String),
   }),
 ).annotate({ identifier: "FindingDetail" }) as any as S.Schema<FindingDetail>;
 
 /** A ‘stateless’ and a point in time event that a check produced a result of interest. */
 export interface Finding {
-  /** Optional. Name of the alert that this finding is bound to. */
-  alert?: string;
-  /** Output only. Audit data about the finding. */
-  audit?: Audit;
-  /** Required. Holder of the domain specific details of the finding. */
-  detail?: FindingDetail;
-  /** Optional. AI summary of the finding. */
-  aiSummary?: string;
-  /** Required. A short descriptive title for the finding <= 250 chars. EX: "Actor 'baddy' offering $1000 for credentials of 'goodguy'". */
-  displayName?: string;
-  /** Identifier. Server generated name for the finding (leave clear during creation). Format: projects/{project}/findings/{finding} */
-  name?: string;
-  /** Optional. Configuration names that are bound to this finding. */
-  configurations?: StringList;
-  /** Optional. Deprecated: Use the `severity_analysis` field instead. Base severity score from the finding source. */
-  severity?: number;
-  /** Required. Logical source of this finding (name of the sub-engine). */
-  provider?: string;
-  /** Output only. High-Precision Relevance Analysis verdict for the finding. */
-  relevanceAnalysis?: RelevanceAnalysis;
-  /** Output only. High-Precision Severity Analysis verdict for the finding. */
-  severityAnalysis?: SeverityAnalysis;
   /** Output only. When identical finding (same labels and same details) has re-occurred. */
   reoccurrenceTimes?: StringList;
+  /** Required. A short descriptive title for the finding <= 250 chars. EX: "Actor 'baddy' offering $1000 for credentials of 'goodguy'". */
+  displayName?: string;
+  /** Output only. High-Precision Severity Analysis verdict for the finding. */
+  severityAnalysis?: SeverityAnalysis;
+  /** Output only. Audit data about the finding. */
+  audit?: Audit;
+  /** Output only. High-Precision Relevance Analysis verdict for the finding. */
+  relevanceAnalysis?: RelevanceAnalysis;
+  /** Required. Holder of the domain specific details of the finding. */
+  detail?: FindingDetail;
+  /** Optional. Name of the alert that this finding is bound to. */
+  alert?: string;
+  /** Required. Logical source of this finding (name of the sub-engine). */
+  provider?: string;
+  /** Optional. Configuration names that are bound to this finding. */
+  configurations?: StringList;
+  /** Optional. AI summary of the finding. */
+  aiSummary?: string;
+  /** Identifier. Server generated name for the finding (leave clear during creation). Format: projects/{project}/findings/{finding} */
+  name?: string;
+  /** Optional. Deprecated: Use the `severity_analysis` field instead. Base severity score from the finding source. */
+  severity?: number;
 }
 export const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    alert: S.optional(S.String),
-    audit: S.optional(Audit),
-    detail: S.optional(FindingDetail),
-    aiSummary: S.optional(S.String),
-    displayName: S.optional(S.String),
-    name: S.optional(S.String),
-    configurations: S.optional(StringList),
-    severity: S.optional(S.Number),
-    provider: S.optional(S.String),
-    relevanceAnalysis: S.optional(RelevanceAnalysis),
-    severityAnalysis: S.optional(SeverityAnalysis),
     reoccurrenceTimes: S.optional(StringList),
+    displayName: S.optional(S.String),
+    severityAnalysis: S.optional(SeverityAnalysis),
+    audit: S.optional(Audit),
+    relevanceAnalysis: S.optional(RelevanceAnalysis),
+    detail: S.optional(FindingDetail),
+    alert: S.optional(S.String),
+    provider: S.optional(S.String),
+    configurations: S.optional(StringList),
+    aiSummary: S.optional(S.String),
+    name: S.optional(S.String),
+    severity: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
 export interface ListProjectsAlertsRequest {
-  /** Optional. Filter criteria. Supported fields for filtering include: * `audit.create_time` * `audit.creator` * `audit.update_time` * `audit.updater` * `detail.data_leak.discovery_document_ids` * `detail.data_leak.severity` * `detail.detail_type` * `detail.initial_access_broker.discovery_document_ids` * `detail.initial_access_broker.severity` * `detail.insider_threat.discovery_document_ids` * `detail.insider_threat.severity` * `finding_count` * `priority_analysis.priority_level` * `relevance_analysis.confidence` * `relevance_analysis.relevance_level` * `relevance_analysis.relevant` * `severity_analysis.severity_level` * `state` Examples: * `detail.detail_type = "initial_access_broker"` * `detail.detail_type != "data_leak"` * `detail.insider_threat.severity = "HIGH"` * `audit.create_time >= "2026-04-03T00:00:00Z" AND audit.create_time < "2026-04-06T00:00:00Z"` * `state = "NEW" OR state = "TRIAGED"` * `severity_analysis.severity_level = "SEVERITY_LEVEL_CRITICAL"` */
-  filter?: string;
-  /** Optional. Page token to retrieve the next page of results. */
-  pageToken?: string;
-  /** Optional. Page size. Default to 100 alerts per page. Maximum is 1000 alerts per page. */
-  pageSize?: number;
   /** Required. Parent of the alerts. Format: projects/{project} */
   parent: string;
+  /** Optional. Page size. Default to 100 alerts per page. Maximum is 1000 alerts per page. */
+  pageSize?: number;
   /** Optional. Order by criteria in the csv format: "field1, field2 desc" or "field1, field2" or "field1 asc, field2". If a field is specified without `asc` or `desc`, ascending order is used by default. Supported fields for ordering are identical to those supported for filtering. Examples: * `audit.create_time desc` * `audit.update_time asc` * `audit.create_time desc, severity_analysis.severity_level desc` */
   orderBy?: string;
+  /** Optional. Page token to retrieve the next page of results. */
+  pageToken?: string;
+  /** Optional. Filter criteria. Supported fields for filtering include: * `audit.create_time` * `audit.creator` * `audit.update_time` * `audit.updater` * `detail.data_leak.discovery_document_ids` * `detail.data_leak.severity` * `detail.detail_type` * `detail.initial_access_broker.discovery_document_ids` * `detail.initial_access_broker.severity` * `detail.insider_threat.discovery_document_ids` * `detail.insider_threat.severity` * `finding_count` * `priority_analysis.priority_level` * `relevance_analysis.confidence` * `relevance_analysis.relevance_level` * `relevance_analysis.relevant` * `severity_analysis.severity_level` * `state` Examples: * `detail.detail_type = "initial_access_broker"` * `detail.detail_type != "data_leak"` * `detail.insider_threat.severity = "HIGH"` * `audit.create_time >= "2026-04-03T00:00:00Z" AND audit.create_time < "2026-04-06T00:00:00Z"` * `state = "NEW" OR state = "TRIAGED"` * `severity_analysis.severity_level = "SEVERITY_LEVEL_CRITICAL"` */
+  filter?: string;
 }
 export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    filter: S.optional(S.String.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1753,20 +1735,20 @@ export interface ListProjectsConfigurationsRequest {
   orderBy?: string;
   /** Optional. Page token. */
   pageToken?: string;
-  /** Optional. Page size. */
-  pageSize?: number;
-  /** Required. Parent of the configuration. Format: vaults/{vault} */
-  parent: string;
   /** Optional. Filter criteria. */
   filter?: string;
+  /** Required. Parent of the configuration. Format: vaults/{vault} */
+  parent: string;
+  /** Optional. Page size. */
+  pageSize?: number;
 }
 export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1785,15 +1767,15 @@ export const ConfigurationList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListConfigurations. */
 export interface ListConfigurationsResponse {
-  /** Page token. */
-  nextPageToken?: string;
   /** List of configurations. */
   configurations?: ConfigurationList;
+  /** Page token. */
+  nextPageToken?: string;
 }
 export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     configurations: S.optional(ConfigurationList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListConfigurationsResponse",
@@ -1802,23 +1784,23 @@ export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsConfigurationsRevisionsRequest {
   /** Optional. An AIP-160 filter string */
   filter?: string;
-  /** Required. The name of the Configuration to retrieve Revisions for */
-  parent: string;
-  /** Optional. Page Size */
-  pageSize?: number;
   /** Optional. A page token provided by the API */
   pageToken?: string;
   /** Optional. Specify ordering of response */
   orderBy?: string;
+  /** Required. The name of the Configuration to retrieve Revisions for */
+  parent: string;
+  /** Optional. Page Size */
+  pageSize?: number;
 }
 export const ListProjectsConfigurationsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1871,24 +1853,24 @@ export const ListConfigurationRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConfigurationRevisionsResponse>;
 
 export interface ListProjectsFindingsRequest {
-  /** Required. Parent of the findings. */
-  parent: string;
-  /** Optional. Page token. */
-  pageToken?: string;
-  /** Optional. Page size. */
-  pageSize?: number;
   /** Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2". */
   orderBy?: string;
   /** Optional. Filter criteria. */
   filter?: string;
+  /** Optional. Page token. */
+  pageToken?: string;
+  /** Required. Parent of the findings. */
+  parent: string;
+  /** Optional. Page size. */
+  pageSize?: number;
 }
 export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2009,23 +1991,23 @@ export const ResolveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolveProjectsAlertsRequest>;
 
 export interface SearchProjectsFindingsRequest {
-  /** Required. Parent of the findings. Format: vaults/{vault} */
-  parent: string;
   /** Optional. Page token. */
   pageToken?: string;
-  /** Optional. Page size. */
-  pageSize?: number;
   /** Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2". */
   orderBy?: string;
+  /** Required. Parent of the findings. Format: vaults/{vault} */
+  parent: string;
+  /** Optional. Page size. */
+  pageSize?: number;
   /** Optional. Query on what findings will be returned. This supports the same filter criteria as FindingService.ListFindings as well as the following relationship query `has_alert`. Example: - `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")` */
   query?: string;
 }
 export const SearchProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -2264,21 +2246,6 @@ export const generateOrgProfileProjects: API.OperationMethod<
   input: GenerateOrgProfileProjectsRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetPasswordProjectsAlertsError = NotFound | Forbidden | GcpOpError;
-/** Get the decrypted password of an alert. */
-export const getPasswordProjectsAlerts: API.OperationMethod<
-  GetPasswordProjectsAlertsRequest,
-  Alert,
-  GetPasswordProjectsAlertsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPasswordProjectsAlertsRequest,
-  output: Alert,
-  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

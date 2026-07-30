@@ -26,7 +26,9 @@ export interface AdvancedThreatProtectionSettingsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName: AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName;
+  advancedThreatProtectionName:
+    | AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName
+    | (string & {});
 }
 export const AdvancedThreatProtectionSettingsGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -250,7 +252,9 @@ export interface AdvancedThreatProtectionSettingsUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName: AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName;
+  advancedThreatProtectionName:
+    | AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName
+    | (string & {});
   /** Resource update properties. */
   properties?: AdvancedThreatProtectionUpdateProperties;
 }
@@ -329,7 +333,9 @@ export interface AdvancedThreatProtectionSettingsUpdatePutRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
-  advancedThreatProtectionName: AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName;
+  advancedThreatProtectionName:
+    | AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName
+    | (string & {});
   /** Resource properties. */
   properties?: AdvancedThreatProtectionPropertiesInput;
 }
@@ -393,7 +399,7 @@ export const AdministratorType = /*@__PURE__*/ S.String;
 /** The properties of an administrator. */
 export interface AdministratorProperties {
   /** Type of the sever administrator. */
-  administratorType?: AdministratorType;
+  administratorType?: AdministratorType | (string & {});
   /** Login name of the server administrator. */
   login?: string;
   /** SID (object ID) of the server administrator. */
@@ -423,7 +429,9 @@ export interface AzureADAdministratorsCreateOrUpdateRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Azure AD Administrator. */
-  administratorName: AzureADAdministratorsCreateOrUpdateRequestAdministratorName;
+  administratorName:
+    | AzureADAdministratorsCreateOrUpdateRequestAdministratorName
+    | (string & {});
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
@@ -488,7 +496,9 @@ export interface AzureADAdministratorsDeleteRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Azure AD Administrator. */
-  administratorName: AzureADAdministratorsDeleteRequestAdministratorName;
+  administratorName:
+    | AzureADAdministratorsDeleteRequestAdministratorName
+    | (string & {});
 }
 export const AzureADAdministratorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -530,7 +540,9 @@ export interface AzureADAdministratorsGetRequest {
   /** The name of the server. */
   serverName: string;
   /** The name of the Azure AD Administrator. */
-  administratorName: AzureADAdministratorsGetRequestAdministratorName;
+  administratorName:
+    | AzureADAdministratorsGetRequestAdministratorName
+    | (string & {});
 }
 export const AzureADAdministratorsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2746,7 +2758,7 @@ export const ProvisioningState = /*@__PURE__*/ S.String;
 export interface ServerBackupPropertiesV2 {
   /** Backup name */
   backupNameV2?: string;
-  backupType?: BackupType;
+  backupType?: BackupType | (string & {});
   /** Backup completed time (ISO8601 format). */
   completedTime?: string;
   /** Backup source */
@@ -4285,7 +4297,7 @@ export const ImportSourceStorageType = /*@__PURE__*/ S.String;
 /** Import source related properties. */
 export interface ImportSourceProperties {
   /** Storage type of import source. */
-  storageType?: ImportSourceStorageType;
+  storageType?: ImportSourceStorageType | (string & {});
   /** Uri of the import source storage. */
   storageUrl?: string;
   /** Sas token for accessing source storage. Read and list permissions are required for sas token. */
@@ -4518,7 +4530,7 @@ export const ServerKeyPropertiesInputServerKeyType = /*@__PURE__*/ S.String;
 /** Properties for a key execution. */
 export interface ServerKeyPropertiesInput {
   /** The key type like 'AzureKeyVault'. */
-  serverKeyType: ServerKeyPropertiesInputServerKeyType;
+  serverKeyType: ServerKeyPropertiesInputServerKeyType | (string & {});
   /** The URI of the key. */
   uri?: string;
 }
@@ -4920,7 +4932,7 @@ export const MySQLServerIdentityInputUserAssignedIdentitiesMap =
 /** Properties to configure Identity for Bring your Own Keys */
 export interface MySQLServerIdentityInput {
   /** Type of managed service identity. */
-  type?: ManagedServiceIdentityType;
+  type?: ManagedServiceIdentityType | (string & {});
   /** Metadata of user assigned identity. */
   userAssignedIdentities?: MySQLServerIdentityInputUserAssignedIdentitiesMap;
 }

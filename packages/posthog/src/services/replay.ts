@@ -560,68 +560,6 @@ export const SessionRecordingPlaylistsUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "SessionRecordingPlaylistsUpdateRequest",
 }) as any as S.Schema<SessionRecordingPlaylistsUpdateRequest>;
 
-/** Session IDs of the recordings to delete (max 100 per call). */
-export type SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
-  Array<string>;
-export const SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList>;
-
-export interface SessionRecordingsBulkDeleteCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Session IDs of the recordings to delete (max 100 per call). */
-  session_recording_ids: SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList;
-  /** Earliest start time of the recordings, as an ISO date or a relative offset like '-30d'. Providing this narrows the lookup and speeds up the request; defaults to the project's recording retention period. */
-  date_from?: string | null;
-}
-export const SessionRecordingsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      session_recording_ids:
-        SessionRecordingsBulkDeleteCreateRequestSessionRecordingIdsList,
-      date_from: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/session_recordings/bulk_delete/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SessionRecordingsBulkDeleteCreateRequest",
-}) as any as S.Schema<SessionRecordingsBulkDeleteCreateRequest>;
-
-/** Session IDs that were found but could not be deleted. These can be retried. */
-export type SessionRecordingBulkDeleteResponseFailedIdsList = Array<string>;
-export const SessionRecordingBulkDeleteResponseFailedIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SessionRecordingBulkDeleteResponseFailedIdsList>;
-
-export interface SessionRecordingBulkDeleteResponse {
-  /** True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips. */
-  success: boolean;
-  /** Number of recordings that were deleted. */
-  deleted_count: number;
-  /** Number of session recording IDs in the request. */
-  total_requested: number;
-  /** Session IDs that were found but could not be deleted. These can be retried. */
-  failed_ids: SessionRecordingBulkDeleteResponseFailedIdsList;
-}
-export const SessionRecordingBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    deleted_count: S.Number,
-    total_requested: S.Number,
-    failed_ids: SessionRecordingBulkDeleteResponseFailedIdsList,
-  }),
-).annotate({
-  identifier: "SessionRecordingBulkDeleteResponse",
-}) as any as S.Schema<SessionRecordingBulkDeleteResponse>;
-
 export interface SessionRecordingsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1078,21 +1016,6 @@ export const sessionRecordingPlaylistsUpdate: API.OperationMethod<
   input: SessionRecordingPlaylistsUpdateRequest,
   output: SessionRecordingPlaylistOutput,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SessionRecordingsBulkDeleteCreateError = PosthogOpError;
-/** Delete a batch of session recordings by session ID. Deletion is permanent and cannot be undone. IDs that don't match an existing recording are skipped and counted in `total_requested` but not `deleted_count`. */
-export const sessionRecordingsBulkDeleteCreate: API.OperationMethod<
-  SessionRecordingsBulkDeleteCreateRequest,
-  SessionRecordingBulkDeleteResponse,
-  SessionRecordingsBulkDeleteCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionRecordingsBulkDeleteCreateRequest,
-  output: SessionRecordingBulkDeleteResponse,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

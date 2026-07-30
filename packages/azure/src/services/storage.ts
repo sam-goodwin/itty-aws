@@ -73,7 +73,9 @@ export interface AdvancedPlatformMetricsCreateOrUpdateRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The type of the advanced platform metrics rule. */
-  advancedPlatformMetricsRuleType: AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType;
+  advancedPlatformMetricsRuleType:
+    | AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType
+    | (string & {});
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRulePropertiesInput;
 }
@@ -224,7 +226,9 @@ export interface AdvancedPlatformMetricsDeleteRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The type of the advanced platform metrics rule. */
-  advancedPlatformMetricsRuleType: AdvancedPlatformMetricsDeleteRequestAdvancedPlatformMetricsRuleType;
+  advancedPlatformMetricsRuleType:
+    | AdvancedPlatformMetricsDeleteRequestAdvancedPlatformMetricsRuleType
+    | (string & {});
 }
 export const AdvancedPlatformMetricsDeleteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -268,7 +272,9 @@ export interface AdvancedPlatformMetricsGetRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The type of the advanced platform metrics rule. */
-  advancedPlatformMetricsRuleType: AdvancedPlatformMetricsGetRequestAdvancedPlatformMetricsRuleType;
+  advancedPlatformMetricsRuleType:
+    | AdvancedPlatformMetricsGetRequestAdvancedPlatformMetricsRuleType
+    | (string & {});
 }
 export const AdvancedPlatformMetricsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1249,7 +1255,7 @@ export interface BlobContainersListRequest {
   /** Optional. When specified, only container names starting with the filter will be listed. */
   _filter?: string;
   /** Optional, used to include the properties for soft deleted blob containers. */
-  _include?: BlobContainersListRequestInclude;
+  _include?: BlobContainersListRequestInclude | (string & {});
 }
 export const BlobContainersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1663,7 +1669,7 @@ export interface BlobInventoryPolicySchemaInput {
   /** Policy is enabled if set to true. */
   enabled: boolean;
   /** The valid value is Inventory */
-  type: InventoryRuleType;
+  type: InventoryRuleType | (string & {});
   /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
   rules: BlobInventoryPolicySchemaInputRulesList;
 }
@@ -1698,7 +1704,9 @@ export interface BlobInventoryPoliciesCreateOrUpdateRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the storage account blob inventory policy. It should always be 'default' */
-  blobInventoryPolicyName: BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName;
+  blobInventoryPolicyName:
+    | BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName
+    | (string & {});
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyPropertiesInput;
 }
@@ -1807,7 +1815,9 @@ export interface BlobInventoryPoliciesDeleteRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the storage account blob inventory policy. It should always be 'default' */
-  blobInventoryPolicyName: BlobInventoryPoliciesDeleteRequestBlobInventoryPolicyName;
+  blobInventoryPolicyName:
+    | BlobInventoryPoliciesDeleteRequestBlobInventoryPolicyName
+    | (string & {});
 }
 export const BlobInventoryPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1847,7 +1857,9 @@ export interface BlobInventoryPoliciesGetRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the storage account blob inventory policy. It should always be 'default' */
-  blobInventoryPolicyName: BlobInventoryPoliciesGetRequestBlobInventoryPolicyName;
+  blobInventoryPolicyName:
+    | BlobInventoryPoliciesGetRequestBlobInventoryPolicyName
+    | (string & {});
 }
 export const BlobInventoryPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2156,7 +2168,7 @@ export interface LastAccessTimeTrackingPolicy {
   /** When set to true last access time based tracking is enabled. */
   enable: boolean;
   /** Name of the policy. The valid value is AccessTimeTracking. This field is currently read only */
-  name?: Name;
+  name?: Name | (string & {});
   /** The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1 */
   trackingGranularityInDays?: number;
   /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
@@ -2488,7 +2500,7 @@ export const StorageConnectorSourceType = /*@__PURE__*/ S.String;
 /** The storage connector backing data source information */
 export interface StorageConnectorSource {
   /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
-  type: StorageConnectorSourceType;
+  type: StorageConnectorSourceType | (string & {});
 }
 export const StorageConnectorSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2507,7 +2519,7 @@ export interface StorageConnectorPropertiesInput {
   /** Test connection to backing data source before creating the storage connector. */
   testConnection?: boolean;
   /** The type of backing data source for this Storage Connector. */
-  dataSourceType: StorageConnectorDataSourceType;
+  dataSourceType: StorageConnectorDataSourceType | (string & {});
   /** Information about how to communicate with and authenticate to the backing data store. */
   source: StorageConnectorSource;
 }
@@ -2900,7 +2912,7 @@ export const StorageConnectorPropertiesUpdateState = /*@__PURE__*/ S.String;
 /** The storage connector backing data source information */
 export interface StorageConnectorSourceUpdate {
   /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
-  type: StorageConnectorSourceType;
+  type: StorageConnectorSourceType | (string & {});
 }
 export const StorageConnectorSourceUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5490,7 +5502,7 @@ export interface LocalUsersListRequest {
   /** Optional. When specified, only local user names starting with the filter will be listed. */
   _filter?: string;
   /** Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default. */
-  _include?: LocalUsersListRequestInclude;
+  _include?: LocalUsersListRequestInclude | (string & {});
 }
 export const LocalUsersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5867,7 +5879,7 @@ export interface ManagementPolicyRule {
   /** A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy. */
   name: string;
   /** The valid value is Lifecycle */
-  type: RuleType;
+  type: RuleType | (string & {});
   /** An object that defines the Lifecycle rule. */
   definition: ManagementPolicyDefinition;
 }
@@ -5922,7 +5934,9 @@ export interface ManagementPoliciesCreateOrUpdateRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the Storage Account Management Policy. It should always be 'default' */
-  managementPolicyName: ManagementPoliciesCreateOrUpdateRequestManagementPolicyName;
+  managementPolicyName:
+    | ManagementPoliciesCreateOrUpdateRequestManagementPolicyName
+    | (string & {});
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyPropertiesInput;
 }
@@ -6002,7 +6016,9 @@ export interface ManagementPoliciesDeleteRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the Storage Account Management Policy. It should always be 'default' */
-  managementPolicyName: ManagementPoliciesDeleteRequestManagementPolicyName;
+  managementPolicyName:
+    | ManagementPoliciesDeleteRequestManagementPolicyName
+    | (string & {});
 }
 export const ManagementPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6042,7 +6058,9 @@ export interface ManagementPoliciesGetRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the Storage Account Management Policy. It should always be 'default' */
-  managementPolicyName: ManagementPoliciesGetRequestManagementPolicyName;
+  managementPolicyName:
+    | ManagementPoliciesGetRequestManagementPolicyName
+    | (string & {});
 }
 export const ManagementPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8239,7 +8257,7 @@ export interface StorageAccountsCheckNameAvailabilityRequest {
   /** The storage account name. */
   name: string;
   /** The type of resource, Microsoft.Storage/storageAccounts */
-  type: StorageAccountsCheckNameAvailabilityRequestType;
+  type: StorageAccountsCheckNameAvailabilityRequestType | (string & {});
 }
 export const StorageAccountsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8291,7 +8309,7 @@ export interface ExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationTypes;
+  type?: ExtendedLocationTypes | (string & {});
 }
 export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8570,7 +8588,7 @@ export interface VirtualNetworkRuleInput {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
   id: string;
   /** The action of virtual network rule. */
-  action?: VirtualNetworkRuleInputAction;
+  action?: VirtualNetworkRuleInputAction | (string & {});
 }
 export const VirtualNetworkRuleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8597,7 +8615,7 @@ export interface IPRule {
   /** Specifies the IP or IP range in CIDR format. */
   value: string;
   /** The action of IP ACL rule. */
-  action?: IPRuleAction;
+  action?: IPRuleAction | (string & {});
 }
 export const IPRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9878,7 +9896,7 @@ export interface StorageAccountsFailoverRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The parameter is set to 'Planned' to indicate whether a Planned failover is requested. */
-  failoverType?: StorageAccountsFailoverRequestFailoverType;
+  failoverType?: StorageAccountsFailoverRequestFailoverType | (string & {});
 }
 export const StorageAccountsFailoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9920,7 +9938,9 @@ export interface StorageAccountsGetCustomerInitiatedMigrationRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** The name of the Storage Account Migration. It should always be 'default' */
-  migrationName: StorageAccountsGetCustomerInitiatedMigrationRequestMigrationName;
+  migrationName:
+    | StorageAccountsGetCustomerInitiatedMigrationRequestMigrationName
+    | (string & {});
 }
 export const StorageAccountsGetCustomerInitiatedMigrationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10350,7 +10370,7 @@ export interface StorageAccountsListKeysRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
   /** Specifies type of the key to be listed. Possible value is kerb. */
-  _expand?: StorageAccountsListKeysRequestExpand;
+  _expand?: StorageAccountsListKeysRequestExpand | (string & {});
 }
 export const StorageAccountsListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11019,7 +11039,7 @@ export interface TriggerParameters {
   /** Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   interval?: number;
   /** Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
-  intervalUnit?: IntervalUnit;
+  intervalUnit?: IntervalUnit | (string & {});
   /** When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   endBy?: string;
   /** When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
@@ -11455,7 +11475,7 @@ export interface TriggerParametersUpdate {
   /** Run interval of task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   interval?: number;
   /** Run interval unit of task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
-  intervalUnit?: IntervalUnit;
+  intervalUnit?: IntervalUnit | (string & {});
   /** When to end task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
   endBy?: string;
   /** When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */

@@ -351,7 +351,7 @@ export const EmailAuthenticationType = /*@__PURE__*/ S.String;
 /** Information about an end user who authenticates using a one-time password sent to their email address. */
 export interface EmailAuthentication {
   /** The type of authentication information. */
-  type: EmailAuthenticationType | (string & {});
+  type: EmailAuthenticationType;
   /** The email address of the end user. */
   email: string;
 }
@@ -371,7 +371,7 @@ export const SmsAuthenticationType = /*@__PURE__*/ S.String;
 /** Information about an end user who authenticates using a one-time password sent to their phone number via SMS. */
 export interface SmsAuthentication {
   /** The type of authentication information. */
-  type: SmsAuthenticationType | (string & {});
+  type: SmsAuthenticationType;
   /** Phone number in [E.164](https://en.wikipedia.org/wiki/E.164) format. */
   phoneNumber: string;
 }
@@ -391,7 +391,7 @@ export const DeveloperJWTAuthenticationType = /*@__PURE__*/ S.String;
 /** Information about an end user who authenticates using a JWT issued by the developer. */
 export interface DeveloperJWTAuthentication {
   /** The type of authentication information. */
-  type: DeveloperJWTAuthenticationType | (string & {});
+  type: DeveloperJWTAuthenticationType;
   /** The key ID of the JWK used to sign the JWT. */
   kid: string;
   /** The unique identifier for the end user that is captured in the `sub` claim of the JWT. */
@@ -477,7 +477,7 @@ export const SiweAuthenticationType = /*@__PURE__*/ S.String;
 /** Information about an end user who authenticates using Sign In With Ethereum (EIP-4361). */
 export interface SiweAuthentication {
   /** The type of authentication information. */
-  type: SiweAuthenticationType | (string & {});
+  type: SiweAuthenticationType;
   /** The ERC-55 checksummed Ethereum address of the end user. */
   address: string;
 }
@@ -1502,7 +1502,7 @@ export const EthValueCriterionOperator = /*@__PURE__*/ S.String;
 /** A schema for specifying a criterion for the `value` field of an EVM transaction. */
 export interface EthValueCriterion {
   /** The type of criterion to use. This should be `ethValue`. */
-  type: EthValueCriterionType | (string & {});
+  type: EthValueCriterionType;
   /** The amount of ETH, in wei, that the transaction's `value` field should be compared to. */
   ethValue: string;
   /** The operator to use for the comparison. The transaction's `value` field will be on the left-hand side of the operator, and the `ethValue` field will be on the right-hand side. */
@@ -1535,7 +1535,7 @@ export const EvmAddressCriterionOperator = /*@__PURE__*/ S.String;
 /** A schema for specifying a criterion for the `to` field of an EVM transaction. */
 export interface EvmAddressCriterion {
   /** The type of criterion to use. This should be `evmAddress`. */
-  type: EvmAddressCriterionType | (string & {});
+  type: EvmAddressCriterionType;
   /** A list of 0x-prefixed EVM addresses that the transaction's `to` field should be compared to. There is a limit of 300 addresses per criterion. */
   addresses: EvmAddressCriterionAddressesList;
   /** The operator to use for the comparison. The transaction's `to` field will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
@@ -1608,7 +1608,7 @@ export const AbiStateMutability = /*@__PURE__*/ S.String;
 /** ABI function type for contract functions. */
 export interface AbiFunction {
   /** The type of the ABI item, must be `function`. */
-  type: AbiFunctionType | (string & {});
+  type: AbiFunctionType;
   /** The name of the ABI function. */
   name: string;
   /** The list of ABI parameters used for this function. */
@@ -1759,7 +1759,7 @@ export const EvmDataCriterionConditionsList = /*@__PURE__*/ S.Array(
 /** A schema for specifying a criterion for the `data` field of an EVM transaction. */
 export interface EvmDataCriterion {
   /** The type of criterion to use. This should be `evmData`. */
-  type: EvmDataCriterionType | (string & {});
+  type: EvmDataCriterionType;
   /** The ABI of the smart contract being called. This can be a partial structure with only specific functions. */
   abi: EvmDataCriterionAbi;
   /** A list of conditions to apply against the function and encoded arguments in the transaction's `data` field. Each condition must be met in order for this policy to be accepted or rejected. */
@@ -1786,7 +1786,7 @@ export const NetUSDChangeCriterionOperator = /*@__PURE__*/ S.String;
 /** A schema for specifying a criterion for the USD denominated asset transfer or exposure for a transaction. This includes native transfers, as well as token transfers. */
 export interface NetUSDChangeCriterion {
   /** The type of criterion to use. This should be `netUSDChange`. */
-  type: NetUSDChangeCriterionType | (string & {});
+  type: NetUSDChangeCriterionType;
   /** The amount of USD, in cents, that the total value of a transaction's asset transfer should be compared to. */
   changeCents: number;
   /** The operator to use for the comparison. The total value of a transaction's asset transfer will be on the left-hand side of the operator, and the `changeCents` field will be on the right-hand side. */
@@ -1820,7 +1820,7 @@ export interface SignEvmTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEvmTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEvmTransactionRuleOperation | (string & {});
+  operation: SignEvmTransactionRuleOperation;
   criteria: SignEvmTransactionCriteria;
 }
 export const SignEvmTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -1877,7 +1877,7 @@ export const EvmNetworkCriterionOperator = /*@__PURE__*/ S.String;
 /** A schema for specifying a criterion for the intended `network` of an EVM transaction. */
 export interface EvmNetworkCriterion {
   /** The type of criterion to use. This should be `evmNetwork`. */
-  type: EvmNetworkCriterionType | (string & {});
+  type: EvmNetworkCriterionType;
   /** A list of EVM network identifiers that the transaction's intended `network` should be compared to. */
   networks: EvmNetworkCriterionNetworksList;
   /** The operator to use for the comparison. The transaction's intended `network` will be on the left-hand side of the operator, and the `networks` field will be on the right-hand side. */
@@ -1912,7 +1912,7 @@ export interface SendEvmTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEvmTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEvmTransactionRuleOperation | (string & {});
+  operation: SendEvmTransactionRuleOperation;
   criteria: SendEvmTransactionCriteria;
 }
 export const SendEvmTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -1963,7 +1963,7 @@ export interface SignEvmMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEvmMessageRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEvmMessageRuleOperation | (string & {});
+  operation: SignEvmMessageRuleOperation;
   criteria: SignEvmMessageCriteria;
 }
 export const SignEvmMessageRule = /*@__PURE__*/ S.suspend(() =>
@@ -2123,7 +2123,7 @@ export const SignEvmTypedDataFieldCriterionConditionsList =
 
 export interface SignEvmTypedDataFieldCriterion {
   /** The type of criterion to use. This should be `evmTypedDataField`. */
-  type: SignEvmTypedDataFieldCriterionType | (string & {});
+  type: SignEvmTypedDataFieldCriterionType;
   /** An object containing EIP-712 type definitions, as well as a primary type for the root message object. */
   types: SignEvmTypedDataFieldCriterionTypes;
   /** A list of conditions to check against the data being signed. Each condition must be met for the rule to take effect. */
@@ -2163,7 +2163,7 @@ export const SignEvmTypedDataVerifyingContractCriterionOperator =
 /** A schema for specifying criterion for a domain's verifying contract. */
 export interface SignEvmTypedDataVerifyingContractCriterion {
   /** The type of criterion to use. This should be `evmTypedDataVerifyingContract`. */
-  type: SignEvmTypedDataVerifyingContractCriterionType | (string & {});
+  type: SignEvmTypedDataVerifyingContractCriterionType;
   /** A list of 0x-prefixed EVM addresses that the domain's verifying contract should be compared to. There is a limit of 300 addresses per criterion. */
   addresses: SignEvmTypedDataVerifyingContractCriterionAddressesList;
   /** The operator to use for the comparison. The domain's verifying contract will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
@@ -2196,7 +2196,7 @@ export interface SignEvmTypedDataRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEvmTypedDataRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEvmTypedDataRuleOperation | (string & {});
+  operation: SignEvmTypedDataRuleOperation;
   criteria: SignEvmTypedDataCriteria;
 }
 export const SignEvmTypedDataRule = /*@__PURE__*/ S.suspend(() =>
@@ -2234,7 +2234,7 @@ export const SolAddressCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the recipient addresses of a Solana transaction's native transfer instruction. */
 export interface SolAddressCriterion {
   /** The type of criterion to use. This should be `solAddress`. */
-  type: SolAddressCriterionType | (string & {});
+  type: SolAddressCriterionType;
   /** The Solana addresses that are compared to the list of native transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
   addresses: SolAddressCriterionAddressesList;
   /** The operator to use for the comparison. Each of the native transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
@@ -2261,7 +2261,7 @@ export const SolValueCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the SOL value in lamports of a native transfer instruction in a Solana transaction. */
 export interface SolValueCriterion {
   /** The type of criterion to use. This should be `solValue`. */
-  type: SolValueCriterionType | (string & {});
+  type: SolValueCriterionType;
   /** The amount of SOL in lamports that the transaction instruction's `value` field should be compared to. */
   solValue: string;
   /** The operator to use for the comparison. The transaction instruction's `value` field will be on the left-hand side of the operator, and the `solValue` field will be on the right-hand side. */
@@ -2294,7 +2294,7 @@ export const SplAddressCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the recipient addresses of a Solana transaction's SPL token transfer instructions. */
 export interface SplAddressCriterion {
   /** The type of criterion to use. This should be `splAddress`. */
-  type: SplAddressCriterionType | (string & {});
+  type: SplAddressCriterionType;
   /** The Solana addresses that are compared to the list of SPL token transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
   addresses: SplAddressCriterionAddressesList;
   /** The operator to use for the comparison. Each of the SPL token transfer recipient addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
@@ -2321,7 +2321,7 @@ export const SplValueCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the SPL token value of a SPL token transfer instruction in a Solana transaction. */
 export interface SplValueCriterion {
   /** The type of criterion to use. This should be `splValue`. */
-  type: SplValueCriterionType | (string & {});
+  type: SplValueCriterionType;
   /** The amount of the SPL token that the transaction instruction's `value` field should be compared to. */
   splValue: string;
   /** The operator to use for the comparison. The transaction instruction's `value` field will be on the left-hand side of the operator, and the `splValue` field will be on the right-hand side. */
@@ -2354,7 +2354,7 @@ export const MintAddressCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the token mint addresses of a Solana transaction's SPL token transfer instructions. */
 export interface MintAddressCriterion {
   /** The type of criterion to use. This should be `mintAddress`. */
-  type: MintAddressCriterionType | (string & {});
+  type: MintAddressCriterionType;
   /** The Solana addresses that are compared to the list of token mint addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array. */
   addresses: MintAddressCriterionAddressesList;
   /** The operator to use for the comparison. Each of the token mint addresses in the transaction's `accountKeys` (for legacy transactions) or `staticAccountKeys` (for V0 transactions) array will be on the left-hand side of the operator, and the `addresses` field will be on the right-hand side. */
@@ -2603,7 +2603,7 @@ export const SolDataCriterionConditionsList = /*@__PURE__*/ S.Array(
 /** A schema for specifying criterion for instruction data in a Solana transaction. */
 export interface SolDataCriterion {
   /** The type of criterion to use. This should be `solData`. */
-  type: SolDataCriterionType | (string & {});
+  type: SolDataCriterionType;
   /** List of IDL specifications. Can contain known program names (strings) or custom IDL objects. */
   idls: SolDataCriterionIdlsList;
   /** A list of conditions to apply against the transaction instruction. Only one condition must evaluate to true for this criterion to be met. */
@@ -2636,7 +2636,7 @@ export const ProgramIdCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the program IDs of a Solana transaction's instructions. */
 export interface ProgramIdCriterion {
   /** The type of criterion to use. This should be `programId`. */
-  type: ProgramIdCriterionType | (string & {});
+  type: ProgramIdCriterionType;
   /** The Solana program IDs that are compared to the list of program IDs in the transaction's instructions. */
   programIds: ProgramIdCriterionProgramIdsList;
   /** The operator to use for the comparison. Each of the program IDs in the transaction's instructions will be on the left-hand side of the operator, and the `programIds` field will be on the right-hand side. */
@@ -2673,7 +2673,7 @@ export interface SignSolTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignSolTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignSolTransactionRuleOperation | (string & {});
+  operation: SignSolTransactionRuleOperation;
   criteria: SignSolTransactionCriteria;
 }
 export const SignSolTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -2717,7 +2717,7 @@ export const SolNetworkCriterionOperator = /*@__PURE__*/ S.String;
 /** The criterion for the Solana network of a transaction. */
 export interface SolNetworkCriterion {
   /** The type of criterion to use. This should be `solNetwork`. */
-  type: SolNetworkCriterionType | (string & {});
+  type: SolNetworkCriterionType;
   /** The Solana networks that the transaction's intended network should be compared to. */
   networks: SolNetworkCriterionNetworksList;
   /** The operator to use for the comparison. The transaction's intended network will be on the left-hand side of the operator, and the `networks` field will be on the right-hand side. */
@@ -2755,7 +2755,7 @@ export interface SendSolTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendSolTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendSolTransactionRuleOperation | (string & {});
+  operation: SendSolTransactionRuleOperation;
   criteria: SendSolTransactionCriteria;
 }
 export const SendSolTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -2806,7 +2806,7 @@ export interface SignSolMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignSolMessageRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignSolMessageRuleOperation | (string & {});
+  operation: SignSolMessageRuleOperation;
   criteria: SignSolMessageCriteria;
 }
 export const SignSolMessageRule = /*@__PURE__*/ S.suspend(() =>
@@ -2831,7 +2831,7 @@ export interface SignEvmHashRule {
   /** Whether any attempts to sign a hash will be accepted or rejected. This rule does not accept any criteria. */
   action: SignEvmHashRuleAction | (string & {});
   /** The operation to which the rule applies. */
-  operation: SignEvmHashRuleOperation | (string & {});
+  operation: SignEvmHashRuleOperation;
 }
 export const SignEvmHashRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2870,7 +2870,7 @@ export interface PrepareUserOperationRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: PrepareUserOperationRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: PrepareUserOperationRuleOperation | (string & {});
+  operation: PrepareUserOperationRuleOperation;
   criteria: PrepareUserOperationCriteria;
 }
 export const PrepareUserOperationRule = /*@__PURE__*/ S.suspend(() =>
@@ -2910,7 +2910,7 @@ export interface SendUserOperationRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendUserOperationRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendUserOperationRuleOperation | (string & {});
+  operation: SendUserOperationRuleOperation;
   criteria: SendUserOperationCriteria;
 }
 export const SendUserOperationRule = /*@__PURE__*/ S.suspend(() =>
@@ -2951,7 +2951,7 @@ export interface SignEndUserEvmTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEndUserEvmTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEndUserEvmTransactionRuleOperation | (string & {});
+  operation: SignEndUserEvmTransactionRuleOperation;
   criteria: SignEndUserEvmTransactionCriteria;
 }
 export const SignEndUserEvmTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -2993,7 +2993,7 @@ export interface SendEndUserEvmTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEndUserEvmTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEndUserEvmTransactionRuleOperation | (string & {});
+  operation: SendEndUserEvmTransactionRuleOperation;
   criteria: SendEndUserEvmTransactionCriteria;
 }
 export const SendEndUserEvmTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -3024,7 +3024,7 @@ export interface SignEndUserEvmMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEndUserEvmMessageRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEndUserEvmMessageRuleOperation | (string & {});
+  operation: SignEndUserEvmMessageRuleOperation;
   criteria: SignEndUserEvmMessageCriteria;
 }
 export const SignEndUserEvmMessageRule = /*@__PURE__*/ S.suspend(() =>
@@ -3062,7 +3062,7 @@ export interface SignEndUserEvmTypedDataRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEndUserEvmTypedDataRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEndUserEvmTypedDataRuleOperation | (string & {});
+  operation: SignEndUserEvmTypedDataRuleOperation;
   criteria: SignEndUserEvmTypedDataCriteria;
 }
 export const SignEndUserEvmTypedDataRule = /*@__PURE__*/ S.suspend(() =>
@@ -3087,7 +3087,7 @@ export interface SignEndUserEvmHashRule {
   /** Whether any attempts to sign a hash will be accepted or rejected. This rule does not accept any criteria. */
   action: SignEndUserEvmHashRuleAction | (string & {});
   /** The operation to which the rule applies. */
-  operation: SignEndUserEvmHashRuleOperation | (string & {});
+  operation: SignEndUserEvmHashRuleOperation;
 }
 export const SignEndUserEvmHashRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3129,7 +3129,7 @@ export interface SignEndUserSolTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEndUserSolTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEndUserSolTransactionRuleOperation | (string & {});
+  operation: SignEndUserSolTransactionRuleOperation;
   criteria: SignEndUserSolTransactionCriteria;
 }
 export const SignEndUserSolTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -3174,7 +3174,7 @@ export interface SendEndUserSolTransactionRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEndUserSolTransactionRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEndUserSolTransactionRuleOperation | (string & {});
+  operation: SendEndUserSolTransactionRuleOperation;
   criteria: SendEndUserSolTransactionCriteria;
 }
 export const SendEndUserSolTransactionRule = /*@__PURE__*/ S.suspend(() =>
@@ -3205,7 +3205,7 @@ export interface SignEndUserSolMessageRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SignEndUserSolMessageRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SignEndUserSolMessageRuleOperation | (string & {});
+  operation: SignEndUserSolMessageRuleOperation;
   criteria: SignEndUserSolMessageCriteria;
 }
 export const SignEndUserSolMessageRule = /*@__PURE__*/ S.suspend(() =>
@@ -3244,7 +3244,7 @@ export interface SendEndUserEvmAssetRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEndUserEvmAssetRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEndUserEvmAssetRuleOperation | (string & {});
+  operation: SendEndUserEvmAssetRuleOperation;
   criteria: SendEndUserEvmAssetCriteria;
 }
 export const SendEndUserEvmAssetRule = /*@__PURE__*/ S.suspend(() =>
@@ -3284,7 +3284,7 @@ export interface SendEndUserSolAssetRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEndUserSolAssetRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEndUserSolAssetRuleOperation | (string & {});
+  operation: SendEndUserSolAssetRuleOperation;
   criteria: SendEndUserSolAssetCriteria;
 }
 export const SendEndUserSolAssetRule = /*@__PURE__*/ S.suspend(() =>
@@ -3325,7 +3325,7 @@ export interface SendEndUserOperationRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: SendEndUserOperationRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: SendEndUserOperationRuleOperation | (string & {});
+  operation: SendEndUserOperationRuleOperation;
   criteria: SendEndUserOperationCriteria;
 }
 export const SendEndUserOperationRule = /*@__PURE__*/ S.suspend(() =>
@@ -3364,7 +3364,7 @@ export interface CreateEndUserEvmSwapRule {
   /** Whether matching the rule will cause the request to be rejected or accepted. */
   action: CreateEndUserEvmSwapRuleAction | (string & {});
   /** The operation to which the rule applies. Every element of the `criteria` array must match the specified operation. */
-  operation: CreateEndUserEvmSwapRuleOperation | (string & {});
+  operation: CreateEndUserEvmSwapRuleOperation;
   criteria: CreateEndUserEvmSwapCriteria;
 }
 export const CreateEndUserEvmSwapRule = /*@__PURE__*/ S.suspend(() =>
@@ -6739,7 +6739,7 @@ export const X402V1PaymentRequirementsExtraMap = /*@__PURE__*/ S.Record(
 /** The x402 v1 payment requirements. Uses human-readable network names, and carries resource metadata (`resource`, `description`, `mimeType`) alongside the payment fields. The only supported scheme is `exact`. */
 export interface X402V1PaymentRequirements {
   /** The scheme of the payment protocol to use. Currently, the only supported scheme is `exact`. */
-  scheme: X402V1PaymentRequirementsScheme | (string & {});
+  scheme: X402V1PaymentRequirementsScheme;
   /** The network of the blockchain to send payment on. */
   network: X402V1Network | (string & {});
   /** The maximum amount required to pay for the resource in atomic units of the payment asset. */
@@ -8398,7 +8398,7 @@ export const X402BatchSettlementDepositPayloadDeposit = /*@__PURE__*/ S.suspend(
 /** Sent on the first request to fund a channel via an ERC-3009 receiveWithAuthorization deposit. */
 export interface X402BatchSettlementDepositPayload {
   /** The payload-type discriminator. Must be `"deposit"` for a channel-funding deposit payload. */
-  type: X402BatchSettlementDepositPayloadType | (string & {});
+  type: X402BatchSettlementDepositPayloadType;
   channelConfig: X402BatchSettlementChannelConfig;
   voucher: X402BatchSettlementVoucher;
   /** The deposit amount and asset-transfer authorization that funds the channel. */
@@ -8422,7 +8422,7 @@ export const X402BatchSettlementVoucherPayloadType = /*@__PURE__*/ S.String;
 /** Sent on subsequent requests against an already-funded channel; carries only the latest cumulative voucher. */
 export interface X402BatchSettlementVoucherPayload {
   /** The payload-type discriminator. Must be `"voucher"` for a voucher-only payment against an already-funded channel. */
-  type: X402BatchSettlementVoucherPayloadType | (string & {});
+  type: X402BatchSettlementVoucherPayloadType;
   channelConfig: X402BatchSettlementChannelConfig;
   voucher: X402BatchSettlementVoucher;
 }
@@ -8484,7 +8484,7 @@ export const X402BatchSettlementRefundPayloadClaimsList = /*@__PURE__*/ S.Array(
 /** A cooperative refund request. The client emits the minimal shape (just `channelConfig` and `voucher`, with an optional `amount`). A mediating server enriches the payload with `amount`, `refundNonce`, and `claims` before forwarding to the facilitator. Authorizer signatures are optional — the facilitator auto-signs when absent. Field presence determines which shape was sent; the facilitator dispatches accordingly. */
 export interface X402BatchSettlementRefundPayload {
   /** The payload-type discriminator. Must be `"refund"` for both the client-emitted and server-enriched shape. */
-  type: X402BatchSettlementRefundPayloadType | (string & {});
+  type: X402BatchSettlementRefundPayloadType;
   channelConfig: X402BatchSettlementChannelConfig;
   voucher: X402BatchSettlementVoucher;
   /** The refund amount in atomic units of `channelConfig.token`. Optional in the client-emitted shape (defaults to the full remaining channel balance). Required when the payload is enriched by a mediating server. */
@@ -8527,7 +8527,7 @@ export const X402BatchSettlementClaimPayloadClaimsList = /*@__PURE__*/ S.Array(
 /** Server-to-facilitator request to batch on-chain claims of accumulated vouchers. `claimAuthorizerSignature` is optional; when absent the facilitator auto-signs with its receiver-authorizer key. */
 export interface X402BatchSettlementClaimPayload {
   /** The payload-type discriminator. Must be `"claim"` for a server-to-facilitator on-chain claim batch request. */
-  type: X402BatchSettlementClaimPayloadType | (string & {});
+  type: X402BatchSettlementClaimPayloadType;
   /** The list of voucher claims to batch in a single on-chain `claim` call. */
   claims: X402BatchSettlementClaimPayloadClaimsList;
   /** Optional EIP-712 signature from the receiver authorizer over the claim batch. When omitted, the facilitator auto-signs. */
@@ -8550,7 +8550,7 @@ export const X402BatchSettlementSettlePayloadType = /*@__PURE__*/ S.String;
 /** Server-to-facilitator request to transfer claimed funds for a `(receiver, token)` pair to the receiver wallet. */
 export interface X402BatchSettlementSettlePayload {
   /** The payload-type discriminator. Must be `"settle"` for a server-to-facilitator request to move claimed funds to the receiver. */
-  type: X402BatchSettlementSettlePayloadType | (string & {});
+  type: X402BatchSettlementSettlePayloadType;
   /** The 0x-prefixed, checksum EVM address of the receiver to settle to. */
   receiver: string;
   /** The 0x-prefixed, checksum EVM address of the token to settle. */
@@ -8654,7 +8654,7 @@ export interface X402V1PaymentPayload {
   /** The x402 protocol version. Must be `1` for this payload shape. */
   x402Version: X402Version | (number & {});
   /** The scheme of the payment protocol to use. Currently, the only supported scheme is `exact`. */
-  scheme: X402V1PaymentPayloadScheme | (string & {});
+  scheme: X402V1PaymentPayloadScheme;
   /** The network of the blockchain to send payment on. */
   network: X402V1Network | (string & {});
   /** The payload of the payment depending on the x402Version, scheme, and network. */

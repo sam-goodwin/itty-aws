@@ -80,11 +80,13 @@ export const CalculateFoldersContainerThreatDetectionSettingsRequest =
     identifier: "CalculateFoldersContainerThreatDetectionSettingsRequest",
   }) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>;
 
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
+  | "ENABLEMENT_STATE_UNSPECIFIED"
+  | "INHERITED"
+  | "ENABLED"
+  | "DISABLED";
+export const ContainerThreatDetectionSettingsServiceEnablementStateEnum =
+  /*@__PURE__*/ S.String;
 
 export type ConfigModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
@@ -93,14 +95,20 @@ export type ConfigModuleEnablementStateEnum =
   | "DISABLED";
 export const ConfigModuleEnablementStateEnum = /*@__PURE__*/ S.String;
 
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
 export interface Config {
-  value?: DocumentMap;
   moduleEnablementState?: ConfigModuleEnablementStateEnum | (string & {});
+  value?: DocumentMap;
 }
 export const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(DocumentMap),
     moduleEnablementState: S.optional(ConfigModuleEnablementStateEnum),
+    value: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
@@ -110,32 +118,24 @@ export const ConfigMap = /*@__PURE__*/ S.Record(
   Config,
 ) as any as S.Schema<ConfigMap>;
 
-export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
-  | "ENABLEMENT_STATE_UNSPECIFIED"
-  | "INHERITED"
-  | "ENABLED"
-  | "DISABLED";
-export const ContainerThreatDetectionSettingsServiceEnablementStateEnum =
-  /*@__PURE__*/ S.String;
-
 export interface ContainerThreatDetectionSettings {
   name?: string;
   serviceAccount?: string;
   updateTime?: string;
-  modules?: ConfigMap;
   serviceEnablementState?:
     | ContainerThreatDetectionSettingsServiceEnablementStateEnum
     | (string & {});
+  modules?: ConfigMap;
 }
 export const ContainerThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     serviceAccount: S.optional(S.String),
     updateTime: S.optional(S.String),
-    modules: S.optional(ConfigMap),
     serviceEnablementState: S.optional(
       ContainerThreatDetectionSettingsServiceEnablementStateEnum,
     ),
+    modules: S.optional(ConfigMap),
   }),
 ).annotate({
   identifier: "ContainerThreatDetectionSettings",
@@ -170,21 +170,21 @@ export const EventThreatDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface EventThreatDetectionSettings {
-  updateTime?: string;
   name?: string;
   serviceEnablementState?:
     | EventThreatDetectionSettingsServiceEnablementStateEnum
     | (string & {});
   modules?: ConfigMap;
+  updateTime?: string;
 }
 export const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateTime: S.optional(S.String),
     name: S.optional(S.String),
     serviceEnablementState: S.optional(
       EventThreatDetectionSettingsServiceEnablementStateEnum,
     ),
     modules: S.optional(ConfigMap),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EventThreatDetectionSettings",
@@ -266,23 +266,23 @@ export const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface SecurityHealthAnalyticsSettings {
-  updateTime?: string;
-  name?: string;
-  serviceAccount?: string;
   serviceEnablementState?:
     | SecurityHealthAnalyticsSettingsServiceEnablementStateEnum
     | (string & {});
   modules?: ConfigMap;
+  serviceAccount?: string;
+  name?: string;
+  updateTime?: string;
 }
 export const SecurityHealthAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    serviceAccount: S.optional(S.String),
     serviceEnablementState: S.optional(
       SecurityHealthAnalyticsSettingsServiceEnablementStateEnum,
     ),
     modules: S.optional(ConfigMap),
+    serviceAccount: S.optional(S.String),
+    name: S.optional(S.String),
+    updateTime: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SecurityHealthAnalyticsSettings",
@@ -317,24 +317,24 @@ export const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface VirtualMachineThreatDetectionSettings {
-  updateTime?: string;
-  name?: string;
-  serviceAccount?: string;
   serviceEnablementState?:
     | VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum
     | (string & {});
   modules?: ConfigMap;
+  updateTime?: string;
+  serviceAccount?: string;
+  name?: string;
 }
 export const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      updateTime: S.optional(S.String),
-      name: S.optional(S.String),
-      serviceAccount: S.optional(S.String),
       serviceEnablementState: S.optional(
         VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum,
       ),
       modules: S.optional(ConfigMap),
+      updateTime: S.optional(S.String),
+      serviceAccount: S.optional(S.String),
+      name: S.optional(S.String),
     }),
 ).annotate({
   identifier: "VirtualMachineThreatDetectionSettings",
@@ -369,20 +369,20 @@ export const WebSecurityScannerSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
 export interface WebSecurityScannerSettings {
-  modules?: ConfigMap;
+  name?: string;
   serviceEnablementState?:
     | WebSecurityScannerSettingsServiceEnablementStateEnum
     | (string & {});
-  name?: string;
+  modules?: ConfigMap;
   updateTime?: string;
 }
 export const WebSecurityScannerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modules: S.optional(ConfigMap),
+    name: S.optional(S.String),
     serviceEnablementState: S.optional(
       WebSecurityScannerSettingsServiceEnablementStateEnum,
     ),
-    name: S.optional(S.String),
+    modules: S.optional(ConfigMap),
     updateTime: S.optional(S.String),
   }),
 ).annotate({
@@ -848,19 +848,19 @@ export const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>;
 
 export interface SecurityCenterSettings {
-  cryptoKeyName?: string;
-  orgServiceAccount?: string;
+  logSinkProject?: string;
   name?: string;
   onboardingTime?: string;
-  logSinkProject?: string;
+  orgServiceAccount?: string;
+  cryptoKeyName?: string;
 }
 export const SecurityCenterSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cryptoKeyName: S.optional(S.String),
-    orgServiceAccount: S.optional(S.String),
+    logSinkProject: S.optional(S.String),
     name: S.optional(S.String),
     onboardingTime: S.optional(S.String),
-    logSinkProject: S.optional(S.String),
+    orgServiceAccount: S.optional(S.String),
+    cryptoKeyName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SecurityCenterSettings",
@@ -973,14 +973,6 @@ export const GetSubscriptionOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionOrganizationsRequest",
 }) as any as S.Schema<GetSubscriptionOrganizationsRequest>;
 
-export type SubscriptionTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "STANDARD"
-  | "PREMIUM"
-  | "ENTERPRISE"
-  | "ENTERPRISE_MC";
-export const SubscriptionTierEnum = /*@__PURE__*/ S.String;
-
 export type DetailsTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STANDARD"
@@ -994,27 +986,35 @@ export type DetailsTypeEnum =
 export const DetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Details {
-  startTime?: string;
   endTime?: string;
   type?: DetailsTypeEnum;
+  startTime?: string;
 }
 export const Details = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    startTime: S.optional(S.String),
     endTime: S.optional(S.String),
     type: S.optional(DetailsTypeEnum),
+    startTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Details" }) as any as S.Schema<Details>;
 
+export type SubscriptionTierEnum =
+  | "TIER_UNSPECIFIED"
+  | "STANDARD"
+  | "PREMIUM"
+  | "ENTERPRISE"
+  | "ENTERPRISE_MC";
+export const SubscriptionTierEnum = /*@__PURE__*/ S.String;
+
 export interface Subscription {
-  tier?: SubscriptionTierEnum;
   details?: Details;
+  tier?: SubscriptionTierEnum;
   name?: string;
 }
 export const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    tier: S.optional(SubscriptionTierEnum),
     details: S.optional(Details),
+    tier: S.optional(SubscriptionTierEnum),
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;

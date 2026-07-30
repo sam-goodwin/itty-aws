@@ -68,36 +68,36 @@ export const DeviceIdentifierDeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
 export interface DeviceIdentifier {
-  /** The device’s second MEID number. */
-  meid2?: string;
-  /** The device’s second IMEI number. */
-  imei2?: string;
-  /** An identifier provided by OEMs, carried through the production and sales process. Only applicable to Chrome OS devices. */
-  chromeOsAttestedDeviceId?: string;
-  /** The device model's name. Allowed values are listed in [Android models](/zero-touch/resources/manufacturer-names#model-names) and [Chrome OS models](https://support.google.com/chrome/a/answer/10130175#identify_compatible). */
-  model?: string;
   /** The device manufacturer’s name. Matches the device's built-in value returned from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names). */
   manufacturer?: string;
   /** The device’s MEID number. */
   meid?: string;
-  /** The manufacturer's serial number for the device. This value might not be unique across different device models. */
-  serialNumber?: string;
   /** The type of the device */
   deviceType?: DeviceIdentifierDeviceTypeEnum | (string & {});
   /** The device’s IMEI number. Validated on input. */
   imei?: string;
+  /** The device’s second IMEI number. */
+  imei2?: string;
+  /** The manufacturer's serial number for the device. This value might not be unique across different device models. */
+  serialNumber?: string;
+  /** An identifier provided by OEMs, carried through the production and sales process. Only applicable to Chrome OS devices. */
+  chromeOsAttestedDeviceId?: string;
+  /** The device model's name. Allowed values are listed in [Android models](/zero-touch/resources/manufacturer-names#model-names) and [Chrome OS models](https://support.google.com/chrome/a/answer/10130175#identify_compatible). */
+  model?: string;
+  /** The device’s second MEID number. */
+  meid2?: string;
 }
 export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    meid2: S.optional(S.String),
-    imei2: S.optional(S.String),
-    chromeOsAttestedDeviceId: S.optional(S.String),
-    model: S.optional(S.String),
     manufacturer: S.optional(S.String),
     meid: S.optional(S.String),
-    serialNumber: S.optional(S.String),
     deviceType: S.optional(DeviceIdentifierDeviceTypeEnum),
     imei: S.optional(S.String),
+    imei2: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+    chromeOsAttestedDeviceId: S.optional(S.String),
+    model: S.optional(S.String),
+    meid2: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DeviceIdentifier",
@@ -121,15 +121,15 @@ export const DeviceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for customer to assign a configuration to device. */
 export interface CustomerApplyConfigurationRequest {
-  /** Required. The device the configuration is applied to. There are custom validations in ApplyConfigurationRequestValidator */
-  device?: DeviceReference;
   /** Required. The configuration applied to the device in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. */
   configuration?: string;
+  /** Required. The device the configuration is applied to. There are custom validations in ApplyConfigurationRequestValidator */
+  device?: DeviceReference;
 }
 export const CustomerApplyConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    device: S.optional(DeviceReference),
     configuration: S.optional(S.String),
+    device: S.optional(DeviceReference),
   }),
 ).annotate({
   identifier: "CustomerApplyConfigurationRequest",
@@ -188,33 +188,33 @@ export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifies one claim request. */
 export interface PartnerClaim {
-  /** Required. The section type of the device's provisioning record. */
-  sectionType?: PartnerClaimSectionTypeEnum | (string & {});
-  /** Optional. The ID of the configuration applied to the device section. */
-  configurationId?: string;
-  /** The ID of the customer for whom the device is being claimed. */
-  customerId?: string;
-  /** Required. The metadata to attach to the device at claim. */
-  deviceMetadata?: DeviceMetadata;
   /** The Google Workspace customer ID. */
   googleWorkspaceCustomerId?: string;
   /** Optional. Must and can only be set for Chrome OS devices. */
   preProvisioningToken?: string;
-  /** Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile. */
-  simlockProfileId?: string;
+  /** Required. The section type of the device's provisioning record. */
+  sectionType?: PartnerClaimSectionTypeEnum | (string & {});
+  /** Required. The metadata to attach to the device at claim. */
+  deviceMetadata?: DeviceMetadata;
+  /** Optional. The ID of the configuration applied to the device section. */
+  configurationId?: string;
   /** Required. Required. Device identifier of the device. */
   deviceIdentifier?: DeviceIdentifier;
+  /** The ID of the customer for whom the device is being claimed. */
+  customerId?: string;
+  /** Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile. */
+  simlockProfileId?: string;
 }
 export const PartnerClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sectionType: S.optional(PartnerClaimSectionTypeEnum),
-    configurationId: S.optional(S.String),
-    customerId: S.optional(S.String),
-    deviceMetadata: S.optional(DeviceMetadata),
     googleWorkspaceCustomerId: S.optional(S.String),
     preProvisioningToken: S.optional(S.String),
-    simlockProfileId: S.optional(S.String),
+    sectionType: S.optional(PartnerClaimSectionTypeEnum),
+    deviceMetadata: S.optional(DeviceMetadata),
+    configurationId: S.optional(S.String),
     deviceIdentifier: S.optional(DeviceIdentifier),
+    customerId: S.optional(S.String),
+    simlockProfileId: S.optional(S.String),
   }),
 ).annotate({ identifier: "PartnerClaim" }) as any as S.Schema<PartnerClaim>;
 
@@ -270,41 +270,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    details: S.optional(DocumentMapList),
     message: S.optional(S.String),
+    details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. */
-  metadata?: DocumentMap;
-  /** This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. */
-  response?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`. */
-  error?: Status;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
+  /** This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`. */
+  error?: Status;
+  /** This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. */
+  metadata?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
     name: S.optional(S.String),
+    error: S.optional(Status),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -316,33 +316,33 @@ export const ClaimDeviceRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message to claim a device on behalf of a customer. */
 export interface ClaimDeviceRequest {
-  /** Required. The section type of the device's provisioning record. */
-  sectionType?: ClaimDeviceRequestSectionTypeEnum | (string & {});
-  /** Optional. The ID of the configuration applied to the device section. */
-  configurationId?: string;
-  /** The ID of the customer for whom the device is being claimed. */
-  customerId?: string;
-  /** Optional. The metadata to attach to the device. */
-  deviceMetadata?: DeviceMetadata;
   /** The Google Workspace customer ID. */
   googleWorkspaceCustomerId?: string;
   /** Optional. Must and can only be set for Chrome OS devices. */
   preProvisioningToken?: string;
-  /** Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile. */
-  simlockProfileId?: string;
+  /** Required. The section type of the device's provisioning record. */
+  sectionType?: ClaimDeviceRequestSectionTypeEnum | (string & {});
+  /** Optional. The metadata to attach to the device. */
+  deviceMetadata?: DeviceMetadata;
+  /** Optional. The ID of the configuration applied to the device section. */
+  configurationId?: string;
   /** Required. Required. The device identifier of the device to claim. */
   deviceIdentifier?: DeviceIdentifier;
+  /** The ID of the customer for whom the device is being claimed. */
+  customerId?: string;
+  /** Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile. */
+  simlockProfileId?: string;
 }
 export const ClaimDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sectionType: S.optional(ClaimDeviceRequestSectionTypeEnum),
-    configurationId: S.optional(S.String),
-    customerId: S.optional(S.String),
-    deviceMetadata: S.optional(DeviceMetadata),
     googleWorkspaceCustomerId: S.optional(S.String),
     preProvisioningToken: S.optional(S.String),
-    simlockProfileId: S.optional(S.String),
+    sectionType: S.optional(ClaimDeviceRequestSectionTypeEnum),
+    deviceMetadata: S.optional(DeviceMetadata),
+    configurationId: S.optional(S.String),
     deviceIdentifier: S.optional(DeviceIdentifier),
+    customerId: S.optional(S.String),
+    simlockProfileId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ClaimDeviceRequest",
@@ -389,40 +389,40 @@ export const ClaimDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface Configuration {
   /** Output only. The API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server. */
   name?: string;
+  /** Required. The resource name of the selected DPC (device policy controller) in the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs, call `customers.dpcs.list`. */
+  dpcResourcePath?: string;
   /** Required. The email address that device users can contact to get help. Zero-touch enrollment shows this email address to device users before device provisioning. The value is validated on input. */
   contactEmail?: string;
   /** Required. A short name that describes the configuration's purpose. For example, _Sales team_ or _Temporary employees_. The zero-touch enrollment portal displays this name to IT admins. */
   configurationName?: string;
+  /** The JSON-formatted EMM provisioning extras that are passed to the DPC. */
+  dpcExtras?: string;
   /** Required. The name of the organization. Zero-touch enrollment shows this organization name to device users during device provisioning. */
   companyName?: string;
+  /** Output only. The ID of the configuration. Assigned by the server. */
+  configurationId?: string;
+  /** Required. Whether this is the default configuration that zero-touch enrollment applies to any new devices the organization purchases in the future. Only one customer configuration can be the default. Setting this value to `true`, changes the previous default configuration's `isDefault` value to `false`. */
+  isDefault?: boolean;
+  /** A message, containing one or two sentences, to help device users get help or give them more details about what’s happening to their device. Zero-touch enrollment shows this message before the device is provisioned. */
+  customMessage?: string;
   /** Optional. The timeout before forcing factory reset the device if the device doesn't go through provisioning in the setup wizard, usually due to lack of network connectivity during setup wizard. Ranges from 0-6 hours, with 2 hours being the default if unset. */
   forcedResetTime?: string;
   /** Required. The telephone number that device users can call, using another device, to get help. Zero-touch enrollment shows this number to device users before device provisioning. Accepts numerals, spaces, the plus sign, hyphens, and parentheses. */
   contactPhone?: string;
-  /** Required. The resource name of the selected DPC (device policy controller) in the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs, call `customers.dpcs.list`. */
-  dpcResourcePath?: string;
-  /** The JSON-formatted EMM provisioning extras that are passed to the DPC. */
-  dpcExtras?: string;
-  /** Output only. The ID of the configuration. Assigned by the server. */
-  configurationId?: string;
-  /** A message, containing one or two sentences, to help device users get help or give them more details about what’s happening to their device. Zero-touch enrollment shows this message before the device is provisioned. */
-  customMessage?: string;
-  /** Required. Whether this is the default configuration that zero-touch enrollment applies to any new devices the organization purchases in the future. Only one customer configuration can be the default. Setting this value to `true`, changes the previous default configuration's `isDefault` value to `false`. */
-  isDefault?: boolean;
 }
 export const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
+    dpcResourcePath: S.optional(S.String),
     contactEmail: S.optional(S.String),
     configurationName: S.optional(S.String),
+    dpcExtras: S.optional(S.String),
     companyName: S.optional(S.String),
+    configurationId: S.optional(S.String),
+    isDefault: S.optional(S.Boolean),
+    customMessage: S.optional(S.String),
     forcedResetTime: S.optional(S.String),
     contactPhone: S.optional(S.String),
-    dpcResourcePath: S.optional(S.String),
-    dpcExtras: S.optional(S.String),
-    configurationId: S.optional(S.String),
-    customMessage: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
@@ -478,36 +478,36 @@ export const CompanyTermsStatusEnum = /*@__PURE__*/ S.String;
 
 /** A reseller, vendor, or customer in the zero-touch reseller and customer APIs. */
 export interface Company {
+  /** Input only. If set to true, welcome email will not be sent to the customer. It is recommended to skip the welcome email if devices will be claimed with additional DEVICE_PROTECTION service, as the customer will receive separate emails at device claim time. This field is ignored if this is not a Zero-touch customer. */
+  skipWelcomeEmail?: boolean;
+  /** Optional. Email address of customer's users in the admin role. Each email address must be associated with a Google Account. */
+  adminEmails?: StringList;
   /** Output only. The Google Workspace account associated with this customer. Only used for customer Companies. */
   googleWorkspaceAccount?: GoogleWorkspaceAccount;
   /** Input only. The preferred locale of the customer represented as a BCP47 language code. This field is validated on input and requests containing unsupported language codes will be rejected. Supported language codes: Arabic (ar) Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese (Traditional) (zh-TW) Czech (cs) Danish (da) Dutch (nl) English (UK) (en-GB) English (US) (en-US) Filipino (fil) Finnish (fi) French (fr) German (de) Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian (it) Japanese (ja) Korean (ko) Norwegian (Bokmal) (no) Polish (pl) Portuguese (Brazil) (pt-BR) Portuguese (Portugal) (pt-PT) Russian (ru) Spanish (es) Spanish (Latin America) (es-419) Swedish (sv) Thai (th) Turkish (tr) Ukrainian (uk) Vietnamese (vi) */
   languageCode?: string;
-  /** Output only. The ID of the company. Assigned by the server. */
-  companyId?: string;
-  /** Required. Input only. Email address of customer's users in the owner role. At least one `owner_email` is required. Owners share the same access as admins but can also add, delete, and edit your organization's portal users. */
-  ownerEmails?: StringList;
-  /** Optional. Email address of customer's users in the admin role. Each email address must be associated with a Google Account. */
-  adminEmails?: StringList;
-  /** Input only. If set to true, welcome email will not be sent to the customer. It is recommended to skip the welcome email if devices will be claimed with additional DEVICE_PROTECTION service, as the customer will receive separate emails at device claim time. This field is ignored if this is not a Zero-touch customer. */
-  skipWelcomeEmail?: boolean;
-  /** Output only. The API resource name of the company. The resource name is one of the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server. */
-  name?: string;
-  /** Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus. */
-  termsStatus?: CompanyTermsStatusEnum | (string & {});
   /** Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in the zero-touch enrollment portal. */
   companyName?: string;
+  /** Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus. */
+  termsStatus?: CompanyTermsStatusEnum | (string & {});
+  /** Output only. The ID of the company. Assigned by the server. */
+  companyId?: string;
+  /** Output only. The API resource name of the company. The resource name is one of the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server. */
+  name?: string;
+  /** Required. Input only. Email address of customer's users in the owner role. At least one `owner_email` is required. Owners share the same access as admins but can also add, delete, and edit your organization's portal users. */
+  ownerEmails?: StringList;
 }
 export const Company = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    skipWelcomeEmail: S.optional(S.Boolean),
+    adminEmails: S.optional(StringList),
     googleWorkspaceAccount: S.optional(GoogleWorkspaceAccount),
     languageCode: S.optional(S.String),
-    companyId: S.optional(S.String),
-    ownerEmails: S.optional(StringList),
-    adminEmails: S.optional(StringList),
-    skipWelcomeEmail: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    termsStatus: S.optional(CompanyTermsStatusEnum),
     companyName: S.optional(S.String),
+    termsStatus: S.optional(CompanyTermsStatusEnum),
+    companyId: S.optional(S.String),
+    name: S.optional(S.String),
+    ownerEmails: S.optional(StringList),
   }),
 ).annotate({ identifier: "Company" }) as any as S.Schema<Company>;
 
@@ -566,19 +566,19 @@ export const DeleteCustomersConfigurationsRequest = /*@__PURE__*/ S.suspend(
 
 /** Request to find devices. */
 export interface FindDevicesByDeviceIdentifierRequest {
-  /** A token specifying which result page to return. */
-  pageToken?: string;
-  /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
-  limit?: string;
   /** Required. Required. The device identifier to search for. If serial number is provided then case insensitive serial number matches are allowed. */
   deviceIdentifier?: DeviceIdentifier;
+  /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
+  limit?: string;
+  /** A token specifying which result page to return. */
+  pageToken?: string;
 }
 export const FindDevicesByDeviceIdentifierRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String),
-      limit: S.optional(S.String),
       deviceIdentifier: S.optional(DeviceIdentifier),
+      limit: S.optional(S.String),
+      pageToken: S.optional(S.String),
     }),
 ).annotate({
   identifier: "FindDevicesByDeviceIdentifierRequest",
@@ -619,30 +619,30 @@ export const DeviceClaimAdditionalServiceEnum = /*@__PURE__*/ S.String;
 
 /** A record of a device claimed by a reseller for a customer. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for customers](/zero-touch/guides/how-it-works#claim). */
 export interface DeviceClaim {
-  /** Output only. The type of claim made on the device. */
-  sectionType?: DeviceClaimSectionTypeEnum;
-  /** The Additional service registered for the device. */
-  additionalService?: DeviceClaimAdditionalServiceEnum;
   /** The ID of the Customer that purchased the device. */
   ownerCompanyId?: string;
-  /** The ID of the reseller that claimed the device. */
-  resellerId?: string;
   /** The ID of the Google Workspace account that owns the Chrome OS device. */
   googleWorkspaceCustomerId?: string;
-  /** The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in 'vacation mode'. */
-  vacationModeExpireTime?: string;
+  /** Output only. The type of claim made on the device. */
+  sectionType?: DeviceClaimSectionTypeEnum;
+  /** The ID of the reseller that claimed the device. */
+  resellerId?: string;
   /** The timestamp when the device was put into ‘vacation mode’. This value is present iff the device is in 'vacation mode'. */
   vacationModeStartTime?: string;
+  /** The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in 'vacation mode'. */
+  vacationModeExpireTime?: string;
+  /** The Additional service registered for the device. */
+  additionalService?: DeviceClaimAdditionalServiceEnum;
 }
 export const DeviceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sectionType: S.optional(DeviceClaimSectionTypeEnum),
-    additionalService: S.optional(DeviceClaimAdditionalServiceEnum),
     ownerCompanyId: S.optional(S.String),
-    resellerId: S.optional(S.String),
     googleWorkspaceCustomerId: S.optional(S.String),
-    vacationModeExpireTime: S.optional(S.String),
+    sectionType: S.optional(DeviceClaimSectionTypeEnum),
+    resellerId: S.optional(S.String),
     vacationModeStartTime: S.optional(S.String),
+    vacationModeExpireTime: S.optional(S.String),
+    additionalService: S.optional(DeviceClaimAdditionalServiceEnum),
   }),
 ).annotate({ identifier: "DeviceClaim" }) as any as S.Schema<DeviceClaim>;
 
@@ -653,27 +653,27 @@ export const DeviceClaimList = /*@__PURE__*/ S.Array(
 
 /** An Android or Chrome OS device registered for zero-touch enrollment. */
 export interface Device {
-  /** The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
-  deviceIdentifier?: DeviceIdentifier;
-  /** Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment. */
-  claims?: DeviceClaimList;
-  /** Output only. The API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server. */
-  name?: string;
   /** Not available to resellers. */
   configuration?: string;
   /** Output only. The ID of the device. Assigned by the server. */
   deviceId?: string;
+  /** Output only. The API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server. */
+  name?: string;
+  /** The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
+  deviceIdentifier?: DeviceIdentifier;
   /** The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device metadata](https://developers.google.com/zero-touch/guides/metadata). */
   deviceMetadata?: DeviceMetadata;
+  /** Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment. */
+  claims?: DeviceClaimList;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deviceIdentifier: S.optional(DeviceIdentifier),
-    claims: S.optional(DeviceClaimList),
-    name: S.optional(S.String),
     configuration: S.optional(S.String),
     deviceId: S.optional(S.String),
+    name: S.optional(S.String),
+    deviceIdentifier: S.optional(DeviceIdentifier),
     deviceMetadata: S.optional(DeviceMetadata),
+    claims: S.optional(DeviceClaimList),
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
@@ -684,19 +684,19 @@ export const DeviceList = /*@__PURE__*/ S.Array(
 
 /** Response containing found devices. */
 export interface FindDevicesByDeviceIdentifierResponse {
-  /** Found devices. */
-  devices?: DeviceList;
-  /** The total count of items in the list irrespective of pagination. */
-  totalSize?: number;
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
+  /** The total count of items in the list irrespective of pagination. */
+  totalSize?: number;
+  /** Found devices. */
+  devices?: DeviceList;
 }
 export const FindDevicesByDeviceIdentifierResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      devices: S.optional(DeviceList),
-      totalSize: S.optional(S.Number),
       nextPageToken: S.optional(S.String),
+      totalSize: S.optional(S.Number),
+      devices: S.optional(DeviceList),
     }),
 ).annotate({
   identifier: "FindDevicesByDeviceIdentifierResponse",
@@ -710,24 +710,24 @@ export const FindDevicesByOwnerRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request to find devices by customers. */
 export interface FindDevicesByOwnerRequest {
-  /** Required. The section type of the device's provisioning record. */
-  sectionType?: FindDevicesByOwnerRequestSectionTypeEnum | (string & {});
   /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
   limit?: string;
-  /** The list of customer IDs to search for. */
-  customerId?: StringList;
-  /** The list of IDs of Google Workspace accounts to search for. */
-  googleWorkspaceCustomerId?: StringList;
   /** A token specifying which result page to return. */
   pageToken?: string;
+  /** The list of customer IDs to search for. */
+  customerId?: StringList;
+  /** Required. The section type of the device's provisioning record. */
+  sectionType?: FindDevicesByOwnerRequestSectionTypeEnum | (string & {});
+  /** The list of IDs of Google Workspace accounts to search for. */
+  googleWorkspaceCustomerId?: StringList;
 }
 export const FindDevicesByOwnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sectionType: S.optional(FindDevicesByOwnerRequestSectionTypeEnum),
     limit: S.optional(S.String),
-    customerId: S.optional(StringList),
-    googleWorkspaceCustomerId: S.optional(StringList),
     pageToken: S.optional(S.String),
+    customerId: S.optional(StringList),
+    sectionType: S.optional(FindDevicesByOwnerRequestSectionTypeEnum),
+    googleWorkspaceCustomerId: S.optional(StringList),
   }),
 ).annotate({
   identifier: "FindDevicesByOwnerRequest",
@@ -758,16 +758,16 @@ export const FindByOwnerPartnersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FindDevicesByOwnerResponse {
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
-  /** The customer's devices. */
-  devices?: DeviceList;
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
+  /** The customer's devices. */
+  devices?: DeviceList;
 }
 export const FindDevicesByOwnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
-    devices: S.optional(DeviceList),
     totalSize: S.optional(S.Number),
+    devices: S.optional(DeviceList),
   }),
 ).annotate({
   identifier: "FindDevicesByOwnerResponse",
@@ -901,15 +901,15 @@ export const GetDeviceSimLockStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDeviceSimLockStateResponse>;
 
 export interface ListCustomersRequest {
-  /** Required. The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive). */
-  pageSize?: number;
   /** A token specifying which result page to return. This field has custom validations in ListCustomersRequestValidator */
   pageToken?: string;
+  /** Required. The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive). */
+  pageSize?: number;
 }
 export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -928,15 +928,15 @@ export const CompanyList = /*@__PURE__*/ S.Array(
 
 /** Response message for listing my customers. */
 export interface CustomerListCustomersResponse {
-  /** A token used to access the next page of results. Omitted if no further results are available. */
-  nextPageToken?: string;
   /** The customer accounts the calling user is a member of. */
   customers?: CompanyList;
+  /** A token used to access the next page of results. Omitted if no further results are available. */
+  nextPageToken?: string;
 }
 export const CustomerListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     customers: S.optional(CompanyList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CustomerListCustomersResponse",
@@ -979,18 +979,18 @@ export const CustomerListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerListConfigurationsResponse>;
 
 export interface ListCustomersDevicesRequest {
-  /** Required. The customer managing the devices. An API resource name in the format `customers/[CUSTOMER_ID]`. */
-  parent: string;
-  /** Optional. The maximum number of devices to show in a page of results. If unset or 0, defaults to 1000. If a value greater than 1000 is specified, it will be coerced to 1000. */
+  /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
   pageSize?: string;
   /** A token specifying which result page to return. */
   pageToken?: string;
+  /** Required. The customer managing the devices. An API resource name in the format `customers/[CUSTOMER_ID]`. */
+  parent: string;
 }
 export const ListCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1038,17 +1038,17 @@ export const ListCustomersDpcsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An EMM's DPC ([device policy controller](http://developer.android.com/work/dpc/build-dpc.html)). Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile policies. All the DPCs listed by the API support zero-touch enrollment and are available in Google Play. */
 export interface Dpc {
-  /** Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_. Useful in an application's user interface. */
-  dpcName?: string;
   /** Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch enrollment installs the DPC app onto a device using this identifier. */
   packageName?: string;
+  /** Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_. Useful in an application's user interface. */
+  dpcName?: string;
   /** Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by the server. To maintain a reference to a DPC across customer accounts, persist and match the last path component (`DPC_ID`). */
   name?: string;
 }
 export const Dpc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    dpcName: S.optional(S.String),
     packageName: S.optional(S.String),
+    dpcName: S.optional(S.String),
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Dpc" }) as any as S.Schema<Dpc>;
@@ -1070,17 +1070,17 @@ export const CustomerListDpcsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerListDpcsResponse>;
 
 export interface ListPartnersCustomersRequest {
-  /** Required. The ID of the reseller partner. */
-  partnerId: string;
   /** The maximum number of results to be returned. If not specified or 0, all the records are returned. */
   pageSize?: number;
+  /** Required. The ID of the reseller partner. */
+  partnerId: string;
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
 }
 export const ListPartnersCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    partnerId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    partnerId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1095,36 +1095,36 @@ export const ListPartnersCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message of all customers related to this partner. */
 export interface ListCustomersResponse {
-  /** A token to retrieve the next page of results. Omitted if no further results are available. */
-  nextPageToken?: string;
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
   /** List of customers related to this reseller partner. */
   customers?: CompanyList;
+  /** A token to retrieve the next page of results. Omitted if no further results are available. */
+  nextPageToken?: string;
 }
 export const ListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     totalSize: S.optional(S.Number),
     customers: S.optional(CompanyList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListCustomersResponse",
 }) as any as S.Schema<ListCustomersResponse>;
 
 export interface ListPartnersVendorsRequest {
-  /** Required. The resource name in the format `partners/[PARTNER_ID]`. */
-  parent: string;
   /** The maximum number of results to be returned. */
   pageSize?: number;
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
+  /** Required. The resource name in the format `partners/[PARTNER_ID]`. */
+  parent: string;
 }
 export const ListPartnersVendorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1138,36 +1138,36 @@ export const ListPartnersVendorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message to list vendors of the partner. */
 export interface ListVendorsResponse {
-  /** A token to retrieve the next page of results. Omitted if no further results are available. */
-  nextPageToken?: string;
   /** List of vendors of the reseller partner. Fields `name`, `companyId` and `companyName` are populated to the Company object. */
   vendors?: CompanyList;
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
+  /** A token to retrieve the next page of results. Omitted if no further results are available. */
+  nextPageToken?: string;
 }
 export const ListVendorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     vendors: S.optional(CompanyList),
     totalSize: S.optional(S.Number),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListVendorsResponse",
 }) as any as S.Schema<ListVendorsResponse>;
 
 export interface ListPartnersVendorsCustomersRequest {
-  /** Required. The resource name in the format `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`. */
-  parent: string;
-  /** The maximum number of results to be returned. */
-  pageSize?: number;
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
+  /** The maximum number of results to be returned. */
+  pageSize?: number;
+  /** Required. The resource name in the format `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`. */
+  parent: string;
 }
 export const ListPartnersVendorsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1181,18 +1181,18 @@ export const ListPartnersVendorsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message to list customers of the vendor. */
 export interface ListVendorCustomersResponse {
+  /** List of customers of the vendor. */
+  customers?: CompanyList;
   /** A token to retrieve the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
-  /** List of customers of the vendor. */
-  customers?: CompanyList;
 }
 export const ListVendorCustomersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    customers: S.optional(CompanyList),
     nextPageToken: S.optional(S.String),
     totalSize: S.optional(S.Number),
-    customers: S.optional(CompanyList),
   }),
 ).annotate({
   identifier: "ListVendorCustomersResponse",
@@ -1304,22 +1304,22 @@ export const PartnerUnclaimSectionTypeEnum = /*@__PURE__*/ S.String;
 export interface PartnerUnclaim {
   /** Required. Device ID of the device. */
   deviceId?: string;
-  /** Required. The section type of the device's provisioning record. */
-  sectionType?: PartnerUnclaimSectionTypeEnum | (string & {});
-  /** Optional. The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
-  vacationModeDays?: number;
   /** Required. Device identifier of the device. */
   deviceIdentifier?: DeviceIdentifier;
+  /** Required. The section type of the device's provisioning record. */
+  sectionType?: PartnerUnclaimSectionTypeEnum | (string & {});
   /** Optional. The expiration time of the vacation unlock. */
   vacationModeExpireTime?: string;
+  /** Optional. The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
+  vacationModeDays?: number;
 }
 export const PartnerUnclaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceId: S.optional(S.String),
-    sectionType: S.optional(PartnerUnclaimSectionTypeEnum),
-    vacationModeDays: S.optional(S.Number),
     deviceIdentifier: S.optional(DeviceIdentifier),
+    sectionType: S.optional(PartnerUnclaimSectionTypeEnum),
     vacationModeExpireTime: S.optional(S.String),
+    vacationModeDays: S.optional(S.Number),
   }),
 ).annotate({ identifier: "PartnerUnclaim" }) as any as S.Schema<PartnerUnclaim>;
 
@@ -1406,22 +1406,22 @@ export const UnclaimDeviceRequestSectionTypeEnum = /*@__PURE__*/ S.String;
 export interface UnclaimDeviceRequest {
   /** Required. The device ID returned by `ClaimDevice`. */
   deviceId?: string;
-  /** Required. The section type of the device's provisioning record. */
-  sectionType?: UnclaimDeviceRequestSectionTypeEnum | (string & {});
-  /** The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
-  vacationModeDays?: number;
   /** Required. The device identifier you used when you claimed this device. */
   deviceIdentifier?: DeviceIdentifier;
+  /** Required. The section type of the device's provisioning record. */
+  sectionType?: UnclaimDeviceRequestSectionTypeEnum | (string & {});
   /** The expiration time of the vacation unlock. */
   vacationModeExpireTime?: string;
+  /** The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
+  vacationModeDays?: number;
 }
 export const UnclaimDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceId: S.optional(S.String),
-    sectionType: S.optional(UnclaimDeviceRequestSectionTypeEnum),
-    vacationModeDays: S.optional(S.Number),
     deviceIdentifier: S.optional(DeviceIdentifier),
+    sectionType: S.optional(UnclaimDeviceRequestSectionTypeEnum),
     vacationModeExpireTime: S.optional(S.String),
+    vacationModeDays: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "UnclaimDeviceRequest",
@@ -1450,17 +1450,17 @@ export const UnclaimPartnersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifies metadata updates to one device. */
 export interface UpdateMetadataArguments {
-  /** Required. Device ID of the device. */
-  deviceId?: string;
   /** Required. Device identifier. */
   deviceIdentifier?: DeviceIdentifier;
+  /** Required. Device ID of the device. */
+  deviceId?: string;
   /** Required. The metadata to update. */
   deviceMetadata?: DeviceMetadata;
 }
 export const UpdateMetadataArguments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deviceId: S.optional(S.String),
     deviceIdentifier: S.optional(DeviceIdentifier),
+    deviceId: S.optional(S.String),
     deviceMetadata: S.optional(DeviceMetadata),
   }),
 ).annotate({

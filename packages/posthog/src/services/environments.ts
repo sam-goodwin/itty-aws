@@ -4163,7 +4163,7 @@ export const environmentsIsGeneratingDemoDataRetrieve: API.OperationMethod<
 }));
 
 export type EnvironmentsLogsConfigPartialUpdateError = PosthogOpError;
-/** Manage logs product configuration for this environment. Members can read; writing requires project admin, matching the admin-only settings UI. */
+/** Manage logs product configuration for this environment. */
 export const environmentsLogsConfigPartialUpdate: API.OperationMethod<
   EnvironmentsLogsConfigPartialUpdateRequest,
   EnvironmentsLogsConfigPartialUpdateResponse,
@@ -4178,7 +4178,7 @@ export const environmentsLogsConfigPartialUpdate: API.OperationMethod<
 }));
 
 export type EnvironmentsLogsConfigRetrieveError = PosthogOpError;
-/** Manage logs product configuration for this environment. Members can read; writing requires project admin, matching the admin-only settings UI. */
+/** Manage logs product configuration for this environment. */
 export const environmentsLogsConfigRetrieve: API.OperationMethod<
   EnvironmentsLogsConfigRetrieveRequest,
   EnvironmentsLogsConfigRetrieveResponse,

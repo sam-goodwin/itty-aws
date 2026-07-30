@@ -147,20 +147,20 @@ export interface QueryRequest {
   requestId?: string;
   /** Required. Third-party user ID. */
   agentUserId?: string;
-  /** Optional. If true, the response will include device metadata in the device_metadata field. */
-  includeDeviceMetadata?: boolean;
   /** Required. Inputs containing third-party device IDs for which to get the device states. */
   inputs?: QueryRequestInputList;
   /** Optional. Specifies the type of device data to be returned in the response. This allows callers to request traditional Smart Home traits, Unified Device Data Model (UDDM) traits, or both. If unspecified, defaults to SMART_HOME_TRAIT_ONLY. */
   deviceView?: QueryRequestDeviceViewEnum | (string & {});
+  /** Optional. If true, the response will include device metadata in the device_metadata field. */
+  includeDeviceMetadata?: boolean;
 }
 export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     agentUserId: S.optional(S.String),
-    includeDeviceMetadata: S.optional(S.Boolean),
     inputs: S.optional(QueryRequestInputList),
     deviceView: S.optional(QueryRequestDeviceViewEnum),
+    includeDeviceMetadata: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "QueryRequest" }) as any as S.Schema<QueryRequest>;
 
@@ -182,28 +182,15 @@ export const QueryDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDevicesRequest",
 }) as any as S.Schema<QueryDevicesRequest>;
 
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
+export type ComponentList = Array<Component>;
+export const ComponentList = /*@__PURE__*/ S.Array(
+  S.suspend(() => Component),
+) as any as S.Schema<ComponentList>;
 
-/** Metadata for traits of a single device. */
-export interface DeviceMetadata {
-  /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. */
-  traitCommitTimestamps?: StringMap;
-}
-export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    traitCommitTimestamps: S.optional(StringMap),
-  }),
-).annotate({ identifier: "DeviceMetadata" }) as any as S.Schema<DeviceMetadata>;
-
-export type DeviceMetadataMap = { [key: string]: DeviceMetadata | undefined };
-export const DeviceMetadataMap = /*@__PURE__*/ S.Record(
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
   S.String,
-  DeviceMetadata,
-) as any as S.Schema<DeviceMetadataMap>;
+) as any as S.Schema<StringList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -217,14 +204,11 @@ export interface TraitData {
   trait?: DocumentMap;
   /** Other metadata for the trait. The time the client update was committed in the server. */
   commitTime?: string;
-  /** Optional in write requests (e.g. ReportStateAndNotification). If set, represents the provider version timestamp of the existing trait in the database. The server will perform optimistic locking validation if this field is present and the experiment is enabled. It will not be persisted to the database. */
-  providerVersionTime?: string;
 }
 export const TraitData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trait: S.optional(DocumentMap),
     commitTime: S.optional(S.String),
-    providerVersionTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "TraitData" }) as any as S.Schema<TraitData>;
 
@@ -233,33 +217,23 @@ export const TraitDataList = /*@__PURE__*/ S.Array(
   TraitData,
 ) as any as S.Schema<TraitDataList>;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-export type ComponentList = Array<Component>;
-export const ComponentList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Component),
-) as any as S.Schema<ComponentList>;
-
 /** Component of a provider device. */
 export interface Component {
-  /** Required. List of trait data associated with the component. */
-  traitData?: TraitDataList;
-  /** Required. ID of the component from the device provider. */
-  id?: string;
-  /** Required. List of Device types associated with this component. Supported device types are defined in cs//depot/google3/home/homeservicelayer/uddm/types/uddm_device_types.proto and the type string is the enum name, for example: ON_OFF_LIGHT => "ON_OFF_LIGHT". */
-  deviceTypes?: StringList;
   /** Optional. Child components. */
   childComponents?: ComponentList;
+  /** Required. List of Device types associated with this component. Supported device types are defined in cs//depot/google3/home/homeservicelayer/uddm/types/uddm_device_types.proto and the type string is the enum name, for example: ON_OFF_LIGHT => "ON_OFF_LIGHT". */
+  deviceTypes?: StringList;
+  /** Required. ID of the component from the device provider. */
+  id?: string;
+  /** Required. List of trait data associated with the component. */
+  traitData?: TraitDataList;
 }
 export const Component = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    traitData: S.optional(TraitDataList),
-    id: S.optional(S.String),
-    deviceTypes: S.optional(StringList),
     childComponents: S.optional(ComponentList),
+    deviceTypes: S.optional(StringList),
+    id: S.optional(S.String),
+    traitData: S.optional(TraitDataList),
   }),
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
@@ -290,20 +264,43 @@ export const DocumentMapMap = /*@__PURE__*/ S.Record(
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
 
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+/** Metadata for traits of a single device. */
+export interface DeviceMetadata {
+  /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. */
+  traitCommitTimestamps?: StringMap;
+}
+export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    traitCommitTimestamps: S.optional(StringMap),
+  }),
+).annotate({ identifier: "DeviceMetadata" }) as any as S.Schema<DeviceMetadata>;
+
+export type DeviceMetadataMap = { [key: string]: DeviceMetadata | undefined };
+export const DeviceMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeviceMetadata,
+) as any as S.Schema<DeviceMetadataMap>;
+
 /** Payload containing device states information. */
 export interface QueryResponsePayload {
-  /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. If a trait has no recorded timestamp, it will be omitted from this map. */
-  deviceMetadata?: DeviceMetadataMap;
   /** Map of device IDs to their Unified Device Data Model (UDDM) trait payloads. This field is populated when `device_view` is set to HOME_TRAIT_ONLY or HOME_TRAIT_AND_SMART_HOME_TRAIT. */
   homeTraitPayload?: HomeTraitPayloadMap;
   /** States of the devices. Map of third-party device ID to struct of device states. */
   devices?: DocumentMapMap;
+  /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. If a trait has no recorded timestamp, it will be omitted from this map. */
+  deviceMetadata?: DeviceMetadataMap;
 }
 export const QueryResponsePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deviceMetadata: S.optional(DeviceMetadataMap),
     homeTraitPayload: S.optional(HomeTraitPayloadMap),
     devices: S.optional(DocumentMapMap),
+    deviceMetadata: S.optional(DeviceMetadataMap),
   }),
 ).annotate({
   identifier: "QueryResponsePayload",
@@ -325,18 +322,18 @@ export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains the details for a single event. */
 export interface EventData {
+  /** Required. The timestamp of the event. */
+  eventTime?: string;
   /** Required. The unique event ID from the device provider. */
   eventId?: string;
   /** Required. The actual event payload. */
   event?: DocumentMap;
-  /** Required. The timestamp of the event. */
-  eventTime?: string;
 }
 export const EventData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    eventTime: S.optional(S.String),
     eventId: S.optional(S.String),
     event: S.optional(DocumentMap),
-    eventTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "EventData" }) as any as S.Schema<EventData>;
 
@@ -385,15 +382,15 @@ export const HomeEventsList = /*@__PURE__*/ S.Array(
 
 /** Contains the set of updates for a component. */
 export interface ComponentTraitUpdates {
-  /** Required. The updated trait data for the component. */
-  traitData?: TraitDataList;
   /** Required. ID of the component from the device provider. */
   componentId?: string;
+  /** Required. The updated trait data for the component. */
+  traitData?: TraitDataList;
 }
 export const ComponentTraitUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    traitData: S.optional(TraitDataList),
     componentId: S.optional(S.String),
+    traitData: S.optional(TraitDataList),
   }),
 ).annotate({
   identifier: "ComponentTraitUpdates",
@@ -431,17 +428,17 @@ export interface ReportStateAndNotificationDevice {
   notifications?: DocumentMap;
   /** Optional. UDDM/WHDM trait events */
   homeEvents?: HomeEventsList;
-  /** Optional. UDDM/WHDM trait updates. */
-  homeTraits?: HomeTraitUpdatesList;
   /** States of devices to update. See the **Device STATES** section of the individual trait [reference guides](https://developers.home.google.com/cloud-to-cloud/traits). */
   states?: DocumentMap;
+  /** Optional. UDDM/WHDM trait updates. */
+  homeTraits?: HomeTraitUpdatesList;
 }
 export const ReportStateAndNotificationDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifications: S.optional(DocumentMap),
     homeEvents: S.optional(HomeEventsList),
-    homeTraits: S.optional(HomeTraitUpdatesList),
     states: S.optional(DocumentMap),
+    homeTraits: S.optional(HomeTraitUpdatesList),
   }),
 ).annotate({
   identifier: "ReportStateAndNotificationDevice",
@@ -462,12 +459,12 @@ export const StateAndNotificationPayload = /*@__PURE__*/ S.suspend(() =>
 
 /** Request type for the [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It may include states, notifications, home_traits, home_events, or any combination thereof. Smart Home Device Traits (SHDT) `states` and `notifications` are defined per `device_id` (for example, "123" and "456" in the following example). Google Home Traits `home_traits` and `home_events` are lists of updates or events, each associated with a `device_id` (for example, "789" in the following example). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": { "states": { "123": { "on": true }, "456": { "on": true, "brightness": 10 }, }, "homeTraits": [ { "deviceId": "789", "components": [ { "componentId": "main", "traitData": [ { "trait": { "@type": "type.googleapis.com/home.graph.v1.OnOffTrait", "onOff": true } } ] } ] } ], "homeEvents": [ { "deviceId": "789", "events": [ { "componentId": "main", "events": [ { "eventId": "event-123", "eventTime": "2026-01-01T00:00:00Z", "event": { "@type": "type.googleapis.com/home.graph.v1.DoorbellPressTrait.DoorbellPressedEvent" } } ] } ] } ] } } } ``` */
 export interface ReportStateAndNotificationRequest {
+  /** Unique identifier per event (for example, a doorbell press). */
+  eventId?: string;
   /** Deprecated. */
   followUpToken?: string;
   /** Required. State of devices to update and notification metadata for devices. */
   payload?: StateAndNotificationPayload;
-  /** Unique identifier per event (for example, a doorbell press). */
-  eventId?: string;
   /** Request ID used for debugging. */
   requestId?: string;
   /** Required. Third-party user ID. */
@@ -475,9 +472,9 @@ export interface ReportStateAndNotificationRequest {
 }
 export const ReportStateAndNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    eventId: S.optional(S.String),
     followUpToken: S.optional(S.String),
     payload: S.optional(StateAndNotificationPayload),
-    eventId: S.optional(S.String),
     requestId: S.optional(S.String),
     agentUserId: S.optional(S.String),
   }),
@@ -612,84 +609,84 @@ export const AgentOtherDeviceIdList = /*@__PURE__*/ S.Array(
   AgentOtherDeviceId,
 ) as any as S.Schema<AgentOtherDeviceIdList>;
 
-/** Device information. */
-export interface DeviceInfo {
-  /** Device manufacturer. */
-  manufacturer?: string;
-  /** Device software version. */
-  swVersion?: string;
-  /** Device model. */
-  model?: string;
-  /** Device hardware version. */
-  hwVersion?: string;
-}
-export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manufacturer: S.optional(S.String),
-    swVersion: S.optional(S.String),
-    model: S.optional(S.String),
-    hwVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
-
 /** Identifiers used to describe the device. */
 export interface DeviceNames {
+  /** List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs, etc. */
+  defaultNames?: StringList;
   /** Primary name of the device, generally provided by the user. Names will be truncated if over the 60 Unicode code point (character) limit and no errors will be thrown. Developers are responsible for handling long names. */
   name?: string;
   /** Additional names provided by the user for the device. */
   nicknames?: StringList;
-  /** List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs, etc. */
-  defaultNames?: StringList;
 }
 export const DeviceNames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    defaultNames: S.optional(StringList),
     name: S.optional(S.String),
     nicknames: S.optional(StringList),
-    defaultNames: S.optional(StringList),
   }),
 ).annotate({ identifier: "DeviceNames" }) as any as S.Schema<DeviceNames>;
 
+/** Device information. */
+export interface DeviceInfo {
+  /** Device software version. */
+  swVersion?: string;
+  /** Device manufacturer. */
+  manufacturer?: string;
+  /** Device hardware version. */
+  hwVersion?: string;
+  /** Device model. */
+  model?: string;
+}
+export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    swVersion: S.optional(S.String),
+    manufacturer: S.optional(S.String),
+    hwVersion: S.optional(S.String),
+    model: S.optional(S.String),
+  }),
+).annotate({ identifier: "DeviceInfo" }) as any as S.Schema<DeviceInfo>;
+
 /** Third-party device definition. */
 export interface Device {
-  /** Custom device attributes stored in Home Graph and provided to your smart home Action in each [QUERY](https://developers.home.google.com/cloud-to-cloud/intents/query) and [EXECUTE](https://developers.home.google.com/cloud-to-cloud/intents/execute) intent. Data in this object has a few constraints: No sensitive information, including but not limited to Personally Identifiable Information. */
-  customData?: DocumentMap;
-  /** Indicates whether your smart home Action will report notifications to Google for this device via ReportStateAndNotification. If your smart home Action enables users to control device notifications, you should update this field and call RequestSyncDevices. */
-  notificationSupportedByAgent?: boolean;
-  /** Alternate IDs associated with this device. This is used to identify cloud synced devices enabled for [local fulfillment](https://developers.home.google.com/local-home/overview). */
-  otherDeviceIds?: AgentOtherDeviceIdList;
-  /** Suggested name for the room where this device is installed. Google attempts to use this value during user setup. */
-  roomHint?: string;
-  /** Attributes for the traits supported by the device. */
-  attributes?: DocumentMap;
-  /** Device manufacturer, model, hardware version, and software version. */
-  deviceInfo?: DeviceInfo;
-  /** Indicates whether your smart home Action will report state of this device to Google via ReportStateAndNotification. */
-  willReportState?: boolean;
-  /** Traits supported by the device. See [device traits](https://developers.home.google.com/cloud-to-cloud/traits). */
-  traits?: StringList;
-  /** Suggested name for the structure where this device is installed. Google attempts to use this value during user setup. */
-  structureHint?: string;
   /** Third-party device ID. */
   id?: string;
+  /** Alternate IDs associated with this device. This is used to identify cloud synced devices enabled for [local fulfillment](https://developers.home.google.com/local-home/overview). */
+  otherDeviceIds?: AgentOtherDeviceIdList;
+  /** Indicates whether your smart home Action will report notifications to Google for this device via ReportStateAndNotification. If your smart home Action enables users to control device notifications, you should update this field and call RequestSyncDevices. */
+  notificationSupportedByAgent?: boolean;
   /** Hardware type of the device. See [device types](https://developers.home.google.com/cloud-to-cloud/guides). */
   type?: string;
   /** Names given to this device by your smart home Action. */
   name?: DeviceNames;
+  /** Attributes for the traits supported by the device. */
+  attributes?: DocumentMap;
+  /** Suggested name for the room where this device is installed. Google attempts to use this value during user setup. */
+  roomHint?: string;
+  /** Suggested name for the structure where this device is installed. Google attempts to use this value during user setup. */
+  structureHint?: string;
+  /** Traits supported by the device. See [device traits](https://developers.home.google.com/cloud-to-cloud/traits). */
+  traits?: StringList;
+  /** Device manufacturer, model, hardware version, and software version. */
+  deviceInfo?: DeviceInfo;
+  /** Custom device attributes stored in Home Graph and provided to your smart home Action in each [QUERY](https://developers.home.google.com/cloud-to-cloud/intents/query) and [EXECUTE](https://developers.home.google.com/cloud-to-cloud/intents/execute) intent. Data in this object has a few constraints: No sensitive information, including but not limited to Personally Identifiable Information. */
+  customData?: DocumentMap;
+  /** Indicates whether your smart home Action will report state of this device to Google via ReportStateAndNotification. */
+  willReportState?: boolean;
 }
 export const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customData: S.optional(DocumentMap),
-    notificationSupportedByAgent: S.optional(S.Boolean),
-    otherDeviceIds: S.optional(AgentOtherDeviceIdList),
-    roomHint: S.optional(S.String),
-    attributes: S.optional(DocumentMap),
-    deviceInfo: S.optional(DeviceInfo),
-    willReportState: S.optional(S.Boolean),
-    traits: S.optional(StringList),
-    structureHint: S.optional(S.String),
     id: S.optional(S.String),
+    otherDeviceIds: S.optional(AgentOtherDeviceIdList),
+    notificationSupportedByAgent: S.optional(S.Boolean),
     type: S.optional(S.String),
     name: S.optional(DeviceNames),
+    attributes: S.optional(DocumentMap),
+    roomHint: S.optional(S.String),
+    structureHint: S.optional(S.String),
+    traits: S.optional(StringList),
+    deviceInfo: S.optional(DeviceInfo),
+    customData: S.optional(DocumentMap),
+    willReportState: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
@@ -700,15 +697,15 @@ export const DeviceList = /*@__PURE__*/ S.Array(
 
 /** Payload containing device information. */
 export interface SyncResponsePayload {
-  /** Third-party user ID */
-  agentUserId?: string;
   /** Devices associated with the third-party user. */
   devices?: DeviceList;
+  /** Third-party user ID */
+  agentUserId?: string;
 }
 export const SyncResponsePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    agentUserId: S.optional(S.String),
     devices: S.optional(DeviceList),
+    agentUserId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SyncResponsePayload",

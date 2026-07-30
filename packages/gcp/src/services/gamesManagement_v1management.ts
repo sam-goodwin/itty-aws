@@ -112,6 +112,21 @@ export const ListHiddenApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHiddenApplicationsRequest",
 }) as any as S.Schema<ListHiddenApplicationsRequest>;
 
+/** Profile settings */
+export interface ProfileSettings {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`. */
+  kind?: string;
+  profileVisible?: boolean;
+}
+export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    profileVisible: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ProfileSettings",
+}) as any as S.Schema<ProfileSettings>;
+
 export interface PlayerName {
   /** The given name of this player. In some places, this is known as the first name. */
   givenName?: string;
@@ -127,17 +142,17 @@ export const PlayerName = /*@__PURE__*/ S.suspend(() =>
 
 /** 1P/3P metadata about a user's level. */
 export interface GamesPlayerLevelResource {
-  /** The minimum experience points for this level. */
-  minExperiencePoints?: string;
   /** The level for the user. */
   level?: number;
+  /** The minimum experience points for this level. */
+  minExperiencePoints?: string;
   /** The maximum experience points for this level. */
   maxExperiencePoints?: string;
 }
 export const GamesPlayerLevelResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    minExperiencePoints: S.optional(S.String),
     level: S.optional(S.Number),
+    minExperiencePoints: S.optional(S.String),
     maxExperiencePoints: S.optional(S.String),
   }),
 ).annotate({
@@ -166,59 +181,44 @@ export const GamesPlayerExperienceInfoResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "GamesPlayerExperienceInfoResource",
 }) as any as S.Schema<GamesPlayerExperienceInfoResource>;
 
-/** Profile settings */
-export interface ProfileSettings {
-  profileVisible?: boolean;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`. */
-  kind?: string;
-}
-export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileVisible: S.optional(S.Boolean),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProfileSettings",
-}) as any as S.Schema<ProfileSettings>;
-
 /** A Player resource. */
 export interface Player {
-  /** The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs. */
-  originalPlayerId?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#player`. */
   kind?: string;
-  /** The url to the landscape mode player banner image. */
-  bannerUrlLandscape?: string;
-  /** An object representation of the individual components of the player's name. For some players, these fields may not be present. */
-  name?: PlayerName;
   /** The ID of the player. */
   playerId?: string;
-  /** The player's title rewarded for their game activities. */
-  title?: string;
+  /** The name to display for the player. */
+  displayName?: string;
   /** The base URL for the image that represents the player. */
   avatarImageUrl?: string;
   /** The url to the portrait mode player banner image. */
   bannerUrlPortrait?: string;
-  /** An object to represent Play Game experience information for the player. */
-  experienceInfo?: GamesPlayerExperienceInfoResource;
-  /** The name to display for the player. */
-  displayName?: string;
+  /** The url to the landscape mode player banner image. */
+  bannerUrlLandscape?: string;
   /** The player's profile settings. Controls whether or not the player's profile is visible to other players. */
   profileSettings?: ProfileSettings;
+  /** An object representation of the individual components of the player's name. For some players, these fields may not be present. */
+  name?: PlayerName;
+  /** An object to represent Play Game experience information for the player. */
+  experienceInfo?: GamesPlayerExperienceInfoResource;
+  /** The player's title rewarded for their game activities. */
+  title?: string;
+  /** The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs. */
+  originalPlayerId?: string;
 }
 export const Player = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    originalPlayerId: S.optional(S.String),
     kind: S.optional(S.String),
-    bannerUrlLandscape: S.optional(S.String),
-    name: S.optional(PlayerName),
     playerId: S.optional(S.String),
-    title: S.optional(S.String),
+    displayName: S.optional(S.String),
     avatarImageUrl: S.optional(S.String),
     bannerUrlPortrait: S.optional(S.String),
-    experienceInfo: S.optional(GamesPlayerExperienceInfoResource),
-    displayName: S.optional(S.String),
+    bannerUrlLandscape: S.optional(S.String),
     profileSettings: S.optional(ProfileSettings),
+    name: S.optional(PlayerName),
+    experienceInfo: S.optional(GamesPlayerExperienceInfoResource),
+    title: S.optional(S.String),
+    originalPlayerId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Player" }) as any as S.Schema<Player>;
 
@@ -246,18 +246,18 @@ export const HiddenPlayerList_ = /*@__PURE__*/ S.Array(
 
 /** A list of hidden players. */
 export interface HiddenPlayerList {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`. */
+  kind?: string;
   /** The players. */
   items: HiddenPlayerList_;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`. */
-  kind?: string;
 }
 export const HiddenPlayerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     items: HiddenPlayerList_,
     nextPageToken: S.optional(S.String),
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "HiddenPlayerList",
@@ -287,17 +287,17 @@ export interface AchievementResetResponse {
   kind?: string;
   /** The ID of an achievement for which player state has been updated. */
   definitionId?: string;
-  /** The current state of the achievement. This is the same as the initial state of the achievement. Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" - Achievement is unlocked. */
-  currentState?: string;
   /** Flag to indicate if the requested update actually occurred. */
   updateOccurred?: boolean;
+  /** The current state of the achievement. This is the same as the initial state of the achievement. Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" - Achievement is unlocked. */
+  currentState?: string;
 }
 export const AchievementResetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     definitionId: S.optional(S.String),
-    currentState: S.optional(S.String),
     updateOccurred: S.optional(S.Boolean),
+    currentState: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AchievementResetResponse",
@@ -577,16 +577,16 @@ export const ResetForAllPlayersScoresResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetForAllPlayersScoresResponse>;
 
 export interface AchievementResetMultipleForAllRequest {
-  /** The IDs of achievements to reset. */
-  achievement_ids?: StringList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
   kind?: string;
+  /** The IDs of achievements to reset. */
+  achievement_ids?: StringList;
 }
 export const AchievementResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      achievement_ids: S.optional(StringList),
       kind: S.optional(S.String),
+      achievement_ids: S.optional(StringList),
     }),
 ).annotate({
   identifier: "AchievementResetMultipleForAllRequest",
@@ -662,15 +662,15 @@ export const ResetMultipleForAllPlayersEventsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
 
 export interface ScoresResetMultipleForAllRequest {
-  /** The IDs of leaderboards to reset. */
-  leaderboard_ids?: StringList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`. */
   kind?: string;
+  /** The IDs of leaderboards to reset. */
+  leaderboard_ids?: StringList;
 }
 export const ScoresResetMultipleForAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    leaderboard_ids: S.optional(StringList),
     kind: S.optional(S.String),
+    leaderboard_ids: S.optional(StringList),
   }),
 ).annotate({
   identifier: "ScoresResetMultipleForAllRequest",

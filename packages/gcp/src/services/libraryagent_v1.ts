@@ -80,21 +80,21 @@ export const BorrowShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A single book in the library. */
 export interface GoogleExampleLibraryagentV1Book {
-  /** The title of the book. */
-  title?: string;
   /** The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book. */
   name?: string;
-  /** The name of the book author. */
-  author?: string;
   /** Value indicating whether the book has been read. */
   read?: boolean;
+  /** The name of the book author. */
+  author?: string;
+  /** The title of the book. */
+  title?: string;
 }
 export const GoogleExampleLibraryagentV1Book = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.optional(S.String),
     name: S.optional(S.String),
-    author: S.optional(S.String),
     read: S.optional(S.Boolean),
+    author: S.optional(S.String),
+    title: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleExampleLibraryagentV1Book",
@@ -120,15 +120,15 @@ export const GetShelvesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A Shelf contains a collection of books with a theme. */
 export interface GoogleExampleLibraryagentV1Shelf {
-  /** The theme of the shelf */
-  theme?: string;
   /** Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The name is ignored when creating a shelf. */
   name?: string;
+  /** The theme of the shelf */
+  theme?: string;
 }
 export const GoogleExampleLibraryagentV1Shelf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    theme: S.optional(S.String),
     name: S.optional(S.String),
+    theme: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GoogleExampleLibraryagentV1Shelf",
@@ -181,34 +181,34 @@ export const GoogleExampleLibraryagentV1ShelfList = /*@__PURE__*/ S.Array(
 
 /** Response message for LibraryAgent.ListShelves. */
 export interface GoogleExampleLibraryagentV1ListShelvesResponse {
-  /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
-  nextPageToken?: string;
   /** The list of shelves. */
   shelves?: GoogleExampleLibraryagentV1ShelfList;
+  /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
+  nextPageToken?: string;
 }
 export const GoogleExampleLibraryagentV1ListShelvesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      nextPageToken: S.optional(S.String),
       shelves: S.optional(GoogleExampleLibraryagentV1ShelfList),
+      nextPageToken: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GoogleExampleLibraryagentV1ListShelvesResponse",
   }) as any as S.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>;
 
 export interface ListShelvesBooksRequest {
-  /** Required. The name of the shelf whose books we'd like to list. */
-  parent: string;
   /** Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method. */
   pageToken?: string;
+  /** Required. The name of the shelf whose books we'd like to list. */
+  parent: string;
 }
 export const ListShelvesBooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",

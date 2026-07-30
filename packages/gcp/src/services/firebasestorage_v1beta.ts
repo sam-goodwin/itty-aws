@@ -102,20 +102,20 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
 
 /** Spark tier-eligible Cloud Storage bucket. One per project. This resource exists if the underlying Cloud Storage bucket exists and it is linked to your Firebase project. See https://firebase.google.com/pricing for pricing details. */
 export interface DefaultBucket {
-  /** Required. Immutable. Location of the default bucket. */
+  /** Immutable. Location of the default bucket. */
   location?: string;
-  /** Immutable. Storage class of the default bucket. Supported values are available at https://cloud.google.com/storage/docs/storage-classes#classes. */
-  storageClass?: string;
   /** Output only. Underlying bucket resource. */
   bucket?: Bucket;
+  /** Immutable. Storage class of the default bucket. Supported values are available at https://cloud.google.com/storage/docs/storage-classes#classes. */
+  storageClass?: string;
   /** Identifier. Resource name of the default bucket. */
   name?: string;
 }
 export const DefaultBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
-    storageClass: S.optional(S.String),
     bucket: S.optional(Bucket),
+    storageClass: S.optional(S.String),
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "DefaultBucket" }) as any as S.Schema<DefaultBucket>;
@@ -202,18 +202,18 @@ export const GetProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsBucketsRequest>;
 
 export interface ListProjectsBucketsRequest {
-  /** The maximum number of buckets to return. If not set, the server will use a reasonable default. */
-  pageSize?: number;
-  /** Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. */
-  parent: string;
   /** A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token. */
   pageToken?: string;
+  /** Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. */
+  parent: string;
+  /** The maximum number of buckets to return. If not set, the server will use a reasonable default. */
+  pageSize?: number;
 }
 export const ListProjectsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

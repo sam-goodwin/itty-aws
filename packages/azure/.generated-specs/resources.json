@@ -1280,10 +1280,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the list of all policy assignments associated with the given resource group in the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource group, including those that apply directly or apply from containing scopes, as well as any applied to resources contained within the resource group. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource group, which is everything in the unfiltered list except those applied to resources contained within the resource group. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the resource group. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentListResult": {
@@ -1746,10 +1746,10 @@
             "smithy.api#enumValue": "policyDefinitionReferenceId"
           }
         },
-        "RESOURCEROLLOUTPERCENTAGE": {
+        "RESOURCEPERCENTAGE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "resourceRolloutPercentage"
+            "smithy.api#enumValue": "resourcePercentage"
           }
         },
         "USERPRINCIPALID": {
@@ -2071,511 +2071,6 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.resources#PolicyTokensAcquireAtResourceGroup": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.resources#PolicyTokensAcquireAtResourceGroupRequest"
-      },
-      "output": {
-        "target": "com.azure.resources#PolicyTokenResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
-          "code": 200,
-          "apiVersion": "2026-07-01"
-        },
-        "smithy.api#documentation": "Acquires a policy token at resource group level.\n\nThis operation acquires a policy token in the given resource group for the given request body.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
-      }
-    },
-    "com.azure.resources#PolicyTokenResponse": {
-      "type": "structure",
-      "members": {
-        "result": {
-          "target": "com.azure.resources#PolicyTokenResult",
-          "traits": {
-            "smithy.api#documentation": "The result of the completed token acquisition operation. Possible values are Succeeded and Failed."
-          }
-        },
-        "requestDetails": {
-          "target": "com.azure.resources#PolicyTokenEvaluatedRequestDetails",
-          "traits": {
-            "smithy.api#documentation": "The external evaluation request details."
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Status message with additional details about the token acquisition operation result."
-          }
-        },
-        "retryAfter": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time after which the client can try to acquire a token again in the case of retry-able failures."
-          }
-        },
-        "results": {
-          "target": "com.azure.resources#PolicyTokenResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "An array of external evaluation endpoint invocation results."
-          }
-        },
-        "changeReference": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The change reference associated with the operation for which the token is acquired."
-          }
-        },
-        "token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The issued policy token."
-          }
-        },
-        "tokenId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The unique Id assigned to the policy token."
-          }
-        },
-        "expiration": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The expiration of the policy token."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The policy token response properties."
-      }
-    },
-    "com.azure.resources#PolicyTokenResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.resources#ExternalEvaluationEndpointInvocationResult"
-      },
-      "traits": {
-        "smithy.api#documentation": "An array of external evaluation endpoint invocation results."
-      }
-    },
-    "com.azure.resources#ExternalEvaluationEndpointInvocationResult": {
-      "type": "structure",
-      "members": {
-        "policyInfo": {
-          "target": "com.azure.resources#PolicyLogInfo",
-          "traits": {
-            "smithy.api#documentation": "The details of the policy requiring the external endpoint invocation."
-          }
-        },
-        "result": {
-          "target": "com.azure.resources#ExternalEndpointResult",
-          "traits": {
-            "smithy.api#documentation": "The result of the external endpoint. Possible values are Succeeded and Failed."
-          }
-        },
-        "endpointKind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The external evaluation endpoint kind."
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The status message with additional details about the invocation result."
-          }
-        },
-        "retryAfter": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The date and time after which a failed endpoint invocation can be retried."
-          }
-        },
-        "claims": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The set of claims that will be attached to the policy token as an attestation for the result of the endpoint invocation."
-          }
-        },
-        "policyAction": {
-          "target": "com.azure.resources#PolicyAction",
-          "traits": {
-            "smithy.api#documentation": "The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error."
-          }
-        },
-        "policyEvaluationDetails": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The evaluation details returned by the policy evaluation engine."
-          }
-        },
-        "additionalInfo": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The endpoint specific metadata."
-          }
-        },
-        "complianceState": {
-          "target": "com.azure.resources#ComplianceState",
-          "traits": {
-            "smithy.api#documentation": "The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Conflict, NotApplicable, Compliant, Error, Unknown, and Exempt."
-          }
-        },
-        "expiration": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The expiration of the results."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The external evaluation endpoint invocation results."
-      }
-    },
-    "com.azure.resources#ComplianceState": {
-      "type": "enum",
-      "members": {
-        "NOTSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NotSpecified"
-          }
-        },
-        "NONCOMPLIANT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NonCompliant"
-          }
-        },
-        "PARTIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Partial"
-          }
-        },
-        "CONFLICT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Conflict"
-          }
-        },
-        "NOTAPPLICABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "NotApplicable"
-          }
-        },
-        "COMPLIANT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Compliant"
-          }
-        },
-        "ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Error"
-          }
-        },
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Unknown"
-          }
-        },
-        "EXEMPT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Exempt"
-          }
-        },
-        "PROTECTED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Protected"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Partial, Conflict, NotApplicable, Compliant, Error, Unknown, Exempt, and Protected."
-      }
-    },
-    "com.azure.resources#PolicyAction": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Unknown"
-          }
-        },
-        "ALLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Allow"
-          }
-        },
-        "AUDIT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Audit"
-          }
-        },
-        "DENY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Deny"
-          }
-        },
-        "ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Error"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error."
-      }
-    },
-    "com.azure.resources#ExternalEndpointResult": {
-      "type": "enum",
-      "members": {
-        "SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Succeeded"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Failed"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The result of the external endpoint. Possible values are Succeeded and Failed."
-      }
-    },
-    "com.azure.resources#PolicyLogInfo": {
-      "type": "structure",
-      "members": {
-        "policyDefinitionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy definition Id."
-          }
-        },
-        "policySetDefinitionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy set definition Id."
-          }
-        },
-        "policyDefinitionReferenceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy definition instance Id inside a policy set."
-          }
-        },
-        "policySetDefinitionName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy set definition name."
-          }
-        },
-        "policySetDefinitionVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy set definition version."
-          }
-        },
-        "policyDefinitionName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy definition name."
-          }
-        },
-        "policyDefinitionVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy definition version."
-          }
-        },
-        "policyDefinitionEffect": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy definition action."
-          }
-        },
-        "policyAssignmentId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy assignment Id."
-          }
-        },
-        "policyAssignmentName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy assignment name."
-          }
-        },
-        "policyAssignmentVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy assignment version."
-          }
-        },
-        "policyAssignmentScope": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The policy assignment scope."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The policy log info."
-      }
-    },
-    "com.azure.resources#PolicyTokenEvaluatedRequestDetails": {
-      "type": "structure",
-      "members": {
-        "uri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The request URI of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        },
-        "resourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The resource Id of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        },
-        "apiVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The api-version of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        },
-        "authorizationAction": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The authorization action of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        },
-        "httpMethod": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The http method of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        },
-        "contentHash": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The hashed payload of the resource operation that is targeted by the issued token.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The policy token evaluated request details."
-      }
-    },
-    "com.azure.resources#PolicyTokenResult": {
-      "type": "enum",
-      "members": {
-        "SUCCEEDED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Succeeded"
-          }
-        },
-        "FAILED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Failed"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The result of the completed token acquisition operation. Possible values are Succeeded and Failed."
-      }
-    },
-    "com.azure.resources#PolicyTokensAcquireAtResourceGroupRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "resourceGroupName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
-          }
-        },
-        "operation": {
-          "target": "com.azure.resources#PolicyTokenOperation",
-          "traits": {
-            "smithy.api#documentation": "The resource operation to acquire a token for.",
-            "smithy.api#required": {}
-          }
-        },
-        "changeReference": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The change reference."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.resources#PolicyTokenOperation": {
-      "type": "structure",
-      "members": {
-        "uri": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The request URI of the resource operation.",
-            "smithy.api#required": {}
-          }
-        },
-        "httpMethod": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The http method of the resource operation.",
-            "smithy.api#required": {}
-          }
-        },
-        "content": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "The payload of the resource operation."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The resource operation to acquire a token for."
-      }
-    },
     "com.azure.resources#PolicyAssignmentsListForResource": {
       "type": "operation",
       "input": {
@@ -2589,10 +2084,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Retrieves all policy assignments that apply to a resource.\n\nThis operation retrieves the list of all policy assignments associated with the specified resource in the given resource group and subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource, including those that apply directly or from all containing scopes, as well as any applied to resources contained within the resource. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource, which is everything in the unfiltered list except those applied to resources contained within the resource. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the resource level. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource. Three parameters plus the resource name are used to identify a specific resource. If the resource is not part of a parent resource (the more common case), the parent resource path should not be provided (or provided as ''). For example a web app could be specified as ({resourceProviderNamespace} == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} == 'MyWebApp'). If the resource is part of a parent resource, then all parameters should be provided. For example a virtual machine DNS name could be specified as ({resourceProviderNamespace} == 'Microsoft.Compute', {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType} == 'domainNames', {resourceName} == 'MyComputerName'). A convenient alternative to providing the namespace and type name separately is to provide both in the {resourceType} parameter, format: ({resourceProviderNamespace} == '', {parentResourcePath} == '', {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsListForResourceRequest": {
@@ -2685,10 +2180,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy set definition version in the given subscription with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsDeleteRequest": {
@@ -2736,10 +2231,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy set definition version in the given subscription with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsCreateOrUpdateResponse": {
@@ -3337,10 +2832,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy set definition version in the given subscription with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsGetResponse": {
@@ -3433,10 +2928,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy set definition versions for the given policy set definition.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionListResult": {
@@ -3558,10 +3053,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy set definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsDeleteRequest": {
@@ -3601,10 +3096,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy set definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsCreateOrUpdateResponse": {
@@ -3892,10 +3387,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy set definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsGetResponse": {
@@ -3980,10 +3475,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy set definitions in a given subscription that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy set definitions associated with the subscription, including those that apply directly or from management groups that contain the given subscription. If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given subscription. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn and Custom. If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionListResult": {
@@ -4104,10 +3599,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy definition version in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsDeleteRequest": {
@@ -4155,10 +3650,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsCreateOrUpdateResponse": {
@@ -4385,10 +3880,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy definition version in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsGetResponse": {
@@ -4474,10 +3969,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy definition versions for the given policy definition.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionListResult": {
@@ -4592,10 +4087,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsDeleteRequest": {
@@ -4635,10 +4130,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsCreateOrUpdateResponse": {
@@ -4811,10 +4306,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy definition in the given subscription with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsGetResponse": {
@@ -4892,10 +4387,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy definitions in a given subscription that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy definitions associated with the subscription, including those that apply directly or from management groups that contain the given subscription. If $filter=atExactScope() is provided, the returned list only includes all policy definitions that at the given subscription. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionListResult": {
@@ -5009,10 +4504,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Retrieves all policy assignments that apply to a subscription.\n\nThis operation retrieves the list of all policy assignments associated with the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the subscription, including those that apply directly or from management groups that contain the given subscription, as well as any applied to objects contained within the subscription. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the subscription, which is everything in the unfiltered list except those applied to objects contained within the subscription. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the subscription. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsListRequest": {
@@ -5065,10 +4560,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all policy set definition versions within a subscription.\n\nThis operation lists all the policy set definition versions for all policy set definitions within a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsListAllRequest": {
@@ -5100,10 +4595,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all policy definition versions within a subscription.\n\nThis operation lists all the policy definition versions for all policy definitions within a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsListAllRequest": {
@@ -5135,10 +4630,357 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/acquirePolicyToken",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Acquires a policy token.\n\nThis operation acquires a policy token in the given subscription for the given request body.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
+      }
+    },
+    "com.azure.resources#PolicyTokenResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.azure.resources#PolicyTokenResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the completed token acquisition operation. Possible values are Succeeded and Failed."
+          }
+        },
+        "requestDetails": {
+          "target": "com.azure.resources#PolicyTokenEvaluatedRequestDetails",
+          "traits": {
+            "smithy.api#documentation": "The external evaluation request details."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status message with additional details about the token acquisition operation result."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time after which the client can try to acquire a token again in the case of retry-able failures."
+          }
+        },
+        "results": {
+          "target": "com.azure.resources#PolicyTokenResponseResultsList",
+          "traits": {
+            "smithy.api#documentation": "An array of external evaluation endpoint invocation results."
+          }
+        },
+        "changeReference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The change reference associated with the operation for which the token is acquired."
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issued policy token."
+          }
+        },
+        "tokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique Id assigned to the policy token."
+          }
+        },
+        "expiration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration of the policy token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy token response properties."
+      }
+    },
+    "com.azure.resources#PolicyTokenResponseResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resources#ExternalEvaluationEndpointInvocationResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of external evaluation endpoint invocation results."
+      }
+    },
+    "com.azure.resources#ExternalEvaluationEndpointInvocationResult": {
+      "type": "structure",
+      "members": {
+        "policyInfo": {
+          "target": "com.azure.resources#PolicyLogInfo",
+          "traits": {
+            "smithy.api#documentation": "The details of the policy requiring the external endpoint invocation."
+          }
+        },
+        "result": {
+          "target": "com.azure.resources#ExternalEndpointResult",
+          "traits": {
+            "smithy.api#documentation": "The result of the external endpoint. Possible values are Succeeded and Failed."
+          }
+        },
+        "endpointKind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external evaluation endpoint kind."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status message with additional details about the invocation result."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time after which a failed endpoint invocation can be retried."
+          }
+        },
+        "claims": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The set of claims that will be attached to the policy token as an attestation for the result of the endpoint invocation."
+          }
+        },
+        "policyAction": {
+          "target": "com.azure.resources#PolicyAction",
+          "traits": {
+            "smithy.api#documentation": "The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error."
+          }
+        },
+        "policyEvaluationDetails": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The evaluation details returned by the policy evaluation engine."
+          }
+        },
+        "additionalInfo": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The endpoint specific metadata."
+          }
+        },
+        "expiration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration of the results."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The external evaluation endpoint invocation results."
+      }
+    },
+    "com.azure.resources#PolicyAction": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Allow"
+          }
+        },
+        "AUDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Audit"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deny"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Error"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error."
+      }
+    },
+    "com.azure.resources#ExternalEndpointResult": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the external endpoint. Possible values are Succeeded and Failed."
+      }
+    },
+    "com.azure.resources#PolicyLogInfo": {
+      "type": "structure",
+      "members": {
+        "policyDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition Id."
+          }
+        },
+        "policySetDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition Id."
+          }
+        },
+        "policyDefinitionReferenceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition instance Id inside a policy set."
+          }
+        },
+        "policySetDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition name."
+          }
+        },
+        "policySetDefinitionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy set definition version."
+          }
+        },
+        "policyDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition name."
+          }
+        },
+        "policyDefinitionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition version."
+          }
+        },
+        "policyDefinitionEffect": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition action."
+          }
+        },
+        "policyAssignmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment Id."
+          }
+        },
+        "policyAssignmentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment name."
+          }
+        },
+        "policyAssignmentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment version."
+          }
+        },
+        "policyAssignmentScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy assignment scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy log info."
+      }
+    },
+    "com.azure.resources#PolicyTokenEvaluatedRequestDetails": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request URI of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource Id of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api-version of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorizationAction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authorization action of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        },
+        "httpMethod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The http method of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentHash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hashed payload of the resource operation that is targeted by the issued token.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policy token evaluated request details."
+      }
+    },
+    "com.azure.resources#PolicyTokenResult": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The result of the completed token acquisition operation. Possible values are Succeeded and Failed."
       }
     },
     "com.azure.resources#PolicyTokensAcquireRequest": {
@@ -5170,6 +5012,34 @@
         "smithy.api#input": {}
       }
     },
+    "com.azure.resources#PolicyTokenOperation": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request URI of the resource operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "httpMethod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The http method of the resource operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "content": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The payload of the resource operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource operation to acquire a token for."
+      }
+    },
     "com.azure.resources#PolicySetDefinitionVersionsDeleteAtManagementGroup": {
       "type": "operation",
       "input": {
@@ -5183,10 +5053,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy set definition version in the given management group with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsDeleteAtManagementGroupRequest": {
@@ -5234,10 +5104,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy set definition version in the given management group with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupResponse": {
@@ -5329,10 +5199,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy set definition version in the given management group with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsGetAtManagementGroupResponse": {
@@ -5425,10 +5295,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy set definition versions for the given policy set definition in a given management group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsListByManagementGroupRequest": {
@@ -5482,10 +5352,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy set definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsDeleteAtManagementGroupRequest": {
@@ -5525,10 +5395,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy set definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsCreateOrUpdateAtManagementGroupResponse": {
@@ -5612,10 +5482,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy set definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsGetAtManagementGroupResponse": {
@@ -5700,10 +5570,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy set definitions in a given management group that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy set definitions associated with the management group, including those that apply directly or from management groups that contain the given management group. If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given management group. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn and Custom. If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsListByManagementGroupRequest": {
@@ -5756,10 +5626,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsDeleteAtManagementGroupRequest": {
@@ -5807,10 +5677,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy definition version in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupResponse": {
@@ -5902,10 +5772,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy definition version in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsGetAtManagementGroupResponse": {
@@ -5991,10 +5861,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy definition versions for the given policy definition in the given management group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsListByManagementGroupRequest": {
@@ -6041,10 +5911,10 @@
           "method": "DELETE",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes the policy definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsDeleteAtManagementGroupRequest": {
@@ -6084,10 +5954,10 @@
           "method": "PUT",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsCreateOrUpdateAtManagementGroupResponse": {
@@ -6171,10 +6041,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the policy definition in the given management group with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsGetAtManagementGroupResponse": {
@@ -6252,10 +6122,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the policy definitions in a given management group that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy definitions associated with the management group, including those that apply directly or from management groups that contain the given management group. If $filter=atExactScope() is provided, the returned list only includes all policy definitions that at the given management group. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsListByManagementGroupRequest": {
@@ -6301,10 +6171,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Retrieves all policy assignments that apply to a management group.\n\nThis operation retrieves the list of all policy assignments applicable to the management group that match the given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is provided, the returned list includes all policy assignments that are assigned to the management group or the management group's ancestors. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the management group. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the management group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsListForManagementGroupRequest": {
@@ -6357,10 +6227,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all policy set definition versions at management group scope.\n\nThis operation lists all the policy set definition versions for all policy set definitions at the management group scope.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsListAllAtManagementGroupRequest": {
@@ -6392,10 +6262,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all policy definition versions at management group scope.\n\nThis operation lists all the policy definition versions for all policy definitions at the management group scope.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsListAllAtManagementGroupRequest": {
@@ -6427,10 +6297,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Acquires a policy token at management group level.\n\nThis operation acquires a policy token in the given management group for the given request body.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyTokensAcquireAtManagementGroupRequest": {
@@ -6475,10 +6345,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the built-in policy set definition version with the given name and version.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsGetBuiltInResponse": {
@@ -6563,10 +6433,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the built-in policy set definition versions for the given built-in policy set definition.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionVersionsListBuiltInRequest": {
@@ -6612,10 +6482,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the built-in policy set definition with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsGetBuiltInResponse": {
@@ -6692,10 +6562,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policySetDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the built-in policy set definitions that match the optional given $filter. If $filter='category -eq {value}' is provided, the returned list only includes all built-in policy set definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicySetDefinitionsListBuiltInRequest": {
@@ -6740,10 +6610,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the built-in policy definition version with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsGetBuiltInResponse": {
@@ -6821,10 +6691,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the built-in policy definition versions for the given policy definition.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsListBuiltInRequest": {
@@ -6863,10 +6733,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves the built-in policy definition with the given name.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsGetBuiltInResponse": {
@@ -6936,10 +6806,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/policyDefinitions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a list of all the built-in policy definitions that match the optional given $filter. If $filter='policyType -eq {value}' is provided, the returned list only includes all built-in policy definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn, Custom, and Static. If $filter='category -eq {value}' is provided, the returned list only includes all built-in policy definitions whose category match the {value}.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionsListBuiltInRequest": {
@@ -6977,10 +6847,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all built-in policy set definition versions.\n\nThis operation lists all the built-in policy set definition versions for all built-in policy set definitions.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyDefinitionVersionsListAllBuiltins": {
@@ -6996,10 +6866,10 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Lists all built-in policy definition versions.\n\nThis operation lists all the built-in policy definition versions for all built-in policy definitions.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#DataPolicyManifestsGetByPolicyMode": {
@@ -7015,10 +6885,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/dataPolicyManifests/{policyMode}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Retrieves a data policy manifest.\n\nThis operation retrieves the data policy manifest with the given policy mode.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#DataPolicyManifestsGetByPolicyModeResponse": {
@@ -7564,10 +7434,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/dataPolicyManifests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "Retrieves data policy manifests.\n\nThis operation retrieves a list of all the data policy manifests that match the optional given $filter. Valid values for $filter are: \\\"$filter=namespace eq '{0}'\\\". If $filter is not provided, the unfiltered list includes all data policy manifests for data resource types. If $filter=namespace is provided, the returned list only includes all data policy manifests that have a namespace matching the provided value.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#DataPolicyManifestListResult": {
@@ -7666,10 +7536,10 @@
           "method": "DELETE",
           "uri": "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation deletes a policy assignment, given its name and the scope it was created in. The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsDeleteResponse": {
@@ -7759,10 +7629,10 @@
           "method": "PATCH",
           "uri": "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation updates a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsUpdateResponse": {
@@ -7951,10 +7821,10 @@
           "method": "PUT",
           "uri": "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsCreateResponse": {
@@ -8222,10 +8092,10 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-06-01"
         },
         "smithy.api#documentation": "This operation retrieves a single policy assignment, given its name and the scope it was created at.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
     "com.azure.resources#PolicyAssignmentsGetResponse": {
@@ -36906,9 +36776,6 @@
         },
         {
           "target": "com.azure.resources#PolicyAssignmentsListForResourceGroup"
-        },
-        {
-          "target": "com.azure.resources#PolicyTokensAcquireAtResourceGroup"
         },
         {
           "target": "com.azure.resources#PolicyAssignmentsListForResource"

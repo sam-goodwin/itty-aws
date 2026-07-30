@@ -223,37 +223,6 @@ export const AchievementsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementsListResponse",
 }) as any as S.Schema<AchievementsListResponse>;
 
-export interface WebAnalyticsAchievementsPreferencesRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const WebAnalyticsAchievementsPreferencesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/web_analytics_achievements/preferences/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAnalyticsAchievementsPreferencesRequest",
-  }) as any as S.Schema<WebAnalyticsAchievementsPreferencesRequest>;
-
-export interface WebAnalyticsUserPreferences {
-  /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
-  achievements_opt_out: boolean;
-}
-export const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    achievements_opt_out: S.Boolean,
-  }),
-).annotate({
-  identifier: "WebAnalyticsUserPreferences",
-}) as any as S.Schema<WebAnalyticsUserPreferences>;
-
 /** * `data` - data * `recording` - recording */
 export type InteractionKindEnum = "data" | "recording";
 export const InteractionKindEnum = /*@__PURE__*/ S.String;
@@ -323,28 +292,6 @@ export const RecordVisitResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordVisitResponse",
 }) as any as S.Schema<RecordVisitResponse>;
 
-export interface WebAnalyticsAchievementsUpdatePreferencesRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
-  achievements_opt_out: boolean;
-}
-export const WebAnalyticsAchievementsUpdatePreferencesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      achievements_opt_out: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/web_analytics_achievements/preferences/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAnalyticsAchievementsUpdatePreferencesRequest",
-  }) as any as S.Schema<WebAnalyticsAchievementsUpdatePreferencesRequest>;
-
 export type WebAnalyticsAchievementsAcknowledgeCelebrationError =
   PosthogOpError;
 /** Acknowledge an achievement celebration Clears a pending celebration for the given track and stage once the client has shown it, so it isn't celebrated again. Idempotent. */
@@ -376,21 +323,6 @@ export const webAnalyticsAchievementsOverview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WebAnalyticsAchievementsPreferencesError = PosthogOpError;
-/** Get Web analytics achievements preferences Returns the requesting user's per-project Web analytics achievements preferences. */
-export const webAnalyticsAchievementsPreferences: API.OperationMethod<
-  WebAnalyticsAchievementsPreferencesRequest,
-  WebAnalyticsUserPreferences,
-  WebAnalyticsAchievementsPreferencesError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsPreferencesRequest,
-  output: WebAnalyticsUserPreferences,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WebAnalyticsAchievementsRecordInteractionError = PosthogOpError;
 /** Record a Web analytics interaction Idempotently increments the requesting user's first-party counter for an in-product Web analytics interaction (slicing data, or opening a session recording), which drives the Explorer and Detective achievement tracks. */
 export const webAnalyticsAchievementsRecordInteraction: API.OperationMethod<
@@ -416,21 +348,6 @@ export const webAnalyticsAchievementsRecordVisit: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WebAnalyticsAchievementsRecordVisitRequest,
   output: RecordVisitResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebAnalyticsAchievementsUpdatePreferencesError = PosthogOpError;
-/** Update Web analytics achievements preferences Sets the requesting user's per-project Web analytics achievements preferences. */
-export const webAnalyticsAchievementsUpdatePreferences: API.OperationMethod<
-  WebAnalyticsAchievementsUpdatePreferencesRequest,
-  WebAnalyticsUserPreferences,
-  WebAnalyticsAchievementsUpdatePreferencesError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsAchievementsUpdatePreferencesRequest,
-  output: WebAnalyticsUserPreferences,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

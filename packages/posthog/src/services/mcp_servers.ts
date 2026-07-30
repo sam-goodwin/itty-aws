@@ -56,10 +56,7 @@ export interface MCPServerTemplate {
   docs_url?: string;
   description?: string;
   auth_type?: MCPAuthTypeEnum;
-  /** Deprecated: use icon_domain instead. Lowercase key for clients that still render bundled icon assets. */
   icon_key?: string;
-  /** The vendor's brand domain (e.g. 'linear.app'), resolved to an icon at render time via the logo.dev proxy endpoint. Empty when no brand icon is known. */
-  icon_domain?: string;
   category?: MCPServerTemplateCategoryEnum;
 }
 export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
@@ -71,7 +68,6 @@ export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     auth_type: S.optional(MCPAuthTypeEnum),
     icon_key: S.optional(S.String),
-    icon_domain: S.optional(S.String),
     category: S.optional(MCPServerTemplateCategoryEnum),
   }),
 ).annotate({

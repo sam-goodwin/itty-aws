@@ -11,10 +11,8 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-/** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
-export type ManagedViewsetsRetrieveRequestKind =
-  | "revenue_analytics"
-  | "engineering_analytics";
+/** * `revenue_analytics` - Revenue Analytics */
+export type ManagedViewsetsRetrieveRequestKind = "revenue_analytics";
 export const ManagedViewsetsRetrieveRequestKind = /*@__PURE__*/ S.String;
 
 export interface ManagedViewsetsRetrieveRequest {
@@ -44,10 +42,8 @@ export const ManagedViewsetsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedViewsetsRetrieveResponse",
 }) as any as S.Schema<ManagedViewsetsRetrieveResponse>;
 
-/** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
-export type ManagedViewsetsUpdateRequestKind =
-  | "revenue_analytics"
-  | "engineering_analytics";
+/** * `revenue_analytics` - Revenue Analytics */
+export type ManagedViewsetsUpdateRequestKind = "revenue_analytics";
 export const ManagedViewsetsUpdateRequestKind = /*@__PURE__*/ S.String;
 
 export interface ManagedViewsetsUpdateRequest {

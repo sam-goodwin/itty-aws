@@ -445,8 +445,9 @@ export type StorageDiscoveryResourceType = "Microsoft.Storage/storageAccounts";
 export const StorageDiscoveryResourceType = /*@__PURE__*/ S.String;
 
 /** Resource types for the collection */
-export type StorageDiscoveryScopeResourceTypesList =
-  Array<StorageDiscoveryResourceType>;
+export type StorageDiscoveryScopeResourceTypesList = Array<
+  StorageDiscoveryResourceType | (string & {})
+>;
 export const StorageDiscoveryScopeResourceTypesList = /*@__PURE__*/ S.Array(
   StorageDiscoveryResourceType,
 ) as any as S.Schema<StorageDiscoveryScopeResourceTypesList>;

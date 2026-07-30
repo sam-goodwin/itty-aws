@@ -479,10 +479,10 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaCondition {
   message?: string;
   /** `reason` is a unique, one-word, CamelCase reason for the condition's last transition. */
   reason?: string;
-  /** `status` is the status of the condition. Should be specified and set to one of True, False, Unknown. */
+  /** `status` is the status of the condition. Can be True, False, Unknown. Required. */
   status?: string;
   /** `type` is the type of the condition. Required. */
-  type: string;
+  type?: string;
 }
 export const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(
   () =>
@@ -491,7 +491,7 @@ export const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ S.suspend(
       message: S.optional(S.String),
       reason: S.optional(S.String),
       status: S.optional(S.String),
-      type: S.String,
+      type: S.optional(S.String),
     }),
 ).annotate({
   identifier: "IoK8sApiFlowcontrolV1FlowSchemaCondition",
@@ -537,7 +537,7 @@ export interface CreateFlowcontrolApiserverV1FlowSchemaRequest {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1FlowSchemaSpec;
+  spec?: IoK8sApiFlowcontrolV1FlowSchemaSpec;
   /** `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
@@ -551,7 +551,7 @@ export const CreateFlowcontrolApiserverV1FlowSchemaRequest =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1FlowSchemaSpec),
       status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
     }).pipe(
       T.Http({
@@ -573,7 +573,7 @@ export interface IoK8sApiFlowcontrolV1FlowSchema {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1FlowSchemaSpec;
+  spec?: IoK8sApiFlowcontrolV1FlowSchemaSpec;
   /** `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
@@ -582,7 +582,7 @@ export const IoK8sApiFlowcontrolV1FlowSchema = /*@__PURE__*/ S.suspend(() =>
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
     metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-    spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+    spec: S.optional(IoK8sApiFlowcontrolV1FlowSchemaSpec),
     status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
   }),
 ).annotate({
@@ -649,7 +649,7 @@ export interface IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration {
   /** `lendablePercent` prescribes the fraction of the level's NominalCL that can be borrowed by other priority levels. The value of this field must be between 0 and 100, inclusive, and it defaults to 0. The number of seats that other levels can borrow from this level, known as this level's LendableConcurrencyLimit (LendableCL), is defined as follows. LendableCL(i) = round( NominalCL(i) * lendablePercent(i)/100.0 ) */
   lendablePercent?: number;
   /** `limitResponse` indicates what to do with requests that can not be executed right now */
-  limitResponse: IoK8sApiFlowcontrolV1LimitResponse;
+  limitResponse?: IoK8sApiFlowcontrolV1LimitResponse;
   /** `nominalConcurrencyShares` (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats available at this priority level. This is used both for requests dispatched from this priority level as well as requests dispatched from other priority levels borrowing seats from this level. The server's concurrency limit (ServerCL) is divided among the Limited priority levels in proportion to their NCS values: NominalCL(i) = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k) Bigger numbers mean a larger nominal concurrency limit, at the expense of every other priority level. If not specified, this field defaults to a value of 30. Setting this field to zero supports the construction of a "jail" for this priority level that is used to hold some request(s) */
   nominalConcurrencyShares?: number;
 }
@@ -658,7 +658,7 @@ export const IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration =
     S.Struct({
       borrowingLimitPercent: S.optional(S.Number),
       lendablePercent: S.optional(S.Number),
-      limitResponse: IoK8sApiFlowcontrolV1LimitResponse,
+      limitResponse: S.optional(IoK8sApiFlowcontrolV1LimitResponse),
       nominalConcurrencyShares: S.optional(S.Number),
     }),
   ).annotate({
@@ -695,10 +695,10 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition {
   message?: string;
   /** `reason` is a unique, one-word, CamelCase reason for the condition's last transition. */
   reason?: string;
-  /** `status` is the status of the condition. Should be specified and set to one of True, False, Unknown. */
+  /** `status` is the status of the condition. Can be True, False, Unknown. Required. */
   status?: string;
   /** `type` is the type of the condition. Required. */
-  type: string;
+  type?: string;
 }
 export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
   /*@__PURE__*/ S.suspend(() =>
@@ -707,7 +707,7 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
       message: S.optional(S.String),
       reason: S.optional(S.String),
       status: S.optional(S.String),
-      type: S.String,
+      type: S.optional(S.String),
     }),
   ).annotate({
     identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition",
@@ -753,7 +753,7 @@ export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
+  spec?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
   /** `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
@@ -767,7 +767,7 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec),
       status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
     }).pipe(
       T.Http({
@@ -789,7 +789,7 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfiguration {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
+  spec?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
   /** `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
@@ -799,7 +799,7 @@ export const IoK8sApiFlowcontrolV1PriorityLevelConfiguration =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec),
       status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
     }),
   ).annotate({
@@ -1815,7 +1815,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaRequest {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1FlowSchemaSpec;
+  spec?: IoK8sApiFlowcontrolV1FlowSchemaSpec;
   /** `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
@@ -1830,7 +1830,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaRequest =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1FlowSchemaSpec),
       status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
     }).pipe(
       T.Http({
@@ -1861,7 +1861,7 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1FlowSchemaSpec;
+  spec?: IoK8sApiFlowcontrolV1FlowSchemaSpec;
   /** `status` is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
@@ -1876,7 +1876,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1FlowSchemaSpec),
       status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
     }).pipe(
       T.Http({
@@ -1907,7 +1907,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest 
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
+  spec?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
   /** `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
@@ -1922,7 +1922,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest =
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec),
       status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
     }).pipe(
       T.Http({
@@ -1954,7 +1954,7 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRe
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta;
   /** `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
-  spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
+  spec?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec;
   /** `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
@@ -1969,7 +1969,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusReques
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+      spec: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec),
       status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
     }).pipe(
       T.Http({

@@ -76,18 +76,18 @@ export const PartitionId = /*@__PURE__*/ S.suspend(() =>
 
 /** A (kind, ID/name) pair used to construct a key path. If either name or ID is set, the element is complete. If neither is set, the element is incomplete. */
 export interface PathElement {
-  /** The kind of the entity. A kind matching regex `__.*__` is reserved/read-only. A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes__` where `` is the base-64 encoding of the bytes. */
-  kind?: string;
   /** The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and may not be supported in the future. */
   id?: string;
   /** The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes__` where `` is the base-64 encoding of the bytes. */
   name?: string;
+  /** The kind of the entity. A kind matching regex `__.*__` is reserved/read-only. A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes__` where `` is the base-64 encoding of the bytes. */
+  kind?: string;
 }
 export const PathElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
     id: S.optional(S.String),
     name: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "PathElement" }) as any as S.Schema<PathElement>;
 
@@ -245,56 +245,20 @@ export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BeginTransactionResponse",
 }) as any as S.Schema<BeginTransactionResponse>;
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity. */
-export interface PropertyMask {
-  /** The paths to the properties covered by this mask. A path is a list of property names separated by dots (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be escaped. A path must not be empty, and may not reference a value inside an array value. */
-  paths?: StringList;
-}
-export const PropertyMask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: S.optional(StringList),
-  }),
-).annotate({ identifier: "PropertyMask" }) as any as S.Schema<PropertyMask>;
-
 export type ValueNullValueEnum = "NULL_VALUE";
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
-export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.suspend(() => Value),
-) as any as S.Schema<ValueMap>;
-
-/** A Datastore data object. Must not exceed 1 MiB - 4 bytes. */
-export interface Entity {
-  /** The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key. */
-  key?: Key;
-  /** The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
-  properties?: ValueMap;
-}
-export const Entity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(Key),
-    properties: S.optional(ValueMap),
-  }),
-).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
-  latitude?: number;
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
+  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  latitude?: number;
 }
 export const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
+    latitude: S.optional(S.Number),
   }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
@@ -314,50 +278,70 @@ export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
+export type ValueMap = { [key: string]: Value | undefined };
+export const ValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.suspend(() => Value),
+) as any as S.Schema<ValueMap>;
+
+/** A Datastore data object. Must not exceed 1 MiB - 4 bytes. */
+export interface Entity {
+  /** The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
+  properties?: ValueMap;
+  /** The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key. */
+  key?: Key;
+}
+export const Entity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(ValueMap),
+    key: S.optional(Key),
+  }),
+).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
+
 /** A message that can hold any of the supported value types and associated metadata. */
 export interface Value {
-  /** If the value should be excluded from all indexes including those defined explicitly. */
-  excludeFromIndexes?: boolean;
-  /** A boolean value. */
-  booleanValue?: boolean;
-  /** A double value. */
-  doubleValue?: number;
-  /** A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes. */
-  stringValue?: string;
-  /** A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded. */
-  blobValue?: string;
-  /** The `meaning` field should only be populated for backwards compatibility. */
-  meaning?: number;
+  /** An integer value. */
+  integerValue?: string;
   /** A timestamp value. When stored in the Datastore, precise only to microseconds; any additional precision is rounded down. */
   timestampValue?: string;
   /** A null value. */
   nullValue?: ValueNullValueEnum | (string & {});
-  /** An entity value. - May have no key. - May have a key with an incomplete key path. - May have a reserved/read-only key. */
-  entityValue?: Entity;
-  /** An integer value. */
-  integerValue?: string;
   /** A geo point value representing a point on the surface of Earth. */
   geoPointValue?: LatLng;
-  /** A key value. */
-  keyValue?: Key;
+  /** A boolean value. */
+  booleanValue?: boolean;
+  /** A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded. */
+  blobValue?: string;
+  /** A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes. */
+  stringValue?: string;
   /** An array value. Cannot contain another array value. A `Value` instance that sets field `array_value` must not set fields `meaning` or `exclude_from_indexes`. */
   arrayValue?: ArrayValue;
+  /** A double value. */
+  doubleValue?: number;
+  /** If the value should be excluded from all indexes including those defined explicitly. */
+  excludeFromIndexes?: boolean;
+  /** An entity value. - May have no key. - May have a key with an incomplete key path. - May have a reserved/read-only key. */
+  entityValue?: Entity;
+  /** A key value. */
+  keyValue?: Key;
+  /** The `meaning` field should only be populated for backwards compatibility. */
+  meaning?: number;
 }
 export const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    excludeFromIndexes: S.optional(S.Boolean),
-    booleanValue: S.optional(S.Boolean),
-    doubleValue: S.optional(S.Number),
-    stringValue: S.optional(S.String),
-    blobValue: S.optional(S.String),
-    meaning: S.optional(S.Number),
+    integerValue: S.optional(S.String),
     timestampValue: S.optional(S.String),
     nullValue: S.optional(ValueNullValueEnum),
-    entityValue: S.optional(Entity),
-    integerValue: S.optional(S.String),
     geoPointValue: S.optional(LatLng),
-    keyValue: S.optional(Key),
+    booleanValue: S.optional(S.Boolean),
+    blobValue: S.optional(S.String),
+    stringValue: S.optional(S.String),
     arrayValue: S.optional(ArrayValue),
+    doubleValue: S.optional(S.Number),
+    excludeFromIndexes: S.optional(S.Boolean),
+    entityValue: S.optional(Entity),
+    keyValue: S.optional(Key),
+    meaning: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
@@ -368,30 +352,30 @@ export const PropertyTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of an entity property. */
 export interface PropertyTransform {
-  /** Adds the given value to the property's current value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the given value. If either of the given value or the current property value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follows IEEE 754 semantics. If there is positive/negative integer overflow, the property is resolved to the largest magnitude positive/negative integer. */
-  increment?: Value;
   /** Sets the property to the minimum of its current value and the given value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the input value. If a minimum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN. */
   minimum?: Value;
-  /** Removes all of the given elements from the array in the property. If the property is not an array, or if the property does not yet exist, it is set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and the null value is equal to the null value. This will remove all equivalent values if there are duplicates. The corresponding transform result will be the null value. */
-  removeAllFromArray?: ArrayValue;
   /** Appends the given elements in order if they are not already present in the current property value. If the property is not an array, or if the property does not yet exist, it is first set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when checking if a value is missing. NaN is equal to NaN, and the null value is equal to the null value. If the input contains multiple equivalent values, only the first will be considered. The corresponding transform result will be the null value. */
   appendMissingElements?: ArrayValue;
+  /** Removes all of the given elements from the array in the property. If the property is not an array, or if the property does not yet exist, it is set to the empty array. Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and the null value is equal to the null value. This will remove all equivalent values if there are duplicates. The corresponding transform result will be the null value. */
+  removeAllFromArray?: ArrayValue;
+  /** Adds the given value to the property's current value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the given value. If either of the given value or the current property value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follows IEEE 754 semantics. If there is positive/negative integer overflow, the property is resolved to the largest magnitude positive/negative integer. */
+  increment?: Value;
+  /** Sets the property to the given server value. */
+  setToServerValue?: PropertyTransformSetToServerValueEnum | (string & {});
   /** Optional. The name of the property. Property paths (a list of property names separated by dots (`.`)) may be used to refer to properties inside entity values. For example `foo.bar` means the property `bar` inside the entity property `foo`. If a property name contains a dot `.` or a backlslash `\`, then that name must be escaped. */
   property?: string;
   /** Sets the property to the maximum of its current value and the given value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the given value. If a maximum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN. */
   maximum?: Value;
-  /** Sets the property to the given server value. */
-  setToServerValue?: PropertyTransformSetToServerValueEnum | (string & {});
 }
 export const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    increment: S.optional(Value),
     minimum: S.optional(Value),
-    removeAllFromArray: S.optional(ArrayValue),
     appendMissingElements: S.optional(ArrayValue),
+    removeAllFromArray: S.optional(ArrayValue),
+    increment: S.optional(Value),
+    setToServerValue: S.optional(PropertyTransformSetToServerValueEnum),
     property: S.optional(S.String),
     maximum: S.optional(Value),
-    setToServerValue: S.optional(PropertyTransformSetToServerValueEnum),
   }),
 ).annotate({
   identifier: "PropertyTransform",
@@ -402,6 +386,22 @@ export const PropertyTransformList = /*@__PURE__*/ S.Array(
   PropertyTransform,
 ) as any as S.Schema<PropertyTransformList>;
 
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity. */
+export interface PropertyMask {
+  /** The paths to the properties covered by this mask. A path is a list of property names separated by dots (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be escaped. A path must not be empty, and may not reference a value inside an array value. */
+  paths?: StringList;
+}
+export const PropertyMask = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paths: S.optional(StringList),
+  }),
+).annotate({ identifier: "PropertyMask" }) as any as S.Schema<PropertyMask>;
+
 export type MutationConflictResolutionStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "SERVER_VALUE"
@@ -410,40 +410,40 @@ export const MutationConflictResolutionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** A mutation to apply to an entity. */
 export interface Mutation {
-  /** The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted. */
-  propertyMask?: PropertyMask;
-  /** The version of the entity that this mutation is being applied to. If this does not match the current version on the server, the mutation conflicts. */
-  baseVersion?: string;
-  /** The key of the entity to delete. The entity may or may not already exist. Must have a complete key path and must not be reserved/read-only. */
-  delete?: Key;
+  /** The update time of the entity that this mutation is being applied to. If this does not match the current update time on the server, the mutation conflicts. */
+  updateTime?: string;
   /** Optional. The transforms to perform on the entity. This field can be set only when the operation is `insert`, `update`, or `upsert`. If present, the transforms are be applied to the entity regardless of the property mask, in order, after the operation. */
   propertyTransforms?: PropertyTransformList;
-  /** The entity to upsert. The entity may or may not already exist. The entity key's final path element may be incomplete. */
-  upsert?: Entity;
   /** The entity to insert. The entity must not already exist. The entity key's final path element may be incomplete. */
   insert?: Entity;
+  /** The entity to upsert. The entity may or may not already exist. The entity key's final path element may be incomplete. */
+  upsert?: Entity;
+  /** The key of the entity to delete. The entity may or may not already exist. Must have a complete key path and must not be reserved/read-only. */
+  delete?: Key;
+  /** The version of the entity that this mutation is being applied to. If this does not match the current version on the server, the mutation conflicts. */
+  baseVersion?: string;
+  /** The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted. */
+  propertyMask?: PropertyMask;
+  /** The entity to update. The entity must already exist. Must have a complete key path. */
+  update?: Entity;
   /** The strategy to use when a conflict is detected. Defaults to `SERVER_VALUE`. If this is set, then `conflict_detection_strategy` must also be set. */
   conflictResolutionStrategy?:
     | MutationConflictResolutionStrategyEnum
     | (string & {});
-  /** The update time of the entity that this mutation is being applied to. If this does not match the current update time on the server, the mutation conflicts. */
-  updateTime?: string;
-  /** The entity to update. The entity must already exist. Must have a complete key path. */
-  update?: Entity;
 }
 export const Mutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    propertyMask: S.optional(PropertyMask),
-    baseVersion: S.optional(S.String),
-    delete: S.optional(Key),
+    updateTime: S.optional(S.String),
     propertyTransforms: S.optional(PropertyTransformList),
-    upsert: S.optional(Entity),
     insert: S.optional(Entity),
+    upsert: S.optional(Entity),
+    delete: S.optional(Key),
+    baseVersion: S.optional(S.String),
+    propertyMask: S.optional(PropertyMask),
+    update: S.optional(Entity),
     conflictResolutionStrategy: S.optional(
       MutationConflictResolutionStrategyEnum,
     ),
-    updateTime: S.optional(S.String),
-    update: S.optional(Entity),
   }),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
@@ -498,27 +498,27 @@ export const CommitProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result of applying a mutation. */
 export interface MutationResult {
+  /** The update time of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the timestamp will be the update timestamp of the current entity. This field will not be set after a 'delete'. */
+  updateTime?: string;
+  /** Whether a conflict was detected for this mutation. Always false when a conflict detection strategy field is not set in the mutation. */
+  conflictDetected?: boolean;
+  /** The results of applying each PropertyTransform, in the same order of the request. */
+  transformResults?: ValueList;
+  /** The create time of the entity. This field will not be set after a 'delete'. */
+  createTime?: string;
   /** The automatically allocated key. Set only when the mutation allocated a key. */
   key?: Key;
   /** The version of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the version will be the version of the current entity or, if no entity is present, a version that is strictly greater than the version of any previous entity and less than the version of any possible future entity. */
   version?: string;
-  /** Whether a conflict was detected for this mutation. Always false when a conflict detection strategy field is not set in the mutation. */
-  conflictDetected?: boolean;
-  /** The create time of the entity. This field will not be set after a 'delete'. */
-  createTime?: string;
-  /** The update time of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the timestamp will be the update timestamp of the current entity. This field will not be set after a 'delete'. */
-  updateTime?: string;
-  /** The results of applying each PropertyTransform, in the same order of the request. */
-  transformResults?: ValueList;
 }
 export const MutationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    updateTime: S.optional(S.String),
+    conflictDetected: S.optional(S.Boolean),
+    transformResults: S.optional(ValueList),
+    createTime: S.optional(S.String),
     key: S.optional(Key),
     version: S.optional(S.String),
-    conflictDetected: S.optional(S.Boolean),
-    createTime: S.optional(S.String),
-    updateTime: S.optional(S.String),
-    transformResults: S.optional(ValueList),
   }),
 ).annotate({ identifier: "MutationResult" }) as any as S.Schema<MutationResult>;
 
@@ -529,18 +529,18 @@ export const MutationResultList = /*@__PURE__*/ S.Array(
 
 /** The response for Datastore.Commit. */
 export interface CommitResponse {
-  /** The transaction commit timestamp. Not set for non-transactional commits. */
-  commitTime?: string;
-  /** The number of index entries updated during the commit, or zero if none were updated. */
-  indexUpdates?: number;
   /** The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation in the request. */
   mutationResults?: MutationResultList;
+  /** The number of index entries updated during the commit, or zero if none were updated. */
+  indexUpdates?: number;
+  /** The transaction commit timestamp. Not set for non-transactional commits. */
+  commitTime?: string;
 }
 export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    commitTime: S.optional(S.String),
-    indexUpdates: S.optional(S.Number),
     mutationResults: S.optional(MutationResultList),
+    indexUpdates: S.optional(S.Number),
+    commitTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "CommitResponse" }) as any as S.Schema<CommitResponse>;
 
@@ -552,18 +552,18 @@ export const ReadOptionsReadConsistencyEnum = /*@__PURE__*/ S.String;
 
 /** The options shared by read requests. */
 export interface ReadOptions {
-  /** The non-transactional read consistency to use. */
-  readConsistency?: ReadOptionsReadConsistencyEnum | (string & {});
   /** The identifier of the transaction in which to read. A transaction identifier is returned by a call to Datastore.BeginTransaction. */
   transaction?: string;
   /** Reads entities as they were at the given time. This value is only supported for Cloud Firestore in Datastore mode. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
+  /** The non-transactional read consistency to use. */
+  readConsistency?: ReadOptionsReadConsistencyEnum | (string & {});
 }
 export const ReadOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    readConsistency: S.optional(ReadOptionsReadConsistencyEnum),
     transaction: S.optional(S.String),
     readTime: S.optional(S.String),
+    readConsistency: S.optional(ReadOptionsReadConsistencyEnum),
   }),
 ).annotate({ identifier: "ReadOptions" }) as any as S.Schema<ReadOptions>;
 
@@ -571,16 +571,16 @@ export const ReadOptions = /*@__PURE__*/ S.suspend(() =>
 export interface LookupRequest {
   /** The options for this lookup request. */
   readOptions?: ReadOptions;
-  /** The properties to return. Defaults to returning all properties. If this field is set and an entity has a property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The entity's key is always returned. */
-  propertyMask?: PropertyMask;
   /** Required. Keys of entities to look up. */
   keys?: KeyList;
+  /** The properties to return. Defaults to returning all properties. If this field is set and an entity has a property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The entity's key is always returned. */
+  propertyMask?: PropertyMask;
 }
 export const LookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readOptions: S.optional(ReadOptions),
-    propertyMask: S.optional(PropertyMask),
     keys: S.optional(KeyList),
+    propertyMask: S.optional(PropertyMask),
   }),
 ).annotate({ identifier: "LookupRequest" }) as any as S.Schema<LookupRequest>;
 
@@ -607,24 +607,24 @@ export const LookupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The result of fetching an entity from Datastore. */
 export interface EntityResult {
+  /** The version of the entity, a strictly positive number that monotonically increases with changes to the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the entity, and it is always set except for eventually consistent reads. */
+  version?: string;
   /** The time at which the entity was created. This field is set for `FULL` entity results. If this entity is missing, this field will not be set. */
   createTime?: string;
   /** The time at which the entity was last changed. This field is set for `FULL` entity results. If this entity is missing, this field will not be set. */
   updateTime?: string;
-  /** The resulting entity. */
-  entity?: Entity;
-  /** The version of the entity, a strictly positive number that monotonically increases with changes to the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the entity, and it is always set except for eventually consistent reads. */
-  version?: string;
   /** A cursor that points to the position after the result entity. Set only when the `EntityResult` is part of a `QueryResultBatch` message. */
   cursor?: string;
+  /** The resulting entity. */
+  entity?: Entity;
 }
 export const EntityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    version: S.optional(S.String),
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
-    entity: S.optional(Entity),
-    version: S.optional(S.String),
     cursor: S.optional(S.String),
+    entity: S.optional(Entity),
   }),
 ).annotate({ identifier: "EntityResult" }) as any as S.Schema<EntityResult>;
 
@@ -635,21 +635,21 @@ export const EntityResultList = /*@__PURE__*/ S.Array(
 
 /** The response for Datastore.Lookup. */
 export interface LookupResponse {
-  /** Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
-  found?: EntityResultList;
-  /** Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
-  missing?: EntityResultList;
   /** A list of keys that were not looked up due to resource constraints. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
   deferred?: KeyList;
   /** The time at which these entities were read or found missing. */
   readTime?: string;
+  /** Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
+  found?: EntityResultList;
+  /** Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
+  missing?: EntityResultList;
 }
 export const LookupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    found: S.optional(EntityResultList),
-    missing: S.optional(EntityResultList),
     deferred: S.optional(KeyList),
     readTime: S.optional(S.String),
+    found: S.optional(EntityResultList),
+    missing: S.optional(EntityResultList),
   }),
 ).annotate({ identifier: "LookupResponse" }) as any as S.Schema<LookupResponse>;
 
@@ -740,6 +740,17 @@ export const RollbackResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RollbackResponse",
 }) as any as S.Schema<RollbackResponse>;
 
+/** Explain options for the query. */
+export interface ExplainOptions {
+  /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
+  analyze?: boolean;
+}
+export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    analyze: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ExplainOptions" }) as any as S.Schema<ExplainOptions>;
+
 /** A reference to a property relative to the kind expressions. */
 export interface PropertyReference {
   /** A reference to a property. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to entity property name limitations. */
@@ -752,6 +763,90 @@ export const PropertyReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PropertyReference",
 }) as any as S.Schema<PropertyReference>;
+
+/** A representation of a property in a projection. */
+export interface Projection {
+  /** The property to project. */
+  property?: PropertyReference;
+}
+export const Projection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(PropertyReference),
+  }),
+).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
+
+export type ProjectionList = Array<Projection>;
+export const ProjectionList = /*@__PURE__*/ S.Array(
+  Projection,
+) as any as S.Schema<ProjectionList>;
+
+export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
+export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
+
+export type FilterList = Array<Filter>;
+export const FilterList = /*@__PURE__*/ S.Array(
+  S.suspend(() => Filter),
+) as any as S.Schema<FilterList>;
+
+/** A filter that merges multiple other filters using the given operator. */
+export interface CompositeFilter {
+  /** The operator for combining multiple filters. */
+  op?: CompositeFilterOpEnum | (string & {});
+  /** The list of filters to combine. Requires: * At least one filter is present. */
+  filters?: FilterList;
+}
+export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    op: S.optional(CompositeFilterOpEnum),
+    filters: S.optional(FilterList),
+  }),
+).annotate({
+  identifier: "CompositeFilter",
+}) as any as S.Schema<CompositeFilter>;
+
+export type PropertyFilterOpEnum =
+  | "OPERATOR_UNSPECIFIED"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUAL"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUAL"
+  | "EQUAL"
+  | "IN"
+  | "NOT_EQUAL"
+  | "HAS_ANCESTOR"
+  | "NOT_IN";
+export const PropertyFilterOpEnum = /*@__PURE__*/ S.String;
+
+/** A filter on a specific property. */
+export interface PropertyFilter {
+  /** The operator to filter by. */
+  op?: PropertyFilterOpEnum | (string & {});
+  /** The property to filter by. */
+  property?: PropertyReference;
+  /** The value to compare the property to. */
+  value?: Value;
+}
+export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    op: S.optional(PropertyFilterOpEnum),
+    property: S.optional(PropertyReference),
+    value: S.optional(Value),
+  }),
+).annotate({ identifier: "PropertyFilter" }) as any as S.Schema<PropertyFilter>;
+
+/** A holder for any type of filter. */
+export interface Filter {
+  /** A composite filter. */
+  compositeFilter?: CompositeFilter;
+  /** A filter on a property. */
+  propertyFilter?: PropertyFilter;
+}
+export const Filter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    compositeFilter: S.optional(CompositeFilter),
+    propertyFilter: S.optional(PropertyFilter),
+  }),
+).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 export type PropertyOrderDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
@@ -778,39 +873,6 @@ export const PropertyOrderList = /*@__PURE__*/ S.Array(
   PropertyOrder,
 ) as any as S.Schema<PropertyOrderList>;
 
-export type FindNearestDistanceMeasureEnum =
-  | "DISTANCE_MEASURE_UNSPECIFIED"
-  | "EUCLIDEAN"
-  | "COSINE"
-  | "DOT_PRODUCT";
-export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
-
-/** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
-export interface FindNearest {
-  /** Required. An indexed vector property to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned. */
-  vectorProperty?: PropertyReference;
-  /** Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions. */
-  queryVector?: Value;
-  /** Optional. Optional name of the field to output the result of the vector distance calculation. Must conform to entity property limitations. */
-  distanceResultProperty?: string;
-  /** Required. The Distance Measure to use, required. */
-  distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
-  /** Required. The number of nearest neighbors to return. Must be a positive integer of no more than 100. */
-  limit?: number;
-  /** Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT distances increase when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN, COSINE: WHERE distance <= distance_threshold * For DOT_PRODUCT: WHERE distance >= distance_threshold */
-  distanceThreshold?: number;
-}
-export const FindNearest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    vectorProperty: S.optional(PropertyReference),
-    queryVector: S.optional(Value),
-    distanceResultProperty: S.optional(S.String),
-    distanceMeasure: S.optional(FindNearestDistanceMeasureEnum),
-    limit: S.optional(S.Number),
-    distanceThreshold: S.optional(S.Number),
-  }),
-).annotate({ identifier: "FindNearest" }) as any as S.Schema<FindNearest>;
-
 /** A representation of a kind. */
 export interface KindExpression {
   /** The name of the kind. */
@@ -827,89 +889,38 @@ export const KindExpressionList = /*@__PURE__*/ S.Array(
   KindExpression,
 ) as any as S.Schema<KindExpressionList>;
 
-export type PropertyFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "LESS_THAN"
-  | "LESS_THAN_OR_EQUAL"
-  | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL"
-  | "EQUAL"
-  | "IN"
-  | "NOT_EQUAL"
-  | "HAS_ANCESTOR"
-  | "NOT_IN";
-export const PropertyFilterOpEnum = /*@__PURE__*/ S.String;
+export type FindNearestDistanceMeasureEnum =
+  | "DISTANCE_MEASURE_UNSPECIFIED"
+  | "EUCLIDEAN"
+  | "COSINE"
+  | "DOT_PRODUCT";
+export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
-/** A filter on a specific property. */
-export interface PropertyFilter {
-  /** The property to filter by. */
-  property?: PropertyReference;
-  /** The operator to filter by. */
-  op?: PropertyFilterOpEnum | (string & {});
-  /** The value to compare the property to. */
-  value?: Value;
+/** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
+export interface FindNearest {
+  /** Required. The Distance Measure to use, required. */
+  distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
+  /** Optional. Optional name of the field to output the result of the vector distance calculation. Must conform to entity property limitations. */
+  distanceResultProperty?: string;
+  /** Required. An indexed vector property to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned. */
+  vectorProperty?: PropertyReference;
+  /** Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions. */
+  queryVector?: Value;
+  /** Required. The number of nearest neighbors to return. Must be a positive integer of no more than 100. */
+  limit?: number;
+  /** Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT_PRODUCT distances increase when the vectors are more similar, the comparison is inverted. * For EUCLIDEAN, COSINE: WHERE distance <= distance_threshold * For DOT_PRODUCT: WHERE distance >= distance_threshold */
+  distanceThreshold?: number;
 }
-export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
+export const FindNearest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    property: S.optional(PropertyReference),
-    op: S.optional(PropertyFilterOpEnum),
-    value: S.optional(Value),
+    distanceMeasure: S.optional(FindNearestDistanceMeasureEnum),
+    distanceResultProperty: S.optional(S.String),
+    vectorProperty: S.optional(PropertyReference),
+    queryVector: S.optional(Value),
+    limit: S.optional(S.Number),
+    distanceThreshold: S.optional(S.Number),
   }),
-).annotate({ identifier: "PropertyFilter" }) as any as S.Schema<PropertyFilter>;
-
-export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
-
-export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Filter),
-) as any as S.Schema<FilterList>;
-
-/** A filter that merges multiple other filters using the given operator. */
-export interface CompositeFilter {
-  /** The operator for combining multiple filters. */
-  op?: CompositeFilterOpEnum | (string & {});
-  /** The list of filters to combine. Requires: * At least one filter is present. */
-  filters?: FilterList;
-}
-export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    op: S.optional(CompositeFilterOpEnum),
-    filters: S.optional(FilterList),
-  }),
-).annotate({
-  identifier: "CompositeFilter",
-}) as any as S.Schema<CompositeFilter>;
-
-/** A holder for any type of filter. */
-export interface Filter {
-  /** A filter on a property. */
-  propertyFilter?: PropertyFilter;
-  /** A composite filter. */
-  compositeFilter?: CompositeFilter;
-}
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    propertyFilter: S.optional(PropertyFilter),
-    compositeFilter: S.optional(CompositeFilter),
-  }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
-
-/** A representation of a property in a projection. */
-export interface Projection {
-  /** The property to project. */
-  property?: PropertyReference;
-}
-export const Projection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(PropertyReference),
-  }),
-).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
-
-export type ProjectionList = Array<Projection>;
-export const ProjectionList = /*@__PURE__*/ S.Array(
-  Projection,
-) as any as S.Schema<ProjectionList>;
+).annotate({ identifier: "FindNearest" }) as any as S.Schema<FindNearest>;
 
 export type PropertyReferenceList = Array<PropertyReference>;
 export const PropertyReferenceList = /*@__PURE__*/ S.Array(
@@ -918,52 +929,41 @@ export const PropertyReferenceList = /*@__PURE__*/ S.Array(
 
 /** A query for entities. The query stages are executed in the following order: 1. kind 2. filter 3. projection 4. order + start_cursor + end_cursor 5. offset 6. limit 7. find_nearest */
 export interface Query {
+  /** The projection to return. Defaults to returning all properties. */
+  projection?: ProjectionList;
+  /** The filter to apply. */
+  filter?: Filter;
   /** An ending point for the query results. Query cursors are returned in query result batches and [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   endCursor?: string;
   /** The order to apply to the query results (if empty, order is unspecified). */
   order?: PropertyOrderList;
-  /** Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the closest vector embeddings to the given query vector. */
-  findNearest?: FindNearest;
   /** The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified. */
   kind?: KindExpressionList;
   /** The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be >= 0 if specified. */
   offset?: number;
-  /** The maximum number of results to return. Applies after all other constraints. Optional. Unspecified is interpreted as no limit. Must be >= 0 if specified. */
-  limit?: number;
-  /** The filter to apply. */
-  filter?: Filter;
   /** A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   startCursor?: string;
-  /** The projection to return. Defaults to returning all properties. */
-  projection?: ProjectionList;
+  /** The maximum number of results to return. Applies after all other constraints. Optional. Unspecified is interpreted as no limit. Must be >= 0 if specified. */
+  limit?: number;
+  /** Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the closest vector embeddings to the given query vector. */
+  findNearest?: FindNearest;
   /** The properties to make distinct. The query results will contain the first result for each distinct combination of values for the given properties (if empty, all results are returned). Requires: * If `order` is specified, the set of distinct on properties must appear before the non-distinct on properties in `order`. */
   distinctOn?: PropertyReferenceList;
 }
 export const Query = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    projection: S.optional(ProjectionList),
+    filter: S.optional(Filter),
     endCursor: S.optional(S.String),
     order: S.optional(PropertyOrderList),
-    findNearest: S.optional(FindNearest),
     kind: S.optional(KindExpressionList),
     offset: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    filter: S.optional(Filter),
     startCursor: S.optional(S.String),
-    projection: S.optional(ProjectionList),
+    limit: S.optional(S.Number),
+    findNearest: S.optional(FindNearest),
     distinctOn: S.optional(PropertyReferenceList),
   }),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
-
-/** Sum of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are integers and the sum result does not overflow. Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means that running the same query repeatedly without any changes to the underlying values could produce slightly different results each time. In those cases, values should be stored as integers over floating-point numbers. */
-export interface Sum {
-  /** The property to aggregate on. */
-  property?: PropertyReference;
-}
-export const Sum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    property: S.optional(PropertyReference),
-  }),
-).annotate({ identifier: "Sum" }) as any as S.Schema<Sum>;
 
 /** Count of entities that match the query. The `COUNT(*)` aggregation function operates on the entire entity so it does not require a field reference. */
 export interface Count {
@@ -975,6 +975,17 @@ export const Count = /*@__PURE__*/ S.suspend(() =>
     upTo: S.optional(S.String),
   }),
 ).annotate({ identifier: "Count" }) as any as S.Schema<Count>;
+
+/** Sum of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are integers and the sum result does not overflow. Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means that running the same query repeatedly without any changes to the underlying values could produce slightly different results each time. In those cases, values should be stored as integers over floating-point numbers. */
+export interface Sum {
+  /** The property to aggregate on. */
+  property?: PropertyReference;
+}
+export const Sum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(PropertyReference),
+  }),
+).annotate({ identifier: "Sum" }) as any as S.Schema<Sum>;
 
 /** Average of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns `NULL`. * Always returns the result as a double. */
 export interface Avg {
@@ -989,21 +1000,21 @@ export const Avg = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines an aggregation that produces a single result. */
 export interface Aggregation {
-  /** Optional. Optional name of the property to store the result of the aggregation. If not provided, Datastore will pick a default name following the format `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS property_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. * Conform to entity property name limitations. */
-  alias?: string;
-  /** Sum aggregator. */
-  sum?: Sum;
   /** Count aggregator. */
   count?: Count;
+  /** Sum aggregator. */
+  sum?: Sum;
   /** Average aggregator. */
   avg?: Avg;
+  /** Optional. Optional name of the property to store the result of the aggregation. If not provided, Datastore will pick a default name following the format `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS property_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. * Conform to entity property name limitations. */
+  alias?: string;
 }
 export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    alias: S.optional(S.String),
-    sum: S.optional(Sum),
     count: S.optional(Count),
+    sum: S.optional(Sum),
     avg: S.optional(Avg),
+    alias: S.optional(S.String),
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
@@ -1027,17 +1038,6 @@ export const AggregationQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AggregationQuery",
 }) as any as S.Schema<AggregationQuery>;
-
-/** Explain options for the query. */
-export interface ExplainOptions {
-  /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
-  analyze?: boolean;
-}
-export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    analyze: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ExplainOptions" }) as any as S.Schema<ExplainOptions>;
 
 /** A binding parameter for a GQL query. */
 export interface GqlQueryParameter {
@@ -1074,40 +1074,40 @@ export interface GqlQuery {
   queryString?: string;
   /** For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`. */
   namedBindings?: GqlQueryParameterMap;
-  /** Numbered binding site @1 references the first numbered parameter, effectively using 1-based indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse must also be true. */
-  positionalBindings?: GqlQueryParameterList;
   /** When false, the query string must not contain any literals and instead must bind all values. For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while `SELECT * FROM Kind WHERE a = @value` is. */
   allowLiterals?: boolean;
+  /** Numbered binding site @1 references the first numbered parameter, effectively using 1-based indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse must also be true. */
+  positionalBindings?: GqlQueryParameterList;
 }
 export const GqlQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryString: S.optional(S.String),
     namedBindings: S.optional(GqlQueryParameterMap),
-    positionalBindings: S.optional(GqlQueryParameterList),
     allowLiterals: S.optional(S.Boolean),
+    positionalBindings: S.optional(GqlQueryParameterList),
   }),
 ).annotate({ identifier: "GqlQuery" }) as any as S.Schema<GqlQuery>;
 
 /** The request for Datastore.RunAggregationQuery. */
 export interface RunAggregationQueryRequest {
+  /** Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned. */
+  explainOptions?: ExplainOptions;
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
   /** The query to run. */
   aggregationQuery?: AggregationQuery;
-  /** Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned. */
-  explainOptions?: ExplainOptions;
-  /** The GQL query to run. This query must be an aggregation query. */
-  gqlQuery?: GqlQuery;
   /** The options for this query. */
   readOptions?: ReadOptions;
+  /** The GQL query to run. This query must be an aggregation query. */
+  gqlQuery?: GqlQuery;
 }
 export const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    explainOptions: S.optional(ExplainOptions),
     partitionId: S.optional(PartitionId),
     aggregationQuery: S.optional(AggregationQuery),
-    explainOptions: S.optional(ExplainOptions),
-    gqlQuery: S.optional(GqlQuery),
     readOptions: S.optional(ReadOptions),
+    gqlQuery: S.optional(GqlQuery),
   }),
 ).annotate({
   identifier: "RunAggregationQueryRequest",
@@ -1256,26 +1256,26 @@ export const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The request for Datastore.RunQuery. */
 export interface RunQueryRequest {
-  /** The options for this query. */
-  readOptions?: ReadOptions;
-  /** The properties to return. This field must not be set for a projection query. See LookupRequest.property_mask. */
-  propertyMask?: PropertyMask;
-  /** The query to run. */
-  query?: Query;
-  /** The GQL query to run. This query must be a non-aggregation query. */
-  gqlQuery?: GqlQuery;
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
+  /** The query to run. */
+  query?: Query;
+  /** The properties to return. This field must not be set for a projection query. See LookupRequest.property_mask. */
+  propertyMask?: PropertyMask;
+  /** The options for this query. */
+  readOptions?: ReadOptions;
+  /** The GQL query to run. This query must be a non-aggregation query. */
+  gqlQuery?: GqlQuery;
   /** Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned. */
   explainOptions?: ExplainOptions;
 }
 export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    readOptions: S.optional(ReadOptions),
-    propertyMask: S.optional(PropertyMask),
-    query: S.optional(Query),
-    gqlQuery: S.optional(GqlQuery),
     partitionId: S.optional(PartitionId),
+    query: S.optional(Query),
+    propertyMask: S.optional(PropertyMask),
+    readOptions: S.optional(ReadOptions),
+    gqlQuery: S.optional(GqlQuery),
     explainOptions: S.optional(ExplainOptions),
   }),
 ).annotate({
@@ -1324,29 +1324,29 @@ export interface QueryResultBatch {
   skippedResults?: number;
   /** A cursor that points to the position after the last result in the batch. */
   endCursor?: string;
-  /** The result type for every entity in `entity_results`. */
-  entityResultType?: QueryResultBatchEntityResultTypeEnum;
-  /** The state of the query after the current batch. */
-  moreResults?: QueryResultBatchMoreResultsEnum;
   /** Read timestamp this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have a greater timestamp. Each batch's read timestamp is valid for all preceding batches. This value will not be set for eventually consistent queries in Cloud Datastore. */
   readTime?: string;
-  /** The results for this batch. */
-  entityResults?: EntityResultList;
-  /** The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have a greater snapshot version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for eventually consistent queries. */
-  snapshotVersion?: string;
+  /** The result type for every entity in `entity_results`. */
+  entityResultType?: QueryResultBatchEntityResultTypeEnum;
   /** A cursor that points to the position after the last skipped result. Will be set when `skipped_results` != 0. */
   skippedCursor?: string;
+  /** The results for this batch. */
+  entityResults?: EntityResultList;
+  /** The state of the query after the current batch. */
+  moreResults?: QueryResultBatchMoreResultsEnum;
+  /** The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have a greater snapshot version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for eventually consistent queries. */
+  snapshotVersion?: string;
 }
 export const QueryResultBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skippedResults: S.optional(S.Number),
     endCursor: S.optional(S.String),
-    entityResultType: S.optional(QueryResultBatchEntityResultTypeEnum),
-    moreResults: S.optional(QueryResultBatchMoreResultsEnum),
     readTime: S.optional(S.String),
-    entityResults: S.optional(EntityResultList),
-    snapshotVersion: S.optional(S.String),
+    entityResultType: S.optional(QueryResultBatchEntityResultTypeEnum),
     skippedCursor: S.optional(S.String),
+    entityResults: S.optional(EntityResultList),
+    moreResults: S.optional(QueryResultBatchMoreResultsEnum),
+    snapshotVersion: S.optional(S.String),
   }),
 ).annotate({
   identifier: "QueryResultBatch",
@@ -1354,18 +1354,18 @@ export const QueryResultBatch = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.RunQuery. */
 export interface RunQueryResponse {
-  /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
-  explainMetrics?: ExplainMetrics;
   /** A batch of query results. This is always present unless running a query under explain-only mode: RunQueryRequest.explain_options was provided and ExplainOptions.analyze was set to false. */
   batch?: QueryResultBatch;
   /** The parsed form of the `GqlQuery` from the request, if it was set. */
   query?: Query;
+  /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
+  explainMetrics?: ExplainMetrics;
 }
 export const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    explainMetrics: S.optional(ExplainMetrics),
     batch: S.optional(QueryResultBatch),
     query: S.optional(Query),
+    explainMetrics: S.optional(ExplainMetrics),
   }),
 ).annotate({
   identifier: "RunQueryResponse",

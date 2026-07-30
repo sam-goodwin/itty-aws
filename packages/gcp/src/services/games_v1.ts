@@ -86,17 +86,17 @@ export const RevisionCheckResponseRevisionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A third party checking a revision response. */
 export interface RevisionCheckResponse {
-  /** The result of the revision check. */
-  revisionStatus?: RevisionCheckResponseRevisionStatusEnum;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#revisionCheckResponse`. */
   kind?: string;
+  /** The result of the revision check. */
+  revisionStatus?: RevisionCheckResponseRevisionStatusEnum;
   /** The version of the API this client revision should use when calling API methods. */
   apiVersion?: string;
 }
 export const RevisionCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    revisionStatus: S.optional(RevisionCheckResponseRevisionStatusEnum),
     kind: S.optional(S.String),
+    revisionStatus: S.optional(RevisionCheckResponseRevisionStatusEnum),
     apiVersion: S.optional(S.String),
   }),
 ).annotate({
@@ -131,18 +131,18 @@ export const GamesPlayerTokensRecallRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Recall token data returned from RetrievePlayerTokens RPC */
 export interface RecallToken {
-  /** Optional. Optional expiration time of the token */
-  expireTime?: string;
   /** Required. Value of the Recall token as it is provided by the client via LinkPersona RPC */
   token?: string;
   /** Required. Whether the persona identified by the token is linked to multiple PGS Players */
   multiPlayerPersona?: boolean;
+  /** Optional. Optional expiration time of the token */
+  expireTime?: string;
 }
 export const RecallToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    expireTime: S.optional(S.String),
     token: S.optional(S.String),
     multiPlayerPersona: S.optional(S.Boolean),
+    expireTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "RecallToken" }) as any as S.Schema<RecallToken>;
 
@@ -230,19 +230,19 @@ export const GeneratePlayGroupingApiTokenResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>;
 
 export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
+  /** Required. App package name to generate the token for (e.g. com.example.mygame). */
+  packageName?: string;
   /** Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system. */
   persona?: string;
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. See https://developer.android.com/games/pgs/recall/recall-setup on how to integrate with Recall and get session ID. */
   recallSessionId?: string;
-  /** Required. App package name to generate the token for (e.g. com.example.mygame). */
-  packageName?: string;
 }
 export const GenerateRecallPlayGroupingApiTokenAccesstokensRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      packageName: S.optional(S.String.pipe(T.Query())),
       persona: S.optional(S.String.pipe(T.Query())),
       recallSessionId: S.optional(S.String.pipe(T.Query())),
-      packageName: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "POST",
@@ -272,18 +272,18 @@ export type GetApplicationsPlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const GetApplicationsPlatformTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetApplicationsRequest {
-  /** Restrict application details returned to the specific platform. */
-  platformType?: GetApplicationsPlatformTypeEnum | (string & {});
-  /** The preferred language to use for strings returned by this method. */
-  language?: string;
   /** The application ID from the Google Play developer console. */
   applicationId: string;
+  /** The preferred language to use for strings returned by this method. */
+  language?: string;
+  /** Restrict application details returned to the specific platform. */
+  platformType?: GetApplicationsPlatformTypeEnum | (string & {});
 }
 export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    platformType: S.optional(GetApplicationsPlatformTypeEnum.pipe(T.Query())),
-    language: S.optional(S.String.pipe(T.Query())),
     applicationId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
+    platformType: S.optional(GetApplicationsPlatformTypeEnum.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -295,26 +295,45 @@ export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetApplicationsRequest",
 }) as any as S.Schema<GetApplicationsRequest>;
 
+/** An application category object. */
+export interface ApplicationCategory {
+  /** The primary category. */
+  primary?: string;
+  /** The secondary category. */
+  secondary?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationCategory`. */
+  kind?: string;
+}
+export const ApplicationCategory = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primary: S.optional(S.String),
+    secondary: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationCategory",
+}) as any as S.Schema<ApplicationCategory>;
+
 /** An image asset object. */
 export interface ImageAsset {
   /** The name of the asset. */
   name?: string;
-  /** The URL of the asset. */
-  url?: string;
-  /** The height of the asset. */
-  height?: number;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#imageAsset`. */
-  kind?: string;
   /** The width of the asset. */
   width?: number;
+  /** The height of the asset. */
+  height?: number;
+  /** The URL of the asset. */
+  url?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#imageAsset`. */
+  kind?: string;
 }
 export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    url: S.optional(S.String),
-    height: S.optional(S.Number),
-    kind: S.optional(S.String),
     width: S.optional(S.Number),
+    height: S.optional(S.Number),
+    url: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
@@ -323,24 +342,8 @@ export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
 
-/** An application category object. */
-export interface ApplicationCategory {
-  /** The primary category. */
-  primary?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationCategory`. */
-  kind?: string;
-  /** The secondary category. */
-  secondary?: string;
-}
-export const ApplicationCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    primary: S.optional(S.String),
-    kind: S.optional(S.String),
-    secondary: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationCategory",
-}) as any as S.Schema<ApplicationCategory>;
+export type InstancePlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
+export const InstancePlatformTypeEnum = /*@__PURE__*/ S.String;
 
 /** The Android instance details resource. */
 export interface InstanceAndroidDetails {
@@ -366,10 +369,10 @@ export const InstanceAndroidDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The iOS details resource. */
 export interface InstanceIosDetails {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceIosDetails`. */
+  kind?: string;
   /** Bundle identifier. */
   bundleIdentifier?: string;
-  /** Indicates that this instance is the default for new installations on iPad devices. */
-  preferredForIpad?: boolean;
   /** iTunes App ID. */
   itunesAppId?: string;
   /** Flag to indicate if this instance supports iPhone. */
@@ -378,40 +381,37 @@ export interface InstanceIosDetails {
   supportIpad?: boolean;
   /** Indicates that this instance is the default for new installations on iPhone devices. */
   preferredForIphone?: boolean;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceIosDetails`. */
-  kind?: string;
+  /** Indicates that this instance is the default for new installations on iPad devices. */
+  preferredForIpad?: boolean;
 }
 export const InstanceIosDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     bundleIdentifier: S.optional(S.String),
-    preferredForIpad: S.optional(S.Boolean),
     itunesAppId: S.optional(S.String),
     supportIphone: S.optional(S.Boolean),
     supportIpad: S.optional(S.Boolean),
     preferredForIphone: S.optional(S.Boolean),
-    kind: S.optional(S.String),
+    preferredForIpad: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "InstanceIosDetails",
 }) as any as S.Schema<InstanceIosDetails>;
 
-export type InstancePlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
-export const InstancePlatformTypeEnum = /*@__PURE__*/ S.String;
-
 /** The Web details resource. */
 export interface InstanceWebDetails {
+  /** Launch URL for the game. */
+  launchUrl?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceWebDetails`. */
   kind?: string;
   /** Indicates that this instance is the default for new installations. */
   preferred?: boolean;
-  /** Launch URL for the game. */
-  launchUrl?: string;
 }
 export const InstanceWebDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    launchUrl: S.optional(S.String),
     kind: S.optional(S.String),
     preferred: S.optional(S.Boolean),
-    launchUrl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "InstanceWebDetails",
@@ -419,36 +419,36 @@ export const InstanceWebDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The Instance resource. */
 export interface Instance {
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instance`. */
-  kind?: string;
-  /** Platform dependent details for Android. */
-  androidInstance?: InstanceAndroidDetails;
-  /** Platform dependent details for iOS. */
-  iosInstance?: InstanceIosDetails;
-  /** URI which shows where a user can acquire this instance. */
-  acquisitionUri?: string;
   /** The platform type. */
   platformType?: InstancePlatformTypeEnum;
+  /** Localized display name. */
+  name?: string;
   /** Flag to show if this game instance supports turn based play. */
   turnBasedPlay?: boolean;
   /** Flag to show if this game instance supports realtime play. */
   realtimePlay?: boolean;
-  /** Localized display name. */
-  name?: string;
+  /** Platform dependent details for Android. */
+  androidInstance?: InstanceAndroidDetails;
+  /** Platform dependent details for iOS. */
+  iosInstance?: InstanceIosDetails;
   /** Platform dependent details for Web. */
   webInstance?: InstanceWebDetails;
+  /** URI which shows where a user can acquire this instance. */
+  acquisitionUri?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#instance`. */
+  kind?: string;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    androidInstance: S.optional(InstanceAndroidDetails),
-    iosInstance: S.optional(InstanceIosDetails),
-    acquisitionUri: S.optional(S.String),
     platformType: S.optional(InstancePlatformTypeEnum),
+    name: S.optional(S.String),
     turnBasedPlay: S.optional(S.Boolean),
     realtimePlay: S.optional(S.Boolean),
-    name: S.optional(S.String),
+    androidInstance: S.optional(InstanceAndroidDetails),
+    iosInstance: S.optional(InstanceIosDetails),
     webInstance: S.optional(InstanceWebDetails),
+    acquisitionUri: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
@@ -468,47 +468,47 @@ export const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
 
 /** The Application resource. */
 export interface Application {
-  /** The number of achievements visible to the currently authenticated player. */
-  achievement_count?: number;
-  /** The assets of the application. */
-  assets?: ImageAssetList;
-  /** The category of the application. */
-  category?: ApplicationCategory;
-  /** The instances of the application. */
-  instances?: InstanceList;
-  /** The last updated timestamp of the application. */
-  lastUpdatedTimestamp?: string;
-  /** The description of the application. */
-  description?: string;
   /** The ID of the application. */
   id?: string;
-  /** A list of features that have been enabled for the application. */
-  enabledFeatures?: ApplicationEnabledFeaturesItemEnumList;
-  /** The number of leaderboards visible to the currently authenticated player. */
-  leaderboard_count?: number;
-  /** The author of the application. */
-  author?: string;
   /** The name of the application. */
   name?: string;
+  /** The author of the application. */
+  author?: string;
+  /** The description of the application. */
+  description?: string;
+  /** The category of the application. */
+  category?: ApplicationCategory;
+  /** The assets of the application. */
+  assets?: ImageAssetList;
+  /** The instances of the application. */
+  instances?: InstanceList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#application`. */
   kind?: string;
+  /** The last updated timestamp of the application. */
+  lastUpdatedTimestamp?: string;
+  /** The number of achievements visible to the currently authenticated player. */
+  achievement_count?: number;
+  /** The number of leaderboards visible to the currently authenticated player. */
+  leaderboard_count?: number;
+  /** A list of features that have been enabled for the application. */
+  enabledFeatures?: ApplicationEnabledFeaturesItemEnumList;
   /** A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB triplet (e.g. "E0E0E0"). */
   themeColor?: string;
 }
 export const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    achievement_count: S.optional(S.Number),
-    assets: S.optional(ImageAssetList),
-    category: S.optional(ApplicationCategory),
-    instances: S.optional(InstanceList),
-    lastUpdatedTimestamp: S.optional(S.String),
-    description: S.optional(S.String),
     id: S.optional(S.String),
-    enabledFeatures: S.optional(ApplicationEnabledFeaturesItemEnumList),
-    leaderboard_count: S.optional(S.Number),
-    author: S.optional(S.String),
     name: S.optional(S.String),
+    author: S.optional(S.String),
+    description: S.optional(S.String),
+    category: S.optional(ApplicationCategory),
+    assets: S.optional(ImageAssetList),
+    instances: S.optional(InstanceList),
     kind: S.optional(S.String),
+    lastUpdatedTimestamp: S.optional(S.String),
+    achievement_count: S.optional(S.Number),
+    leaderboard_count: S.optional(S.Number),
+    enabledFeatures: S.optional(ApplicationEnabledFeaturesItemEnumList),
     themeColor: S.optional(S.String),
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
@@ -578,26 +578,26 @@ export const LeaderboardOrderEnum = /*@__PURE__*/ S.String;
 
 /** The Leaderboard resource. */
 export interface Leaderboard {
-  /** The name of the leaderboard. */
-  name?: string;
-  /** Indicates whether the icon image being returned is a default image, or is game-provided. */
-  isIconUrlDefault?: boolean;
-  /** The leaderboard ID. */
-  id?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboard`. */
   kind?: string;
+  /** The leaderboard ID. */
+  id?: string;
+  /** The name of the leaderboard. */
+  name?: string;
   /** The icon for the leaderboard. */
   iconUrl?: string;
+  /** Indicates whether the icon image being returned is a default image, or is game-provided. */
+  isIconUrlDefault?: boolean;
   /** How scores are ordered. */
   order?: LeaderboardOrderEnum;
 }
 export const Leaderboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    isIconUrlDefault: S.optional(S.Boolean),
-    id: S.optional(S.String),
     kind: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
     iconUrl: S.optional(S.String),
+    isIconUrlDefault: S.optional(S.Boolean),
     order: S.optional(LeaderboardOrderEnum),
   }),
 ).annotate({ identifier: "Leaderboard" }) as any as S.Schema<Leaderboard>;
@@ -642,18 +642,18 @@ export const PlayerLevelList = /*@__PURE__*/ S.Array(
 
 /** The metagame config resource */
 export interface MetagameConfig {
+  /** Current version of the metagame configuration data. When this data is updated, the version number will be increased by one. */
+  currentVersion?: number;
   /** The list of player levels. */
   playerLevels?: PlayerLevelList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#metagameConfig`. */
   kind?: string;
-  /** Current version of the metagame configuration data. When this data is updated, the version number will be increased by one. */
-  currentVersion?: number;
 }
 export const MetagameConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    currentVersion: S.optional(S.Number),
     playerLevels: S.optional(PlayerLevelList),
     kind: S.optional(S.String),
-    currentVersion: S.optional(S.Number),
   }),
 ).annotate({ identifier: "MetagameConfig" }) as any as S.Schema<MetagameConfig>;
 
@@ -712,17 +712,17 @@ export const GetMultipleApplicationPlayerIdsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>;
 
 export interface GetPlayersRequest {
-  /** The preferred language to use for strings returned by this method. */
-  language?: string;
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
+  /** The preferred language to use for strings returned by this method. */
+  language?: string;
   /** Consistency token of the player id. The call returns a 'not found' result when the token is present and invalid. Empty value is ignored. See also GlobalPlayerIdConsistencyTokenProto */
   playerIdConsistencyToken?: string;
 }
 export const GetPlayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    language: S.optional(S.String.pipe(T.Query())),
     playerId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
     playerIdConsistencyToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -735,31 +735,6 @@ export const GetPlayersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPlayersRequest",
 }) as any as S.Schema<GetPlayersRequest>;
 
-/** 1P/3P metadata about the player's experience. */
-export interface PlayerExperienceInfo {
-  /** The current number of experience points for the player. */
-  currentExperiencePoints?: string;
-  /** The timestamp when the player was leveled up, in millis since Unix epoch UTC. */
-  lastLevelUpTimestampMillis?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerExperienceInfo`. */
-  kind?: string;
-  /** The current level of the player. */
-  currentLevel?: PlayerLevel;
-  /** The next level of the player. If the current level is the maximum level, this should be same as the current level. */
-  nextLevel?: PlayerLevel;
-}
-export const PlayerExperienceInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentExperiencePoints: S.optional(S.String),
-    lastLevelUpTimestampMillis: S.optional(S.String),
-    kind: S.optional(S.String),
-    currentLevel: S.optional(PlayerLevel),
-    nextLevel: S.optional(PlayerLevel),
-  }),
-).annotate({
-  identifier: "PlayerExperienceInfo",
-}) as any as S.Schema<PlayerExperienceInfo>;
-
 export type ProfileSettingsFriendsListVisibilityEnum =
   | "VISIBLE"
   | "REQUEST_REQUIRED"
@@ -768,16 +743,16 @@ export const ProfileSettingsFriendsListVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Profile settings */
 export interface ProfileSettings {
-  /** Whether the player's profile is visible to the currently signed in player. */
-  profileVisible?: boolean;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#profileSettings`. */
   kind?: string;
+  /** Whether the player's profile is visible to the currently signed in player. */
+  profileVisible?: boolean;
   friendsListVisibility?: ProfileSettingsFriendsListVisibilityEnum;
 }
 export const ProfileSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    profileVisible: S.optional(S.Boolean),
     kind: S.optional(S.String),
+    profileVisible: S.optional(S.Boolean),
     friendsListVisibility: S.optional(ProfileSettingsFriendsListVisibilityEnum),
   }),
 ).annotate({
@@ -797,53 +772,78 @@ export const PlayerName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerName" }) as any as S.Schema<PlayerName>;
 
+/** 1P/3P metadata about the player's experience. */
+export interface PlayerExperienceInfo {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerExperienceInfo`. */
+  kind?: string;
+  /** The current number of experience points for the player. */
+  currentExperiencePoints?: string;
+  /** The timestamp when the player was leveled up, in millis since Unix epoch UTC. */
+  lastLevelUpTimestampMillis?: string;
+  /** The current level of the player. */
+  currentLevel?: PlayerLevel;
+  /** The next level of the player. If the current level is the maximum level, this should be same as the current level. */
+  nextLevel?: PlayerLevel;
+}
+export const PlayerExperienceInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    currentExperiencePoints: S.optional(S.String),
+    lastLevelUpTimestampMillis: S.optional(S.String),
+    currentLevel: S.optional(PlayerLevel),
+    nextLevel: S.optional(PlayerLevel),
+  }),
+).annotate({
+  identifier: "PlayerExperienceInfo",
+}) as any as S.Schema<PlayerExperienceInfo>;
+
 export type PlayerFriendStatusEnum = "NO_RELATIONSHIP" | "FRIEND";
 export const PlayerFriendStatusEnum = /*@__PURE__*/ S.String;
 
 /** A Player resource. */
 export interface Player {
-  /** An object to represent Play Game experience information for the player. */
-  experienceInfo?: PlayerExperienceInfo;
-  /** The ID of the player. */
-  playerId?: string;
-  /** The base URL for the image that represents the player. */
-  avatarImageUrl?: string;
-  /** Per-application unique player identifier. */
-  gamePlayerId?: string;
-  /** The url to the landscape mode player banner image. */
-  bannerUrlLandscape?: string;
-  /** The player's profile settings. Controls whether or not the player's profile is visible to other players. */
-  profileSettings?: ProfileSettings;
-  /** The url to the portrait mode player banner image. */
-  bannerUrlPortrait?: string;
-  /** A representation of the individual components of the name. */
-  name?: PlayerName;
-  /** The player's title rewarded for their game activities. */
-  title?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#player` */
   kind?: string;
+  /** The ID of the player. */
+  playerId?: string;
   /** The name to display for the player. */
   displayName?: string;
+  /** The base URL for the image that represents the player. */
+  avatarImageUrl?: string;
+  /** The url to the portrait mode player banner image. */
+  bannerUrlPortrait?: string;
+  /** The url to the landscape mode player banner image. */
+  bannerUrlLandscape?: string;
   /** The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs. */
   originalPlayerId?: string;
+  /** The player's profile settings. Controls whether or not the player's profile is visible to other players. */
+  profileSettings?: ProfileSettings;
+  /** A representation of the individual components of the name. */
+  name?: PlayerName;
+  /** An object to represent Play Game experience information for the player. */
+  experienceInfo?: PlayerExperienceInfo;
+  /** The player's title rewarded for their game activities. */
+  title?: string;
   /** The friend status of the given player, relative to the requester. This is unset if the player is not sharing their friends list with the game. */
   friendStatus?: PlayerFriendStatusEnum;
+  /** Per-application unique player identifier. */
+  gamePlayerId?: string;
 }
 export const Player = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    experienceInfo: S.optional(PlayerExperienceInfo),
-    playerId: S.optional(S.String),
-    avatarImageUrl: S.optional(S.String),
-    gamePlayerId: S.optional(S.String),
-    bannerUrlLandscape: S.optional(S.String),
-    profileSettings: S.optional(ProfileSettings),
-    bannerUrlPortrait: S.optional(S.String),
-    name: S.optional(PlayerName),
-    title: S.optional(S.String),
     kind: S.optional(S.String),
+    playerId: S.optional(S.String),
     displayName: S.optional(S.String),
+    avatarImageUrl: S.optional(S.String),
+    bannerUrlPortrait: S.optional(S.String),
+    bannerUrlLandscape: S.optional(S.String),
     originalPlayerId: S.optional(S.String),
+    profileSettings: S.optional(ProfileSettings),
+    name: S.optional(PlayerName),
+    experienceInfo: S.optional(PlayerExperienceInfo),
+    title: S.optional(S.String),
     friendStatus: S.optional(PlayerFriendStatusEnum),
+    gamePlayerId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Player" }) as any as S.Schema<Player>;
 
@@ -876,6 +876,9 @@ export const ScopedPlayerIds = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScopedPlayerIds",
 }) as any as S.Schema<ScopedPlayerIds>;
 
+export type GetScoresTimeSpanEnum = "ALL" | "ALL_TIME" | "WEEKLY" | "DAILY";
+export const GetScoresTimeSpanEnum = /*@__PURE__*/ S.String;
+
 export type GetScoresIncludeRankTypeEnum =
   | "ALL"
   | "PUBLIC"
@@ -883,20 +886,17 @@ export type GetScoresIncludeRankTypeEnum =
   | "FRIENDS";
 export const GetScoresIncludeRankTypeEnum = /*@__PURE__*/ S.String;
 
-export type GetScoresTimeSpanEnum = "ALL" | "ALL_TIME" | "WEEKLY" | "DAILY";
-export const GetScoresTimeSpanEnum = /*@__PURE__*/ S.String;
-
 export interface GetScoresRequest {
+  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
+  playerId: string;
+  /** The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this application. */
+  leaderboardId: string;
+  /** The time span for the scores and ranks you're requesting. */
+  timeSpan: GetScoresTimeSpanEnum | (string & {});
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The types of ranks to return. If the parameter is omitted, no ranks will be returned. */
   includeRankType?: GetScoresIncludeRankTypeEnum | (string & {});
-  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
-  playerId: string;
-  /** The time span for the scores and ranks you're requesting. */
-  timeSpan: GetScoresTimeSpanEnum | (string & {});
-  /** The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this application. */
-  leaderboardId: string;
   /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
   maxResults?: number;
   /** The token returned by the previous request. */
@@ -904,11 +904,11 @@ export interface GetScoresRequest {
 }
 export const GetScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    playerId: S.String.pipe(T.Label()),
+    leaderboardId: S.String.pipe(T.Label()),
+    timeSpan: GetScoresTimeSpanEnum.pipe(T.Label()),
     language: S.optional(S.String.pipe(T.Query())),
     includeRankType: S.optional(GetScoresIncludeRankTypeEnum.pipe(T.Query())),
-    playerId: S.String.pipe(T.Label()),
-    timeSpan: GetScoresTimeSpanEnum.pipe(T.Label()),
-    leaderboardId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -926,10 +926,10 @@ export const GetScoresRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LeaderboardScoreRank {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardScoreRank`. */
   kind?: string;
-  /** The rank in the leaderboard as a string. */
-  formattedRank?: string;
   /** The rank in the leaderboard. */
   rank?: string;
+  /** The rank in the leaderboard as a string. */
+  formattedRank?: string;
   /** The number of scores in the leaderboard. */
   numScores?: string;
   /** The number of scores in the leaderboard as a string. */
@@ -938,8 +938,8 @@ export interface LeaderboardScoreRank {
 export const LeaderboardScoreRank = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    formattedRank: S.optional(S.String),
     rank: S.optional(S.String),
+    formattedRank: S.optional(S.String),
     numScores: S.optional(S.String),
     formattedNumScores: S.optional(S.String),
   }),
@@ -955,39 +955,39 @@ export const PlayerLeaderboardScoreTimeSpanEnum = /*@__PURE__*/ S.String;
 
 /** A player leaderboard score object. */
 export interface PlayerLeaderboardScore {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLeaderboardScore`. */
+  kind?: string;
+  /** The ID of the leaderboard this score is in. */
+  leaderboard_id?: string;
+  /** The numerical value of this score. */
+  scoreValue?: string;
+  /** The formatted value of this score. */
+  scoreString?: string;
+  /** The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly. */
+  publicRank?: LeaderboardScoreRank;
   /** The social rank of the score in this leaderboard. */
   socialRank?: LeaderboardScoreRank;
   /** The rank of the score in the friends collection for this leaderboard. */
   friendsRank?: LeaderboardScoreRank;
-  /** The timestamp at which this score was recorded, in milliseconds since the epoch in UTC. */
-  writeTimestamp?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLeaderboardScore`. */
-  kind?: string;
-  /** The public rank of the score in this leaderboard. This object will not be present if the user is not sharing their scores publicly. */
-  publicRank?: LeaderboardScoreRank;
-  /** The ID of the leaderboard this score is in. */
-  leaderboard_id?: string;
-  /** Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
-  scoreTag?: string;
-  /** The formatted value of this score. */
-  scoreString?: string;
-  /** The numerical value of this score. */
-  scoreValue?: string;
   /** The time span of this score. */
   timeSpan?: PlayerLeaderboardScoreTimeSpanEnum;
+  /** The timestamp at which this score was recorded, in milliseconds since the epoch in UTC. */
+  writeTimestamp?: string;
+  /** Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
+  scoreTag?: string;
 }
 export const PlayerLeaderboardScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
+    leaderboard_id: S.optional(S.String),
+    scoreValue: S.optional(S.String),
+    scoreString: S.optional(S.String),
+    publicRank: S.optional(LeaderboardScoreRank),
     socialRank: S.optional(LeaderboardScoreRank),
     friendsRank: S.optional(LeaderboardScoreRank),
-    writeTimestamp: S.optional(S.String),
-    kind: S.optional(S.String),
-    publicRank: S.optional(LeaderboardScoreRank),
-    leaderboard_id: S.optional(S.String),
-    scoreTag: S.optional(S.String),
-    scoreString: S.optional(S.String),
-    scoreValue: S.optional(S.String),
     timeSpan: S.optional(PlayerLeaderboardScoreTimeSpanEnum),
+    writeTimestamp: S.optional(S.String),
+    scoreTag: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PlayerLeaderboardScore",
@@ -1000,36 +1000,36 @@ export const PlayerLeaderboardScoreList = /*@__PURE__*/ S.Array(
 
 /** A list of player leaderboard scores. */
 export interface PlayerLeaderboardScoreListResponse {
-  /** The pagination token for the next page of results. */
-  nextPageToken?: string;
-  /** The leaderboard scores. */
-  items: PlayerLeaderboardScoreList;
-  /** The Player resources for the owner of this score. */
-  player?: Player;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLeaderboardScoreListResponse`. */
   kind?: string;
+  /** The pagination token for the next page of results. */
+  nextPageToken?: string;
+  /** The Player resources for the owner of this score. */
+  player?: Player;
+  /** The leaderboard scores. */
+  items: PlayerLeaderboardScoreList;
 }
 export const PlayerLeaderboardScoreListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    items: PlayerLeaderboardScoreList,
-    player: S.optional(Player),
     kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    player: S.optional(Player),
+    items: PlayerLeaderboardScoreList,
   }),
 ).annotate({
   identifier: "PlayerLeaderboardScoreListResponse",
 }) as any as S.Schema<PlayerLeaderboardScoreListResponse>;
 
 export interface GetSnapshotsRequest {
-  /** The preferred language to use for strings returned by this method. */
-  language?: string;
   /** The ID of the snapshot. */
   snapshotId: string;
+  /** The preferred language to use for strings returned by this method. */
+  language?: string;
 }
 export const GetSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    language: S.optional(S.String.pipe(T.Query())),
     snapshotId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1041,69 +1041,69 @@ export const GetSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSnapshotsRequest",
 }) as any as S.Schema<GetSnapshotsRequest>;
 
-/** An image of a snapshot. */
-export interface SnapshotImage {
-  /** The URL of the image. This URL may be invalidated at any time and should not be cached. */
-  url?: string;
-  /** The height of the image. */
-  height?: number;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotImage`. */
-  kind?: string;
-  /** The MIME type of the image. */
-  mime_type?: string;
-  /** The width of the image. */
-  width?: number;
-}
-export const SnapshotImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-    height: S.optional(S.Number),
-    kind: S.optional(S.String),
-    mime_type: S.optional(S.String),
-    width: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SnapshotImage" }) as any as S.Schema<SnapshotImage>;
-
 export type SnapshotTypeEnum = "SAVE_GAME";
 export const SnapshotTypeEnum = /*@__PURE__*/ S.String;
 
+/** An image of a snapshot. */
+export interface SnapshotImage {
+  /** The width of the image. */
+  width?: number;
+  /** The height of the image. */
+  height?: number;
+  /** The MIME type of the image. */
+  mime_type?: string;
+  /** The URL of the image. This URL may be invalidated at any time and should not be cached. */
+  url?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotImage`. */
+  kind?: string;
+}
+export const SnapshotImage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    width: S.optional(S.Number),
+    height: S.optional(S.Number),
+    mime_type: S.optional(S.String),
+    url: S.optional(S.String),
+    kind: S.optional(S.String),
+  }),
+).annotate({ identifier: "SnapshotImage" }) as any as S.Schema<SnapshotImage>;
+
 /** An snapshot object. */
 export interface Snapshot {
-  /** The cover image of this snapshot. May be absent if there is no image. */
-  coverImage?: SnapshotImage;
-  /** The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a view on a Drive file and the file is owned by the caller. */
-  driveId?: string;
   /** The ID of the snapshot. */
   id?: string;
-  /** The timestamp (in millis since Unix epoch) of the last modification to this snapshot. */
-  lastModifiedMillis?: string;
-  /** The unique name provided when the snapshot was created. */
-  uniqueName?: string;
+  /** The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a view on a Drive file and the file is owned by the caller. */
+  driveId?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshot`. */
+  kind?: string;
   /** The type of this snapshot. */
   type?: SnapshotTypeEnum;
   /** The title of this snapshot. */
   title?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshot`. */
-  kind?: string;
   /** The description of this snapshot. */
   description?: string;
+  /** The timestamp (in millis since Unix epoch) of the last modification to this snapshot. */
+  lastModifiedMillis?: string;
   /** The duration associated with this snapshot, in millis. */
   durationMillis?: string;
+  /** The cover image of this snapshot. May be absent if there is no image. */
+  coverImage?: SnapshotImage;
+  /** The unique name provided when the snapshot was created. */
+  uniqueName?: string;
   /** The progress value (64-bit integer set by developer) associated with this snapshot. */
   progressValue?: string;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    coverImage: S.optional(SnapshotImage),
-    driveId: S.optional(S.String),
     id: S.optional(S.String),
-    lastModifiedMillis: S.optional(S.String),
-    uniqueName: S.optional(S.String),
+    driveId: S.optional(S.String),
+    kind: S.optional(S.String),
     type: S.optional(SnapshotTypeEnum),
     title: S.optional(S.String),
-    kind: S.optional(S.String),
     description: S.optional(S.String),
+    lastModifiedMillis: S.optional(S.String),
     durationMillis: S.optional(S.String),
+    coverImage: S.optional(SnapshotImage),
+    uniqueName: S.optional(S.String),
     progressValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
@@ -1125,20 +1125,20 @@ export const GetStatsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StatsResponse {
   /** The probability of the player not returning to play the game in the next day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough information. */
   churn_probability?: number;
-  /** The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough information. */
-  spend_percentile?: number;
   /** Number of in-app purchases made by the player in this game. E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information. */
   num_purchases?: number;
+  /** The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough information. */
+  spend_percentile?: number;
+  /** Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information. */
+  days_since_last_played?: number;
+  /** The approximate number of sessions of the player within the last 28 days, where a session begins when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information. */
+  num_sessions?: number;
   /** The approximation of the sessions percentile of the player within the last 30 days, where a session begins when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough information. */
   num_sessions_percentile?: number;
   /** Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not populated if there is not enough information. */
   avg_session_length_minutes?: number;
-  /** Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information. */
-  days_since_last_played?: number;
   /** The probability of the player going to spend the game in the next seven days. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough information. */
   spend_probability?: number;
-  /** The approximate number of sessions of the player within the last 28 days, where a session begins when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information. */
-  num_sessions?: number;
   /** The probability of the player going to spend beyond a threshold amount of money. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough information. */
   high_spender_probability?: number;
   /** The predicted amount of money that the player going to spend in the next 28 days. E.g., 1, 30, 60, ... . Not populated if there is not enough information. */
@@ -1149,13 +1149,13 @@ export interface StatsResponse {
 export const StatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     churn_probability: S.optional(S.Number),
-    spend_percentile: S.optional(S.Number),
     num_purchases: S.optional(S.Number),
+    spend_percentile: S.optional(S.Number),
+    days_since_last_played: S.optional(S.Number),
+    num_sessions: S.optional(S.Number),
     num_sessions_percentile: S.optional(S.Number),
     avg_session_length_minutes: S.optional(S.Number),
-    days_since_last_played: S.optional(S.Number),
     spend_probability: S.optional(S.Number),
-    num_sessions: S.optional(S.Number),
     high_spender_probability: S.optional(S.Number),
     total_spend_next_28_days: S.optional(S.Number),
     kind: S.optional(S.String),
@@ -1163,18 +1163,18 @@ export const StatsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatsResponse" }) as any as S.Schema<StatsResponse>;
 
 export interface IncrementAchievementsRequest {
+  /** The ID of the achievement used by this method. */
+  achievementId: string;
   /** A randomly generated numeric ID for each request specified by the caller. This number is used at the server to ensure that the request is handled correctly across retries. */
   requestId?: string;
   /** Required. The number of steps to increment. */
   stepsToIncrement: number;
-  /** The ID of the achievement used by this method. */
-  achievementId: string;
 }
 export const IncrementAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    achievementId: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
     stepsToIncrement: S.Number.pipe(T.Query()),
-    achievementId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1188,18 +1188,18 @@ export const IncrementAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An achievement increment response */
 export interface AchievementIncrementResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementIncrementResponse`. */
+  kind?: string;
   /** The current steps recorded for this incremental achievement. */
   currentSteps?: number;
   /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
   newlyUnlocked?: boolean;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementIncrementResponse`. */
-  kind?: string;
 }
 export const AchievementIncrementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     currentSteps: S.optional(S.Number),
     newlyUnlocked: S.optional(S.Boolean),
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AchievementIncrementResponse",
@@ -1251,38 +1251,38 @@ export const LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
 
 /** Request to link an in-game account with a PGS principal (encoded in the session id). */
 export interface LinkPersonaRequest {
+  /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
+  sessionId?: string;
+  /** Required. Stable identifier of the in-game account. Please refrain from re-using the same persona for different games. */
+  persona?: string;
   /** Required. Value of the token to create. Opaque to Play Games and assumed to be non-stable (encrypted with key rotation). */
   token?: string;
   /** Required. Cardinality constraint to observe when linking a persona to a player in the scope of a game. */
   cardinalityConstraint?:
     | LinkPersonaRequestCardinalityConstraintEnum
     | (string & {});
-  /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
-  sessionId?: string;
-  /** Required. Stable identifier of the in-game account. Please refrain from re-using the same persona for different games. */
-  persona?: string;
-  /** Input only. Optional time-to-live. */
-  ttl?: string;
   /** Required. Resolution policy to apply when the linking of a persona to a player would result in violating the specified cardinality constraint. */
   conflictingLinksResolutionPolicy?:
     | LinkPersonaRequestConflictingLinksResolutionPolicyEnum
     | (string & {});
   /** Input only. Optional expiration time. */
   expireTime?: string;
+  /** Input only. Optional time-to-live. */
+  ttl?: string;
 }
 export const LinkPersonaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    sessionId: S.optional(S.String),
+    persona: S.optional(S.String),
     token: S.optional(S.String),
     cardinalityConstraint: S.optional(
       LinkPersonaRequestCardinalityConstraintEnum,
     ),
-    sessionId: S.optional(S.String),
-    persona: S.optional(S.String),
-    ttl: S.optional(S.String),
     conflictingLinksResolutionPolicy: S.optional(
       LinkPersonaRequestConflictingLinksResolutionPolicyEnum,
     ),
     expireTime: S.optional(S.String),
+    ttl: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LinkPersonaRequest",
@@ -1325,18 +1325,18 @@ export const LinkPersonaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkPersonaResponse>;
 
 export interface ListAchievementDefinitionsRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListAchievementDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1353,6 +1353,12 @@ export type AchievementDefinitionAchievementTypeEnum =
   | "INCREMENTAL";
 export const AchievementDefinitionAchievementTypeEnum = /*@__PURE__*/ S.String;
 
+export type AchievementDefinitionInitialStateEnum =
+  | "HIDDEN"
+  | "REVEALED"
+  | "UNLOCKED";
+export const AchievementDefinitionInitialStateEnum = /*@__PURE__*/ S.String;
+
 export type AchievementDefinitionAchievementLifecycleStateEnum =
   | "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED"
   | "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE"
@@ -1360,61 +1366,55 @@ export type AchievementDefinitionAchievementLifecycleStateEnum =
 export const AchievementDefinitionAchievementLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
-export type AchievementDefinitionInitialStateEnum =
-  | "HIDDEN"
-  | "REVEALED"
-  | "UNLOCKED";
-export const AchievementDefinitionInitialStateEnum = /*@__PURE__*/ S.String;
-
 /** An achievement definition object. */
 export interface AchievementDefinition {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementDefinition`. */
+  kind?: string;
+  /** The ID of the achievement. */
+  id?: string;
+  /** The name of the achievement. */
+  name?: string;
   /** The description of the achievement. */
   description?: string;
   /** The type of the achievement. */
   achievementType?: AchievementDefinitionAchievementTypeEnum;
-  /** Indicates whether the unlocked icon image being returned is a default image, or is game-provided. */
-  isUnlockedIconUrlDefault?: boolean;
-  /** The ID of the achievement. */
-  id?: string;
   /** The total steps for an incremental achievement. */
   totalSteps?: number;
+  /** The total steps for an incremental achievement as a string. */
+  formattedTotalSteps?: string;
+  /** The image URL for the revealed achievement icon. */
+  revealedIconUrl?: string;
   /** Indicates whether the revealed icon image being returned is a default image, or is provided by the game. */
   isRevealedIconUrlDefault?: boolean;
-  /** The name of the achievement. */
-  name?: string;
+  /** The image URL for the unlocked achievement icon. */
+  unlockedIconUrl?: string;
+  /** Indicates whether the unlocked icon image being returned is a default image, or is game-provided. */
+  isUnlockedIconUrlDefault?: boolean;
+  /** The initial state of the achievement. */
+  initialState?: AchievementDefinitionInitialStateEnum;
   /** Experience points which will be earned when unlocking this achievement. */
   experiencePoints?: string;
   /** Output only. The lifecycle state of the achievement. */
   achievementLifecycleState?: AchievementDefinitionAchievementLifecycleStateEnum;
-  /** The total steps for an incremental achievement as a string. */
-  formattedTotalSteps?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementDefinition`. */
-  kind?: string;
-  /** The image URL for the unlocked achievement icon. */
-  unlockedIconUrl?: string;
-  /** The image URL for the revealed achievement icon. */
-  revealedIconUrl?: string;
-  /** The initial state of the achievement. */
-  initialState?: AchievementDefinitionInitialStateEnum;
 }
 export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
     description: S.optional(S.String),
     achievementType: S.optional(AchievementDefinitionAchievementTypeEnum),
-    isUnlockedIconUrlDefault: S.optional(S.Boolean),
-    id: S.optional(S.String),
     totalSteps: S.optional(S.Number),
+    formattedTotalSteps: S.optional(S.String),
+    revealedIconUrl: S.optional(S.String),
     isRevealedIconUrlDefault: S.optional(S.Boolean),
-    name: S.optional(S.String),
+    unlockedIconUrl: S.optional(S.String),
+    isUnlockedIconUrlDefault: S.optional(S.Boolean),
+    initialState: S.optional(AchievementDefinitionInitialStateEnum),
     experiencePoints: S.optional(S.String),
     achievementLifecycleState: S.optional(
       AchievementDefinitionAchievementLifecycleStateEnum,
     ),
-    formattedTotalSteps: S.optional(S.String),
-    kind: S.optional(S.String),
-    unlockedIconUrl: S.optional(S.String),
-    revealedIconUrl: S.optional(S.String),
-    initialState: S.optional(AchievementDefinitionInitialStateEnum),
   }),
 ).annotate({
   identifier: "AchievementDefinition",
@@ -1427,18 +1427,18 @@ export const AchievementDefinitionList = /*@__PURE__*/ S.Array(
 
 /** A list of achievement definition objects. */
 export interface AchievementDefinitionsListResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementDefinitionsListResponse`. */
+  kind?: string;
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The achievement definitions. */
   items: AchievementDefinitionList;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementDefinitionsListResponse`. */
-  kind?: string;
 }
 export const AchievementDefinitionsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     items: AchievementDefinitionList,
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AchievementDefinitionsListResponse",
@@ -1452,24 +1452,24 @@ export type ListAchievementsStateEnum =
 export const ListAchievementsStateEnum = /*@__PURE__*/ S.String;
 
 export interface ListAchievementsRequest {
+  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
+  playerId: string;
+  /** The preferred language to use for strings returned by this method. */
+  language?: string;
   /** The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
   /** The token returned by the previous request. */
   pageToken?: string;
   /** Tells the server to return only achievements with the specified state. If this parameter isn't specified, all achievements are returned. */
   state?: ListAchievementsStateEnum | (string & {});
-  /** The preferred language to use for strings returned by this method. */
-  language?: string;
-  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
-  playerId: string;
 }
 export const ListAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    playerId: S.String.pipe(T.Label()),
+    language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
     state: S.optional(ListAchievementsStateEnum.pipe(T.Query())),
-    language: S.optional(S.String.pipe(T.Query())),
-    playerId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1491,28 +1491,28 @@ export const PlayerAchievementAchievementStateEnum = /*@__PURE__*/ S.String;
 export interface PlayerAchievement {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerAchievement`. */
   kind?: string;
-  /** The state of the achievement. */
-  achievementState?: PlayerAchievementAchievementStateEnum;
-  /** The current steps for an incremental achievement as a string. */
-  formattedCurrentStepsString?: string;
+  /** The ID of the achievement. */
+  id?: string;
   /** The current steps for an incremental achievement. */
   currentSteps?: number;
+  /** The current steps for an incremental achievement as a string. */
+  formattedCurrentStepsString?: string;
+  /** The state of the achievement. */
+  achievementState?: PlayerAchievementAchievementStateEnum;
   /** The timestamp of the last modification to this achievement's state. */
   lastUpdatedTimestamp?: string;
   /** Experience points earned for the achievement. This field is absent for achievements that have not yet been unlocked and 0 for achievements that have been unlocked by testers but that are unpublished. */
   experiencePoints?: string;
-  /** The ID of the achievement. */
-  id?: string;
 }
 export const PlayerAchievement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    achievementState: S.optional(PlayerAchievementAchievementStateEnum),
-    formattedCurrentStepsString: S.optional(S.String),
+    id: S.optional(S.String),
     currentSteps: S.optional(S.Number),
+    formattedCurrentStepsString: S.optional(S.String),
+    achievementState: S.optional(PlayerAchievementAchievementStateEnum),
     lastUpdatedTimestamp: S.optional(S.String),
     experiencePoints: S.optional(S.String),
-    id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PlayerAchievement",
@@ -1543,18 +1543,18 @@ export const PlayerAchievementListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlayerAchievementListResponse>;
 
 export interface ListByPlayerEventsRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The maximum number of events to return in the response, used for paging. For any response, the actual number of events to return may be less than the specified maxResults. */
   maxResults?: number;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListByPlayerEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1570,22 +1570,22 @@ export const ListByPlayerEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PlayerEvent {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerEvent`. */
   kind?: string;
-  /** The current number of times this event has occurred, as a string. The formatting of this string depends on the configuration of your event in the Play Games Developer Console. */
-  formattedNumEvents?: string;
+  /** The ID of the event definition. */
+  definitionId?: string;
   /** The ID of the player. */
   playerId?: string;
   /** The current number of times this event has occurred. */
   numEvents?: string;
-  /** The ID of the event definition. */
-  definitionId?: string;
+  /** The current number of times this event has occurred, as a string. The formatting of this string depends on the configuration of your event in the Play Games Developer Console. */
+  formattedNumEvents?: string;
 }
 export const PlayerEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    formattedNumEvents: S.optional(S.String),
+    definitionId: S.optional(S.String),
     playerId: S.optional(S.String),
     numEvents: S.optional(S.String),
-    definitionId: S.optional(S.String),
+    formattedNumEvents: S.optional(S.String),
   }),
 ).annotate({ identifier: "PlayerEvent" }) as any as S.Schema<PlayerEvent>;
 
@@ -1618,25 +1618,25 @@ export const ListCategoriesByPlayerMetagameCollectionEnum =
   /*@__PURE__*/ S.String;
 
 export interface ListCategoriesByPlayerMetagameRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
-  /** The maximum number of category resources to return in the response, used for paging. For any response, the actual number of category resources returned may be less than the specified `maxResults`. */
-  maxResults?: number;
-  /** The collection of categories for which data will be returned. */
-  collection: ListCategoriesByPlayerMetagameCollectionEnum | (string & {});
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
+  /** The collection of categories for which data will be returned. */
+  collection: ListCategoriesByPlayerMetagameCollectionEnum | (string & {});
   /** The preferred language to use for strings returned by this method. */
   language?: string;
+  /** The maximum number of category resources to return in the response, used for paging. For any response, the actual number of category resources returned may be less than the specified `maxResults`. */
+  maxResults?: number;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListCategoriesByPlayerMetagameRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      maxResults: S.optional(S.Number.pipe(T.Query())),
-      collection: ListCategoriesByPlayerMetagameCollectionEnum.pipe(T.Label()),
       playerId: S.String.pipe(T.Label()),
+      collection: ListCategoriesByPlayerMetagameCollectionEnum.pipe(T.Label()),
       language: S.optional(S.String.pipe(T.Query())),
+      maxResults: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1650,17 +1650,17 @@ export const ListCategoriesByPlayerMetagameRequest = /*@__PURE__*/ S.suspend(
 
 /** Data related to individual game categories. */
 export interface Category {
-  /** The category name. */
-  category?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#category`. */
   kind?: string;
+  /** The category name. */
+  category?: string;
   /** Experience points earned in this category. */
   experiencePoints?: string;
 }
 export const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    category: S.optional(S.String),
     kind: S.optional(S.String),
+    category: S.optional(S.String),
     experiencePoints: S.optional(S.String),
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
@@ -1737,33 +1737,33 @@ export const EventChildList = /*@__PURE__*/ S.Array(
 
 /** An event definition resource. */
 export interface EventDefinition {
-  /** Description of what this event represents. */
-  description?: string;
+  /** The ID of the event. */
+  id?: string;
   /** The visibility of event being tracked in this definition. */
   visibility?: EventDefinitionVisibilityEnum;
-  /** A list of events that are a child of this event. */
-  childEvents?: EventChildList;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinition`. */
-  kind?: string;
   /** The name to display for the event. */
   displayName?: string;
   /** The base URL for the image that represents the event. */
   imageUrl?: string;
-  /** The ID of the event. */
-  id?: string;
+  /** A list of events that are a child of this event. */
+  childEvents?: EventChildList;
+  /** Description of what this event represents. */
+  description?: string;
   /** Indicates whether the icon image being returned is a default image, or is game-provided. */
   isDefaultImageUrl?: boolean;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinition`. */
+  kind?: string;
 }
 export const EventDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    description: S.optional(S.String),
+    id: S.optional(S.String),
     visibility: S.optional(EventDefinitionVisibilityEnum),
-    childEvents: S.optional(EventChildList),
-    kind: S.optional(S.String),
     displayName: S.optional(S.String),
     imageUrl: S.optional(S.String),
-    id: S.optional(S.String),
+    childEvents: S.optional(EventChildList),
+    description: S.optional(S.String),
     isDefaultImageUrl: S.optional(S.Boolean),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EventDefinition",
@@ -1776,36 +1776,36 @@ export const EventDefinitionList = /*@__PURE__*/ S.Array(
 
 /** A ListDefinitions response. */
 export interface EventDefinitionListResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinitionListResponse`. */
+  kind?: string;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
   /** The event definitions. */
   items: EventDefinitionList;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinitionListResponse`. */
-  kind?: string;
 }
 export const EventDefinitionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     items: EventDefinitionList,
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EventDefinitionListResponse",
 }) as any as S.Schema<EventDefinitionListResponse>;
 
 export interface ListLeaderboardsRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The maximum number of leaderboards to return in the response. For any response, the actual number of leaderboards returned may be less than the specified `maxResults`. */
   maxResults?: number;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1845,20 +1845,20 @@ export type ListPlayersCollectionEnum = "CONNECTED" | "VISIBLE" | "FRIENDS_ALL";
 export const ListPlayersCollectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlayersRequest {
+  /** Collection of players being retrieved */
+  collection: ListPlayersCollectionEnum | (string & {});
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
-  /** Collection of players being retrieved */
-  collection: ListPlayersCollectionEnum | (string & {});
   /** The token returned by the previous request. */
   pageToken?: string;
 }
 export const ListPlayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    collection: ListPlayersCollectionEnum.pipe(T.Label()),
     language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
-    collection: ListPlayersCollectionEnum.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -1878,18 +1878,18 @@ export const PlayerList = /*@__PURE__*/ S.Array(
 
 /** A third party player list response. */
 export interface PlayerListResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerListResponse`. */
+  kind?: string;
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The players. */
   items: PlayerList;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerListResponse`. */
-  kind?: string;
 }
 export const PlayerListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     items: PlayerList,
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PlayerListResponse",
@@ -1902,27 +1902,27 @@ export type ListScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const ListScoresTimeSpanEnum = /*@__PURE__*/ S.String;
 
 export interface ListScoresRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
   /** The ID of the leaderboard. */
   leaderboardId: string;
-  /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
-  maxResults?: number;
   /** The collection of scores you're requesting. */
   collection: ListScoresCollectionEnum | (string & {});
-  /** Required. The time span for the scores and ranks you're requesting. */
-  timeSpan: ListScoresTimeSpanEnum | (string & {});
   /** The preferred language to use for strings returned by this method. */
   language?: string;
+  /** Required. The time span for the scores and ranks you're requesting. */
+  timeSpan: ListScoresTimeSpanEnum | (string & {});
+  /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
+  maxResults?: number;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
     leaderboardId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
     collection: ListScoresCollectionEnum.pipe(T.Label()),
-    timeSpan: ListScoresTimeSpanEnum.pipe(T.Query()),
     language: S.optional(S.String.pipe(T.Query())),
+    timeSpan: ListScoresTimeSpanEnum.pipe(T.Query()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1941,33 +1941,33 @@ export const LeaderboardEntryTimeSpanEnum = /*@__PURE__*/ S.String;
 export interface LeaderboardEntry {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardEntry`. */
   kind?: string;
-  /** The localized string for the rank of this score for this leaderboard. */
-  formattedScoreRank?: string;
   /** The player who holds this score. */
   player?: Player;
   /** The rank of this score for this leaderboard. */
   scoreRank?: string;
-  /** The localized string for the numerical value of this score. */
-  formattedScore?: string;
-  /** The timestamp at which this score was recorded, in milliseconds since the epoch in UTC. */
-  writeTimestampMillis?: string;
-  /** The time span of this high score. */
-  timeSpan?: LeaderboardEntryTimeSpanEnum;
+  /** The localized string for the rank of this score for this leaderboard. */
+  formattedScoreRank?: string;
   /** The numerical value of this score. */
   scoreValue?: string;
+  /** The localized string for the numerical value of this score. */
+  formattedScore?: string;
+  /** The time span of this high score. */
+  timeSpan?: LeaderboardEntryTimeSpanEnum;
+  /** The timestamp at which this score was recorded, in milliseconds since the epoch in UTC. */
+  writeTimestampMillis?: string;
   /** Additional information about the score. Values must contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
   scoreTag?: string;
 }
 export const LeaderboardEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    formattedScoreRank: S.optional(S.String),
     player: S.optional(Player),
     scoreRank: S.optional(S.String),
-    formattedScore: S.optional(S.String),
-    writeTimestampMillis: S.optional(S.String),
-    timeSpan: S.optional(LeaderboardEntryTimeSpanEnum),
+    formattedScoreRank: S.optional(S.String),
     scoreValue: S.optional(S.String),
+    formattedScore: S.optional(S.String),
+    timeSpan: S.optional(LeaderboardEntryTimeSpanEnum),
+    writeTimestampMillis: S.optional(S.String),
     scoreTag: S.optional(S.String),
   }),
 ).annotate({
@@ -1981,47 +1981,47 @@ export const LeaderboardEntryList = /*@__PURE__*/ S.Array(
 
 /** A ListScores response. */
 export interface LeaderboardScores {
-  /** The pagination token for the next page of results. */
-  nextPageToken?: string;
-  /** The scores in the leaderboard. */
-  items: LeaderboardEntryList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardScores`. */
   kind?: string;
+  /** The pagination token for the next page of results. */
+  nextPageToken?: string;
   /** The pagination token for the previous page of results. */
   prevPageToken?: string;
   /** The total number of scores in the leaderboard. */
   numScores?: string;
   /** The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present. */
   playerScore?: LeaderboardEntry;
+  /** The scores in the leaderboard. */
+  items: LeaderboardEntryList;
 }
 export const LeaderboardScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
-    items: LeaderboardEntryList,
     kind: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
     prevPageToken: S.optional(S.String),
     numScores: S.optional(S.String),
     playerScore: S.optional(LeaderboardEntry),
+    items: LeaderboardEntryList,
   }),
 ).annotate({
   identifier: "LeaderboardScores",
 }) as any as S.Schema<LeaderboardScores>;
 
 export interface ListSnapshotsRequest {
+  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
+  playerId: string;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
   /** The maximum number of snapshot resources to return in the response, used for paging. For any response, the actual number of snapshot resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
-  /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
-  playerId: string;
   /** The token returned by the previous request. */
   pageToken?: string;
 }
 export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    playerId: S.String.pipe(T.Label()),
     language: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
-    playerId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -2041,18 +2041,18 @@ export const SnapshotList = /*@__PURE__*/ S.Array(
 
 /** A third party list snapshots response. */
 export interface SnapshotListResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotListResponse`. */
+  kind?: string;
   /** Token corresponding to the next page of results. If there are no more results, the token is omitted. */
   nextPageToken?: string;
   /** The snapshots. */
   items: SnapshotList;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotListResponse`. */
-  kind?: string;
 }
 export const SnapshotListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
     items: SnapshotList,
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SnapshotListResponse",
@@ -2065,33 +2065,33 @@ export type ListWindowScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const ListWindowScoresTimeSpanEnum = /*@__PURE__*/ S.String;
 
 export interface ListWindowScoresRequest {
-  /** The token returned by the previous request. */
-  pageToken?: string;
-  /** True if the top scores should be returned when the player is not in the leaderboard. Defaults to true. */
-  returnTopIfAbsent?: boolean;
   /** The ID of the leaderboard. */
   leaderboardId: string;
-  /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
-  maxResults?: number;
   /** The collection of scores you're requesting. */
   collection: ListWindowScoresCollectionEnum | (string & {});
-  /** Required. The time span for the scores and ranks you're requesting. */
-  timeSpan: ListWindowScoresTimeSpanEnum | (string & {});
-  /** The preferred number of scores to return above the player's score. More scores may be returned if the player is at the bottom of the leaderboard; fewer may be returned if the player is at the top. Must be less than or equal to maxResults. */
-  resultsAbove?: number;
   /** The preferred language to use for strings returned by this method. */
   language?: string;
+  /** Required. The time span for the scores and ranks you're requesting. */
+  timeSpan: ListWindowScoresTimeSpanEnum | (string & {});
+  /** The maximum number of leaderboard scores to return in the response. For any response, the actual number of leaderboard scores returned may be less than the specified `maxResults`. */
+  maxResults?: number;
+  /** The preferred number of scores to return above the player's score. More scores may be returned if the player is at the bottom of the leaderboard; fewer may be returned if the player is at the top. Must be less than or equal to maxResults. */
+  resultsAbove?: number;
+  /** True if the top scores should be returned when the player is not in the leaderboard. Defaults to true. */
+  returnTopIfAbsent?: boolean;
+  /** The token returned by the previous request. */
+  pageToken?: string;
 }
 export const ListWindowScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
     leaderboardId: S.String.pipe(T.Label()),
-    maxResults: S.optional(S.Number.pipe(T.Query())),
     collection: ListWindowScoresCollectionEnum.pipe(T.Label()),
-    timeSpan: ListWindowScoresTimeSpanEnum.pipe(T.Query()),
-    resultsAbove: S.optional(S.Number.pipe(T.Query())),
     language: S.optional(S.String.pipe(T.Query())),
+    timeSpan: ListWindowScoresTimeSpanEnum.pipe(T.Query()),
+    maxResults: S.optional(S.Number.pipe(T.Query())),
+    resultsAbove: S.optional(S.Number.pipe(T.Query())),
+    returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2123,20 +2123,39 @@ export const PlayedApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayedApplicationsResponse",
 }) as any as S.Schema<PlayedApplicationsResponse>;
 
+/** An event period time range. */
+export interface EventPeriodRange {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodRange`. */
+  kind?: string;
+  /** The time when this update period begins, in millis, since 1970 UTC (Unix Epoch). */
+  periodStartMillis?: string;
+  /** The time when this update period ends, in millis, since 1970 UTC (Unix Epoch). */
+  periodEndMillis?: string;
+}
+export const EventPeriodRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    periodStartMillis: S.optional(S.String),
+    periodEndMillis: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventPeriodRange",
+}) as any as S.Schema<EventPeriodRange>;
+
 /** An event period update resource. */
 export interface EventUpdateRequest {
   /** The ID of the event being modified in this update. */
   definitionId?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateRequest`. */
-  kind?: string;
   /** The number of times this event occurred in this time period. */
   updateCount?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateRequest`. */
+  kind?: string;
 }
 export const EventUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definitionId: S.optional(S.String),
-    kind: S.optional(S.String),
     updateCount: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EventUpdateRequest",
@@ -2147,39 +2166,20 @@ export const EventUpdateRequestList = /*@__PURE__*/ S.Array(
   EventUpdateRequest,
 ) as any as S.Schema<EventUpdateRequestList>;
 
-/** An event period time range. */
-export interface EventPeriodRange {
-  /** The time when this update period begins, in millis, since 1970 UTC (Unix Epoch). */
-  periodStartMillis?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodRange`. */
-  kind?: string;
-  /** The time when this update period ends, in millis, since 1970 UTC (Unix Epoch). */
-  periodEndMillis?: string;
-}
-export const EventPeriodRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    periodStartMillis: S.optional(S.String),
-    kind: S.optional(S.String),
-    periodEndMillis: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventPeriodRange",
-}) as any as S.Schema<EventPeriodRange>;
-
 /** An event period update resource. */
 export interface EventPeriodUpdate {
+  /** The time period being covered by this update. */
+  timePeriod?: EventPeriodRange;
   /** The updates being made for this time period. */
   updates?: EventUpdateRequestList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodUpdate`. */
   kind?: string;
-  /** The time period being covered by this update. */
-  timePeriod?: EventPeriodRange;
 }
 export const EventPeriodUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    timePeriod: S.optional(EventPeriodRange),
     updates: S.optional(EventUpdateRequestList),
     kind: S.optional(S.String),
-    timePeriod: S.optional(EventPeriodRange),
   }),
 ).annotate({
   identifier: "EventPeriodUpdate",
@@ -2192,21 +2192,21 @@ export const EventPeriodUpdateList = /*@__PURE__*/ S.Array(
 
 /** An event period update resource. */
 export interface EventRecordRequest {
-  /** The request ID used to identify this attempt to record events. */
-  requestId?: string;
-  /** A list of the time period updates being made in this request. */
-  timePeriods?: EventPeriodUpdateList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordRequest`. */
   kind?: string;
+  /** The request ID used to identify this attempt to record events. */
+  requestId?: string;
   /** The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch). */
   currentTimeMillis?: string;
+  /** A list of the time period updates being made in this request. */
+  timePeriods?: EventPeriodUpdateList;
 }
 export const EventRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    requestId: S.optional(S.String),
-    timePeriods: S.optional(EventPeriodUpdateList),
     kind: S.optional(S.String),
+    requestId: S.optional(S.String),
     currentTimeMillis: S.optional(S.String),
+    timePeriods: S.optional(EventPeriodUpdateList),
   }),
 ).annotate({
   identifier: "EventRecordRequest",
@@ -2233,35 +2233,6 @@ export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordEventsRequest",
 }) as any as S.Schema<RecordEventsRequest>;
 
-export type EventRecordFailureFailureCauseEnum =
-  | "NOT_FOUND"
-  | "INVALID_UPDATE_VALUE";
-export const EventRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
-
-/** An event update failure resource. */
-export interface EventRecordFailure {
-  /** The cause for the update failure. */
-  failureCause?: EventRecordFailureFailureCauseEnum;
-  /** The ID of the event that was not updated. */
-  eventId?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordFailure`. */
-  kind?: string;
-}
-export const EventRecordFailure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failureCause: S.optional(EventRecordFailureFailureCauseEnum),
-    eventId: S.optional(S.String),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventRecordFailure",
-}) as any as S.Schema<EventRecordFailure>;
-
-export type EventRecordFailureList = Array<EventRecordFailure>;
-export const EventRecordFailureList = /*@__PURE__*/ S.Array(
-  EventRecordFailure,
-) as any as S.Schema<EventRecordFailureList>;
-
 export type EventBatchRecordFailureFailureCauseEnum =
   | "TOO_LARGE"
   | "TIME_PERIOD_EXPIRED"
@@ -2273,18 +2244,18 @@ export const EventBatchRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** A batch update failure resource. */
 export interface EventBatchRecordFailure {
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventBatchRecordFailure`. */
-  kind?: string;
-  /** The cause for the update failure. */
-  failureCause?: EventBatchRecordFailureFailureCauseEnum;
   /** The time range which was rejected; empty for a request-wide failure. */
   range?: EventPeriodRange;
+  /** The cause for the update failure. */
+  failureCause?: EventBatchRecordFailureFailureCauseEnum;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventBatchRecordFailure`. */
+  kind?: string;
 }
 export const EventBatchRecordFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kind: S.optional(S.String),
-    failureCause: S.optional(EventBatchRecordFailureFailureCauseEnum),
     range: S.optional(EventPeriodRange),
+    failureCause: S.optional(EventBatchRecordFailureFailureCauseEnum),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "EventBatchRecordFailure",
@@ -2295,23 +2266,52 @@ export const EventBatchRecordFailureList = /*@__PURE__*/ S.Array(
   EventBatchRecordFailure,
 ) as any as S.Schema<EventBatchRecordFailureList>;
 
+export type EventRecordFailureFailureCauseEnum =
+  | "NOT_FOUND"
+  | "INVALID_UPDATE_VALUE";
+export const EventRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
+
+/** An event update failure resource. */
+export interface EventRecordFailure {
+  /** The ID of the event that was not updated. */
+  eventId?: string;
+  /** The cause for the update failure. */
+  failureCause?: EventRecordFailureFailureCauseEnum;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordFailure`. */
+  kind?: string;
+}
+export const EventRecordFailure = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventId: S.optional(S.String),
+    failureCause: S.optional(EventRecordFailureFailureCauseEnum),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventRecordFailure",
+}) as any as S.Schema<EventRecordFailure>;
+
+export type EventRecordFailureList = Array<EventRecordFailure>;
+export const EventRecordFailureList = /*@__PURE__*/ S.Array(
+  EventRecordFailure,
+) as any as S.Schema<EventRecordFailureList>;
+
 /** An event period update resource. */
 export interface EventUpdateResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateResponse`. */
   kind?: string;
+  /** Any batch-wide failures which occurred applying updates. */
+  batchFailures?: EventBatchRecordFailureList;
   /** Any failures updating a particular event. */
   eventFailures?: EventRecordFailureList;
   /** The current status of any updated events */
   playerEvents?: PlayerEventList;
-  /** Any batch-wide failures which occurred applying updates. */
-  batchFailures?: EventBatchRecordFailureList;
 }
 export const EventUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
+    batchFailures: S.optional(EventBatchRecordFailureList),
     eventFailures: S.optional(EventRecordFailureList),
     playerEvents: S.optional(PlayerEventList),
-    batchFailures: S.optional(EventBatchRecordFailureList),
   }),
 ).annotate({
   identifier: "EventUpdateResponse",
@@ -2459,16 +2459,16 @@ export const SetStepsAtLeastAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AchievementSetStepsAtLeastResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementSetStepsAtLeastResponse`. */
   kind?: string;
-  /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
-  newlyUnlocked?: boolean;
   /** The current steps recorded for this incremental achievement. */
   currentSteps?: number;
+  /** Whether the current steps for the achievement has reached the number of steps required to unlock. */
+  newlyUnlocked?: boolean;
 }
 export const AchievementSetStepsAtLeastResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
-    newlyUnlocked: S.optional(S.Boolean),
     currentSteps: S.optional(S.Number),
+    newlyUnlocked: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "AchievementSetStepsAtLeastResponse",
@@ -2476,23 +2476,23 @@ export const AchievementSetStepsAtLeastResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A request to submit a score to leaderboards. */
 export interface ScoreSubmission {
-  /** The new score being submitted. */
-  score?: string;
-  /** The leaderboard this score is being submitted to. */
-  leaderboardId?: string;
-  /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
-  scoreTag?: string;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#scoreSubmission`. */
   kind?: string;
+  /** The leaderboard this score is being submitted to. */
+  leaderboardId?: string;
+  /** The new score being submitted. */
+  score?: string;
+  /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
+  scoreTag?: string;
   /** Signature Values will contain URI-safe characters as defined by section 2.3 of RFC 3986. */
   signature?: string;
 }
 export const ScoreSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    score: S.optional(S.String),
-    leaderboardId: S.optional(S.String),
-    scoreTag: S.optional(S.String),
     kind: S.optional(S.String),
+    leaderboardId: S.optional(S.String),
+    score: S.optional(S.String),
+    scoreTag: S.optional(S.String),
     signature: S.optional(S.String),
   }),
 ).annotate({
@@ -2506,15 +2506,15 @@ export const ScoreSubmissionList = /*@__PURE__*/ S.Array(
 
 /** A list of score submission requests. */
 export interface PlayerScoreSubmissionList {
-  /** The score submissions. */
-  scores?: ScoreSubmissionList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreSubmissionList`. */
   kind?: string;
+  /** The score submissions. */
+  scores?: ScoreSubmissionList;
 }
 export const PlayerScoreSubmissionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scores: S.optional(ScoreSubmissionList),
     kind: S.optional(S.String),
+    scores: S.optional(ScoreSubmissionList),
   }),
 ).annotate({
   identifier: "PlayerScoreSubmissionList",
@@ -2541,37 +2541,6 @@ export const SubmitMultipleScoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmitMultipleScoresRequest",
 }) as any as S.Schema<SubmitMultipleScoresRequest>;
 
-export type PlayerScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
-export const PlayerScoreTimeSpanEnum = /*@__PURE__*/ S.String;
-
-/** A player score. */
-export interface PlayerScore {
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScore`. */
-  kind?: string;
-  /** The time span for this player score. */
-  timeSpan?: PlayerScoreTimeSpanEnum;
-  /** The numerical value for this player score. */
-  score?: string;
-  /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
-  scoreTag?: string;
-  /** The formatted score for this player score. */
-  formattedScore?: string;
-}
-export const PlayerScore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    timeSpan: S.optional(PlayerScoreTimeSpanEnum),
-    score: S.optional(S.String),
-    scoreTag: S.optional(S.String),
-    formattedScore: S.optional(S.String),
-  }),
-).annotate({ identifier: "PlayerScore" }) as any as S.Schema<PlayerScore>;
-
-export type PlayerScoreList = Array<PlayerScore>;
-export const PlayerScoreList = /*@__PURE__*/ S.Array(
-  PlayerScore,
-) as any as S.Schema<PlayerScoreList>;
-
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
   | "ALL_TIME"
   | "WEEKLY"
@@ -2586,31 +2555,62 @@ export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
     PlayerScoreResponseBeatenScoreTimeSpansItemEnum,
   ) as any as S.Schema<PlayerScoreResponseBeatenScoreTimeSpansItemEnumList>;
 
+export type PlayerScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
+export const PlayerScoreTimeSpanEnum = /*@__PURE__*/ S.String;
+
+/** A player score. */
+export interface PlayerScore {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScore`. */
+  kind?: string;
+  /** The time span for this player score. */
+  timeSpan?: PlayerScoreTimeSpanEnum;
+  /** The numerical value for this player score. */
+  score?: string;
+  /** The formatted score for this player score. */
+  formattedScore?: string;
+  /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
+  scoreTag?: string;
+}
+export const PlayerScore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    timeSpan: S.optional(PlayerScoreTimeSpanEnum),
+    score: S.optional(S.String),
+    formattedScore: S.optional(S.String),
+    scoreTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "PlayerScore" }) as any as S.Schema<PlayerScore>;
+
+export type PlayerScoreList = Array<PlayerScore>;
+export const PlayerScoreList = /*@__PURE__*/ S.Array(
+  PlayerScore,
+) as any as S.Schema<PlayerScoreList>;
+
 /** A list of leaderboard entry resources. */
 export interface PlayerScoreResponse {
-  /** The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans. */
-  unbeatenScores?: PlayerScoreList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreResponse`. */
   kind?: string;
   /** The time spans where the submitted score is better than the existing score for that time span. */
   beatenScoreTimeSpans?: PlayerScoreResponseBeatenScoreTimeSpansItemEnumList;
+  /** The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans. */
+  unbeatenScores?: PlayerScoreList;
+  /** The formatted value of the submitted score. */
+  formattedScore?: string;
   /** The leaderboard ID that this score was submitted to. */
   leaderboardId?: string;
   /** Additional information about this score. Values will contain no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986. */
   scoreTag?: string;
-  /** The formatted value of the submitted score. */
-  formattedScore?: string;
 }
 export const PlayerScoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    unbeatenScores: S.optional(PlayerScoreList),
     kind: S.optional(S.String),
     beatenScoreTimeSpans: S.optional(
       PlayerScoreResponseBeatenScoreTimeSpansItemEnumList,
     ),
+    unbeatenScores: S.optional(PlayerScoreList),
+    formattedScore: S.optional(S.String),
     leaderboardId: S.optional(S.String),
     scoreTag: S.optional(S.String),
-    formattedScore: S.optional(S.String),
   }),
 ).annotate({
   identifier: "PlayerScoreResponse",
@@ -2666,17 +2666,17 @@ export const SubmitScoresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to remove a Recall token linking PGS principal and an in-game account */
 export interface UnlinkPersonaRequest {
-  /** Value of the Recall token as it was provided by the client in LinkPersona RPC */
-  token?: string;
   /** Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. */
   sessionId?: string;
+  /** Value of the Recall token as it was provided by the client in LinkPersona RPC */
+  token?: string;
   /** Value of the 'persona' field as it was provided by the client in LinkPersona RPC */
   persona?: string;
 }
 export const UnlinkPersonaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    token: S.optional(S.String),
     sessionId: S.optional(S.String),
+    token: S.optional(S.String),
     persona: S.optional(S.String),
   }),
 ).annotate({
@@ -2756,6 +2756,25 @@ export type AchievementUpdateRequestUpdateTypeEnum =
 export const AchievementUpdateRequestUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The payload to request to increment an achievement. */
+export interface GamesAchievementIncrement {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#GamesAchievementIncrement`. */
+  kind?: string;
+  /** The number of steps to be incremented. */
+  steps?: number;
+  /** The requestId associated with an increment to an achievement. */
+  requestId?: string;
+}
+export const GamesAchievementIncrement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    steps: S.optional(S.Number),
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GamesAchievementIncrement",
+}) as any as S.Schema<GamesAchievementIncrement>;
+
+/** The payload to request to increment an achievement. */
 export interface GamesAchievementSetStepsAtLeast {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#GamesAchievementSetStepsAtLeast`. */
   kind?: string;
@@ -2771,25 +2790,6 @@ export const GamesAchievementSetStepsAtLeast = /*@__PURE__*/ S.suspend(() =>
   identifier: "GamesAchievementSetStepsAtLeast",
 }) as any as S.Schema<GamesAchievementSetStepsAtLeast>;
 
-/** The payload to request to increment an achievement. */
-export interface GamesAchievementIncrement {
-  /** The requestId associated with an increment to an achievement. */
-  requestId?: string;
-  /** The number of steps to be incremented. */
-  steps?: number;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#GamesAchievementIncrement`. */
-  kind?: string;
-}
-export const GamesAchievementIncrement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-    steps: S.optional(S.Number),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GamesAchievementIncrement",
-}) as any as S.Schema<GamesAchievementIncrement>;
-
 /** A request to update an achievement. */
 export interface AchievementUpdateRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateRequest`. */
@@ -2798,18 +2798,18 @@ export interface AchievementUpdateRequest {
   achievementId?: string;
   /** The type of update being applied. */
   updateType?: AchievementUpdateRequestUpdateTypeEnum | (string & {});
-  /** The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement. */
-  setStepsAtLeastPayload?: GamesAchievementSetStepsAtLeast;
   /** The payload if an update of type `INCREMENT` was requested for the achievement. */
   incrementPayload?: GamesAchievementIncrement;
+  /** The payload if an update of type `SET_STEPS_AT_LEAST` was requested for the achievement. */
+  setStepsAtLeastPayload?: GamesAchievementSetStepsAtLeast;
 }
 export const AchievementUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     achievementId: S.optional(S.String),
     updateType: S.optional(AchievementUpdateRequestUpdateTypeEnum),
-    setStepsAtLeastPayload: S.optional(GamesAchievementSetStepsAtLeast),
     incrementPayload: S.optional(GamesAchievementIncrement),
+    setStepsAtLeastPayload: S.optional(GamesAchievementSetStepsAtLeast),
   }),
 ).annotate({
   identifier: "AchievementUpdateRequest",
@@ -2862,27 +2862,27 @@ export const AchievementUpdateResponseCurrentStateEnum = /*@__PURE__*/ S.String;
 
 /** An updated achievement. */
 export interface AchievementUpdateResponse {
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateResponse`. */
+  kind?: string;
+  /** The achievement this update is was applied to. */
+  achievementId?: string;
   /** Whether the requested updates actually affected the achievement. */
   updateOccurred?: boolean;
   /** The current state of the achievement. */
   currentState?: AchievementUpdateResponseCurrentStateEnum;
   /** The current steps recorded for this achievement if it is incremental. */
   currentSteps?: number;
-  /** The achievement this update is was applied to. */
-  achievementId?: string;
   /** Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the first for the player). */
   newlyUnlocked?: boolean;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateResponse`. */
-  kind?: string;
 }
 export const AchievementUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    kind: S.optional(S.String),
+    achievementId: S.optional(S.String),
     updateOccurred: S.optional(S.Boolean),
     currentState: S.optional(AchievementUpdateResponseCurrentStateEnum),
     currentSteps: S.optional(S.Number),
-    achievementId: S.optional(S.String),
     newlyUnlocked: S.optional(S.Boolean),
-    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "AchievementUpdateResponse",
@@ -2895,15 +2895,15 @@ export const AchievementUpdateResponseList = /*@__PURE__*/ S.Array(
 
 /** Response message for UpdateMultipleAchievements rpc. */
 export interface AchievementUpdateMultipleResponse {
-  /** The updated state of the achievements. */
-  updatedAchievements?: AchievementUpdateResponseList;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateMultipleResponse`. */
   kind?: string;
+  /** The updated state of the achievements. */
+  updatedAchievements?: AchievementUpdateResponseList;
 }
 export const AchievementUpdateMultipleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updatedAchievements: S.optional(AchievementUpdateResponseList),
     kind: S.optional(S.String),
+    updatedAchievements: S.optional(AchievementUpdateResponseList),
   }),
 ).annotate({
   identifier: "AchievementUpdateMultipleResponse",
@@ -2931,16 +2931,16 @@ export const VerifyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApplicationVerifyResponse {
   /** The ID of the player that was issued the auth token used in this request. */
   player_id?: string;
-  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationVerifyResponse`. */
-  kind?: string;
   /** An alternate ID that was once used for the player that was issued the auth token used in this request. (This field is not normally populated.) */
   alternate_player_id?: string;
+  /** Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationVerifyResponse`. */
+  kind?: string;
 }
 export const ApplicationVerifyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     player_id: S.optional(S.String),
-    kind: S.optional(S.String),
     alternate_player_id: S.optional(S.String),
+    kind: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ApplicationVerifyResponse",

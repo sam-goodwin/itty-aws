@@ -361,30 +361,6 @@ export const SavedPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedPartialUpdateRequest",
 }) as any as S.Schema<SavedPartialUpdateRequest>;
 
-export interface SavedPrewarmCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Exact page URL to speculatively render ahead of heatmap creation. Wildcards are not allowed. */
-  url: string;
-  /** When true, ask the headless browser to dismiss cookie/consent banners before capturing. Must match the value used at creation time for the prewarmed render to be reused. */
-  block_consent_modals?: boolean;
-}
-export const SavedPrewarmCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    url: S.String,
-    block_consent_modals: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/saved/prewarm/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SavedPrewarmCreateRequest",
-}) as any as S.Schema<SavedPrewarmCreateRequest>;
-
 export interface SavedRegenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -489,21 +465,6 @@ export const savedPartialUpdate: API.OperationMethod<
   input: SavedPartialUpdateRequest,
   output: HeatmapScreenshotResponse,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SavedPrewarmCreateError = PosthogOpError;
-/** Speculatively render a screenshot for a page URL ahead of heatmap creation, so it's ready (or closer to ready) by the time the user reaches the generation screen. Renders a single preview width. Idempotent within a short window: returns the existing in-flight or completed prewarm render for the same URL and consent setting if one exists (200), otherwise starts a new one (201). The result is reused when a heatmap is later created for the same URL. */
-export const savedPrewarmCreate: API.OperationMethod<
-  SavedPrewarmCreateRequest,
-  HeatmapScreenshotResponse,
-  SavedPrewarmCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SavedPrewarmCreateRequest,
-  output: HeatmapScreenshotResponse,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

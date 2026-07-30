@@ -94,50 +94,25 @@ export const DecodeIntegrityTokenV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DecodeIntegrityTokenV1Request",
 }) as any as S.Schema<DecodeIntegrityTokenV1Request>;
 
-export type AppIntegrityAppRecognitionVerdictEnum =
-  | "UNKNOWN"
-  | "PLAY_RECOGNIZED"
-  | "UNRECOGNIZED_VERSION"
-  | "UNEVALUATED";
-export const AppIntegrityAppRecognitionVerdictEnum = /*@__PURE__*/ S.String;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Contains the application integrity information. */
-export interface AppIntegrity {
-  /** Required. Details about the app recognition verdict */
-  appRecognitionVerdict?: AppIntegrityAppRecognitionVerdictEnum;
-  /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
-  packageName?: string;
-  /** The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED. */
-  certificateSha256Digest?: StringList;
-  /** Version code of the application. Set iff app_recognition_verdict != UNEVALUATED. */
-  versionCode?: string;
+/** Contains the integrity request information. */
+export interface RequestDetails {
+  /** Required. Timestamp, in milliseconds, of the integrity application request. */
+  timestampMillis?: string;
+  /** Request hash that was provided in the request. */
+  requestHash?: string;
+  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. For details on application integrity, check application_integrity. */
+  requestPackageName?: string;
+  /** Nonce that was provided in the request (which is base64 web-safe no-wrap). */
+  nonce?: string;
 }
-export const AppIntegrity = /*@__PURE__*/ S.suspend(() =>
+export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    appRecognitionVerdict: S.optional(AppIntegrityAppRecognitionVerdictEnum),
-    packageName: S.optional(S.String),
-    certificateSha256Digest: S.optional(StringList),
-    versionCode: S.optional(S.String),
+    timestampMillis: S.optional(S.String),
+    requestHash: S.optional(S.String),
+    requestPackageName: S.optional(S.String),
+    nonce: S.optional(S.String),
   }),
-).annotate({ identifier: "AppIntegrity" }) as any as S.Schema<AppIntegrity>;
-
-/** Contains information about the device for which the integrity token was generated, e.g. Android SDK version. */
-export interface DeviceAttributes {
-  /** Android SDK version of the device, as defined in the public Android documentation: https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary requirement was missed. For example DeviceIntegrity did not meet the minimum bar. */
-  sdkVersion?: number;
-}
-export const DeviceAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sdkVersion: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DeviceAttributes",
-}) as any as S.Schema<DeviceAttributes>;
+).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
 
 export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
   | "UNKNOWN"
@@ -180,53 +155,18 @@ export const RecentDeviceActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecentDeviceActivity",
 }) as any as S.Schema<RecentDeviceActivity>;
 
-/** Contains the recall bits values. */
-export interface Values {
-  /** Required. Second recall bit value. */
-  bitSecond?: boolean;
-  /** Required. First recall bit value. */
-  bitFirst?: boolean;
-  /** Required. Third recall bit value. */
-  bitThird?: boolean;
+/** Contains information about the device for which the integrity token was generated, e.g. Android SDK version. */
+export interface DeviceAttributes {
+  /** Android SDK version of the device, as defined in the public Android documentation: https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary requirement was missed. For example DeviceIntegrity did not meet the minimum bar. */
+  sdkVersion?: number;
 }
-export const Values = /*@__PURE__*/ S.suspend(() =>
+export const DeviceAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bitSecond: S.optional(S.Boolean),
-    bitFirst: S.optional(S.Boolean),
-    bitThird: S.optional(S.Boolean),
+    sdkVersion: S.optional(S.Number),
   }),
-).annotate({ identifier: "Values" }) as any as S.Schema<Values>;
-
-/** Contains the recall bits write dates. */
-export interface WriteDates {
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit. Note that this value won't be set if the second bit is false. */
-  yyyymmSecond?: number;
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be set if the first bit is false. */
-  yyyymmFirst?: number;
-  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit. Note that this value won't be set if the third bit is false. */
-  yyyymmThird?: number;
-}
-export const WriteDates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    yyyymmSecond: S.optional(S.Number),
-    yyyymmFirst: S.optional(S.Number),
-    yyyymmThird: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WriteDates" }) as any as S.Schema<WriteDates>;
-
-/** Contains the recall bits per device set by the developer. */
-export interface DeviceRecall {
-  /** Required. Contains the recall bits values. */
-  values?: Values;
-  /** Required. Contains the recall bits write dates. */
-  writeDates?: WriteDates;
-}
-export const DeviceRecall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(Values),
-    writeDates: S.optional(WriteDates),
-  }),
-).annotate({ identifier: "DeviceRecall" }) as any as S.Schema<DeviceRecall>;
+).annotate({
+  identifier: "DeviceAttributes",
+}) as any as S.Schema<DeviceAttributes>;
 
 export type DeviceIntegrityDeviceRecognitionVerdictItemEnum =
   | "UNKNOWN"
@@ -244,118 +184,82 @@ export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
     DeviceIntegrityDeviceRecognitionVerdictItemEnum,
   ) as any as S.Schema<DeviceIntegrityDeviceRecognitionVerdictItemEnumList>;
 
+/** Contains the recall bits values. */
+export interface Values {
+  /** Required. First recall bit value. */
+  bitFirst?: boolean;
+  /** Required. Second recall bit value. */
+  bitSecond?: boolean;
+  /** Required. Third recall bit value. */
+  bitThird?: boolean;
+}
+export const Values = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bitFirst: S.optional(S.Boolean),
+    bitSecond: S.optional(S.Boolean),
+    bitThird: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Values" }) as any as S.Schema<Values>;
+
+/** Contains the recall bits write dates. */
+export interface WriteDates {
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be set if the first bit is false. */
+  yyyymmFirst?: number;
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit. Note that this value won't be set if the third bit is false. */
+  yyyymmThird?: number;
+  /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit. Note that this value won't be set if the second bit is false. */
+  yyyymmSecond?: number;
+}
+export const WriteDates = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    yyyymmFirst: S.optional(S.Number),
+    yyyymmThird: S.optional(S.Number),
+    yyyymmSecond: S.optional(S.Number),
+  }),
+).annotate({ identifier: "WriteDates" }) as any as S.Schema<WriteDates>;
+
+/** Contains the recall bits per device set by the developer. */
+export interface DeviceRecall {
+  /** Required. Contains the recall bits values. */
+  values?: Values;
+  /** Required. Contains the recall bits write dates. */
+  writeDates?: WriteDates;
+}
+export const DeviceRecall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(Values),
+    writeDates: S.optional(WriteDates),
+  }),
+).annotate({ identifier: "DeviceRecall" }) as any as S.Schema<DeviceRecall>;
+
 /** Contains the device attestation information. */
 export interface DeviceIntegrity {
-  /** Attributes of the device where the integrity token was generated. */
-  deviceAttributes?: DeviceAttributes;
   /** Contains legacy details about the integrity of the device the app is running on. Only for devices with Android version T or higher and only for apps opted in to the new verdicts. Only available during the transition period to the new verdicts system and will be removed afterwards. */
   legacyDeviceRecognitionVerdict?: DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList;
   /** Details about the device activity of the device the app is running on. */
   recentDeviceActivity?: RecentDeviceActivity;
-  /** Details about the device recall bits set by the developer. */
-  deviceRecall?: DeviceRecall;
+  /** Attributes of the device where the integrity token was generated. */
+  deviceAttributes?: DeviceAttributes;
   /** Details about the integrity of the device the app is running on. */
   deviceRecognitionVerdict?: DeviceIntegrityDeviceRecognitionVerdictItemEnumList;
+  /** Details about the device recall bits set by the developer. */
+  deviceRecall?: DeviceRecall;
 }
 export const DeviceIntegrity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    deviceAttributes: S.optional(DeviceAttributes),
     legacyDeviceRecognitionVerdict: S.optional(
       DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList,
     ),
     recentDeviceActivity: S.optional(RecentDeviceActivity),
-    deviceRecall: S.optional(DeviceRecall),
+    deviceAttributes: S.optional(DeviceAttributes),
     deviceRecognitionVerdict: S.optional(
       DeviceIntegrityDeviceRecognitionVerdictItemEnumList,
     ),
+    deviceRecall: S.optional(DeviceRecall),
   }),
 ).annotate({
   identifier: "DeviceIntegrity",
 }) as any as S.Schema<DeviceIntegrity>;
-
-export type AccountActivityActivityLevelEnum =
-  | "ACTIVITY_LEVEL_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "UNUSUAL"
-  | "UNKNOWN"
-  | "TYPICAL_BASIC"
-  | "TYPICAL_STRONG";
-export const AccountActivityActivityLevelEnum = /*@__PURE__*/ S.String;
-
-/** (Restricted Access) Contains a signal helping apps differentiating between likely genuine and likely non-genuine user traffic. */
-export interface AccountActivity {
-  /** Required. Indicates the activity level of the account. */
-  activityLevel?: AccountActivityActivityLevelEnum;
-}
-export const AccountActivity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activityLevel: S.optional(AccountActivityActivityLevelEnum),
-  }),
-).annotate({
-  identifier: "AccountActivity",
-}) as any as S.Schema<AccountActivity>;
-
-export type AccountDetailsAppLicensingVerdictEnum =
-  | "UNKNOWN"
-  | "LICENSED"
-  | "UNLICENSED"
-  | "UNEVALUATED";
-export const AccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
-
-/** Contains the account information such as the licensing status for the user in the scope. */
-export interface AccountDetails {
-  /** (Restricted Access) Details about the account activity for the user in the scope. */
-  accountActivity?: AccountActivity;
-  /** Required. Details about the licensing status of the user for the app in the scope. */
-  appLicensingVerdict?: AccountDetailsAppLicensingVerdictEnum;
-}
-export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountActivity: S.optional(AccountActivity),
-    appLicensingVerdict: S.optional(AccountDetailsAppLicensingVerdictEnum),
-  }),
-).annotate({ identifier: "AccountDetails" }) as any as S.Schema<AccountDetails>;
-
-/** Contains the integrity request information. */
-export interface RequestDetails {
-  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. For details on application integrity, check application_integrity. */
-  requestPackageName?: string;
-  /** Request hash that was provided in the request. */
-  requestHash?: string;
-  /** Nonce that was provided in the request (which is base64 web-safe no-wrap). */
-  nonce?: string;
-  /** Required. Timestamp, in milliseconds, of the integrity application request. */
-  timestampMillis?: string;
-}
-export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestPackageName: S.optional(S.String),
-    requestHash: S.optional(S.String),
-    nonce: S.optional(S.String),
-    timestampMillis: S.optional(S.String),
-  }),
-).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
-
-/** Contains additional information generated for testing responses. */
-export interface TestingDetails {
-  /** Required. Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
-  isTestingResponse?: boolean;
-}
-export const TestingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isTestingResponse: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "TestingDetails" }) as any as S.Schema<TestingDetails>;
-
-export type EnvironmentDetailsPlayProtectVerdictEnum =
-  | "PLAY_PROTECT_VERDICT_UNSPECIFIED"
-  | "UNEVALUATED"
-  | "NO_ISSUES"
-  | "NO_DATA"
-  | "MEDIUM_RISK"
-  | "HIGH_RISK"
-  | "POSSIBLE_RISK";
-export const EnvironmentDetailsPlayProtectVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AppAccessRiskVerdictAppsDetectedItemEnum =
   | "APPS_DETECTED_UNSPECIFIED"
@@ -389,45 +293,141 @@ export const AppAccessRiskVerdict = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppAccessRiskVerdict",
 }) as any as S.Schema<AppAccessRiskVerdict>;
 
+export type EnvironmentDetailsPlayProtectVerdictEnum =
+  | "PLAY_PROTECT_VERDICT_UNSPECIFIED"
+  | "UNEVALUATED"
+  | "NO_ISSUES"
+  | "NO_DATA"
+  | "MEDIUM_RISK"
+  | "HIGH_RISK"
+  | "POSSIBLE_RISK";
+export const EnvironmentDetailsPlayProtectVerdictEnum = /*@__PURE__*/ S.String;
+
 /** Contains information about the environment Play Integrity API runs in, e.g. Play Protect verdict. */
 export interface EnvironmentDetails {
-  /** The evaluation of Play Protect verdict. */
-  playProtectVerdict?: EnvironmentDetailsPlayProtectVerdictEnum;
   /** The evaluation of the App Access Risk verdicts. */
   appAccessRiskVerdict?: AppAccessRiskVerdict;
+  /** The evaluation of Play Protect verdict. */
+  playProtectVerdict?: EnvironmentDetailsPlayProtectVerdictEnum;
 }
 export const EnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    playProtectVerdict: S.optional(EnvironmentDetailsPlayProtectVerdictEnum),
     appAccessRiskVerdict: S.optional(AppAccessRiskVerdict),
+    playProtectVerdict: S.optional(EnvironmentDetailsPlayProtectVerdictEnum),
   }),
 ).annotate({
   identifier: "EnvironmentDetails",
 }) as any as S.Schema<EnvironmentDetails>;
 
+export type AppIntegrityAppRecognitionVerdictEnum =
+  | "UNKNOWN"
+  | "PLAY_RECOGNIZED"
+  | "UNRECOGNIZED_VERSION"
+  | "UNEVALUATED";
+export const AppIntegrityAppRecognitionVerdictEnum = /*@__PURE__*/ S.String;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** Contains the application integrity information. */
+export interface AppIntegrity {
+  /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
+  packageName?: string;
+  /** Required. Details about the app recognition verdict */
+  appRecognitionVerdict?: AppIntegrityAppRecognitionVerdictEnum;
+  /** The SHA256 hash of the requesting app's signing certificates (base64 web-safe encoded). Set iff app_recognition_verdict != UNEVALUATED. */
+  certificateSha256Digest?: StringList;
+  /** Version code of the application. Set iff app_recognition_verdict != UNEVALUATED. */
+  versionCode?: string;
+}
+export const AppIntegrity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.optional(S.String),
+    appRecognitionVerdict: S.optional(AppIntegrityAppRecognitionVerdictEnum),
+    certificateSha256Digest: S.optional(StringList),
+    versionCode: S.optional(S.String),
+  }),
+).annotate({ identifier: "AppIntegrity" }) as any as S.Schema<AppIntegrity>;
+
+export type AccountDetailsAppLicensingVerdictEnum =
+  | "UNKNOWN"
+  | "LICENSED"
+  | "UNLICENSED"
+  | "UNEVALUATED";
+export const AccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
+
+export type AccountActivityActivityLevelEnum =
+  | "ACTIVITY_LEVEL_UNSPECIFIED"
+  | "UNEVALUATED"
+  | "UNUSUAL"
+  | "UNKNOWN"
+  | "TYPICAL_BASIC"
+  | "TYPICAL_STRONG";
+export const AccountActivityActivityLevelEnum = /*@__PURE__*/ S.String;
+
+/** (Restricted Access) Contains a signal helping apps differentiating between likely genuine and likely non-genuine user traffic. */
+export interface AccountActivity {
+  /** Required. Indicates the activity level of the account. */
+  activityLevel?: AccountActivityActivityLevelEnum;
+}
+export const AccountActivity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    activityLevel: S.optional(AccountActivityActivityLevelEnum),
+  }),
+).annotate({
+  identifier: "AccountActivity",
+}) as any as S.Schema<AccountActivity>;
+
+/** Contains the account information such as the licensing status for the user in the scope. */
+export interface AccountDetails {
+  /** Required. Details about the licensing status of the user for the app in the scope. */
+  appLicensingVerdict?: AccountDetailsAppLicensingVerdictEnum;
+  /** (Restricted Access) Details about the account activity for the user in the scope. */
+  accountActivity?: AccountActivity;
+}
+export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appLicensingVerdict: S.optional(AccountDetailsAppLicensingVerdictEnum),
+    accountActivity: S.optional(AccountActivity),
+  }),
+).annotate({ identifier: "AccountDetails" }) as any as S.Schema<AccountDetails>;
+
+/** Contains additional information generated for testing responses. */
+export interface TestingDetails {
+  /** Required. Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
+  isTestingResponse?: boolean;
+}
+export const TestingDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isTestingResponse: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "TestingDetails" }) as any as S.Schema<TestingDetails>;
+
 /** Contains basic app information and integrity signals like device attestation and licensing details. */
 export interface TokenPayloadExternal {
-  /** Required. Details about the application integrity. */
-  appIntegrity?: AppIntegrity;
-  /** Required. Details about the device integrity. */
-  deviceIntegrity?: DeviceIntegrity;
-  /** Required. Details about the Play Store account. */
-  accountDetails?: AccountDetails;
   /** Required. Details about the integrity request. */
   requestDetails?: RequestDetails;
-  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
-  testingDetails?: TestingDetails;
+  /** Required. Details about the device integrity. */
+  deviceIntegrity?: DeviceIntegrity;
   /** Details of the environment Play Integrity API runs in. */
   environmentDetails?: EnvironmentDetails;
+  /** Required. Details about the application integrity. */
+  appIntegrity?: AppIntegrity;
+  /** Required. Details about the Play Store account. */
+  accountDetails?: AccountDetails;
+  /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
+  testingDetails?: TestingDetails;
 }
 export const TokenPayloadExternal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    appIntegrity: S.optional(AppIntegrity),
-    deviceIntegrity: S.optional(DeviceIntegrity),
-    accountDetails: S.optional(AccountDetails),
     requestDetails: S.optional(RequestDetails),
-    testingDetails: S.optional(TestingDetails),
+    deviceIntegrity: S.optional(DeviceIntegrity),
     environmentDetails: S.optional(EnvironmentDetails),
+    appIntegrity: S.optional(AppIntegrity),
+    accountDetails: S.optional(AccountDetails),
+    testingDetails: S.optional(TestingDetails),
   }),
 ).annotate({
   identifier: "TokenPayloadExternal",
@@ -480,25 +480,6 @@ export const DecodePcIntegrityTokenV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DecodePcIntegrityTokenV1Request",
 }) as any as S.Schema<DecodePcIntegrityTokenV1Request>;
 
-/** Contains the integrity request information. */
-export interface PcRequestDetails {
-  /** Required. Timestamp, of the integrity application request. */
-  requestTime?: string;
-  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. */
-  requestPackageName?: string;
-  /** Request hash that was provided in the request. */
-  requestHash?: string;
-}
-export const PcRequestDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestTime: S.optional(S.String),
-    requestPackageName: S.optional(S.String),
-    requestHash: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PcRequestDetails",
-}) as any as S.Schema<PcRequestDetails>;
-
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
   | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
   | "MEETS_PC_INTEGRITY";
@@ -526,6 +507,25 @@ export const PcDeviceIntegrity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PcDeviceIntegrity",
 }) as any as S.Schema<PcDeviceIntegrity>;
+
+/** Contains the integrity request information. */
+export interface PcRequestDetails {
+  /** Required. Timestamp, of the integrity application request. */
+  requestTime?: string;
+  /** Request hash that was provided in the request. */
+  requestHash?: string;
+  /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. */
+  requestPackageName?: string;
+}
+export const PcRequestDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestTime: S.optional(S.String),
+    requestHash: S.optional(S.String),
+    requestPackageName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PcRequestDetails",
+}) as any as S.Schema<PcRequestDetails>;
 
 export type PcAccountDetailsAppLicensingVerdictEnum =
   | "UNKNOWN"
@@ -562,10 +562,10 @@ export const PcTestingDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains PC device attestation details. */
 export interface PcTokenPayloadExternal {
-  /** Required. Details about the integrity request. */
-  requestDetails?: PcRequestDetails;
   /** Required. Details about the device integrity. */
   deviceIntegrity?: PcDeviceIntegrity;
+  /** Required. Details about the integrity request. */
+  requestDetails?: PcRequestDetails;
   /** Details about the account information such as the licensing status. */
   accountDetails?: PcAccountDetails;
   /** Indicates that this payload is generated for testing purposes and contains any additional data that is linked with testing status. */
@@ -573,8 +573,8 @@ export interface PcTokenPayloadExternal {
 }
 export const PcTokenPayloadExternal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    requestDetails: S.optional(PcRequestDetails),
     deviceIntegrity: S.optional(PcDeviceIntegrity),
+    requestDetails: S.optional(PcRequestDetails),
     accountDetails: S.optional(PcAccountDetails),
     testingDetails: S.optional(PcTestingDetails),
   }),

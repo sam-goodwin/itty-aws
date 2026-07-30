@@ -104,39 +104,39 @@ export const StringMap = /*@__PURE__*/ S.Record(
 
 /** A top-level description of an API. Produced by producers and are commitments to provide services. */
 export interface Api {
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: StringMap;
-  /** A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN". */
-  availability?: string;
   /** The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   recommendedVersion?: string;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
+  /** A detailed description. */
+  description?: string;
+  /** A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN". */
+  availability?: string;
+  /** Resource name. */
+  name?: string;
   /** The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}` */
   recommendedDeployment?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: StringMap;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: StringMap;
   /** Output only. Last update timestamp. */
   updateTime?: string;
   /** Human-meaningful name. */
   displayName?: string;
-  /** A detailed description. */
-  description?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: StringMap;
-  /** Resource name. */
-  name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
 }
 export const Api = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotations: S.optional(StringMap),
-    availability: S.optional(S.String),
     recommendedVersion: S.optional(S.String),
+    createTime: S.optional(S.String),
+    description: S.optional(S.String),
+    availability: S.optional(S.String),
+    name: S.optional(S.String),
     recommendedDeployment: S.optional(S.String),
+    labels: S.optional(StringMap),
+    annotations: S.optional(StringMap),
     updateTime: S.optional(S.String),
     displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
@@ -166,14 +166,6 @@ export const CreateProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e., not for display in primary views of the resource but perhaps displayed or downloaded upon request. The `ListArtifacts` method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents. */
 export interface Artifact {
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed. */
-  labels?: StringMap;
-  /** Resource name. */
-  name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
-  /** Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents. */
-  contents?: string;
   /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
   annotations?: StringMap;
   /** Output only. The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact. */
@@ -182,36 +174,44 @@ export interface Artifact {
   updateTime?: string;
   /** A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
   mimeType?: string;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
   /** Output only. A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact. */
   hash?: string;
+  /** Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents. */
+  contents?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed. */
+  labels?: StringMap;
+  /** Resource name. */
+  name?: string;
 }
 export const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
-    contents: S.optional(S.String),
     annotations: S.optional(StringMap),
     sizeBytes: S.optional(S.Number),
     updateTime: S.optional(S.String),
     mimeType: S.optional(S.String),
+    createTime: S.optional(S.String),
     hash: S.optional(S.String),
+    contents: S.optional(S.String),
+    labels: S.optional(StringMap),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 export interface CreateProjectsLocationsApisArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
   /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   artifactId?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
   /** Request body */
   body?: Artifact;
 }
 export const CreateProjectsLocationsApisArtifactsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       artifactId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Artifact.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -226,67 +226,67 @@ export const CreateProjectsLocationsApisArtifactsRequest =
 
 /** Describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes. */
 export interface ApiDeployment {
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: StringMap;
-  /** Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision. */
-  intendedAudience?: string;
-  /** Output only. Creation timestamp; when the deployment resource was created. */
-  createTime?: string;
-  /** Human-meaningful name. */
-  displayName?: string;
-  /** A detailed description. */
-  description?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: StringMap;
-  /** Text briefly describing how to access the endpoint. Changes to this value will not affect the revision. */
-  accessGuidance?: string;
-  /** Resource name. */
-  name?: string;
   /** The address where the deployment is serving. Changes to this value will update the revision. */
   endpointUri?: string;
-  /** Output only. Last update timestamp: when the represented revision was last modified. */
-  revisionUpdateTime?: string;
-  /** The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}` */
-  apiSpecRevision?: string;
-  /** The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision. */
-  externalChannelUri?: string;
-  /** Output only. Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string. */
-  revisionId?: string;
   /** Output only. Revision creation timestamp; when the represented revision was created. */
   revisionCreateTime?: string;
+  /** Human-meaningful name. */
+  displayName?: string;
+  /** Output only. Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string. */
+  revisionId?: string;
+  /** The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}` */
+  apiSpecRevision?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: StringMap;
+  /** A detailed description. */
+  description?: string;
+  /** Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision. */
+  intendedAudience?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: StringMap;
+  /** Output only. Creation timestamp; when the deployment resource was created. */
+  createTime?: string;
+  /** The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision. */
+  externalChannelUri?: string;
+  /** Resource name. */
+  name?: string;
+  /** Text briefly describing how to access the endpoint. Changes to this value will not affect the revision. */
+  accessGuidance?: string;
+  /** Output only. Last update timestamp: when the represented revision was last modified. */
+  revisionUpdateTime?: string;
 }
 export const ApiDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    annotations: S.optional(StringMap),
-    intendedAudience: S.optional(S.String),
-    createTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-    accessGuidance: S.optional(S.String),
-    name: S.optional(S.String),
     endpointUri: S.optional(S.String),
-    revisionUpdateTime: S.optional(S.String),
-    apiSpecRevision: S.optional(S.String),
-    externalChannelUri: S.optional(S.String),
-    revisionId: S.optional(S.String),
     revisionCreateTime: S.optional(S.String),
+    displayName: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    apiSpecRevision: S.optional(S.String),
+    labels: S.optional(StringMap),
+    description: S.optional(S.String),
+    intendedAudience: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    createTime: S.optional(S.String),
+    externalChannelUri: S.optional(S.String),
+    name: S.optional(S.String),
+    accessGuidance: S.optional(S.String),
+    revisionUpdateTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "ApiDeployment" }) as any as S.Schema<ApiDeployment>;
 
 export interface CreateProjectsLocationsApisDeploymentsRequest {
-  /** Required. The parent, which owns this collection of deployments. Format: `projects/*\/locations/*\/apis/*` */
-  parent: string;
   /** Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiDeploymentId?: string;
+  /** Required. The parent, which owns this collection of deployments. Format: `projects/*\/locations/*\/apis/*` */
+  parent: string;
   /** Request body */
   body?: ApiDeployment;
 }
 export const CreateProjectsLocationsApisDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       apiDeploymentId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(ApiDeployment.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -326,52 +326,52 @@ export const CreateProjectsLocationsApisDeploymentsArtifactsRequest =
 
 /** Describes a particular version of an API. ApiVersions are what consumers actually use. */
 export interface ApiVersion {
-  /** A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED". */
-  state?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: StringMap;
-  /** Output only. Last update timestamp. */
-  updateTime?: string;
-  /** Human-meaningful name. */
-  displayName?: string;
-  /** A detailed description. */
-  description?: string;
-  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
-  labels?: StringMap;
-  /** Resource name. */
-  name?: string;
   /** Output only. Creation timestamp. */
   createTime?: string;
+  /** Resource name. */
+  name?: string;
+  /** A detailed description. */
+  description?: string;
+  /** A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED". */
+  state?: string;
+  /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
+  labels?: StringMap;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: StringMap;
+  /** Human-meaningful name. */
+  displayName?: string;
+  /** Output only. Last update timestamp. */
+  updateTime?: string;
   /** The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec} */
   primarySpec?: string;
 }
 export const ApiVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    updateTime: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    labels: S.optional(StringMap),
-    name: S.optional(S.String),
     createTime: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    state: S.optional(S.String),
+    labels: S.optional(StringMap),
+    annotations: S.optional(StringMap),
+    displayName: S.optional(S.String),
+    updateTime: S.optional(S.String),
     primarySpec: S.optional(S.String),
   }),
 ).annotate({ identifier: "ApiVersion" }) as any as S.Schema<ApiVersion>;
 
 export interface CreateProjectsLocationsApisVersionsRequest {
-  /** Required. The parent, which owns this collection of versions. Format: `projects/*\/locations/*\/apis/*` */
-  parent: string;
   /** Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 1-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiVersionId?: string;
+  /** Required. The parent, which owns this collection of versions. Format: `projects/*\/locations/*\/apis/*` */
+  parent: string;
   /** Request body */
   body?: ApiVersion;
 }
 export const CreateProjectsLocationsApisVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       apiVersionId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(ApiVersion.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -411,67 +411,67 @@ export const CreateProjectsLocationsApisVersionsArtifactsRequest =
 
 /** Describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g., in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services. */
 export interface ApiSpec {
-  /** Output only. Creation timestamp; when the spec resource was created. */
-  createTime?: string;
-  /** A possibly-hierarchical name used to refer to the spec from other specs. */
-  filename?: string;
   /** A detailed description. */
   description?: string;
   /** Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed. */
   labels?: StringMap;
   /** Output only. A SHA-256 hash of the spec's contents. If the spec is gzipped, this is the hash of the uncompressed spec. */
   hash?: string;
-  /** Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents. */
-  contents?: string;
-  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
-  annotations?: StringMap;
-  /** Output only. Last update timestamp: when the represented revision was last modified. */
-  revisionUpdateTime?: string;
-  /** Resource name. */
-  name?: string;
   /** Output only. Immutable. The revision ID of the spec. A new revision is committed whenever the spec contents are changed. The format is an 8-character hexadecimal string. */
   revisionId?: string;
-  /** Output only. Revision creation timestamp; when the represented revision was created. */
-  revisionCreateTime?: string;
   /** A style (format) descriptor for this spec that is specified as a [Media Type](https://en.wikipedia.org/wiki/Media_type). Possible values include `application/vnd.apigee.proto`, `application/vnd.apigee.openapi`, and `application/vnd.apigee.graphql`, with possible suffixes representing compression types. These hypothetical names are defined in the vendor tree defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip"). */
   mimeType?: string;
-  /** The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved. */
-  sourceUri?: string;
+  /** Output only. Revision creation timestamp; when the represented revision was created. */
+  revisionCreateTime?: string;
   /** Output only. The size of the spec file in bytes. If the spec is gzipped, this is the size of the uncompressed spec. */
   sizeBytes?: number;
+  /** Resource name. */
+  name?: string;
+  /** Output only. Last update timestamp: when the represented revision was last modified. */
+  revisionUpdateTime?: string;
+  /** Input only. The contents of the spec. Provided by API callers when specs are created or updated. To access the contents of a spec, use GetApiSpecContents. */
+  contents?: string;
+  /** Output only. Creation timestamp; when the spec resource was created. */
+  createTime?: string;
+  /** A possibly-hierarchical name used to refer to the spec from other specs. */
+  filename?: string;
+  /** The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved. */
+  sourceUri?: string;
+  /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
+  annotations?: StringMap;
 }
 export const ApiSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createTime: S.optional(S.String),
-    filename: S.optional(S.String),
     description: S.optional(S.String),
     labels: S.optional(StringMap),
     hash: S.optional(S.String),
-    contents: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    revisionUpdateTime: S.optional(S.String),
-    name: S.optional(S.String),
     revisionId: S.optional(S.String),
-    revisionCreateTime: S.optional(S.String),
     mimeType: S.optional(S.String),
-    sourceUri: S.optional(S.String),
+    revisionCreateTime: S.optional(S.String),
     sizeBytes: S.optional(S.Number),
+    name: S.optional(S.String),
+    revisionUpdateTime: S.optional(S.String),
+    contents: S.optional(S.String),
+    createTime: S.optional(S.String),
+    filename: S.optional(S.String),
+    sourceUri: S.optional(S.String),
+    annotations: S.optional(StringMap),
   }),
 ).annotate({ identifier: "ApiSpec" }) as any as S.Schema<ApiSpec>;
 
 export interface CreateProjectsLocationsApisVersionsSpecsRequest {
-  /** Required. The parent, which owns this collection of specs. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
-  parent: string;
   /** Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiSpecId?: string;
+  /** Required. The parent, which owns this collection of specs. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
+  parent: string;
   /** Request body */
   body?: ApiSpec;
 }
 export const CreateProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       apiSpecId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(ApiSpec.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -510,18 +510,18 @@ export const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest =
   }) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsArtifactsRequest>;
 
 export interface CreateProjectsLocationsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
   /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   artifactId?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
   /** Request body */
   body?: Artifact;
 }
 export const CreateProjectsLocationsArtifactsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
       artifactId: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       body: S.optional(Artifact.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -533,6 +533,30 @@ export const CreateProjectsLocationsArtifactsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateProjectsLocationsArtifactsRequest",
 }) as any as S.Schema<CreateProjectsLocationsArtifactsRequest>;
+
+export type InstanceStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "INACTIVE"
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED";
+export const InstanceStateEnum = /*@__PURE__*/ S.String;
+
+/** Available configurations to provision an Instance. */
+export interface Config {
+  /** Output only. The GCP location where the Instance resides. */
+  location?: string;
+  /** Required. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location. */
+  cmekKeyName?: string;
+}
+export const Config = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    cmekKeyName: S.optional(S.String),
+  }),
+).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 /** Build information of the Instance if it's in `ACTIVE` state. */
 export interface Build {
@@ -551,72 +575,48 @@ export const Build = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Build" }) as any as S.Schema<Build>;
 
-/** Available configurations to provision an Instance. */
-export interface Config {
-  /** Output only. The GCP location where the Instance resides. */
-  location?: string;
-  /** Required. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location. */
-  cmekKeyName?: string;
-}
-export const Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(S.String),
-    cmekKeyName: S.optional(S.String),
-  }),
-).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
-
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "INACTIVE"
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "FAILED";
-export const InstanceStateEnum = /*@__PURE__*/ S.String;
-
 /** An Instance represents the instance resources of the Registry. Currently, only one instance is allowed for each project. */
 export interface Instance {
-  /** Format: `projects/*\/locations/*\/instance`. Currently only `locations/global` is supported. */
-  name?: string;
-  /** Output only. Creation timestamp. */
-  createTime?: string;
   /** Output only. Last update timestamp. */
   updateTime?: string;
-  /** Output only. Build info of the Instance if it's in `ACTIVE` state. */
-  build?: Build;
-  /** Required. Config of the Instance. */
-  config?: Config;
   /** Output only. The current state of the Instance. */
   state?: InstanceStateEnum | (string & {});
+  /** Format: `projects/*\/locations/*\/instance`. Currently only `locations/global` is supported. */
+  name?: string;
+  /** Required. Config of the Instance. */
+  config?: Config;
   /** Output only. Extra information of Instance.State if the state is `FAILED`. */
   stateMessage?: string;
+  /** Output only. Creation timestamp. */
+  createTime?: string;
+  /** Output only. Build info of the Instance if it's in `ACTIVE` state. */
+  build?: Build;
 }
 export const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
-    build: S.optional(Build),
-    config: S.optional(Config),
     state: S.optional(InstanceStateEnum),
+    name: S.optional(S.String),
+    config: S.optional(Config),
     stateMessage: S.optional(S.String),
+    createTime: S.optional(S.String),
+    build: S.optional(Build),
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface CreateProjectsLocationsInstancesRequest {
-  /** Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource. */
-  instanceId?: string;
   /** Required. Parent resource of the Instance, of the form: `projects/*\/locations/*` */
   parent: string;
+  /** Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource. */
+  instanceId?: string;
   /** Request body */
   body?: Instance;
 }
 export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      instanceId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      instanceId: S.optional(S.String.pipe(T.Query())),
       body: S.optional(Instance.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -642,41 +642,41 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
 }
 export const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
+    code: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(Status),
-    name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    response: S.optional(DocumentMap),
+    name: S.optional(S.String),
     done: S.optional(S.Boolean),
+    error: S.optional(Status),
+    response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -762,16 +762,16 @@ export const DeleteProjectsLocationsApisDeploymentsArtifactsRequest =
   }) as any as S.Schema<DeleteProjectsLocationsApisDeploymentsArtifactsRequest>;
 
 export interface DeleteProjectsLocationsApisVersionsRequest {
-  /** Required. The name of the version to delete. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
-  name: string;
   /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
   force?: boolean;
+  /** Required. The name of the version to delete. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
+  name: string;
 }
 export const DeleteProjectsLocationsApisVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.String.pipe(T.Label()),
       force: S.optional(S.Boolean.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -959,18 +959,18 @@ export const GetContentsProjectsLocationsApisArtifactsRequest =
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: DocumentMapList;
   /** The HTTP request/response body as raw binary. */
   data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: DocumentMapList;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
     data: S.optional(S.String),
+    extensions: S.optional(DocumentMapList),
+    contentType: S.optional(S.String),
   }),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
@@ -1091,45 +1091,45 @@ export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIamPolicyProjectsLocationsApisRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
 
+/** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
+export interface Expr {
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+}
+export const Expr = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    title: S.optional(S.String),
+  }),
+).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
+
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-/** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-}
-export const Expr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expression: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
   role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. */
-  members?: StringList;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. */
+  members?: StringList;
 }
 export const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
-    members: S.optional(StringList),
     condition: S.optional(Expr),
+    members: S.optional(StringList),
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
@@ -1140,17 +1140,17 @@ export const BindingList = /*@__PURE__*/ S.Array(
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
 export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    version: S.optional(S.Number),
     etag: S.optional(S.String),
+    version: S.optional(S.Number),
     bindings: S.optional(BindingList),
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
@@ -1398,21 +1398,21 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: DocumentMap;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: DocumentMap;
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
 export const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    metadata: S.optional(DocumentMap),
     displayName: S.optional(S.String),
     labels: S.optional(StringMap),
+    metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
@@ -1626,21 +1626,21 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export interface ListProjectsLocationsRequest {
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
 }
 export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
-    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1678,20 +1678,20 @@ export interface ListProjectsLocationsApisRequest {
   pageSize?: number;
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
-  /** Required. The parent, which owns this collection of APIs. Format: `projects/*\/locations/*` */
-  parent: string;
-  /** A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApis` must match the call that provided the page token. */
-  pageToken?: string;
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
+  /** A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApis` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of APIs. Format: `projects/*\/locations/*` */
+  parent: string;
 }
 export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1723,25 +1723,25 @@ export const ListApisResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApisResponse>;
 
 export interface ListProjectsLocationsApisArtifactsRequest {
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
 }
 export const ListProjectsLocationsApisArtifactsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1775,25 +1775,25 @@ export const ListArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListArtifactsResponse>;
 
 export interface ListProjectsLocationsApisDeploymentsRequest {
-  /** The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** Required. The parent, which owns this collection of deployments. Format: `projects/*\/locations/*\/apis/*` */
-  parent: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
   /** A page token, received from a previous `ListApiDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiDeployments` must match the call that provided the page token. */
   pageToken?: string;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of deployments. Format: `projects/*\/locations/*\/apis/*` */
+  parent: string;
+  /** The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
 }
 export const ListProjectsLocationsApisDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1827,25 +1827,25 @@ export const ListApiDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApiDeploymentsResponse>;
 
 export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
-  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
-  parent: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
   /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
   pageToken?: string;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
+  parent: string;
 }
 export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1858,25 +1858,25 @@ export const ListProjectsLocationsApisDeploymentsArtifactsRequest =
   }) as any as S.Schema<ListProjectsLocationsApisDeploymentsArtifactsRequest>;
 
 export interface ListProjectsLocationsApisVersionsRequest {
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
+  filter?: string;
   /** The maximum number of versions to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
   /** Required. The parent, which owns this collection of versions. Format: `projects/*\/locations/*\/apis/*` */
   parent: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
-  filter?: string;
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
   /** A page token, received from a previous `ListApiVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiVersions` must match the call that provided the page token. */
   pageToken?: string;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
 }
 export const ListProjectsLocationsApisVersionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1916,10 +1916,10 @@ export interface ListProjectsLocationsApisVersionsArtifactsRequest {
   pageToken?: string;
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
 }
 export const ListProjectsLocationsApisVersionsArtifactsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1927,8 +1927,8 @@ export const ListProjectsLocationsApisVersionsArtifactsRequest =
       orderBy: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1941,25 +1941,25 @@ export const ListProjectsLocationsApisVersionsArtifactsRequest =
   }) as any as S.Schema<ListProjectsLocationsApisVersionsArtifactsRequest>;
 
 export interface ListProjectsLocationsApisVersionsSpecsRequest {
-  /** A page token, received from a previous `ListApiSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiSpecs` must match the call that provided the page token. */
-  pageToken?: string;
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
+  /** A page token, received from a previous `ListApiSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiSpecs` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of specs. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
+  parent: string;
   /** The maximum number of specs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
   filter?: string;
-  /** Required. The parent, which owns this collection of specs. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
-  parent: string;
 }
 export const ListProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -1978,40 +1978,40 @@ export const ApiSpecList = /*@__PURE__*/ S.Array(
 
 /** Response message for ListApiSpecs. */
 export interface ListApiSpecsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The specs from the specified publisher. */
   apiSpecs?: ApiSpecList;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 export const ListApiSpecsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    nextPageToken: S.optional(S.String),
     apiSpecs: S.optional(ApiSpecList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ListApiSpecsResponse",
 }) as any as S.Schema<ListApiSpecsResponse>;
 
 export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
+  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
+  filter?: string;
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
   /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
   pageToken?: string;
-  /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
-  /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
-  filter?: string;
 }
 export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2024,12 +2024,12 @@ export const ListProjectsLocationsApisVersionsSpecsArtifactsRequest =
   }) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsArtifactsRequest>;
 
 export interface ListProjectsLocationsArtifactsRequest {
-  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
-  orderBy?: string;
-  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
-  pageToken?: string;
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
+  /** A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token. */
+  pageToken?: string;
+  /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
+  orderBy?: string;
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
   filter?: string;
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
@@ -2038,9 +2038,9 @@ export interface ListProjectsLocationsArtifactsRequest {
 export const ListProjectsLocationsArtifactsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      orderBy: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
@@ -2055,22 +2055,22 @@ export const ListProjectsLocationsArtifactsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsArtifactsRequest>;
 
 export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page token. */
-  pageToken?: string;
   /** The name of the operation's parent resource. */
   name: string;
   /** The standard list page size. */
   pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list filter. */
+  filter?: string;
 }
 export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2104,22 +2104,22 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
-  /** The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
   /** Required. The name of the deployment to list revisions for. */
   name: string;
   /** The maximum number of revisions to return per page. */
   pageSize?: number;
+  /** The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
 }
 export const ListRevisionsProjectsLocationsApisDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2148,22 +2148,22 @@ export const ListApiDeploymentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApiDeploymentRevisionsResponse>;
 
 export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
-  /** The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page. */
-  pageToken?: string;
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
   /** Required. The name of the spec to list revisions for. */
   name: string;
   /** The maximum number of revisions to return per page. */
   pageSize?: number;
+  /** The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page. */
+  pageToken?: string;
 }
 export const ListRevisionsProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
+      pageToken: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2192,20 +2192,20 @@ export const ListApiSpecRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApiSpecRevisionsResponse>;
 
 export interface PatchProjectsLocationsApisRequest {
-  /** Resource name. */
-  name: string;
-  /** If set to true, and the API is not found, a new API will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
   /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
   updateMask?: string;
+  /** If set to true, and the API is not found, a new API will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
+  /** Resource name. */
+  name: string;
   /** Request body */
   body?: Api;
 }
 export const PatchProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String.pipe(T.Label()),
-    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
+    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
     body: S.optional(Api.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -2221,10 +2221,10 @@ export const PatchProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchProjectsLocationsApisDeploymentsRequest {
   /** Resource name. */
   name: string;
-  /** If set to true, and the deployment is not found, a new deployment will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
   /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
   updateMask?: string;
+  /** If set to true, and the deployment is not found, a new deployment will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
   /** Request body */
   body?: ApiDeployment;
 }
@@ -2232,8 +2232,8 @@ export const PatchProjectsLocationsApisDeploymentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       body: S.optional(ApiDeployment.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -2247,21 +2247,21 @@ export const PatchProjectsLocationsApisDeploymentsRequest =
   }) as any as S.Schema<PatchProjectsLocationsApisDeploymentsRequest>;
 
 export interface PatchProjectsLocationsApisVersionsRequest {
+  /** Resource name. */
+  name: string;
   /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
   updateMask?: string;
   /** If set to true, and the version is not found, a new version will be created. In this situation, `update_mask` is ignored. */
   allowMissing?: boolean;
-  /** Resource name. */
-  name: string;
   /** Request body */
   body?: ApiVersion;
 }
 export const PatchProjectsLocationsApisVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
       allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
       body: S.optional(ApiVersion.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -2275,21 +2275,21 @@ export const PatchProjectsLocationsApisVersionsRequest =
   }) as any as S.Schema<PatchProjectsLocationsApisVersionsRequest>;
 
 export interface PatchProjectsLocationsApisVersionsSpecsRequest {
-  /** If set to true, and the spec is not found, a new spec will be created. In this situation, `update_mask` is ignored. */
-  allowMissing?: boolean;
   /** Resource name. */
   name: string;
   /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
   updateMask?: string;
+  /** If set to true, and the spec is not found, a new spec will be created. In this situation, `update_mask` is ignored. */
+  allowMissing?: boolean;
   /** Request body */
   body?: ApiSpec;
 }
 export const PatchProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
+      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
       body: S.optional(ApiSpec.pipe(T.HttpBody())),
     }).pipe(
       T.Http({

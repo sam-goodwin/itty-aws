@@ -24,7 +24,7 @@ export interface ClustersCheckNameAvailabilityRequest {
   /** Cluster name to verify. */
   name: string;
   /** Resource type used for verification. */
-  type: ClustersCheckNameAvailabilityRequestType;
+  type: ClustersCheckNameAvailabilityRequestType | (string & {});
 }
 export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>

@@ -452,7 +452,7 @@ export interface StandbyContainerGroupPoolElasticityProfile {
   /** Specifies maximum number of standby container groups in the standby pool. */
   maxReadyCapacity: number;
   /** Specifies refill policy of the pool. */
-  refillPolicy?: RefillPolicy;
+  refillPolicy?: RefillPolicy | (string & {});
   /** Specifies the dynamic sizing configuration. */
   dynamicSizing?: DynamicSizing;
 }

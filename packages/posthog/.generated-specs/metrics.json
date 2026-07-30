@@ -17,227 +17,6 @@
     ]
   },
   "shapes": {
-    "com.posthog.metrics#MetricsAttributeValuesRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "dateFrom": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "dateFrom",
-            "smithy.api#documentation": "Lower bound (inclusive) of the window values are suggested from. ISO 8601. Defaults to 7 days ago."
-          }
-        },
-        "dateTo": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "dateTo",
-            "smithy.api#documentation": "Upper bound (exclusive) of the window. ISO 8601. Defaults to now."
-          }
-        },
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "key",
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Attribute key to list values for (e.g. 'env'). 'service_name'/'service.name' list service names."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit",
-            "smithy.api#documentation": "Max number of values to return. Defaults to 100; maximum 1000."
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "value",
-            "smithy.api#documentation": "Substring filter (case-insensitive) applied to values. Named 'value' to match the property-values autocomplete convention."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.metrics#MetricAttributeValuesResponse": {
-      "type": "structure",
-      "members": {
-        "results": {
-          "target": "com.posthog.metrics#MetricAttributeValuesResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "Observed values for the requested key, most frequent first.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricAttributeValue": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The attribute value (same as name; kept for picker compatibility).",
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The attribute value.",
-            "smithy.api#required": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of data points observed with this value in the window.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricAttributeValuesResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.metrics#MetricAttributeValue"
-      },
-      "traits": {
-        "smithy.api#documentation": "Observed values for the requested key, most frequent first."
-      }
-    },
-    "com.posthog.metrics#MetricsAttributeValuesRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.metrics#MetricsAttributeValuesRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.metrics#MetricAttributeValuesResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/metrics/attribute_values/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Observed values for one metric attribute key, most frequent first.\nBacks the filter bar's value autocomplete."
-      }
-    },
-    "com.posthog.metrics#MetricsAttributesRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "dateFrom": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "dateFrom",
-            "smithy.api#documentation": "Lower bound (inclusive) of the window keys are suggested from. ISO 8601. Defaults to 7 days ago."
-          }
-        },
-        "dateTo": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "dateTo",
-            "smithy.api#documentation": "Upper bound (exclusive) of the window. ISO 8601. Defaults to now."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "limit",
-            "smithy.api#documentation": "Max number of keys to return. Defaults to 100; maximum 1000."
-          }
-        },
-        "search": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "search",
-            "smithy.api#documentation": "Substring filter (case-insensitive) applied to attribute keys."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.metrics#MetricAttributeKeysResponse": {
-      "type": "structure",
-      "members": {
-        "results": {
-          "target": "com.posthog.metrics#MetricAttributeKeysResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "Distinct attribute keys (datapoint and resource attributes merged), most frequent first.",
-            "smithy.api#required": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of keys returned.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricAttributeKey": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Attribute key as it appears on the team's metrics (e.g. 'env', 'k8s.pod.name').",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricAttributeKeysResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.metrics#MetricAttributeKey"
-      },
-      "traits": {
-        "smithy.api#documentation": "Distinct attribute keys (datapoint and resource attributes merged), most frequent first."
-      }
-    },
-    "com.posthog.metrics#MetricsAttributesRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.metrics#MetricsAttributesRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.metrics#MetricAttributeKeysResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/metrics/attributes/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Distinct attribute keys seen on the team's metrics (datapoint and\nresource attributes merged), most frequent first. Backs the filter\nbar's key autocomplete."
-      }
-    },
     "com.posthog.metrics#MetricAnomalyBody": {
       "type": "structure",
       "members": {
@@ -737,9 +516,8 @@
         "value": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Aggregated value for the bucket. Null when the aggregate isn't representable (e.g. float overflow) — render as a gap.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
+            "smithy.api#documentation": "Aggregated value for the bucket.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -787,18 +565,30 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.metrics#HasMetricsResponse": {
+    "com.posthog.metrics#MetricsHasMetricsRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.posthog.metrics#MetricsHasMetricsRetrieveResponse": {
       "type": "structure",
       "members": {
-        "hasMetrics": {
-          "target": "smithy.api#Boolean",
+        "body": {
+          "target": "com.posthog.metrics#MetricsHasMetricsRetrieveResponseBodyMap",
           "traits": {
-            "smithy.api#documentation": "Whether the team has ingested any metrics.",
+            "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
           }
         }
       },
-      "traits": {}
+      "traits": {
+        "smithy.api#output": {}
+      }
     },
     "com.posthog.metrics#MetricsHasMetricsRetrieve": {
       "type": "operation",
@@ -806,7 +596,7 @@
         "target": "com.posthog.metrics#MetricsHasMetricsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.metrics#HasMetricsResponse"
+        "target": "com.posthog.metrics#MetricsHasMetricsRetrieveResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -823,13 +613,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Exact metric name to query (e.g. 'http.server.duration'). Single-clause shorthand — mutually exclusive with 'clauses'."
-          }
-        },
-        "metricType": {
-          "target": "com.posthog.metrics#OtelMetricTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from 'metric-names-list'.\n\n* `gauge` - gauge\n* `sum` - sum\n* `histogram` - histogram\n* `exponential_histogram` - exponential_histogram\n* `summary` - summary",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "aggregation": {
@@ -892,44 +675,6 @@
         }
       },
       "traits": {}
-    },
-    "com.posthog.metrics#OtelMetricTypeEnum": {
-      "type": "enum",
-      "members": {
-        "GAUGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "gauge"
-          }
-        },
-        "SUM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sum"
-          }
-        },
-        "HISTOGRAM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "histogram"
-          }
-        },
-        "EXPONENTIAL_HISTOGRAM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "exponential_histogram"
-          }
-        },
-        "SUMMARY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "summary"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `gauge` - gauge\n* `sum` - sum\n* `histogram` - histogram\n* `exponential_histogram` - exponential_histogram\n* `summary` - summary"
-      }
     },
     "com.posthog.metrics#MetricQueryBodyFiltersList": {
       "type": "list",
@@ -1039,13 +784,6 @@
           "traits": {
             "smithy.api#documentation": "Exact metric name this clause queries.",
             "smithy.api#required": {}
-          }
-        },
-        "metricType": {
-          "target": "com.posthog.metrics#OtelMetricTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from 'metric-names-list'.\n\n* `gauge` - gauge\n* `sum` - sum\n* `histogram` - histogram\n* `exponential_histogram` - exponential_histogram\n* `summary` - summary",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "aggregation": {
@@ -1164,227 +902,6 @@
         }
       }
     },
-    "com.posthog.metrics#MetricSamplesBody": {
-      "type": "structure",
-      "members": {
-        "metricName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Exact metric name to list raw emissions for (e.g. 'http.server.duration').",
-            "smithy.api#required": {}
-          }
-        },
-        "dateFrom": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Lower bound (inclusive) for the sample window. ISO 8601.",
-            "smithy.api#required": {}
-          }
-        },
-        "dateTo": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Upper bound (exclusive) for the sample window. Defaults to now if omitted."
-          }
-        },
-        "traceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Restrict to emissions on this trace (hex trace id, as the tracing product uses) — the reverse metric->trace pivot. Omit for all traces."
-          }
-        },
-        "limit": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Max emissions to return, newest first. Defaults to 100, capped at 1000."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricsSamplesCreateRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "query": {
-          "target": "com.posthog.metrics#MetricSamplesBody",
-          "traits": {
-            "smithy.api#documentation": "The raw-emissions query to execute.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.metrics#MetricSamplesResponse": {
-      "type": "structure",
-      "members": {
-        "results": {
-          "target": "com.posthog.metrics#MetricSamplesResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "Raw emissions ordered by timestamp descending.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricEventSample": {
-      "type": "structure",
-      "members": {
-        "timestamp": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the metric was emitted, ISO 8601.",
-            "smithy.api#required": {}
-          }
-        },
-        "metric_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Metric this emission belongs to.",
-            "smithy.api#required": {}
-          }
-        },
-        "metric_type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "OTel metric type: gauge, sum, histogram, summary, or exponential_histogram.",
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The emitted value. For histogram/summary points this is the distribution sum; pair with count.",
-            "smithy.api#required": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Observations behind this point: 1 for gauges/counters, the distribution count for histograms/summaries.",
-            "smithy.api#required": {}
-          }
-        },
-        "unit": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unit of the value, if any.",
-            "smithy.api#required": {}
-          }
-        },
-        "aggregation_temporality": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "For counters: 'delta' or 'cumulative' (decides whether rate() must diff). Empty for gauges.",
-            "smithy.api#required": {}
-          }
-        },
-        "is_monotonic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True for monotonically increasing counters.",
-            "smithy.api#required": {}
-          }
-        },
-        "service_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Service that emitted the metric.",
-            "smithy.api#required": {}
-          }
-        },
-        "trace_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Trace this emission belongs to (hex, same form the tracing product uses); empty if none. Use it to pivot to the trace.",
-            "smithy.api#required": {}
-          }
-        },
-        "span_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Span this emission belongs to (hex); empty if none.",
-            "smithy.api#required": {}
-          }
-        },
-        "attributes": {
-          "target": "com.posthog.metrics#MetricEventSampleAttributesMap",
-          "traits": {
-            "smithy.api#documentation": "Per-emission attributes (high-cardinality labels on the data point).",
-            "smithy.api#required": {}
-          }
-        },
-        "resource_attributes": {
-          "target": "com.posthog.metrics#MetricEventSampleResourceAttributesMap",
-          "traits": {
-            "smithy.api#documentation": "Attributes of the resource (host, pod, service version) that emitted the metric.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.metrics#MetricEventSampleAttributesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Per-emission attributes (high-cardinality labels on the data point)."
-      }
-    },
-    "com.posthog.metrics#MetricEventSampleResourceAttributesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Attributes of the resource (host, pod, service version) that emitted the metric."
-      }
-    },
-    "com.posthog.metrics#MetricSamplesResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.metrics#MetricEventSample"
-      },
-      "traits": {
-        "smithy.api#documentation": "Raw emissions ordered by timestamp descending."
-      }
-    },
-    "com.posthog.metrics#MetricsSamplesCreate": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.metrics#MetricsSamplesCreateRequest"
-      },
-      "output": {
-        "target": "com.posthog.metrics#MetricSamplesResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/api/projects/{project_id}/metrics/samples/",
-          "code": 200
-        },
-        "smithy.api#documentation": "Raw individual emissions for a metric (the events model), newest\nfirst — backs the Samples view and the metric->trace pivot."
-      }
-    },
     "com.posthog.metrics#MetricsValuesRetrieveRequest": {
       "type": "structure",
       "members": {
@@ -1479,12 +996,6 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.metrics#MetricsAttributeValuesRetrieve"
-        },
-        {
-          "target": "com.posthog.metrics#MetricsAttributesRetrieve"
-        },
-        {
           "target": "com.posthog.metrics#MetricsCharacterizeCreate"
         },
         {
@@ -1492,9 +1003,6 @@
         },
         {
           "target": "com.posthog.metrics#MetricsQueryCreate"
-        },
-        {
-          "target": "com.posthog.metrics#MetricsSamplesCreate"
         },
         {
           "target": "com.posthog.metrics#MetricsValuesRetrieve"

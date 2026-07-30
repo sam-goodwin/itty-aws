@@ -523,19 +523,6 @@
             "smithy.api#documentation": "What this skill does and when to use it. Max 4096 characters."
           }
         },
-        "body_total_length": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total length of the full body in characters, independent of any body_offset/body_length paging. Compare against the length of the returned body to detect a truncated response."
-          }
-        },
-        "body_next_offset": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "When body_length paging stops before the end of the body, the character offset to request next (pass as body_offset). Null when the returned body reaches the end.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "body": {
           "target": "smithy.api#String",
           "traits": {
@@ -700,19 +687,6 @@
             "smithy.api#documentation": "What this skill does and when to use it. Max 4096 characters."
           }
         },
-        "body_total_length": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total length of the full body in characters, independent of any body_offset/body_length paging. Compare against the length of the returned body to detect a truncated response."
-          }
-        },
-        "body_next_offset": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "When body_length paging stops before the end of the body, the character offset to request next (pass as body_offset). Null when the returned body reaches the end.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "body": {
           "target": "smithy.api#String",
           "traits": {
@@ -752,7 +726,7 @@
         "files": {
           "target": "com.posthog.llm_skills#LLMSkillFilesList",
           "traits": {
-            "smithy.api#documentation": "Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/."
+            "smithy.api#documentation": "Bundled files manifest. Each entry is path + content_type only; fetch content via /llm_skills/name/{name}/files/{path}/."
           }
         },
         "outline": {
@@ -823,18 +797,6 @@
         },
         "content_type": {
           "target": "smithy.api#String"
-        },
-        "line_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of lines in the file content."
-          }
-        },
-        "char_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of characters in the file content."
-          }
         }
       },
       "traits": {}
@@ -845,7 +807,7 @@
         "target": "com.posthog.llm_skills#LLMSkillFileManifest"
       },
       "traits": {
-        "smithy.api#documentation": "Bundled files manifest. Each entry carries path, content_type, and line/char counts — no content; fetch content via /llm_skills/name/{name}/files/{path}/."
+        "smithy.api#documentation": "Bundled files manifest. Each entry is path + content_type only; fetch content via /llm_skills/name/{name}/files/{path}/."
       }
     },
     "com.posthog.llm_skills#LLMSkillOutlineList": {
@@ -1105,20 +1067,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "body_length": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "body_length",
-            "smithy.api#documentation": "Maximum number of characters of the body to return starting at body_offset. Omit to return the whole body from the offset onwards. When the slice stops before the end, body_next_offset is the offset to request next."
-          }
-        },
-        "body_offset": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#httpQuery": "body_offset",
-            "smithy.api#documentation": "Zero-based character offset to start the returned body from. Use with body_length to page through a large body that a client would otherwise truncate. Compare the returned body length against body_total_length to detect truncation, then re-fetch from body_next_offset. Defaults to 0 (start of body)."
           }
         },
         "version": {
@@ -1832,181 +1780,6 @@
         }
       }
     },
-    "com.posthog.llm_skills#LlmSkillsSearchRetrieveRequest": {
-      "type": "structure",
-      "members": {
-        "project_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "query": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "query",
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Case-insensitive substring to search across ordinary skill names, descriptions, bodies, file paths, and Markdown file contents."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.posthog.llm_skills#LLMSkillSearchResponse": {
-      "type": "structure",
-      "members": {
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of matching skills returned, capped at 10.",
-            "smithy.api#required": {}
-          }
-        },
-        "results": {
-          "target": "com.posthog.llm_skills#LLMSkillSearchResponseResultsList",
-          "traits": {
-            "smithy.api#documentation": "Matching ordinary skills in relevance order.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_skills#LLMSkillSearchResult": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique skill name.",
-            "smithy.api#required": {}
-          }
-        },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "What this skill does and when to use it.",
-            "smithy.api#required": {}
-          }
-        },
-        "matches": {
-          "target": "com.posthog.llm_skills#LLMSkillSearchResultMatchesList",
-          "traits": {
-            "smithy.api#documentation": "Up to two locations that matched the search query, ordered by field relevance.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_skills#LLMSkillSearchMatch": {
-      "type": "structure",
-      "members": {
-        "matched_field": {
-          "target": "com.posthog.llm_skills#MatchedFieldEnum",
-          "traits": {
-            "smithy.api#documentation": "Skill field that matched the search query.\n\n* `name` - name\n* `description` - description\n* `body` - body\n* `file_path` - file_path\n* `file_content` - file_content",
-            "smithy.api#required": {}
-          }
-        },
-        "path": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Skill-relative file path for body or bundled-file matches. Omitted for name and description matches."
-          }
-        },
-        "line": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "One-based line containing the match when the result came from a body or bundled file."
-          }
-        },
-        "excerpt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Short excerpt showing why this skill matched.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_skills#MatchedFieldEnum": {
-      "type": "enum",
-      "members": {
-        "NAME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "name"
-          }
-        },
-        "DESCRIPTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "description"
-          }
-        },
-        "BODY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "body"
-          }
-        },
-        "FILE_PATH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "file_path"
-          }
-        },
-        "FILE_CONTENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "file_content"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `name` - name\n* `description` - description\n* `body` - body\n* `file_path` - file_path\n* `file_content` - file_content"
-      }
-    },
-    "com.posthog.llm_skills#LLMSkillSearchResultMatchesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_skills#LLMSkillSearchMatch"
-      },
-      "traits": {
-        "smithy.api#documentation": "Up to two locations that matched the search query, ordered by field relevance."
-      }
-    },
-    "com.posthog.llm_skills#LLMSkillSearchResponseResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_skills#LLMSkillSearchResult"
-      },
-      "traits": {
-        "smithy.api#documentation": "Matching ordinary skills in relevance order."
-      }
-    },
-    "com.posthog.llm_skills#LlmSkillsSearchRetrieve": {
-      "type": "operation",
-      "input": {
-        "target": "com.posthog.llm_skills#LlmSkillsSearchRetrieveRequest"
-      },
-      "output": {
-        "target": "com.posthog.llm_skills#LLMSkillSearchResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/api/projects/{project_id}/llm_skills/search/",
-          "code": 200
-        }
-      }
-    },
     "com.posthog.llm_skills#LlmSkills": {
       "type": "service",
       "version": "1.0.0",
@@ -2055,9 +1828,6 @@
         },
         {
           "target": "com.posthog.llm_skills#LlmSkillsResolveNameRetrieve"
-        },
-        {
-          "target": "com.posthog.llm_skills#LlmSkillsSearchRetrieve"
         }
       ],
       "traits": {

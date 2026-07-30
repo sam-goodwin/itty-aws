@@ -21,7 +21,7 @@ export interface ApplicationGroupPolicy {
   /** The Name of this policy */
   name: string;
   /** Application Group Policy types */
-  type: ApplicationGroupPolicyType;
+  type: ApplicationGroupPolicyType | (string & {});
 }
 export const ApplicationGroupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -373,7 +373,7 @@ export const ClusterSkuName = /*@__PURE__*/ S.String;
 /** SKU parameters particular to a cluster instance. */
 export interface ClusterSku {
   /** Name of this SKU. */
-  name: ClusterSkuName;
+  name: ClusterSkuName | (string & {});
   /** The quantity of Event Hubs Cluster Capacity Units contained in this cluster. */
   capacity?: number;
 }
@@ -2710,7 +2710,7 @@ export interface Encryption {
   /** Properties of KeyVault */
   keyVaultProperties?: EncryptionKeyVaultPropertiesList;
   /** Enumerates the possible value of keySource for Encryption */
-  keySource?: EncryptionKeySource;
+  keySource?: EncryptionKeySource | (string & {});
   /** Enable Infrastructure Encryption (Double Encryption) */
   requireInfrastructureEncryption?: boolean;
 }
@@ -3387,7 +3387,7 @@ export interface NWRuleSetIpRules {
   /** IP Mask */
   ipMask?: string;
   /** The IP Filter Action */
-  action?: NetworkRuleIPAction;
+  action?: NetworkRuleIPAction | (string & {});
 }
 export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

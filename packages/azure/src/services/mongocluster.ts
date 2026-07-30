@@ -533,8 +533,9 @@ export type PreviewFeature = "GeoReplicas";
 export const PreviewFeature = /*@__PURE__*/ S.String;
 
 /** List of private endpoint connections. */
-export type MongoClusterPropertiesInputPreviewFeaturesList =
-  Array<PreviewFeature>;
+export type MongoClusterPropertiesInputPreviewFeaturesList = Array<
+  PreviewFeature | (string & {})
+>;
 export const MongoClusterPropertiesInputPreviewFeaturesList =
   /*@__PURE__*/ S.Array(
     PreviewFeature,
@@ -572,7 +573,7 @@ export const KeyEncryptionKeyIdentityType = /*@__PURE__*/ S.String;
 /** The identity used for key encryption key. */
 export interface KeyEncryptionKeyIdentity {
   /** The type of identity. Only 'UserAssignedIdentity' is supported. */
-  identityType?: KeyEncryptionKeyIdentityType;
+  identityType?: KeyEncryptionKeyIdentityType | (string & {});
   /** The user assigned identity resource id. */
   userAssignedIdentityResourceId?: string;
 }
@@ -1423,9 +1424,9 @@ export interface MongoClustersPromoteRequest {
   /** The name of the mongo cluster. */
   mongoClusterName: string;
   /** The promote option to apply to the operation. */
-  promoteOption: PromoteOption;
+  promoteOption: PromoteOption | (string & {});
   /** The mode to apply to the promote operation. Value is optional and default value is 'Switchover'. */
-  mode?: PromoteMode;
+  mode?: PromoteMode | (string & {});
 }
 export const MongoClustersPromoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1477,8 +1478,9 @@ export const MongoClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoClustersUpdateRequestTagsMap>;
 
 /** List of private endpoint connections. */
-export type MongoClusterUpdatePropertiesInputPreviewFeaturesList =
-  Array<PreviewFeature>;
+export type MongoClusterUpdatePropertiesInputPreviewFeaturesList = Array<
+  PreviewFeature | (string & {})
+>;
 export const MongoClusterUpdatePropertiesInputPreviewFeaturesList =
   /*@__PURE__*/ S.Array(
     PreviewFeature,
@@ -2255,7 +2257,7 @@ export const IdentityProviderType = /*@__PURE__*/ S.String;
 /** Defines a user's identity provider definition. */
 export interface IdentityProvider {
   /** The type of identity provider that the user belongs to. */
-  type: IdentityProviderType;
+  type: IdentityProviderType | (string & {});
 }
 export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2274,7 +2276,7 @@ export interface DatabaseRole {
   /** Database scope that the role is assigned to. */
   db: string;
   /** The role that is assigned to the user on the database scope. */
-  role: UserRole;
+  role: UserRole | (string & {});
 }
 export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

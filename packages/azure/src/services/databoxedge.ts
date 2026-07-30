@@ -1734,7 +1734,7 @@ export interface Sku {
   /** SKU name. */
   name?: SkuName | (string & {});
   /** The SKU tier. This is based on the SKU name. */
-  tier?: SkuTier;
+  tier?: SkuTier | (string & {});
 }
 export const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({

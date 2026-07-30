@@ -64,16 +64,16 @@ export class NotFound extends T.applyErrorMatchers(
 export interface MonitoredProject {
   /** Immutable. The resource name of the MonitoredProject. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER} */
   name?: string;
-  /** Output only. Set if the project has been tombstoned by the user. */
-  isTombstoned?: boolean;
   /** Output only. The time when this MonitoredProject was created. */
   createTime?: string;
+  /** Output only. Set if the project has been tombstoned by the user. */
+  isTombstoned?: boolean;
 }
 export const MonitoredProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
-    isTombstoned: S.optional(S.Boolean),
     createTime: S.optional(S.String),
+    isTombstoned: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "MonitoredProject",
@@ -131,12 +131,12 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
   name?: string;
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
   done?: boolean;
   /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
@@ -144,9 +144,9 @@ export interface Operation {
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
     error: S.optional(Status),
-    metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
   }),
@@ -157,873 +157,37 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type EventAnnotationEventTypeEnum =
-  | "EVENT_TYPE_UNSPECIFIED"
-  | "GKE_WORKLOAD_DEPLOYMENT"
-  | "GKE_POD_CRASH"
-  | "GKE_POD_UNSCHEDULABLE"
-  | "GKE_CONTAINER_CREATION_FAILED"
-  | "GKE_CLUSTER_CREATE_DELETE"
-  | "GKE_CLUSTER_UPDATE"
-  | "GKE_NODE_POOL_UPDATE"
-  | "GKE_CLUSTER_AUTOSCALER"
-  | "GKE_POD_AUTOSCALER"
-  | "VM_TERMINATION"
-  | "VM_GUEST_OS_ERROR"
-  | "VM_START_FAILED"
-  | "MIG_UPDATE"
-  | "MIG_AUTOSCALER"
-  | "CLOUD_RUN_DEPLOYMENT"
-  | "CLOUD_SQL_FAILOVER"
-  | "CLOUD_SQL_START_STOP"
-  | "CLOUD_SQL_STORAGE"
-  | "UPTIME_CHECK_FAILURE"
-  | "CLOUD_ALERTING_ALERT"
-  | "SERVICE_HEALTH_INCIDENT"
-  | "SAP_BACKINT"
-  | "SAP_AVAILABILITY"
-  | "SAP_OPERATIONS"
-  | "INTERCONNECT_MAINTENANCE_STARTED"
-  | "INTERCONNECT_MAINTENANCE_COMPLETED"
-  | "VPN_TRAFFIC_SELECTOR_NARROWING"
-  | "VPN_MAINTENANCE";
-export const EventAnnotationEventTypeEnum = /*@__PURE__*/ S.String;
-
-/** Annotation configuration for one event type on a dashboard */
-export interface EventAnnotation {
-  /** Whether or not to show the events on the dashboard by default */
-  enabled?: boolean;
-  /** Solely for UI display. Should not be used programmatically. */
-  displayName?: string;
-  /** string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='user@example.com'" */
-  filter?: string;
-  /** The type of event to display. */
-  eventType?: EventAnnotationEventTypeEnum | (string & {});
-  /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: “projects/another-project-id” */
-  resourceNames?: StringList;
-}
-export const EventAnnotation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    filter: S.optional(S.String),
-    eventType: S.optional(EventAnnotationEventTypeEnum),
-    resourceNames: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "EventAnnotation",
-}) as any as S.Schema<EventAnnotation>;
-
-export type EventAnnotationList = Array<EventAnnotation>;
-export const EventAnnotationList = /*@__PURE__*/ S.Array(
-  EventAnnotation,
-) as any as S.Schema<EventAnnotationList>;
-
-/** Dashboard-level configuration for annotations */
-export interface DashboardAnnotations {
-  /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: “projects/some-project-id” */
-  defaultResourceNames?: StringList;
-  /** List of annotation configurations for this dashboard. Each entry specifies one event type. */
-  eventAnnotations?: EventAnnotationList;
-}
-export const DashboardAnnotations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultResourceNames: S.optional(StringList),
-    eventAnnotations: S.optional(EventAnnotationList),
-  }),
-).annotate({
-  identifier: "DashboardAnnotations",
-}) as any as S.Schema<DashboardAnnotations>;
-
-export type StatisticalTimeSeriesFilterRankingMethodEnum =
-  | "METHOD_UNSPECIFIED"
-  | "METHOD_CLUSTER_OUTLIER";
-export const StatisticalTimeSeriesFilterRankingMethodEnum =
-  /*@__PURE__*/ S.String;
-
-/** A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API. */
-export interface StatisticalTimeSeriesFilter {
-  /** rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series. */
-  rankingMethod?: StatisticalTimeSeriesFilterRankingMethodEnum | (string & {});
-  /** How many time series to output. */
-  numTimeSeries?: number;
-}
-export const StatisticalTimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rankingMethod: S.optional(StatisticalTimeSeriesFilterRankingMethodEnum),
-    numTimeSeries: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StatisticalTimeSeriesFilter",
-}) as any as S.Schema<StatisticalTimeSeriesFilter>;
-
-export type AggregationCrossSeriesReducerEnum =
-  | "REDUCE_NONE"
-  | "REDUCE_MEAN"
-  | "REDUCE_MIN"
-  | "REDUCE_MAX"
-  | "REDUCE_SUM"
-  | "REDUCE_STDDEV"
-  | "REDUCE_COUNT"
-  | "REDUCE_COUNT_TRUE"
-  | "REDUCE_COUNT_FALSE"
-  | "REDUCE_FRACTION_TRUE"
-  | "REDUCE_PERCENTILE_99"
-  | "REDUCE_PERCENTILE_95"
-  | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05";
-export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
-
-export type AggregationPerSeriesAlignerEnum =
-  | "ALIGN_NONE"
-  | "ALIGN_DELTA"
-  | "ALIGN_RATE"
-  | "ALIGN_INTERPOLATE"
-  | "ALIGN_NEXT_OLDER"
-  | "ALIGN_MIN"
-  | "ALIGN_MAX"
-  | "ALIGN_MEAN"
-  | "ALIGN_COUNT"
-  | "ALIGN_SUM"
-  | "ALIGN_STDDEV"
-  | "ALIGN_COUNT_TRUE"
-  | "ALIGN_COUNT_FALSE"
-  | "ALIGN_FRACTION_TRUE"
-  | "ALIGN_PERCENTILE_99"
-  | "ALIGN_PERCENTILE_95"
-  | "ALIGN_PERCENTILE_50"
-  | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE";
-export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
-
-/** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
-export interface Aggregation {
-  /** The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks. */
-  alignmentPeriod?: string;
-  /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
-  groupByFields?: StringList;
-  /** The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned. */
-  crossSeriesReducer?: AggregationCrossSeriesReducerEnum | (string & {});
-  /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
-  perSeriesAligner?: AggregationPerSeriesAlignerEnum | (string & {});
-}
-export const Aggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alignmentPeriod: S.optional(S.String),
-    groupByFields: S.optional(StringList),
-    crossSeriesReducer: S.optional(AggregationCrossSeriesReducerEnum),
-    perSeriesAligner: S.optional(AggregationPerSeriesAlignerEnum),
-  }),
-).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
-
-export type PickTimeSeriesFilterRankingMethodEnum =
-  | "METHOD_UNSPECIFIED"
-  | "METHOD_MEAN"
-  | "METHOD_MAX"
-  | "METHOD_MIN"
-  | "METHOD_SUM"
-  | "METHOD_LATEST";
-export const PickTimeSeriesFilterRankingMethodEnum = /*@__PURE__*/ S.String;
-
-export type PickTimeSeriesFilterDirectionEnum =
-  | "DIRECTION_UNSPECIFIED"
-  | "TOP"
-  | "BOTTOM";
-export const PickTimeSeriesFilterDirectionEnum = /*@__PURE__*/ S.String;
-
-/** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
-export interface Interval {
-  /** Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start. */
-  startTime?: string;
-  /** Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end. */
-  endTime?: string;
-}
-export const Interval = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
-
-/** Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter. */
-export interface PickTimeSeriesFilter {
-  /** ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series. */
-  rankingMethod?: PickTimeSeriesFilterRankingMethodEnum | (string & {});
-  /** How to use the ranking to select time series that pass through the filter. */
-  direction?: PickTimeSeriesFilterDirectionEnum | (string & {});
-  /** Select the top N streams/time series within this time interval */
-  interval?: Interval;
-  /** How many time series to allow to pass through the filter. */
-  numTimeSeries?: number;
-}
-export const PickTimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rankingMethod: S.optional(PickTimeSeriesFilterRankingMethodEnum),
-    direction: S.optional(PickTimeSeriesFilterDirectionEnum),
-    interval: S.optional(Interval),
-    numTimeSeries: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PickTimeSeriesFilter",
-}) as any as S.Schema<PickTimeSeriesFilter>;
-
-/** A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method. */
-export interface TimeSeriesFilter {
-  /** Statistics based time series filter. Note: This field is deprecated and completely ignored by the API. */
-  statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
-  /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
-  filter?: string;
-  /** Apply a second aggregation after aggregation is applied. */
-  secondaryAggregation?: Aggregation;
-  /** Ranking based time series filter. */
-  pickTimeSeriesFilter?: PickTimeSeriesFilter;
-  /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
-  aggregation?: Aggregation;
-}
-export const TimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
-    filter: S.optional(S.String),
-    secondaryAggregation: S.optional(Aggregation),
-    pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
-    aggregation: S.optional(Aggregation),
-  }),
-).annotate({
-  identifier: "TimeSeriesFilter",
-}) as any as S.Schema<TimeSeriesFilter>;
-
-export type TraceQuerySpanDataValueEnum =
-  | "SPAN_DATA_VALUE_UNSPECIFIED"
-  | "SPAN_COUNT"
-  | "SPAN_DURATION"
-  | "SPAN_DURATION_PERCENTILES";
-export const TraceQuerySpanDataValueEnum = /*@__PURE__*/ S.String;
-
-/** Span attribute key and list of values to be used for filtering. */
-export interface SpanAttributeFilter {
-  /** Key of the attribute */
-  key?: string;
-  /** List of attribute values for given key. Multiple values will be OR'd together. */
-  value?: StringList;
-}
-export const SpanAttributeFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "SpanAttributeFilter",
-}) as any as S.Schema<SpanAttributeFilter>;
-
-export type SpanAttributeFilterList = Array<SpanAttributeFilter>;
-export const SpanAttributeFilterList = /*@__PURE__*/ S.Array(
-  SpanAttributeFilter,
-) as any as S.Schema<SpanAttributeFilterList>;
-
-/** First version of span filtering that is supported by the Trace component. */
-export interface SpanFilters {
-  /** Optional. Filtering for spans containing one of the kinds in the list. Multiple values will be OR'd together. */
-  kinds?: StringList;
-  /** Optional. Filtering for spans with a maximum duration. */
-  maxDuration?: string;
-  /** Optional. Filtering for spans containing one of the Apphub service IDs in the list. Multiple values will be OR'd together. Example: "service-id1", "service-id2" */
-  apphubServices?: StringList;
-  /** Optional. List of span attribute filters. Each SpanAttributeFilter key must be unique. Multiple attribute filters will be AND'd together. */
-  attributes?: SpanAttributeFilterList;
-  /** Optional. Filtering for spans containing one of the Apphub Application IDs in the list. Multiple values will be OR'd together. */
-  applicationIds?: StringList;
-  /** Optional. Filtering for spans containing one of the statuses in the list. Multiple values will be OR'd together. */
-  status?: StringList;
-  /** Optional. Filters for root spans only if set to true. A root span is a span without a defined parent span ID. */
-  isRootSpan?: boolean;
-  /** Optional. Filtering for spans containing one of the Apphub workload IDs in the list. Multiple values will be OR'd together. Example: "workload-id1", "workload-id2" */
-  apphubWorkloads?: StringList;
-  /** Optional. Filtering for spans with a minimum duration. */
-  minDuration?: string;
-  /** Optional. Filtering for spans containing one of the span display names in the list. Multiple values will be OR'd together. */
-  displayNames?: StringList;
-  /** Optional. Filtering for spans containing one of the services in the list. Multiple values will be OR'd together. */
+/** A widget that displays a list of error groups. */
+export interface ErrorReportingPanel {
+  /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used. */
   services?: StringList;
+  /** The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234. */
+  projectNames?: StringList;
+  /** Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app. */
+  versions?: StringList;
 }
-export const SpanFilters = /*@__PURE__*/ S.suspend(() =>
+export const ErrorReportingPanel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    kinds: S.optional(StringList),
-    maxDuration: S.optional(S.String),
-    apphubServices: S.optional(StringList),
-    attributes: S.optional(SpanAttributeFilterList),
-    applicationIds: S.optional(StringList),
-    status: S.optional(StringList),
-    isRootSpan: S.optional(S.Boolean),
-    apphubWorkloads: S.optional(StringList),
-    minDuration: S.optional(S.String),
-    displayNames: S.optional(StringList),
     services: S.optional(StringList),
-  }),
-).annotate({ identifier: "SpanFilters" }) as any as S.Schema<SpanFilters>;
-
-/** LINT.IfChange Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
-export interface TraceQuery {
-  /** The type of span data value to be displayed on the chart. Required. */
-  spanDataValue?: TraceQuerySpanDataValueEnum | (string & {});
-  /** First version of span filtering that we will support. Required. */
-  spanFilters?: SpanFilters;
-  /** Optional. The resource name of the project or Trace scope to fetch data from. If empty, the widget will default to the project's default Trace scope. If scope cannot be determined, then we fallback to the current project. Optional. */
-  resourceContainer?: string;
-}
-export const TraceQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    spanDataValue: S.optional(TraceQuerySpanDataValueEnum),
-    spanFilters: S.optional(SpanFilters),
-    resourceContainer: S.optional(S.String),
-  }),
-).annotate({ identifier: "TraceQuery" }) as any as S.Schema<TraceQuery>;
-
-/** Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio. */
-export interface RatioPart {
-  /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
-  filter?: string;
-  /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
-  aggregation?: Aggregation;
-}
-export const RatioPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    aggregation: S.optional(Aggregation),
-  }),
-).annotate({ identifier: "RatioPart" }) as any as S.Schema<RatioPart>;
-
-/** A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series. */
-export interface TimeSeriesFilterRatio {
-  /** The denominator of the ratio. */
-  denominator?: RatioPart;
-  /** Statistics based time series filter. Note: This field is deprecated and completely ignored by the API. */
-  statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
-  /** Apply a second aggregation after the ratio is computed. */
-  secondaryAggregation?: Aggregation;
-  /** Ranking based time series filter. */
-  pickTimeSeriesFilter?: PickTimeSeriesFilter;
-  /** The numerator of the ratio. */
-  numerator?: RatioPart;
-}
-export const TimeSeriesFilterRatio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    denominator: S.optional(RatioPart),
-    statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
-    secondaryAggregation: S.optional(Aggregation),
-    pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
-    numerator: S.optional(RatioPart),
+    projectNames: S.optional(StringList),
+    versions: S.optional(StringList),
   }),
 ).annotate({
-  identifier: "TimeSeriesFilterRatio",
-}) as any as S.Schema<TimeSeriesFilterRatio>;
+  identifier: "ErrorReportingPanel",
+}) as any as S.Schema<ErrorReportingPanel>;
 
-/** Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release. */
-export interface OpsAnalyticsQuery {
-  /** A SQL query to fetch time series, category series, or numeric series data. */
-  sql?: string;
+/** A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
+export interface CollapsibleGroup {
+  /** The collapsed state of the widget on first page load. */
+  collapsed?: boolean;
 }
-export const OpsAnalyticsQuery = /*@__PURE__*/ S.suspend(() =>
+export const CollapsibleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sql: S.optional(S.String),
+    collapsed: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "OpsAnalyticsQuery",
-}) as any as S.Schema<OpsAnalyticsQuery>;
-
-/** TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API. */
-export interface TimeSeriesQuery {
-  /** Filter parameters to fetch time series. */
-  timeSeriesFilter?: TimeSeriesFilter;
-  /** Optional. Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
-  traceQuery?: TraceQuery;
-  /** A query used to fetch time series with PromQL. */
-  prometheusQuery?: string;
-  /** Parameters to fetch a ratio between two time series filters. */
-  timeSeriesFilterRatio?: TimeSeriesFilterRatio;
-  /** Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release. */
-  opsAnalyticsQuery?: OpsAnalyticsQuery;
-  /** Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart */
-  outputFullDuration?: boolean;
-  /** A query used to fetch time series with MQL. */
-  timeSeriesQueryLanguage?: string;
-  /** The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor. */
-  unitOverride?: string;
-}
-export const TimeSeriesQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeSeriesFilter: S.optional(TimeSeriesFilter),
-    traceQuery: S.optional(TraceQuery),
-    prometheusQuery: S.optional(S.String),
-    timeSeriesFilterRatio: S.optional(TimeSeriesFilterRatio),
-    opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
-    outputFullDuration: S.optional(S.Boolean),
-    timeSeriesQueryLanguage: S.optional(S.String),
-    unitOverride: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TimeSeriesQuery",
-}) as any as S.Schema<TimeSeriesQuery>;
-
-export type DimensionSortOrderEnum =
-  | "SORT_ORDER_UNSPECIFIED"
-  | "SORT_ORDER_NONE"
-  | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
-export const DimensionSortOrderEnum = /*@__PURE__*/ S.String;
-
-/** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
-export interface Dimension {
-  /** The sort order applied to the sort column. */
-  sortOrder?: DimensionSortOrderEnum | (string & {});
-  /** The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used. */
-  sortColumn?: string;
-  /** Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column. */
-  floatBinSize?: number;
-  /** numeric_bin_size is used when the column type used for a dimension is numeric or string. If the column field is set to metric_value, then numericBinSize overrides maxBinCount. */
-  numericBinSize?: number;
-  /** time_bin_size is used when the data type of the specified dimension is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours. */
-  timeBinSize?: string;
-  /** Required. For widgets that use SQL queries, set the value to the name of the column in the results table whose data is charted. For a histogram that uses a time series query, set the value of this field to metric_value. */
-  column?: string;
-  /** Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64. */
-  columnType?: string;
-  /** For widgets that use SQL queries, the limit to the number of bins to generate. When 0 is specified, the maximum count is not enforced. For a histogram that uses a time series query, the exact number of bins to generate. If not specified or the value is 0, then the histogram determines the number of bins to use. */
-  maxBinCount?: number;
-  /** The minimum value for the x-axis. */
-  xMin?: number;
-  /** The maximum value for the x-axis. */
-  xMax?: number;
-}
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortOrder: S.optional(DimensionSortOrderEnum),
-    sortColumn: S.optional(S.String),
-    floatBinSize: S.optional(S.Number),
-    numericBinSize: S.optional(S.Number),
-    timeBinSize: S.optional(S.String),
-    column: S.optional(S.String),
-    columnType: S.optional(S.String),
-    maxBinCount: S.optional(S.Number),
-    xMin: S.optional(S.Number),
-    xMax: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
-
-export type DimensionList = Array<Dimension>;
-export const DimensionList = /*@__PURE__*/ S.Array(
-  Dimension,
-) as any as S.Schema<DimensionList>;
-
-/** Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release. */
-export interface Parameter {
-  /** An integer parameter value. */
-  intValue?: string;
-  /** A floating-point parameter value. */
-  doubleValue?: number;
-}
-export const Parameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intValue: S.optional(S.String),
-    doubleValue: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
-
-export type ParameterList = Array<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(
-  Parameter,
-) as any as S.Schema<ParameterList>;
-
-/** Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release. */
-export interface AggregationFunction {
-  /** Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM() */
-  type?: string;
-  /** Optional. Parameters applied to the aggregation function. Only used for functions that require them. */
-  parameters?: ParameterList;
-}
-export const AggregationFunction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    parameters: S.optional(ParameterList),
-  }),
-).annotate({
-  identifier: "AggregationFunction",
-}) as any as S.Schema<AggregationFunction>;
-
-/** A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc. */
-export interface Measure {
-  /** Required. The column name within in the dataset used for the measure. */
-  column?: string;
-  /** Required. The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins. */
-  aggregationFunction?: AggregationFunction;
-}
-export const Measure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.optional(S.String),
-    aggregationFunction: S.optional(AggregationFunction),
-  }),
-).annotate({ identifier: "Measure" }) as any as S.Schema<Measure>;
-
-export type MeasureList = Array<Measure>;
-export const MeasureList = /*@__PURE__*/ S.Array(
-  Measure,
-) as any as S.Schema<MeasureList>;
-
-export type SparkChartViewSparkChartTypeEnum =
-  | "SPARK_CHART_TYPE_UNSPECIFIED"
-  | "SPARK_LINE"
-  | "SPARK_BAR";
-export const SparkChartViewSparkChartTypeEnum = /*@__PURE__*/ S.String;
-
-/** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
-export interface SparkChartView {
-  /** Required. The type of sparkchart to show in this chartView. */
-  sparkChartType?: SparkChartViewSparkChartTypeEnum | (string & {});
-  /** The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
-  minAlignmentPeriod?: string;
-}
-export const SparkChartView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sparkChartType: S.optional(SparkChartViewSparkChartTypeEnum),
-    minAlignmentPeriod: S.optional(S.String),
-  }),
-).annotate({ identifier: "SparkChartView" }) as any as S.Schema<SparkChartView>;
-
-export type ThresholdDirectionEnum =
-  | "DIRECTION_UNSPECIFIED"
-  | "ABOVE"
-  | "BELOW";
-export const ThresholdDirectionEnum = /*@__PURE__*/ S.String;
-
-export type ThresholdTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
-export const ThresholdTargetAxisEnum = /*@__PURE__*/ S.String;
-
-export type ThresholdColorEnum = "COLOR_UNSPECIFIED" | "YELLOW" | "RED";
-export const ThresholdColorEnum = /*@__PURE__*/ S.String;
-
-/** Defines a threshold for categorizing time series values. */
-export interface Threshold {
-  /** The direction for the current threshold. Direction is not allowed in a XyChart. */
-  direction?: ThresholdDirectionEnum | (string & {});
-  /** The value of the threshold. The value should be defined in the native scale of the metric. */
-  value?: number;
-  /** The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard. */
-  targetAxis?: ThresholdTargetAxisEnum | (string & {});
-  /** The state color for this threshold. Color is not allowed in a XyChart. */
-  color?: ThresholdColorEnum | (string & {});
-  /** A label for the threshold. */
-  label?: string;
-}
-export const Threshold = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(ThresholdDirectionEnum),
-    value: S.optional(S.Number),
-    targetAxis: S.optional(ThresholdTargetAxisEnum),
-    color: S.optional(ThresholdColorEnum),
-    label: S.optional(S.String),
-  }),
-).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
-
-export type ThresholdList = Array<Threshold>;
-export const ThresholdList = /*@__PURE__*/ S.Array(
-  Threshold,
-) as any as S.Schema<ThresholdList>;
-
-/** A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive). */
-export interface GaugeView {
-  /** The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this. */
-  lowerBound?: number;
-  /** The upper bound for this gauge chart. The value of the chart should always be less than or equal to this. */
-  upperBound?: number;
-}
-export const GaugeView = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lowerBound: S.optional(S.Number),
-    upperBound: S.optional(S.Number),
-  }),
-).annotate({ identifier: "GaugeView" }) as any as S.Schema<GaugeView>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
-
-export type BreakdownSortOrderEnum =
-  | "SORT_ORDER_UNSPECIFIED"
-  | "SORT_ORDER_NONE"
-  | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
-export const BreakdownSortOrderEnum = /*@__PURE__*/ S.String;
-
-/** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
-export interface Breakdown {
-  /** Required. The sort order is applied to the values of the breakdown column. */
-  sortOrder?: BreakdownSortOrderEnum | (string & {});
-  /** Required. The name of the column in the dataset containing the breakdown values. */
-  column?: string;
-  /** Required. A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field. */
-  limit?: number;
-  /** Required. The Aggregation function is applied across all data in each breakdown created. */
-  aggregationFunction?: AggregationFunction;
-}
-export const Breakdown = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sortOrder: S.optional(BreakdownSortOrderEnum),
-    column: S.optional(S.String),
-    limit: S.optional(S.Number),
-    aggregationFunction: S.optional(AggregationFunction),
-  }),
-).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
-
-export type BreakdownList = Array<Breakdown>;
-export const BreakdownList = /*@__PURE__*/ S.Array(
-  Breakdown,
-) as any as S.Schema<BreakdownList>;
-
-/** A widget showing the latest value of a metric, and how this value relates to one or more thresholds. */
-export interface Scorecard {
-  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
-  timeSeriesQuery?: TimeSeriesQuery;
-  /** Optional. A dimension is a structured label, class, or category for a set of measurements in your data. */
-  dimensions?: DimensionList;
-  /** Optional. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: MeasureList;
-  /** Will cause the scorecard to show a spark chart. */
-  sparkChartView?: SparkChartView;
-  /** The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state. */
-  thresholds?: ThresholdList;
-  /** Will cause the scorecard to show a gauge chart. */
-  gaugeView?: GaugeView;
-  /** Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds. */
-  blankView?: Empty;
-  /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
-  breakdowns?: BreakdownList;
-}
-export const Scorecard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-    dimensions: S.optional(DimensionList),
-    measures: S.optional(MeasureList),
-    sparkChartView: S.optional(SparkChartView),
-    thresholds: S.optional(ThresholdList),
-    gaugeView: S.optional(GaugeView),
-    blankView: S.optional(Empty),
-    breakdowns: S.optional(BreakdownList),
-  }),
-).annotate({ identifier: "Scorecard" }) as any as S.Schema<Scorecard>;
-
-/** A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content. */
-export interface SectionHeader {
-  /** Whether to insert a divider below the section in the table of contents */
-  dividerBelow?: boolean;
-  /** The subtitle of the section */
-  subtitle?: string;
-}
-export const SectionHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dividerBelow: S.optional(S.Boolean),
-    subtitle: S.optional(S.String),
-  }),
-).annotate({ identifier: "SectionHeader" }) as any as S.Schema<SectionHeader>;
-
-export type PieChartChartTypeEnum =
-  | "PIE_CHART_TYPE_UNSPECIFIED"
-  | "PIE"
-  | "DONUT";
-export const PieChartChartTypeEnum = /*@__PURE__*/ S.String;
-
-/** Groups a time series query definition. */
-export interface PieChartDataSet {
-  /** Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name. */
-  sliceNameTemplate?: string;
-  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals. */
-  minAlignmentPeriod?: string;
-  /** Required. The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery. */
-  timeSeriesQuery?: TimeSeriesQuery;
-  /** A dimension is a structured label, class, or category for a set of measurements in your data. */
-  dimensions?: DimensionList;
-  /** A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: MeasureList;
-}
-export const PieChartDataSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sliceNameTemplate: S.optional(S.String),
-    minAlignmentPeriod: S.optional(S.String),
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-    dimensions: S.optional(DimensionList),
-    measures: S.optional(MeasureList),
-  }),
-).annotate({
-  identifier: "PieChartDataSet",
-}) as any as S.Schema<PieChartDataSet>;
-
-export type PieChartDataSetList = Array<PieChartDataSet>;
-export const PieChartDataSetList = /*@__PURE__*/ S.Array(
-  PieChartDataSet,
-) as any as S.Schema<PieChartDataSetList>;
-
-/** A widget that displays timeseries data as a pie or a donut. */
-export interface PieChart {
-  /** Required. Indicates the visualization type for the PieChart. */
-  chartType?: PieChartChartTypeEnum | (string & {});
-  /** Optional. Indicates whether or not the pie chart should show slices' labels */
-  showLabels?: boolean;
-  /** Required. The queries for the chart's data. */
-  dataSets?: PieChartDataSetList;
-}
-export const PieChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    chartType: S.optional(PieChartChartTypeEnum),
-    showLabels: S.optional(S.Boolean),
-    dataSets: S.optional(PieChartDataSetList),
-  }),
-).annotate({ identifier: "PieChart" }) as any as S.Schema<PieChart>;
-
-export type AxisScaleEnum = "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10";
-export const AxisScaleEnum = /*@__PURE__*/ S.String;
-
-/** A chart axis. */
-export interface Axis {
-  /** The label of the axis. */
-  label?: string;
-  /** The axis scale. By default, a linear scale is used. */
-  scale?: AxisScaleEnum | (string & {});
-}
-export const Axis = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.String),
-    scale: S.optional(AxisScaleEnum),
-  }),
-).annotate({ identifier: "Axis" }) as any as S.Schema<Axis>;
-
-export type ColumnSortingOptionsDirectionEnum =
-  | "SORT_ORDER_UNSPECIFIED"
-  | "SORT_ORDER_NONE"
-  | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING";
-export const ColumnSortingOptionsDirectionEnum = /*@__PURE__*/ S.String;
-
-/** Data structure to storing column's sort strategy */
-export interface ColumnSortingOptions {
-  /** Optional. Column name to sort data by */
-  column?: string;
-  /** Optional. A sorting direction that determines ascending or descending order. This is a legacy field kept for backwards compatibility with table. */
-  direction?: ColumnSortingOptionsDirectionEnum | (string & {});
-}
-export const ColumnSortingOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.optional(S.String),
-    direction: S.optional(ColumnSortingOptionsDirectionEnum),
-  }),
-).annotate({
-  identifier: "ColumnSortingOptions",
-}) as any as S.Schema<ColumnSortingOptions>;
-
-export type ColumnSortingOptionsList = Array<ColumnSortingOptions>;
-export const ColumnSortingOptionsList = /*@__PURE__*/ S.Array(
-  ColumnSortingOptions,
-) as any as S.Schema<ColumnSortingOptionsList>;
-
-export type DataSetPlotTypeEnum =
-  | "PLOT_TYPE_UNSPECIFIED"
-  | "LINE"
-  | "STACKED_AREA"
-  | "STACKED_BAR"
-  | "HEATMAP";
-export const DataSetPlotTypeEnum = /*@__PURE__*/ S.String;
-
-export type DataSetTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
-export const DataSetTargetAxisEnum = /*@__PURE__*/ S.String;
-
-/** Groups a time series query definition with charting options. */
-export interface DataSet {
-  /** Optional. A collection of sort options, affects the order of the data and legend. */
-  sort?: ColumnSortingOptionsList;
-  /** Optional. A collection of measures. */
-  measures?: MeasureList;
-  /** Optional. The collection of breakdowns to be applied to the dataset. */
-  breakdowns?: BreakdownList;
-  /** A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value. */
-  legendTemplate?: string;
-  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
-  timeSeriesQuery?: TimeSeriesQuery;
-  /** Optional. A collection of dimension columns. */
-  dimensions?: DimensionList;
-  /** How this data should be plotted on the chart. */
-  plotType?: DataSetPlotTypeEnum | (string & {});
-  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
-  minAlignmentPeriod?: string;
-  /** Optional. The target axis to use for plotting the metric. */
-  targetAxis?: DataSetTargetAxisEnum | (string & {});
-}
-export const DataSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sort: S.optional(ColumnSortingOptionsList),
-    measures: S.optional(MeasureList),
-    breakdowns: S.optional(BreakdownList),
-    legendTemplate: S.optional(S.String),
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-    dimensions: S.optional(DimensionList),
-    plotType: S.optional(DataSetPlotTypeEnum),
-    minAlignmentPeriod: S.optional(S.String),
-    targetAxis: S.optional(DataSetTargetAxisEnum),
-  }),
-).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
-
-export type DataSetList = Array<DataSet>;
-export const DataSetList = /*@__PURE__*/ S.Array(
-  DataSet,
-) as any as S.Schema<DataSetList>;
-
-export type ChartOptionsModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "COLOR"
-  | "X_RAY"
-  | "STATS";
-export const ChartOptionsModeEnum = /*@__PURE__*/ S.String;
-
-/** Options to control visual rendering of a chart. */
-export interface ChartOptions {
-  /** The chart mode. */
-  mode?: ChartOptionsModeEnum | (string & {});
-  /** Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release. */
-  displayHorizontal?: boolean;
-}
-export const ChartOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(ChartOptionsModeEnum),
-    displayHorizontal: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ChartOptions" }) as any as S.Schema<ChartOptions>;
-
-/** A chart that displays data on a 2D (X and Y axes) plane. */
-export interface XyChart {
-  /** Threshold lines drawn horizontally across the chart. */
-  thresholds?: ThresholdList;
-  /** The properties applied to the y2-axis. */
-  y2Axis?: Axis;
-  /** The properties applied to the x-axis. */
-  xAxis?: Axis;
-  /** The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type. */
-  timeshiftDuration?: string;
-  /** The properties applied to the y-axis. */
-  yAxis?: Axis;
-  /** Required. The data displayed in this chart. */
-  dataSets?: DataSetList;
-  /** Display options for the chart. */
-  chartOptions?: ChartOptions;
-}
-export const XyChart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thresholds: S.optional(ThresholdList),
-    y2Axis: S.optional(Axis),
-    xAxis: S.optional(Axis),
-    timeshiftDuration: S.optional(S.String),
-    yAxis: S.optional(Axis),
-    dataSets: S.optional(DataSetList),
-    chartOptions: S.optional(ChartOptions),
-  }),
-).annotate({ identifier: "XyChart" }) as any as S.Schema<XyChart>;
+  identifier: "CollapsibleGroup",
+}) as any as S.Schema<CollapsibleGroup>;
 
 /** A chart that displays alert policy data. */
 export interface AlertChart {
@@ -1035,341 +199,6 @@ export const AlertChart = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "AlertChart" }) as any as S.Schema<AlertChart>;
-
-/** A widget that displays a list of error groups. */
-export interface ErrorReportingPanel {
-  /** The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234. */
-  projectNames?: StringList;
-  /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used. */
-  services?: StringList;
-  /** Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app. */
-  versions?: StringList;
-}
-export const ErrorReportingPanel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectNames: S.optional(StringList),
-    services: S.optional(StringList),
-    versions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ErrorReportingPanel",
-}) as any as S.Schema<ErrorReportingPanel>;
-
-export type SingleViewGroupDisplayTypeEnum =
-  | "DISPLAY_TYPE_UNSPECIFIED"
-  | "DROPDOWN"
-  | "TAB";
-export const SingleViewGroupDisplayTypeEnum = /*@__PURE__*/ S.String;
-
-/** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
-export interface SingleViewGroup {
-  /** Optional. Determines how the widget selector will be displayed. */
-  displayType?: SingleViewGroupDisplayTypeEnum | (string & {});
-}
-export const SingleViewGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayType: S.optional(SingleViewGroupDisplayTypeEnum),
-  }),
-).annotate({
-  identifier: "SingleViewGroup",
-}) as any as S.Schema<SingleViewGroup>;
-
-/** A widget that displays a stream of log. */
-export interface LogsPanel {
-  /** A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries. */
-  filter?: string;
-  /** The names of logging resources to collect logs for. Currently projects and storage views are supported. If empty, the widget will default to the host project. */
-  resourceNames?: StringList;
-}
-export const LogsPanel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.optional(S.String),
-    resourceNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "LogsPanel" }) as any as S.Schema<LogsPanel>;
-
-/** Table display options that can be reused. */
-export interface TableDisplayOptions {
-  /** Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings */
-  shownColumns?: StringList;
-}
-export const TableDisplayOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shownColumns: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TableDisplayOptions",
-}) as any as S.Schema<TableDisplayOptions>;
-
-/** Groups a time series query definition with table options. */
-export interface TableDataSet {
-  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
-  timeSeriesQuery?: TimeSeriesQuery;
-  /** Optional. Table display options for configuring how the table is rendered. */
-  tableDisplayOptions?: TableDisplayOptions;
-  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals. */
-  minAlignmentPeriod?: string;
-  /** Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}." */
-  tableTemplate?: string;
-}
-export const TableDataSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-    tableDisplayOptions: S.optional(TableDisplayOptions),
-    minAlignmentPeriod: S.optional(S.String),
-    tableTemplate: S.optional(S.String),
-  }),
-).annotate({ identifier: "TableDataSet" }) as any as S.Schema<TableDataSet>;
-
-export type TableDataSetList = Array<TableDataSet>;
-export const TableDataSetList = /*@__PURE__*/ S.Array(
-  TableDataSet,
-) as any as S.Schema<TableDataSetList>;
-
-export type TimeSeriesTableMetricVisualizationEnum =
-  | "METRIC_VISUALIZATION_UNSPECIFIED"
-  | "NUMBER"
-  | "BAR";
-export const TimeSeriesTableMetricVisualizationEnum = /*@__PURE__*/ S.String;
-
-export type ColumnSettingsAlignmentEnum =
-  | "CELL_ALIGNMENT_UNSPECIFIED"
-  | "LEFT"
-  | "CENTER"
-  | "RIGHT";
-export const ColumnSettingsAlignmentEnum = /*@__PURE__*/ S.String;
-
-/** The persistent settings for a table's columns. */
-export interface ColumnSettings {
-  /** Optional. Whether the column should be left / middle / right aligned */
-  alignment?: ColumnSettingsAlignmentEnum | (string & {});
-  /** Optional. Display name of the column */
-  displayName?: string;
-  /** Optional. The thresholds used to determine how the table cell should be rendered given the time series' current value. */
-  thresholds?: ThresholdList;
-  /** Required. The id of the column. */
-  column?: string;
-  /** Required. Whether the column should be visible on page load. */
-  visible?: boolean;
-}
-export const ColumnSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alignment: S.optional(ColumnSettingsAlignmentEnum),
-    displayName: S.optional(S.String),
-    thresholds: S.optional(ThresholdList),
-    column: S.optional(S.String),
-    visible: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ColumnSettings" }) as any as S.Schema<ColumnSettings>;
-
-export type ColumnSettingsList = Array<ColumnSettings>;
-export const ColumnSettingsList = /*@__PURE__*/ S.Array(
-  ColumnSettings,
-) as any as S.Schema<ColumnSettingsList>;
-
-/** A table that displays time series data. */
-export interface TimeSeriesTable {
-  /** Required. The data displayed in this table. */
-  dataSets?: TableDataSetList;
-  /** Optional. Store rendering strategy */
-  metricVisualization?: TimeSeriesTableMetricVisualizationEnum | (string & {});
-  /** Optional. The list of the persistent column settings for the table. */
-  columnSettings?: ColumnSettingsList;
-}
-export const TimeSeriesTable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSets: S.optional(TableDataSetList),
-    metricVisualization: S.optional(TimeSeriesTableMetricVisualizationEnum),
-    columnSettings: S.optional(ColumnSettingsList),
-  }),
-).annotate({
-  identifier: "TimeSeriesTable",
-}) as any as S.Schema<TimeSeriesTable>;
-
-/** A widget that displays an input field to change the value of a template variable. */
-export interface FilterControl {
-  /** Name of the template variable the widget affects. */
-  templateVariable?: string;
-}
-export const FilterControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templateVariable: S.optional(S.String),
-  }),
-).annotate({ identifier: "FilterControl" }) as any as S.Schema<FilterControl>;
-
-/** The data represented by the treemap. Needs to include the data itself, plus rules on how to organize it hierarchically. */
-export interface TreemapDataSet {
-  /** Required. The query that fetches the relevant data. See google.monitoring.dashboard.v1.TimeSeriesQuery */
-  timeSeriesQuery?: TimeSeriesQuery;
-  /** Optional. A collection of measures. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: MeasureList;
-  /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
-  breakdowns?: BreakdownList;
-}
-export const TreemapDataSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-    measures: S.optional(MeasureList),
-    breakdowns: S.optional(BreakdownList),
-  }),
-).annotate({ identifier: "TreemapDataSet" }) as any as S.Schema<TreemapDataSet>;
-
-export type TreemapDataSetList = Array<TreemapDataSet>;
-export const TreemapDataSetList = /*@__PURE__*/ S.Array(
-  TreemapDataSet,
-) as any as S.Schema<TreemapDataSetList>;
-
-/** A widget that displays hierarchical data as a treemap. */
-export interface Treemap {
-  /** Required. The collection of datasets used to construct and populate the treemap. For the rendered treemap rectangles: Color is determined by the aggregated value for each grouping. Size is proportional to the count of time series aggregated within that rectangle's segment. */
-  dataSets?: TreemapDataSetList;
-  /** Required. Ordered labels representing the hierarchical treemap structure. */
-  treemapHierarchy?: StringList;
-}
-export const Treemap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSets: S.optional(TreemapDataSetList),
-    treemapHierarchy: S.optional(StringList),
-  }),
-).annotate({ identifier: "Treemap" }) as any as S.Schema<Treemap>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-/** An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} */
-export interface MonitoredResource {
-  /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
-  type?: string;
-  /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
-  labels?: StringMap;
-}
-export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({
-  identifier: "MonitoredResource",
-}) as any as S.Schema<MonitoredResource>;
-
-export type MonitoredResourceList = Array<MonitoredResource>;
-export const MonitoredResourceList = /*@__PURE__*/ S.Array(
-  MonitoredResource,
-) as any as S.Schema<MonitoredResourceList>;
-
-/** A widget that displays a list of incidents */
-export interface IncidentList {
-  /** Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering. */
-  monitoredResources?: MonitoredResourceList;
-  /** Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization. */
-  policyNames?: StringList;
-}
-export const IncidentList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    monitoredResources: S.optional(MonitoredResourceList),
-    policyNames: S.optional(StringList),
-  }),
-).annotate({ identifier: "IncidentList" }) as any as S.Schema<IncidentList>;
-
-export type TextFormatEnum = "FORMAT_UNSPECIFIED" | "MARKDOWN" | "RAW";
-export const TextFormatEnum = /*@__PURE__*/ S.String;
-
-export type TextStylePointerLocationEnum =
-  | "POINTER_LOCATION_UNSPECIFIED"
-  | "PL_TOP"
-  | "PL_RIGHT"
-  | "PL_BOTTOM"
-  | "PL_LEFT"
-  | "PL_TOP_LEFT"
-  | "PL_TOP_RIGHT"
-  | "PL_RIGHT_TOP"
-  | "PL_RIGHT_BOTTOM"
-  | "PL_BOTTOM_RIGHT"
-  | "PL_BOTTOM_LEFT"
-  | "PL_LEFT_BOTTOM"
-  | "PL_LEFT_TOP";
-export const TextStylePointerLocationEnum = /*@__PURE__*/ S.String;
-
-export type TextStylePaddingEnum =
-  | "PADDING_SIZE_UNSPECIFIED"
-  | "P_EXTRA_SMALL"
-  | "P_SMALL"
-  | "P_MEDIUM"
-  | "P_LARGE"
-  | "P_EXTRA_LARGE";
-export const TextStylePaddingEnum = /*@__PURE__*/ S.String;
-
-export type TextStyleHorizontalAlignmentEnum =
-  | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
-  | "H_LEFT"
-  | "H_CENTER"
-  | "H_RIGHT";
-export const TextStyleHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
-
-export type TextStyleFontSizeEnum =
-  | "FONT_SIZE_UNSPECIFIED"
-  | "FS_EXTRA_SMALL"
-  | "FS_SMALL"
-  | "FS_MEDIUM"
-  | "FS_LARGE"
-  | "FS_EXTRA_LARGE";
-export const TextStyleFontSizeEnum = /*@__PURE__*/ S.String;
-
-export type TextStyleVerticalAlignmentEnum =
-  | "VERTICAL_ALIGNMENT_UNSPECIFIED"
-  | "V_TOP"
-  | "V_CENTER"
-  | "V_BOTTOM";
-export const TextStyleVerticalAlignmentEnum = /*@__PURE__*/ S.String;
-
-/** Properties that determine how the title and content are styled */
-export interface TextStyle {
-  /** The text color as a hex string. "#RRGGBB" or "#RGB" */
-  textColor?: string;
-  /** The pointer location for this widget (also sometimes called a "tail") */
-  pointerLocation?: TextStylePointerLocationEnum | (string & {});
-  /** The amount of padding around the widget */
-  padding?: TextStylePaddingEnum | (string & {});
-  /** The horizontal alignment of both the title and content */
-  horizontalAlignment?: TextStyleHorizontalAlignmentEnum | (string & {});
-  /** Font sizes for both the title and content. The title will still be larger relative to the content. */
-  fontSize?: TextStyleFontSizeEnum | (string & {});
-  /** The background color as a hex string. "#RRGGBB" or "#RGB" */
-  backgroundColor?: string;
-  /** The vertical alignment of both the title and content */
-  verticalAlignment?: TextStyleVerticalAlignmentEnum | (string & {});
-}
-export const TextStyle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    textColor: S.optional(S.String),
-    pointerLocation: S.optional(TextStylePointerLocationEnum),
-    padding: S.optional(TextStylePaddingEnum),
-    horizontalAlignment: S.optional(TextStyleHorizontalAlignmentEnum),
-    fontSize: S.optional(TextStyleFontSizeEnum),
-    backgroundColor: S.optional(S.String),
-    verticalAlignment: S.optional(TextStyleVerticalAlignmentEnum),
-  }),
-).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
-
-/** A widget that displays textual content. */
-export interface Text {
-  /** The text content to be displayed. */
-  content?: string;
-  /** How the text content is formatted. */
-  format?: TextFormatEnum | (string & {});
-  /** How the text is styled */
-  style?: TextStyle;
-}
-export const Text = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    format: S.optional(TextFormatEnum),
-    style: S.optional(TextStyle),
-  }),
-).annotate({ identifier: "Text" }) as any as S.Schema<Text>;
 
 export type TemplateVariableConditionComparatorEnum =
   | "COMPARATOR_UNSPECIFIED"
@@ -1408,78 +237,1171 @@ export const VisibilityCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisibilityCondition",
 }) as any as S.Schema<VisibilityCondition>;
 
-/** A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
-export interface CollapsibleGroup {
-  /** The collapsed state of the widget on first page load. */
-  collapsed?: boolean;
+/** A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive). */
+export interface GaugeView {
+  /** The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this. */
+  lowerBound?: number;
+  /** The upper bound for this gauge chart. The value of the chart should always be less than or equal to this. */
+  upperBound?: number;
 }
-export const CollapsibleGroup = /*@__PURE__*/ S.suspend(() =>
+export const GaugeView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    collapsed: S.optional(S.Boolean),
+    lowerBound: S.optional(S.Number),
+    upperBound: S.optional(S.Number),
+  }),
+).annotate({ identifier: "GaugeView" }) as any as S.Schema<GaugeView>;
+
+export type SparkChartViewSparkChartTypeEnum =
+  | "SPARK_CHART_TYPE_UNSPECIFIED"
+  | "SPARK_LINE"
+  | "SPARK_BAR";
+export const SparkChartViewSparkChartTypeEnum = /*@__PURE__*/ S.String;
+
+/** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
+export interface SparkChartView {
+  /** The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
+  minAlignmentPeriod?: string;
+  /** Required. The type of sparkchart to show in this chartView. */
+  sparkChartType?: SparkChartViewSparkChartTypeEnum | (string & {});
+}
+export const SparkChartView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minAlignmentPeriod: S.optional(S.String),
+    sparkChartType: S.optional(SparkChartViewSparkChartTypeEnum),
+  }),
+).annotate({ identifier: "SparkChartView" }) as any as S.Schema<SparkChartView>;
+
+/** Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release. */
+export interface Parameter {
+  /** An integer parameter value. */
+  intValue?: string;
+  /** A floating-point parameter value. */
+  doubleValue?: number;
+}
+export const Parameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    intValue: S.optional(S.String),
+    doubleValue: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
+
+export type ParameterList = Array<Parameter>;
+export const ParameterList = /*@__PURE__*/ S.Array(
+  Parameter,
+) as any as S.Schema<ParameterList>;
+
+/** Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release. */
+export interface AggregationFunction {
+  /** Optional. Parameters applied to the aggregation function. Only used for functions that require them. */
+  parameters?: ParameterList;
+  /** Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM() */
+  type?: string;
+}
+export const AggregationFunction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(ParameterList),
+    type: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CollapsibleGroup",
-}) as any as S.Schema<CollapsibleGroup>;
+  identifier: "AggregationFunction",
+}) as any as S.Schema<AggregationFunction>;
+
+export type BreakdownSortOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "SORT_ORDER_NONE"
+  | "SORT_ORDER_ASCENDING"
+  | "SORT_ORDER_DESCENDING";
+export const BreakdownSortOrderEnum = /*@__PURE__*/ S.String;
+
+/** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
+export interface Breakdown {
+  /** Required. A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field. */
+  limit?: number;
+  /** Required. The Aggregation function is applied across all data in each breakdown created. */
+  aggregationFunction?: AggregationFunction;
+  /** Required. The sort order is applied to the values of the breakdown column. */
+  sortOrder?: BreakdownSortOrderEnum | (string & {});
+  /** Required. The name of the column in the dataset containing the breakdown values. */
+  column?: string;
+}
+export const Breakdown = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    limit: S.optional(S.Number),
+    aggregationFunction: S.optional(AggregationFunction),
+    sortOrder: S.optional(BreakdownSortOrderEnum),
+    column: S.optional(S.String),
+  }),
+).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
+
+export type BreakdownList = Array<Breakdown>;
+export const BreakdownList = /*@__PURE__*/ S.Array(
+  Breakdown,
+) as any as S.Schema<BreakdownList>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
+export type ThresholdTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
+export const ThresholdTargetAxisEnum = /*@__PURE__*/ S.String;
+
+export type ThresholdColorEnum = "COLOR_UNSPECIFIED" | "YELLOW" | "RED";
+export const ThresholdColorEnum = /*@__PURE__*/ S.String;
+
+export type ThresholdDirectionEnum =
+  | "DIRECTION_UNSPECIFIED"
+  | "ABOVE"
+  | "BELOW";
+export const ThresholdDirectionEnum = /*@__PURE__*/ S.String;
+
+/** Defines a threshold for categorizing time series values. */
+export interface Threshold {
+  /** The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard. */
+  targetAxis?: ThresholdTargetAxisEnum | (string & {});
+  /** A label for the threshold. */
+  label?: string;
+  /** The state color for this threshold. Color is not allowed in a XyChart. */
+  color?: ThresholdColorEnum | (string & {});
+  /** The direction for the current threshold. Direction is not allowed in a XyChart. */
+  direction?: ThresholdDirectionEnum | (string & {});
+  /** The value of the threshold. The value should be defined in the native scale of the metric. */
+  value?: number;
+}
+export const Threshold = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetAxis: S.optional(ThresholdTargetAxisEnum),
+    label: S.optional(S.String),
+    color: S.optional(ThresholdColorEnum),
+    direction: S.optional(ThresholdDirectionEnum),
+    value: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
+
+export type ThresholdList = Array<Threshold>;
+export const ThresholdList = /*@__PURE__*/ S.Array(
+  Threshold,
+) as any as S.Schema<ThresholdList>;
+
+export type AggregationPerSeriesAlignerEnum =
+  | "ALIGN_NONE"
+  | "ALIGN_DELTA"
+  | "ALIGN_RATE"
+  | "ALIGN_INTERPOLATE"
+  | "ALIGN_NEXT_OLDER"
+  | "ALIGN_MIN"
+  | "ALIGN_MAX"
+  | "ALIGN_MEAN"
+  | "ALIGN_COUNT"
+  | "ALIGN_SUM"
+  | "ALIGN_STDDEV"
+  | "ALIGN_COUNT_TRUE"
+  | "ALIGN_COUNT_FALSE"
+  | "ALIGN_FRACTION_TRUE"
+  | "ALIGN_PERCENTILE_99"
+  | "ALIGN_PERCENTILE_95"
+  | "ALIGN_PERCENTILE_50"
+  | "ALIGN_PERCENTILE_05"
+  | "ALIGN_PERCENT_CHANGE";
+export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
+
+export type AggregationCrossSeriesReducerEnum =
+  | "REDUCE_NONE"
+  | "REDUCE_MEAN"
+  | "REDUCE_MIN"
+  | "REDUCE_MAX"
+  | "REDUCE_SUM"
+  | "REDUCE_STDDEV"
+  | "REDUCE_COUNT"
+  | "REDUCE_COUNT_TRUE"
+  | "REDUCE_COUNT_FALSE"
+  | "REDUCE_FRACTION_TRUE"
+  | "REDUCE_PERCENTILE_99"
+  | "REDUCE_PERCENTILE_95"
+  | "REDUCE_PERCENTILE_50"
+  | "REDUCE_PERCENTILE_05";
+export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
+
+/** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
+export interface Aggregation {
+  /** The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks. */
+  alignmentPeriod?: string;
+  /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
+  perSeriesAligner?: AggregationPerSeriesAlignerEnum | (string & {});
+  /** The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned. */
+  crossSeriesReducer?: AggregationCrossSeriesReducerEnum | (string & {});
+  /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
+  groupByFields?: StringList;
+}
+export const Aggregation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alignmentPeriod: S.optional(S.String),
+    perSeriesAligner: S.optional(AggregationPerSeriesAlignerEnum),
+    crossSeriesReducer: S.optional(AggregationCrossSeriesReducerEnum),
+    groupByFields: S.optional(StringList),
+  }),
+).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
+
+/** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
+export interface Interval {
+  /** Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start. */
+  startTime?: string;
+  /** Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end. */
+  endTime?: string;
+}
+export const Interval = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
+
+export type PickTimeSeriesFilterRankingMethodEnum =
+  | "METHOD_UNSPECIFIED"
+  | "METHOD_MEAN"
+  | "METHOD_MAX"
+  | "METHOD_MIN"
+  | "METHOD_SUM"
+  | "METHOD_LATEST";
+export const PickTimeSeriesFilterRankingMethodEnum = /*@__PURE__*/ S.String;
+
+export type PickTimeSeriesFilterDirectionEnum =
+  | "DIRECTION_UNSPECIFIED"
+  | "TOP"
+  | "BOTTOM";
+export const PickTimeSeriesFilterDirectionEnum = /*@__PURE__*/ S.String;
+
+/** Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter. */
+export interface PickTimeSeriesFilter {
+  /** Select the top N streams/time series within this time interval */
+  interval?: Interval;
+  /** ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series. */
+  rankingMethod?: PickTimeSeriesFilterRankingMethodEnum | (string & {});
+  /** How to use the ranking to select time series that pass through the filter. */
+  direction?: PickTimeSeriesFilterDirectionEnum | (string & {});
+  /** How many time series to allow to pass through the filter. */
+  numTimeSeries?: number;
+}
+export const PickTimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interval: S.optional(Interval),
+    rankingMethod: S.optional(PickTimeSeriesFilterRankingMethodEnum),
+    direction: S.optional(PickTimeSeriesFilterDirectionEnum),
+    numTimeSeries: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PickTimeSeriesFilter",
+}) as any as S.Schema<PickTimeSeriesFilter>;
+
+export type StatisticalTimeSeriesFilterRankingMethodEnum =
+  | "METHOD_UNSPECIFIED"
+  | "METHOD_CLUSTER_OUTLIER";
+export const StatisticalTimeSeriesFilterRankingMethodEnum =
+  /*@__PURE__*/ S.String;
+
+/** A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API. */
+export interface StatisticalTimeSeriesFilter {
+  /** rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series. */
+  rankingMethod?: StatisticalTimeSeriesFilterRankingMethodEnum | (string & {});
+  /** How many time series to output. */
+  numTimeSeries?: number;
+}
+export const StatisticalTimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rankingMethod: S.optional(StatisticalTimeSeriesFilterRankingMethodEnum),
+    numTimeSeries: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StatisticalTimeSeriesFilter",
+}) as any as S.Schema<StatisticalTimeSeriesFilter>;
+
+/** A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method. */
+export interface TimeSeriesFilter {
+  /** Apply a second aggregation after aggregation is applied. */
+  secondaryAggregation?: Aggregation;
+  /** Ranking based time series filter. */
+  pickTimeSeriesFilter?: PickTimeSeriesFilter;
+  /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
+  filter?: string;
+  /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
+  aggregation?: Aggregation;
+  /** Statistics based time series filter. Note: This field is deprecated and completely ignored by the API. */
+  statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
+}
+export const TimeSeriesFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    secondaryAggregation: S.optional(Aggregation),
+    pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
+    filter: S.optional(S.String),
+    aggregation: S.optional(Aggregation),
+    statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
+  }),
+).annotate({
+  identifier: "TimeSeriesFilter",
+}) as any as S.Schema<TimeSeriesFilter>;
+
+/** Span attribute key and list of values to be used for filtering. */
+export interface SpanAttributeFilter {
+  /** Key of the attribute */
+  key?: string;
+  /** List of attribute values for given key. Multiple values will be OR'd together. */
+  value?: StringList;
+}
+export const SpanAttributeFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "SpanAttributeFilter",
+}) as any as S.Schema<SpanAttributeFilter>;
+
+export type SpanAttributeFilterList = Array<SpanAttributeFilter>;
+export const SpanAttributeFilterList = /*@__PURE__*/ S.Array(
+  SpanAttributeFilter,
+) as any as S.Schema<SpanAttributeFilterList>;
+
+/** First version of span filtering that is supported by the Trace component. */
+export interface SpanFilters {
+  /** Optional. Filtering for spans with a minimum duration. */
+  minDuration?: string;
+  /** Optional. Filtering for spans containing one of the Apphub workload IDs in the list. Multiple values will be OR'd together. Example: "workload-id1", "workload-id2" */
+  apphubWorkloads?: StringList;
+  /** Optional. Filtering for spans containing one of the services in the list. Multiple values will be OR'd together. */
+  services?: StringList;
+  /** Optional. Filtering for spans containing one of the Apphub Application IDs in the list. Multiple values will be OR'd together. */
+  applicationIds?: StringList;
+  /** Optional. Filtering for spans with a maximum duration. */
+  maxDuration?: string;
+  /** Optional. Filtering for spans containing one of the span display names in the list. Multiple values will be OR'd together. */
+  displayNames?: StringList;
+  /** Optional. Filtering for spans containing one of the statuses in the list. Multiple values will be OR'd together. */
+  status?: StringList;
+  /** Optional. Filtering for spans containing one of the Apphub service IDs in the list. Multiple values will be OR'd together. Example: "service-id1", "service-id2" */
+  apphubServices?: StringList;
+  /** Optional. Filters for root spans only if set to true. A root span is a span without a defined parent span ID. */
+  isRootSpan?: boolean;
+  /** Optional. List of span attribute filters. Each SpanAttributeFilter key must be unique. Multiple attribute filters will be AND'd together. */
+  attributes?: SpanAttributeFilterList;
+  /** Optional. Filtering for spans containing one of the kinds in the list. Multiple values will be OR'd together. */
+  kinds?: StringList;
+}
+export const SpanFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minDuration: S.optional(S.String),
+    apphubWorkloads: S.optional(StringList),
+    services: S.optional(StringList),
+    applicationIds: S.optional(StringList),
+    maxDuration: S.optional(S.String),
+    displayNames: S.optional(StringList),
+    status: S.optional(StringList),
+    apphubServices: S.optional(StringList),
+    isRootSpan: S.optional(S.Boolean),
+    attributes: S.optional(SpanAttributeFilterList),
+    kinds: S.optional(StringList),
+  }),
+).annotate({ identifier: "SpanFilters" }) as any as S.Schema<SpanFilters>;
+
+export type TraceQuerySpanDataValueEnum =
+  | "SPAN_DATA_VALUE_UNSPECIFIED"
+  | "SPAN_COUNT"
+  | "SPAN_DURATION"
+  | "SPAN_DURATION_PERCENTILES";
+export const TraceQuerySpanDataValueEnum = /*@__PURE__*/ S.String;
+
+/** LINT.IfChange Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
+export interface TraceQuery {
+  /** First version of span filtering that we will support. Required. */
+  spanFilters?: SpanFilters;
+  /** Optional. The resource name of the project or Trace scope to fetch data from. If empty, the widget will default to the project's default Trace scope. If scope cannot be determined, then we fallback to the current project. Optional. */
+  resourceContainer?: string;
+  /** The type of span data value to be displayed on the chart. Required. */
+  spanDataValue?: TraceQuerySpanDataValueEnum | (string & {});
+}
+export const TraceQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spanFilters: S.optional(SpanFilters),
+    resourceContainer: S.optional(S.String),
+    spanDataValue: S.optional(TraceQuerySpanDataValueEnum),
+  }),
+).annotate({ identifier: "TraceQuery" }) as any as S.Schema<TraceQuery>;
+
+/** Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release. */
+export interface OpsAnalyticsQuery {
+  /** A SQL query to fetch time series, category series, or numeric series data. */
+  sql?: string;
+}
+export const OpsAnalyticsQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sql: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OpsAnalyticsQuery",
+}) as any as S.Schema<OpsAnalyticsQuery>;
+
+/** Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio. */
+export interface RatioPart {
+  /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
+  filter?: string;
+  /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
+  aggregation?: Aggregation;
+}
+export const RatioPart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String),
+    aggregation: S.optional(Aggregation),
+  }),
+).annotate({ identifier: "RatioPart" }) as any as S.Schema<RatioPart>;
+
+/** A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series. */
+export interface TimeSeriesFilterRatio {
+  /** The numerator of the ratio. */
+  numerator?: RatioPart;
+  /** Statistics based time series filter. Note: This field is deprecated and completely ignored by the API. */
+  statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
+  /** Ranking based time series filter. */
+  pickTimeSeriesFilter?: PickTimeSeriesFilter;
+  /** Apply a second aggregation after the ratio is computed. */
+  secondaryAggregation?: Aggregation;
+  /** The denominator of the ratio. */
+  denominator?: RatioPart;
+}
+export const TimeSeriesFilterRatio = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    numerator: S.optional(RatioPart),
+    statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
+    pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
+    secondaryAggregation: S.optional(Aggregation),
+    denominator: S.optional(RatioPart),
+  }),
+).annotate({
+  identifier: "TimeSeriesFilterRatio",
+}) as any as S.Schema<TimeSeriesFilterRatio>;
+
+/** TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API. */
+export interface TimeSeriesQuery {
+  /** A query used to fetch time series with MQL. */
+  timeSeriesQueryLanguage?: string;
+  /** A query used to fetch time series with PromQL. */
+  prometheusQuery?: string;
+  /** Filter parameters to fetch time series. */
+  timeSeriesFilter?: TimeSeriesFilter;
+  /** The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor. */
+  unitOverride?: string;
+  /** Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart */
+  outputFullDuration?: boolean;
+  /** Optional. Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
+  traceQuery?: TraceQuery;
+  /** Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release. */
+  opsAnalyticsQuery?: OpsAnalyticsQuery;
+  /** Parameters to fetch a ratio between two time series filters. */
+  timeSeriesFilterRatio?: TimeSeriesFilterRatio;
+}
+export const TimeSeriesQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeSeriesQueryLanguage: S.optional(S.String),
+    prometheusQuery: S.optional(S.String),
+    timeSeriesFilter: S.optional(TimeSeriesFilter),
+    unitOverride: S.optional(S.String),
+    outputFullDuration: S.optional(S.Boolean),
+    traceQuery: S.optional(TraceQuery),
+    opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
+    timeSeriesFilterRatio: S.optional(TimeSeriesFilterRatio),
+  }),
+).annotate({
+  identifier: "TimeSeriesQuery",
+}) as any as S.Schema<TimeSeriesQuery>;
+
+/** A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc. */
+export interface Measure {
+  /** Required. The column name within in the dataset used for the measure. */
+  column?: string;
+  /** Required. The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins. */
+  aggregationFunction?: AggregationFunction;
+}
+export const Measure = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    column: S.optional(S.String),
+    aggregationFunction: S.optional(AggregationFunction),
+  }),
+).annotate({ identifier: "Measure" }) as any as S.Schema<Measure>;
+
+export type MeasureList = Array<Measure>;
+export const MeasureList = /*@__PURE__*/ S.Array(
+  Measure,
+) as any as S.Schema<MeasureList>;
+
+export type DimensionSortOrderEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "SORT_ORDER_NONE"
+  | "SORT_ORDER_ASCENDING"
+  | "SORT_ORDER_DESCENDING";
+export const DimensionSortOrderEnum = /*@__PURE__*/ S.String;
+
+/** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
+export interface Dimension {
+  /** The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used. */
+  sortColumn?: string;
+  /** time_bin_size is used when the data type of the specified dimension is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours. */
+  timeBinSize?: string;
+  /** Required. For widgets that use SQL queries, set the value to the name of the column in the results table whose data is charted. For a histogram that uses a time series query, set the value of this field to metric_value. */
+  column?: string;
+  /** For widgets that use SQL queries, the limit to the number of bins to generate. When 0 is specified, the maximum count is not enforced. For a histogram that uses a time series query, the exact number of bins to generate. If not specified or the value is 0, then the histogram determines the number of bins to use. */
+  maxBinCount?: number;
+  /** The minimum value for the x-axis. */
+  xMin?: number;
+  /** Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column. */
+  floatBinSize?: number;
+  /** The maximum value for the x-axis. */
+  xMax?: number;
+  /** numeric_bin_size is used when the column type used for a dimension is numeric or string. If the column field is set to metric_value, then numericBinSize overrides maxBinCount. */
+  numericBinSize?: number;
+  /** The sort order applied to the sort column. */
+  sortOrder?: DimensionSortOrderEnum | (string & {});
+  /** Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64. */
+  columnType?: string;
+}
+export const Dimension = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sortColumn: S.optional(S.String),
+    timeBinSize: S.optional(S.String),
+    column: S.optional(S.String),
+    maxBinCount: S.optional(S.Number),
+    xMin: S.optional(S.Number),
+    floatBinSize: S.optional(S.Number),
+    xMax: S.optional(S.Number),
+    numericBinSize: S.optional(S.Number),
+    sortOrder: S.optional(DimensionSortOrderEnum),
+    columnType: S.optional(S.String),
+  }),
+).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
+
+export type DimensionList = Array<Dimension>;
+export const DimensionList = /*@__PURE__*/ S.Array(
+  Dimension,
+) as any as S.Schema<DimensionList>;
+
+/** A widget showing the latest value of a metric, and how this value relates to one or more thresholds. */
+export interface Scorecard {
+  /** Will cause the scorecard to show a gauge chart. */
+  gaugeView?: GaugeView;
+  /** Will cause the scorecard to show a spark chart. */
+  sparkChartView?: SparkChartView;
+  /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
+  breakdowns?: BreakdownList;
+  /** Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds. */
+  blankView?: Empty;
+  /** The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state. */
+  thresholds?: ThresholdList;
+  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
+  timeSeriesQuery?: TimeSeriesQuery;
+  /** Optional. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
+  measures?: MeasureList;
+  /** Optional. A dimension is a structured label, class, or category for a set of measurements in your data. */
+  dimensions?: DimensionList;
+}
+export const Scorecard = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gaugeView: S.optional(GaugeView),
+    sparkChartView: S.optional(SparkChartView),
+    breakdowns: S.optional(BreakdownList),
+    blankView: S.optional(Empty),
+    thresholds: S.optional(ThresholdList),
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+    measures: S.optional(MeasureList),
+    dimensions: S.optional(DimensionList),
+  }),
+).annotate({ identifier: "Scorecard" }) as any as S.Schema<Scorecard>;
+
+/** Table display options that can be reused. */
+export interface TableDisplayOptions {
+  /** Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings */
+  shownColumns?: StringList;
+}
+export const TableDisplayOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    shownColumns: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TableDisplayOptions",
+}) as any as S.Schema<TableDisplayOptions>;
+
+/** Groups a time series query definition with table options. */
+export interface TableDataSet {
+  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
+  timeSeriesQuery?: TimeSeriesQuery;
+  /** Optional. Table display options for configuring how the table is rendered. */
+  tableDisplayOptions?: TableDisplayOptions;
+  /** Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}." */
+  tableTemplate?: string;
+  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals. */
+  minAlignmentPeriod?: string;
+}
+export const TableDataSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+    tableDisplayOptions: S.optional(TableDisplayOptions),
+    tableTemplate: S.optional(S.String),
+    minAlignmentPeriod: S.optional(S.String),
+  }),
+).annotate({ identifier: "TableDataSet" }) as any as S.Schema<TableDataSet>;
+
+export type TableDataSetList = Array<TableDataSet>;
+export const TableDataSetList = /*@__PURE__*/ S.Array(
+  TableDataSet,
+) as any as S.Schema<TableDataSetList>;
+
+export type TimeSeriesTableMetricVisualizationEnum =
+  | "METRIC_VISUALIZATION_UNSPECIFIED"
+  | "NUMBER"
+  | "BAR";
+export const TimeSeriesTableMetricVisualizationEnum = /*@__PURE__*/ S.String;
+
+export type ColumnSettingsAlignmentEnum =
+  | "CELL_ALIGNMENT_UNSPECIFIED"
+  | "LEFT"
+  | "CENTER"
+  | "RIGHT";
+export const ColumnSettingsAlignmentEnum = /*@__PURE__*/ S.String;
+
+/** The persistent settings for a table's columns. */
+export interface ColumnSettings {
+  /** Required. Whether the column should be visible on page load. */
+  visible?: boolean;
+  /** Optional. Display name of the column */
+  displayName?: string;
+  /** Required. The id of the column. */
+  column?: string;
+  /** Optional. Whether the column should be left / middle / right aligned */
+  alignment?: ColumnSettingsAlignmentEnum | (string & {});
+  /** Optional. The thresholds used to determine how the table cell should be rendered given the time series' current value. */
+  thresholds?: ThresholdList;
+}
+export const ColumnSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    visible: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    column: S.optional(S.String),
+    alignment: S.optional(ColumnSettingsAlignmentEnum),
+    thresholds: S.optional(ThresholdList),
+  }),
+).annotate({ identifier: "ColumnSettings" }) as any as S.Schema<ColumnSettings>;
+
+export type ColumnSettingsList = Array<ColumnSettings>;
+export const ColumnSettingsList = /*@__PURE__*/ S.Array(
+  ColumnSettings,
+) as any as S.Schema<ColumnSettingsList>;
+
+/** A table that displays time series data. */
+export interface TimeSeriesTable {
+  /** Required. The data displayed in this table. */
+  dataSets?: TableDataSetList;
+  /** Optional. Store rendering strategy */
+  metricVisualization?: TimeSeriesTableMetricVisualizationEnum | (string & {});
+  /** Optional. The list of the persistent column settings for the table. */
+  columnSettings?: ColumnSettingsList;
+}
+export const TimeSeriesTable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSets: S.optional(TableDataSetList),
+    metricVisualization: S.optional(TimeSeriesTableMetricVisualizationEnum),
+    columnSettings: S.optional(ColumnSettingsList),
+  }),
+).annotate({
+  identifier: "TimeSeriesTable",
+}) as any as S.Schema<TimeSeriesTable>;
+
+/** A widget that displays an input field to change the value of a template variable. */
+export interface FilterControl {
+  /** Name of the template variable the widget affects. */
+  templateVariable?: string;
+}
+export const FilterControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templateVariable: S.optional(S.String),
+  }),
+).annotate({ identifier: "FilterControl" }) as any as S.Schema<FilterControl>;
+
+export type SingleViewGroupDisplayTypeEnum =
+  | "DISPLAY_TYPE_UNSPECIFIED"
+  | "DROPDOWN"
+  | "TAB";
+export const SingleViewGroupDisplayTypeEnum = /*@__PURE__*/ S.String;
+
+/** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
+export interface SingleViewGroup {
+  /** Optional. Determines how the widget selector will be displayed. */
+  displayType?: SingleViewGroupDisplayTypeEnum | (string & {});
+}
+export const SingleViewGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayType: S.optional(SingleViewGroupDisplayTypeEnum),
+  }),
+).annotate({
+  identifier: "SingleViewGroup",
+}) as any as S.Schema<SingleViewGroup>;
+
+export type DataSetPlotTypeEnum =
+  | "PLOT_TYPE_UNSPECIFIED"
+  | "LINE"
+  | "STACKED_AREA"
+  | "STACKED_BAR"
+  | "HEATMAP";
+export const DataSetPlotTypeEnum = /*@__PURE__*/ S.String;
+
+export type ColumnSortingOptionsDirectionEnum =
+  | "SORT_ORDER_UNSPECIFIED"
+  | "SORT_ORDER_NONE"
+  | "SORT_ORDER_ASCENDING"
+  | "SORT_ORDER_DESCENDING";
+export const ColumnSortingOptionsDirectionEnum = /*@__PURE__*/ S.String;
+
+/** Data structure to storing column's sort strategy */
+export interface ColumnSortingOptions {
+  /** Optional. Column name to sort data by */
+  column?: string;
+  /** Optional. A sorting direction that determines ascending or descending order. This is a legacy field kept for backwards compatibility with table. */
+  direction?: ColumnSortingOptionsDirectionEnum | (string & {});
+}
+export const ColumnSortingOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    column: S.optional(S.String),
+    direction: S.optional(ColumnSortingOptionsDirectionEnum),
+  }),
+).annotate({
+  identifier: "ColumnSortingOptions",
+}) as any as S.Schema<ColumnSortingOptions>;
+
+export type ColumnSortingOptionsList = Array<ColumnSortingOptions>;
+export const ColumnSortingOptionsList = /*@__PURE__*/ S.Array(
+  ColumnSortingOptions,
+) as any as S.Schema<ColumnSortingOptionsList>;
+
+export type DataSetTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
+export const DataSetTargetAxisEnum = /*@__PURE__*/ S.String;
+
+/** Groups a time series query definition with charting options. */
+export interface DataSet {
+  /** Optional. A collection of dimension columns. */
+  dimensions?: DimensionList;
+  /** Required. Fields for querying time series data from the Stackdriver metrics API. */
+  timeSeriesQuery?: TimeSeriesQuery;
+  /** Optional. A collection of measures. */
+  measures?: MeasureList;
+  /** A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value. */
+  legendTemplate?: string;
+  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
+  minAlignmentPeriod?: string;
+  /** How this data should be plotted on the chart. */
+  plotType?: DataSetPlotTypeEnum | (string & {});
+  /** Optional. A collection of sort options, affects the order of the data and legend. */
+  sort?: ColumnSortingOptionsList;
+  /** Optional. The target axis to use for plotting the metric. */
+  targetAxis?: DataSetTargetAxisEnum | (string & {});
+  /** Optional. The collection of breakdowns to be applied to the dataset. */
+  breakdowns?: BreakdownList;
+}
+export const DataSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: S.optional(DimensionList),
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+    measures: S.optional(MeasureList),
+    legendTemplate: S.optional(S.String),
+    minAlignmentPeriod: S.optional(S.String),
+    plotType: S.optional(DataSetPlotTypeEnum),
+    sort: S.optional(ColumnSortingOptionsList),
+    targetAxis: S.optional(DataSetTargetAxisEnum),
+    breakdowns: S.optional(BreakdownList),
+  }),
+).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
+
+export type DataSetList = Array<DataSet>;
+export const DataSetList = /*@__PURE__*/ S.Array(
+  DataSet,
+) as any as S.Schema<DataSetList>;
+
+export type AxisScaleEnum = "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10";
+export const AxisScaleEnum = /*@__PURE__*/ S.String;
+
+/** A chart axis. */
+export interface Axis {
+  /** The label of the axis. */
+  label?: string;
+  /** The axis scale. By default, a linear scale is used. */
+  scale?: AxisScaleEnum | (string & {});
+}
+export const Axis = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(S.String),
+    scale: S.optional(AxisScaleEnum),
+  }),
+).annotate({ identifier: "Axis" }) as any as S.Schema<Axis>;
+
+export type ChartOptionsModeEnum =
+  | "MODE_UNSPECIFIED"
+  | "COLOR"
+  | "X_RAY"
+  | "STATS";
+export const ChartOptionsModeEnum = /*@__PURE__*/ S.String;
+
+/** Options to control visual rendering of a chart. */
+export interface ChartOptions {
+  /** Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release. */
+  displayHorizontal?: boolean;
+  /** The chart mode. */
+  mode?: ChartOptionsModeEnum | (string & {});
+}
+export const ChartOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayHorizontal: S.optional(S.Boolean),
+    mode: S.optional(ChartOptionsModeEnum),
+  }),
+).annotate({ identifier: "ChartOptions" }) as any as S.Schema<ChartOptions>;
+
+/** A chart that displays data on a 2D (X and Y axes) plane. */
+export interface XyChart {
+  /** Required. The data displayed in this chart. */
+  dataSets?: DataSetList;
+  /** Threshold lines drawn horizontally across the chart. */
+  thresholds?: ThresholdList;
+  /** The properties applied to the x-axis. */
+  xAxis?: Axis;
+  /** The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type. */
+  timeshiftDuration?: string;
+  /** The properties applied to the y-axis. */
+  yAxis?: Axis;
+  /** Display options for the chart. */
+  chartOptions?: ChartOptions;
+  /** The properties applied to the y2-axis. */
+  y2Axis?: Axis;
+}
+export const XyChart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSets: S.optional(DataSetList),
+    thresholds: S.optional(ThresholdList),
+    xAxis: S.optional(Axis),
+    timeshiftDuration: S.optional(S.String),
+    yAxis: S.optional(Axis),
+    chartOptions: S.optional(ChartOptions),
+    y2Axis: S.optional(Axis),
+  }),
+).annotate({ identifier: "XyChart" }) as any as S.Schema<XyChart>;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+/** An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} */
+export interface MonitoredResource {
+  /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
+  labels?: StringMap;
+  /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
+  type?: string;
+}
+export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labels: S.optional(StringMap),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MonitoredResource",
+}) as any as S.Schema<MonitoredResource>;
+
+export type MonitoredResourceList = Array<MonitoredResource>;
+export const MonitoredResourceList = /*@__PURE__*/ S.Array(
+  MonitoredResource,
+) as any as S.Schema<MonitoredResourceList>;
+
+/** A widget that displays a list of incidents */
+export interface IncidentList {
+  /** Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering. */
+  monitoredResources?: MonitoredResourceList;
+  /** Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization. */
+  policyNames?: StringList;
+}
+export const IncidentList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    monitoredResources: S.optional(MonitoredResourceList),
+    policyNames: S.optional(StringList),
+  }),
+).annotate({ identifier: "IncidentList" }) as any as S.Schema<IncidentList>;
+
+export type TextFormatEnum = "FORMAT_UNSPECIFIED" | "MARKDOWN" | "RAW";
+export const TextFormatEnum = /*@__PURE__*/ S.String;
+
+export type TextStylePaddingEnum =
+  | "PADDING_SIZE_UNSPECIFIED"
+  | "P_EXTRA_SMALL"
+  | "P_SMALL"
+  | "P_MEDIUM"
+  | "P_LARGE"
+  | "P_EXTRA_LARGE";
+export const TextStylePaddingEnum = /*@__PURE__*/ S.String;
+
+export type TextStyleVerticalAlignmentEnum =
+  | "VERTICAL_ALIGNMENT_UNSPECIFIED"
+  | "V_TOP"
+  | "V_CENTER"
+  | "V_BOTTOM";
+export const TextStyleVerticalAlignmentEnum = /*@__PURE__*/ S.String;
+
+export type TextStyleHorizontalAlignmentEnum =
+  | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
+  | "H_LEFT"
+  | "H_CENTER"
+  | "H_RIGHT";
+export const TextStyleHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
+
+export type TextStyleFontSizeEnum =
+  | "FONT_SIZE_UNSPECIFIED"
+  | "FS_EXTRA_SMALL"
+  | "FS_SMALL"
+  | "FS_MEDIUM"
+  | "FS_LARGE"
+  | "FS_EXTRA_LARGE";
+export const TextStyleFontSizeEnum = /*@__PURE__*/ S.String;
+
+export type TextStylePointerLocationEnum =
+  | "POINTER_LOCATION_UNSPECIFIED"
+  | "PL_TOP"
+  | "PL_RIGHT"
+  | "PL_BOTTOM"
+  | "PL_LEFT"
+  | "PL_TOP_LEFT"
+  | "PL_TOP_RIGHT"
+  | "PL_RIGHT_TOP"
+  | "PL_RIGHT_BOTTOM"
+  | "PL_BOTTOM_RIGHT"
+  | "PL_BOTTOM_LEFT"
+  | "PL_LEFT_BOTTOM"
+  | "PL_LEFT_TOP";
+export const TextStylePointerLocationEnum = /*@__PURE__*/ S.String;
+
+/** Properties that determine how the title and content are styled */
+export interface TextStyle {
+  /** The amount of padding around the widget */
+  padding?: TextStylePaddingEnum | (string & {});
+  /** The background color as a hex string. "#RRGGBB" or "#RGB" */
+  backgroundColor?: string;
+  /** The vertical alignment of both the title and content */
+  verticalAlignment?: TextStyleVerticalAlignmentEnum | (string & {});
+  /** The text color as a hex string. "#RRGGBB" or "#RGB" */
+  textColor?: string;
+  /** The horizontal alignment of both the title and content */
+  horizontalAlignment?: TextStyleHorizontalAlignmentEnum | (string & {});
+  /** Font sizes for both the title and content. The title will still be larger relative to the content. */
+  fontSize?: TextStyleFontSizeEnum | (string & {});
+  /** The pointer location for this widget (also sometimes called a "tail") */
+  pointerLocation?: TextStylePointerLocationEnum | (string & {});
+}
+export const TextStyle = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    padding: S.optional(TextStylePaddingEnum),
+    backgroundColor: S.optional(S.String),
+    verticalAlignment: S.optional(TextStyleVerticalAlignmentEnum),
+    textColor: S.optional(S.String),
+    horizontalAlignment: S.optional(TextStyleHorizontalAlignmentEnum),
+    fontSize: S.optional(TextStyleFontSizeEnum),
+    pointerLocation: S.optional(TextStylePointerLocationEnum),
+  }),
+).annotate({ identifier: "TextStyle" }) as any as S.Schema<TextStyle>;
+
+/** A widget that displays textual content. */
+export interface Text {
+  /** The text content to be displayed. */
+  content?: string;
+  /** How the text content is formatted. */
+  format?: TextFormatEnum | (string & {});
+  /** How the text is styled */
+  style?: TextStyle;
+}
+export const Text = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    format: S.optional(TextFormatEnum),
+    style: S.optional(TextStyle),
+  }),
+).annotate({ identifier: "Text" }) as any as S.Schema<Text>;
+
+/** A widget that displays a stream of log. */
+export interface LogsPanel {
+  /** A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries. */
+  filter?: string;
+  /** The names of logging resources to collect logs for. Currently projects and storage views are supported. If empty, the widget will default to the host project. */
+  resourceNames?: StringList;
+}
+export const LogsPanel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String),
+    resourceNames: S.optional(StringList),
+  }),
+).annotate({ identifier: "LogsPanel" }) as any as S.Schema<LogsPanel>;
+
+/** A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content. */
+export interface SectionHeader {
+  /** The subtitle of the section */
+  subtitle?: string;
+  /** Whether to insert a divider below the section in the table of contents */
+  dividerBelow?: boolean;
+}
+export const SectionHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subtitle: S.optional(S.String),
+    dividerBelow: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "SectionHeader" }) as any as S.Schema<SectionHeader>;
+
+/** The data represented by the treemap. Needs to include the data itself, plus rules on how to organize it hierarchically. */
+export interface TreemapDataSet {
+  /** Required. The query that fetches the relevant data. See google.monitoring.dashboard.v1.TimeSeriesQuery */
+  timeSeriesQuery?: TimeSeriesQuery;
+  /** Optional. A collection of measures. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
+  measures?: MeasureList;
+  /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
+  breakdowns?: BreakdownList;
+}
+export const TreemapDataSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+    measures: S.optional(MeasureList),
+    breakdowns: S.optional(BreakdownList),
+  }),
+).annotate({ identifier: "TreemapDataSet" }) as any as S.Schema<TreemapDataSet>;
+
+export type TreemapDataSetList = Array<TreemapDataSet>;
+export const TreemapDataSetList = /*@__PURE__*/ S.Array(
+  TreemapDataSet,
+) as any as S.Schema<TreemapDataSetList>;
+
+/** A widget that displays hierarchical data as a treemap. */
+export interface Treemap {
+  /** Required. Ordered labels representing the hierarchical treemap structure. */
+  treemapHierarchy?: StringList;
+  /** Required. The collection of datasets used to construct and populate the treemap. For the rendered treemap rectangles: Color is determined by the aggregated value for each grouping. Size is proportional to the count of time series aggregated within that rectangle's segment. */
+  dataSets?: TreemapDataSetList;
+}
+export const Treemap = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    treemapHierarchy: S.optional(StringList),
+    dataSets: S.optional(TreemapDataSetList),
+  }),
+).annotate({ identifier: "Treemap" }) as any as S.Schema<Treemap>;
+
+export type PieChartChartTypeEnum =
+  | "PIE_CHART_TYPE_UNSPECIFIED"
+  | "PIE"
+  | "DONUT";
+export const PieChartChartTypeEnum = /*@__PURE__*/ S.String;
+
+/** Groups a time series query definition. */
+export interface PieChartDataSet {
+  /** Required. The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery. */
+  timeSeriesQuery?: TimeSeriesQuery;
+  /** A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
+  measures?: MeasureList;
+  /** A dimension is a structured label, class, or category for a set of measurements in your data. */
+  dimensions?: DimensionList;
+  /** Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name. */
+  sliceNameTemplate?: string;
+  /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals. */
+  minAlignmentPeriod?: string;
+}
+export const PieChartDataSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+    measures: S.optional(MeasureList),
+    dimensions: S.optional(DimensionList),
+    sliceNameTemplate: S.optional(S.String),
+    minAlignmentPeriod: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PieChartDataSet",
+}) as any as S.Schema<PieChartDataSet>;
+
+export type PieChartDataSetList = Array<PieChartDataSet>;
+export const PieChartDataSetList = /*@__PURE__*/ S.Array(
+  PieChartDataSet,
+) as any as S.Schema<PieChartDataSetList>;
+
+/** A widget that displays timeseries data as a pie or a donut. */
+export interface PieChart {
+  /** Required. Indicates the visualization type for the PieChart. */
+  chartType?: PieChartChartTypeEnum | (string & {});
+  /** Required. The queries for the chart's data. */
+  dataSets?: PieChartDataSetList;
+  /** Optional. Indicates whether or not the pie chart should show slices' labels */
+  showLabels?: boolean;
+}
+export const PieChart = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    chartType: S.optional(PieChartChartTypeEnum),
+    dataSets: S.optional(PieChartDataSetList),
+    showLabels: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "PieChart" }) as any as S.Schema<PieChart>;
 
 /** Widget contains a single dashboard component and configuration of how to present the component in the dashboard. */
 export interface Widget {
-  /** Optional. The title of the widget. */
-  title?: string;
-  /** Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional. */
-  id?: string;
-  /** A scorecard summarizing time series data. */
-  scorecard?: Scorecard;
-  /** A widget that defines a section header for easier navigation of the dashboard. */
-  sectionHeader?: SectionHeader;
-  /** A widget that displays timeseries data as a pie chart. */
-  pieChart?: PieChart;
-  /** A chart of time series data. */
-  xyChart?: XyChart;
-  /** A chart of alert policy data. */
-  alertChart?: AlertChart;
   /** A widget that displays a list of error groups. */
   errorReportingPanel?: ErrorReportingPanel;
-  /** A widget that groups the other widgets by using a dropdown menu. */
-  singleViewGroup?: SingleViewGroup;
-  /** A widget that shows a stream of logs. */
-  logsPanel?: LogsPanel;
+  /** A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
+  collapsibleGroup?: CollapsibleGroup;
+  /** A chart of alert policy data. */
+  alertChart?: AlertChart;
+  /** Optional. If set, this widget is rendered only when the condition is evaluated to true. */
+  visibilityCondition?: VisibilityCondition;
+  /** Optional. The title of the widget. */
+  title?: string;
+  /** A scorecard summarizing time series data. */
+  scorecard?: Scorecard;
   /** A widget that displays time series data in a tabular format. */
   timeSeriesTable?: TimeSeriesTable;
   /** A widget that displays an input field to change the value of a template variable. */
   filterControl?: FilterControl;
-  /** A widget that displays data as a treemap. */
-  treemap?: Treemap;
-  /** A blank space. */
-  blank?: Empty;
+  /** A widget that groups the other widgets by using a dropdown menu. */
+  singleViewGroup?: SingleViewGroup;
+  /** A chart of time series data. */
+  xyChart?: XyChart;
+  /** Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional. */
+  id?: string;
   /** A widget that shows list of incidents. */
   incidentList?: IncidentList;
+  /** A blank space. */
+  blank?: Empty;
   /** A raw string or markdown displaying textual content. */
   text?: Text;
-  /** Optional. If set, this widget is rendered only when the condition is evaluated to true. */
-  visibilityCondition?: VisibilityCondition;
-  /** A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
-  collapsibleGroup?: CollapsibleGroup;
+  /** A widget that shows a stream of logs. */
+  logsPanel?: LogsPanel;
+  /** A widget that defines a section header for easier navigation of the dashboard. */
+  sectionHeader?: SectionHeader;
+  /** A widget that displays data as a treemap. */
+  treemap?: Treemap;
+  /** A widget that displays timeseries data as a pie chart. */
+  pieChart?: PieChart;
 }
 export const Widget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    title: S.optional(S.String),
-    id: S.optional(S.String),
-    scorecard: S.optional(Scorecard),
-    sectionHeader: S.optional(SectionHeader),
-    pieChart: S.optional(PieChart),
-    xyChart: S.optional(XyChart),
-    alertChart: S.optional(AlertChart),
     errorReportingPanel: S.optional(ErrorReportingPanel),
-    singleViewGroup: S.optional(SingleViewGroup),
-    logsPanel: S.optional(LogsPanel),
+    collapsibleGroup: S.optional(CollapsibleGroup),
+    alertChart: S.optional(AlertChart),
+    visibilityCondition: S.optional(VisibilityCondition),
+    title: S.optional(S.String),
+    scorecard: S.optional(Scorecard),
     timeSeriesTable: S.optional(TimeSeriesTable),
     filterControl: S.optional(FilterControl),
-    treemap: S.optional(Treemap),
-    blank: S.optional(Empty),
+    singleViewGroup: S.optional(SingleViewGroup),
+    xyChart: S.optional(XyChart),
+    id: S.optional(S.String),
     incidentList: S.optional(IncidentList),
+    blank: S.optional(Empty),
     text: S.optional(Text),
-    visibilityCondition: S.optional(VisibilityCondition),
-    collapsibleGroup: S.optional(CollapsibleGroup),
+    logsPanel: S.optional(LogsPanel),
+    sectionHeader: S.optional(SectionHeader),
+    treemap: S.optional(Treemap),
+    pieChart: S.optional(PieChart),
   }),
 ).annotate({ identifier: "Widget" }) as any as S.Schema<Widget>;
 
@@ -1487,114 +1409,6 @@ export type WidgetList = Array<Widget>;
 export const WidgetList = /*@__PURE__*/ S.Array(
   Widget,
 ) as any as S.Schema<WidgetList>;
-
-/** A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy. */
-export interface GridLayout {
-  /** The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering. */
-  columns?: string;
-  /** The informational elements that are arranged into the columns row-first. */
-  widgets?: WidgetList;
-}
-export const GridLayout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    columns: S.optional(S.String),
-    widgets: S.optional(WidgetList),
-  }),
-).annotate({ identifier: "GridLayout" }) as any as S.Schema<GridLayout>;
-
-/** Defines the layout properties and content for a row. */
-export interface Row {
-  /** The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering. */
-  weight?: string;
-  /** The display widgets arranged horizontally in this row. */
-  widgets?: WidgetList;
-}
-export const Row = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    weight: S.optional(S.String),
-    widgets: S.optional(WidgetList),
-  }),
-).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
-
-export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
-
-/** A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row. */
-export interface RowLayout {
-  /** The rows of content to display. */
-  rows?: RowList;
-}
-export const RowLayout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rows: S.optional(RowList),
-  }),
-).annotate({ identifier: "RowLayout" }) as any as S.Schema<RowLayout>;
-
-export type DashboardFilterValueTypeEnum =
-  | "VALUE_TYPE_UNSPECIFIED"
-  | "STRING"
-  | "STRING_ARRAY";
-export const DashboardFilterValueTypeEnum = /*@__PURE__*/ S.String;
-
-export type DashboardFilterFilterTypeEnum =
-  | "FILTER_TYPE_UNSPECIFIED"
-  | "RESOURCE_LABEL"
-  | "METRIC_LABEL"
-  | "USER_METADATA_LABEL"
-  | "SYSTEM_METADATA_LABEL"
-  | "GROUP"
-  | "VALUE_ONLY";
-export const DashboardFilterFilterTypeEnum = /*@__PURE__*/ S.String;
-
-/** An array of strings */
-export interface StringArray {
-  /** The values of the array */
-  values?: StringList;
-}
-export const StringArray = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(StringList),
-  }),
-).annotate({ identifier: "StringArray" }) as any as S.Schema<StringArray>;
-
-/** A filter to reduce the amount of data charted in relevant widgets. */
-export interface DashboardFilter {
-  /** The type of the filter value. If value_type is not provided, it will be inferred from the default_value. If neither value_type nor default_value is provided, value_type will be set to STRING by default. */
-  valueType?: DashboardFilterValueTypeEnum | (string & {});
-  /** The specified filter type */
-  filterType?: DashboardFilterFilterTypeEnum | (string & {});
-  /** A list of possible string values for the filter */
-  stringArray?: StringArray;
-  /** An array of variable-length string values. If this field is set, value_type must be set to STRING_ARRAY or VALUE_TYPE_UNSPECIFIED */
-  stringArrayValue?: StringArray;
-  /** A variable-length string value. If this field is set, value_type must be set to STRING or VALUE_TYPE_UNSPECIFIED */
-  stringValue?: string;
-  /** The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard. */
-  templateVariable?: string;
-  /** Optional. The key for the label. This must be omitted if the filter_type is VALUE_ONLY but is required otherwise. */
-  labelKey?: string;
-  /** A query to run to fetch possible values for the filter. Only OpsAnalyticsQueries are supported */
-  timeSeriesQuery?: TimeSeriesQuery;
-}
-export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valueType: S.optional(DashboardFilterValueTypeEnum),
-    filterType: S.optional(DashboardFilterFilterTypeEnum),
-    stringArray: S.optional(StringArray),
-    stringArrayValue: S.optional(StringArray),
-    stringValue: S.optional(S.String),
-    templateVariable: S.optional(S.String),
-    labelKey: S.optional(S.String),
-    timeSeriesQuery: S.optional(TimeSeriesQuery),
-  }),
-).annotate({
-  identifier: "DashboardFilter",
-}) as any as S.Schema<DashboardFilter>;
-
-export type DashboardFilterList = Array<DashboardFilter>;
-export const DashboardFilterList = /*@__PURE__*/ S.Array(
-  DashboardFilter,
-) as any as S.Schema<DashboardFilterList>;
 
 /** Defines the layout properties and content for a column. */
 export interface Column {
@@ -1626,26 +1440,116 @@ export const ColumnLayout = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnLayout" }) as any as S.Schema<ColumnLayout>;
 
+export type EventAnnotationEventTypeEnum =
+  | "EVENT_TYPE_UNSPECIFIED"
+  | "GKE_WORKLOAD_DEPLOYMENT"
+  | "GKE_POD_CRASH"
+  | "GKE_POD_UNSCHEDULABLE"
+  | "GKE_CONTAINER_CREATION_FAILED"
+  | "GKE_CLUSTER_CREATE_DELETE"
+  | "GKE_CLUSTER_UPDATE"
+  | "GKE_NODE_POOL_UPDATE"
+  | "GKE_CLUSTER_AUTOSCALER"
+  | "GKE_POD_AUTOSCALER"
+  | "VM_TERMINATION"
+  | "VM_GUEST_OS_ERROR"
+  | "VM_START_FAILED"
+  | "MIG_UPDATE"
+  | "MIG_AUTOSCALER"
+  | "CLOUD_RUN_DEPLOYMENT"
+  | "CLOUD_SQL_FAILOVER"
+  | "CLOUD_SQL_START_STOP"
+  | "CLOUD_SQL_STORAGE"
+  | "UPTIME_CHECK_FAILURE"
+  | "CLOUD_ALERTING_ALERT"
+  | "SERVICE_HEALTH_INCIDENT"
+  | "SAP_BACKINT"
+  | "SAP_AVAILABILITY"
+  | "SAP_OPERATIONS"
+  | "INTERCONNECT_MAINTENANCE_STARTED"
+  | "INTERCONNECT_MAINTENANCE_COMPLETED";
+export const EventAnnotationEventTypeEnum = /*@__PURE__*/ S.String;
+
+/** Annotation configuration for one event type on a dashboard */
+export interface EventAnnotation {
+  /** Solely for UI display. Should not be used programmatically. */
+  displayName?: string;
+  /** The type of event to display. */
+  eventType?: EventAnnotationEventTypeEnum | (string & {});
+  /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: “projects/another-project-id” */
+  resourceNames?: StringList;
+  /** Whether or not to show the events on the dashboard by default */
+  enabled?: boolean;
+  /** string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='user@example.com'" */
+  filter?: string;
+}
+export const EventAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    eventType: S.optional(EventAnnotationEventTypeEnum),
+    resourceNames: S.optional(StringList),
+    enabled: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventAnnotation",
+}) as any as S.Schema<EventAnnotation>;
+
+export type EventAnnotationList = Array<EventAnnotation>;
+export const EventAnnotationList = /*@__PURE__*/ S.Array(
+  EventAnnotation,
+) as any as S.Schema<EventAnnotationList>;
+
+/** Dashboard-level configuration for annotations */
+export interface DashboardAnnotations {
+  /** List of annotation configurations for this dashboard. Each entry specifies one event type. */
+  eventAnnotations?: EventAnnotationList;
+  /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: “projects/some-project-id” */
+  defaultResourceNames?: StringList;
+}
+export const DashboardAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventAnnotations: S.optional(EventAnnotationList),
+    defaultResourceNames: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DashboardAnnotations",
+}) as any as S.Schema<DashboardAnnotations>;
+
+/** A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy. */
+export interface GridLayout {
+  /** The informational elements that are arranged into the columns row-first. */
+  widgets?: WidgetList;
+  /** The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering. */
+  columns?: string;
+}
+export const GridLayout = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    widgets: S.optional(WidgetList),
+    columns: S.optional(S.String),
+  }),
+).annotate({ identifier: "GridLayout" }) as any as S.Schema<GridLayout>;
+
 /** A single tile in the mosaic. The placement and size of the tile are configurable. */
 export interface Tile {
-  /** The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1. */
-  width?: number;
-  /** The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1. */
-  height?: number;
   /** The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative. */
   xPos?: number;
-  /** The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative. */
-  yPos?: number;
   /** The informational widget contained in the tile. For example an XyChart. */
   widget?: Widget;
+  /** The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1. */
+  width?: number;
+  /** The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative. */
+  yPos?: number;
+  /** The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1. */
+  height?: number;
 }
 export const Tile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
     xPos: S.optional(S.Number),
-    yPos: S.optional(S.Number),
     widget: S.optional(Widget),
+    width: S.optional(S.Number),
+    yPos: S.optional(S.Number),
+    height: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Tile" }) as any as S.Schema<Tile>;
 
@@ -1668,41 +1572,135 @@ export const MosaicLayout = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MosaicLayout" }) as any as S.Schema<MosaicLayout>;
 
+/** Defines the layout properties and content for a row. */
+export interface Row {
+  /** The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering. */
+  weight?: string;
+  /** The display widgets arranged horizontally in this row. */
+  widgets?: WidgetList;
+}
+export const Row = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    weight: S.optional(S.String),
+    widgets: S.optional(WidgetList),
+  }),
+).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
+
+export type RowList = Array<Row>;
+export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+
+/** A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row. */
+export interface RowLayout {
+  /** The rows of content to display. */
+  rows?: RowList;
+}
+export const RowLayout = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rows: S.optional(RowList),
+  }),
+).annotate({ identifier: "RowLayout" }) as any as S.Schema<RowLayout>;
+
+export type DashboardFilterFilterTypeEnum =
+  | "FILTER_TYPE_UNSPECIFIED"
+  | "RESOURCE_LABEL"
+  | "METRIC_LABEL"
+  | "USER_METADATA_LABEL"
+  | "SYSTEM_METADATA_LABEL"
+  | "GROUP"
+  | "VALUE_ONLY";
+export const DashboardFilterFilterTypeEnum = /*@__PURE__*/ S.String;
+
+/** An array of strings */
+export interface StringArray {
+  /** The values of the array */
+  values?: StringList;
+}
+export const StringArray = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(StringList),
+  }),
+).annotate({ identifier: "StringArray" }) as any as S.Schema<StringArray>;
+
+export type DashboardFilterValueTypeEnum =
+  | "VALUE_TYPE_UNSPECIFIED"
+  | "STRING"
+  | "STRING_ARRAY";
+export const DashboardFilterValueTypeEnum = /*@__PURE__*/ S.String;
+
+/** A filter to reduce the amount of data charted in relevant widgets. */
+export interface DashboardFilter {
+  /** The specified filter type */
+  filterType?: DashboardFilterFilterTypeEnum | (string & {});
+  /** A list of possible string values for the filter */
+  stringArray?: StringArray;
+  /** The type of the filter value. If value_type is not provided, it will be inferred from the default_value. If neither value_type nor default_value is provided, value_type will be set to STRING by default. */
+  valueType?: DashboardFilterValueTypeEnum | (string & {});
+  /** A variable-length string value. If this field is set, value_type must be set to STRING or VALUE_TYPE_UNSPECIFIED */
+  stringValue?: string;
+  /** Optional. The key for the label. This must be omitted if the filter_type is VALUE_ONLY but is required otherwise. */
+  labelKey?: string;
+  /** An array of variable-length string values. If this field is set, value_type must be set to STRING_ARRAY or VALUE_TYPE_UNSPECIFIED */
+  stringArrayValue?: StringArray;
+  /** The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard. */
+  templateVariable?: string;
+  /** A query to run to fetch possible values for the filter. Only OpsAnalyticsQueries are supported */
+  timeSeriesQuery?: TimeSeriesQuery;
+}
+export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filterType: S.optional(DashboardFilterFilterTypeEnum),
+    stringArray: S.optional(StringArray),
+    valueType: S.optional(DashboardFilterValueTypeEnum),
+    stringValue: S.optional(S.String),
+    labelKey: S.optional(S.String),
+    stringArrayValue: S.optional(StringArray),
+    templateVariable: S.optional(S.String),
+    timeSeriesQuery: S.optional(TimeSeriesQuery),
+  }),
+).annotate({
+  identifier: "DashboardFilter",
+}) as any as S.Schema<DashboardFilter>;
+
+export type DashboardFilterList = Array<DashboardFilter>;
+export const DashboardFilterList = /*@__PURE__*/ S.Array(
+  DashboardFilter,
+) as any as S.Schema<DashboardFilterList>;
+
 /** A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web application. */
 export interface Dashboard {
+  /** Identifier. The resource name of the dashboard. */
+  name?: string;
+  /** The content is divided into equally spaced columns and the widgets are arranged vertically. */
+  columnLayout?: ColumnLayout;
   /** Configuration for event annotations to display on this dashboard. */
   annotations?: DashboardAnnotations;
-  /** Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles. */
-  gridLayout?: GridLayout;
-  /** The content is divided into equally spaced rows and the widgets are arranged horizontally. */
-  rowLayout?: RowLayout;
+  /** Required. The mutable, human-readable name. */
+  displayName?: string;
   /** Labels applied to the dashboard */
   labels?: StringMap;
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation. */
   etag?: string;
-  /** Identifier. The resource name of the dashboard. */
-  name?: string;
-  /** Filters to reduce the amount of data charted based on the filter criteria. */
-  dashboardFilters?: DashboardFilterList;
-  /** The content is divided into equally spaced columns and the widgets are arranged vertically. */
-  columnLayout?: ColumnLayout;
-  /** Required. The mutable, human-readable name. */
-  displayName?: string;
+  /** Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles. */
+  gridLayout?: GridLayout;
   /** The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks. */
   mosaicLayout?: MosaicLayout;
+  /** The content is divided into equally spaced rows and the widgets are arranged horizontally. */
+  rowLayout?: RowLayout;
+  /** Filters to reduce the amount of data charted based on the filter criteria. */
+  dashboardFilters?: DashboardFilterList;
 }
 export const Dashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    name: S.optional(S.String),
+    columnLayout: S.optional(ColumnLayout),
     annotations: S.optional(DashboardAnnotations),
-    gridLayout: S.optional(GridLayout),
-    rowLayout: S.optional(RowLayout),
+    displayName: S.optional(S.String),
     labels: S.optional(StringMap),
     etag: S.optional(S.String),
-    name: S.optional(S.String),
-    dashboardFilters: S.optional(DashboardFilterList),
-    columnLayout: S.optional(ColumnLayout),
-    displayName: S.optional(S.String),
+    gridLayout: S.optional(GridLayout),
     mosaicLayout: S.optional(MosaicLayout),
+    rowLayout: S.optional(RowLayout),
+    dashboardFilters: S.optional(DashboardFilterList),
   }),
 ).annotate({ identifier: "Dashboard" }) as any as S.Schema<Dashboard>;
 
@@ -1793,20 +1791,20 @@ export const MonitoredProjectList = /*@__PURE__*/ S.Array(
 
 /** Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#concept-scope) in Cloud Monitoring, which specifies one or more Google projects and zero or more AWS accounts to monitor together. */
 export interface MetricsScope {
-  /** Output only. The list of projects monitored by this Metrics Scope. */
-  monitoredProjects?: MonitoredProjectList;
   /** Output only. The time when this Metrics Scope was created. */
   createTime?: string;
   /** Output only. The time when this Metrics Scope record was last updated. */
   updateTime?: string;
+  /** Output only. The list of projects monitored by this Metrics Scope. */
+  monitoredProjects?: MonitoredProjectList;
   /** Immutable. The resource name of the Monitoring Metrics Scope. On input, the resource name can be specified with the scoping project ID or number. On output, the resource name is specified with the scoping project number. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER} */
   name?: string;
 }
 export const MetricsScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    monitoredProjects: S.optional(MonitoredProjectList),
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
+    monitoredProjects: S.optional(MonitoredProjectList),
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "MetricsScope" }) as any as S.Schema<MetricsScope>;
@@ -1849,36 +1847,36 @@ export const GetProjectsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** QueryLabelsRequest holds all parameters of the Prometheus upstream API for returning a list of label names. */
 export interface QueryLabelsRequest {
-  /** A list of matchers encoded in the Prometheus label matcher format to constrain the values to series that satisfy them. */
-  match?: string;
-  /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
-  end?: string;
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   start?: string;
+  /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
+  end?: string;
+  /** A list of matchers encoded in the Prometheus label matcher format to constrain the values to series that satisfy them. */
+  match?: string;
 }
 export const QueryLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    match: S.optional(S.String),
-    end: S.optional(S.String),
     start: S.optional(S.String),
+    end: S.optional(S.String),
+    match: S.optional(S.String),
   }),
 ).annotate({
   identifier: "QueryLabelsRequest",
 }) as any as S.Schema<QueryLabelsRequest>;
 
 export interface LabelsProjectsLocationPrometheusApiV1Request {
-  /** Location of the resource information. Has to be "global" now. */
-  location: string;
   /** Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. */
   name: string;
+  /** Location of the resource information. Has to be "global" now. */
+  location: string;
   /** Request body */
   body?: QueryLabelsRequest;
 }
 export const LabelsProjectsLocationPrometheusApiV1Request =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      location: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
       body: S.optional(QueryLabelsRequest.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -1893,18 +1891,18 @@ export const LabelsProjectsLocationPrometheusApiV1Request =
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page.This message can be used both in streaming and non-streaming API methods in the request as well as the response.It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body.Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    contentType: S.optional(S.String),
     data: S.optional(S.String),
     extensions: S.optional(DocumentMapList),
+    contentType: S.optional(S.String),
   }),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
@@ -1993,22 +1991,22 @@ export const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDashboardsResponse>;
 
 export interface ListProjectsLocationPrometheusApiV1MetadataRequest {
+  /** Maximum number of metrics to return. */
+  limit?: string;
+  /** Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. */
+  name: string;
   /** Location of the resource information. Has to be "global" for now. */
   location: string;
   /** The metric name for which to query metadata. If unset, all metric metadata is returned. */
   metric?: string;
-  /** Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. */
-  name: string;
-  /** Maximum number of metrics to return. */
-  limit?: string;
 }
 export const ListProjectsLocationPrometheusApiV1MetadataRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
+      limit: S.optional(S.String.pipe(T.Query())),
+      name: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
       metric: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      limit: S.optional(S.String.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -2021,17 +2019,17 @@ export const ListProjectsLocationPrometheusApiV1MetadataRequest =
   }) as any as S.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>;
 
 export interface PatchProjectsDashboardsRequest {
-  /** If set, validate the request and preview the review, but do not actually save it. */
-  validateOnly?: boolean;
   /** Identifier. The resource name of the dashboard. */
   name: string;
+  /** If set, validate the request and preview the review, but do not actually save it. */
+  validateOnly?: boolean;
   /** Request body */
   body?: Dashboard;
 }
 export const PatchProjectsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Dashboard.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
@@ -2064,18 +2062,18 @@ export const QueryExemplarsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryExemplarsRequest>;
 
 export interface Query_exemplarsProjectsLocationPrometheusApiV1Request {
-  /** Location of the resource information. Has to be "global" now. */
-  location: string;
   /** Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. */
   name: string;
+  /** Location of the resource information. Has to be "global" now. */
+  location: string;
   /** Request body */
   body?: QueryExemplarsRequest;
 }
 export const Query_exemplarsProjectsLocationPrometheusApiV1Request =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      location: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
       body: S.optional(QueryExemplarsRequest.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -2090,12 +2088,12 @@ export const Query_exemplarsProjectsLocationPrometheusApiV1Request =
 
 /** QueryRangeRequest holds all parameters of the Prometheus upstream range query API plus GCM specific parameters. */
 export interface QueryRangeRequest {
+  /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
+  start?: string;
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   end?: string;
   /** A PromQL query string. Query language documentation: https://prometheus.io/docs/prometheus/latest/querying/basics/. */
   query?: string;
-  /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
-  start?: string;
   /** The resolution of query result. Either a Prometheus duration string (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds. This non-standard encoding must be used for compatibility with the open source API. Clients may still implement timeouts at the connection level while ignoring this field. */
   step?: string;
   /** An upper bound timeout for the query. Either a Prometheus duration string (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds. This non-standard encoding must be used for compatibility with the open source API. Clients may still implement timeouts at the connection level while ignoring this field. */
@@ -2103,9 +2101,9 @@ export interface QueryRangeRequest {
 }
 export const QueryRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    start: S.optional(S.String),
     end: S.optional(S.String),
     query: S.optional(S.String),
-    start: S.optional(S.String),
     step: S.optional(S.String),
     timeout: S.optional(S.String),
   }),
@@ -2114,18 +2112,18 @@ export const QueryRangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryRangeRequest>;
 
 export interface Query_rangeProjectsLocationPrometheusApiV1Request {
-  /** Location of the resource information. Has to be "global" now. */
-  location: string;
   /** Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. */
   name: string;
+  /** Location of the resource information. Has to be "global" now. */
+  location: string;
   /** Request body */
   body?: QueryRangeRequest;
 }
 export const Query_rangeProjectsLocationPrometheusApiV1Request =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      location: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
       body: S.optional(QueryRangeRequest.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
@@ -2224,28 +2222,28 @@ export const SeriesProjectsLocationPrometheusApiV1Request =
   }) as any as S.Schema<SeriesProjectsLocationPrometheusApiV1Request>;
 
 export interface ValuesProjectsLocationPrometheusApiV1LabelRequest {
-  /** The label name for which values are queried. */
-  label: string;
+  /** Location of the resource information. Has to be "global" now. */
+  location: string;
   /** A list of matchers encoded in the Prometheus label matcher format to constrain the values to series that satisfy them. */
   match?: string;
-  /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
-  end?: string;
   /** Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. */
   name: string;
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   start?: string;
-  /** Location of the resource information. Has to be "global" now. */
-  location: string;
+  /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
+  end?: string;
+  /** The label name for which values are queried. */
+  label: string;
 }
 export const ValuesProjectsLocationPrometheusApiV1LabelRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      label: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
       match: S.optional(S.String.pipe(T.Query())),
-      end: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
       start: S.optional(S.String.pipe(T.Query())),
-      location: S.String.pipe(T.Label()),
+      end: S.optional(S.String.pipe(T.Query())),
+      label: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",

@@ -42,7 +42,6 @@ export * as computelimit from "./computelimit.ts";
 export * as computeschedule from "./computeschedule.ts";
 export * as confidentialledger from "./confidentialledger.ts";
 export * as confluent from "./confluent.ts";
-export * as connectedcache from "./connectedcache.ts";
 export * as connectedvmware from "./connectedvmware.ts";
 export * as consumption from "./consumption.ts";
 export * as containerinstance from "./containerinstance.ts";

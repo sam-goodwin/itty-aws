@@ -69,7 +69,7 @@ export const CodeInvitesRedeemCreateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeInvitesRedeemCreateResponse>;
 
 export type CodeInvitesCheckAccessRetrieveError = Forbidden | PosthogOpError;
-/** Check access Check whether the authenticated user has access to PostHog Code and to Loops. */
+/** Check access Check whether the authenticated user has access to PostHog Code. */
 export const codeInvitesCheckAccessRetrieve: API.OperationMethod<
   CodeInvitesCheckAccessRetrieveRequest,
   CodeInvitesCheckAccessRetrieveResponse,

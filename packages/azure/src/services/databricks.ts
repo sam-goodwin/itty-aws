@@ -1797,7 +1797,7 @@ export const EncryptionV2KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 /** The object that contains details of encryption used on the workspace. */
 export interface EncryptionV2 {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
-  keySource: EncryptionKeySource2;
+  keySource: EncryptionKeySource2 | (string & {});
   /** Key Vault input properties for encryption. */
   keyVaultProperties?: EncryptionV2KeyVaultProperties;
 }
@@ -1831,7 +1831,7 @@ export const ManagedDiskEncryptionKeyVaultProperties = /*@__PURE__*/ S.suspend(
 /** The object that contains details of encryption used on the workspace. */
 export interface ManagedDiskEncryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace. */
-  keySource: EncryptionKeySource2;
+  keySource: EncryptionKeySource2 | (string & {});
   /** Key Vault input properties for encryption. */
   keyVaultProperties: ManagedDiskEncryptionKeyVaultProperties;
   /** Indicate whether the latest key version should be automatically used for Managed Disk Encryption. */

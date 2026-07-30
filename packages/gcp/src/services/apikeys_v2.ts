@@ -71,6 +71,25 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
+/** A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive. */
+export interface V2ApiTarget {
+  /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
+  methods?: StringList;
+  /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
+  service?: string;
+}
+export const V2ApiTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    methods: S.optional(StringList),
+    service: S.optional(S.String),
+  }),
+).annotate({ identifier: "V2ApiTarget" }) as any as S.Schema<V2ApiTarget>;
+
+export type V2ApiTargetList = Array<V2ApiTarget>;
+export const V2ApiTargetList = /*@__PURE__*/ S.Array(
+  V2ApiTarget,
+) as any as S.Schema<V2ApiTargetList>;
+
 /** The HTTP referrers (websites) that are allowed to use the key. */
 export interface V2BrowserKeyRestrictions {
   /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
@@ -83,19 +102,6 @@ export const V2BrowserKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "V2BrowserKeyRestrictions",
 }) as any as S.Schema<V2BrowserKeyRestrictions>;
-
-/** The IP addresses of callers that are allowed to use the key. */
-export interface V2ServerKeyRestrictions {
-  /** A list of the caller IP addresses that are allowed to make API calls with this key. */
-  allowedIps?: StringList;
-}
-export const V2ServerKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedIps: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "V2ServerKeyRestrictions",
-}) as any as S.Schema<V2ServerKeyRestrictions>;
 
 /** Identifier of an Android application for key use. */
 export interface V2AndroidApplication {
@@ -131,6 +137,19 @@ export const V2AndroidKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2AndroidKeyRestrictions",
 }) as any as S.Schema<V2AndroidKeyRestrictions>;
 
+/** The IP addresses of callers that are allowed to use the key. */
+export interface V2ServerKeyRestrictions {
+  /** A list of the caller IP addresses that are allowed to make API calls with this key. */
+  allowedIps?: StringList;
+}
+export const V2ServerKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedIps: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "V2ServerKeyRestrictions",
+}) as any as S.Schema<V2ServerKeyRestrictions>;
+
 /** The iOS apps that are allowed to use the key. */
 export interface V2IosKeyRestrictions {
   /** A list of bundle IDs that are allowed when making API calls with this key. */
@@ -144,85 +163,66 @@ export const V2IosKeyRestrictions = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2IosKeyRestrictions",
 }) as any as S.Schema<V2IosKeyRestrictions>;
 
-/** A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive. */
-export interface V2ApiTarget {
-  /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
-  service?: string;
-  /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
-  methods?: StringList;
-}
-export const V2ApiTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    methods: S.optional(StringList),
-  }),
-).annotate({ identifier: "V2ApiTarget" }) as any as S.Schema<V2ApiTarget>;
-
-export type V2ApiTargetList = Array<V2ApiTarget>;
-export const V2ApiTargetList = /*@__PURE__*/ S.Array(
-  V2ApiTarget,
-) as any as S.Schema<V2ApiTargetList>;
-
 /** Describes the restrictions on the key. */
 export interface V2Restrictions {
-  /** The HTTP referrers (websites) that are allowed to use the key. */
-  browserKeyRestrictions?: V2BrowserKeyRestrictions;
-  /** The IP addresses of callers that are allowed to use the key. */
-  serverKeyRestrictions?: V2ServerKeyRestrictions;
-  /** The Android apps that are allowed to use the key. */
-  androidKeyRestrictions?: V2AndroidKeyRestrictions;
-  /** The iOS apps that are allowed to use the key. */
-  iosKeyRestrictions?: V2IosKeyRestrictions;
   /** A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed. */
   apiTargets?: V2ApiTargetList;
+  /** The HTTP referrers (websites) that are allowed to use the key. */
+  browserKeyRestrictions?: V2BrowserKeyRestrictions;
+  /** The Android apps that are allowed to use the key. */
+  androidKeyRestrictions?: V2AndroidKeyRestrictions;
+  /** The IP addresses of callers that are allowed to use the key. */
+  serverKeyRestrictions?: V2ServerKeyRestrictions;
+  /** The iOS apps that are allowed to use the key. */
+  iosKeyRestrictions?: V2IosKeyRestrictions;
 }
 export const V2Restrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    browserKeyRestrictions: S.optional(V2BrowserKeyRestrictions),
-    serverKeyRestrictions: S.optional(V2ServerKeyRestrictions),
-    androidKeyRestrictions: S.optional(V2AndroidKeyRestrictions),
-    iosKeyRestrictions: S.optional(V2IosKeyRestrictions),
     apiTargets: S.optional(V2ApiTargetList),
+    browserKeyRestrictions: S.optional(V2BrowserKeyRestrictions),
+    androidKeyRestrictions: S.optional(V2AndroidKeyRestrictions),
+    serverKeyRestrictions: S.optional(V2ServerKeyRestrictions),
+    iosKeyRestrictions: S.optional(V2IosKeyRestrictions),
   }),
 ).annotate({ identifier: "V2Restrictions" }) as any as S.Schema<V2Restrictions>;
 
 /** The representation of a key managed by the API Keys API. */
 export interface V2Key {
-  /** A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154. */
-  etag?: string;
-  /** Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
-  annotations?: StringMap;
-  /** Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-  name?: string;
-  /** Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method. */
-  keyString?: string;
-  /** Output only. A timestamp when this key was deleted. If the resource is not deleted, this must be empty. */
-  deleteTime?: string;
-  /** Output only. A timestamp identifying the time this key was originally created. */
-  createTime?: string;
-  /** Key restrictions. */
-  restrictions?: V2Restrictions;
   /** Output only. Unique id in UUID4 format. */
   uid?: string;
-  /** Human-readable display name of this key that you can modify. The maximum length is 63 characters. */
-  displayName?: string;
+  /** Output only. A timestamp when this key was deleted. If the resource is not deleted, this must be empty. */
+  deleteTime?: string;
+  /** Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
+  annotations?: StringMap;
+  /** A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154. */
+  etag?: string;
+  /** Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+  name?: string;
   /** Optional. The email address of [the service account](https://cloud.google.com/iam/docs/service-accounts) the key is bound to. */
   serviceAccountEmail?: string;
+  /** Human-readable display name of this key that you can modify. The maximum length is 63 characters. */
+  displayName?: string;
+  /** Key restrictions. */
+  restrictions?: V2Restrictions;
+  /** Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method. */
+  keyString?: string;
+  /** Output only. A timestamp identifying the time this key was originally created. */
+  createTime?: string;
   /** Output only. A timestamp identifying the time this key was last updated. */
   updateTime?: string;
 }
 export const V2Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    etag: S.optional(S.String),
-    annotations: S.optional(StringMap),
-    name: S.optional(S.String),
-    keyString: S.optional(S.String),
-    deleteTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    restrictions: S.optional(V2Restrictions),
     uid: S.optional(S.String),
-    displayName: S.optional(S.String),
+    deleteTime: S.optional(S.String),
+    annotations: S.optional(StringMap),
+    etag: S.optional(S.String),
+    name: S.optional(S.String),
     serviceAccountEmail: S.optional(S.String),
+    displayName: S.optional(S.String),
+    restrictions: S.optional(V2Restrictions),
+    keyString: S.optional(S.String),
+    createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
   }),
 ).annotate({ identifier: "V2Key" }) as any as S.Schema<V2Key>;
@@ -283,22 +283,22 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
 }
 export const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
-    name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
+    name: S.optional(S.String),
     done: S.optional(S.Boolean),
+    error: S.optional(Status),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
@@ -392,21 +392,21 @@ export const GetProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsKeysRequest>;
 
 export interface ListProjectsLocationsKeysRequest {
-  /** Optional. Specifies the maximum number of results to be returned at a time. */
-  pageSize?: number;
-  /** Optional. Requests a specific page of results. */
-  pageToken?: string;
-  /** Optional. Indicate that keys deleted in the past 30 days should also be returned. */
-  showDeleted?: boolean;
   /** Required. Lists all API keys associated with this project. The parent field must be in format of "projects//locations/global". */
   parent: string;
+  /** Optional. Specifies the maximum number of results to be returned at a time. */
+  pageSize?: number;
+  /** Optional. Indicate that keys deleted in the past 30 days should also be returned. */
+  showDeleted?: boolean;
+  /** Optional. Requests a specific page of results. */
+  pageToken?: string;
 }
 export const ListProjectsLocationsKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -459,15 +459,15 @@ export const LookupKeyKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for `LookupKey` method. */
 export interface V2LookupKeyResponse {
-  /** The project that owns the key with the value specified in the request. */
-  parent?: string;
   /** The resource name of the API key. If the API key has been purged, resource name is empty. */
   name?: string;
+  /** The project that owns the key with the value specified in the request. */
+  parent?: string;
 }
 export const V2LookupKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.optional(S.String),
     name: S.optional(S.String),
+    parent: S.optional(S.String),
   }),
 ).annotate({
   identifier: "V2LookupKeyResponse",

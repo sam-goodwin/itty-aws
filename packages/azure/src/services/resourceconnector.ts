@@ -47,7 +47,7 @@ export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(
 /** Properties for an appliance. */
 export interface AppliancePropertiesInput {
   /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
-  distro?: AppliancePropertiesInputDistro;
+  distro?: AppliancePropertiesInputDistro | (string & {});
   /** Contains infrastructure information about the Appliance */
   infrastructureConfig?: AppliancePropertiesInfrastructureConfig;
   /** Certificates pair used to download MSI certificate from HIS. Can only be set once. */

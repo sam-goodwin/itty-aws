@@ -7,85 +7,93 @@
     "baseUrl": "https://datastore.googleapis.com/"
   },
   "shapes": {
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetails": {
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEvent": {
       "type": "structure",
       "members": {
-        "concurrencyMode": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetailsConcurrencyModeEnum",
+        "state": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEventStateEnum",
           "traits": {
-            "smithy.api#documentation": "The concurrency mode for this database."
+            "smithy.api#documentation": "The new state of the migration."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Details for the `REDIRECT_WRITES` step."
+        "smithy.api#documentation": "An event signifying a change in state of a [migration from Cloud Datastore to Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore)."
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetailsConcurrencyModeEnum": {
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEventStateEnum": {
       "type": "enum",
       "members": {
-        "CONCURRENCY_MODE_UNSPECIFIED": {
+        "MIGRATION_STATE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "CONCURRENCY_MODE_UNSPECIFIED"
+            "smithy.api#enumValue": "MIGRATION_STATE_UNSPECIFIED"
           }
         },
-        "PESSIMISTIC": {
+        "RUNNING": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "PESSIMISTIC"
+            "smithy.api#enumValue": "RUNNING"
           }
         },
-        "OPTIMISTIC": {
+        "PAUSED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OPTIMISTIC"
+            "smithy.api#enumValue": "PAUSED"
           }
         },
-        "OPTIMISTIC_WITH_ENTITY_GROUPS": {
+        "COMPLETE": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "OPTIMISTIC_WITH_ENTITY_GROUPS"
+            "smithy.api#enumValue": "COMPLETE"
           }
         }
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata": {
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress": {
+      "type": "structure",
+      "members": {
+        "workCompleted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of work that has been completed. Note that this may be greater than work_estimated."
+          }
+        },
+        "workEstimated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Measures the progress of a particular metric."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ExportEntitiesRequest": {
       "type": "structure",
       "members": {
         "labels": {
           "target": "com.gcp.datastore_v1beta1#StringMap",
           "traits": {
-            "smithy.api#documentation": "The client-assigned labels which were provided when the operation was created. May also include additional labels."
+            "smithy.api#documentation": "Client-assigned labels."
           }
         },
-        "startTime": {
+        "entityFilter": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
+          "traits": {
+            "smithy.api#documentation": "Description of what data from the project is included in the export."
+          }
+        },
+        "outputUrlPrefix": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The time that work began on the operation."
-          }
-        },
-        "endTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time the operation ended, either successfully or otherwise."
-          }
-        },
-        "operationType": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataOperationTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "The type of the operation. Can be used as a filter in ListOperationsRequest."
-          }
-        },
-        "state": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataStateEnum",
-          "traits": {
-            "smithy.api#documentation": "The current state of the Operation."
+            "smithy.api#documentation": "Location for the export metadata and data files. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be used for subsequent ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities operations without conflict."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
+        "smithy.api#documentation": "The request for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities."
       }
     },
     "com.gcp.datastore_v1beta1#StringMap": {
@@ -97,27 +105,76 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataOperationTypeEnum": {
-      "type": "enum",
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ExportEntitiesResponse": {
+      "type": "structure",
       "members": {
-        "OPERATION_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
+        "outputUrl": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#enumValue": "OPERATION_TYPE_UNSPECIFIED"
-          }
-        },
-        "EXPORT_ENTITIES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXPORT_ENTITIES"
-          }
-        },
-        "IMPORT_ENTITIES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "IMPORT_ENTITIES"
+            "smithy.api#documentation": "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."
           }
         }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress": {
+      "type": "structure",
+      "members": {
+        "workCompleted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of work that has been completed. Note that this may be greater than work_estimated."
+          }
+        },
+        "workEstimated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Measures the progress of a particular metric."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata": {
+      "type": "structure",
+      "members": {
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the operation ended, either successfully or otherwise."
+          }
+        },
+        "labels": {
+          "target": "com.gcp.datastore_v1beta1#StringMap",
+          "traits": {
+            "smithy.api#documentation": "The client-assigned labels which were provided when the operation was created. May also include additional labels."
+          }
+        },
+        "state": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataStateEnum",
+          "traits": {
+            "smithy.api#documentation": "The current state of the Operation."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time that work began on the operation."
+          }
+        },
+        "operationType": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataOperationTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The type of the operation. Can be used as a filter in ListOperationsRequest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
       }
     },
     "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataStateEnum": {
@@ -173,7 +230,30 @@
         }
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ExportEntitiesMetadata": {
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadataOperationTypeEnum": {
+      "type": "enum",
+      "members": {
+        "OPERATION_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPERATION_TYPE_UNSPECIFIED"
+          }
+        },
+        "EXPORT_ENTITIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXPORT_ENTITIES"
+          }
+        },
+        "IMPORT_ENTITIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IMPORT_ENTITIES"
+          }
+        }
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1IndexOperationMetadata": {
       "type": "structure",
       "members": {
         "common": {
@@ -182,10 +262,246 @@
             "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
           }
         },
+        "progressEntities": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
+          "traits": {
+            "smithy.api#documentation": "An estimate of the number of entities processed."
+          }
+        },
+        "indexId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The index resource ID that this operation is acting on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata for Index operations."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleLongrunningOperation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+          }
+        },
+        "metadata": {
+          "target": "com.gcp.datastore_v1beta1#DocumentMap",
+          "traits": {
+            "smithy.api#documentation": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+          }
+        },
+        "done": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+          }
+        },
+        "error": {
+          "target": "com.gcp.datastore_v1beta1#Status",
+          "traits": {
+            "smithy.api#documentation": "The error result of the operation in case of failure or cancellation."
+          }
+        },
+        "response": {
+          "target": "com.gcp.datastore_v1beta1#DocumentMap",
+          "traits": {
+            "smithy.api#documentation": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This resource represents a long-running operation that is the result of a network API call."
+      }
+    },
+    "com.gcp.datastore_v1beta1#DocumentMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ExportEntitiesResponse": {
+      "type": "structure",
+      "members": {
+        "outputUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ImportEntitiesMetadata": {
+      "type": "structure",
+      "members": {
+        "common": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
+          }
+        },
+        "inputUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1.ExportEntitiesResponse.output_url field."
+          }
+        },
+        "progressEntities": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
+          "traits": {
+            "smithy.api#documentation": "An estimate of the number of entities processed."
+          }
+        },
+        "entityFilter": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1EntityFilter",
+          "traits": {
+            "smithy.api#documentation": "Description of which entities are being imported."
+          }
+        },
+        "progressBytes": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
+          "traits": {
+            "smithy.api#documentation": "An estimate of the number of bytes processed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata for ImportEntities operations."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEvent": {
+      "type": "structure",
+      "members": {
+        "step": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEventStepEnum",
+          "traits": {
+            "smithy.api#documentation": "The step that is starting. An event with step set to `START` indicates that the migration has been reverted back to the initial pre-migration state."
+          }
+        },
+        "prepareStepDetails": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetails",
+          "traits": {
+            "smithy.api#documentation": "Details for the `PREPARE` step."
+          }
+        },
+        "redirectWritesStepDetails": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetails",
+          "traits": {
+            "smithy.api#documentation": "Details for the `REDIRECT_WRITES` step."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An event signifying the start of a new step in a [migration from Cloud Datastore to Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore)."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEventStepEnum": {
+      "type": "enum",
+      "members": {
+        "MIGRATION_STEP_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MIGRATION_STEP_UNSPECIFIED"
+          }
+        },
+        "PREPARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREPARE"
+          }
+        },
+        "START": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "START"
+          }
+        },
+        "APPLY_WRITES_SYNCHRONOUSLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "APPLY_WRITES_SYNCHRONOUSLY"
+          }
+        },
+        "COPY_AND_VERIFY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COPY_AND_VERIFY"
+          }
+        },
+        "REDIRECT_EVENTUALLY_CONSISTENT_READS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REDIRECT_EVENTUALLY_CONSISTENT_READS"
+          }
+        },
+        "REDIRECT_STRONGLY_CONSISTENT_READS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REDIRECT_STRONGLY_CONSISTENT_READS"
+          }
+        },
+        "REDIRECT_WRITES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REDIRECT_WRITES"
+          }
+        }
+      }
+    },
+    "com.gcp.datastore_v1beta1#Status": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+          }
+        },
+        "details": {
+          "target": "com.gcp.datastore_v1beta1#DocumentMapList",
+          "traits": {
+            "smithy.api#documentation": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+          }
+        },
+        "code": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The status code, which should be an enum value of google.rpc.Code."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      }
+    },
+    "com.gcp.datastore_v1beta1#DocumentMapList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.datastore_v1beta1#DocumentMap"
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ExportEntitiesMetadata": {
+      "type": "structure",
+      "members": {
         "outputUrlPrefix": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Location for the export metadata and data files. This will be the same value as the google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url."
+          }
+        },
+        "common": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
           }
         },
         "progressBytes": {
@@ -211,190 +527,19 @@
         "smithy.api#documentation": "Metadata for ExportEntities operations."
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ExportEntitiesRequest": {
-      "type": "structure",
-      "members": {
-        "labels": {
-          "target": "com.gcp.datastore_v1beta1#StringMap",
-          "traits": {
-            "smithy.api#documentation": "Client-assigned labels."
-          }
-        },
-        "entityFilter": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
-          "traits": {
-            "smithy.api#documentation": "Description of what data from the project is included in the export."
-          }
-        },
-        "outputUrlPrefix": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Location for the export metadata and data files. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be used for subsequent ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities operations without conflict."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The request for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ExportEntitiesResponse": {
-      "type": "structure",
-      "members": {
-        "outputUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress": {
-      "type": "structure",
-      "members": {
-        "workEstimated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."
-          }
-        },
-        "workCompleted": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The amount of work that has been completed. Note that this may be greater than work_estimated."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Measures the progress of a particular metric."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress": {
-      "type": "structure",
-      "members": {
-        "workCompleted": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The amount of work that has been completed. Note that this may be greater than work_estimated."
-          }
-        },
-        "workEstimated": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Measures the progress of a particular metric."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ImportEntitiesMetadata": {
-      "type": "structure",
-      "members": {
-        "entityFilter": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
-          "traits": {
-            "smithy.api#documentation": "Description of which entities are being imported."
-          }
-        },
-        "inputUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field."
-          }
-        },
-        "common": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata",
-          "traits": {
-            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
-          }
-        },
-        "progressBytes": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
-          "traits": {
-            "smithy.api#documentation": "An estimate of the number of bytes processed."
-          }
-        },
-        "progressEntities": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
-          "traits": {
-            "smithy.api#documentation": "An estimate of the number of entities processed."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Metadata for ImportEntities operations."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleLongrunningOperation": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-          }
-        },
-        "done": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
-          }
-        },
-        "response": {
-          "target": "com.gcp.datastore_v1beta1#DocumentMap",
-          "traits": {
-            "smithy.api#documentation": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
-          }
-        },
-        "error": {
-          "target": "com.gcp.datastore_v1beta1#Status",
-          "traits": {
-            "smithy.api#documentation": "The error result of the operation in case of failure or cancellation."
-          }
-        },
-        "metadata": {
-          "target": "com.gcp.datastore_v1beta1#DocumentMap",
-          "traits": {
-            "smithy.api#documentation": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "This resource represents a long-running operation that is the result of a network API call."
-      }
-    },
-    "com.gcp.datastore_v1beta1#DocumentMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      }
-    },
     "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadata": {
       "type": "structure",
       "members": {
-        "startTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time that work began on the operation."
-          }
-        },
         "endTime": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The time the operation ended, either successfully or otherwise."
           }
         },
-        "operationType": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadataOperationTypeEnum",
+        "labels": {
+          "target": "com.gcp.datastore_v1beta1#StringMap",
           "traits": {
-            "smithy.api#documentation": "The type of the operation. Can be used as a filter in ListOperationsRequest."
+            "smithy.api#documentation": "The client-assigned labels which were provided when the operation was created. May also include additional labels."
           }
         },
         "state": {
@@ -403,50 +548,21 @@
             "smithy.api#documentation": "The current state of the Operation."
           }
         },
-        "labels": {
-          "target": "com.gcp.datastore_v1beta1#StringMap",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The client-assigned labels which were provided when the operation was created. May also include additional labels."
+            "smithy.api#documentation": "The time that work began on the operation."
+          }
+        },
+        "operationType": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadataOperationTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "The type of the operation. Can be used as a filter in ListOperationsRequest."
           }
         }
       },
       "traits": {
         "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadataOperationTypeEnum": {
-      "type": "enum",
-      "members": {
-        "OPERATION_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OPERATION_TYPE_UNSPECIFIED"
-          }
-        },
-        "EXPORT_ENTITIES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EXPORT_ENTITIES"
-          }
-        },
-        "IMPORT_ENTITIES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "IMPORT_ENTITIES"
-          }
-        },
-        "CREATE_INDEX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CREATE_INDEX"
-          }
-        },
-        "DELETE_INDEX": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "DELETE_INDEX"
-          }
-        }
       }
     },
     "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadataStateEnum": {
@@ -502,53 +618,70 @@
         }
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter": {
-      "type": "structure",
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadataOperationTypeEnum": {
+      "type": "enum",
       "members": {
-        "namespaceIds": {
-          "target": "com.gcp.datastore_v1beta1#StringList",
+        "OPERATION_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."
+            "smithy.api#enumValue": "OPERATION_TYPE_UNSPECIFIED"
           }
         },
-        "kinds": {
-          "target": "com.gcp.datastore_v1beta1#StringList",
+        "EXPORT_ENTITIES": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "If empty, then this represents all kinds."
+            "smithy.api#enumValue": "EXPORT_ENTITIES"
+          }
+        },
+        "IMPORT_ENTITIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IMPORT_ENTITIES"
+          }
+        },
+        "CREATE_INDEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CREATE_INDEX"
+          }
+        },
+        "DELETE_INDEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE_INDEX"
+          }
+        }
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ImportEntitiesRequest": {
+      "type": "structure",
+      "members": {
+        "labels": {
+          "target": "com.gcp.datastore_v1beta1#StringMap",
+          "traits": {
+            "smithy.api#documentation": "Client-assigned labels."
+          }
+        },
+        "entityFilter": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
+          "traits": {
+            "smithy.api#documentation": "Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported."
+          }
+        },
+        "inputUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input_url should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information, see google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz']"
-      }
-    },
-    "com.gcp.datastore_v1beta1#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
+        "smithy.api#documentation": "The request for google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities."
       }
     },
     "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ExportEntitiesMetadata": {
       "type": "structure",
       "members": {
-        "entityFilter": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
-          "traits": {
-            "smithy.api#documentation": "Description of which entities are being exported."
-          }
-        },
-        "progressEntities": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
-          "traits": {
-            "smithy.api#documentation": "An estimate of the number of entities processed."
-          }
-        },
-        "common": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata",
-          "traits": {
-            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
-          }
-        },
         "outputUrlPrefix": {
           "target": "smithy.api#String",
           "traits": {
@@ -560,105 +693,28 @@
           "traits": {
             "smithy.api#documentation": "An estimate of the number of bytes processed."
           }
+        },
+        "progressEntities": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
+          "traits": {
+            "smithy.api#documentation": "An estimate of the number of entities processed."
+          }
+        },
+        "entityFilter": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
+          "traits": {
+            "smithy.api#documentation": "Description of which entities are being exported."
+          }
+        },
+        "common": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
+          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Metadata for ExportEntities operations."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetails": {
-      "type": "structure",
-      "members": {
-        "concurrencyMode": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetailsConcurrencyModeEnum",
-          "traits": {
-            "smithy.api#documentation": "The concurrency mode this database will use when it reaches the `REDIRECT_WRITES` step."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Details for the `PREPARE` step."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetailsConcurrencyModeEnum": {
-      "type": "enum",
-      "members": {
-        "CONCURRENCY_MODE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CONCURRENCY_MODE_UNSPECIFIED"
-          }
-        },
-        "PESSIMISTIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PESSIMISTIC"
-          }
-        },
-        "OPTIMISTIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OPTIMISTIC"
-          }
-        },
-        "OPTIMISTIC_WITH_ENTITY_GROUPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OPTIMISTIC_WITH_ENTITY_GROUPS"
-          }
-        }
-      }
-    },
-    "com.gcp.datastore_v1beta1#Status": {
-      "type": "structure",
-      "members": {
-        "code": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The status code, which should be an enum value of google.rpc.Code."
-          }
-        },
-        "details": {
-          "target": "com.gcp.datastore_v1beta1#DocumentMapList",
-          "traits": {
-            "smithy.api#documentation": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
-      }
-    },
-    "com.gcp.datastore_v1beta1#DocumentMapList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.datastore_v1beta1#DocumentMap"
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1EntityFilter": {
-      "type": "structure",
-      "members": {
-        "namespaceIds": {
-          "target": "com.gcp.datastore_v1beta1#StringList",
-          "traits": {
-            "smithy.api#documentation": "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."
-          }
-        },
-        "kinds": {
-          "target": "com.gcp.datastore_v1beta1#StringList",
-          "traits": {
-            "smithy.api#documentation": "If empty, then this represents all kinds."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz']"
       }
     },
     "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata": {
@@ -763,230 +819,174 @@
         }
       }
     },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ImportEntitiesMetadata": {
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1EntityFilter": {
       "type": "structure",
       "members": {
-        "progressBytes": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
+        "namespaceIds": {
+          "target": "com.gcp.datastore_v1beta1#StringList",
           "traits": {
-            "smithy.api#documentation": "An estimate of the number of bytes processed."
+            "smithy.api#documentation": "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."
           }
         },
+        "kinds": {
+          "target": "com.gcp.datastore_v1beta1#StringList",
+          "traits": {
+            "smithy.api#documentation": "If empty, then this represents all kinds."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz']"
+      }
+    },
+    "com.gcp.datastore_v1beta1#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetails": {
+      "type": "structure",
+      "members": {
+        "concurrencyMode": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetailsConcurrencyModeEnum",
+          "traits": {
+            "smithy.api#documentation": "The concurrency mode this database will use when it reaches the `REDIRECT_WRITES` step."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details for the `PREPARE` step."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetailsConcurrencyModeEnum": {
+      "type": "enum",
+      "members": {
+        "CONCURRENCY_MODE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONCURRENCY_MODE_UNSPECIFIED"
+          }
+        },
+        "PESSIMISTIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PESSIMISTIC"
+          }
+        },
+        "OPTIMISTIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIMISTIC"
+          }
+        },
+        "OPTIMISTIC_WITH_ENTITY_GROUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIMISTIC_WITH_ENTITY_GROUPS"
+          }
+        }
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetails": {
+      "type": "structure",
+      "members": {
+        "concurrencyMode": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetailsConcurrencyModeEnum",
+          "traits": {
+            "smithy.api#documentation": "The concurrency mode for this database."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details for the `REDIRECT_WRITES` step."
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetailsConcurrencyModeEnum": {
+      "type": "enum",
+      "members": {
+        "CONCURRENCY_MODE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONCURRENCY_MODE_UNSPECIFIED"
+          }
+        },
+        "PESSIMISTIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PESSIMISTIC"
+          }
+        },
+        "OPTIMISTIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIMISTIC"
+          }
+        },
+        "OPTIMISTIC_WITH_ENTITY_GROUPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIMISTIC_WITH_ENTITY_GROUPS"
+          }
+        }
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter": {
+      "type": "structure",
+      "members": {
+        "kinds": {
+          "target": "com.gcp.datastore_v1beta1#StringList",
+          "traits": {
+            "smithy.api#documentation": "If empty, then this represents all kinds."
+          }
+        },
+        "namespaceIds": {
+          "target": "com.gcp.datastore_v1beta1#StringList",
+          "traits": {
+            "smithy.api#documentation": "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz']"
+      }
+    },
+    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ImportEntitiesMetadata": {
+      "type": "structure",
+      "members": {
         "common": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadata",
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1CommonMetadata",
           "traits": {
             "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
           }
         },
+        "inputUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field."
+          }
+        },
+        "progressBytes": {
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
+          "traits": {
+            "smithy.api#documentation": "An estimate of the number of bytes processed."
+          }
+        },
         "progressEntities": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
+          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1Progress",
           "traits": {
             "smithy.api#documentation": "An estimate of the number of entities processed."
-          }
-        },
-        "entityFilter": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1EntityFilter",
-          "traits": {
-            "smithy.api#documentation": "Description of which entities are being imported."
-          }
-        },
-        "inputUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1.ExportEntitiesResponse.output_url field."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Metadata for ImportEntities operations."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEvent": {
-      "type": "structure",
-      "members": {
-        "state": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEventStateEnum",
-          "traits": {
-            "smithy.api#documentation": "The new state of the migration."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "An event signifying a change in state of a [migration from Cloud Datastore to Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore)."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationStateEventStateEnum": {
-      "type": "enum",
-      "members": {
-        "MIGRATION_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MIGRATION_STATE_UNSPECIFIED"
-          }
-        },
-        "RUNNING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "RUNNING"
-          }
-        },
-        "PAUSED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PAUSED"
-          }
-        },
-        "COMPLETE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "COMPLETE"
-          }
-        }
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1ImportEntitiesRequest": {
-      "type": "structure",
-      "members": {
-        "inputUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input_url should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). For more information, see google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url."
-          }
-        },
-        "labels": {
-          "target": "com.gcp.datastore_v1beta1#StringMap",
-          "traits": {
-            "smithy.api#documentation": "Client-assigned labels."
           }
         },
         "entityFilter": {
           "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1beta1EntityFilter",
           "traits": {
-            "smithy.api#documentation": "Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported."
+            "smithy.api#documentation": "Description of which entities are being imported."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The request for google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1ExportEntitiesResponse": {
-      "type": "structure",
-      "members": {
-        "outputUrl": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEvent": {
-      "type": "structure",
-      "members": {
-        "prepareStepDetails": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1PrepareStepDetails",
-          "traits": {
-            "smithy.api#documentation": "Details for the `PREPARE` step."
-          }
-        },
-        "step": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEventStepEnum",
-          "traits": {
-            "smithy.api#documentation": "The step that is starting. An event with step set to `START` indicates that the migration has been reverted back to the initial pre-migration state."
-          }
-        },
-        "redirectWritesStepDetails": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1RedirectWritesStepDetails",
-          "traits": {
-            "smithy.api#documentation": "Details for the `REDIRECT_WRITES` step."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "An event signifying the start of a new step in a [migration from Cloud Datastore to Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore)."
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1MigrationProgressEventStepEnum": {
-      "type": "enum",
-      "members": {
-        "MIGRATION_STEP_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "MIGRATION_STEP_UNSPECIFIED"
-          }
-        },
-        "PREPARE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PREPARE"
-          }
-        },
-        "START": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "START"
-          }
-        },
-        "APPLY_WRITES_SYNCHRONOUSLY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "APPLY_WRITES_SYNCHRONOUSLY"
-          }
-        },
-        "COPY_AND_VERIFY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "COPY_AND_VERIFY"
-          }
-        },
-        "REDIRECT_EVENTUALLY_CONSISTENT_READS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REDIRECT_EVENTUALLY_CONSISTENT_READS"
-          }
-        },
-        "REDIRECT_STRONGLY_CONSISTENT_READS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REDIRECT_STRONGLY_CONSISTENT_READS"
-          }
-        },
-        "REDIRECT_WRITES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "REDIRECT_WRITES"
-          }
-        }
-      }
-    },
-    "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1IndexOperationMetadata": {
-      "type": "structure",
-      "members": {
-        "indexId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The index resource ID that this operation is acting on."
-          }
-        },
-        "progressEntities": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1Progress",
-          "traits": {
-            "smithy.api#documentation": "An estimate of the number of entities processed."
-          }
-        },
-        "common": {
-          "target": "com.gcp.datastore_v1beta1#GoogleDatastoreAdminV1CommonMetadata",
-          "traits": {
-            "smithy.api#documentation": "Metadata common to all Datastore Admin operations."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Metadata for Index operations."
+        "smithy.api#documentation": "Metadata for ImportEntities operations."
       }
     },
     "com.gcp.datastore_v1beta1#ExportProjectsRequest": {

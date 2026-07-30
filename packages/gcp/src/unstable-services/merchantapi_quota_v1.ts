@@ -89,21 +89,21 @@ export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountLimit" }) as any as S.Schema<AccountLimit>;
 
 export interface ListAccountsLimitsRequest {
-  /** Required. The parent account. Format: `accounts/{account}` */
-  parent: string;
-  /** Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. */
-  pageToken?: string;
   /** Required. A filter on the limit `type` is required, for example, `type = "products"`. */
   filter?: string;
   /** Optional. The maximum number of limits to return. The service may return fewer than this value. If unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
+  /** Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent account. Format: `accounts/{account}` */
+  parent: string;
 }
 export const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
-    pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
@@ -122,32 +122,32 @@ export const AccountLimitList = /*@__PURE__*/ S.Array(
 
 /** Response message for the `ListAccountLimits` method. */
 export interface ListAccountLimitsResponse {
-  /** The limits for the given account. */
-  accountLimits?: AccountLimitList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The limits for the given account. */
+  accountLimits?: AccountLimitList;
 }
 export const ListAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountLimits: S.optional(AccountLimitList),
     nextPageToken: S.optional(S.String),
+    accountLimits: S.optional(AccountLimitList),
   }),
 ).annotate({
   identifier: "ListAccountLimitsResponse",
 }) as any as S.Schema<ListAccountLimitsResponse>;
 
 export interface ListAccountsQuotasRequest {
-  /** Required. The merchant account who owns the collection of method quotas Format: accounts/{account} */
-  parent: string;
   /** Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
+  /** Required. The merchant account who owns the collection of method quotas Format: accounts/{account} */
+  parent: string;
   /** Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
 export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -162,21 +162,21 @@ export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The method details per method in the Merchant API. */
 export interface MethodDetails {
-  /** Output only. The path for the method such as `products/v1/productInputs.insert` */
-  path?: string;
-  /** Output only. The name of the method for example `products.list`. */
-  method?: string;
   /** Output only. The API version that the method belongs to. */
   version?: string;
   /** Output only. The sub-API that the method belongs to. */
   subapi?: string;
+  /** Output only. The name of the method for example `products.list`. */
+  method?: string;
+  /** Output only. The path for the method such as `products/v1/productInputs.insert` */
+  path?: string;
 }
 export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    path: S.optional(S.String),
-    method: S.optional(S.String),
     version: S.optional(S.String),
     subapi: S.optional(S.String),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
   }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
@@ -187,24 +187,24 @@ export const MethodDetailsList = /*@__PURE__*/ S.Array(
 
 /** The group information for methods in the Merchant API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
-  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
-  name?: string;
-  /** Output only. List of all methods group quota applies to. */
-  methodDetails?: MethodDetailsList;
-  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at 12:00 PM midday UTC. */
+  /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
   quotaUsage?: string;
   /** Output only. The maximum number of calls allowed per minute for the group. */
   quotaMinuteLimit?: string;
   /** Output only. The maximum number of calls allowed per day for the group. */
   quotaLimit?: string;
+  /** Output only. List of all methods group quota applies to. */
+  methodDetails?: MethodDetailsList;
+  /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
+  name?: string;
 }
 export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String),
-    methodDetails: S.optional(MethodDetailsList),
     quotaUsage: S.optional(S.String),
     quotaMinuteLimit: S.optional(S.String),
     quotaLimit: S.optional(S.String),
+    methodDetails: S.optional(MethodDetailsList),
+    name: S.optional(S.String),
   }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
@@ -215,15 +215,15 @@ export const QuotaGroupList = /*@__PURE__*/ S.Array(
 
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
-  /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
-  quotaGroups?: QuotaGroupList;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
+  quotaGroups?: QuotaGroupList;
 }
 export const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    quotaGroups: S.optional(QuotaGroupList),
     nextPageToken: S.optional(S.String),
+    quotaGroups: S.optional(QuotaGroupList),
   }),
 ).annotate({
   identifier: "ListQuotaGroupsResponse",

@@ -30,10 +30,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified volume group only if there are no volumes under volume group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeGroupsDeleteRequest": {
@@ -89,10 +89,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a volume group along with specified volumes",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeGroupsCreateResponse": {
@@ -552,7 +552,7 @@
         "enableSubvolumes": {
           "target": "com.azure.netapp#VolumePropertiesEnableSubvolumes",
           "traits": {
-            "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume\nDeprecated. Subvolume operations and this flag will be removed in a future API version."
+            "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume"
           }
         },
         "provisionedAvailabilityZone": {
@@ -581,36 +581,10 @@
             "smithy.api#documentation": "Space shared by short term clone volume with parent volume in bytes.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "breakthroughMode": {
-          "target": "com.azure.netapp#BreakthroughMode",
-          "traits": {
-            "smithy.api#documentation": "Specifies whether the volume operates in Breakthrough Mode."
-          }
         }
       },
       "traits": {
         "smithy.api#documentation": "Volume properties"
-      }
-    },
-    "com.azure.netapp#BreakthroughMode": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode,\ndelivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature\nis available only in regions where it’s been configured and first-time users must finish onboarding prior to using Breakthrough Mode."
       }
     },
     "com.azure.netapp#VolumePropertiesEnableSubvolumes": {
@@ -630,7 +604,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume\nDeprecated. Subvolume operations and this flag will be removed in a future API version."
+        "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume"
       }
     },
     "com.azure.netapp#VolumePropertiesPlacementRulesList": {
@@ -2195,19 +2169,13 @@
         "enableSubvolumes": {
           "target": "com.azure.netapp#VolumePropertiesInputEnableSubvolumes",
           "traits": {
-            "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume\nDeprecated. Subvolume operations and this flag will be removed in a future API version."
+            "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume"
           }
         },
         "isLargeVolume": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Specifies whether volume is a Large Volume or Regular Volume."
-          }
-        },
-        "breakthroughMode": {
-          "target": "com.azure.netapp#BreakthroughMode",
-          "traits": {
-            "smithy.api#documentation": "Specifies whether the volume operates in Breakthrough Mode."
           }
         }
       },
@@ -2232,7 +2200,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume\nDeprecated. Subvolume operations and this flag will be removed in a future API version."
+        "smithy.api#documentation": "Flag indicating whether subvolume operations are enabled on the volume"
       }
     },
     "com.azure.netapp#VolumePropertiesInputPlacementRulesList": {
@@ -2542,10 +2510,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified volume group",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeGroupsGetResponse": {
@@ -2645,10 +2613,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all volume groups for given account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeGroupList": {
@@ -2784,10 +2752,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Transitions all volumes in a VNet to a different encryption key source (Microsoft-managed key or Azure Key Vault). Operation fails if targeted volumes share encryption sibling set with volumes from another account.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsTransitionToCmkRequest": {
@@ -2849,10 +2817,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}/volumes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get volumes associated with snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPolicyVolumeList": {
@@ -3023,10 +2991,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPoliciesDeleteRequest": {
@@ -3082,10 +3050,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPoliciesUpdateResponse": {
@@ -3457,10 +3425,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPoliciesCreateResponse": {
@@ -3618,10 +3586,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a snapshot Policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPoliciesGetResponse": {
@@ -3747,10 +3715,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotPoliciesList": {
@@ -3898,10 +3866,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/renewCredentials",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsRenewCredentialsRequest": {
@@ -3949,10 +3917,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits/{quotaLimitName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the default, current and usages account quota limit",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetResponse": {
@@ -4073,10 +4041,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets a list of quota limits for all quotas that are under account. Currently PoolsPerAccount is the only one.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#QuotaItemList": {
@@ -4192,10 +4160,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/migrateBackups",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Migrate the backups under a NetApp account to backup vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsUnderAccountMigrateBackupsRequest": {
@@ -4250,10 +4218,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/getKeyVaultStatus",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Contains data from encryption.keyVaultProperties as well as information about which private endpoint is used by each encryption sibling set. Response from this endpoint can be modified and used as request body for POST request.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#GetKeyVaultStatusResponse": {
@@ -4376,10 +4344,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/changeKeyVault",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Affects existing volumes that are encrypted with Key Vault/Managed HSM, and new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and Key Vault to Key Vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsChangeKeyVaultRequest": {
@@ -4463,10 +4431,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete quota rule",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeQuotaRulesDeleteRequest": {
@@ -4538,10 +4506,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a quota rule",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeQuotaRulesUpdateResponse": {
@@ -4846,10 +4814,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create the specified quota rule within the given volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeQuotaRulesCreateResponse": {
@@ -5015,10 +4983,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified quota rule",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeQuotaRulesGetResponse": {
@@ -5153,10 +5121,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all quota rules associated with the volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeQuotaRulesList": {
@@ -5313,10 +5281,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}/getMetadata",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified subvolume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumeModel": {
@@ -5488,10 +5456,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete subvolume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumesDeleteRequest": {
@@ -5563,10 +5531,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a subvolume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumesUpdateResponse": {
@@ -5737,10 +5705,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates a subvolume in the path or clones the subvolume mentioned in the parentPath",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumesCreateResponse": {
@@ -5884,10 +5852,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes/{subvolumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Returns the path associated with the subvolumeName provided",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumesGetResponse": {
@@ -5997,10 +5965,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/subvolumes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Returns a list of the subvolumes in the volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SubvolumesList": {
@@ -6068,7 +6036,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Subvolume Information properties\nDeprecated. This resource type will be removed in a future API version."
+        "smithy.api#documentation": "Subvolume Information properties"
       }
     },
     "com.azure.netapp#SubvolumesListByVolumeRequest": {
@@ -6132,10 +6100,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Split operation to convert clone volume to an independent volume.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesSplitCloneFromParentResponse": {
@@ -6284,10 +6252,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}/restoreFiles",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Restore the specified files from the specified snapshot to the active filesystem",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsRestoreFilesRequest": {
@@ -6381,10 +6349,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete snapshot",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsDeleteRequest": {
@@ -6456,10 +6424,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a snapshot",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsUpdateResponse": {
@@ -6602,10 +6570,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create the specified snapshot within the given volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsCreateResponse": {
@@ -6742,10 +6710,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots/{snapshotName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified snapshot",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsGetResponse": {
@@ -6862,10 +6830,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all snapshots associated with the volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SnapshotsList": {
@@ -7004,10 +6972,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesRevertRelocationRequest": {
@@ -7071,10 +7039,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Revert a volume to the snapshot specified in the body",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesRevertRequest": {
@@ -7144,10 +7112,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesResyncReplicationRequest": {
@@ -7211,10 +7179,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resetCifsPassword",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Reset cifs password from volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesResetCifsPasswordRequest": {
@@ -7278,10 +7246,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the status of the replication",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#ReplicationStatus": {
@@ -7383,10 +7351,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Relocates volume to a new stamp",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesRelocateRequest": {
@@ -7456,10 +7424,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Re-Initializes the replication connection on the destination volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesReInitializeReplicationRequest": {
@@ -7523,10 +7491,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesReestablishReplicationRequest": {
@@ -7596,10 +7564,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}/clearSuspects",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Clear ransomware suspects for the given Advanced Ransomware Protection report. You should evaluate the report to determine whether the activity is acceptable (false positive) or whether an attack seems malicious.\nARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data\",",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#RansomwareReportsClearSuspectsRequest": {
@@ -7714,10 +7682,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports/{ransomwareReportName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified ransomware report (ARP)\nARP reports are created with a list of suspected files when it detects any combination of high data entropy, abnormal volume activity with data encryption, and unusual file extensions.\nARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#RansomwareReportsGetResponse": {
@@ -7999,10 +7967,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all ransomware reports for the volume\nReturns a list of the Advanced Ransomware Protection (ARP) reports for the volume.\nARP reports are created with a list of suspected files when it detects any combination of high data entropy, abnormal volume activity with data encryption, and unusual file extensions.\nARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data\"",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#RansomwareReportsList": {
@@ -8134,10 +8102,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "This operation will populate availability zone information for a volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesPopulateAvailabilityZoneResponse": {
@@ -8286,10 +8254,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Moves volume to another pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesPoolChangeRequest": {
@@ -8360,10 +8328,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/performReplicationTransfer",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Performs an adhoc replication transfer on a volume with volumeType Migration",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesPerformReplicationTransferRequest": {
@@ -8427,10 +8395,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Starts peering the external cluster for this migration volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#ClusterPeerCommandResponse": {
@@ -8544,10 +8512,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/migrateBackups",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Migrate the backups under volume to backup vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsUnderVolumeMigrateBackupsRequest": {
@@ -8618,10 +8586,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all replications for a specified volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#ListReplications": {
@@ -8823,10 +8791,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listQuotaReport",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get quota report for volume (with filter support)",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#ListQuotaReportResult": {
@@ -8989,10 +8957,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the latest status of the restore for a volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#RestoreStatus": {
@@ -9132,10 +9100,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the latest status of the backup for a volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupStatus": {
@@ -9293,10 +9261,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Returns the list of group Ids for a specific LDAP User",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#GetGroupIdListForLdapUserResponse": {
@@ -9390,10 +9358,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeRelocation",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Finalizes the relocation of the volume and cleans up the old volume.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesFinalizeRelocationRequest": {
@@ -9457,10 +9425,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/finalizeExternalReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Finalizes the migration of an external volume by releasing the replication and breaking the external cluster peering if no other migration is active.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesFinalizeExternalReplicationRequest": {
@@ -9524,10 +9492,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/deleteReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the replication connection on the destination volume, and send release to the source replication",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesDeleteReplicationRequest": {
@@ -9591,10 +9559,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/refreshCertificate",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "This operation will fetch the certificate from Azure Key Vault and install it on the bucket server.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsRefreshCertificateRequest": {
@@ -9666,10 +9634,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateCredentials",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Generate the access key and secret key used for accessing the specified volume bucket. Also return expiry date and time of key pair (in UTC).",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketGenerateCredentials": {
@@ -9774,10 +9742,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}/generateAkvCredentials",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Generate the access key and secret key used for accessing the specified volume bucket and store in Azure Key Vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsGenerateAkvCredentialsRequest": {
@@ -9855,10 +9823,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a volume's bucket.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsDeleteRequest": {
@@ -9930,10 +9898,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates the details of a volume bucket.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsUpdateResponse": {
@@ -10401,10 +10369,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a bucket for a volume. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsCreateOrUpdateResponse": {
@@ -10604,10 +10572,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the details of the specified volume's bucket. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketsGetResponse": {
@@ -10717,10 +10685,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Describes all buckets belonging to a volume. Buckets allow additional services, such as AI services, connect to the volume data contained in those buckets.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BucketList": {
@@ -10852,10 +10820,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Break the replication connection on the destination volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesBreakReplicationRequest": {
@@ -10925,10 +10893,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Break all the file locks on a volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesBreakFileLocksRequest": {
@@ -11004,10 +10972,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Authorize the replication connection on the source volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesAuthorizeReplicationRequest": {
@@ -11077,10 +11045,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Starts SVM peering and returns a command to be run on the external ONTAP to accept it.  Once the SVM have been peered a SnapMirror will be created",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#SvmPeerCommandResponse": {
@@ -11172,10 +11140,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesDeleteRequest": {
@@ -11246,10 +11214,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch the specified volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesUpdateResponse": {
@@ -11650,10 +11618,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or update the specified volume within the capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesCreateOrUpdateResponse": {
@@ -11849,10 +11817,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the details of the specified volume",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumesGetResponse": {
@@ -12001,10 +11969,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all volumes within the capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#VolumeList": {
@@ -12090,10 +12058,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/resetSmbPassword",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Resets the SMB password for the cache",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesResetSmbPasswordResponse": {
@@ -13274,10 +13242,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/poolChange",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Moves Cache  to another Capacity Pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesPoolChangeResponse": {
@@ -13433,10 +13401,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/listPeeringPassphrases",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "This operation will list the cluster peering command, cluster peering passphrase and the vserver peering command",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#PeeringPassphrases": {
@@ -13535,10 +13503,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified cache",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesDeleteRequest": {
@@ -13602,10 +13570,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch the specified Cache",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesUpdateResponse": {
@@ -13843,10 +13811,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or update the specified Cache within the Capacity Pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesCreateOrUpdateResponse": {
@@ -14167,10 +14135,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the details of the specified Cache",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CachesGetResponse": {
@@ -14319,10 +14287,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all Caches within the Capacity Pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CacheList": {
@@ -14493,10 +14461,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#PoolsDeleteRequest": {
@@ -14552,10 +14520,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch the specified capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#PoolsUpdateResponse": {
@@ -14914,10 +14882,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or Update a capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#PoolsCreateOrUpdateResponse": {
@@ -15201,10 +15169,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get details of the specified capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#PoolsGetResponse": {
@@ -15330,10 +15298,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all capacity pools in the NetApp Account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CapacityPoolList": {
@@ -15481,10 +15449,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}/restoreFiles",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Restore the specified files from the specified backup to the active filesystem",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequest": {
@@ -15577,10 +15545,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete a Backup under the Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsDeleteRequest": {
@@ -15644,10 +15612,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a Backup under the Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsUpdateResponse": {
@@ -15885,10 +15853,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a backup under the Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsCreateResponse": {
@@ -16031,10 +15999,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the specified Backup under Backup Vault.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsGetResponse": {
@@ -16137,10 +16105,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List all backups Under a Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupsList": {
@@ -16272,10 +16240,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupVaultsDeleteRequest": {
@@ -16331,10 +16299,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch the specified NetApp Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupVaultsUpdateResponse": {
@@ -16485,10 +16453,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or update the specified Backup Vault in the NetApp account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupVaultsCreateOrUpdateResponse": {
@@ -16645,10 +16613,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupVaultsGetResponse": {
@@ -16767,10 +16735,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List and describe all Backup Vaults in the NetApp account.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupVaultsList": {
@@ -16911,10 +16879,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete backup policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupPoliciesDeleteRequest": {
@@ -16970,10 +16938,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch a backup policy for Netapp Account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupPoliciesUpdateResponse": {
@@ -17258,10 +17226,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create a backup policy for Netapp Account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupPoliciesCreateResponse": {
@@ -17419,10 +17387,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies/{backupPolicyName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get a particular backup Policy",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupPoliciesGetResponse": {
@@ -17548,10 +17516,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List backup policies for Netapp Account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#BackupPoliciesList": {
@@ -17699,10 +17667,10 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Delete the specified NetApp account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsDeleteRequest": {
@@ -17750,10 +17718,10 @@
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Patch the specified NetApp account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsUpdateResponse": {
@@ -18804,10 +18772,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Create or update the specified NetApp account within the resource group",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsCreateOrUpdateResponse": {
@@ -19043,10 +19011,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the NetApp account",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsGetResponse": {
@@ -19213,10 +19181,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List and describe all NetApp accounts in the resource group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppAccountList": {
@@ -19405,10 +19373,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List and describe all NetApp accounts in the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#AccountsListBySubscriptionRequest": {
@@ -19440,10 +19408,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages/{usageType}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get specific type of usage\n\nGet current subscription usage of the specific type",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#UsageResult": {
@@ -19563,10 +19531,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get usages\n\nGet current subscription usages",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#UsagesListResult": {
@@ -19636,10 +19604,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/updateNetworkSiblingSet",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Update the network features of a network sibling set\n\nUpdate the network features of the specified network sibling set.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetworkSiblingSet": {
@@ -19885,10 +19853,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos/default",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Provides storage to network proximity and logical zone mapping information.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceRegionInfosGetResponse": {
@@ -20069,10 +20037,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Provides region specific information.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#RegionInfosList": {
@@ -20180,10 +20148,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfo",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Describes region specific information.\n\nProvides storage to network proximity and logical zone mapping information.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceQueryRegionInfoRequest": {
@@ -20223,10 +20191,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits/{quotaLimitName}",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the default and current quota limit",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceQuotaLimitsGetResponse": {
@@ -20312,10 +20280,10 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Get the default and current limits for quotas",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceQuotaLimitsListRequest": {
@@ -20355,10 +20323,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/queryNetworkSiblingSet",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Describe a network sibling set\n\nGet details of the specified network sibling set.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceQueryNetworkSiblingSetRequest": {
@@ -20412,10 +20380,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkQuotaAvailability",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Check quota availability\n\nCheck if a quota is available.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#CheckAvailabilityResponse": {
@@ -20566,10 +20534,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkNameAvailability",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Check resource name availability\n\nCheck if a resource name is available.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceCheckNameAvailabilityRequest": {
@@ -20674,10 +20642,10 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/checkFilePathAvailability",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Check file path availability\n\nCheck if a file path is available.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#NetAppResourceCheckFilePathAvailabilityRequest": {
@@ -20738,10 +20706,10 @@
           "method": "GET",
           "uri": "/providers/Microsoft.NetApp/operations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.netapp#OperationListResult": {

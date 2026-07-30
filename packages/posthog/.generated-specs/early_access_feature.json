@@ -112,18 +112,9 @@
         },
         "created_at": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
-      "traits": {
-        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
-      }
+      "traits": {}
     },
     "com.posthog.early_access_feature#MinimalFeatureFlag": {
       "type": "structure",
@@ -470,18 +461,9 @@
         },
         "feature_flag": {
           "target": "com.posthog.early_access_feature#MinimalFeatureFlag"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
-      "traits": {
-        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
-      }
+      "traits": {}
     },
     "com.posthog.early_access_feature#EarlyAccessFeatureCreate": {
       "type": "operation",

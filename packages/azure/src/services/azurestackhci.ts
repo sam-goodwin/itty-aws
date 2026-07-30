@@ -183,7 +183,7 @@ export const ServiceName = /*@__PURE__*/ S.String;
 /** Service configuration details */
 export interface ServiceConfiguration {
   /** Specifies the name of the service associated with the update or operation. This helps identify which system component or tool is involved. */
-  serviceName: ServiceName;
+  serviceName: ServiceName | (string & {});
   /** The port on which service is enabled. */
   port: number;
 }
@@ -1390,7 +1390,7 @@ export const SecretsType = /*@__PURE__*/ S.String;
 /** Secrets location details */
 export interface SecretsLocationDetails {
   /** Type of secrets to store */
-  secretsType: SecretsType;
+  secretsType: SecretsType | (string & {});
   /** secrets location */
   secretsLocation: string;
 }
@@ -4239,7 +4239,7 @@ export interface EdgeDeviceJobsCreateOrUpdateRequest {
   /** Name of EdgeDevice Job */
   jobsName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: EdgeDeviceKind;
+  kind: EdgeDeviceKind | (string & {});
 }
 export const EdgeDeviceJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4443,7 +4443,7 @@ export interface EdgeDevicesCreateOrUpdateRequest {
   /** Name of Device */
   edgeDeviceName: string;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
-  kind: DeviceKind;
+  kind: DeviceKind | (string & {});
 }
 export const EdgeDevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5370,7 +5370,7 @@ export interface GalleryImagesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const GalleryImagesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -6615,7 +6615,7 @@ export interface LogicalNetworksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const LogicalNetworksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -7365,7 +7365,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -8056,7 +8056,7 @@ export interface NetworkInterfacesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -9480,7 +9480,7 @@ export interface StorageContainersCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const StorageContainersCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -11798,7 +11798,7 @@ export interface VirtualHardDisksCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -12782,7 +12782,7 @@ export interface VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation {
   /** The name of the extended location. */
   name?: string;
   /** The type of the extended location. */
-  type?: ExtendedLocationType;
+  type?: ExtendedLocationType | (string & {});
 }
 export const VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
   /*@__PURE__*/ S.suspend(() =>
@@ -12803,7 +12803,9 @@ export const VirtualMachineInstancesCreateOrUpdateRequestIdentityType =
 /** Identity for the resource. */
 export interface VirtualMachineInstancesCreateOrUpdateRequestIdentity {
   /** The identity type. */
-  type?: VirtualMachineInstancesCreateOrUpdateRequestIdentityType;
+  type?:
+    | VirtualMachineInstancesCreateOrUpdateRequestIdentityType
+    | (string & {});
 }
 export const VirtualMachineInstancesCreateOrUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>
@@ -14251,7 +14253,7 @@ export const VirtualMachineInstancesUpdateRequestIdentityType =
 /** Identity for the resource. */
 export interface VirtualMachineInstancesUpdateRequestIdentity {
   /** The identity type. */
-  type?: VirtualMachineInstancesUpdateRequestIdentityType;
+  type?: VirtualMachineInstancesUpdateRequestIdentityType | (string & {});
 }
 export const VirtualMachineInstancesUpdateRequestIdentity =
   /*@__PURE__*/ S.suspend(() =>

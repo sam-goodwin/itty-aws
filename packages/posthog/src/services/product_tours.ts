@@ -327,7 +327,7 @@ export interface ProductTour {
   created_by?: UserBasic | null;
   updated_at?: string;
   archived?: boolean;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
+  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
 export const ProductTour = /*@__PURE__*/ S.suspend(() =>
@@ -516,7 +516,7 @@ export interface ProductToursListRequest {
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
-  /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
+  /** Fuzzy match against product tour `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type. */
   search?: string;
 }
 export const ProductToursListRequest = /*@__PURE__*/ S.suspend(() =>
@@ -712,7 +712,6 @@ export type ProductToursCreateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursCreate: API.OperationMethod<
   ProductToursCreateRequest,
   ProductTourSerializerCreateUpdateOnlyOutput,
@@ -727,7 +726,6 @@ export const productToursCreate: API.OperationMethod<
 }));
 
 export type ProductToursDestroyError = Forbidden | NotFound | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursDestroy: API.OperationMethod<
   ProductToursDestroyRequest,
   ProductToursDestroyResponse,
@@ -820,7 +818,6 @@ export type ProductToursListError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursList: API.OperationMethod<
   ProductToursListRequest,
   PaginatedProductTourList,
@@ -839,7 +836,6 @@ export type ProductToursPartialUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursPartialUpdate: API.OperationMethod<
   ProductToursPartialUpdateRequest,
   ProductTourSerializerCreateUpdateOnlyOutput,
@@ -873,7 +869,6 @@ export const productToursPublishDraftCreate: API.OperationMethod<
 }));
 
 export type ProductToursRetrieveError = Forbidden | NotFound | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursRetrieve: API.OperationMethod<
   ProductToursRetrieveRequest,
   ProductTour,
@@ -892,7 +887,6 @@ export type ProductToursUpdateError =
   | Forbidden
   | NotFound
   | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
 export const productToursUpdate: API.OperationMethod<
   ProductToursUpdateRequest,
   ProductTour,

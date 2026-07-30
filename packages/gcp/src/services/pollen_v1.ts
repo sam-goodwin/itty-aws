@@ -37,29 +37,29 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export interface LookupForecastRequest {
-  /** Optional. A page token received from a previous daily call. It is used to retrieve the subsequent page. Note that when providing a value for the page token, all other request parameters provided must match the previous call that provided the page token. */
-  pageToken?: string;
-  /** Optional. The maximum number of daily info records to return per page. The default and max value is 5, indicating 5 days of data. */
-  pageSize?: number;
-  /** Required. A number that indicates how many forecast days to request (minimum value 1, maximum value is 5). */
-  days?: number;
-  /** Optional. Allows the client to choose the language for the response. If data cannot be provided for that language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default value is "en". */
-  languageCode?: string;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
-  "location.longitude"?: number;
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   "location.latitude"?: number;
+  /** Required. A number that indicates how many forecast days to request (minimum value 1, maximum value is 5). */
+  days?: number;
+  /** Optional. The maximum number of daily info records to return per page. The default and max value is 5, indicating 5 days of data. */
+  pageSize?: number;
+  /** Optional. Allows the client to choose the language for the response. If data cannot be provided for that language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default value is "en". */
+  languageCode?: string;
+  /** Optional. A page token received from a previous daily call. It is used to retrieve the subsequent page. Note that when providing a value for the page token, all other request parameters provided must match the previous call that provided the page token. */
+  pageToken?: string;
+  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+  "location.longitude"?: number;
   /** Optional. Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. The default value is "true". */
   plantsDescription?: boolean;
 }
 export const LookupForecastRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    pageToken: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    days: S.optional(S.Number.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    "location.longitude": S.optional(S.Number.pipe(T.Query())),
     "location.latitude": S.optional(S.Number.pipe(T.Query())),
+    days: S.optional(S.Number.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    "location.longitude": S.optional(S.Number.pipe(T.Query())),
     plantsDescription: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -71,13 +71,6 @@ export const LookupForecastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LookupForecastRequest",
 }) as any as S.Schema<LookupForecastRequest>;
-
-export type PollenTypeInfoCodeEnum =
-  | "POLLEN_TYPE_UNSPECIFIED"
-  | "GRASS"
-  | "TREE"
-  | "WEED";
-export const PollenTypeInfoCodeEnum = /*@__PURE__*/ S.String;
 
 export type IndexInfoCodeEnum = "INDEX_UNSPECIFIED" | "UPI";
 export const IndexInfoCodeEnum = /*@__PURE__*/ S.String;
@@ -104,29 +97,36 @@ export const Color = /*@__PURE__*/ S.suspend(() =>
 
 /** This object contains data representing specific pollen index value, category and description. */
 export interface IndexInfo {
-  /** Textual explanation of current index level. */
-  indexDescription?: string;
-  /** The index's code. This field represents the index for programming purposes by using snake cases instead of spaces. Example: "UPI". */
-  code?: IndexInfoCodeEnum;
-  /** A human readable representation of the index name. Example: "Universal Pollen Index". */
-  displayName?: string;
-  /** Text classification of index numerical score interpretation. The index consists of six categories: * 0: "None" * 1: "Very low" * 2: "Low" * 3: "Moderate" * 4: "High" * 5: "Very high */
-  category?: string;
-  /** The color used to represent the Pollen Index numeric score. */
-  color?: Color;
   /** The index's numeric score. Numeric range is between 0 and 5. */
   value?: number;
+  /** Text classification of index numerical score interpretation. The index consists of six categories: * 0: "None" * 1: "Very low" * 2: "Low" * 3: "Moderate" * 4: "High" * 5: "Very high */
+  category?: string;
+  /** The index's code. This field represents the index for programming purposes by using snake cases instead of spaces. Example: "UPI". */
+  code?: IndexInfoCodeEnum;
+  /** Textual explanation of current index level. */
+  indexDescription?: string;
+  /** The color used to represent the Pollen Index numeric score. */
+  color?: Color;
+  /** A human readable representation of the index name. Example: "Universal Pollen Index". */
+  displayName?: string;
 }
 export const IndexInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    indexDescription: S.optional(S.String),
-    code: S.optional(IndexInfoCodeEnum),
-    displayName: S.optional(S.String),
-    category: S.optional(S.String),
-    color: S.optional(Color),
     value: S.optional(S.Number),
+    category: S.optional(S.String),
+    code: S.optional(IndexInfoCodeEnum),
+    indexDescription: S.optional(S.String),
+    color: S.optional(Color),
+    displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "IndexInfo" }) as any as S.Schema<IndexInfo>;
+
+export type PollenTypeInfoCodeEnum =
+  | "POLLEN_TYPE_UNSPECIFIED"
+  | "GRASS"
+  | "TREE"
+  | "WEED";
+export const PollenTypeInfoCodeEnum = /*@__PURE__*/ S.String;
 
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
@@ -135,23 +135,23 @@ export const StringList = /*@__PURE__*/ S.Array(
 
 /** This object contains the pollen type index and health recommendation information on specific pollen type. */
 export interface PollenTypeInfo {
-  /** The pollen type's code name. For example: "GRASS" */
-  code?: PollenTypeInfoCodeEnum;
   /** A human readable representation of the pollen type name. Example: "Grass" */
   displayName?: string;
   /** Indication whether the plant is in season or not. */
   inSeason?: boolean;
   /** Contains the Universal Pollen Index (UPI) data for the pollen type. */
   indexInfo?: IndexInfo;
+  /** The pollen type's code name. For example: "GRASS" */
+  code?: PollenTypeInfoCodeEnum;
   /** Textual list of explanations, related to health insights based on the current pollen levels. */
   healthRecommendations?: StringList;
 }
 export const PollenTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    code: S.optional(PollenTypeInfoCodeEnum),
     displayName: S.optional(S.String),
     inSeason: S.optional(S.Boolean),
     indexInfo: S.optional(IndexInfo),
+    code: S.optional(PollenTypeInfoCodeEnum),
     healthRecommendations: S.optional(StringList),
   }),
 ).annotate({ identifier: "PollenTypeInfo" }) as any as S.Schema<PollenTypeInfo>;
@@ -160,6 +160,47 @@ export type PollenTypeInfoList = Array<PollenTypeInfo>;
 export const PollenTypeInfoList = /*@__PURE__*/ S.Array(
   PollenTypeInfo,
 ) as any as S.Schema<PollenTypeInfoList>;
+
+export type PlantDescriptionTypeEnum =
+  | "POLLEN_TYPE_UNSPECIFIED"
+  | "GRASS"
+  | "TREE"
+  | "WEED";
+export const PlantDescriptionTypeEnum = /*@__PURE__*/ S.String;
+
+/** Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. */
+export interface PlantDescription {
+  /** A human readable representation of the plant family name. Example: "Betulaceae (the Birch family)". */
+  family?: string;
+  /** Textual description of the plants' colors of leaves, bark, flowers or seeds that helps identify the plant. */
+  specialColors?: string;
+  /** Textual description of the plants' shapes of leaves, bark, flowers or seeds that helps identify the plant. */
+  specialShapes?: string;
+  /** Link to the picture of the plant. */
+  picture?: string;
+  /** Textual list of explanations of seasons where the pollen is active. Example: "Late winter, spring". */
+  season?: string;
+  /** Textual description of pollen cross reaction plants. Example: Alder, Hazel, Hornbeam, Beech, Willow, and Oak pollen. */
+  crossReaction?: string;
+  /** Link to a closeup picture of the plant. */
+  pictureCloseup?: string;
+  /** The plant's pollen type. For example: "GRASS". A list of all available codes could be found here. */
+  type?: PlantDescriptionTypeEnum;
+}
+export const PlantDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    family: S.optional(S.String),
+    specialColors: S.optional(S.String),
+    specialShapes: S.optional(S.String),
+    picture: S.optional(S.String),
+    season: S.optional(S.String),
+    crossReaction: S.optional(S.String),
+    pictureCloseup: S.optional(S.String),
+    type: S.optional(PlantDescriptionTypeEnum),
+  }),
+).annotate({
+  identifier: "PlantDescription",
+}) as any as S.Schema<PlantDescription>;
 
 export type PlantInfoCodeEnum =
   | "PLANT_UNSPECIFIED"
@@ -182,67 +223,26 @@ export type PlantInfoCodeEnum =
   | "JAPANESE_CYPRESS";
 export const PlantInfoCodeEnum = /*@__PURE__*/ S.String;
 
-export type PlantDescriptionTypeEnum =
-  | "POLLEN_TYPE_UNSPECIFIED"
-  | "GRASS"
-  | "TREE"
-  | "WEED";
-export const PlantDescriptionTypeEnum = /*@__PURE__*/ S.String;
-
-/** Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. */
-export interface PlantDescription {
-  /** A human readable representation of the plant family name. Example: "Betulaceae (the Birch family)". */
-  family?: string;
-  /** Link to the picture of the plant. */
-  picture?: string;
-  /** Textual description of the plants' colors of leaves, bark, flowers or seeds that helps identify the plant. */
-  specialColors?: string;
-  /** Link to a closeup picture of the plant. */
-  pictureCloseup?: string;
-  /** Textual list of explanations of seasons where the pollen is active. Example: "Late winter, spring". */
-  season?: string;
-  /** The plant's pollen type. For example: "GRASS". A list of all available codes could be found here. */
-  type?: PlantDescriptionTypeEnum;
-  /** Textual description of pollen cross reaction plants. Example: Alder, Hazel, Hornbeam, Beech, Willow, and Oak pollen. */
-  crossReaction?: string;
-  /** Textual description of the plants' shapes of leaves, bark, flowers or seeds that helps identify the plant. */
-  specialShapes?: string;
-}
-export const PlantDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    family: S.optional(S.String),
-    picture: S.optional(S.String),
-    specialColors: S.optional(S.String),
-    pictureCloseup: S.optional(S.String),
-    season: S.optional(S.String),
-    type: S.optional(PlantDescriptionTypeEnum),
-    crossReaction: S.optional(S.String),
-    specialShapes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PlantDescription",
-}) as any as S.Schema<PlantDescription>;
-
 /** This object contains the daily information on specific plant. */
 export interface PlantInfo {
-  /** This object contains data representing specific pollen index value, category and description. */
-  indexInfo?: IndexInfo;
-  /** The plant code name. For example: "COTTONWOOD". A list of all available codes could be found here. */
-  code?: PlantInfoCodeEnum;
   /** A human readable representation of the plant name. Example: “Cottonwood". */
   displayName?: string;
   /** Indication of either the plant is in season or not. */
   inSeason?: boolean;
+  /** This object contains data representing specific pollen index value, category and description. */
+  indexInfo?: IndexInfo;
   /** Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. */
   plantDescription?: PlantDescription;
+  /** The plant code name. For example: "COTTONWOOD". A list of all available codes could be found here. */
+  code?: PlantInfoCodeEnum;
 }
 export const PlantInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    indexInfo: S.optional(IndexInfo),
-    code: S.optional(PlantInfoCodeEnum),
     displayName: S.optional(S.String),
     inSeason: S.optional(S.Boolean),
+    indexInfo: S.optional(IndexInfo),
     plantDescription: S.optional(PlantDescription),
+    code: S.optional(PlantInfoCodeEnum),
   }),
 ).annotate({ identifier: "PlantInfo" }) as any as S.Schema<PlantInfo>;
 
@@ -253,18 +253,18 @@ export const PlantInfoList = /*@__PURE__*/ S.Array(
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Pollen_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
 }
 export const Pollen_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    day: S.optional(S.Number),
     year: S.optional(S.Number),
     month: S.optional(S.Number),
-    day: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Pollen_Date" }) as any as S.Schema<Pollen_Date>;
 
@@ -293,16 +293,16 @@ export const DayInfoList = /*@__PURE__*/ S.Array(
 export interface LookupForecastResponse {
   /** The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
   regionCode?: string;
-  /** Optional. The token to retrieve the next page. */
-  nextPageToken?: string;
   /** Required. This object contains the daily forecast information for each day requested. */
   dailyInfo?: DayInfoList;
+  /** Optional. The token to retrieve the next page. */
+  nextPageToken?: string;
 }
 export const LookupForecastResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
-    nextPageToken: S.optional(S.String),
     dailyInfo: S.optional(DayInfoList),
+    nextPageToken: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LookupForecastResponse",
@@ -317,22 +317,22 @@ export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
   /*@__PURE__*/ S.String;
 
 export interface LookupHeatmapTileMapTypesHeatmapTilesRequest {
-  /** Required. The type of the pollen heatmap. Defines the combination of pollen type and index that the map will graphically represent. */
-  mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum | (string & {});
-  /** Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. * Zoom level 0 is the entire world in a single tile. * Zoom level 1 is the entire world in 4 tiles. * Zoom level 2 is the entire world in 16 tiles. * Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16 */
-  zoom: number;
   /** Required. Defines the east-west point in the requested tile. */
   x: number;
   /** Required. Defines the north-south point in the requested tile. */
   y: number;
+  /** Required. The type of the pollen heatmap. Defines the combination of pollen type and index that the map will graphically represent. */
+  mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum | (string & {});
+  /** Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. * Zoom level 0 is the entire world in a single tile. * Zoom level 1 is the entire world in 4 tiles. * Zoom level 2 is the entire world in 16 tiles. * Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16 */
+  zoom: number;
 }
 export const LookupHeatmapTileMapTypesHeatmapTilesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
-      zoom: S.Number.pipe(T.Label()),
       x: S.Number.pipe(T.Label()),
       y: S.Number.pipe(T.Label()),
+      mapType: LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum.pipe(T.Label()),
+      zoom: S.Number.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
@@ -357,18 +357,18 @@ export const DocumentMapList = /*@__PURE__*/ S.Array(
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: DocumentMapList;
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: DocumentMapList;
 }
 export const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    extensions: S.optional(DocumentMapList),
-    data: S.optional(S.String),
     contentType: S.optional(S.String),
+    data: S.optional(S.String),
+    extensions: S.optional(DocumentMapList),
   }),
 ).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 

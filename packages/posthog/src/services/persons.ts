@@ -383,98 +383,98 @@ export const PaginatedAsyncDeletionStatusList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAsyncDeletionStatusList",
 }) as any as S.Schema<PaginatedAsyncDeletionStatusList>;
 
-export type PersonsEmailsListRequestFormat = "csv" | "json";
-export const PersonsEmailsListRequestFormat = /*@__PURE__*/ S.String;
+export type PersonsFunnelCreateRequestFormat = "csv" | "json";
+export const PersonsFunnelCreateRequestFormat = /*@__PURE__*/ S.String;
 
-export interface PersonsEmailsListRequest {
+export interface PersonsFunnelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** A unique integer value identifying this person. */
-  id: number;
-  /** Start of the time range, matched on sent time. Relative ('-30d', '-24h') or ISO 8601. Defaults to -30d (the retention window) — bounds the ClickHouse partition scan. */
-  after?: string;
-  /** End of the time range, matched on sent time. Same format as 'after'. Defaults to now. */
-  before?: string;
-  format?: PersonsEmailsListRequestFormat | (string & {});
-  /** Maximum number of emails to return (1-500, default 50). */
-  limit?: number;
-  /** Number of emails to skip, for pagination. */
-  offset?: number;
+  format?: PersonsFunnelCreateRequestFormat | (string & {});
+  /** Key-value map of person properties set via $set and $set_once operations. */
+  properties?: unknown;
 }
-export const PersonsEmailsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const PersonsFunnelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    after: S.optional(S.String.pipe(T.Query())),
-    before: S.optional(S.String.pipe(T.Query())),
-    format: S.optional(PersonsEmailsListRequestFormat.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
+    format: S.optional(PersonsFunnelCreateRequestFormat.pipe(T.Query())),
+    properties: S.optional(S.Unknown),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/persons/{id}/emails/",
+      method: "POST",
+      uri: "/api/projects/{project_id}/persons/funnel/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "PersonsEmailsListRequest",
-}) as any as S.Schema<PersonsEmailsListRequest>;
+  identifier: "PersonsFunnelCreateRequest",
+}) as any as S.Schema<PersonsFunnelCreateRequest>;
 
-export interface MessageAsset {
-  /** The workflow run this email was sent in. */
-  invocation_id: string;
-  /** The email step (action node) within the workflow that sent this email. */
-  action_id: string;
-  /** The workflow id that sent this email — used to navigate from a person's Emails tab back into the originating workflow. */
-  function_id: string;
-  /** Human-readable workflow name for display. Empty when the workflow has been deleted; clients should fall back to function_id in that case. */
-  function_name: string;
-  /** The batch run this email belongs to, for batch-triggered workflows. Empty for event-triggered runs. */
-  parent_run_id: string;
-  /** Asset kind. Currently always 'email'. */
-  kind: string;
-  /** The recipient's distinct_id. */
-  distinct_id: string;
-  /** The recipient's person UUID, if resolved. */
-  person_id: string;
-  /** The recipient email address. */
-  recipient: string;
-  /** The email subject line. */
-  subject: string;
-  /** Delivery status at capture time. Currently always 'sent'. */
-  status: string;
-  /** When the email was sent. */
-  sent_at: string;
-}
-export const MessageAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocation_id: S.String,
-    action_id: S.String,
-    function_id: S.String,
-    function_name: S.String,
-    parent_run_id: S.String,
-    kind: S.String,
-    distinct_id: S.String,
-    person_id: S.String,
-    recipient: S.String,
-    subject: S.String,
-    status: S.String,
-    sent_at: S.String,
-  }),
-).annotate({ identifier: "MessageAsset" }) as any as S.Schema<MessageAsset>;
-
-export type PersonsEmailsListResponseBodyList = Array<MessageAsset>;
-export const PersonsEmailsListResponseBodyList = /*@__PURE__*/ S.Array(
-  MessageAsset,
-) as any as S.Schema<PersonsEmailsListResponseBodyList>;
-
-export type PersonsEmailsListResponse = PersonsEmailsListResponseBodyList;
-export const PersonsEmailsListResponse = /*@__PURE__*/ S.suspend(() =>
-  PersonsEmailsListResponseBodyList.pipe(T.RawResponseRoot()),
+export interface PersonsFunnelCreateResponse {}
+export const PersonsFunnelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "PersonsEmailsListResponse",
-}) as any as S.Schema<PersonsEmailsListResponse>;
+  identifier: "PersonsFunnelCreateResponse",
+}) as any as S.Schema<PersonsFunnelCreateResponse>;
+
+export type PersonsFunnelRetrieveRequestFormat = "csv" | "json";
+export const PersonsFunnelRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface PersonsFunnelRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: PersonsFunnelRetrieveRequestFormat | (string & {});
+}
+export const PersonsFunnelRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(PersonsFunnelRetrieveRequestFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/persons/funnel/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PersonsFunnelRetrieveRequest",
+}) as any as S.Schema<PersonsFunnelRetrieveRequest>;
+
+export interface PersonsFunnelRetrieveResponse {}
+export const PersonsFunnelRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PersonsFunnelRetrieveResponse",
+}) as any as S.Schema<PersonsFunnelRetrieveResponse>;
+
+export type PersonsLifecycleRetrieveRequestFormat = "csv" | "json";
+export const PersonsLifecycleRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface PersonsLifecycleRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: PersonsLifecycleRetrieveRequestFormat | (string & {});
+}
+export const PersonsLifecycleRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(PersonsLifecycleRetrieveRequestFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/persons/lifecycle/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PersonsLifecycleRetrieveRequest",
+}) as any as S.Schema<PersonsLifecycleRetrieveRequest>;
+
+export interface PersonsLifecycleRetrieveResponse {}
+export const PersonsLifecycleRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PersonsLifecycleRetrieveResponse",
+}) as any as S.Schema<PersonsLifecycleRetrieveResponse>;
 
 export type PersonsListRequestFormat = "csv" | "json";
 export const PersonsListRequestFormat = /*@__PURE__*/ S.String;
@@ -528,13 +528,12 @@ export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
 export const PropertyItemOperator =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyItemOperator>;
 
-/** * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `person_metadata` - person_metadata * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `metric_attribute` - metric_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `account_custom_property` - account_custom_property * `flag` - flag * `workflow_variable` - workflow_variable */
+/** * `event` - event * `event_metadata` - event_metadata * `feature` - feature * `person` - person * `cohort` - cohort * `element` - element * `static-cohort` - static-cohort * `dynamic-cohort` - dynamic-cohort * `precalculated-cohort` - precalculated-cohort * `group` - group * `recording` - recording * `log_entry` - log_entry * `behavioral` - behavioral * `session` - session * `hogql` - hogql * `data_warehouse` - data_warehouse * `data_warehouse_person_property` - data_warehouse_person_property * `error_tracking_issue` - error_tracking_issue * `log` - log * `log_attribute` - log_attribute * `log_resource_attribute` - log_resource_attribute * `span` - span * `span_attribute` - span_attribute * `span_resource_attribute` - span_resource_attribute * `revenue_analytics` - revenue_analytics * `flag` - flag * `workflow_variable` - workflow_variable */
 export type PropertyFilterTypeEnum =
   | "event"
   | "event_metadata"
   | "feature"
   | "person"
-  | "person_metadata"
   | "cohort"
   | "element"
   | "static-cohort"
@@ -552,12 +551,10 @@ export type PropertyFilterTypeEnum =
   | "log"
   | "log_attribute"
   | "log_resource_attribute"
-  | "metric_attribute"
   | "span"
   | "span_attribute"
   | "span_resource_attribute"
   | "revenue_analytics"
-  | "account_custom_property"
   | "flag"
   | "workflow_variable";
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
@@ -1008,6 +1005,36 @@ export const PersonSplitResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonSplitResponse",
 }) as any as S.Schema<PersonSplitResponse>;
 
+export type PersonsTrendsRetrieveRequestFormat = "csv" | "json";
+export const PersonsTrendsRetrieveRequestFormat = /*@__PURE__*/ S.String;
+
+export interface PersonsTrendsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: PersonsTrendsRetrieveRequestFormat | (string & {});
+}
+export const PersonsTrendsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(PersonsTrendsRetrieveRequestFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/persons/trends/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PersonsTrendsRetrieveRequest",
+}) as any as S.Schema<PersonsTrendsRetrieveRequest>;
+
+export interface PersonsTrendsRetrieveResponse {}
+export const PersonsTrendsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PersonsTrendsRetrieveResponse",
+}) as any as S.Schema<PersonsTrendsRetrieveResponse>;
+
 export type PersonsUpdateRequestFormat = "csv" | "json";
 export const PersonsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
@@ -1266,17 +1293,59 @@ export const personsDeletionStatusList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PersonsEmailsListError = PosthogOpError;
+export type PersonsFunnelCreateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
 /** This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs. */
-export const personsEmailsList: API.OperationMethod<
-  PersonsEmailsListRequest,
-  PersonsEmailsListResponse,
-  PersonsEmailsListError,
+export const personsFunnelCreate: API.OperationMethod<
+  PersonsFunnelCreateRequest,
+  PersonsFunnelCreateResponse,
+  PersonsFunnelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PersonsEmailsListRequest,
-  output: PersonsEmailsListResponse,
-  errors: [],
+  input: PersonsFunnelCreateRequest,
+  output: PersonsFunnelCreateResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PersonsFunnelRetrieveError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs. */
+export const personsFunnelRetrieve: API.OperationMethod<
+  PersonsFunnelRetrieveRequest,
+  PersonsFunnelRetrieveResponse,
+  PersonsFunnelRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PersonsFunnelRetrieveRequest,
+  output: PersonsFunnelRetrieveResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PersonsLifecycleRetrieveError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs. */
+export const personsLifecycleRetrieve: API.OperationMethod<
+  PersonsLifecycleRetrieveRequest,
+  PersonsLifecycleRetrieveResponse,
+  PersonsLifecycleRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PersonsLifecycleRetrieveRequest,
+  output: PersonsLifecycleRetrieveResponse,
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -1409,6 +1478,25 @@ export const personsSplitCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PersonsSplitCreateRequest,
   output: PersonSplitResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PersonsTrendsRetrieveError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** This endpoint is meant for reading and deleting persons. To create or update persons, we recommend using the [capture API](https://posthog.com/docs/api/capture), the `$set` and `$unset` [properties](https://posthog.com/docs/product-analytics/user-properties), or one of our SDKs. */
+export const personsTrendsRetrieve: API.OperationMethod<
+  PersonsTrendsRetrieveRequest,
+  PersonsTrendsRetrieveResponse,
+  PersonsTrendsRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PersonsTrendsRetrieveRequest,
+  output: PersonsTrendsRetrieveResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

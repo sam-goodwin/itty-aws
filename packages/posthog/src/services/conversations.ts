@@ -35,47 +35,6 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-/** * `good` - good * `bad` - bad */
-export type RatingEnum = "good" | "bad";
-export const RatingEnum = /*@__PURE__*/ S.String;
-
-export interface ConversationsTicketsAiFeedbackCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** The ticket's UUID or its numeric ticket number. */
-  id: string;
-  /** ID of the AI message being rated. */
-  message_id: string;
-  /** Reviewer rating: good or bad. * `good` - good * `bad` - bad */
-  rating: RatingEnum | (string & {});
-  /** Optional text explaining a bad rating. */
-  feedback_text?: string;
-}
-export const ConversationsTicketsAiFeedbackCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      message_id: S.String,
-      rating: RatingEnum,
-      feedback_text: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/conversations/tickets/{id}/ai_feedback/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ConversationsTicketsAiFeedbackCreateRequest",
-  }) as any as S.Schema<ConversationsTicketsAiFeedbackCreateRequest>;
-
-export interface ConversationsTicketsAiFeedbackCreateResponse {}
-export const ConversationsTicketsAiFeedbackCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ConversationsTicketsAiFeedbackCreateResponse",
-  }) as any as S.Schema<ConversationsTicketsAiFeedbackCreateResponse>;
-
 /** List of ticket UUIDs to update. */
 export type ConversationsTicketsBulkUpdateStatusCreateRequestIdsList =
   Array<string>;
@@ -148,8 +107,8 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequestIdsList =
   ) as any as S.Schema<ConversationsTicketsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
+export type ActionEnum = "add" | "remove" | "set";
+export const ActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
 export type ConversationsTicketsBulkUpdateTagsCreateRequestTagsList =
@@ -165,7 +124,7 @@ export interface ConversationsTicketsBulkUpdateTagsCreateRequest {
   /** List of object IDs to update tags on. */
   ids?: ConversationsTicketsBulkUpdateTagsCreateRequestIdsList;
   /** 'add' merges with existing tags, 'remove' deletes specific tags, 'set' replaces all tags. * `add` - add * `remove` - remove * `set` - set */
-  action?: BulkUpdateTagsActionEnum | (string & {});
+  action?: ActionEnum | (string & {});
   /** Tag names to add, remove, or set. */
   tags?: ConversationsTicketsBulkUpdateTagsCreateRequestTagsList;
 }
@@ -174,7 +133,7 @@ export const ConversationsTicketsBulkUpdateTagsCreateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       ids: S.optional(ConversationsTicketsBulkUpdateTagsCreateRequestIdsList),
-      action: S.optional(BulkUpdateTagsActionEnum),
+      action: S.optional(ActionEnum),
       tags: S.optional(ConversationsTicketsBulkUpdateTagsCreateRequestTagsList),
     }).pipe(
       T.Http({
@@ -293,143 +252,62 @@ export const ComposeTicketResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComposeTicketResponse",
 }) as any as S.Schema<ComposeTicketResponse>;
 
-export interface ConversationsTicketsDestroyRequest {
+/** * `low` - Low * `medium` - Medium * `high` - High */
+export type TicketPriorityEnum = "low" | "medium" | "high";
+export const TicketPriorityEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+/** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
+export type ConversationsTicketsCreateRequestPriority =
+  | TicketPriorityEnum
+  | BlankEnum;
+export const ConversationsTicketsCreateRequestPriority =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ConversationsTicketsCreateRequestPriority>;
+
+export type ConversationsTicketsCreateRequestTagsList = Array<unknown>;
+export const ConversationsTicketsCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ConversationsTicketsCreateRequestTagsList>;
+
+export interface ConversationsTicketsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** The ticket's UUID or its numeric ticket number. */
-  id: string;
+  /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
+  status?: TicketStatusEnum | (string & {});
+  /** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
+  priority?: ConversationsTicketsCreateRequestPriority | null;
+  /** Customer-provided traits such as name and email */
+  anonymous_traits?: unknown;
+  ai_resolved?: boolean;
+  escalation_reason?: string | null;
+  /** SLA deadline set via workflows. Null means no SLA. */
+  sla_due_at?: string | null;
+  snoozed_until?: string | null;
+  tags?: ConversationsTicketsCreateRequestTagsList;
 }
-export const ConversationsTicketsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+export const ConversationsTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
+    status: S.optional(TicketStatusEnum),
+    priority: S.optional(S.NullOr(ConversationsTicketsCreateRequestPriority)),
+    anonymous_traits: S.optional(S.Unknown),
+    ai_resolved: S.optional(S.Boolean),
+    escalation_reason: S.optional(S.NullOr(S.String)),
+    sla_due_at: S.optional(S.NullOr(S.String)),
+    snoozed_until: S.optional(S.NullOr(S.String)),
+    tags: S.optional(ConversationsTicketsCreateRequestTagsList),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/conversations/tickets/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConversationsTicketsDestroyRequest",
-}) as any as S.Schema<ConversationsTicketsDestroyRequest>;
-
-export interface ConversationsTicketsDestroyResponse {}
-export const ConversationsTicketsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConversationsTicketsDestroyResponse",
-}) as any as S.Schema<ConversationsTicketsDestroyResponse>;
-
-export type ConversationsTicketsListRequestChannelDetail =
-  | "github_issue"
-  | "slack_bot_mention"
-  | "slack_channel_message"
-  | "slack_emoji_reaction"
-  | "teams_bot_mention"
-  | "teams_channel_message"
-  | "widget_api"
-  | "widget_embedded";
-export const ConversationsTicketsListRequestChannelDetail =
-  /*@__PURE__*/ S.String;
-
-export type ConversationsTicketsListRequestChannelSource =
-  | "email"
-  | "github"
-  | "slack"
-  | "teams"
-  | "widget";
-export const ConversationsTicketsListRequestChannelSource =
-  /*@__PURE__*/ S.String;
-
-export type ConversationsTicketsListRequestOrderBy =
-  | "-created_at"
-  | "-sla_due_at"
-  | "-ticket_number"
-  | "-updated_at"
-  | "created_at"
-  | "sla_due_at"
-  | "ticket_number"
-  | "updated_at";
-export const ConversationsTicketsListRequestOrderBy = /*@__PURE__*/ S.String;
-
-export type ConversationsTicketsListRequestSla =
-  | "at-risk"
-  | "breached"
-  | "on-track";
-export const ConversationsTicketsListRequestSla = /*@__PURE__*/ S.String;
-
-export interface ConversationsTicketsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Filter by assignee. Accepts a single value or a comma-separated list (matches any, max 100 entries). Each entry is `unassigned` (no assignee), `user:<user_id>`, or `role:<role_uuid>`, e.g. `assignee=unassigned,user:123`. */
-  assignee?: string;
-  /** Filter by the channel sub-type (e.g. `widget_embedded`, `slack_bot_mention`). */
-  channel_detail?: ConversationsTicketsListRequestChannelDetail | (string & {});
-  /** Filter by the channel the ticket originated from. */
-  channel_source?: ConversationsTicketsListRequestChannelSource | (string & {});
-  /** Only include tickets updated on or after this date. Accepts absolute dates (`2026-01-01`) or relative ones (`-7d`, `-1mStart`). Pass `all` to disable the filter. */
-  date_from?: string;
-  /** Only include tickets updated on or before this date. Same format as `date_from`. */
-  date_to?: string;
-  /** Comma-separated list of person `distinct_id`s to filter by (max 100). */
-  distinct_ids?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Sort order. Prefix with `-` for descending. Defaults to `-updated_at`. */
-  order_by?: ConversationsTicketsListRequestOrderBy | (string & {});
-  /** Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`, `critical`. */
-  priority?: string;
-  /** Free-text search. A numeric value matches a ticket number exactly; otherwise matches against the customer's name or email (case-insensitive, partial match). */
-  search?: string;
-  /** Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining. */
-  sla?: ConversationsTicketsListRequestSla | (string & {});
-  /** Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`. */
-  status?: string;
-  /** JSON-encoded array of tag names; returns tickets with ANY of them (OR), e.g. `["billing","urgent"]`. */
-  tags?: string;
-  /** JSON-encoded array of tag names; returns tickets that have ALL of them (AND), e.g. `["billing","urgent"]`. */
-  tags_all?: string;
-  /** JSON-encoded array of tag names; returns tickets that have NONE of them (NOT), e.g. `["escalated"]`. */
-  tags_exclude?: string;
-}
-export const ConversationsTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    assignee: S.optional(S.String.pipe(T.Query())),
-    channel_detail: S.optional(
-      ConversationsTicketsListRequestChannelDetail.pipe(T.Query()),
-    ),
-    channel_source: S.optional(
-      ConversationsTicketsListRequestChannelSource.pipe(T.Query()),
-    ),
-    date_from: S.optional(S.String.pipe(T.Query())),
-    date_to: S.optional(S.String.pipe(T.Query())),
-    distinct_ids: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    order_by: S.optional(
-      ConversationsTicketsListRequestOrderBy.pipe(T.Query()),
-    ),
-    priority: S.optional(S.String.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-    sla: S.optional(ConversationsTicketsListRequestSla.pipe(T.Query())),
-    status: S.optional(S.String.pipe(T.Query())),
-    tags: S.optional(S.String.pipe(T.Query())),
-    tags_all: S.optional(S.String.pipe(T.Query())),
-    tags_exclude: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
+      method: "POST",
       uri: "/api/projects/{project_id}/conversations/tickets/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ConversationsTicketsListRequest",
-}) as any as S.Schema<ConversationsTicketsListRequest>;
+  identifier: "ConversationsTicketsCreateRequest",
+}) as any as S.Schema<ConversationsTicketsCreateRequest>;
 
 /** * `widget` - Widget * `email` - Email * `slack` - Slack * `teams` - Microsoft Teams * `github` - GitHub */
 export type ChannelSourceEnum =
@@ -452,14 +330,7 @@ export type ChannelDetailEnum =
   | "github_issue";
 export const ChannelDetailEnum = /*@__PURE__*/ S.String;
 
-/** * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
-export type TicketPriorityEnum = "low" | "medium" | "high" | "critical";
-export const TicketPriorityEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-/** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+/** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
 export type TicketPriority = TicketPriorityEnum | BlankEnum;
 export const TicketPriority =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TicketPriority>;
@@ -539,13 +410,11 @@ export interface Ticket {
   distinct_id?: string;
   /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
   status?: TicketStatusEnum;
-  /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+  /** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
   priority?: TicketPriority | null;
   assignee?: TicketAssignment;
   /** Customer-provided traits such as name and email */
   anonymous_traits?: unknown;
-  /** Trust signal indicating whether the ticket's claimed identity was attested by the server (widget HMAC, SPF-authenticated email, or a signature-validated platform webhook). True when verified, false when assessed but not attested, null when unknown (e.g. created before this signal existed). */
-  identity_verified?: boolean | null;
   ai_resolved?: boolean;
   escalation_reason?: string | null;
   /** AI support pipeline triage and outcome (status, result, ticket_type, confidence, attempts, etc.). */
@@ -571,11 +440,8 @@ export interface Ticket {
   cc_participants?: unknown;
   github_repo?: string | null;
   github_issue_number?: number | null;
-  zendesk_ticket_id?: number | null;
   /** Customer's PostHog organization group key, resolved at ticket creation. Null when unknown. */
   organization_id?: string | null;
-  /** How organization_id was resolved: 'person' (from the requester's identity) or 'slack_channel_account' (inferred from the customer analytics account linked to the ticket's Slack channel). Null when organization_id is unset. */
-  organization_id_source?: string | null;
   person?: TicketPerson | null;
   tags?: TicketTagsList;
 }
@@ -590,7 +456,6 @@ export const Ticket = /*@__PURE__*/ S.suspend(() =>
     priority: S.optional(S.NullOr(TicketPriority)),
     assignee: S.optional(TicketAssignment),
     anonymous_traits: S.optional(S.Unknown),
-    identity_verified: S.optional(S.NullOr(S.Boolean)),
     ai_resolved: S.optional(S.Boolean),
     escalation_reason: S.optional(S.NullOr(S.String)),
     ai_triage: S.optional(S.Unknown),
@@ -614,13 +479,149 @@ export const Ticket = /*@__PURE__*/ S.suspend(() =>
     cc_participants: S.optional(S.Unknown),
     github_repo: S.optional(S.NullOr(S.String)),
     github_issue_number: S.optional(S.NullOr(S.Number)),
-    zendesk_ticket_id: S.optional(S.NullOr(S.Number)),
     organization_id: S.optional(S.NullOr(S.String)),
-    organization_id_source: S.optional(S.NullOr(S.String)),
     person: S.optional(S.NullOr(TicketPerson)),
     tags: S.optional(TicketTagsList),
   }),
 ).annotate({ identifier: "Ticket" }) as any as S.Schema<Ticket>;
+
+export interface ConversationsTicketsDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** The ticket's UUID or its numeric ticket number. */
+  id: string;
+}
+export const ConversationsTicketsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/conversations/tickets/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ConversationsTicketsDestroyRequest",
+}) as any as S.Schema<ConversationsTicketsDestroyRequest>;
+
+export interface ConversationsTicketsDestroyResponse {}
+export const ConversationsTicketsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ConversationsTicketsDestroyResponse",
+}) as any as S.Schema<ConversationsTicketsDestroyResponse>;
+
+export type ConversationsTicketsListRequestChannelDetail =
+  | "github_issue"
+  | "slack_bot_mention"
+  | "slack_channel_message"
+  | "slack_emoji_reaction"
+  | "teams_bot_mention"
+  | "teams_channel_message"
+  | "widget_api"
+  | "widget_embedded";
+export const ConversationsTicketsListRequestChannelDetail =
+  /*@__PURE__*/ S.String;
+
+export type ConversationsTicketsListRequestChannelSource =
+  | "email"
+  | "github"
+  | "slack"
+  | "teams"
+  | "widget";
+export const ConversationsTicketsListRequestChannelSource =
+  /*@__PURE__*/ S.String;
+
+export type ConversationsTicketsListRequestOrderBy =
+  | "-created_at"
+  | "-sla_due_at"
+  | "-ticket_number"
+  | "-updated_at"
+  | "created_at"
+  | "sla_due_at"
+  | "ticket_number"
+  | "updated_at";
+export const ConversationsTicketsListRequestOrderBy = /*@__PURE__*/ S.String;
+
+export type ConversationsTicketsListRequestSla =
+  | "at-risk"
+  | "breached"
+  | "on-track";
+export const ConversationsTicketsListRequestSla = /*@__PURE__*/ S.String;
+
+export interface ConversationsTicketsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Filter by assignee. Use `unassigned` for tickets with no assignee, `user:<user_id>` for a specific user, or `role:<role_uuid>` for a role. */
+  assignee?: string;
+  /** Filter by the channel sub-type (e.g. `widget_embedded`, `slack_bot_mention`). */
+  channel_detail?: ConversationsTicketsListRequestChannelDetail | (string & {});
+  /** Filter by the channel the ticket originated from. */
+  channel_source?: ConversationsTicketsListRequestChannelSource | (string & {});
+  /** Only include tickets updated on or after this date. Accepts absolute dates (`2026-01-01`) or relative ones (`-7d`, `-1mStart`). Pass `all` to disable the filter. */
+  date_from?: string;
+  /** Only include tickets updated on or before this date. Same format as `date_from`. */
+  date_to?: string;
+  /** Comma-separated list of person `distinct_id`s to filter by (max 100). */
+  distinct_ids?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Sort order. Prefix with `-` for descending. Defaults to `-updated_at`. */
+  order_by?: ConversationsTicketsListRequestOrderBy | (string & {});
+  /** Filter by priority. Accepts a single value or a comma-separated list (e.g. `medium,high`). Valid values: `low`, `medium`, `high`. */
+  priority?: string;
+  /** Free-text search. A numeric value matches a ticket number exactly; otherwise matches against the customer's name or email (case-insensitive, partial match). */
+  search?: string;
+  /** Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining. */
+  sla?: ConversationsTicketsListRequestSla | (string & {});
+  /** Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`. */
+  status?: string;
+  /** JSON-encoded array of tag names; returns tickets with ANY of them (OR), e.g. `["billing","urgent"]`. */
+  tags?: string;
+  /** JSON-encoded array of tag names; returns tickets that have ALL of them (AND), e.g. `["billing","urgent"]`. */
+  tags_all?: string;
+  /** JSON-encoded array of tag names; returns tickets that have NONE of them (NOT), e.g. `["escalated"]`. */
+  tags_exclude?: string;
+}
+export const ConversationsTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    assignee: S.optional(S.String.pipe(T.Query())),
+    channel_detail: S.optional(
+      ConversationsTicketsListRequestChannelDetail.pipe(T.Query()),
+    ),
+    channel_source: S.optional(
+      ConversationsTicketsListRequestChannelSource.pipe(T.Query()),
+    ),
+    date_from: S.optional(S.String.pipe(T.Query())),
+    date_to: S.optional(S.String.pipe(T.Query())),
+    distinct_ids: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    order_by: S.optional(
+      ConversationsTicketsListRequestOrderBy.pipe(T.Query()),
+    ),
+    priority: S.optional(S.String.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+    sla: S.optional(ConversationsTicketsListRequestSla.pipe(T.Query())),
+    status: S.optional(S.String.pipe(T.Query())),
+    tags: S.optional(S.String.pipe(T.Query())),
+    tags_all: S.optional(S.String.pipe(T.Query())),
+    tags_exclude: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/conversations/tickets/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ConversationsTicketsListRequest",
+}) as any as S.Schema<ConversationsTicketsListRequest>;
 
 export type PaginatedTicketListResultsList = Array<Ticket>;
 export const PaginatedTicketListResultsList = /*@__PURE__*/ S.Array(
@@ -722,7 +723,7 @@ export const PaginatedTicketMessageList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTicketMessageList",
 }) as any as S.Schema<PaginatedTicketMessageList>;
 
-/** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+/** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
 export type ConversationsTicketsPartialUpdateRequestPriority =
   | TicketPriorityEnum
   | BlankEnum;
@@ -742,7 +743,7 @@ export interface ConversationsTicketsPartialUpdateRequest {
   id: string;
   /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
   status?: TicketStatusEnum | (string & {});
-  /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+  /** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
   priority?: ConversationsTicketsPartialUpdateRequestPriority | null;
   /** Customer-provided traits such as name and email */
   anonymous_traits?: unknown;
@@ -831,7 +832,7 @@ export const ConversationsTicketsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationsTicketsRetrieveRequest",
 }) as any as S.Schema<ConversationsTicketsRetrieveRequest>;
 
-/** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+/** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
 export type ConversationsTicketsUpdateRequestPriority =
   | TicketPriorityEnum
   | BlankEnum;
@@ -850,7 +851,7 @@ export interface ConversationsTicketsUpdateRequest {
   id: string;
   /** Ticket status: new, open, pending, on_hold, or resolved * `new` - New * `open` - Open * `pending` - Pending * `on_hold` - On hold * `resolved` - Resolved */
   status?: TicketStatusEnum | (string & {});
-  /** Ticket priority: low, medium, high, or critical. Null if unset. * `low` - Low * `medium` - Medium * `high` - High * `critical` - Critical */
+  /** Ticket priority: low, medium, or high. Null if unset. * `low` - Low * `medium` - Medium * `high` - High */
   priority?: ConversationsTicketsUpdateRequestPriority | null;
   /** Customer-provided traits such as name and email */
   anonymous_traits?: unknown;
@@ -899,15 +900,12 @@ export interface ConversationsViewsCreateRequest {
   name?: string;
   /** Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys. */
   filters?: ConversationsViewsCreateRequestFiltersMap;
-  /** Whether the current user has favorited this view. Favorited views sort to the top of the list. Favorites are personal to each user. */
-  is_favorited?: boolean;
 }
 export const ConversationsViewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
     filters: S.optional(ConversationsViewsCreateRequestFiltersMap),
-    is_favorited: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -981,8 +979,6 @@ export interface TicketView {
   filters?: TicketViewFiltersMap;
   created_at?: string;
   created_by?: UserBasic | null;
-  /** Whether the current user has favorited this view. Favorited views sort to the top of the list. Favorites are personal to each user. */
-  is_favorited?: boolean;
 }
 export const TicketView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -992,7 +988,6 @@ export const TicketView = /*@__PURE__*/ S.suspend(() =>
     filters: S.optional(TicketViewFiltersMap),
     created_at: S.optional(S.String),
     created_by: S.optional(S.NullOr(UserBasic)),
-    is_favorited: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "TicketView" }) as any as S.Schema<TicketView>;
 
@@ -1069,45 +1064,6 @@ export const PaginatedTicketViewList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTicketViewList",
 }) as any as S.Schema<PaginatedTicketViewList>;
 
-/** Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys. */
-export type ConversationsViewsPartialUpdateRequestFiltersMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsViewsPartialUpdateRequestFiltersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsViewsPartialUpdateRequestFiltersMap>;
-
-export interface ConversationsViewsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  short_id: string;
-  name?: string;
-  /** Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys. */
-  filters?: ConversationsViewsPartialUpdateRequestFiltersMap;
-  /** Whether the current user has favorited this view. Favorited views sort to the top of the list. Favorites are personal to each user. */
-  is_favorited?: boolean;
-}
-export const ConversationsViewsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      short_id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      filters: S.optional(ConversationsViewsPartialUpdateRequestFiltersMap),
-      is_favorited: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/conversations/views/{short_id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ConversationsViewsPartialUpdateRequest",
-}) as any as S.Schema<ConversationsViewsPartialUpdateRequest>;
-
 export interface ConversationsViewsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1127,21 +1083,6 @@ export const ConversationsViewsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConversationsViewsRetrieveRequest",
 }) as any as S.Schema<ConversationsViewsRetrieveRequest>;
-
-export type ConversationsTicketsAiFeedbackCreateError = PosthogOpError;
-/** Record reviewer feedback on an AI reply, captured to the internal analytics project. */
-export const conversationsTicketsAiFeedbackCreate: API.OperationMethod<
-  ConversationsTicketsAiFeedbackCreateRequest,
-  ConversationsTicketsAiFeedbackCreateResponse,
-  ConversationsTicketsAiFeedbackCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConversationsTicketsAiFeedbackCreateRequest,
-  output: ConversationsTicketsAiFeedbackCreateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
 
 export type ConversationsTicketsBulkUpdateStatusCreateError = PosthogOpError;
 /** Update the status of multiple tickets in a single request. Only tickets belonging to the current team are affected; other-team UUIDs are silently ignored. Tickets already in the requested status are skipped. */
@@ -1190,6 +1131,24 @@ export const conversationsTicketsComposeCreate: API.OperationMethod<
   input: ConversationsTicketsComposeCreateRequest,
   output: ComposeTicketResponse,
   errors: [BadRequest],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ConversationsTicketsCreateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+export const conversationsTicketsCreate: API.OperationMethod<
+  ConversationsTicketsCreateRequest,
+  Ticket,
+  ConversationsTicketsCreateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ConversationsTicketsCreateRequest,
+  output: Ticket,
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -1368,20 +1327,6 @@ export const conversationsViewsList: API.OperationMethod<
   input: ConversationsViewsListRequest,
   output: PaginatedTicketViewList,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConversationsViewsPartialUpdateError = PosthogOpError;
-export const conversationsViewsPartialUpdate: API.OperationMethod<
-  ConversationsViewsPartialUpdateRequest,
-  TicketView,
-  ConversationsViewsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConversationsViewsPartialUpdateRequest,
-  output: TicketView,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

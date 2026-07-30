@@ -160,7 +160,6 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "MinimalFeatureFlag",
 }) as any as S.Schema<MinimalFeatureFlag>;
 
-/** Mixin for serializers to add user access control fields */
 export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   id?: string;
   /** The name of the early access feature. */
@@ -175,8 +174,6 @@ export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   payload?: unknown;
   created_at?: string;
   feature_flag?: MinimalFeatureFlag;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const EarlyAccessFeatureSerializerCreateOnlyOutput =
   /*@__PURE__*/ S.suspend(() =>
@@ -189,7 +186,6 @@ export const EarlyAccessFeatureSerializerCreateOnlyOutput =
       payload: S.optional(S.Unknown),
       created_at: S.optional(S.String),
       feature_flag: S.optional(MinimalFeatureFlag),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "EarlyAccessFeatureSerializerCreateOnlyOutput",
@@ -256,7 +252,6 @@ export const EarlyAccessFeaturePayloadMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<EarlyAccessFeaturePayloadMap>;
 
-/** Mixin for serializers to add user access control fields */
 export interface EarlyAccessFeature2 {
   id?: string;
   feature_flag?: MinimalFeatureFlag;
@@ -271,8 +266,6 @@ export interface EarlyAccessFeature2 {
   /** Feature flag payload for this early access feature */
   payload?: EarlyAccessFeaturePayloadMap;
   created_at?: string;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -284,7 +277,6 @@ export const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
     documentation_url: S.optional(S.String),
     payload: S.optional(EarlyAccessFeaturePayloadMap),
     created_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "EarlyAccessFeature2",
