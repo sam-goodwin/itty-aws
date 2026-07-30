@@ -1,6 +1,7 @@
 {
   "errors": {
-    "Forbidden": [{ "status": 403 }]
+    "Forbidden": [{ "status": 403 }],
+    "RumSiteQuotaExceeded": [{ "code": 10014 }]
   },
   "response": {
     "properties": {

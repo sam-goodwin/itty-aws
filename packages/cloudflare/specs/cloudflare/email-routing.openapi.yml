@@ -115,6 +115,11 @@ paths:
                     description: The date and time the destination address has been verified. Null
                       means not verified yet.
       x-distilled-response-path: result
+      x-distilled-errors:
+        EmailAddressNotFound:
+          - code: 2015
+        EmailAddressCreatedTooRecently:
+          - code: 2032
   /accounts/{account_id}/email/routing/addresses:
     get:
       operationId: listAddresses

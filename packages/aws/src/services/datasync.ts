@@ -168,10 +168,11 @@ export const CancelTaskExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelTaskExecutionRequest",
 }) as any as S.Schema<CancelTaskExecutionRequest>;
 export interface CancelTaskExecutionResponse {}
-export const CancelTaskExecutionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelTaskExecutionResponse",
-  }) as any as S.Schema<CancelTaskExecutionResponse>;
+export const CancelTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CancelTaskExecutionResponse",
+}) as any as S.Schema<CancelTaskExecutionResponse>;
 export interface TagListEntry {
   Key: string;
   Value?: string;
@@ -267,34 +268,32 @@ export interface CreateLocationAzureBlobRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const CreateLocationAzureBlobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContainerUrl: S.String,
-      AuthenticationType: AzureBlobAuthenticationType,
-      SasConfiguration: S.optional(AzureBlobSasConfiguration),
-      BlobType: S.optional(AzureBlobType),
-      AccessTier: S.optional(AzureAccessTier),
-      Subdirectory: S.optional(S.String),
-      AgentArns: S.optional(AgentArnList),
-      Tags: S.optional(InputTagList),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationAzureBlobRequest",
-  }) as any as S.Schema<CreateLocationAzureBlobRequest>;
+export const CreateLocationAzureBlobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContainerUrl: S.String,
+    AuthenticationType: AzureBlobAuthenticationType,
+    SasConfiguration: S.optional(AzureBlobSasConfiguration),
+    BlobType: S.optional(AzureBlobType),
+    AccessTier: S.optional(AzureAccessTier),
+    Subdirectory: S.optional(S.String),
+    AgentArns: S.optional(AgentArnList),
+    Tags: S.optional(InputTagList),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationAzureBlobRequest",
+}) as any as S.Schema<CreateLocationAzureBlobRequest>;
 export interface CreateLocationAzureBlobResponse {
   LocationArn?: string;
 }
-export const CreateLocationAzureBlobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationAzureBlobResponse",
-  }) as any as S.Schema<CreateLocationAzureBlobResponse>;
+export const CreateLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationAzureBlobResponse",
+}) as any as S.Schema<CreateLocationAzureBlobResponse>;
 export type Ec2SecurityGroupArnList = string[];
 export const Ec2SecurityGroupArnList = /*@__PURE__*/ S.Array(S.String);
 export interface Ec2Config {
@@ -344,28 +343,26 @@ export interface CreateLocationFsxLustreRequest {
   Subdirectory?: string;
   Tags?: TagListEntry[];
 }
-export const CreateLocationFsxLustreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FsxFilesystemArn: S.String,
-      SecurityGroupArns: Ec2SecurityGroupArnList,
-      Subdirectory: S.optional(S.String),
-      Tags: S.optional(InputTagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationFsxLustreRequest",
-  }) as any as S.Schema<CreateLocationFsxLustreRequest>;
+export const CreateLocationFsxLustreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FsxFilesystemArn: S.String,
+    SecurityGroupArns: Ec2SecurityGroupArnList,
+    Subdirectory: S.optional(S.String),
+    Tags: S.optional(InputTagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationFsxLustreRequest",
+}) as any as S.Schema<CreateLocationFsxLustreRequest>;
 export interface CreateLocationFsxLustreResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxLustreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationFsxLustreResponse",
-  }) as any as S.Schema<CreateLocationFsxLustreResponse>;
+export const CreateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationFsxLustreResponse",
+}) as any as S.Schema<CreateLocationFsxLustreResponse>;
 export type NfsVersion =
   | "AUTOMATIC"
   | "NFS3"
@@ -448,29 +445,27 @@ export interface CreateLocationFsxOntapRequest {
   Subdirectory?: string;
   Tags?: TagListEntry[];
 }
-export const CreateLocationFsxOntapRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Protocol: FsxProtocol,
-      SecurityGroupArns: Ec2SecurityGroupArnList,
-      StorageVirtualMachineArn: S.String,
-      Subdirectory: S.optional(S.String),
-      Tags: S.optional(InputTagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationFsxOntapRequest",
-  }) as any as S.Schema<CreateLocationFsxOntapRequest>;
+export const CreateLocationFsxOntapRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Protocol: FsxProtocol,
+    SecurityGroupArns: Ec2SecurityGroupArnList,
+    StorageVirtualMachineArn: S.String,
+    Subdirectory: S.optional(S.String),
+    Tags: S.optional(InputTagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationFsxOntapRequest",
+}) as any as S.Schema<CreateLocationFsxOntapRequest>;
 export interface CreateLocationFsxOntapResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxOntapResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationFsxOntapResponse",
-  }) as any as S.Schema<CreateLocationFsxOntapResponse>;
+export const CreateLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationFsxOntapResponse",
+}) as any as S.Schema<CreateLocationFsxOntapResponse>;
 export interface CreateLocationFsxOpenZfsRequest {
   FsxFilesystemArn: string;
   Protocol: FsxProtocol;
@@ -478,29 +473,27 @@ export interface CreateLocationFsxOpenZfsRequest {
   Subdirectory?: string;
   Tags?: TagListEntry[];
 }
-export const CreateLocationFsxOpenZfsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FsxFilesystemArn: S.String,
-      Protocol: FsxProtocol,
-      SecurityGroupArns: Ec2SecurityGroupArnList,
-      Subdirectory: S.optional(S.String),
-      Tags: S.optional(InputTagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationFsxOpenZfsRequest",
-  }) as any as S.Schema<CreateLocationFsxOpenZfsRequest>;
+export const CreateLocationFsxOpenZfsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FsxFilesystemArn: S.String,
+    Protocol: FsxProtocol,
+    SecurityGroupArns: Ec2SecurityGroupArnList,
+    Subdirectory: S.optional(S.String),
+    Tags: S.optional(InputTagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationFsxOpenZfsRequest",
+}) as any as S.Schema<CreateLocationFsxOpenZfsRequest>;
 export interface CreateLocationFsxOpenZfsResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxOpenZfsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationFsxOpenZfsResponse",
-  }) as any as S.Schema<CreateLocationFsxOpenZfsResponse>;
+export const CreateLocationFsxOpenZfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationFsxOpenZfsResponse",
+}) as any as S.Schema<CreateLocationFsxOpenZfsResponse>;
 export interface CreateLocationFsxWindowsRequest {
   Subdirectory?: string;
   FsxFilesystemArn: string;
@@ -512,33 +505,31 @@ export interface CreateLocationFsxWindowsRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const CreateLocationFsxWindowsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Subdirectory: S.optional(S.String),
-      FsxFilesystemArn: S.String,
-      SecurityGroupArns: Ec2SecurityGroupArnList,
-      Tags: S.optional(InputTagList),
-      User: S.String,
-      Domain: S.optional(S.String),
-      Password: S.optional(SensitiveString),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationFsxWindowsRequest",
-  }) as any as S.Schema<CreateLocationFsxWindowsRequest>;
+export const CreateLocationFsxWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Subdirectory: S.optional(S.String),
+    FsxFilesystemArn: S.String,
+    SecurityGroupArns: Ec2SecurityGroupArnList,
+    Tags: S.optional(InputTagList),
+    User: S.String,
+    Domain: S.optional(S.String),
+    Password: S.optional(SensitiveString),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationFsxWindowsRequest",
+}) as any as S.Schema<CreateLocationFsxWindowsRequest>;
 export interface CreateLocationFsxWindowsResponse {
   LocationArn?: string;
 }
-export const CreateLocationFsxWindowsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationFsxWindowsResponse",
-  }) as any as S.Schema<CreateLocationFsxWindowsResponse>;
+export const CreateLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationFsxWindowsResponse",
+}) as any as S.Schema<CreateLocationFsxWindowsResponse>;
 export interface HdfsNameNode {
   Hostname: string;
   Port: number;
@@ -674,36 +665,34 @@ export interface CreateLocationObjectStorageRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const CreateLocationObjectStorageRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ServerHostname: S.String,
-      ServerPort: S.optional(S.Number),
-      ServerProtocol: S.optional(ObjectStorageServerProtocol),
-      Subdirectory: S.optional(S.String),
-      BucketName: S.String,
-      AccessKey: S.optional(S.String),
-      SecretKey: S.optional(SensitiveString),
-      AgentArns: S.optional(AgentArnList),
-      Tags: S.optional(InputTagList),
-      ServerCertificate: S.optional(T.Blob),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateLocationObjectStorageRequest",
-  }) as any as S.Schema<CreateLocationObjectStorageRequest>;
+export const CreateLocationObjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServerHostname: S.String,
+    ServerPort: S.optional(S.Number),
+    ServerProtocol: S.optional(ObjectStorageServerProtocol),
+    Subdirectory: S.optional(S.String),
+    BucketName: S.String,
+    AccessKey: S.optional(S.String),
+    SecretKey: S.optional(SensitiveString),
+    AgentArns: S.optional(AgentArnList),
+    Tags: S.optional(InputTagList),
+    ServerCertificate: S.optional(T.Blob),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateLocationObjectStorageRequest",
+}) as any as S.Schema<CreateLocationObjectStorageRequest>;
 export interface CreateLocationObjectStorageResponse {
   LocationArn?: string;
 }
-export const CreateLocationObjectStorageResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateLocationObjectStorageResponse",
-  }) as any as S.Schema<CreateLocationObjectStorageResponse>;
+export const CreateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateLocationObjectStorageResponse",
+}) as any as S.Schema<CreateLocationObjectStorageResponse>;
 export type S3StorageClass =
   | "STANDARD"
   | "STANDARD_IA"
@@ -1171,14 +1160,13 @@ export const DescribeAgentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeLocationAzureBlobRequest {
   LocationArn: string;
 }
-export const DescribeLocationAzureBlobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationAzureBlobRequest",
-  }) as any as S.Schema<DescribeLocationAzureBlobRequest>;
+export const DescribeLocationAzureBlobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationAzureBlobRequest",
+}) as any as S.Schema<DescribeLocationAzureBlobRequest>;
 export interface DescribeLocationAzureBlobResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1191,23 +1179,22 @@ export interface DescribeLocationAzureBlobResponse {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const DescribeLocationAzureBlobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      AuthenticationType: S.optional(AzureBlobAuthenticationType),
-      BlobType: S.optional(AzureBlobType),
-      AccessTier: S.optional(AzureAccessTier),
-      AgentArns: S.optional(AgentArnList),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ManagedSecretConfig: S.optional(ManagedSecretConfig),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationAzureBlobResponse",
-  }) as any as S.Schema<DescribeLocationAzureBlobResponse>;
+export const DescribeLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    AuthenticationType: S.optional(AzureBlobAuthenticationType),
+    BlobType: S.optional(AzureBlobType),
+    AccessTier: S.optional(AzureAccessTier),
+    AgentArns: S.optional(AgentArnList),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ManagedSecretConfig: S.optional(ManagedSecretConfig),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }),
+).annotate({
+  identifier: "DescribeLocationAzureBlobResponse",
+}) as any as S.Schema<DescribeLocationAzureBlobResponse>;
 export interface DescribeLocationEfsRequest {
   LocationArn: string;
 }
@@ -1227,59 +1214,55 @@ export interface DescribeLocationEfsResponse {
   FileSystemAccessRoleArn?: string;
   InTransitEncryption?: EfsInTransitEncryption;
 }
-export const DescribeLocationEfsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      Ec2Config: S.optional(Ec2Config),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      AccessPointArn: S.optional(S.String),
-      FileSystemAccessRoleArn: S.optional(S.String),
-      InTransitEncryption: S.optional(EfsInTransitEncryption),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationEfsResponse",
-  }) as any as S.Schema<DescribeLocationEfsResponse>;
+export const DescribeLocationEfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    Ec2Config: S.optional(Ec2Config),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AccessPointArn: S.optional(S.String),
+    FileSystemAccessRoleArn: S.optional(S.String),
+    InTransitEncryption: S.optional(EfsInTransitEncryption),
+  }),
+).annotate({
+  identifier: "DescribeLocationEfsResponse",
+}) as any as S.Schema<DescribeLocationEfsResponse>;
 export interface DescribeLocationFsxLustreRequest {
   LocationArn: string;
 }
-export const DescribeLocationFsxLustreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationFsxLustreRequest",
-  }) as any as S.Schema<DescribeLocationFsxLustreRequest>;
+export const DescribeLocationFsxLustreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationFsxLustreRequest",
+}) as any as S.Schema<DescribeLocationFsxLustreRequest>;
 export interface DescribeLocationFsxLustreResponse {
   LocationArn?: string;
   LocationUri?: string;
   SecurityGroupArns?: string[];
   CreationTime?: Date;
 }
-export const DescribeLocationFsxLustreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationFsxLustreResponse",
-  }) as any as S.Schema<DescribeLocationFsxLustreResponse>;
+export const DescribeLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DescribeLocationFsxLustreResponse",
+}) as any as S.Schema<DescribeLocationFsxLustreResponse>;
 export interface DescribeLocationFsxOntapRequest {
   LocationArn: string;
 }
-export const DescribeLocationFsxOntapRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationFsxOntapRequest",
-  }) as any as S.Schema<DescribeLocationFsxOntapRequest>;
+export const DescribeLocationFsxOntapRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationFsxOntapRequest",
+}) as any as S.Schema<DescribeLocationFsxOntapRequest>;
 export interface DescribeLocationFsxOntapResponse {
   CreationTime?: Date;
   LocationArn?: string;
@@ -1289,31 +1272,29 @@ export interface DescribeLocationFsxOntapResponse {
   StorageVirtualMachineArn?: string;
   FsxFilesystemArn?: string;
 }
-export const DescribeLocationFsxOntapResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      Protocol: S.optional(FsxProtocol),
-      SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
-      StorageVirtualMachineArn: S.optional(S.String),
-      FsxFilesystemArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationFsxOntapResponse",
-  }) as any as S.Schema<DescribeLocationFsxOntapResponse>;
+export const DescribeLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    Protocol: S.optional(FsxProtocol),
+    SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
+    StorageVirtualMachineArn: S.optional(S.String),
+    FsxFilesystemArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeLocationFsxOntapResponse",
+}) as any as S.Schema<DescribeLocationFsxOntapResponse>;
 export interface DescribeLocationFsxOpenZfsRequest {
   LocationArn: string;
 }
-export const DescribeLocationFsxOpenZfsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationFsxOpenZfsRequest",
-  }) as any as S.Schema<DescribeLocationFsxOpenZfsRequest>;
+export const DescribeLocationFsxOpenZfsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationFsxOpenZfsRequest",
+}) as any as S.Schema<DescribeLocationFsxOpenZfsRequest>;
 export interface DescribeLocationFsxOpenZfsResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1321,29 +1302,27 @@ export interface DescribeLocationFsxOpenZfsResponse {
   Protocol?: FsxProtocol;
   CreationTime?: Date;
 }
-export const DescribeLocationFsxOpenZfsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
-      Protocol: S.optional(FsxProtocol),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationFsxOpenZfsResponse",
-  }) as any as S.Schema<DescribeLocationFsxOpenZfsResponse>;
+export const DescribeLocationFsxOpenZfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
+    Protocol: S.optional(FsxProtocol),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DescribeLocationFsxOpenZfsResponse",
+}) as any as S.Schema<DescribeLocationFsxOpenZfsResponse>;
 export interface DescribeLocationFsxWindowsRequest {
   LocationArn: string;
 }
-export const DescribeLocationFsxWindowsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationFsxWindowsRequest",
-  }) as any as S.Schema<DescribeLocationFsxWindowsRequest>;
+export const DescribeLocationFsxWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationFsxWindowsRequest",
+}) as any as S.Schema<DescribeLocationFsxWindowsRequest>;
 export interface DescribeLocationFsxWindowsResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1355,33 +1334,31 @@ export interface DescribeLocationFsxWindowsResponse {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const DescribeLocationFsxWindowsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      User: S.optional(S.String),
-      Domain: S.optional(S.String),
-      ManagedSecretConfig: S.optional(ManagedSecretConfig),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationFsxWindowsResponse",
-  }) as any as S.Schema<DescribeLocationFsxWindowsResponse>;
+export const DescribeLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    SecurityGroupArns: S.optional(Ec2SecurityGroupArnList),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    User: S.optional(S.String),
+    Domain: S.optional(S.String),
+    ManagedSecretConfig: S.optional(ManagedSecretConfig),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }),
+).annotate({
+  identifier: "DescribeLocationFsxWindowsResponse",
+}) as any as S.Schema<DescribeLocationFsxWindowsResponse>;
 export interface DescribeLocationHdfsRequest {
   LocationArn: string;
 }
-export const DescribeLocationHdfsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LocationArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeLocationHdfsRequest",
-  }) as any as S.Schema<DescribeLocationHdfsRequest>;
+export const DescribeLocationHdfsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeLocationHdfsRequest",
+}) as any as S.Schema<DescribeLocationHdfsRequest>;
 export interface DescribeLocationHdfsResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1399,28 +1376,27 @@ export interface DescribeLocationHdfsResponse {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const DescribeLocationHdfsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      NameNodes: S.optional(HdfsNameNodeList),
-      BlockSize: S.optional(S.Number),
-      ReplicationFactor: S.optional(S.Number),
-      KmsKeyProviderUri: S.optional(S.String),
-      QopConfiguration: S.optional(QopConfiguration),
-      AuthenticationType: S.optional(HdfsAuthenticationType),
-      SimpleUser: S.optional(S.String),
-      KerberosPrincipal: S.optional(S.String),
-      AgentArns: S.optional(AgentArnList),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ManagedSecretConfig: S.optional(ManagedSecretConfig),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationHdfsResponse",
-  }) as any as S.Schema<DescribeLocationHdfsResponse>;
+export const DescribeLocationHdfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    NameNodes: S.optional(HdfsNameNodeList),
+    BlockSize: S.optional(S.Number),
+    ReplicationFactor: S.optional(S.Number),
+    KmsKeyProviderUri: S.optional(S.String),
+    QopConfiguration: S.optional(QopConfiguration),
+    AuthenticationType: S.optional(HdfsAuthenticationType),
+    SimpleUser: S.optional(S.String),
+    KerberosPrincipal: S.optional(S.String),
+    AgentArns: S.optional(AgentArnList),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ManagedSecretConfig: S.optional(ManagedSecretConfig),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }),
+).annotate({
+  identifier: "DescribeLocationHdfsResponse",
+}) as any as S.Schema<DescribeLocationHdfsResponse>;
 export interface DescribeLocationNfsRequest {
   LocationArn: string;
 }
@@ -1438,29 +1414,28 @@ export interface DescribeLocationNfsResponse {
   MountOptions?: NfsMountOptions;
   CreationTime?: Date;
 }
-export const DescribeLocationNfsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      OnPremConfig: S.optional(OnPremConfig),
-      MountOptions: S.optional(NfsMountOptions),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationNfsResponse",
-  }) as any as S.Schema<DescribeLocationNfsResponse>;
+export const DescribeLocationNfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    OnPremConfig: S.optional(OnPremConfig),
+    MountOptions: S.optional(NfsMountOptions),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DescribeLocationNfsResponse",
+}) as any as S.Schema<DescribeLocationNfsResponse>;
 export interface DescribeLocationObjectStorageRequest {
   LocationArn: string;
 }
-export const DescribeLocationObjectStorageRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeLocationObjectStorageRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ LocationArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DescribeLocationObjectStorageRequest",
-  }) as any as S.Schema<DescribeLocationObjectStorageRequest>;
+).annotate({
+  identifier: "DescribeLocationObjectStorageRequest",
+}) as any as S.Schema<DescribeLocationObjectStorageRequest>;
 export interface DescribeLocationObjectStorageResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1474,8 +1449,8 @@ export interface DescribeLocationObjectStorageResponse {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const DescribeLocationObjectStorageResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       LocationArn: S.optional(S.String),
       LocationUri: S.optional(S.String),
@@ -1489,9 +1464,9 @@ export const DescribeLocationObjectStorageResponse =
       CmkSecretConfig: S.optional(CmkSecretConfig),
       CustomSecretConfig: S.optional(CustomSecretConfig),
     }),
-  ).annotate({
-    identifier: "DescribeLocationObjectStorageResponse",
-  }) as any as S.Schema<DescribeLocationObjectStorageResponse>;
+).annotate({
+  identifier: "DescribeLocationObjectStorageResponse",
+}) as any as S.Schema<DescribeLocationObjectStorageResponse>;
 export interface DescribeLocationS3Request {
   LocationArn: string;
 }
@@ -1547,26 +1522,25 @@ export interface DescribeLocationSmbResponse {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const DescribeLocationSmbResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.optional(S.String),
-      LocationUri: S.optional(S.String),
-      AgentArns: S.optional(AgentArnList),
-      User: S.optional(S.String),
-      Domain: S.optional(S.String),
-      MountOptions: S.optional(SmbMountOptions),
-      CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DnsIpAddresses: S.optional(DnsIpList),
-      KerberosPrincipal: S.optional(S.String),
-      AuthenticationType: S.optional(SmbAuthenticationType),
-      ManagedSecretConfig: S.optional(ManagedSecretConfig),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }),
-  ).annotate({
-    identifier: "DescribeLocationSmbResponse",
-  }) as any as S.Schema<DescribeLocationSmbResponse>;
+export const DescribeLocationSmbResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.optional(S.String),
+    LocationUri: S.optional(S.String),
+    AgentArns: S.optional(AgentArnList),
+    User: S.optional(S.String),
+    Domain: S.optional(S.String),
+    MountOptions: S.optional(SmbMountOptions),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DnsIpAddresses: S.optional(DnsIpList),
+    KerberosPrincipal: S.optional(S.String),
+    AuthenticationType: S.optional(SmbAuthenticationType),
+    ManagedSecretConfig: S.optional(ManagedSecretConfig),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }),
+).annotate({
+  identifier: "DescribeLocationSmbResponse",
+}) as any as S.Schema<DescribeLocationSmbResponse>;
 export interface DescribeTaskRequest {
   TaskArn: string;
 }
@@ -1660,14 +1634,13 @@ export const DescribeTaskResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTaskExecutionRequest {
   TaskExecutionArn: string;
 }
-export const DescribeTaskExecutionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TaskExecutionArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeTaskExecutionRequest",
-  }) as any as S.Schema<DescribeTaskExecutionRequest>;
+export const DescribeTaskExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskExecutionArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeTaskExecutionRequest",
+}) as any as S.Schema<DescribeTaskExecutionRequest>;
 export type TaskExecutionStatus =
   | "QUEUED"
   | "CANCELLING"
@@ -1723,45 +1696,42 @@ export interface TaskExecutionFilesListedDetail {
   AtSource?: number;
   AtDestinationForDelete?: number;
 }
-export const TaskExecutionFilesListedDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AtSource: S.optional(S.Number),
-      AtDestinationForDelete: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TaskExecutionFilesListedDetail",
-  }) as any as S.Schema<TaskExecutionFilesListedDetail>;
+export const TaskExecutionFilesListedDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AtSource: S.optional(S.Number),
+    AtDestinationForDelete: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TaskExecutionFilesListedDetail",
+}) as any as S.Schema<TaskExecutionFilesListedDetail>;
 export interface TaskExecutionFilesFailedDetail {
   Prepare?: number;
   Transfer?: number;
   Verify?: number;
   Delete?: number;
 }
-export const TaskExecutionFilesFailedDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Prepare: S.optional(S.Number),
-      Transfer: S.optional(S.Number),
-      Verify: S.optional(S.Number),
-      Delete: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TaskExecutionFilesFailedDetail",
-  }) as any as S.Schema<TaskExecutionFilesFailedDetail>;
+export const TaskExecutionFilesFailedDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Prepare: S.optional(S.Number),
+    Transfer: S.optional(S.Number),
+    Verify: S.optional(S.Number),
+    Delete: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TaskExecutionFilesFailedDetail",
+}) as any as S.Schema<TaskExecutionFilesFailedDetail>;
 export interface TaskExecutionFoldersListedDetail {
   AtSource?: number;
   AtDestinationForDelete?: number;
 }
-export const TaskExecutionFoldersListedDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AtSource: S.optional(S.Number),
-      AtDestinationForDelete: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TaskExecutionFoldersListedDetail",
-  }) as any as S.Schema<TaskExecutionFoldersListedDetail>;
+export const TaskExecutionFoldersListedDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AtSource: S.optional(S.Number),
+    AtDestinationForDelete: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TaskExecutionFoldersListedDetail",
+}) as any as S.Schema<TaskExecutionFoldersListedDetail>;
 export interface TaskExecutionFoldersFailedDetail {
   List?: number;
   Prepare?: number;
@@ -1769,18 +1739,17 @@ export interface TaskExecutionFoldersFailedDetail {
   Verify?: number;
   Delete?: number;
 }
-export const TaskExecutionFoldersFailedDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      List: S.optional(S.Number),
-      Prepare: S.optional(S.Number),
-      Transfer: S.optional(S.Number),
-      Verify: S.optional(S.Number),
-      Delete: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TaskExecutionFoldersFailedDetail",
-  }) as any as S.Schema<TaskExecutionFoldersFailedDetail>;
+export const TaskExecutionFoldersFailedDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    List: S.optional(S.Number),
+    Prepare: S.optional(S.Number),
+    Transfer: S.optional(S.Number),
+    Verify: S.optional(S.Number),
+    Delete: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TaskExecutionFoldersFailedDetail",
+}) as any as S.Schema<TaskExecutionFoldersFailedDetail>;
 export interface DescribeTaskExecutionResponse {
   TaskExecutionArn?: string;
   Status?: TaskExecutionStatus;
@@ -1818,48 +1787,47 @@ export interface DescribeTaskExecutionResponse {
   LaunchTime?: Date;
   EndTime?: Date;
 }
-export const DescribeTaskExecutionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TaskExecutionArn: S.optional(S.String),
-      Status: S.optional(TaskExecutionStatus),
-      Options: S.optional(Options),
-      Excludes: S.optional(FilterList),
-      Includes: S.optional(FilterList),
-      ManifestConfig: S.optional(ManifestConfig),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EstimatedFilesToTransfer: S.optional(S.Number),
-      EstimatedBytesToTransfer: S.optional(S.Number),
-      FilesTransferred: S.optional(S.Number),
-      BytesWritten: S.optional(S.Number),
-      BytesTransferred: S.optional(S.Number),
-      BytesCompressed: S.optional(S.Number),
-      Result: S.optional(TaskExecutionResultDetail),
-      TaskReportConfig: S.optional(TaskReportConfig),
-      FilesDeleted: S.optional(S.Number),
-      FilesSkipped: S.optional(S.Number),
-      FilesVerified: S.optional(S.Number),
-      ReportResult: S.optional(ReportResult),
-      EstimatedFilesToDelete: S.optional(S.Number),
-      TaskMode: S.optional(TaskMode),
-      FilesPrepared: S.optional(S.Number),
-      FilesListed: S.optional(TaskExecutionFilesListedDetail),
-      FilesFailed: S.optional(TaskExecutionFilesFailedDetail),
-      EstimatedFoldersToDelete: S.optional(S.Number),
-      EstimatedFoldersToTransfer: S.optional(S.Number),
-      FoldersSkipped: S.optional(S.Number),
-      FoldersPrepared: S.optional(S.Number),
-      FoldersTransferred: S.optional(S.Number),
-      FoldersVerified: S.optional(S.Number),
-      FoldersDeleted: S.optional(S.Number),
-      FoldersListed: S.optional(TaskExecutionFoldersListedDetail),
-      FoldersFailed: S.optional(TaskExecutionFoldersFailedDetail),
-      LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "DescribeTaskExecutionResponse",
-  }) as any as S.Schema<DescribeTaskExecutionResponse>;
+export const DescribeTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskExecutionArn: S.optional(S.String),
+    Status: S.optional(TaskExecutionStatus),
+    Options: S.optional(Options),
+    Excludes: S.optional(FilterList),
+    Includes: S.optional(FilterList),
+    ManifestConfig: S.optional(ManifestConfig),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EstimatedFilesToTransfer: S.optional(S.Number),
+    EstimatedBytesToTransfer: S.optional(S.Number),
+    FilesTransferred: S.optional(S.Number),
+    BytesWritten: S.optional(S.Number),
+    BytesTransferred: S.optional(S.Number),
+    BytesCompressed: S.optional(S.Number),
+    Result: S.optional(TaskExecutionResultDetail),
+    TaskReportConfig: S.optional(TaskReportConfig),
+    FilesDeleted: S.optional(S.Number),
+    FilesSkipped: S.optional(S.Number),
+    FilesVerified: S.optional(S.Number),
+    ReportResult: S.optional(ReportResult),
+    EstimatedFilesToDelete: S.optional(S.Number),
+    TaskMode: S.optional(TaskMode),
+    FilesPrepared: S.optional(S.Number),
+    FilesListed: S.optional(TaskExecutionFilesListedDetail),
+    FilesFailed: S.optional(TaskExecutionFilesFailedDetail),
+    EstimatedFoldersToDelete: S.optional(S.Number),
+    EstimatedFoldersToTransfer: S.optional(S.Number),
+    FoldersSkipped: S.optional(S.Number),
+    FoldersPrepared: S.optional(S.Number),
+    FoldersTransferred: S.optional(S.Number),
+    FoldersVerified: S.optional(S.Number),
+    FoldersDeleted: S.optional(S.Number),
+    FoldersListed: S.optional(TaskExecutionFoldersListedDetail),
+    FoldersFailed: S.optional(TaskExecutionFoldersFailedDetail),
+    LaunchTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DescribeTaskExecutionResponse",
+}) as any as S.Schema<DescribeTaskExecutionResponse>;
 export interface ListAgentsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1998,15 +1966,14 @@ export interface ListTagsForResourceResponse {
   Tags?: TagListEntry[];
   NextToken?: string;
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Tags: S.optional(OutputTagList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Tags: S.optional(OutputTagList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTaskExecutionsRequest {
   TaskArn?: string;
   MaxResults?: number;
@@ -2200,29 +2167,29 @@ export interface UpdateLocationAzureBlobRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const UpdateLocationAzureBlobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      Subdirectory: S.optional(S.String),
-      AuthenticationType: S.optional(AzureBlobAuthenticationType),
-      SasConfiguration: S.optional(AzureBlobSasConfiguration),
-      BlobType: S.optional(AzureBlobType),
-      AccessTier: S.optional(AzureAccessTier),
-      AgentArns: S.optional(AgentArnList),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationAzureBlobRequest",
-  }) as any as S.Schema<UpdateLocationAzureBlobRequest>;
+export const UpdateLocationAzureBlobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.String,
+    Subdirectory: S.optional(S.String),
+    AuthenticationType: S.optional(AzureBlobAuthenticationType),
+    SasConfiguration: S.optional(AzureBlobSasConfiguration),
+    BlobType: S.optional(AzureBlobType),
+    AccessTier: S.optional(AzureAccessTier),
+    AgentArns: S.optional(AgentArnList),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationAzureBlobRequest",
+}) as any as S.Schema<UpdateLocationAzureBlobRequest>;
 export interface UpdateLocationAzureBlobResponse {}
-export const UpdateLocationAzureBlobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationAzureBlobResponse",
-  }) as any as S.Schema<UpdateLocationAzureBlobResponse>;
+export const UpdateLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationAzureBlobResponse",
+}) as any as S.Schema<UpdateLocationAzureBlobResponse>;
 export interface UpdateLocationEfsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2253,22 +2220,19 @@ export interface UpdateLocationFsxLustreRequest {
   LocationArn: string;
   Subdirectory?: string;
 }
-export const UpdateLocationFsxLustreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      Subdirectory: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationFsxLustreRequest",
-  }) as any as S.Schema<UpdateLocationFsxLustreRequest>;
+export const UpdateLocationFsxLustreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LocationArn: S.String, Subdirectory: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationFsxLustreRequest",
+}) as any as S.Schema<UpdateLocationFsxLustreRequest>;
 export interface UpdateLocationFsxLustreResponse {}
-export const UpdateLocationFsxLustreResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationFsxLustreResponse",
-  }) as any as S.Schema<UpdateLocationFsxLustreResponse>;
+export const UpdateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationFsxLustreResponse",
+}) as any as S.Schema<UpdateLocationFsxLustreResponse>;
 export interface FsxUpdateProtocolSmb {
   Domain?: string;
   MountOptions?: SmbMountOptions;
@@ -2306,45 +2270,45 @@ export interface UpdateLocationFsxOntapRequest {
   Protocol?: FsxUpdateProtocol;
   Subdirectory?: string;
 }
-export const UpdateLocationFsxOntapRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      Protocol: S.optional(FsxUpdateProtocol),
-      Subdirectory: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationFsxOntapRequest",
-  }) as any as S.Schema<UpdateLocationFsxOntapRequest>;
+export const UpdateLocationFsxOntapRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.String,
+    Protocol: S.optional(FsxUpdateProtocol),
+    Subdirectory: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationFsxOntapRequest",
+}) as any as S.Schema<UpdateLocationFsxOntapRequest>;
 export interface UpdateLocationFsxOntapResponse {}
-export const UpdateLocationFsxOntapResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationFsxOntapResponse",
-  }) as any as S.Schema<UpdateLocationFsxOntapResponse>;
+export const UpdateLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationFsxOntapResponse",
+}) as any as S.Schema<UpdateLocationFsxOntapResponse>;
 export interface UpdateLocationFsxOpenZfsRequest {
   LocationArn: string;
   Protocol?: FsxProtocol;
   Subdirectory?: string;
 }
-export const UpdateLocationFsxOpenZfsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      Protocol: S.optional(FsxProtocol),
-      Subdirectory: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationFsxOpenZfsRequest",
-  }) as any as S.Schema<UpdateLocationFsxOpenZfsRequest>;
+export const UpdateLocationFsxOpenZfsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.String,
+    Protocol: S.optional(FsxProtocol),
+    Subdirectory: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationFsxOpenZfsRequest",
+}) as any as S.Schema<UpdateLocationFsxOpenZfsRequest>;
 export interface UpdateLocationFsxOpenZfsResponse {}
-export const UpdateLocationFsxOpenZfsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationFsxOpenZfsResponse",
-  }) as any as S.Schema<UpdateLocationFsxOpenZfsResponse>;
+export const UpdateLocationFsxOpenZfsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationFsxOpenZfsResponse",
+}) as any as S.Schema<UpdateLocationFsxOpenZfsResponse>;
 export interface UpdateLocationFsxWindowsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2354,27 +2318,27 @@ export interface UpdateLocationFsxWindowsRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const UpdateLocationFsxWindowsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      Subdirectory: S.optional(S.String),
-      Domain: S.optional(S.String),
-      User: S.optional(S.String),
-      Password: S.optional(SensitiveString),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationFsxWindowsRequest",
-  }) as any as S.Schema<UpdateLocationFsxWindowsRequest>;
+export const UpdateLocationFsxWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.String,
+    Subdirectory: S.optional(S.String),
+    Domain: S.optional(S.String),
+    User: S.optional(S.String),
+    Password: S.optional(SensitiveString),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationFsxWindowsRequest",
+}) as any as S.Schema<UpdateLocationFsxWindowsRequest>;
 export interface UpdateLocationFsxWindowsResponse {}
-export const UpdateLocationFsxWindowsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationFsxWindowsResponse",
-  }) as any as S.Schema<UpdateLocationFsxWindowsResponse>;
+export const UpdateLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationFsxWindowsResponse",
+}) as any as S.Schema<UpdateLocationFsxWindowsResponse>;
 export interface UpdateLocationHdfsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2460,31 +2424,31 @@ export interface UpdateLocationObjectStorageRequest {
   CmkSecretConfig?: CmkSecretConfig;
   CustomSecretConfig?: CustomSecretConfig;
 }
-export const UpdateLocationObjectStorageRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LocationArn: S.String,
-      ServerPort: S.optional(S.Number),
-      ServerProtocol: S.optional(ObjectStorageServerProtocol),
-      Subdirectory: S.optional(S.String),
-      ServerHostname: S.optional(S.String),
-      AccessKey: S.optional(S.String),
-      SecretKey: S.optional(SensitiveString),
-      AgentArns: S.optional(AgentArnList),
-      ServerCertificate: S.optional(T.Blob),
-      CmkSecretConfig: S.optional(CmkSecretConfig),
-      CustomSecretConfig: S.optional(CustomSecretConfig),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateLocationObjectStorageRequest",
-  }) as any as S.Schema<UpdateLocationObjectStorageRequest>;
+export const UpdateLocationObjectStorageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LocationArn: S.String,
+    ServerPort: S.optional(S.Number),
+    ServerProtocol: S.optional(ObjectStorageServerProtocol),
+    Subdirectory: S.optional(S.String),
+    ServerHostname: S.optional(S.String),
+    AccessKey: S.optional(S.String),
+    SecretKey: S.optional(SensitiveString),
+    AgentArns: S.optional(AgentArnList),
+    ServerCertificate: S.optional(T.Blob),
+    CmkSecretConfig: S.optional(CmkSecretConfig),
+    CustomSecretConfig: S.optional(CustomSecretConfig),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateLocationObjectStorageRequest",
+}) as any as S.Schema<UpdateLocationObjectStorageRequest>;
 export interface UpdateLocationObjectStorageResponse {}
-export const UpdateLocationObjectStorageResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLocationObjectStorageResponse",
-  }) as any as S.Schema<UpdateLocationObjectStorageResponse>;
+export const UpdateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLocationObjectStorageResponse",
+}) as any as S.Schema<UpdateLocationObjectStorageResponse>;
 export interface UpdateLocationS3Request {
   LocationArn: string;
   Subdirectory?: string;
@@ -2601,10 +2565,11 @@ export const UpdateTaskExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTaskExecutionRequest",
 }) as any as S.Schema<UpdateTaskExecutionRequest>;
 export interface UpdateTaskExecutionResponse {}
-export const UpdateTaskExecutionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateTaskExecutionResponse",
-  }) as any as S.Schema<UpdateTaskExecutionResponse>;
+export const UpdateTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateTaskExecutionResponse",
+}) as any as S.Schema<UpdateTaskExecutionResponse>;
 
 //# Errors
 export class InternalException extends S.TaggedErrorClass<InternalException>()(
@@ -3000,6 +2965,7 @@ export const createLocationSmb: API.OperationMethod<
 export type CreateTaskError =
   | InternalException
   | InvalidRequestException
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Configures a *task*, which defines where and how DataSync
@@ -3021,7 +2987,11 @@ export const createTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTaskRequest,
   output: CreateTaskResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationAccessTestFailed,
+  ],
   operationName: "CreateTask",
 }));
 export type DeleteAgentError =

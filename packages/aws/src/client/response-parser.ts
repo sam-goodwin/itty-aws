@@ -13,7 +13,12 @@
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import * as SchemaIssue from "effect/SchemaIssue";
-import { COMMON_ERRORS, ParseError, UnknownAwsError } from "../errors.ts";
+import {
+  COMMON_ERRORS,
+  InternalError,
+  ParseError,
+  UnknownAwsError,
+} from "../errors.ts";
 import {
   getAwsQueryError,
   getHttpError,
@@ -234,6 +239,13 @@ export const makeResponseParser = <A>(
       );
       if (statusMatches.length === 1) {
         errorSchema = statusMatches[0];
+      } else if (response.status >= 500) {
+        // A code-less 5xx (e.g. a raw "502 Bad Gateway" HTML page from an
+        // AWS front-end proxy) is a transient server fault, not a client
+        // parse bug. Surface it as the ServerError-categorized
+        // InternalError so the default retry policy treats it as transient
+        // instead of failing fast with an unretryable ParseError.
+        return yield* new InternalError();
       } else {
         return yield* new ParseError({
           message: `No error code found in response and ${statusMatches.length} declared errors match status ${response.status}. Data: ${JSON.stringify(data)}`,
