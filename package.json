@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -b",
     "generate": "bun scripts/generate-all.ts",
+    "specs:sync": "git submodule sync --recursive && git submodule update --force --init --recursive --depth=1",
     "typecheck": "tsc -b",
     "format": "oxfmt '.'",
     "format:check": "bun run format -- --check",
