@@ -159442,6 +159442,9 @@ paths:
                       - name
                       - type
       x-distilled-pagination-class: IdentityProviderListResponsesV4PagePaginationArray
+      x-distilled-errors:
+        Forbidden:
+          - status: 403
     post:
       operationId: createIdentityProvider
       description: "Adds a new identity provider to Access.  @example ```ts const

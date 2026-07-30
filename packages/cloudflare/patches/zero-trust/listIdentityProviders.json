@@ -1,4 +1,7 @@
 {
+  "errors": {
+    "Forbidden": [{ "status": 403 }]
+  },
   "response": {
     "properties": {
       "result": {
