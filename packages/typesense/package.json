@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/typesense",
-  "version": "0.30.2",
+  "version": "0.30.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",

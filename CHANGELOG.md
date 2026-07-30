@@ -1,3 +1,22 @@
+## v0.30.3
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **aws**:
+  - **ses**: Typed InvalidParameterValue + IdentityNotVerified on receipt rule ops &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/391 [<samp>(4cdd4)</samp>](https://github.com/alchemy-run/distilled/commit/4cdd4efef)
+- **cloudflare**:
+  - **zero-trust**: Typed Forbidden on listIdentityProviders &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/395 [<samp>(6be50)</samp>](https://github.com/alchemy-run/distilled/commit/6be508c52)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Typed errors for DataSync createTask, Email Routing deleteAddress, RUM site quota; retryable code-less 5xx &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/392 [<samp>(060c4)</samp>](https://github.com/alchemy-run/distilled/commit/060c45226)
+- **aws**:
+  - **cloudfront**: OriginAccessControlSummary.Description is optional &nbsp;-&nbsp; by **sam** and **Claude Fable 5** [<samp>(401fe)</samp>](https://github.com/alchemy-run/distilled/commit/401feadf6)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.30.2...HEAD)
+
+---
+
 ## v0.30.2
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
