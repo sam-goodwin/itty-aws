@@ -12706,6 +12706,14 @@ paths:
                         required:
                           - mode
                           - target
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - targeted
+                        required:
+                          - mode
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                       Specify mode='smart' for Smart Placement, or one of

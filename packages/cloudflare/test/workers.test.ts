@@ -831,6 +831,18 @@ describe("Workers", () => {
   });
 
   describe("putScript", () => {
+    it("happy path - decodes a targeted placement response without a target", () => {
+      expect(
+        Schema.decodeUnknownSync(Workers.PutScriptResponse)({
+          startup_time_ms: 0,
+          placement: { mode: "targeted" },
+        }),
+      ).toEqual({
+        startupTimeMs: 0,
+        placement: { mode: "targeted" },
+      });
+    });
+
     test("happy path - uploads a worker script", () =>
       Effect.gen(function* () {
         const name = scriptName("put-script-happy");

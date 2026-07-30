@@ -198,6 +198,20 @@
   },
   "response": {
     "properties": {
+      "placement": {
+        "appendUnion": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "mode",
+                "required": true,
+                "type": { "kind": "literal", "value": "targeted" }
+              }
+            ]
+          }
+        ]
+      },
       "observability.traces": {
         "optional": true,
         "definition": {

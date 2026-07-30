@@ -6922,6 +6922,15 @@ const Metadata2 = /*@__PURE__*/ Schema.suspend(() =>
   ),
 ) as unknown as Schema.Codec<Metadata2>;
 
+interface PutScriptResponsePlacement8 {
+  mode: "targeted";
+}
+const PutScriptResponsePlacement8 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mode: Schema.Literal("targeted"),
+  }),
+) as unknown as Schema.Codec<PutScriptResponsePlacement8>;
+
 interface ScriptSearchResponseItem {
   /** Identifier. */
   id: string;
@@ -14968,6 +14977,7 @@ export interface PutScriptResponse {
           | (string & {})
           | null;
       }
+    | { mode: "targeted" }
     | null;
   /** @deprecated */
   placementMode?: "smart" | "targeted" | (string & {}) | null;
@@ -15033,6 +15043,7 @@ export const PutScriptResponse = /*@__PURE__*/ Schema.suspend(() =>
           ListScriptsResponseResultPlacement1,
           ListScriptsResponseResultPlacement2,
           ListScriptsResponseResultPlacement3,
+          PutScriptResponsePlacement8,
         ]),
         Schema.Null,
       ]),
