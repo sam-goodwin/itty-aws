@@ -28228,6 +28228,18 @@ export const ScriptsUpdateResponsePlacementCase7 = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateResponsePlacementCase7",
 }) as any as S.Schema<ScriptsUpdateResponsePlacementCase7>;
 
+export interface ScriptsUpdateResponsePlacementCase8 {
+  /** Targeted placement mode (no target echoed). */
+  mode: ScriptsUpdateResponsePlacementCase7Mode;
+}
+export const ScriptsUpdateResponsePlacementCase8 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: ScriptsUpdateResponsePlacementCase7Mode,
+  }),
+).annotate({
+  identifier: "ScriptsUpdateResponsePlacementCase8",
+}) as any as S.Schema<ScriptsUpdateResponsePlacementCase8>;
+
 export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementCase0
   | ScriptsUpdateResponsePlacementCase1
@@ -28236,7 +28248,8 @@ export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementCase4
   | ScriptsUpdateResponsePlacementCase5
   | ScriptsUpdateResponsePlacementCase6
-  | ScriptsUpdateResponsePlacementCase7;
+  | ScriptsUpdateResponsePlacementCase7
+  | ScriptsUpdateResponsePlacementCase8;
 export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
@@ -28247,6 +28260,7 @@ export const ScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
     ["hostname", "mode", "lastAnalyzedAt", "status"],
     ["host", "mode", "lastAnalyzedAt", "status"],
     ["mode", "target", "lastAnalyzedAt", "status"],
+    ["mode"],
   ]),
 );
 
