@@ -7059,6 +7059,1625 @@ export const CreateScriptDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateScriptDeploymentResponse",
 }) as any as S.Schema<CreateScriptDeploymentResponse>;
 
+export interface CreateScriptEdgePreviewWranglerSessionConfigWorkersDev {
+  /** Route the preview through workers.dev. */
+  workersDev: boolean;
+  minimalMode?: boolean;
+}
+export const CreateScriptEdgePreviewWranglerSessionConfigWorkersDev =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      workersDev: S.Boolean.pipe(T.Body("workers_dev")),
+      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewWranglerSessionConfigWorkersDev",
+  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigWorkersDev>;
+
+export type CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
+  Array<string>;
+export const CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutesList>;
+
+export interface CreateScriptEdgePreviewWranglerSessionConfigRoutes {
+  /** Routes to serve the preview on. */
+  routes: CreateScriptEdgePreviewWranglerSessionConfigRoutesList;
+  minimalMode?: boolean;
+}
+export const CreateScriptEdgePreviewWranglerSessionConfigRoutes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      routes: CreateScriptEdgePreviewWranglerSessionConfigRoutesList,
+      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewWranglerSessionConfigRoutes",
+  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutes>;
+
+export type CreateScriptEdgePreviewWranglerSessionConfig =
+  | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
+  | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
+export const CreateScriptEdgePreviewWranglerSessionConfig =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["workersDev", "minimalMode"],
+      ["routes", "minimalMode"],
+    ]),
+  );
+
+export type CreateScriptEdgePreviewMetadataStringList = Array<string>;
+export const CreateScriptEdgePreviewMetadataStringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataStringList>;
+
+export type CreateScriptEdgePreviewMetadataUsageModel =
+  | "bundled"
+  | "unbound"
+  | "standard";
+export const CreateScriptEdgePreviewMetadataUsageModel = /*@__PURE__*/ S.String;
+
+export type CreateScriptEdgePreviewMetadataBindingPlainTextType = "plain_text";
+export const CreateScriptEdgePreviewMetadataBindingPlainTextType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingPlainText {
+  type: CreateScriptEdgePreviewMetadataBindingPlainTextType;
+  name: string;
+  text: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingPlainText =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingPlainTextType,
+      name: S.String,
+      text: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingPlainText",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingPlainText>;
+
+export type CreateScriptEdgePreviewMetadataBindingSecretTextType =
+  "secret_text";
+export const CreateScriptEdgePreviewMetadataBindingSecretTextType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingSecretText {
+  type: CreateScriptEdgePreviewMetadataBindingSecretTextType;
+  name: string;
+  text: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingSecretText =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingSecretTextType,
+      name: S.String,
+      text: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingSecretText",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingSecretText>;
+
+export type CreateScriptEdgePreviewMetadataBindingJsonType = "json";
+export const CreateScriptEdgePreviewMetadataBindingJsonType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingJson {
+  type: CreateScriptEdgePreviewMetadataBindingJsonType;
+  name: string;
+  json: unknown;
+}
+export const CreateScriptEdgePreviewMetadataBindingJson =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingJsonType,
+      name: S.String,
+      json: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingJson",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingJson>;
+
+export type CreateScriptEdgePreviewMetadataBindingKvNamespaceType =
+  "kv_namespace";
+export const CreateScriptEdgePreviewMetadataBindingKvNamespaceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingKvNamespace {
+  type: CreateScriptEdgePreviewMetadataBindingKvNamespaceType;
+  name: string;
+  namespaceId: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingKvNamespace =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingKvNamespaceType,
+      name: S.String,
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingKvNamespace",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingKvNamespace>;
+
+export type CreateScriptEdgePreviewMetadataBindingDurableObjectNamespaceType =
+  "durable_object_namespace";
+export const CreateScriptEdgePreviewMetadataBindingDurableObjectNamespaceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingDurableObjectNamespace {
+  type: CreateScriptEdgePreviewMetadataBindingDurableObjectNamespaceType;
+  name: string;
+  className: string;
+  scriptName?: string;
+  environment?: string;
+  namespaceId?: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingDurableObjectNamespace =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingDurableObjectNamespaceType,
+      name: S.String,
+      className: S.String.pipe(T.Body("class_name")),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      environment: S.optional(S.String),
+      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingDurableObjectNamespace",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDurableObjectNamespace>;
+
+export type CreateScriptEdgePreviewMetadataBindingR2BucketType = "r2_bucket";
+export const CreateScriptEdgePreviewMetadataBindingR2BucketType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingR2Bucket {
+  type: CreateScriptEdgePreviewMetadataBindingR2BucketType;
+  name: string;
+  bucketName: string;
+  jurisdiction?: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingR2Bucket =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingR2BucketType,
+      name: S.String,
+      bucketName: S.String.pipe(T.Body("bucket_name")),
+      jurisdiction: S.optional(S.String),
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingR2Bucket",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingR2Bucket>;
+
+export type CreateScriptEdgePreviewMetadataBindingD1Type = "d1";
+export const CreateScriptEdgePreviewMetadataBindingD1Type =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingD1 {
+  type: CreateScriptEdgePreviewMetadataBindingD1Type;
+  name: string;
+  id: string;
+  internalEnv?: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingD1 = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingD1Type,
+      name: S.String,
+      id: S.String,
+      internalEnv: S.optional(S.String.pipe(T.Body("internal_env"))),
+      raw: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadataBindingD1",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingD1>;
+
+export type CreateScriptEdgePreviewMetadataBindingQueueType = "queue";
+export const CreateScriptEdgePreviewMetadataBindingQueueType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingQueue {
+  type: CreateScriptEdgePreviewMetadataBindingQueueType;
+  name: string;
+  queueName: string;
+  deliveryDelay?: number;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingQueue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingQueueType,
+      name: S.String,
+      queueName: S.String.pipe(T.Body("queue_name")),
+      deliveryDelay: S.optional(S.Number.pipe(T.Body("delivery_delay"))),
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingQueue",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingQueue>;
+
+export type CreateScriptEdgePreviewMetadataBindingServiceType = "service";
+export const CreateScriptEdgePreviewMetadataBindingServiceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingService {
+  type: CreateScriptEdgePreviewMetadataBindingServiceType;
+  name: string;
+  service: string;
+  environment?: string;
+  entrypoint?: string;
+  crossAccountGrant?: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingService =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingServiceType,
+      name: S.String,
+      service: S.String,
+      environment: S.optional(S.String),
+      entrypoint: S.optional(S.String),
+      crossAccountGrant: S.optional(
+        S.String.pipe(T.Body("cross_account_grant")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingService",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingService>;
+
+export type CreateScriptEdgePreviewMetadataBindingAiType = "ai";
+export const CreateScriptEdgePreviewMetadataBindingAiType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingAi {
+  type: CreateScriptEdgePreviewMetadataBindingAiType;
+  name: string;
+  staging?: boolean;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingAi = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingAiType,
+      name: S.String,
+      staging: S.optional(S.Boolean),
+      raw: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadataBindingAi",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAi>;
+
+export type CreateScriptEdgePreviewMetadataBindingBrowserType = "browser";
+export const CreateScriptEdgePreviewMetadataBindingBrowserType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingBrowser {
+  type: CreateScriptEdgePreviewMetadataBindingBrowserType;
+  name: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingBrowser =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingBrowserType,
+      name: S.String,
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingBrowser",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingBrowser>;
+
+export type CreateScriptEdgePreviewMetadataBindingImagesType = "images";
+export const CreateScriptEdgePreviewMetadataBindingImagesType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingImages {
+  type: CreateScriptEdgePreviewMetadataBindingImagesType;
+  name: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingImages =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingImagesType,
+      name: S.String,
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingImages",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingImages>;
+
+export type CreateScriptEdgePreviewMetadataBindingVectorizeType = "vectorize";
+export const CreateScriptEdgePreviewMetadataBindingVectorizeType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingVectorize {
+  type: CreateScriptEdgePreviewMetadataBindingVectorizeType;
+  name: string;
+  indexName: string;
+  internalEnv?: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingVectorize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingVectorizeType,
+      name: S.String,
+      indexName: S.String.pipe(T.Body("index_name")),
+      internalEnv: S.optional(S.String.pipe(T.Body("internal_env"))),
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingVectorize",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVectorize>;
+
+export type CreateScriptEdgePreviewMetadataBindingWorkflowType = "workflow";
+export const CreateScriptEdgePreviewMetadataBindingWorkflowType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingWorkflow {
+  type: CreateScriptEdgePreviewMetadataBindingWorkflowType;
+  name: string;
+  workflowName: string;
+  className: string;
+  scriptName?: string;
+  raw?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingWorkflow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingWorkflowType,
+      name: S.String,
+      workflowName: S.String.pipe(T.Body("workflow_name")),
+      className: S.String.pipe(T.Body("class_name")),
+      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
+      raw: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingWorkflow",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingWorkflow>;
+
+export type CreateScriptEdgePreviewMetadataBindingHyperdriveType = "hyperdrive";
+export const CreateScriptEdgePreviewMetadataBindingHyperdriveType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingHyperdrive {
+  type: CreateScriptEdgePreviewMetadataBindingHyperdriveType;
+  name: string;
+  id: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingHyperdrive =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingHyperdriveType,
+      name: S.String,
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingHyperdrive",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingHyperdrive>;
+
+export type CreateScriptEdgePreviewMetadataBindingAnalyticsEngineType =
+  "analytics_engine";
+export const CreateScriptEdgePreviewMetadataBindingAnalyticsEngineType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingAnalyticsEngine {
+  type: CreateScriptEdgePreviewMetadataBindingAnalyticsEngineType;
+  name: string;
+  dataset?: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingAnalyticsEngine =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingAnalyticsEngineType,
+      name: S.String,
+      dataset: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingAnalyticsEngine",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAnalyticsEngine>;
+
+export type CreateScriptEdgePreviewMetadataBindingDispatchNamespaceType =
+  "dispatch_namespace";
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespaceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker {
+  service?: string;
+  environment?: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.optional(S.String),
+      environment: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker>;
+
+export interface CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam {
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam>;
+
+export type CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParamsList =
+  Array<CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam>;
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParamsList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParam,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParamsList>;
+
+export interface CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound {
+  worker?: CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker;
+  params?: CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParamsList;
+}
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      worker: S.optional(
+        CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundWorker,
+      ),
+      params: S.optional(
+        CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutboundParamsList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound>;
+
+export interface CreateScriptEdgePreviewMetadataBindingDispatchNamespace {
+  type: CreateScriptEdgePreviewMetadataBindingDispatchNamespaceType;
+  name: string;
+  namespace: string;
+  outbound?: CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound;
+}
+export const CreateScriptEdgePreviewMetadataBindingDispatchNamespace =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingDispatchNamespaceType,
+      name: S.String,
+      namespace: S.String,
+      outbound: S.optional(
+        CreateScriptEdgePreviewMetadataBindingDispatchNamespaceOutbound,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingDispatchNamespace",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDispatchNamespace>;
+
+export type CreateScriptEdgePreviewMetadataBindingSendEmailType = "send_email";
+export const CreateScriptEdgePreviewMetadataBindingSendEmailType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingSendEmail {
+  type: CreateScriptEdgePreviewMetadataBindingSendEmailType;
+  name: string;
+  destinationAddress?: string;
+  allowedDestinationAddresses?: CreateScriptEdgePreviewMetadataStringList;
+  allowedSenderAddresses?: CreateScriptEdgePreviewMetadataStringList;
+}
+export const CreateScriptEdgePreviewMetadataBindingSendEmail =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingSendEmailType,
+      name: S.String,
+      destinationAddress: S.optional(
+        S.String.pipe(T.Body("destination_address")),
+      ),
+      allowedDestinationAddresses: S.optional(
+        CreateScriptEdgePreviewMetadataStringList.pipe(
+          T.Body("allowed_destination_addresses"),
+        ),
+      ),
+      allowedSenderAddresses: S.optional(
+        CreateScriptEdgePreviewMetadataStringList.pipe(
+          T.Body("allowed_sender_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingSendEmail",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingSendEmail>;
+
+export type CreateScriptEdgePreviewMetadataBindingMtlsCertificateType =
+  "mtls_certificate";
+export const CreateScriptEdgePreviewMetadataBindingMtlsCertificateType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingMtlsCertificate {
+  type: CreateScriptEdgePreviewMetadataBindingMtlsCertificateType;
+  name: string;
+  certificateId: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingMtlsCertificate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingMtlsCertificateType,
+      name: S.String,
+      certificateId: S.String.pipe(T.Body("certificate_id")),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingMtlsCertificate",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingMtlsCertificate>;
+
+export type CreateScriptEdgePreviewMetadataBindingWasmModuleType =
+  "wasm_module";
+export const CreateScriptEdgePreviewMetadataBindingWasmModuleType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingWasmModule {
+  type: CreateScriptEdgePreviewMetadataBindingWasmModuleType;
+  name: string;
+  part: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingWasmModule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingWasmModuleType,
+      name: S.String,
+      part: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingWasmModule",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingWasmModule>;
+
+export type CreateScriptEdgePreviewMetadataBindingTextBlobType = "text_blob";
+export const CreateScriptEdgePreviewMetadataBindingTextBlobType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingTextBlob {
+  type: CreateScriptEdgePreviewMetadataBindingTextBlobType;
+  name: string;
+  part: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingTextBlob =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingTextBlobType,
+      name: S.String,
+      part: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingTextBlob",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingTextBlob>;
+
+export type CreateScriptEdgePreviewMetadataBindingDataBlobType = "data_blob";
+export const CreateScriptEdgePreviewMetadataBindingDataBlobType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingDataBlob {
+  type: CreateScriptEdgePreviewMetadataBindingDataBlobType;
+  name: string;
+  part: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingDataBlob =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingDataBlobType,
+      name: S.String,
+      part: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingDataBlob",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingDataBlob>;
+
+export type CreateScriptEdgePreviewMetadataBindingPipelinesType = "pipelines";
+export const CreateScriptEdgePreviewMetadataBindingPipelinesType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingPipelines {
+  type: CreateScriptEdgePreviewMetadataBindingPipelinesType;
+  name: string;
+  pipeline: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingPipelines =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingPipelinesType,
+      name: S.String,
+      pipeline: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingPipelines",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingPipelines>;
+
+export type CreateScriptEdgePreviewMetadataBindingSecretsStoreSecretType =
+  "secrets_store_secret";
+export const CreateScriptEdgePreviewMetadataBindingSecretsStoreSecretType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingSecretsStoreSecret {
+  type: CreateScriptEdgePreviewMetadataBindingSecretsStoreSecretType;
+  name: string;
+  storeId: string;
+  secretName: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingSecretsStoreSecret =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingSecretsStoreSecretType,
+      name: S.String,
+      storeId: S.String.pipe(T.Body("store_id")),
+      secretName: S.String.pipe(T.Body("secret_name")),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingSecretsStoreSecret",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingSecretsStoreSecret>;
+
+export type CreateScriptEdgePreviewMetadataBindingStreamType = "stream";
+export const CreateScriptEdgePreviewMetadataBindingStreamType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingStream {
+  type: CreateScriptEdgePreviewMetadataBindingStreamType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingStream =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingStreamType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingStream",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingStream>;
+
+export type CreateScriptEdgePreviewMetadataBindingMediaType = "media";
+export const CreateScriptEdgePreviewMetadataBindingMediaType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingMedia {
+  type: CreateScriptEdgePreviewMetadataBindingMediaType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingMedia =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingMediaType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingMedia",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingMedia>;
+
+export type CreateScriptEdgePreviewMetadataBindingVersionMetadataType =
+  "version_metadata";
+export const CreateScriptEdgePreviewMetadataBindingVersionMetadataType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingVersionMetadata {
+  type: CreateScriptEdgePreviewMetadataBindingVersionMetadataType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingVersionMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingVersionMetadataType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingVersionMetadata",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVersionMetadata>;
+
+export type CreateScriptEdgePreviewMetadataBindingAssetsType = "assets";
+export const CreateScriptEdgePreviewMetadataBindingAssetsType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingAssets {
+  type: CreateScriptEdgePreviewMetadataBindingAssetsType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingAssets =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingAssetsType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingAssets",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAssets>;
+
+export type CreateScriptEdgePreviewMetadataBindingWorkerLoaderType =
+  "worker_loader";
+export const CreateScriptEdgePreviewMetadataBindingWorkerLoaderType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingWorkerLoader {
+  type: CreateScriptEdgePreviewMetadataBindingWorkerLoaderType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingWorkerLoader =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingWorkerLoaderType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingWorkerLoader",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingWorkerLoader>;
+
+export type CreateScriptEdgePreviewMetadataBindingLogfwdrType = "logfwdr";
+export const CreateScriptEdgePreviewMetadataBindingLogfwdrType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingLogfwdr {
+  type: CreateScriptEdgePreviewMetadataBindingLogfwdrType;
+  name: string;
+  destination: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingLogfwdr =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingLogfwdrType,
+      name: S.String,
+      destination: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingLogfwdr",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingLogfwdr>;
+
+export type CreateScriptEdgePreviewMetadataBindingAiSearchNamespaceType =
+  "ai_search_namespace";
+export const CreateScriptEdgePreviewMetadataBindingAiSearchNamespaceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingAiSearchNamespace {
+  type: CreateScriptEdgePreviewMetadataBindingAiSearchNamespaceType;
+  name: string;
+  namespace: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingAiSearchNamespace =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingAiSearchNamespaceType,
+      name: S.String,
+      namespace: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingAiSearchNamespace",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAiSearchNamespace>;
+
+export type CreateScriptEdgePreviewMetadataBindingAiSearchType = "ai_search";
+export const CreateScriptEdgePreviewMetadataBindingAiSearchType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingAiSearch {
+  type: CreateScriptEdgePreviewMetadataBindingAiSearchType;
+  name: string;
+  instanceName: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingAiSearch =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingAiSearchType,
+      name: S.String,
+      instanceName: S.String.pipe(T.Body("instance_name")),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingAiSearch",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingAiSearch>;
+
+export type CreateScriptEdgePreviewMetadataBindingRatelimitType = "ratelimit";
+export const CreateScriptEdgePreviewMetadataBindingRatelimitType =
+  /*@__PURE__*/ S.String;
+
+export type CreateScriptEdgePreviewMetadataBindingRatelimitPeriod = "10" | "60";
+export const CreateScriptEdgePreviewMetadataBindingRatelimitPeriod =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingRatelimitSimple {
+  limit: number;
+  period: CreateScriptEdgePreviewMetadataBindingRatelimitPeriod | (string & {});
+}
+export const CreateScriptEdgePreviewMetadataBindingRatelimitSimple =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      limit: S.Number,
+      period: CreateScriptEdgePreviewMetadataBindingRatelimitPeriod,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingRatelimitSimple",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingRatelimitSimple>;
+
+export interface CreateScriptEdgePreviewMetadataBindingRatelimit {
+  type: CreateScriptEdgePreviewMetadataBindingRatelimitType;
+  name: string;
+  namespaceId: string;
+  simple: CreateScriptEdgePreviewMetadataBindingRatelimitSimple;
+}
+export const CreateScriptEdgePreviewMetadataBindingRatelimit =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingRatelimitType,
+      name: S.String,
+      namespaceId: S.String.pipe(T.Body("namespace_id")),
+      simple: CreateScriptEdgePreviewMetadataBindingRatelimitSimple,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingRatelimit",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingRatelimit>;
+
+export type CreateScriptEdgePreviewMetadataBindingArtifactsType = "artifacts";
+export const CreateScriptEdgePreviewMetadataBindingArtifactsType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingArtifacts {
+  type: CreateScriptEdgePreviewMetadataBindingArtifactsType;
+  name: string;
+  namespace: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingArtifacts =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingArtifactsType,
+      name: S.String,
+      namespace: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingArtifacts",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingArtifacts>;
+
+export type CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType =
+  "unsafe_hello_world";
+export const CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorld {
+  type: CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType;
+  name: string;
+  enableTimer?: boolean;
+}
+export const CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorld =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorldType,
+      name: S.String,
+      enableTimer: S.optional(S.Boolean.pipe(T.Body("enable_timer"))),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorld",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorld>;
+
+export type CreateScriptEdgePreviewMetadataBindingFlagshipType = "flagship";
+export const CreateScriptEdgePreviewMetadataBindingFlagshipType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingFlagship {
+  type: CreateScriptEdgePreviewMetadataBindingFlagshipType;
+  name: string;
+  appId: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingFlagship =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingFlagshipType,
+      name: S.String,
+      appId: S.String.pipe(T.Body("app_id")),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingFlagship",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingFlagship>;
+
+export type CreateScriptEdgePreviewMetadataBindingVpcServiceType =
+  "vpc_service";
+export const CreateScriptEdgePreviewMetadataBindingVpcServiceType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingVpcService {
+  type: CreateScriptEdgePreviewMetadataBindingVpcServiceType;
+  name: string;
+  serviceId: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingVpcService =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingVpcServiceType,
+      name: S.String,
+      serviceId: S.String.pipe(T.Body("service_id")),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingVpcService",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVpcService>;
+
+export type CreateScriptEdgePreviewMetadataBindingVpcNetworkType =
+  "vpc_network";
+export const CreateScriptEdgePreviewMetadataBindingVpcNetworkType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingVpcNetwork {
+  type: CreateScriptEdgePreviewMetadataBindingVpcNetworkType;
+  name: string;
+  tunnelId?: string;
+  networkId?: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingVpcNetwork =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingVpcNetworkType,
+      name: S.String,
+      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
+      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingVpcNetwork",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingVpcNetwork>;
+
+export type CreateScriptEdgePreviewMetadataBindingInheritType = "inherit";
+export const CreateScriptEdgePreviewMetadataBindingInheritType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataBindingInherit {
+  type: CreateScriptEdgePreviewMetadataBindingInheritType;
+  name: string;
+}
+export const CreateScriptEdgePreviewMetadataBindingInherit =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CreateScriptEdgePreviewMetadataBindingInheritType,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataBindingInherit",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingInherit>;
+
+export type CreateScriptEdgePreviewMetadataBinding =
+  | CreateScriptEdgePreviewMetadataBindingPlainText
+  | CreateScriptEdgePreviewMetadataBindingSecretText
+  | CreateScriptEdgePreviewMetadataBindingJson
+  | CreateScriptEdgePreviewMetadataBindingKvNamespace
+  | CreateScriptEdgePreviewMetadataBindingDurableObjectNamespace
+  | CreateScriptEdgePreviewMetadataBindingR2Bucket
+  | CreateScriptEdgePreviewMetadataBindingD1
+  | CreateScriptEdgePreviewMetadataBindingQueue
+  | CreateScriptEdgePreviewMetadataBindingService
+  | CreateScriptEdgePreviewMetadataBindingAi
+  | CreateScriptEdgePreviewMetadataBindingBrowser
+  | CreateScriptEdgePreviewMetadataBindingImages
+  | CreateScriptEdgePreviewMetadataBindingVectorize
+  | CreateScriptEdgePreviewMetadataBindingWorkflow
+  | CreateScriptEdgePreviewMetadataBindingHyperdrive
+  | CreateScriptEdgePreviewMetadataBindingAnalyticsEngine
+  | CreateScriptEdgePreviewMetadataBindingDispatchNamespace
+  | CreateScriptEdgePreviewMetadataBindingSendEmail
+  | CreateScriptEdgePreviewMetadataBindingMtlsCertificate
+  | CreateScriptEdgePreviewMetadataBindingWasmModule
+  | CreateScriptEdgePreviewMetadataBindingTextBlob
+  | CreateScriptEdgePreviewMetadataBindingDataBlob
+  | CreateScriptEdgePreviewMetadataBindingPipelines
+  | CreateScriptEdgePreviewMetadataBindingSecretsStoreSecret
+  | CreateScriptEdgePreviewMetadataBindingStream
+  | CreateScriptEdgePreviewMetadataBindingMedia
+  | CreateScriptEdgePreviewMetadataBindingVersionMetadata
+  | CreateScriptEdgePreviewMetadataBindingAssets
+  | CreateScriptEdgePreviewMetadataBindingWorkerLoader
+  | CreateScriptEdgePreviewMetadataBindingLogfwdr
+  | CreateScriptEdgePreviewMetadataBindingAiSearchNamespace
+  | CreateScriptEdgePreviewMetadataBindingAiSearch
+  | CreateScriptEdgePreviewMetadataBindingRatelimit
+  | CreateScriptEdgePreviewMetadataBindingArtifacts
+  | CreateScriptEdgePreviewMetadataBindingUnsafeHelloWorld
+  | CreateScriptEdgePreviewMetadataBindingFlagship
+  | CreateScriptEdgePreviewMetadataBindingVpcService
+  | CreateScriptEdgePreviewMetadataBindingVpcNetwork
+  | CreateScriptEdgePreviewMetadataBindingInherit;
+export const CreateScriptEdgePreviewMetadataBinding =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["type", "name", "text"],
+      ["type", "name", "text"],
+      ["type", "name", "json"],
+      ["type", "name", "namespaceId", "raw"],
+      ["type", "name", "className", "scriptName", "environment", "namespaceId"],
+      ["type", "name", "bucketName", "jurisdiction", "raw"],
+      ["type", "name", "id", "internalEnv", "raw"],
+      ["type", "name", "queueName", "deliveryDelay", "raw"],
+      [
+        "type",
+        "name",
+        "service",
+        "environment",
+        "entrypoint",
+        "crossAccountGrant",
+      ],
+      ["type", "name", "staging", "raw"],
+      ["type", "name", "raw"],
+      ["type", "name", "raw"],
+      ["type", "name", "indexName", "internalEnv", "raw"],
+      ["type", "name", "workflowName", "className", "scriptName", "raw"],
+      ["type", "name", "id"],
+      ["type", "name", "dataset"],
+      ["type", "name", "namespace", "outbound"],
+      [
+        "type",
+        "name",
+        "destinationAddress",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+      ],
+      ["type", "name", "certificateId"],
+      ["type", "name", "part"],
+      ["type", "name", "part"],
+      ["type", "name", "part"],
+      ["type", "name", "pipeline"],
+      ["type", "name", "storeId", "secretName"],
+      ["type", "name"],
+      ["type", "name"],
+      ["type", "name"],
+      ["type", "name"],
+      ["type", "name"],
+      ["type", "name", "destination"],
+      ["type", "name", "namespace"],
+      ["type", "name", "instanceName"],
+      ["type", "name", "namespaceId", "simple"],
+      ["type", "name", "namespace"],
+      ["type", "name", "enableTimer"],
+      ["type", "name", "appId"],
+      ["type", "name", "serviceId"],
+      ["type", "name", "tunnelId", "networkId"],
+      ["type", "name"],
+    ]),
+  );
+
+export type CreateScriptEdgePreviewMetadataBindingsList =
+  Array<CreateScriptEdgePreviewMetadataBinding>;
+export const CreateScriptEdgePreviewMetadataBindingsList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataBinding,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingsList>;
+
+export interface CreateScriptEdgePreviewMetadataMigrationRenamedClass {
+  from?: string;
+  to?: string;
+}
+export const CreateScriptEdgePreviewMetadataMigrationRenamedClass =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.optional(S.String),
+      to: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataMigrationRenamedClass",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationRenamedClass>;
+
+export type CreateScriptEdgePreviewMetadataMigrationRenamedClassesList =
+  Array<CreateScriptEdgePreviewMetadataMigrationRenamedClass>;
+export const CreateScriptEdgePreviewMetadataMigrationRenamedClassesList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataMigrationRenamedClass,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationRenamedClassesList>;
+
+export interface CreateScriptEdgePreviewMetadataMigrationStep {
+  newClasses?: CreateScriptEdgePreviewMetadataStringList;
+  newSqliteClasses?: CreateScriptEdgePreviewMetadataStringList;
+  renamedClasses?: CreateScriptEdgePreviewMetadataMigrationRenamedClassesList;
+  deletedClasses?: CreateScriptEdgePreviewMetadataStringList;
+}
+export const CreateScriptEdgePreviewMetadataMigrationStep =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      newClasses: S.optional(
+        CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("new_classes")),
+      ),
+      newSqliteClasses: S.optional(
+        CreateScriptEdgePreviewMetadataStringList.pipe(
+          T.Body("new_sqlite_classes"),
+        ),
+      ),
+      renamedClasses: S.optional(
+        CreateScriptEdgePreviewMetadataMigrationRenamedClassesList.pipe(
+          T.Body("renamed_classes"),
+        ),
+      ),
+      deletedClasses: S.optional(
+        CreateScriptEdgePreviewMetadataStringList.pipe(
+          T.Body("deleted_classes"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataMigrationStep",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationStep>;
+
+export type CreateScriptEdgePreviewMetadataMigrationStepsList =
+  Array<CreateScriptEdgePreviewMetadataMigrationStep>;
+export const CreateScriptEdgePreviewMetadataMigrationStepsList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataMigrationStep,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationStepsList>;
+
+export interface CreateScriptEdgePreviewMetadataMigrations {
+  oldTag?: string;
+  newTag?: string;
+  steps?: CreateScriptEdgePreviewMetadataMigrationStepsList;
+}
+export const CreateScriptEdgePreviewMetadataMigrations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+      steps: S.optional(CreateScriptEdgePreviewMetadataMigrationStepsList),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataMigrations",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrations>;
+
+export type CreateScriptEdgePreviewMetadataPlacementSmartMode = "smart";
+export const CreateScriptEdgePreviewMetadataPlacementSmartMode =
+  /*@__PURE__*/ S.String;
+
+export interface CreateScriptEdgePreviewMetadataPlacementSmart {
+  mode: CreateScriptEdgePreviewMetadataPlacementSmartMode;
+  hint?: string;
+}
+export const CreateScriptEdgePreviewMetadataPlacementSmart =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: CreateScriptEdgePreviewMetadataPlacementSmartMode,
+      hint: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataPlacementSmart",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementSmart>;
+
+export interface CreateScriptEdgePreviewMetadataPlacementRegion {
+  region: string;
+}
+export const CreateScriptEdgePreviewMetadataPlacementRegion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataPlacementRegion",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementRegion>;
+
+export interface CreateScriptEdgePreviewMetadataPlacementHost {
+  host: string;
+}
+export const CreateScriptEdgePreviewMetadataPlacementHost =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataPlacementHost",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementHost>;
+
+export interface CreateScriptEdgePreviewMetadataPlacementHostname {
+  hostname: string;
+}
+export const CreateScriptEdgePreviewMetadataPlacementHostname =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hostname: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataPlacementHostname",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataPlacementHostname>;
+
+export type CreateScriptEdgePreviewMetadataPlacement =
+  | CreateScriptEdgePreviewMetadataPlacementSmart
+  | CreateScriptEdgePreviewMetadataPlacementRegion
+  | CreateScriptEdgePreviewMetadataPlacementHost
+  | CreateScriptEdgePreviewMetadataPlacementHostname;
+export const CreateScriptEdgePreviewMetadataPlacement =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([["mode", "hint"], ["region"], ["host"], ["hostname"]]),
+  );
+
+export interface CreateScriptEdgePreviewMetadataTailConsumer {
+  service: string;
+  environment?: string;
+}
+export const CreateScriptEdgePreviewMetadataTailConsumer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      service: S.String,
+      environment: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataTailConsumer",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataTailConsumer>;
+
+export type CreateScriptEdgePreviewMetadataTailConsumersList =
+  Array<CreateScriptEdgePreviewMetadataTailConsumer>;
+export const CreateScriptEdgePreviewMetadataTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataTailConsumer,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataTailConsumersList>;
+
+export interface CreateScriptEdgePreviewMetadataLimits {
+  cpuMs?: number;
+  subrequests?: number;
+}
+export const CreateScriptEdgePreviewMetadataLimits = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+      subrequests: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadataLimits",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadataLimits>;
+
+export type CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling =
+  | "auto-trailing-slash"
+  | "force-trailing-slash"
+  | "drop-trailing-slash"
+  | "none";
+export const CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling =
+  /*@__PURE__*/ S.String;
+
+export type CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling =
+  | "single-page-application"
+  | "404-page"
+  | "none";
+export const CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling =
+  /*@__PURE__*/ S.String;
+
+export type CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst =
+  | boolean
+  | CreateScriptEdgePreviewMetadataStringList;
+export const CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
+
+export interface CreateScriptEdgePreviewMetadataAssetsConfig {
+  htmlHandling?:
+    | CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling
+    | (string & {});
+  notFoundHandling?:
+    | CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling
+    | (string & {});
+  runWorkerFirst?: CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst;
+  redirects?: string;
+  headers?: string;
+}
+export const CreateScriptEdgePreviewMetadataAssetsConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      htmlHandling: S.optional(
+        CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling.pipe(
+          T.Body("html_handling"),
+        ),
+      ),
+      notFoundHandling: S.optional(
+        CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling.pipe(
+          T.Body("not_found_handling"),
+        ),
+      ),
+      runWorkerFirst: S.optional(
+        CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst.pipe(
+          T.Body("run_worker_first"),
+        ),
+      ),
+      redirects: S.optional(S.String),
+      headers: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataAssetsConfig",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataAssetsConfig>;
+
+export interface CreateScriptEdgePreviewMetadataAssets {
+  jwt?: string;
+  config?: CreateScriptEdgePreviewMetadataAssetsConfig;
+}
+export const CreateScriptEdgePreviewMetadataAssets = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      jwt: S.optional(S.String),
+      config: S.optional(CreateScriptEdgePreviewMetadataAssetsConfig),
+    }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadataAssets",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadataAssets>;
+
+export interface CreateScriptEdgePreviewMetadataObservabilityLogs {
+  enabled?: boolean;
+  headSamplingRate?: number;
+  invocationLogs?: boolean;
+  persist?: boolean;
+  destinations?: CreateScriptEdgePreviewMetadataStringList;
+}
+export const CreateScriptEdgePreviewMetadataObservabilityLogs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+      persist: S.optional(S.Boolean),
+      destinations: S.optional(CreateScriptEdgePreviewMetadataStringList),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataObservabilityLogs",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityLogs>;
+
+export interface CreateScriptEdgePreviewMetadataObservabilityTraces {
+  enabled?: boolean;
+  headSamplingRate?: number;
+  persist?: boolean;
+  destinations?: CreateScriptEdgePreviewMetadataStringList;
+}
+export const CreateScriptEdgePreviewMetadataObservabilityTraces =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      persist: S.optional(S.Boolean),
+      destinations: S.optional(CreateScriptEdgePreviewMetadataStringList),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataObservabilityTraces",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityTraces>;
+
+export interface CreateScriptEdgePreviewMetadataObservability {
+  enabled?: boolean;
+  headSamplingRate?: number;
+  logs?: CreateScriptEdgePreviewMetadataObservabilityLogs;
+  traces?: CreateScriptEdgePreviewMetadataObservabilityTraces;
+}
+export const CreateScriptEdgePreviewMetadataObservability =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+      logs: S.optional(CreateScriptEdgePreviewMetadataObservabilityLogs),
+      traces: S.optional(CreateScriptEdgePreviewMetadataObservabilityTraces),
+    }),
+  ).annotate({
+    identifier: "CreateScriptEdgePreviewMetadataObservability",
+  }) as any as S.Schema<CreateScriptEdgePreviewMetadataObservability>;
+
+export interface CreateScriptEdgePreviewMetadataContainer {
+  className: string;
+}
+export const CreateScriptEdgePreviewMetadataContainer = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      className: S.String.pipe(T.Body("class_name")),
+    }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadataContainer",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadataContainer>;
+
+export type CreateScriptEdgePreviewMetadataContainersList =
+  Array<CreateScriptEdgePreviewMetadataContainer>;
+export const CreateScriptEdgePreviewMetadataContainersList =
+  /*@__PURE__*/ S.Array(
+    CreateScriptEdgePreviewMetadataContainer,
+  ) as any as S.Schema<CreateScriptEdgePreviewMetadataContainersList>;
+
+export interface CreateScriptEdgePreviewMetadata {
+  mainModule?: string;
+  bodyPart?: string;
+  compatibilityDate?: string;
+  compatibilityFlags?: CreateScriptEdgePreviewMetadataStringList;
+  usageModel?: CreateScriptEdgePreviewMetadataUsageModel | (string & {});
+  bindings?: CreateScriptEdgePreviewMetadataBindingsList;
+  keepBindings?: CreateScriptEdgePreviewMetadataStringList;
+  migrations?: CreateScriptEdgePreviewMetadataMigrations;
+  capnpSchema?: string;
+  logpush?: boolean;
+  placement?: CreateScriptEdgePreviewMetadataPlacement;
+  tailConsumers?: CreateScriptEdgePreviewMetadataTailConsumersList;
+  streamingTailConsumers?: CreateScriptEdgePreviewMetadataTailConsumersList;
+  limits?: CreateScriptEdgePreviewMetadataLimits;
+  assets?: CreateScriptEdgePreviewMetadataAssets;
+  observability?: CreateScriptEdgePreviewMetadataObservability;
+  containers?: CreateScriptEdgePreviewMetadataContainersList;
+  annotations?: unknown;
+  keepAssets?: boolean;
+  tags?: CreateScriptEdgePreviewMetadataStringList;
+}
+export const CreateScriptEdgePreviewMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+    bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
+    compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+    compatibilityFlags: S.optional(
+      CreateScriptEdgePreviewMetadataStringList.pipe(
+        T.Body("compatibility_flags"),
+      ),
+    ),
+    usageModel: S.optional(
+      CreateScriptEdgePreviewMetadataUsageModel.pipe(T.Body("usage_model")),
+    ),
+    bindings: S.optional(CreateScriptEdgePreviewMetadataBindingsList),
+    keepBindings: S.optional(
+      CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("keep_bindings")),
+    ),
+    migrations: S.optional(CreateScriptEdgePreviewMetadataMigrations),
+    capnpSchema: S.optional(S.String.pipe(T.Body("capnp_schema"))),
+    logpush: S.optional(S.Boolean),
+    placement: S.optional(CreateScriptEdgePreviewMetadataPlacement),
+    tailConsumers: S.optional(
+      CreateScriptEdgePreviewMetadataTailConsumersList.pipe(
+        T.Body("tail_consumers"),
+      ),
+    ),
+    streamingTailConsumers: S.optional(
+      CreateScriptEdgePreviewMetadataTailConsumersList.pipe(
+        T.Body("streaming_tail_consumers"),
+      ),
+    ),
+    limits: S.optional(CreateScriptEdgePreviewMetadataLimits),
+    assets: S.optional(CreateScriptEdgePreviewMetadataAssets),
+    observability: S.optional(CreateScriptEdgePreviewMetadataObservability),
+    containers: S.optional(CreateScriptEdgePreviewMetadataContainersList),
+    annotations: S.optional(S.Unknown),
+    keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
+    tags: S.optional(CreateScriptEdgePreviewMetadataStringList),
+  }),
+).annotate({
+  identifier: "CreateScriptEdgePreviewMetadata",
+}) as any as S.Schema<CreateScriptEdgePreviewMetadata>;
+
+export interface CreateScriptEdgePreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** The session token returned by createSubdomainEdgePreviewSession. */
+  cfPreviewUploadConfigToken: string;
+  /** Module files comprising the worker script, appended under their own filenames. */
+  files?: File | Blob | (File | Blob)[];
+  /** JSON-encoded multipart part selecting how the preview is routed (workers.dev or explicit routes); without it edge previews cannot opt into workers.dev routing. */
+  wranglerSessionConfig?: CreateScriptEdgePreviewWranglerSessionConfig;
+  /** JSON-encoded multipart `metadata` part: the preview worker's modules, bindings and settings. */
+  metadata?: CreateScriptEdgePreviewMetadata;
+}
+export const CreateScriptEdgePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    cfPreviewUploadConfigToken: S.String.pipe(
+      T.Header("cf-preview-upload-config-token"),
+    ),
+    files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+    wranglerSessionConfig: S.optional(
+      CreateScriptEdgePreviewWranglerSessionConfig.pipe(
+        T.Body("wrangler-session-config"),
+      ),
+    ),
+    metadata: S.optional(CreateScriptEdgePreviewMetadata),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
+        code: 200,
+        contentType: "multipart",
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptEdgePreviewRequest",
+}) as any as S.Schema<CreateScriptEdgePreviewRequest>;
+
+export interface CreateScriptEdgePreviewResponse {
+  /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
+  previewToken: string;
+}
+export const CreateScriptEdgePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    previewToken: S.String.pipe(T.Body("preview_token")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptEdgePreviewResponse",
+}) as any as S.Schema<CreateScriptEdgePreviewResponse>;
+
+export interface CreateScriptSubdomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Whether the Worker should be available on the workers.dev subdomain. */
+  enabled: boolean;
+  /** Whether the Worker's Preview URLs should be available on the workers.dev subdomain. */
+  previewsEnabled?: boolean;
+}
+export const CreateScriptSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    enabled: S.Boolean,
+    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptSubdomainRequest",
+}) as any as S.Schema<CreateScriptSubdomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateScriptSubdomainResponse {
+  /** Whether the Worker is available on the workers.dev subdomain. */
+  enabled: boolean;
+  /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
+  previewsEnabled: boolean;
+}
+export const CreateScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptSubdomainResponse",
+}) as any as S.Schema<CreateScriptSubdomainResponse>;
+
+export type CreateScriptTailFiltersList = Array<unknown>;
+export const CreateScriptTailFiltersList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateScriptTailFiltersList>;
+
+export interface CreateScriptTailRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Name of the script, used in URLs and route configuration. */
+  scriptName: string;
+  /** Tail event filters; an empty list tails everything. */
+  filters?: CreateScriptTailFiltersList;
+}
+export const CreateScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    filters: S.optional(CreateScriptTailFiltersList),
+  })
+    .pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+        code: 200,
+      }),
+    )
+    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptTailRequest",
+}) as any as S.Schema<CreateScriptTailRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateScriptTailResponse {
+  /** Identifier. */
+  id: string;
+  expiresAt: string;
+  url: string;
+}
+export const CreateScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    expiresAt: S.String.pipe(T.Body("expires_at")),
+    url: S.String,
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+).annotate({
+  identifier: "CreateScriptTailResponse",
+}) as any as S.Schema<CreateScriptTailResponse>;
+
+export type ScriptsVersionsCreateRequestBindingsInherit = "strict";
+export const ScriptsVersionsCreateRequestBindingsInherit =
+  /*@__PURE__*/ S.String;
+
 export interface PutScriptMetadataAnnotations {
   workersMessage?: string;
   workersTag?: string;
@@ -8549,205 +10168,6 @@ export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutScriptMetadata",
 }) as any as S.Schema<PutScriptMetadata>;
-
-export interface CreateScriptEdgePreviewWranglerSessionConfigWorkersDev {
-  /** Route the preview through workers.dev. */
-  workersDev: boolean;
-  minimalMode?: boolean;
-}
-export const CreateScriptEdgePreviewWranglerSessionConfigWorkersDev =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workersDev: S.Boolean.pipe(T.Body("workers_dev")),
-      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
-    }),
-  ).annotate({
-    identifier: "CreateScriptEdgePreviewWranglerSessionConfigWorkersDev",
-  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigWorkersDev>;
-
-export type CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
-  Array<string>;
-export const CreateScriptEdgePreviewWranglerSessionConfigRoutesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutesList>;
-
-export interface CreateScriptEdgePreviewWranglerSessionConfigRoutes {
-  /** Routes to serve the preview on. */
-  routes: CreateScriptEdgePreviewWranglerSessionConfigRoutesList;
-  minimalMode?: boolean;
-}
-export const CreateScriptEdgePreviewWranglerSessionConfigRoutes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      routes: CreateScriptEdgePreviewWranglerSessionConfigRoutesList,
-      minimalMode: S.optional(S.Boolean.pipe(T.Body("minimal_mode"))),
-    }),
-  ).annotate({
-    identifier: "CreateScriptEdgePreviewWranglerSessionConfigRoutes",
-  }) as any as S.Schema<CreateScriptEdgePreviewWranglerSessionConfigRoutes>;
-
-export type CreateScriptEdgePreviewWranglerSessionConfig =
-  | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
-  | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
-export const CreateScriptEdgePreviewWranglerSessionConfig =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["workersDev", "minimalMode"],
-      ["routes", "minimalMode"],
-    ]),
-  );
-
-export interface CreateScriptEdgePreviewRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Name of the script, used in URLs and route configuration. */
-  scriptName: string;
-  /** The session token returned by createSubdomainEdgePreviewSession. */
-  cfPreviewUploadConfigToken: string;
-  /** JSON-encoded metadata about the uploaded parts and Worker configuration. */
-  metadata?: PutScriptMetadata;
-  /** Module files comprising the worker script, appended under their own filenames. */
-  files?: File | Blob | (File | Blob)[];
-  /** JSON-encoded multipart part selecting how the preview is routed (workers.dev or explicit routes); without it edge previews cannot opt into workers.dev routing. */
-  wranglerSessionConfig?: CreateScriptEdgePreviewWranglerSessionConfig;
-}
-export const CreateScriptEdgePreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    cfPreviewUploadConfigToken: S.String.pipe(
-      T.Header("cf-preview-upload-config-token"),
-    ),
-    metadata: S.optional(PutScriptMetadata),
-    files: S.optional(S.Unknown.pipe(T.FormDataFile())),
-    wranglerSessionConfig: S.optional(
-      CreateScriptEdgePreviewWranglerSessionConfig.pipe(
-        T.Body("wrangler-session-config"),
-      ),
-    ),
-  })
-    .pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
-        code: 200,
-        contentType: "multipart",
-      }),
-    )
-    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptEdgePreviewRequest",
-}) as any as S.Schema<CreateScriptEdgePreviewRequest>;
-
-export interface CreateScriptEdgePreviewResponse {
-  /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
-  previewToken: string;
-}
-export const CreateScriptEdgePreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    previewToken: S.String.pipe(T.Body("preview_token")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptEdgePreviewResponse",
-}) as any as S.Schema<CreateScriptEdgePreviewResponse>;
-
-export interface CreateScriptSubdomainRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Name of the script, used in URLs and route configuration. */
-  scriptName: string;
-  /** Whether the Worker should be available on the workers.dev subdomain. */
-  enabled: boolean;
-  /** Whether the Worker's Preview URLs should be available on the workers.dev subdomain. */
-  previewsEnabled?: boolean;
-}
-export const CreateScriptSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    enabled: S.Boolean,
-    previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
-  })
-    .pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
-        code: 200,
-      }),
-    )
-    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptSubdomainRequest",
-}) as any as S.Schema<CreateScriptSubdomainRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateScriptSubdomainResponse {
-  /** Whether the Worker is available on the workers.dev subdomain. */
-  enabled: boolean;
-  /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
-  previewsEnabled: boolean;
-}
-export const CreateScriptSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptSubdomainResponse",
-}) as any as S.Schema<CreateScriptSubdomainResponse>;
-
-export type CreateScriptTailFiltersList = Array<unknown>;
-export const CreateScriptTailFiltersList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateScriptTailFiltersList>;
-
-export interface CreateScriptTailRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Name of the script, used in URLs and route configuration. */
-  scriptName: string;
-  /** Tail event filters; an empty list tails everything. */
-  filters?: CreateScriptTailFiltersList;
-}
-export const CreateScriptTailRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    filters: S.optional(CreateScriptTailFiltersList),
-  })
-    .pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
-        code: 200,
-      }),
-    )
-    .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptTailRequest",
-}) as any as S.Schema<CreateScriptTailRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateScriptTailResponse {
-  /** Identifier. */
-  id: string;
-  expiresAt: string;
-  url: string;
-}
-export const CreateScriptTailResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    expiresAt: S.String.pipe(T.Body("expires_at")),
-    url: S.String,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-).annotate({
-  identifier: "CreateScriptTailResponse",
-}) as any as S.Schema<CreateScriptTailResponse>;
-
-export type ScriptsVersionsCreateRequestBindingsInherit = "strict";
-export const ScriptsVersionsCreateRequestBindingsInherit =
-  /*@__PURE__*/ S.String;
 
 export interface CreateScriptVersionRequest {
   /** Identifier. */

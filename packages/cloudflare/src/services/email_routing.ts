@@ -33,6 +33,25 @@ export class DestinationNotVerified extends T.applyErrorMatchers(
   [{ code: 2054 }],
 ) {}
 
+export class EmailAddressCreatedTooRecently extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EmailAddressCreatedTooRecently>()(
+    "EmailAddressCreatedTooRecently",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 2032 }],
+) {}
+
+export class EmailAddressNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EmailAddressNotFound>()("EmailAddressNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 2015 }],
+) {}
+
 export class EmailRoutingRuleNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<EmailRoutingRuleNotFound>()("EmailRoutingRuleNotFound", {
     code: S.Number,
@@ -1847,7 +1866,10 @@ export const createRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAddressError = CloudflareOpError;
+export type DeleteAddressError =
+  | EmailAddressNotFound
+  | EmailAddressCreatedTooRecently
+  | CloudflareOpError;
 /** Deletes a specific destination address. */
 export const deleteAddress: API.OperationMethod<
   DeleteAddressRequest,
@@ -1857,7 +1879,12 @@ export const deleteAddress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAddressRequest,
   output: DeleteAddressResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    EmailAddressNotFound,
+    EmailAddressCreatedTooRecently,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

@@ -60,6 +60,14 @@ export class RulesetNotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export class RumSiteQuotaExceeded extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RumSiteQuotaExceeded>()("RumSiteQuotaExceeded", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10014 }],
+) {}
+
 export class SiteNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
     code: S.Number,
@@ -1071,7 +1079,10 @@ export const createRule: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSiteInfoError = Forbidden | CloudflareOpError;
+export type CreateSiteInfoError =
+  | Forbidden
+  | RumSiteQuotaExceeded
+  | CloudflareOpError;
 /** Creates a new Web Analytics site. */
 export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoRequest,
@@ -1081,7 +1092,12 @@ export const createSiteInfo: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteInfoRequest,
   output: CreateSiteInfoResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  errors: [
+    Forbidden,
+    RumSiteQuotaExceeded,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
