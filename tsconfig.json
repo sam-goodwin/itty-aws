@@ -40,12 +40,5 @@
     { "path": "./packages/typesense/tsconfig.scripts.json" },
     { "path": "./packages/workos/tsconfig.json" },
     { "path": "./packages/workos/tsconfig.scripts.json" }
-  ],
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@effect/language-service"
-      }
-    ]
-  }
+  ]
 }
