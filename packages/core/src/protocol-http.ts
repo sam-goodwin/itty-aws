@@ -288,7 +288,8 @@ export const mapKeys = (
           ? (dict[k] ?? k)
           : (Object.entries(dict).find(([, w]) => w === k)?.[0] ?? k)
         : k;
-      out[renamed] =
+
+      out[typeof renamed === "string" ? renamed : renamed[0]] =
         isigs && isigs.length
           ? mapKeys(isigs[0]!.type, v, direction, dict)
           : dict
@@ -498,7 +499,7 @@ export const buildRequest = ({
     if (consumed.has(key) || value === undefined) continue;
     const wire =
       rootDict?.[key] ?? (unknownKeyToWire ? unknownKeyToWire(key) : key);
-    body[wire] = rootDict
+    body[typeof wire === "string" ? wire : wire[0]] = rootDict
       ? mapKeysByDictionary(rootDict, value, "encode")
       : value;
     hasBodyMembers = true;

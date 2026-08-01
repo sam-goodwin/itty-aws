@@ -15,7 +15,7 @@ import * as Retry from "../retry.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
-const KEY_DICTIONARY: Record<string, string> = {
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   accountAppId: "account_app_id",
   allowNullCipher: "allow_null_cipher",
   automaticReturnRouting: "automatic_return_routing",

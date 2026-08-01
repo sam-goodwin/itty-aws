@@ -15,7 +15,7 @@ import * as Retry from "../retry.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
-const KEY_DICTIONARY: Record<string, string> = {
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   additionalRoutes: "additional_routes",
   cookieAttributes: "cookie_attributes",
   cookieSuffix: "cookie_suffix",

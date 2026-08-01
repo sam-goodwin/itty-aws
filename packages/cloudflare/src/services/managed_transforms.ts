@@ -13,7 +13,7 @@ import * as Retry from "../retry.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
-const KEY_DICTIONARY: Record<string, string> = {
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   conflictsWith: "conflicts_with",
   hasConflict: "has_conflict",
   managedRequestHeaders: "managed_request_headers",

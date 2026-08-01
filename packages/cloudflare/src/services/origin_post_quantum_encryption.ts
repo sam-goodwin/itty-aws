@@ -13,7 +13,9 @@ import * as Retry from "../retry.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
-const KEY_DICTIONARY: Record<string, string> = { modifiedOn: "modified_on" };
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
+  modifiedOn: "modified_on",
+};
 
 export class Forbidden extends T.applyErrorMatchers(
   S.TaggedErrorClass<Forbidden>()("Forbidden", {
