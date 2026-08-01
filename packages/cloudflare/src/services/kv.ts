@@ -595,9 +595,20 @@ export const GetNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamespaceValueRequest",
 }) as any as S.Schema<GetNamespaceValueRequest>;
 
-export interface GetNamespaceValueResponse {}
+export interface GetNamespaceValueResponse {
+  /** Raw value body as an Effect Stream. */
+  body: T.BinaryResponseBody;
+  /** Expiration time of the KV pair, seconds since the UNIX epoch (set when the pair is set to expire). */
+  expiration?: number;
+  /** MIME type the value was stored with. */
+  contentType?: string;
+}
 export const GetNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({
+    body: S.Unknown.pipe(T.BinaryResponseBody()),
+    expiration: S.optional(S.Number.pipe(T.Header())),
+    contentType: S.optional(S.String.pipe(T.Header("content-type"))),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceValueResponse",
 }) as any as S.Schema<GetNamespaceValueResponse>;

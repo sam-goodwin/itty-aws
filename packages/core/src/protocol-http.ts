@@ -589,7 +589,15 @@ export const buildRequest = ({
     // media type (e.g. application/x-ndjson for Vectorize
     // insert/upsert); otherwise it's JSON.
     if (rawBody instanceof Blob || rawBody instanceof ArrayBuffer) {
-      request = request.pipe(HttpClientRequest.setBody(HttpBody.raw(rawBody)));
+      // Honor the declared media type (e.g. application/x-ndjson for
+      // Vectorize insert/upsert) — without it the server may fall back to
+      // JSON parsing. When no bodyMediaType is modeled the header is left
+      // untouched (a modeled Content-Type header member rides alongside).
+      request = request.pipe(
+        HttpClientRequest.setBody(
+          HttpBody.raw(rawBody, { contentType: http.bodyMediaType }),
+        ),
+      );
     } else if (rawBody instanceof Uint8Array) {
       request = request.pipe(
         HttpClientRequest.setBody(

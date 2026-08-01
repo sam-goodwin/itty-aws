@@ -45473,7 +45473,7 @@ export const GatewayProxyEndpointsCreateResultIPKind = /*@__PURE__*/ S.String;
 
 export interface GatewayProxyEndpointsCreateResultIP {
   /** Specify the list of CIDRs to restrict ingress connections. */
-  ips: GatewayProxyEndpointsCreateResultIPIpsList;
+  ips?: GatewayProxyEndpointsCreateResultIPIpsList | null;
   /** Specify the name of the proxy endpoint. */
   name: string;
   id?: string | null;
@@ -45486,7 +45486,7 @@ export interface GatewayProxyEndpointsCreateResultIP {
 }
 export const GatewayProxyEndpointsCreateResultIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ips: GatewayProxyEndpointsCreateResultIPIpsList,
+    ips: S.optional(S.NullOr(GatewayProxyEndpointsCreateResultIPIpsList)),
     name: S.String,
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -97372,7 +97372,7 @@ export const GatewayProxyEndpointsGetResultIPKind = /*@__PURE__*/ S.String;
 
 export interface GatewayProxyEndpointsGetResultIP {
   /** Specify the list of CIDRs to restrict ingress connections. */
-  ips: GatewayProxyEndpointsGetResultIPIpsList;
+  ips?: GatewayProxyEndpointsGetResultIPIpsList | null;
   /** Specify the name of the proxy endpoint. */
   name: string;
   id?: string | null;
@@ -97385,7 +97385,7 @@ export interface GatewayProxyEndpointsGetResultIP {
 }
 export const GatewayProxyEndpointsGetResultIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ips: GatewayProxyEndpointsGetResultIPIpsList,
+    ips: S.optional(S.NullOr(GatewayProxyEndpointsGetResultIPIpsList)),
     name: S.String,
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -138455,7 +138455,7 @@ export const GatewayProxyEndpointsListResultItemIPKind = /*@__PURE__*/ S.String;
 
 export interface GatewayProxyEndpointsListResultItemIP {
   /** Specify the list of CIDRs to restrict ingress connections. */
-  ips: GatewayProxyEndpointsListResultItemIPIpsList;
+  ips?: GatewayProxyEndpointsListResultItemIPIpsList | null;
   /** Specify the name of the proxy endpoint. */
   name: string;
   id?: string | null;
@@ -138469,7 +138469,7 @@ export interface GatewayProxyEndpointsListResultItemIP {
 export const GatewayProxyEndpointsListResultItemIP = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      ips: GatewayProxyEndpointsListResultItemIPIpsList,
+      ips: S.optional(S.NullOr(GatewayProxyEndpointsListResultItemIPIpsList)),
       name: S.String,
       id: S.optional(S.NullOr(S.String)),
       createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -148545,7 +148545,7 @@ export const GatewayProxyEndpointsEditResultIPKind = /*@__PURE__*/ S.String;
 
 export interface GatewayProxyEndpointsEditResultIP {
   /** Specify the list of CIDRs to restrict ingress connections. */
-  ips: GatewayProxyEndpointsEditResultIPIpsList;
+  ips?: GatewayProxyEndpointsEditResultIPIpsList | null;
   /** Specify the name of the proxy endpoint. */
   name: string;
   id?: string | null;
@@ -148558,7 +148558,7 @@ export interface GatewayProxyEndpointsEditResultIP {
 }
 export const GatewayProxyEndpointsEditResultIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ips: GatewayProxyEndpointsEditResultIPIpsList,
+    ips: S.optional(S.NullOr(GatewayProxyEndpointsEditResultIPIpsList)),
     name: S.String,
     id: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),

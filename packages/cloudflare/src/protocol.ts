@@ -267,8 +267,8 @@ const camelizeKeys = (v: unknown): unknown => {
  * `content-length`).
  */
 const wantsNumber = (ast: AST.AST): boolean =>
-  ast._tag === "NumberKeyword" ||
-  (ast._tag === "UnionType" &&
+  ast._tag === "Number" ||
+  (ast._tag === "Union" &&
     (ast as { types?: readonly AST.AST[] }).types?.some(wantsNumber) === true);
 
 /**
