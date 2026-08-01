@@ -24,7 +24,9 @@ const waitForKey = (keyId: string) =>
         : Effect.fail(new Error(`Key ${keyId} not yet Enabled`)),
     ),
     Effect.retry({
-      schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(30)]),
+      schedule: Schedule.spaced("1 second").pipe(
+        Schedule.both(Schedule.recurs(30)),
+      ),
     }),
   );
 
@@ -116,7 +118,9 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "key not found yet",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
     } finally {
@@ -173,7 +177,9 @@ test(
           );
         }),
         Effect.retry({
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(30)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(30)),
+          ),
         }),
       );
     } finally {
@@ -190,7 +196,9 @@ test(
 // Alias Tests
 // ============================================================================
 
-const retrySchedule = Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(30)]);
+const retrySchedule = Schedule.spaced("1 second").pipe(
+  Schedule.both(Schedule.recurs(30)),
+);
 
 const waitForAlias = (keyId: string, aliasName: string) =>
   listAliases({ KeyId: keyId }).pipe(

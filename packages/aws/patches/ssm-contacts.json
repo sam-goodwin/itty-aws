@@ -63,9 +63,7 @@
       ]
     },
     "createRotation": {
-      "errors": [
-        "ConflictException"
-      ],
+      "errors": ["ConflictException"],
       "syntheticErrors": [
         {
           "name": "IncidentManagerNotOnboarded",
@@ -490,11 +488,7 @@
     }
   },
   "errorCategories": {
-    "IncidentManagerNotOnboarded": [
-      "BadRequestError"
-    ],
-    "InvalidRotationArn": [
-      "BadRequestError"
-    ]
+    "IncidentManagerNotOnboarded": ["BadRequestError"],
+    "InvalidRotationArn": ["BadRequestError"]
   }
 }

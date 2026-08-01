@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -88,21 +90,29 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type RoleNameType = string;
 export type AccountIdType = string;
 export type AccessTokenType = string | redacted.Redacted<string>;
-export type AccessKeyType = string;
-export type SecretAccessKeyType = string | redacted.Redacted<string>;
-export type SessionTokenType = string | redacted.Redacted<string>;
-export type ExpirationTimestampType = number;
-export type ErrorDescription = string;
-export type NextTokenType = string;
-export type MaxResultType = number;
-export type AccountNameType = string;
-export type EmailAddressType = string;
-
-//# Schemas
 export interface GetRoleCredentialsRequest {
   roleName: string;
   accountId: string;
@@ -126,6 +136,10 @@ export const GetRoleCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoleCredentialsRequest",
 }) as any as S.Schema<GetRoleCredentialsRequest>;
+export type AccessKeyType = string;
+export type SecretAccessKeyType = string | redacted.Redacted<string>;
+export type SessionTokenType = string | redacted.Redacted<string>;
+export type ExpirationTimestampType = number;
 export interface RoleCredentials {
   accessKeyId?: string;
   secretAccessKey?: string | redacted.Redacted<string>;
@@ -150,6 +164,8 @@ export const GetRoleCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoleCredentialsResponse",
 }) as any as S.Schema<GetRoleCredentialsResponse>;
+export type NextTokenType = string;
+export type MaxResultType = number;
 export interface ListAccountRolesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -219,6 +235,8 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
+export type AccountNameType = string;
+export type EmailAddressType = string;
 export interface AccountInfo {
   accountId?: string;
   accountName?: string;
@@ -266,26 +284,7 @@ export interface LogoutResponse {}
 export const LogoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "LogoutResponse" }) as any as S.Schema<LogoutResponse>;
-
-//# Errors
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-
-//# Operations
+export type ErrorDescription = string;
 export type GetRoleCredentialsError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -310,8 +309,11 @@ export const getRoleCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoleCredentials",
 }));
+
 export type ListAccountRolesError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -350,6 +352,8 @@ export const listAccountRoles: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountRoles",
   pagination: {
     inputToken: "nextToken",
@@ -358,6 +362,7 @@ export const listAccountRoles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAccountsError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -398,6 +403,8 @@ export const listAccounts: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -406,6 +413,7 @@ export const listAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type LogoutError =
   | InvalidRequestException
   | TooManyRequestsException
@@ -440,5 +448,7 @@ export const logout: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Logout",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,39 +88,190 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BatchWriteException extends S.TaggedErrorClass<BatchWriteException>()(
+  "BatchWriteException",
+  {
+    Index: S.optional(S.Number),
+    Type: S.optional(
+      S.suspend(() => BatchWriteExceptionType).annotate({
+        identifier: "BatchWriteExceptionType",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+) {}
+export class CannotListParentOfRootException extends S.TaggedErrorClass<CannotListParentOfRootException>()(
+  "CannotListParentOfRootException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryAlreadyExistsException extends S.TaggedErrorClass<DirectoryAlreadyExistsException>()(
+  "DirectoryAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DirectoryDeletedException extends S.TaggedErrorClass<DirectoryDeletedException>()(
+  "DirectoryDeletedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryNotDisabledException extends S.TaggedErrorClass<DirectoryNotDisabledException>()(
+  "DirectoryNotDisabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryNotEnabledException extends S.TaggedErrorClass<DirectoryNotEnabledException>()(
+  "DirectoryNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetAlreadyExistsException extends S.TaggedErrorClass<FacetAlreadyExistsException>()(
+  "FacetAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class FacetInUseException extends S.TaggedErrorClass<FacetInUseException>()(
+  "FacetInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetNotFoundException extends S.TaggedErrorClass<FacetNotFoundException>()(
+  "FacetNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetValidationException extends S.TaggedErrorClass<FacetValidationException>()(
+  "FacetValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IncompatibleSchemaException extends S.TaggedErrorClass<IncompatibleSchemaException>()(
+  "IncompatibleSchemaException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IndexedAttributeMissingException extends S.TaggedErrorClass<IndexedAttributeMissingException>()(
+  "IndexedAttributeMissingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidAttachmentException extends S.TaggedErrorClass<InvalidAttachmentException>()(
+  "InvalidAttachmentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidFacetUpdateException extends S.TaggedErrorClass<InvalidFacetUpdateException>()(
+  "InvalidFacetUpdateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRuleException extends S.TaggedErrorClass<InvalidRuleException>()(
+  "InvalidRuleException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSchemaDocException extends S.TaggedErrorClass<InvalidSchemaDocException>()(
+  "InvalidSchemaDocException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidTaggingRequestException extends S.TaggedErrorClass<InvalidTaggingRequestException>()(
+  "InvalidTaggingRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LinkNameAlreadyInUseException extends S.TaggedErrorClass<LinkNameAlreadyInUseException>()(
+  "LinkNameAlreadyInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotIndexException extends S.TaggedErrorClass<NotIndexException>()(
+  "NotIndexException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotNodeException extends S.TaggedErrorClass<NotNodeException>()(
+  "NotNodeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotPolicyException extends S.TaggedErrorClass<NotPolicyException>()(
+  "NotPolicyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ObjectAlreadyDetachedException extends S.TaggedErrorClass<ObjectAlreadyDetachedException>()(
+  "ObjectAlreadyDetachedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ObjectNotDetachedException extends S.TaggedErrorClass<ObjectNotDetachedException>()(
+  "ObjectNotDetachedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
+  "RetryableConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class SchemaAlreadyExistsException extends S.TaggedErrorClass<SchemaAlreadyExistsException>()(
+  "SchemaAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SchemaAlreadyPublishedException extends S.TaggedErrorClass<SchemaAlreadyPublishedException>()(
+  "SchemaAlreadyPublishedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class StillContainsLinksException extends S.TaggedErrorClass<StillContainsLinksException>()(
+  "StillContainsLinksException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedIndexTypeException extends S.TaggedErrorClass<UnsupportedIndexTypeException>()(
+  "UnsupportedIndexTypeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type FacetName = string;
-export type AttributeName = string;
-export type StringAttributeValue = string;
-export type BinaryAttributeValue = Uint8Array;
-export type BooleanAttributeValue = boolean;
-export type NumberAttributeValue = string;
-export type DatetimeAttributeValue = Date;
-export type SelectorObjectReference = string;
-export type ExceptionMessage = string;
-export type LinkName = string;
-export type ObjectIdentifier = string;
-export type TypedLinkName = string;
-export type NextToken = string;
-export type NumberResults = number;
-export type PathString = string;
-export type PolicyType = string;
-export type BatchReferenceName = string;
-export type BatchOperationIndex = number;
-export type DirectoryName = string;
-export type DirectoryArn = string;
-export type RuleKey = string;
-export type RuleParameterKey = string;
-export type RuleParameterValue = string;
-export type SchemaName = string;
-export type SchemaJsonDocument = string;
-export type TagsNumberResults = number;
-export type TagKey = string;
-export type TagValue = string;
-export type Version = string;
-
-//# Schemas
 export interface SchemaFacet {
   SchemaArn?: string;
   FacetName?: string;
@@ -129,6 +282,7 @@ export const SchemaFacet = /*@__PURE__*/ S.suspend(() =>
     FacetName: S.optional(S.String),
   }),
 ).annotate({ identifier: "SchemaFacet" }) as any as S.Schema<SchemaFacet>;
+export type AttributeName = string;
 export interface AttributeKey {
   SchemaArn: string;
   FacetName: string;
@@ -137,6 +291,11 @@ export interface AttributeKey {
 export const AttributeKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SchemaArn: S.String, FacetName: S.String, Name: S.String }),
 ).annotate({ identifier: "AttributeKey" }) as any as S.Schema<AttributeKey>;
+export type StringAttributeValue = string;
+export type BinaryAttributeValue = Uint8Array;
+export type BooleanAttributeValue = boolean;
+export type NumberAttributeValue = string;
+export type DatetimeAttributeValue = Date;
 export type TypedAttributeValue =
   | {
       StringValue: string;
@@ -192,6 +351,7 @@ export const AttributeKeyAndValue = /*@__PURE__*/ S.suspend(() =>
 export type AttributeKeyAndValueList = AttributeKeyAndValue[];
 export const AttributeKeyAndValueList =
   /*@__PURE__*/ S.Array(AttributeKeyAndValue);
+export type SelectorObjectReference = string;
 export interface ObjectReference {
   Selector?: string;
 }
@@ -270,6 +430,7 @@ export const ApplySchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplySchemaResponse",
 }) as any as S.Schema<ApplySchemaResponse>;
+export type LinkName = string;
 export interface AttachObjectRequest {
   DirectoryArn: string;
   ParentReference: ObjectReference;
@@ -298,6 +459,7 @@ export const AttachObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachObjectRequest",
 }) as any as S.Schema<AttachObjectRequest>;
+export type ObjectIdentifier = string;
 export interface AttachObjectResponse {
   AttachedObjectIdentifier?: string;
 }
@@ -372,16 +534,16 @@ export const AttachToIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachToIndexResponse",
 }) as any as S.Schema<AttachToIndexResponse>;
+export type TypedLinkName = string;
 export interface TypedLinkSchemaAndFacetName {
   SchemaArn: string;
   TypedLinkName: string;
 }
-export const TypedLinkSchemaAndFacetName =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArn: S.String, TypedLinkName: S.String }),
-  ).annotate({
-    identifier: "TypedLinkSchemaAndFacetName",
-  }) as any as S.Schema<TypedLinkSchemaAndFacetName>;
+export const TypedLinkSchemaAndFacetName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArn: S.String, TypedLinkName: S.String }),
+).annotate({
+  identifier: "TypedLinkSchemaAndFacetName",
+}) as any as S.Schema<TypedLinkSchemaAndFacetName>;
 export interface AttributeNameAndValue {
   AttributeName: string;
   Value: TypedAttributeValue;
@@ -449,6 +611,8 @@ export const AttachTypedLinkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachTypedLinkResponse",
 }) as any as S.Schema<AttachTypedLinkResponse>;
+export type NextToken = string;
+export type NumberResults = number;
 export interface BatchListObjectAttributes {
   ObjectReference: ObjectReference;
   NextToken?: string;
@@ -595,6 +759,7 @@ export type RangeMode =
   | "EXCLUSIVE"
   | (string & {});
 export const RangeMode = /*@__PURE__*/ S.String;
+
 export interface TypedAttributeValueRange {
   StartMode: RangeMode;
   StartValue?: TypedAttributeValue;
@@ -663,18 +828,17 @@ export interface BatchListOutgoingTypedLinks {
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchListOutgoingTypedLinks =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectReference: ObjectReference,
-      FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-      FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "BatchListOutgoingTypedLinks",
-  }) as any as S.Schema<BatchListOutgoingTypedLinks>;
+export const BatchListOutgoingTypedLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectReference: ObjectReference,
+    FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
+    FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BatchListOutgoingTypedLinks",
+}) as any as S.Schema<BatchListOutgoingTypedLinks>;
 export interface BatchListIncomingTypedLinks {
   ObjectReference: ObjectReference;
   FilterAttributeRanges?: TypedLinkAttributeRange[];
@@ -682,18 +846,17 @@ export interface BatchListIncomingTypedLinks {
   NextToken?: string;
   MaxResults?: number;
 }
-export const BatchListIncomingTypedLinks =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectReference: ObjectReference,
-      FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-      FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "BatchListIncomingTypedLinks",
-  }) as any as S.Schema<BatchListIncomingTypedLinks>;
+export const BatchListIncomingTypedLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectReference: ObjectReference,
+    FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
+    FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BatchListIncomingTypedLinks",
+}) as any as S.Schema<BatchListIncomingTypedLinks>;
 export interface BatchGetLinkAttributes {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeNames: string[];
@@ -746,6 +909,7 @@ export type BatchReadOperationList = BatchReadOperation[];
 export const BatchReadOperationList = /*@__PURE__*/ S.Array(BatchReadOperation);
 export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL" | (string & {});
 export const ConsistencyLevel = /*@__PURE__*/ S.String;
+
 export interface BatchReadRequest {
   DirectoryArn: string;
   Operations: BatchReadOperation[];
@@ -778,57 +942,55 @@ export interface BatchListObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
   NextToken?: string;
 }
-export const BatchListObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(AttributeKeyAndValueList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListObjectAttributesResponse",
-  }) as any as S.Schema<BatchListObjectAttributesResponse>;
+export const BatchListObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(AttributeKeyAndValueList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListObjectAttributesResponse",
+}) as any as S.Schema<BatchListObjectAttributesResponse>;
 export type LinkNameToObjectIdentifierMap = {
   [key: string]: string | undefined;
 };
-export const LinkNameToObjectIdentifierMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const LinkNameToObjectIdentifierMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface BatchListObjectChildrenResponse {
   Children?: { [key: string]: string | undefined };
   NextToken?: string;
 }
-export const BatchListObjectChildrenResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Children: S.optional(LinkNameToObjectIdentifierMap),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListObjectChildrenResponse",
-  }) as any as S.Schema<BatchListObjectChildrenResponse>;
+export const BatchListObjectChildrenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Children: S.optional(LinkNameToObjectIdentifierMap),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListObjectChildrenResponse",
+}) as any as S.Schema<BatchListObjectChildrenResponse>;
 export type SchemaFacetList = SchemaFacet[];
 export const SchemaFacetList = /*@__PURE__*/ S.Array(SchemaFacet);
 export interface BatchGetObjectInformationResponse {
   SchemaFacets?: SchemaFacet[];
   ObjectIdentifier?: string;
 }
-export const BatchGetObjectInformationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaFacets: S.optional(SchemaFacetList),
-      ObjectIdentifier: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchGetObjectInformationResponse",
-  }) as any as S.Schema<BatchGetObjectInformationResponse>;
+export const BatchGetObjectInformationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaFacets: S.optional(SchemaFacetList),
+    ObjectIdentifier: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchGetObjectInformationResponse",
+}) as any as S.Schema<BatchGetObjectInformationResponse>;
 export interface BatchGetObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const BatchGetObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-  ).annotate({
-    identifier: "BatchGetObjectAttributesResponse",
-  }) as any as S.Schema<BatchGetObjectAttributesResponse>;
+export const BatchGetObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
+).annotate({
+  identifier: "BatchGetObjectAttributesResponse",
+}) as any as S.Schema<BatchGetObjectAttributesResponse>;
 export interface IndexAttachment {
   IndexedAttributes?: AttributeKeyAndValue[];
   ObjectIdentifier?: string;
@@ -847,15 +1009,15 @@ export interface BatchListAttachedIndicesResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-export const BatchListAttachedIndicesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexAttachments: S.optional(IndexAttachmentList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListAttachedIndicesResponse",
-  }) as any as S.Schema<BatchListAttachedIndicesResponse>;
+export const BatchListAttachedIndicesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexAttachments: S.optional(IndexAttachmentList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListAttachedIndicesResponse",
+}) as any as S.Schema<BatchListAttachedIndicesResponse>;
+export type PathString = string;
 export type ObjectIdentifierList = string[];
 export const ObjectIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface PathToObjectIdentifiers {
@@ -878,41 +1040,39 @@ export interface BatchListObjectParentPathsResponse {
   PathToObjectIdentifiersList?: PathToObjectIdentifiers[];
   NextToken?: string;
 }
-export const BatchListObjectParentPathsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListObjectParentPathsResponse",
-  }) as any as S.Schema<BatchListObjectParentPathsResponse>;
+export const BatchListObjectParentPathsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListObjectParentPathsResponse",
+}) as any as S.Schema<BatchListObjectParentPathsResponse>;
 export interface BatchListObjectPoliciesResponse {
   AttachedPolicyIds?: string[];
   NextToken?: string;
 }
-export const BatchListObjectPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AttachedPolicyIds: S.optional(ObjectIdentifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListObjectPoliciesResponse",
-  }) as any as S.Schema<BatchListObjectPoliciesResponse>;
+export const BatchListObjectPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AttachedPolicyIds: S.optional(ObjectIdentifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListObjectPoliciesResponse",
+}) as any as S.Schema<BatchListObjectPoliciesResponse>;
 export interface BatchListPolicyAttachmentsResponse {
   ObjectIdentifiers?: string[];
   NextToken?: string;
 }
-export const BatchListPolicyAttachmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectIdentifiers: S.optional(ObjectIdentifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListPolicyAttachmentsResponse",
-  }) as any as S.Schema<BatchListPolicyAttachmentsResponse>;
+export const BatchListPolicyAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectIdentifiers: S.optional(ObjectIdentifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListPolicyAttachmentsResponse",
+}) as any as S.Schema<BatchListPolicyAttachmentsResponse>;
+export type PolicyType = string;
 export interface PolicyAttachment {
   PolicyId?: string;
   ObjectIdentifier?: string;
@@ -971,67 +1131,63 @@ export interface BatchListOutgoingTypedLinksResponse {
   TypedLinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const BatchListOutgoingTypedLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListOutgoingTypedLinksResponse",
-  }) as any as S.Schema<BatchListOutgoingTypedLinksResponse>;
+export const BatchListOutgoingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListOutgoingTypedLinksResponse",
+}) as any as S.Schema<BatchListOutgoingTypedLinksResponse>;
 export interface BatchListIncomingTypedLinksResponse {
   LinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const BatchListIncomingTypedLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LinkSpecifiers: S.optional(TypedLinkSpecifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListIncomingTypedLinksResponse",
-  }) as any as S.Schema<BatchListIncomingTypedLinksResponse>;
+export const BatchListIncomingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LinkSpecifiers: S.optional(TypedLinkSpecifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListIncomingTypedLinksResponse",
+}) as any as S.Schema<BatchListIncomingTypedLinksResponse>;
 export interface BatchGetLinkAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const BatchGetLinkAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-  ).annotate({
-    identifier: "BatchGetLinkAttributesResponse",
-  }) as any as S.Schema<BatchGetLinkAttributesResponse>;
+export const BatchGetLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
+).annotate({
+  identifier: "BatchGetLinkAttributesResponse",
+}) as any as S.Schema<BatchGetLinkAttributesResponse>;
 export interface ObjectIdentifierAndLinkNameTuple {
   ObjectIdentifier?: string;
   LinkName?: string;
 }
-export const ObjectIdentifierAndLinkNameTuple =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectIdentifier: S.optional(S.String),
-      LinkName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ObjectIdentifierAndLinkNameTuple",
-  }) as any as S.Schema<ObjectIdentifierAndLinkNameTuple>;
+export const ObjectIdentifierAndLinkNameTuple = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectIdentifier: S.optional(S.String),
+    LinkName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ObjectIdentifierAndLinkNameTuple",
+}) as any as S.Schema<ObjectIdentifierAndLinkNameTuple>;
 export type ObjectIdentifierAndLinkNameList =
   ObjectIdentifierAndLinkNameTuple[];
-export const ObjectIdentifierAndLinkNameList =
-  /*@__PURE__*/ S.Array(ObjectIdentifierAndLinkNameTuple);
+export const ObjectIdentifierAndLinkNameList = /*@__PURE__*/ S.Array(
+  ObjectIdentifierAndLinkNameTuple,
+);
 export interface BatchListObjectParentsResponse {
   ParentLinks?: ObjectIdentifierAndLinkNameTuple[];
   NextToken?: string;
 }
-export const BatchListObjectParentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParentLinks: S.optional(ObjectIdentifierAndLinkNameList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchListObjectParentsResponse",
-  }) as any as S.Schema<BatchListObjectParentsResponse>;
+export const BatchListObjectParentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParentLinks: S.optional(ObjectIdentifierAndLinkNameList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchListObjectParentsResponse",
+}) as any as S.Schema<BatchListObjectParentsResponse>;
 export interface BatchReadSuccessfulResponse {
   ListObjectAttributes?: BatchListObjectAttributesResponse;
   ListObjectChildren?: BatchListObjectChildrenResponse;
@@ -1048,27 +1204,26 @@ export interface BatchReadSuccessfulResponse {
   GetLinkAttributes?: BatchGetLinkAttributesResponse;
   ListObjectParents?: BatchListObjectParentsResponse;
 }
-export const BatchReadSuccessfulResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ListObjectAttributes: S.optional(BatchListObjectAttributesResponse),
-      ListObjectChildren: S.optional(BatchListObjectChildrenResponse),
-      GetObjectInformation: S.optional(BatchGetObjectInformationResponse),
-      GetObjectAttributes: S.optional(BatchGetObjectAttributesResponse),
-      ListAttachedIndices: S.optional(BatchListAttachedIndicesResponse),
-      ListObjectParentPaths: S.optional(BatchListObjectParentPathsResponse),
-      ListObjectPolicies: S.optional(BatchListObjectPoliciesResponse),
-      ListPolicyAttachments: S.optional(BatchListPolicyAttachmentsResponse),
-      LookupPolicy: S.optional(BatchLookupPolicyResponse),
-      ListIndex: S.optional(BatchListIndexResponse),
-      ListOutgoingTypedLinks: S.optional(BatchListOutgoingTypedLinksResponse),
-      ListIncomingTypedLinks: S.optional(BatchListIncomingTypedLinksResponse),
-      GetLinkAttributes: S.optional(BatchGetLinkAttributesResponse),
-      ListObjectParents: S.optional(BatchListObjectParentsResponse),
-    }),
-  ).annotate({
-    identifier: "BatchReadSuccessfulResponse",
-  }) as any as S.Schema<BatchReadSuccessfulResponse>;
+export const BatchReadSuccessfulResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ListObjectAttributes: S.optional(BatchListObjectAttributesResponse),
+    ListObjectChildren: S.optional(BatchListObjectChildrenResponse),
+    GetObjectInformation: S.optional(BatchGetObjectInformationResponse),
+    GetObjectAttributes: S.optional(BatchGetObjectAttributesResponse),
+    ListAttachedIndices: S.optional(BatchListAttachedIndicesResponse),
+    ListObjectParentPaths: S.optional(BatchListObjectParentPathsResponse),
+    ListObjectPolicies: S.optional(BatchListObjectPoliciesResponse),
+    ListPolicyAttachments: S.optional(BatchListPolicyAttachmentsResponse),
+    LookupPolicy: S.optional(BatchLookupPolicyResponse),
+    ListIndex: S.optional(BatchListIndexResponse),
+    ListOutgoingTypedLinks: S.optional(BatchListOutgoingTypedLinksResponse),
+    ListIncomingTypedLinks: S.optional(BatchListIncomingTypedLinksResponse),
+    GetLinkAttributes: S.optional(BatchGetLinkAttributesResponse),
+    ListObjectParents: S.optional(BatchListObjectParentsResponse),
+  }),
+).annotate({
+  identifier: "BatchReadSuccessfulResponse",
+}) as any as S.Schema<BatchReadSuccessfulResponse>;
 export type BatchReadExceptionType =
   | "ValidationException"
   | "InvalidArnException"
@@ -1085,6 +1240,8 @@ export type BatchReadExceptionType =
   | "InternalServiceException"
   | (string & {});
 export const BatchReadExceptionType = /*@__PURE__*/ S.String;
+
+export type ExceptionMessage = string;
 export interface BatchReadException {
   Type?: BatchReadExceptionType;
   Message?: string;
@@ -1110,8 +1267,9 @@ export const BatchReadOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchReadOperationResponse",
 }) as any as S.Schema<BatchReadOperationResponse>;
 export type BatchReadOperationResponseList = BatchReadOperationResponse[];
-export const BatchReadOperationResponseList =
-  /*@__PURE__*/ S.Array(BatchReadOperationResponse);
+export const BatchReadOperationResponseList = /*@__PURE__*/ S.Array(
+  BatchReadOperationResponse,
+);
 export interface BatchReadResponse {
   Responses?: BatchReadOperationResponse[];
 }
@@ -1120,6 +1278,7 @@ export const BatchReadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchReadResponse",
 }) as any as S.Schema<BatchReadResponse>;
+export type BatchReferenceName = string;
 export interface BatchCreateObject {
   SchemaFacet: SchemaFacet[];
   ObjectAttributeList: AttributeKeyAndValue[];
@@ -1168,6 +1327,7 @@ export const BatchDetachObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDetachObject>;
 export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE" | (string & {});
 export const UpdateActionType = /*@__PURE__*/ S.String;
+
 export interface ObjectAttributeAction {
   ObjectAttributeActionType?: UpdateActionType;
   ObjectAttributeUpdateValue?: TypedAttributeValue;
@@ -1200,15 +1360,14 @@ export interface BatchUpdateObjectAttributes {
   ObjectReference: ObjectReference;
   AttributeUpdates: ObjectAttributeUpdate[];
 }
-export const BatchUpdateObjectAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectReference: ObjectReference,
-      AttributeUpdates: ObjectAttributeUpdateList,
-    }),
-  ).annotate({
-    identifier: "BatchUpdateObjectAttributes",
-  }) as any as S.Schema<BatchUpdateObjectAttributes>;
+export const BatchUpdateObjectAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectReference: ObjectReference,
+    AttributeUpdates: ObjectAttributeUpdateList,
+  }),
+).annotate({
+  identifier: "BatchUpdateObjectAttributes",
+}) as any as S.Schema<BatchUpdateObjectAttributes>;
 export interface BatchDeleteObject {
   ObjectReference: ObjectReference;
 }
@@ -1463,12 +1622,11 @@ export const BatchDetachObjectResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchUpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-export const BatchUpdateObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-  ).annotate({
-    identifier: "BatchUpdateObjectAttributesResponse",
-  }) as any as S.Schema<BatchUpdateObjectAttributesResponse>;
+export const BatchUpdateObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
+).annotate({
+  identifier: "BatchUpdateObjectAttributesResponse",
+}) as any as S.Schema<BatchUpdateObjectAttributesResponse>;
 export interface BatchDeleteObjectResponse {}
 export const BatchDeleteObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1476,15 +1634,17 @@ export const BatchDeleteObjectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteObjectResponse",
 }) as any as S.Schema<BatchDeleteObjectResponse>;
 export interface BatchAddFacetToObjectResponse {}
-export const BatchAddFacetToObjectResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchAddFacetToObjectResponse",
-  }) as any as S.Schema<BatchAddFacetToObjectResponse>;
+export const BatchAddFacetToObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchAddFacetToObjectResponse",
+}) as any as S.Schema<BatchAddFacetToObjectResponse>;
 export interface BatchRemoveFacetFromObjectResponse {}
-export const BatchRemoveFacetFromObjectResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchRemoveFacetFromObjectResponse",
-  }) as any as S.Schema<BatchRemoveFacetFromObjectResponse>;
+export const BatchRemoveFacetFromObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchRemoveFacetFromObjectResponse",
+}) as any as S.Schema<BatchRemoveFacetFromObjectResponse>;
 export interface BatchAttachPolicyResponse {}
 export const BatchAttachPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1516,31 +1676,31 @@ export const BatchAttachToIndexResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchDetachFromIndexResponse {
   DetachedObjectIdentifier?: string;
 }
-export const BatchDetachFromIndexResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DetachedObjectIdentifier: S.optional(S.String) }),
-  ).annotate({
-    identifier: "BatchDetachFromIndexResponse",
-  }) as any as S.Schema<BatchDetachFromIndexResponse>;
+export const BatchDetachFromIndexResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DetachedObjectIdentifier: S.optional(S.String) }),
+).annotate({
+  identifier: "BatchDetachFromIndexResponse",
+}) as any as S.Schema<BatchDetachFromIndexResponse>;
 export interface BatchAttachTypedLinkResponse {
   TypedLinkSpecifier?: TypedLinkSpecifier;
 }
-export const BatchAttachTypedLinkResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ TypedLinkSpecifier: S.optional(TypedLinkSpecifier) }),
-  ).annotate({
-    identifier: "BatchAttachTypedLinkResponse",
-  }) as any as S.Schema<BatchAttachTypedLinkResponse>;
+export const BatchAttachTypedLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TypedLinkSpecifier: S.optional(TypedLinkSpecifier) }),
+).annotate({
+  identifier: "BatchAttachTypedLinkResponse",
+}) as any as S.Schema<BatchAttachTypedLinkResponse>;
 export interface BatchDetachTypedLinkResponse {}
-export const BatchDetachTypedLinkResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDetachTypedLinkResponse",
-  }) as any as S.Schema<BatchDetachTypedLinkResponse>;
+export const BatchDetachTypedLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchDetachTypedLinkResponse",
+}) as any as S.Schema<BatchDetachTypedLinkResponse>;
 export interface BatchUpdateLinkAttributesResponse {}
-export const BatchUpdateLinkAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchUpdateLinkAttributesResponse",
-  }) as any as S.Schema<BatchUpdateLinkAttributesResponse>;
+export const BatchUpdateLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchUpdateLinkAttributesResponse",
+}) as any as S.Schema<BatchUpdateLinkAttributesResponse>;
 export interface BatchWriteOperationResponse {
   CreateObject?: BatchCreateObjectResponse;
   AttachObject?: BatchAttachObjectResponse;
@@ -1558,31 +1718,31 @@ export interface BatchWriteOperationResponse {
   DetachTypedLink?: BatchDetachTypedLinkResponse;
   UpdateLinkAttributes?: BatchUpdateLinkAttributesResponse;
 }
-export const BatchWriteOperationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CreateObject: S.optional(BatchCreateObjectResponse),
-      AttachObject: S.optional(BatchAttachObjectResponse),
-      DetachObject: S.optional(BatchDetachObjectResponse),
-      UpdateObjectAttributes: S.optional(BatchUpdateObjectAttributesResponse),
-      DeleteObject: S.optional(BatchDeleteObjectResponse),
-      AddFacetToObject: S.optional(BatchAddFacetToObjectResponse),
-      RemoveFacetFromObject: S.optional(BatchRemoveFacetFromObjectResponse),
-      AttachPolicy: S.optional(BatchAttachPolicyResponse),
-      DetachPolicy: S.optional(BatchDetachPolicyResponse),
-      CreateIndex: S.optional(BatchCreateIndexResponse),
-      AttachToIndex: S.optional(BatchAttachToIndexResponse),
-      DetachFromIndex: S.optional(BatchDetachFromIndexResponse),
-      AttachTypedLink: S.optional(BatchAttachTypedLinkResponse),
-      DetachTypedLink: S.optional(BatchDetachTypedLinkResponse),
-      UpdateLinkAttributes: S.optional(BatchUpdateLinkAttributesResponse),
-    }),
-  ).annotate({
-    identifier: "BatchWriteOperationResponse",
-  }) as any as S.Schema<BatchWriteOperationResponse>;
+export const BatchWriteOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreateObject: S.optional(BatchCreateObjectResponse),
+    AttachObject: S.optional(BatchAttachObjectResponse),
+    DetachObject: S.optional(BatchDetachObjectResponse),
+    UpdateObjectAttributes: S.optional(BatchUpdateObjectAttributesResponse),
+    DeleteObject: S.optional(BatchDeleteObjectResponse),
+    AddFacetToObject: S.optional(BatchAddFacetToObjectResponse),
+    RemoveFacetFromObject: S.optional(BatchRemoveFacetFromObjectResponse),
+    AttachPolicy: S.optional(BatchAttachPolicyResponse),
+    DetachPolicy: S.optional(BatchDetachPolicyResponse),
+    CreateIndex: S.optional(BatchCreateIndexResponse),
+    AttachToIndex: S.optional(BatchAttachToIndexResponse),
+    DetachFromIndex: S.optional(BatchDetachFromIndexResponse),
+    AttachTypedLink: S.optional(BatchAttachTypedLinkResponse),
+    DetachTypedLink: S.optional(BatchDetachTypedLinkResponse),
+    UpdateLinkAttributes: S.optional(BatchUpdateLinkAttributesResponse),
+  }),
+).annotate({
+  identifier: "BatchWriteOperationResponse",
+}) as any as S.Schema<BatchWriteOperationResponse>;
 export type BatchWriteOperationResponseList = BatchWriteOperationResponse[];
-export const BatchWriteOperationResponseList =
-  /*@__PURE__*/ S.Array(BatchWriteOperationResponse);
+export const BatchWriteOperationResponseList = /*@__PURE__*/ S.Array(
+  BatchWriteOperationResponse,
+);
 export interface BatchWriteResponse {
   Responses?: BatchWriteOperationResponse[];
 }
@@ -1591,27 +1751,7 @@ export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchWriteResponse",
 }) as any as S.Schema<BatchWriteResponse>;
-export type BatchWriteExceptionType =
-  | "InternalServiceException"
-  | "ValidationException"
-  | "InvalidArnException"
-  | "LinkNameAlreadyInUseException"
-  | "StillContainsLinksException"
-  | "FacetValidationException"
-  | "ObjectNotDetachedException"
-  | "ResourceNotFoundException"
-  | "AccessDeniedException"
-  | "InvalidAttachmentException"
-  | "NotIndexException"
-  | "NotNodeException"
-  | "IndexedAttributeMissingException"
-  | "ObjectAlreadyDetachedException"
-  | "NotPolicyException"
-  | "DirectoryNotEnabledException"
-  | "LimitExceededException"
-  | "UnsupportedIndexTypeException"
-  | (string & {});
-export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
+export type DirectoryName = string;
 export interface CreateDirectoryRequest {
   Name: string;
   SchemaArn: string;
@@ -1636,6 +1776,7 @@ export const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDirectoryRequest",
 }) as any as S.Schema<CreateDirectoryRequest>;
+export type DirectoryArn = string;
 export interface CreateDirectoryResponse {
   DirectoryArn: string;
   Name: string;
@@ -1661,6 +1802,8 @@ export type FacetAttributeType =
   | "VARIANT"
   | (string & {});
 export const FacetAttributeType = /*@__PURE__*/ S.String;
+
+export type RuleKey = string;
 export type RuleType =
   | "BINARY_LENGTH"
   | "NUMBER_COMPARISON"
@@ -1668,6 +1811,9 @@ export type RuleType =
   | "STRING_LENGTH"
   | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
+
+export type RuleParameterKey = string;
+export type RuleParameterValue = string;
 export type RuleParameterMap = { [key: string]: string | undefined };
 export const RuleParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1715,6 +1861,7 @@ export type RequiredAttributeBehavior =
   | "NOT_REQUIRED"
   | (string & {});
 export const RequiredAttributeBehavior = /*@__PURE__*/ S.String;
+
 export interface FacetAttribute {
   Name: string;
   AttributeDefinition?: FacetAttributeDefinition;
@@ -1738,8 +1885,10 @@ export type ObjectType =
   | "INDEX"
   | (string & {});
 export const ObjectType = /*@__PURE__*/ S.String;
+
 export type FacetStyle = "STATIC" | "DYNAMIC" | (string & {});
 export const FacetStyle = /*@__PURE__*/ S.String;
+
 export interface CreateFacetRequest {
   SchemaArn: string;
   Name: string;
@@ -1846,6 +1995,7 @@ export const CreateObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateObjectResponse",
 }) as any as S.Schema<CreateObjectResponse>;
+export type SchemaName = string;
 export interface CreateSchemaRequest {
   Name: string;
 }
@@ -1882,22 +2032,22 @@ export interface TypedLinkAttributeDefinition {
   Rules?: { [key: string]: Rule | undefined };
   RequiredBehavior: RequiredAttributeBehavior;
 }
-export const TypedLinkAttributeDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Type: FacetAttributeType,
-      DefaultValue: S.optional(TypedAttributeValue),
-      IsImmutable: S.optional(S.Boolean),
-      Rules: S.optional(RuleMap),
-      RequiredBehavior: RequiredAttributeBehavior,
-    }),
-  ).annotate({
-    identifier: "TypedLinkAttributeDefinition",
-  }) as any as S.Schema<TypedLinkAttributeDefinition>;
+export const TypedLinkAttributeDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Type: FacetAttributeType,
+    DefaultValue: S.optional(TypedAttributeValue),
+    IsImmutable: S.optional(S.Boolean),
+    Rules: S.optional(RuleMap),
+    RequiredBehavior: RequiredAttributeBehavior,
+  }),
+).annotate({
+  identifier: "TypedLinkAttributeDefinition",
+}) as any as S.Schema<TypedLinkAttributeDefinition>;
 export type TypedLinkAttributeDefinitionList = TypedLinkAttributeDefinition[];
-export const TypedLinkAttributeDefinitionList =
-  /*@__PURE__*/ S.Array(TypedLinkAttributeDefinition);
+export const TypedLinkAttributeDefinitionList = /*@__PURE__*/ S.Array(
+  TypedLinkAttributeDefinition,
+);
 export interface TypedLinkFacet {
   Name: string;
   Attributes: TypedLinkAttributeDefinition[];
@@ -1914,32 +2064,32 @@ export interface CreateTypedLinkFacetRequest {
   SchemaArn: string;
   Facet: TypedLinkFacet;
 }
-export const CreateTypedLinkFacetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      Facet: TypedLinkFacet,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/create",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    Facet: TypedLinkFacet,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/create",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateTypedLinkFacetRequest",
-  }) as any as S.Schema<CreateTypedLinkFacetRequest>;
+  ),
+).annotate({
+  identifier: "CreateTypedLinkFacetRequest",
+}) as any as S.Schema<CreateTypedLinkFacetRequest>;
 export interface CreateTypedLinkFacetResponse {}
-export const CreateTypedLinkFacetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateTypedLinkFacetResponse",
-  }) as any as S.Schema<CreateTypedLinkFacetResponse>;
+export const CreateTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateTypedLinkFacetResponse",
+}) as any as S.Schema<CreateTypedLinkFacetResponse>;
 export interface DeleteDirectoryRequest {
   DirectoryArn: string;
 }
@@ -2061,32 +2211,32 @@ export interface DeleteTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
 }
-export const DeleteTypedLinkFacetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      Name: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/delete",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    Name: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/delete",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTypedLinkFacetRequest",
-  }) as any as S.Schema<DeleteTypedLinkFacetRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTypedLinkFacetRequest",
+}) as any as S.Schema<DeleteTypedLinkFacetRequest>;
 export interface DeleteTypedLinkFacetResponse {}
-export const DeleteTypedLinkFacetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTypedLinkFacetResponse",
-  }) as any as S.Schema<DeleteTypedLinkFacetResponse>;
+export const DeleteTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTypedLinkFacetResponse",
+}) as any as S.Schema<DeleteTypedLinkFacetResponse>;
 export interface DetachFromIndexRequest {
   DirectoryArn: string;
   IndexReference: ObjectReference;
@@ -2280,33 +2430,31 @@ export const EnableDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAppliedSchemaVersionRequest {
   SchemaArn: string;
 }
-export const GetAppliedSchemaVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArn: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/schema/getappliedschema",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAppliedSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArn: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/schema/getappliedschema",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetAppliedSchemaVersionRequest",
-  }) as any as S.Schema<GetAppliedSchemaVersionRequest>;
+  ),
+).annotate({
+  identifier: "GetAppliedSchemaVersionRequest",
+}) as any as S.Schema<GetAppliedSchemaVersionRequest>;
 export interface GetAppliedSchemaVersionResponse {
   AppliedSchemaArn?: string;
 }
-export const GetAppliedSchemaVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AppliedSchemaArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetAppliedSchemaVersionResponse",
-  }) as any as S.Schema<GetAppliedSchemaVersionResponse>;
+export const GetAppliedSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AppliedSchemaArn: S.optional(S.String) }),
+).annotate({
+  identifier: "GetAppliedSchemaVersionResponse",
+}) as any as S.Schema<GetAppliedSchemaVersionResponse>;
 export interface GetDirectoryRequest {
   DirectoryArn: string;
 }
@@ -2331,6 +2479,7 @@ export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDirectoryRequest>;
 export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
 export const DirectoryState = /*@__PURE__*/ S.String;
+
 export interface Directory {
   Name?: string;
   DirectoryArn?: string;
@@ -2467,54 +2616,51 @@ export const GetObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
 }
-export const GetObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
-  ).annotate({
-    identifier: "GetObjectAttributesResponse",
-  }) as any as S.Schema<GetObjectAttributesResponse>;
+export const GetObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Attributes: S.optional(AttributeKeyAndValueList) }),
+).annotate({
+  identifier: "GetObjectAttributesResponse",
+}) as any as S.Schema<GetObjectAttributesResponse>;
 export interface GetObjectInformationRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   ConsistencyLevel?: ConsistencyLevel;
 }
-export const GetObjectInformationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-        T.HttpHeader("x-amz-consistency-level"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/object/information",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetObjectInformationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
+      T.HttpHeader("x-amz-consistency-level"),
     ),
-  ).annotate({
-    identifier: "GetObjectInformationRequest",
-  }) as any as S.Schema<GetObjectInformationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/object/information",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetObjectInformationRequest",
+}) as any as S.Schema<GetObjectInformationRequest>;
 export interface GetObjectInformationResponse {
   SchemaFacets?: SchemaFacet[];
   ObjectIdentifier?: string;
 }
-export const GetObjectInformationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaFacets: S.optional(SchemaFacetList),
-      ObjectIdentifier: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetObjectInformationResponse",
-  }) as any as S.Schema<GetObjectInformationResponse>;
+export const GetObjectInformationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaFacets: S.optional(SchemaFacetList),
+    ObjectIdentifier: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetObjectInformationResponse",
+}) as any as S.Schema<GetObjectInformationResponse>;
 export interface GetSchemaAsJsonRequest {
   SchemaArn: string;
 }
@@ -2537,6 +2683,7 @@ export const GetSchemaAsJsonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaAsJsonRequest",
 }) as any as S.Schema<GetSchemaAsJsonRequest>;
+export type SchemaJsonDocument = string;
 export interface GetSchemaAsJsonResponse {
   Name?: string;
   Document?: string;
@@ -2550,77 +2697,73 @@ export interface GetTypedLinkFacetInformationRequest {
   SchemaArn: string;
   Name: string;
 }
-export const GetTypedLinkFacetInformationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      Name: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/get",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTypedLinkFacetInformationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    Name: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/get",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTypedLinkFacetInformationRequest",
-  }) as any as S.Schema<GetTypedLinkFacetInformationRequest>;
+  ),
+).annotate({
+  identifier: "GetTypedLinkFacetInformationRequest",
+}) as any as S.Schema<GetTypedLinkFacetInformationRequest>;
 export interface GetTypedLinkFacetInformationResponse {
   IdentityAttributeOrder?: string[];
 }
-export const GetTypedLinkFacetInformationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ IdentityAttributeOrder: S.optional(AttributeNameList) }),
-  ).annotate({
-    identifier: "GetTypedLinkFacetInformationResponse",
-  }) as any as S.Schema<GetTypedLinkFacetInformationResponse>;
+export const GetTypedLinkFacetInformationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ IdentityAttributeOrder: S.optional(AttributeNameList) }),
+).annotate({
+  identifier: "GetTypedLinkFacetInformationResponse",
+}) as any as S.Schema<GetTypedLinkFacetInformationResponse>;
 export interface ListAppliedSchemaArnsRequest {
   DirectoryArn: string;
   SchemaArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListAppliedSchemaArnsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String,
-      SchemaArn: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/schema/applied",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAppliedSchemaArnsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String,
+    SchemaArn: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/schema/applied",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAppliedSchemaArnsRequest",
-  }) as any as S.Schema<ListAppliedSchemaArnsRequest>;
+  ),
+).annotate({
+  identifier: "ListAppliedSchemaArnsRequest",
+}) as any as S.Schema<ListAppliedSchemaArnsRequest>;
 export type Arns = string[];
 export const Arns = /*@__PURE__*/ S.Array(S.String);
 export interface ListAppliedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListAppliedSchemaArnsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListAppliedSchemaArnsResponse",
-  }) as any as S.Schema<ListAppliedSchemaArnsResponse>;
+export const ListAppliedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAppliedSchemaArnsResponse",
+}) as any as S.Schema<ListAppliedSchemaArnsResponse>;
 export interface ListAttachedIndicesRequest {
   DirectoryArn: string;
   TargetReference: ObjectReference;
@@ -2657,50 +2800,47 @@ export interface ListAttachedIndicesResponse {
   IndexAttachments?: IndexAttachment[];
   NextToken?: string;
 }
-export const ListAttachedIndicesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IndexAttachments: S.optional(IndexAttachmentList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAttachedIndicesResponse",
-  }) as any as S.Schema<ListAttachedIndicesResponse>;
+export const ListAttachedIndicesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IndexAttachments: S.optional(IndexAttachmentList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAttachedIndicesResponse",
+}) as any as S.Schema<ListAttachedIndicesResponse>;
 export interface ListDevelopmentSchemaArnsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDevelopmentSchemaArnsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/schema/development",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDevelopmentSchemaArnsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/schema/development",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDevelopmentSchemaArnsRequest",
-  }) as any as S.Schema<ListDevelopmentSchemaArnsRequest>;
+  ),
+).annotate({
+  identifier: "ListDevelopmentSchemaArnsRequest",
+}) as any as S.Schema<ListDevelopmentSchemaArnsRequest>;
 export interface ListDevelopmentSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListDevelopmentSchemaArnsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListDevelopmentSchemaArnsResponse",
-  }) as any as S.Schema<ListDevelopmentSchemaArnsResponse>;
+export const ListDevelopmentSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDevelopmentSchemaArnsResponse",
+}) as any as S.Schema<ListDevelopmentSchemaArnsResponse>;
 export interface ListDirectoriesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2770,15 +2910,14 @@ export interface ListFacetAttributesResponse {
   Attributes?: FacetAttribute[];
   NextToken?: string;
 }
-export const ListFacetAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(FacetAttributeList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFacetAttributesResponse",
-  }) as any as S.Schema<ListFacetAttributesResponse>;
+export const ListFacetAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(FacetAttributeList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFacetAttributesResponse",
+}) as any as S.Schema<ListFacetAttributesResponse>;
 export interface ListFacetNamesRequest {
   SchemaArn: string;
   NextToken?: string;
@@ -2828,45 +2967,43 @@ export interface ListIncomingTypedLinksRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-export const ListIncomingTypedLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-      FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ConsistencyLevel: S.optional(ConsistencyLevel),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/incoming",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListIncomingTypedLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
+    FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ConsistencyLevel: S.optional(ConsistencyLevel),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/incoming",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListIncomingTypedLinksRequest",
-  }) as any as S.Schema<ListIncomingTypedLinksRequest>;
+  ),
+).annotate({
+  identifier: "ListIncomingTypedLinksRequest",
+}) as any as S.Schema<ListIncomingTypedLinksRequest>;
 export interface ListIncomingTypedLinksResponse {
   LinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const ListIncomingTypedLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LinkSpecifiers: S.optional(TypedLinkSpecifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListIncomingTypedLinksResponse",
-  }) as any as S.Schema<ListIncomingTypedLinksResponse>;
+export const ListIncomingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LinkSpecifiers: S.optional(TypedLinkSpecifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListIncomingTypedLinksResponse",
+}) as any as S.Schema<ListIncomingTypedLinksResponse>;
 export interface ListIndexRequest {
   DirectoryArn: string;
   RangesOnIndexedValues?: ObjectAttributeRange[];
@@ -2918,38 +3055,36 @@ export interface ListManagedSchemaArnsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListManagedSchemaArnsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/schema/managed",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListManagedSchemaArnsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/schema/managed",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListManagedSchemaArnsRequest",
-  }) as any as S.Schema<ListManagedSchemaArnsRequest>;
+  ),
+).annotate({
+  identifier: "ListManagedSchemaArnsRequest",
+}) as any as S.Schema<ListManagedSchemaArnsRequest>;
 export interface ListManagedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListManagedSchemaArnsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListManagedSchemaArnsResponse",
-  }) as any as S.Schema<ListManagedSchemaArnsResponse>;
+export const ListManagedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListManagedSchemaArnsResponse",
+}) as any as S.Schema<ListManagedSchemaArnsResponse>;
 export interface ListObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -2958,46 +3093,44 @@ export interface ListObjectAttributesRequest {
   ConsistencyLevel?: ConsistencyLevel;
   FacetFilter?: SchemaFacet;
 }
-export const ListObjectAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-        T.HttpHeader("x-amz-consistency-level"),
-      ),
-      FacetFilter: S.optional(SchemaFacet),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/object/attributes",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
+      T.HttpHeader("x-amz-consistency-level"),
     ),
-  ).annotate({
-    identifier: "ListObjectAttributesRequest",
-  }) as any as S.Schema<ListObjectAttributesRequest>;
+    FacetFilter: S.optional(SchemaFacet),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/object/attributes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListObjectAttributesRequest",
+}) as any as S.Schema<ListObjectAttributesRequest>;
 export interface ListObjectAttributesResponse {
   Attributes?: AttributeKeyAndValue[];
   NextToken?: string;
 }
-export const ListObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attributes: S.optional(AttributeKeyAndValueList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListObjectAttributesResponse",
-  }) as any as S.Schema<ListObjectAttributesResponse>;
+export const ListObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attributes: S.optional(AttributeKeyAndValueList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListObjectAttributesResponse",
+}) as any as S.Schema<ListObjectAttributesResponse>;
 export interface ListObjectChildrenRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -3048,42 +3181,40 @@ export interface ListObjectParentPathsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListObjectParentPathsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/object/parentpaths",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListObjectParentPathsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/object/parentpaths",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListObjectParentPathsRequest",
-  }) as any as S.Schema<ListObjectParentPathsRequest>;
+  ),
+).annotate({
+  identifier: "ListObjectParentPathsRequest",
+}) as any as S.Schema<ListObjectParentPathsRequest>;
 export interface ListObjectParentPathsResponse {
   PathToObjectIdentifiersList?: PathToObjectIdentifiers[];
   NextToken?: string;
 }
-export const ListObjectParentPathsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListObjectParentPathsResponse",
-  }) as any as S.Schema<ListObjectParentPathsResponse>;
+export const ListObjectParentPathsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PathToObjectIdentifiersList: S.optional(PathToObjectIdentifiersList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListObjectParentPathsResponse",
+}) as any as S.Schema<ListObjectParentPathsResponse>;
 export interface ListObjectParentsRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -3121,8 +3252,10 @@ export const ListObjectParentsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ObjectIdentifierToLinkNameMap = {
   [key: string]: string | undefined;
 };
-export const ObjectIdentifierToLinkNameMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ObjectIdentifierToLinkNameMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface ListObjectParentsResponse {
   Parents?: { [key: string]: string | undefined };
   NextToken?: string;
@@ -3190,45 +3323,43 @@ export interface ListOutgoingTypedLinksRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-export const ListOutgoingTypedLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
-      FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ConsistencyLevel: S.optional(ConsistencyLevel),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/outgoing",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListOutgoingTypedLinksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    FilterAttributeRanges: S.optional(TypedLinkAttributeRangeList),
+    FilterTypedLink: S.optional(TypedLinkSchemaAndFacetName),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ConsistencyLevel: S.optional(ConsistencyLevel),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/outgoing",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListOutgoingTypedLinksRequest",
-  }) as any as S.Schema<ListOutgoingTypedLinksRequest>;
+  ),
+).annotate({
+  identifier: "ListOutgoingTypedLinksRequest",
+}) as any as S.Schema<ListOutgoingTypedLinksRequest>;
 export interface ListOutgoingTypedLinksResponse {
   TypedLinkSpecifiers?: TypedLinkSpecifier[];
   NextToken?: string;
 }
-export const ListOutgoingTypedLinksResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListOutgoingTypedLinksResponse",
-  }) as any as S.Schema<ListOutgoingTypedLinksResponse>;
+export const ListOutgoingTypedLinksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TypedLinkSpecifiers: S.optional(TypedLinkSpecifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOutgoingTypedLinksResponse",
+}) as any as S.Schema<ListOutgoingTypedLinksResponse>;
 export interface ListPolicyAttachmentsRequest {
   DirectoryArn: string;
   PolicyReference: ObjectReference;
@@ -3236,82 +3367,79 @@ export interface ListPolicyAttachmentsRequest {
   MaxResults?: number;
   ConsistencyLevel?: ConsistencyLevel;
 }
-export const ListPolicyAttachmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      PolicyReference: ObjectReference,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
-        T.HttpHeader("x-amz-consistency-level"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/policy/attachment",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPolicyAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    PolicyReference: ObjectReference,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ConsistencyLevel: S.optional(ConsistencyLevel).pipe(
+      T.HttpHeader("x-amz-consistency-level"),
     ),
-  ).annotate({
-    identifier: "ListPolicyAttachmentsRequest",
-  }) as any as S.Schema<ListPolicyAttachmentsRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/policy/attachment",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicyAttachmentsRequest",
+}) as any as S.Schema<ListPolicyAttachmentsRequest>;
 export interface ListPolicyAttachmentsResponse {
   ObjectIdentifiers?: string[];
   NextToken?: string;
 }
-export const ListPolicyAttachmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ObjectIdentifiers: S.optional(ObjectIdentifierList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPolicyAttachmentsResponse",
-  }) as any as S.Schema<ListPolicyAttachmentsResponse>;
+export const ListPolicyAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ObjectIdentifiers: S.optional(ObjectIdentifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPolicyAttachmentsResponse",
+}) as any as S.Schema<ListPolicyAttachmentsResponse>;
 export interface ListPublishedSchemaArnsRequest {
   SchemaArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPublishedSchemaArnsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/schema/published",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPublishedSchemaArnsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/schema/published",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPublishedSchemaArnsRequest",
-  }) as any as S.Schema<ListPublishedSchemaArnsRequest>;
+  ),
+).annotate({
+  identifier: "ListPublishedSchemaArnsRequest",
+}) as any as S.Schema<ListPublishedSchemaArnsRequest>;
 export interface ListPublishedSchemaArnsResponse {
   SchemaArns?: string[];
   NextToken?: string;
 }
-export const ListPublishedSchemaArnsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListPublishedSchemaArnsResponse",
-  }) as any as S.Schema<ListPublishedSchemaArnsResponse>;
+export const ListPublishedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SchemaArns: S.optional(Arns), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListPublishedSchemaArnsResponse",
+}) as any as S.Schema<ListPublishedSchemaArnsResponse>;
+export type TagsNumberResults = number;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
   NextToken?: string;
@@ -3324,10 +3452,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
     MaxResults: S.optional(S.Number),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/amazonclouddirectory/2017-01-11/tags",
-      }),
+      T.Http({ method: "POST", uri: "/amazonclouddirectory/2017-01-11/tags" }),
       svc,
       auth,
       proto,
@@ -3338,6 +3463,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -3351,96 +3478,92 @@ export interface ListTagsForResourceResponse {
   Tags?: Tag[];
   NextToken?: string;
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTypedLinkFacetAttributesRequest {
   SchemaArn: string;
   Name: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListTypedLinkFacetAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      Name: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTypedLinkFacetAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    Name: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTypedLinkFacetAttributesRequest",
-  }) as any as S.Schema<ListTypedLinkFacetAttributesRequest>;
+  ),
+).annotate({
+  identifier: "ListTypedLinkFacetAttributesRequest",
+}) as any as S.Schema<ListTypedLinkFacetAttributesRequest>;
 export interface ListTypedLinkFacetAttributesResponse {
   Attributes?: TypedLinkAttributeDefinition[];
   NextToken?: string;
 }
-export const ListTypedLinkFacetAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListTypedLinkFacetAttributesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Attributes: S.optional(TypedLinkAttributeDefinitionList),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListTypedLinkFacetAttributesResponse",
-  }) as any as S.Schema<ListTypedLinkFacetAttributesResponse>;
+).annotate({
+  identifier: "ListTypedLinkFacetAttributesResponse",
+}) as any as S.Schema<ListTypedLinkFacetAttributesResponse>;
 export interface ListTypedLinkFacetNamesRequest {
   SchemaArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListTypedLinkFacetNamesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/list",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTypedLinkFacetNamesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet/list",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTypedLinkFacetNamesRequest",
-  }) as any as S.Schema<ListTypedLinkFacetNamesRequest>;
+  ),
+).annotate({
+  identifier: "ListTypedLinkFacetNamesRequest",
+}) as any as S.Schema<ListTypedLinkFacetNamesRequest>;
 export type TypedLinkNameList = string[];
 export const TypedLinkNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ListTypedLinkFacetNamesResponse {
   FacetNames?: string[];
   NextToken?: string;
 }
-export const ListTypedLinkFacetNamesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      FacetNames: S.optional(TypedLinkNameList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTypedLinkFacetNamesResponse",
-  }) as any as S.Schema<ListTypedLinkFacetNamesResponse>;
+export const ListTypedLinkFacetNamesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FacetNames: S.optional(TypedLinkNameList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTypedLinkFacetNamesResponse",
+}) as any as S.Schema<ListTypedLinkFacetNamesResponse>;
 export interface LookupPolicyRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
@@ -3481,6 +3604,7 @@ export const LookupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LookupPolicyResponse",
 }) as any as S.Schema<LookupPolicyResponse>;
+export type Version = string;
 export interface PublishSchemaRequest {
   DevelopmentSchemaArn: string;
   Version: string;
@@ -3554,33 +3678,33 @@ export interface RemoveFacetFromObjectRequest {
   SchemaFacet: SchemaFacet;
   ObjectReference: ObjectReference;
 }
-export const RemoveFacetFromObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      SchemaFacet: SchemaFacet,
-      ObjectReference: ObjectReference,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/object/facets/delete",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveFacetFromObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    SchemaFacet: SchemaFacet,
+    ObjectReference: ObjectReference,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/object/facets/delete",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RemoveFacetFromObjectRequest",
-  }) as any as S.Schema<RemoveFacetFromObjectRequest>;
+  ),
+).annotate({
+  identifier: "RemoveFacetFromObjectRequest",
+}) as any as S.Schema<RemoveFacetFromObjectRequest>;
 export interface RemoveFacetFromObjectResponse {}
-export const RemoveFacetFromObjectResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RemoveFacetFromObjectResponse",
-  }) as any as S.Schema<RemoveFacetFromObjectResponse>;
+export const RemoveFacetFromObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RemoveFacetFromObjectResponse",
+}) as any as S.Schema<RemoveFacetFromObjectResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
@@ -3688,69 +3812,67 @@ export interface UpdateLinkAttributesRequest {
   TypedLinkSpecifier: TypedLinkSpecifier;
   AttributeUpdates: LinkAttributeUpdate[];
 }
-export const UpdateLinkAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      TypedLinkSpecifier: TypedLinkSpecifier,
-      AttributeUpdates: LinkAttributeUpdateList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/attributes/update",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateLinkAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    TypedLinkSpecifier: TypedLinkSpecifier,
+    AttributeUpdates: LinkAttributeUpdateList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/attributes/update",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateLinkAttributesRequest",
-  }) as any as S.Schema<UpdateLinkAttributesRequest>;
+  ),
+).annotate({
+  identifier: "UpdateLinkAttributesRequest",
+}) as any as S.Schema<UpdateLinkAttributesRequest>;
 export interface UpdateLinkAttributesResponse {}
-export const UpdateLinkAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLinkAttributesResponse",
-  }) as any as S.Schema<UpdateLinkAttributesResponse>;
+export const UpdateLinkAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLinkAttributesResponse",
+}) as any as S.Schema<UpdateLinkAttributesResponse>;
 export interface UpdateObjectAttributesRequest {
   DirectoryArn: string;
   ObjectReference: ObjectReference;
   AttributeUpdates: ObjectAttributeUpdate[];
 }
-export const UpdateObjectAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      ObjectReference: ObjectReference,
-      AttributeUpdates: ObjectAttributeUpdateList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/object/update",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateObjectAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    ObjectReference: ObjectReference,
+    AttributeUpdates: ObjectAttributeUpdateList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/object/update",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateObjectAttributesRequest",
-  }) as any as S.Schema<UpdateObjectAttributesRequest>;
+  ),
+).annotate({
+  identifier: "UpdateObjectAttributesRequest",
+}) as any as S.Schema<UpdateObjectAttributesRequest>;
 export interface UpdateObjectAttributesResponse {
   ObjectIdentifier?: string;
 }
-export const UpdateObjectAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ObjectIdentifier: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UpdateObjectAttributesResponse",
-  }) as any as S.Schema<UpdateObjectAttributesResponse>;
+export const UpdateObjectAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ObjectIdentifier: S.optional(S.String) }),
+).annotate({
+  identifier: "UpdateObjectAttributesResponse",
+}) as any as S.Schema<UpdateObjectAttributesResponse>;
 export interface UpdateSchemaRequest {
   SchemaArn: string;
   Name: string;
@@ -3787,278 +3909,149 @@ export interface TypedLinkFacetAttributeUpdate {
   Attribute: TypedLinkAttributeDefinition;
   Action: UpdateActionType;
 }
-export const TypedLinkFacetAttributeUpdate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Attribute: TypedLinkAttributeDefinition,
-      Action: UpdateActionType,
-    }),
-  ).annotate({
-    identifier: "TypedLinkFacetAttributeUpdate",
-  }) as any as S.Schema<TypedLinkFacetAttributeUpdate>;
+export const TypedLinkFacetAttributeUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attribute: TypedLinkAttributeDefinition,
+    Action: UpdateActionType,
+  }),
+).annotate({
+  identifier: "TypedLinkFacetAttributeUpdate",
+}) as any as S.Schema<TypedLinkFacetAttributeUpdate>;
 export type TypedLinkFacetAttributeUpdateList = TypedLinkFacetAttributeUpdate[];
-export const TypedLinkFacetAttributeUpdateList =
-  /*@__PURE__*/ S.Array(TypedLinkFacetAttributeUpdate);
+export const TypedLinkFacetAttributeUpdateList = /*@__PURE__*/ S.Array(
+  TypedLinkFacetAttributeUpdate,
+);
 export interface UpdateTypedLinkFacetRequest {
   SchemaArn: string;
   Name: string;
   AttributeUpdates: TypedLinkFacetAttributeUpdate[];
   IdentityAttributeOrder: string[];
 }
-export const UpdateTypedLinkFacetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
-      Name: S.String,
-      AttributeUpdates: TypedLinkFacetAttributeUpdateList,
-      IdentityAttributeOrder: AttributeNameList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/typedlink/facet",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTypedLinkFacetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaArn: S.String.pipe(T.HttpHeader("x-amz-data-partition")),
+    Name: S.String,
+    AttributeUpdates: TypedLinkFacetAttributeUpdateList,
+    IdentityAttributeOrder: AttributeNameList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/typedlink/facet",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTypedLinkFacetRequest",
-  }) as any as S.Schema<UpdateTypedLinkFacetRequest>;
+  ),
+).annotate({
+  identifier: "UpdateTypedLinkFacetRequest",
+}) as any as S.Schema<UpdateTypedLinkFacetRequest>;
 export interface UpdateTypedLinkFacetResponse {}
-export const UpdateTypedLinkFacetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateTypedLinkFacetResponse",
-  }) as any as S.Schema<UpdateTypedLinkFacetResponse>;
+export const UpdateTypedLinkFacetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateTypedLinkFacetResponse",
+}) as any as S.Schema<UpdateTypedLinkFacetResponse>;
 export interface UpgradeAppliedSchemaRequest {
   PublishedSchemaArn: string;
   DirectoryArn: string;
   DryRun?: boolean;
 }
-export const UpgradeAppliedSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PublishedSchemaArn: S.String,
-      DirectoryArn: S.String,
-      DryRun: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/schema/upgradeapplied",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpgradeAppliedSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PublishedSchemaArn: S.String,
+    DirectoryArn: S.String,
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/schema/upgradeapplied",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpgradeAppliedSchemaRequest",
-  }) as any as S.Schema<UpgradeAppliedSchemaRequest>;
+  ),
+).annotate({
+  identifier: "UpgradeAppliedSchemaRequest",
+}) as any as S.Schema<UpgradeAppliedSchemaRequest>;
 export interface UpgradeAppliedSchemaResponse {
   UpgradedSchemaArn?: string;
   DirectoryArn?: string;
 }
-export const UpgradeAppliedSchemaResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpgradedSchemaArn: S.optional(S.String),
-      DirectoryArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeAppliedSchemaResponse",
-  }) as any as S.Schema<UpgradeAppliedSchemaResponse>;
+export const UpgradeAppliedSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpgradedSchemaArn: S.optional(S.String),
+    DirectoryArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpgradeAppliedSchemaResponse",
+}) as any as S.Schema<UpgradeAppliedSchemaResponse>;
 export interface UpgradePublishedSchemaRequest {
   DevelopmentSchemaArn: string;
   PublishedSchemaArn: string;
   MinorVersion: string;
   DryRun?: boolean;
 }
-export const UpgradePublishedSchemaRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DevelopmentSchemaArn: S.String,
-      PublishedSchemaArn: S.String,
-      MinorVersion: S.String,
-      DryRun: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/amazonclouddirectory/2017-01-11/schema/upgradepublished",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpgradePublishedSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DevelopmentSchemaArn: S.String,
+    PublishedSchemaArn: S.String,
+    MinorVersion: S.String,
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/amazonclouddirectory/2017-01-11/schema/upgradepublished",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpgradePublishedSchemaRequest",
-  }) as any as S.Schema<UpgradePublishedSchemaRequest>;
+  ),
+).annotate({
+  identifier: "UpgradePublishedSchemaRequest",
+}) as any as S.Schema<UpgradePublishedSchemaRequest>;
 export interface UpgradePublishedSchemaResponse {
   UpgradedSchemaArn?: string;
 }
-export const UpgradePublishedSchemaResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ UpgradedSchemaArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UpgradePublishedSchemaResponse",
-  }) as any as S.Schema<UpgradePublishedSchemaResponse>;
+export const UpgradePublishedSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UpgradedSchemaArn: S.optional(S.String) }),
+).annotate({
+  identifier: "UpgradePublishedSchemaResponse",
+}) as any as S.Schema<UpgradePublishedSchemaResponse>;
+export type BatchOperationIndex = number;
+export type BatchWriteExceptionType =
+  | "InternalServiceException"
+  | "ValidationException"
+  | "InvalidArnException"
+  | "LinkNameAlreadyInUseException"
+  | "StillContainsLinksException"
+  | "FacetValidationException"
+  | "ObjectNotDetachedException"
+  | "ResourceNotFoundException"
+  | "AccessDeniedException"
+  | "InvalidAttachmentException"
+  | "NotIndexException"
+  | "NotNodeException"
+  | "IndexedAttributeMissingException"
+  | "ObjectAlreadyDetachedException"
+  | "NotPolicyException"
+  | "DirectoryNotEnabledException"
+  | "LimitExceededException"
+  | "UnsupportedIndexTypeException"
+  | (string & {});
+export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class DirectoryNotEnabledException extends S.TaggedErrorClass<DirectoryNotEnabledException>()(
-  "DirectoryNotEnabledException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class FacetValidationException extends S.TaggedErrorClass<FacetValidationException>()(
-  "FacetValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
-  "RetryableConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidAttachmentException extends S.TaggedErrorClass<InvalidAttachmentException>()(
-  "InvalidAttachmentException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class SchemaAlreadyExistsException extends S.TaggedErrorClass<SchemaAlreadyExistsException>()(
-  "SchemaAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class LinkNameAlreadyInUseException extends S.TaggedErrorClass<LinkNameAlreadyInUseException>()(
-  "LinkNameAlreadyInUseException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotPolicyException extends S.TaggedErrorClass<NotPolicyException>()(
-  "NotPolicyException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class IndexedAttributeMissingException extends S.TaggedErrorClass<IndexedAttributeMissingException>()(
-  "IndexedAttributeMissingException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotIndexException extends S.TaggedErrorClass<NotIndexException>()(
-  "NotIndexException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class BatchWriteException extends S.TaggedErrorClass<BatchWriteException>()(
-  "BatchWriteException",
-  {
-    Index: S.optional(S.Number),
-    Type: S.optional(BatchWriteExceptionType),
-    Message: S.optional(S.String),
-  },
-) {}
-export class DirectoryAlreadyExistsException extends S.TaggedErrorClass<DirectoryAlreadyExistsException>()(
-  "DirectoryAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class FacetAlreadyExistsException extends S.TaggedErrorClass<FacetAlreadyExistsException>()(
-  "FacetAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidRuleException extends S.TaggedErrorClass<InvalidRuleException>()(
-  "InvalidRuleException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class UnsupportedIndexTypeException extends S.TaggedErrorClass<UnsupportedIndexTypeException>()(
-  "UnsupportedIndexTypeException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DirectoryDeletedException extends S.TaggedErrorClass<DirectoryDeletedException>()(
-  "DirectoryDeletedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DirectoryNotDisabledException extends S.TaggedErrorClass<DirectoryNotDisabledException>()(
-  "DirectoryNotDisabledException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class FacetInUseException extends S.TaggedErrorClass<FacetInUseException>()(
-  "FacetInUseException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class FacetNotFoundException extends S.TaggedErrorClass<FacetNotFoundException>()(
-  "FacetNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ObjectNotDetachedException extends S.TaggedErrorClass<ObjectNotDetachedException>()(
-  "ObjectNotDetachedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class StillContainsLinksException extends S.TaggedErrorClass<StillContainsLinksException>()(
-  "StillContainsLinksException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ObjectAlreadyDetachedException extends S.TaggedErrorClass<ObjectAlreadyDetachedException>()(
-  "ObjectAlreadyDetachedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotNodeException extends S.TaggedErrorClass<NotNodeException>()(
-  "NotNodeException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class CannotListParentOfRootException extends S.TaggedErrorClass<CannotListParentOfRootException>()(
-  "CannotListParentOfRootException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidTaggingRequestException extends S.TaggedErrorClass<InvalidTaggingRequestException>()(
-  "InvalidTaggingRequestException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class SchemaAlreadyPublishedException extends S.TaggedErrorClass<SchemaAlreadyPublishedException>()(
-  "SchemaAlreadyPublishedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidSchemaDocException extends S.TaggedErrorClass<InvalidSchemaDocException>()(
-  "InvalidSchemaDocException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidFacetUpdateException extends S.TaggedErrorClass<InvalidFacetUpdateException>()(
-  "InvalidFacetUpdateException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class IncompatibleSchemaException extends S.TaggedErrorClass<IncompatibleSchemaException>()(
-  "IncompatibleSchemaException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AddFacetToObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4092,8 +4085,11 @@ export const addFacetToObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFacetToObject",
 }));
+
 export type ApplySchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4128,8 +4124,11 @@ export const applySchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplySchema",
 }));
+
 export type AttachObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4172,8 +4171,11 @@ export const attachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachObject",
 }));
+
 export type AttachPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4208,8 +4210,11 @@ export const attachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachPolicy",
 }));
+
 export type AttachToIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4249,8 +4254,11 @@ export const attachToIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachToIndex",
 }));
+
 export type AttachTypedLinkError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4286,8 +4294,11 @@ export const attachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachTypedLink",
 }));
+
 export type BatchReadError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4317,8 +4328,11 @@ export const batchRead: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRead",
 }));
+
 export type BatchWriteError =
   | AccessDeniedException
   | BatchWriteException
@@ -4351,8 +4365,11 @@ export const batchWrite: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchWrite",
 }));
+
 export type CreateDirectoryError =
   | AccessDeniedException
   | DirectoryAlreadyExistsException
@@ -4388,8 +4405,11 @@ export const createDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectory",
 }));
+
 export type CreateFacetError =
   | AccessDeniedException
   | FacetAlreadyExistsException
@@ -4426,8 +4446,11 @@ export const createFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFacet",
 }));
+
 export type CreateIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4465,8 +4488,11 @@ export const createIndex: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
+
 export type CreateObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4507,8 +4533,11 @@ export const createObject: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateObject",
 }));
+
 export type CreateSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4550,8 +4579,11 @@ export const createSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type CreateTypedLinkFacetError =
   | AccessDeniedException
   | FacetAlreadyExistsException
@@ -4587,8 +4619,11 @@ export const createTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTypedLinkFacet",
 }));
+
 export type DeleteDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -4624,8 +4659,11 @@ export const deleteDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectory",
 }));
+
 export type DeleteFacetError =
   | AccessDeniedException
   | FacetInUseException
@@ -4661,8 +4699,11 @@ export const deleteFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFacet",
 }));
+
 export type DeleteObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4697,8 +4738,11 @@ export const deleteObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObject",
 }));
+
 export type DeleteSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4730,8 +4774,11 @@ export const deleteSchema: API.OperationMethod<
     StillContainsLinksException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteTypedLinkFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -4763,8 +4810,11 @@ export const deleteTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTypedLinkFacet",
 }));
+
 export type DetachFromIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4800,8 +4850,11 @@ export const detachFromIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachFromIndex",
 }));
+
 export type DetachObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4836,8 +4889,11 @@ export const detachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachObject",
 }));
+
 export type DetachPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4871,8 +4927,11 @@ export const detachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachPolicy",
 }));
+
 export type DetachTypedLinkError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4906,8 +4965,11 @@ export const detachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachTypedLink",
 }));
+
 export type DisableDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -4940,8 +5002,11 @@ export const disableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDirectory",
 }));
+
 export type EnableDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -4974,8 +5039,11 @@ export const enableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDirectory",
 }));
+
 export type GetAppliedSchemaVersionError =
   | AccessDeniedException
   | InternalServiceException
@@ -5005,8 +5073,11 @@ export const getAppliedSchemaVersion: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppliedSchemaVersion",
 }));
+
 export type GetDirectoryError =
   | AccessDeniedException
   | InternalServiceException
@@ -5034,8 +5105,11 @@ export const getDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectory",
 }));
+
 export type GetFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5068,8 +5142,11 @@ export const getFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFacet",
 }));
+
 export type GetLinkAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5103,8 +5180,11 @@ export const getLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinkAttributes",
 }));
+
 export type GetObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5138,8 +5218,11 @@ export const getObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectAttributes",
 }));
+
 export type GetObjectInformationError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5171,8 +5254,11 @@ export const getObjectInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectInformation",
 }));
+
 export type GetSchemaAsJsonError =
   | AccessDeniedException
   | InternalServiceException
@@ -5202,8 +5288,11 @@ export const getSchemaAsJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaAsJson",
 }));
+
 export type GetTypedLinkFacetInformationError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5237,8 +5326,11 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTypedLinkFacetInformation",
 }));
+
 export type ListAppliedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5285,6 +5377,8 @@ export const listAppliedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppliedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5292,6 +5386,7 @@ export const listAppliedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAttachedIndicesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5338,6 +5433,8 @@ export const listAttachedIndices: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedIndices",
   pagination: {
     inputToken: "NextToken",
@@ -5345,6 +5442,7 @@ export const listAttachedIndices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevelopmentSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5392,6 +5490,8 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevelopmentSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5399,6 +5499,7 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDirectoriesError =
   | AccessDeniedException
   | InternalServiceException
@@ -5443,6 +5544,8 @@ export const listDirectories: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -5450,6 +5553,7 @@ export const listDirectories: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFacetAttributesError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5498,6 +5602,8 @@ export const listFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFacetAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -5505,6 +5611,7 @@ export const listFacetAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFacetNamesError =
   | AccessDeniedException
   | InternalServiceException
@@ -5551,6 +5658,8 @@ export const listFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFacetNames",
   pagination: {
     inputToken: "NextToken",
@@ -5558,6 +5667,7 @@ export const listFacetNames: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIncomingTypedLinksError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5595,8 +5705,11 @@ export const listIncomingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncomingTypedLinks",
 }));
+
 export type ListIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5649,6 +5762,8 @@ export const listIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndex",
   pagination: {
     inputToken: "NextToken",
@@ -5656,6 +5771,7 @@ export const listIndex: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListManagedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5698,6 +5814,8 @@ export const listManagedSchemaArns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5705,6 +5823,7 @@ export const listManagedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5755,6 +5874,8 @@ export const listObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -5762,6 +5883,7 @@ export const listObjectAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectChildrenError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5813,6 +5935,8 @@ export const listObjectChildren: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectChildren",
   pagination: {
     inputToken: "NextToken",
@@ -5820,6 +5944,7 @@ export const listObjectChildren: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectParentPathsError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5876,6 +6001,8 @@ export const listObjectParentPaths: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectParentPaths",
   pagination: {
     inputToken: "NextToken",
@@ -5883,6 +6010,7 @@ export const listObjectParentPaths: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectParentsError =
   | AccessDeniedException
   | CannotListParentOfRootException
@@ -5934,6 +6062,8 @@ export const listObjectParents: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectParents",
   pagination: {
     inputToken: "NextToken",
@@ -5941,6 +6071,7 @@ export const listObjectParents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectPoliciesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5989,6 +6120,8 @@ export const listObjectPolicies: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -5996,6 +6129,7 @@ export const listObjectPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOutgoingTypedLinksError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6033,8 +6167,11 @@ export const listOutgoingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOutgoingTypedLinks",
 }));
+
 export type ListPolicyAttachmentsError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6085,6 +6222,8 @@ export const listPolicyAttachments: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -6092,6 +6231,7 @@ export const listPolicyAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPublishedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -6138,6 +6278,8 @@ export const listPublishedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublishedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -6145,6 +6287,7 @@ export const listPublishedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6193,6 +6336,8 @@ export const listTagsForResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6200,6 +6345,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypedLinkFacetAttributesError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6248,6 +6394,8 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypedLinkFacetAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -6255,6 +6403,7 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypedLinkFacetNamesError =
   | AccessDeniedException
   | InternalServiceException
@@ -6302,6 +6451,8 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypedLinkFacetNames",
   pagination: {
     inputToken: "NextToken",
@@ -6309,6 +6460,7 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type LookupPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6362,6 +6514,8 @@ export const lookupPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LookupPolicy",
   pagination: {
     inputToken: "NextToken",
@@ -6369,6 +6523,7 @@ export const lookupPolicy: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PublishSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -6400,8 +6555,11 @@ export const publishSchema: API.OperationMethod<
     SchemaAlreadyPublishedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishSchema",
 }));
+
 export type PutSchemaFromJsonError =
   | AccessDeniedException
   | InternalServiceException
@@ -6433,8 +6591,11 @@ export const putSchemaFromJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSchemaFromJson",
 }));
+
 export type RemoveFacetFromObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6468,8 +6629,11 @@ export const removeFacetFromObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFacetFromObject",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6501,8 +6665,11 @@ export const tagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6534,8 +6701,11 @@ export const untagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6579,8 +6749,11 @@ export const updateFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFacet",
 }));
+
 export type UpdateLinkAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6614,8 +6787,11 @@ export const updateLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLinkAttributes",
 }));
+
 export type UpdateObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6651,8 +6827,11 @@ export const updateObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateObjectAttributes",
 }));
+
 export type UpdateSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -6683,8 +6862,11 @@ export const updateSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchema",
 }));
+
 export type UpdateTypedLinkFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6722,8 +6904,11 @@ export const updateTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTypedLinkFacet",
 }));
+
 export type UpgradeAppliedSchemaError =
   | AccessDeniedException
   | IncompatibleSchemaException
@@ -6757,8 +6942,11 @@ export const upgradeAppliedSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeAppliedSchema",
 }));
+
 export type UpgradePublishedSchemaError =
   | AccessDeniedException
   | IncompatibleSchemaException
@@ -6792,5 +6980,7 @@ export const upgradePublishedSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradePublishedSchema",
 }));

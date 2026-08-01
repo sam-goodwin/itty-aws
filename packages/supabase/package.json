@@ -1,7 +1,7 @@
 {
   "name": "@distilled.cloud/supabase",
+  "version": "0.31.0",
   "license": "Apache-2.0",
-  "version": "0.30.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -20,16 +20,6 @@
       "bun": "./src/index.ts",
       "default": "./lib/index.js"
     },
-    "./Category": {
-      "types": "./lib/category.d.ts",
-      "bun": "./src/category.ts",
-      "default": "./lib/category.js"
-    },
-    "./Client": {
-      "types": "./lib/client.d.ts",
-      "bun": "./src/client.ts",
-      "default": "./lib/client.js"
-    },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
       "bun": "./src/credentials.ts",
@@ -40,51 +30,46 @@
       "bun": "./src/errors.ts",
       "default": "./lib/errors.js"
     },
-    "./Operations": {
-      "types": "./lib/operations/index.d.ts",
-      "bun": "./src/operations/index.ts",
-      "default": "./lib/operations/index.js"
+    "./Traits": {
+      "types": "./lib/traits.d.ts",
+      "bun": "./src/traits.ts",
+      "default": "./lib/traits.js"
     },
     "./Retry": {
       "types": "./lib/retry.d.ts",
       "bun": "./src/retry.ts",
       "default": "./lib/retry.js"
     },
-    "./Sensitive": {
-      "types": "./lib/sensitive.d.ts",
-      "bun": "./src/sensitive.ts",
-      "default": "./lib/sensitive.js"
+    "./Protocol": {
+      "types": "./lib/protocol.d.ts",
+      "bun": "./src/protocol.ts",
+      "default": "./lib/protocol.js"
     },
-    "./Traits": {
-      "types": "./lib/traits.d.ts",
-      "bun": "./src/traits.ts",
-      "default": "./lib/traits.js"
+    "./Operations": {
+      "types": "./lib/services/supabase.d.ts",
+      "bun": "./src/services/supabase.ts",
+      "default": "./lib/services/supabase.js"
+    },
+    "./*": {
+      "types": "./lib/services/*.d.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
-    "fmt": "oxfmt --write src",
-    "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
-    "nuke": "bun scripts/nuke.ts",
-    "test": "bunx vitest run test --exclude specs --passWithNoTests",
-    "publish:npm": "bun run build && bun publish --access public",
-    "generate": "bun run scripts/generate.ts && oxlint --fix src && oxfmt --write src && oxfmt --write src",
+    "convert": "bun scripts/convert.ts",
+    "generate": "bun scripts/generate.ts",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-supabase && git -C specs/distilled-spec-supabase checkout -- .",
     "specs:update": "git -C specs/distilled-spec-supabase fetch && git -C specs/distilled-spec-supabase checkout main && git -C specs/distilled-spec-supabase pull"
   },
   "dependencies": {
-    "@distilled.cloud/core": "workspace:*"
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
   },
   "devDependencies": {
     "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "dotenv": "catalog:",
-    "rolldown": "catalog:",
-    "vitest": "catalog:"
-  },
-  "peerDependencies": {
-    "effect": "catalog:"
+    "@types/node": "catalog:"
   }
 }

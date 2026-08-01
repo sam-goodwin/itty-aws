@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "SynProtectionRuleNotFound": [{ "status": 404 }],
-    "AdvancedTcpProtectionNotEntitled": [{ "code": 8888 }], "Forbidden": [{ "status": 403 }]
-  }
-}

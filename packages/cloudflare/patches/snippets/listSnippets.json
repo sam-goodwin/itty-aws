@@ -1,10 +1,73 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "result": { "nullable": true }
+  "description": "Align snippets#List with distilled cloudflare/snippets listSnippets",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.snippets#List",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippets"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.snippets#ListRequest",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippetsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippets/input/target",
+      "value": "com.cloudflare.snippets#ListSnippetsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.snippets#ListResponse",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippetsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippets/output/target",
+      "value": "com.cloudflare.snippets#ListSnippetsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippets/traits/smithy.api#paginated",
+      "value": {
+        "mode": "page",
+        "inputToken": "page",
+        "outputToken": "resultInfo.page",
+        "items": "result",
+        "pageSize": "perPage"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.snippets#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.snippets#ListSnippets/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.snippets#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

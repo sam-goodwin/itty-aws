@@ -1,8 +1,0 @@
-{
-  "errors": {},
-  "response": {
-    "properties": {
-      "result_info": { "optional": true }
-    }
-  }
-}

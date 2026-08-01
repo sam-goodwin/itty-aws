@@ -1,9 +1,12 @@
 /**
- * EAS-specific error types.
+ * EAS-specific error types — hand-written.
  *
- * Re-exports common HTTP errors from sdk-core and adds typed wrappers for the
+ * Re-exports common HTTP errors from core and adds typed wrappers for the
  * GraphQL error envelope returned by api.expo.dev. EAS GraphQL errors carry a
- * stable `extensions.errorCode` string we map to dedicated tagged classes.
+ * stable `extensions.errorCode` string we map to dedicated tagged classes
+ * (see `EAS_ERROR_CODE_MAP`, consulted by the protocol's error matcher).
+ *
+ * Ported verbatim from distilled v0 `packages/expo-eas/src/errors.ts`.
  */
 export {
   BadGateway,
@@ -23,7 +26,15 @@ export {
   DEFAULT_ERRORS,
   API_ERRORS,
 } from "@distilled.cloud/core/errors";
-export type { DefaultErrors } from "@distilled.cloud/core/errors";
+import type {
+  BadRequest,
+  Conflict,
+  DefaultErrors as CoreDefaultErrors,
+  Forbidden,
+  Locked,
+  NotFound,
+  UnprocessableEntity,
+} from "@distilled.cloud/core/errors";
 
 import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
@@ -200,9 +211,9 @@ export class EasDevDomainNameTaken extends Schema.TaggedErrorClass<EasDevDomainN
 
 /**
  * Map from EAS GraphQL `extensions.errorCode` → typed error class.
- * Used by the client to surface known errors with a dedicated tag.
+ * Used by the protocol to surface known errors with a dedicated tag.
  */
-// biome-ignore lint/suspicious/noExplicitAny: heterogeneous error class map
+// oxlint-disable-next-line no-explicit-any -- heterogeneous error class map
 export const EAS_ERROR_CODE_MAP: Record<string, any> = {
   // The EAS backend emits the bare code `EAS_CLI_UPGRADE_REQUIRED`
   // (see eas-cli's EAS_CLI_UPGRADE_REQUIRED_ERROR_CODE constant which holds
@@ -229,3 +240,41 @@ export const EAS_ERROR_CODE_MAP: Record<string, any> = {
   APP_NO_DEV_DOMAIN_NAME: EasAppNoDevDomainName,
   DEV_DOMAIN_NAME_TAKEN: EasDevDomainNameTaken,
 };
+
+/** Union of the EAS-specific tagged error classes above. */
+export type EasTypedErrors =
+  | EasUpgradeRequired
+  | EasValidationError
+  | EasDeprecatedJobFormat
+  | EasBuildDownForMaintenance
+  | EasBuildFreeTierDisabled
+  | EasBuildFreeTierLimitExceeded
+  | EasBuildTooManyPendingBuilds
+  | EasBuildResourceClassNotAvailableInFreeTier
+  | EasBuildLegacyResourceClassNotAvailable
+  | EasChannelAlreadyExists
+  | EasUnauthorizedOperation
+  | EasExperienceNotFound
+  | EasAppNoDevDomainName
+  | EasDevDomainNameTaken;
+
+/**
+ * Errors that any EAS operation may surface beyond the core default classes:
+ * the typed GraphQL error-code classes plus the client-level fallbacks.
+ */
+export type ClientErrors = EasTypedErrors | UnknownEasError | EasParseError;
+
+/**
+ * Default EAS operation errors: the shared HTTP status errors from core
+ * (both the always-on defaults and the status-mapped 4xx classes the
+ * protocol's HTTP fallback can construct) plus the client-level errors.
+ */
+export type DefaultErrors =
+  | CoreDefaultErrors
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | UnprocessableEntity
+  | Locked
+  | ClientErrors;

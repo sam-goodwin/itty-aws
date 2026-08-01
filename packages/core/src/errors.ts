@@ -228,3 +228,5 @@ export const DEFAULT_ERRORS = [
 ] as const;
 
 export type DefaultErrors = InstanceType<(typeof DEFAULT_ERRORS)[number]>;
+
+export const RETRYABLE = "@distilled/errors/retryable" as const;

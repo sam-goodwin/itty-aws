@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -90,17 +92,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ImageType = string;
-export type ImageIdOverride = string;
-export type KubernetesVersion = string;
-export type TagKey = string;
-export type TagValue = string;
-export type JobExecutionTimeoutMinutes = number;
-export type Quantity = string;
-export type ClientRequestToken = string;
-
-//# Schemas
+export class ClientException extends S.TaggedErrorClass<ClientException>()(
+  "ClientException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ComputeEnvironmentBeingModified extends S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
+  "ComputeEnvironmentBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ComputeEnvironmentInUse extends S.TaggedErrorClass<ComputeEnvironmentInUse>()(
+  "ComputeEnvironmentInUse",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "found existing JobQueue relationship" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class ComputeEnvironmentNotFound extends S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
+  "ComputeEnvironmentNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "compute-environment/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
+  "ComputeEnvironmentNotValid",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "must be (created and )?valid before attaching" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
+  "JobQueueAlreadyExists",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "already exists" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class JobQueueBeingModified extends S.TaggedErrorClass<JobQueueBeingModified>()(
+  "JobQueueBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class JobQueueNotFound extends S.TaggedErrorClass<JobQueueNotFound>()(
+  "JobQueueNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "job-queue/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ServerException extends S.TaggedErrorClass<ServerException>()(
+  "ServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export interface CancelJobRequest {
   jobId?: string;
   reason?: string;
@@ -128,8 +185,10 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelJobResponse>;
 export type CEType = "MANAGED" | "UNMANAGED" | (string & {});
 export const CEType = /*@__PURE__*/ S.String;
+
 export type CEState = "ENABLED" | "DISABLED" | (string & {});
 export const CEState = /*@__PURE__*/ S.String;
+
 export type CRType =
   | "EC2"
   | "SPOT"
@@ -137,6 +196,7 @@ export type CRType =
   | "FARGATE_SPOT"
   | (string & {});
 export const CRType = /*@__PURE__*/ S.String;
+
 export type CRAllocationStrategy =
   | "BEST_FIT"
   | "BEST_FIT_PROGRESSIVE"
@@ -146,6 +206,7 @@ export type CRAllocationStrategy =
   | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type TagsMap = { [key: string]: string | undefined };
@@ -155,6 +216,7 @@ export const TagsMap = /*@__PURE__*/ S.Record(
 );
 export type UserdataType = "EKS_BOOTSTRAP_SH" | "EKS_NODEADM" | (string & {});
 export const UserdataType = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateSpecificationOverride {
   launchTemplateId?: string;
   launchTemplateName?: string;
@@ -162,22 +224,22 @@ export interface LaunchTemplateSpecificationOverride {
   targetInstanceTypes?: string[];
   userdataType?: UserdataType;
 }
-export const LaunchTemplateSpecificationOverride =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      launchTemplateId: S.optional(S.String),
-      launchTemplateName: S.optional(S.String),
-      version: S.optional(S.String),
-      targetInstanceTypes: S.optional(StringList),
-      userdataType: S.optional(UserdataType),
-    }),
-  ).annotate({
-    identifier: "LaunchTemplateSpecificationOverride",
-  }) as any as S.Schema<LaunchTemplateSpecificationOverride>;
+export const LaunchTemplateSpecificationOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    launchTemplateId: S.optional(S.String),
+    launchTemplateName: S.optional(S.String),
+    version: S.optional(S.String),
+    targetInstanceTypes: S.optional(StringList),
+    userdataType: S.optional(UserdataType),
+  }),
+).annotate({
+  identifier: "LaunchTemplateSpecificationOverride",
+}) as any as S.Schema<LaunchTemplateSpecificationOverride>;
 export type LaunchTemplateSpecificationOverrideList =
   LaunchTemplateSpecificationOverride[];
-export const LaunchTemplateSpecificationOverrideList =
-  /*@__PURE__*/ S.Array(LaunchTemplateSpecificationOverride);
+export const LaunchTemplateSpecificationOverrideList = /*@__PURE__*/ S.Array(
+  LaunchTemplateSpecificationOverride,
+);
 export interface LaunchTemplateSpecification {
   launchTemplateId?: string;
   launchTemplateName?: string;
@@ -185,18 +247,20 @@ export interface LaunchTemplateSpecification {
   overrides?: LaunchTemplateSpecificationOverride[];
   userdataType?: UserdataType;
 }
-export const LaunchTemplateSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      launchTemplateId: S.optional(S.String),
-      launchTemplateName: S.optional(S.String),
-      version: S.optional(S.String),
-      overrides: S.optional(LaunchTemplateSpecificationOverrideList),
-      userdataType: S.optional(UserdataType),
-    }),
-  ).annotate({
-    identifier: "LaunchTemplateSpecification",
-  }) as any as S.Schema<LaunchTemplateSpecification>;
+export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    launchTemplateId: S.optional(S.String),
+    launchTemplateName: S.optional(S.String),
+    version: S.optional(S.String),
+    overrides: S.optional(LaunchTemplateSpecificationOverrideList),
+    userdataType: S.optional(UserdataType),
+  }),
+).annotate({
+  identifier: "LaunchTemplateSpecification",
+}) as any as S.Schema<LaunchTemplateSpecification>;
+export type ImageType = string;
+export type ImageIdOverride = string;
+export type KubernetesVersion = string;
 export interface Ec2Configuration {
   imageType?: string;
   imageIdOverride?: string;
@@ -267,6 +331,8 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeResource",
 }) as any as S.Schema<ComputeResource>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagrisTagsMap = { [key: string]: string | undefined };
 export const TagrisTagsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -295,87 +361,84 @@ export interface CreateComputeEnvironmentRequest {
   eksConfiguration?: EksConfiguration;
   context?: string;
 }
-export const CreateComputeEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironmentName: S.optional(S.String),
-      type: S.optional(CEType),
-      state: S.optional(CEState),
-      unmanagedvCpus: S.optional(S.Number),
-      computeResources: S.optional(ComputeResource),
-      serviceRole: S.optional(S.String),
-      tags: S.optional(TagrisTagsMap),
-      eksConfiguration: S.optional(EksConfiguration),
-      context: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/createcomputeenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateComputeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironmentName: S.optional(S.String),
+    type: S.optional(CEType),
+    state: S.optional(CEState),
+    unmanagedvCpus: S.optional(S.Number),
+    computeResources: S.optional(ComputeResource),
+    serviceRole: S.optional(S.String),
+    tags: S.optional(TagrisTagsMap),
+    eksConfiguration: S.optional(EksConfiguration),
+    context: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/createcomputeenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateComputeEnvironmentRequest",
-  }) as any as S.Schema<CreateComputeEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "CreateComputeEnvironmentRequest",
+}) as any as S.Schema<CreateComputeEnvironmentRequest>;
 export interface CreateComputeEnvironmentResponse {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
 }
-export const CreateComputeEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironmentName: S.optional(S.String),
-      computeEnvironmentArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateComputeEnvironmentResponse",
-  }) as any as S.Schema<CreateComputeEnvironmentResponse>;
+export const CreateComputeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironmentName: S.optional(S.String),
+    computeEnvironmentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateComputeEnvironmentResponse",
+}) as any as S.Schema<CreateComputeEnvironmentResponse>;
 export interface CreateConsumableResourceRequest {
   consumableResourceName?: string;
   totalQuantity?: number;
   resourceType?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateConsumableResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResourceName: S.optional(S.String),
-      totalQuantity: S.optional(S.Number),
-      resourceType: S.optional(S.String),
-      tags: S.optional(TagrisTagsMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/createconsumableresource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResourceName: S.optional(S.String),
+    totalQuantity: S.optional(S.Number),
+    resourceType: S.optional(S.String),
+    tags: S.optional(TagrisTagsMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/createconsumableresource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateConsumableResourceRequest",
-  }) as any as S.Schema<CreateConsumableResourceRequest>;
+  ),
+).annotate({
+  identifier: "CreateConsumableResourceRequest",
+}) as any as S.Schema<CreateConsumableResourceRequest>;
 export interface CreateConsumableResourceResponse {
   consumableResourceName: string;
   consumableResourceArn: string;
 }
-export const CreateConsumableResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResourceName: S.optional(S.String),
-      consumableResourceArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateConsumableResourceResponse",
-  }) as any as S.Schema<CreateConsumableResourceResponse>;
+export const CreateConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResourceName: S.optional(S.String),
+    consumableResourceArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateConsumableResourceResponse",
+}) as any as S.Schema<CreateConsumableResourceResponse>;
 export type JQState = "ENABLED" | "DISABLED" | (string & {});
 export const JQState = /*@__PURE__*/ S.String;
+
 export interface ComputeEnvironmentOrder {
   order?: number;
   computeEnvironment?: string;
@@ -415,13 +478,16 @@ export type JobQueueType =
   | "SAGEMAKER_TRAINING"
   | (string & {});
 export const JobQueueType = /*@__PURE__*/ S.String;
+
 export type JobStateTimeLimitActionsState = "RUNNABLE" | (string & {});
 export const JobStateTimeLimitActionsState = /*@__PURE__*/ S.String;
+
 export type JobStateTimeLimitActionsAction =
   | "CANCEL"
   | "TERMINATE"
   | (string & {});
 export const JobStateTimeLimitActionsAction = /*@__PURE__*/ S.String;
+
 export interface JobStateTimeLimitAction {
   reason?: string;
   state?: JobStateTimeLimitActionsState;
@@ -512,37 +578,37 @@ export type QuotaShareResourceSharingStrategy =
   | "LEND_AND_BORROW"
   | (string & {});
 export const QuotaShareResourceSharingStrategy = /*@__PURE__*/ S.String;
+
 export interface QuotaShareResourceSharingConfiguration {
   strategy?: QuotaShareResourceSharingStrategy;
   borrowLimit?: number;
 }
-export const QuotaShareResourceSharingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
+export const QuotaShareResourceSharingConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       strategy: S.optional(QuotaShareResourceSharingStrategy),
       borrowLimit: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "QuotaShareResourceSharingConfiguration",
-  }) as any as S.Schema<QuotaShareResourceSharingConfiguration>;
+).annotate({
+  identifier: "QuotaShareResourceSharingConfiguration",
+}) as any as S.Schema<QuotaShareResourceSharingConfiguration>;
 export type QuotaShareInSharePreemptionState =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const QuotaShareInSharePreemptionState = /*@__PURE__*/ S.String;
+
 export interface QuotaSharePreemptionConfiguration {
   inSharePreemption?: QuotaShareInSharePreemptionState;
 }
-export const QuotaSharePreemptionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inSharePreemption: S.optional(QuotaShareInSharePreemptionState),
-    }),
-  ).annotate({
-    identifier: "QuotaSharePreemptionConfiguration",
-  }) as any as S.Schema<QuotaSharePreemptionConfiguration>;
+export const QuotaSharePreemptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ inSharePreemption: S.optional(QuotaShareInSharePreemptionState) }),
+).annotate({
+  identifier: "QuotaSharePreemptionConfiguration",
+}) as any as S.Schema<QuotaSharePreemptionConfiguration>;
 export type QuotaShareState = "ENABLED" | "DISABLED" | (string & {});
 export const QuotaShareState = /*@__PURE__*/ S.String;
+
 export interface CreateQuotaShareRequest {
   quotaShareName?: string;
   jobQueue?: string;
@@ -591,6 +657,7 @@ export const CreateQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQuotaShareResponse>;
 export type QuotaShareIdleResourceAssignmentStrategy = "FIFO" | (string & {});
 export const QuotaShareIdleResourceAssignmentStrategy = /*@__PURE__*/ S.String;
+
 export interface QuotaSharePolicy {
   idleResourceAssignmentStrategy?: QuotaShareIdleResourceAssignmentStrategy;
 }
@@ -637,43 +704,41 @@ export interface CreateSchedulingPolicyRequest {
   fairsharePolicy?: FairsharePolicy;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateSchedulingPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      quotaSharePolicy: S.optional(QuotaSharePolicy),
-      fairsharePolicy: S.optional(FairsharePolicy),
-      tags: S.optional(TagrisTagsMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/createschedulingpolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSchedulingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    quotaSharePolicy: S.optional(QuotaSharePolicy),
+    fairsharePolicy: S.optional(FairsharePolicy),
+    tags: S.optional(TagrisTagsMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/createschedulingpolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSchedulingPolicyRequest",
-  }) as any as S.Schema<CreateSchedulingPolicyRequest>;
+  ),
+).annotate({
+  identifier: "CreateSchedulingPolicyRequest",
+}) as any as S.Schema<CreateSchedulingPolicyRequest>;
 export interface CreateSchedulingPolicyResponse {
   name: string;
   arn: string;
 }
-export const CreateSchedulingPolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ name: S.optional(S.String), arn: S.optional(S.String) }).pipe(
-      ns,
-    ),
-  ).annotate({
-    identifier: "CreateSchedulingPolicyResponse",
-  }) as any as S.Schema<CreateSchedulingPolicyResponse>;
+export const CreateSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), arn: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CreateSchedulingPolicyResponse",
+}) as any as S.Schema<CreateSchedulingPolicyResponse>;
 export type ServiceEnvironmentType = "SAGEMAKER_TRAINING" | (string & {});
 export const ServiceEnvironmentType = /*@__PURE__*/ S.String;
+
 export type ServiceEnvironmentState = "ENABLED" | "DISABLED" | (string & {});
 export const ServiceEnvironmentState = /*@__PURE__*/ S.String;
+
 export interface CapacityLimit {
   maxCapacity?: number;
   capacityUnit?: string;
@@ -693,89 +758,87 @@ export interface CreateServiceEnvironmentRequest {
   capacityLimits?: CapacityLimit[];
   tags?: { [key: string]: string | undefined };
 }
-export const CreateServiceEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironmentName: S.optional(S.String),
-      serviceEnvironmentType: S.optional(ServiceEnvironmentType),
-      state: S.optional(ServiceEnvironmentState),
-      capacityLimits: S.optional(CapacityLimits),
-      tags: S.optional(TagrisTagsMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/createserviceenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironmentName: S.optional(S.String),
+    serviceEnvironmentType: S.optional(ServiceEnvironmentType),
+    state: S.optional(ServiceEnvironmentState),
+    capacityLimits: S.optional(CapacityLimits),
+    tags: S.optional(TagrisTagsMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/createserviceenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateServiceEnvironmentRequest",
-  }) as any as S.Schema<CreateServiceEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "CreateServiceEnvironmentRequest",
+}) as any as S.Schema<CreateServiceEnvironmentRequest>;
 export interface CreateServiceEnvironmentResponse {
   serviceEnvironmentName: string;
   serviceEnvironmentArn: string;
 }
-export const CreateServiceEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironmentName: S.optional(S.String),
-      serviceEnvironmentArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateServiceEnvironmentResponse",
-  }) as any as S.Schema<CreateServiceEnvironmentResponse>;
+export const CreateServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironmentName: S.optional(S.String),
+    serviceEnvironmentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateServiceEnvironmentResponse",
+}) as any as S.Schema<CreateServiceEnvironmentResponse>;
 export interface DeleteComputeEnvironmentRequest {
   computeEnvironment?: string;
 }
-export const DeleteComputeEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ computeEnvironment: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/deletecomputeenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteComputeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ computeEnvironment: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/deletecomputeenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteComputeEnvironmentRequest",
-  }) as any as S.Schema<DeleteComputeEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "DeleteComputeEnvironmentRequest",
+}) as any as S.Schema<DeleteComputeEnvironmentRequest>;
 export interface DeleteComputeEnvironmentResponse {}
-export const DeleteComputeEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteComputeEnvironmentResponse",
-  }) as any as S.Schema<DeleteComputeEnvironmentResponse>;
+export const DeleteComputeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteComputeEnvironmentResponse",
+}) as any as S.Schema<DeleteComputeEnvironmentResponse>;
 export interface DeleteConsumableResourceRequest {
   consumableResource?: string;
 }
-export const DeleteConsumableResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ consumableResource: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/deleteconsumableresource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ consumableResource: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/deleteconsumableresource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConsumableResourceRequest",
-  }) as any as S.Schema<DeleteConsumableResourceRequest>;
+  ),
+).annotate({
+  identifier: "DeleteConsumableResourceRequest",
+}) as any as S.Schema<DeleteConsumableResourceRequest>;
 export interface DeleteConsumableResourceResponse {}
-export const DeleteConsumableResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteConsumableResourceResponse",
-  }) as any as S.Schema<DeleteConsumableResourceResponse>;
+export const DeleteConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteConsumableResourceResponse",
+}) as any as S.Schema<DeleteConsumableResourceResponse>;
 export interface DeleteJobQueueRequest {
   jobQueue?: string;
 }
@@ -827,100 +890,99 @@ export const DeleteQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSchedulingPolicyRequest {
   arn?: string;
 }
-export const DeleteSchedulingPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/deleteschedulingpolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSchedulingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/deleteschedulingpolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSchedulingPolicyRequest",
-  }) as any as S.Schema<DeleteSchedulingPolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteSchedulingPolicyRequest",
+}) as any as S.Schema<DeleteSchedulingPolicyRequest>;
 export interface DeleteSchedulingPolicyResponse {}
-export const DeleteSchedulingPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteSchedulingPolicyResponse",
-  }) as any as S.Schema<DeleteSchedulingPolicyResponse>;
+export const DeleteSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteSchedulingPolicyResponse",
+}) as any as S.Schema<DeleteSchedulingPolicyResponse>;
 export interface DeleteServiceEnvironmentRequest {
   serviceEnvironment?: string;
 }
-export const DeleteServiceEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ serviceEnvironment: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/deleteserviceenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceEnvironment: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/deleteserviceenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteServiceEnvironmentRequest",
-  }) as any as S.Schema<DeleteServiceEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "DeleteServiceEnvironmentRequest",
+}) as any as S.Schema<DeleteServiceEnvironmentRequest>;
 export interface DeleteServiceEnvironmentResponse {}
-export const DeleteServiceEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteServiceEnvironmentResponse",
-  }) as any as S.Schema<DeleteServiceEnvironmentResponse>;
+export const DeleteServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteServiceEnvironmentResponse",
+}) as any as S.Schema<DeleteServiceEnvironmentResponse>;
 export interface DeregisterJobDefinitionRequest {
   jobDefinition?: string;
 }
-export const DeregisterJobDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ jobDefinition: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/deregisterjobdefinition" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobDefinition: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/deregisterjobdefinition" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeregisterJobDefinitionRequest",
-  }) as any as S.Schema<DeregisterJobDefinitionRequest>;
+  ),
+).annotate({
+  identifier: "DeregisterJobDefinitionRequest",
+}) as any as S.Schema<DeregisterJobDefinitionRequest>;
 export interface DeregisterJobDefinitionResponse {}
-export const DeregisterJobDefinitionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeregisterJobDefinitionResponse",
-  }) as any as S.Schema<DeregisterJobDefinitionResponse>;
+export const DeregisterJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeregisterJobDefinitionResponse",
+}) as any as S.Schema<DeregisterJobDefinitionResponse>;
 export interface DescribeComputeEnvironmentsRequest {
   computeEnvironments?: string[];
   maxResults?: number;
   nextToken?: string;
 }
-export const DescribeComputeEnvironmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironments: S.optional(StringList),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/describecomputeenvironments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeComputeEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironments: S.optional(StringList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/describecomputeenvironments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeComputeEnvironmentsRequest",
-  }) as any as S.Schema<DescribeComputeEnvironmentsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeComputeEnvironmentsRequest",
+}) as any as S.Schema<DescribeComputeEnvironmentsRequest>;
 export type CEStatus =
   | "CREATING"
   | "UPDATING"
@@ -930,6 +992,8 @@ export type CEStatus =
   | "INVALID"
   | (string & {});
 export const CEStatus = /*@__PURE__*/ S.String;
+
+export type JobExecutionTimeoutMinutes = number;
 export interface UpdatePolicy {
   terminateJobsOnUpdate?: boolean;
   jobExecutionTimeoutMinutes?: number;
@@ -942,6 +1006,7 @@ export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePolicy" }) as any as S.Schema<UpdatePolicy>;
 export type OrchestrationType = "ECS" | "EKS" | (string & {});
 export const OrchestrationType = /*@__PURE__*/ S.String;
+
 export interface ComputeEnvironmentDetail {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
@@ -1002,34 +1067,32 @@ export interface DescribeComputeEnvironmentsResponse {
   })[];
   nextToken?: string;
 }
-export const DescribeComputeEnvironmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironments: S.optional(ComputeEnvironmentDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeComputeEnvironmentsResponse",
-  }) as any as S.Schema<DescribeComputeEnvironmentsResponse>;
+export const DescribeComputeEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironments: S.optional(ComputeEnvironmentDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeComputeEnvironmentsResponse",
+}) as any as S.Schema<DescribeComputeEnvironmentsResponse>;
 export interface DescribeConsumableResourceRequest {
   consumableResource?: string;
 }
-export const DescribeConsumableResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ consumableResource: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/describeconsumableresource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ consumableResource: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/describeconsumableresource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeConsumableResourceRequest",
-  }) as any as S.Schema<DescribeConsumableResourceRequest>;
+  ),
+).annotate({
+  identifier: "DescribeConsumableResourceRequest",
+}) as any as S.Schema<DescribeConsumableResourceRequest>;
 export interface DescribeConsumableResourceResponse {
   consumableResourceName: string;
   consumableResourceArn: string;
@@ -1040,21 +1103,20 @@ export interface DescribeConsumableResourceResponse {
   createdAt?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const DescribeConsumableResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResourceName: S.optional(S.String),
-      consumableResourceArn: S.optional(S.String),
-      totalQuantity: S.optional(S.Number),
-      inUseQuantity: S.optional(S.Number),
-      availableQuantity: S.optional(S.Number),
-      resourceType: S.optional(S.String),
-      createdAt: S.optional(S.Number),
-      tags: S.optional(TagrisTagsMap),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeConsumableResourceResponse",
-  }) as any as S.Schema<DescribeConsumableResourceResponse>;
+export const DescribeConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResourceName: S.optional(S.String),
+    consumableResourceArn: S.optional(S.String),
+    totalQuantity: S.optional(S.Number),
+    inUseQuantity: S.optional(S.Number),
+    availableQuantity: S.optional(S.Number),
+    resourceType: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    tags: S.optional(TagrisTagsMap),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeConsumableResourceResponse",
+}) as any as S.Schema<DescribeConsumableResourceResponse>;
 export interface DescribeJobDefinitionsRequest {
   jobDefinitions?: string[];
   maxResults?: number;
@@ -1062,28 +1124,27 @@ export interface DescribeJobDefinitionsRequest {
   status?: string;
   nextToken?: string;
 }
-export const DescribeJobDefinitionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobDefinitions: S.optional(StringList),
-      maxResults: S.optional(S.Number),
-      jobDefinitionName: S.optional(S.String),
-      status: S.optional(S.String),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/describejobdefinitions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobDefinitions: S.optional(StringList),
+    maxResults: S.optional(S.Number),
+    jobDefinitionName: S.optional(S.String),
+    status: S.optional(S.String),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/describejobdefinitions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeJobDefinitionsRequest",
-  }) as any as S.Schema<DescribeJobDefinitionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeJobDefinitionsRequest",
+}) as any as S.Schema<DescribeJobDefinitionsRequest>;
 export type ParametersMap = { [key: string]: string | undefined };
 export const ParametersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1091,6 +1152,7 @@ export const ParametersMap = /*@__PURE__*/ S.Record(
 );
 export type RetryAction = "RETRY" | "EXIT" | (string & {});
 export const RetryAction = /*@__PURE__*/ S.String;
+
 export interface EvaluateOnExit {
   onStatusReason?: string;
   onReason?: string;
@@ -1125,8 +1187,10 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type EFSTransitEncryption = "ENABLED" | "DISABLED" | (string & {});
 export const EFSTransitEncryption = /*@__PURE__*/ S.String;
+
 export type EFSAuthorizationConfigIAM = "ENABLED" | "DISABLED" | (string & {});
 export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
+
 export interface EFSAuthorizationConfig {
   accessPointId?: string;
   iam?: EFSAuthorizationConfigIAM;
@@ -1228,6 +1292,7 @@ export type Ulimits = Ulimit[];
 export const Ulimits = /*@__PURE__*/ S.Array(Ulimit);
 export type ResourceType = "GPU" | "VCPU" | "MEMORY" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ResourceRequirement {
   value?: string;
   type?: ResourceType;
@@ -1241,6 +1306,7 @@ export type ResourceRequirements = ResourceRequirement[];
 export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
 export type DeviceCgroupPermission = "READ" | "WRITE" | "MKNOD" | (string & {});
 export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
+
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
 export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
   DeviceCgroupPermission,
@@ -1304,6 +1370,7 @@ export type LogDriver =
   | "awsfirelens"
   | (string & {});
 export const LogDriver = /*@__PURE__*/ S.String;
+
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
 export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1334,6 +1401,7 @@ export const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogConfiguration>;
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
 export const AssignPublicIp = /*@__PURE__*/ S.String;
+
 export interface NetworkConfiguration {
   assignPublicIp?: AssignPublicIp;
 }
@@ -1345,12 +1413,11 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface FargatePlatformConfiguration {
   platformVersion?: string;
 }
-export const FargatePlatformConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ platformVersion: S.optional(S.String) }),
-  ).annotate({
-    identifier: "FargatePlatformConfiguration",
-  }) as any as S.Schema<FargatePlatformConfiguration>;
+export const FargatePlatformConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ platformVersion: S.optional(S.String) }),
+).annotate({
+  identifier: "FargatePlatformConfiguration",
+}) as any as S.Schema<FargatePlatformConfiguration>;
 export interface EphemeralStorage {
   sizeInGiB?: number;
 }
@@ -1459,11 +1526,14 @@ export const TaskContainerDependencyList = /*@__PURE__*/ S.Array(
 );
 export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
 export const FirelensConfigurationType = /*@__PURE__*/ S.String;
+
 export type FirelensConfigurationOptionsMap = {
   [key: string]: string | undefined;
 };
-export const FirelensConfigurationOptionsMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const FirelensConfigurationOptionsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface FirelensConfiguration {
   type?: FirelensConfigurationType;
   options?: { [key: string]: string | undefined };
@@ -1578,16 +1648,17 @@ export interface EksContainerEnvironmentVariable {
   name?: string;
   value?: string;
 }
-export const EksContainerEnvironmentVariable =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "EksContainerEnvironmentVariable",
-  }) as any as S.Schema<EksContainerEnvironmentVariable>;
+export const EksContainerEnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+).annotate({
+  identifier: "EksContainerEnvironmentVariable",
+}) as any as S.Schema<EksContainerEnvironmentVariable>;
 export type EksContainerEnvironmentVariables =
   EksContainerEnvironmentVariable[];
-export const EksContainerEnvironmentVariables =
-  /*@__PURE__*/ S.Array(EksContainerEnvironmentVariable);
+export const EksContainerEnvironmentVariables = /*@__PURE__*/ S.Array(
+  EksContainerEnvironmentVariable,
+);
+export type Quantity = string;
 export type EksLimits = { [key: string]: string | undefined };
 export const EksLimits = /*@__PURE__*/ S.Record(
   S.String,
@@ -1602,15 +1673,14 @@ export interface EksContainerResourceRequirements {
   limits?: { [key: string]: string | undefined };
   requests?: { [key: string]: string | undefined };
 }
-export const EksContainerResourceRequirements =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      limits: S.optional(EksLimits),
-      requests: S.optional(EksRequests),
-    }),
-  ).annotate({
-    identifier: "EksContainerResourceRequirements",
-  }) as any as S.Schema<EksContainerResourceRequirements>;
+export const EksContainerResourceRequirements = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    limits: S.optional(EksLimits),
+    requests: S.optional(EksRequests),
+  }),
+).annotate({
+  identifier: "EksContainerResourceRequirements",
+}) as any as S.Schema<EksContainerResourceRequirements>;
 export interface EksContainerVolumeMount {
   name?: string;
   mountPath?: string;
@@ -1639,19 +1709,18 @@ export interface EksContainerSecurityContext {
   readOnlyRootFilesystem?: boolean;
   runAsNonRoot?: boolean;
 }
-export const EksContainerSecurityContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      runAsUser: S.optional(S.Number),
-      runAsGroup: S.optional(S.Number),
-      privileged: S.optional(S.Boolean),
-      allowPrivilegeEscalation: S.optional(S.Boolean),
-      readOnlyRootFilesystem: S.optional(S.Boolean),
-      runAsNonRoot: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "EksContainerSecurityContext",
-  }) as any as S.Schema<EksContainerSecurityContext>;
+export const EksContainerSecurityContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runAsUser: S.optional(S.Number),
+    runAsGroup: S.optional(S.Number),
+    privileged: S.optional(S.Boolean),
+    allowPrivilegeEscalation: S.optional(S.Boolean),
+    readOnlyRootFilesystem: S.optional(S.Boolean),
+    runAsNonRoot: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EksContainerSecurityContext",
+}) as any as S.Schema<EksContainerSecurityContext>;
 export interface EksContainer {
   name?: string;
   image?: string;
@@ -1789,15 +1858,14 @@ export interface ConsumableResourceRequirement {
   consumableResource?: string;
   quantity?: number;
 }
-export const ConsumableResourceRequirement =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResource: S.optional(S.String),
-      quantity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ConsumableResourceRequirement",
-  }) as any as S.Schema<ConsumableResourceRequirement>;
+export const ConsumableResourceRequirement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResource: S.optional(S.String),
+    quantity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ConsumableResourceRequirement",
+}) as any as S.Schema<ConsumableResourceRequirement>;
 export type ConsumableResourceList = ConsumableResourceRequirement[];
 export const ConsumableResourceList = /*@__PURE__*/ S.Array(
   ConsumableResourceRequirement,
@@ -1805,12 +1873,11 @@ export const ConsumableResourceList = /*@__PURE__*/ S.Array(
 export interface ConsumableResourceProperties {
   consumableResourceList?: ConsumableResourceRequirement[];
 }
-export const ConsumableResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ consumableResourceList: S.optional(ConsumableResourceList) }),
-  ).annotate({
-    identifier: "ConsumableResourceProperties",
-  }) as any as S.Schema<ConsumableResourceProperties>;
+export const ConsumableResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ consumableResourceList: S.optional(ConsumableResourceList) }),
+).annotate({
+  identifier: "ConsumableResourceProperties",
+}) as any as S.Schema<ConsumableResourceProperties>;
 export interface NodeRangeProperty {
   targetNodes?: string;
   container?: ContainerProperties;
@@ -1847,6 +1914,7 @@ export const NodeProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeProperties" }) as any as S.Schema<NodeProperties>;
 export type PlatformCapability = "EC2" | "FARGATE" | (string & {});
 export const PlatformCapability = /*@__PURE__*/ S.String;
+
 export type PlatformCapabilityList = PlatformCapability[];
 export const PlatformCapabilityList = /*@__PURE__*/ S.Array(PlatformCapability);
 export interface JobDefinition {
@@ -2096,15 +2164,14 @@ export interface DescribeJobDefinitionsResponse {
   })[];
   nextToken?: string;
 }
-export const DescribeJobDefinitionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobDefinitions: S.optional(JobDefinitionList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeJobDefinitionsResponse",
-  }) as any as S.Schema<DescribeJobDefinitionsResponse>;
+export const DescribeJobDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobDefinitions: S.optional(JobDefinitionList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeJobDefinitionsResponse",
+}) as any as S.Schema<DescribeJobDefinitionsResponse>;
 export interface DescribeJobQueuesRequest {
   jobQueues?: string[];
   maxResults?: number;
@@ -2138,6 +2205,7 @@ export type JQStatus =
   | "INVALID"
   | (string & {});
 export const JQStatus = /*@__PURE__*/ S.String;
+
 export interface JobQueueDetail {
   jobQueueName?: string;
   jobQueueArn?: string;
@@ -2229,6 +2297,7 @@ export type JobStatus =
   | "FAILED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface NetworkInterface {
   attachmentId?: string;
   ipv6Address?: string;
@@ -2272,21 +2341,21 @@ export interface AttemptTaskContainerDetails {
   logStreamName?: string;
   networkInterfaces?: NetworkInterface[];
 }
-export const AttemptTaskContainerDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exitCode: S.optional(S.Number),
-      name: S.optional(S.String),
-      reason: S.optional(S.String),
-      logStreamName: S.optional(S.String),
-      networkInterfaces: S.optional(NetworkInterfaceList),
-    }),
-  ).annotate({
-    identifier: "AttemptTaskContainerDetails",
-  }) as any as S.Schema<AttemptTaskContainerDetails>;
+export const AttemptTaskContainerDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exitCode: S.optional(S.Number),
+    name: S.optional(S.String),
+    reason: S.optional(S.String),
+    logStreamName: S.optional(S.String),
+    networkInterfaces: S.optional(NetworkInterfaceList),
+  }),
+).annotate({
+  identifier: "AttemptTaskContainerDetails",
+}) as any as S.Schema<AttemptTaskContainerDetails>;
 export type ListAttemptTaskContainerDetails = AttemptTaskContainerDetails[];
-export const ListAttemptTaskContainerDetails =
-  /*@__PURE__*/ S.Array(AttemptTaskContainerDetails);
+export const ListAttemptTaskContainerDetails = /*@__PURE__*/ S.Array(
+  AttemptTaskContainerDetails,
+);
 export interface AttemptEcsTaskDetails {
   containerInstanceArn?: string;
   taskArn?: string;
@@ -2325,6 +2394,7 @@ export type AttemptDetails = AttemptDetail[];
 export const AttemptDetails = /*@__PURE__*/ S.Array(AttemptDetail);
 export type ArrayJobDependency = "N_TO_N" | "SEQUENTIAL" | (string & {});
 export const ArrayJobDependency = /*@__PURE__*/ S.String;
+
 export interface JobDependency {
   jobId?: string;
   type?: ArrayJobDependency;
@@ -2953,6 +3023,7 @@ export type QuotaShareStatus =
   | "DELETING"
   | (string & {});
 export const QuotaShareStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeQuotaShareResponse {
   quotaShareName?: string;
   quotaShareArn?: string;
@@ -2991,22 +3062,21 @@ export const DescribeQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSchedulingPoliciesRequest {
   arns?: string[];
 }
-export const DescribeSchedulingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ arns: S.optional(StringList) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/describeschedulingpolicies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSchedulingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arns: S.optional(StringList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/describeschedulingpolicies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSchedulingPoliciesRequest",
-  }) as any as S.Schema<DescribeSchedulingPoliciesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeSchedulingPoliciesRequest",
+}) as any as S.Schema<DescribeSchedulingPoliciesRequest>;
 export interface SchedulingPolicyDetail {
   name?: string;
   arn?: string;
@@ -3041,39 +3111,37 @@ export interface DescribeSchedulingPoliciesResponse {
     };
   })[];
 }
-export const DescribeSchedulingPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      schedulingPolicies: S.optional(SchedulingPolicyDetailList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeSchedulingPoliciesResponse",
-  }) as any as S.Schema<DescribeSchedulingPoliciesResponse>;
+export const DescribeSchedulingPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ schedulingPolicies: S.optional(SchedulingPolicyDetailList) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "DescribeSchedulingPoliciesResponse",
+}) as any as S.Schema<DescribeSchedulingPoliciesResponse>;
 export interface DescribeServiceEnvironmentsRequest {
   serviceEnvironments?: string[];
   maxResults?: number;
   nextToken?: string;
 }
-export const DescribeServiceEnvironmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironments: S.optional(StringList),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/describeserviceenvironments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeServiceEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironments: S.optional(StringList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/describeserviceenvironments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeServiceEnvironmentsRequest",
-  }) as any as S.Schema<DescribeServiceEnvironmentsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeServiceEnvironmentsRequest",
+}) as any as S.Schema<DescribeServiceEnvironmentsRequest>;
 export type ServiceEnvironmentStatus =
   | "CREATING"
   | "UPDATING"
@@ -3083,6 +3151,7 @@ export type ServiceEnvironmentStatus =
   | "INVALID"
   | (string & {});
 export const ServiceEnvironmentStatus = /*@__PURE__*/ S.String;
+
 export interface ServiceEnvironmentDetail {
   serviceEnvironmentName?: string;
   serviceEnvironmentArn?: string;
@@ -3118,15 +3187,14 @@ export interface DescribeServiceEnvironmentsResponse {
   })[];
   nextToken?: string;
 }
-export const DescribeServiceEnvironmentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironments: S.optional(ServiceEnvironmentDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeServiceEnvironmentsResponse",
-  }) as any as S.Schema<DescribeServiceEnvironmentsResponse>;
+export const DescribeServiceEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironments: S.optional(ServiceEnvironmentDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeServiceEnvironmentsResponse",
+}) as any as S.Schema<DescribeServiceEnvironmentsResponse>;
 export interface DescribeServiceJobRequest {
   jobId?: string;
 }
@@ -3147,6 +3215,7 @@ export const DescribeServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeServiceJobRequest>;
 export type ServiceResourceIdName = "TrainingJobArn" | (string & {});
 export const ServiceResourceIdName = /*@__PURE__*/ S.String;
+
 export interface ServiceResourceId {
   name?: ServiceResourceIdName;
   value?: string;
@@ -3183,18 +3252,18 @@ export interface ServiceJobCapacityUsageDetail {
   capacityUnit?: string;
   quantity?: number;
 }
-export const ServiceJobCapacityUsageDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      capacityUnit: S.optional(S.String),
-      quantity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ServiceJobCapacityUsageDetail",
-  }) as any as S.Schema<ServiceJobCapacityUsageDetail>;
+export const ServiceJobCapacityUsageDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityUnit: S.optional(S.String),
+    quantity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceJobCapacityUsageDetail",
+}) as any as S.Schema<ServiceJobCapacityUsageDetail>;
 export type ServiceJobCapacityUsageDetailList = ServiceJobCapacityUsageDetail[];
-export const ServiceJobCapacityUsageDetailList =
-  /*@__PURE__*/ S.Array(ServiceJobCapacityUsageDetail);
+export const ServiceJobCapacityUsageDetailList = /*@__PURE__*/ S.Array(
+  ServiceJobCapacityUsageDetail,
+);
 export interface LatestServiceJobAttempt {
   serviceResourceId?: ServiceResourceId;
 }
@@ -3205,6 +3274,7 @@ export const LatestServiceJobAttempt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatestServiceJobAttempt>;
 export type ServiceJobRetryAction = "RETRY" | "EXIT" | (string & {});
 export const ServiceJobRetryAction = /*@__PURE__*/ S.String;
+
 export interface ServiceJobEvaluateOnExit {
   action?: ServiceJobRetryAction;
   onStatusReason?: string;
@@ -3235,15 +3305,15 @@ export const ServiceJobRetryStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceJobRetryStrategy>;
 export type ServiceJobType = "SAGEMAKER_TRAINING" | (string & {});
 export const ServiceJobType = /*@__PURE__*/ S.String;
+
 export interface ServiceJobPreemptionConfiguration {
   preemptionRetriesBeforeTermination?: number;
 }
-export const ServiceJobPreemptionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ preemptionRetriesBeforeTermination: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "ServiceJobPreemptionConfiguration",
-  }) as any as S.Schema<ServiceJobPreemptionConfiguration>;
+export const ServiceJobPreemptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ preemptionRetriesBeforeTermination: S.optional(S.Number) }),
+).annotate({
+  identifier: "ServiceJobPreemptionConfiguration",
+}) as any as S.Schema<ServiceJobPreemptionConfiguration>;
 export interface ServiceJobPreemptedAttempt {
   serviceResourceId?: ServiceResourceId;
   startedAt?: number;
@@ -3261,21 +3331,21 @@ export const ServiceJobPreemptedAttempt = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceJobPreemptedAttempt",
 }) as any as S.Schema<ServiceJobPreemptedAttempt>;
 export type ServiceJobRecentPreemptedAttemptList = ServiceJobPreemptedAttempt[];
-export const ServiceJobRecentPreemptedAttemptList =
-  /*@__PURE__*/ S.Array(ServiceJobPreemptedAttempt);
+export const ServiceJobRecentPreemptedAttemptList = /*@__PURE__*/ S.Array(
+  ServiceJobPreemptedAttempt,
+);
 export interface ServiceJobPreemptionSummary {
   preemptedAttemptCount?: number;
   recentPreemptedAttempts?: ServiceJobPreemptedAttempt[];
 }
-export const ServiceJobPreemptionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      preemptedAttemptCount: S.optional(S.Number),
-      recentPreemptedAttempts: S.optional(ServiceJobRecentPreemptedAttemptList),
-    }),
-  ).annotate({
-    identifier: "ServiceJobPreemptionSummary",
-  }) as any as S.Schema<ServiceJobPreemptionSummary>;
+export const ServiceJobPreemptionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    preemptedAttemptCount: S.optional(S.Number),
+    recentPreemptedAttempts: S.optional(ServiceJobRecentPreemptedAttemptList),
+  }),
+).annotate({
+  identifier: "ServiceJobPreemptionSummary",
+}) as any as S.Schema<ServiceJobPreemptionSummary>;
 export type ServiceJobStatus =
   | "SUBMITTED"
   | "PENDING"
@@ -3287,6 +3357,7 @@ export type ServiceJobStatus =
   | "FAILED"
   | (string & {});
 export const ServiceJobStatus = /*@__PURE__*/ S.String;
+
 export interface ServiceJobTimeout {
   attemptDurationSeconds?: number;
 }
@@ -3418,26 +3489,25 @@ export interface FrontOfQuotaShareJobSummary {
   jobArn?: string;
   earliestTimeAtPosition?: number;
 }
-export const FrontOfQuotaShareJobSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobArn: S.optional(S.String),
-      earliestTimeAtPosition: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "FrontOfQuotaShareJobSummary",
-  }) as any as S.Schema<FrontOfQuotaShareJobSummary>;
+export const FrontOfQuotaShareJobSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobArn: S.optional(S.String),
+    earliestTimeAtPosition: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FrontOfQuotaShareJobSummary",
+}) as any as S.Schema<FrontOfQuotaShareJobSummary>;
 export type FrontOfQuotaShareJobSummaryList = FrontOfQuotaShareJobSummary[];
-export const FrontOfQuotaShareJobSummaryList =
-  /*@__PURE__*/ S.Array(FrontOfQuotaShareJobSummary);
+export const FrontOfQuotaShareJobSummaryList = /*@__PURE__*/ S.Array(
+  FrontOfQuotaShareJobSummary,
+);
 export type FrontOfQuotaSharesJobSummaryMap = {
   [key: string]: FrontOfQuotaShareJobSummary[] | undefined;
 };
-export const FrontOfQuotaSharesJobSummaryMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    FrontOfQuotaShareJobSummaryList.pipe(S.optional),
-  );
+export const FrontOfQuotaSharesJobSummaryMap = /*@__PURE__*/ S.Record(
+  S.String,
+  FrontOfQuotaShareJobSummaryList.pipe(S.optional),
+);
 export interface FrontOfQuotaSharesDetail {
   quotaShares?: { [key: string]: FrontOfQuotaShareJobSummary[] | undefined };
   lastUpdatedAt?: number;
@@ -3463,8 +3533,9 @@ export const QueueSnapshotCapacityUsage = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueueSnapshotCapacityUsage",
 }) as any as S.Schema<QueueSnapshotCapacityUsage>;
 export type QueueSnapshotCapacityUsageList = QueueSnapshotCapacityUsage[];
-export const QueueSnapshotCapacityUsageList =
-  /*@__PURE__*/ S.Array(QueueSnapshotCapacityUsage);
+export const QueueSnapshotCapacityUsageList = /*@__PURE__*/ S.Array(
+  QueueSnapshotCapacityUsage,
+);
 export interface FairshareCapacityUsage {
   capacityUnit?: string;
   quantity?: number;
@@ -3485,18 +3556,18 @@ export interface FairshareCapacityUtilization {
   shareIdentifier?: string;
   capacityUsage?: FairshareCapacityUsage[];
 }
-export const FairshareCapacityUtilization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      shareIdentifier: S.optional(S.String),
-      capacityUsage: S.optional(FairshareCapacityUsageList),
-    }),
-  ).annotate({
-    identifier: "FairshareCapacityUtilization",
-  }) as any as S.Schema<FairshareCapacityUtilization>;
+export const FairshareCapacityUtilization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    shareIdentifier: S.optional(S.String),
+    capacityUsage: S.optional(FairshareCapacityUsageList),
+  }),
+).annotate({
+  identifier: "FairshareCapacityUtilization",
+}) as any as S.Schema<FairshareCapacityUtilization>;
 export type FairshareCapacityUtilizationList = FairshareCapacityUtilization[];
-export const FairshareCapacityUtilizationList =
-  /*@__PURE__*/ S.Array(FairshareCapacityUtilization);
+export const FairshareCapacityUtilizationList = /*@__PURE__*/ S.Array(
+  FairshareCapacityUtilization,
+);
 export interface FairshareUtilizationDetail {
   activeShareCount?: number;
   topCapacityUtilization?: FairshareCapacityUtilization[];
@@ -3529,61 +3600,58 @@ export interface QuotaShareCapacityUtilization {
   quotaShareName?: string;
   capacityUsage?: QuotaShareCapacityUsage[];
 }
-export const QuotaShareCapacityUtilization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      quotaShareName: S.optional(S.String),
-      capacityUsage: S.optional(QuotaShareCapacityUsageList),
-    }),
-  ).annotate({
-    identifier: "QuotaShareCapacityUtilization",
-  }) as any as S.Schema<QuotaShareCapacityUtilization>;
+export const QuotaShareCapacityUtilization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    quotaShareName: S.optional(S.String),
+    capacityUsage: S.optional(QuotaShareCapacityUsageList),
+  }),
+).annotate({
+  identifier: "QuotaShareCapacityUtilization",
+}) as any as S.Schema<QuotaShareCapacityUtilization>;
 export type QuotaShareCapacityUtilizationList = QuotaShareCapacityUtilization[];
-export const QuotaShareCapacityUtilizationList =
-  /*@__PURE__*/ S.Array(QuotaShareCapacityUtilization);
+export const QuotaShareCapacityUtilizationList = /*@__PURE__*/ S.Array(
+  QuotaShareCapacityUtilization,
+);
 export interface QuotaShareUtilizationDetail {
   topCapacityUtilization?: QuotaShareCapacityUtilization[];
 }
-export const QuotaShareUtilizationDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      topCapacityUtilization: S.optional(QuotaShareCapacityUtilizationList),
-    }),
-  ).annotate({
-    identifier: "QuotaShareUtilizationDetail",
-  }) as any as S.Schema<QuotaShareUtilizationDetail>;
+export const QuotaShareUtilizationDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    topCapacityUtilization: S.optional(QuotaShareCapacityUtilizationList),
+  }),
+).annotate({
+  identifier: "QuotaShareUtilizationDetail",
+}) as any as S.Schema<QuotaShareUtilizationDetail>;
 export interface QueueSnapshotUtilizationDetail {
   totalCapacityUsage?: QueueSnapshotCapacityUsage[];
   fairshareUtilization?: FairshareUtilizationDetail;
   quotaShareUtilization?: QuotaShareUtilizationDetail;
   lastUpdatedAt?: number;
 }
-export const QueueSnapshotUtilizationDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      totalCapacityUsage: S.optional(QueueSnapshotCapacityUsageList),
-      fairshareUtilization: S.optional(FairshareUtilizationDetail),
-      quotaShareUtilization: S.optional(QuotaShareUtilizationDetail),
-      lastUpdatedAt: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "QueueSnapshotUtilizationDetail",
-  }) as any as S.Schema<QueueSnapshotUtilizationDetail>;
+export const QueueSnapshotUtilizationDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalCapacityUsage: S.optional(QueueSnapshotCapacityUsageList),
+    fairshareUtilization: S.optional(FairshareUtilizationDetail),
+    quotaShareUtilization: S.optional(QuotaShareUtilizationDetail),
+    lastUpdatedAt: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QueueSnapshotUtilizationDetail",
+}) as any as S.Schema<QueueSnapshotUtilizationDetail>;
 export interface GetJobQueueSnapshotResponse {
   frontOfQueue?: FrontOfQueueDetail;
   frontOfQuotaShares?: FrontOfQuotaSharesDetail;
   queueUtilization?: QueueSnapshotUtilizationDetail;
 }
-export const GetJobQueueSnapshotResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frontOfQueue: S.optional(FrontOfQueueDetail),
-      frontOfQuotaShares: S.optional(FrontOfQuotaSharesDetail),
-      queueUtilization: S.optional(QueueSnapshotUtilizationDetail),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetJobQueueSnapshotResponse",
-  }) as any as S.Schema<GetJobQueueSnapshotResponse>;
+export const GetJobQueueSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    frontOfQueue: S.optional(FrontOfQueueDetail),
+    frontOfQuotaShares: S.optional(FrontOfQuotaSharesDetail),
+    queueUtilization: S.optional(QueueSnapshotUtilizationDetail),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetJobQueueSnapshotResponse",
+}) as any as S.Schema<GetJobQueueSnapshotResponse>;
 export interface KeyValuesPair {
   name?: string;
   values?: string[];
@@ -3599,26 +3667,25 @@ export interface ListConsumableResourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConsumableResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filters: S.optional(ListConsumableResourcesFilterList),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/listconsumableresources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConsumableResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: S.optional(ListConsumableResourcesFilterList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/listconsumableresources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListConsumableResourcesRequest",
-  }) as any as S.Schema<ListConsumableResourcesRequest>;
+  ),
+).annotate({
+  identifier: "ListConsumableResourcesRequest",
+}) as any as S.Schema<ListConsumableResourcesRequest>;
 export interface ConsumableResourceSummary {
   consumableResourceArn?: string;
   consumableResourceName?: string;
@@ -3638,8 +3705,9 @@ export const ConsumableResourceSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumableResourceSummary",
 }) as any as S.Schema<ConsumableResourceSummary>;
 export type ConsumableResourceSummaryList = ConsumableResourceSummary[];
-export const ConsumableResourceSummaryList =
-  /*@__PURE__*/ S.Array(ConsumableResourceSummary);
+export const ConsumableResourceSummaryList = /*@__PURE__*/ S.Array(
+  ConsumableResourceSummary,
+);
 export interface ListConsumableResourcesResponse {
   consumableResources: (ConsumableResourceSummary & {
     consumableResourceArn: string;
@@ -3647,15 +3715,14 @@ export interface ListConsumableResourcesResponse {
   })[];
   nextToken?: string;
 }
-export const ListConsumableResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResources: S.optional(ConsumableResourceSummaryList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListConsumableResourcesResponse",
-  }) as any as S.Schema<ListConsumableResourcesResponse>;
+export const ListConsumableResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResources: S.optional(ConsumableResourceSummaryList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListConsumableResourcesResponse",
+}) as any as S.Schema<ListConsumableResourcesResponse>;
 export type ListJobsFilterList = KeyValuesPair[];
 export const ListJobsFilterList = /*@__PURE__*/ S.Array(KeyValuesPair);
 export interface ListJobsRequest {
@@ -3804,27 +3871,26 @@ export interface ListJobsByConsumableResourceRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListJobsByConsumableResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResource: S.optional(S.String),
-      filters: S.optional(ListJobsByConsumableResourceFilterList),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/listjobsbyconsumableresource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListJobsByConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResource: S.optional(S.String),
+    filters: S.optional(ListJobsByConsumableResourceFilterList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/listjobsbyconsumableresource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListJobsByConsumableResourceRequest",
-  }) as any as S.Schema<ListJobsByConsumableResourceRequest>;
+  ),
+).annotate({
+  identifier: "ListJobsByConsumableResourceRequest",
+}) as any as S.Schema<ListJobsByConsumableResourceRequest>;
 export interface ListJobsByConsumableResourceSummary {
   jobArn?: string;
   jobQueueArn?: string;
@@ -3838,28 +3904,28 @@ export interface ListJobsByConsumableResourceSummary {
   createdAt?: number;
   consumableResourceProperties?: ConsumableResourceProperties;
 }
-export const ListJobsByConsumableResourceSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobArn: S.optional(S.String),
-      jobQueueArn: S.optional(S.String),
-      jobName: S.optional(S.String),
-      jobDefinitionArn: S.optional(S.String),
-      shareIdentifier: S.optional(S.String),
-      jobStatus: S.optional(S.String),
-      quantity: S.optional(S.Number),
-      statusReason: S.optional(S.String),
-      startedAt: S.optional(S.Number),
-      createdAt: S.optional(S.Number),
-      consumableResourceProperties: S.optional(ConsumableResourceProperties),
-    }),
-  ).annotate({
-    identifier: "ListJobsByConsumableResourceSummary",
-  }) as any as S.Schema<ListJobsByConsumableResourceSummary>;
+export const ListJobsByConsumableResourceSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobArn: S.optional(S.String),
+    jobQueueArn: S.optional(S.String),
+    jobName: S.optional(S.String),
+    jobDefinitionArn: S.optional(S.String),
+    shareIdentifier: S.optional(S.String),
+    jobStatus: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    statusReason: S.optional(S.String),
+    startedAt: S.optional(S.Number),
+    createdAt: S.optional(S.Number),
+    consumableResourceProperties: S.optional(ConsumableResourceProperties),
+  }),
+).annotate({
+  identifier: "ListJobsByConsumableResourceSummary",
+}) as any as S.Schema<ListJobsByConsumableResourceSummary>;
 export type ListJobsByConsumableResourceSummaryList =
   ListJobsByConsumableResourceSummary[];
-export const ListJobsByConsumableResourceSummaryList =
-  /*@__PURE__*/ S.Array(ListJobsByConsumableResourceSummary);
+export const ListJobsByConsumableResourceSummaryList = /*@__PURE__*/ S.Array(
+  ListJobsByConsumableResourceSummary,
+);
 export interface ListJobsByConsumableResourceResponse {
   jobs: (ListJobsByConsumableResourceSummary & {
     jobArn: string;
@@ -3872,15 +3938,15 @@ export interface ListJobsByConsumableResourceResponse {
   })[];
   nextToken?: string;
 }
-export const ListJobsByConsumableResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListJobsByConsumableResourceResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       jobs: S.optional(ListJobsByConsumableResourceSummaryList),
       nextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListJobsByConsumableResourceResponse",
-  }) as any as S.Schema<ListJobsByConsumableResourceResponse>;
+).annotate({
+  identifier: "ListJobsByConsumableResourceResponse",
+}) as any as S.Schema<ListJobsByConsumableResourceResponse>;
 export interface ListQuotaSharesRequest {
   jobQueue?: string;
   maxResults?: number;
@@ -3960,50 +4026,48 @@ export interface ListSchedulingPoliciesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSchedulingPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/listschedulingpolicies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSchedulingPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/listschedulingpolicies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSchedulingPoliciesRequest",
-  }) as any as S.Schema<ListSchedulingPoliciesRequest>;
+  ),
+).annotate({
+  identifier: "ListSchedulingPoliciesRequest",
+}) as any as S.Schema<ListSchedulingPoliciesRequest>;
 export interface SchedulingPolicyListingDetail {
   arn?: string;
 }
-export const SchedulingPolicyListingDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "SchedulingPolicyListingDetail",
-  }) as any as S.Schema<SchedulingPolicyListingDetail>;
+export const SchedulingPolicyListingDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.optional(S.String) }),
+).annotate({
+  identifier: "SchedulingPolicyListingDetail",
+}) as any as S.Schema<SchedulingPolicyListingDetail>;
 export type SchedulingPolicyListingDetailList = SchedulingPolicyListingDetail[];
-export const SchedulingPolicyListingDetailList =
-  /*@__PURE__*/ S.Array(SchedulingPolicyListingDetail);
+export const SchedulingPolicyListingDetailList = /*@__PURE__*/ S.Array(
+  SchedulingPolicyListingDetail,
+);
 export interface ListSchedulingPoliciesResponse {
   schedulingPolicies?: (SchedulingPolicyListingDetail & { arn: string })[];
   nextToken?: string;
 }
-export const ListSchedulingPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      schedulingPolicies: S.optional(SchedulingPolicyListingDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListSchedulingPoliciesResponse",
-  }) as any as S.Schema<ListSchedulingPoliciesResponse>;
+export const ListSchedulingPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schedulingPolicies: S.optional(SchedulingPolicyListingDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListSchedulingPoliciesResponse",
+}) as any as S.Schema<ListSchedulingPoliciesResponse>;
 export interface ListServiceJobsRequest {
   jobQueue?: string;
   jobStatus?: ServiceJobStatus;
@@ -4036,19 +4100,19 @@ export interface ServiceJobCapacityUsageSummary {
   capacityUnit?: string;
   quantity?: number;
 }
-export const ServiceJobCapacityUsageSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      capacityUnit: S.optional(S.String),
-      quantity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ServiceJobCapacityUsageSummary",
-  }) as any as S.Schema<ServiceJobCapacityUsageSummary>;
+export const ServiceJobCapacityUsageSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityUnit: S.optional(S.String),
+    quantity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceJobCapacityUsageSummary",
+}) as any as S.Schema<ServiceJobCapacityUsageSummary>;
 export type ServiceJobCapacityUsageSummaryList =
   ServiceJobCapacityUsageSummary[];
-export const ServiceJobCapacityUsageSummaryList =
-  /*@__PURE__*/ S.Array(ServiceJobCapacityUsageSummary);
+export const ServiceJobCapacityUsageSummaryList = /*@__PURE__*/ S.Array(
+  ServiceJobCapacityUsageSummary,
+);
 export interface ServiceJobSummary {
   latestAttempt?: LatestServiceJobAttempt;
   capacityUsage?: ServiceJobCapacityUsageSummary[];
@@ -4130,14 +4194,14 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagrisTagsMap) }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagrisTagsMap) }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type JobDefinitionType = "container" | "multinode" | (string & {});
 export const JobDefinitionType = /*@__PURE__*/ S.String;
+
 export interface RegisterJobDefinitionRequest {
   jobDefinitionName?: string;
   type?: JobDefinitionType;
@@ -4154,52 +4218,50 @@ export interface RegisterJobDefinitionRequest {
   ecsProperties?: EcsProperties;
   consumableResourceProperties?: ConsumableResourceProperties;
 }
-export const RegisterJobDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobDefinitionName: S.optional(S.String),
-      type: S.optional(JobDefinitionType),
-      parameters: S.optional(ParametersMap),
-      schedulingPriority: S.optional(S.Number),
-      containerProperties: S.optional(ContainerProperties),
-      nodeProperties: S.optional(NodeProperties),
-      retryStrategy: S.optional(RetryStrategy),
-      propagateTags: S.optional(S.Boolean),
-      timeout: S.optional(JobTimeout),
-      tags: S.optional(TagrisTagsMap),
-      platformCapabilities: S.optional(PlatformCapabilityList),
-      eksProperties: S.optional(EksProperties),
-      ecsProperties: S.optional(EcsProperties),
-      consumableResourceProperties: S.optional(ConsumableResourceProperties),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/registerjobdefinition" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobDefinitionName: S.optional(S.String),
+    type: S.optional(JobDefinitionType),
+    parameters: S.optional(ParametersMap),
+    schedulingPriority: S.optional(S.Number),
+    containerProperties: S.optional(ContainerProperties),
+    nodeProperties: S.optional(NodeProperties),
+    retryStrategy: S.optional(RetryStrategy),
+    propagateTags: S.optional(S.Boolean),
+    timeout: S.optional(JobTimeout),
+    tags: S.optional(TagrisTagsMap),
+    platformCapabilities: S.optional(PlatformCapabilityList),
+    eksProperties: S.optional(EksProperties),
+    ecsProperties: S.optional(EcsProperties),
+    consumableResourceProperties: S.optional(ConsumableResourceProperties),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/registerjobdefinition" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterJobDefinitionRequest",
-  }) as any as S.Schema<RegisterJobDefinitionRequest>;
+  ),
+).annotate({
+  identifier: "RegisterJobDefinitionRequest",
+}) as any as S.Schema<RegisterJobDefinitionRequest>;
 export interface RegisterJobDefinitionResponse {
   jobDefinitionName: string;
   jobDefinitionArn: string;
   revision: number;
 }
-export const RegisterJobDefinitionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobDefinitionName: S.optional(S.String),
-      jobDefinitionArn: S.optional(S.String),
-      revision: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "RegisterJobDefinitionResponse",
-  }) as any as S.Schema<RegisterJobDefinitionResponse>;
+export const RegisterJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobDefinitionName: S.optional(S.String),
+    jobDefinitionArn: S.optional(S.String),
+    revision: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "RegisterJobDefinitionResponse",
+}) as any as S.Schema<RegisterJobDefinitionResponse>;
 export interface ArrayProperties {
   size?: number;
 }
@@ -4416,6 +4478,7 @@ export const SubmitJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubmitJobResponse",
 }) as any as S.Schema<SubmitJobResponse>;
+export type ClientRequestToken = string;
 export interface SubmitServiceJobRequest {
   jobName?: string;
   jobQueue?: string;
@@ -4530,10 +4593,7 @@ export interface TerminateServiceJobRequest {
   reason?: string;
 }
 export const TerminateServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String),
-    reason: S.optional(S.String),
-  }).pipe(
+  S.Struct({ jobId: S.optional(S.String), reason: S.optional(S.String) }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/v1/terminateservicejob" }),
@@ -4548,10 +4608,11 @@ export const TerminateServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TerminateServiceJobRequest",
 }) as any as S.Schema<TerminateServiceJobRequest>;
 export interface TerminateServiceJobResponse {}
-export const TerminateServiceJobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "TerminateServiceJobResponse",
-  }) as any as S.Schema<TerminateServiceJobResponse>;
+export const TerminateServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "TerminateServiceJobResponse",
+}) as any as S.Schema<TerminateServiceJobResponse>;
 export type TagKeysList = string[];
 export const TagKeysList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
@@ -4590,6 +4651,7 @@ export type CRUpdateAllocationStrategy =
   | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRUpdateAllocationStrategy = /*@__PURE__*/ S.String;
+
 export interface ComputeResourceUpdate {
   minvCpus?: number;
   maxvCpus?: number;
@@ -4643,85 +4705,81 @@ export interface UpdateComputeEnvironmentRequest {
   updatePolicy?: UpdatePolicy;
   context?: string;
 }
-export const UpdateComputeEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironment: S.optional(S.String),
-      state: S.optional(CEState),
-      unmanagedvCpus: S.optional(S.Number),
-      computeResources: S.optional(ComputeResourceUpdate),
-      serviceRole: S.optional(S.String),
-      updatePolicy: S.optional(UpdatePolicy),
-      context: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/updatecomputeenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateComputeEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironment: S.optional(S.String),
+    state: S.optional(CEState),
+    unmanagedvCpus: S.optional(S.Number),
+    computeResources: S.optional(ComputeResourceUpdate),
+    serviceRole: S.optional(S.String),
+    updatePolicy: S.optional(UpdatePolicy),
+    context: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/updatecomputeenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateComputeEnvironmentRequest",
-  }) as any as S.Schema<UpdateComputeEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "UpdateComputeEnvironmentRequest",
+}) as any as S.Schema<UpdateComputeEnvironmentRequest>;
 export interface UpdateComputeEnvironmentResponse {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
 }
-export const UpdateComputeEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeEnvironmentName: S.optional(S.String),
-      computeEnvironmentArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateComputeEnvironmentResponse",
-  }) as any as S.Schema<UpdateComputeEnvironmentResponse>;
+export const UpdateComputeEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computeEnvironmentName: S.optional(S.String),
+    computeEnvironmentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateComputeEnvironmentResponse",
+}) as any as S.Schema<UpdateComputeEnvironmentResponse>;
 export interface UpdateConsumableResourceRequest {
   consumableResource?: string;
   operation?: string;
   quantity?: number;
   clientToken?: string;
 }
-export const UpdateConsumableResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResource: S.optional(S.String),
-      operation: S.optional(S.String),
-      quantity: S.optional(S.Number),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/updateconsumableresource" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateConsumableResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResource: S.optional(S.String),
+    operation: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/updateconsumableresource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateConsumableResourceRequest",
-  }) as any as S.Schema<UpdateConsumableResourceRequest>;
+  ),
+).annotate({
+  identifier: "UpdateConsumableResourceRequest",
+}) as any as S.Schema<UpdateConsumableResourceRequest>;
 export interface UpdateConsumableResourceResponse {
   consumableResourceName: string;
   consumableResourceArn: string;
   totalQuantity?: number;
 }
-export const UpdateConsumableResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumableResourceName: S.optional(S.String),
-      consumableResourceArn: S.optional(S.String),
-      totalQuantity: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateConsumableResourceResponse",
-  }) as any as S.Schema<UpdateConsumableResourceResponse>;
+export const UpdateConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consumableResourceName: S.optional(S.String),
+    consumableResourceArn: S.optional(S.String),
+    totalQuantity: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateConsumableResourceResponse",
+}) as any as S.Schema<UpdateConsumableResourceResponse>;
 export interface UpdateJobQueueRequest {
   jobQueue?: string;
   state?: JQState;
@@ -4813,69 +4871,67 @@ export interface UpdateSchedulingPolicyRequest {
   quotaSharePolicy?: QuotaSharePolicy;
   fairsharePolicy?: FairsharePolicy;
 }
-export const UpdateSchedulingPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      quotaSharePolicy: S.optional(QuotaSharePolicy),
-      fairsharePolicy: S.optional(FairsharePolicy),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/updateschedulingpolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSchedulingPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    quotaSharePolicy: S.optional(QuotaSharePolicy),
+    fairsharePolicy: S.optional(FairsharePolicy),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/updateschedulingpolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateSchedulingPolicyRequest",
-  }) as any as S.Schema<UpdateSchedulingPolicyRequest>;
+  ),
+).annotate({
+  identifier: "UpdateSchedulingPolicyRequest",
+}) as any as S.Schema<UpdateSchedulingPolicyRequest>;
 export interface UpdateSchedulingPolicyResponse {}
-export const UpdateSchedulingPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateSchedulingPolicyResponse",
-  }) as any as S.Schema<UpdateSchedulingPolicyResponse>;
+export const UpdateSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateSchedulingPolicyResponse",
+}) as any as S.Schema<UpdateSchedulingPolicyResponse>;
 export interface UpdateServiceEnvironmentRequest {
   serviceEnvironment?: string;
   state?: ServiceEnvironmentState;
   capacityLimits?: CapacityLimit[];
 }
-export const UpdateServiceEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironment: S.optional(S.String),
-      state: S.optional(ServiceEnvironmentState),
-      capacityLimits: S.optional(CapacityLimits),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/v1/updateserviceenvironment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironment: S.optional(S.String),
+    state: S.optional(ServiceEnvironmentState),
+    capacityLimits: S.optional(CapacityLimits),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/updateserviceenvironment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateServiceEnvironmentRequest",
-  }) as any as S.Schema<UpdateServiceEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "UpdateServiceEnvironmentRequest",
+}) as any as S.Schema<UpdateServiceEnvironmentRequest>;
 export interface UpdateServiceEnvironmentResponse {
   serviceEnvironmentName: string;
   serviceEnvironmentArn: string;
 }
-export const UpdateServiceEnvironmentResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceEnvironmentName: S.optional(S.String),
-      serviceEnvironmentArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateServiceEnvironmentResponse",
-  }) as any as S.Schema<UpdateServiceEnvironmentResponse>;
+export const UpdateServiceEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceEnvironmentName: S.optional(S.String),
+    serviceEnvironmentArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "UpdateServiceEnvironmentResponse",
+}) as any as S.Schema<UpdateServiceEnvironmentResponse>;
 export interface UpdateServiceJobRequest {
   jobId?: string;
   schedulingPriority?: number;
@@ -4912,74 +4968,6 @@ export const UpdateServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceJobResponse",
 }) as any as S.Schema<UpdateServiceJobResponse>;
-
-//# Errors
-export class ClientException extends S.TaggedErrorClass<ClientException>()(
-  "ClientException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServerException extends S.TaggedErrorClass<ServerException>()(
-  "ServerException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
-  "ComputeEnvironmentNotValid",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "must be (created and )?valid before attaching" },
-  }),
-).pipe(C.withDependencyViolationError, C.withRetryableError) {}
-export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
-  "JobQueueAlreadyExists",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "already exists" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class ComputeEnvironmentInUse extends S.TaggedErrorClass<ComputeEnvironmentInUse>()(
-  "ComputeEnvironmentInUse",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "found existing JobQueue relationship" },
-  }),
-).pipe(C.withDependencyViolationError, C.withRetryableError) {}
-export class ComputeEnvironmentBeingModified extends S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
-  "ComputeEnvironmentBeingModified",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "is being modified" },
-  }),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class JobQueueBeingModified extends S.TaggedErrorClass<JobQueueBeingModified>()(
-  "JobQueueBeingModified",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "is being modified" },
-  }),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ComputeEnvironmentNotFound extends S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
-  "ComputeEnvironmentNotFound",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "compute-environment/.* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class JobQueueNotFound extends S.TaggedErrorClass<JobQueueNotFound>()(
-  "JobQueueNotFound",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "job-queue/.* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-
-//# Operations
 export type CancelJobError = ClientException | ServerException | CommonErrors;
 /**
  * Cancels a job in an Batch job queue. Jobs that are in a `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled and the job status is updated to `FAILED`.
@@ -5006,8 +4994,11 @@ export const cancelJob: API.OperationMethod<
   input: CancelJobRequest,
   output: CancelJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
+
 export type CreateComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -5049,8 +5040,11 @@ export const createComputeEnvironment: API.OperationMethod<
   input: CreateComputeEnvironmentRequest,
   output: CreateComputeEnvironmentResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputeEnvironment",
 }));
+
 export type CreateConsumableResourceError =
   | ClientException
   | ServerException
@@ -5067,8 +5061,11 @@ export const createConsumableResource: API.OperationMethod<
   input: CreateConsumableResourceRequest,
   output: CreateConsumableResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConsumableResource",
 }));
+
 export type CreateJobQueueError =
   | ClientException
   | ServerException
@@ -5099,8 +5096,11 @@ export const createJobQueue: API.OperationMethod<
     ComputeEnvironmentNotValid,
     JobQueueAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJobQueue",
 }));
+
 export type CreateQuotaShareError =
   | ClientException
   | ServerException
@@ -5117,8 +5117,11 @@ export const createQuotaShare: API.OperationMethod<
   input: CreateQuotaShareRequest,
   output: CreateQuotaShareResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuotaShare",
 }));
+
 export type CreateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -5135,8 +5138,11 @@ export const createSchedulingPolicy: API.OperationMethod<
   input: CreateSchedulingPolicyRequest,
   output: CreateSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchedulingPolicy",
 }));
+
 export type CreateServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -5153,8 +5159,11 @@ export const createServiceEnvironment: API.OperationMethod<
   input: CreateServiceEnvironmentRequest,
   output: CreateServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceEnvironment",
 }));
+
 export type DeleteComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -5187,8 +5196,11 @@ export const deleteComputeEnvironment: API.OperationMethod<
     ComputeEnvironmentInUse,
     ComputeEnvironmentBeingModified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComputeEnvironment",
 }));
+
 export type DeleteConsumableResourceError =
   | ClientException
   | ServerException
@@ -5205,8 +5217,11 @@ export const deleteConsumableResource: API.OperationMethod<
   input: DeleteConsumableResourceRequest,
   output: DeleteConsumableResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConsumableResource",
 }));
+
 export type DeleteJobQueueError =
   | ClientException
   | ServerException
@@ -5235,8 +5250,11 @@ export const deleteJobQueue: API.OperationMethod<
     JobQueueNotFound,
     JobQueueBeingModified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobQueue",
 }));
+
 export type DeleteQuotaShareError =
   | ClientException
   | ServerException
@@ -5255,8 +5273,11 @@ export const deleteQuotaShare: API.OperationMethod<
   input: DeleteQuotaShareRequest,
   output: DeleteQuotaShareResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQuotaShare",
 }));
+
 export type DeleteSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -5275,8 +5296,11 @@ export const deleteSchedulingPolicy: API.OperationMethod<
   input: DeleteSchedulingPolicyRequest,
   output: DeleteSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchedulingPolicy",
 }));
+
 export type DeleteServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -5293,8 +5317,11 @@ export const deleteServiceEnvironment: API.OperationMethod<
   input: DeleteServiceEnvironmentRequest,
   output: DeleteServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceEnvironment",
 }));
+
 export type DeregisterJobDefinitionError =
   | ClientException
   | ServerException
@@ -5312,8 +5339,11 @@ export const deregisterJobDefinition: API.OperationMethod<
   input: DeregisterJobDefinitionRequest,
   output: DeregisterJobDefinitionResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterJobDefinition",
 }));
+
 export type DescribeComputeEnvironmentsError =
   | ClientException
   | ServerException
@@ -5349,6 +5379,8 @@ export const describeComputeEnvironments: API.OperationMethod<
   input: DescribeComputeEnvironmentsRequest,
   output: DescribeComputeEnvironmentsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComputeEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -5357,6 +5389,7 @@ export const describeComputeEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeConsumableResourceError =
   | ClientException
   | ServerException
@@ -5373,8 +5406,11 @@ export const describeConsumableResource: API.OperationMethod<
   input: DescribeConsumableResourceRequest,
   output: DescribeConsumableResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConsumableResource",
 }));
+
 export type DescribeJobDefinitionsError =
   | ClientException
   | ServerException
@@ -5407,6 +5443,8 @@ export const describeJobDefinitions: API.OperationMethod<
   input: DescribeJobDefinitionsRequest,
   output: DescribeJobDefinitionsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -5415,6 +5453,7 @@ export const describeJobDefinitions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeJobQueuesError =
   | ClientException
   | ServerException
@@ -5446,6 +5485,8 @@ export const describeJobQueues: API.OperationMethod<
   input: DescribeJobQueuesRequest,
   output: DescribeJobQueuesResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobQueues",
   pagination: {
     inputToken: "nextToken",
@@ -5454,6 +5495,7 @@ export const describeJobQueues: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeJobsError =
   | ClientException
   | ServerException
@@ -5470,8 +5512,11 @@ export const describeJobs: API.OperationMethod<
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobs",
 }));
+
 export type DescribeQuotaShareError =
   | ClientException
   | ServerException
@@ -5488,8 +5533,11 @@ export const describeQuotaShare: API.OperationMethod<
   input: DescribeQuotaShareRequest,
   output: DescribeQuotaShareResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuotaShare",
 }));
+
 export type DescribeSchedulingPoliciesError =
   | ClientException
   | ServerException
@@ -5506,8 +5554,11 @@ export const describeSchedulingPolicies: API.OperationMethod<
   input: DescribeSchedulingPoliciesRequest,
   output: DescribeSchedulingPoliciesResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchedulingPolicies",
 }));
+
 export type DescribeServiceEnvironmentsError =
   | ClientException
   | ServerException
@@ -5539,6 +5590,8 @@ export const describeServiceEnvironments: API.OperationMethod<
   input: DescribeServiceEnvironmentsRequest,
   output: DescribeServiceEnvironmentsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -5547,6 +5600,7 @@ export const describeServiceEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeServiceJobError =
   | ClientException
   | ServerException
@@ -5563,8 +5617,11 @@ export const describeServiceJob: API.OperationMethod<
   input: DescribeServiceJobRequest,
   output: DescribeServiceJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceJob",
 }));
+
 export type GetJobQueueSnapshotError =
   | ClientException
   | ServerException
@@ -5584,8 +5641,11 @@ export const getJobQueueSnapshot: API.OperationMethod<
   input: GetJobQueueSnapshotRequest,
   output: GetJobQueueSnapshotResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobQueueSnapshot",
 }));
+
 export type ListConsumableResourcesError =
   | ClientException
   | ServerException
@@ -5617,6 +5677,8 @@ export const listConsumableResources: API.OperationMethod<
   input: ListConsumableResourcesRequest,
   output: ListConsumableResourcesResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConsumableResources",
   pagination: {
     inputToken: "nextToken",
@@ -5625,6 +5687,7 @@ export const listConsumableResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobsError = ClientException | ServerException | CommonErrors;
 /**
  * Returns a list of Batch jobs.
@@ -5661,6 +5724,8 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5669,6 +5734,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobsByConsumableResourceError =
   | ClientException
   | ServerException
@@ -5700,6 +5766,8 @@ export const listJobsByConsumableResource: API.OperationMethod<
   input: ListJobsByConsumableResourceRequest,
   output: ListJobsByConsumableResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobsByConsumableResource",
   pagination: {
     inputToken: "nextToken",
@@ -5708,6 +5776,7 @@ export const listJobsByConsumableResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListQuotaSharesError =
   | ClientException
   | ServerException
@@ -5739,6 +5808,8 @@ export const listQuotaShares: API.OperationMethod<
   input: ListQuotaSharesRequest,
   output: ListQuotaSharesResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuotaShares",
   pagination: {
     inputToken: "nextToken",
@@ -5747,6 +5818,7 @@ export const listQuotaShares: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSchedulingPoliciesError =
   | ClientException
   | ServerException
@@ -5778,6 +5850,8 @@ export const listSchedulingPolicies: API.OperationMethod<
   input: ListSchedulingPoliciesRequest,
   output: ListSchedulingPoliciesResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchedulingPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -5786,6 +5860,7 @@ export const listSchedulingPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceJobsError =
   | ClientException
   | ServerException
@@ -5817,6 +5892,8 @@ export const listServiceJobs: API.OperationMethod<
   input: ListServiceJobsRequest,
   output: ListServiceJobsResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5825,6 +5902,7 @@ export const listServiceJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ClientException
   | ServerException
@@ -5842,8 +5920,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterJobDefinitionError =
   | ClientException
   | ServerException
@@ -5860,8 +5941,11 @@ export const registerJobDefinition: API.OperationMethod<
   input: RegisterJobDefinitionRequest,
   output: RegisterJobDefinitionResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterJobDefinition",
 }));
+
 export type SubmitJobError = ClientException | ServerException | CommonErrors;
 /**
  * Submits an Batch job from a job definition. Parameters that are specified during SubmitJob override parameters defined in the job definition. vCPU and memory
@@ -5887,8 +5971,11 @@ export const submitJob: API.OperationMethod<
   input: SubmitJobRequest,
   output: SubmitJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitJob",
 }));
+
 export type SubmitServiceJobError =
   | ClientException
   | ServerException
@@ -5905,8 +5992,11 @@ export const submitServiceJob: API.OperationMethod<
   input: SubmitServiceJobRequest,
   output: SubmitServiceJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitServiceJob",
 }));
+
 export type TagResourceError = ClientException | ServerException | CommonErrors;
 /**
  * Associates the specified tags to a resource with the specified `resourceArn`.
@@ -5924,8 +6014,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateJobError =
   | ClientException
   | ServerException
@@ -5945,8 +6038,11 @@ export const terminateJob: API.OperationMethod<
   input: TerminateJobRequest,
   output: TerminateJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateJob",
 }));
+
 export type TerminateServiceJobError =
   | ClientException
   | ServerException
@@ -5963,8 +6059,11 @@ export const terminateServiceJob: API.OperationMethod<
   input: TerminateServiceJobRequest,
   output: TerminateServiceJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateServiceJob",
 }));
+
 export type UntagResourceError =
   | ClientException
   | ServerException
@@ -5981,8 +6080,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -6006,8 +6108,11 @@ export const updateComputeEnvironment: API.OperationMethod<
     ComputeEnvironmentNotFound,
     ComputeEnvironmentBeingModified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComputeEnvironment",
 }));
+
 export type UpdateConsumableResourceError =
   | ClientException
   | ServerException
@@ -6024,8 +6129,11 @@ export const updateConsumableResource: API.OperationMethod<
   input: UpdateConsumableResourceRequest,
   output: UpdateConsumableResourceResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConsumableResource",
 }));
+
 export type UpdateJobQueueError =
   | ClientException
   | ServerException
@@ -6049,8 +6157,11 @@ export const updateJobQueue: API.OperationMethod<
     JobQueueNotFound,
     JobQueueBeingModified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobQueue",
 }));
+
 export type UpdateQuotaShareError =
   | ClientException
   | ServerException
@@ -6067,8 +6178,11 @@ export const updateQuotaShare: API.OperationMethod<
   input: UpdateQuotaShareRequest,
   output: UpdateQuotaShareResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuotaShare",
 }));
+
 export type UpdateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -6085,8 +6199,11 @@ export const updateSchedulingPolicy: API.OperationMethod<
   input: UpdateSchedulingPolicyRequest,
   output: UpdateSchedulingPolicyResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchedulingPolicy",
 }));
+
 export type UpdateServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -6103,8 +6220,11 @@ export const updateServiceEnvironment: API.OperationMethod<
   input: UpdateServiceEnvironmentRequest,
   output: UpdateServiceEnvironmentResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceEnvironment",
 }));
+
 export type UpdateServiceJobError =
   | ClientException
   | ServerException
@@ -6121,5 +6241,7 @@ export const updateServiceJob: API.OperationMethod<
   input: UpdateServiceJobRequest,
   output: UpdateServiceJobResponse,
   errors: [ClientException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceJob",
 }));

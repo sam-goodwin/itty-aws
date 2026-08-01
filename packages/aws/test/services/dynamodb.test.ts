@@ -23,8 +23,13 @@ type ManagedTable = {
   TableArn: string;
 };
 
-const retrySchedule = Schedule.max([Schedule.recurs(30), Schedule.spaced("1 second")]);
-const eventualRetrySchedule = Schedule.max([Schedule.exponential(250), Schedule.recurs(20)]);
+const retrySchedule = Schedule.both(
+  Schedule.recurs(30),
+  Schedule.spaced("1 second"),
+);
+const eventualRetrySchedule = Schedule.exponential(250).pipe(
+  Schedule.both(Schedule.recurs(20)),
+);
 
 // Helper to wait for table to become active
 const waitForTableActive = (tableName: string) =>
@@ -67,7 +72,9 @@ const getTableArn = (tableName: string) =>
         : Effect.fail(new Error("Table ARN not available yet")),
     ),
     Effect.retry(retrySchedule),
-    Effect.mapError(() => new Error(`Table ARN not available for ${tableName}`)),
+    Effect.mapError(
+      () => new Error(`Table ARN not available for ${tableName}`),
+    ),
   );
 
 const withTable = <A, E, R>(
@@ -748,7 +755,9 @@ test(
               while: (e) =>
                 e._tag === "InternalServerError" ||
                 e._tag === "ResourceNotFoundException",
-              schedule: Schedule.max([Schedule.exponential(250), Schedule.recurs(20)]),
+              schedule: Schedule.exponential(250).pipe(
+                Schedule.both(Schedule.recurs(20)),
+              ),
             }),
           );
 

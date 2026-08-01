@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,70 +85,82 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.String,
+    resourceIdentifier: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    retryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    resourceIdentifier: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceIdentifier: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String, serviceCode: S.String, quotaCode: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  {},
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type FindingId = string;
-export type ExceptionMessage = string;
-export type ResourceType = string;
-export type ServiceCode = string;
-export type RegionName = string;
-export type SseKmsKey = string;
-export type ClientToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResponsePlanName = string;
-export type ResponsePlanDisplayName = string;
-export type IncidentTitle = string;
-export type Impact = number;
-export type IncidentSummary = string;
-export type DedupeString = string;
-export type SnsArn = string;
-export type SsmContactsArn = string;
-export type RoleArn = string;
-export type SsmTargetAccount = string;
-export type VariableType = string;
-export type TimelineEventType = string;
-export type EventData = string;
-export type GeneratedId = string;
-export type UUID = string;
-export type PolicyId = string;
-export type IncidentRecordStatus = string;
-export type ServicePrincipal = string;
-export type IncidentSource = string;
-export type RegionStatus = string;
-export type ReplicationSetStatus = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type Policy = string;
-export type Url = string;
-export type MetricDefinition = string;
-export type ItemType = string;
-export type TimelineEventSort = string;
-export type SortOrder = string;
-export type RawData = string;
-
-//# Schemas
 export type FindingIdList = string[];
 export const FindingIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetIncidentFindingsInput {
   incidentRecordArn: string;
   findingIds: string[];
 }
-export const BatchGetIncidentFindingsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ incidentRecordArn: S.String, findingIds: FindingIdList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetIncidentFindingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ incidentRecordArn: S.String, findingIds: FindingIdList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchGetIncidentFindingsInput",
-  }) as any as S.Schema<BatchGetIncidentFindingsInput>;
+  ),
+).annotate({
+  identifier: "BatchGetIncidentFindingsInput",
+}) as any as S.Schema<BatchGetIncidentFindingsInput>;
 export interface CodeDeployDeployment {
   startTime: Date;
   endTime?: Date;
@@ -211,29 +225,30 @@ export interface BatchGetIncidentFindingsError_ {
   code: string;
   message: string;
 }
-export const BatchGetIncidentFindingsError_ =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ findingId: S.String, code: S.String, message: S.String }),
-  ).annotate({
-    identifier: "BatchGetIncidentFindingsError",
-  }) as any as S.Schema<BatchGetIncidentFindingsError_>;
+export const BatchGetIncidentFindingsError_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ findingId: S.String, code: S.String, message: S.String }),
+).annotate({
+  identifier: "BatchGetIncidentFindingsError",
+}) as any as S.Schema<BatchGetIncidentFindingsError_>;
 export type BatchGetIncidentFindingsErrorList =
   BatchGetIncidentFindingsError_[];
-export const BatchGetIncidentFindingsErrorList =
-  /*@__PURE__*/ S.Array(BatchGetIncidentFindingsError_);
+export const BatchGetIncidentFindingsErrorList = /*@__PURE__*/ S.Array(
+  BatchGetIncidentFindingsError_,
+);
 export interface BatchGetIncidentFindingsOutput {
   findings: Finding[];
   errors: BatchGetIncidentFindingsError_[];
 }
-export const BatchGetIncidentFindingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findings: FindingList,
-      errors: BatchGetIncidentFindingsErrorList,
-    }),
-  ).annotate({
-    identifier: "BatchGetIncidentFindingsOutput",
-  }) as any as S.Schema<BatchGetIncidentFindingsOutput>;
+export const BatchGetIncidentFindingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findings: FindingList,
+    errors: BatchGetIncidentFindingsErrorList,
+  }),
+).annotate({
+  identifier: "BatchGetIncidentFindingsOutput",
+}) as any as S.Schema<BatchGetIncidentFindingsOutput>;
+export type RegionName = string;
+export type SseKmsKey = string;
 export interface RegionMapInputValue {
   sseKmsKeyId?: string;
 }
@@ -247,6 +262,9 @@ export const RegionMapInput = /*@__PURE__*/ S.Record(
   S.String,
   RegionMapInputValue.pipe(S.optional),
 );
+export type ClientToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -283,6 +301,12 @@ export const CreateReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReplicationSetOutput",
 }) as any as S.Schema<CreateReplicationSetOutput>;
+export type ResponsePlanName = string;
+export type ResponsePlanDisplayName = string;
+export type IncidentTitle = string;
+export type Impact = number;
+export type IncidentSummary = string;
+export type DedupeString = string;
 export type NotificationTargetItem = { snsTopicArn: string };
 export const NotificationTargetItem = /*@__PURE__*/ S.Union([
   S.Struct({ snsTopicArn: S.String }),
@@ -317,6 +341,7 @@ export const EmptyChatChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EmptyChatChannel",
 }) as any as S.Schema<EmptyChatChannel>;
+export type SnsArn = string;
 export type ChatbotSnsConfigurationSet = string[];
 export const ChatbotSnsConfigurationSet = /*@__PURE__*/ S.Array(S.String);
 export type ChatChannel =
@@ -326,8 +351,11 @@ export const ChatChannel = /*@__PURE__*/ S.Union([
   S.Struct({ empty: EmptyChatChannel }),
   S.Struct({ chatbotSns: ChatbotSnsConfigurationSet }),
 ]);
+export type SsmContactsArn = string;
 export type EngagementSet = string[];
 export const EngagementSet = /*@__PURE__*/ S.Array(S.String);
+export type RoleArn = string;
+export type SsmTargetAccount = string;
 export type SsmParameterValues = string[];
 export const SsmParameterValues = /*@__PURE__*/ S.Array(S.String);
 export type SsmParameters = { [key: string]: string[] | undefined };
@@ -335,6 +363,7 @@ export const SsmParameters = /*@__PURE__*/ S.Record(
   S.String,
   SsmParameterValues.pipe(S.optional),
 );
+export type VariableType = string;
 export type DynamicSsmParameterValue = { variable: string };
 export const DynamicSsmParameterValue = /*@__PURE__*/ S.Union([
   S.Struct({ variable: S.String }),
@@ -373,10 +402,11 @@ export const ActionsList = /*@__PURE__*/ S.Array(Action);
 export interface PagerDutyIncidentConfiguration {
   serviceId: string;
 }
-export const PagerDutyIncidentConfiguration =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ serviceId: S.String })).annotate({
-    identifier: "PagerDutyIncidentConfiguration",
-  }) as any as S.Schema<PagerDutyIncidentConfiguration>;
+export const PagerDutyIncidentConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ serviceId: S.String }),
+).annotate({
+  identifier: "PagerDutyIncidentConfiguration",
+}) as any as S.Schema<PagerDutyIncidentConfiguration>;
 export interface PagerDutyConfiguration {
   name: string;
   secretId: string;
@@ -440,6 +470,9 @@ export const CreateResponsePlanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResponsePlanOutput",
 }) as any as S.Schema<CreateResponsePlanOutput>;
+export type TimelineEventType = string;
+export type EventData = string;
+export type GeneratedId = string;
 export type EventReference =
   | { resource: string; relatedItemId?: never }
   | { resource?: never; relatedItemId: string };
@@ -478,6 +511,7 @@ export const CreateTimelineEventInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTimelineEventInput",
 }) as any as S.Schema<CreateTimelineEventInput>;
+export type UUID = string;
 export interface CreateTimelineEventOutput {
   incidentRecordArn: string;
   eventId: string;
@@ -533,6 +567,7 @@ export const DeleteReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteReplicationSetOutput",
 }) as any as S.Schema<DeleteReplicationSetOutput>;
+export type PolicyId = string;
 export interface DeleteResourcePolicyInput {
   resourceArn: string;
   policyId: string;
@@ -621,6 +656,7 @@ export const GetIncidentRecordInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIncidentRecordInput",
 }) as any as S.Schema<GetIncidentRecordInput>;
+export type IncidentRecordStatus = string;
 export type AutomationExecution = { ssmExecutionArn: string };
 export const AutomationExecution = /*@__PURE__*/ S.Union([
   S.Struct({ ssmExecutionArn: S.String }),
@@ -628,6 +664,8 @@ export const AutomationExecution = /*@__PURE__*/ S.Union([
 export type AutomationExecutionSet = AutomationExecution[];
 export const AutomationExecutionSet =
   /*@__PURE__*/ S.Array(AutomationExecution);
+export type ServicePrincipal = string;
+export type IncidentSource = string;
 export interface IncidentRecordSource {
   createdBy: string;
   invokedBy?: string;
@@ -703,6 +741,7 @@ export const GetReplicationSetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReplicationSetInput",
 }) as any as S.Schema<GetReplicationSetInput>;
+export type RegionStatus = string;
 export interface RegionInfo {
   sseKmsKeyId?: string;
   status: string;
@@ -722,6 +761,7 @@ export const RegionInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   RegionInfo.pipe(S.optional),
 );
+export type ReplicationSetStatus = string;
 export interface ReplicationSet {
   arn?: string;
   regionMap: { [key: string]: RegionInfo | undefined };
@@ -752,6 +792,8 @@ export const GetReplicationSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReplicationSetOutput",
 }) as any as S.Schema<GetReplicationSetOutput>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface GetResourcePoliciesInput {
   resourceArn: string;
   maxResults?: number;
@@ -775,6 +817,7 @@ export const GetResourcePoliciesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePoliciesInput",
 }) as any as S.Schema<GetResourcePoliciesInput>;
+export type Policy = string;
 export interface ResourcePolicy {
   policyDocument: string;
   policyId: string;
@@ -1048,6 +1091,8 @@ export const ListRelatedItemsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRelatedItemsInput",
 }) as any as S.Schema<ListRelatedItemsInput>;
+export type Url = string;
+export type MetricDefinition = string;
 export interface PagerDutyIncidentDetail {
   id: string;
   autoResolve?: boolean;
@@ -1093,6 +1138,7 @@ export const ItemValue = /*@__PURE__*/ S.Union([
   S.Struct({ metricDefinition: S.String }),
   S.Struct({ pagerDutyIncidentDetail: PagerDutyIncidentDetail }),
 ]);
+export type ItemType = string;
 export interface ItemIdentifier {
   value: ItemValue;
   type: string;
@@ -1119,10 +1165,7 @@ export interface ListRelatedItemsOutput {
   nextToken?: string;
 }
 export const ListRelatedItemsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    relatedItems: RelatedItemList,
-    nextToken: S.optional(S.String),
-  }),
+  S.Struct({ relatedItems: RelatedItemList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRelatedItemsOutput",
 }) as any as S.Schema<ListRelatedItemsOutput>;
@@ -1231,10 +1274,13 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: TagMap })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: TagMap }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export type TimelineEventSort = string;
+export type SortOrder = string;
 export interface ListTimelineEventsInput {
   incidentRecordArn: string;
   filters?: Filter[];
@@ -1322,6 +1368,7 @@ export const PutResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutResourcePolicyOutput",
 }) as any as S.Schema<PutResourcePolicyOutput>;
+export type RawData = string;
 export interface TriggerDetails {
   source: string;
   triggerArn?: string;
@@ -1434,30 +1481,30 @@ export interface UpdateDeletionProtectionInput {
   deletionProtected: boolean;
   clientToken?: string;
 }
-export const UpdateDeletionProtectionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.String,
-      deletionProtected: S.Boolean,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/updateDeletionProtection" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDeletionProtectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    deletionProtected: S.Boolean,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/updateDeletionProtection" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDeletionProtectionInput",
-  }) as any as S.Schema<UpdateDeletionProtectionInput>;
+  ),
+).annotate({
+  identifier: "UpdateDeletionProtectionInput",
+}) as any as S.Schema<UpdateDeletionProtectionInput>;
 export interface UpdateDeletionProtectionOutput {}
-export const UpdateDeletionProtectionOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateDeletionProtectionOutput",
-  }) as any as S.Schema<UpdateDeletionProtectionOutput>;
+export const UpdateDeletionProtectionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateDeletionProtectionOutput",
+}) as any as S.Schema<UpdateDeletionProtectionOutput>;
 export interface UpdateIncidentRecordInput {
   clientToken?: string;
   arn: string;
@@ -1681,57 +1728,9 @@ export const UpdateTimelineEventOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTimelineEventOutput",
 }) as any as S.Schema<UpdateTimelineEventOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    resourceIdentifier: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String, serviceCode: S.String, quotaCode: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.String,
-    resourceIdentifier: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    retryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceIdentifier: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  {},
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type ResourceType = string;
+export type ServiceCode = string;
 export type BatchGetIncidentFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -1760,8 +1759,11 @@ export const batchGetIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetIncidentFindings",
 }));
+
 export type CreateReplicationSetError =
   | AccessDeniedException
   | ConflictException
@@ -1792,8 +1794,11 @@ export const createReplicationSet: API.OperationMethod<
     ValidationException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationSet",
 }));
+
 export type CreateResponsePlanError =
   | AccessDeniedException
   | ConflictException
@@ -1823,8 +1828,11 @@ export const createResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResponsePlan",
 }));
+
 export type CreateTimelineEventError =
   | AccessDeniedException
   | ConflictException
@@ -1855,8 +1863,11 @@ export const createTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTimelineEvent",
 }));
+
 export type DeleteIncidentRecordError =
   | AccessDeniedException
   | InternalServerException
@@ -1880,8 +1891,11 @@ export const deleteIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIncidentRecord",
 }));
+
 export type DeleteReplicationSetError =
   | AccessDeniedException
   | InternalServerException
@@ -1908,8 +1922,11 @@ export const deleteReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationSet",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -1936,8 +1953,11 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteResponsePlanError =
   | AccessDeniedException
   | InternalServerException
@@ -1962,8 +1982,11 @@ export const deleteResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResponsePlan",
 }));
+
 export type DeleteTimelineEventError =
   | AccessDeniedException
   | InternalServerException
@@ -1987,8 +2010,11 @@ export const deleteTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTimelineEvent",
 }));
+
 export type GetIncidentRecordError =
   | AccessDeniedException
   | InternalServerException
@@ -2014,8 +2040,11 @@ export const getIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIncidentRecord",
 }));
+
 export type GetReplicationSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2041,8 +2070,11 @@ export const getReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReplicationSet",
 }));
+
 export type GetResourcePoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -2083,6 +2115,8 @@ export const getResourcePolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -2091,6 +2125,7 @@ export const getResourcePolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetResponsePlanError =
   | AccessDeniedException
   | InternalServerException
@@ -2116,8 +2151,11 @@ export const getResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResponsePlan",
 }));
+
 export type GetTimelineEventError =
   | AccessDeniedException
   | InternalServerException
@@ -2143,8 +2181,11 @@ export const getTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTimelineEvent",
 }));
+
 export type ListIncidentFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -2188,6 +2229,8 @@ export const listIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncidentFindings",
   pagination: {
     inputToken: "nextToken",
@@ -2196,6 +2239,7 @@ export const listIncidentFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIncidentRecordsError =
   | AccessDeniedException
   | InternalServerException
@@ -2235,6 +2279,8 @@ export const listIncidentRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncidentRecords",
   pagination: {
     inputToken: "nextToken",
@@ -2243,6 +2289,7 @@ export const listIncidentRecords: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRelatedItemsError =
   | AccessDeniedException
   | InternalServerException
@@ -2281,6 +2328,8 @@ export const listRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRelatedItems",
   pagination: {
     inputToken: "nextToken",
@@ -2289,6 +2338,7 @@ export const listRelatedItems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReplicationSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -2327,6 +2377,8 @@ export const listReplicationSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplicationSets",
   pagination: {
     inputToken: "nextToken",
@@ -2335,6 +2387,7 @@ export const listReplicationSets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResponsePlansError =
   | AccessDeniedException
   | InternalServerException
@@ -2373,6 +2426,8 @@ export const listResponsePlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResponsePlans",
   pagination: {
     inputToken: "nextToken",
@@ -2381,6 +2436,7 @@ export const listResponsePlans: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2406,8 +2462,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTimelineEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -2446,6 +2505,8 @@ export const listTimelineEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTimelineEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2454,6 +2515,7 @@ export const listTimelineEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -2481,8 +2543,11 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type StartIncidentError =
   | AccessDeniedException
   | ConflictException
@@ -2511,8 +2576,11 @@ export const startIncident: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartIncident",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -2542,8 +2610,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -2571,8 +2642,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDeletionProtectionError =
   | AccessDeniedException
   | InternalServerException
@@ -2599,8 +2673,11 @@ export const updateDeletionProtection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeletionProtection",
 }));
+
 export type UpdateIncidentRecordError =
   | AccessDeniedException
   | ConflictException
@@ -2630,8 +2707,11 @@ export const updateIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIncidentRecord",
 }));
+
 export type UpdateRelatedItemsError =
   | AccessDeniedException
   | ConflictException
@@ -2659,8 +2739,11 @@ export const updateRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelatedItems",
 }));
+
 export type UpdateReplicationSetError =
   | AccessDeniedException
   | ConflictException
@@ -2688,8 +2771,11 @@ export const updateReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationSet",
 }));
+
 export type UpdateResponsePlanError =
   | AccessDeniedException
   | ConflictException
@@ -2717,8 +2803,11 @@ export const updateResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResponsePlan",
 }));
+
 export type UpdateTimelineEventError =
   | AccessDeniedException
   | ConflictException
@@ -2746,5 +2835,7 @@ export const updateTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTimelineEvent",
 }));

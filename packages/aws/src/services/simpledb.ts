@@ -19,7 +19,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -72,7 +74,7 @@ export type DomainName = string;
 export interface CreateDomainRequest {
   DomainName: string;
 }
-export const CreateDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -88,7 +90,7 @@ export const CreateDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateDomainRequest",
 }) as any as S.Schema<CreateDomainRequest>;
 export interface CreateDomainResponse {}
-export const CreateDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateDomainResponse",
@@ -97,7 +99,7 @@ export const CreateDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteDomainRequest {
   DomainName: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -113,7 +115,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteDomainRequest",
 }) as any as S.Schema<DeleteDomainRequest>;
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteDomainResponse",
@@ -122,7 +124,7 @@ export const DeleteDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DomainMetadataRequest {
   DomainName: string;
 }
-export const DomainMetadataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DomainMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -146,17 +148,16 @@ export interface DomainMetadataResponse {
   AttributeValuesSizeBytes?: number;
   Timestamp?: number;
 }
-export const DomainMetadataResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ItemCount: S.optional(S.Number),
-      ItemNamesSizeBytes: S.optional(S.Number),
-      AttributeNameCount: S.optional(S.Number),
-      AttributeNamesSizeBytes: S.optional(S.Number),
-      AttributeValueCount: S.optional(S.Number),
-      AttributeValuesSizeBytes: S.optional(S.Number),
-      Timestamp: S.optional(S.Number),
-    }),
+export const DomainMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemCount: S.optional(S.Number),
+    ItemNamesSizeBytes: S.optional(S.Number),
+    AttributeNameCount: S.optional(S.Number),
+    AttributeNamesSizeBytes: S.optional(S.Number),
+    AttributeValueCount: S.optional(S.Number),
+    AttributeValuesSizeBytes: S.optional(S.Number),
+    Timestamp: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "DomainMetadataResponse",
 }) as any as S.Schema<DomainMetadataResponse>;
@@ -165,7 +166,7 @@ export interface ListDomainsRequest {
   MaxNumberOfDomains?: number;
   NextToken?: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxNumberOfDomains: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -184,12 +185,12 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
 export type DomainNameList = string[];
-export const DomainNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DomainNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ListDomainsResponse {
   DomainNames?: string[];
   NextToken?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     // SimpleDB returns a flattened list of repeated <DomainName> elements
     DomainNames: S.optional(DomainNameList).pipe(
@@ -215,7 +216,7 @@ export interface Attribute {
   Value: string;
   AlternateValueEncoding?: string;
 }
-export const Attribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Attribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     AlternateNameEncoding: S.optional(S.String),
@@ -226,14 +227,14 @@ export const Attribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "Attribute",
 }) as any as S.Schema<Attribute>;
 export type AttributeList = Attribute[];
-export const AttributeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Attribute);
+export const AttributeList = /*@__PURE__*/ S.Array(Attribute);
 
 export interface ReplaceableAttribute {
   Name: string;
   Value: string;
   Replace?: boolean;
 }
-export const ReplaceableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReplaceableAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Value: S.String,
@@ -244,13 +245,13 @@ export const ReplaceableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceableAttribute>;
 export type ReplaceableAttributeList = ReplaceableAttribute[];
 export const ReplaceableAttributeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplaceableAttribute);
+  /*@__PURE__*/ S.Array(ReplaceableAttribute);
 
 export interface DeletableAttribute {
   Name: string;
   Value?: string;
 }
-export const DeletableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletableAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Value: S.optional(S.String),
@@ -259,15 +260,14 @@ export const DeletableAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeletableAttribute",
 }) as any as S.Schema<DeletableAttribute>;
 export type DeletableAttributeList = DeletableAttribute[];
-export const DeletableAttributeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeletableAttribute);
+export const DeletableAttributeList = /*@__PURE__*/ S.Array(DeletableAttribute);
 
 export interface UpdateCondition {
   Name?: string;
   Value?: string;
   Exists?: boolean;
 }
-export const UpdateCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Value: S.optional(S.String),
@@ -281,7 +281,7 @@ export interface ReplaceableItem {
   ItemName: string;
   Attributes: ReplaceableAttribute[];
 }
-export const ReplaceableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReplaceableItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ItemName: S.String,
     Attributes: ReplaceableAttributeList.pipe(
@@ -293,14 +293,13 @@ export const ReplaceableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ReplaceableItem",
 }) as any as S.Schema<ReplaceableItem>;
 export type ReplaceableItemList = ReplaceableItem[];
-export const ReplaceableItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplaceableItem);
+export const ReplaceableItemList = /*@__PURE__*/ S.Array(ReplaceableItem);
 
 export interface DeletableItem {
   ItemName: string;
   Attributes?: DeletableAttribute[];
 }
-export const DeletableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletableItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ItemName: S.String,
     Attributes: S.optional(DeletableAttributeList).pipe(
@@ -312,15 +311,14 @@ export const DeletableItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeletableItem",
 }) as any as S.Schema<DeletableItem>;
 export type DeletableItemList = DeletableItem[];
-export const DeletableItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeletableItem);
+export const DeletableItemList = /*@__PURE__*/ S.Array(DeletableItem);
 
 export interface Item {
   Name: string;
   AlternateNameEncoding?: string;
   Attributes?: Attribute[];
 }
-export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     AlternateNameEncoding: S.optional(S.String),
@@ -333,7 +331,7 @@ export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "Item",
 }) as any as S.Schema<Item>;
 export type ItemList = Item[];
-export const ItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Item);
+export const ItemList = /*@__PURE__*/ S.Array(Item);
 
 export interface GetAttributesRequest {
   DomainName: string;
@@ -341,7 +339,7 @@ export interface GetAttributesRequest {
   AttributeNames?: string[];
   ConsistentRead?: boolean;
 }
-export const GetAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ItemName: S.String,
@@ -367,7 +365,7 @@ export const GetAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAttributesResponse {
   Attributes?: Attribute[];
 }
-export const GetAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     // SimpleDB returns a flattened list of repeated <Attribute> elements
     Attributes: S.optional(AttributeList).pipe(
@@ -385,7 +383,7 @@ export interface PutAttributesRequest {
   Attributes: ReplaceableAttribute[];
   Expected?: UpdateCondition;
 }
-export const PutAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ItemName: S.String,
@@ -409,7 +407,7 @@ export const PutAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PutAttributesRequest",
 }) as any as S.Schema<PutAttributesRequest>;
 export interface PutAttributesResponse {}
-export const PutAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PutAttributesResponse",
@@ -421,33 +419,32 @@ export interface DeleteAttributesRequest {
   Attributes?: DeletableAttribute[];
   Expected?: UpdateCondition;
 }
-export const DeleteAttributesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DomainName: S.String,
-      ItemName: S.String,
-      Attributes: S.optional(DeletableAttributeList).pipe(
-        T.XmlName("Attribute"),
-        T.XmlFlattened(),
-      ),
-      Expected: S.optional(UpdateCondition),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    ItemName: S.String,
+    Attributes: S.optional(DeletableAttributeList).pipe(
+      T.XmlName("Attribute"),
+      T.XmlFlattened(),
     ),
+    Expected: S.optional(UpdateCondition),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "DeleteAttributesRequest",
 }) as any as S.Schema<DeleteAttributesRequest>;
 export interface DeleteAttributesResponse {}
-export const DeleteAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteAttributesResponse",
 }) as any as S.Schema<DeleteAttributesResponse>;
@@ -456,66 +453,66 @@ export interface BatchPutAttributesRequest {
   DomainName: string;
   Items: ReplaceableItem[];
 }
-export const BatchPutAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      Items: ReplaceableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchPutAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    Items: ReplaceableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchPutAttributesRequest",
-  }) as any as S.Schema<BatchPutAttributesRequest>;
+  ),
+).annotate({
+  identifier: "BatchPutAttributesRequest",
+}) as any as S.Schema<BatchPutAttributesRequest>;
 export interface BatchPutAttributesResponse {}
-export const BatchPutAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchPutAttributesResponse",
-  }) as any as S.Schema<BatchPutAttributesResponse>;
+export const BatchPutAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchPutAttributesResponse",
+}) as any as S.Schema<BatchPutAttributesResponse>;
 
 export interface BatchDeleteAttributesRequest {
   DomainName: string;
   Items: DeletableItem[];
 }
-export const BatchDeleteAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      Items: DeletableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeleteAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    Items: DeletableItemList.pipe(T.XmlName("Item"), T.XmlFlattened()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchDeleteAttributesRequest",
-  }) as any as S.Schema<BatchDeleteAttributesRequest>;
+  ),
+).annotate({
+  identifier: "BatchDeleteAttributesRequest",
+}) as any as S.Schema<BatchDeleteAttributesRequest>;
 export interface BatchDeleteAttributesResponse {}
-export const BatchDeleteAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteAttributesResponse",
-  }) as any as S.Schema<BatchDeleteAttributesResponse>;
+export const BatchDeleteAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchDeleteAttributesResponse",
+}) as any as S.Schema<BatchDeleteAttributesResponse>;
 
 export interface SelectRequest {
   SelectExpression: string;
   NextToken?: string;
   ConsistentRead?: boolean;
 }
-export const SelectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SelectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SelectExpression: S.String,
     NextToken: S.optional(S.String),
@@ -538,7 +535,7 @@ export interface SelectResponse {
   Items?: Item[];
   NextToken?: string;
 }
-export const SelectResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SelectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     // SimpleDB returns a flattened list of repeated <Item> elements
     Items: S.optional(ItemList).pipe(T.XmlName("Item"), T.XmlFlattened()),
@@ -633,10 +630,12 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDomainRequest,
   output: CreateDomainResponse,
   errors: [InvalidParameterValue, MissingParameter, NumberDomainsExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type DeleteDomainError = MissingParameter | CommonErrors;
@@ -649,10 +648,12 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DomainMetadataError =
@@ -667,10 +668,12 @@ export const domainMetadata: API.OperationMethod<
   DomainMetadataResponse,
   DomainMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DomainMetadataRequest,
   output: DomainMetadataResponse,
   errors: [MissingParameter, NoSuchDomain],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DomainMetadata",
 }));
 export type ListDomainsError =
@@ -700,10 +703,12 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidNextToken, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",
@@ -726,10 +731,12 @@ export const getAttributes: API.OperationMethod<
   GetAttributesResponse,
   GetAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttributesRequest,
   output: GetAttributesResponse,
   errors: [InvalidParameterValue, MissingParameter, NoSuchDomain],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttributes",
 }));
 export type PutAttributesError =
@@ -750,7 +757,7 @@ export const putAttributes: API.OperationMethod<
   PutAttributesResponse,
   PutAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAttributesRequest,
   output: PutAttributesResponse,
   errors: [
@@ -762,6 +769,8 @@ export const putAttributes: API.OperationMethod<
     NumberDomainBytesExceeded,
     NumberItemAttributesExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAttributes",
 }));
 export type DeleteAttributesError =
@@ -780,7 +789,7 @@ export const deleteAttributes: API.OperationMethod<
   DeleteAttributesResponse,
   DeleteAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAttributesRequest,
   output: DeleteAttributesResponse,
   errors: [
@@ -789,6 +798,8 @@ export const deleteAttributes: API.OperationMethod<
     MissingParameter,
     NoSuchDomain,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttributes",
 }));
 export type BatchPutAttributesError =
@@ -810,7 +821,7 @@ export const batchPutAttributes: API.OperationMethod<
   BatchPutAttributesResponse,
   BatchPutAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchPutAttributesRequest,
   output: BatchPutAttributesResponse,
   errors: [
@@ -824,6 +835,8 @@ export const batchPutAttributes: API.OperationMethod<
     NumberSubmittedAttributesExceeded,
     NumberSubmittedItemsExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutAttributes",
 }));
 export type BatchDeleteAttributesError = CommonErrors;
@@ -836,10 +849,12 @@ export const batchDeleteAttributes: API.OperationMethod<
   BatchDeleteAttributesResponse,
   BatchDeleteAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteAttributesRequest,
   output: BatchDeleteAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteAttributes",
 }));
 export type SelectError =
@@ -877,7 +892,7 @@ export const select: API.OperationMethod<
     SelectError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SelectRequest,
   output: SelectResponse,
   errors: [
@@ -891,6 +906,8 @@ export const select: API.OperationMethod<
     RequestTimeout,
     TooManyRequestedAttributes,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Select",
   pagination: {
     inputToken: "NextToken",

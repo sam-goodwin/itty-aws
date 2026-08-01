@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -88,29 +90,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => AccessDeniedReason).annotate({
+        identifier: "AccessDeniedReason",
+      }),
+    ),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
+  "DirectoryUnavailableException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => DirectoryUnavailableReason).annotate({
+        identifier: "DirectoryUnavailableReason",
+      }),
+    ),
+  },
+  T.all(T.HttpError(400), T.Retryable()),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DirectoryId = string;
 export type GroupName = string;
 export type MemberName = string;
 export type Realm = string;
 export type ClientToken = string;
-export type ExceptionMessage = string;
-export type LdapDisplayName = string;
-export type StringAttributeValue = string | redacted.Redacted<string>;
-export type NumberAttributeValue = number;
-export type BooleanAttributeValue = boolean;
-export type SID = string;
-export type UserName = string;
-export type EmailAddress = string | redacted.Redacted<string>;
-export type GivenName = string | redacted.Redacted<string>;
-export type Surname = string | redacted.Redacted<string>;
-export type DistinguishedName = string | redacted.Redacted<string>;
-export type UserPrincipalName = string | redacted.Redacted<string>;
-export type NextToken = string | redacted.Redacted<string>;
-export type MaxResults = number;
-export type SearchString = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AddGroupMemberRequest {
   DirectoryId: string;
   GroupName: string;
@@ -145,40 +188,9 @@ export const AddGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddGroupMemberResult",
 }) as any as S.Schema<AddGroupMemberResult>;
-export type AccessDeniedReason =
-  | "IAM_AUTH"
-  | "DIRECTORY_AUTH"
-  | "DATA_DISABLED"
-  | (string & {});
-export const AccessDeniedReason = /*@__PURE__*/ S.String;
-export type DirectoryUnavailableReason =
-  | "INVALID_DIRECTORY_STATE"
-  | "DIRECTORY_TIMEOUT"
-  | "DIRECTORY_RESOURCES_EXCEEDED"
-  | "NO_DISK_SPACE"
-  | "TRUST_AUTH_FAILURE"
-  | (string & {});
-export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "INVALID_REALM"
-  | "INVALID_DIRECTORY_TYPE"
-  | "INVALID_SECONDARY_REGION"
-  | "INVALID_NEXT_TOKEN"
-  | "INVALID_ATTRIBUTE_VALUE"
-  | "INVALID_ATTRIBUTE_NAME"
-  | "INVALID_ATTRIBUTE_FOR_USER"
-  | "INVALID_ATTRIBUTE_FOR_GROUP"
-  | "INVALID_ATTRIBUTE_FOR_SEARCH"
-  | "INVALID_ATTRIBUTE_FOR_MODIFY"
-  | "DUPLICATE_ATTRIBUTE"
-  | "MISSING_ATTRIBUTE"
-  | "ATTRIBUTE_EXISTS"
-  | "LDAP_SIZE_LIMIT_EXCEEDED"
-  | "LDAP_UNSUPPORTED_OPERATION"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export type GroupType = "Distribution" | "Security" | (string & {});
 export const GroupType = /*@__PURE__*/ S.String;
+
 export type GroupScope =
   | "DomainLocal"
   | "Global"
@@ -186,7 +198,12 @@ export type GroupScope =
   | "BuiltinLocal"
   | (string & {});
 export const GroupScope = /*@__PURE__*/ S.String;
-export type StringSetAttributeValue = string | redacted.Redacted<string>[];
+
+export type LdapDisplayName = string;
+export type StringAttributeValue = string | redacted.Redacted<string>;
+export type NumberAttributeValue = number;
+export type BooleanAttributeValue = boolean;
+export type StringSetAttributeValue = (string | redacted.Redacted<string>)[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(SensitiveString);
 export type AttributeValue =
   | {
@@ -201,7 +218,7 @@ export type AttributeValue =
       S?: never;
       N?: never;
       BOOL?: never;
-      SS: string | redacted.Redacted<string>[];
+      SS: (string | redacted.Redacted<string>)[];
     };
 export const AttributeValue = /*@__PURE__*/ S.Union([
   S.Struct({ S: SensitiveString }),
@@ -244,6 +261,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupRequest",
 }) as any as S.Schema<CreateGroupRequest>;
+export type SID = string;
 export interface CreateGroupResult {
   DirectoryId?: string;
   SAMAccountName?: string;
@@ -258,6 +276,10 @@ export const CreateGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResult",
 }) as any as S.Schema<CreateGroupResult>;
+export type UserName = string;
+export type EmailAddress = string | redacted.Redacted<string>;
+export type GivenName = string | redacted.Redacted<string>;
+export type Surname = string | redacted.Redacted<string>;
 export interface CreateUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -392,6 +414,7 @@ export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGroupRequest",
 }) as any as S.Schema<DescribeGroupRequest>;
+export type DistinguishedName = string | redacted.Redacted<string>;
 export interface DescribeGroupResult {
   DirectoryId?: string;
   Realm?: string;
@@ -442,6 +465,7 @@ export const DescribeUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeUserRequest",
 }) as any as S.Schema<DescribeUserRequest>;
+export type UserPrincipalName = string | redacted.Redacted<string>;
 export interface DescribeUserResult {
   DirectoryId?: string;
   Realm?: string;
@@ -502,6 +526,8 @@ export const DisableUserResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableUserResult",
 }) as any as S.Schema<DisableUserResult>;
+export type NextToken = string | redacted.Redacted<string>;
+export type MaxResults = number;
 export interface ListGroupMembersRequest {
   DirectoryId: string;
   Realm?: string;
@@ -534,6 +560,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
+
 export interface Member {
   SID: string;
   SAMAccountName: string;
@@ -639,10 +666,7 @@ export const ListGroupsForMemberRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.all(
       ns,
-      T.Http({
-        method: "POST",
-        uri: "/GroupMemberships/ListGroupsForMember",
-      }),
+      T.Http({ method: "POST", uri: "/GroupMemberships/ListGroupsForMember" }),
       svc,
       auth,
       proto,
@@ -765,6 +789,7 @@ export const RemoveGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveGroupMemberResult",
 }) as any as S.Schema<RemoveGroupMemberResult>;
+export type SearchString = string | redacted.Redacted<string>;
 export interface SearchGroupsRequest {
   DirectoryId: string;
   SearchString: string | redacted.Redacted<string>;
@@ -905,6 +930,7 @@ export const SearchUsersResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchUsersResult>;
 export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
+
 export interface UpdateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -983,50 +1009,42 @@ export const UpdateUserResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResult",
 }) as any as S.Schema<UpdateUserResult>;
+export type ExceptionMessage = string;
+export type AccessDeniedReason =
+  | "IAM_AUTH"
+  | "DIRECTORY_AUTH"
+  | "DATA_DISABLED"
+  | (string & {});
+export const AccessDeniedReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), Reason: S.optional(AccessDeniedReason) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
-  "DirectoryUnavailableException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(DirectoryUnavailableReason),
-  },
-  T.Retryable(),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-  },
-).pipe(C.withBadRequestError) {}
+export type DirectoryUnavailableReason =
+  | "INVALID_DIRECTORY_STATE"
+  | "DIRECTORY_TIMEOUT"
+  | "DIRECTORY_RESOURCES_EXCEEDED"
+  | "NO_DISK_SPACE"
+  | "TRUST_AUTH_FAILURE"
+  | (string & {});
+export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export type ValidationExceptionReason =
+  | "INVALID_REALM"
+  | "INVALID_DIRECTORY_TYPE"
+  | "INVALID_SECONDARY_REGION"
+  | "INVALID_NEXT_TOKEN"
+  | "INVALID_ATTRIBUTE_VALUE"
+  | "INVALID_ATTRIBUTE_NAME"
+  | "INVALID_ATTRIBUTE_FOR_USER"
+  | "INVALID_ATTRIBUTE_FOR_GROUP"
+  | "INVALID_ATTRIBUTE_FOR_SEARCH"
+  | "INVALID_ATTRIBUTE_FOR_MODIFY"
+  | "DUPLICATE_ATTRIBUTE"
+  | "MISSING_ATTRIBUTE"
+  | "ATTRIBUTE_EXISTS"
+  | "LDAP_SIZE_LIMIT_EXCEEDED"
+  | "LDAP_UNSUPPORTED_OPERATION"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
 export type AddGroupMemberError =
   | AccessDeniedException
   | ConflictException
@@ -1056,8 +1074,11 @@ export const addGroupMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddGroupMember",
 }));
+
 export type CreateGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1085,8 +1106,11 @@ export const createGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateUserError =
   | AccessDeniedException
   | ConflictException
@@ -1114,8 +1138,11 @@ export const createUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1145,8 +1172,11 @@ export const deleteGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteUserError =
   | AccessDeniedException
   | ConflictException
@@ -1176,8 +1206,11 @@ export const deleteUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DescribeGroupError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1205,8 +1238,11 @@ export const describeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroup",
 }));
+
 export type DescribeUserError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1234,8 +1270,11 @@ export const describeUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
+
 export type DisableUserError =
   | AccessDeniedException
   | ConflictException
@@ -1267,8 +1306,11 @@ export const disableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableUser",
 }));
+
 export type ListGroupMembersError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1319,6 +1361,8 @@ export const listGroupMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupMembers",
   pagination: {
     inputToken: "NextToken",
@@ -1327,6 +1371,7 @@ export const listGroupMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1375,6 +1420,8 @@ export const listGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -1383,6 +1430,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsForMemberError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1433,6 +1481,8 @@ export const listGroupsForMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupsForMember",
   pagination: {
     inputToken: "NextToken",
@@ -1441,6 +1491,7 @@ export const listGroupsForMember: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUsersError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1489,6 +1540,8 @@ export const listUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -1497,6 +1550,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type RemoveGroupMemberError =
   | AccessDeniedException
   | ConflictException
@@ -1526,8 +1580,11 @@ export const removeGroupMember: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveGroupMember",
 }));
+
 export type SearchGroupsError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1578,6 +1635,8 @@ export const searchGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchGroups",
   pagination: {
     inputToken: "NextToken",
@@ -1586,6 +1645,7 @@ export const searchGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchUsersError =
   | AccessDeniedException
   | DirectoryUnavailableException
@@ -1636,6 +1696,8 @@ export const searchUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUsers",
   pagination: {
     inputToken: "NextToken",
@@ -1644,6 +1706,7 @@ export const searchUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type UpdateGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1673,8 +1736,11 @@ export const updateGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateUserError =
   | AccessDeniedException
   | ConflictException
@@ -1704,5 +1770,7 @@ export const updateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

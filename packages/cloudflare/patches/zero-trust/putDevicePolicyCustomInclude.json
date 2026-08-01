@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "DevicePolicyNotFound": [{ "code": 2052 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "ListNotFound": [{ "code": 10001 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align rules#ListsGet with distilled cloudflare/rules getList",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsGet",
+      "path": "/shapes/com.cloudflare.rules#GetList"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsGetRequest",
+      "path": "/shapes/com.cloudflare.rules#GetListRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rules#GetList/input/target",
+      "value": "com.cloudflare.rules#GetListRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rules#ListsGetResponse",
+      "path": "/shapes/com.cloudflare.rules#GetListResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rules#GetList/output/target",
+      "value": "com.cloudflare.rules#GetListResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#ListNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10001
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rules#GetList/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rules#ListNotFound"
+        },
+        {
+          "target": "com.cloudflare.rules#Forbidden"
+        }
+      ]
+    }
+  ]
 }

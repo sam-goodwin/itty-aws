@@ -1,8 +1,91 @@
 {
-  "errors": {
-    "VariantsNotConfigured": [
-      { "status": 404, "message": { "includes": "zone setting does not exist" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align cache#VariantsDelete with distilled cloudflare/cache deleteVariant",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#VariantsDelete",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariant"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#VariantsDeleteRequest",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariantRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariant/input/target",
+      "value": "com.cloudflare.cache#DeleteVariantRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#VariantsDeleteResponse",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariantResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariant/output/target",
+      "value": "com.cloudflare.cache#DeleteVariantResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#VariantsNotConfigured",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "zone setting does not exist"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#DeleteVariant/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.cache#VariantsNotConfigured"
+        },
+        {
+          "target": "com.cloudflare.cache#Forbidden"
+        }
+      ]
+    }
+  ]
 }

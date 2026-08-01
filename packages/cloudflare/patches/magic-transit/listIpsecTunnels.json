@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "MagicTransitNotOnboarded": [{ "code": 1012 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

@@ -1,11 +1,91 @@
 {
-  "errors": {
-    "DuplicateUaRule": [
-      {
-        "code": 10009,
-        "message": { "includes": "firewalluablock.api.duplicate_of_existing" }
+  "description": "Align firewall#UaRulesCreate with distilled cloudflare/firewall createUaRule",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesCreate",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRule"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesCreateRequest",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRuleRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRule/input/target",
+      "value": "com.cloudflare.firewall#CreateUaRuleRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.firewall#UaRulesCreateResponse",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRuleResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRule/output/target",
+      "value": "com.cloudflare.firewall#CreateUaRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#DuplicateUaRule",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10009,
+              "message": {
+                "includes": "firewalluablock.api.duplicate_of_existing"
+              }
+            }
+          ]
+        }
       }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.firewall#CreateUaRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.firewall#DuplicateUaRule"
+        },
+        {
+          "target": "com.cloudflare.firewall#Forbidden"
+        }
+      ]
+    }
+  ]
 }

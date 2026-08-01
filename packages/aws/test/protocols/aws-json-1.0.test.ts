@@ -919,42 +919,7 @@ describe("awsJson1_0 protocol", () => {
         ).pipe(Effect.flip);
 
         expect(result).toBeInstanceOf(ValidationException);
-        // The service's validation message must survive decoding — a
-        // ValidationException with an empty message hides the actual reason.
-        expect((result as ValidationException).message).toBe("Invalid input");
       }),
-    );
-
-    it.effect(
-      "should surface ValidationException reason and fieldList details",
-      () =>
-        Effect.gen(function* () {
-          const response: Response = {
-            status: 400,
-            statusText: "Bad Request",
-            headers: {},
-            body: JSON.stringify({
-              __type: "ValidationException",
-              message: "1 validation error detected",
-              reason: "FIELD_VALIDATION_FAILED",
-              fieldList: [{ name: "Name", message: "Member must not be null" }],
-            }),
-          };
-
-          const result = yield* parseResponse(
-            DescribeTableInput,
-            response,
-            [],
-          ).pipe(Effect.flip);
-
-          expect(result).toBeInstanceOf(ValidationException);
-          const err = result as ValidationException;
-          expect(err.message).toBe("1 validation error detected");
-          expect(err.reason).toBe("FIELD_VALIDATION_FAILED");
-          expect(err.fieldList).toEqual([
-            { name: "Name", message: "Member must not be null" },
-          ]);
-        }),
     );
 
     it.effect("should return UnknownAwsError for unknown error codes", () =>

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,57 +85,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
+  "AccountSuspendedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
+  "MailFromDomainNotVerifiedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
+  "MessageRejected",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class SendingPausedException extends S.TaggedErrorClass<SendingPausedException>()(
+  "SendingPausedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ConfigurationSetName = string;
 export type CustomRedirectDomain = string;
-export type PoolName = string;
-export type Enabled = boolean;
-export type LastFreshStart = Date;
-export type TagKey = string;
-export type TagValue = string;
-export type ErrorMessage = string;
-export type EventDestinationName = string;
-export type AmazonResourceName = string;
-export type DimensionName = string;
-export type DefaultDimensionValue = string;
-export type ReportName = string;
-export type EmailAddress = string;
-export type MessageData = string;
-export type Charset = string;
-export type RawMessageData = Uint8Array;
-export type TemplateArn = string;
-export type TemplateData = string;
-export type ReportId = string;
-export type Identity = string;
-export type DnsToken = string;
-export type Max24HourSend = number;
-export type MaxSendRate = number;
-export type SentLast24Hours = number;
-export type GeneralEnforcementStatus = string;
-export type BlacklistItemName = string;
-export type RblName = string;
-export type BlacklistingDescription = string;
-export type Ip = string;
-export type Percentage100Wrapper = number;
-export type NextToken = string;
-export type MaxItems = number;
-export type Domain = string;
-export type IspName = string;
-export type DeliverabilityTestSubject = string;
-export type Percentage = number;
-export type MessageContent = string;
-export type CampaignId = string;
-export type ImageUrl = string;
-export type Subject = string;
-export type Volume = number;
-export type Esp = string;
-export type MailFromDomainName = string;
-export type SendingPoolName = string;
-export type MessageTagName = string;
-export type MessageTagValue = string;
-export type OutboundMessageId = string;
-
-//# Schemas
 export interface TrackingOptions {
   CustomRedirectDomain: string;
 }
@@ -144,6 +147,8 @@ export const TrackingOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrackingOptions>;
 export type TlsPolicy = "REQUIRE" | "OPTIONAL" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
+
+export type PoolName = string;
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
   SendingPoolName?: string;
@@ -156,6 +161,8 @@ export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeliveryOptions",
 }) as any as S.Schema<DeliveryOptions>;
+export type Enabled = boolean;
+export type LastFreshStart = Date;
 export interface ReputationOptions {
   ReputationMetricsEnabled?: boolean;
   LastFreshStart?: Date;
@@ -174,6 +181,8 @@ export interface SendingOptions {
 export const SendingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SendingEnabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "SendingOptions" }) as any as S.Schema<SendingOptions>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -191,33 +200,34 @@ export interface CreateConfigurationSetRequest {
   SendingOptions?: SendingOptions;
   Tags?: Tag[];
 }
-export const CreateConfigurationSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSetName: S.String,
-      TrackingOptions: S.optional(TrackingOptions),
-      DeliveryOptions: S.optional(DeliveryOptions),
-      ReputationOptions: S.optional(ReputationOptions),
-      SendingOptions: S.optional(SendingOptions),
-      Tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/email/configuration-sets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSetName: S.String,
+    TrackingOptions: S.optional(TrackingOptions),
+    DeliveryOptions: S.optional(DeliveryOptions),
+    ReputationOptions: S.optional(ReputationOptions),
+    SendingOptions: S.optional(SendingOptions),
+    Tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/email/configuration-sets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateConfigurationSetRequest",
-  }) as any as S.Schema<CreateConfigurationSetRequest>;
+  ),
+).annotate({
+  identifier: "CreateConfigurationSetRequest",
+}) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResponse {}
-export const CreateConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateConfigurationSetResponse",
-  }) as any as S.Schema<CreateConfigurationSetResponse>;
+export const CreateConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateConfigurationSetResponse",
+}) as any as S.Schema<CreateConfigurationSetResponse>;
+export type EventDestinationName = string;
 export type EventType =
   | "SEND"
   | "REJECT"
@@ -229,8 +239,10 @@ export type EventType =
   | "RENDERING_FAILURE"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
+export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
   DeliveryStreamArn: string;
@@ -240,31 +252,34 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
+export type DimensionName = string;
 export type DimensionValueSource =
   | "MESSAGE_TAG"
   | "EMAIL_HEADER"
   | "LINK_TAG"
   | (string & {});
 export const DimensionValueSource = /*@__PURE__*/ S.String;
+
+export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-export const CloudWatchDimensionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DimensionName: S.String,
-      DimensionValueSource: DimensionValueSource,
-      DefaultDimensionValue: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudWatchDimensionConfiguration",
-  }) as any as S.Schema<CloudWatchDimensionConfiguration>;
+export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DimensionName: S.String,
+    DimensionValueSource: DimensionValueSource,
+    DefaultDimensionValue: S.String,
+  }),
+).annotate({
+  identifier: "CloudWatchDimensionConfiguration",
+}) as any as S.Schema<CloudWatchDimensionConfiguration>;
 export type CloudWatchDimensionConfigurations =
   CloudWatchDimensionConfiguration[];
-export const CloudWatchDimensionConfigurations =
-  /*@__PURE__*/ S.Array(CloudWatchDimensionConfiguration);
+export const CloudWatchDimensionConfigurations = /*@__PURE__*/ S.Array(
+  CloudWatchDimensionConfiguration,
+);
 export interface CloudWatchDestination {
   DimensionConfigurations: CloudWatchDimensionConfiguration[];
 }
@@ -343,26 +358,30 @@ export interface CreateDedicatedIpPoolRequest {
   PoolName: string;
   Tags?: Tag[];
 }
-export const CreateDedicatedIpPoolRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PoolName: S.String, Tags: S.optional(TagList) }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/v1/email/dedicated-ip-pools" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDedicatedIpPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PoolName: S.String, Tags: S.optional(TagList) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/email/dedicated-ip-pools" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDedicatedIpPoolRequest",
-  }) as any as S.Schema<CreateDedicatedIpPoolRequest>;
+  ),
+).annotate({
+  identifier: "CreateDedicatedIpPoolRequest",
+}) as any as S.Schema<CreateDedicatedIpPoolRequest>;
 export interface CreateDedicatedIpPoolResponse {}
-export const CreateDedicatedIpPoolResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateDedicatedIpPoolResponse",
-  }) as any as S.Schema<CreateDedicatedIpPoolResponse>;
+export const CreateDedicatedIpPoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateDedicatedIpPoolResponse",
+}) as any as S.Schema<CreateDedicatedIpPoolResponse>;
+export type ReportName = string;
+export type EmailAddress = string;
+export type MessageData = string;
+export type Charset = string;
 export interface Content {
   Data: string;
   Charset?: string;
@@ -384,12 +403,15 @@ export interface Message {
 export const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Subject: Content, Body: Body }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
+export type RawMessageData = Uint8Array;
 export interface RawMessage {
   Data: Uint8Array;
 }
 export const RawMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Data: T.Blob }),
 ).annotate({ identifier: "RawMessage" }) as any as S.Schema<RawMessage>;
+export type TemplateArn = string;
+export type TemplateData = string;
 export interface Template {
   TemplateArn?: string;
   TemplateData?: string;
@@ -418,8 +440,8 @@ export interface CreateDeliverabilityTestReportRequest {
   Content: EmailContent;
   Tags?: Tag[];
 }
-export const CreateDeliverabilityTestReportRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateDeliverabilityTestReportRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReportName: S.optional(S.String),
       FromEmailAddress: S.String,
@@ -438,27 +460,30 @@ export const CreateDeliverabilityTestReportRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateDeliverabilityTestReportRequest",
-  }) as any as S.Schema<CreateDeliverabilityTestReportRequest>;
+).annotate({
+  identifier: "CreateDeliverabilityTestReportRequest",
+}) as any as S.Schema<CreateDeliverabilityTestReportRequest>;
+export type ReportId = string;
 export type DeliverabilityTestStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | (string & {});
 export const DeliverabilityTestStatus = /*@__PURE__*/ S.String;
+
 export interface CreateDeliverabilityTestReportResponse {
   ReportId: string;
   DeliverabilityTestStatus: DeliverabilityTestStatus;
 }
-export const CreateDeliverabilityTestReportResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateDeliverabilityTestReportResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ReportId: S.String,
       DeliverabilityTestStatus: DeliverabilityTestStatus,
     }),
-  ).annotate({
-    identifier: "CreateDeliverabilityTestReportResponse",
-  }) as any as S.Schema<CreateDeliverabilityTestReportResponse>;
+).annotate({
+  identifier: "CreateDeliverabilityTestReportResponse",
+}) as any as S.Schema<CreateDeliverabilityTestReportResponse>;
+export type Identity = string;
 export interface CreateEmailIdentityRequest {
   EmailIdentity: string;
   Tags?: Tag[];
@@ -483,6 +508,7 @@ export type IdentityType =
   | "MANAGED_DOMAIN"
   | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export type DkimStatus =
   | "PENDING"
   | "SUCCESS"
@@ -491,6 +517,8 @@ export type DkimStatus =
   | "NOT_STARTED"
   | (string & {});
 export const DkimStatus = /*@__PURE__*/ S.String;
+
+export type DnsToken = string;
 export type DnsTokenList = string[];
 export const DnsTokenList = /*@__PURE__*/ S.Array(S.String);
 export interface DkimAttributes {
@@ -510,44 +538,43 @@ export interface CreateEmailIdentityResponse {
   VerifiedForSendingStatus?: boolean;
   DkimAttributes?: DkimAttributes;
 }
-export const CreateEmailIdentityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IdentityType: S.optional(IdentityType),
-      VerifiedForSendingStatus: S.optional(S.Boolean),
-      DkimAttributes: S.optional(DkimAttributes),
-    }),
-  ).annotate({
-    identifier: "CreateEmailIdentityResponse",
-  }) as any as S.Schema<CreateEmailIdentityResponse>;
+export const CreateEmailIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityType: S.optional(IdentityType),
+    VerifiedForSendingStatus: S.optional(S.Boolean),
+    DkimAttributes: S.optional(DkimAttributes),
+  }),
+).annotate({
+  identifier: "CreateEmailIdentityResponse",
+}) as any as S.Schema<CreateEmailIdentityResponse>;
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-export const DeleteConfigurationSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/email/configuration-sets/{ConfigurationSetName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/email/configuration-sets/{ConfigurationSetName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConfigurationSetRequest",
-  }) as any as S.Schema<DeleteConfigurationSetRequest>;
+  ),
+).annotate({
+  identifier: "DeleteConfigurationSetRequest",
+}) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-export const DeleteConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteConfigurationSetResponse",
-  }) as any as S.Schema<DeleteConfigurationSetResponse>;
+export const DeleteConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConfigurationSetResponse",
+}) as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -581,41 +608,36 @@ export const DeleteConfigurationSetEventDestinationResponse =
 export interface DeleteDedicatedIpPoolRequest {
   PoolName: string;
 }
-export const DeleteDedicatedIpPoolRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PoolName: S.String.pipe(T.HttpLabel("PoolName")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v1/email/dedicated-ip-pools/{PoolName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDedicatedIpPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PoolName: S.String.pipe(T.HttpLabel("PoolName")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/email/dedicated-ip-pools/{PoolName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteDedicatedIpPoolRequest",
-  }) as any as S.Schema<DeleteDedicatedIpPoolRequest>;
+  ),
+).annotate({
+  identifier: "DeleteDedicatedIpPoolRequest",
+}) as any as S.Schema<DeleteDedicatedIpPoolRequest>;
 export interface DeleteDedicatedIpPoolResponse {}
-export const DeleteDedicatedIpPoolResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDedicatedIpPoolResponse",
-  }) as any as S.Schema<DeleteDedicatedIpPoolResponse>;
+export const DeleteDedicatedIpPoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDedicatedIpPoolResponse",
+}) as any as S.Schema<DeleteDedicatedIpPoolResponse>;
 export interface DeleteEmailIdentityRequest {
   EmailIdentity: string;
 }
 export const DeleteEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-  }).pipe(
+  S.Struct({ EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")) }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/v1/email/identities/{EmailIdentity}",
-      }),
+      T.Http({ method: "DELETE", uri: "/v1/email/identities/{EmailIdentity}" }),
       svc,
       auth,
       proto,
@@ -627,10 +649,11 @@ export const DeleteEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEmailIdentityRequest",
 }) as any as S.Schema<DeleteEmailIdentityRequest>;
 export interface DeleteEmailIdentityResponse {}
-export const DeleteEmailIdentityResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEmailIdentityResponse",
-  }) as any as S.Schema<DeleteEmailIdentityResponse>;
+export const DeleteEmailIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEmailIdentityResponse",
+}) as any as S.Schema<DeleteEmailIdentityResponse>;
 export interface GetAccountRequest {}
 export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -646,6 +669,9 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountRequest",
 }) as any as S.Schema<GetAccountRequest>;
+export type Max24HourSend = number;
+export type MaxSendRate = number;
+export type SentLast24Hours = number;
 export interface SendQuota {
   Max24HourSend?: number;
   MaxSendRate?: number;
@@ -658,6 +684,7 @@ export const SendQuota = /*@__PURE__*/ S.suspend(() =>
     SentLast24Hours: S.optional(S.Number),
   }),
 ).annotate({ identifier: "SendQuota" }) as any as S.Schema<SendQuota>;
+export type GeneralEnforcementStatus = string;
 export interface GetAccountResponse {
   SendQuota?: SendQuota;
   SendingEnabled?: boolean;
@@ -676,6 +703,7 @@ export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountResponse",
 }) as any as S.Schema<GetAccountResponse>;
+export type BlacklistItemName = string;
 export type BlacklistItemNames = string[];
 export const BlacklistItemNames = /*@__PURE__*/ S.Array(S.String);
 export interface GetBlacklistReportsRequest {
@@ -702,6 +730,8 @@ export const GetBlacklistReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBlacklistReportsRequest",
 }) as any as S.Schema<GetBlacklistReportsRequest>;
+export type RblName = string;
+export type BlacklistingDescription = string;
 export interface BlacklistEntry {
   RblName?: string;
   ListingTime?: Date;
@@ -724,12 +754,11 @@ export const BlacklistReport = /*@__PURE__*/ S.Record(
 export interface GetBlacklistReportsResponse {
   BlacklistReport: { [key: string]: BlacklistEntry[] | undefined };
 }
-export const GetBlacklistReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BlacklistReport: BlacklistReport }),
-  ).annotate({
-    identifier: "GetBlacklistReportsResponse",
-  }) as any as S.Schema<GetBlacklistReportsResponse>;
+export const GetBlacklistReportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BlacklistReport: BlacklistReport }),
+).annotate({
+  identifier: "GetBlacklistReportsResponse",
+}) as any as S.Schema<GetBlacklistReportsResponse>;
 export interface GetConfigurationSetRequest {
   ConfigurationSetName: string;
 }
@@ -760,19 +789,18 @@ export interface GetConfigurationSetResponse {
   SendingOptions?: SendingOptions;
   Tags?: Tag[];
 }
-export const GetConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSetName: S.optional(S.String),
-      TrackingOptions: S.optional(TrackingOptions),
-      DeliveryOptions: S.optional(DeliveryOptions),
-      ReputationOptions: S.optional(ReputationOptions),
-      SendingOptions: S.optional(SendingOptions),
-      Tags: S.optional(TagList),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationSetResponse",
-  }) as any as S.Schema<GetConfigurationSetResponse>;
+export const GetConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSetName: S.optional(S.String),
+    TrackingOptions: S.optional(TrackingOptions),
+    DeliveryOptions: S.optional(DeliveryOptions),
+    ReputationOptions: S.optional(ReputationOptions),
+    SendingOptions: S.optional(SendingOptions),
+    Tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "GetConfigurationSetResponse",
+}) as any as S.Schema<GetConfigurationSetResponse>;
 export interface GetConfigurationSetEventDestinationsRequest {
   ConfigurationSetName: string;
 }
@@ -829,6 +857,7 @@ export const GetConfigurationSetEventDestinationsResponse =
   ).annotate({
     identifier: "GetConfigurationSetEventDestinationsResponse",
   }) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>;
+export type Ip = string;
 export interface GetDedicatedIpRequest {
   Ip: string;
 }
@@ -848,6 +877,8 @@ export const GetDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDedicatedIpRequest>;
 export type WarmupStatus = "IN_PROGRESS" | "DONE" | (string & {});
 export const WarmupStatus = /*@__PURE__*/ S.String;
+
+export type Percentage100Wrapper = number;
 export interface DedicatedIp {
   Ip: string;
   WarmupStatus: WarmupStatus;
@@ -870,6 +901,8 @@ export const GetDedicatedIpResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDedicatedIpResponse",
 }) as any as S.Schema<GetDedicatedIpResponse>;
+export type NextToken = string;
+export type MaxItems = number;
 export interface GetDedicatedIpsRequest {
   PoolName?: string;
   NextToken?: string;
@@ -908,8 +941,8 @@ export const GetDedicatedIpsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDedicatedIpsResponse",
 }) as any as S.Schema<GetDedicatedIpsResponse>;
 export interface GetDeliverabilityDashboardOptionsRequest {}
-export const GetDeliverabilityDashboardOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDeliverabilityDashboardOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/v1/email/deliverability-dashboard" }),
@@ -920,51 +953,53 @@ export const GetDeliverabilityDashboardOptionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetDeliverabilityDashboardOptionsRequest",
-  }) as any as S.Schema<GetDeliverabilityDashboardOptionsRequest>;
+).annotate({
+  identifier: "GetDeliverabilityDashboardOptionsRequest",
+}) as any as S.Schema<GetDeliverabilityDashboardOptionsRequest>;
 export type DeliverabilityDashboardAccountStatus =
   | "ACTIVE"
   | "PENDING_EXPIRATION"
   | "DISABLED"
   | (string & {});
 export const DeliverabilityDashboardAccountStatus = /*@__PURE__*/ S.String;
+
+export type Domain = string;
+export type IspName = string;
 export type IspNameList = string[];
 export const IspNameList = /*@__PURE__*/ S.Array(S.String);
 export interface InboxPlacementTrackingOption {
   Global?: boolean;
   TrackedIsps?: string[];
 }
-export const InboxPlacementTrackingOption =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Global: S.optional(S.Boolean),
-      TrackedIsps: S.optional(IspNameList),
-    }),
-  ).annotate({
-    identifier: "InboxPlacementTrackingOption",
-  }) as any as S.Schema<InboxPlacementTrackingOption>;
+export const InboxPlacementTrackingOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Global: S.optional(S.Boolean),
+    TrackedIsps: S.optional(IspNameList),
+  }),
+).annotate({
+  identifier: "InboxPlacementTrackingOption",
+}) as any as S.Schema<InboxPlacementTrackingOption>;
 export interface DomainDeliverabilityTrackingOption {
   Domain?: string;
   SubscriptionStartDate?: Date;
   InboxPlacementTrackingOption?: InboxPlacementTrackingOption;
 }
-export const DomainDeliverabilityTrackingOption =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Domain: S.optional(S.String),
-      SubscriptionStartDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      InboxPlacementTrackingOption: S.optional(InboxPlacementTrackingOption),
-    }),
-  ).annotate({
-    identifier: "DomainDeliverabilityTrackingOption",
-  }) as any as S.Schema<DomainDeliverabilityTrackingOption>;
+export const DomainDeliverabilityTrackingOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Domain: S.optional(S.String),
+    SubscriptionStartDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    InboxPlacementTrackingOption: S.optional(InboxPlacementTrackingOption),
+  }),
+).annotate({
+  identifier: "DomainDeliverabilityTrackingOption",
+}) as any as S.Schema<DomainDeliverabilityTrackingOption>;
 export type DomainDeliverabilityTrackingOptions =
   DomainDeliverabilityTrackingOption[];
-export const DomainDeliverabilityTrackingOptions =
-  /*@__PURE__*/ S.Array(DomainDeliverabilityTrackingOption);
+export const DomainDeliverabilityTrackingOptions = /*@__PURE__*/ S.Array(
+  DomainDeliverabilityTrackingOption,
+);
 export interface GetDeliverabilityDashboardOptionsResponse {
   DashboardEnabled: boolean;
   SubscriptionExpiryDate?: Date;
@@ -991,24 +1026,24 @@ export const GetDeliverabilityDashboardOptionsResponse =
 export interface GetDeliverabilityTestReportRequest {
   ReportId: string;
 }
-export const GetDeliverabilityTestReportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ReportId: S.String.pipe(T.HttpLabel("ReportId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/email/deliverability-dashboard/test-reports/{ReportId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDeliverabilityTestReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ReportId: S.String.pipe(T.HttpLabel("ReportId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/email/deliverability-dashboard/test-reports/{ReportId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDeliverabilityTestReportRequest",
-  }) as any as S.Schema<GetDeliverabilityTestReportRequest>;
+  ),
+).annotate({
+  identifier: "GetDeliverabilityTestReportRequest",
+}) as any as S.Schema<GetDeliverabilityTestReportRequest>;
+export type DeliverabilityTestSubject = string;
 export interface DeliverabilityTestReport {
   ReportId?: string;
   ReportName?: string;
@@ -1029,6 +1064,7 @@ export const DeliverabilityTestReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeliverabilityTestReport",
 }) as any as S.Schema<DeliverabilityTestReport>;
+export type Percentage = number;
 export interface PlacementStatistics {
   InboxPercentage?: number;
   SpamPercentage?: number;
@@ -1059,6 +1095,7 @@ export const IspPlacement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IspPlacement" }) as any as S.Schema<IspPlacement>;
 export type IspPlacements = IspPlacement[];
 export const IspPlacements = /*@__PURE__*/ S.Array(IspPlacement);
+export type MessageContent = string;
 export interface GetDeliverabilityTestReportResponse {
   DeliverabilityTestReport: DeliverabilityTestReport;
   OverallPlacement: PlacementStatistics;
@@ -1066,23 +1103,23 @@ export interface GetDeliverabilityTestReportResponse {
   Message?: string;
   Tags?: Tag[];
 }
-export const GetDeliverabilityTestReportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DeliverabilityTestReport: DeliverabilityTestReport,
-      OverallPlacement: PlacementStatistics,
-      IspPlacements: IspPlacements,
-      Message: S.optional(S.String),
-      Tags: S.optional(TagList),
-    }),
-  ).annotate({
-    identifier: "GetDeliverabilityTestReportResponse",
-  }) as any as S.Schema<GetDeliverabilityTestReportResponse>;
+export const GetDeliverabilityTestReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeliverabilityTestReport: DeliverabilityTestReport,
+    OverallPlacement: PlacementStatistics,
+    IspPlacements: IspPlacements,
+    Message: S.optional(S.String),
+    Tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "GetDeliverabilityTestReportResponse",
+}) as any as S.Schema<GetDeliverabilityTestReportResponse>;
+export type CampaignId = string;
 export interface GetDomainDeliverabilityCampaignRequest {
   CampaignId: string;
 }
-export const GetDomainDeliverabilityCampaignRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDomainDeliverabilityCampaignRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ CampaignId: S.String.pipe(T.HttpLabel("CampaignId")) }).pipe(
       T.all(
         T.Http({
@@ -1096,11 +1133,15 @@ export const GetDomainDeliverabilityCampaignRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetDomainDeliverabilityCampaignRequest",
-  }) as any as S.Schema<GetDomainDeliverabilityCampaignRequest>;
+).annotate({
+  identifier: "GetDomainDeliverabilityCampaignRequest",
+}) as any as S.Schema<GetDomainDeliverabilityCampaignRequest>;
+export type ImageUrl = string;
+export type Subject = string;
 export type IpList = string[];
 export const IpList = /*@__PURE__*/ S.Array(S.String);
+export type Volume = number;
+export type Esp = string;
 export type Esps = string[];
 export const Esps = /*@__PURE__*/ S.Array(S.String);
 export interface DomainDeliverabilityCampaign {
@@ -1119,71 +1160,69 @@ export interface DomainDeliverabilityCampaign {
   ProjectedVolume?: number;
   Esps?: string[];
 }
-export const DomainDeliverabilityCampaign =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CampaignId: S.optional(S.String),
-      ImageUrl: S.optional(S.String),
-      Subject: S.optional(S.String),
-      FromAddress: S.optional(S.String),
-      SendingIps: S.optional(IpList),
-      FirstSeenDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LastSeenDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      InboxCount: S.optional(S.Number),
-      SpamCount: S.optional(S.Number),
-      ReadRate: S.optional(S.Number),
-      DeleteRate: S.optional(S.Number),
-      ReadDeleteRate: S.optional(S.Number),
-      ProjectedVolume: S.optional(S.Number),
-      Esps: S.optional(Esps),
-    }),
-  ).annotate({
-    identifier: "DomainDeliverabilityCampaign",
-  }) as any as S.Schema<DomainDeliverabilityCampaign>;
+export const DomainDeliverabilityCampaign = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CampaignId: S.optional(S.String),
+    ImageUrl: S.optional(S.String),
+    Subject: S.optional(S.String),
+    FromAddress: S.optional(S.String),
+    SendingIps: S.optional(IpList),
+    FirstSeenDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LastSeenDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    InboxCount: S.optional(S.Number),
+    SpamCount: S.optional(S.Number),
+    ReadRate: S.optional(S.Number),
+    DeleteRate: S.optional(S.Number),
+    ReadDeleteRate: S.optional(S.Number),
+    ProjectedVolume: S.optional(S.Number),
+    Esps: S.optional(Esps),
+  }),
+).annotate({
+  identifier: "DomainDeliverabilityCampaign",
+}) as any as S.Schema<DomainDeliverabilityCampaign>;
 export interface GetDomainDeliverabilityCampaignResponse {
   DomainDeliverabilityCampaign: DomainDeliverabilityCampaign;
 }
-export const GetDomainDeliverabilityCampaignResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDomainDeliverabilityCampaignResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ DomainDeliverabilityCampaign: DomainDeliverabilityCampaign }),
-  ).annotate({
-    identifier: "GetDomainDeliverabilityCampaignResponse",
-  }) as any as S.Schema<GetDomainDeliverabilityCampaignResponse>;
+).annotate({
+  identifier: "GetDomainDeliverabilityCampaignResponse",
+}) as any as S.Schema<GetDomainDeliverabilityCampaignResponse>;
 export interface GetDomainStatisticsReportRequest {
   Domain: string;
   StartDate: Date;
   EndDate: Date;
 }
-export const GetDomainStatisticsReportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Domain: S.String.pipe(T.HttpLabel("Domain")),
-      StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("StartDate"),
-      ),
-      EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("EndDate"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v1/email/deliverability-dashboard/statistics-report/{Domain}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDomainStatisticsReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Domain: S.String.pipe(T.HttpLabel("Domain")),
+    StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("StartDate"),
     ),
-  ).annotate({
-    identifier: "GetDomainStatisticsReportRequest",
-  }) as any as S.Schema<GetDomainStatisticsReportRequest>;
+    EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("EndDate"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/email/deliverability-dashboard/statistics-report/{Domain}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDomainStatisticsReportRequest",
+}) as any as S.Schema<GetDomainStatisticsReportRequest>;
 export interface VolumeStatistics {
   InboxRawCount?: number;
   SpamRawCount?: number;
@@ -1250,19 +1289,16 @@ export interface GetDomainStatisticsReportResponse {
   OverallVolume: OverallVolume;
   DailyVolumes: DailyVolume[];
 }
-export const GetDomainStatisticsReportResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OverallVolume: OverallVolume, DailyVolumes: DailyVolumes }),
-  ).annotate({
-    identifier: "GetDomainStatisticsReportResponse",
-  }) as any as S.Schema<GetDomainStatisticsReportResponse>;
+export const GetDomainStatisticsReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OverallVolume: OverallVolume, DailyVolumes: DailyVolumes }),
+).annotate({
+  identifier: "GetDomainStatisticsReportResponse",
+}) as any as S.Schema<GetDomainStatisticsReportResponse>;
 export interface GetEmailIdentityRequest {
   EmailIdentity: string;
 }
 export const GetEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-  }).pipe(
+  S.Struct({ EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v1/email/identities/{EmailIdentity}" }),
       svc,
@@ -1275,6 +1311,7 @@ export const GetEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEmailIdentityRequest",
 }) as any as S.Schema<GetEmailIdentityRequest>;
+export type MailFromDomainName = string;
 export type MailFromDomainStatus =
   | "PENDING"
   | "SUCCESS"
@@ -1282,11 +1319,13 @@ export type MailFromDomainStatus =
   | "TEMPORARY_FAILURE"
   | (string & {});
 export const MailFromDomainStatus = /*@__PURE__*/ S.String;
+
 export type BehaviorOnMxFailure =
   | "USE_DEFAULT_VALUE"
   | "REJECT_MESSAGE"
   | (string & {});
 export const BehaviorOnMxFailure = /*@__PURE__*/ S.String;
+
 export interface MailFromAttributes {
   MailFromDomain: string;
   MailFromDomainStatus: MailFromDomainStatus;
@@ -1325,82 +1364,78 @@ export interface ListConfigurationSetsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-export const ListConfigurationSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/email/configuration-sets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConfigurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/email/configuration-sets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListConfigurationSetsRequest",
-  }) as any as S.Schema<ListConfigurationSetsRequest>;
+  ),
+).annotate({
+  identifier: "ListConfigurationSetsRequest",
+}) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSetNameList = string[];
 export const ConfigurationSetNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: string[];
   NextToken?: string;
 }
-export const ListConfigurationSetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSets: S.optional(ConfigurationSetNameList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListConfigurationSetsResponse",
-  }) as any as S.Schema<ListConfigurationSetsResponse>;
+export const ListConfigurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSets: S.optional(ConfigurationSetNameList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConfigurationSetsResponse",
+}) as any as S.Schema<ListConfigurationSetsResponse>;
 export interface ListDedicatedIpPoolsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-export const ListDedicatedIpPoolsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/v1/email/dedicated-ip-pools" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDedicatedIpPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/email/dedicated-ip-pools" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDedicatedIpPoolsRequest",
-  }) as any as S.Schema<ListDedicatedIpPoolsRequest>;
+  ),
+).annotate({
+  identifier: "ListDedicatedIpPoolsRequest",
+}) as any as S.Schema<ListDedicatedIpPoolsRequest>;
 export type ListOfDedicatedIpPools = string[];
 export const ListOfDedicatedIpPools = /*@__PURE__*/ S.Array(S.String);
 export interface ListDedicatedIpPoolsResponse {
   DedicatedIpPools?: string[];
   NextToken?: string;
 }
-export const ListDedicatedIpPoolsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DedicatedIpPools: S.optional(ListOfDedicatedIpPools),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDedicatedIpPoolsResponse",
-  }) as any as S.Schema<ListDedicatedIpPoolsResponse>;
+export const ListDedicatedIpPoolsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DedicatedIpPools: S.optional(ListOfDedicatedIpPools),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDedicatedIpPoolsResponse",
+}) as any as S.Schema<ListDedicatedIpPoolsResponse>;
 export interface ListDeliverabilityTestReportsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-export const ListDeliverabilityTestReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListDeliverabilityTestReportsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
       PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
@@ -1417,9 +1452,9 @@ export const ListDeliverabilityTestReportsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListDeliverabilityTestReportsRequest",
-  }) as any as S.Schema<ListDeliverabilityTestReportsRequest>;
+).annotate({
+  identifier: "ListDeliverabilityTestReportsRequest",
+}) as any as S.Schema<ListDeliverabilityTestReportsRequest>;
 export type DeliverabilityTestReports = DeliverabilityTestReport[];
 export const DeliverabilityTestReports = /*@__PURE__*/ S.Array(
   DeliverabilityTestReport,
@@ -1428,15 +1463,15 @@ export interface ListDeliverabilityTestReportsResponse {
   DeliverabilityTestReports: DeliverabilityTestReport[];
   NextToken?: string;
 }
-export const ListDeliverabilityTestReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListDeliverabilityTestReportsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DeliverabilityTestReports: DeliverabilityTestReports,
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListDeliverabilityTestReportsResponse",
-  }) as any as S.Schema<ListDeliverabilityTestReportsResponse>;
+).annotate({
+  identifier: "ListDeliverabilityTestReportsResponse",
+}) as any as S.Schema<ListDeliverabilityTestReportsResponse>;
 export interface ListDomainDeliverabilityCampaignsRequest {
   StartDate: Date;
   EndDate: Date;
@@ -1444,8 +1479,8 @@ export interface ListDomainDeliverabilityCampaignsRequest {
   NextToken?: string;
   PageSize?: number;
 }
-export const ListDomainDeliverabilityCampaignsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListDomainDeliverabilityCampaignsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
         T.HttpQuery("StartDate"),
@@ -1469,12 +1504,13 @@ export const ListDomainDeliverabilityCampaignsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListDomainDeliverabilityCampaignsRequest",
-  }) as any as S.Schema<ListDomainDeliverabilityCampaignsRequest>;
+).annotate({
+  identifier: "ListDomainDeliverabilityCampaignsRequest",
+}) as any as S.Schema<ListDomainDeliverabilityCampaignsRequest>;
 export type DomainDeliverabilityCampaignList = DomainDeliverabilityCampaign[];
-export const DomainDeliverabilityCampaignList =
-  /*@__PURE__*/ S.Array(DomainDeliverabilityCampaign);
+export const DomainDeliverabilityCampaignList = /*@__PURE__*/ S.Array(
+  DomainDeliverabilityCampaign,
+);
 export interface ListDomainDeliverabilityCampaignsResponse {
   DomainDeliverabilityCampaigns: DomainDeliverabilityCampaign[];
   NextToken?: string;
@@ -1527,15 +1563,14 @@ export interface ListEmailIdentitiesResponse {
   EmailIdentities?: IdentityInfo[];
   NextToken?: string;
 }
-export const ListEmailIdentitiesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EmailIdentities: S.optional(IdentityInfoList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEmailIdentitiesResponse",
-  }) as any as S.Schema<ListEmailIdentitiesResponse>;
+export const ListEmailIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EmailIdentities: S.optional(IdentityInfoList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEmailIdentitiesResponse",
+}) as any as S.Schema<ListEmailIdentitiesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1556,10 +1591,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Tags: TagList })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: TagList }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutAccountDedicatedIpWarmupAttributesRequest {
   AutoWarmupEnabled?: boolean;
 }
@@ -1589,26 +1625,27 @@ export const PutAccountDedicatedIpWarmupAttributesResponse =
 export interface PutAccountSendingAttributesRequest {
   SendingEnabled?: boolean;
 }
-export const PutAccountSendingAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SendingEnabled: S.optional(S.Boolean) }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/v1/email/account/sending" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutAccountSendingAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SendingEnabled: S.optional(S.Boolean) }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v1/email/account/sending" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutAccountSendingAttributesRequest",
-  }) as any as S.Schema<PutAccountSendingAttributesRequest>;
+  ),
+).annotate({
+  identifier: "PutAccountSendingAttributesRequest",
+}) as any as S.Schema<PutAccountSendingAttributesRequest>;
 export interface PutAccountSendingAttributesResponse {}
-export const PutAccountSendingAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutAccountSendingAttributesResponse",
-  }) as any as S.Schema<PutAccountSendingAttributesResponse>;
+export const PutAccountSendingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutAccountSendingAttributesResponse",
+}) as any as S.Schema<PutAccountSendingAttributesResponse>;
+export type SendingPoolName = string;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   TlsPolicy?: TlsPolicy;
@@ -1675,8 +1712,8 @@ export interface PutConfigurationSetSendingOptionsRequest {
   ConfigurationSetName: string;
   SendingEnabled?: boolean;
 }
-export const PutConfigurationSetSendingOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const PutConfigurationSetSendingOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
       SendingEnabled: S.optional(S.Boolean),
@@ -1693,9 +1730,9 @@ export const PutConfigurationSetSendingOptionsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PutConfigurationSetSendingOptionsRequest",
-  }) as any as S.Schema<PutConfigurationSetSendingOptionsRequest>;
+).annotate({
+  identifier: "PutConfigurationSetSendingOptionsRequest",
+}) as any as S.Schema<PutConfigurationSetSendingOptionsRequest>;
 export interface PutConfigurationSetSendingOptionsResponse {}
 export const PutConfigurationSetSendingOptionsResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -1735,35 +1772,35 @@ export interface PutDedicatedIpInPoolRequest {
   Ip: string;
   DestinationPoolName: string;
 }
-export const PutDedicatedIpInPoolRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Ip: S.String.pipe(T.HttpLabel("Ip")),
-      DestinationPoolName: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/v1/email/dedicated-ips/{Ip}/pool" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutDedicatedIpInPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Ip: S.String.pipe(T.HttpLabel("Ip")),
+    DestinationPoolName: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v1/email/dedicated-ips/{Ip}/pool" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutDedicatedIpInPoolRequest",
-  }) as any as S.Schema<PutDedicatedIpInPoolRequest>;
+  ),
+).annotate({
+  identifier: "PutDedicatedIpInPoolRequest",
+}) as any as S.Schema<PutDedicatedIpInPoolRequest>;
 export interface PutDedicatedIpInPoolResponse {}
-export const PutDedicatedIpInPoolResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutDedicatedIpInPoolResponse",
-  }) as any as S.Schema<PutDedicatedIpInPoolResponse>;
+export const PutDedicatedIpInPoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutDedicatedIpInPoolResponse",
+}) as any as S.Schema<PutDedicatedIpInPoolResponse>;
 export interface PutDedicatedIpWarmupAttributesRequest {
   Ip: string;
   WarmupPercentage: number;
 }
-export const PutDedicatedIpWarmupAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const PutDedicatedIpWarmupAttributesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Ip: S.String.pipe(T.HttpLabel("Ip")),
       WarmupPercentage: S.Number,
@@ -1777,20 +1814,21 @@ export const PutDedicatedIpWarmupAttributesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PutDedicatedIpWarmupAttributesRequest",
-  }) as any as S.Schema<PutDedicatedIpWarmupAttributesRequest>;
+).annotate({
+  identifier: "PutDedicatedIpWarmupAttributesRequest",
+}) as any as S.Schema<PutDedicatedIpWarmupAttributesRequest>;
 export interface PutDedicatedIpWarmupAttributesResponse {}
-export const PutDedicatedIpWarmupAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutDedicatedIpWarmupAttributesResponse",
-  }) as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>;
+export const PutDedicatedIpWarmupAttributesResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "PutDedicatedIpWarmupAttributesResponse",
+}) as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>;
 export interface PutDeliverabilityDashboardOptionRequest {
   DashboardEnabled: boolean;
   SubscribedDomains?: DomainDeliverabilityTrackingOption[];
 }
-export const PutDeliverabilityDashboardOptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const PutDeliverabilityDashboardOptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DashboardEnabled: S.Boolean,
       SubscribedDomains: S.optional(DomainDeliverabilityTrackingOptions),
@@ -1804,20 +1842,21 @@ export const PutDeliverabilityDashboardOptionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PutDeliverabilityDashboardOptionRequest",
-  }) as any as S.Schema<PutDeliverabilityDashboardOptionRequest>;
+).annotate({
+  identifier: "PutDeliverabilityDashboardOptionRequest",
+}) as any as S.Schema<PutDeliverabilityDashboardOptionRequest>;
 export interface PutDeliverabilityDashboardOptionResponse {}
-export const PutDeliverabilityDashboardOptionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutDeliverabilityDashboardOptionResponse",
-  }) as any as S.Schema<PutDeliverabilityDashboardOptionResponse>;
+export const PutDeliverabilityDashboardOptionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "PutDeliverabilityDashboardOptionResponse",
+}) as any as S.Schema<PutDeliverabilityDashboardOptionResponse>;
 export interface PutEmailIdentityDkimAttributesRequest {
   EmailIdentity: string;
   SigningEnabled?: boolean;
 }
-export const PutEmailIdentityDkimAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const PutEmailIdentityDkimAttributesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
       SigningEnabled: S.optional(S.Boolean),
@@ -1834,14 +1873,15 @@ export const PutEmailIdentityDkimAttributesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PutEmailIdentityDkimAttributesRequest",
-  }) as any as S.Schema<PutEmailIdentityDkimAttributesRequest>;
+).annotate({
+  identifier: "PutEmailIdentityDkimAttributesRequest",
+}) as any as S.Schema<PutEmailIdentityDkimAttributesRequest>;
 export interface PutEmailIdentityDkimAttributesResponse {}
-export const PutEmailIdentityDkimAttributesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutEmailIdentityDkimAttributesResponse",
-  }) as any as S.Schema<PutEmailIdentityDkimAttributesResponse>;
+export const PutEmailIdentityDkimAttributesResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "PutEmailIdentityDkimAttributesResponse",
+}) as any as S.Schema<PutEmailIdentityDkimAttributesResponse>;
 export interface PutEmailIdentityFeedbackAttributesRequest {
   EmailIdentity: string;
   EmailForwardingEnabled?: boolean;
@@ -1918,6 +1958,8 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
     BccAddresses: S.optional(EmailAddressList),
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
+export type MessageTagName = string;
+export type MessageTagValue = string;
 export interface MessageTag {
   Name: string;
   Value: string;
@@ -1958,6 +2000,7 @@ export const SendEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendEmailRequest",
 }) as any as S.Schema<SendEmailRequest>;
+export type OutboundMessageId = string;
 export interface SendEmailResponse {
   MessageId?: string;
 }
@@ -2051,50 +2094,7 @@ export const UpdateConfigurationSetEventDestinationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateConfigurationSetEventDestinationResponse",
   }) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
-
-//# Errors
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
-  "AccountSuspendedException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
-  "MailFromDomainNotVerifiedException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class SendingPausedException extends S.TaggedErrorClass<SendingPausedException>()(
-  "SendingPausedException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateConfigurationSetError =
   | AlreadyExistsException
   | BadRequestException
@@ -2126,8 +2126,11 @@ export const createConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
+
 export type CreateConfigurationSetEventDestinationError =
   | AlreadyExistsException
   | BadRequestException
@@ -2160,8 +2163,11 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
+
 export type CreateDedicatedIpPoolError =
   | AlreadyExistsException
   | BadRequestException
@@ -2190,8 +2196,11 @@ export const createDedicatedIpPool: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDedicatedIpPool",
 }));
+
 export type CreateDeliverabilityTestReportError =
   | AccountSuspendedException
   | BadRequestException
@@ -2231,8 +2240,11 @@ export const createDeliverabilityTestReport: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeliverabilityTestReport",
 }));
+
 export type CreateEmailIdentityError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2269,8 +2281,11 @@ export const createEmailIdentity: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEmailIdentity",
 }));
+
 export type DeleteConfigurationSetError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2300,8 +2315,11 @@ export const deleteConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
+
 export type DeleteConfigurationSetEventDestinationError =
   | BadRequestException
   | NotFoundException
@@ -2325,8 +2343,11 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   input: DeleteConfigurationSetEventDestinationRequest,
   output: DeleteConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
+
 export type DeleteDedicatedIpPoolError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2350,8 +2371,11 @@ export const deleteDedicatedIpPool: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDedicatedIpPool",
 }));
+
 export type DeleteEmailIdentityError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2376,8 +2400,11 @@ export const deleteEmailIdentity: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailIdentity",
 }));
+
 export type GetAccountError =
   | BadRequestException
   | TooManyRequestsException
@@ -2395,8 +2422,11 @@ export const getAccount: API.OperationMethod<
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccount",
 }));
+
 export type GetBlacklistReportsError =
   | BadRequestException
   | NotFoundException
@@ -2414,8 +2444,11 @@ export const getBlacklistReports: API.OperationMethod<
   input: GetBlacklistReportsRequest,
   output: GetBlacklistReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlacklistReports",
 }));
+
 export type GetConfigurationSetError =
   | BadRequestException
   | NotFoundException
@@ -2441,8 +2474,11 @@ export const getConfigurationSet: API.OperationMethod<
   input: GetConfigurationSetRequest,
   output: GetConfigurationSetResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationSet",
 }));
+
 export type GetConfigurationSetEventDestinationsError =
   | BadRequestException
   | NotFoundException
@@ -2467,8 +2503,11 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   input: GetConfigurationSetEventDestinationsRequest,
   output: GetConfigurationSetEventDestinationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationSetEventDestinations",
 }));
+
 export type GetDedicatedIpError =
   | BadRequestException
   | NotFoundException
@@ -2488,8 +2527,11 @@ export const getDedicatedIp: API.OperationMethod<
   input: GetDedicatedIpRequest,
   output: GetDedicatedIpResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDedicatedIp",
 }));
+
 export type GetDedicatedIpsError =
   | BadRequestException
   | NotFoundException
@@ -2523,6 +2565,8 @@ export const getDedicatedIps: API.OperationMethod<
   input: GetDedicatedIpsRequest,
   output: GetDedicatedIpsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDedicatedIps",
   pagination: {
     inputToken: "NextToken",
@@ -2530,6 +2574,7 @@ export const getDedicatedIps: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GetDeliverabilityDashboardOptionsError =
   | BadRequestException
   | LimitExceededException
@@ -2558,8 +2603,11 @@ export const getDeliverabilityDashboardOptions: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliverabilityDashboardOptions",
 }));
+
 export type GetDeliverabilityTestReportError =
   | BadRequestException
   | NotFoundException
@@ -2577,8 +2625,11 @@ export const getDeliverabilityTestReport: API.OperationMethod<
   input: GetDeliverabilityTestReportRequest,
   output: GetDeliverabilityTestReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliverabilityTestReport",
 }));
+
 export type GetDomainDeliverabilityCampaignError =
   | BadRequestException
   | NotFoundException
@@ -2599,8 +2650,11 @@ export const getDomainDeliverabilityCampaign: API.OperationMethod<
   input: GetDomainDeliverabilityCampaignRequest,
   output: GetDomainDeliverabilityCampaignResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainDeliverabilityCampaign",
 }));
+
 export type GetDomainStatisticsReportError =
   | BadRequestException
   | NotFoundException
@@ -2619,8 +2673,11 @@ export const getDomainStatisticsReport: API.OperationMethod<
   input: GetDomainStatisticsReportRequest,
   output: GetDomainStatisticsReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainStatisticsReport",
 }));
+
 export type GetEmailIdentityError =
   | BadRequestException
   | NotFoundException
@@ -2640,8 +2697,11 @@ export const getEmailIdentity: API.OperationMethod<
   input: GetEmailIdentityRequest,
   output: GetEmailIdentityResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailIdentity",
 }));
+
 export type ListConfigurationSetsError =
   | BadRequestException
   | TooManyRequestsException
@@ -2680,6 +2740,8 @@ export const listConfigurationSets: API.OperationMethod<
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationSets",
   pagination: {
     inputToken: "NextToken",
@@ -2687,6 +2749,7 @@ export const listConfigurationSets: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDedicatedIpPoolsError =
   | BadRequestException
   | TooManyRequestsException
@@ -2719,6 +2782,8 @@ export const listDedicatedIpPools: API.OperationMethod<
   input: ListDedicatedIpPoolsRequest,
   output: ListDedicatedIpPoolsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDedicatedIpPools",
   pagination: {
     inputToken: "NextToken",
@@ -2726,6 +2791,7 @@ export const listDedicatedIpPools: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDeliverabilityTestReportsError =
   | BadRequestException
   | NotFoundException
@@ -2760,6 +2826,8 @@ export const listDeliverabilityTestReports: API.OperationMethod<
   input: ListDeliverabilityTestReportsRequest,
   output: ListDeliverabilityTestReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeliverabilityTestReports",
   pagination: {
     inputToken: "NextToken",
@@ -2767,6 +2835,7 @@ export const listDeliverabilityTestReports: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDomainDeliverabilityCampaignsError =
   | BadRequestException
   | NotFoundException
@@ -2802,6 +2871,8 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
   input: ListDomainDeliverabilityCampaignsRequest,
   output: ListDomainDeliverabilityCampaignsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainDeliverabilityCampaigns",
   pagination: {
     inputToken: "NextToken",
@@ -2809,6 +2880,7 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListEmailIdentitiesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2842,6 +2914,8 @@ export const listEmailIdentities: API.OperationMethod<
   input: ListEmailIdentitiesRequest,
   output: ListEmailIdentitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEmailIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -2849,6 +2923,7 @@ export const listEmailIdentities: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | NotFoundException
@@ -2871,8 +2946,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutAccountDedicatedIpWarmupAttributesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2889,8 +2967,11 @@ export const putAccountDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutAccountDedicatedIpWarmupAttributesRequest,
   output: PutAccountDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountDedicatedIpWarmupAttributes",
 }));
+
 export type PutAccountSendingAttributesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2907,8 +2988,11 @@ export const putAccountSendingAttributes: API.OperationMethod<
   input: PutAccountSendingAttributesRequest,
   output: PutAccountSendingAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountSendingAttributes",
 }));
+
 export type PutConfigurationSetDeliveryOptionsError =
   | BadRequestException
   | NotFoundException
@@ -2927,8 +3011,11 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   input: PutConfigurationSetDeliveryOptionsRequest,
   output: PutConfigurationSetDeliveryOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetDeliveryOptions",
 }));
+
 export type PutConfigurationSetReputationOptionsError =
   | BadRequestException
   | NotFoundException
@@ -2947,8 +3034,11 @@ export const putConfigurationSetReputationOptions: API.OperationMethod<
   input: PutConfigurationSetReputationOptionsRequest,
   output: PutConfigurationSetReputationOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetReputationOptions",
 }));
+
 export type PutConfigurationSetSendingOptionsError =
   | BadRequestException
   | NotFoundException
@@ -2967,8 +3057,11 @@ export const putConfigurationSetSendingOptions: API.OperationMethod<
   input: PutConfigurationSetSendingOptionsRequest,
   output: PutConfigurationSetSendingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetSendingOptions",
 }));
+
 export type PutConfigurationSetTrackingOptionsError =
   | BadRequestException
   | NotFoundException
@@ -2987,8 +3080,11 @@ export const putConfigurationSetTrackingOptions: API.OperationMethod<
   input: PutConfigurationSetTrackingOptionsRequest,
   output: PutConfigurationSetTrackingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetTrackingOptions",
 }));
+
 export type PutDedicatedIpInPoolError =
   | BadRequestException
   | NotFoundException
@@ -3012,8 +3108,11 @@ export const putDedicatedIpInPool: API.OperationMethod<
   input: PutDedicatedIpInPoolRequest,
   output: PutDedicatedIpInPoolResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDedicatedIpInPool",
 }));
+
 export type PutDedicatedIpWarmupAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3031,8 +3130,11 @@ export const putDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutDedicatedIpWarmupAttributesRequest,
   output: PutDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDedicatedIpWarmupAttributes",
 }));
+
 export type PutDeliverabilityDashboardOptionError =
   | AlreadyExistsException
   | BadRequestException
@@ -3065,8 +3167,11 @@ export const putDeliverabilityDashboardOption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliverabilityDashboardOption",
 }));
+
 export type PutEmailIdentityDkimAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3084,8 +3189,11 @@ export const putEmailIdentityDkimAttributes: API.OperationMethod<
   input: PutEmailIdentityDkimAttributesRequest,
   output: PutEmailIdentityDkimAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityDkimAttributes",
 }));
+
 export type PutEmailIdentityFeedbackAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3115,8 +3223,11 @@ export const putEmailIdentityFeedbackAttributes: API.OperationMethod<
   input: PutEmailIdentityFeedbackAttributesRequest,
   output: PutEmailIdentityFeedbackAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityFeedbackAttributes",
 }));
+
 export type PutEmailIdentityMailFromAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3135,8 +3246,11 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
   input: PutEmailIdentityMailFromAttributesRequest,
   output: PutEmailIdentityMailFromAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityMailFromAttributes",
 }));
+
 export type SendEmailError =
   | AccountSuspendedException
   | BadRequestException
@@ -3179,8 +3293,11 @@ export const sendEmail: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEmail",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3213,8 +3330,11 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3238,8 +3358,11 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConfigurationSetEventDestinationError =
   | BadRequestException
   | NotFoundException
@@ -3263,5 +3386,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   input: UpdateConfigurationSetEventDestinationRequest,
   output: UpdateConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetEventDestination",
 }));

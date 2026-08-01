@@ -13,8 +13,6 @@
     }
   },
   "errorCategories": {
-    "AuditManagerMaintenanceMode": [
-      "BadRequestError"
-    ]
+    "AuditManagerMaintenanceMode": ["BadRequestError"]
   }
 }

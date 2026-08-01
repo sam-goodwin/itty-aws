@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -89,235 +91,333 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ErrorMessage = string;
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class CFNRegistryException extends S.TaggedErrorClass<CFNRegistryException>()(
+  "CFNRegistryException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "CFNRegistryException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ChangeSetNotFoundException extends S.TaggedErrorClass<ChangeSetNotFoundException>()(
+  "ChangeSetNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ChangeSetNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentResourcesLimitExceededException extends S.TaggedErrorClass<ConcurrentResourcesLimitExceededException>()(
+  "ConcurrentResourcesLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConcurrentResourcesLimitExceeded",
+      httpResponseCode: 429,
+    }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class CreatedButModifiedException extends S.TaggedErrorClass<CreatedButModifiedException>()(
+  "CreatedButModifiedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CreatedButModifiedException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class GeneratedTemplateNotFoundException extends S.TaggedErrorClass<GeneratedTemplateNotFoundException>()(
+  "GeneratedTemplateNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "GeneratedTemplateNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HookResultNotFoundException extends S.TaggedErrorClass<HookResultNotFoundException>()(
+  "HookResultNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "HookResultNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientCapabilitiesException extends S.TaggedErrorClass<InsufficientCapabilitiesException>()(
+  "InsufficientCapabilitiesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientCapabilitiesException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidChangeSetStatusException extends S.TaggedErrorClass<InvalidChangeSetStatusException>()(
+  "InvalidChangeSetStatusException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidChangeSetStatus", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidOperationException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
+  "InvalidStateTransitionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidStateTransition", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NameAlreadyExistsException extends S.TaggedErrorClass<NameAlreadyExistsException>()(
+  "NameAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NameAlreadyExistsException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class NoUpdateToPerform extends S.TaggedErrorClass<NoUpdateToPerform>()(
+  "NoUpdateToPerform",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "No updates are to be performed" },
+  }),
+) {}
+export class OperationIdAlreadyExistsException extends S.TaggedErrorClass<OperationIdAlreadyExistsException>()(
+  "OperationIdAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OperationIdAlreadyExistsException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
+  "OperationInProgressException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OperationInProgressException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class OperationNotFoundException extends S.TaggedErrorClass<OperationNotFoundException>()(
+  "OperationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OperationNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OperationStatusCheckFailedException extends S.TaggedErrorClass<OperationStatusCheckFailedException>()(
+  "OperationStatusCheckFailedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConditionalCheckFailed", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceScanInProgressException extends S.TaggedErrorClass<ResourceScanInProgressException>()(
+  "ResourceScanInProgressException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceScanInProgress", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceScanLimitExceededException extends S.TaggedErrorClass<ResourceScanLimitExceededException>()(
+  "ResourceScanLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceScanLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceScanNotFoundException extends S.TaggedErrorClass<ResourceScanNotFoundException>()(
+  "ResourceScanNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceScanNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StackInstanceNotFoundException extends S.TaggedErrorClass<StackInstanceNotFoundException>()(
+  "StackInstanceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "StackInstanceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StackNotFound extends S.TaggedErrorClass<StackNotFound>()(
+  "StackNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class StackNotFoundException extends S.TaggedErrorClass<StackNotFoundException>()(
+  "StackNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "StackNotFoundException", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StackRefactorNotFoundException extends S.TaggedErrorClass<StackRefactorNotFoundException>()(
+  "StackRefactorNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "StackRefactorNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StackSetNotEmptyException extends S.TaggedErrorClass<StackSetNotEmptyException>()(
+  "StackSetNotEmptyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "StackSetNotEmptyException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class StackSetNotFoundException extends S.TaggedErrorClass<StackSetNotFoundException>()(
+  "StackSetNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "StackSetNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StaleRequestException extends S.TaggedErrorClass<StaleRequestException>()(
+  "StaleRequestException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "StaleRequestException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class TokenAlreadyExistsException extends S.TaggedErrorClass<TokenAlreadyExistsException>()(
+  "TokenAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TokenAlreadyExistsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class TypeConfigurationNotFoundException extends S.TaggedErrorClass<TypeConfigurationNotFoundException>()(
+  "TypeConfigurationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TypeConfigurationNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TypeNotFoundException extends S.TaggedErrorClass<TypeNotFoundException>()(
+  "TypeNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export interface ActivateOrganizationsAccessInput {}
+export const ActivateOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ActivateOrganizationsAccessInput",
+}) as any as S.Schema<ActivateOrganizationsAccessInput>;
+export interface ActivateOrganizationsAccessOutput {}
+export const ActivateOrganizationsAccessOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ActivateOrganizationsAccessOutput",
+}) as any as S.Schema<ActivateOrganizationsAccessOutput>;
+export type ThirdPartyType = "RESOURCE" | "MODULE" | "HOOK" | (string & {});
+export const ThirdPartyType = /*@__PURE__*/ S.String;
+
 export type ThirdPartyTypeArn = string;
 export type PublisherId = string;
 export type TypeName = string;
 export type AutoUpdate = boolean;
 export type RoleARN2 = string;
 export type LogGroupName = string;
-export type MajorVersion = number;
-export type PrivateTypeArn = string;
-export type TypeArn = string;
-export type TypeConfigurationAlias = string;
-export type TypeConfigurationArn = string;
-export type ErrorCode = string;
-export type TypeConfiguration = string;
-export type IsDefaultConfiguration = boolean;
-export type StackName = string;
-export type ClientRequestToken = string;
-export type StackNameOrId = string;
-export type RoleARN = string;
-export type ResourceToSkip = string;
-export type TemplateBody = string;
-export type TemplateURL = string;
-export type UsePreviousTemplate = boolean;
-export type ParameterKey = string;
-export type ParameterValue = string;
-export type UsePreviousValue = boolean;
-export type ResourceType = string;
-export type Arn = string;
-export type Type = string;
-export type MonitoringTimeInMinutes = number;
-export type NotificationARN = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ChangeSetName = string;
-export type ClientToken = string;
-export type Description = string;
-export type LogicalResourceId = string;
-export type ResourceIdentifierPropertyKey = string;
-export type ResourceIdentifierPropertyValue = string;
-export type IncludeNestedStacks = boolean;
-export type ImportExistingResources = boolean;
-export type ChangeSetId = string;
-export type StackId = string;
-export type GeneratedTemplateName = string;
-export type GeneratedTemplateId = string;
-export type DisableRollback = boolean;
-export type TimeoutMinutes = number;
-export type StackPolicyBody = string;
-export type StackPolicyURL = string;
-export type EnableTerminationProtection = boolean;
-export type RetainExceptOnCreate = boolean;
-export type OperationId = string;
-export type StackSetName = string;
-export type Account = string;
-export type AccountsUrl = string;
-export type OrganizationalUnitId = string;
-export type Region = string;
-export type FailureToleranceCount = number;
-export type FailureTolerancePercentage = number;
-export type MaxConcurrentCount = number;
-export type MaxConcurrentPercentage = number;
-export type EnableStackCreation = boolean;
-export type StackRefactorId = string;
-export type ExecutionRoleName = string;
-export type AutoDeploymentNullable = boolean;
-export type RetainStacksOnAccountRemovalNullable = boolean;
-export type StackSetARN = string;
-export type ManagedExecutionNullable = boolean;
-export type StackSetId = string;
-export type ChangeSetNameOrId = string;
-export type RetainStacks = boolean;
-export type TypeVersionId = string;
-export type NextToken = string;
-export type LimitName = string;
-export type LimitValue = number;
-export type IncludePropertyValues = boolean;
-export type CreationTime = Date;
-export type ChangeSetStatusReason = string;
-export type HookInvocationCount = number;
-export type PhysicalResourceId = string;
-export type ResourcePropertyPath = string;
-export type PropertyName = string;
-export type BeforeValue = string;
-export type AfterValue = string;
-export type ResourceDriftPreviousValue = string;
-export type ResourceDriftActualValue = string;
-export type CausingEntity = string;
-export type TypeHierarchy = string;
-export type LogicalIdHierarchy = string;
-export type BeforeContext = string;
-export type AfterContext = string;
-export type PreviousDeploymentContext = string;
-export type HookTypeName = string;
-export type HookTypeVersionId = string;
-export type HookTypeConfigurationVersionId = string;
-export type HookTargetTypeName = string;
-export type FailedEventsFilter = boolean;
-export type EventId = string;
-export type ResourceStatusReason = string;
-export type ResourceProperties = string;
-export type HookType = string;
-export type HookStatusReason = string;
-export type ValidationName = string;
-export type ValidationStatusReason = string;
-export type ValidationPath = string;
-export type PropertyPath = string;
-export type RequiredProperty = boolean;
-export type PropertyDescription = string;
-export type TemplateStatusReason = string;
-export type LastUpdatedTime = Date;
-export type ResourcesSucceeded = number;
-export type ResourcesFailed = number;
-export type ResourcesProcessing = number;
-export type ResourcesPending = number;
-export type TotalWarnings = number;
-export type PublisherProfile = string;
-export type ResourceScanId = string;
-export type ResourceScanStatusReason = string;
-export type PercentageCompleted = number;
-export type ResourcesScanned = number;
-export type ResourcesRead = number;
-export type ResourceTypeFilter = string;
-export type StackDriftDetectionId = string;
-export type StackDriftDetectionStatusReason = string;
-export type BoxedInteger = number;
-export type HookInvocationId = string;
-export type Reason = string;
-export type ExecutionStatusReason = string;
-export type StackRefactorStatusReason = string;
-export type Metadata = string;
-export type BoxedMaxResults = number;
-export type Key = string;
-export type Value = string;
-export type Properties = string;
-export type PropertyValue = string;
-export type StackResourceDriftStatusReason = string;
-export type DeletionTime = Date;
-export type StackStatusReason = string;
-export type OutputKey = string;
-export type OutputValue = string;
-export type ExportName = string;
-export type TotalStackInstancesCount = number;
-export type DriftedStackInstancesCount = number;
-export type InSyncStackInstancesCount = number;
-export type InProgressStackInstancesCount = number;
-export type FailedStackInstancesCount = number;
-export type RetainStacksNullable = boolean;
-export type StackSetOperationStatusReason = string;
-export type PublicVersionNumber = string;
-export type IsDefaultVersion = boolean;
-export type TypeTestsStatusDescription = string;
-export type TypeSchema = string;
-export type SupportedMajorVersion = number;
-export type OptionalSecureUrl = string;
-export type ConfigurationSchema = string;
-export type IsActivated = boolean;
-export type RegistrationToken = string;
-export type StackSetNameOrId = string;
-export type Url = string;
-export type HookTypeArn = string;
-export type HookTargetId = string;
-export type AnnotationName = string;
-export type RemediationMessageStatusMessage = string;
-export type RemediationMessageRemediationMessage = string;
-export type AnnotationRemediationLink = string;
-export type TreatUnrecognizedResourceTypesAsWarnings = boolean;
-export type ParameterType = string;
-export type NoEcho = boolean;
-export type AllowedValue = string;
-export type CapabilitiesReason = string;
-export type Version = string;
-export type TransformName = string;
-export type StackIdsUrl = string;
-export type ExportValue = string;
-export type MaxResults = number;
-export type NumberOfResources = number;
-export type HookResultId = string;
-export type JazzResourceIdentifierPropertyKey = string;
-export type JazzResourceIdentifierPropertyValue = string;
-export type ManagedByStack = boolean;
-export type ResourceIdentifier = string;
-export type ResourceTypePrefix = string;
-export type ResourceScannerMaxResults = number;
-export type StackInstanceFilterValues = string;
-export type StackRefactorResourceIdentifier = string;
-export type DetectionReason = string;
-export type TemplateDescription = string;
-export type OperationResultFilterValues = string;
-export type AccountGateStatusReason = string;
-export type TypeNamePrefix = string;
-export type PublisherName = string;
-export type StatusMessage = string;
-export type ResourceModel = string;
-export type AcceptTermsAndConditions = boolean;
-export type ConnectionArn = string;
-export type S3Url = string;
-export type RequestToken = string;
-export type ResourceSignalUniqueId = string;
-export type S3Bucket = string;
-export type RefreshAllResources = boolean;
-export type StackPolicyDuringUpdateBody = string;
-export type StackPolicyDuringUpdateURL = string;
-
-//# Schemas
-export interface ActivateOrganizationsAccessInput {}
-export const ActivateOrganizationsAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ActivateOrganizationsAccessInput",
-  }) as any as S.Schema<ActivateOrganizationsAccessInput>;
-export interface ActivateOrganizationsAccessOutput {}
-export const ActivateOrganizationsAccessOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ActivateOrganizationsAccessOutput",
-  }) as any as S.Schema<ActivateOrganizationsAccessOutput>;
-export type ThirdPartyType = "RESOURCE" | "MODULE" | "HOOK" | (string & {});
-export const ThirdPartyType = /*@__PURE__*/ S.String;
 export interface LoggingConfig {
   LogRoleArn?: string;
   LogGroupName?: string;
@@ -330,6 +430,8 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingConfig" }) as any as S.Schema<LoggingConfig>;
 export type VersionBump = "MAJOR" | "MINOR" | (string & {});
 export const VersionBump = /*@__PURE__*/ S.String;
+
+export type MajorVersion = number;
 export interface ActivateTypeInput {
   Type?: ThirdPartyType;
   PublicTypeArn?: string;
@@ -368,6 +470,7 @@ export const ActivateTypeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateTypeInput",
 }) as any as S.Schema<ActivateTypeInput>;
+export type PrivateTypeArn = string;
 export interface ActivateTypeOutput {
   Arn?: string;
 }
@@ -376,6 +479,9 @@ export const ActivateTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateTypeOutput",
 }) as any as S.Schema<ActivateTypeOutput>;
+export type TypeArn = string;
+export type TypeConfigurationAlias = string;
+export type TypeConfigurationArn = string;
 export interface TypeConfigurationIdentifier {
   TypeArn?: string;
   TypeConfigurationAlias?: string;
@@ -383,18 +489,17 @@ export interface TypeConfigurationIdentifier {
   Type?: ThirdPartyType;
   TypeName?: string;
 }
-export const TypeConfigurationIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TypeArn: S.optional(S.String),
-      TypeConfigurationAlias: S.optional(S.String),
-      TypeConfigurationArn: S.optional(S.String),
-      Type: S.optional(ThirdPartyType),
-      TypeName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TypeConfigurationIdentifier",
-  }) as any as S.Schema<TypeConfigurationIdentifier>;
+export const TypeConfigurationIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TypeArn: S.optional(S.String),
+    TypeConfigurationAlias: S.optional(S.String),
+    TypeConfigurationArn: S.optional(S.String),
+    Type: S.optional(ThirdPartyType),
+    TypeName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TypeConfigurationIdentifier",
+}) as any as S.Schema<TypeConfigurationIdentifier>;
 export type TypeConfigurationIdentifiers = TypeConfigurationIdentifier[];
 export const TypeConfigurationIdentifiers = /*@__PURE__*/ S.Array(
   TypeConfigurationIdentifier,
@@ -402,8 +507,8 @@ export const TypeConfigurationIdentifiers = /*@__PURE__*/ S.Array(
 export interface BatchDescribeTypeConfigurationsInput {
   TypeConfigurationIdentifiers?: TypeConfigurationIdentifier[];
 }
-export const BatchDescribeTypeConfigurationsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchDescribeTypeConfigurationsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       TypeConfigurationIdentifiers: S.optional(TypeConfigurationIdentifiers),
     }).pipe(
@@ -417,31 +522,37 @@ export const BatchDescribeTypeConfigurationsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "BatchDescribeTypeConfigurationsInput",
-  }) as any as S.Schema<BatchDescribeTypeConfigurationsInput>;
+).annotate({
+  identifier: "BatchDescribeTypeConfigurationsInput",
+}) as any as S.Schema<BatchDescribeTypeConfigurationsInput>;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface BatchDescribeTypeConfigurationsError_ {
   ErrorCode?: string;
   ErrorMessage?: string;
   TypeConfigurationIdentifier?: TypeConfigurationIdentifier;
 }
-export const BatchDescribeTypeConfigurationsError_ =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchDescribeTypeConfigurationsError_ = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ErrorCode: S.optional(S.String),
       ErrorMessage: S.optional(S.String),
       TypeConfigurationIdentifier: S.optional(TypeConfigurationIdentifier),
     }),
-  ).annotate({
-    identifier: "BatchDescribeTypeConfigurationsError",
-  }) as any as S.Schema<BatchDescribeTypeConfigurationsError_>;
+).annotate({
+  identifier: "BatchDescribeTypeConfigurationsError",
+}) as any as S.Schema<BatchDescribeTypeConfigurationsError_>;
 export type BatchDescribeTypeConfigurationsErrors =
   BatchDescribeTypeConfigurationsError_[];
-export const BatchDescribeTypeConfigurationsErrors =
-  /*@__PURE__*/ S.Array(BatchDescribeTypeConfigurationsError_);
+export const BatchDescribeTypeConfigurationsErrors = /*@__PURE__*/ S.Array(
+  BatchDescribeTypeConfigurationsError_,
+);
 export type UnprocessedTypeConfigurations = TypeConfigurationIdentifier[];
-export const UnprocessedTypeConfigurations =
-  /*@__PURE__*/ S.Array(TypeConfigurationIdentifier);
+export const UnprocessedTypeConfigurations = /*@__PURE__*/ S.Array(
+  TypeConfigurationIdentifier,
+);
+export type TypeConfiguration = string;
+export type IsDefaultConfiguration = boolean;
 export interface TypeConfigurationDetails {
   Arn?: string;
   Alias?: string;
@@ -475,16 +586,18 @@ export interface BatchDescribeTypeConfigurationsOutput {
   UnprocessedTypeConfigurations?: TypeConfigurationIdentifier[];
   TypeConfigurations?: TypeConfigurationDetails[];
 }
-export const BatchDescribeTypeConfigurationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchDescribeTypeConfigurationsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Errors: S.optional(BatchDescribeTypeConfigurationsErrors),
       UnprocessedTypeConfigurations: S.optional(UnprocessedTypeConfigurations),
       TypeConfigurations: S.optional(TypeConfigurationDetailsList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "BatchDescribeTypeConfigurationsOutput",
-  }) as any as S.Schema<BatchDescribeTypeConfigurationsOutput>;
+).annotate({
+  identifier: "BatchDescribeTypeConfigurationsOutput",
+}) as any as S.Schema<BatchDescribeTypeConfigurationsOutput>;
+export type StackName = string;
+export type ClientRequestToken = string;
 export interface CancelUpdateStackInput {
   StackName?: string;
   ClientRequestToken?: string;
@@ -513,6 +626,9 @@ export const CancelUpdateStackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelUpdateStackResponse",
 }) as any as S.Schema<CancelUpdateStackResponse>;
+export type StackNameOrId = string;
+export type RoleARN = string;
+export type ResourceToSkip = string;
 export type ResourcesToSkip = string[];
 export const ResourcesToSkip = /*@__PURE__*/ S.Array(S.String);
 export interface ContinueUpdateRollbackInput {
@@ -521,32 +637,38 @@ export interface ContinueUpdateRollbackInput {
   ResourcesToSkip?: string[];
   ClientRequestToken?: string;
 }
-export const ContinueUpdateRollbackInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackName: S.optional(S.String),
-      RoleARN: S.optional(S.String),
-      ResourcesToSkip: S.optional(ResourcesToSkip),
-      ClientRequestToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ContinueUpdateRollbackInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackName: S.optional(S.String),
+    RoleARN: S.optional(S.String),
+    ResourcesToSkip: S.optional(ResourcesToSkip),
+    ClientRequestToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ContinueUpdateRollbackInput",
-  }) as any as S.Schema<ContinueUpdateRollbackInput>;
+  ),
+).annotate({
+  identifier: "ContinueUpdateRollbackInput",
+}) as any as S.Schema<ContinueUpdateRollbackInput>;
 export interface ContinueUpdateRollbackOutput {}
-export const ContinueUpdateRollbackOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ContinueUpdateRollbackOutput",
-  }) as any as S.Schema<ContinueUpdateRollbackOutput>;
+export const ContinueUpdateRollbackOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ContinueUpdateRollbackOutput",
+}) as any as S.Schema<ContinueUpdateRollbackOutput>;
+export type TemplateBody = string;
+export type TemplateURL = string;
+export type UsePreviousTemplate = boolean;
+export type ParameterKey = string;
+export type ParameterValue = string;
+export type UsePreviousValue = boolean;
 export interface Parameter {
   ParameterKey?: string;
   ParameterValue?: string;
@@ -569,10 +691,14 @@ export type Capability =
   | "CAPABILITY_AUTO_EXPAND"
   | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
+
 export type Capabilities = Capability[];
 export const Capabilities = /*@__PURE__*/ S.Array(Capability);
+export type ResourceType = string;
 export type ResourceTypes = string[];
 export const ResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export type Arn = string;
+export type Type = string;
 export interface RollbackTrigger {
   Arn?: string;
   Type?: string;
@@ -584,6 +710,7 @@ export const RollbackTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollbackTrigger>;
 export type RollbackTriggers = RollbackTrigger[];
 export const RollbackTriggers = /*@__PURE__*/ S.Array(RollbackTrigger);
+export type MonitoringTimeInMinutes = number;
 export interface RollbackConfiguration {
   RollbackTriggers?: RollbackTrigger[];
   MonitoringTimeInMinutes?: number;
@@ -596,8 +723,11 @@ export const RollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RollbackConfiguration",
 }) as any as S.Schema<RollbackConfiguration>;
+export type NotificationARN = string;
 export type NotificationARNs = string[];
 export const NotificationARNs = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -607,13 +737,22 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
+export type ChangeSetName = string;
+export type ClientToken = string;
+export type Description = string;
 export type ChangeSetType = "CREATE" | "UPDATE" | "IMPORT" | (string & {});
 export const ChangeSetType = /*@__PURE__*/ S.String;
+
+export type LogicalResourceId = string;
+export type ResourceIdentifierPropertyKey = string;
+export type ResourceIdentifierPropertyValue = string;
 export type ResourceIdentifierProperties = {
   [key: string]: string | undefined;
 };
-export const ResourceIdentifierProperties =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceIdentifierProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface ResourceToImport {
   ResourceType?: string;
   LogicalResourceId?: string;
@@ -630,14 +769,18 @@ export const ResourceToImport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceToImport>;
 export type ResourcesToImport = ResourceToImport[];
 export const ResourcesToImport = /*@__PURE__*/ S.Array(ResourceToImport);
+export type IncludeNestedStacks = boolean;
 export type OnStackFailure =
   | "DO_NOTHING"
   | "ROLLBACK"
   | "DELETE"
   | (string & {});
 export const OnStackFailure = /*@__PURE__*/ S.String;
+
+export type ImportExistingResources = boolean;
 export type DeploymentMode = "REVERT_DRIFT" | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
+
 export interface CreateChangeSetInput {
   StackName?: string;
   TemplateBody?: string;
@@ -696,6 +839,8 @@ export const CreateChangeSetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChangeSetInput",
 }) as any as S.Schema<CreateChangeSetInput>;
+export type ChangeSetId = string;
+export type StackId = string;
 export interface CreateChangeSetOutput {
   Id?: string;
   StackId?: string;
@@ -723,16 +868,19 @@ export const ResourceDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceDefinition>;
 export type ResourceDefinitions = ResourceDefinition[];
 export const ResourceDefinitions = /*@__PURE__*/ S.Array(ResourceDefinition);
+export type GeneratedTemplateName = string;
 export type GeneratedTemplateDeletionPolicy =
   | "DELETE"
   | "RETAIN"
   | (string & {});
 export const GeneratedTemplateDeletionPolicy = /*@__PURE__*/ S.String;
+
 export type GeneratedTemplateUpdateReplacePolicy =
   | "DELETE"
   | "RETAIN"
   | (string & {});
 export const GeneratedTemplateUpdateReplacePolicy = /*@__PURE__*/ S.String;
+
 export interface TemplateConfiguration {
   DeletionPolicy?: GeneratedTemplateDeletionPolicy;
   UpdateReplacePolicy?: GeneratedTemplateUpdateReplacePolicy;
@@ -751,38 +899,44 @@ export interface CreateGeneratedTemplateInput {
   StackName?: string;
   TemplateConfiguration?: TemplateConfiguration;
 }
-export const CreateGeneratedTemplateInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Resources: S.optional(ResourceDefinitions),
-      GeneratedTemplateName: S.optional(S.String),
-      StackName: S.optional(S.String),
-      TemplateConfiguration: S.optional(TemplateConfiguration),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateGeneratedTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resources: S.optional(ResourceDefinitions),
+    GeneratedTemplateName: S.optional(S.String),
+    StackName: S.optional(S.String),
+    TemplateConfiguration: S.optional(TemplateConfiguration),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateGeneratedTemplateInput",
-  }) as any as S.Schema<CreateGeneratedTemplateInput>;
+  ),
+).annotate({
+  identifier: "CreateGeneratedTemplateInput",
+}) as any as S.Schema<CreateGeneratedTemplateInput>;
+export type GeneratedTemplateId = string;
 export interface CreateGeneratedTemplateOutput {
   GeneratedTemplateId?: string;
 }
-export const CreateGeneratedTemplateOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateGeneratedTemplateOutput",
-  }) as any as S.Schema<CreateGeneratedTemplateOutput>;
+export const CreateGeneratedTemplateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "CreateGeneratedTemplateOutput",
+}) as any as S.Schema<CreateGeneratedTemplateOutput>;
+export type DisableRollback = boolean;
+export type TimeoutMinutes = number;
 export type OnFailure = "DO_NOTHING" | "ROLLBACK" | "DELETE" | (string & {});
 export const OnFailure = /*@__PURE__*/ S.String;
+
+export type StackPolicyBody = string;
+export type StackPolicyURL = string;
+export type EnableTerminationProtection = boolean;
+export type RetainExceptOnCreate = boolean;
 export interface CreateStackInput {
   StackName?: string;
   TemplateBody?: string;
@@ -837,6 +991,7 @@ export const CreateStackInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackInput",
 }) as any as S.Schema<CreateStackInput>;
+export type OperationId = string;
 export interface CreateStackOutput {
   StackId?: string;
   OperationId?: string;
@@ -849,8 +1004,12 @@ export const CreateStackOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackOutput",
 }) as any as S.Schema<CreateStackOutput>;
+export type StackSetName = string;
+export type Account = string;
 export type AccountList = string[];
 export const AccountList = /*@__PURE__*/ S.Array(S.String);
+export type AccountsUrl = string;
+export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
 export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
 export type AccountFilterType =
@@ -860,6 +1019,7 @@ export type AccountFilterType =
   | "UNION"
   | (string & {});
 export const AccountFilterType = /*@__PURE__*/ S.String;
+
 export interface DeploymentTargets {
   Accounts?: string[];
   AccountsUrl?: string;
@@ -876,15 +1036,22 @@ export const DeploymentTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentTargets",
 }) as any as S.Schema<DeploymentTargets>;
+export type Region = string;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export type RegionConcurrencyType = "SEQUENTIAL" | "PARALLEL" | (string & {});
 export const RegionConcurrencyType = /*@__PURE__*/ S.String;
+
+export type FailureToleranceCount = number;
+export type FailureTolerancePercentage = number;
+export type MaxConcurrentCount = number;
+export type MaxConcurrentPercentage = number;
 export type ConcurrencyMode =
   | "STRICT_FAILURE_TOLERANCE"
   | "SOFT_FAILURE_TOLERANCE"
   | (string & {});
 export const ConcurrencyMode = /*@__PURE__*/ S.String;
+
 export interface StackSetOperationPreferences {
   RegionConcurrencyType?: RegionConcurrencyType;
   RegionOrder?: string[];
@@ -894,22 +1061,22 @@ export interface StackSetOperationPreferences {
   MaxConcurrentPercentage?: number;
   ConcurrencyMode?: ConcurrencyMode;
 }
-export const StackSetOperationPreferences =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionConcurrencyType: S.optional(RegionConcurrencyType),
-      RegionOrder: S.optional(RegionList),
-      FailureToleranceCount: S.optional(S.Number),
-      FailureTolerancePercentage: S.optional(S.Number),
-      MaxConcurrentCount: S.optional(S.Number),
-      MaxConcurrentPercentage: S.optional(S.Number),
-      ConcurrencyMode: S.optional(ConcurrencyMode),
-    }),
-  ).annotate({
-    identifier: "StackSetOperationPreferences",
-  }) as any as S.Schema<StackSetOperationPreferences>;
+export const StackSetOperationPreferences = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionConcurrencyType: S.optional(RegionConcurrencyType),
+    RegionOrder: S.optional(RegionList),
+    FailureToleranceCount: S.optional(S.Number),
+    FailureTolerancePercentage: S.optional(S.Number),
+    MaxConcurrentCount: S.optional(S.Number),
+    MaxConcurrentPercentage: S.optional(S.Number),
+    ConcurrencyMode: S.optional(ConcurrencyMode),
+  }),
+).annotate({
+  identifier: "StackSetOperationPreferences",
+}) as any as S.Schema<StackSetOperationPreferences>;
 export type CallAs = "SELF" | "DELEGATED_ADMIN" | (string & {});
 export const CallAs = /*@__PURE__*/ S.String;
+
 export interface CreateStackInstancesInput {
   StackSetName?: string;
   Accounts?: string[];
@@ -952,6 +1119,7 @@ export const CreateStackInstancesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackInstancesOutput",
 }) as any as S.Schema<CreateStackInstancesOutput>;
+export type EnableStackCreation = boolean;
 export interface ResourceLocation {
   StackName?: string;
   LogicalResourceId?: string;
@@ -1020,6 +1188,7 @@ export const CreateStackRefactorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackRefactorInput",
 }) as any as S.Schema<CreateStackRefactorInput>;
+export type StackRefactorId = string;
 export interface CreateStackRefactorOutput {
   StackRefactorId: string;
 }
@@ -1028,11 +1197,16 @@ export const CreateStackRefactorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackRefactorOutput",
 }) as any as S.Schema<CreateStackRefactorOutput>;
+export type ExecutionRoleName = string;
 export type PermissionModels =
   | "SERVICE_MANAGED"
   | "SELF_MANAGED"
   | (string & {});
 export const PermissionModels = /*@__PURE__*/ S.String;
+
+export type AutoDeploymentNullable = boolean;
+export type RetainStacksOnAccountRemovalNullable = boolean;
+export type StackSetARN = string;
 export type StackSetARNList = string[];
 export const StackSetARNList = /*@__PURE__*/ S.Array(S.String);
 export interface AutoDeployment {
@@ -1047,6 +1221,7 @@ export const AutoDeployment = /*@__PURE__*/ S.suspend(() =>
     DependsOn: S.optional(StackSetARNList),
   }),
 ).annotate({ identifier: "AutoDeployment" }) as any as S.Schema<AutoDeployment>;
+export type ManagedExecutionNullable = boolean;
 export interface ManagedExecution {
   Active?: boolean;
 }
@@ -1103,6 +1278,7 @@ export const CreateStackSetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackSetInput",
 }) as any as S.Schema<CreateStackSetInput>;
+export type StackSetId = string;
 export interface CreateStackSetOutput {
   StackSetId?: string;
 }
@@ -1112,27 +1288,27 @@ export const CreateStackSetOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStackSetOutput",
 }) as any as S.Schema<CreateStackSetOutput>;
 export interface DeactivateOrganizationsAccessInput {}
-export const DeactivateOrganizationsAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeactivateOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeactivateOrganizationsAccessInput",
-  }) as any as S.Schema<DeactivateOrganizationsAccessInput>;
+  ),
+).annotate({
+  identifier: "DeactivateOrganizationsAccessInput",
+}) as any as S.Schema<DeactivateOrganizationsAccessInput>;
 export interface DeactivateOrganizationsAccessOutput {}
-export const DeactivateOrganizationsAccessOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeactivateOrganizationsAccessOutput",
-  }) as any as S.Schema<DeactivateOrganizationsAccessOutput>;
+export const DeactivateOrganizationsAccessOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeactivateOrganizationsAccessOutput",
+}) as any as S.Schema<DeactivateOrganizationsAccessOutput>;
 export interface DeactivateTypeInput {
   TypeName?: string;
   Type?: ThirdPartyType;
@@ -1163,6 +1339,7 @@ export const DeactivateTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeactivateTypeOutput",
 }) as any as S.Schema<DeactivateTypeOutput>;
+export type ChangeSetNameOrId = string;
 export interface DeleteChangeSetInput {
   ChangeSetName?: string;
   StackName?: string;
@@ -1194,31 +1371,32 @@ export const DeleteChangeSetOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGeneratedTemplateInput {
   GeneratedTemplateName?: string;
 }
-export const DeleteGeneratedTemplateInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteGeneratedTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteGeneratedTemplateInput",
-  }) as any as S.Schema<DeleteGeneratedTemplateInput>;
+  ),
+).annotate({
+  identifier: "DeleteGeneratedTemplateInput",
+}) as any as S.Schema<DeleteGeneratedTemplateInput>;
 export interface DeleteGeneratedTemplateResponse {}
-export const DeleteGeneratedTemplateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteGeneratedTemplateResponse",
-  }) as any as S.Schema<DeleteGeneratedTemplateResponse>;
+export const DeleteGeneratedTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteGeneratedTemplateResponse",
+}) as any as S.Schema<DeleteGeneratedTemplateResponse>;
 export type RetainResources = string[];
 export const RetainResources = /*@__PURE__*/ S.Array(S.String);
 export type DeletionMode = "STANDARD" | "FORCE_DELETE_STACK" | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
+
 export interface DeleteStackInput {
   StackName?: string;
   RetainResources?: string[];
@@ -1253,6 +1431,7 @@ export const DeleteStackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteStackResponse",
 }) as any as S.Schema<DeleteStackResponse>;
+export type RetainStacks = boolean;
 export interface DeleteStackInstancesInput {
   StackSetName?: string;
   Accounts?: string[];
@@ -1325,6 +1504,8 @@ export const DeleteStackSetOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStackSetOutput>;
 export type RegistryType = "RESOURCE" | "MODULE" | "HOOK" | (string & {});
 export const RegistryType = /*@__PURE__*/ S.String;
+
+export type TypeVersionId = string;
 export interface DeregisterTypeInput {
   Arn?: string;
   Type?: RegistryType;
@@ -1357,6 +1538,7 @@ export const DeregisterTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterTypeOutput",
 }) as any as S.Schema<DeregisterTypeOutput>;
+export type NextToken = string;
 export interface DescribeAccountLimitsInput {
   NextToken?: string;
 }
@@ -1375,6 +1557,8 @@ export const DescribeAccountLimitsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountLimitsInput",
 }) as any as S.Schema<DescribeAccountLimitsInput>;
+export type LimitName = string;
+export type LimitValue = number;
 export interface AccountLimit {
   Name?: string;
   Value?: number;
@@ -1388,15 +1572,15 @@ export interface DescribeAccountLimitsOutput {
   AccountLimits?: AccountLimit[];
   NextToken?: string;
 }
-export const DescribeAccountLimitsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountLimits: S.optional(AccountLimitList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeAccountLimitsOutput",
-  }) as any as S.Schema<DescribeAccountLimitsOutput>;
+export const DescribeAccountLimitsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountLimits: S.optional(AccountLimitList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeAccountLimitsOutput",
+}) as any as S.Schema<DescribeAccountLimitsOutput>;
+export type IncludePropertyValues = boolean;
 export interface DescribeChangeSetInput {
   ChangeSetName?: string;
   StackName?: string;
@@ -1423,6 +1607,7 @@ export const DescribeChangeSetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeChangeSetInput",
 }) as any as S.Schema<DescribeChangeSetInput>;
+export type CreationTime = Date;
 export type ExecutionStatus =
   | "UNAVAILABLE"
   | "AVAILABLE"
@@ -1432,6 +1617,7 @@ export type ExecutionStatus =
   | "OBSOLETE"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export type ChangeSetStatus =
   | "CREATE_PENDING"
   | "CREATE_IN_PROGRESS"
@@ -1443,6 +1629,8 @@ export type ChangeSetStatus =
   | "FAILED"
   | (string & {});
 export const ChangeSetStatus = /*@__PURE__*/ S.String;
+
+export type ChangeSetStatusReason = string;
 export type StackDriftStatus =
   | "DRIFTED"
   | "IN_SYNC"
@@ -1450,8 +1638,11 @@ export type StackDriftStatus =
   | "NOT_CHECKED"
   | (string & {});
 export const StackDriftStatus = /*@__PURE__*/ S.String;
+
 export type ChangeType = "Resource" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
+export type HookInvocationCount = number;
 export type PolicyAction =
   | "Delete"
   | "Retain"
@@ -1461,6 +1652,7 @@ export type PolicyAction =
   | "ReplaceAndSnapshot"
   | (string & {});
 export const PolicyAction = /*@__PURE__*/ S.String;
+
 export type ChangeAction =
   | "Add"
   | "Modify"
@@ -1470,8 +1662,11 @@ export type ChangeAction =
   | "SyncWithActual"
   | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
+export type PhysicalResourceId = string;
 export type Replacement = "True" | "False" | "Conditional" | (string & {});
 export const Replacement = /*@__PURE__*/ S.String;
+
 export type ResourceAttribute =
   | "Properties"
   | "Metadata"
@@ -1482,6 +1677,7 @@ export type ResourceAttribute =
   | "Tags"
   | (string & {});
 export const ResourceAttribute = /*@__PURE__*/ S.String;
+
 export type Scope = ResourceAttribute[];
 export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
 export type StackResourceDriftStatus =
@@ -1493,40 +1689,51 @@ export type StackResourceDriftStatus =
   | "UNSUPPORTED"
   | (string & {});
 export const StackResourceDriftStatus = /*@__PURE__*/ S.String;
+
+export type ResourcePropertyPath = string;
 export type DriftIgnoredReason =
   | "MANAGED_BY_AWS"
   | "WRITE_ONLY_PROPERTY"
   | (string & {});
 export const DriftIgnoredReason = /*@__PURE__*/ S.String;
+
 export interface ResourceDriftIgnoredAttribute {
   Path?: string;
   Reason?: DriftIgnoredReason;
 }
-export const ResourceDriftIgnoredAttribute =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Path: S.optional(S.String),
-      Reason: S.optional(DriftIgnoredReason),
-    }),
-  ).annotate({
-    identifier: "ResourceDriftIgnoredAttribute",
-  }) as any as S.Schema<ResourceDriftIgnoredAttribute>;
+export const ResourceDriftIgnoredAttribute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Path: S.optional(S.String),
+    Reason: S.optional(DriftIgnoredReason),
+  }),
+).annotate({
+  identifier: "ResourceDriftIgnoredAttribute",
+}) as any as S.Schema<ResourceDriftIgnoredAttribute>;
 export type ResourceDriftIgnoredAttributes = ResourceDriftIgnoredAttribute[];
-export const ResourceDriftIgnoredAttributes =
-  /*@__PURE__*/ S.Array(ResourceDriftIgnoredAttribute);
+export const ResourceDriftIgnoredAttributes = /*@__PURE__*/ S.Array(
+  ResourceDriftIgnoredAttribute,
+);
+export type PropertyName = string;
 export type RequiresRecreation =
   | "Never"
   | "Conditionally"
   | "Always"
   | (string & {});
 export const RequiresRecreation = /*@__PURE__*/ S.String;
+
+export type BeforeValue = string;
+export type AfterValue = string;
 export type BeforeValueFrom =
   | "PREVIOUS_DEPLOYMENT_STATE"
   | "ACTUAL_STATE"
   | (string & {});
 export const BeforeValueFrom = /*@__PURE__*/ S.String;
+
 export type AfterValueFrom = "TEMPLATE" | (string & {});
 export const AfterValueFrom = /*@__PURE__*/ S.String;
+
+export type ResourceDriftPreviousValue = string;
+export type ResourceDriftActualValue = string;
 export interface LiveResourceDrift {
   PreviousValue?: string;
   ActualValue?: string;
@@ -1550,6 +1757,7 @@ export type AttributeChangeType =
   | "SyncWithActual"
   | (string & {});
 export const AttributeChangeType = /*@__PURE__*/ S.String;
+
 export interface ResourceTargetDefinition {
   Attribute?: ResourceAttribute;
   Name?: string;
@@ -1580,6 +1788,7 @@ export const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTargetDefinition>;
 export type EvaluationType = "Static" | "Dynamic" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
 export type ChangeSource =
   | "ResourceReference"
   | "ParameterReference"
@@ -1589,6 +1798,8 @@ export type ChangeSource =
   | "NoModification"
   | (string & {});
 export const ChangeSource = /*@__PURE__*/ S.String;
+
+export type CausingEntity = string;
 export interface ResourceChangeDetail {
   Target?: ResourceTargetDefinition;
   Evaluation?: EvaluationType;
@@ -1608,6 +1819,8 @@ export const ResourceChangeDetail = /*@__PURE__*/ S.suspend(() =>
 export type ResourceChangeDetails = ResourceChangeDetail[];
 export const ResourceChangeDetails =
   /*@__PURE__*/ S.Array(ResourceChangeDetail);
+export type TypeHierarchy = string;
+export type LogicalIdHierarchy = string;
 export interface ModuleInfo {
   TypeHierarchy?: string;
   LogicalIdHierarchy?: string;
@@ -1618,6 +1831,9 @@ export const ModuleInfo = /*@__PURE__*/ S.suspend(() =>
     LogicalIdHierarchy: S.optional(S.String),
   }),
 ).annotate({ identifier: "ModuleInfo" }) as any as S.Schema<ModuleInfo>;
+export type BeforeContext = string;
+export type AfterContext = string;
+export type PreviousDeploymentContext = string;
 export interface ResourceChange {
   PolicyAction?: PolicyAction;
   Action?: ChangeAction;
@@ -1732,48 +1948,53 @@ export interface DescribeChangeSetHooksInput {
   NextToken?: string;
   LogicalResourceId?: string;
 }
-export const DescribeChangeSetHooksInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ChangeSetName: S.optional(S.String),
-      StackName: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      LogicalResourceId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeChangeSetHooksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ChangeSetName: S.optional(S.String),
+    StackName: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    LogicalResourceId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeChangeSetHooksInput",
-  }) as any as S.Schema<DescribeChangeSetHooksInput>;
+  ),
+).annotate({
+  identifier: "DescribeChangeSetHooksInput",
+}) as any as S.Schema<DescribeChangeSetHooksInput>;
 export type HookInvocationPoint = "PRE_PROVISION" | (string & {});
 export const HookInvocationPoint = /*@__PURE__*/ S.String;
+
 export type HookFailureMode = "FAIL" | "WARN" | (string & {});
 export const HookFailureMode = /*@__PURE__*/ S.String;
+
+export type HookTypeName = string;
+export type HookTypeVersionId = string;
+export type HookTypeConfigurationVersionId = string;
 export type HookTargetType = "RESOURCE" | (string & {});
 export const HookTargetType = /*@__PURE__*/ S.String;
+
+export type HookTargetTypeName = string;
 export interface ChangeSetHookResourceTargetDetails {
   LogicalResourceId?: string;
   ResourceType?: string;
   ResourceAction?: ChangeAction;
 }
-export const ChangeSetHookResourceTargetDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LogicalResourceId: S.optional(S.String),
-      ResourceType: S.optional(S.String),
-      ResourceAction: S.optional(ChangeAction),
-    }),
-  ).annotate({
-    identifier: "ChangeSetHookResourceTargetDetails",
-  }) as any as S.Schema<ChangeSetHookResourceTargetDetails>;
+export const ChangeSetHookResourceTargetDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogicalResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceAction: S.optional(ChangeAction),
+  }),
+).annotate({
+  identifier: "ChangeSetHookResourceTargetDetails",
+}) as any as S.Schema<ChangeSetHookResourceTargetDetails>;
 export interface ChangeSetHookTargetDetails {
   TargetType?: HookTargetType;
   ResourceTargetDetails?: ChangeSetHookResourceTargetDetails;
@@ -1812,6 +2033,7 @@ export type ChangeSetHooksStatus =
   | "UNAVAILABLE"
   | (string & {});
 export const ChangeSetHooksStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeChangeSetHooksOutput {
   ChangeSetId?: string;
   ChangeSetName?: string;
@@ -1821,20 +2043,20 @@ export interface DescribeChangeSetHooksOutput {
   StackId?: string;
   StackName?: string;
 }
-export const DescribeChangeSetHooksOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ChangeSetId: S.optional(S.String),
-      ChangeSetName: S.optional(S.String),
-      Hooks: S.optional(ChangeSetHooks),
-      Status: S.optional(ChangeSetHooksStatus),
-      NextToken: S.optional(S.String),
-      StackId: S.optional(S.String),
-      StackName: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeChangeSetHooksOutput",
-  }) as any as S.Schema<DescribeChangeSetHooksOutput>;
+export const DescribeChangeSetHooksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ChangeSetId: S.optional(S.String),
+    ChangeSetName: S.optional(S.String),
+    Hooks: S.optional(ChangeSetHooks),
+    Status: S.optional(ChangeSetHooksStatus),
+    NextToken: S.optional(S.String),
+    StackId: S.optional(S.String),
+    StackName: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeChangeSetHooksOutput",
+}) as any as S.Schema<DescribeChangeSetHooksOutput>;
+export type FailedEventsFilter = boolean;
 export interface EventFilter {
   FailedEvents?: boolean;
 }
@@ -1869,6 +2091,7 @@ export const DescribeEventsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventsInput",
 }) as any as S.Schema<DescribeEventsInput>;
+export type EventId = string;
 export type OperationType =
   | "CREATE_STACK"
   | "UPDATE_STACK"
@@ -1878,12 +2101,14 @@ export type OperationType =
   | "CREATE_CHANGESET"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type BeaconStackOperationStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
 export const BeaconStackOperationStatus = /*@__PURE__*/ S.String;
+
 export type EventType =
   | "STACK_EVENT"
   | "PROGRESS_EVENT"
@@ -1892,6 +2117,7 @@ export type EventType =
   | "HOOK_INVOCATION_ERROR"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type ResourceStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
@@ -1923,6 +2149,10 @@ export type ResourceStatus =
   | "ROLLBACK_FAILED"
   | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
+
+export type ResourceStatusReason = string;
+export type ResourceProperties = string;
+export type HookType = string;
 export type HookStatus =
   | "HOOK_IN_PROGRESS"
   | "HOOK_COMPLETE_SUCCEEDED"
@@ -1930,13 +2160,20 @@ export type HookStatus =
   | "HOOK_FAILED"
   | (string & {});
 export const HookStatus = /*@__PURE__*/ S.String;
+
+export type HookStatusReason = string;
 export type DetailedStatus =
   | "CONFIGURATION_COMPLETE"
   | "VALIDATION_FAILED"
   | (string & {});
 export const DetailedStatus = /*@__PURE__*/ S.String;
+
+export type ValidationName = string;
 export type ValidationStatus = "FAILED" | "SKIPPED" | (string & {});
 export const ValidationStatus = /*@__PURE__*/ S.String;
+
+export type ValidationStatusReason = string;
+export type ValidationPath = string;
 export interface OperationEvent {
   EventId?: string;
   StackId?: string;
@@ -2018,22 +2255,21 @@ export const DescribeEventsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeGeneratedTemplateInput {
   GeneratedTemplateName?: string;
 }
-export const DescribeGeneratedTemplateInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeGeneratedTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeneratedTemplateName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeGeneratedTemplateInput",
-  }) as any as S.Schema<DescribeGeneratedTemplateInput>;
+  ),
+).annotate({
+  identifier: "DescribeGeneratedTemplateInput",
+}) as any as S.Schema<DescribeGeneratedTemplateInput>;
 export type GeneratedTemplateResourceStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -2041,6 +2277,7 @@ export type GeneratedTemplateResourceStatus =
   | "COMPLETE"
   | (string & {});
 export const GeneratedTemplateResourceStatus = /*@__PURE__*/ S.String;
+
 export type WarningType =
   | "MUTUALLY_EXCLUSIVE_PROPERTIES"
   | "UNSUPPORTED_PROPERTIES"
@@ -2049,6 +2286,10 @@ export type WarningType =
   | "EXCLUDED_RESOURCES"
   | (string & {});
 export const WarningType = /*@__PURE__*/ S.String;
+
+export type PropertyPath = string;
+export type RequiredProperty = boolean;
+export type PropertyDescription = string;
 export interface WarningProperty {
   PropertyPath?: string;
   Required?: boolean;
@@ -2108,6 +2349,13 @@ export type GeneratedTemplateStatus =
   | "COMPLETE"
   | (string & {});
 export const GeneratedTemplateStatus = /*@__PURE__*/ S.String;
+
+export type TemplateStatusReason = string;
+export type LastUpdatedTime = Date;
+export type ResourcesSucceeded = number;
+export type ResourcesFailed = number;
+export type ResourcesProcessing = number;
+export type ResourcesPending = number;
 export interface TemplateProgress {
   ResourcesSucceeded?: number;
   ResourcesFailed?: number;
@@ -2124,6 +2372,7 @@ export const TemplateProgress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TemplateProgress",
 }) as any as S.Schema<TemplateProgress>;
+export type TotalWarnings = number;
 export interface DescribeGeneratedTemplateOutput {
   GeneratedTemplateId?: string;
   GeneratedTemplateName?: string;
@@ -2137,62 +2386,60 @@ export interface DescribeGeneratedTemplateOutput {
   TemplateConfiguration?: TemplateConfiguration;
   TotalWarnings?: number;
 }
-export const DescribeGeneratedTemplateOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GeneratedTemplateId: S.optional(S.String),
-      GeneratedTemplateName: S.optional(S.String),
-      Resources: S.optional(ResourceDetails),
-      Status: S.optional(GeneratedTemplateStatus),
-      StatusReason: S.optional(S.String),
-      CreationTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      LastUpdatedTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      Progress: S.optional(TemplateProgress),
-      StackId: S.optional(S.String),
-      TemplateConfiguration: S.optional(TemplateConfiguration),
-      TotalWarnings: S.optional(S.Number),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeGeneratedTemplateOutput",
-  }) as any as S.Schema<DescribeGeneratedTemplateOutput>;
+export const DescribeGeneratedTemplateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GeneratedTemplateId: S.optional(S.String),
+    GeneratedTemplateName: S.optional(S.String),
+    Resources: S.optional(ResourceDetails),
+    Status: S.optional(GeneratedTemplateStatus),
+    StatusReason: S.optional(S.String),
+    CreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    LastUpdatedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    Progress: S.optional(TemplateProgress),
+    StackId: S.optional(S.String),
+    TemplateConfiguration: S.optional(TemplateConfiguration),
+    TotalWarnings: S.optional(S.Number),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeGeneratedTemplateOutput",
+}) as any as S.Schema<DescribeGeneratedTemplateOutput>;
 export interface DescribeOrganizationsAccessInput {
   CallAs?: CallAs;
 }
-export const DescribeOrganizationsAccessInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ CallAs: S.optional(CallAs) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeOrganizationsAccessInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CallAs: S.optional(CallAs) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeOrganizationsAccessInput",
-  }) as any as S.Schema<DescribeOrganizationsAccessInput>;
+  ),
+).annotate({
+  identifier: "DescribeOrganizationsAccessInput",
+}) as any as S.Schema<DescribeOrganizationsAccessInput>;
 export type OrganizationStatus =
   | "ENABLED"
   | "DISABLED"
   | "DISABLED_PERMANENTLY"
   | (string & {});
 export const OrganizationStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeOrganizationsAccessOutput {
   Status?: OrganizationStatus;
 }
-export const DescribeOrganizationsAccessOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.optional(OrganizationStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeOrganizationsAccessOutput",
-  }) as any as S.Schema<DescribeOrganizationsAccessOutput>;
+export const DescribeOrganizationsAccessOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(OrganizationStatus) }).pipe(ns),
+).annotate({
+  identifier: "DescribeOrganizationsAccessOutput",
+}) as any as S.Schema<DescribeOrganizationsAccessOutput>;
 export interface DescribePublisherInput {
   PublisherId?: string;
 }
@@ -2213,12 +2460,15 @@ export const DescribePublisherInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePublisherInput>;
 export type PublisherStatus = "VERIFIED" | "UNVERIFIED" | (string & {});
 export const PublisherStatus = /*@__PURE__*/ S.String;
+
 export type IdentityProvider =
   | "AWS_Marketplace"
   | "GitHub"
   | "Bitbucket"
   | (string & {});
 export const IdentityProvider = /*@__PURE__*/ S.String;
+
+export type PublisherProfile = string;
 export interface DescribePublisherOutput {
   PublisherId?: string;
   PublisherStatus?: PublisherStatus;
@@ -2235,6 +2485,7 @@ export const DescribePublisherOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePublisherOutput",
 }) as any as S.Schema<DescribePublisherOutput>;
+export type ResourceScanId = string;
 export interface DescribeResourceScanInput {
   ResourceScanId?: string;
 }
@@ -2260,6 +2511,12 @@ export type ResourceScanStatus =
   | "EXPIRED"
   | (string & {});
 export const ResourceScanStatus = /*@__PURE__*/ S.String;
+
+export type ResourceScanStatusReason = string;
+export type PercentageCompleted = number;
+export type ResourcesScanned = number;
+export type ResourcesRead = number;
+export type ResourceTypeFilter = string;
 export type ResourceTypeFilters = string[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(S.String);
 export interface ScanFilter {
@@ -2300,11 +2557,12 @@ export const DescribeResourceScanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeResourceScanOutput",
 }) as any as S.Schema<DescribeResourceScanOutput>;
+export type StackDriftDetectionId = string;
 export interface DescribeStackDriftDetectionStatusInput {
   StackDriftDetectionId?: string;
 }
-export const DescribeStackDriftDetectionStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeStackDriftDetectionStatusInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ StackDriftDetectionId: S.optional(S.String) }).pipe(
       T.all(
         ns,
@@ -2316,15 +2574,18 @@ export const DescribeStackDriftDetectionStatusInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeStackDriftDetectionStatusInput",
-  }) as any as S.Schema<DescribeStackDriftDetectionStatusInput>;
+).annotate({
+  identifier: "DescribeStackDriftDetectionStatusInput",
+}) as any as S.Schema<DescribeStackDriftDetectionStatusInput>;
 export type StackDriftDetectionStatus =
   | "DETECTION_IN_PROGRESS"
   | "DETECTION_FAILED"
   | "DETECTION_COMPLETE"
   | (string & {});
 export const StackDriftDetectionStatus = /*@__PURE__*/ S.String;
+
+export type StackDriftDetectionStatusReason = string;
+export type BoxedInteger = number;
 export interface DescribeStackDriftDetectionStatusOutput {
   StackId: string;
   StackDriftDetectionId: string;
@@ -2334,8 +2595,8 @@ export interface DescribeStackDriftDetectionStatusOutput {
   DriftedStackResourceCount?: number;
   Timestamp: Date;
 }
-export const DescribeStackDriftDetectionStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeStackDriftDetectionStatusOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StackId: S.optional(S.String),
       StackDriftDetectionId: S.optional(S.String),
@@ -2347,9 +2608,9 @@ export const DescribeStackDriftDetectionStatusOutput =
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackDriftDetectionStatusOutput",
-  }) as any as S.Schema<DescribeStackDriftDetectionStatusOutput>;
+).annotate({
+  identifier: "DescribeStackDriftDetectionStatusOutput",
+}) as any as S.Schema<DescribeStackDriftDetectionStatusOutput>;
 export interface DescribeStackEventsInput {
   StackName?: string;
   NextToken?: string;
@@ -2372,6 +2633,7 @@ export const DescribeStackEventsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStackEventsInput",
 }) as any as S.Schema<DescribeStackEventsInput>;
+export type HookInvocationId = string;
 export interface StackEvent {
   StackId?: string;
   EventId?: string;
@@ -2469,6 +2731,7 @@ export type StackInstanceStatus =
   | "INOPERABLE"
   | (string & {});
 export const StackInstanceStatus = /*@__PURE__*/ S.String;
+
 export type StackInstanceDetailedStatus =
   | "PENDING"
   | "RUNNING"
@@ -2480,15 +2743,16 @@ export type StackInstanceDetailedStatus =
   | "FAILED_IMPORT"
   | (string & {});
 export const StackInstanceDetailedStatus = /*@__PURE__*/ S.String;
+
 export interface StackInstanceComprehensiveStatus {
   DetailedStatus?: StackInstanceDetailedStatus;
 }
-export const StackInstanceComprehensiveStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DetailedStatus: S.optional(StackInstanceDetailedStatus) }),
-  ).annotate({
-    identifier: "StackInstanceComprehensiveStatus",
-  }) as any as S.Schema<StackInstanceComprehensiveStatus>;
+export const StackInstanceComprehensiveStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DetailedStatus: S.optional(StackInstanceDetailedStatus) }),
+).annotate({
+  identifier: "StackInstanceComprehensiveStatus",
+}) as any as S.Schema<StackInstanceComprehensiveStatus>;
+export type Reason = string;
 export interface StackInstance {
   StackSetId?: string;
   Region?: string;
@@ -2524,12 +2788,11 @@ export const StackInstance = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStackInstanceOutput {
   StackInstance?: StackInstance;
 }
-export const DescribeStackInstanceOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackInstance: S.optional(StackInstance) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackInstanceOutput",
-  }) as any as S.Schema<DescribeStackInstanceOutput>;
+export const DescribeStackInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackInstance: S.optional(StackInstance) }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackInstanceOutput",
+}) as any as S.Schema<DescribeStackInstanceOutput>;
 export interface DescribeStackRefactorInput {
   StackRefactorId?: string;
 }
@@ -2562,6 +2825,8 @@ export type StackRefactorExecutionStatus =
   | "ROLLBACK_FAILED"
   | (string & {});
 export const StackRefactorExecutionStatus = /*@__PURE__*/ S.String;
+
+export type ExecutionStatusReason = string;
 export type StackRefactorStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
@@ -2571,6 +2836,8 @@ export type StackRefactorStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const StackRefactorStatus = /*@__PURE__*/ S.String;
+
+export type StackRefactorStatusReason = string;
 export interface DescribeStackRefactorOutput {
   Description?: string;
   StackRefactorId?: string;
@@ -2580,20 +2847,19 @@ export interface DescribeStackRefactorOutput {
   Status?: StackRefactorStatus;
   StatusReason?: string;
 }
-export const DescribeStackRefactorOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Description: S.optional(S.String),
-      StackRefactorId: S.optional(S.String),
-      StackIds: S.optional(StackIds),
-      ExecutionStatus: S.optional(StackRefactorExecutionStatus),
-      ExecutionStatusReason: S.optional(S.String),
-      Status: S.optional(StackRefactorStatus),
-      StatusReason: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackRefactorOutput",
-  }) as any as S.Schema<DescribeStackRefactorOutput>;
+export const DescribeStackRefactorOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    StackRefactorId: S.optional(S.String),
+    StackIds: S.optional(StackIds),
+    ExecutionStatus: S.optional(StackRefactorExecutionStatus),
+    ExecutionStatusReason: S.optional(S.String),
+    Status: S.optional(StackRefactorStatus),
+    StatusReason: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackRefactorOutput",
+}) as any as S.Schema<DescribeStackRefactorOutput>;
 export interface DescribeStackResourceInput {
   StackName?: string;
   LogicalResourceId?: string;
@@ -2616,21 +2882,21 @@ export const DescribeStackResourceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStackResourceInput",
 }) as any as S.Schema<DescribeStackResourceInput>;
+export type Metadata = string;
 export interface StackResourceDriftInformation {
   StackResourceDriftStatus?: StackResourceDriftStatus;
   LastCheckTimestamp?: Date;
 }
-export const StackResourceDriftInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackResourceDriftStatus: S.optional(StackResourceDriftStatus),
-      LastCheckTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "StackResourceDriftInformation",
-  }) as any as S.Schema<StackResourceDriftInformation>;
+export const StackResourceDriftInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackResourceDriftStatus: S.optional(StackResourceDriftStatus),
+    LastCheckTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "StackResourceDriftInformation",
+}) as any as S.Schema<StackResourceDriftInformation>;
 export interface StackResourceDetail {
   StackName?: string;
   StackId?: string;
@@ -2676,60 +2942,64 @@ export interface DescribeStackResourceOutput {
     };
   };
 }
-export const DescribeStackResourceOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackResourceDetail: S.optional(StackResourceDetail) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackResourceOutput",
-  }) as any as S.Schema<DescribeStackResourceOutput>;
+export const DescribeStackResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackResourceDetail: S.optional(StackResourceDetail) }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackResourceOutput",
+}) as any as S.Schema<DescribeStackResourceOutput>;
 export type StackResourceDriftStatusFilters = StackResourceDriftStatus[];
-export const StackResourceDriftStatusFilters =
-  /*@__PURE__*/ S.Array(StackResourceDriftStatus);
+export const StackResourceDriftStatusFilters = /*@__PURE__*/ S.Array(
+  StackResourceDriftStatus,
+);
+export type BoxedMaxResults = number;
 export interface DescribeStackResourceDriftsInput {
   StackName?: string;
   StackResourceDriftStatusFilters?: StackResourceDriftStatus[];
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeStackResourceDriftsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackName: S.optional(S.String),
-      StackResourceDriftStatusFilters: S.optional(
-        StackResourceDriftStatusFilters,
-      ),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeStackResourceDriftsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackName: S.optional(S.String),
+    StackResourceDriftStatusFilters: S.optional(
+      StackResourceDriftStatusFilters,
     ),
-  ).annotate({
-    identifier: "DescribeStackResourceDriftsInput",
-  }) as any as S.Schema<DescribeStackResourceDriftsInput>;
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeStackResourceDriftsInput",
+}) as any as S.Schema<DescribeStackResourceDriftsInput>;
+export type Key = string;
+export type Value = string;
 export interface PhysicalResourceIdContextKeyValuePair {
   Key?: string;
   Value?: string;
 }
-export const PhysicalResourceIdContextKeyValuePair =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "PhysicalResourceIdContextKeyValuePair",
-  }) as any as S.Schema<PhysicalResourceIdContextKeyValuePair>;
+export const PhysicalResourceIdContextKeyValuePair = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+).annotate({
+  identifier: "PhysicalResourceIdContextKeyValuePair",
+}) as any as S.Schema<PhysicalResourceIdContextKeyValuePair>;
 export type PhysicalResourceIdContext = PhysicalResourceIdContextKeyValuePair[];
 export const PhysicalResourceIdContext = /*@__PURE__*/ S.Array(
   PhysicalResourceIdContextKeyValuePair,
 );
+export type Properties = string;
+export type PropertyValue = string;
 export type DifferenceType = "ADD" | "REMOVE" | "NOT_EQUAL" | (string & {});
 export const DifferenceType = /*@__PURE__*/ S.String;
+
 export interface PropertyDifference {
   PropertyPath?: string;
   ExpectedValue?: string;
@@ -2748,6 +3018,7 @@ export const PropertyDifference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyDifference>;
 export type PropertyDifferences = PropertyDifference[];
 export const PropertyDifferences = /*@__PURE__*/ S.Array(PropertyDifference);
+export type StackResourceDriftStatusReason = string;
 export interface StackResourceDrift {
   StackId?: string;
   LogicalResourceId?: string;
@@ -2804,40 +3075,38 @@ export interface DescribeStackResourceDriftsOutput {
   })[];
   NextToken?: string;
 }
-export const DescribeStackResourceDriftsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackResourceDrifts: S.optional(StackResourceDrifts),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackResourceDriftsOutput",
-  }) as any as S.Schema<DescribeStackResourceDriftsOutput>;
+export const DescribeStackResourceDriftsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackResourceDrifts: S.optional(StackResourceDrifts),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackResourceDriftsOutput",
+}) as any as S.Schema<DescribeStackResourceDriftsOutput>;
 export interface DescribeStackResourcesInput {
   StackName?: string;
   LogicalResourceId?: string;
   PhysicalResourceId?: string;
 }
-export const DescribeStackResourcesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackName: S.optional(S.String),
-      LogicalResourceId: S.optional(S.String),
-      PhysicalResourceId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeStackResourcesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackName: S.optional(S.String),
+    LogicalResourceId: S.optional(S.String),
+    PhysicalResourceId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeStackResourcesInput",
-  }) as any as S.Schema<DescribeStackResourcesInput>;
+  ),
+).annotate({
+  identifier: "DescribeStackResourcesInput",
+}) as any as S.Schema<DescribeStackResourcesInput>;
 export interface StackResource {
   StackName?: string;
   StackId?: string;
@@ -2881,12 +3150,11 @@ export interface DescribeStackResourcesOutput {
     };
   })[];
 }
-export const DescribeStackResourcesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackResources: S.optional(StackResources) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackResourcesOutput",
-  }) as any as S.Schema<DescribeStackResourcesOutput>;
+export const DescribeStackResourcesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackResources: S.optional(StackResources) }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackResourcesOutput",
+}) as any as S.Schema<DescribeStackResourcesOutput>;
 export interface DescribeStacksInput {
   StackName?: string;
   NextToken?: string;
@@ -2909,6 +3177,7 @@ export const DescribeStacksInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStacksInput",
 }) as any as S.Schema<DescribeStacksInput>;
+export type DeletionTime = Date;
 export type StackStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
@@ -2935,6 +3204,11 @@ export type StackStatus =
   | "IMPORT_ROLLBACK_COMPLETE"
   | (string & {});
 export const StackStatus = /*@__PURE__*/ S.String;
+
+export type StackStatusReason = string;
+export type OutputKey = string;
+export type OutputValue = string;
+export type ExportName = string;
 export interface Output {
   OutputKey?: string;
   OutputValue?: string;
@@ -3090,12 +3364,14 @@ export const DescribeStackSetInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeStackSetInput>;
 export type StackSetStatus = "ACTIVE" | "DELETED" | (string & {});
 export const StackSetStatus = /*@__PURE__*/ S.String;
+
 export type StackSetDriftStatus =
   | "DRIFTED"
   | "IN_SYNC"
   | "NOT_CHECKED"
   | (string & {});
 export const StackSetDriftStatus = /*@__PURE__*/ S.String;
+
 export type StackSetDriftDetectionStatus =
   | "COMPLETED"
   | "FAILED"
@@ -3104,6 +3380,12 @@ export type StackSetDriftDetectionStatus =
   | "STOPPED"
   | (string & {});
 export const StackSetDriftDetectionStatus = /*@__PURE__*/ S.String;
+
+export type TotalStackInstancesCount = number;
+export type DriftedStackInstancesCount = number;
+export type InSyncStackInstancesCount = number;
+export type InProgressStackInstancesCount = number;
+export type FailedStackInstancesCount = number;
 export interface StackSetDriftDetectionDetails {
   DriftStatus?: StackSetDriftStatus;
   DriftDetectionStatus?: StackSetDriftDetectionStatus;
@@ -3114,23 +3396,22 @@ export interface StackSetDriftDetectionDetails {
   InProgressStackInstancesCount?: number;
   FailedStackInstancesCount?: number;
 }
-export const StackSetDriftDetectionDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DriftStatus: S.optional(StackSetDriftStatus),
-      DriftDetectionStatus: S.optional(StackSetDriftDetectionStatus),
-      LastDriftCheckTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      TotalStackInstancesCount: S.optional(S.Number),
-      DriftedStackInstancesCount: S.optional(S.Number),
-      InSyncStackInstancesCount: S.optional(S.Number),
-      InProgressStackInstancesCount: S.optional(S.Number),
-      FailedStackInstancesCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "StackSetDriftDetectionDetails",
-  }) as any as S.Schema<StackSetDriftDetectionDetails>;
+export const StackSetDriftDetectionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DriftStatus: S.optional(StackSetDriftStatus),
+    DriftDetectionStatus: S.optional(StackSetDriftDetectionStatus),
+    LastDriftCheckTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    TotalStackInstancesCount: S.optional(S.Number),
+    DriftedStackInstancesCount: S.optional(S.Number),
+    InSyncStackInstancesCount: S.optional(S.Number),
+    InProgressStackInstancesCount: S.optional(S.Number),
+    FailedStackInstancesCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StackSetDriftDetectionDetails",
+}) as any as S.Schema<StackSetDriftDetectionDetails>;
 export interface StackSet {
   StackSetName?: string;
   StackSetId?: string;
@@ -3184,26 +3465,25 @@ export interface DescribeStackSetOperationInput {
   OperationId?: string;
   CallAs?: CallAs;
 }
-export const DescribeStackSetOperationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetName: S.optional(S.String),
-      OperationId: S.optional(S.String),
-      CallAs: S.optional(CallAs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeStackSetOperationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetName: S.optional(S.String),
+    OperationId: S.optional(S.String),
+    CallAs: S.optional(CallAs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeStackSetOperationInput",
-  }) as any as S.Schema<DescribeStackSetOperationInput>;
+  ),
+).annotate({
+  identifier: "DescribeStackSetOperationInput",
+}) as any as S.Schema<DescribeStackSetOperationInput>;
 export type StackSetOperationAction =
   | "CREATE"
   | "UPDATE"
@@ -3211,6 +3491,7 @@ export type StackSetOperationAction =
   | "DETECT_DRIFT"
   | (string & {});
 export const StackSetOperationAction = /*@__PURE__*/ S.String;
+
 export type StackSetOperationStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -3220,15 +3501,17 @@ export type StackSetOperationStatus =
   | "QUEUED"
   | (string & {});
 export const StackSetOperationStatus = /*@__PURE__*/ S.String;
+
+export type RetainStacksNullable = boolean;
+export type StackSetOperationStatusReason = string;
 export interface StackSetOperationStatusDetails {
   FailedStackInstancesCount?: number;
 }
-export const StackSetOperationStatusDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ FailedStackInstancesCount: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "StackSetOperationStatusDetails",
-  }) as any as S.Schema<StackSetOperationStatusDetails>;
+export const StackSetOperationStatusDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FailedStackInstancesCount: S.optional(S.Number) }),
+).annotate({
+  identifier: "StackSetOperationStatusDetails",
+}) as any as S.Schema<StackSetOperationStatusDetails>;
 export interface StackSetOperation {
   OperationId?: string;
   StackSetId?: string;
@@ -3272,12 +3555,12 @@ export const StackSetOperation = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStackSetOperationOutput {
   StackSetOperation?: StackSetOperation;
 }
-export const DescribeStackSetOperationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackSetOperation: S.optional(StackSetOperation) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeStackSetOperationOutput",
-  }) as any as S.Schema<DescribeStackSetOperationOutput>;
+export const DescribeStackSetOperationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackSetOperation: S.optional(StackSetOperation) }).pipe(ns),
+).annotate({
+  identifier: "DescribeStackSetOperationOutput",
+}) as any as S.Schema<DescribeStackSetOperationOutput>;
+export type PublicVersionNumber = string;
 export interface DescribeTypeInput {
   Type?: RegistryType;
   TypeName?: string;
@@ -3308,6 +3591,7 @@ export const DescribeTypeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTypeInput",
 }) as any as S.Schema<DescribeTypeInput>;
+export type IsDefaultVersion = boolean;
 export type TypeTestsStatus =
   | "PASSED"
   | "FAILED"
@@ -3315,14 +3599,20 @@ export type TypeTestsStatus =
   | "NOT_TESTED"
   | (string & {});
 export const TypeTestsStatus = /*@__PURE__*/ S.String;
+
+export type TypeTestsStatusDescription = string;
+export type TypeSchema = string;
 export type ProvisioningType =
   | "NON_PROVISIONABLE"
   | "IMMUTABLE"
   | "FULLY_MUTABLE"
   | (string & {});
 export const ProvisioningType = /*@__PURE__*/ S.String;
+
 export type DeprecatedStatus = "LIVE" | "DEPRECATED" | (string & {});
 export const DeprecatedStatus = /*@__PURE__*/ S.String;
+
+export type SupportedMajorVersion = number;
 export type SupportedMajorVersions = number[];
 export const SupportedMajorVersions = /*@__PURE__*/ S.Array(S.Number);
 export interface RequiredActivatedType {
@@ -3347,6 +3637,10 @@ export const RequiredActivatedTypes = /*@__PURE__*/ S.Array(
 );
 export type Visibility = "PUBLIC" | "PRIVATE" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
+
+export type OptionalSecureUrl = string;
+export type ConfigurationSchema = string;
+export type IsActivated = boolean;
 export interface DescribeTypeOutput {
   Arn?: string;
   Type?: RegistryType;
@@ -3416,48 +3710,48 @@ export const DescribeTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTypeOutput",
 }) as any as S.Schema<DescribeTypeOutput>;
+export type RegistrationToken = string;
 export interface DescribeTypeRegistrationInput {
   RegistrationToken?: string;
 }
-export const DescribeTypeRegistrationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RegistrationToken: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeTypeRegistrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RegistrationToken: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeTypeRegistrationInput",
-  }) as any as S.Schema<DescribeTypeRegistrationInput>;
+  ),
+).annotate({
+  identifier: "DescribeTypeRegistrationInput",
+}) as any as S.Schema<DescribeTypeRegistrationInput>;
 export type RegistrationStatus =
   | "COMPLETE"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeTypeRegistrationOutput {
   ProgressStatus?: RegistrationStatus;
   Description?: string;
   TypeArn?: string;
   TypeVersionArn?: string;
 }
-export const DescribeTypeRegistrationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProgressStatus: S.optional(RegistrationStatus),
-      Description: S.optional(S.String),
-      TypeArn: S.optional(S.String),
-      TypeVersionArn: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeTypeRegistrationOutput",
-  }) as any as S.Schema<DescribeTypeRegistrationOutput>;
+export const DescribeTypeRegistrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProgressStatus: S.optional(RegistrationStatus),
+    Description: S.optional(S.String),
+    TypeArn: S.optional(S.String),
+    TypeVersionArn: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeTypeRegistrationOutput",
+}) as any as S.Schema<DescribeTypeRegistrationOutput>;
 export type LogicalResourceIds = string[];
 export const LogicalResourceIds = /*@__PURE__*/ S.Array(S.String);
 export interface DetectStackDriftInput {
@@ -3494,25 +3788,24 @@ export interface DetectStackResourceDriftInput {
   StackName?: string;
   LogicalResourceId?: string;
 }
-export const DetectStackResourceDriftInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackName: S.optional(S.String),
-      LogicalResourceId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DetectStackResourceDriftInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackName: S.optional(S.String),
+    LogicalResourceId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DetectStackResourceDriftInput",
-  }) as any as S.Schema<DetectStackResourceDriftInput>;
+  ),
+).annotate({
+  identifier: "DetectStackResourceDriftInput",
+}) as any as S.Schema<DetectStackResourceDriftInput>;
 export interface DetectStackResourceDriftOutput {
   StackResourceDrift: StackResourceDrift & {
     StackId: StackId;
@@ -3532,12 +3825,12 @@ export interface DetectStackResourceDriftOutput {
     })[];
   };
 }
-export const DetectStackResourceDriftOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackResourceDrift: S.optional(StackResourceDrift) }).pipe(ns),
-  ).annotate({
-    identifier: "DetectStackResourceDriftOutput",
-  }) as any as S.Schema<DetectStackResourceDriftOutput>;
+export const DetectStackResourceDriftOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackResourceDrift: S.optional(StackResourceDrift) }).pipe(ns),
+).annotate({
+  identifier: "DetectStackResourceDriftOutput",
+}) as any as S.Schema<DetectStackResourceDriftOutput>;
+export type StackSetNameOrId = string;
 export interface DetectStackSetDriftInput {
   StackSetName?: string;
   OperationPreferences?: StackSetOperationPreferences;
@@ -3596,6 +3889,7 @@ export const EstimateTemplateCostInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EstimateTemplateCostInput",
 }) as any as S.Schema<EstimateTemplateCostInput>;
+export type Url = string;
 export interface EstimateTemplateCostOutput {
   Url?: string;
 }
@@ -3657,12 +3951,14 @@ export const ExecuteStackRefactorInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteStackRefactorInput",
 }) as any as S.Schema<ExecuteStackRefactorInput>;
 export interface ExecuteStackRefactorResponse {}
-export const ExecuteStackRefactorResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ExecuteStackRefactorResponse",
-  }) as any as S.Schema<ExecuteStackRefactorResponse>;
+export const ExecuteStackRefactorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ExecuteStackRefactorResponse",
+}) as any as S.Schema<ExecuteStackRefactorResponse>;
 export type TemplateFormat = "JSON" | "YAML" | (string & {});
 export const TemplateFormat = /*@__PURE__*/ S.String;
+
 export interface GetGeneratedTemplateInput {
   Format?: TemplateFormat;
   GeneratedTemplateName?: string;
@@ -3715,6 +4011,8 @@ export const GetHookResultInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHookResultInput",
 }) as any as S.Schema<GetHookResultInput>;
+export type HookTypeArn = string;
+export type HookTargetId = string;
 export type HookTargetAction =
   | "CREATE"
   | "UPDATE"
@@ -3722,6 +4020,7 @@ export type HookTargetAction =
   | "IMPORT"
   | (string & {});
 export const HookTargetAction = /*@__PURE__*/ S.String;
+
 export interface HookTarget {
   TargetType?: HookTargetType;
   TargetTypeName?: string;
@@ -3736,8 +4035,13 @@ export const HookTarget = /*@__PURE__*/ S.suspend(() =>
     Action: S.optional(HookTargetAction),
   }),
 ).annotate({ identifier: "HookTarget" }) as any as S.Schema<HookTarget>;
+export type AnnotationName = string;
 export type AnnotationStatus = "PASSED" | "FAILED" | "SKIPPED" | (string & {});
 export const AnnotationStatus = /*@__PURE__*/ S.String;
+
+export type RemediationMessageStatusMessage = string;
+export type RemediationMessageRemediationMessage = string;
+export type AnnotationRemediationLink = string;
 export type AnnotationSeverityLevel =
   | "INFORMATIONAL"
   | "LOW"
@@ -3746,6 +4050,7 @@ export type AnnotationSeverityLevel =
   | "CRITICAL"
   | (string & {});
 export const AnnotationSeverityLevel = /*@__PURE__*/ S.String;
+
 export interface Annotation {
   AnnotationName?: string;
   Status?: AnnotationStatus;
@@ -3835,6 +4140,7 @@ export const GetStackPolicyOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStackPolicyOutput>;
 export type TemplateStage = "Original" | "Processed" | (string & {});
 export const TemplateStage = /*@__PURE__*/ S.String;
+
 export interface GetTemplateInput {
   StackName?: string;
   ChangeSetName?: string;
@@ -3873,6 +4179,7 @@ export const GetTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTemplateOutput",
 }) as any as S.Schema<GetTemplateOutput>;
+export type TreatUnrecognizedResourceTypesAsWarnings = boolean;
 export interface TemplateSummaryConfig {
   TreatUnrecognizedResourceTypesAsWarnings?: boolean;
 }
@@ -3911,6 +4218,9 @@ export const GetTemplateSummaryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTemplateSummaryInput",
 }) as any as S.Schema<GetTemplateSummaryInput>;
+export type ParameterType = string;
+export type NoEcho = boolean;
+export type AllowedValue = string;
 export type AllowedValues = string[];
 export const AllowedValues = /*@__PURE__*/ S.Array(S.String);
 export interface ParameterConstraints {
@@ -3944,6 +4254,9 @@ export const ParameterDeclaration = /*@__PURE__*/ S.suspend(() =>
 export type ParameterDeclarations = ParameterDeclaration[];
 export const ParameterDeclarations =
   /*@__PURE__*/ S.Array(ParameterDeclaration);
+export type CapabilitiesReason = string;
+export type Version = string;
+export type TransformName = string;
 export type TransformsList = string[];
 export const TransformsList = /*@__PURE__*/ S.Array(S.String);
 export type ResourceIdentifiers = string[];
@@ -4002,6 +4315,7 @@ export const GetTemplateSummaryOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTemplateSummaryOutput>;
 export type StackIdList = string[];
 export const StackIdList = /*@__PURE__*/ S.Array(S.String);
+export type StackIdsUrl = string;
 export interface ImportStacksToStackSetInput {
   StackSetName?: string;
   StackIds?: string[];
@@ -4011,39 +4325,37 @@ export interface ImportStacksToStackSetInput {
   OperationId?: string;
   CallAs?: CallAs;
 }
-export const ImportStacksToStackSetInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetName: S.optional(S.String),
-      StackIds: S.optional(StackIdList),
-      StackIdsUrl: S.optional(S.String),
-      OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
-      OperationPreferences: S.optional(StackSetOperationPreferences),
-      OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
-      CallAs: S.optional(CallAs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ImportStacksToStackSetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetName: S.optional(S.String),
+    StackIds: S.optional(StackIdList),
+    StackIdsUrl: S.optional(S.String),
+    OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
+    OperationPreferences: S.optional(StackSetOperationPreferences),
+    OperationId: S.optional(S.String).pipe(T.IdempotencyToken()),
+    CallAs: S.optional(CallAs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ImportStacksToStackSetInput",
-  }) as any as S.Schema<ImportStacksToStackSetInput>;
+  ),
+).annotate({
+  identifier: "ImportStacksToStackSetInput",
+}) as any as S.Schema<ImportStacksToStackSetInput>;
 export interface ImportStacksToStackSetOutput {
   OperationId?: string;
 }
-export const ImportStacksToStackSetOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "ImportStacksToStackSetOutput",
-  }) as any as S.Schema<ImportStacksToStackSetOutput>;
+export const ImportStacksToStackSetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "ImportStacksToStackSetOutput",
+}) as any as S.Schema<ImportStacksToStackSetOutput>;
 export interface ListChangeSetsInput {
   StackName?: string;
   NextToken?: string;
@@ -4134,6 +4446,7 @@ export const ListExportsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExportsInput",
 }) as any as S.Schema<ListExportsInput>;
+export type ExportValue = string;
 export interface Export {
   ExportingStackId?: string;
   Name?: string;
@@ -4160,29 +4473,30 @@ export const ListExportsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExportsOutput",
 }) as any as S.Schema<ListExportsOutput>;
+export type MaxResults = number;
 export interface ListGeneratedTemplatesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListGeneratedTemplatesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListGeneratedTemplatesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListGeneratedTemplatesInput",
-  }) as any as S.Schema<ListGeneratedTemplatesInput>;
+  ),
+).annotate({
+  identifier: "ListGeneratedTemplatesInput",
+}) as any as S.Schema<ListGeneratedTemplatesInput>;
+export type NumberOfResources = number;
 export interface TemplateSummary {
   GeneratedTemplateId?: string;
   GeneratedTemplateName?: string;
@@ -4215,15 +4529,14 @@ export interface ListGeneratedTemplatesOutput {
   Summaries?: TemplateSummary[];
   NextToken?: string;
 }
-export const ListGeneratedTemplatesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Summaries: S.optional(TemplateSummaries),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListGeneratedTemplatesOutput",
-  }) as any as S.Schema<ListGeneratedTemplatesOutput>;
+export const ListGeneratedTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Summaries: S.optional(TemplateSummaries),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListGeneratedTemplatesOutput",
+}) as any as S.Schema<ListGeneratedTemplatesOutput>;
 export type ListHookResultsTargetType =
   | "CHANGE_SET"
   | "STACK"
@@ -4231,6 +4544,8 @@ export type ListHookResultsTargetType =
   | "CLOUD_CONTROL"
   | (string & {});
 export const ListHookResultsTargetType = /*@__PURE__*/ S.String;
+
+export type HookResultId = string;
 export interface ListHookResultsInput {
   TargetType?: ListHookResultsTargetType;
   TargetId?: string;
@@ -4349,11 +4664,15 @@ export const ListImportsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImportsOutput",
 }) as any as S.Schema<ListImportsOutput>;
+export type JazzResourceIdentifierPropertyKey = string;
+export type JazzResourceIdentifierPropertyValue = string;
 export type JazzResourceIdentifierProperties = {
   [key: string]: string | undefined;
 };
-export const JazzResourceIdentifierProperties =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const JazzResourceIdentifierProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface ScannedResourceIdentifier {
   ResourceType?: string;
   ResourceIdentifier?: { [key: string]: string | undefined };
@@ -4376,8 +4695,8 @@ export interface ListResourceScanRelatedResourcesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListResourceScanRelatedResourcesInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourceScanRelatedResourcesInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourceScanId: S.optional(S.String),
       Resources: S.optional(ScannedResourceIdentifiers),
@@ -4394,9 +4713,10 @@ export const ListResourceScanRelatedResourcesInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListResourceScanRelatedResourcesInput",
-  }) as any as S.Schema<ListResourceScanRelatedResourcesInput>;
+).annotate({
+  identifier: "ListResourceScanRelatedResourcesInput",
+}) as any as S.Schema<ListResourceScanRelatedResourcesInput>;
+export type ManagedByStack = boolean;
 export interface ScannedResource {
   ResourceType?: string;
   ResourceIdentifier?: { [key: string]: string | undefined };
@@ -4417,15 +4737,18 @@ export interface ListResourceScanRelatedResourcesOutput {
   RelatedResources?: ScannedResource[];
   NextToken?: string;
 }
-export const ListResourceScanRelatedResourcesOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourceScanRelatedResourcesOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RelatedResources: S.optional(RelatedResources),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListResourceScanRelatedResourcesOutput",
-  }) as any as S.Schema<ListResourceScanRelatedResourcesOutput>;
+).annotate({
+  identifier: "ListResourceScanRelatedResourcesOutput",
+}) as any as S.Schema<ListResourceScanRelatedResourcesOutput>;
+export type ResourceIdentifier = string;
+export type ResourceTypePrefix = string;
+export type ResourceScannerMaxResults = number;
 export interface ListResourceScanResourcesInput {
   ResourceScanId?: string;
   ResourceIdentifier?: string;
@@ -4435,47 +4758,46 @@ export interface ListResourceScanResourcesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListResourceScanResourcesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceScanId: S.optional(S.String),
-      ResourceIdentifier: S.optional(S.String),
-      ResourceTypePrefix: S.optional(S.String),
-      TagKey: S.optional(S.String),
-      TagValue: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceScanResourcesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceScanId: S.optional(S.String),
+    ResourceIdentifier: S.optional(S.String),
+    ResourceTypePrefix: S.optional(S.String),
+    TagKey: S.optional(S.String),
+    TagValue: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourceScanResourcesInput",
-  }) as any as S.Schema<ListResourceScanResourcesInput>;
+  ),
+).annotate({
+  identifier: "ListResourceScanResourcesInput",
+}) as any as S.Schema<ListResourceScanResourcesInput>;
 export type ScannedResources = ScannedResource[];
 export const ScannedResources = /*@__PURE__*/ S.Array(ScannedResource);
 export interface ListResourceScanResourcesOutput {
   Resources?: ScannedResource[];
   NextToken?: string;
 }
-export const ListResourceScanResourcesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Resources: S.optional(ScannedResources),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListResourceScanResourcesOutput",
-  }) as any as S.Schema<ListResourceScanResourcesOutput>;
+export const ListResourceScanResourcesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Resources: S.optional(ScannedResources),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListResourceScanResourcesOutput",
+}) as any as S.Schema<ListResourceScanResourcesOutput>;
 export type ScanType = "FULL" | "PARTIAL" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
+
 export interface ListResourceScansInput {
   NextToken?: string;
   MaxResults?: number;
@@ -4548,8 +4870,8 @@ export interface ListStackInstanceResourceDriftsInput {
   OperationId?: string;
   CallAs?: CallAs;
 }
-export const ListStackInstanceResourceDriftsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListStackInstanceResourceDriftsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StackSetName: S.optional(S.String),
       NextToken: S.optional(S.String),
@@ -4572,9 +4894,9 @@ export const ListStackInstanceResourceDriftsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListStackInstanceResourceDriftsInput",
-  }) as any as S.Schema<ListStackInstanceResourceDriftsInput>;
+).annotate({
+  identifier: "ListStackInstanceResourceDriftsInput",
+}) as any as S.Schema<ListStackInstanceResourceDriftsInput>;
 export interface StackInstanceResourceDriftsSummary {
   StackId?: string;
   LogicalResourceId?: string;
@@ -4585,27 +4907,27 @@ export interface StackInstanceResourceDriftsSummary {
   StackResourceDriftStatus?: StackResourceDriftStatus;
   Timestamp?: Date;
 }
-export const StackInstanceResourceDriftsSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackId: S.optional(S.String),
-      LogicalResourceId: S.optional(S.String),
-      PhysicalResourceId: S.optional(S.String),
-      PhysicalResourceIdContext: S.optional(PhysicalResourceIdContext),
-      ResourceType: S.optional(S.String),
-      PropertyDifferences: S.optional(PropertyDifferences),
-      StackResourceDriftStatus: S.optional(StackResourceDriftStatus),
-      Timestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "StackInstanceResourceDriftsSummary",
-  }) as any as S.Schema<StackInstanceResourceDriftsSummary>;
+export const StackInstanceResourceDriftsSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackId: S.optional(S.String),
+    LogicalResourceId: S.optional(S.String),
+    PhysicalResourceId: S.optional(S.String),
+    PhysicalResourceIdContext: S.optional(PhysicalResourceIdContext),
+    ResourceType: S.optional(S.String),
+    PropertyDifferences: S.optional(PropertyDifferences),
+    StackResourceDriftStatus: S.optional(StackResourceDriftStatus),
+    Timestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "StackInstanceResourceDriftsSummary",
+}) as any as S.Schema<StackInstanceResourceDriftsSummary>;
 export type StackInstanceResourceDriftsSummaries =
   StackInstanceResourceDriftsSummary[];
-export const StackInstanceResourceDriftsSummaries =
-  /*@__PURE__*/ S.Array(StackInstanceResourceDriftsSummary);
+export const StackInstanceResourceDriftsSummaries = /*@__PURE__*/ S.Array(
+  StackInstanceResourceDriftsSummary,
+);
 export interface ListStackInstanceResourceDriftsOutput {
   Summaries?: (StackInstanceResourceDriftsSummary & {
     StackId: StackId;
@@ -4626,21 +4948,23 @@ export interface ListStackInstanceResourceDriftsOutput {
   })[];
   NextToken?: string;
 }
-export const ListStackInstanceResourceDriftsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListStackInstanceResourceDriftsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Summaries: S.optional(StackInstanceResourceDriftsSummaries),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListStackInstanceResourceDriftsOutput",
-  }) as any as S.Schema<ListStackInstanceResourceDriftsOutput>;
+).annotate({
+  identifier: "ListStackInstanceResourceDriftsOutput",
+}) as any as S.Schema<ListStackInstanceResourceDriftsOutput>;
 export type StackInstanceFilterName =
   | "DETAILED_STATUS"
   | "LAST_OPERATION_ID"
   | "DRIFT_STATUS"
   | (string & {});
 export const StackInstanceFilterName = /*@__PURE__*/ S.String;
+
+export type StackInstanceFilterValues = string;
 export interface StackInstanceFilter {
   Name?: StackInstanceFilterName;
   Values?: string;
@@ -4739,32 +5063,36 @@ export interface ListStackRefactorActionsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListStackRefactorActionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackRefactorId: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStackRefactorActionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackRefactorId: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListStackRefactorActionsInput",
-  }) as any as S.Schema<ListStackRefactorActionsInput>;
+  ),
+).annotate({
+  identifier: "ListStackRefactorActionsInput",
+}) as any as S.Schema<ListStackRefactorActionsInput>;
 export type StackRefactorActionType = "MOVE" | "CREATE" | (string & {});
 export const StackRefactorActionType = /*@__PURE__*/ S.String;
+
 export type StackRefactorActionEntity = "RESOURCE" | "STACK" | (string & {});
 export const StackRefactorActionEntity = /*@__PURE__*/ S.String;
+
+export type StackRefactorResourceIdentifier = string;
 export type StackRefactorDetection = "AUTO" | "MANUAL" | (string & {});
 export const StackRefactorDetection = /*@__PURE__*/ S.String;
+
+export type DetectionReason = string;
 export type StackRefactorTagResources = Tag[];
 export const StackRefactorTagResources = /*@__PURE__*/ S.Array(Tag);
 export type StackRefactorUntagResources = string[];
@@ -4815,18 +5143,18 @@ export interface ListStackRefactorActionsOutput {
   })[];
   NextToken?: string;
 }
-export const ListStackRefactorActionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackRefactorActions: S.optional(StackRefactorActions),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListStackRefactorActionsOutput",
-  }) as any as S.Schema<ListStackRefactorActionsOutput>;
+export const ListStackRefactorActionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackRefactorActions: S.optional(StackRefactorActions),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListStackRefactorActionsOutput",
+}) as any as S.Schema<ListStackRefactorActionsOutput>;
 export type StackRefactorExecutionStatusFilter = StackRefactorExecutionStatus[];
-export const StackRefactorExecutionStatusFilter =
-  /*@__PURE__*/ S.Array(StackRefactorExecutionStatus);
+export const StackRefactorExecutionStatusFilter = /*@__PURE__*/ S.Array(
+  StackRefactorExecutionStatus,
+);
 export interface ListStackRefactorsInput {
   ExecutionStatusFilter?: StackRefactorExecutionStatus[];
   NextToken?: string;
@@ -4912,17 +5240,17 @@ export interface StackResourceDriftInformationSummary {
   StackResourceDriftStatus?: StackResourceDriftStatus;
   LastCheckTimestamp?: Date;
 }
-export const StackResourceDriftInformationSummary =
-  /*@__PURE__*/ S.suspend(() =>
+export const StackResourceDriftInformationSummary = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StackResourceDriftStatus: S.optional(StackResourceDriftStatus),
       LastCheckTimestamp: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
     }),
-  ).annotate({
-    identifier: "StackResourceDriftInformationSummary",
-  }) as any as S.Schema<StackResourceDriftInformationSummary>;
+).annotate({
+  identifier: "StackResourceDriftInformationSummary",
+}) as any as S.Schema<StackResourceDriftInformationSummary>;
 export interface StackResourceSummary {
   LogicalResourceId?: string;
   PhysicalResourceId?: string;
@@ -4996,21 +5324,21 @@ export const ListStacksInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStacksInput",
 }) as any as S.Schema<ListStacksInput>;
+export type TemplateDescription = string;
 export interface StackDriftInformationSummary {
   StackDriftStatus?: StackDriftStatus;
   LastCheckTimestamp?: Date;
 }
-export const StackDriftInformationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackDriftStatus: S.optional(StackDriftStatus),
-      LastCheckTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "StackDriftInformationSummary",
-  }) as any as S.Schema<StackDriftInformationSummary>;
+export const StackDriftInformationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackDriftStatus: S.optional(StackDriftStatus),
+    LastCheckTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "StackDriftInformationSummary",
+}) as any as S.Schema<StackDriftInformationSummary>;
 export interface StackSummary {
   StackId?: string;
   StackName?: string;
@@ -5074,8 +5402,8 @@ export interface ListStackSetAutoDeploymentTargetsInput {
   MaxResults?: number;
   CallAs?: CallAs;
 }
-export const ListStackSetAutoDeploymentTargetsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListStackSetAutoDeploymentTargetsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StackSetName: S.optional(S.String),
       NextToken: S.optional(S.String),
@@ -5092,43 +5420,45 @@ export const ListStackSetAutoDeploymentTargetsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListStackSetAutoDeploymentTargetsInput",
-  }) as any as S.Schema<ListStackSetAutoDeploymentTargetsInput>;
+).annotate({
+  identifier: "ListStackSetAutoDeploymentTargetsInput",
+}) as any as S.Schema<ListStackSetAutoDeploymentTargetsInput>;
 export interface StackSetAutoDeploymentTargetSummary {
   OrganizationalUnitId?: string;
   Regions?: string[];
 }
-export const StackSetAutoDeploymentTargetSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OrganizationalUnitId: S.optional(S.String),
-      Regions: S.optional(RegionList),
-    }),
-  ).annotate({
-    identifier: "StackSetAutoDeploymentTargetSummary",
-  }) as any as S.Schema<StackSetAutoDeploymentTargetSummary>;
+export const StackSetAutoDeploymentTargetSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationalUnitId: S.optional(S.String),
+    Regions: S.optional(RegionList),
+  }),
+).annotate({
+  identifier: "StackSetAutoDeploymentTargetSummary",
+}) as any as S.Schema<StackSetAutoDeploymentTargetSummary>;
 export type StackSetAutoDeploymentTargetSummaries =
   StackSetAutoDeploymentTargetSummary[];
-export const StackSetAutoDeploymentTargetSummaries =
-  /*@__PURE__*/ S.Array(StackSetAutoDeploymentTargetSummary);
+export const StackSetAutoDeploymentTargetSummaries = /*@__PURE__*/ S.Array(
+  StackSetAutoDeploymentTargetSummary,
+);
 export interface ListStackSetAutoDeploymentTargetsOutput {
   Summaries?: StackSetAutoDeploymentTargetSummary[];
   NextToken?: string;
 }
-export const ListStackSetAutoDeploymentTargetsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListStackSetAutoDeploymentTargetsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Summaries: S.optional(StackSetAutoDeploymentTargetSummaries),
       NextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListStackSetAutoDeploymentTargetsOutput",
-  }) as any as S.Schema<ListStackSetAutoDeploymentTargetsOutput>;
+).annotate({
+  identifier: "ListStackSetAutoDeploymentTargetsOutput",
+}) as any as S.Schema<ListStackSetAutoDeploymentTargetsOutput>;
 export type OperationResultFilterName =
   | "OPERATION_RESULT_STATUS"
   | (string & {});
 export const OperationResultFilterName = /*@__PURE__*/ S.String;
+
+export type OperationResultFilterValues = string;
 export interface OperationResultFilter {
   Name?: OperationResultFilterName;
   Values?: string;
@@ -5153,29 +5483,28 @@ export interface ListStackSetOperationResultsInput {
   CallAs?: CallAs;
   Filters?: OperationResultFilter[];
 }
-export const ListStackSetOperationResultsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetName: S.optional(S.String),
-      OperationId: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      CallAs: S.optional(CallAs),
-      Filters: S.optional(OperationResultFilters),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStackSetOperationResultsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetName: S.optional(S.String),
+    OperationId: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    CallAs: S.optional(CallAs),
+    Filters: S.optional(OperationResultFilters),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListStackSetOperationResultsInput",
-  }) as any as S.Schema<ListStackSetOperationResultsInput>;
+  ),
+).annotate({
+  identifier: "ListStackSetOperationResultsInput",
+}) as any as S.Schema<ListStackSetOperationResultsInput>;
 export type StackSetOperationResultStatus =
   | "PENDING"
   | "RUNNING"
@@ -5184,12 +5513,15 @@ export type StackSetOperationResultStatus =
   | "CANCELLED"
   | (string & {});
 export const StackSetOperationResultStatus = /*@__PURE__*/ S.String;
+
 export type AccountGateStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "SKIPPED"
   | (string & {});
 export const AccountGateStatus = /*@__PURE__*/ S.String;
+
+export type AccountGateStatusReason = string;
 export interface AccountGateResult {
   Status?: AccountGateStatus;
   StatusReason?: string;
@@ -5210,62 +5542,60 @@ export interface StackSetOperationResultSummary {
   AccountGateResult?: AccountGateResult;
   OrganizationalUnitId?: string;
 }
-export const StackSetOperationResultSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Account: S.optional(S.String),
-      Region: S.optional(S.String),
-      Status: S.optional(StackSetOperationResultStatus),
-      StatusReason: S.optional(S.String),
-      AccountGateResult: S.optional(AccountGateResult),
-      OrganizationalUnitId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StackSetOperationResultSummary",
-  }) as any as S.Schema<StackSetOperationResultSummary>;
+export const StackSetOperationResultSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Account: S.optional(S.String),
+    Region: S.optional(S.String),
+    Status: S.optional(StackSetOperationResultStatus),
+    StatusReason: S.optional(S.String),
+    AccountGateResult: S.optional(AccountGateResult),
+    OrganizationalUnitId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StackSetOperationResultSummary",
+}) as any as S.Schema<StackSetOperationResultSummary>;
 export type StackSetOperationResultSummaries = StackSetOperationResultSummary[];
-export const StackSetOperationResultSummaries =
-  /*@__PURE__*/ S.Array(StackSetOperationResultSummary);
+export const StackSetOperationResultSummaries = /*@__PURE__*/ S.Array(
+  StackSetOperationResultSummary,
+);
 export interface ListStackSetOperationResultsOutput {
   Summaries?: StackSetOperationResultSummary[];
   NextToken?: string;
 }
-export const ListStackSetOperationResultsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Summaries: S.optional(StackSetOperationResultSummaries),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListStackSetOperationResultsOutput",
-  }) as any as S.Schema<ListStackSetOperationResultsOutput>;
+export const ListStackSetOperationResultsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Summaries: S.optional(StackSetOperationResultSummaries),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListStackSetOperationResultsOutput",
+}) as any as S.Schema<ListStackSetOperationResultsOutput>;
 export interface ListStackSetOperationsInput {
   StackSetName?: string;
   NextToken?: string;
   MaxResults?: number;
   CallAs?: CallAs;
 }
-export const ListStackSetOperationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StackSetName: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      CallAs: S.optional(CallAs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStackSetOperationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StackSetName: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    CallAs: S.optional(CallAs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListStackSetOperationsInput",
-  }) as any as S.Schema<ListStackSetOperationsInput>;
+  ),
+).annotate({
+  identifier: "ListStackSetOperationsInput",
+}) as any as S.Schema<ListStackSetOperationsInput>;
 export interface StackSetOperationSummary {
   OperationId?: string;
   Action?: StackSetOperationAction;
@@ -5302,15 +5632,14 @@ export interface ListStackSetOperationsOutput {
   Summaries?: StackSetOperationSummary[];
   NextToken?: string;
 }
-export const ListStackSetOperationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Summaries: S.optional(StackSetOperationSummaries),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListStackSetOperationsOutput",
-  }) as any as S.Schema<ListStackSetOperationsOutput>;
+export const ListStackSetOperationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Summaries: S.optional(StackSetOperationSummaries),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListStackSetOperationsOutput",
+}) as any as S.Schema<ListStackSetOperationsOutput>;
 export interface ListStackSetsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -5415,15 +5744,14 @@ export interface ListTypeRegistrationsOutput {
   RegistrationTokenList?: string[];
   NextToken?: string;
 }
-export const ListTypeRegistrationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegistrationTokenList: S.optional(RegistrationTokenList),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListTypeRegistrationsOutput",
-  }) as any as S.Schema<ListTypeRegistrationsOutput>;
+export const ListTypeRegistrationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegistrationTokenList: S.optional(RegistrationTokenList),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListTypeRegistrationsOutput",
+}) as any as S.Schema<ListTypeRegistrationsOutput>;
 export type Category =
   | "REGISTERED"
   | "ACTIVATED"
@@ -5431,6 +5759,8 @@ export type Category =
   | "AWS_TYPES"
   | (string & {});
 export const Category = /*@__PURE__*/ S.String;
+
+export type TypeNamePrefix = string;
 export interface TypeFilters {
   Category?: Category;
   PublisherId?: string;
@@ -5473,6 +5803,7 @@ export const ListTypesInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "ListTypesInput" }) as any as S.Schema<ListTypesInput>;
+export type PublisherName = string;
 export interface TypeSummary {
   Type?: RegistryType;
   TypeName?: string;
@@ -5634,6 +5965,8 @@ export type OperationStatus =
   | "FAILED"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export type HandlerErrorCode =
   | "NotUpdatable"
   | "InvalidRequest"
@@ -5656,6 +5989,8 @@ export type HandlerErrorCode =
   | "UnsupportedTarget"
   | (string & {});
 export const HandlerErrorCode = /*@__PURE__*/ S.String;
+
+export type ResourceModel = string;
 export interface RecordHandlerProgressInput {
   BearerToken?: string;
   OperationStatus?: OperationStatus;
@@ -5689,10 +6024,13 @@ export const RecordHandlerProgressInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordHandlerProgressInput",
 }) as any as S.Schema<RecordHandlerProgressInput>;
 export interface RecordHandlerProgressOutput {}
-export const RecordHandlerProgressOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RecordHandlerProgressOutput",
-  }) as any as S.Schema<RecordHandlerProgressOutput>;
+export const RecordHandlerProgressOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RecordHandlerProgressOutput",
+}) as any as S.Schema<RecordHandlerProgressOutput>;
+export type AcceptTermsAndConditions = boolean;
+export type ConnectionArn = string;
 export interface RegisterPublisherInput {
   AcceptTermsAndConditions?: boolean;
   ConnectionArn?: string;
@@ -5723,6 +6061,8 @@ export const RegisterPublisherOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterPublisherOutput",
 }) as any as S.Schema<RegisterPublisherOutput>;
+export type S3Url = string;
+export type RequestToken = string;
 export interface RegisterTypeInput {
   Type?: RegistryType;
   TypeName?: string;
@@ -5892,12 +6232,15 @@ export const SetTypeDefaultVersionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetTypeDefaultVersionInput",
 }) as any as S.Schema<SetTypeDefaultVersionInput>;
 export interface SetTypeDefaultVersionOutput {}
-export const SetTypeDefaultVersionOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetTypeDefaultVersionOutput",
-  }) as any as S.Schema<SetTypeDefaultVersionOutput>;
+export const SetTypeDefaultVersionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetTypeDefaultVersionOutput",
+}) as any as S.Schema<SetTypeDefaultVersionOutput>;
+export type ResourceSignalUniqueId = string;
 export type ResourceSignalStatus = "SUCCESS" | "FAILURE" | (string & {});
 export const ResourceSignalStatus = /*@__PURE__*/ S.String;
+
 export interface SignalResourceInput {
   StackName?: string;
   LogicalResourceId?: string;
@@ -5985,10 +6328,12 @@ export const StopStackSetOperationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopStackSetOperationInput",
 }) as any as S.Schema<StopStackSetOperationInput>;
 export interface StopStackSetOperationOutput {}
-export const StopStackSetOperationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "StopStackSetOperationOutput",
-  }) as any as S.Schema<StopStackSetOperationOutput>;
+export const StopStackSetOperationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "StopStackSetOperationOutput",
+}) as any as S.Schema<StopStackSetOperationOutput>;
+export type S3Bucket = string;
 export interface TestTypeInput {
   Arn?: string;
   Type?: ThirdPartyType;
@@ -6023,6 +6368,7 @@ export const TestTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestTypeOutput" }) as any as S.Schema<TestTypeOutput>;
 export type JazzLogicalResourceIds = string[];
 export const JazzLogicalResourceIds = /*@__PURE__*/ S.Array(S.String);
+export type RefreshAllResources = boolean;
 export interface UpdateGeneratedTemplateInput {
   GeneratedTemplateName?: string;
   NewGeneratedTemplateName?: string;
@@ -6031,38 +6377,38 @@ export interface UpdateGeneratedTemplateInput {
   RefreshAllResources?: boolean;
   TemplateConfiguration?: TemplateConfiguration;
 }
-export const UpdateGeneratedTemplateInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GeneratedTemplateName: S.optional(S.String),
-      NewGeneratedTemplateName: S.optional(S.String),
-      AddResources: S.optional(ResourceDefinitions),
-      RemoveResources: S.optional(JazzLogicalResourceIds),
-      RefreshAllResources: S.optional(S.Boolean),
-      TemplateConfiguration: S.optional(TemplateConfiguration),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateGeneratedTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GeneratedTemplateName: S.optional(S.String),
+    NewGeneratedTemplateName: S.optional(S.String),
+    AddResources: S.optional(ResourceDefinitions),
+    RemoveResources: S.optional(JazzLogicalResourceIds),
+    RefreshAllResources: S.optional(S.Boolean),
+    TemplateConfiguration: S.optional(TemplateConfiguration),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateGeneratedTemplateInput",
-  }) as any as S.Schema<UpdateGeneratedTemplateInput>;
+  ),
+).annotate({
+  identifier: "UpdateGeneratedTemplateInput",
+}) as any as S.Schema<UpdateGeneratedTemplateInput>;
 export interface UpdateGeneratedTemplateOutput {
   GeneratedTemplateId?: string;
 }
-export const UpdateGeneratedTemplateOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateGeneratedTemplateOutput",
-  }) as any as S.Schema<UpdateGeneratedTemplateOutput>;
+export const UpdateGeneratedTemplateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GeneratedTemplateId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateGeneratedTemplateOutput",
+}) as any as S.Schema<UpdateGeneratedTemplateOutput>;
+export type StackPolicyDuringUpdateBody = string;
+export type StackPolicyDuringUpdateURL = string;
 export interface UpdateStackInput {
   StackName?: string;
   TemplateBody?: string;
@@ -6239,34 +6585,32 @@ export interface UpdateTerminationProtectionInput {
   EnableTerminationProtection?: boolean;
   StackName?: string;
 }
-export const UpdateTerminationProtectionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EnableTerminationProtection: S.optional(S.Boolean),
-      StackName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTerminationProtectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnableTerminationProtection: S.optional(S.Boolean),
+    StackName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTerminationProtectionInput",
-  }) as any as S.Schema<UpdateTerminationProtectionInput>;
+  ),
+).annotate({
+  identifier: "UpdateTerminationProtectionInput",
+}) as any as S.Schema<UpdateTerminationProtectionInput>;
 export interface UpdateTerminationProtectionOutput {
   StackId?: string;
 }
-export const UpdateTerminationProtectionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ StackId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateTerminationProtectionOutput",
-  }) as any as S.Schema<UpdateTerminationProtectionOutput>;
+export const UpdateTerminationProtectionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ StackId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateTerminationProtectionOutput",
+}) as any as S.Schema<UpdateTerminationProtectionOutput>;
 export interface ValidateTemplateInput {
   TemplateBody?: string;
   TemplateURL?: string;
@@ -6325,204 +6669,6 @@ export const ValidateTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateTemplateOutput",
 }) as any as S.Schema<ValidateTemplateOutput>;
-
-//# Errors
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidOperationException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class OperationNotFoundException extends S.TaggedErrorClass<OperationNotFoundException>()(
-  "OperationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OperationNotFoundException",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class CFNRegistryException extends S.TaggedErrorClass<CFNRegistryException>()(
-  "CFNRegistryException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "CFNRegistryException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TypeNotFoundException extends S.TaggedErrorClass<TypeNotFoundException>()(
-  "TypeNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TypeNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class TypeConfigurationNotFoundException extends S.TaggedErrorClass<TypeConfigurationNotFoundException>()(
-  "TypeConfigurationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TypeConfigurationNotFoundException",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class TokenAlreadyExistsException extends S.TaggedErrorClass<TokenAlreadyExistsException>()(
-  "TokenAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TokenAlreadyExistsException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AlreadyExistsException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InsufficientCapabilitiesException extends S.TaggedErrorClass<InsufficientCapabilitiesException>()(
-  "InsufficientCapabilitiesException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientCapabilitiesException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceededException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentResourcesLimitExceededException extends S.TaggedErrorClass<ConcurrentResourcesLimitExceededException>()(
-  "ConcurrentResourcesLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConcurrentResourcesLimitExceeded",
-    httpResponseCode: 429,
-  }),
-).pipe(C.withThrottlingError) {}
-export class OperationIdAlreadyExistsException extends S.TaggedErrorClass<OperationIdAlreadyExistsException>()(
-  "OperationIdAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OperationIdAlreadyExistsException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
-  "OperationInProgressException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "OperationInProgressException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError) {}
-export class StackSetNotFoundException extends S.TaggedErrorClass<StackSetNotFoundException>()(
-  "StackSetNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "StackSetNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class StaleRequestException extends S.TaggedErrorClass<StaleRequestException>()(
-  "StaleRequestException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "StaleRequestException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class CreatedButModifiedException extends S.TaggedErrorClass<CreatedButModifiedException>()(
-  "CreatedButModifiedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CreatedButModifiedException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError) {}
-export class NameAlreadyExistsException extends S.TaggedErrorClass<NameAlreadyExistsException>()(
-  "NameAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NameAlreadyExistsException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidChangeSetStatusException extends S.TaggedErrorClass<InvalidChangeSetStatusException>()(
-  "InvalidChangeSetStatusException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidChangeSetStatus", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class GeneratedTemplateNotFoundException extends S.TaggedErrorClass<GeneratedTemplateNotFoundException>()(
-  "GeneratedTemplateNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "GeneratedTemplateNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class StackSetNotEmptyException extends S.TaggedErrorClass<StackSetNotEmptyException>()(
-  "StackSetNotEmptyException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "StackSetNotEmptyException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class ChangeSetNotFoundException extends S.TaggedErrorClass<ChangeSetNotFoundException>()(
-  "ChangeSetNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ChangeSetNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceScanNotFoundException extends S.TaggedErrorClass<ResourceScanNotFoundException>()(
-  "ResourceScanNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceScanNotFound", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class StackInstanceNotFoundException extends S.TaggedErrorClass<StackInstanceNotFoundException>()(
-  "StackInstanceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "StackInstanceNotFoundException",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class StackRefactorNotFoundException extends S.TaggedErrorClass<StackRefactorNotFoundException>()(
-  "StackRefactorNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "StackRefactorNotFoundException",
-    httpResponseCode: 404,
-  }),
-).pipe(C.withBadRequestError) {}
-export class StackNotFound extends S.TaggedErrorClass<StackNotFound>()(
-  "StackNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class HookResultNotFoundException extends S.TaggedErrorClass<HookResultNotFoundException>()(
-  "HookResultNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "HookResultNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class StackNotFoundException extends S.TaggedErrorClass<StackNotFoundException>()(
-  "StackNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "StackNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceScanInProgressException extends S.TaggedErrorClass<ResourceScanInProgressException>()(
-  "ResourceScanInProgressException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceScanInProgress", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
-  "InvalidStateTransitionException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidStateTransition", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class OperationStatusCheckFailedException extends S.TaggedErrorClass<OperationStatusCheckFailedException>()(
-  "OperationStatusCheckFailedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConditionalCheckFailed", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceScanLimitExceededException extends S.TaggedErrorClass<ResourceScanLimitExceededException>()(
-  "ResourceScanLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceScanLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class NoUpdateToPerform extends S.TaggedErrorClass<NoUpdateToPerform>()(
-  "NoUpdateToPerform",
-  {},
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "No updates are to be performed" },
-  }),
-) {}
-
-//# Operations
 export type ActivateOrganizationsAccessError =
   | InvalidOperationException
   | OperationNotFoundException
@@ -6541,8 +6687,11 @@ export const activateOrganizationsAccess: API.OperationMethod<
   input: ActivateOrganizationsAccessInput,
   output: ActivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateOrganizationsAccess",
 }));
+
 export type ActivateTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -6572,8 +6721,11 @@ export const activateType: API.OperationMethod<
   input: ActivateTypeInput,
   output: ActivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateType",
 }));
+
 export type BatchDescribeTypeConfigurationsError =
   | CFNRegistryException
   | TypeConfigurationNotFoundException
@@ -6595,8 +6747,11 @@ export const batchDescribeTypeConfigurations: API.OperationMethod<
   input: BatchDescribeTypeConfigurationsInput,
   output: BatchDescribeTypeConfigurationsOutput,
   errors: [CFNRegistryException, TypeConfigurationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDescribeTypeConfigurations",
 }));
+
 export type CancelUpdateStackError = TokenAlreadyExistsException | CommonErrors;
 /**
  * Cancels an update on the specified stack. If the call completes successfully, the stack
@@ -6613,8 +6768,11 @@ export const cancelUpdateStack: API.OperationMethod<
   input: CancelUpdateStackInput,
   output: CancelUpdateStackResponse,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelUpdateStack",
 }));
+
 export type ContinueUpdateRollbackError =
   | TokenAlreadyExistsException
   | CommonErrors;
@@ -6643,8 +6801,11 @@ export const continueUpdateRollback: API.OperationMethod<
   input: ContinueUpdateRollbackInput,
   output: ContinueUpdateRollbackOutput,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ContinueUpdateRollback",
 }));
+
 export type CreateChangeSetError =
   | AlreadyExistsException
   | InsufficientCapabilitiesException
@@ -6687,8 +6848,11 @@ export const createChangeSet: API.OperationMethod<
     InsufficientCapabilitiesException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChangeSet",
 }));
+
 export type CreateGeneratedTemplateError =
   | AlreadyExistsException
   | ConcurrentResourcesLimitExceededException
@@ -6712,8 +6876,11 @@ export const createGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGeneratedTemplate",
 }));
+
 export type CreateStackError =
   | AlreadyExistsException
   | InsufficientCapabilitiesException
@@ -6742,8 +6909,11 @@ export const createStack: API.OperationMethod<
     LimitExceededException,
     TokenAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStack",
 }));
+
 export type CreateStackInstancesError =
   | InvalidOperationException
   | LimitExceededException
@@ -6786,8 +6956,11 @@ export const createStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackInstances",
 }));
+
 export type CreateStackRefactorError = CommonErrors;
 /**
  * Creates a refactor across multiple stacks, with the list of stacks and resources that are
@@ -6802,8 +6975,11 @@ export const createStackRefactor: API.OperationMethod<
   input: CreateStackRefactorInput,
   output: CreateStackRefactorOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackRefactor",
 }));
+
 export type CreateStackSetError =
   | CreatedButModifiedException
   | LimitExceededException
@@ -6825,8 +7001,11 @@ export const createStackSet: API.OperationMethod<
     LimitExceededException,
     NameAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackSet",
 }));
+
 export type DeactivateOrganizationsAccessError =
   | InvalidOperationException
   | OperationNotFoundException
@@ -6845,8 +7024,11 @@ export const deactivateOrganizationsAccess: API.OperationMethod<
   input: DeactivateOrganizationsAccessInput,
   output: DeactivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateOrganizationsAccess",
 }));
+
 export type DeactivateTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -6874,8 +7056,11 @@ export const deactivateType: API.OperationMethod<
   input: DeactivateTypeInput,
   output: DeactivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateType",
 }));
+
 export type DeleteChangeSetError =
   | InvalidChangeSetStatusException
   | CommonErrors;
@@ -6899,8 +7084,11 @@ export const deleteChangeSet: API.OperationMethod<
   input: DeleteChangeSetInput,
   output: DeleteChangeSetOutput,
   errors: [InvalidChangeSetStatusException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChangeSet",
 }));
+
 export type DeleteGeneratedTemplateError =
   | ConcurrentResourcesLimitExceededException
   | GeneratedTemplateNotFoundException
@@ -6920,8 +7108,11 @@ export const deleteGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     GeneratedTemplateNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGeneratedTemplate",
 }));
+
 export type DeleteStackError = TokenAlreadyExistsException | CommonErrors;
 /**
  * Deletes a specified stack. Once the call completes successfully, stack deletion starts.
@@ -6940,8 +7131,11 @@ export const deleteStack: API.OperationMethod<
   input: DeleteStackInput,
   output: DeleteStackResponse,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStack",
 }));
+
 export type DeleteStackInstancesError =
   | InvalidOperationException
   | OperationIdAlreadyExistsException
@@ -6979,8 +7173,11 @@ export const deleteStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStackInstances",
 }));
+
 export type DeleteStackSetError =
   | OperationInProgressException
   | StackSetNotEmptyException
@@ -6998,8 +7195,11 @@ export const deleteStackSet: API.OperationMethod<
   input: DeleteStackSetInput,
   output: DeleteStackSetOutput,
   errors: [OperationInProgressException, StackSetNotEmptyException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStackSet",
 }));
+
 export type DeregisterTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -7033,8 +7233,11 @@ export const deregisterType: API.OperationMethod<
   input: DeregisterTypeInput,
   output: DeregisterTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterType",
 }));
+
 export type DescribeAccountLimitsError = CommonErrors;
 /**
  * Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you
@@ -7064,6 +7267,8 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "NextToken",
@@ -7071,6 +7276,7 @@ export const describeAccountLimits: API.OperationMethod<
     items: "AccountLimits",
   } as const,
 }));
+
 export type DescribeChangeSetError = ChangeSetNotFoundException | CommonErrors;
 /**
  * Returns the inputs for the change set and a list of changes that CloudFormation will make if
@@ -7102,6 +7308,8 @@ export const describeChangeSet: API.OperationMethod<
   input: DescribeChangeSetInput,
   output: DescribeChangeSetOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChangeSet",
   pagination: {
     inputToken: "NextToken",
@@ -7109,6 +7317,7 @@ export const describeChangeSet: API.OperationMethod<
     items: "Changes",
   } as const,
 }));
+
 export type DescribeChangeSetHooksError =
   | ChangeSetNotFoundException
   | CommonErrors;
@@ -7125,8 +7334,11 @@ export const describeChangeSetHooks: API.OperationMethod<
   input: DescribeChangeSetHooksInput,
   output: DescribeChangeSetHooksOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChangeSetHooks",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Returns CloudFormation events based on flexible query criteria. Groups events by operation ID,
@@ -7178,6 +7390,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsInput,
   output: DescribeEventsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7185,6 +7399,7 @@ export const describeEvents: API.OperationMethod<
     items: "OperationEvents",
   } as const,
 }));
+
 export type DescribeGeneratedTemplateError =
   | GeneratedTemplateNotFoundException
   | CommonErrors;
@@ -7203,8 +7418,11 @@ export const describeGeneratedTemplate: API.OperationMethod<
   input: DescribeGeneratedTemplateInput,
   output: DescribeGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGeneratedTemplate",
 }));
+
 export type DescribeOrganizationsAccessError =
   | InvalidOperationException
   | OperationNotFoundException
@@ -7224,8 +7442,11 @@ export const describeOrganizationsAccess: API.OperationMethod<
   input: DescribeOrganizationsAccessInput,
   output: DescribeOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationsAccess",
 }));
+
 export type DescribePublisherError = CFNRegistryException | CommonErrors;
 /**
  * Returns information about a CloudFormation extension publisher.
@@ -7251,8 +7472,11 @@ export const describePublisher: API.OperationMethod<
   input: DescribePublisherInput,
   output: DescribePublisherOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePublisher",
 }));
+
 export type DescribeResourceScanError =
   | ResourceScanNotFoundException
   | CommonErrors;
@@ -7268,8 +7492,11 @@ export const describeResourceScan: API.OperationMethod<
   input: DescribeResourceScanInput,
   output: DescribeResourceScanOutput,
   errors: [ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceScan",
 }));
+
 export type DescribeStackDriftDetectionStatusError = CommonErrors;
 /**
  * Returns information about a stack drift detection operation. A stack drift detection
@@ -7295,8 +7522,11 @@ export const describeStackDriftDetectionStatus: API.OperationMethod<
   input: DescribeStackDriftDetectionStatusInput,
   output: DescribeStackDriftDetectionStatusOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackDriftDetectionStatus",
 }));
+
 export type DescribeStackEventsError = CommonErrors;
 /**
  * Returns all stack related events for a specified stack in reverse chronological order. For
@@ -7330,6 +7560,8 @@ export const describeStackEvents: API.OperationMethod<
   input: DescribeStackEventsInput,
   output: DescribeStackEventsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7337,6 +7569,7 @@ export const describeStackEvents: API.OperationMethod<
     items: "StackEvents",
   } as const,
 }));
+
 export type DescribeStackInstanceError =
   | StackInstanceNotFoundException
   | StackSetNotFoundException
@@ -7356,8 +7589,11 @@ export const describeStackInstance: API.OperationMethod<
   input: DescribeStackInstanceInput,
   output: DescribeStackInstanceOutput,
   errors: [StackInstanceNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackInstance",
 }));
+
 export type DescribeStackRefactorError =
   | StackRefactorNotFoundException
   | CommonErrors;
@@ -7373,8 +7609,11 @@ export const describeStackRefactor: API.OperationMethod<
   input: DescribeStackRefactorInput,
   output: DescribeStackRefactorOutput,
   errors: [StackRefactorNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackRefactor",
 }));
+
 export type DescribeStackResourceError = CommonErrors;
 /**
  * Returns a description of the specified resource in the specified stack.
@@ -7391,8 +7630,11 @@ export const describeStackResource: API.OperationMethod<
   input: DescribeStackResourceInput,
   output: DescribeStackResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResource",
 }));
+
 export type DescribeStackResourceDriftsError = CommonErrors;
 /**
  * Returns drift information for the resources that have been checked for drift in the
@@ -7433,6 +7675,8 @@ export const describeStackResourceDrifts: API.OperationMethod<
   input: DescribeStackResourceDriftsInput,
   output: DescribeStackResourceDriftsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResourceDrifts",
   pagination: {
     inputToken: "NextToken",
@@ -7440,6 +7684,7 @@ export const describeStackResourceDrifts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStackResourcesError = CommonErrors;
 /**
  * Returns Amazon Web Services resource descriptions for running and deleted stacks. If
@@ -7470,8 +7715,11 @@ export const describeStackResources: API.OperationMethod<
   input: DescribeStackResourcesInput,
   output: DescribeStackResourcesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResources",
 }));
+
 export type DescribeStacksError = StackNotFound | CommonErrors;
 /**
  * Returns the description for the specified stack; if no stack name was specified, then it
@@ -7505,6 +7753,8 @@ export const describeStacks: API.OperationMethod<
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
   errors: [StackNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStacks",
   pagination: {
     inputToken: "NextToken",
@@ -7512,6 +7762,7 @@ export const describeStacks: API.OperationMethod<
     items: "Stacks",
   } as const,
 }));
+
 export type DescribeStackSetError = StackSetNotFoundException | CommonErrors;
 /**
  * Returns the description of the specified StackSet.
@@ -7528,8 +7779,11 @@ export const describeStackSet: API.OperationMethod<
   input: DescribeStackSetInput,
   output: DescribeStackSetOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackSet",
 }));
+
 export type DescribeStackSetOperationError =
   | OperationNotFoundException
   | StackSetNotFoundException
@@ -7549,8 +7803,11 @@ export const describeStackSetOperation: API.OperationMethod<
   input: DescribeStackSetOperationInput,
   output: DescribeStackSetOperationOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackSetOperation",
 }));
+
 export type DescribeTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -7576,8 +7833,11 @@ export const describeType: API.OperationMethod<
   input: DescribeTypeInput,
   output: DescribeTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeType",
 }));
+
 export type DescribeTypeRegistrationError = CFNRegistryException | CommonErrors;
 /**
  * Returns information about an extension's registration, including its current status and
@@ -7599,8 +7859,11 @@ export const describeTypeRegistration: API.OperationMethod<
   input: DescribeTypeRegistrationInput,
   output: DescribeTypeRegistrationOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTypeRegistration",
 }));
+
 export type DetectStackDriftError = CommonErrors;
 /**
  * Detects whether a stack's actual configuration differs, or has
@@ -7638,8 +7901,11 @@ export const detectStackDrift: API.OperationMethod<
   input: DetectStackDriftInput,
   output: DetectStackDriftOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackDrift",
 }));
+
 export type DetectStackResourceDriftError = CommonErrors;
 /**
  * Returns information about whether a resource's actual configuration differs, or has
@@ -7667,8 +7933,11 @@ export const detectStackResourceDrift: API.OperationMethod<
   input: DetectStackResourceDriftInput,
   output: DetectStackResourceDriftOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackResourceDrift",
 }));
+
 export type DetectStackSetDriftError =
   | InvalidOperationException
   | OperationInProgressException
@@ -7719,8 +7988,11 @@ export const detectStackSetDrift: API.OperationMethod<
     OperationInProgressException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackSetDrift",
 }));
+
 export type EstimateTemplateCostError = CommonErrors;
 /**
  * Returns the estimated monthly cost of a template. The return value is an Amazon Web Services Simple
@@ -7736,8 +8008,11 @@ export const estimateTemplateCost: API.OperationMethod<
   input: EstimateTemplateCostInput,
   output: EstimateTemplateCostOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EstimateTemplateCost",
 }));
+
 export type ExecuteChangeSetError =
   | ChangeSetNotFoundException
   | InsufficientCapabilitiesException
@@ -7772,8 +8047,11 @@ export const executeChangeSet: API.OperationMethod<
     InvalidChangeSetStatusException,
     TokenAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteChangeSet",
 }));
+
 export type ExecuteStackRefactorError = CommonErrors;
 /**
  * Executes the stack refactor operation.
@@ -7787,8 +8065,11 @@ export const executeStackRefactor: API.OperationMethod<
   input: ExecuteStackRefactorInput,
   output: ExecuteStackRefactorResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStackRefactor",
 }));
+
 export type GetGeneratedTemplateError =
   | GeneratedTemplateNotFoundException
   | CommonErrors;
@@ -7807,8 +8088,11 @@ export const getGeneratedTemplate: API.OperationMethod<
   input: GetGeneratedTemplateInput,
   output: GetGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGeneratedTemplate",
 }));
+
 export type GetHookResultError = HookResultNotFoundException | CommonErrors;
 /**
  * Retrieves detailed information and remediation guidance for a Hook invocation
@@ -7829,8 +8113,11 @@ export const getHookResult: API.OperationMethod<
   input: GetHookResultInput,
   output: GetHookResultOutput,
   errors: [HookResultNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHookResult",
 }));
+
 export type GetStackPolicyError = CommonErrors;
 /**
  * Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null
@@ -7845,8 +8132,11 @@ export const getStackPolicy: API.OperationMethod<
   input: GetStackPolicyInput,
   output: GetStackPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStackPolicy",
 }));
+
 export type GetTemplateError = ChangeSetNotFoundException | CommonErrors;
 /**
  * Returns the template body for a specified stack. You can get the template for running or
@@ -7866,8 +8156,11 @@ export const getTemplate: API.OperationMethod<
   input: GetTemplateInput,
   output: GetTemplateOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplate",
 }));
+
 export type GetTemplateSummaryError = StackSetNotFoundException | CommonErrors;
 /**
  * Returns information about a new or existing template. The `GetTemplateSummary`
@@ -7890,8 +8183,11 @@ export const getTemplateSummary: API.OperationMethod<
   input: GetTemplateSummaryInput,
   output: GetTemplateSummaryOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplateSummary",
 }));
+
 export type ImportStacksToStackSetError =
   | InvalidOperationException
   | LimitExceededException
@@ -7924,8 +8220,11 @@ export const importStacksToStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportStacksToStackSet",
 }));
+
 export type ListChangeSetsError = CommonErrors;
 /**
  * Returns the ID and status of each active change set for a stack. For example, CloudFormation
@@ -7956,6 +8255,8 @@ export const listChangeSets: API.OperationMethod<
   input: ListChangeSetsInput,
   output: ListChangeSetsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChangeSets",
   pagination: {
     inputToken: "NextToken",
@@ -7963,6 +8264,7 @@ export const listChangeSets: API.OperationMethod<
     items: "Summaries",
   } as const,
 }));
+
 export type ListExportsError = CommonErrors;
 /**
  * Lists all exported output values in the account and Region in which you call this action.
@@ -7996,6 +8298,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
@@ -8003,6 +8307,7 @@ export const listExports: API.OperationMethod<
     items: "Exports",
   } as const,
 }));
+
 export type ListGeneratedTemplatesError = CommonErrors;
 /**
  * Lists your generated templates in this Region.
@@ -8031,6 +8336,8 @@ export const listGeneratedTemplates: API.OperationMethod<
   input: ListGeneratedTemplatesInput,
   output: ListGeneratedTemplatesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeneratedTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -8039,6 +8346,7 @@ export const listGeneratedTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHookResultsError = HookResultNotFoundException | CommonErrors;
 /**
  * Returns summaries of invoked Hooks. For more information, see View invocation
@@ -8065,8 +8373,11 @@ export const listHookResults: API.OperationMethod<
   input: ListHookResultsInput,
   output: ListHookResultsOutput,
   errors: [HookResultNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHookResults",
 }));
+
 export type ListImportsError = CommonErrors;
 /**
  * Lists all stacks that are importing an exported output value. To modify or remove an
@@ -8099,6 +8410,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -8106,6 +8419,7 @@ export const listImports: API.OperationMethod<
     items: "Imports",
   } as const,
 }));
+
 export type ListResourceScanRelatedResourcesError =
   | ResourceScanInProgressException
   | ResourceScanNotFoundException
@@ -8138,6 +8452,8 @@ export const listResourceScanRelatedResources: API.OperationMethod<
   input: ListResourceScanRelatedResourcesInput,
   output: ListResourceScanRelatedResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScanRelatedResources",
   pagination: {
     inputToken: "NextToken",
@@ -8146,6 +8462,7 @@ export const listResourceScanRelatedResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceScanResourcesError =
   | ResourceScanInProgressException
   | ResourceScanNotFoundException
@@ -8180,6 +8497,8 @@ export const listResourceScanResources: API.OperationMethod<
   input: ListResourceScanResourcesInput,
   output: ListResourceScanResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScanResources",
   pagination: {
     inputToken: "NextToken",
@@ -8188,6 +8507,7 @@ export const listResourceScanResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceScansError = CommonErrors;
 /**
  * List the resource scans from newest to oldest. By default it will return up to 10 resource
@@ -8217,6 +8537,8 @@ export const listResourceScans: API.OperationMethod<
   input: ListResourceScansInput,
   output: ListResourceScansOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScans",
   pagination: {
     inputToken: "NextToken",
@@ -8225,6 +8547,7 @@ export const listResourceScans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackInstanceResourceDriftsError =
   | OperationNotFoundException
   | StackInstanceNotFoundException
@@ -8250,8 +8573,11 @@ export const listStackInstanceResourceDrifts: API.OperationMethod<
     StackInstanceNotFoundException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstanceResourceDrifts",
 }));
+
 export type ListStackInstancesError = StackSetNotFoundException | CommonErrors;
 /**
  * Returns summary information about stack instances that are associated with the specified
@@ -8282,6 +8608,8 @@ export const listStackInstances: API.OperationMethod<
   input: ListStackInstancesInput,
   output: ListStackInstancesOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstances",
   pagination: {
     inputToken: "NextToken",
@@ -8290,6 +8618,7 @@ export const listStackInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackRefactorActionsError = CommonErrors;
 /**
  * Lists the stack refactor actions that will be taken after calling the ExecuteStackRefactor action.
@@ -8318,6 +8647,8 @@ export const listStackRefactorActions: API.OperationMethod<
   input: ListStackRefactorActionsInput,
   output: ListStackRefactorActionsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackRefactorActions",
   pagination: {
     inputToken: "NextToken",
@@ -8326,6 +8657,7 @@ export const listStackRefactorActions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackRefactorsError = CommonErrors;
 /**
  * Lists all account stack refactor operations and their statuses.
@@ -8354,6 +8686,8 @@ export const listStackRefactors: API.OperationMethod<
   input: ListStackRefactorsInput,
   output: ListStackRefactorsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackRefactors",
   pagination: {
     inputToken: "NextToken",
@@ -8362,6 +8696,7 @@ export const listStackRefactors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackResourcesError = CommonErrors;
 /**
  * Returns descriptions of all resources of the specified stack.
@@ -8393,6 +8728,8 @@ export const listStackResources: API.OperationMethod<
   input: ListStackResourcesInput,
   output: ListStackResourcesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackResources",
   pagination: {
     inputToken: "NextToken",
@@ -8400,6 +8737,7 @@ export const listStackResources: API.OperationMethod<
     items: "StackResourceSummaries",
   } as const,
 }));
+
 export type ListStacksError = CommonErrors;
 /**
  * Returns the summary information for stacks whose status matches the specified
@@ -8432,6 +8770,8 @@ export const listStacks: API.OperationMethod<
   input: ListStacksInput,
   output: ListStacksOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStacks",
   pagination: {
     inputToken: "NextToken",
@@ -8439,6 +8779,7 @@ export const listStacks: API.OperationMethod<
     items: "StackSummaries",
   } as const,
 }));
+
 export type ListStackSetAutoDeploymentTargetsError =
   | StackSetNotFoundException
   | CommonErrors;
@@ -8454,8 +8795,11 @@ export const listStackSetAutoDeploymentTargets: API.OperationMethod<
   input: ListStackSetAutoDeploymentTargetsInput,
   output: ListStackSetAutoDeploymentTargetsOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetAutoDeploymentTargets",
 }));
+
 export type ListStackSetOperationResultsError =
   | OperationNotFoundException
   | StackSetNotFoundException
@@ -8490,6 +8834,8 @@ export const listStackSetOperationResults: API.OperationMethod<
   input: ListStackSetOperationResultsInput,
   output: ListStackSetOperationResultsOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetOperationResults",
   pagination: {
     inputToken: "NextToken",
@@ -8498,6 +8844,7 @@ export const listStackSetOperationResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackSetOperationsError =
   | StackSetNotFoundException
   | CommonErrors;
@@ -8531,6 +8878,8 @@ export const listStackSetOperations: API.OperationMethod<
   input: ListStackSetOperationsInput,
   output: ListStackSetOperationsOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetOperations",
   pagination: {
     inputToken: "NextToken",
@@ -8539,6 +8888,7 @@ export const listStackSetOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStackSetsError = CommonErrors;
 /**
  * Returns summary information about StackSets that are associated with the user.
@@ -8583,6 +8933,8 @@ export const listStackSets: API.OperationMethod<
   input: ListStackSetsInput,
   output: ListStackSetsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSets",
   pagination: {
     inputToken: "NextToken",
@@ -8591,6 +8943,7 @@ export const listStackSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypeRegistrationsError = CFNRegistryException | CommonErrors;
 /**
  * Returns a list of registration tokens for the specified extension(s).
@@ -8619,6 +8972,8 @@ export const listTypeRegistrations: API.OperationMethod<
   input: ListTypeRegistrationsInput,
   output: ListTypeRegistrationsOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypeRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -8626,6 +8981,7 @@ export const listTypeRegistrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypesError = CFNRegistryException | CommonErrors;
 /**
  * Returns summary information about all extensions, including your private resource types,
@@ -8656,6 +9012,8 @@ export const listTypes: API.OperationMethod<
   input: ListTypesInput,
   output: ListTypesOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypes",
   pagination: {
     inputToken: "NextToken",
@@ -8664,6 +9022,7 @@ export const listTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypeVersionsError = CFNRegistryException | CommonErrors;
 /**
  * Returns summary information about the versions of an extension.
@@ -8692,6 +9051,8 @@ export const listTypeVersions: API.OperationMethod<
   input: ListTypeVersionsInput,
   output: ListTypeVersionsOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -8699,6 +9060,7 @@ export const listTypeVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PublishTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -8722,8 +9084,11 @@ export const publishType: API.OperationMethod<
   input: PublishTypeInput,
   output: PublishTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishType",
 }));
+
 export type RecordHandlerProgressError =
   | InvalidStateTransitionException
   | OperationStatusCheckFailedException
@@ -8746,8 +9111,11 @@ export const recordHandlerProgress: API.OperationMethod<
     InvalidStateTransitionException,
     OperationStatusCheckFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecordHandlerProgress",
 }));
+
 export type RegisterPublisherError = CFNRegistryException | CommonErrors;
 /**
  * Registers your account as a publisher of public extensions in the CloudFormation registry.
@@ -8767,8 +9135,11 @@ export const registerPublisher: API.OperationMethod<
   input: RegisterPublisherInput,
   output: RegisterPublisherOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPublisher",
 }));
+
 export type RegisterTypeError = CFNRegistryException | CommonErrors;
 /**
  * Registers an extension with the CloudFormation service. Registering an extension makes it
@@ -8806,8 +9177,11 @@ export const registerType: API.OperationMethod<
   input: RegisterTypeInput,
   output: RegisterTypeOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterType",
 }));
+
 export type RollbackStackError = TokenAlreadyExistsException | CommonErrors;
 /**
  * When specifying `RollbackStack`, you preserve the state of previously
@@ -8840,8 +9214,11 @@ export const rollbackStack: API.OperationMethod<
   input: RollbackStackInput,
   output: RollbackStackOutput,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackStack",
 }));
+
 export type SetStackPolicyError = CommonErrors;
 /**
  * Sets a stack policy for a specified stack.
@@ -8855,8 +9232,11 @@ export const setStackPolicy: API.OperationMethod<
   input: SetStackPolicyInput,
   output: SetStackPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetStackPolicy",
 }));
+
 export type SetTypeConfigurationError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -8889,8 +9269,11 @@ export const setTypeConfiguration: API.OperationMethod<
   input: SetTypeConfigurationInput,
   output: SetTypeConfigurationOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTypeConfiguration",
 }));
+
 export type SetTypeDefaultVersionError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -8908,8 +9291,11 @@ export const setTypeDefaultVersion: API.OperationMethod<
   input: SetTypeDefaultVersionInput,
   output: SetTypeDefaultVersionOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTypeDefaultVersion",
 }));
+
 export type SignalResourceError = CommonErrors;
 /**
  * Sends a signal to the specified resource with a success or failure status. You can use the
@@ -8928,8 +9314,11 @@ export const signalResource: API.OperationMethod<
   input: SignalResourceInput,
   output: SignalResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignalResource",
 }));
+
 export type StartResourceScanError =
   | ResourceScanInProgressException
   | ResourceScanLimitExceededException
@@ -8947,8 +9336,11 @@ export const startResourceScan: API.OperationMethod<
   input: StartResourceScanInput,
   output: StartResourceScanOutput,
   errors: [ResourceScanInProgressException, ResourceScanLimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceScan",
 }));
+
 export type StopStackSetOperationError =
   | InvalidOperationException
   | OperationNotFoundException
@@ -8972,8 +9364,11 @@ export const stopStackSetOperation: API.OperationMethod<
     OperationNotFoundException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStackSetOperation",
 }));
+
 export type TestTypeError =
   | CFNRegistryException
   | TypeNotFoundException
@@ -9015,8 +9410,11 @@ export const testType: API.OperationMethod<
   input: TestTypeInput,
   output: TestTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestType",
 }));
+
 export type UpdateGeneratedTemplateError =
   | AlreadyExistsException
   | GeneratedTemplateNotFoundException
@@ -9041,8 +9439,11 @@ export const updateGeneratedTemplate: API.OperationMethod<
     GeneratedTemplateNotFoundException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGeneratedTemplate",
 }));
+
 export type UpdateStackError =
   | InsufficientCapabilitiesException
   | TokenAlreadyExistsException
@@ -9072,8 +9473,11 @@ export const updateStack: API.OperationMethod<
     TokenAlreadyExistsException,
     NoUpdateToPerform,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStack",
 }));
+
 export type UpdateStackInstancesError =
   | InvalidOperationException
   | OperationIdAlreadyExistsException
@@ -9129,8 +9533,11 @@ export const updateStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStackInstances",
 }));
+
 export type UpdateStackSetError =
   | InvalidOperationException
   | OperationIdAlreadyExistsException
@@ -9176,8 +9583,11 @@ export const updateStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStackSet",
 }));
+
 export type UpdateTerminationProtectionError = CommonErrors;
 /**
  * Updates termination protection for the specified stack. If a user attempts to delete a
@@ -9198,8 +9608,11 @@ export const updateTerminationProtection: API.OperationMethod<
   input: UpdateTerminationProtectionInput,
   output: UpdateTerminationProtectionOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTerminationProtection",
 }));
+
 export type ValidateTemplateError = CommonErrors;
 /**
  * Validates a specified template. CloudFormation first checks if the template is valid JSON. If
@@ -9215,5 +9628,7 @@ export const validateTemplate: API.OperationMethod<
   input: ValidateTemplateInput,
   output: ValidateTemplateOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateTemplate",
 }));

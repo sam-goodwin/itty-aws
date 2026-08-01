@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,41 +87,89 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type EnvironmentName = string | redacted.Redacted<string>;
 export type Arn = string;
 export type DesktopEndpoint = string | redacted.Redacted<string>;
-export type Hour = number;
-export type Minute = number;
-export type SoftwareSetId = string;
-export type KmsKeyArn = string;
-export type ClientToken = string;
-export type DeviceCreationTagKey = string;
-export type DeviceCreationTagValue = string;
-export type EnvironmentId = string;
-export type ActivationCode = string | redacted.Redacted<string>;
-export type ExceptionMessage = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type RetryAfterSeconds = number;
-export type ServiceCode = string;
-export type QuotaCode = string;
-export type FieldName = string;
-export type DeviceId = string;
-export type DeviceName = string | redacted.Redacted<string>;
-export type UserId = string | redacted.Redacted<string>;
-export type PaginationToken = string;
-export type MaxResults = number;
-export type SoftwareSetIdOrEmptyString = string;
-
-//# Schemas
 export type SoftwareSetUpdateSchedule =
   | "USE_MAINTENANCE_WINDOW"
   | "APPLY_IMMEDIATELY"
   | (string & {});
 export const SoftwareSetUpdateSchedule = /*@__PURE__*/ S.String;
+
 export type MaintenanceWindowType = "SYSTEM" | "CUSTOM" | (string & {});
 export const MaintenanceWindowType = /*@__PURE__*/ S.String;
+
+export type Hour = number;
+export type Minute = number;
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -130,10 +180,12 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export type DayOfWeekList = DayOfWeek[];
 export const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
 export type ApplyTimeOf = "UTC" | "DEVICE" | (string & {});
 export const ApplyTimeOf = /*@__PURE__*/ S.String;
+
 export interface MaintenanceWindow {
   type: MaintenanceWindowType;
   startTimeHour?: number;
@@ -161,11 +213,17 @@ export type SoftwareSetUpdateMode =
   | "USE_DESIRED"
   | (string & {});
 export const SoftwareSetUpdateMode = /*@__PURE__*/ S.String;
+
+export type SoftwareSetId = string;
+export type KmsKeyArn = string;
+export type ClientToken = string;
 export type TagsMap = { [key: string]: string | undefined };
 export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DeviceCreationTagKey = string;
+export type DeviceCreationTagValue = string;
 export type DeviceCreationTagsMap = { [key: string]: string | undefined };
 export const DeviceCreationTagsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -210,12 +268,15 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
+export type EnvironmentId = string;
 export type DesktopType =
   | "workspaces"
   | "appstream"
   | "workspaces-web"
   | (string & {});
 export const DesktopType = /*@__PURE__*/ S.String;
+
+export type ActivationCode = string | redacted.Redacted<string>;
 export interface EnvironmentSummary {
   id?: string;
   name?: string | redacted.Redacted<string>;
@@ -260,26 +321,7 @@ export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type DeviceId = string;
 export interface DeleteDeviceRequest {
   id: string;
   clientToken?: string;
@@ -342,6 +384,7 @@ export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvironmentResponse>;
 export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
 export const TargetDeviceStatus = /*@__PURE__*/ S.String;
+
 export interface DeregisterDeviceRequest {
   id: string;
   targetDeviceStatus?: TargetDeviceStatus;
@@ -388,6 +431,7 @@ export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeviceRequest",
 }) as any as S.Schema<GetDeviceRequest>;
+export type DeviceName = string | redacted.Redacted<string>;
 export type DeviceStatus =
   | "REGISTERED"
   | "DEREGISTERING"
@@ -395,18 +439,22 @@ export type DeviceStatus =
   | "ARCHIVED"
   | (string & {});
 export const DeviceStatus = /*@__PURE__*/ S.String;
+
 export type DeviceSoftwareSetComplianceStatus =
   | "NONE"
   | "COMPLIANT"
   | "NOT_COMPLIANT"
   | (string & {});
 export const DeviceSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
+
 export type SoftwareSetUpdateStatus =
   | "AVAILABLE"
   | "IN_PROGRESS"
   | "UP_TO_DATE"
   | (string & {});
 export const SoftwareSetUpdateStatus = /*@__PURE__*/ S.String;
+
+export type UserId = string | redacted.Redacted<string>;
 export interface Device {
   id?: string;
   serialNumber?: string;
@@ -488,6 +536,7 @@ export type EnvironmentSoftwareSetComplianceStatus =
   | "NOT_COMPLIANT"
   | (string & {});
 export const EnvironmentSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
+
 export interface Environment {
   id?: string;
   name?: string | redacted.Redacted<string>;
@@ -564,6 +613,7 @@ export type SoftwareSetValidationStatus =
   | "NOT_VALIDATED"
   | (string & {});
 export const SoftwareSetValidationStatus = /*@__PURE__*/ S.String;
+
 export interface Software {
   name?: string;
   version?: string;
@@ -601,6 +651,8 @@ export const GetSoftwareSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSoftwareSetResponse",
 }) as any as S.Schema<GetSoftwareSetResponse>;
+export type PaginationToken = string;
+export type MaxResults = number;
 export interface ListDevicesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -786,12 +838,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagsMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagsMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
@@ -881,6 +932,7 @@ export const UpdateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDeviceResponse",
 }) as any as S.Schema<UpdateDeviceResponse>;
+export type SoftwareSetIdOrEmptyString = string;
 export interface UpdateEnvironmentRequest {
   id: string;
   name?: string | redacted.Redacted<string>;
@@ -951,64 +1003,34 @@ export const UpdateSoftwareSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSoftwareSetResponse",
 }) as any as S.Schema<UpdateSoftwareSetResponse>;
+export type ExceptionMessage = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type RetryAfterSeconds = number;
+export type ServiceCode = string;
+export type QuotaCode = string;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.optional(S.String),
-    reason: S.optional(ValidationExceptionReason),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type FieldName = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type CreateEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -1038,8 +1060,12 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -1067,8 +1093,12 @@ export const deleteDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevice",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeleteEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -1096,8 +1126,12 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
+  endpointHostPrefix: "api.",
 }));
+
 export type DeregisterDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -1125,8 +1159,12 @@ export const deregisterDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterDevice",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -1152,8 +1190,12 @@ export const getDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevice",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetEnvironmentError =
   | AccessDeniedException
   | InternalServerException
@@ -1179,8 +1221,12 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
+  endpointHostPrefix: "api.",
 }));
+
 export type GetSoftwareSetError =
   | AccessDeniedException
   | InternalServerException
@@ -1206,8 +1252,12 @@ export const getSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSoftwareSet",
+  endpointHostPrefix: "api.",
 }));
+
 export type ListDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -1246,7 +1296,10 @@ export const listDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1254,6 +1307,7 @@ export const listDevices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEnvironmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -1292,7 +1346,10 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1300,6 +1357,7 @@ export const listEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSoftwareSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -1338,7 +1396,10 @@ export const listSoftwareSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSoftwareSets",
+  endpointHostPrefix: "api.",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
@@ -1346,6 +1407,7 @@ export const listSoftwareSets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1371,8 +1433,12 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1400,8 +1466,12 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1429,8 +1499,12 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -1456,8 +1530,12 @@ export const updateDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevice",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -1485,8 +1563,12 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
+  endpointHostPrefix: "api.",
 }));
+
 export type UpdateSoftwareSetError =
   | AccessDeniedException
   | InternalServerException
@@ -1512,5 +1594,8 @@ export const updateSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSoftwareSet",
+  endpointHostPrefix: "api.",
 }));

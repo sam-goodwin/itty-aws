@@ -1,5 +1,62 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align ssl#UniversalSettingsGet with distilled cloudflare/ssl getUniversalSetting",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#UniversalSettingsGet",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSetting"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#UniversalSettingsGetRequest",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSettingRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSetting/input/target",
+      "value": "com.cloudflare.ssl#GetUniversalSettingRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#UniversalSettingsGetResponse",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSettingResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSetting/output/target",
+      "value": "com.cloudflare.ssl#GetUniversalSettingResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ssl#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ssl#GetUniversalSetting/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.ssl#Forbidden"
+        }
+      ]
+    }
+  ]
 }

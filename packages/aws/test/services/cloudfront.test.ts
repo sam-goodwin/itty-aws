@@ -400,19 +400,19 @@ test(
         const comment = dist.Distribution?.DistributionConfig?.Comment;
         expect(
           Redacted.isRedacted(comment) ? Redacted.value(comment) : comment,
-        ).toEqual(`distilled-aws test distribution (distilled-cf-dist-lifecycle-${testRunId})`);
+        ).toEqual(
+          `distilled-aws test distribution (distilled-cf-dist-lifecycle-${testRunId})`,
+        );
 
         // Get distribution config
         const config = yield* getDistributionConfig({ Id: id });
         expect(config.DistributionConfig?.Enabled).toBe(false);
 
         // List distributions (paginate to find ours)
-        const allDists = yield* listDistributions.items({}).pipe(
-          Stream.runCollect,
-        );
-        const foundDist = allDists.find(
-          (d: any) => d.Id === id,
-        );
+        const allDists = yield* listDistributions
+          .items({})
+          .pipe(Stream.runCollect);
+        const foundDist = allDists.find((d: any) => d.Id === id);
         expect(foundDist).toBeDefined();
       }),
     );

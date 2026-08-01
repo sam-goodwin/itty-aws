@@ -1,10 +1,88 @@
 {
-  "errors": {
-    "StreamNotFound": [
-      { "code": 1016 }
-    ],
-    "InvalidStreamId": [
-      { "code": 2 }
-    ]
-  }
+  "description": "Align pipelines#StreamsGet with distilled cloudflare/pipelines getStream",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#StreamsGet",
+      "path": "/shapes/com.cloudflare.pipelines#GetStream"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#StreamsGetRequest",
+      "path": "/shapes/com.cloudflare.pipelines#GetStreamRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#GetStream/input/target",
+      "value": "com.cloudflare.pipelines#GetStreamRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#StreamsGetResponse",
+      "path": "/shapes/com.cloudflare.pipelines#GetStreamResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#GetStream/output/target",
+      "value": "com.cloudflare.pipelines#GetStreamResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#StreamNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1016
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#InvalidStreamId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#GetStream/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#StreamNotFound"
+        },
+        {
+          "target": "com.cloudflare.pipelines#InvalidStreamId"
+        }
+      ]
+    }
+  ]
 }

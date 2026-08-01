@@ -1,10 +1,143 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "PolicyNotFound": [
-      { "code": 0, "message": { "includes": "Policy not found" } }
-    ],
-    "InvalidAlertType": [{ "code": 17004 }],
-    "MechanismRequired": [{ "code": 17102 }]
-  }
+  "description": "Align alerting#PoliciesUpdate with distilled cloudflare/alerting updatePolicy",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesUpdate",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicy"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesUpdateRequest",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicyRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicy/input/target",
+      "value": "com.cloudflare.alerting#UpdatePolicyRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#PoliciesUpdateResponse",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicyResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicy/output/target",
+      "value": "com.cloudflare.alerting#UpdatePolicyResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#PolicyNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "Policy not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidAlertType",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 17004
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#MechanismRequired",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 17102
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#UpdatePolicy/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.alerting#PolicyNotFound"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidAlertType"
+        },
+        {
+          "target": "com.cloudflare.alerting#MechanismRequired"
+        }
+      ]
+    }
+  ]
 }

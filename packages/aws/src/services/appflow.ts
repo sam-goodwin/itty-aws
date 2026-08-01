@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,118 +87,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConnectorAuthenticationException extends S.TaggedErrorClass<ConnectorAuthenticationException>()(
+  "ConnectorAuthenticationException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ConnectorServerException extends S.TaggedErrorClass<ConnectorServerException>()(
+  "ConnectorServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type FlowName = string;
 export type ExecutionId = string;
-export type ErrorMessage = string;
-export type ConnectorProfileName = string;
-export type KMSArn = string;
-export type ConnectorLabel = string;
-export type InstanceUrl = string;
-export type DatabaseUrl = string;
-export type BucketName = string;
-export type BucketPrefix = string;
-export type RoleArn = string;
-export type DataApiRoleArn = string;
-export type ClusterIdentifier = string;
-export type WorkgroupName = string;
-export type DatabaseName = string;
-export type Warehouse = string;
-export type Stage = string;
-export type PrivateLinkServiceName = string;
-export type AccountName = string;
-export type Region = string;
-export type ApplicationHostUrl = string;
-export type ApplicationServicePath = string;
-export type PortNumber = number;
-export type ClientNumber = string;
-export type LogonLanguage = string;
-export type TokenUrl = string;
-export type AuthCodeUrl = string;
-export type OAuthScope = string;
-export type ProfilePropertyKey = string;
-export type ProfilePropertyValue = string;
-export type CustomPropertyKey = string;
-export type CustomPropertyValue = string;
-export type BusinessUnitId = string;
-export type ApiKey = string | redacted.Redacted<string>;
-export type SecretKey = string | redacted.Redacted<string>;
-export type ApplicationKey = string;
-export type ApiToken = string;
-export type ClientId = string;
-export type ClientSecret = string | redacted.Redacted<string>;
-export type AccessToken = string | redacted.Redacted<string>;
-export type RefreshToken = string;
-export type AuthCode = string;
-export type RedirectUri = string;
-export type AccessKeyId = string | redacted.Redacted<string>;
-export type Username = string;
-export type Key = string;
-export type Password = string | redacted.Redacted<string>;
-export type ClientCredentialsArn = string | redacted.Redacted<string>;
-export type JwtToken = string | redacted.Redacted<string>;
-export type ApiSecretKey = string | redacted.Redacted<string>;
-export type CustomAuthenticationType = string;
-export type CredentialsMapKey = string | redacted.Redacted<string>;
-export type CredentialsMapValue = string | redacted.Redacted<string>;
-export type ClientToken = string;
-export type ConnectorProfileArn = string;
-export type FlowDescription = string;
-export type ScheduleExpression = string;
-export type Timezone = string;
-export type ScheduleOffset = number;
-export type FlowErrorDeactivationThreshold = number;
-export type ApiVersion = string;
-export type DocumentType = string;
-export type SAPODataMaxParallelism = number;
-export type SAPODataMaxPageSize = number;
-export type EntityName = string;
-export type DataTransferApiTypeName = string;
-export type DatetimeTypeFieldName = string;
-export type JavaBoolean = boolean;
-export type Name = string;
-export type UpsolverBucketName = string;
-export type DomainName = string;
-export type ObjectTypeName = string;
-export type DestinationField = string;
-export type Property = string;
-export type TagKey = string;
-export type TagValue = string;
-export type GlueDataCatalogIAMRole = string;
-export type GlueDataCatalogDatabaseName = string;
-export type GlueDataCatalogTablePrefix = string;
-export type FlowArn = string;
-export type ConnectorDescription = string;
-export type ConnectorOwner = string;
-export type ConnectorName = string;
-export type ConnectorVersion = string;
-export type ARN = string;
-export type ConnectorMode = string;
-export type Label = string;
-export type Description = string;
-export type ConnectorSuppliedValue = string;
-export type ConnectorRuntimeSettingDataType = string;
-export type ConnectorRuntimeSettingScope = string;
-export type SupportedApiVersion = string;
-export type LogoURL = string;
-export type RegisteredBy = string;
-export type Identifier = string;
-export type FieldType = string;
-export type Value = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type PrivateConnectionProvisioningFailureMessage = string;
-export type ApplicationType = string;
-export type FlowStatusMessage = string;
-export type MostRecentExecutionMessage = string;
-export type CreatedBy = string;
-export type UpdatedBy = string;
-export type ExecutionMessage = string;
-export type EntitiesPath = string;
-export type ListEntitiesMaxResults = number;
-export type Group = string;
-
-//# Schemas
 export type ExecutionIds = string[];
 export const ExecutionIds = /*@__PURE__*/ S.Array(S.String);
 export interface CancelFlowExecutionsRequest {
@@ -225,6 +167,8 @@ export const CancelFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelFlowExecutionsResponse",
 }) as any as S.Schema<CancelFlowExecutionsResponse>;
+export type ConnectorProfileName = string;
+export type KMSArn = string;
 export type ConnectorType =
   | "Salesforce"
   | "Singular"
@@ -252,14 +196,18 @@ export type ConnectorType =
   | "Pardot"
   | (string & {});
 export const ConnectorType = /*@__PURE__*/ S.String;
+
+export type ConnectorLabel = string;
 export type ConnectionMode = "Public" | "Private" | (string & {});
 export const ConnectionMode = /*@__PURE__*/ S.String;
+
 export interface AmplitudeConnectorProfileProperties {}
 export const AmplitudeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AmplitudeConnectorProfileProperties",
 }) as any as S.Schema<AmplitudeConnectorProfileProperties>;
+export type InstanceUrl = string;
 export interface DatadogConnectorProfileProperties {
   instanceUrl: string;
 }
@@ -303,6 +251,14 @@ export const MarketoConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MarketoConnectorProfileProperties",
 }) as any as S.Schema<MarketoConnectorProfileProperties>;
+export type DatabaseUrl = string;
+export type BucketName = string;
+export type BucketPrefix = string;
+export type RoleArn = string;
+export type DataApiRoleArn = string;
+export type ClusterIdentifier = string;
+export type WorkgroupName = string;
+export type DatabaseName = string;
 export interface RedshiftConnectorProfileProperties {
   databaseUrl?: string;
   bucketName: string;
@@ -366,6 +322,11 @@ export const SlackConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SlackConnectorProfileProperties",
 }) as any as S.Schema<SlackConnectorProfileProperties>;
+export type Warehouse = string;
+export type Stage = string;
+export type PrivateLinkServiceName = string;
+export type AccountName = string;
+export type Region = string;
 export interface SnowflakeConnectorProfileProperties {
   warehouse: string;
   stage: string;
@@ -410,6 +371,14 @@ export const ZendeskConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ZendeskConnectorProfileProperties",
 }) as any as S.Schema<ZendeskConnectorProfileProperties>;
+export type ApplicationHostUrl = string;
+export type ApplicationServicePath = string;
+export type PortNumber = number;
+export type ClientNumber = string;
+export type LogonLanguage = string;
+export type TokenUrl = string;
+export type AuthCodeUrl = string;
+export type OAuthScope = string;
 export type OAuthScopeList = string[];
 export const OAuthScopeList = /*@__PURE__*/ S.Array(S.String);
 export interface OAuthProperties {
@@ -450,6 +419,8 @@ export const SAPODataConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SAPODataConnectorProfileProperties",
 }) as any as S.Schema<SAPODataConnectorProfileProperties>;
+export type ProfilePropertyKey = string;
+export type ProfilePropertyValue = string;
 export type ProfilePropertiesMap = { [key: string]: string | undefined };
 export const ProfilePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -461,6 +432,9 @@ export type OAuth2GrantType =
   | "JWT_BEARER"
   | (string & {});
 export const OAuth2GrantType = /*@__PURE__*/ S.String;
+
+export type CustomPropertyKey = string;
+export type CustomPropertyValue = string;
 export type TokenUrlCustomProperties = { [key: string]: string | undefined };
 export const TokenUrlCustomProperties = /*@__PURE__*/ S.Record(
   S.String,
@@ -492,6 +466,7 @@ export const CustomConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomConnectorProfileProperties",
 }) as any as S.Schema<CustomConnectorProfileProperties>;
+export type BusinessUnitId = string;
 export interface PardotConnectorProfileProperties {
   instanceUrl?: string;
   isSandboxEnvironment?: boolean;
@@ -552,6 +527,8 @@ export const ConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorProfileProperties",
 }) as any as S.Schema<ConnectorProfileProperties>;
+export type ApiKey = string | redacted.Redacted<string>;
+export type SecretKey = string | redacted.Redacted<string>;
 export interface AmplitudeConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
   secretKey: string | redacted.Redacted<string>;
@@ -561,6 +538,7 @@ export const AmplitudeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AmplitudeConnectorProfileCredentials",
 }) as any as S.Schema<AmplitudeConnectorProfileCredentials>;
+export type ApplicationKey = string;
 export interface DatadogConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
   applicationKey: string | redacted.Redacted<string>;
@@ -570,6 +548,7 @@ export const DatadogConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatadogConnectorProfileCredentials",
 }) as any as S.Schema<DatadogConnectorProfileCredentials>;
+export type ApiToken = string;
 export interface DynatraceConnectorProfileCredentials {
   apiToken: string | redacted.Redacted<string>;
 }
@@ -578,6 +557,12 @@ export const DynatraceConnectorProfileCredentials = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DynatraceConnectorProfileCredentials",
 }) as any as S.Schema<DynatraceConnectorProfileCredentials>;
+export type ClientId = string;
+export type ClientSecret = string | redacted.Redacted<string>;
+export type AccessToken = string | redacted.Redacted<string>;
+export type RefreshToken = string;
+export type AuthCode = string;
+export type RedirectUri = string;
 export interface ConnectorOAuthRequest {
   authCode?: string;
   redirectUri?: string;
@@ -624,6 +609,9 @@ export const HoneycodeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HoneycodeConnectorProfileCredentials",
 }) as any as S.Schema<HoneycodeConnectorProfileCredentials>;
+export type AccessKeyId = string | redacted.Redacted<string>;
+export type Username = string;
+export type Key = string;
 export interface InforNexusConnectorProfileCredentials {
   accessKeyId: string | redacted.Redacted<string>;
   userId: string;
@@ -657,6 +645,7 @@ export const MarketoConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MarketoConnectorProfileCredentials",
 }) as any as S.Schema<MarketoConnectorProfileCredentials>;
+export type Password = string | redacted.Redacted<string>;
 export interface RedshiftConnectorProfileCredentials {
   username?: string;
   password?: string | redacted.Redacted<string>;
@@ -669,6 +658,8 @@ export const RedshiftConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftConnectorProfileCredentials",
 }) as any as S.Schema<RedshiftConnectorProfileCredentials>;
+export type ClientCredentialsArn = string | redacted.Redacted<string>;
+export type JwtToken = string | redacted.Redacted<string>;
 export interface SalesforceConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   refreshToken?: string | redacted.Redacted<string>;
@@ -756,6 +747,7 @@ export const SnowflakeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "SnowflakeConnectorProfileCredentials",
 }) as any as S.Schema<SnowflakeConnectorProfileCredentials>;
+export type ApiSecretKey = string | redacted.Redacted<string>;
 export interface TrendmicroConnectorProfileCredentials {
   apiSecretKey: string | redacted.Redacted<string>;
 }
@@ -835,6 +827,7 @@ export type AuthenticationType =
   | "CUSTOM"
   | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export interface ApiKeyCredentials {
   apiKey: string | redacted.Redacted<string>;
   apiSecretKey?: string | redacted.Redacted<string>;
@@ -847,6 +840,9 @@ export const ApiKeyCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiKeyCredentials",
 }) as any as S.Schema<ApiKeyCredentials>;
+export type CustomAuthenticationType = string;
+export type CredentialsMapKey = string | redacted.Redacted<string>;
+export type CredentialsMapValue = string | redacted.Redacted<string>;
 export type CredentialsMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -960,6 +956,7 @@ export const ConnectorProfileConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorProfileConfig",
 }) as any as S.Schema<ConnectorProfileConfig>;
+export type ClientToken = string;
 export interface CreateConnectorProfileRequest {
   connectorProfileName: string;
   kmsArn?: string;
@@ -991,6 +988,7 @@ export const CreateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorProfileRequest",
 }) as any as S.Schema<CreateConnectorProfileRequest>;
+export type ConnectorProfileArn = string;
 export interface CreateConnectorProfileResponse {
   connectorProfileArn?: string;
 }
@@ -999,10 +997,17 @@ export const CreateConnectorProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorProfileResponse",
 }) as any as S.Schema<CreateConnectorProfileResponse>;
+export type FlowDescription = string;
 export type TriggerType = "Scheduled" | "Event" | "OnDemand" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
+export type ScheduleExpression = string;
 export type DataPullMode = "Incremental" | "Complete" | (string & {});
 export const DataPullMode = /*@__PURE__*/ S.String;
+
+export type Timezone = string;
+export type ScheduleOffset = number;
+export type FlowErrorDeactivationThreshold = number;
 export interface ScheduledTriggerProperties {
   scheduleExpression: string;
   dataPullMode?: DataPullMode;
@@ -1051,6 +1056,7 @@ export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
     triggerProperties: S.optional(TriggerProperties),
   }),
 ).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
+export type ApiVersion = string;
 export interface AmplitudeSourceProperties {
   object: string;
 }
@@ -1101,6 +1107,7 @@ export const MarketoSourceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketoSourceProperties>;
 export type S3InputFileType = "CSV" | "JSON" | (string & {});
 export const S3InputFileType = /*@__PURE__*/ S.String;
+
 export interface S3InputFormatConfig {
   s3InputFileType?: S3InputFileType;
 }
@@ -1129,6 +1136,7 @@ export type SalesforceDataTransferApi =
   | "REST_SYNC"
   | (string & {});
 export const SalesforceDataTransferApi = /*@__PURE__*/ S.String;
+
 export interface SalesforceSourceProperties {
   object: string;
   enableDynamicFieldUpdate?: boolean;
@@ -1177,6 +1185,7 @@ export const TrendmicroSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrendmicroSourceProperties",
 }) as any as S.Schema<TrendmicroSourceProperties>;
+export type DocumentType = string;
 export interface VeevaSourceProperties {
   object: string;
   documentType?: string;
@@ -1203,6 +1212,7 @@ export const ZendeskSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ZendeskSourceProperties",
 }) as any as S.Schema<ZendeskSourceProperties>;
+export type SAPODataMaxParallelism = number;
 export interface SAPODataParallelismConfig {
   maxParallelism: number;
 }
@@ -1211,6 +1221,7 @@ export const SAPODataParallelismConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SAPODataParallelismConfig",
 }) as any as S.Schema<SAPODataParallelismConfig>;
+export type SAPODataMaxPageSize = number;
 export interface SAPODataPaginationConfig {
   maxPageSize: number;
 }
@@ -1233,17 +1244,20 @@ export const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SAPODataSourceProperties",
 }) as any as S.Schema<SAPODataSourceProperties>;
+export type EntityName = string;
 export type CustomProperties = { [key: string]: string | undefined };
 export const CustomProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DataTransferApiTypeName = string;
 export type DataTransferApiType =
   | "SYNC"
   | "ASYNC"
   | "AUTOMATIC"
   | (string & {});
 export const DataTransferApiType = /*@__PURE__*/ S.String;
+
 export interface DataTransferApi {
   Name?: string;
   Type?: DataTransferApiType;
@@ -1320,6 +1334,7 @@ export const SourceConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceConnectorProperties",
 }) as any as S.Schema<SourceConnectorProperties>;
+export type DatetimeTypeFieldName = string;
 export interface IncrementalPullConfig {
   datetimeTypeFieldName?: string;
 }
@@ -1378,12 +1393,14 @@ export const RedshiftDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedshiftDestinationProperties>;
 export type FileType = "CSV" | "JSON" | "PARQUET" | (string & {});
 export const FileType = /*@__PURE__*/ S.String;
+
 export type PrefixType =
   | "FILENAME"
   | "PATH"
   | "PATH_AND_FILENAME"
   | (string & {});
 export const PrefixType = /*@__PURE__*/ S.String;
+
 export type PrefixFormat =
   | "YEAR"
   | "MONTH"
@@ -1392,8 +1409,10 @@ export type PrefixFormat =
   | "MINUTE"
   | (string & {});
 export const PrefixFormat = /*@__PURE__*/ S.String;
+
 export type PathPrefix = "EXECUTION_ID" | "SCHEMA_VERSION" | (string & {});
 export const PathPrefix = /*@__PURE__*/ S.String;
+
 export type PathPrefixHierarchy = PathPrefix[];
 export const PathPrefixHierarchy = /*@__PURE__*/ S.Array(PathPrefix);
 export interface PrefixConfig {
@@ -1410,6 +1429,7 @@ export const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixConfig" }) as any as S.Schema<PrefixConfig>;
 export type AggregationType = "None" | "SingleFile" | (string & {});
 export const AggregationType = /*@__PURE__*/ S.String;
+
 export interface AggregationConfig {
   aggregationType?: AggregationType;
   targetFileSize?: number;
@@ -1422,6 +1442,7 @@ export const AggregationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AggregationConfig",
 }) as any as S.Schema<AggregationConfig>;
+export type JavaBoolean = boolean;
 export interface S3OutputFormatConfig {
   fileType?: FileType;
   prefixConfig?: PrefixConfig;
@@ -1452,6 +1473,7 @@ export const S3DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DestinationProperties",
 }) as any as S.Schema<S3DestinationProperties>;
+export type Name = string;
 export type IdFieldNameList = string[];
 export const IdFieldNameList = /*@__PURE__*/ S.Array(S.String);
 export type WriteOperationType =
@@ -1461,6 +1483,7 @@ export type WriteOperationType =
   | "DELETE"
   | (string & {});
 export const WriteOperationType = /*@__PURE__*/ S.String;
+
 export interface SalesforceDestinationProperties {
   object: string;
   idFieldNames?: string[];
@@ -1513,6 +1536,7 @@ export const LookoutMetricsDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LookoutMetricsDestinationProperties",
 }) as any as S.Schema<LookoutMetricsDestinationProperties>;
+export type UpsolverBucketName = string;
 export interface UpsolverS3OutputFormatConfig {
   fileType?: FileType;
   prefixConfig: PrefixConfig;
@@ -1553,6 +1577,8 @@ export const HoneycodeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HoneycodeDestinationProperties",
 }) as any as S.Schema<HoneycodeDestinationProperties>;
+export type DomainName = string;
+export type ObjectTypeName = string;
 export interface CustomerProfilesDestinationProperties {
   domainName: string;
   objectTypeName?: string;
@@ -1698,6 +1724,7 @@ export type SourceFields = string[];
 export const SourceFields = /*@__PURE__*/ S.Array(S.String);
 export type AmplitudeConnectorOperator = "BETWEEN" | (string & {});
 export const AmplitudeConnectorOperator = /*@__PURE__*/ S.String;
+
 export type DatadogConnectorOperator =
   | "PROJECTION"
   | "BETWEEN"
@@ -1716,6 +1743,7 @@ export type DatadogConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const DatadogConnectorOperator = /*@__PURE__*/ S.String;
+
 export type DynatraceConnectorOperator =
   | "PROJECTION"
   | "BETWEEN"
@@ -1734,11 +1762,13 @@ export type DynatraceConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const DynatraceConnectorOperator = /*@__PURE__*/ S.String;
+
 export type GoogleAnalyticsConnectorOperator =
   | "PROJECTION"
   | "BETWEEN"
   | (string & {});
 export const GoogleAnalyticsConnectorOperator = /*@__PURE__*/ S.String;
+
 export type InforNexusConnectorOperator =
   | "PROJECTION"
   | "BETWEEN"
@@ -1757,6 +1787,7 @@ export type InforNexusConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const InforNexusConnectorOperator = /*@__PURE__*/ S.String;
+
 export type MarketoConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1776,6 +1807,7 @@ export type MarketoConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const MarketoConnectorOperator = /*@__PURE__*/ S.String;
+
 export type S3ConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1799,6 +1831,7 @@ export type S3ConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const S3ConnectorOperator = /*@__PURE__*/ S.String;
+
 export type SalesforceConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1823,6 +1856,7 @@ export type SalesforceConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const SalesforceConnectorOperator = /*@__PURE__*/ S.String;
+
 export type ServiceNowConnectorOperator =
   | "PROJECTION"
   | "CONTAINS"
@@ -1847,6 +1881,7 @@ export type ServiceNowConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const ServiceNowConnectorOperator = /*@__PURE__*/ S.String;
+
 export type SingularConnectorOperator =
   | "PROJECTION"
   | "EQUAL_TO"
@@ -1864,6 +1899,7 @@ export type SingularConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const SingularConnectorOperator = /*@__PURE__*/ S.String;
+
 export type SlackConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1886,6 +1922,7 @@ export type SlackConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const SlackConnectorOperator = /*@__PURE__*/ S.String;
+
 export type TrendmicroConnectorOperator =
   | "PROJECTION"
   | "EQUAL_TO"
@@ -1903,6 +1940,7 @@ export type TrendmicroConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const TrendmicroConnectorOperator = /*@__PURE__*/ S.String;
+
 export type VeevaConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1927,6 +1965,7 @@ export type VeevaConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const VeevaConnectorOperator = /*@__PURE__*/ S.String;
+
 export type ZendeskConnectorOperator =
   | "PROJECTION"
   | "GREATER_THAN"
@@ -1944,6 +1983,7 @@ export type ZendeskConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const ZendeskConnectorOperator = /*@__PURE__*/ S.String;
+
 export type SAPODataConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1968,6 +2008,7 @@ export type SAPODataConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const SAPODataConnectorOperator = /*@__PURE__*/ S.String;
+
 export type Operator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1992,6 +2033,7 @@ export type Operator =
   | "NO_OP"
   | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
 export type PardotConnectorOperator =
   | "PROJECTION"
   | "EQUAL_TO"
@@ -2009,6 +2051,7 @@ export type PardotConnectorOperator =
   | "VALIDATE_NUMERIC"
   | (string & {});
 export const PardotConnectorOperator = /*@__PURE__*/ S.String;
+
 export interface ConnectorOperator {
   Amplitude?: AmplitudeConnectorOperator;
   Datadog?: DatadogConnectorOperator;
@@ -2051,6 +2094,7 @@ export const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorOperator",
 }) as any as S.Schema<ConnectorOperator>;
+export type DestinationField = string;
 export type TaskType =
   | "Arithmetic"
   | "Filter"
@@ -2064,6 +2108,7 @@ export type TaskType =
   | "Partition"
   | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
+
 export type OperatorPropertiesKeys =
   | "VALUE"
   | "VALUES"
@@ -2084,6 +2129,8 @@ export type OperatorPropertiesKeys =
   | "ORDERED_PARTITION_KEYS_LIST"
   | (string & {});
 export const OperatorPropertiesKeys = /*@__PURE__*/ S.String;
+
+export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
@@ -2107,11 +2154,16 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 export type Tasks = Task[];
 export const Tasks = /*@__PURE__*/ S.Array(Task);
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type GlueDataCatalogIAMRole = string;
+export type GlueDataCatalogDatabaseName = string;
+export type GlueDataCatalogTablePrefix = string;
 export interface GlueDataCatalogConfig {
   roleArn: string;
   databaseName: string;
@@ -2171,6 +2223,7 @@ export const CreateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowRequest",
 }) as any as S.Schema<CreateFlowRequest>;
+export type FlowArn = string;
 export type FlowStatus =
   | "Active"
   | "Deprecated"
@@ -2180,6 +2233,7 @@ export type FlowStatus =
   | "Suspended"
   | (string & {});
 export const FlowStatus = /*@__PURE__*/ S.String;
+
 export interface CreateFlowResponse {
   flowArn?: string;
   flowStatus?: FlowStatus;
@@ -2275,6 +2329,7 @@ export type ScheduleFrequencyType =
   | "ONCE"
   | (string & {});
 export const ScheduleFrequencyType = /*@__PURE__*/ S.String;
+
 export type SchedulingFrequencyTypeList = ScheduleFrequencyType[];
 export const SchedulingFrequencyTypeList = /*@__PURE__*/ S.Array(
   ScheduleFrequencyType,
@@ -2484,16 +2539,26 @@ export const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorMetadata",
 }) as any as S.Schema<ConnectorMetadata>;
+export type ConnectorDescription = string;
+export type ConnectorOwner = string;
+export type ConnectorName = string;
+export type ConnectorVersion = string;
+export type ARN = string;
+export type ConnectorMode = string;
 export type ConnectorModeList = string[];
 export const ConnectorModeList = /*@__PURE__*/ S.Array(S.String);
 export type TokenUrlList = string[];
 export const TokenUrlList = /*@__PURE__*/ S.Array(S.String);
 export type AuthCodeUrlList = string[];
 export const AuthCodeUrlList = /*@__PURE__*/ S.Array(S.String);
+export type Label = string;
+export type Description = string;
+export type ConnectorSuppliedValue = string;
 export type ConnectorSuppliedValueList = string[];
 export const ConnectorSuppliedValueList = /*@__PURE__*/ S.Array(S.String);
 export type OAuth2CustomPropType = "TOKEN_URL" | "AUTH_URL" | (string & {});
 export const OAuth2CustomPropType = /*@__PURE__*/ S.String;
+
 export interface OAuth2CustomParameter {
   key?: string;
   isRequired?: boolean;
@@ -2590,6 +2655,8 @@ export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticationConfig",
 }) as any as S.Schema<AuthenticationConfig>;
+export type ConnectorRuntimeSettingDataType = string;
+export type ConnectorRuntimeSettingScope = string;
 export type ConnectorSuppliedValueOptionList = string[];
 export const ConnectorSuppliedValueOptionList = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectorRuntimeSetting {
@@ -2618,6 +2685,7 @@ export type ConnectorRuntimeSettingList = ConnectorRuntimeSetting[];
 export const ConnectorRuntimeSettingList = /*@__PURE__*/ S.Array(
   ConnectorRuntimeSetting,
 );
+export type SupportedApiVersion = string;
 export type SupportedApiVersionList = string[];
 export const SupportedApiVersionList = /*@__PURE__*/ S.Array(S.String);
 export type Operators =
@@ -2644,6 +2712,7 @@ export type Operators =
   | "NO_OP"
   | (string & {});
 export const Operators = /*@__PURE__*/ S.String;
+
 export type SupportedOperatorList = Operators[];
 export const SupportedOperatorList = /*@__PURE__*/ S.Array(Operators);
 export type SupportedWriteOperationList = WriteOperationType[];
@@ -2651,6 +2720,7 @@ export const SupportedWriteOperationList =
   /*@__PURE__*/ S.Array(WriteOperationType);
 export type ConnectorProvisioningType = "LAMBDA" | (string & {});
 export const ConnectorProvisioningType = /*@__PURE__*/ S.String;
+
 export interface LambdaConnectorProvisioningConfig {
   lambdaArn: string;
 }
@@ -2667,8 +2737,11 @@ export const ConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorProvisioningConfig",
 }) as any as S.Schema<ConnectorProvisioningConfig>;
+export type LogoURL = string;
+export type RegisteredBy = string;
 export type SupportedDataTransferType = "RECORD" | "FILE" | (string & {});
 export const SupportedDataTransferType = /*@__PURE__*/ S.String;
+
 export type SupportedDataTransferTypeList = SupportedDataTransferType[];
 export const SupportedDataTransferTypeList = /*@__PURE__*/ S.Array(
   SupportedDataTransferType,
@@ -2772,8 +2845,11 @@ export const DescribeConnectorEntityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectorEntityRequest",
 }) as any as S.Schema<DescribeConnectorEntityRequest>;
+export type Identifier = string;
+export type FieldType = string;
 export type FilterOperatorList = Operator[];
 export const FilterOperatorList = /*@__PURE__*/ S.Array(Operator);
+export type Value = string;
 export type SupportedValueList = string[];
 export const SupportedValueList = /*@__PURE__*/ S.Array(S.String);
 export interface Range {
@@ -2890,6 +2966,8 @@ export const DescribeConnectorEntityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConnectorEntityResponse>;
 export type ConnectorProfileNameList = string[];
 export const ConnectorProfileNameList = /*@__PURE__*/ S.Array(S.String);
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeConnectorProfilesRequest {
   connectorProfileNames?: string[];
   connectorType?: ConnectorType;
@@ -2923,6 +3001,8 @@ export type PrivateConnectionProvisioningStatus =
   | "CREATED"
   | (string & {});
 export const PrivateConnectionProvisioningStatus = /*@__PURE__*/ S.String;
+
+export type PrivateConnectionProvisioningFailureMessage = string;
 export type PrivateConnectionProvisioningFailureCause =
   | "CONNECTOR_AUTHENTICATION"
   | "CONNECTOR_SERVER"
@@ -2931,6 +3011,7 @@ export type PrivateConnectionProvisioningFailureCause =
   | "VALIDATION"
   | (string & {});
 export const PrivateConnectionProvisioningFailureCause = /*@__PURE__*/ S.String;
+
 export interface PrivateConnectionProvisioningState {
   status?: PrivateConnectionProvisioningStatus;
   failureMessage?: string;
@@ -3020,6 +3101,7 @@ export const ConnectorConfigurationsMap = /*@__PURE__*/ S.Record(
   ConnectorType,
   ConnectorConfiguration.pipe(S.optional),
 );
+export type ApplicationType = string;
 export interface ConnectorDetail {
   connectorDescription?: string;
   connectorName?: string;
@@ -3087,6 +3169,8 @@ export const DescribeFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFlowRequest",
 }) as any as S.Schema<DescribeFlowRequest>;
+export type FlowStatusMessage = string;
+export type MostRecentExecutionMessage = string;
 export type ExecutionStatus =
   | "InProgress"
   | "Successful"
@@ -3095,6 +3179,7 @@ export type ExecutionStatus =
   | "Canceled"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface ExecutionDetails {
   mostRecentExecutionMessage?: string;
   mostRecentExecutionTime?: Date;
@@ -3111,8 +3196,11 @@ export const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionDetails",
 }) as any as S.Schema<ExecutionDetails>;
+export type CreatedBy = string;
+export type UpdatedBy = string;
 export type CatalogType = "GLUE" | (string & {});
 export const CatalogType = /*@__PURE__*/ S.String;
+
 export interface RegistrationOutput {
   message?: string;
   result?: string;
@@ -3216,6 +3304,7 @@ export const DescribeFlowExecutionRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFlowExecutionRecordsRequest",
 }) as any as S.Schema<DescribeFlowExecutionRecordsRequest>;
+export type ExecutionMessage = string;
 export interface ErrorInfo {
   putFailuresCount?: number;
   executionMessage?: string;
@@ -3289,6 +3378,8 @@ export const DescribeFlowExecutionRecordsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeFlowExecutionRecordsResponse",
 }) as any as S.Schema<DescribeFlowExecutionRecordsResponse>;
+export type EntitiesPath = string;
+export type ListEntitiesMaxResults = number;
 export interface ListConnectorEntitiesRequest {
   connectorProfileName?: string;
   connectorType?: ConnectorType;
@@ -3318,6 +3409,7 @@ export const ListConnectorEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConnectorEntitiesRequest",
 }) as any as S.Schema<ListConnectorEntitiesRequest>;
+export type Group = string;
 export interface ConnectorEntity {
   name: string;
   label?: string;
@@ -3801,59 +3893,7 @@ export const UpdateFlowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFlowResponse",
 }) as any as S.Schema<UpdateFlowResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ConnectorAuthenticationException extends S.TaggedErrorClass<ConnectorAuthenticationException>()(
-  "ConnectorAuthenticationException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ConnectorServerException extends S.TaggedErrorClass<ConnectorServerException>()(
-  "ConnectorServerException",
-  {},
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CancelFlowExecutionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3899,8 +3939,11 @@ export const cancelFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelFlowExecutions",
 }));
+
 export type CreateConnectorProfileError =
   | ConflictException
   | ConnectorAuthenticationException
@@ -3932,8 +3975,11 @@ export const createConnectorProfile: API.OperationMethod<
     ValidationException,
     ConnectorServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectorProfile",
 }));
+
 export type CreateFlowError =
   | AccessDeniedException
   | ConflictException
@@ -3969,8 +4015,11 @@ export const createFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlow",
 }));
+
 export type DeleteConnectorProfileError =
   | ConflictException
   | InternalServerException
@@ -3992,8 +4041,11 @@ export const deleteConnectorProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectorProfile",
 }));
+
 export type DeleteFlowError =
   | ConflictException
   | InternalServerException
@@ -4016,8 +4068,11 @@ export const deleteFlow: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlow",
 }));
+
 export type DescribeConnectorError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4041,8 +4096,11 @@ export const describeConnector: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnector",
 }));
+
 export type DescribeConnectorEntityError =
   | ConnectorAuthenticationException
   | ConnectorServerException
@@ -4069,8 +4127,11 @@ export const describeConnectorEntity: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorEntity",
 }));
+
 export type DescribeConnectorProfilesError =
   | InternalServerException
   | ValidationException
@@ -4107,6 +4168,8 @@ export const describeConnectorProfiles: API.OperationMethod<
   input: DescribeConnectorProfilesRequest,
   output: DescribeConnectorProfilesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -4114,6 +4177,7 @@ export const describeConnectorProfiles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeConnectorsError =
   | InternalServerException
   | ValidationException
@@ -4148,6 +4212,8 @@ export const describeConnectors: API.OperationMethod<
   input: DescribeConnectorsRequest,
   output: DescribeConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -4155,6 +4221,7 @@ export const describeConnectors: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeFlowError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4171,8 +4238,11 @@ export const describeFlow: API.OperationMethod<
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlow",
 }));
+
 export type DescribeFlowExecutionRecordsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4209,6 +4279,8 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowExecutionRecords",
   pagination: {
     inputToken: "nextToken",
@@ -4216,6 +4288,7 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListConnectorEntitiesError =
   | ConnectorAuthenticationException
   | ConnectorServerException
@@ -4244,8 +4317,11 @@ export const listConnectorEntities: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorEntities",
 }));
+
 export type ListConnectorsError =
   | InternalServerException
   | ValidationException
@@ -4279,6 +4355,8 @@ export const listConnectors: API.OperationMethod<
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -4286,6 +4364,7 @@ export const listConnectors: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFlowsError =
   | InternalServerException
   | ValidationException
@@ -4317,6 +4396,8 @@ export const listFlows: API.OperationMethod<
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlows",
   pagination: {
     inputToken: "nextToken",
@@ -4324,6 +4405,7 @@ export const listFlows: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4345,8 +4427,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterConnectorError =
   | AccessDeniedException
   | ConflictException
@@ -4382,8 +4467,11 @@ export const registerConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterConnector",
 }));
+
 export type ResetConnectorMetadataCacheError =
   | ConflictException
   | InternalServerException
@@ -4414,8 +4502,11 @@ export const resetConnectorMetadataCache: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetConnectorMetadataCache",
 }));
+
 export type StartFlowError =
   | ConflictException
   | InternalServerException
@@ -4440,8 +4531,11 @@ export const startFlow: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlow",
 }));
+
 export type StopFlowError =
   | ConflictException
   | InternalServerException
@@ -4467,8 +4561,11 @@ export const stopFlow: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFlow",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4490,8 +4587,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UnregisterConnectorError =
   | ConflictException
   | InternalServerException
@@ -4514,8 +4614,11 @@ export const unregisterConnector: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnregisterConnector",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -4537,8 +4640,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectorProfileError =
   | ConflictException
   | ConnectorAuthenticationException
@@ -4566,8 +4672,11 @@ export const updateConnectorProfile: API.OperationMethod<
     ValidationException,
     ConnectorServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorProfile",
 }));
+
 export type UpdateConnectorRegistrationError =
   | AccessDeniedException
   | ConflictException
@@ -4606,8 +4715,11 @@ export const updateConnectorRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorRegistration",
 }));
+
 export type UpdateFlowError =
   | AccessDeniedException
   | ConflictException
@@ -4639,5 +4751,7 @@ export const updateFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlow",
 }));

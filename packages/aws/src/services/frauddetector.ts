@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,55 +88,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type TagKey = string;
-export type TagValue = string;
-export type Integer2 = number;
-export type FraudDetectorArn = string;
-export type Identifier = string;
-export type S3BucketLocation = string;
-export type IamRoleArn = string;
-export type WholeNumberVersionString = string;
-export type Description = string;
-export type ModelIdentifier = string;
-export type FloatVersionString = string;
-export type NoDashIdentifier = string;
-export type Elements = string | redacted.Redacted<string>;
-export type VariableType = string;
-export type RuleExpression = string | redacted.Redacted<string>;
-export type DeleteAuditHistory = boolean;
-export type SageMakerEndpointIdentifier = string;
-export type DetectorVersionMaxResults = number;
-export type ModelsMaxPageSize = number;
-export type BatchImportsMaxPageSize = number;
-export type BatchPredictionsMaxPageSize = number;
-export type DetectorsMaxResults = number;
-export type EntityTypesMaxResults = number;
-export type AttributeKey = string;
-export type AttributeValue = string | redacted.Redacted<string>;
-export type EntityRestrictedString = string;
-export type UtcTimestampISO8601 = string;
-export type VariableName = string;
-export type VariableValue = string | redacted.Redacted<string>;
-export type ContentType = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type EventTypesMaxResults = number;
-export type ExternalModelsMaxResults = number;
-export type UseEventVariables = boolean;
-export type ModelInputTemplate = string;
-export type KmsEncryptionKeyArn = string;
-export type LabelsMaxResults = number;
-export type NextToken = string;
-export type ListsElementsMaxResults = number;
-export type ListsMetadataMaxResults = number;
-export type OutcomesMaxResults = number;
-export type RulesMaxResults = number;
-export type VariablesMaxResults = number;
-export type FilterString = string;
-export type EventPredictionsMaxResults = number;
-export type TagsMaxResults = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface VariableEntry {
   name?: string;
   dataType?: string;
@@ -155,6 +143,8 @@ export const VariableEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VariableEntry" }) as any as S.Schema<VariableEntry>;
 export type VariableEntryList = VariableEntry[];
 export const VariableEntryList = /*@__PURE__*/ S.Array(VariableEntry);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -186,6 +176,7 @@ export const BatchCreateVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateVariableRequest",
 }) as any as S.Schema<BatchCreateVariableRequest>;
+export type Integer2 = number;
 export interface BatchCreateVariableError_ {
   name?: string;
   code?: number;
@@ -240,12 +231,15 @@ export type DataType =
   | "DATETIME"
   | (string & {});
 export const DataType = /*@__PURE__*/ S.String;
+
 export type DataSource =
   | "EVENT"
   | "MODEL_SCORE"
   | "EXTERNAL_MODEL_SCORE"
   | (string & {});
 export const DataSource = /*@__PURE__*/ S.String;
+
+export type FraudDetectorArn = string;
 export interface Variable {
   name?: string;
   dataType?: DataType;
@@ -302,6 +296,7 @@ export const BatchGetVariableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetVariableResult",
 }) as any as S.Schema<BatchGetVariableResult>;
+export type Identifier = string;
 export interface CancelBatchImportJobRequest {
   jobId: string;
 }
@@ -350,6 +345,8 @@ export const CancelBatchPredictionJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelBatchPredictionJobResult",
 }) as any as S.Schema<CancelBatchPredictionJobResult>;
+export type S3BucketLocation = string;
+export type IamRoleArn = string;
 export interface CreateBatchImportJobRequest {
   jobId: string;
   inputPath: string;
@@ -386,6 +383,7 @@ export const CreateBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBatchImportJobResult",
 }) as any as S.Schema<CreateBatchImportJobResult>;
+export type WholeNumberVersionString = string;
 export interface CreateBatchPredictionJobRequest {
   jobId: string;
   inputPath: string;
@@ -426,6 +424,7 @@ export const CreateBatchPredictionJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBatchPredictionJobResult",
 }) as any as S.Schema<CreateBatchPredictionJobResult>;
+export type Description = string;
 export type ListOfStrings = string[];
 export const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface Rule {
@@ -438,12 +437,15 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 export type RuleList = Rule[];
 export const RuleList = /*@__PURE__*/ S.Array(Rule);
+export type ModelIdentifier = string;
 export type ModelTypeEnum =
   | "ONLINE_FRAUD_INSIGHTS"
   | "TRANSACTION_FRAUD_INSIGHTS"
   | "ACCOUNT_TAKEOVER_INSIGHTS"
   | (string & {});
 export const ModelTypeEnum = /*@__PURE__*/ S.String;
+
+export type FloatVersionString = string;
 export interface ModelVersion {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -462,6 +464,7 @@ export type ListOfModelVersions = ModelVersion[];
 export const ListOfModelVersions = /*@__PURE__*/ S.Array(ModelVersion);
 export type RuleExecutionMode = "ALL_MATCHED" | "FIRST_MATCHED" | (string & {});
 export const RuleExecutionMode = /*@__PURE__*/ S.String;
+
 export interface CreateDetectorVersionRequest {
   detectorId: string;
   description?: string;
@@ -500,6 +503,7 @@ export type DetectorVersionStatus =
   | "INACTIVE"
   | (string & {});
 export const DetectorVersionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateDetectorVersionResult {
   detectorId?: string;
   detectorVersionId?: string;
@@ -514,8 +518,11 @@ export const CreateDetectorVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDetectorVersionResult",
 }) as any as S.Schema<CreateDetectorVersionResult>;
+export type NoDashIdentifier = string;
+export type Elements = string | redacted.Redacted<string>;
 export type ElementsList = (string | redacted.Redacted<string>)[];
 export const ElementsList = /*@__PURE__*/ S.Array(SensitiveString);
+export type VariableType = string;
 export interface CreateListRequest {
   name: string;
   elements?: (string | redacted.Redacted<string>)[];
@@ -589,6 +596,7 @@ export type TrainingDataSourceEnum =
   | "INGESTED_EVENTS"
   | (string & {});
 export const TrainingDataSourceEnum = /*@__PURE__*/ S.String;
+
 export type LabelMapper = { [key: string]: string[] | undefined };
 export const LabelMapper = /*@__PURE__*/ S.Record(
   S.String,
@@ -601,6 +609,7 @@ export type UnlabeledEventsTreatment =
   | "AUTO"
   | (string & {});
 export const UnlabeledEventsTreatment = /*@__PURE__*/ S.String;
+
 export interface LabelSchema {
   labelMapper?: { [key: string]: string[] | undefined };
   unlabeledEventsTreatment?: UnlabeledEventsTreatment;
@@ -697,8 +706,10 @@ export const CreateModelVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelVersionResult",
 }) as any as S.Schema<CreateModelVersionResult>;
+export type RuleExpression = string | redacted.Redacted<string>;
 export type Language = "DETECTORPL" | (string & {});
 export const Language = /*@__PURE__*/ S.String;
+
 export type NonEmptyListOfStrings = string[];
 export const NonEmptyListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface CreateRuleRequest {
@@ -900,6 +911,7 @@ export const DeleteEntityTypeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEntityTypeResult",
 }) as any as S.Schema<DeleteEntityTypeResult>;
+export type DeleteAuditHistory = boolean;
 export interface DeleteEventRequest {
   eventId: string;
   eventTypeName: string;
@@ -984,6 +996,7 @@ export const DeleteEventTypeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEventTypeResult",
 }) as any as S.Schema<DeleteEventTypeResult>;
+export type SageMakerEndpointIdentifier = string;
 export interface DeleteExternalModelRequest {
   modelEndpoint: string;
 }
@@ -1183,6 +1196,7 @@ export const DeleteVariableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteVariableResult",
 }) as any as S.Schema<DeleteVariableResult>;
+export type DetectorVersionMaxResults = number;
 export interface DescribeDetectorRequest {
   detectorId: string;
   nextToken?: string;
@@ -1243,6 +1257,7 @@ export const DescribeDetectorResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDetectorResult",
 }) as any as S.Schema<DescribeDetectorResult>;
+export type ModelsMaxPageSize = number;
 export interface DescribeModelVersionsRequest {
   modelId?: string;
   modelVersionNumber?: string;
@@ -1626,6 +1641,7 @@ export const DescribeModelVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeModelVersionsResult",
 }) as any as S.Schema<DescribeModelVersionsResult>;
+export type BatchImportsMaxPageSize = number;
 export interface GetBatchImportJobsRequest {
   jobId?: string;
   maxResults?: number;
@@ -1659,6 +1675,7 @@ export type AsyncJobStatus =
   | "FAILED"
   | (string & {});
 export const AsyncJobStatus = /*@__PURE__*/ S.String;
+
 export interface BatchImport {
   jobId?: string;
   status?: AsyncJobStatus;
@@ -1705,6 +1722,7 @@ export const GetBatchImportJobsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBatchImportJobsResult",
 }) as any as S.Schema<GetBatchImportJobsResult>;
+export type BatchPredictionsMaxPageSize = number;
 export interface GetBatchPredictionJobsRequest {
   jobId?: string;
   maxResults?: number;
@@ -1813,6 +1831,7 @@ export const GetDeleteEventsByEventTypeStatusResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetDeleteEventsByEventTypeStatusResult",
 }) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>;
+export type DetectorsMaxResults = number;
 export interface GetDetectorsRequest {
   detectorId?: string;
   nextToken?: string;
@@ -1918,6 +1937,7 @@ export const GetDetectorVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDetectorVersionResult",
 }) as any as S.Schema<GetDetectorVersionResult>;
+export type EntityTypesMaxResults = number;
 export interface GetEntityTypesRequest {
   name?: string;
   nextToken?: string;
@@ -1991,6 +2011,8 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventRequest",
 }) as any as S.Schema<GetEventRequest>;
+export type AttributeKey = string;
+export type AttributeValue = string | redacted.Redacted<string>;
 export type EventAttributeMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -1998,6 +2020,7 @@ export const EventAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type EntityRestrictedString = string;
 export interface Entity {
   entityType: string;
   entityId: string;
@@ -2035,6 +2058,9 @@ export interface GetEventResult {
 export const GetEventResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ event: S.optional(Event) }).pipe(ns),
 ).annotate({ identifier: "GetEventResult" }) as any as S.Schema<GetEventResult>;
+export type UtcTimestampISO8601 = string;
+export type VariableName = string;
+export type VariableValue = string | redacted.Redacted<string>;
 export type EventVariableMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -2042,6 +2068,7 @@ export const EventVariableMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type ContentType = string;
 export interface ModelEndpointDataBlob {
   byteBuffer?: Uint8Array;
   contentType?: string;
@@ -2132,6 +2159,7 @@ export type ListOfRuleResults = RuleResult[];
 export const ListOfRuleResults = /*@__PURE__*/ S.Array(RuleResult);
 export type ModelSource = "SAGEMAKER" | (string & {});
 export const ModelSource = /*@__PURE__*/ S.String;
+
 export interface ExternalModelSummary {
   modelEndpoint?: string;
   modelSource?: ModelSource;
@@ -2206,6 +2234,7 @@ export const GetEventPredictionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventPredictionMetadataRequest",
 }) as any as S.Schema<GetEventPredictionMetadataRequest>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface EventVariableSummary {
   name?: string | redacted.Redacted<string>;
   value?: string | redacted.Redacted<string>;
@@ -2397,6 +2426,7 @@ export const GetEventPredictionMetadataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventPredictionMetadataResult",
 }) as any as S.Schema<GetEventPredictionMetadataResult>;
+export type EventTypesMaxResults = number;
 export interface GetEventTypesRequest {
   name?: string;
   nextToken?: string;
@@ -2423,6 +2453,7 @@ export const GetEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventTypesRequest>;
 export type EventIngestion = "ENABLED" | "DISABLED" | (string & {});
 export const EventIngestion = /*@__PURE__*/ S.String;
+
 export interface IngestedEventStatistics {
   numberOfEvents?: number;
   eventDataSizeInBytes?: number;
@@ -2491,6 +2522,7 @@ export const GetEventTypesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventTypesResult",
 }) as any as S.Schema<GetEventTypesResult>;
+export type ExternalModelsMaxResults = number;
 export interface GetExternalModelsRequest {
   modelEndpoint?: string;
   nextToken?: string;
@@ -2520,6 +2552,9 @@ export type ModelInputDataFormat =
   | "APPLICATION_JSON"
   | (string & {});
 export const ModelInputDataFormat = /*@__PURE__*/ S.String;
+
+export type UseEventVariables = boolean;
+export type ModelInputTemplate = string;
 export interface ModelInputConfiguration {
   eventTypeName?: string;
   format?: ModelInputDataFormat;
@@ -2543,6 +2578,7 @@ export type ModelOutputDataFormat =
   | "APPLICATION_JSONLINES"
   | (string & {});
 export const ModelOutputDataFormat = /*@__PURE__*/ S.String;
+
 export type JsonKeyToVariableMap = { [key: string]: string | undefined };
 export const JsonKeyToVariableMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2569,6 +2605,7 @@ export const ModelOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelOutputConfiguration>;
 export type ModelEndpointStatus = "ASSOCIATED" | "DISSOCIATED" | (string & {});
 export const ModelEndpointStatus = /*@__PURE__*/ S.String;
+
 export interface ExternalModel {
   modelEndpoint?: string;
   modelSource?: ModelSource;
@@ -2623,6 +2660,7 @@ export const GetKMSEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKMSEncryptionKeyRequest",
 }) as any as S.Schema<GetKMSEncryptionKeyRequest>;
+export type KmsEncryptionKeyArn = string;
 export interface KMSKey {
   kmsEncryptionKeyArn?: string;
 }
@@ -2637,6 +2675,7 @@ export const GetKMSEncryptionKeyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKMSEncryptionKeyResult",
 }) as any as S.Schema<GetKMSEncryptionKeyResult>;
+export type LabelsMaxResults = number;
 export interface GetLabelsRequest {
   name?: string;
   nextToken?: string;
@@ -2691,6 +2730,8 @@ export const GetLabelsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLabelsResult",
 }) as any as S.Schema<GetLabelsResult>;
+export type NextToken = string;
+export type ListsElementsMaxResults = number;
 export interface GetListElementsRequest {
   name: string;
   nextToken?: string;
@@ -2727,6 +2768,7 @@ export const GetListElementsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetListElementsResult",
 }) as any as S.Schema<GetListElementsResult>;
+export type ListsMetadataMaxResults = number;
 export interface GetListsMetadataRequest {
   name?: string;
   nextToken?: string;
@@ -2893,6 +2935,7 @@ export const GetModelVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetModelVersionResult",
 }) as any as S.Schema<GetModelVersionResult>;
+export type OutcomesMaxResults = number;
 export interface GetOutcomesRequest {
   name?: string;
   nextToken?: string;
@@ -2947,6 +2990,7 @@ export const GetOutcomesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOutcomesResult",
 }) as any as S.Schema<GetOutcomesResult>;
+export type RulesMaxResults = number;
 export interface GetRulesRequest {
   ruleId?: string;
   detectorId: string;
@@ -3013,6 +3057,7 @@ export const GetRulesResult = /*@__PURE__*/ S.suspend(() =>
     nextToken: S.optional(S.String),
   }).pipe(ns),
 ).annotate({ identifier: "GetRulesResult" }) as any as S.Schema<GetRulesResult>;
+export type VariablesMaxResults = number;
 export interface GetVariablesRequest {
   name?: string;
   nextToken?: string;
@@ -3049,6 +3094,7 @@ export const GetVariablesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVariablesResult",
 }) as any as S.Schema<GetVariablesResult>;
+export type FilterString = string;
 export interface FilterCondition {
   value?: string;
 }
@@ -3066,6 +3112,7 @@ export const PredictionTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictionTimeRange",
 }) as any as S.Schema<PredictionTimeRange>;
+export type EventPredictionsMaxResults = number;
 export interface ListEventPredictionsRequest {
   eventId?: FilterCondition;
   eventType?: FilterCondition;
@@ -3134,6 +3181,7 @@ export const ListEventPredictionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventPredictionsResult",
 }) as any as S.Schema<ListEventPredictionsResult>;
+export type TagsMaxResults = number;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
   nextToken?: string;
@@ -3616,6 +3664,7 @@ export const UpdateEventLabelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEventLabelResult>;
 export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE" | (string & {});
 export const ListUpdateMode = /*@__PURE__*/ S.String;
+
 export interface UpdateListRequest {
   name: string;
   elements?: (string | redacted.Redacted<string>)[];
@@ -3732,6 +3781,7 @@ export type ModelVersionStatus =
   | "TRAINING_CANCELLED"
   | (string & {});
 export const ModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateModelVersionStatusRequest {
   modelId: string;
   modelType: ModelTypeEnum;
@@ -3859,45 +3909,6 @@ export const UpdateVariableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVariableResult",
 }) as any as S.Schema<UpdateVariableResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type BatchCreateVariableError =
   | AccessDeniedException
   | InternalServerException
@@ -3921,8 +3932,11 @@ export const batchCreateVariable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateVariable",
 }));
+
 export type BatchGetVariableError =
   | AccessDeniedException
   | InternalServerException
@@ -3946,8 +3960,11 @@ export const batchGetVariable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetVariable",
 }));
+
 export type CancelBatchImportJobError =
   | AccessDeniedException
   | InternalServerException
@@ -3973,8 +3990,11 @@ export const cancelBatchImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBatchImportJob",
 }));
+
 export type CancelBatchPredictionJobError =
   | AccessDeniedException
   | InternalServerException
@@ -4000,8 +4020,11 @@ export const cancelBatchPredictionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBatchPredictionJob",
 }));
+
 export type CreateBatchImportJobError =
   | AccessDeniedException
   | InternalServerException
@@ -4027,8 +4050,11 @@ export const createBatchImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchImportJob",
 }));
+
 export type CreateBatchPredictionJobError =
   | AccessDeniedException
   | InternalServerException
@@ -4054,8 +4080,11 @@ export const createBatchPredictionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchPredictionJob",
 }));
+
 export type CreateDetectorVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -4081,8 +4110,11 @@ export const createDetectorVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDetectorVersion",
 }));
+
 export type CreateListError =
   | AccessDeniedException
   | InternalServerException
@@ -4109,8 +4141,11 @@ export const createList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateList",
 }));
+
 export type CreateModelError =
   | AccessDeniedException
   | InternalServerException
@@ -4134,8 +4169,11 @@ export const createModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModel",
 }));
+
 export type CreateModelVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -4161,8 +4199,11 @@ export const createModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelVersion",
 }));
+
 export type CreateRuleError =
   | AccessDeniedException
   | InternalServerException
@@ -4186,8 +4227,11 @@ export const createRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRule",
 }));
+
 export type CreateVariableError =
   | AccessDeniedException
   | InternalServerException
@@ -4211,8 +4255,11 @@ export const createVariable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVariable",
 }));
+
 export type DeleteBatchImportJobError =
   | AccessDeniedException
   | InternalServerException
@@ -4236,8 +4283,11 @@ export const deleteBatchImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBatchImportJob",
 }));
+
 export type DeleteBatchPredictionJobError =
   | AccessDeniedException
   | InternalServerException
@@ -4261,8 +4311,11 @@ export const deleteBatchPredictionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBatchPredictionJob",
 }));
+
 export type DeleteDetectorError =
   | AccessDeniedException
   | ConflictException
@@ -4290,8 +4343,11 @@ export const deleteDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDetector",
 }));
+
 export type DeleteDetectorVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4321,8 +4377,11 @@ export const deleteDetectorVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDetectorVersion",
 }));
+
 export type DeleteEntityTypeError =
   | AccessDeniedException
   | ConflictException
@@ -4352,8 +4411,11 @@ export const deleteEntityType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntityType",
 }));
+
 export type DeleteEventError =
   | AccessDeniedException
   | InternalServerException
@@ -4380,8 +4442,11 @@ export const deleteEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEvent",
 }));
+
 export type DeleteEventsByEventTypeError =
   | AccessDeniedException
   | ConflictException
@@ -4409,8 +4474,11 @@ export const deleteEventsByEventType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventsByEventType",
 }));
+
 export type DeleteEventTypeError =
   | AccessDeniedException
   | ConflictException
@@ -4440,8 +4508,11 @@ export const deleteEventType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventType",
 }));
+
 export type DeleteExternalModelError =
   | AccessDeniedException
   | ConflictException
@@ -4469,8 +4540,11 @@ export const deleteExternalModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExternalModel",
 }));
+
 export type DeleteLabelError =
   | ConflictException
   | InternalServerException
@@ -4500,8 +4574,11 @@ export const deleteLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLabel",
 }));
+
 export type DeleteListError =
   | AccessDeniedException
   | ConflictException
@@ -4529,8 +4606,11 @@ export const deleteList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteList",
 }));
+
 export type DeleteModelError =
   | AccessDeniedException
   | ConflictException
@@ -4560,8 +4640,11 @@ export const deleteModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModel",
 }));
+
 export type DeleteModelVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4591,8 +4674,11 @@ export const deleteModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelVersion",
 }));
+
 export type DeleteOutcomeError =
   | AccessDeniedException
   | ConflictException
@@ -4622,8 +4708,11 @@ export const deleteOutcome: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOutcome",
 }));
+
 export type DeleteRuleError =
   | AccessDeniedException
   | ConflictException
@@ -4651,8 +4740,11 @@ export const deleteRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
+
 export type DeleteVariableError =
   | AccessDeniedException
   | ConflictException
@@ -4684,8 +4776,11 @@ export const deleteVariable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVariable",
 }));
+
 export type DescribeDetectorError =
   | AccessDeniedException
   | InternalServerException
@@ -4711,8 +4806,11 @@ export const describeDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetector",
 }));
+
 export type DescribeModelVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -4753,6 +4851,8 @@ export const describeModelVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelVersions",
   pagination: {
     inputToken: "nextToken",
@@ -4760,6 +4860,7 @@ export const describeModelVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBatchImportJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -4803,6 +4904,8 @@ export const getBatchImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBatchImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4810,6 +4913,7 @@ export const getBatchImportJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBatchPredictionJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -4850,6 +4954,8 @@ export const getBatchPredictionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBatchPredictionJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4857,6 +4963,7 @@ export const getBatchPredictionJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetDeleteEventsByEventTypeStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4882,8 +4989,11 @@ export const getDeleteEventsByEventTypeStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeleteEventsByEventTypeStatus",
 }));
+
 export type GetDetectorsError =
   | AccessDeniedException
   | InternalServerException
@@ -4929,6 +5039,8 @@ export const getDetectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDetectors",
   pagination: {
     inputToken: "nextToken",
@@ -4936,6 +5048,7 @@ export const getDetectors: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetDetectorVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -4961,8 +5074,11 @@ export const getDetectorVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDetectorVersion",
 }));
+
 export type GetEntityTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -5008,6 +5124,8 @@ export const getEntityTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntityTypes",
   pagination: {
     inputToken: "nextToken",
@@ -5015,6 +5133,7 @@ export const getEntityTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetEventError =
   | AccessDeniedException
   | InternalServerException
@@ -5040,8 +5159,11 @@ export const getEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvent",
 }));
+
 export type GetEventPredictionError =
   | AccessDeniedException
   | ConflictException
@@ -5071,8 +5193,11 @@ export const getEventPrediction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventPrediction",
 }));
+
 export type GetEventPredictionMetadataError =
   | AccessDeniedException
   | InternalServerException
@@ -5098,8 +5223,11 @@ export const getEventPredictionMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventPredictionMetadata",
 }));
+
 export type GetEventTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -5145,6 +5273,8 @@ export const getEventTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventTypes",
   pagination: {
     inputToken: "nextToken",
@@ -5152,6 +5282,7 @@ export const getEventTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetExternalModelsError =
   | AccessDeniedException
   | InternalServerException
@@ -5197,6 +5328,8 @@ export const getExternalModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExternalModels",
   pagination: {
     inputToken: "nextToken",
@@ -5204,6 +5337,7 @@ export const getExternalModels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetKMSEncryptionKeyError =
   | AccessDeniedException
   | InternalServerException
@@ -5227,8 +5361,11 @@ export const getKMSEncryptionKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKMSEncryptionKey",
 }));
+
 export type GetLabelsError =
   | AccessDeniedException
   | InternalServerException
@@ -5274,6 +5411,8 @@ export const getLabels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLabels",
   pagination: {
     inputToken: "nextToken",
@@ -5281,6 +5420,7 @@ export const getLabels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetListElementsError =
   | AccessDeniedException
   | InternalServerException
@@ -5321,6 +5461,8 @@ export const getListElements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetListElements",
   pagination: {
     inputToken: "nextToken",
@@ -5328,6 +5470,7 @@ export const getListElements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetListsMetadataError =
   | AccessDeniedException
   | InternalServerException
@@ -5368,6 +5511,8 @@ export const getListsMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetListsMetadata",
   pagination: {
     inputToken: "nextToken",
@@ -5375,6 +5520,7 @@ export const getListsMetadata: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetModelsError =
   | AccessDeniedException
   | InternalServerException
@@ -5422,6 +5568,8 @@ export const getModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModels",
   pagination: {
     inputToken: "nextToken",
@@ -5429,6 +5577,7 @@ export const getModels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetModelVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -5454,8 +5603,11 @@ export const getModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelVersion",
 }));
+
 export type GetOutcomesError =
   | AccessDeniedException
   | InternalServerException
@@ -5501,6 +5653,8 @@ export const getOutcomes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutcomes",
   pagination: {
     inputToken: "nextToken",
@@ -5508,6 +5662,7 @@ export const getOutcomes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -5550,6 +5705,8 @@ export const getRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRules",
   pagination: {
     inputToken: "nextToken",
@@ -5557,6 +5714,7 @@ export const getRules: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetVariablesError =
   | AccessDeniedException
   | InternalServerException
@@ -5602,6 +5760,8 @@ export const getVariables: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVariables",
   pagination: {
     inputToken: "nextToken",
@@ -5609,6 +5769,7 @@ export const getVariables: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEventPredictionsError =
   | AccessDeniedException
   | InternalServerException
@@ -5658,6 +5819,8 @@ export const listEventPredictions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventPredictions",
   pagination: {
     inputToken: "nextToken",
@@ -5665,6 +5828,7 @@ export const listEventPredictions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -5705,6 +5869,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -5712,6 +5878,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutDetectorError =
   | AccessDeniedException
   | ConflictException
@@ -5737,8 +5904,11 @@ export const putDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDetector",
 }));
+
 export type PutEntityTypeError =
   | AccessDeniedException
   | ConflictException
@@ -5764,8 +5934,11 @@ export const putEntityType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEntityType",
 }));
+
 export type PutEventTypeError =
   | AccessDeniedException
   | ConflictException
@@ -5791,8 +5964,11 @@ export const putEventType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventType",
 }));
+
 export type PutExternalModelError =
   | AccessDeniedException
   | ConflictException
@@ -5818,8 +5994,11 @@ export const putExternalModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutExternalModel",
 }));
+
 export type PutKMSEncryptionKeyError =
   | AccessDeniedException
   | ConflictException
@@ -5847,8 +6026,11 @@ export const putKMSEncryptionKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKMSEncryptionKey",
 }));
+
 export type PutLabelError =
   | AccessDeniedException
   | ConflictException
@@ -5874,8 +6056,11 @@ export const putLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLabel",
 }));
+
 export type PutOutcomeError =
   | AccessDeniedException
   | ConflictException
@@ -5901,8 +6086,11 @@ export const putOutcome: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOutcome",
 }));
+
 export type SendEventError =
   | AccessDeniedException
   | ConflictException
@@ -5930,8 +6118,11 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEvent",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -5955,8 +6146,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -5980,8 +6174,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDetectorVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6009,8 +6206,11 @@ export const updateDetectorVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetectorVersion",
 }));
+
 export type UpdateDetectorVersionMetadataError =
   | AccessDeniedException
   | ConflictException
@@ -6037,8 +6237,11 @@ export const updateDetectorVersionMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetectorVersionMetadata",
 }));
+
 export type UpdateDetectorVersionStatusError =
   | AccessDeniedException
   | ConflictException
@@ -6067,8 +6270,11 @@ export const updateDetectorVersionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetectorVersionStatus",
 }));
+
 export type UpdateEventLabelError =
   | AccessDeniedException
   | ConflictException
@@ -6096,8 +6302,11 @@ export const updateEventLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventLabel",
 }));
+
 export type UpdateListError =
   | AccessDeniedException
   | ConflictException
@@ -6125,8 +6334,11 @@ export const updateList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateList",
 }));
+
 export type UpdateModelError =
   | AccessDeniedException
   | ConflictException
@@ -6154,8 +6366,11 @@ export const updateModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModel",
 }));
+
 export type UpdateModelVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6183,8 +6398,11 @@ export const updateModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModelVersion",
 }));
+
 export type UpdateModelVersionStatusError =
   | AccessDeniedException
   | ConflictException
@@ -6220,8 +6438,11 @@ export const updateModelVersionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModelVersionStatus",
 }));
+
 export type UpdateRuleMetadataError =
   | AccessDeniedException
   | ConflictException
@@ -6249,8 +6470,11 @@ export const updateRuleMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleMetadata",
 }));
+
 export type UpdateRuleVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6278,8 +6502,11 @@ export const updateRuleVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleVersion",
 }));
+
 export type UpdateVariableError =
   | AccessDeniedException
   | ConflictException
@@ -6307,5 +6534,7 @@ export const updateVariable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVariable",
 }));

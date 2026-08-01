@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "TunnelNotFound": [{ "code": 1002 }],
-    "DuplicateTunnelName": [{ "code": 1013 }]
-  }
-}

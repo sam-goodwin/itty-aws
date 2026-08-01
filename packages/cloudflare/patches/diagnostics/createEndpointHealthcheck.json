@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "InvalidHealthcheckEndpoint": [{ "code": 1002 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align diagnostics#EndpointHealthchecksCreate with distilled cloudflare/diagnostics createEndpointHealthcheck",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.diagnostics#EndpointHealthchecksCreate",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheck"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.diagnostics#EndpointHealthchecksCreateRequest",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheckRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheck/input/target",
+      "value": "com.cloudflare.diagnostics#CreateEndpointHealthcheckRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.diagnostics#EndpointHealthchecksCreateResponse",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheckResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheck/output/target",
+      "value": "com.cloudflare.diagnostics#CreateEndpointHealthcheckResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.diagnostics#InvalidHealthcheckEndpoint",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.diagnostics#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.diagnostics#CreateEndpointHealthcheck/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.diagnostics#InvalidHealthcheckEndpoint"
+        },
+        {
+          "target": "com.cloudflare.diagnostics#Forbidden"
+        }
+      ]
+    }
+  ]
 }

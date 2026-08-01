@@ -1,28 +1,88 @@
 {
-  "errors": {
-    "AdvancedCertificateManagerRequired": [
-      {
-        "code": 1450
+  "description": "Align ssl#CertificatePacksCreate with distilled cloudflare/ssl createCertificatePack",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#CertificatePacksCreate",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePack"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#CertificatePacksCreateRequest",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePackRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePack/input/target",
+      "value": "com.cloudflare.ssl#CreateCertificatePackRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ssl#CertificatePacksCreateResponse",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePackResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePack/output/target",
+      "value": "com.cloudflare.ssl#CreateCertificatePackResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ssl#AdvancedCertificateManagerRequired",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1450
+            }
+          ]
+        }
       }
-    ],
-    "Forbidden": [
-      {
-        "status": 403
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ssl#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
       }
-    ]
-  },
-  "request": {
-    "properties": {
-      "validityDays": {
-        "type": "number"
-      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ssl#CreateCertificatePack/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.ssl#AdvancedCertificateManagerRequired"
+        },
+        {
+          "target": "com.cloudflare.ssl#Forbidden"
+        }
+      ]
     }
-  },
-  "response": {
-    "properties": {
-      "validity_days": {
-        "type": "number"
-      }
-    }
-  }
+  ]
 }

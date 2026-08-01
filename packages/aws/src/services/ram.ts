@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,20 +88,284 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type PermissionName = string;
-export type Policy = string;
-export type TagKey = string;
-export type TagValue = string;
-export type MaxResults = number;
-
-//# Schemas
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "IdempotentParameterMismatch",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClientTokenException extends S.TaggedErrorClass<InvalidClientTokenException>()(
+  "InvalidClientTokenException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidMaxResultsException extends S.TaggedErrorClass<InvalidMaxResultsException>()(
+  "InvalidMaxResultsException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
+  "InvalidPolicyException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidResourceTypeException extends S.TaggedErrorClass<InvalidResourceTypeException>()(
+  "InvalidResourceTypeException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceType.Unknown",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
+  "InvalidStateTransitionException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidStateTransitionException.Unknown",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MalformedArnException extends S.TaggedErrorClass<MalformedArnException>()(
+  "MalformedArnException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicyTemplateException extends S.TaggedErrorClass<MalformedPolicyTemplateException>()(
+  "MalformedPolicyTemplateException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "MalformedPolicyTemplateException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
+  "MissingRequiredParameterException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "MissingRequiredParameter",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
+  "OperationNotPermittedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PermissionAlreadyExistsException extends S.TaggedErrorClass<PermissionAlreadyExistsException>()(
+  "PermissionAlreadyExistsException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "PermissionAlreadyExistsException",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class PermissionLimitExceededException extends S.TaggedErrorClass<PermissionLimitExceededException>()(
+  "PermissionLimitExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "PermissionLimitExceededException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PermissionVersionsLimitExceededException extends S.TaggedErrorClass<PermissionVersionsLimitExceededException>()(
+  "PermissionVersionsLimitExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "PermissionVersionsLimitExceededException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceArnNotFoundException extends S.TaggedErrorClass<ResourceArnNotFoundException>()(
+  "ResourceArnNotFoundException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceArn.NotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationAlreadyAcceptedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyAcceptedException>()(
+  "ResourceShareInvitationAlreadyAcceptedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceShareInvitationArn.AlreadyAccepted",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationAlreadyRejectedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyRejectedException>()(
+  "ResourceShareInvitationAlreadyRejectedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceShareInvitationArn.AlreadyRejected",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationArnNotFoundException extends S.TaggedErrorClass<ResourceShareInvitationArnNotFoundException>()(
+  "ResourceShareInvitationArnNotFoundException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceShareInvitationArn.NotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceShareInvitationExpiredException extends S.TaggedErrorClass<ResourceShareInvitationExpiredException>()(
+  "ResourceShareInvitationExpiredException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceShareInvitationArn.Expired",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceShareLimitExceededException extends S.TaggedErrorClass<ResourceShareLimitExceededException>()(
+  "ResourceShareLimitExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceShareLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
+  "ServerInternalException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }),
+    T.HttpError(503),
+  ),
+).pipe(C.withServerError) {}
+export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
+  "TagLimitExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagPolicyViolationException extends S.TaggedErrorClass<TagPolicyViolationException>()(
+  "TagPolicyViolationException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class UnknownResourceException extends S.TaggedErrorClass<UnknownResourceException>()(
+  "UnknownResourceException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResourceShareArn.NotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnmatchedPolicyPermissionException extends S.TaggedErrorClass<UnmatchedPolicyPermissionException>()(
+  "UnmatchedPolicyPermissionException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "UnmatchedPolicyPermissionException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export interface AcceptResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;
 }
-export const AcceptResourceShareInvitationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AcceptResourceShareInvitationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareInvitationArn: S.String,
       clientToken: S.optional(S.String),
@@ -113,9 +379,9 @@ export const AcceptResourceShareInvitationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AcceptResourceShareInvitationRequest",
-  }) as any as S.Schema<AcceptResourceShareInvitationRequest>;
+).annotate({
+  identifier: "AcceptResourceShareInvitationRequest",
+}) as any as S.Schema<AcceptResourceShareInvitationRequest>;
 export type ResourceShareInvitationStatus =
   | "PENDING"
   | "ACCEPTED"
@@ -123,12 +389,14 @@ export type ResourceShareInvitationStatus =
   | "EXPIRED"
   | (string & {});
 export const ResourceShareInvitationStatus = /*@__PURE__*/ S.String;
+
 export type ResourceShareAssociationType =
   | "PRINCIPAL"
   | "RESOURCE"
   | "SOURCE"
   | (string & {});
 export const ResourceShareAssociationType = /*@__PURE__*/ S.String;
+
 export type ResourceShareAssociationStatus =
   | "ASSOCIATING"
   | "ASSOCIATED"
@@ -140,6 +408,7 @@ export type ResourceShareAssociationStatus =
   | "RESTORING"
   | (string & {});
 export const ResourceShareAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ResourceShareAssociation {
   resourceShareArn?: string;
   resourceShareName?: string;
@@ -206,15 +475,15 @@ export interface AcceptResourceShareInvitationResponse {
   resourceShareInvitation?: ResourceShareInvitation;
   clientToken?: string;
 }
-export const AcceptResourceShareInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const AcceptResourceShareInvitationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareInvitation: S.optional(ResourceShareInvitation),
       clientToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "AcceptResourceShareInvitationResponse",
-  }) as any as S.Schema<AcceptResourceShareInvitationResponse>;
+).annotate({
+  identifier: "AcceptResourceShareInvitationResponse",
+}) as any as S.Schema<AcceptResourceShareInvitationResponse>;
 export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -234,40 +503,38 @@ export interface AssociateResourceShareRequest {
   clientToken?: string;
   sources?: string[];
 }
-export const AssociateResourceShareRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareArn: S.String,
-      resourceArns: S.optional(ResourceArnList),
-      principals: S.optional(PrincipalArnOrIdList),
-      clientToken: S.optional(S.String),
-      sources: S.optional(SourceArnOrAccountList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/associateresourceshare" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareArn: S.String,
+    resourceArns: S.optional(ResourceArnList),
+    principals: S.optional(PrincipalArnOrIdList),
+    clientToken: S.optional(S.String),
+    sources: S.optional(SourceArnOrAccountList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/associateresourceshare" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateResourceShareRequest",
-  }) as any as S.Schema<AssociateResourceShareRequest>;
+  ),
+).annotate({
+  identifier: "AssociateResourceShareRequest",
+}) as any as S.Schema<AssociateResourceShareRequest>;
 export interface AssociateResourceShareResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   clientToken?: string;
 }
-export const AssociateResourceShareResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareAssociations: S.optional(ResourceShareAssociationList),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AssociateResourceShareResponse",
-  }) as any as S.Schema<AssociateResourceShareResponse>;
+export const AssociateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareAssociations: S.optional(ResourceShareAssociationList),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssociateResourceShareResponse",
+}) as any as S.Schema<AssociateResourceShareResponse>;
 export interface AssociateResourceSharePermissionRequest {
   resourceShareArn: string;
   permissionArn: string;
@@ -275,8 +542,8 @@ export interface AssociateResourceSharePermissionRequest {
   clientToken?: string;
   permissionVersion?: number;
 }
-export const AssociateResourceSharePermissionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociateResourceSharePermissionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareArn: S.String,
       permissionArn: S.String,
@@ -293,22 +560,26 @@ export const AssociateResourceSharePermissionRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AssociateResourceSharePermissionRequest",
-  }) as any as S.Schema<AssociateResourceSharePermissionRequest>;
+).annotate({
+  identifier: "AssociateResourceSharePermissionRequest",
+}) as any as S.Schema<AssociateResourceSharePermissionRequest>;
 export interface AssociateResourceSharePermissionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
-export const AssociateResourceSharePermissionResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssociateResourceSharePermissionResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       returnValue: S.optional(S.Boolean),
       clientToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "AssociateResourceSharePermissionResponse",
-  }) as any as S.Schema<AssociateResourceSharePermissionResponse>;
+).annotate({
+  identifier: "AssociateResourceSharePermissionResponse",
+}) as any as S.Schema<AssociateResourceSharePermissionResponse>;
+export type PermissionName = string;
+export type Policy = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
@@ -347,12 +618,14 @@ export const CreatePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePermissionRequest>;
 export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
+
 export type PermissionFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
 export const PermissionFeatureSet = /*@__PURE__*/ S.String;
+
 export interface ResourceSharePermissionSummary {
   arn?: string;
   version?: string;
@@ -367,27 +640,26 @@ export interface ResourceSharePermissionSummary {
   featureSet?: PermissionFeatureSet;
   tags?: Tag[];
 }
-export const ResourceSharePermissionSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      version: S.optional(S.String),
-      defaultVersion: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      status: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      isResourceTypeDefault: S.optional(S.Boolean),
-      permissionType: S.optional(PermissionType),
-      featureSet: S.optional(PermissionFeatureSet),
-      tags: S.optional(TagList),
-    }),
-  ).annotate({
-    identifier: "ResourceSharePermissionSummary",
-  }) as any as S.Schema<ResourceSharePermissionSummary>;
+export const ResourceSharePermissionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    version: S.optional(S.String),
+    defaultVersion: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    status: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    isResourceTypeDefault: S.optional(S.Boolean),
+    permissionType: S.optional(PermissionType),
+    featureSet: S.optional(PermissionFeatureSet),
+    tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "ResourceSharePermissionSummary",
+}) as any as S.Schema<ResourceSharePermissionSummary>;
 export interface CreatePermissionResponse {
   permission?: ResourceSharePermissionSummary;
   clientToken?: string;
@@ -405,25 +677,24 @@ export interface CreatePermissionVersionRequest {
   policyTemplate: string;
   clientToken?: string;
 }
-export const CreatePermissionVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionArn: S.String,
-      policyTemplate: S.String,
-      clientToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/createpermissionversion" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreatePermissionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionArn: S.String,
+    policyTemplate: S.String,
+    clientToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/createpermissionversion" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreatePermissionVersionRequest",
-  }) as any as S.Schema<CreatePermissionVersionRequest>;
+  ),
+).annotate({
+  identifier: "CreatePermissionVersionRequest",
+}) as any as S.Schema<CreatePermissionVersionRequest>;
 export type PermissionStatus =
   | "ATTACHABLE"
   | "UNATTACHABLE"
@@ -431,6 +702,7 @@ export type PermissionStatus =
   | "DELETED"
   | (string & {});
 export const PermissionStatus = /*@__PURE__*/ S.String;
+
 export interface ResourceSharePermissionDetail {
   arn?: string;
   version?: string;
@@ -446,41 +718,39 @@ export interface ResourceSharePermissionDetail {
   status?: PermissionStatus;
   tags?: Tag[];
 }
-export const ResourceSharePermissionDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      arn: S.optional(S.String),
-      version: S.optional(S.String),
-      defaultVersion: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      resourceType: S.optional(S.String),
-      permission: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      isResourceTypeDefault: S.optional(S.Boolean),
-      permissionType: S.optional(PermissionType),
-      featureSet: S.optional(PermissionFeatureSet),
-      status: S.optional(PermissionStatus),
-      tags: S.optional(TagList),
-    }),
-  ).annotate({
-    identifier: "ResourceSharePermissionDetail",
-  }) as any as S.Schema<ResourceSharePermissionDetail>;
+export const ResourceSharePermissionDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    version: S.optional(S.String),
+    defaultVersion: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    permission: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    isResourceTypeDefault: S.optional(S.Boolean),
+    permissionType: S.optional(PermissionType),
+    featureSet: S.optional(PermissionFeatureSet),
+    status: S.optional(PermissionStatus),
+    tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "ResourceSharePermissionDetail",
+}) as any as S.Schema<ResourceSharePermissionDetail>;
 export interface CreatePermissionVersionResponse {
   permission?: ResourceSharePermissionDetail;
   clientToken?: string;
 }
-export const CreatePermissionVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permission: S.optional(ResourceSharePermissionDetail),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreatePermissionVersionResponse",
-  }) as any as S.Schema<CreatePermissionVersionResponse>;
+export const CreatePermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permission: S.optional(ResourceSharePermissionDetail),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreatePermissionVersionResponse",
+}) as any as S.Schema<CreatePermissionVersionResponse>;
 export type PermissionArnList = string[];
 export const PermissionArnList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -489,9 +759,7 @@ export interface ResourceShareConfiguration {
   retainSharingOnAccountLeaveOrganization?: boolean;
 }
 export const ResourceShareConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retainSharingOnAccountLeaveOrganization: S.optional(S.Boolean),
-  }),
+  S.Struct({ retainSharingOnAccountLeaveOrganization: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "ResourceShareConfiguration",
 }) as any as S.Schema<ResourceShareConfiguration>;
@@ -538,12 +806,14 @@ export type ResourceShareStatus =
   | "DELETED"
   | (string & {});
 export const ResourceShareStatus = /*@__PURE__*/ S.String;
+
 export type ResourceShareFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
 export const ResourceShareFeatureSet = /*@__PURE__*/ S.String;
+
 export interface ResourceShare {
   resourceShareArn?: string;
   name?: string;
@@ -578,15 +848,14 @@ export interface CreateResourceShareResponse {
   resourceShare?: ResourceShare;
   clientToken?: string;
 }
-export const CreateResourceShareResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShare: S.optional(ResourceShare),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateResourceShareResponse",
-  }) as any as S.Schema<CreateResourceShareResponse>;
+export const CreateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShare: S.optional(ResourceShare),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateResourceShareResponse",
+}) as any as S.Schema<CreateResourceShareResponse>;
 export interface DeletePermissionRequest {
   permissionArn: string;
   clientToken?: string;
@@ -627,40 +896,38 @@ export interface DeletePermissionVersionRequest {
   permissionVersion: number;
   clientToken?: string;
 }
-export const DeletePermissionVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionArn: S.String.pipe(T.HttpQuery("permissionArn")),
-      permissionVersion: S.Number.pipe(T.HttpQuery("permissionVersion")),
-      clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/deletepermissionversion" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeletePermissionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionArn: S.String.pipe(T.HttpQuery("permissionArn")),
+    permissionVersion: S.Number.pipe(T.HttpQuery("permissionVersion")),
+    clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/deletepermissionversion" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeletePermissionVersionRequest",
-  }) as any as S.Schema<DeletePermissionVersionRequest>;
+  ),
+).annotate({
+  identifier: "DeletePermissionVersionRequest",
+}) as any as S.Schema<DeletePermissionVersionRequest>;
 export interface DeletePermissionVersionResponse {
   returnValue?: boolean;
   clientToken?: string;
   permissionStatus?: PermissionStatus;
 }
-export const DeletePermissionVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
-      clientToken: S.optional(S.String),
-      permissionStatus: S.optional(PermissionStatus),
-    }),
-  ).annotate({
-    identifier: "DeletePermissionVersionResponse",
-  }) as any as S.Schema<DeletePermissionVersionResponse>;
+export const DeletePermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
+    clientToken: S.optional(S.String),
+    permissionStatus: S.optional(PermissionStatus),
+  }),
+).annotate({
+  identifier: "DeletePermissionVersionResponse",
+}) as any as S.Schema<DeletePermissionVersionResponse>;
 export interface DeleteResourceShareRequest {
   resourceShareArn: string;
   clientToken?: string;
@@ -686,15 +953,14 @@ export interface DeleteResourceShareResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
-export const DeleteResourceShareResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteResourceShareResponse",
-  }) as any as S.Schema<DeleteResourceShareResponse>;
+export const DeleteResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteResourceShareResponse",
+}) as any as S.Schema<DeleteResourceShareResponse>;
 export interface DisassociateResourceShareRequest {
   resourceShareArn: string;
   resourceArns?: string[];
@@ -702,40 +968,38 @@ export interface DisassociateResourceShareRequest {
   clientToken?: string;
   sources?: string[];
 }
-export const DisassociateResourceShareRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareArn: S.String,
-      resourceArns: S.optional(ResourceArnList),
-      principals: S.optional(PrincipalArnOrIdList),
-      clientToken: S.optional(S.String),
-      sources: S.optional(SourceArnOrAccountList),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/disassociateresourceshare" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareArn: S.String,
+    resourceArns: S.optional(ResourceArnList),
+    principals: S.optional(PrincipalArnOrIdList),
+    clientToken: S.optional(S.String),
+    sources: S.optional(SourceArnOrAccountList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/disassociateresourceshare" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateResourceShareRequest",
-  }) as any as S.Schema<DisassociateResourceShareRequest>;
+  ),
+).annotate({
+  identifier: "DisassociateResourceShareRequest",
+}) as any as S.Schema<DisassociateResourceShareRequest>;
 export interface DisassociateResourceShareResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   clientToken?: string;
 }
-export const DisassociateResourceShareResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareAssociations: S.optional(ResourceShareAssociationList),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DisassociateResourceShareResponse",
-  }) as any as S.Schema<DisassociateResourceShareResponse>;
+export const DisassociateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareAssociations: S.optional(ResourceShareAssociationList),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisassociateResourceShareResponse",
+}) as any as S.Schema<DisassociateResourceShareResponse>;
 export interface DisassociateResourceSharePermissionRequest {
   resourceShareArn: string;
   permissionArn: string;
@@ -774,8 +1038,8 @@ export const DisassociateResourceSharePermissionResponse =
     identifier: "DisassociateResourceSharePermissionResponse",
   }) as any as S.Schema<DisassociateResourceSharePermissionResponse>;
 export interface EnableSharingWithAwsOrganizationRequest {}
-export const EnableSharingWithAwsOrganizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const EnableSharingWithAwsOrganizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/enablesharingwithawsorganization" }),
@@ -786,18 +1050,18 @@ export const EnableSharingWithAwsOrganizationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "EnableSharingWithAwsOrganizationRequest",
-  }) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>;
+).annotate({
+  identifier: "EnableSharingWithAwsOrganizationRequest",
+}) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>;
 export interface EnableSharingWithAwsOrganizationResponse {
   returnValue?: boolean;
 }
-export const EnableSharingWithAwsOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const EnableSharingWithAwsOrganizationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")) }),
-  ).annotate({
-    identifier: "EnableSharingWithAwsOrganizationResponse",
-  }) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>;
+).annotate({
+  identifier: "EnableSharingWithAwsOrganizationResponse",
+}) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>;
 export interface GetPermissionRequest {
   permissionArn: string;
   permissionVersion?: number;
@@ -827,6 +1091,7 @@ export const GetPermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPermissionResponse",
 }) as any as S.Schema<GetPermissionResponse>;
+export type MaxResults = number;
 export interface GetResourcePoliciesRequest {
   resourceArns: string[];
   principal?: string;
@@ -860,15 +1125,14 @@ export interface GetResourcePoliciesResponse {
   policies?: string[];
   nextToken?: string;
 }
-export const GetResourcePoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policies: S.optional(PolicyList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourcePoliciesResponse",
-  }) as any as S.Schema<GetResourcePoliciesResponse>;
+export const GetResourcePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policies: S.optional(PolicyList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourcePoliciesResponse",
+}) as any as S.Schema<GetResourcePoliciesResponse>;
 export type ResourceShareArnList = string[];
 export const ResourceShareArnList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -882,71 +1146,70 @@ export interface GetResourceShareAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const GetResourceShareAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      associationType: ResourceShareAssociationType,
-      resourceShareArns: S.optional(ResourceShareArnList),
-      resourceArn: S.optional(S.String),
-      principal: S.optional(S.String),
-      associationStatus: S.optional(ResourceShareAssociationStatus),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/getresourceshareassociations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceShareAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    associationType: ResourceShareAssociationType,
+    resourceShareArns: S.optional(ResourceShareArnList),
+    resourceArn: S.optional(S.String),
+    principal: S.optional(S.String),
+    associationStatus: S.optional(ResourceShareAssociationStatus),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/getresourceshareassociations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetResourceShareAssociationsRequest",
-  }) as any as S.Schema<GetResourceShareAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "GetResourceShareAssociationsRequest",
+}) as any as S.Schema<GetResourceShareAssociationsRequest>;
 export interface GetResourceShareAssociationsResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   nextToken?: string;
 }
-export const GetResourceShareAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetResourceShareAssociationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareAssociations: S.optional(ResourceShareAssociationList),
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GetResourceShareAssociationsResponse",
-  }) as any as S.Schema<GetResourceShareAssociationsResponse>;
+).annotate({
+  identifier: "GetResourceShareAssociationsResponse",
+}) as any as S.Schema<GetResourceShareAssociationsResponse>;
 export type ResourceShareInvitationArnList = string[];
-export const ResourceShareInvitationArnList =
-  /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ResourceShareInvitationArnList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
 export interface GetResourceShareInvitationsRequest {
   resourceShareInvitationArns?: string[];
   resourceShareArns?: string[];
   nextToken?: string;
   maxResults?: number;
 }
-export const GetResourceShareInvitationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareInvitationArns: S.optional(ResourceShareInvitationArnList),
-      resourceShareArns: S.optional(ResourceShareArnList),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/getresourceshareinvitations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceShareInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareInvitationArns: S.optional(ResourceShareInvitationArnList),
+    resourceShareArns: S.optional(ResourceShareArnList),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/getresourceshareinvitations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetResourceShareInvitationsRequest",
-  }) as any as S.Schema<GetResourceShareInvitationsRequest>;
+  ),
+).annotate({
+  identifier: "GetResourceShareInvitationsRequest",
+}) as any as S.Schema<GetResourceShareInvitationsRequest>;
 export type ResourceShareInvitationList = ResourceShareInvitation[];
 export const ResourceShareInvitationList = /*@__PURE__*/ S.Array(
   ResourceShareInvitation.pipe(T.XmlName("item")).annotate({
@@ -957,17 +1220,17 @@ export interface GetResourceShareInvitationsResponse {
   resourceShareInvitations?: ResourceShareInvitation[];
   nextToken?: string;
 }
-export const GetResourceShareInvitationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareInvitations: S.optional(ResourceShareInvitationList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourceShareInvitationsResponse",
-  }) as any as S.Schema<GetResourceShareInvitationsResponse>;
+export const GetResourceShareInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareInvitations: S.optional(ResourceShareInvitationList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourceShareInvitationsResponse",
+}) as any as S.Schema<GetResourceShareInvitationsResponse>;
 export type ResourceOwner = "SELF" | "OTHER-ACCOUNTS" | (string & {});
 export const ResourceOwner = /*@__PURE__*/ S.String;
+
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TagFilter {
@@ -1041,14 +1304,15 @@ export type ResourceRegionScopeFilter =
   | "GLOBAL"
   | (string & {});
 export const ResourceRegionScopeFilter = /*@__PURE__*/ S.String;
+
 export interface ListPendingInvitationResourcesRequest {
   resourceShareInvitationArn: string;
   nextToken?: string;
   maxResults?: number;
   resourceRegionScope?: ResourceRegionScopeFilter;
 }
-export const ListPendingInvitationResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListPendingInvitationResourcesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareInvitationArn: S.String,
       nextToken: S.optional(S.String),
@@ -1064,9 +1328,9 @@ export const ListPendingInvitationResourcesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListPendingInvitationResourcesRequest",
-  }) as any as S.Schema<ListPendingInvitationResourcesRequest>;
+).annotate({
+  identifier: "ListPendingInvitationResourcesRequest",
+}) as any as S.Schema<ListPendingInvitationResourcesRequest>;
 export type ResourceStatus =
   | "AVAILABLE"
   | "ZONAL_RESOURCE_INACCESSIBLE"
@@ -1075,8 +1339,10 @@ export type ResourceStatus =
   | "PENDING"
   | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
+
 export type ResourceRegionScope = "REGIONAL" | "GLOBAL" | (string & {});
 export const ResourceRegionScope = /*@__PURE__*/ S.String;
+
 export interface Resource {
   arn?: string;
   type?: string;
@@ -1111,15 +1377,15 @@ export interface ListPendingInvitationResourcesResponse {
   resources?: Resource[];
   nextToken?: string;
 }
-export const ListPendingInvitationResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListPendingInvitationResourcesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resources: S.optional(ResourceList),
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListPendingInvitationResourcesResponse",
-  }) as any as S.Schema<ListPendingInvitationResourcesResponse>;
+).annotate({
+  identifier: "ListPendingInvitationResourcesResponse",
+}) as any as S.Schema<ListPendingInvitationResourcesResponse>;
 export interface ListPermissionAssociationsRequest {
   permissionArn?: string;
   permissionVersion?: number;
@@ -1130,30 +1396,29 @@ export interface ListPermissionAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListPermissionAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionArn: S.optional(S.String),
-      permissionVersion: S.optional(S.Number),
-      associationStatus: S.optional(ResourceShareAssociationStatus),
-      resourceType: S.optional(S.String),
-      featureSet: S.optional(PermissionFeatureSet),
-      defaultVersion: S.optional(S.Boolean),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listpermissionassociations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPermissionAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionArn: S.optional(S.String),
+    permissionVersion: S.optional(S.Number),
+    associationStatus: S.optional(ResourceShareAssociationStatus),
+    resourceType: S.optional(S.String),
+    featureSet: S.optional(PermissionFeatureSet),
+    defaultVersion: S.optional(S.Boolean),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listpermissionassociations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPermissionAssociationsRequest",
-  }) as any as S.Schema<ListPermissionAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "ListPermissionAssociationsRequest",
+}) as any as S.Schema<ListPermissionAssociationsRequest>;
 export interface AssociatedPermission {
   arn?: string;
   permissionVersion?: string;
@@ -1190,21 +1455,21 @@ export interface ListPermissionAssociationsResponse {
   permissions?: AssociatedPermission[];
   nextToken?: string;
 }
-export const ListPermissionAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissions: S.optional(AssociatedPermissionList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPermissionAssociationsResponse",
-  }) as any as S.Schema<ListPermissionAssociationsResponse>;
+export const ListPermissionAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissions: S.optional(AssociatedPermissionList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPermissionAssociationsResponse",
+}) as any as S.Schema<ListPermissionAssociationsResponse>;
 export type PermissionTypeFilter =
   | "ALL"
   | "AWS_MANAGED"
   | "CUSTOMER_MANAGED"
   | (string & {});
 export const PermissionTypeFilter = /*@__PURE__*/ S.String;
+
 export interface ListPermissionsRequest {
   resourceType?: string;
   nextToken?: string;
@@ -1253,38 +1518,36 @@ export interface ListPermissionVersionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListPermissionVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionArn: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listpermissionversions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPermissionVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionArn: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listpermissionversions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPermissionVersionsRequest",
-  }) as any as S.Schema<ListPermissionVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListPermissionVersionsRequest",
+}) as any as S.Schema<ListPermissionVersionsRequest>;
 export interface ListPermissionVersionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
-export const ListPermissionVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissions: S.optional(ResourceSharePermissionList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPermissionVersionsResponse",
-  }) as any as S.Schema<ListPermissionVersionsResponse>;
+export const ListPermissionVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissions: S.optional(ResourceSharePermissionList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPermissionVersionsResponse",
+}) as any as S.Schema<ListPermissionVersionsResponse>;
 export interface ListPrincipalsRequest {
   resourceOwner: ResourceOwner;
   resourceArn?: string;
@@ -1351,14 +1614,16 @@ export const ListPrincipalsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPrincipalsResponse",
 }) as any as S.Schema<ListPrincipalsResponse>;
 export type ReplacePermissionAssociationsWorkIdList = string[];
-export const ReplacePermissionAssociationsWorkIdList =
-  /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export const ReplacePermissionAssociationsWorkIdList = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
 export type ReplacePermissionAssociationsWorkStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
 export const ReplacePermissionAssociationsWorkStatus = /*@__PURE__*/ S.String;
+
 export interface ListReplacePermissionAssociationsWorkRequest {
   workIds?: string[];
   status?: ReplacePermissionAssociationsWorkStatus;
@@ -1399,32 +1664,30 @@ export interface ReplacePermissionAssociationsWork {
   creationTime?: Date;
   lastUpdatedTime?: Date;
 }
-export const ReplacePermissionAssociationsWork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      fromPermissionArn: S.optional(S.String),
-      fromPermissionVersion: S.optional(S.String),
-      toPermissionArn: S.optional(S.String),
-      toPermissionVersion: S.optional(S.String),
-      status: S.optional(ReplacePermissionAssociationsWorkStatus),
-      statusMessage: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ReplacePermissionAssociationsWork",
-  }) as any as S.Schema<ReplacePermissionAssociationsWork>;
+export const ReplacePermissionAssociationsWork = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    fromPermissionArn: S.optional(S.String),
+    fromPermissionVersion: S.optional(S.String),
+    toPermissionArn: S.optional(S.String),
+    toPermissionVersion: S.optional(S.String),
+    status: S.optional(ReplacePermissionAssociationsWorkStatus),
+    statusMessage: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "ReplacePermissionAssociationsWork",
+}) as any as S.Schema<ReplacePermissionAssociationsWork>;
 export type ReplacePermissionAssociationsWorkList =
   ReplacePermissionAssociationsWork[];
-export const ReplacePermissionAssociationsWorkList =
-  /*@__PURE__*/ S.Array(
-    ReplacePermissionAssociationsWork.pipe(T.XmlName("item")).annotate({
-      identifier: "ReplacePermissionAssociationsWork",
-    }),
-  );
+export const ReplacePermissionAssociationsWorkList = /*@__PURE__*/ S.Array(
+  ReplacePermissionAssociationsWork.pipe(T.XmlName("item")).annotate({
+    identifier: "ReplacePermissionAssociationsWork",
+  }),
+);
 export interface ListReplacePermissionAssociationsWorkResponse {
   replacePermissionAssociationsWorks?: ReplacePermissionAssociationsWork[];
   nextToken?: string;
@@ -1490,38 +1753,37 @@ export interface ListResourceSharePermissionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListResourceSharePermissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareArn: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listresourcesharepermissions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListResourceSharePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareArn: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listresourcesharepermissions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListResourceSharePermissionsRequest",
-  }) as any as S.Schema<ListResourceSharePermissionsRequest>;
+  ),
+).annotate({
+  identifier: "ListResourceSharePermissionsRequest",
+}) as any as S.Schema<ListResourceSharePermissionsRequest>;
 export interface ListResourceSharePermissionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
-export const ListResourceSharePermissionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourceSharePermissionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       permissions: S.optional(ResourceSharePermissionList),
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListResourceSharePermissionsResponse",
-  }) as any as S.Schema<ListResourceSharePermissionsResponse>;
+).annotate({
+  identifier: "ListResourceSharePermissionsResponse",
+}) as any as S.Schema<ListResourceSharePermissionsResponse>;
 export interface ListResourceTypesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1560,12 +1822,11 @@ export const ServiceNameAndResourceType = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceNameAndResourceType",
 }) as any as S.Schema<ServiceNameAndResourceType>;
 export type ServiceNameAndResourceTypeList = ServiceNameAndResourceType[];
-export const ServiceNameAndResourceTypeList =
-  /*@__PURE__*/ S.Array(
-    ServiceNameAndResourceType.pipe(T.XmlName("item")).annotate({
-      identifier: "ServiceNameAndResourceType",
-    }),
-  );
+export const ServiceNameAndResourceTypeList = /*@__PURE__*/ S.Array(
+  ServiceNameAndResourceType.pipe(T.XmlName("item")).annotate({
+    identifier: "ServiceNameAndResourceType",
+  }),
+);
 export interface ListResourceTypesResponse {
   resourceTypes?: ServiceNameAndResourceType[];
   nextToken?: string;
@@ -1586,28 +1847,27 @@ export interface ListSourceAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListSourceAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShareArns: S.optional(ResourceShareArnList),
-      sourceId: S.optional(S.String),
-      sourceType: S.optional(S.String),
-      associationStatus: S.optional(ResourceShareAssociationStatus),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/listsourceassociations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSourceAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShareArns: S.optional(ResourceShareArnList),
+    sourceId: S.optional(S.String),
+    sourceType: S.optional(S.String),
+    associationStatus: S.optional(ResourceShareAssociationStatus),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/listsourceassociations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSourceAssociationsRequest",
-  }) as any as S.Schema<ListSourceAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "ListSourceAssociationsRequest",
+}) as any as S.Schema<ListSourceAssociationsRequest>;
 export interface AssociatedSource {
   resourceShareArn?: string;
   sourceId?: string;
@@ -1642,15 +1902,14 @@ export interface ListSourceAssociationsResponse {
   sourceAssociations?: AssociatedSource[];
   nextToken?: string;
 }
-export const ListSourceAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceAssociations: S.optional(AssociatedSourceList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListSourceAssociationsResponse",
-  }) as any as S.Schema<ListSourceAssociationsResponse>;
+export const ListSourceAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceAssociations: S.optional(AssociatedSourceList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSourceAssociationsResponse",
+}) as any as S.Schema<ListSourceAssociationsResponse>;
 export interface PromotePermissionCreatedFromPolicyRequest {
   permissionArn: string;
   name: string;
@@ -1724,8 +1983,8 @@ export interface RejectResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;
 }
-export const RejectResourceShareInvitationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const RejectResourceShareInvitationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareInvitationArn: S.String,
       clientToken: S.optional(S.String),
@@ -1739,30 +1998,30 @@ export const RejectResourceShareInvitationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "RejectResourceShareInvitationRequest",
-  }) as any as S.Schema<RejectResourceShareInvitationRequest>;
+).annotate({
+  identifier: "RejectResourceShareInvitationRequest",
+}) as any as S.Schema<RejectResourceShareInvitationRequest>;
 export interface RejectResourceShareInvitationResponse {
   resourceShareInvitation?: ResourceShareInvitation;
   clientToken?: string;
 }
-export const RejectResourceShareInvitationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const RejectResourceShareInvitationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceShareInvitation: S.optional(ResourceShareInvitation),
       clientToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "RejectResourceShareInvitationResponse",
-  }) as any as S.Schema<RejectResourceShareInvitationResponse>;
+).annotate({
+  identifier: "RejectResourceShareInvitationResponse",
+}) as any as S.Schema<RejectResourceShareInvitationResponse>;
 export interface ReplacePermissionAssociationsRequest {
   fromPermissionArn: string;
   fromPermissionVersion?: number;
   toPermissionArn: string;
   clientToken?: string;
 }
-export const ReplacePermissionAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ReplacePermissionAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       fromPermissionArn: S.String,
       fromPermissionVersion: S.optional(S.Number),
@@ -1778,61 +2037,59 @@ export const ReplacePermissionAssociationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ReplacePermissionAssociationsRequest",
-  }) as any as S.Schema<ReplacePermissionAssociationsRequest>;
+).annotate({
+  identifier: "ReplacePermissionAssociationsRequest",
+}) as any as S.Schema<ReplacePermissionAssociationsRequest>;
 export interface ReplacePermissionAssociationsResponse {
   replacePermissionAssociationsWork?: ReplacePermissionAssociationsWork;
   clientToken?: string;
 }
-export const ReplacePermissionAssociationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ReplacePermissionAssociationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       replacePermissionAssociationsWork: S.optional(
         ReplacePermissionAssociationsWork,
       ),
       clientToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ReplacePermissionAssociationsResponse",
-  }) as any as S.Schema<ReplacePermissionAssociationsResponse>;
+).annotate({
+  identifier: "ReplacePermissionAssociationsResponse",
+}) as any as S.Schema<ReplacePermissionAssociationsResponse>;
 export interface SetDefaultPermissionVersionRequest {
   permissionArn: string;
   permissionVersion: number;
   clientToken?: string;
 }
-export const SetDefaultPermissionVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permissionArn: S.String,
-      permissionVersion: S.Number,
-      clientToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/setdefaultpermissionversion" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetDefaultPermissionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissionArn: S.String,
+    permissionVersion: S.Number,
+    clientToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/setdefaultpermissionversion" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetDefaultPermissionVersionRequest",
-  }) as any as S.Schema<SetDefaultPermissionVersionRequest>;
+  ),
+).annotate({
+  identifier: "SetDefaultPermissionVersionRequest",
+}) as any as S.Schema<SetDefaultPermissionVersionRequest>;
 export interface SetDefaultPermissionVersionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
-export const SetDefaultPermissionVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SetDefaultPermissionVersionResponse",
-  }) as any as S.Schema<SetDefaultPermissionVersionResponse>;
+export const SetDefaultPermissionVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
+    clientToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SetDefaultPermissionVersionResponse",
+}) as any as S.Schema<SetDefaultPermissionVersionResponse>;
 export interface TagResourceRequest {
   resourceShareArn?: string;
   tags: Tag[];
@@ -1922,204 +2179,14 @@ export interface UpdateResourceShareResponse {
   resourceShare?: ResourceShare;
   clientToken?: string;
 }
-export const UpdateResourceShareResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceShare: S.optional(ResourceShare),
-      clientToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateResourceShareResponse",
-  }) as any as S.Schema<UpdateResourceShareResponse>;
-
-//# Errors
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "IdempotentParameterMismatch",
-    httpResponseCode: 400,
+export const UpdateResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceShare: S.optional(ResourceShare),
+    clientToken: S.optional(S.String),
   }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClientTokenException extends S.TaggedErrorClass<InvalidClientTokenException>()(
-  "InvalidClientTokenException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidClientToken", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MalformedArnException extends S.TaggedErrorClass<MalformedArnException>()(
-  "MalformedArnException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidArn.Malformed", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { message: S.String },
-  T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationAlreadyAcceptedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyAcceptedException>()(
-  "ResourceShareInvitationAlreadyAcceptedException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceShareInvitationArn.AlreadyAccepted",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationAlreadyRejectedException extends S.TaggedErrorClass<ResourceShareInvitationAlreadyRejectedException>()(
-  "ResourceShareInvitationAlreadyRejectedException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceShareInvitationArn.AlreadyRejected",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationArnNotFoundException extends S.TaggedErrorClass<ResourceShareInvitationArnNotFoundException>()(
-  "ResourceShareInvitationArnNotFoundException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceShareInvitationArn.NotFound",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareInvitationExpiredException extends S.TaggedErrorClass<ResourceShareInvitationExpiredException>()(
-  "ResourceShareInvitationExpiredException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceShareInvitationArn.Expired",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
-  "ServerInternalException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.String },
-  T.AwsQueryError({ code: "Unavailable", httpResponseCode: 503 }),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
-  "InvalidStateTransitionException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidStateTransitionException.Unknown",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ResourceShareLimitExceededException extends S.TaggedErrorClass<ResourceShareLimitExceededException>()(
-  "ResourceShareLimitExceededException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "ResourceShareLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class UnknownResourceException extends S.TaggedErrorClass<UnknownResourceException>()(
-  "UnknownResourceException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceShareArn.NotFound",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
-  "InvalidPolicyException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyTemplateException extends S.TaggedErrorClass<MalformedPolicyTemplateException>()(
-  "MalformedPolicyTemplateException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "MalformedPolicyTemplateException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class PermissionAlreadyExistsException extends S.TaggedErrorClass<PermissionAlreadyExistsException>()(
-  "PermissionAlreadyExistsException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "PermissionAlreadyExistsException",
-    httpResponseCode: 409,
-  }),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class PermissionLimitExceededException extends S.TaggedErrorClass<PermissionLimitExceededException>()(
-  "PermissionLimitExceededException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "PermissionLimitExceededException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class PermissionVersionsLimitExceededException extends S.TaggedErrorClass<PermissionVersionsLimitExceededException>()(
-  "PermissionVersionsLimitExceededException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "PermissionVersionsLimitExceededException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { message: S.String },
-  T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TagPolicyViolationException extends S.TaggedErrorClass<TagPolicyViolationException>()(
-  "TagPolicyViolationException",
-  { message: S.String },
-  T.AwsQueryError({ code: "TagPolicyViolation", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceArnNotFoundException extends S.TaggedErrorClass<ResourceArnNotFoundException>()(
-  "ResourceArnNotFoundException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceArn.NotFound",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidMaxResultsException extends S.TaggedErrorClass<InvalidMaxResultsException>()(
-  "InvalidMaxResultsException",
-  { message: S.String },
-  T.AwsQueryError({ code: "InvalidMaxResults", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
-  "MissingRequiredParameterException",
-  { message: S.String },
-  T.AwsQueryError({ code: "MissingRequiredParameter", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidResourceTypeException extends S.TaggedErrorClass<InvalidResourceTypeException>()(
-  "InvalidResourceTypeException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "InvalidResourceType.Unknown",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class UnmatchedPolicyPermissionException extends S.TaggedErrorClass<UnmatchedPolicyPermissionException>()(
-  "UnmatchedPolicyPermissionException",
-  { message: S.String },
-  T.AwsQueryError({
-    code: "UnmatchedPolicyPermissionException",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+).annotate({
+  identifier: "UpdateResourceShareResponse",
+}) as any as S.Schema<UpdateResourceShareResponse>;
 export type AcceptResourceShareInvitationError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2157,8 +2224,11 @@ export const acceptResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptResourceShareInvitation",
 }));
+
 export type AssociateResourceShareError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2198,8 +2268,11 @@ export const associateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceShare",
 }));
+
 export type AssociateResourceSharePermissionError =
   | InvalidClientTokenException
   | InvalidParameterException
@@ -2232,8 +2305,11 @@ export const associateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceSharePermission",
 }));
+
 export type CreatePermissionError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2270,8 +2346,11 @@ export const createPermission: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermission",
 }));
+
 export type CreatePermissionVersionError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2313,8 +2392,11 @@ export const createPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermissionVersion",
 }));
+
 export type CreateResourceShareError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2362,8 +2444,11 @@ export const createResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceShare",
 }));
+
 export type DeletePermissionError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2395,8 +2480,11 @@ export const deletePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermission",
 }));
+
 export type DeletePermissionVersionError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2432,8 +2520,11 @@ export const deletePermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionVersion",
 }));
+
 export type DeleteResourceShareError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2472,8 +2563,11 @@ export const deleteResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceShare",
 }));
+
 export type DisassociateResourceShareError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -2512,8 +2606,11 @@ export const disassociateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceShare",
 }));
+
 export type DisassociateResourceSharePermissionError =
   | InvalidClientTokenException
   | InvalidParameterException
@@ -2547,8 +2644,11 @@ export const disassociateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceSharePermission",
 }));
+
 export type EnableSharingWithAwsOrganizationError =
   | OperationNotPermittedException
   | ServerInternalException
@@ -2580,8 +2680,11 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSharingWithAwsOrganization",
 }));
+
 export type GetPermissionError =
   | InvalidParameterException
   | MalformedArnException
@@ -2609,8 +2712,11 @@ export const getPermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermission",
 }));
+
 export type GetResourcePoliciesError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -2660,6 +2766,8 @@ export const getResourcePolicies: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -2667,6 +2775,7 @@ export const getResourcePolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetResourceShareAssociationsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -2718,6 +2827,8 @@ export const getResourceShareAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShareAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2725,6 +2836,7 @@ export const getResourceShareAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetResourceShareInvitationsError =
   | InvalidMaxResultsException
   | InvalidNextTokenException
@@ -2777,6 +2889,8 @@ export const getResourceShareInvitations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShareInvitations",
   pagination: {
     inputToken: "nextToken",
@@ -2784,6 +2898,7 @@ export const getResourceShareInvitations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetResourceSharesError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -2832,6 +2947,8 @@ export const getResourceShares: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShares",
   pagination: {
     inputToken: "nextToken",
@@ -2839,6 +2956,7 @@ export const getResourceShares: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPendingInvitationResourcesError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -2895,6 +3013,8 @@ export const listPendingInvitationResources: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPendingInvitationResources",
   pagination: {
     inputToken: "nextToken",
@@ -2902,6 +3022,7 @@ export const listPendingInvitationResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPermissionAssociationsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -2950,6 +3071,8 @@ export const listPermissionAssociations: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2957,6 +3080,7 @@ export const listPermissionAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPermissionsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3004,6 +3128,8 @@ export const listPermissions: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissions",
   pagination: {
     inputToken: "nextToken",
@@ -3011,6 +3137,7 @@ export const listPermissions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPermissionVersionsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3061,6 +3188,8 @@ export const listPermissionVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3068,6 +3197,7 @@ export const listPermissionVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPrincipalsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3117,6 +3247,8 @@ export const listPrincipals: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipals",
   pagination: {
     inputToken: "nextToken",
@@ -3124,6 +3256,7 @@ export const listPrincipals: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReplacePermissionAssociationsWorkError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3169,6 +3302,8 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplacePermissionAssociationsWork",
   pagination: {
     inputToken: "nextToken",
@@ -3176,6 +3311,7 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3227,6 +3363,8 @@ export const listResources: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "nextToken",
@@ -3234,6 +3372,7 @@ export const listResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourceSharePermissionsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3284,6 +3423,8 @@ export const listResourceSharePermissions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSharePermissions",
   pagination: {
     inputToken: "nextToken",
@@ -3291,6 +3432,7 @@ export const listResourceSharePermissions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourceTypesError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3329,6 +3471,8 @@ export const listResourceTypes: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3336,6 +3480,7 @@ export const listResourceTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSourceAssociationsError =
   | InvalidNextTokenException
   | InvalidParameterException
@@ -3380,6 +3525,8 @@ export const listSourceAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -3388,6 +3535,7 @@ export const listSourceAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PromotePermissionCreatedFromPolicyError =
   | InvalidParameterException
   | InvalidPolicyException
@@ -3445,8 +3593,11 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PromotePermissionCreatedFromPolicy",
 }));
+
 export type PromoteResourceShareCreatedFromPolicyError =
   | InvalidParameterException
   | InvalidStateTransitionException
@@ -3495,8 +3646,11 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
     UnknownResourceException,
     UnmatchedPolicyPermissionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PromoteResourceShareCreatedFromPolicy",
 }));
+
 export type RejectResourceShareInvitationError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -3532,8 +3686,11 @@ export const rejectResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectResourceShareInvitation",
 }));
+
 export type ReplacePermissionAssociationsError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -3580,8 +3737,11 @@ export const replacePermissionAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplacePermissionAssociations",
 }));
+
 export type SetDefaultPermissionVersionError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -3613,8 +3773,11 @@ export const setDefaultPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultPermissionVersion",
 }));
+
 export type TagResourceError =
   | InvalidParameterException
   | MalformedArnException
@@ -3649,8 +3812,11 @@ export const tagResource: API.OperationMethod<
     TagPolicyViolationException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidParameterException
   | MalformedArnException
@@ -3676,8 +3842,11 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateResourceShareError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -3711,5 +3880,7 @@ export const updateResourceShare: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceShare",
 }));

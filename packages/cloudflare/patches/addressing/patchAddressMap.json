@@ -1,14 +1,129 @@
 {
-  "errors": {
-    "MethodNotAllowed": [
-      { "code": 10405, "message": { "includes": "not allowed" } },
-      { "code": 10000, "message": { "includes": "not allowed" } }
-    ],
-    "FeatureNotEnabled": [
-      { "code": 1002, "message": { "includes": "address_maps_not_enabled" } }
-    ],
-    "InvalidAccountId": [
-      { "code": 7003, "message": { "includes": "Could not route" } }
-    ]
-  }
+  "description": "Align addressing#AddressMapsEdit with distilled cloudflare/addressing patchAddressMap",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#AddressMapsEdit",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMap"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#AddressMapsEditRequest",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMapRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMap/input/target",
+      "value": "com.cloudflare.addressing#PatchAddressMapRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#AddressMapsEditResponse",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMapResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMap/output/target",
+      "value": "com.cloudflare.addressing#PatchAddressMapResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#MethodNotAllowed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10405,
+              "message": {
+                "includes": "not allowed"
+              }
+            },
+            {
+              "code": 10000,
+              "message": {
+                "includes": "not allowed"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#FeatureNotEnabled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002,
+              "message": {
+                "includes": "address_maps_not_enabled"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#InvalidAccountId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#PatchAddressMap/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.addressing#MethodNotAllowed"
+        },
+        {
+          "target": "com.cloudflare.addressing#FeatureNotEnabled"
+        },
+        {
+          "target": "com.cloudflare.addressing#InvalidAccountId"
+        }
+      ]
+    }
+  ]
 }

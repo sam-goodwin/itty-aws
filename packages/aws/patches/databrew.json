@@ -1,29 +1,17 @@
 {
   "errorCategories": {
-    "TooManyRequestsException": [
-      "ThrottlingError",
-      "RetryableError"
-    ],
-    "DataBrewRoleNotAssumable": [
-      "BadRequestError",
-      "RetryableError"
-    ]
+    "TooManyRequestsException": ["ThrottlingError", "RetryableError"],
+    "DataBrewRoleNotAssumable": ["BadRequestError", "RetryableError"]
   },
   "operations": {
     "batchDeleteRecipeVersion": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "createDataset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "createProfileJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -35,9 +23,7 @@
       ]
     },
     "createProject": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -49,14 +35,10 @@
       ]
     },
     "createRecipe": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "createRecipeJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -68,160 +50,97 @@
       ]
     },
     "createRuleset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "createSchedule": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteDataset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteProject": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteRecipeVersion": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteRuleset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "deleteSchedule": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeDataset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeJobRun": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeProject": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeRecipe": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeRuleset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "describeSchedule": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listDatasets": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listJobRuns": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listJobs": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listProjects": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listRecipeVersions": {
-      "errors": [
-        "TooManyRequestsException",
-        "ResourceNotFoundException"
-      ]
+      "errors": ["TooManyRequestsException", "ResourceNotFoundException"]
     },
     "listRecipes": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listRulesets": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listSchedules": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "listTagsForResource": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "publishRecipe": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "startJobRun": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "stopJobRun": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "tagResource": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "untagResource": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "updateDataset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "updateProfileJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -233,9 +152,7 @@
       ]
     },
     "updateProject": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -247,14 +164,10 @@
       ]
     },
     "updateRecipe": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "updateRecipeJob": {
-      "errors": [
-        "TooManyRequestsException"
-      ],
+      "errors": ["TooManyRequestsException"],
       "syntheticErrors": [
         {
           "name": "DataBrewRoleNotAssumable",
@@ -266,14 +179,10 @@
       ]
     },
     "updateRuleset": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     },
     "updateSchedule": {
-      "errors": [
-        "TooManyRequestsException"
-      ]
+      "errors": ["TooManyRequestsException"]
     }
   }
 }

@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#RiskScoringIntegrationsCreate with distilled cloudflare/zero-trust createRiskScoringIntegration",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#RiskScoringIntegrationsCreate",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegration"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#RiskScoringIntegrationsCreateRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegrationRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegration/input/target",
+      "value": "com.cloudflare.zero_trust#CreateRiskScoringIntegrationRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#RiskScoringIntegrationsCreateResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegrationResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegration/output/target",
+      "value": "com.cloudflare.zero_trust#CreateRiskScoringIntegrationResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateRiskScoringIntegration/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
+    }
+  ]
+}

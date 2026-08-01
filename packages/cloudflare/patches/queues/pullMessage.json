@@ -1,11 +1,152 @@
 {
-  "errors": {
-    "InvalidRequestBody": [{ "code": 10026 }],
-    "InvalidQueueId": [{ "code": 10107 }],
-    "QueueNotFound": [
-      { "code": 11000 },
-      { "code": 0, "message": { "includes": "Queue does not exist" } }
-    ],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align queues#MessagesPull with distilled cloudflare/queues pullMessage",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPull",
+      "path": "/shapes/com.cloudflare.queues#PullMessage"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPullRequest",
+      "path": "/shapes/com.cloudflare.queues#PullMessageRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PullMessage/input/target",
+      "value": "com.cloudflare.queues#PullMessageRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#MessagesPullResponse",
+      "path": "/shapes/com.cloudflare.queues#PullMessageResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#PullMessage/output/target",
+      "value": "com.cloudflare.queues#PullMessageResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidRequestBody",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10026
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidQueueId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10107
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#QueueNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 11000
+            },
+            {
+              "code": 0,
+              "message": {
+                "includes": "Queue does not exist"
+              }
+            },
+            {
+              "status": 404,
+              "message": {
+                "includes": "Queue does not exist"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#PullMessage/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.queues#InvalidRequestBody"
+        },
+        {
+          "target": "com.cloudflare.queues#InvalidQueueId"
+        },
+        {
+          "target": "com.cloudflare.queues#QueueNotFound"
+        },
+        {
+          "target": "com.cloudflare.queues#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

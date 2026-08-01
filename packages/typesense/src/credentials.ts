@@ -1,3 +1,11 @@
+/**
+ * Typesense credentials — hand-written.
+ *
+ * API-compatible port of the distilled repo's typesense credentials module:
+ * a static API key sent as the `X-TYPESENSE-API-KEY` header plus a
+ * caller-supplied base URL. The `Credentials` service holds an *effect* so
+ * layers may resolve the key lazily (env, vaults, …).
+ */
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
@@ -44,3 +52,21 @@ export const CredentialsFromEnv = Layer.succeed(
     Effect.orDie,
   ),
 );
+
+/** Convenience layer from a plain key + base URL (kept for local tests). */
+export const credentials = (config: {
+  readonly apiKey: string;
+  readonly apiBaseUrl: string;
+}): Layer.Layer<Credentials> =>
+  Layer.succeed(
+    Credentials,
+    Effect.succeed({
+      apiKey: Redacted.make(config.apiKey),
+      apiBaseUrl: config.apiBaseUrl,
+    }),
+  );
+
+/** Auth headers for a resolved credentials config. */
+export const formatHeaders = (config: Config): Record<string, string> => ({
+  "X-TYPESENSE-API-KEY": Redacted.value(config.apiKey),
+});

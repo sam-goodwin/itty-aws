@@ -1,48 +1,112 @@
+#!/usr/bin/env bun
 /**
- * EAS SDK Code Generator
+ * generate — turn the Smithy JSON model in .generated-specs into the Effect
+ * SDK.
  *
- * Generates Effect-based operations from the EAS GraphQL introspection schema
- * shipped with the eas-cli submodule. The EAS backend is a single GraphQL
- * endpoint at https://api.expo.dev/graphql — see
- * specs/eas-cli/packages/eas-cli/graphql.schema.json.
+ * Input:  .generated-specs/eas.json  (Smithy 2.0 model produced by
+ *         scripts/convert.ts from the EAS GraphQL introspection schema)
+ * Output: src/services/eas.ts  +  services/index.ts
  *
- * The shared GraphQL generator emits one operation per top-level Query field
- * and per top-level Mutation field. Most top-level EAS fields are namespacing
- * objects (e.g. `account: AccountQuery`, `app: AppMutation`) whose nested
- * leaves are the real operations — these get expanded by the generator's
- * selection-set walker up to `maxDepth` levels.
+ * The smithy→SDK compiler and CLI pipeline live in
+ * `@distilled.cloud/core/codegen`; this script is Expo EAS's provider spec:
+ * the GraphQL trait vocabulary (`com.expo.graphql#operation` →
+ * `T.GraphQLOp`, `#responsePath` → `T.ResponsePath`, `#nullable` /
+ * `#nullableItems` / `#payload`), protocol/retry names, and error classes.
  */
-import * as path from "path";
-import { generateFromGraphQL } from "@distilled.cloud/core/graphql/generate";
+import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
+import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 
-const rootDir = path.join(import.meta.dir, "..");
+const OP_TRAIT = "com.expo.graphql#operation";
+const RESPONSE_PATH_TRAIT = "com.expo.graphql#responsePath";
+const NULLABLE_TRAIT = "com.expo.graphql#nullable";
+const NULLABLE_ITEMS_TRAIT = "com.expo.graphql#nullableItems";
+const PAYLOAD_TRAIT = "com.expo.graphql#payload";
 
-generateFromGraphQL({
-  schemaPath: path.join(
-    rootDir,
-    "specs/eas-cli/packages/eas-cli/graphql.schema.json",
-  ),
-  outputDir: path.join(rootDir, "src/operations"),
-  endpoint: "/graphql",
-  maxDepth: 3,
-  clientImport: "../client",
-  traitsImport: "../traits",
-  skipDeprecated: true,
-  // The schema exposes a couple of `_doNotUse` placeholder fields that are
-  // not real operations.
-  skipQuery: (name) => name.startsWith("_"),
-  skipMutation: (name) => name.startsWith("_"),
-  // Expo's schema declares a number of custom scalars. Map the common ones
-  // to sensible Effect Schema primitives so generated operations don't
-  // dissolve into Schema.Unknown.
-  customScalars: {
-    DateTime: "Schema.String",
-    JSON: "Schema.Unknown",
-    JSONObject: "Schema.Unknown",
-    Upload: "Schema.Unknown",
-    WorkflowsJSON: "Schema.Unknown",
-    AccountName: "Schema.String",
-    UUID: "Schema.String",
-    BigInt: "Schema.String",
+const PURE = "/*@__PURE__*/ ";
+
+/** Expo EAS's provider spec for the shared smithy→SDK compiler. */
+const makeEasSpec = (model: any): SdkSpec => ({
+  nullableTrait: NULLABLE_TRAIT,
+  sourceNote: ".generated-specs (EAS GraphQL introspection → smithy)",
+
+  // Op inputs carry the HTTP binding (POST /graphql) plus the baked GraphQL
+  // document; outputs carry the `data.<path>` unwrap instruction. Both live
+  // as traits on the structures themselves (stamped by convert.ts).
+  structPipes: (ctx) => {
+    const traits = model.shapes?.[ctx.id]?.traits ?? {};
+    const pipes: string[] = [];
+    if (ctx.httpTrait) {
+      pipes.push(`T.Http(${JSON.stringify(ctx.httpTrait)})`);
+    }
+    if (traits[OP_TRAIT] !== undefined) {
+      pipes.push(`T.GraphQLOp(${JSON.stringify(traits[OP_TRAIT])})`);
+    }
+    if (traits[RESPONSE_PATH_TRAIT] !== undefined) {
+      pipes.push(
+        `T.ResponsePath(${JSON.stringify(traits[RESPONSE_PATH_TRAIT])})`,
+      );
+    }
+    return pipes;
   },
+
+  shapeOverride: (ctx) => {
+    // Lists whose GraphQL element type is nullable: `(X | null)[]`.
+    if (
+      ctx.def.type === "list" &&
+      ctx.def.traits?.[NULLABLE_ITEMS_TRAIT] !== undefined
+    ) {
+      const t = ctx.def.member.target;
+      return [
+        `export type ${ctx.name} = (${ctx.tsRef(t)} | null)[];`,
+        `export const ${ctx.name} = ${PURE}S.Array(S.NullOr(${ctx.ref(t, ctx.selfIdx)})) as any as S.Schema<${ctx.name}>;\n`,
+      ];
+    }
+
+    // Bare-payload responses (GraphQL leaf returned a list/scalar/enum/
+    // opaque value): the response IS the sole `result` member's value, so
+    // emit the member's type directly and pipe the schema through the
+    // payload-root marker + the response-path unwrap.
+    if (ctx.def.type === "structure") {
+      const entries = Object.entries(ctx.def.members ?? {});
+      if (entries.length === 1) {
+        const [, m] = entries[0]! as [string, any];
+        const mTraits = m.traits ?? {};
+        if (PAYLOAD_TRAIT in mTraits) {
+          const nullable = NULLABLE_TRAIT in mTraits;
+          const rp = ctx.def.traits?.[RESPONSE_PATH_TRAIT];
+          const inner = nullable
+            ? `S.NullOr(${ctx.ref(m.target, ctx.selfIdx)})`
+            : ctx.ref(m.target, ctx.selfIdx);
+          const pipes = [
+            "T.GraphQLPayloadRoot()",
+            ...(rp !== undefined
+              ? [`T.ResponsePath(${JSON.stringify(rp)})`]
+              : []),
+          ];
+          return [
+            `export type ${ctx.name} = ${ctx.tsRef(m.target)}${nullable ? " | null" : ""};`,
+            `export const ${ctx.name} = ${PURE}S.suspend(() =>\n${inner}.pipe(${pipes.join(", ")}),\n).annotate({ identifier: ${JSON.stringify(ctx.name)} }) as any as S.Schema<${ctx.name}>;\n`,
+          ];
+        }
+      }
+    }
+
+    return undefined;
+  },
+
+  operationDecl: {
+    contextType: "ExpoEasOpContext",
+    commonErrorType: "ExpoEasOpError",
+    // Errors are client-wide (mapped from the GraphQL `errors[]` envelope by
+    // the protocol) — no per-operation unions, mirroring distilled v0.
+    commonErrorClasses: ["UnknownEasError", "EasParseError"],
+    protocol: "ExpoGraphqlProtocol",
+    retry: "Retry.Retry",
+  },
+});
+
+runGeneratorCli({
+  description: "Generate the Expo EAS Effect SDK from the Smithy model",
+  root: `${import.meta.dir}/..`,
+  spec: makeEasSpec,
 });

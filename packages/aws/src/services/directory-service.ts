@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -88,145 +90,189 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ADAssessmentLimitExceededException extends S.TaggedErrorClass<ADAssessmentLimitExceededException>()(
+  "ADAssessmentLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class AuthenticationFailedException extends S.TaggedErrorClass<AuthenticationFailedException>()(
+  "AuthenticationFailedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class CertificateAlreadyExistsException extends S.TaggedErrorClass<CertificateAlreadyExistsException>()(
+  "CertificateAlreadyExistsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class CertificateDoesNotExistException extends S.TaggedErrorClass<CertificateDoesNotExistException>()(
+  "CertificateDoesNotExistException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class CertificateInUseException extends S.TaggedErrorClass<CertificateInUseException>()(
+  "CertificateInUseException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class CertificateLimitExceededException extends S.TaggedErrorClass<CertificateLimitExceededException>()(
+  "CertificateLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class ClientException extends S.TaggedErrorClass<ClientException>()(
+  "ClientException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryAlreadyInRegionException extends S.TaggedErrorClass<DirectoryAlreadyInRegionException>()(
+  "DirectoryAlreadyInRegionException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryAlreadySharedException extends S.TaggedErrorClass<DirectoryAlreadySharedException>()(
+  "DirectoryAlreadySharedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryDoesNotExistException extends S.TaggedErrorClass<DirectoryDoesNotExistException>()(
+  "DirectoryDoesNotExistException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryInDesiredStateException extends S.TaggedErrorClass<DirectoryInDesiredStateException>()(
+  "DirectoryInDesiredStateException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryLimitExceededException extends S.TaggedErrorClass<DirectoryLimitExceededException>()(
+  "DirectoryLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryNotSharedException extends S.TaggedErrorClass<DirectoryNotSharedException>()(
+  "DirectoryNotSharedException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
+  "DirectoryUnavailableException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DisableAlreadyInProgressException extends S.TaggedErrorClass<DisableAlreadyInProgressException>()(
+  "DisableAlreadyInProgressException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class DomainControllerLimitExceededException extends S.TaggedErrorClass<DomainControllerLimitExceededException>()(
+  "DomainControllerLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class EnableAlreadyInProgressException extends S.TaggedErrorClass<EnableAlreadyInProgressException>()(
+  "EnableAlreadyInProgressException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  "EntityAlreadyExistsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class EntityDoesNotExistException extends S.TaggedErrorClass<EntityDoesNotExistException>()(
+  "EntityDoesNotExistException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class IncompatibleSettingsException extends S.TaggedErrorClass<IncompatibleSettingsException>()(
+  "IncompatibleSettingsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InsufficientPermissionsException extends S.TaggedErrorClass<InsufficientPermissionsException>()(
+  "InsufficientPermissionsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidCertificateException extends S.TaggedErrorClass<InvalidCertificateException>()(
+  "InvalidCertificateException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidClientAuthStatusException extends S.TaggedErrorClass<InvalidClientAuthStatusException>()(
+  "InvalidClientAuthStatusException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidLDAPSStatusException extends S.TaggedErrorClass<InvalidLDAPSStatusException>()(
+  "InvalidLDAPSStatusException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
+  "InvalidPasswordException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class InvalidTargetException extends S.TaggedErrorClass<InvalidTargetException>()(
+  "InvalidTargetException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class IpRouteLimitExceededException extends S.TaggedErrorClass<IpRouteLimitExceededException>()(
+  "IpRouteLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class NoAvailableCertificateException extends S.TaggedErrorClass<NoAvailableCertificateException>()(
+  "NoAvailableCertificateException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class OrganizationsException extends S.TaggedErrorClass<OrganizationsException>()(
+  "OrganizationsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class RegionLimitExceededException extends S.TaggedErrorClass<RegionLimitExceededException>()(
+  "RegionLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class ShareLimitExceededException extends S.TaggedErrorClass<ShareLimitExceededException>()(
+  "ShareLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class SnapshotLimitExceededException extends S.TaggedErrorClass<SnapshotLimitExceededException>()(
+  "SnapshotLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
+  "TagLimitExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class UnsupportedSettingsException extends S.TaggedErrorClass<UnsupportedSettingsException>()(
+  "UnsupportedSettingsException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
+export class UserDoesNotExistException extends S.TaggedErrorClass<UserDoesNotExistException>()(
+  "UserDoesNotExistException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+) {}
 export type DirectoryId = string;
-export type CustomerId = string;
-export type Notes = string | redacted.Redacted<string>;
-export type CreatedDateTime = Date;
-export type LastUpdatedDateTime = Date;
-export type ExceptionMessage = string;
-export type RequestId = string;
-export type CidrIp = string;
-export type CidrIpv6 = string;
-export type Description = string;
-export type UpdateSecurityGroupForDirectoryControllers = boolean;
-export type RegionName = string;
-export type VpcId = string;
-export type SubnetId = string;
-export type ResourceId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type SchemaExtensionId = string;
-export type DirectoryName = string;
-export type DirectoryShortName = string;
-export type ConnectPassword = string | redacted.Redacted<string>;
-export type IpAddr = string;
-export type Ipv6Addr = string;
-export type UserName = string;
-export type AliasName = string;
-export type ComputerName = string;
-export type ComputerPassword = string | redacted.Redacted<string>;
-export type OrganizationalUnitDN = string;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type SID = string;
-export type RemoteDomainName = string;
-export type Password = string | redacted.Redacted<string>;
-export type SecretArn = string;
-export type AssessmentId = string;
-export type LogGroupName = string;
-export type SnapshotName = string;
-export type SnapshotId = string;
-export type TrustPassword = string | redacted.Redacted<string>;
-export type TrustId = string;
-export type DeleteAssociatedConditionalForwarder = boolean;
-export type CertificateId = string;
-export type TopicName = string;
-export type AssessmentStartTime = Date;
-export type LastUpdateDateTime = Date;
-export type AssessmentStatus = string;
-export type AssessmentStatusCode = string;
-export type AssessmentStatusReason = string;
-export type SecurityGroupId = string;
-export type AssessmentInstanceId = string;
-export type AssessmentReportType = string;
-export type AssessmentVersion = string;
-export type AssessmentValidationCategory = string;
-export type AssessmentValidationName = string;
-export type AssessmentValidationStatus = string;
-export type AssessmentValidationStatusCode = string;
-export type AssessmentValidationStatusReason = string;
-export type AssessmentValidationTimeStamp = Date;
-export type PcaConnectorArn = string;
-export type CaEnrollmentPolicyStatusReason = string;
-export type CertificateStateReason = string;
-export type CertificateCN = string;
-export type CertificateRegisteredDateTime = Date;
-export type CertificateExpiryDateTime = Date;
-export type OCSPUrl = string;
-export type NextToken = string;
-export type PageLimit = number;
-export type Limit = number;
-export type AccessUrl = string;
-export type LaunchTime = Date;
-export type AvailabilityZone = string;
-export type Server = string;
-export type PortNumber = number;
-export type RadiusTimeout = number;
-export type RadiusRetries = number;
-export type RadiusSharedSecret = string | redacted.Redacted<string>;
-export type RadiusDisplayLabel = string;
-export type UseSameUsername = boolean;
-export type StageReason = string;
-export type SsoEnabled = boolean;
-export type DesiredNumberOfDomainControllers = number;
-export type DomainControllerId = string;
-export type DomainControllerStatusReason = string;
-export type TopicArn = string;
-export type UpdateStatusReason = string;
-export type InitiatedBy = string;
-export type StartDateTime = Date;
-export type LDAPSStatusReason = string;
-export type StateLastUpdatedDateTime = Date;
-export type DirectoryConfigurationSettingType = string;
-export type DirectoryConfigurationSettingName = string;
-export type DirectoryConfigurationSettingAllowedValues = string;
-export type DirectoryConfigurationSettingValue = string;
-export type DirectoryConfigurationSettingRequestStatusMessage = string;
-export type DirectoryConfigurationSettingLastUpdatedDateTime = Date;
-export type DirectoryConfigurationSettingLastRequestedDateTime = Date;
-export type DirectoryConfigurationSettingDataType = string;
-export type StartTime = Date;
-export type TrustStateReason = string;
-export type CloudOnlyDirectoriesLimitReached = boolean;
-export type ConnectedDirectoriesLimitReached = boolean;
-export type ManualSnapshotsLimitReached = boolean;
-export type AssessmentLimit = number;
-export type AddedDateTime = Date;
-export type IpRouteStatusReason = string;
-export type SubscriptionCreatedDateTime = Date;
-export type SchemaExtensionStatusReason = string;
-export type EndDateTime = Date;
-export type CertificateData = string;
-export type CustomerUserName = string;
-export type UserPassword = string | redacted.Redacted<string>;
-export type TargetId = string;
-export type CreateSnapshotBeforeSchemaExtension = boolean;
-export type LdifContent = string;
-export type CreateSnapshotBeforeUpdate = boolean;
-
-//# Schemas
 export interface AcceptSharedDirectoryRequest {
   SharedDirectoryId: string;
 }
-export const AcceptSharedDirectoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SharedDirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AcceptSharedDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SharedDirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AcceptSharedDirectoryRequest",
-  }) as any as S.Schema<AcceptSharedDirectoryRequest>;
+  ),
+).annotate({
+  identifier: "AcceptSharedDirectoryRequest",
+}) as any as S.Schema<AcceptSharedDirectoryRequest>;
+export type CustomerId = string;
 export type ShareMethod = "ORGANIZATIONS" | "HANDSHAKE" | (string & {});
 export const ShareMethod = /*@__PURE__*/ S.String;
+
 export type ShareStatus =
   | "Shared"
   | "PendingAcceptance"
@@ -239,6 +285,10 @@ export type ShareStatus =
   | "Deleting"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
+export type Notes = string | redacted.Redacted<string>;
+export type CreatedDateTime = Date;
+export type LastUpdatedDateTime = Date;
 export interface SharedDirectory {
   OwnerAccountId?: string;
   OwnerDirectoryId?: string;
@@ -272,12 +322,14 @@ export const SharedDirectory = /*@__PURE__*/ S.suspend(() =>
 export interface AcceptSharedDirectoryResult {
   SharedDirectory?: SharedDirectory;
 }
-export const AcceptSharedDirectoryResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SharedDirectory: S.optional(SharedDirectory) }).pipe(ns),
-  ).annotate({
-    identifier: "AcceptSharedDirectoryResult",
-  }) as any as S.Schema<AcceptSharedDirectoryResult>;
+export const AcceptSharedDirectoryResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SharedDirectory: S.optional(SharedDirectory) }).pipe(ns),
+).annotate({
+  identifier: "AcceptSharedDirectoryResult",
+}) as any as S.Schema<AcceptSharedDirectoryResult>;
+export type CidrIp = string;
+export type CidrIpv6 = string;
+export type Description = string;
 export interface IpRoute {
   CidrIp?: string;
   CidrIpv6?: string;
@@ -292,6 +344,7 @@ export const IpRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRoute" }) as any as S.Schema<IpRoute>;
 export type IpRoutes = IpRoute[];
 export const IpRoutes = /*@__PURE__*/ S.Array(IpRoute);
+export type UpdateSecurityGroupForDirectoryControllers = boolean;
 export interface AddIpRoutesRequest {
   DirectoryId: string;
   IpRoutes: IpRoute[];
@@ -322,6 +375,9 @@ export const AddIpRoutesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddIpRoutesResult",
 }) as any as S.Schema<AddIpRoutesResult>;
+export type RegionName = string;
+export type VpcId = string;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export interface DirectoryVpcSettings {
@@ -363,6 +419,9 @@ export const AddRegionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddRegionResult",
 }) as any as S.Schema<AddRegionResult>;
+export type ResourceId = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -397,37 +456,45 @@ export const AddTagsToResourceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsToResourceResult",
 }) as any as S.Schema<AddTagsToResourceResult>;
+export type SchemaExtensionId = string;
 export interface CancelSchemaExtensionRequest {
   DirectoryId: string;
   SchemaExtensionId: string;
 }
-export const CancelSchemaExtensionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, SchemaExtensionId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelSchemaExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, SchemaExtensionId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelSchemaExtensionRequest",
-  }) as any as S.Schema<CancelSchemaExtensionRequest>;
+  ),
+).annotate({
+  identifier: "CancelSchemaExtensionRequest",
+}) as any as S.Schema<CancelSchemaExtensionRequest>;
 export interface CancelSchemaExtensionResult {}
-export const CancelSchemaExtensionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CancelSchemaExtensionResult",
-  }) as any as S.Schema<CancelSchemaExtensionResult>;
+export const CancelSchemaExtensionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CancelSchemaExtensionResult",
+}) as any as S.Schema<CancelSchemaExtensionResult>;
+export type DirectoryName = string;
+export type DirectoryShortName = string;
+export type ConnectPassword = string | redacted.Redacted<string>;
 export type DirectorySize = "Small" | "Large" | (string & {});
 export const DirectorySize = /*@__PURE__*/ S.String;
+
+export type IpAddr = string;
 export type DnsIpAddrs = string[];
 export const DnsIpAddrs = /*@__PURE__*/ S.Array(S.String);
+export type Ipv6Addr = string;
 export type DnsIpv6Addrs = string[];
 export const DnsIpv6Addrs = /*@__PURE__*/ S.Array(S.String);
+export type UserName = string;
 export interface DirectoryConnectSettings {
   VpcId: string;
   SubnetIds: string[];
@@ -448,6 +515,7 @@ export const DirectoryConnectSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryConnectSettings>;
 export type NetworkType = "Dual-stack" | "IPv4" | "IPv6" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface ConnectDirectoryRequest {
   Name: string;
   ShortName?: string;
@@ -490,6 +558,7 @@ export const ConnectDirectoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectDirectoryResult",
 }) as any as S.Schema<ConnectDirectoryResult>;
+export type AliasName = string;
 export interface CreateAliasRequest {
   DirectoryId: string;
   Alias: string;
@@ -521,6 +590,11 @@ export const CreateAliasResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAliasResult",
 }) as any as S.Schema<CreateAliasResult>;
+export type ComputerName = string;
+export type ComputerPassword = string | redacted.Redacted<string>;
+export type OrganizationalUnitDN = string;
+export type AttributeName = string;
+export type AttributeValue = string;
 export interface Attribute {
   Name?: string;
   Value?: string;
@@ -558,6 +632,7 @@ export const CreateComputerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComputerRequest",
 }) as any as S.Schema<CreateComputerRequest>;
+export type SID = string;
 export interface Computer {
   ComputerId?: string;
   ComputerName?: string;
@@ -578,38 +653,40 @@ export const CreateComputerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComputerResult",
 }) as any as S.Schema<CreateComputerResult>;
+export type RemoteDomainName = string;
 export interface CreateConditionalForwarderRequest {
   DirectoryId: string;
   RemoteDomainName: string;
   DnsIpAddrs?: string[];
   DnsIpv6Addrs?: string[];
 }
-export const CreateConditionalForwarderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      RemoteDomainName: S.String,
-      DnsIpAddrs: S.optional(DnsIpAddrs),
-      DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    RemoteDomainName: S.String,
+    DnsIpAddrs: S.optional(DnsIpAddrs),
+    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateConditionalForwarderRequest",
-  }) as any as S.Schema<CreateConditionalForwarderRequest>;
+  ),
+).annotate({
+  identifier: "CreateConditionalForwarderRequest",
+}) as any as S.Schema<CreateConditionalForwarderRequest>;
 export interface CreateConditionalForwarderResult {}
-export const CreateConditionalForwarderResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateConditionalForwarderResult",
-  }) as any as S.Schema<CreateConditionalForwarderResult>;
+export const CreateConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateConditionalForwarderResult",
+}) as any as S.Schema<CreateConditionalForwarderResult>;
+export type Password = string | redacted.Redacted<string>;
 export interface CreateDirectoryRequest {
   Name: string;
   ShortName?: string;
@@ -652,6 +729,8 @@ export const CreateDirectoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDirectoryResult",
 }) as any as S.Schema<CreateDirectoryResult>;
+export type SecretArn = string;
+export type AssessmentId = string;
 export interface CreateHybridADRequest {
   SecretArn: string;
   AssessmentId: string;
@@ -684,37 +763,39 @@ export const CreateHybridADResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHybridADResult",
 }) as any as S.Schema<CreateHybridADResult>;
+export type LogGroupName = string;
 export interface CreateLogSubscriptionRequest {
   DirectoryId: string;
   LogGroupName: string;
 }
-export const CreateLogSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, LogGroupName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, LogGroupName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateLogSubscriptionRequest",
-  }) as any as S.Schema<CreateLogSubscriptionRequest>;
+  ),
+).annotate({
+  identifier: "CreateLogSubscriptionRequest",
+}) as any as S.Schema<CreateLogSubscriptionRequest>;
 export interface CreateLogSubscriptionResult {}
-export const CreateLogSubscriptionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateLogSubscriptionResult",
-  }) as any as S.Schema<CreateLogSubscriptionResult>;
+export const CreateLogSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateLogSubscriptionResult",
+}) as any as S.Schema<CreateLogSubscriptionResult>;
 export type DirectoryEdition =
   | "Enterprise"
   | "Standard"
   | "Hybrid"
   | (string & {});
 export const DirectoryEdition = /*@__PURE__*/ S.String;
+
 export interface CreateMicrosoftADRequest {
   Name: string;
   ShortName?: string;
@@ -757,6 +838,7 @@ export const CreateMicrosoftADResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMicrosoftADResult",
 }) as any as S.Schema<CreateMicrosoftADResult>;
+export type SnapshotName = string;
 export interface CreateSnapshotRequest {
   DirectoryId: string;
   Name?: string;
@@ -776,6 +858,7 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSnapshotRequest",
 }) as any as S.Schema<CreateSnapshotRequest>;
+export type SnapshotId = string;
 export interface CreateSnapshotResult {
   SnapshotId?: string;
 }
@@ -784,16 +867,20 @@ export const CreateSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSnapshotResult",
 }) as any as S.Schema<CreateSnapshotResult>;
+export type TrustPassword = string | redacted.Redacted<string>;
 export type TrustDirection =
   | "One-Way: Outgoing"
   | "One-Way: Incoming"
   | "Two-Way"
   | (string & {});
 export const TrustDirection = /*@__PURE__*/ S.String;
+
 export type TrustType = "Forest" | "External" | (string & {});
 export const TrustType = /*@__PURE__*/ S.String;
+
 export type SelectiveAuth = "Enabled" | "Disabled" | (string & {});
 export const SelectiveAuth = /*@__PURE__*/ S.String;
+
 export interface CreateTrustRequest {
   DirectoryId: string;
   RemoteDomainName: string;
@@ -828,6 +915,7 @@ export const CreateTrustRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrustRequest",
 }) as any as S.Schema<CreateTrustRequest>;
+export type TrustId = string;
 export interface CreateTrustResult {
   TrustId?: string;
 }
@@ -866,27 +954,27 @@ export interface DeleteConditionalForwarderRequest {
   DirectoryId: string;
   RemoteDomainName: string;
 }
-export const DeleteConditionalForwarderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, RemoteDomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, RemoteDomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConditionalForwarderRequest",
-  }) as any as S.Schema<DeleteConditionalForwarderRequest>;
+  ),
+).annotate({
+  identifier: "DeleteConditionalForwarderRequest",
+}) as any as S.Schema<DeleteConditionalForwarderRequest>;
 export interface DeleteConditionalForwarderResult {}
-export const DeleteConditionalForwarderResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteConditionalForwarderResult",
-  }) as any as S.Schema<DeleteConditionalForwarderResult>;
+export const DeleteConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteConditionalForwarderResult",
+}) as any as S.Schema<DeleteConditionalForwarderResult>;
 export interface DeleteDirectoryRequest {
   DirectoryId: string;
 }
@@ -916,27 +1004,27 @@ export const DeleteDirectoryResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLogSubscriptionRequest {
   DirectoryId: string;
 }
-export const DeleteLogSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteLogSubscriptionRequest",
-  }) as any as S.Schema<DeleteLogSubscriptionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteLogSubscriptionRequest",
+}) as any as S.Schema<DeleteLogSubscriptionRequest>;
 export interface DeleteLogSubscriptionResult {}
-export const DeleteLogSubscriptionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteLogSubscriptionResult",
-  }) as any as S.Schema<DeleteLogSubscriptionResult>;
+export const DeleteLogSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteLogSubscriptionResult",
+}) as any as S.Schema<DeleteLogSubscriptionResult>;
 export interface DeleteSnapshotRequest {
   SnapshotId: string;
 }
@@ -963,6 +1051,7 @@ export const DeleteSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSnapshotResult",
 }) as any as S.Schema<DeleteSnapshotResult>;
+export type DeleteAssociatedConditionalForwarder = boolean;
 export interface DeleteTrustRequest {
   TrustId: string;
   DeleteAssociatedConditionalForwarder?: boolean;
@@ -993,51 +1082,52 @@ export const DeleteTrustResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTrustResult",
 }) as any as S.Schema<DeleteTrustResult>;
+export type CertificateId = string;
 export interface DeregisterCertificateRequest {
   DirectoryId: string;
   CertificateId: string;
 }
-export const DeregisterCertificateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, CertificateId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeregisterCertificateRequest",
-  }) as any as S.Schema<DeregisterCertificateRequest>;
+  ),
+).annotate({
+  identifier: "DeregisterCertificateRequest",
+}) as any as S.Schema<DeregisterCertificateRequest>;
 export interface DeregisterCertificateResult {}
-export const DeregisterCertificateResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeregisterCertificateResult",
-  }) as any as S.Schema<DeregisterCertificateResult>;
+export const DeregisterCertificateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeregisterCertificateResult",
+}) as any as S.Schema<DeregisterCertificateResult>;
+export type TopicName = string;
 export interface DeregisterEventTopicRequest {
   DirectoryId: string;
   TopicName: string;
 }
-export const DeregisterEventTopicRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeregisterEventTopicRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, TopicName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeregisterEventTopicRequest",
-  }) as any as S.Schema<DeregisterEventTopicRequest>;
+  ),
+).annotate({
+  identifier: "DeregisterEventTopicRequest",
+}) as any as S.Schema<DeregisterEventTopicRequest>;
 export interface DeregisterEventTopicResult {}
 export const DeregisterEventTopicResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -1047,28 +1137,36 @@ export const DeregisterEventTopicResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeADAssessmentRequest {
   AssessmentId: string;
 }
-export const DescribeADAssessmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AssessmentId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeADAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AssessmentId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeADAssessmentRequest",
-  }) as any as S.Schema<DescribeADAssessmentRequest>;
+  ),
+).annotate({
+  identifier: "DescribeADAssessmentRequest",
+}) as any as S.Schema<DescribeADAssessmentRequest>;
+export type AssessmentStartTime = Date;
+export type LastUpdateDateTime = Date;
+export type AssessmentStatus = string;
+export type AssessmentStatusCode = string;
+export type AssessmentStatusReason = string;
 export type CustomerDnsIps = string[];
 export const CustomerDnsIps = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type AssessmentInstanceId = string;
 export type AssessmentInstanceIds = string[];
 export const AssessmentInstanceIds = /*@__PURE__*/ S.Array(S.String);
+export type AssessmentReportType = string;
+export type AssessmentVersion = string;
 export interface Assessment {
   AssessmentId?: string;
   DirectoryId?: string;
@@ -1107,6 +1205,12 @@ export const Assessment = /*@__PURE__*/ S.suspend(() =>
     Version: S.optional(S.String),
   }),
 ).annotate({ identifier: "Assessment" }) as any as S.Schema<Assessment>;
+export type AssessmentValidationCategory = string;
+export type AssessmentValidationName = string;
+export type AssessmentValidationStatus = string;
+export type AssessmentValidationStatusCode = string;
+export type AssessmentValidationStatusReason = string;
+export type AssessmentValidationTimeStamp = Date;
 export interface AssessmentValidation {
   Category?: string;
   Name?: string;
@@ -1163,22 +1267,22 @@ export const DescribeADAssessmentResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeCAEnrollmentPolicyRequest {
   DirectoryId: string;
 }
-export const DescribeCAEnrollmentPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeCAEnrollmentPolicyRequest",
-  }) as any as S.Schema<DescribeCAEnrollmentPolicyRequest>;
+  ),
+).annotate({
+  identifier: "DescribeCAEnrollmentPolicyRequest",
+}) as any as S.Schema<DescribeCAEnrollmentPolicyRequest>;
+export type PcaConnectorArn = string;
 export type CaEnrollmentPolicyStatus =
   | "InProgress"
   | "Success"
@@ -1188,6 +1292,8 @@ export type CaEnrollmentPolicyStatus =
   | "Impaired"
   | (string & {});
 export const CaEnrollmentPolicyStatus = /*@__PURE__*/ S.String;
+
+export type CaEnrollmentPolicyStatusReason = string;
 export interface DescribeCAEnrollmentPolicyResult {
   DirectoryId?: string;
   PcaConnectorArn?: string;
@@ -1195,20 +1301,19 @@ export interface DescribeCAEnrollmentPolicyResult {
   LastUpdatedDateTime?: Date;
   CaEnrollmentPolicyStatusReason?: string;
 }
-export const DescribeCAEnrollmentPolicyResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.optional(S.String),
-      PcaConnectorArn: S.optional(S.String),
-      CaEnrollmentPolicyStatus: S.optional(CaEnrollmentPolicyStatus),
-      LastUpdatedDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      CaEnrollmentPolicyStatusReason: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeCAEnrollmentPolicyResult",
-  }) as any as S.Schema<DescribeCAEnrollmentPolicyResult>;
+export const DescribeCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.optional(S.String),
+    PcaConnectorArn: S.optional(S.String),
+    CaEnrollmentPolicyStatus: S.optional(CaEnrollmentPolicyStatus),
+    LastUpdatedDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    CaEnrollmentPolicyStatusReason: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeCAEnrollmentPolicyResult",
+}) as any as S.Schema<DescribeCAEnrollmentPolicyResult>;
 export interface DescribeCertificateRequest {
   DirectoryId: string;
   CertificateId: string;
@@ -1237,8 +1342,15 @@ export type CertificateState =
   | "DeregisterFailed"
   | (string & {});
 export const CertificateState = /*@__PURE__*/ S.String;
+
+export type CertificateStateReason = string;
+export type CertificateCN = string;
+export type CertificateRegisteredDateTime = Date;
+export type CertificateExpiryDateTime = Date;
 export type CertificateType = "ClientCertAuth" | "ClientLDAPS" | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
+
+export type OCSPUrl = string;
 export interface ClientCertAuthSettings {
   OCSPUrl?: string;
 }
@@ -1284,6 +1396,9 @@ export type ClientAuthenticationType =
   | "SmartCardOrPassword"
   | (string & {});
 export const ClientAuthenticationType = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
+export type PageLimit = number;
 export interface DescribeClientAuthenticationSettingsRequest {
   DirectoryId: string;
   Type?: ClientAuthenticationType;
@@ -1313,27 +1428,28 @@ export const DescribeClientAuthenticationSettingsRequest =
   }) as any as S.Schema<DescribeClientAuthenticationSettingsRequest>;
 export type ClientAuthenticationStatus = "Enabled" | "Disabled" | (string & {});
 export const ClientAuthenticationStatus = /*@__PURE__*/ S.String;
+
 export interface ClientAuthenticationSettingInfo {
   Type?: ClientAuthenticationType;
   Status?: ClientAuthenticationStatus;
   LastUpdatedDateTime?: Date;
 }
-export const ClientAuthenticationSettingInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Type: S.optional(ClientAuthenticationType),
-      Status: S.optional(ClientAuthenticationStatus),
-      LastUpdatedDateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ClientAuthenticationSettingInfo",
-  }) as any as S.Schema<ClientAuthenticationSettingInfo>;
+export const ClientAuthenticationSettingInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(ClientAuthenticationType),
+    Status: S.optional(ClientAuthenticationStatus),
+    LastUpdatedDateTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "ClientAuthenticationSettingInfo",
+}) as any as S.Schema<ClientAuthenticationSettingInfo>;
 export type ClientAuthenticationSettingsInfo =
   ClientAuthenticationSettingInfo[];
-export const ClientAuthenticationSettingsInfo =
-  /*@__PURE__*/ S.Array(ClientAuthenticationSettingInfo);
+export const ClientAuthenticationSettingsInfo = /*@__PURE__*/ S.Array(
+  ClientAuthenticationSettingInfo,
+);
 export interface DescribeClientAuthenticationSettingsResult {
   ClientAuthenticationSettingsInfo?: ClientAuthenticationSettingInfo[];
   NextToken?: string;
@@ -1355,8 +1471,8 @@ export interface DescribeConditionalForwardersRequest {
   DirectoryId: string;
   RemoteDomainNames?: string[];
 }
-export const DescribeConditionalForwardersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeConditionalForwardersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DirectoryId: S.String,
       RemoteDomainNames: S.optional(RemoteDomainNames),
@@ -1371,11 +1487,12 @@ export const DescribeConditionalForwardersRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DescribeConditionalForwardersRequest",
-  }) as any as S.Schema<DescribeConditionalForwardersRequest>;
+).annotate({
+  identifier: "DescribeConditionalForwardersRequest",
+}) as any as S.Schema<DescribeConditionalForwardersRequest>;
 export type ReplicationScope = "Domain" | (string & {});
 export const ReplicationScope = /*@__PURE__*/ S.String;
+
 export interface ConditionalForwarder {
   RemoteDomainName?: string;
   DnsIpAddrs?: string[];
@@ -1398,16 +1515,16 @@ export const ConditionalForwarders =
 export interface DescribeConditionalForwardersResult {
   ConditionalForwarders?: ConditionalForwarder[];
 }
-export const DescribeConditionalForwardersResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ConditionalForwarders: S.optional(ConditionalForwarders) }).pipe(
-      ns,
-    ),
-  ).annotate({
-    identifier: "DescribeConditionalForwardersResult",
-  }) as any as S.Schema<DescribeConditionalForwardersResult>;
+export const DescribeConditionalForwardersResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConditionalForwarders: S.optional(ConditionalForwarders) }).pipe(
+    ns,
+  ),
+).annotate({
+  identifier: "DescribeConditionalForwardersResult",
+}) as any as S.Schema<DescribeConditionalForwardersResult>;
 export type DirectoryIds = string[];
 export const DirectoryIds = /*@__PURE__*/ S.Array(S.String);
+export type Limit = number;
 export interface DescribeDirectoriesRequest {
   DirectoryIds?: string[];
   NextToken?: string;
@@ -1432,6 +1549,7 @@ export const DescribeDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDirectoriesRequest",
 }) as any as S.Schema<DescribeDirectoriesRequest>;
+export type AccessUrl = string;
 export type DirectoryStage =
   | "Requested"
   | "Creating"
@@ -1447,6 +1565,8 @@ export type DirectoryStage =
   | "Updating"
   | (string & {});
 export const DirectoryStage = /*@__PURE__*/ S.String;
+
+export type LaunchTime = Date;
 export type DirectoryType =
   | "SimpleAD"
   | "ADConnector"
@@ -1454,6 +1574,8 @@ export type DirectoryType =
   | "SharedMicrosoftAD"
   | (string & {});
 export const DirectoryType = /*@__PURE__*/ S.String;
+
+export type AvailabilityZone = string;
 export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
 export interface DirectoryVpcSettingsDescription {
@@ -1462,17 +1584,16 @@ export interface DirectoryVpcSettingsDescription {
   SecurityGroupId?: string;
   AvailabilityZones?: string[];
 }
-export const DirectoryVpcSettingsDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VpcId: S.optional(S.String),
-      SubnetIds: S.optional(SubnetIds),
-      SecurityGroupId: S.optional(S.String),
-      AvailabilityZones: S.optional(AvailabilityZones),
-    }),
-  ).annotate({
-    identifier: "DirectoryVpcSettingsDescription",
-  }) as any as S.Schema<DirectoryVpcSettingsDescription>;
+export const DirectoryVpcSettingsDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VpcId: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIds),
+    SecurityGroupId: S.optional(S.String),
+    AvailabilityZones: S.optional(AvailabilityZones),
+  }),
+).annotate({
+  identifier: "DirectoryVpcSettingsDescription",
+}) as any as S.Schema<DirectoryVpcSettingsDescription>;
 export type IpAddrs = string[];
 export const IpAddrs = /*@__PURE__*/ S.Array(S.String);
 export type IpV6Addrs = string[];
@@ -1486,22 +1607,26 @@ export interface DirectoryConnectSettingsDescription {
   ConnectIps?: string[];
   ConnectIpsV6?: string[];
 }
-export const DirectoryConnectSettingsDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VpcId: S.optional(S.String),
-      SubnetIds: S.optional(SubnetIds),
-      CustomerUserName: S.optional(S.String),
-      SecurityGroupId: S.optional(S.String),
-      AvailabilityZones: S.optional(AvailabilityZones),
-      ConnectIps: S.optional(IpAddrs),
-      ConnectIpsV6: S.optional(IpV6Addrs),
-    }),
-  ).annotate({
-    identifier: "DirectoryConnectSettingsDescription",
-  }) as any as S.Schema<DirectoryConnectSettingsDescription>;
+export const DirectoryConnectSettingsDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VpcId: S.optional(S.String),
+    SubnetIds: S.optional(SubnetIds),
+    CustomerUserName: S.optional(S.String),
+    SecurityGroupId: S.optional(S.String),
+    AvailabilityZones: S.optional(AvailabilityZones),
+    ConnectIps: S.optional(IpAddrs),
+    ConnectIpsV6: S.optional(IpV6Addrs),
+  }),
+).annotate({
+  identifier: "DirectoryConnectSettingsDescription",
+}) as any as S.Schema<DirectoryConnectSettingsDescription>;
+export type Server = string;
 export type Servers = string[];
 export const Servers = /*@__PURE__*/ S.Array(S.String);
+export type PortNumber = number;
+export type RadiusTimeout = number;
+export type RadiusRetries = number;
+export type RadiusSharedSecret = string | redacted.Redacted<string>;
 export type RadiusAuthenticationProtocol =
   | "PAP"
   | "CHAP"
@@ -1509,6 +1634,9 @@ export type RadiusAuthenticationProtocol =
   | "MS-CHAPv2"
   | (string & {});
 export const RadiusAuthenticationProtocol = /*@__PURE__*/ S.String;
+
+export type RadiusDisplayLabel = string;
+export type UseSameUsername = boolean;
 export interface RadiusSettings {
   RadiusServers?: string[];
   RadiusServersIpv6?: string[];
@@ -1535,6 +1663,10 @@ export const RadiusSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RadiusSettings" }) as any as S.Schema<RadiusSettings>;
 export type RadiusStatus = "Creating" | "Completed" | "Failed" | (string & {});
 export const RadiusStatus = /*@__PURE__*/ S.String;
+
+export type StageReason = string;
+export type SsoEnabled = boolean;
+export type DesiredNumberOfDomainControllers = number;
 export interface OwnerDirectoryDescription {
   DirectoryId?: string;
   AccountId?: string;
@@ -1573,6 +1705,7 @@ export const RegionsInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionsInfo" }) as any as S.Schema<RegionsInfo>;
 export type OSVersion = "SERVER_2012" | "SERVER_2019" | (string & {});
 export const OSVersion = /*@__PURE__*/ S.String;
+
 export interface HybridSettingsDescription {
   SelfManagedDnsIpAddrs?: string[];
   SelfManagedInstanceIds?: string[];
@@ -1671,22 +1804,21 @@ export const DescribeDirectoriesResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-export const DescribeDirectoryDataAccessRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDirectoryDataAccessRequest",
-  }) as any as S.Schema<DescribeDirectoryDataAccessRequest>;
+  ),
+).annotate({
+  identifier: "DescribeDirectoryDataAccessRequest",
+}) as any as S.Schema<DescribeDirectoryDataAccessRequest>;
 export type DataAccessStatus =
   | "Disabled"
   | "Disabling"
@@ -1695,15 +1827,16 @@ export type DataAccessStatus =
   | "Failed"
   | (string & {});
 export const DataAccessStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDirectoryDataAccessResult {
   DataAccessStatus?: DataAccessStatus;
 }
-export const DescribeDirectoryDataAccessResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DataAccessStatus: S.optional(DataAccessStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDirectoryDataAccessResult",
-  }) as any as S.Schema<DescribeDirectoryDataAccessResult>;
+export const DescribeDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DataAccessStatus: S.optional(DataAccessStatus) }).pipe(ns),
+).annotate({
+  identifier: "DescribeDirectoryDataAccessResult",
+}) as any as S.Schema<DescribeDirectoryDataAccessResult>;
+export type DomainControllerId = string;
 export type DomainControllerIds = string[];
 export const DomainControllerIds = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeDomainControllersRequest {
@@ -1712,27 +1845,26 @@ export interface DescribeDomainControllersRequest {
   NextToken?: string;
   Limit?: number;
 }
-export const DescribeDomainControllersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      DomainControllerIds: S.optional(DomainControllerIds),
-      NextToken: S.optional(S.String),
-      Limit: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDomainControllersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    DomainControllerIds: S.optional(DomainControllerIds),
+    NextToken: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDomainControllersRequest",
-  }) as any as S.Schema<DescribeDomainControllersRequest>;
+  ),
+).annotate({
+  identifier: "DescribeDomainControllersRequest",
+}) as any as S.Schema<DescribeDomainControllersRequest>;
 export type DomainControllerStatus =
   | "Creating"
   | "Active"
@@ -1744,6 +1876,8 @@ export type DomainControllerStatus =
   | "Updating"
   | (string & {});
 export const DomainControllerStatus = /*@__PURE__*/ S.String;
+
+export type DomainControllerStatusReason = string;
 export interface DomainController {
   DirectoryId?: string;
   DomainControllerId?: string;
@@ -1782,15 +1916,14 @@ export interface DescribeDomainControllersResult {
   DomainControllers?: DomainController[];
   NextToken?: string;
 }
-export const DescribeDomainControllersResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainControllers: S.optional(DomainControllers),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDomainControllersResult",
-  }) as any as S.Schema<DescribeDomainControllersResult>;
+export const DescribeDomainControllersResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainControllers: S.optional(DomainControllers),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDomainControllersResult",
+}) as any as S.Schema<DescribeDomainControllersResult>;
 export type TopicNames = string[];
 export const TopicNames = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeEventTopicsRequest {
@@ -1815,6 +1948,7 @@ export const DescribeEventTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventTopicsRequest",
 }) as any as S.Schema<DescribeEventTopicsRequest>;
+export type TopicArn = string;
 export type TopicStatus =
   | "Registered"
   | "Topic not found"
@@ -1822,6 +1956,7 @@ export type TopicStatus =
   | "Deleted"
   | (string & {});
 export const TopicStatus = /*@__PURE__*/ S.String;
+
 export interface EventTopic {
   DirectoryId?: string;
   TopicName?: string;
@@ -1855,37 +1990,40 @@ export type HybridUpdateType =
   | "HybridAdministratorAccount"
   | (string & {});
 export const HybridUpdateType = /*@__PURE__*/ S.String;
+
 export interface DescribeHybridADUpdateRequest {
   DirectoryId: string;
   UpdateType?: HybridUpdateType;
   NextToken?: string;
 }
-export const DescribeHybridADUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      UpdateType: S.optional(HybridUpdateType),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeHybridADUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    UpdateType: S.optional(HybridUpdateType),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeHybridADUpdateRequest",
-  }) as any as S.Schema<DescribeHybridADUpdateRequest>;
+  ),
+).annotate({
+  identifier: "DescribeHybridADUpdateRequest",
+}) as any as S.Schema<DescribeHybridADUpdateRequest>;
 export type UpdateStatus =
   | "Updated"
   | "Updating"
   | "UpdateFailed"
   | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
+
+export type UpdateStatusReason = string;
+export type InitiatedBy = string;
 export interface HybridUpdateValue {
   InstanceIds?: string[];
   DnsIps?: string[];
@@ -1898,6 +2036,7 @@ export const HybridUpdateValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HybridUpdateValue",
 }) as any as S.Schema<HybridUpdateValue>;
+export type StartDateTime = Date;
 export interface HybridUpdateInfoEntry {
   Status?: UpdateStatus;
   StatusReason?: string;
@@ -1944,44 +2083,43 @@ export interface DescribeHybridADUpdateResult {
   UpdateActivities?: HybridUpdateActivities;
   NextToken?: string;
 }
-export const DescribeHybridADUpdateResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdateActivities: S.optional(HybridUpdateActivities),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeHybridADUpdateResult",
-  }) as any as S.Schema<DescribeHybridADUpdateResult>;
+export const DescribeHybridADUpdateResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdateActivities: S.optional(HybridUpdateActivities),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeHybridADUpdateResult",
+}) as any as S.Schema<DescribeHybridADUpdateResult>;
 export type LDAPSType = "Client" | (string & {});
 export const LDAPSType = /*@__PURE__*/ S.String;
+
 export interface DescribeLDAPSSettingsRequest {
   DirectoryId: string;
   Type?: LDAPSType;
   NextToken?: string;
   Limit?: number;
 }
-export const DescribeLDAPSSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      Type: S.optional(LDAPSType),
-      NextToken: S.optional(S.String),
-      Limit: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeLDAPSSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    Type: S.optional(LDAPSType),
+    NextToken: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeLDAPSSettingsRequest",
-  }) as any as S.Schema<DescribeLDAPSSettingsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeLDAPSSettingsRequest",
+}) as any as S.Schema<DescribeLDAPSSettingsRequest>;
 export type LDAPSStatus =
   | "Enabling"
   | "Enabled"
@@ -1989,6 +2127,8 @@ export type LDAPSStatus =
   | "Disabled"
   | (string & {});
 export const LDAPSStatus = /*@__PURE__*/ S.String;
+
+export type LDAPSStatusReason = string;
 export interface LDAPSSettingInfo {
   LDAPSStatus?: LDAPSStatus;
   LDAPSStatusReason?: string;
@@ -2011,15 +2151,14 @@ export interface DescribeLDAPSSettingsResult {
   LDAPSSettingsInfo?: LDAPSSettingInfo[];
   NextToken?: string;
 }
-export const DescribeLDAPSSettingsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LDAPSSettingsInfo: S.optional(LDAPSSettingsInfo),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeLDAPSSettingsResult",
-  }) as any as S.Schema<DescribeLDAPSSettingsResult>;
+export const DescribeLDAPSSettingsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LDAPSSettingsInfo: S.optional(LDAPSSettingsInfo),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeLDAPSSettingsResult",
+}) as any as S.Schema<DescribeLDAPSSettingsResult>;
 export interface DescribeRegionsRequest {
   DirectoryId: string;
   RegionName?: string;
@@ -2046,6 +2185,8 @@ export const DescribeRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRegionsRequest>;
 export type RegionType = "Primary" | "Additional" | (string & {});
 export const RegionType = /*@__PURE__*/ S.String;
+
+export type StateLastUpdatedDateTime = Date;
 export interface RegionDescription {
   DirectoryId?: string;
   RegionName?: string;
@@ -2098,6 +2239,7 @@ export type DirectoryConfigurationStatus =
   | "Default"
   | (string & {});
 export const DirectoryConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeSettingsRequest {
   DirectoryId: string;
   Status?: DirectoryConfigurationStatus;
@@ -2122,6 +2264,10 @@ export const DescribeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSettingsRequest",
 }) as any as S.Schema<DescribeSettingsRequest>;
+export type DirectoryConfigurationSettingType = string;
+export type DirectoryConfigurationSettingName = string;
+export type DirectoryConfigurationSettingAllowedValues = string;
+export type DirectoryConfigurationSettingValue = string;
 export type DirectoryConfigurationSettingRequestDetailedStatus = {
   [key: string]: DirectoryConfigurationStatus | undefined;
 };
@@ -2130,6 +2276,10 @@ export const DirectoryConfigurationSettingRequestDetailedStatus =
     S.String,
     DirectoryConfigurationStatus.pipe(S.optional),
   );
+export type DirectoryConfigurationSettingRequestStatusMessage = string;
+export type DirectoryConfigurationSettingLastUpdatedDateTime = Date;
+export type DirectoryConfigurationSettingLastRequestedDateTime = Date;
+export type DirectoryConfigurationSettingDataType = string;
 export interface SettingEntry {
   Type?: string;
   Name?: string;
@@ -2188,42 +2338,40 @@ export interface DescribeSharedDirectoriesRequest {
   NextToken?: string;
   Limit?: number;
 }
-export const DescribeSharedDirectoriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OwnerDirectoryId: S.String,
-      SharedDirectoryIds: S.optional(DirectoryIds),
-      NextToken: S.optional(S.String),
-      Limit: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSharedDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OwnerDirectoryId: S.String,
+    SharedDirectoryIds: S.optional(DirectoryIds),
+    NextToken: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSharedDirectoriesRequest",
-  }) as any as S.Schema<DescribeSharedDirectoriesRequest>;
+  ),
+).annotate({
+  identifier: "DescribeSharedDirectoriesRequest",
+}) as any as S.Schema<DescribeSharedDirectoriesRequest>;
 export type SharedDirectories = SharedDirectory[];
 export const SharedDirectories = /*@__PURE__*/ S.Array(SharedDirectory);
 export interface DescribeSharedDirectoriesResult {
   SharedDirectories?: SharedDirectory[];
   NextToken?: string;
 }
-export const DescribeSharedDirectoriesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SharedDirectories: S.optional(SharedDirectories),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeSharedDirectoriesResult",
-  }) as any as S.Schema<DescribeSharedDirectoriesResult>;
+export const DescribeSharedDirectoriesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SharedDirectories: S.optional(SharedDirectories),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeSharedDirectoriesResult",
+}) as any as S.Schema<DescribeSharedDirectoriesResult>;
 export type SnapshotIds = string[];
 export const SnapshotIds = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeSnapshotsRequest {
@@ -2254,12 +2402,15 @@ export const DescribeSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotType = "Auto" | "Manual" | (string & {});
 export const SnapshotType = /*@__PURE__*/ S.String;
+
 export type SnapshotStatus =
   | "Creating"
   | "Completed"
   | "Failed"
   | (string & {});
 export const SnapshotStatus = /*@__PURE__*/ S.String;
+
+export type StartTime = Date;
 export interface Snapshot {
   DirectoryId?: string;
   SnapshotId?: string;
@@ -2334,6 +2485,8 @@ export type TrustState =
   | "Failed"
   | (string & {});
 export const TrustState = /*@__PURE__*/ S.String;
+
+export type TrustStateReason = string;
 export interface Trust {
   DirectoryId?: string;
   TrustId?: string;
@@ -2384,33 +2537,33 @@ export const DescribeTrustsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeTrustsResult>;
 export type UpdateType = "OS" | "NETWORK" | "SIZE" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
+
 export interface DescribeUpdateDirectoryRequest {
   DirectoryId: string;
   UpdateType: UpdateType;
   RegionName?: string;
   NextToken?: string;
 }
-export const DescribeUpdateDirectoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      UpdateType: UpdateType,
-      RegionName: S.optional(S.String),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeUpdateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    UpdateType: UpdateType,
+    RegionName: S.optional(S.String),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeUpdateDirectoryRequest",
-  }) as any as S.Schema<DescribeUpdateDirectoryRequest>;
+  ),
+).annotate({
+  identifier: "DescribeUpdateDirectoryRequest",
+}) as any as S.Schema<DescribeUpdateDirectoryRequest>;
 export interface OSUpdateSettings {
   OSVersion?: OSVersion;
 }
@@ -2457,88 +2610,87 @@ export interface DescribeUpdateDirectoryResult {
   UpdateActivities?: UpdateInfoEntry[];
   NextToken?: string;
 }
-export const DescribeUpdateDirectoryResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdateActivities: S.optional(UpdateActivities),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeUpdateDirectoryResult",
-  }) as any as S.Schema<DescribeUpdateDirectoryResult>;
+export const DescribeUpdateDirectoryResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdateActivities: S.optional(UpdateActivities),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeUpdateDirectoryResult",
+}) as any as S.Schema<DescribeUpdateDirectoryResult>;
 export interface DisableCAEnrollmentPolicyRequest {
   DirectoryId: string;
 }
-export const DisableCAEnrollmentPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableCAEnrollmentPolicyRequest",
-  }) as any as S.Schema<DisableCAEnrollmentPolicyRequest>;
+  ),
+).annotate({
+  identifier: "DisableCAEnrollmentPolicyRequest",
+}) as any as S.Schema<DisableCAEnrollmentPolicyRequest>;
 export interface DisableCAEnrollmentPolicyResult {}
-export const DisableCAEnrollmentPolicyResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisableCAEnrollmentPolicyResult",
-  }) as any as S.Schema<DisableCAEnrollmentPolicyResult>;
+export const DisableCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisableCAEnrollmentPolicyResult",
+}) as any as S.Schema<DisableCAEnrollmentPolicyResult>;
 export interface DisableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
 }
-export const DisableClientAuthenticationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableClientAuthenticationRequest",
-  }) as any as S.Schema<DisableClientAuthenticationRequest>;
+  ),
+).annotate({
+  identifier: "DisableClientAuthenticationRequest",
+}) as any as S.Schema<DisableClientAuthenticationRequest>;
 export interface DisableClientAuthenticationResult {}
-export const DisableClientAuthenticationResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisableClientAuthenticationResult",
-  }) as any as S.Schema<DisableClientAuthenticationResult>;
+export const DisableClientAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisableClientAuthenticationResult",
+}) as any as S.Schema<DisableClientAuthenticationResult>;
 export interface DisableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-export const DisableDirectoryDataAccessRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableDirectoryDataAccessRequest",
-  }) as any as S.Schema<DisableDirectoryDataAccessRequest>;
+  ),
+).annotate({
+  identifier: "DisableDirectoryDataAccessRequest",
+}) as any as S.Schema<DisableDirectoryDataAccessRequest>;
 export interface DisableDirectoryDataAccessResult {}
-export const DisableDirectoryDataAccessResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisableDirectoryDataAccessResult",
-  }) as any as S.Schema<DisableDirectoryDataAccessResult>;
+export const DisableDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisableDirectoryDataAccessResult",
+}) as any as S.Schema<DisableDirectoryDataAccessResult>;
 export interface DisableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
@@ -2622,76 +2774,76 @@ export interface EnableCAEnrollmentPolicyRequest {
   DirectoryId: string;
   PcaConnectorArn: string;
 }
-export const EnableCAEnrollmentPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, PcaConnectorArn: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableCAEnrollmentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, PcaConnectorArn: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableCAEnrollmentPolicyRequest",
-  }) as any as S.Schema<EnableCAEnrollmentPolicyRequest>;
+  ),
+).annotate({
+  identifier: "EnableCAEnrollmentPolicyRequest",
+}) as any as S.Schema<EnableCAEnrollmentPolicyRequest>;
 export interface EnableCAEnrollmentPolicyResult {}
-export const EnableCAEnrollmentPolicyResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "EnableCAEnrollmentPolicyResult",
-  }) as any as S.Schema<EnableCAEnrollmentPolicyResult>;
+export const EnableCAEnrollmentPolicyResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "EnableCAEnrollmentPolicyResult",
+}) as any as S.Schema<EnableCAEnrollmentPolicyResult>;
 export interface EnableClientAuthenticationRequest {
   DirectoryId: string;
   Type: ClientAuthenticationType;
 }
-export const EnableClientAuthenticationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableClientAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String, Type: ClientAuthenticationType }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableClientAuthenticationRequest",
-  }) as any as S.Schema<EnableClientAuthenticationRequest>;
+  ),
+).annotate({
+  identifier: "EnableClientAuthenticationRequest",
+}) as any as S.Schema<EnableClientAuthenticationRequest>;
 export interface EnableClientAuthenticationResult {}
-export const EnableClientAuthenticationResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "EnableClientAuthenticationResult",
-  }) as any as S.Schema<EnableClientAuthenticationResult>;
+export const EnableClientAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "EnableClientAuthenticationResult",
+}) as any as S.Schema<EnableClientAuthenticationResult>;
 export interface EnableDirectoryDataAccessRequest {
   DirectoryId: string;
 }
-export const EnableDirectoryDataAccessRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableDirectoryDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableDirectoryDataAccessRequest",
-  }) as any as S.Schema<EnableDirectoryDataAccessRequest>;
+  ),
+).annotate({
+  identifier: "EnableDirectoryDataAccessRequest",
+}) as any as S.Schema<EnableDirectoryDataAccessRequest>;
 export interface EnableDirectoryDataAccessResult {}
-export const EnableDirectoryDataAccessResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "EnableDirectoryDataAccessResult",
-  }) as any as S.Schema<EnableDirectoryDataAccessResult>;
+export const EnableDirectoryDataAccessResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "EnableDirectoryDataAccessResult",
+}) as any as S.Schema<EnableDirectoryDataAccessResult>;
 export interface EnableLDAPSRequest {
   DirectoryId: string;
   Type: LDAPSType;
@@ -2788,6 +2940,8 @@ export const GetDirectoryLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDirectoryLimitsRequest",
 }) as any as S.Schema<GetDirectoryLimitsRequest>;
+export type CloudOnlyDirectoriesLimitReached = boolean;
+export type ConnectedDirectoriesLimitReached = boolean;
 export interface DirectoryLimits {
   CloudOnlyDirectoriesLimit?: number;
   CloudOnlyDirectoriesCurrentCount?: number;
@@ -2840,6 +2994,7 @@ export const GetSnapshotLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSnapshotLimitsRequest",
 }) as any as S.Schema<GetSnapshotLimitsRequest>;
+export type ManualSnapshotsLimitReached = boolean;
 export interface SnapshotLimits {
   ManualSnapshotsLimit?: number;
   ManualSnapshotsCurrentCount?: number;
@@ -2860,6 +3015,7 @@ export const GetSnapshotLimitsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSnapshotLimitsResult",
 }) as any as S.Schema<GetSnapshotLimitsResult>;
+export type AssessmentLimit = number;
 export interface ListADAssessmentsRequest {
   DirectoryId?: string;
   NextToken?: string;
@@ -3013,6 +3169,9 @@ export type IpRouteStatusMsg =
   | "RemoveFailed"
   | (string & {});
 export const IpRouteStatusMsg = /*@__PURE__*/ S.String;
+
+export type AddedDateTime = Date;
+export type IpRouteStatusReason = string;
 export interface IpRouteInfo {
   DirectoryId?: string;
   CidrIp?: string;
@@ -3052,26 +3211,26 @@ export interface ListLogSubscriptionsRequest {
   NextToken?: string;
   Limit?: number;
 }
-export const ListLogSubscriptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      Limit: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListLogSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListLogSubscriptionsRequest",
-  }) as any as S.Schema<ListLogSubscriptionsRequest>;
+  ),
+).annotate({
+  identifier: "ListLogSubscriptionsRequest",
+}) as any as S.Schema<ListLogSubscriptionsRequest>;
+export type SubscriptionCreatedDateTime = Date;
 export interface LogSubscription {
   DirectoryId?: string;
   LogGroupName?: string;
@@ -3107,26 +3266,25 @@ export interface ListSchemaExtensionsRequest {
   NextToken?: string;
   Limit?: number;
 }
-export const ListSchemaExtensionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      NextToken: S.optional(S.String),
-      Limit: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSchemaExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    NextToken: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSchemaExtensionsRequest",
-  }) as any as S.Schema<ListSchemaExtensionsRequest>;
+  ),
+).annotate({
+  identifier: "ListSchemaExtensionsRequest",
+}) as any as S.Schema<ListSchemaExtensionsRequest>;
 export type SchemaExtensionStatus =
   | "Initializing"
   | "CreatingSnapshot"
@@ -3139,6 +3297,9 @@ export type SchemaExtensionStatus =
   | "Completed"
   | (string & {});
 export const SchemaExtensionStatus = /*@__PURE__*/ S.String;
+
+export type SchemaExtensionStatusReason = string;
+export type EndDateTime = Date;
 export interface SchemaExtensionInfo {
   DirectoryId?: string;
   SchemaExtensionId?: string;
@@ -3210,6 +3371,7 @@ export const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResult",
 }) as any as S.Schema<ListTagsForResourceResult>;
+export type CertificateData = string;
 export interface RegisterCertificateRequest {
   DirectoryId: string;
   CertificateData: string;
@@ -3272,31 +3434,29 @@ export const RegisterEventTopicResult = /*@__PURE__*/ S.suspend(() =>
 export interface RejectSharedDirectoryRequest {
   SharedDirectoryId: string;
 }
-export const RejectSharedDirectoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SharedDirectoryId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RejectSharedDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SharedDirectoryId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RejectSharedDirectoryRequest",
-  }) as any as S.Schema<RejectSharedDirectoryRequest>;
+  ),
+).annotate({
+  identifier: "RejectSharedDirectoryRequest",
+}) as any as S.Schema<RejectSharedDirectoryRequest>;
 export interface RejectSharedDirectoryResult {
   SharedDirectoryId?: string;
 }
-export const RejectSharedDirectoryResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "RejectSharedDirectoryResult",
-  }) as any as S.Schema<RejectSharedDirectoryResult>;
+export const RejectSharedDirectoryResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SharedDirectoryId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "RejectSharedDirectoryResult",
+}) as any as S.Schema<RejectSharedDirectoryResult>;
 export type CidrIps = string[];
 export const CidrIps = /*@__PURE__*/ S.Array(S.String);
 export type CidrIpv6s = string[];
@@ -3361,27 +3521,29 @@ export interface RemoveTagsFromResourceRequest {
   ResourceId: string;
   TagKeys: string[];
 }
-export const RemoveTagsFromResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceId: S.String, TagKeys: TagKeys }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveTagsFromResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceId: S.String, TagKeys: TagKeys }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RemoveTagsFromResourceRequest",
-  }) as any as S.Schema<RemoveTagsFromResourceRequest>;
+  ),
+).annotate({
+  identifier: "RemoveTagsFromResourceRequest",
+}) as any as S.Schema<RemoveTagsFromResourceRequest>;
 export interface RemoveTagsFromResourceResult {}
-export const RemoveTagsFromResourceResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveTagsFromResourceResult",
-  }) as any as S.Schema<RemoveTagsFromResourceResult>;
+export const RemoveTagsFromResourceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveTagsFromResourceResult",
+}) as any as S.Schema<RemoveTagsFromResourceResult>;
+export type CustomerUserName = string;
+export type UserPassword = string | redacted.Redacted<string>;
 export interface ResetUserPasswordRequest {
   DirectoryId: string;
   UserName: string;
@@ -3436,8 +3598,10 @@ export const RestoreFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreFromSnapshotResult",
 }) as any as S.Schema<RestoreFromSnapshotResult>;
+export type TargetId = string;
 export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
 export interface ShareTarget {
   Id: string;
   Type: TargetType;
@@ -3527,33 +3691,34 @@ export const StartADAssessmentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartADAssessmentResult",
 }) as any as S.Schema<StartADAssessmentResult>;
+export type CreateSnapshotBeforeSchemaExtension = boolean;
+export type LdifContent = string;
 export interface StartSchemaExtensionRequest {
   DirectoryId: string;
   CreateSnapshotBeforeSchemaExtension: boolean;
   LdifContent: string;
   Description: string;
 }
-export const StartSchemaExtensionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      CreateSnapshotBeforeSchemaExtension: S.Boolean,
-      LdifContent: S.String,
-      Description: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartSchemaExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    CreateSnapshotBeforeSchemaExtension: S.Boolean,
+    LdifContent: S.String,
+    Description: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartSchemaExtensionRequest",
-  }) as any as S.Schema<StartSchemaExtensionRequest>;
+  ),
+).annotate({
+  identifier: "StartSchemaExtensionRequest",
+}) as any as S.Schema<StartSchemaExtensionRequest>;
 export interface StartSchemaExtensionResult {
   SchemaExtensionId?: string;
 }
@@ -3602,41 +3767,40 @@ export interface UpdateConditionalForwarderRequest {
   DnsIpAddrs?: string[];
   DnsIpv6Addrs?: string[];
 }
-export const UpdateConditionalForwarderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      RemoteDomainName: S.String,
-      DnsIpAddrs: S.optional(DnsIpAddrs),
-      DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateConditionalForwarderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    RemoteDomainName: S.String,
+    DnsIpAddrs: S.optional(DnsIpAddrs),
+    DnsIpv6Addrs: S.optional(DnsIpv6Addrs),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateConditionalForwarderRequest",
-  }) as any as S.Schema<UpdateConditionalForwarderRequest>;
+  ),
+).annotate({
+  identifier: "UpdateConditionalForwarderRequest",
+}) as any as S.Schema<UpdateConditionalForwarderRequest>;
 export interface UpdateConditionalForwarderResult {}
-export const UpdateConditionalForwarderResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateConditionalForwarderResult",
-  }) as any as S.Schema<UpdateConditionalForwarderResult>;
+export const UpdateConditionalForwarderResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateConditionalForwarderResult",
+}) as any as S.Schema<UpdateConditionalForwarderResult>;
 export interface DirectorySizeUpdateSettings {
   DirectorySize?: DirectorySize;
 }
-export const DirectorySizeUpdateSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DirectorySize: S.optional(DirectorySize) }),
-  ).annotate({
-    identifier: "DirectorySizeUpdateSettings",
-  }) as any as S.Schema<DirectorySizeUpdateSettings>;
+export const DirectorySizeUpdateSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DirectorySize: S.optional(DirectorySize) }),
+).annotate({
+  identifier: "DirectorySizeUpdateSettings",
+}) as any as S.Schema<DirectorySizeUpdateSettings>;
 export interface NetworkUpdateSettings {
   NetworkType?: NetworkType;
   CustomerDnsIpsV6?: string[];
@@ -3649,6 +3813,7 @@ export const NetworkUpdateSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkUpdateSettings",
 }) as any as S.Schema<NetworkUpdateSettings>;
+export type CreateSnapshotBeforeUpdate = boolean;
 export interface UpdateDirectorySetupRequest {
   DirectoryId: string;
   UpdateType: UpdateType;
@@ -3657,29 +3822,28 @@ export interface UpdateDirectorySetupRequest {
   NetworkUpdateSettings?: NetworkUpdateSettings;
   CreateSnapshotBeforeUpdate?: boolean;
 }
-export const UpdateDirectorySetupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DirectoryId: S.String,
-      UpdateType: UpdateType,
-      OSUpdateSettings: S.optional(OSUpdateSettings),
-      DirectorySizeUpdateSettings: S.optional(DirectorySizeUpdateSettings),
-      NetworkUpdateSettings: S.optional(NetworkUpdateSettings),
-      CreateSnapshotBeforeUpdate: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDirectorySetupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String,
+    UpdateType: UpdateType,
+    OSUpdateSettings: S.optional(OSUpdateSettings),
+    DirectorySizeUpdateSettings: S.optional(DirectorySizeUpdateSettings),
+    NetworkUpdateSettings: S.optional(NetworkUpdateSettings),
+    CreateSnapshotBeforeUpdate: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDirectorySetupRequest",
-  }) as any as S.Schema<UpdateDirectorySetupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDirectorySetupRequest",
+}) as any as S.Schema<UpdateDirectorySetupRequest>;
 export interface UpdateDirectorySetupResult {}
 export const UpdateDirectorySetupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -3689,23 +3853,23 @@ export const UpdateDirectorySetupResult = /*@__PURE__*/ S.suspend(() =>
 export interface HybridAdministratorAccountUpdate {
   SecretArn: string;
 }
-export const HybridAdministratorAccountUpdate =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ SecretArn: S.String })).annotate({
-    identifier: "HybridAdministratorAccountUpdate",
-  }) as any as S.Schema<HybridAdministratorAccountUpdate>;
+export const HybridAdministratorAccountUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SecretArn: S.String }),
+).annotate({
+  identifier: "HybridAdministratorAccountUpdate",
+}) as any as S.Schema<HybridAdministratorAccountUpdate>;
 export interface HybridCustomerInstancesSettings {
   CustomerDnsIps: string[];
   InstanceIds: string[];
 }
-export const HybridCustomerInstancesSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CustomerDnsIps: CustomerDnsIps,
-      InstanceIds: AssessmentInstanceIds,
-    }),
-  ).annotate({
-    identifier: "HybridCustomerInstancesSettings",
-  }) as any as S.Schema<HybridCustomerInstancesSettings>;
+export const HybridCustomerInstancesSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CustomerDnsIps: CustomerDnsIps,
+    InstanceIds: AssessmentInstanceIds,
+  }),
+).annotate({
+  identifier: "HybridCustomerInstancesSettings",
+}) as any as S.Schema<HybridCustomerInstancesSettings>;
 export interface UpdateHybridADRequest {
   DirectoryId: string;
   HybridAdministratorAccountUpdate?: HybridAdministratorAccountUpdate;
@@ -3748,8 +3912,8 @@ export interface UpdateNumberOfDomainControllersRequest {
   DirectoryId: string;
   DesiredNumber: number;
 }
-export const UpdateNumberOfDomainControllersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateNumberOfDomainControllersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ DirectoryId: S.String, DesiredNumber: S.Number }).pipe(
       T.all(
         ns,
@@ -3761,14 +3925,15 @@ export const UpdateNumberOfDomainControllersRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateNumberOfDomainControllersRequest",
-  }) as any as S.Schema<UpdateNumberOfDomainControllersRequest>;
+).annotate({
+  identifier: "UpdateNumberOfDomainControllersRequest",
+}) as any as S.Schema<UpdateNumberOfDomainControllersRequest>;
 export interface UpdateNumberOfDomainControllersResult {}
-export const UpdateNumberOfDomainControllersResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateNumberOfDomainControllersResult",
-  }) as any as S.Schema<UpdateNumberOfDomainControllersResult>;
+export const UpdateNumberOfDomainControllersResult = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateNumberOfDomainControllersResult",
+}) as any as S.Schema<UpdateNumberOfDomainControllersResult>;
 export interface UpdateRadiusRequest {
   DirectoryId: string;
   RadiusSettings: RadiusSettings;
@@ -3852,6 +4017,7 @@ export const UpdateTrustRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrustRequest",
 }) as any as S.Schema<UpdateTrustRequest>;
+export type RequestId = string;
 export interface UpdateTrustResult {
   RequestId?: string;
   TrustId?: string;
@@ -3890,170 +4056,7 @@ export const VerifyTrustResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyTrustResult",
 }) as any as S.Schema<VerifyTrustResult>;
-
-//# Errors
-export class ClientException extends S.TaggedErrorClass<ClientException>()(
-  "ClientException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryAlreadySharedException extends S.TaggedErrorClass<DirectoryAlreadySharedException>()(
-  "DirectoryAlreadySharedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class EntityDoesNotExistException extends S.TaggedErrorClass<EntityDoesNotExistException>()(
-  "EntityDoesNotExistException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
-  "DirectoryUnavailableException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
-  "EntityAlreadyExistsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class IpRouteLimitExceededException extends S.TaggedErrorClass<IpRouteLimitExceededException>()(
-  "IpRouteLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class DirectoryAlreadyInRegionException extends S.TaggedErrorClass<DirectoryAlreadyInRegionException>()(
-  "DirectoryAlreadyInRegionException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryDoesNotExistException extends S.TaggedErrorClass<DirectoryDoesNotExistException>()(
-  "DirectoryDoesNotExistException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class RegionLimitExceededException extends S.TaggedErrorClass<RegionLimitExceededException>()(
-  "RegionLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryLimitExceededException extends S.TaggedErrorClass<DirectoryLimitExceededException>()(
-  "DirectoryLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class AuthenticationFailedException extends S.TaggedErrorClass<AuthenticationFailedException>()(
-  "AuthenticationFailedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class ADAssessmentLimitExceededException extends S.TaggedErrorClass<ADAssessmentLimitExceededException>()(
-  "ADAssessmentLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InsufficientPermissionsException extends S.TaggedErrorClass<InsufficientPermissionsException>()(
-  "InsufficientPermissionsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class SnapshotLimitExceededException extends S.TaggedErrorClass<SnapshotLimitExceededException>()(
-  "SnapshotLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class CertificateDoesNotExistException extends S.TaggedErrorClass<CertificateDoesNotExistException>()(
-  "CertificateDoesNotExistException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class CertificateInUseException extends S.TaggedErrorClass<CertificateInUseException>()(
-  "CertificateInUseException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DisableAlreadyInProgressException extends S.TaggedErrorClass<DisableAlreadyInProgressException>()(
-  "DisableAlreadyInProgressException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidClientAuthStatusException extends S.TaggedErrorClass<InvalidClientAuthStatusException>()(
-  "InvalidClientAuthStatusException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryInDesiredStateException extends S.TaggedErrorClass<DirectoryInDesiredStateException>()(
-  "DirectoryInDesiredStateException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidLDAPSStatusException extends S.TaggedErrorClass<InvalidLDAPSStatusException>()(
-  "InvalidLDAPSStatusException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class EnableAlreadyInProgressException extends S.TaggedErrorClass<EnableAlreadyInProgressException>()(
-  "EnableAlreadyInProgressException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class NoAvailableCertificateException extends S.TaggedErrorClass<NoAvailableCertificateException>()(
-  "NoAvailableCertificateException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class CertificateAlreadyExistsException extends S.TaggedErrorClass<CertificateAlreadyExistsException>()(
-  "CertificateAlreadyExistsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class CertificateLimitExceededException extends S.TaggedErrorClass<CertificateLimitExceededException>()(
-  "CertificateLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidCertificateException extends S.TaggedErrorClass<InvalidCertificateException>()(
-  "InvalidCertificateException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
-  "InvalidPasswordException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class UserDoesNotExistException extends S.TaggedErrorClass<UserDoesNotExistException>()(
-  "UserDoesNotExistException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class InvalidTargetException extends S.TaggedErrorClass<InvalidTargetException>()(
-  "InvalidTargetException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class OrganizationsException extends S.TaggedErrorClass<OrganizationsException>()(
-  "OrganizationsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class ShareLimitExceededException extends S.TaggedErrorClass<ShareLimitExceededException>()(
-  "ShareLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DirectoryNotSharedException extends S.TaggedErrorClass<DirectoryNotSharedException>()(
-  "DirectoryNotSharedException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class DomainControllerLimitExceededException extends S.TaggedErrorClass<DomainControllerLimitExceededException>()(
-  "DomainControllerLimitExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class IncompatibleSettingsException extends S.TaggedErrorClass<IncompatibleSettingsException>()(
-  "IncompatibleSettingsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-export class UnsupportedSettingsException extends S.TaggedErrorClass<UnsupportedSettingsException>()(
-  "UnsupportedSettingsException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AcceptSharedDirectoryError =
   | ClientException
   | DirectoryAlreadySharedException
@@ -4079,8 +4082,11 @@ export const acceptSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptSharedDirectory",
 }));
+
 export type AddIpRoutesError =
   | ClientException
   | DirectoryUnavailableException
@@ -4118,8 +4124,11 @@ export const addIpRoutes: API.OperationMethod<
     IpRouteLimitExceededException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddIpRoutes",
 }));
+
 export type AddRegionError =
   | AccessDeniedException
   | ClientException
@@ -4155,8 +4164,11 @@ export const addRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddRegion",
 }));
+
 export type AddTagsToResourceError =
   | ClientException
   | EntityDoesNotExistException
@@ -4184,8 +4196,11 @@ export const addTagsToResource: API.OperationMethod<
     ServiceException,
     TagLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type CancelSchemaExtensionError =
   | ClientException
   | EntityDoesNotExistException
@@ -4207,8 +4222,11 @@ export const cancelSchemaExtension: API.OperationMethod<
   input: CancelSchemaExtensionRequest,
   output: CancelSchemaExtensionResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSchemaExtension",
 }));
+
 export type ConnectDirectoryError =
   | ClientException
   | DirectoryLimitExceededException
@@ -4236,8 +4254,11 @@ export const connectDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConnectDirectory",
 }));
+
 export type CreateAliasError =
   | ClientException
   | EntityAlreadyExistsException
@@ -4267,8 +4288,11 @@ export const createAlias: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
+
 export type CreateComputerError =
   | AuthenticationFailedException
   | ClientException
@@ -4300,8 +4324,11 @@ export const createComputer: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputer",
 }));
+
 export type CreateConditionalForwarderError =
   | ClientException
   | DirectoryUnavailableException
@@ -4333,8 +4360,11 @@ export const createConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConditionalForwarder",
 }));
+
 export type CreateDirectoryError =
   | ClientException
   | DirectoryLimitExceededException
@@ -4362,8 +4392,11 @@ export const createDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectory",
 }));
+
 export type CreateHybridADError =
   | ADAssessmentLimitExceededException
   | ClientException
@@ -4400,8 +4433,11 @@ export const createHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHybridAD",
 }));
+
 export type CreateLogSubscriptionError =
   | ClientException
   | EntityAlreadyExistsException
@@ -4430,8 +4466,11 @@ export const createLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogSubscription",
 }));
+
 export type CreateMicrosoftADError =
   | ClientException
   | DirectoryLimitExceededException
@@ -4461,8 +4500,11 @@ export const createMicrosoftAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMicrosoftAD",
 }));
+
 export type CreateSnapshotError =
   | ClientException
   | EntityDoesNotExistException
@@ -4490,8 +4532,11 @@ export const createSnapshot: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
+
 export type CreateTrustError =
   | ClientException
   | EntityAlreadyExistsException
@@ -4526,8 +4571,11 @@ export const createTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrust",
 }));
+
 export type DeleteADAssessmentError =
   | ClientException
   | EntityDoesNotExistException
@@ -4558,8 +4606,11 @@ export const deleteADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteADAssessment",
 }));
+
 export type DeleteConditionalForwarderError =
   | ClientException
   | DirectoryUnavailableException
@@ -4588,8 +4639,11 @@ export const deleteConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConditionalForwarder",
 }));
+
 export type DeleteDirectoryError =
   | ClientException
   | EntityDoesNotExistException
@@ -4611,8 +4665,11 @@ export const deleteDirectory: API.OperationMethod<
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectory",
 }));
+
 export type DeleteLogSubscriptionError =
   | ClientException
   | EntityDoesNotExistException
@@ -4636,8 +4693,11 @@ export const deleteLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogSubscription",
 }));
+
 export type DeleteSnapshotError =
   | ClientException
   | EntityDoesNotExistException
@@ -4661,8 +4721,11 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
+
 export type DeleteTrustError =
   | ClientException
   | EntityDoesNotExistException
@@ -4689,8 +4752,11 @@ export const deleteTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrust",
 }));
+
 export type DeregisterCertificateError =
   | CertificateDoesNotExistException
   | CertificateInUseException
@@ -4723,8 +4789,11 @@ export const deregisterCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterCertificate",
 }));
+
 export type DeregisterEventTopicError =
   | ClientException
   | EntityDoesNotExistException
@@ -4748,8 +4817,11 @@ export const deregisterEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterEventTopic",
 }));
+
 export type DescribeADAssessmentError =
   | ClientException
   | EntityDoesNotExistException
@@ -4777,8 +4849,11 @@ export const describeADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeADAssessment",
 }));
+
 export type DescribeCAEnrollmentPolicyError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -4804,8 +4879,11 @@ export const describeCAEnrollmentPolicy: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCAEnrollmentPolicy",
 }));
+
 export type DescribeCertificateError =
   | CertificateDoesNotExistException
   | ClientException
@@ -4834,8 +4912,11 @@ export const describeCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
+
 export type DescribeClientAuthenticationSettingsError =
   | AccessDeniedException
   | ClientException
@@ -4881,6 +4962,8 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientAuthenticationSettings",
   pagination: {
     inputToken: "NextToken",
@@ -4889,6 +4972,7 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConditionalForwardersError =
   | ClientException
   | DirectoryUnavailableException
@@ -4919,8 +5003,11 @@ export const describeConditionalForwarders: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConditionalForwarders",
 }));
+
 export type DescribeDirectoriesError =
   | ClientException
   | EntityDoesNotExistException
@@ -4974,6 +5061,8 @@ export const describeDirectories: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -4982,6 +5071,7 @@ export const describeDirectories: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeDirectoryDataAccessError =
   | AccessDeniedException
   | ClientException
@@ -5008,8 +5098,11 @@ export const describeDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectoryDataAccess",
 }));
+
 export type DescribeDomainControllersError =
   | ClientException
   | EntityDoesNotExistException
@@ -5052,6 +5145,8 @@ export const describeDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainControllers",
   pagination: {
     inputToken: "NextToken",
@@ -5059,6 +5154,7 @@ export const describeDomainControllers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeEventTopicsError =
   | ClientException
   | EntityDoesNotExistException
@@ -5086,8 +5182,11 @@ export const describeEventTopics: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventTopics",
 }));
+
 export type DescribeHybridADUpdateError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5117,8 +5216,11 @@ export const describeHybridADUpdate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHybridADUpdate",
 }));
+
 export type DescribeLDAPSSettingsError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5161,6 +5263,8 @@ export const describeLDAPSSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLDAPSSettings",
   pagination: {
     inputToken: "NextToken",
@@ -5169,6 +5273,7 @@ export const describeLDAPSSettings: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRegionsError =
   | AccessDeniedException
   | ClientException
@@ -5214,6 +5319,8 @@ export const describeRegions: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegions",
   pagination: {
     inputToken: "NextToken",
@@ -5221,6 +5328,7 @@ export const describeRegions: API.OperationMethod<
     items: "RegionsDescription",
   } as const,
 }));
+
 export type DescribeSettingsError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5248,8 +5356,11 @@ export const describeSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSettings",
 }));
+
 export type DescribeSharedDirectoriesError =
   | ClientException
   | EntityDoesNotExistException
@@ -5292,6 +5403,8 @@ export const describeSharedDirectories: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSharedDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -5300,6 +5413,7 @@ export const describeSharedDirectories: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeSnapshotsError =
   | ClientException
   | EntityDoesNotExistException
@@ -5348,6 +5462,8 @@ export const describeSnapshots: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -5356,6 +5472,7 @@ export const describeSnapshots: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeTrustsError =
   | ClientException
   | EntityDoesNotExistException
@@ -5401,6 +5518,8 @@ export const describeTrusts: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrusts",
   pagination: {
     inputToken: "NextToken",
@@ -5409,6 +5528,7 @@ export const describeTrusts: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeUpdateDirectoryError =
   | AccessDeniedException
   | ClientException
@@ -5451,6 +5571,8 @@ export const describeUpdateDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUpdateDirectory",
   pagination: {
     inputToken: "NextToken",
@@ -5458,6 +5580,7 @@ export const describeUpdateDirectory: API.OperationMethod<
     items: "UpdateActivities",
   } as const,
 }));
+
 export type DisableCAEnrollmentPolicyError =
   | AccessDeniedException
   | ClientException
@@ -5494,8 +5617,11 @@ export const disableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableCAEnrollmentPolicy",
 }));
+
 export type DisableClientAuthenticationError =
   | AccessDeniedException
   | ClientException
@@ -5523,8 +5649,11 @@ export const disableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableClientAuthentication",
 }));
+
 export type DisableDirectoryDataAccessError =
   | AccessDeniedException
   | ClientException
@@ -5555,8 +5684,11 @@ export const disableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDirectoryDataAccess",
 }));
+
 export type DisableLDAPSError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5586,8 +5718,11 @@ export const disableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableLDAPS",
 }));
+
 export type DisableRadiusError =
   | ClientException
   | EntityDoesNotExistException
@@ -5606,8 +5741,11 @@ export const disableRadius: API.OperationMethod<
   input: DisableRadiusRequest,
   output: DisableRadiusResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableRadius",
 }));
+
 export type DisableSsoError =
   | AuthenticationFailedException
   | ClientException
@@ -5633,8 +5771,11 @@ export const disableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSso",
 }));
+
 export type EnableCAEnrollmentPolicyError =
   | AccessDeniedException
   | ClientException
@@ -5674,8 +5815,11 @@ export const enableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableCAEnrollmentPolicy",
 }));
+
 export type EnableClientAuthenticationError =
   | AccessDeniedException
   | ClientException
@@ -5705,8 +5849,11 @@ export const enableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableClientAuthentication",
 }));
+
 export type EnableDirectoryDataAccessError =
   | AccessDeniedException
   | ClientException
@@ -5737,8 +5884,11 @@ export const enableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDirectoryDataAccess",
 }));
+
 export type EnableLDAPSError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5770,8 +5920,11 @@ export const enableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableLDAPS",
 }));
+
 export type EnableRadiusError =
   | ClientException
   | EntityAlreadyExistsException
@@ -5798,8 +5951,11 @@ export const enableRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableRadius",
 }));
+
 export type EnableSsoError =
   | AuthenticationFailedException
   | ClientException
@@ -5827,8 +5983,11 @@ export const enableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSso",
 }));
+
 export type GetDirectoryLimitsError =
   | ClientException
   | EntityDoesNotExistException
@@ -5846,8 +6005,11 @@ export const getDirectoryLimits: API.OperationMethod<
   input: GetDirectoryLimitsRequest,
   output: GetDirectoryLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectoryLimits",
 }));
+
 export type GetSnapshotLimitsError =
   | ClientException
   | EntityDoesNotExistException
@@ -5865,8 +6027,11 @@ export const getSnapshotLimits: API.OperationMethod<
   input: GetSnapshotLimitsRequest,
   output: GetSnapshotLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshotLimits",
 }));
+
 export type ListADAssessmentsError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5909,6 +6074,8 @@ export const listADAssessments: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListADAssessments",
   pagination: {
     inputToken: "NextToken",
@@ -5917,6 +6084,7 @@ export const listADAssessments: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListCertificatesError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -5960,6 +6128,8 @@ export const listCertificates: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -5968,6 +6138,7 @@ export const listCertificates: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListIpRoutesError =
   | ClientException
   | EntityDoesNotExistException
@@ -6008,6 +6179,8 @@ export const listIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIpRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -6016,6 +6189,7 @@ export const listIpRoutes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListLogSubscriptionsError =
   | ClientException
   | EntityDoesNotExistException
@@ -6054,6 +6228,8 @@ export const listLogSubscriptions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -6062,6 +6238,7 @@ export const listLogSubscriptions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListSchemaExtensionsError =
   | ClientException
   | EntityDoesNotExistException
@@ -6100,6 +6277,8 @@ export const listSchemaExtensions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaExtensions",
   pagination: {
     inputToken: "NextToken",
@@ -6108,6 +6287,7 @@ export const listSchemaExtensions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ClientException
   | EntityDoesNotExistException
@@ -6148,6 +6328,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6156,6 +6338,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type RegisterCertificateError =
   | CertificateAlreadyExistsException
   | CertificateLimitExceededException
@@ -6189,8 +6372,11 @@ export const registerCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCertificate",
 }));
+
 export type RegisterEventTopicError =
   | ClientException
   | EntityDoesNotExistException
@@ -6218,8 +6404,11 @@ export const registerEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterEventTopic",
 }));
+
 export type RejectSharedDirectoryError =
   | ClientException
   | DirectoryAlreadySharedException
@@ -6245,8 +6434,11 @@ export const rejectSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectSharedDirectory",
 }));
+
 export type RemoveIpRoutesError =
   | ClientException
   | DirectoryUnavailableException
@@ -6272,8 +6464,11 @@ export const removeIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveIpRoutes",
 }));
+
 export type RemoveRegionError =
   | AccessDeniedException
   | ClientException
@@ -6303,8 +6498,11 @@ export const removeRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveRegion",
 }));
+
 export type RemoveTagsFromResourceError =
   | ClientException
   | EntityDoesNotExistException
@@ -6328,8 +6526,11 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type ResetUserPasswordError =
   | ClientException
   | DirectoryUnavailableException
@@ -6374,8 +6575,11 @@ export const resetUserPassword: API.OperationMethod<
     UnsupportedOperationException,
     UserDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetUserPassword",
 }));
+
 export type RestoreFromSnapshotError =
   | ClientException
   | EntityDoesNotExistException
@@ -6406,8 +6610,11 @@ export const restoreFromSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromSnapshot",
 }));
+
 export type ShareDirectoryError =
   | AccessDeniedException
   | ClientException
@@ -6458,8 +6665,11 @@ export const shareDirectory: API.OperationMethod<
     ShareLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ShareDirectory",
 }));
+
 export type StartADAssessmentError =
   | ADAssessmentLimitExceededException
   | ClientException
@@ -6507,8 +6717,11 @@ export const startADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartADAssessment",
 }));
+
 export type StartSchemaExtensionError =
   | ClientException
   | DirectoryUnavailableException
@@ -6536,8 +6749,11 @@ export const startSchemaExtension: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSchemaExtension",
 }));
+
 export type UnshareDirectoryError =
   | ClientException
   | DirectoryNotSharedException
@@ -6563,8 +6779,11 @@ export const unshareDirectory: API.OperationMethod<
     InvalidTargetException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnshareDirectory",
 }));
+
 export type UpdateConditionalForwarderError =
   | ClientException
   | DirectoryUnavailableException
@@ -6593,8 +6812,11 @@ export const updateConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConditionalForwarder",
 }));
+
 export type UpdateDirectorySetupError =
   | AccessDeniedException
   | ClientException
@@ -6628,8 +6850,11 @@ export const updateDirectorySetup: API.OperationMethod<
     SnapshotLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectorySetup",
 }));
+
 export type UpdateHybridADError =
   | ADAssessmentLimitExceededException
   | ClientException
@@ -6670,8 +6895,11 @@ export const updateHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHybridAD",
 }));
+
 export type UpdateNumberOfDomainControllersError =
   | ClientException
   | DirectoryUnavailableException
@@ -6705,8 +6933,11 @@ export const updateNumberOfDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNumberOfDomainControllers",
 }));
+
 export type UpdateRadiusError =
   | ClientException
   | EntityDoesNotExistException
@@ -6731,8 +6962,11 @@ export const updateRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRadius",
 }));
+
 export type UpdateSettingsError =
   | ClientException
   | DirectoryDoesNotExistException
@@ -6764,8 +6998,11 @@ export const updateSettings: API.OperationMethod<
     UnsupportedOperationException,
     UnsupportedSettingsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSettings",
 }));
+
 export type UpdateTrustError =
   | ClientException
   | EntityDoesNotExistException
@@ -6790,8 +7027,11 @@ export const updateTrust: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrust",
 }));
+
 export type VerifyTrustError =
   | ClientException
   | EntityDoesNotExistException
@@ -6821,5 +7061,7 @@ export const verifyTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyTrust",
 }));

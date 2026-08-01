@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "Web3HostnameNotFound": [{ "code": 1002 }],
-    "InvalidWeb3HostnameTarget": [{ "code": 1006 }],
-    "Forbidden": [{ "status": 403 }]
-  }
+  "description": "Align web3#HostnamesIpfsUniversalPathsContentListsGet with distilled cloudflare/web3 getHostnameIpfsUniversalPathContentList",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGet",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentList"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGetRequest",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentListRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentList/input/target",
+      "value": "com.cloudflare.web3#GetHostnameIpfsUniversalPathContentListRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.web3#HostnamesIpfsUniversalPathsContentListsGetResponse",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentListResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentList/output/target",
+      "value": "com.cloudflare.web3#GetHostnameIpfsUniversalPathContentListResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Web3HostnameNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#InvalidWeb3HostnameTarget",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1006
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.web3#GetHostnameIpfsUniversalPathContentList/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.web3#Web3HostnameNotFound"
+        },
+        {
+          "target": "com.cloudflare.web3#InvalidWeb3HostnameTarget"
+        },
+        {
+          "target": "com.cloudflare.web3#Forbidden"
+        }
+      ]
+    }
+  ]
 }

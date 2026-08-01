@@ -141,27 +141,15 @@
     }
   },
   "errorCategories": {
-    "ClusterNotFound": [
-      "NotFoundError"
-    ],
-    "SecurityConfigurationNotFound": [
-      "NotFoundError"
-    ],
+    "ClusterNotFound": ["NotFoundError"],
+    "SecurityConfigurationNotFound": ["NotFoundError"],
     "SecurityConfigurationAlreadyExists": [
       "AlreadyExistsError",
       "ConflictError"
     ],
-    "StudioNotFound": [
-      "NotFoundError"
-    ],
-    "StudioServiceRoleNotAssumable": [
-      "RetryableError"
-    ],
-    "StudioServiceRoleMissingS3Access": [
-      "RetryableError"
-    ],
-    "JobFlowNotFound": [
-      "NotFoundError"
-    ]
+    "StudioNotFound": ["NotFoundError"],
+    "StudioServiceRoleNotAssumable": ["RetryableError"],
+    "StudioServiceRoleMissingS3Access": ["RetryableError"],
+    "JobFlowNotFound": ["NotFoundError"]
   }
 }

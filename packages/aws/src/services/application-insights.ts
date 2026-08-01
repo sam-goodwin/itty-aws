@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,97 +85,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "BadRequestException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceInUseException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagsAlreadyExistException extends S.TaggedErrorClass<TagsAlreadyExistException>()(
+  "TagsAlreadyExistException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ResourceGroupName = string;
 export type ComponentName = string;
 export type WorkloadName = string;
-export type ComponentConfiguration = string;
-export type WorkloadId = string;
-export type ErrorMsg = string;
-export type OpsCenterEnabled = boolean;
-export type CWEMonitorEnabled = boolean;
-export type OpsItemSNSTopicArn = string;
-export type SNSNotificationArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AutoConfigEnabled = boolean;
-export type AutoCreate = boolean;
-export type AttachMissingPermission = boolean;
-export type AccountId = string;
-export type LifeCycle = string;
-export type Remarks = string;
-export type ExceptionMessage = string;
-export type CustomComponentName = string;
-export type ResourceARN = string;
-export type LogPatternSetName = string;
-export type LogPatternName = string;
-export type LogPatternRegex = string;
-export type LogPatternRank = number;
-export type ResourceType = string;
-export type Monitor = boolean;
-export type MetaDataKey = string;
-export type MetaDataValue = string;
-export type ObservationId = string;
-export type StartTime = Date;
-export type EndTime = Date;
-export type SourceType = string;
-export type SourceARN = string;
-export type LogGroup = string;
-export type LineTime = Date;
-export type LogText = string;
-export type MetricNamespace = string;
-export type MetricName = string;
-export type Unit = string;
-export type Value = number;
-export type CloudWatchEventId = string;
-export type CloudWatchEventDetailType = string;
-export type HealthEventArn = string;
-export type HealthService = string;
-export type HealthEventTypeCode = string;
-export type HealthEventTypeCategory = string;
-export type HealthEventDescription = string;
-export type CodeDeployDeploymentId = string;
-export type CodeDeployDeploymentGroup = string;
-export type CodeDeployState = string;
-export type CodeDeployApplication = string;
-export type CodeDeployInstanceGroupId = string;
-export type Ec2State = string;
-export type RdsEventCategories = string;
-export type RdsEventMessage = string;
-export type S3EventName = string;
-export type StatesExecutionArn = string;
-export type StatesArn = string;
-export type StatesStatus = string;
-export type StatesInput = string;
-export type EbsEvent = string;
-export type EbsResult = string;
-export type EbsCause = string;
-export type EbsRequestId = string;
-export type XRayFaultPercent = number;
-export type XRayThrottlePercent = number;
-export type XRayErrorPercent = number;
-export type XRayRequestCount = number;
-export type XRayRequestAverageLatency = number;
-export type XRayNodeName = string;
-export type XRayNodeType = string;
-export type ProblemId = string;
-export type Title = string;
-export type ShortName = string;
-export type Insights = string;
-export type AffectedResource = string;
-export type RecurringCount = number;
-export type LastRecurrenceTime = Date;
-export type MaxEntities = number;
-export type PaginationToken = string;
-export type ConfigurationEventMonitoredResourceARN = string;
-export type ConfigurationEventTime = Date;
-export type ConfigurationEventDetail = string;
-export type ConfigurationEventResourceName = string;
-export type AmazonResourceName = string;
-export type MissingWorkloadConfig = boolean;
-export type RemoveSNSTopic = boolean;
-
-//# Schemas
 export type Tier =
   | "CUSTOM"
   | "DEFAULT"
@@ -200,6 +175,8 @@ export type Tier =
   | "SAP_NETWEAVER_HIGH_AVAILABILITY"
   | (string & {});
 export const Tier = /*@__PURE__*/ S.String;
+
+export type ComponentConfiguration = string;
 export interface WorkloadConfiguration {
   WorkloadName?: string;
   Tier?: Tier;
@@ -230,6 +207,7 @@ export const AddWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddWorkloadRequest",
 }) as any as S.Schema<AddWorkloadRequest>;
+export type WorkloadId = string;
 export interface AddWorkloadResponse {
   WorkloadId?: string;
   WorkloadConfiguration?: WorkloadConfiguration;
@@ -242,6 +220,12 @@ export const AddWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddWorkloadResponse",
 }) as any as S.Schema<AddWorkloadResponse>;
+export type OpsCenterEnabled = boolean;
+export type CWEMonitorEnabled = boolean;
+export type OpsItemSNSTopicArn = string;
+export type SNSNotificationArn = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -251,8 +235,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type AutoConfigEnabled = boolean;
+export type AutoCreate = boolean;
 export type GroupingType = "ACCOUNT_BASED" | (string & {});
 export const GroupingType = /*@__PURE__*/ S.String;
+
+export type AttachMissingPermission = boolean;
 export interface CreateApplicationRequest {
   ResourceGroupName?: string;
   OpsCenterEnabled?: boolean;
@@ -283,11 +271,15 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
+export type AccountId = string;
+export type LifeCycle = string;
+export type Remarks = string;
 export type DiscoveryType =
   | "RESOURCE_GROUP_BASED"
   | "ACCOUNT_BASED"
   | (string & {});
 export const DiscoveryType = /*@__PURE__*/ S.String;
+
 export interface ApplicationInfo {
   AccountId?: string;
   ResourceGroupName?: string;
@@ -326,6 +318,8 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type CustomComponentName = string;
+export type ResourceARN = string;
 export type ResourceList = string[];
 export const ResourceList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateComponentRequest {
@@ -350,6 +344,10 @@ export const CreateComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentResponse",
 }) as any as S.Schema<CreateComponentResponse>;
+export type LogPatternSetName = string;
+export type LogPatternName = string;
+export type LogPatternRegex = string;
+export type LogPatternRank = number;
 export interface CreateLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
@@ -468,12 +466,11 @@ export const DescribeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
-export const DescribeApplicationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ApplicationInfo: S.optional(ApplicationInfo) }),
-  ).annotate({
-    identifier: "DescribeApplicationResponse",
-  }) as any as S.Schema<DescribeApplicationResponse>;
+export const DescribeApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationInfo: S.optional(ApplicationInfo) }),
+).annotate({
+  identifier: "DescribeApplicationResponse",
+}) as any as S.Schema<DescribeApplicationResponse>;
 export interface DescribeComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -490,8 +487,13 @@ export const DescribeComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComponentRequest",
 }) as any as S.Schema<DescribeComponentRequest>;
+export type ResourceType = string;
 export type OsType = "WINDOWS" | "LINUX" | (string & {});
 export const OsType = /*@__PURE__*/ S.String;
+
+export type Monitor = boolean;
+export type MetaDataKey = string;
+export type MetaDataValue = string;
 export type WorkloadMetaData = { [key: string]: string | undefined };
 export const WorkloadMetaData = /*@__PURE__*/ S.Record(
   S.String,
@@ -545,8 +547,8 @@ export interface DescribeComponentConfigurationRequest {
   ComponentName: string;
   AccountId?: string;
 }
-export const DescribeComponentConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeComponentConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ResourceGroupName: S.String,
       ComponentName: S.String,
@@ -554,30 +556,31 @@ export const DescribeComponentConfigurationRequest =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "DescribeComponentConfigurationRequest",
-  }) as any as S.Schema<DescribeComponentConfigurationRequest>;
+).annotate({
+  identifier: "DescribeComponentConfigurationRequest",
+}) as any as S.Schema<DescribeComponentConfigurationRequest>;
 export interface DescribeComponentConfigurationResponse {
   Monitor?: boolean;
   Tier?: Tier;
   ComponentConfiguration?: string;
 }
-export const DescribeComponentConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeComponentConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Monitor: S.optional(S.Boolean),
       Tier: S.optional(Tier),
       ComponentConfiguration: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DescribeComponentConfigurationResponse",
-  }) as any as S.Schema<DescribeComponentConfigurationResponse>;
+).annotate({
+  identifier: "DescribeComponentConfigurationResponse",
+}) as any as S.Schema<DescribeComponentConfigurationResponse>;
 export type RecommendationType =
   | "INFRA_ONLY"
   | "WORKLOAD_ONLY"
   | "ALL"
   | (string & {});
 export const RecommendationType = /*@__PURE__*/ S.String;
+
 export interface DescribeComponentConfigurationRecommendationRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -640,6 +643,7 @@ export const DescribeLogPatternResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLogPatternResponse",
 }) as any as S.Schema<DescribeLogPatternResponse>;
+export type ObservationId = string;
 export interface DescribeObservationRequest {
   ObservationId: string;
   AccountId?: string;
@@ -651,8 +655,21 @@ export const DescribeObservationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeObservationRequest",
 }) as any as S.Schema<DescribeObservationRequest>;
+export type StartTime = Date;
+export type EndTime = Date;
+export type SourceType = string;
+export type SourceARN = string;
+export type LogGroup = string;
+export type LineTime = Date;
+export type LogText = string;
 export type LogFilter = "ERROR" | "WARN" | "INFO" | (string & {});
 export const LogFilter = /*@__PURE__*/ S.String;
+
+export type MetricNamespace = string;
+export type MetricName = string;
+export type Unit = string;
+export type Value = number;
+export type CloudWatchEventId = string;
 export type CloudWatchEventSource =
   | "EC2"
   | "CODE_DEPLOY"
@@ -660,6 +677,37 @@ export type CloudWatchEventSource =
   | "RDS"
   | (string & {});
 export const CloudWatchEventSource = /*@__PURE__*/ S.String;
+
+export type CloudWatchEventDetailType = string;
+export type HealthEventArn = string;
+export type HealthService = string;
+export type HealthEventTypeCode = string;
+export type HealthEventTypeCategory = string;
+export type HealthEventDescription = string;
+export type CodeDeployDeploymentId = string;
+export type CodeDeployDeploymentGroup = string;
+export type CodeDeployState = string;
+export type CodeDeployApplication = string;
+export type CodeDeployInstanceGroupId = string;
+export type Ec2State = string;
+export type RdsEventCategories = string;
+export type RdsEventMessage = string;
+export type S3EventName = string;
+export type StatesExecutionArn = string;
+export type StatesArn = string;
+export type StatesStatus = string;
+export type StatesInput = string;
+export type EbsEvent = string;
+export type EbsResult = string;
+export type EbsCause = string;
+export type EbsRequestId = string;
+export type XRayFaultPercent = number;
+export type XRayThrottlePercent = number;
+export type XRayErrorPercent = number;
+export type XRayRequestCount = number;
+export type XRayRequestAverageLatency = number;
+export type XRayNodeName = string;
+export type XRayNodeType = string;
 export interface Observation {
   Id?: string;
   StartTime?: Date;
@@ -759,12 +807,12 @@ export const Observation = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeObservationResponse {
   Observation?: Observation;
 }
-export const DescribeObservationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Observation: S.optional(Observation) }),
-  ).annotate({
-    identifier: "DescribeObservationResponse",
-  }) as any as S.Schema<DescribeObservationResponse>;
+export const DescribeObservationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Observation: S.optional(Observation) }),
+).annotate({
+  identifier: "DescribeObservationResponse",
+}) as any as S.Schema<DescribeObservationResponse>;
+export type ProblemId = string;
 export interface DescribeProblemRequest {
   ProblemId: string;
   AccountId?: string;
@@ -776,6 +824,9 @@ export const DescribeProblemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProblemRequest",
 }) as any as S.Schema<DescribeProblemRequest>;
+export type Title = string;
+export type ShortName = string;
+export type Insights = string;
 export type Status =
   | "IGNORE"
   | "RESOLVED"
@@ -784,6 +835,8 @@ export type Status =
   | "RECOVERING"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type AffectedResource = string;
 export type SeverityLevel =
   | "Informative"
   | "Low"
@@ -791,27 +844,34 @@ export type SeverityLevel =
   | "High"
   | (string & {});
 export const SeverityLevel = /*@__PURE__*/ S.String;
+
 export type FeedbackKey = "INSIGHTS_FEEDBACK" | (string & {});
 export const FeedbackKey = /*@__PURE__*/ S.String;
+
 export type FeedbackValue =
   | "NOT_SPECIFIED"
   | "USEFUL"
   | "NOT_USEFUL"
   | (string & {});
 export const FeedbackValue = /*@__PURE__*/ S.String;
+
 export type Feedback = { [key in FeedbackKey]?: FeedbackValue };
 export const Feedback = /*@__PURE__*/ S.Record(
   FeedbackKey,
   FeedbackValue.pipe(S.optional),
 );
+export type RecurringCount = number;
+export type LastRecurrenceTime = Date;
 export type Visibility = "IGNORED" | "VISIBLE" | (string & {});
 export const Visibility = /*@__PURE__*/ S.String;
+
 export type ResolutionMethod =
   | "MANUAL"
   | "AUTOMATIC"
   | "UNRESOLVED"
   | (string & {});
 export const ResolutionMethod = /*@__PURE__*/ S.String;
+
 export interface Problem {
   Id?: string;
   Title?: string;
@@ -868,14 +928,13 @@ export interface DescribeProblemObservationsRequest {
   ProblemId: string;
   AccountId?: string;
 }
-export const DescribeProblemObservationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ProblemId: S.String, AccountId: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DescribeProblemObservationsRequest",
-  }) as any as S.Schema<DescribeProblemObservationsRequest>;
+export const DescribeProblemObservationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ProblemId: S.String, AccountId: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeProblemObservationsRequest",
+}) as any as S.Schema<DescribeProblemObservationsRequest>;
 export type ObservationList = Observation[];
 export const ObservationList = /*@__PURE__*/ S.Array(Observation);
 export interface RelatedObservations {
@@ -889,12 +948,11 @@ export const RelatedObservations = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeProblemObservationsResponse {
   RelatedObservations?: RelatedObservations;
 }
-export const DescribeProblemObservationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RelatedObservations: S.optional(RelatedObservations) }),
-  ).annotate({
-    identifier: "DescribeProblemObservationsResponse",
-  }) as any as S.Schema<DescribeProblemObservationsResponse>;
+export const DescribeProblemObservationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RelatedObservations: S.optional(RelatedObservations) }),
+).annotate({
+  identifier: "DescribeProblemObservationsResponse",
+}) as any as S.Schema<DescribeProblemObservationsResponse>;
 export interface DescribeWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -927,6 +985,8 @@ export const DescribeWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWorkloadResponse",
 }) as any as S.Schema<DescribeWorkloadResponse>;
+export type MaxEntities = number;
+export type PaginationToken = string;
 export interface ListApplicationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -996,6 +1056,7 @@ export type ConfigurationEventStatus =
   | "ERROR"
   | (string & {});
 export const ConfigurationEventStatus = /*@__PURE__*/ S.String;
+
 export interface ListConfigurationHistoryRequest {
   ResourceGroupName?: string;
   StartTime?: Date;
@@ -1005,22 +1066,22 @@ export interface ListConfigurationHistoryRequest {
   NextToken?: string;
   AccountId?: string;
 }
-export const ListConfigurationHistoryRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceGroupName: S.optional(S.String),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EventStatus: S.optional(ConfigurationEventStatus),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-      AccountId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListConfigurationHistoryRequest",
-  }) as any as S.Schema<ListConfigurationHistoryRequest>;
+export const ListConfigurationHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceGroupName: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EventStatus: S.optional(ConfigurationEventStatus),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    AccountId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListConfigurationHistoryRequest",
+}) as any as S.Schema<ListConfigurationHistoryRequest>;
+export type ConfigurationEventMonitoredResourceARN = string;
 export type ConfigurationEventResourceType =
   | "CLOUDWATCH_ALARM"
   | "CLOUDWATCH_LOG"
@@ -1028,6 +1089,10 @@ export type ConfigurationEventResourceType =
   | "SSM_ASSOCIATION"
   | (string & {});
 export const ConfigurationEventResourceType = /*@__PURE__*/ S.String;
+
+export type ConfigurationEventTime = Date;
+export type ConfigurationEventDetail = string;
+export type ConfigurationEventResourceName = string;
 export interface ConfigurationEvent {
   ResourceGroupName?: string;
   AccountId?: string;
@@ -1058,15 +1123,14 @@ export interface ListConfigurationHistoryResponse {
   EventList?: ConfigurationEvent[];
   NextToken?: string;
 }
-export const ListConfigurationHistoryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventList: S.optional(ConfigurationEventList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListConfigurationHistoryResponse",
-  }) as any as S.Schema<ListConfigurationHistoryResponse>;
+export const ListConfigurationHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventList: S.optional(ConfigurationEventList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConfigurationHistoryResponse",
+}) as any as S.Schema<ListConfigurationHistoryResponse>;
 export interface ListLogPatternsRequest {
   ResourceGroupName: string;
   PatternSetName?: string;
@@ -1185,6 +1249,7 @@ export const ListProblemsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProblemsResponse",
 }) as any as S.Schema<ListProblemsResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -1198,12 +1263,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWorkloadsRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -1224,6 +1288,7 @@ export const ListWorkloadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkloadsRequest",
 }) as any as S.Schema<ListWorkloadsRequest>;
+export type MissingWorkloadConfig = boolean;
 export interface Workload {
   WorkloadId?: string;
   ComponentName?: string;
@@ -1314,6 +1379,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type RemoveSNSTopic = boolean;
 export interface UpdateApplicationRequest {
   ResourceGroupName: string;
   OpsCenterEnabled?: boolean;
@@ -1380,26 +1446,26 @@ export interface UpdateComponentConfigurationRequest {
   ComponentConfiguration?: string;
   AutoConfigEnabled?: boolean;
 }
-export const UpdateComponentConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceGroupName: S.String,
-      ComponentName: S.String,
-      Monitor: S.optional(S.Boolean),
-      Tier: S.optional(Tier),
-      ComponentConfiguration: S.optional(S.String),
-      AutoConfigEnabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateComponentConfigurationRequest",
-  }) as any as S.Schema<UpdateComponentConfigurationRequest>;
+export const UpdateComponentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceGroupName: S.String,
+    ComponentName: S.String,
+    Monitor: S.optional(S.Boolean),
+    Tier: S.optional(Tier),
+    ComponentConfiguration: S.optional(S.String),
+    AutoConfigEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateComponentConfigurationRequest",
+}) as any as S.Schema<UpdateComponentConfigurationRequest>;
 export interface UpdateComponentConfigurationResponse {}
-export const UpdateComponentConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateComponentConfigurationResponse",
-  }) as any as S.Schema<UpdateComponentConfigurationResponse>;
+export const UpdateComponentConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateComponentConfigurationResponse",
+}) as any as S.Schema<UpdateComponentConfigurationResponse>;
 export interface UpdateLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
@@ -1434,6 +1500,7 @@ export const UpdateLogPatternResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLogPatternResponse>;
 export type UpdateStatus = "RESOLVED" | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateProblemRequest {
   ProblemId: string;
   UpdateStatus?: UpdateStatus;
@@ -1486,48 +1553,8 @@ export const UpdateWorkloadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkloadResponse",
 }) as any as S.Schema<UpdateWorkloadResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceInUseException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class TagsAlreadyExistException extends S.TaggedErrorClass<TagsAlreadyExistException>()(
-  "TagsAlreadyExistException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "BadRequestException", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMsg = string;
+export type ExceptionMessage = string;
 export type AddWorkloadError =
   | InternalServerException
   | ResourceInUseException
@@ -1551,8 +1578,11 @@ export const addWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddWorkload",
 }));
+
 export type CreateApplicationError =
   | AccessDeniedException
   | InternalServerException
@@ -1580,8 +1610,11 @@ export const createApplication: API.OperationMethod<
     TagsAlreadyExistException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateComponentError =
   | InternalServerException
   | ResourceInUseException
@@ -1605,8 +1638,11 @@ export const createComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponent",
 }));
+
 export type CreateLogPatternError =
   | InternalServerException
   | ResourceInUseException
@@ -1630,8 +1666,11 @@ export const createLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogPattern",
 }));
+
 export type DeleteApplicationError =
   | BadRequestException
   | InternalServerException
@@ -1656,8 +1695,11 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteComponentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1681,8 +1723,11 @@ export const deleteComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
+
 export type DeleteLogPatternError =
   | BadRequestException
   | InternalServerException
@@ -1706,8 +1751,11 @@ export const deleteLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogPattern",
 }));
+
 export type DescribeApplicationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1729,8 +1777,11 @@ export const describeApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplication",
 }));
+
 export type DescribeComponentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1753,8 +1804,11 @@ export const describeComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponent",
 }));
+
 export type DescribeComponentConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1776,8 +1830,11 @@ export const describeComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponentConfiguration",
 }));
+
 export type DescribeComponentConfigurationRecommendationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1799,8 +1856,11 @@ export const describeComponentConfigurationRecommendation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponentConfigurationRecommendation",
 }));
+
 export type DescribeLogPatternError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1822,8 +1882,11 @@ export const describeLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLogPattern",
 }));
+
 export type DescribeObservationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1845,8 +1908,11 @@ export const describeObservation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObservation",
 }));
+
 export type DescribeProblemError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1868,8 +1934,11 @@ export const describeProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProblem",
 }));
+
 export type DescribeProblemObservationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1891,8 +1960,11 @@ export const describeProblemObservations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProblemObservations",
 }));
+
 export type DescribeWorkloadError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1914,8 +1986,11 @@ export const describeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkload",
 }));
+
 export type ListApplicationsError =
   | InternalServerException
   | ValidationException
@@ -1947,6 +2022,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1954,6 +2031,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1990,6 +2068,8 @@ export const listComponents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
@@ -1997,6 +2077,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationHistoryError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2041,6 +2122,8 @@ export const listConfigurationHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationHistory",
   pagination: {
     inputToken: "NextToken",
@@ -2048,6 +2131,7 @@ export const listConfigurationHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLogPatternsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2084,6 +2168,8 @@ export const listLogPatterns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogPatterns",
   pagination: {
     inputToken: "NextToken",
@@ -2091,6 +2177,7 @@ export const listLogPatterns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLogPatternSetsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2127,6 +2214,8 @@ export const listLogPatternSets: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogPatternSets",
   pagination: {
     inputToken: "NextToken",
@@ -2134,6 +2223,7 @@ export const listLogPatternSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProblemsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2170,6 +2260,8 @@ export const listProblems: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProblems",
   pagination: {
     inputToken: "NextToken",
@@ -2177,6 +2269,7 @@ export const listProblems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ResourceNotFoundException
   | ValidationException
@@ -2198,8 +2291,11 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWorkloadsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2236,6 +2332,8 @@ export const listWorkloads: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloads",
   pagination: {
     inputToken: "NextToken",
@@ -2243,6 +2341,7 @@ export const listWorkloads: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type RemoveWorkloadError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2264,8 +2363,11 @@ export const removeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveWorkload",
 }));
+
 export type TagResourceError =
   | ResourceNotFoundException
   | TooManyTagsException
@@ -2295,8 +2397,11 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ResourceNotFoundException
   | ValidationException
@@ -2313,8 +2418,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2336,8 +2444,11 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateComponentError =
   | InternalServerException
   | ResourceInUseException
@@ -2362,8 +2473,11 @@ export const updateComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponent",
 }));
+
 export type UpdateComponentConfigurationError =
   | InternalServerException
   | ResourceInUseException
@@ -2389,8 +2503,11 @@ export const updateComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponentConfiguration",
 }));
+
 export type UpdateLogPatternError =
   | InternalServerException
   | ResourceInUseException
@@ -2414,8 +2531,11 @@ export const updateLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLogPattern",
 }));
+
 export type UpdateProblemError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2438,8 +2558,11 @@ export const updateProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProblem",
 }));
+
 export type UpdateWorkloadError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2461,5 +2584,7 @@ export const updateWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkload",
 }));

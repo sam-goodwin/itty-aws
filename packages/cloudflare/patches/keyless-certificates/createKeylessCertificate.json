@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "KeylessSslNotAvailable": [
-      { "code": 1067, "message": { "includes": "Keyless SSL is not available" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

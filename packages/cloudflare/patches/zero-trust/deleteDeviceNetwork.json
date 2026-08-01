@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "DeviceNetworkNotFound": [{ "code": 2053 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

@@ -1,0 +1,97 @@
+{
+  "description": "Align mtls_certificates#Delete with distilled cloudflare/mtls-certificates deleteMtlsCertificate",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.mtls_certificates#Delete",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificate"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.mtls_certificates#DeleteRequest",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificateRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificate/input/target",
+      "value": "com.cloudflare.mtls_certificates#DeleteMtlsCertificateRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.mtls_certificates#DeleteResponse",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificateResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificate/output/target",
+      "value": "com.cloudflare.mtls_certificates#DeleteMtlsCertificateResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.mtls_certificates#CertificateNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1472,
+              "message": {
+                "includes": "Certificate not found"
+              }
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.mtls_certificates#CertificateAlreadyDeleted",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": {
+                "includes": "already deleted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.mtls_certificates#DeleteMtlsCertificate/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.mtls_certificates#CertificateNotFound"
+        },
+        {
+          "target": "com.cloudflare.mtls_certificates#CertificateAlreadyDeleted"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "AccessCertificateQuotaExceeded": [
-      { "code": 12130, "message": { "includes": "maximum number of certificates" } }
-    ]
-  }
-}

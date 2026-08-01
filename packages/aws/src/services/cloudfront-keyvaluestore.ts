@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -140,13 +142,39 @@ const rules = T.EndpointResolver((p, _) => {
   );
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type KvsARN = string;
 export type Key = string;
 export type Etag = string;
-export type Value = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface DeleteKeyRequest {
   KvsARN: string;
   Key: string;
@@ -190,23 +218,22 @@ export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeKeyValueStoreRequest {
   KvsARN: string;
 }
-export const DescribeKeyValueStoreRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/key-value-stores/{KvsARN}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeKeyValueStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KvsARN: S.String.pipe(T.HttpLabel("KvsARN"), T.ContextParam("KvsARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/key-value-stores/{KvsARN}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeKeyValueStoreRequest",
-  }) as any as S.Schema<DescribeKeyValueStoreRequest>;
+  ),
+).annotate({
+  identifier: "DescribeKeyValueStoreRequest",
+}) as any as S.Schema<DescribeKeyValueStoreRequest>;
 export interface DescribeKeyValueStoreResponse {
   ItemCount: number;
   TotalSizeInBytes: number;
@@ -217,21 +244,20 @@ export interface DescribeKeyValueStoreResponse {
   Status?: string;
   FailureReason?: string;
 }
-export const DescribeKeyValueStoreResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ItemCount: S.Number,
-      TotalSizeInBytes: S.Number,
-      KvsARN: S.String,
-      Created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ETag: S.String.pipe(T.HttpHeader("ETag")),
-      LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Status: S.optional(S.String),
-      FailureReason: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DescribeKeyValueStoreResponse",
-  }) as any as S.Schema<DescribeKeyValueStoreResponse>;
+export const DescribeKeyValueStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemCount: S.Number,
+    TotalSizeInBytes: S.Number,
+    KvsARN: S.String,
+    Created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ETag: S.String.pipe(T.HttpHeader("ETag")),
+    LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Status: S.optional(S.String),
+    FailureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeKeyValueStoreResponse",
+}) as any as S.Schema<DescribeKeyValueStoreResponse>;
 export interface GetKeyRequest {
   KvsARN: string;
   Key: string;
@@ -251,6 +277,7 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
+export type Value = string | redacted.Redacted<string>;
 export interface GetKeyResponse {
   Key: string;
   Value: string | redacted.Redacted<string>;
@@ -410,34 +437,6 @@ export const UpdateKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateKeysResponse",
 }) as any as S.Schema<UpdateKeysResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type DeleteKeyError =
   | AccessDeniedException
   | ConflictException
@@ -465,8 +464,11 @@ export const deleteKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKey",
 }));
+
 export type DescribeKeyValueStoreError =
   | AccessDeniedException
   | ConflictException
@@ -490,8 +492,11 @@ export const describeKeyValueStore: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyValueStore",
 }));
+
 export type GetKeyError =
   | AccessDeniedException
   | ConflictException
@@ -515,8 +520,11 @@ export const getKey: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKey",
 }));
+
 export type ListKeysError =
   | AccessDeniedException
   | ConflictException
@@ -557,6 +565,8 @@ export const listKeys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
@@ -565,6 +575,7 @@ export const listKeys: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutKeyError =
   | AccessDeniedException
   | ConflictException
@@ -592,8 +603,11 @@ export const putKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKey",
 }));
+
 export type UpdateKeysError =
   | AccessDeniedException
   | ConflictException
@@ -621,5 +635,7 @@ export const updateKeys: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeys",
 }));

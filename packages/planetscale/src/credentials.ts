@@ -1,3 +1,14 @@
+/**
+ * PlanetScale credentials — hand-written.
+ *
+ * API-compatible port of the distilled repo's planetscale credentials module.
+ * Dual-mode: service tokens (PlanetScale's non-standard
+ * `Authorization: <tokenId>:<token>` scheme) and OAuth access tokens
+ * (`Authorization: Bearer <accessToken>`). The `Credentials` service holds an
+ * *effect* that resolves the current credentials, so callers that rotate or
+ * refresh tokens (e.g. alchemy's AuthProvider) Just Work — the protocol
+ * resolves it per request.
+ */
 import { ConfigError } from "@distilled.cloud/core/errors";
 import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";

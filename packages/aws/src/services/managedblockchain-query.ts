@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,30 +85,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type QueryNetwork = string;
 export type ChainAddress = string;
 export type QueryTokenId = string;
-export type ErrorType = string;
-export type ExceptionMessage = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type ServiceCode = string;
-export type QuotaCode = string;
-export type ValidationExceptionReason = string;
-export type QueryTokenStandard = string;
-export type QueryTransactionHash = string;
-export type QueryTransactionId = string;
-export type BlockHash = string;
-export type ConfirmationStatus = string;
-export type ExecutionStatus = string;
-export type NextToken = string;
-export type ListFilteredTransactionEventsSortBy = string;
-export type SortOrder = string;
-export type QueryTransactionEventType = string;
-export type ListTransactionsSortBy = string;
-
-//# Schemas
 export interface TokenIdentifier {
   network: string;
   contractAddress?: string;
@@ -144,16 +177,15 @@ export interface BatchGetTokenBalanceInputItem {
   ownerIdentifier: OwnerIdentifier;
   atBlockchainInstant?: BlockchainInstant;
 }
-export const BatchGetTokenBalanceInputItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tokenIdentifier: TokenIdentifier,
-      ownerIdentifier: OwnerIdentifier,
-      atBlockchainInstant: S.optional(BlockchainInstant),
-    }),
-  ).annotate({
-    identifier: "BatchGetTokenBalanceInputItem",
-  }) as any as S.Schema<BatchGetTokenBalanceInputItem>;
+export const BatchGetTokenBalanceInputItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenIdentifier: TokenIdentifier,
+    ownerIdentifier: OwnerIdentifier,
+    atBlockchainInstant: S.optional(BlockchainInstant),
+  }),
+).annotate({
+  identifier: "BatchGetTokenBalanceInputItem",
+}) as any as S.Schema<BatchGetTokenBalanceInputItem>;
 export type GetTokenBalanceInputList = BatchGetTokenBalanceInputItem[];
 export const GetTokenBalanceInputList = /*@__PURE__*/ S.Array(
   BatchGetTokenBalanceInputItem,
@@ -184,21 +216,22 @@ export interface BatchGetTokenBalanceOutputItem {
   atBlockchainInstant: BlockchainInstant;
   lastUpdatedTime?: BlockchainInstant;
 }
-export const BatchGetTokenBalanceOutputItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ownerIdentifier: S.optional(OwnerIdentifier),
-      tokenIdentifier: S.optional(TokenIdentifier),
-      balance: S.String,
-      atBlockchainInstant: BlockchainInstant,
-      lastUpdatedTime: S.optional(BlockchainInstant),
-    }),
-  ).annotate({
-    identifier: "BatchGetTokenBalanceOutputItem",
-  }) as any as S.Schema<BatchGetTokenBalanceOutputItem>;
+export const BatchGetTokenBalanceOutputItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ownerIdentifier: S.optional(OwnerIdentifier),
+    tokenIdentifier: S.optional(TokenIdentifier),
+    balance: S.String,
+    atBlockchainInstant: BlockchainInstant,
+    lastUpdatedTime: S.optional(BlockchainInstant),
+  }),
+).annotate({
+  identifier: "BatchGetTokenBalanceOutputItem",
+}) as any as S.Schema<BatchGetTokenBalanceOutputItem>;
 export type BatchGetTokenBalanceOutputList = BatchGetTokenBalanceOutputItem[];
-export const BatchGetTokenBalanceOutputList =
-  /*@__PURE__*/ S.Array(BatchGetTokenBalanceOutputItem);
+export const BatchGetTokenBalanceOutputList = /*@__PURE__*/ S.Array(
+  BatchGetTokenBalanceOutputItem,
+);
+export type ErrorType = string;
 export interface BatchGetTokenBalanceErrorItem {
   tokenIdentifier?: TokenIdentifier;
   ownerIdentifier?: OwnerIdentifier;
@@ -207,19 +240,18 @@ export interface BatchGetTokenBalanceErrorItem {
   errorMessage: string;
   errorType: string;
 }
-export const BatchGetTokenBalanceErrorItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tokenIdentifier: S.optional(TokenIdentifier),
-      ownerIdentifier: S.optional(OwnerIdentifier),
-      atBlockchainInstant: S.optional(BlockchainInstant),
-      errorCode: S.String,
-      errorMessage: S.String,
-      errorType: S.String,
-    }),
-  ).annotate({
-    identifier: "BatchGetTokenBalanceErrorItem",
-  }) as any as S.Schema<BatchGetTokenBalanceErrorItem>;
+export const BatchGetTokenBalanceErrorItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenIdentifier: S.optional(TokenIdentifier),
+    ownerIdentifier: S.optional(OwnerIdentifier),
+    atBlockchainInstant: S.optional(BlockchainInstant),
+    errorCode: S.String,
+    errorMessage: S.String,
+    errorType: S.String,
+  }),
+).annotate({
+  identifier: "BatchGetTokenBalanceErrorItem",
+}) as any as S.Schema<BatchGetTokenBalanceErrorItem>;
 export type BatchGetTokenBalanceErrors = BatchGetTokenBalanceErrorItem[];
 export const BatchGetTokenBalanceErrors = /*@__PURE__*/ S.Array(
   BatchGetTokenBalanceErrorItem,
@@ -236,19 +268,6 @@ export const BatchGetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTokenBalanceOutput",
 }) as any as S.Schema<BatchGetTokenBalanceOutput>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export interface ContractIdentifier {
   network: string;
   contractAddress: string;
@@ -275,6 +294,7 @@ export const GetAssetContractInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssetContractInput",
 }) as any as S.Schema<GetAssetContractInput>;
+export type QueryTokenStandard = string;
 export interface ContractMetadata {
   name?: string;
   symbol?: string;
@@ -346,6 +366,8 @@ export const GetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTokenBalanceOutput",
 }) as any as S.Schema<GetTokenBalanceOutput>;
+export type QueryTransactionHash = string;
+export type QueryTransactionId = string;
 export interface GetTransactionInput {
   transactionHash?: string;
   transactionId?: string;
@@ -369,6 +391,9 @@ export const GetTransactionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTransactionInput",
 }) as any as S.Schema<GetTransactionInput>;
+export type BlockHash = string;
+export type ConfirmationStatus = string;
+export type ExecutionStatus = string;
 export interface Transaction {
   network: string;
   blockHash?: string;
@@ -435,6 +460,7 @@ export const ContractFilter = /*@__PURE__*/ S.suspend(() =>
     deployerAddress: S.String,
   }),
 ).annotate({ identifier: "ContractFilter" }) as any as S.Schema<ContractFilter>;
+export type NextToken = string;
 export interface ListAssetContractsInput {
   contractFilter: ContractFilter;
   nextToken?: string;
@@ -517,16 +543,17 @@ export const ConfirmationStatusFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmationStatusFilter",
 }) as any as S.Schema<ConfirmationStatusFilter>;
+export type ListFilteredTransactionEventsSortBy = string;
+export type SortOrder = string;
 export interface ListFilteredTransactionEventsSort {
   sortBy?: string;
   sortOrder?: string;
 }
-export const ListFilteredTransactionEventsSort =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListFilteredTransactionEventsSort",
-  }) as any as S.Schema<ListFilteredTransactionEventsSort>;
+export const ListFilteredTransactionEventsSort = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFilteredTransactionEventsSort",
+}) as any as S.Schema<ListFilteredTransactionEventsSort>;
 export interface ListFilteredTransactionEventsInput {
   network: string;
   addressIdentifierFilter: AddressIdentifierFilter;
@@ -537,30 +564,30 @@ export interface ListFilteredTransactionEventsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListFilteredTransactionEventsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      network: S.String,
-      addressIdentifierFilter: AddressIdentifierFilter,
-      timeFilter: S.optional(TimeFilter),
-      voutFilter: S.optional(VoutFilter),
-      confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
-      sort: S.optional(ListFilteredTransactionEventsSort),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListFilteredTransactionEventsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    network: S.String,
+    addressIdentifierFilter: AddressIdentifierFilter,
+    timeFilter: S.optional(TimeFilter),
+    voutFilter: S.optional(VoutFilter),
+    confirmationStatusFilter: S.optional(ConfirmationStatusFilter),
+    sort: S.optional(ListFilteredTransactionEventsSort),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/list-filtered-transaction-events" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListFilteredTransactionEventsInput",
-  }) as any as S.Schema<ListFilteredTransactionEventsInput>;
+  ),
+).annotate({
+  identifier: "ListFilteredTransactionEventsInput",
+}) as any as S.Schema<ListFilteredTransactionEventsInput>;
+export type QueryTransactionEventType = string;
 export interface TransactionEvent {
   network: string;
   transactionHash: string;
@@ -607,12 +634,11 @@ export interface ListFilteredTransactionEventsOutput {
   events: TransactionEvent[];
   nextToken?: string;
 }
-export const ListFilteredTransactionEventsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListFilteredTransactionEventsOutput",
-  }) as any as S.Schema<ListFilteredTransactionEventsOutput>;
+export const ListFilteredTransactionEventsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFilteredTransactionEventsOutput",
+}) as any as S.Schema<ListFilteredTransactionEventsOutput>;
 export interface OwnerFilter {
   address: string;
 }
@@ -717,12 +743,12 @@ export interface ListTransactionEventsOutput {
   events: TransactionEvent[];
   nextToken?: string;
 }
-export const ListTransactionEventsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListTransactionEventsOutput",
-  }) as any as S.Schema<ListTransactionEventsOutput>;
+export const ListTransactionEventsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ events: TransactionEventList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListTransactionEventsOutput",
+}) as any as S.Schema<ListTransactionEventsOutput>;
+export type ListTransactionsSortBy = string;
 export interface ListTransactionsSort {
   sortBy?: string;
   sortOrder?: string;
@@ -799,54 +825,25 @@ export const ListTransactionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTransactionsOutput",
 }) as any as S.Schema<ListTransactionsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type ServiceCode = string;
+export type QuotaCode = string;
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchGetTokenBalanceError =
   | AccessDeniedException
   | InternalServerException
@@ -878,8 +875,11 @@ export const batchGetTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTokenBalance",
 }));
+
 export type GetAssetContractError =
   | AccessDeniedException
   | InternalServerException
@@ -913,8 +913,11 @@ export const getAssetContract: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetContract",
 }));
+
 export type GetTokenBalanceError =
   | AccessDeniedException
   | InternalServerException
@@ -945,8 +948,11 @@ export const getTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTokenBalance",
 }));
+
 export type GetTransactionError =
   | AccessDeniedException
   | InternalServerException
@@ -978,8 +984,11 @@ export const getTransaction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransaction",
 }));
+
 export type ListAssetContractsError =
   | AccessDeniedException
   | InternalServerException
@@ -1024,6 +1033,8 @@ export const listAssetContracts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetContracts",
   pagination: {
     inputToken: "nextToken",
@@ -1032,6 +1043,7 @@ export const listAssetContracts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFilteredTransactionEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -1074,6 +1086,8 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFilteredTransactionEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1082,6 +1096,7 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTokenBalancesError =
   | AccessDeniedException
   | InternalServerException
@@ -1132,6 +1147,8 @@ export const listTokenBalances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTokenBalances",
   pagination: {
     inputToken: "nextToken",
@@ -1140,6 +1157,7 @@ export const listTokenBalances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTransactionEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -1184,6 +1202,8 @@ export const listTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransactionEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1192,6 +1212,7 @@ export const listTransactionEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTransactionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1232,6 +1253,8 @@ export const listTransactions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransactions",
   pagination: {
     inputToken: "nextToken",

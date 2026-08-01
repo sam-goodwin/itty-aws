@@ -1,0 +1,91 @@
+{
+  "description": "Align resource_sharing#RecipientsDelete with distilled cloudflare/resource-sharing deleteRecipient",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_sharing#RecipientsDelete",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipient"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_sharing#RecipientsDeleteRequest",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipientRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipient/input/target",
+      "value": "com.cloudflare.resource_sharing#DeleteRecipientRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_sharing#RecipientsDeleteResponse",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipientResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipient/output/target",
+      "value": "com.cloudflare.resource_sharing#DeleteRecipientResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_sharing#ShareRecipientNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1004
+            },
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_sharing#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_sharing#DeleteRecipient/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.resource_sharing#ShareRecipientNotFound"
+        },
+        {
+          "target": "com.cloudflare.resource_sharing#Forbidden"
+        }
+      ]
+    }
+  ]
+}

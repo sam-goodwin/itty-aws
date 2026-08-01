@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,112 +88,108 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class CallRateLimitExceededException extends S.TaggedErrorClass<CallRateLimitExceededException>()(
+  "CallRateLimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ClientException extends S.TaggedErrorClass<ClientException>()(
+  "ClientException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
+  "DryRunOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidVersionNumberException extends S.TaggedErrorClass<InvalidVersionNumberException>()(
+  "InvalidVersionNumberException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ResourceDependencyException extends S.TaggedErrorClass<ResourceDependencyException>()(
+  "ResourceDependencyException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ImageBuildVersionArn = string;
 export type ClientToken = string;
-export type NonEmptyString = string;
-export type ErrorMessage = string;
-export type LifecycleExecutionId = string;
-export type ResourceName = string;
-export type VersionNumber = string;
-export type OsVersion = string;
-export type InlineComponentData = string;
-export type Uri = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ComponentBuildVersionArn = string;
-export type ImageBuilderArn = string;
-export type WildcardVersionNumber = string;
-export type ComponentVersionArnOrBuildVersionArn = string;
-export type ComponentParameterName = string;
-export type ComponentParameterValue = string;
-export type EbsIopsInteger = number;
-export type EbsVolumeSizeInteger = number;
-export type EbsVolumeThroughput = number;
-export type EmptyString = string;
-export type InlineDockerFileTemplate = string;
-export type ContainerRecipeArn = string;
-export type AmiNameString = string;
-export type AccountId = string;
-export type OrganizationArn = string;
-export type OrganizationalUnitArn = string;
-export type LicenseConfigurationArn = string;
-export type LaunchTemplateId = string;
-export type TargetResourceCount = number;
-export type MaxParallelLaunches = number;
-export type SsmParameterName = string;
-export type DistributionConfigurationArn = string;
-export type ImageRecipeArn = string;
-export type InfrastructureConfigurationArn = string;
-export type ImageTestsTimeoutMinutes = number;
-export type WorkflowVersionArnOrBuildVersionArn = string;
-export type WorkflowParameterName = string;
-export type WorkflowParameterValue = string;
-export type ParallelGroup = string;
-export type RoleNameOrArn = string;
-export type LogGroupName = string;
-export type Timezone = string;
-export type AutoDisableFailureCount = number;
-export type ImagePipelineArn = string;
-export type UserDataOverride = string;
-export type AmiWatermarkName = string;
-export type InstanceType = string;
-export type InstanceProfileNameType = string;
-export type SnsTopicArn = string;
-export type HttpTokens = string;
-export type HttpPutResponseHopLimit = number;
-export type LifecyclePolicyDetailFilterValue = number;
-export type LifecyclePolicyDetailFilterRetainAtLeast = number;
-export type LifecyclePolicyDetailExclusionRulesAmisLastLaunchedValue = number;
-export type LifecyclePolicyArn = string;
-export type InlineWorkflowData = string;
-export type WorkflowBuildVersionArn = string;
-export type ComponentParameterType = string;
-export type ComponentParameterDescription = string;
-export type ComponentData = string;
-export type ProductCodeId = string;
-export type ResourcePolicyDocument = string;
-export type DockerFileTemplate = string;
-export type DistributionTimeoutMinutes = number;
-export type ImageVersionArnOrBuildVersionArn = string;
-export type Arn = string;
-export type DateTimeTimestamp = Date;
-export type ConsecutiveFailures = number;
-export type MarketplaceResourceLocation = string;
-export type WorkflowData = string;
-export type WorkflowParameterType = string;
-export type WorkflowParameterDescription = string;
-export type WorkflowExecutionId = string;
-export type WorkflowExecutionMessage = string;
-export type WorkflowStepCount = number;
-export type WorkflowStepExecutionId = string;
-export type WorkflowStepName = string;
-export type WorkflowStepDescription = string;
-export type WorkflowStepAction = string;
-export type WorkflowStepMessage = string;
-export type WorkflowStepInputs = string;
-export type WorkflowStepOutputs = string;
-export type WorkflowStepTimeoutSecondsInteger = number;
-export type UefiData = string;
-export type WindowsConfigurationImageIndex = number;
-export type ComponentVersionArn = string;
-export type RestrictedInteger = number;
-export type PaginationToken = string;
-export type FilterName = string;
-export type FilterValue = string;
-export type ImageVersionArn = string;
-export type SeverityCountNumber = number;
-export type NonNegativeDouble = number;
-export type VulnerabilityId = string;
-export type SourceLayerHash = string;
-export type PackageEpoch = number;
-export type PackageArchitecture = string;
-export type WorkflowWildcardVersionArn = string;
-export type WorkflowNameArn = string;
-export type ImageBuildMessage = string;
-export type WorkflowVersionArn = string;
-
-//# Schemas
 export interface CancelImageCreationRequest {
   imageBuildVersionArn: string;
   clientToken: string;
@@ -213,6 +211,7 @@ export const CancelImageCreationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImageCreationRequest",
 }) as any as S.Schema<CancelImageCreationRequest>;
+export type NonEmptyString = string;
 export interface CancelImageCreationResponse {
   requestId?: string;
   clientToken?: string;
@@ -227,6 +226,7 @@ export const CancelImageCreationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImageCreationResponse",
 }) as any as S.Schema<CancelImageCreationResponse>;
+export type LifecycleExecutionId = string;
 export interface CancelLifecycleExecutionRequest {
   lifecycleExecutionId: string;
   clientToken: string;
@@ -256,10 +256,18 @@ export const CancelLifecycleExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelLifecycleExecutionResponse",
 }) as any as S.Schema<CancelLifecycleExecutionResponse>;
+export type ResourceName = string;
+export type VersionNumber = string;
 export type Platform = "Windows" | "Linux" | "macOS" | (string & {});
 export const Platform = /*@__PURE__*/ S.String;
+
+export type OsVersion = string;
 export type OsVersionList = string[];
 export const OsVersionList = /*@__PURE__*/ S.Array(S.String);
+export type InlineComponentData = string;
+export type Uri = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -306,6 +314,8 @@ export const CreateComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentRequest",
 }) as any as S.Schema<CreateComponentRequest>;
+export type ComponentBuildVersionArn = string;
+export type ImageBuilderArn = string;
 export interface LatestVersionReferences {
   latestVersionArn?: string;
   latestMajorVersionArn?: string;
@@ -340,6 +350,11 @@ export const CreateComponentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateComponentResponse>;
 export type ContainerType = "DOCKER" | (string & {});
 export const ContainerType = /*@__PURE__*/ S.String;
+
+export type WildcardVersionNumber = string;
+export type ComponentVersionArnOrBuildVersionArn = string;
+export type ComponentParameterName = string;
+export type ComponentParameterValue = string;
 export type ComponentParameterValueList = string[];
 export const ComponentParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentParameter {
@@ -369,6 +384,8 @@ export type ComponentConfigurationList = ComponentConfiguration[];
 export const ComponentConfigurationList = /*@__PURE__*/ S.Array(
   ComponentConfiguration,
 );
+export type EbsIopsInteger = number;
+export type EbsVolumeSizeInteger = number;
 export type EbsVolumeType =
   | "standard"
   | "io1"
@@ -379,6 +396,8 @@ export type EbsVolumeType =
   | "st1"
   | (string & {});
 export const EbsVolumeType = /*@__PURE__*/ S.String;
+
+export type EbsVolumeThroughput = number;
 export interface EbsInstanceBlockDeviceSpecification {
   encrypted?: boolean;
   deleteOnTermination?: boolean;
@@ -403,6 +422,7 @@ export const EbsInstanceBlockDeviceSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EbsInstanceBlockDeviceSpecification",
 }) as any as S.Schema<EbsInstanceBlockDeviceSpecification>;
+export type EmptyString = string;
 export interface InstanceBlockDeviceMapping {
   deviceName?: string;
   ebs?: EbsInstanceBlockDeviceSpecification;
@@ -435,8 +455,10 @@ export const InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceConfiguration",
 }) as any as S.Schema<InstanceConfiguration>;
+export type InlineDockerFileTemplate = string;
 export type ContainerRepositoryService = "ECR" | (string & {});
 export const ContainerRepositoryService = /*@__PURE__*/ S.String;
+
 export interface TargetContainerRepository {
   service: ContainerRepositoryService;
   repositoryName: string;
@@ -495,6 +517,7 @@ export const CreateContainerRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContainerRecipeRequest",
 }) as any as S.Schema<CreateContainerRecipeRequest>;
+export type ContainerRecipeArn = string;
 export interface CreateContainerRecipeResponse {
   requestId?: string;
   clientToken?: string;
@@ -511,12 +534,16 @@ export const CreateContainerRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContainerRecipeResponse",
 }) as any as S.Schema<CreateContainerRecipeResponse>;
+export type AmiNameString = string;
+export type AccountId = string;
 export type AccountList = string[];
 export const AccountList = /*@__PURE__*/ S.Array(S.String);
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type OrganizationArn = string;
 export type OrganizationArnList = string[];
 export const OrganizationArnList = /*@__PURE__*/ S.Array(S.String);
+export type OrganizationalUnitArn = string;
 export type OrganizationalUnitArnList = string[];
 export const OrganizationalUnitArnList = /*@__PURE__*/ S.Array(S.String);
 export interface LaunchPermissionConfiguration {
@@ -569,8 +596,10 @@ export const ContainerDistributionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerDistributionConfiguration",
 }) as any as S.Schema<ContainerDistributionConfiguration>;
+export type LicenseConfigurationArn = string;
 export type LicenseConfigurationArnList = string[];
 export const LicenseConfigurationArnList = /*@__PURE__*/ S.Array(S.String);
+export type LaunchTemplateId = string;
 export interface LaunchTemplateConfiguration {
   launchTemplateId: string;
   accountId?: string;
@@ -591,6 +620,7 @@ export const LaunchTemplateConfigurationList = /*@__PURE__*/ S.Array(
 );
 export type DiskImageFormat = "VMDK" | "RAW" | "VHD" | (string & {});
 export const DiskImageFormat = /*@__PURE__*/ S.String;
+
 export interface S3ExportConfiguration {
   roleName: string;
   diskImageFormat: DiskImageFormat;
@@ -607,6 +637,7 @@ export const S3ExportConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3ExportConfiguration",
 }) as any as S.Schema<S3ExportConfiguration>;
+export type TargetResourceCount = number;
 export interface FastLaunchSnapshotConfiguration {
   targetResourceCount?: number;
 }
@@ -615,6 +646,7 @@ export const FastLaunchSnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FastLaunchSnapshotConfiguration",
 }) as any as S.Schema<FastLaunchSnapshotConfiguration>;
+export type MaxParallelLaunches = number;
 export interface FastLaunchLaunchTemplateSpecification {
   launchTemplateId?: string;
   launchTemplateName?: string;
@@ -652,8 +684,10 @@ export type FastLaunchConfigurationList = FastLaunchConfiguration[];
 export const FastLaunchConfigurationList = /*@__PURE__*/ S.Array(
   FastLaunchConfiguration,
 );
+export type SsmParameterName = string;
 export type SsmParameterDataType = "text" | "aws:ec2:image" | (string & {});
 export const SsmParameterDataType = /*@__PURE__*/ S.String;
+
 export interface SsmParameterConfiguration {
   amiAccountId?: string;
   parameterName: string;
@@ -726,6 +760,7 @@ export const CreateDistributionConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDistributionConfigurationRequest",
 }) as any as S.Schema<CreateDistributionConfigurationRequest>;
+export type DistributionConfigurationArn = string;
 export interface CreateDistributionConfigurationResponse {
   requestId?: string;
   clientToken?: string;
@@ -741,6 +776,9 @@ export const CreateDistributionConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDistributionConfigurationResponse",
 }) as any as S.Schema<CreateDistributionConfigurationResponse>;
+export type ImageRecipeArn = string;
+export type InfrastructureConfigurationArn = string;
+export type ImageTestsTimeoutMinutes = number;
 export interface ImageTestsConfiguration {
   imageTestsEnabled?: boolean;
   timeoutMinutes?: number;
@@ -777,6 +815,9 @@ export const ImageScanningConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageScanningConfiguration",
 }) as any as S.Schema<ImageScanningConfiguration>;
+export type WorkflowVersionArnOrBuildVersionArn = string;
+export type WorkflowParameterName = string;
+export type WorkflowParameterValue = string;
 export type WorkflowParameterValueList = string[];
 export const WorkflowParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface WorkflowParameter {
@@ -790,8 +831,10 @@ export const WorkflowParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowParameter>;
 export type WorkflowParameterList = WorkflowParameter[];
 export const WorkflowParameterList = /*@__PURE__*/ S.Array(WorkflowParameter);
+export type ParallelGroup = string;
 export type OnWorkflowFailure = "CONTINUE" | "ABORT" | (string & {});
 export const OnWorkflowFailure = /*@__PURE__*/ S.String;
+
 export interface WorkflowConfiguration {
   workflowArn: string;
   parameters?: WorkflowParameter[];
@@ -812,6 +855,8 @@ export type WorkflowConfigurationList = WorkflowConfiguration[];
 export const WorkflowConfigurationList = /*@__PURE__*/ S.Array(
   WorkflowConfiguration,
 );
+export type RoleNameOrArn = string;
+export type LogGroupName = string;
 export interface ImageLoggingConfiguration {
   logGroupName?: string;
 }
@@ -877,11 +922,14 @@ export const CreateImageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageResponse",
 }) as any as S.Schema<CreateImageResponse>;
+export type Timezone = string;
 export type PipelineExecutionStartCondition =
   | "EXPRESSION_MATCH_ONLY"
   | "EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
   | (string & {});
 export const PipelineExecutionStartCondition = /*@__PURE__*/ S.String;
+
+export type AutoDisableFailureCount = number;
 export interface AutoDisablePolicy {
   failureCount: number;
 }
@@ -908,6 +956,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 export type PipelineStatus = "DISABLED" | "ENABLED" | (string & {});
 export const PipelineStatus = /*@__PURE__*/ S.String;
+
 export interface PipelineLoggingConfiguration {
   imageLogGroupName?: string;
   pipelineLogGroupName?: string;
@@ -971,6 +1020,7 @@ export const CreateImagePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImagePipelineRequest",
 }) as any as S.Schema<CreateImagePipelineRequest>;
+export type ImagePipelineArn = string;
 export interface CreateImagePipelineResponse {
   requestId?: string;
   clientToken?: string;
@@ -993,6 +1043,7 @@ export const SystemsManagerAgent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SystemsManagerAgent",
 }) as any as S.Schema<SystemsManagerAgent>;
+export type UserDataOverride = string;
 export interface AdditionalInstanceConfiguration {
   systemsManagerAgent?: SystemsManagerAgent;
   userDataOverride?: string;
@@ -1005,6 +1056,7 @@ export const AdditionalInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdditionalInstanceConfiguration",
 }) as any as S.Schema<AdditionalInstanceConfiguration>;
+export type AmiWatermarkName = string;
 export type AmiWatermarksList = string[];
 export const AmiWatermarksList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateImageRecipeRequest {
@@ -1066,8 +1118,10 @@ export const CreateImageRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageRecipeResponse",
 }) as any as S.Schema<CreateImageRecipeResponse>;
+export type InstanceType = string;
 export type InstanceTypeList = string[];
 export const InstanceTypeList = /*@__PURE__*/ S.Array(S.String);
+export type InstanceProfileNameType = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface S3Logs {
@@ -1086,11 +1140,14 @@ export interface Logging {
 export const Logging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Logs: S.optional(S3Logs) }),
 ).annotate({ identifier: "Logging" }) as any as S.Schema<Logging>;
+export type SnsTopicArn = string;
 export type ResourceTagMap = { [key: string]: string | undefined };
 export const ResourceTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type HttpTokens = string;
+export type HttpPutResponseHopLimit = number;
 export interface InstanceMetadataOptions {
   httpTokens?: string;
   httpPutResponseHopLimit?: number;
@@ -1105,6 +1162,7 @@ export const InstanceMetadataOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceMetadataOptions>;
 export type TenancyType = "default" | "dedicated" | "host" | (string & {});
 export const TenancyType = /*@__PURE__*/ S.String;
+
 export interface Placement {
   availabilityZone?: string;
   tenancy?: TenancyType;
@@ -1184,17 +1242,20 @@ export const CreateInfrastructureConfigurationResponse =
   }) as any as S.Schema<CreateInfrastructureConfigurationResponse>;
 export type LifecyclePolicyStatus = "DISABLED" | "ENABLED" | (string & {});
 export const LifecyclePolicyStatus = /*@__PURE__*/ S.String;
+
 export type LifecyclePolicyResourceType =
   | "AMI_IMAGE"
   | "CONTAINER_IMAGE"
   | (string & {});
 export const LifecyclePolicyResourceType = /*@__PURE__*/ S.String;
+
 export type LifecyclePolicyDetailActionType =
   | "DELETE"
   | "DEPRECATE"
   | "DISABLE"
   | (string & {});
 export const LifecyclePolicyDetailActionType = /*@__PURE__*/ S.String;
+
 export interface LifecyclePolicyDetailActionIncludeResources {
   amis?: boolean;
   snapshots?: boolean;
@@ -1224,6 +1285,8 @@ export const LifecyclePolicyDetailAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecyclePolicyDetailAction>;
 export type LifecyclePolicyDetailFilterType = "AGE" | "COUNT" | (string & {});
 export const LifecyclePolicyDetailFilterType = /*@__PURE__*/ S.String;
+
+export type LifecyclePolicyDetailFilterValue = number;
 export type LifecyclePolicyTimeUnit =
   | "DAYS"
   | "WEEKS"
@@ -1231,6 +1294,8 @@ export type LifecyclePolicyTimeUnit =
   | "YEARS"
   | (string & {});
 export const LifecyclePolicyTimeUnit = /*@__PURE__*/ S.String;
+
+export type LifecyclePolicyDetailFilterRetainAtLeast = number;
 export interface LifecyclePolicyDetailFilter {
   type: LifecyclePolicyDetailFilterType;
   value: number;
@@ -1247,6 +1312,7 @@ export const LifecyclePolicyDetailFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecyclePolicyDetailFilter",
 }) as any as S.Schema<LifecyclePolicyDetailFilter>;
+export type LifecyclePolicyDetailExclusionRulesAmisLastLaunchedValue = number;
 export interface LifecyclePolicyDetailExclusionRulesAmisLastLaunched {
   value: number;
   unit: LifecyclePolicyTimeUnit;
@@ -1369,6 +1435,7 @@ export const CreateLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLifecyclePolicyRequest",
 }) as any as S.Schema<CreateLifecyclePolicyRequest>;
+export type LifecyclePolicyArn = string;
 export interface CreateLifecyclePolicyResponse {
   clientToken?: string;
   lifecyclePolicyArn?: string;
@@ -1381,8 +1448,10 @@ export const CreateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLifecyclePolicyResponse",
 }) as any as S.Schema<CreateLifecyclePolicyResponse>;
+export type InlineWorkflowData = string;
 export type WorkflowType = "BUILD" | "TEST" | "DISTRIBUTION" | (string & {});
 export const WorkflowType = /*@__PURE__*/ S.String;
+
 export interface CreateWorkflowRequest {
   name: string;
   semanticVersion: string;
@@ -1422,6 +1491,7 @@ export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkflowRequest",
 }) as any as S.Schema<CreateWorkflowRequest>;
+export type WorkflowBuildVersionArn = string;
 export interface CreateWorkflowResponse {
   clientToken?: string;
   workflowBuildVersionArn?: string;
@@ -1783,12 +1853,14 @@ export const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetComponentRequest>;
 export type ComponentType = "BUILD" | "TEST" | (string & {});
 export const ComponentType = /*@__PURE__*/ S.String;
+
 export type ComponentStatus =
   | "DEPRECATED"
   | "DISABLED"
   | "ACTIVE"
   | (string & {});
 export const ComponentStatus = /*@__PURE__*/ S.String;
+
 export interface ComponentState {
   status?: ComponentStatus;
   reason?: string;
@@ -1799,6 +1871,8 @@ export const ComponentState = /*@__PURE__*/ S.suspend(() =>
     reason: S.optional(S.String),
   }),
 ).annotate({ identifier: "ComponentState" }) as any as S.Schema<ComponentState>;
+export type ComponentParameterType = string;
+export type ComponentParameterDescription = string;
 export interface ComponentParameterDetail {
   name: string;
   type: string;
@@ -1819,8 +1893,11 @@ export type ComponentParameterDetailList = ComponentParameterDetail[];
 export const ComponentParameterDetailList = /*@__PURE__*/ S.Array(
   ComponentParameterDetail,
 );
+export type ComponentData = string;
+export type ProductCodeId = string;
 export type ProductCodeType = "marketplace" | (string & {});
 export const ProductCodeType = /*@__PURE__*/ S.String;
+
 export interface ProductCodeListItem {
   productCodeId: string;
   productCodeType: ProductCodeType;
@@ -1907,6 +1984,7 @@ export const GetComponentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComponentPolicyRequest",
 }) as any as S.Schema<GetComponentPolicyRequest>;
+export type ResourcePolicyDocument = string;
 export interface GetComponentPolicyResponse {
   requestId?: string;
   policy?: string;
@@ -1935,6 +2013,7 @@ export const GetContainerRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContainerRecipeRequest",
 }) as any as S.Schema<GetContainerRecipeRequest>;
+export type DockerFileTemplate = string;
 export interface ContainerRecipe {
   arn?: string;
   containerType?: ContainerType;
@@ -2040,6 +2119,7 @@ export const GetDistributionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDistributionConfigurationRequest",
 }) as any as S.Schema<GetDistributionConfigurationRequest>;
+export type DistributionTimeoutMinutes = number;
 export interface DistributionConfiguration {
   arn?: string;
   name?: string;
@@ -2077,6 +2157,7 @@ export const GetDistributionConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetDistributionConfigurationResponse",
 }) as any as S.Schema<GetDistributionConfigurationResponse>;
+export type ImageVersionArnOrBuildVersionArn = string;
 export interface GetImageRequest {
   imageBuildVersionArn: string;
 }
@@ -2098,6 +2179,7 @@ export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetImageRequest>;
 export type ImageType = "AMI" | "DOCKER" | (string & {});
 export const ImageType = /*@__PURE__*/ S.String;
+
 export type ImageStatus =
   | "PENDING"
   | "CREATING"
@@ -2113,6 +2195,7 @@ export type ImageStatus =
   | "DISABLED"
   | (string & {});
 export const ImageStatus = /*@__PURE__*/ S.String;
+
 export interface ImageState {
   status?: ImageStatus;
   reason?: string;
@@ -2160,6 +2243,7 @@ export const ImageRecipe = /*@__PURE__*/ S.suspend(() =>
     amiWatermarks: S.optional(AmiWatermarksList),
   }),
 ).annotate({ identifier: "ImageRecipe" }) as any as S.Schema<ImageRecipe>;
+export type Arn = string;
 export interface InfrastructureConfiguration {
   arn?: string;
   name?: string;
@@ -2250,6 +2334,7 @@ export type BuildType =
   | "IMPORT_ISO"
   | (string & {});
 export const BuildType = /*@__PURE__*/ S.String;
+
 export type ImageSource =
   | "AMAZON_MANAGED"
   | "AWS_MARKETPLACE"
@@ -2257,6 +2342,7 @@ export type ImageSource =
   | "CUSTOM"
   | (string & {});
 export const ImageSource = /*@__PURE__*/ S.String;
+
 export type ImageScanStatus =
   | "PENDING"
   | "SCANNING"
@@ -2267,6 +2353,7 @@ export type ImageScanStatus =
   | "TIMED_OUT"
   | (string & {});
 export const ImageScanStatus = /*@__PURE__*/ S.String;
+
 export interface ImageScanState {
   status?: ImageScanStatus;
   reason?: string;
@@ -2277,6 +2364,7 @@ export const ImageScanState = /*@__PURE__*/ S.suspend(() =>
     reason: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImageScanState" }) as any as S.Schema<ImageScanState>;
+export type DateTimeTimestamp = Date;
 export interface Image {
   arn?: string;
   type?: ImageType;
@@ -2372,6 +2460,7 @@ export const GetImagePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetImagePipelineRequest",
 }) as any as S.Schema<GetImagePipelineRequest>;
+export type ConsecutiveFailures = number;
 export interface ImagePipeline {
   arn?: string;
   name?: string;
@@ -2597,6 +2686,7 @@ export type LifecycleExecutionStatus =
   | "PENDING"
   | (string & {});
 export const LifecycleExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface LifecycleExecutionState {
   status?: LifecycleExecutionStatus;
   reason?: string;
@@ -2703,6 +2793,8 @@ export type MarketplaceResourceType =
   | "COMPONENT_ARTIFACT"
   | (string & {});
 export const MarketplaceResourceType = /*@__PURE__*/ S.String;
+
+export type MarketplaceResourceLocation = string;
 export interface GetMarketplaceResourceRequest {
   resourceType: MarketplaceResourceType;
   resourceArn: string;
@@ -2763,6 +2855,7 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkflowRequest>;
 export type WorkflowStatus = "DEPRECATED" | (string & {});
 export const WorkflowStatus = /*@__PURE__*/ S.String;
+
 export interface WorkflowState {
   status?: WorkflowStatus;
   reason?: string;
@@ -2773,6 +2866,9 @@ export const WorkflowState = /*@__PURE__*/ S.suspend(() =>
     reason: S.optional(S.String),
   }),
 ).annotate({ identifier: "WorkflowState" }) as any as S.Schema<WorkflowState>;
+export type WorkflowData = string;
+export type WorkflowParameterType = string;
+export type WorkflowParameterDescription = string;
 export interface WorkflowParameterDetail {
   name: string;
   type: string;
@@ -2837,6 +2933,7 @@ export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkflowResponse",
 }) as any as S.Schema<GetWorkflowResponse>;
+export type WorkflowExecutionId = string;
 export interface GetWorkflowExecutionRequest {
   workflowExecutionId: string;
 }
@@ -2867,6 +2964,9 @@ export type WorkflowExecutionStatus =
   | "CANCELLED"
   | (string & {});
 export const WorkflowExecutionStatus = /*@__PURE__*/ S.String;
+
+export type WorkflowExecutionMessage = string;
+export type WorkflowStepCount = number;
 export interface GetWorkflowExecutionResponse {
   requestId?: string;
   workflowBuildVersionArn?: string;
@@ -2903,6 +3003,7 @@ export const GetWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkflowExecutionResponse",
 }) as any as S.Schema<GetWorkflowExecutionResponse>;
+export type WorkflowStepExecutionId = string;
 export interface GetWorkflowStepExecutionRequest {
   stepExecutionId: string;
 }
@@ -2922,6 +3023,9 @@ export const GetWorkflowStepExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkflowStepExecutionRequest",
 }) as any as S.Schema<GetWorkflowStepExecutionRequest>;
+export type WorkflowStepName = string;
+export type WorkflowStepDescription = string;
+export type WorkflowStepAction = string;
 export type WorkflowStepExecutionStatus =
   | "PENDING"
   | "SKIPPED"
@@ -2931,6 +3035,7 @@ export type WorkflowStepExecutionStatus =
   | "CANCELLED"
   | (string & {});
 export const WorkflowStepExecutionStatus = /*@__PURE__*/ S.String;
+
 export type WorkflowStepExecutionRollbackStatus =
   | "RUNNING"
   | "COMPLETED"
@@ -2938,6 +3043,11 @@ export type WorkflowStepExecutionRollbackStatus =
   | "FAILED"
   | (string & {});
 export const WorkflowStepExecutionRollbackStatus = /*@__PURE__*/ S.String;
+
+export type WorkflowStepMessage = string;
+export type WorkflowStepInputs = string;
+export type WorkflowStepOutputs = string;
+export type WorkflowStepTimeoutSecondsInteger = number;
 export interface GetWorkflowStepExecutionResponse {
   requestId?: string;
   stepExecutionId?: string;
@@ -2982,6 +3092,7 @@ export const GetWorkflowStepExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkflowStepExecutionResponse>;
 export type ComponentFormat = "SHELL" | (string & {});
 export const ComponentFormat = /*@__PURE__*/ S.String;
+
 export interface ImportComponentRequest {
   name: string;
   semanticVersion: string;
@@ -3037,6 +3148,7 @@ export const ImportComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportComponentResponse",
 }) as any as S.Schema<ImportComponentResponse>;
+export type UefiData = string;
 export interface RegisterImageOptions {
   secureBootEnabled?: boolean;
   uefiData?: string;
@@ -3049,6 +3161,7 @@ export const RegisterImageOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterImageOptions",
 }) as any as S.Schema<RegisterImageOptions>;
+export type WindowsConfigurationImageIndex = number;
 export interface WindowsConfiguration {
   imageIndex: number;
 }
@@ -3161,6 +3274,9 @@ export const ImportVmImageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportVmImageResponse",
 }) as any as S.Schema<ImportVmImageResponse>;
+export type ComponentVersionArn = string;
+export type RestrictedInteger = number;
+export type PaginationToken = string;
 export interface ListComponentBuildVersionsRequest {
   componentVersionArn?: string;
   maxResults?: number;
@@ -3244,6 +3360,9 @@ export type Ownership =
   | "AWSMarketplace"
   | (string & {});
 export const Ownership = /*@__PURE__*/ S.String;
+
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -3467,6 +3586,7 @@ export const ListDistributionConfigurationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListDistributionConfigurationsResponse",
 }) as any as S.Schema<ListDistributionConfigurationsResponse>;
+export type ImageVersionArn = string;
 export interface ListImageBuildVersionsRequest {
   imageVersionArn?: string;
   filters?: Filter[];
@@ -3831,6 +3951,7 @@ export const ListImageScanFindingAggregationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListImageScanFindingAggregationsRequest",
 }) as any as S.Schema<ListImageScanFindingAggregationsRequest>;
+export type SeverityCountNumber = number;
 export interface SeverityCounts {
   all?: number;
   critical?: number;
@@ -3986,6 +4107,7 @@ export interface Remediation {
 export const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ recommendation: S.optional(RemediationRecommendation) }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
+export type NonNegativeDouble = number;
 export interface CvssScoreAdjustment {
   metric?: string;
   reason?: string;
@@ -4026,6 +4148,10 @@ export const InspectorScoreDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InspectorScoreDetails",
 }) as any as S.Schema<InspectorScoreDetails>;
+export type VulnerabilityId = string;
+export type SourceLayerHash = string;
+export type PackageEpoch = number;
+export type PackageArchitecture = string;
 export interface VulnerablePackage {
   name?: string;
   version?: string;
@@ -4269,6 +4395,7 @@ export type LifecycleExecutionResourceStatus =
   | "SUCCESS"
   | (string & {});
 export const LifecycleExecutionResourceStatus = /*@__PURE__*/ S.String;
+
 export interface LifecycleExecutionResourceState {
   status?: LifecycleExecutionResourceStatus;
   reason?: string;
@@ -4288,6 +4415,7 @@ export type LifecycleExecutionResourceActionName =
   | "DISABLE"
   | (string & {});
 export const LifecycleExecutionResourceActionName = /*@__PURE__*/ S.String;
+
 export interface LifecycleExecutionResourceAction {
   name?: LifecycleExecutionResourceActionName;
   reason?: string;
@@ -4553,6 +4681,7 @@ export const ListWaitingWorkflowStepsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWaitingWorkflowStepsResponse",
 }) as any as S.Schema<ListWaitingWorkflowStepsResponse>;
+export type WorkflowWildcardVersionArn = string;
 export interface ListWorkflowBuildVersionsRequest {
   workflowVersionArn?: string;
   maxResults?: number;
@@ -4576,6 +4705,7 @@ export const ListWorkflowBuildVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkflowBuildVersionsRequest",
 }) as any as S.Schema<ListWorkflowBuildVersionsRequest>;
+export type WorkflowNameArn = string;
 export interface WorkflowSummary {
   arn?: string;
   name?: string;
@@ -4679,6 +4809,7 @@ export type WorkflowExecutionsList = WorkflowExecutionMetadata[];
 export const WorkflowExecutionsList = /*@__PURE__*/ S.Array(
   WorkflowExecutionMetadata,
 );
+export type ImageBuildMessage = string;
 export interface ListWorkflowExecutionsResponse {
   requestId?: string;
   workflowExecutions?: WorkflowExecutionMetadata[];
@@ -4724,6 +4855,7 @@ export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkflowsRequest",
 }) as any as S.Schema<ListWorkflowsRequest>;
+export type WorkflowVersionArn = string;
 export interface WorkflowVersion {
   arn?: string;
   name?: string;
@@ -4990,6 +5122,7 @@ export const RetryImageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetryImageResponse>;
 export type WorkflowStepActionType = "RESUME" | "STOP" | (string & {});
 export const WorkflowStepActionType = /*@__PURE__*/ S.String;
+
 export interface SendWorkflowStepActionRequest {
   stepExecutionId: string;
   imageBuildVersionArn: string;
@@ -5075,6 +5208,7 @@ export type ResourceStatus =
   | "DISABLED"
   | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
+
 export interface ResourceState {
   status?: ResourceStatus;
 }
@@ -5408,108 +5542,7 @@ export const UpdateLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLifecyclePolicyResponse",
 }) as any as S.Schema<UpdateLifecyclePolicyResponse>;
-
-//# Errors
-export class CallRateLimitExceededException extends S.TaggedErrorClass<CallRateLimitExceededException>()(
-  "CallRateLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ClientException extends S.TaggedErrorClass<ClientException>()(
-  "ClientException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {},
-) {}
-export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
-  "DryRunOperationException",
-  { message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidVersionNumberException extends S.TaggedErrorClass<InvalidVersionNumberException>()(
-  "InvalidVersionNumberException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceDependencyException extends S.TaggedErrorClass<ResourceDependencyException>()(
-  "ResourceDependencyException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CancelImageCreationError =
   | CallRateLimitExceededException
   | ClientException
@@ -5544,8 +5577,11 @@ export const cancelImageCreation: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImageCreation",
 }));
+
 export type CancelLifecycleExecutionError =
   | CallRateLimitExceededException
   | ClientException
@@ -5577,8 +5613,11 @@ export const cancelLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelLifecycleExecution",
 }));
+
 export type CreateComponentError =
   | CallRateLimitExceededException
   | ClientException
@@ -5625,8 +5664,11 @@ export const createComponent: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponent",
 }));
+
 export type CreateContainerRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -5665,8 +5707,11 @@ export const createContainerRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerRecipe",
 }));
+
 export type CreateDistributionConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -5705,8 +5750,11 @@ export const createDistributionConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistributionConfiguration",
 }));
+
 export type CreateImageError =
   | CallRateLimitExceededException
   | ClientException
@@ -5743,8 +5791,11 @@ export const createImage: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImage",
 }));
+
 export type CreateImagePipelineError =
   | CallRateLimitExceededException
   | ClientException
@@ -5781,8 +5832,11 @@ export const createImagePipeline: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImagePipeline",
 }));
+
 export type CreateImageRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -5821,8 +5875,11 @@ export const createImageRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageRecipe",
 }));
+
 export type CreateInfrastructureConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -5861,8 +5918,11 @@ export const createInfrastructureConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInfrastructureConfiguration",
 }));
+
 export type CreateLifecyclePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -5898,8 +5958,11 @@ export const createLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLifecyclePolicy",
 }));
+
 export type CreateWorkflowError =
   | CallRateLimitExceededException
   | ClientException
@@ -5939,8 +6002,11 @@ export const createWorkflow: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
+
 export type DeleteComponentError =
   | CallRateLimitExceededException
   | ClientException
@@ -5972,8 +6038,11 @@ export const deleteComponent: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
+
 export type DeleteContainerRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -6003,8 +6072,11 @@ export const deleteContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerRecipe",
 }));
+
 export type DeleteDistributionConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -6036,8 +6108,11 @@ export const deleteDistributionConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistributionConfiguration",
 }));
+
 export type DeleteImageError =
   | CallRateLimitExceededException
   | ClientException
@@ -6085,8 +6160,11 @@ export const deleteImage: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImage",
 }));
+
 export type DeleteImagePipelineError =
   | CallRateLimitExceededException
   | ClientException
@@ -6118,8 +6196,11 @@ export const deleteImagePipeline: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImagePipeline",
 }));
+
 export type DeleteImageRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -6151,8 +6232,11 @@ export const deleteImageRecipe: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageRecipe",
 }));
+
 export type DeleteInfrastructureConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -6184,8 +6268,11 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInfrastructureConfiguration",
 }));
+
 export type DeleteLifecyclePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -6215,8 +6302,11 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
+
 export type DeleteWorkflowError =
   | CallRateLimitExceededException
   | ClientException
@@ -6246,8 +6336,11 @@ export const deleteWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
+
 export type DistributeImageError =
   | AccessDeniedException
   | CallRateLimitExceededException
@@ -6289,8 +6382,11 @@ export const distributeImage: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DistributeImage",
 }));
+
 export type GetComponentError =
   | CallRateLimitExceededException
   | ClientException
@@ -6320,8 +6416,11 @@ export const getComponent: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
+
 export type GetComponentPolicyError =
   | CallRateLimitExceededException
   | ForbiddenException
@@ -6349,8 +6448,11 @@ export const getComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentPolicy",
 }));
+
 export type GetContainerRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -6378,8 +6480,11 @@ export const getContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerRecipe",
 }));
+
 export type GetContainerRecipePolicyError =
   | CallRateLimitExceededException
   | ForbiddenException
@@ -6407,8 +6512,11 @@ export const getContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerRecipePolicy",
 }));
+
 export type GetDistributionConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -6438,8 +6546,11 @@ export const getDistributionConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionConfiguration",
 }));
+
 export type GetImageError =
   | CallRateLimitExceededException
   | ClientException
@@ -6469,8 +6580,11 @@ export const getImage: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImage",
 }));
+
 export type GetImagePipelineError =
   | CallRateLimitExceededException
   | ClientException
@@ -6500,8 +6614,11 @@ export const getImagePipeline: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImagePipeline",
 }));
+
 export type GetImagePolicyError =
   | CallRateLimitExceededException
   | ForbiddenException
@@ -6529,8 +6646,11 @@ export const getImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImagePolicy",
 }));
+
 export type GetImageRecipeError =
   | CallRateLimitExceededException
   | ClientException
@@ -6560,8 +6680,11 @@ export const getImageRecipe: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageRecipe",
 }));
+
 export type GetImageRecipePolicyError =
   | CallRateLimitExceededException
   | ForbiddenException
@@ -6589,8 +6712,11 @@ export const getImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageRecipePolicy",
 }));
+
 export type GetInfrastructureConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -6620,8 +6746,11 @@ export const getInfrastructureConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInfrastructureConfiguration",
 }));
+
 export type GetLifecycleExecutionError =
   | CallRateLimitExceededException
   | ClientException
@@ -6649,8 +6778,11 @@ export const getLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecycleExecution",
 }));
+
 export type GetLifecyclePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -6678,8 +6810,11 @@ export const getLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
+
 export type GetMarketplaceResourceError =
   | CallRateLimitExceededException
   | ClientException
@@ -6709,8 +6844,11 @@ export const getMarketplaceResource: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMarketplaceResource",
 }));
+
 export type GetWorkflowError =
   | CallRateLimitExceededException
   | ClientException
@@ -6738,8 +6876,11 @@ export const getWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
+
 export type GetWorkflowExecutionError =
   | CallRateLimitExceededException
   | ClientException
@@ -6768,8 +6909,11 @@ export const getWorkflowExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowExecution",
 }));
+
 export type GetWorkflowStepExecutionError =
   | CallRateLimitExceededException
   | ClientException
@@ -6798,8 +6942,11 @@ export const getWorkflowStepExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowStepExecution",
 }));
+
 export type ImportComponentError =
   | CallRateLimitExceededException
   | ClientException
@@ -6835,8 +6982,11 @@ export const importComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportComponent",
 }));
+
 export type ImportDiskImageError =
   | AccessDeniedException
   | ClientException
@@ -6865,8 +7015,11 @@ export const importDiskImage: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDiskImage",
 }));
+
 export type ImportVmImageError =
   | ClientException
   | ServiceException
@@ -6891,8 +7044,11 @@ export const importVmImage: API.OperationMethod<
   input: ImportVmImageRequest,
   output: ImportVmImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportVmImage",
 }));
+
 export type ListComponentBuildVersionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -6940,6 +7096,8 @@ export const listComponentBuildVersions: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -6948,6 +7106,7 @@ export const listComponentBuildVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7002,6 +7161,8 @@ export const listComponents: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -7010,6 +7171,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListContainerRecipesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7054,6 +7216,8 @@ export const listContainerRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerRecipes",
   pagination: {
     inputToken: "nextToken",
@@ -7062,6 +7226,7 @@ export const listContainerRecipes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDistributionConfigurationsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7106,6 +7271,8 @@ export const listDistributionConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -7114,6 +7281,7 @@ export const listDistributionConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImageBuildVersionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7158,6 +7326,8 @@ export const listImageBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -7166,6 +7336,7 @@ export const listImageBuildVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImagePackagesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7213,6 +7384,8 @@ export const listImagePackages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePackages",
   pagination: {
     inputToken: "nextToken",
@@ -7221,6 +7394,7 @@ export const listImagePackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImagePipelineImagesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7267,6 +7441,8 @@ export const listImagePipelineImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePipelineImages",
   pagination: {
     inputToken: "nextToken",
@@ -7275,6 +7451,7 @@ export const listImagePipelineImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImagePipelinesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7319,6 +7496,8 @@ export const listImagePipelines: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePipelines",
   pagination: {
     inputToken: "nextToken",
@@ -7327,6 +7506,7 @@ export const listImagePipelines: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImageRecipesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7371,6 +7551,8 @@ export const listImageRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageRecipes",
   pagination: {
     inputToken: "nextToken",
@@ -7379,6 +7561,7 @@ export const listImageRecipes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImagesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7424,6 +7607,8 @@ export const listImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImages",
   pagination: {
     inputToken: "nextToken",
@@ -7432,6 +7617,7 @@ export const listImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImageScanFindingAggregationsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7490,6 +7676,8 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageScanFindingAggregations",
   pagination: {
     inputToken: "nextToken",
@@ -7497,6 +7685,7 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     items: "responses",
   } as const,
 }));
+
 export type ListImageScanFindingsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7541,6 +7730,8 @@ export const listImageScanFindings: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageScanFindings",
   pagination: {
     inputToken: "nextToken",
@@ -7549,6 +7740,7 @@ export const listImageScanFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInfrastructureConfigurationsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7593,6 +7785,8 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInfrastructureConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -7601,6 +7795,7 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListLifecycleExecutionResourcesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7645,6 +7840,8 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecycleExecutionResources",
   pagination: {
     inputToken: "nextToken",
@@ -7653,6 +7850,7 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListLifecycleExecutionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7697,6 +7895,8 @@ export const listLifecycleExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecycleExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -7705,6 +7905,7 @@ export const listLifecycleExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListLifecyclePoliciesError =
   | CallRateLimitExceededException
   | ClientException
@@ -7749,6 +7950,8 @@ export const listLifecyclePolicies: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecyclePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -7757,6 +7960,7 @@ export const listLifecyclePolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -7778,8 +7982,11 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWaitingWorkflowStepsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7825,6 +8032,8 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWaitingWorkflowSteps",
   pagination: {
     inputToken: "nextToken",
@@ -7833,6 +8042,7 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListWorkflowBuildVersionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7877,6 +8087,8 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -7885,6 +8097,7 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListWorkflowExecutionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7930,6 +8143,8 @@ export const listWorkflowExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -7938,6 +8153,7 @@ export const listWorkflowExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListWorkflowsError =
   | CallRateLimitExceededException
   | ClientException
@@ -7982,6 +8198,8 @@ export const listWorkflows: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -7990,6 +8208,7 @@ export const listWorkflows: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListWorkflowStepExecutionsError =
   | CallRateLimitExceededException
   | ClientException
@@ -8035,6 +8254,8 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowStepExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -8043,6 +8264,7 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutComponentPolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -8076,8 +8298,11 @@ export const putComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutComponentPolicy",
 }));
+
 export type PutContainerRecipePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -8116,8 +8341,11 @@ export const putContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContainerRecipePolicy",
 }));
+
 export type PutImagePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -8151,8 +8379,11 @@ export const putImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImagePolicy",
 }));
+
 export type PutImageRecipePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -8186,8 +8417,11 @@ export const putImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImageRecipePolicy",
 }));
+
 export type RetryImageError =
   | CallRateLimitExceededException
   | ClientException
@@ -8219,8 +8453,11 @@ export const retryImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryImage",
 }));
+
 export type SendWorkflowStepActionError =
   | CallRateLimitExceededException
   | ClientException
@@ -8257,8 +8494,11 @@ export const sendWorkflowStepAction: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendWorkflowStepAction",
 }));
+
 export type StartImagePipelineExecutionError =
   | CallRateLimitExceededException
   | ClientException
@@ -8292,8 +8532,11 @@ export const startImagePipelineExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImagePipelineExecution",
 }));
+
 export type StartResourceStateUpdateError =
   | CallRateLimitExceededException
   | ClientException
@@ -8328,8 +8571,11 @@ export const startResourceStateUpdate: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceStateUpdate",
 }));
+
 export type TagResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8351,8 +8597,11 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8374,8 +8623,11 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDistributionConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -8412,8 +8664,11 @@ export const updateDistributionConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionConfiguration",
 }));
+
 export type UpdateImagePipelineError =
   | CallRateLimitExceededException
   | ClientException
@@ -8453,8 +8708,11 @@ export const updateImagePipeline: API.OperationMethod<
     ServiceUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImagePipeline",
 }));
+
 export type UpdateInfrastructureConfigurationError =
   | CallRateLimitExceededException
   | ClientException
@@ -8491,8 +8749,11 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInfrastructureConfiguration",
 }));
+
 export type UpdateLifecyclePolicyError =
   | CallRateLimitExceededException
   | ClientException
@@ -8526,5 +8787,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLifecyclePolicy",
 }));

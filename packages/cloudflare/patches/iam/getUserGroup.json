@@ -1,13 +1,91 @@
 {
-  "errors": {
-    "UserGroupNotFound": [
-      { "code": 404, "message": { "includes": "User group" } }
-    ],
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "policies[].resource_groups[].scope": { "type": "unknown" }
+  "description": "Align iam#UserGroupsGet with distilled cloudflare/iam getUserGroup",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsGet",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroup"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsGetRequest",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroupRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroup/input/target",
+      "value": "com.cloudflare.iam#GetUserGroupRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsGetResponse",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroupResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroup/output/target",
+      "value": "com.cloudflare.iam#GetUserGroupResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#UserGroupNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 404,
+              "message": {
+                "includes": "User group"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#GetUserGroup/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.iam#UserGroupNotFound"
+        },
+        {
+          "target": "com.cloudflare.iam#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,23 +84,124 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AuthException extends S.TaggedErrorClass<AuthException>()(
+  "AuthException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "Forbidden", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class EC2InstanceNotFoundException extends S.TaggedErrorClass<EC2InstanceNotFoundException>()(
+  "EC2InstanceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EC2InstanceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EC2InstanceStateInvalidException extends S.TaggedErrorClass<EC2InstanceStateInvalidException>()(
+  "EC2InstanceStateInvalidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EC2InstanceStateInvalid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EC2InstanceTypeInvalidException extends S.TaggedErrorClass<EC2InstanceTypeInvalidException>()(
+  "EC2InstanceTypeInvalidException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EC2InstanceTypeInvalid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EC2InstanceUnavailableException extends S.TaggedErrorClass<EC2InstanceUnavailableException>()(
+  "EC2InstanceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EC2InstanceUnavailable", httpResponseCode: 503 }),
+    T.HttpError(503),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
+  "InvalidArgsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidArguments", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SerialConsoleAccessDisabledException extends S.TaggedErrorClass<SerialConsoleAccessDisabledException>()(
+  "SerialConsoleAccessDisabledException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SerialConsoleAccessDisabled",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class SerialConsoleSessionLimitExceededException extends S.TaggedErrorClass<SerialConsoleSessionLimitExceededException>()(
+  "SerialConsoleSessionLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SerialConsoleSessionLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SerialConsoleSessionUnavailableException extends S.TaggedErrorClass<SerialConsoleSessionUnavailableException>()(
+  "SerialConsoleSessionUnavailableException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SerialConsoleSessionUnavailable",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class SerialConsoleSessionUnsupportedException extends S.TaggedErrorClass<SerialConsoleSessionUnsupportedException>()(
+  "SerialConsoleSessionUnsupportedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SerialConsoleSessionUnsupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
 export type InstanceId = string;
 export type SerialPort = number;
 export type SSHPublicKey = string;
-export type RequestId = string;
-export type Success = boolean;
-export type InstanceOSUser = string;
-export type AvailabilityZone = string;
-
-//# Schemas
 export interface SendSerialConsoleSSHPublicKeyRequest {
   InstanceId: string;
   SerialPort?: number;
   SSHPublicKey: string;
 }
-export const SendSerialConsoleSSHPublicKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       InstanceId: S.String,
       SerialPort: S.optional(S.Number),
@@ -106,22 +209,26 @@ export const SendSerialConsoleSSHPublicKeyRequest =
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
-  ).annotate({
-    identifier: "SendSerialConsoleSSHPublicKeyRequest",
-  }) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
+).annotate({
+  identifier: "SendSerialConsoleSSHPublicKeyRequest",
+}) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
+export type RequestId = string;
+export type Success = boolean;
 export interface SendSerialConsoleSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
-export const SendSerialConsoleSSHPublicKeyResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RequestId: S.optional(S.String),
       Success: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "SendSerialConsoleSSHPublicKeyResponse",
-  }) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
+).annotate({
+  identifier: "SendSerialConsoleSSHPublicKeyResponse",
+}) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
+export type InstanceOSUser = string;
+export type AvailabilityZone = string;
 export interface SendSSHPublicKeyRequest {
   InstanceId: string;
   InstanceOSUser: string;
@@ -145,89 +252,10 @@ export interface SendSSHPublicKeyResponse {
   Success?: boolean;
 }
 export const SendSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RequestId: S.optional(S.String),
-    Success: S.optional(S.Boolean),
-  }),
+  S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "SendSSHPublicKeyResponse",
 }) as any as S.Schema<SendSSHPublicKeyResponse>;
-
-//# Errors
-export class AuthException extends S.TaggedErrorClass<AuthException>()(
-  "AuthException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "Forbidden", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class EC2InstanceNotFoundException extends S.TaggedErrorClass<EC2InstanceNotFoundException>()(
-  "EC2InstanceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EC2InstanceNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class EC2InstanceStateInvalidException extends S.TaggedErrorClass<EC2InstanceStateInvalidException>()(
-  "EC2InstanceStateInvalidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EC2InstanceStateInvalid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class EC2InstanceTypeInvalidException extends S.TaggedErrorClass<EC2InstanceTypeInvalidException>()(
-  "EC2InstanceTypeInvalidException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EC2InstanceTypeInvalid", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class EC2InstanceUnavailableException extends S.TaggedErrorClass<EC2InstanceUnavailableException>()(
-  "EC2InstanceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "EC2InstanceUnavailable", httpResponseCode: 503 }),
-).pipe(C.withServerError) {}
-export class InvalidArgsException extends S.TaggedErrorClass<InvalidArgsException>()(
-  "InvalidArgsException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidArguments", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SerialConsoleAccessDisabledException extends S.TaggedErrorClass<SerialConsoleAccessDisabledException>()(
-  "SerialConsoleAccessDisabledException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SerialConsoleAccessDisabled",
-    httpResponseCode: 403,
-  }),
-).pipe(C.withAuthError) {}
-export class SerialConsoleSessionLimitExceededException extends S.TaggedErrorClass<SerialConsoleSessionLimitExceededException>()(
-  "SerialConsoleSessionLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SerialConsoleSessionLimitExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class SerialConsoleSessionUnavailableException extends S.TaggedErrorClass<SerialConsoleSessionUnavailableException>()(
-  "SerialConsoleSessionUnavailableException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SerialConsoleSessionUnavailable",
-    httpResponseCode: 500,
-  }),
-).pipe(C.withServerError) {}
-export class SerialConsoleSessionUnsupportedException extends S.TaggedErrorClass<SerialConsoleSessionUnsupportedException>()(
-  "SerialConsoleSessionUnsupportedException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "SerialConsoleSessionUnsupported",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServerError", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
 export type SendSerialConsoleSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException
@@ -270,8 +298,11 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
     ServiceException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendSerialConsoleSSHPublicKey",
 }));
+
 export type SendSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException
@@ -304,5 +335,7 @@ export const sendSSHPublicKey: API.OperationMethod<
     ServiceException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendSSHPublicKey",
 }));

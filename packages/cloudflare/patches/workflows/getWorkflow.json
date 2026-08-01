@@ -1,6 +1,88 @@
 {
-  "errors": {
-    "WorkflowNotFound": [{ "code": 10200 }],
-    "InvalidRoute": [{ "code": 7003 }]
-  }
+  "description": "Align workflows#Get with distilled cloudflare/workflows getWorkflow",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#Get",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflow"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#GetRequest",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflowRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflow/input/target",
+      "value": "com.cloudflare.workflows#GetWorkflowRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workflows#GetResponse",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflowResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflow/output/target",
+      "value": "com.cloudflare.workflows#GetWorkflowResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#WorkflowNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10200
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workflows#GetWorkflow/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workflows#WorkflowNotFound"
+        },
+        {
+          "target": "com.cloudflare.workflows#InvalidRoute"
+        }
+      ]
+    }
+  ]
 }

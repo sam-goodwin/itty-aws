@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -80,12 +82,275 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type SSEEnabled = boolean;
-export type ExceptionMessage = string;
-export type AwsQueryErrorMessage = string;
-
-//# Schemas
+export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
+  "ClusterAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
+  "ClusterNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterQuotaForCustomerExceededFault extends S.TaggedErrorClass<ClusterQuotaForCustomerExceededFault>()(
+  "ClusterQuotaForCustomerExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterQuotaForCustomerExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
+  "InsufficientClusterCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientClusterCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidARNFault extends S.TaggedErrorClass<InvalidARNFault>()(
+  "InvalidARNFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
+  "InvalidClusterStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterCombination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterGroupStateFault extends S.TaggedErrorClass<InvalidParameterGroupStateFault>()(
+  "InvalidParameterGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  "InvalidVPCNetworkStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidVPCNetworkStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NodeNotFoundFault extends S.TaggedErrorClass<NodeNotFoundFault>()(
+  "NodeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NodeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NodeQuotaForClusterExceededFault extends S.TaggedErrorClass<NodeQuotaForClusterExceededFault>()(
+  "NodeQuotaForClusterExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NodeQuotaForClusterExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NodeQuotaForCustomerExceededFault extends S.TaggedErrorClass<NodeQuotaForCustomerExceededFault>()(
+  "NodeQuotaForCustomerExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NodeQuotaForCustomerExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ParameterGroupAlreadyExistsFault>()(
+  "ParameterGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ParameterGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ParameterGroupNotFoundFault extends S.TaggedErrorClass<ParameterGroupNotFoundFault>()(
+  "ParameterGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ParameterGroupNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ParameterGroupQuotaExceededFault>()(
+  "ParameterGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ParameterGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceLinkedRoleNotFoundFault extends S.TaggedErrorClass<ServiceLinkedRoleNotFoundFault>()(
+  "ServiceLinkedRoleNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceLinkedRoleNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {},
+  T.all(
+    T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 402 }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class SubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<SubnetGroupAlreadyExistsFault>()(
+  "SubnetGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SubnetGroupInUseFault extends S.TaggedErrorClass<SubnetGroupInUseFault>()(
+  "SubnetGroupInUseFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetGroupInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetGroupNotFoundFault extends S.TaggedErrorClass<SubnetGroupNotFoundFault>()(
+  "SubnetGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetGroupQuotaExceededFault extends S.TaggedErrorClass<SubnetGroupQuotaExceededFault>()(
+  "SubnetGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetInUse extends S.TaggedErrorClass<SubnetInUse>()(
+  "SubnetInUse",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class SubnetNotAllowedFault extends S.TaggedErrorClass<SubnetNotAllowedFault>()(
+  "SubnetNotAllowedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetQuotaExceededFault extends S.TaggedErrorClass<SubnetQuotaExceededFault>()(
+  "SubnetQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubnetQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagNotFoundFault extends S.TaggedErrorClass<TagNotFoundFault>()(
+  "TagNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagQuotaPerResourceExceeded extends S.TaggedErrorClass<TagQuotaPerResourceExceeded>()(
+  "TagQuotaPerResourceExceeded",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TagQuotaPerResourceExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type AvailabilityZoneList = string[];
 export const AvailabilityZoneList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdentifierList = string[];
@@ -99,6 +364,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type SSEEnabled = boolean;
 export interface SSESpecification {
   Enabled: boolean;
 }
@@ -109,8 +375,10 @@ export const SSESpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SSESpecification>;
 export type ClusterEndpointEncryptionType = "NONE" | "TLS" | (string & {});
 export const ClusterEndpointEncryptionType = /*@__PURE__*/ S.String;
+
 export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateClusterRequest {
   ClusterName: string;
   NodeType: string;
@@ -242,6 +510,7 @@ export type SSEStatus =
   | "DISABLED"
   | (string & {});
 export const SSEStatus = /*@__PURE__*/ S.String;
+
 export interface SSEDescription {
   Status?: SSEStatus;
 }
@@ -304,25 +573,24 @@ export interface CreateParameterGroupRequest {
   ParameterGroupName: string;
   Description?: string;
 }
-export const CreateParameterGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      Description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateParameterGroupRequest",
-  }) as any as S.Schema<CreateParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateParameterGroupRequest",
+}) as any as S.Schema<CreateParameterGroupRequest>;
 export interface ParameterGroup {
   ParameterGroupName?: string;
   Description?: string;
@@ -336,12 +604,11 @@ export const ParameterGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const CreateParameterGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateParameterGroupResponse",
-  }) as any as S.Schema<CreateParameterGroupResponse>;
+export const CreateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "CreateParameterGroupResponse",
+}) as any as S.Schema<CreateParameterGroupResponse>;
 export type SubnetIdentifierList = string[];
 export const SubnetIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateSubnetGroupRequest {
@@ -414,36 +681,34 @@ export interface DecreaseReplicationFactorRequest {
   AvailabilityZones?: string[];
   NodeIdsToRemove?: string[];
 }
-export const DecreaseReplicationFactorRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterName: S.String,
-      NewReplicationFactor: S.Number,
-      AvailabilityZones: S.optional(AvailabilityZoneList),
-      NodeIdsToRemove: S.optional(NodeIdentifierList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DecreaseReplicationFactorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterName: S.String,
+    NewReplicationFactor: S.Number,
+    AvailabilityZones: S.optional(AvailabilityZoneList),
+    NodeIdsToRemove: S.optional(NodeIdentifierList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DecreaseReplicationFactorRequest",
-  }) as any as S.Schema<DecreaseReplicationFactorRequest>;
+  ),
+).annotate({
+  identifier: "DecreaseReplicationFactorRequest",
+}) as any as S.Schema<DecreaseReplicationFactorRequest>;
 export interface DecreaseReplicationFactorResponse {
   Cluster?: Cluster;
 }
-export const DecreaseReplicationFactorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "DecreaseReplicationFactorResponse",
-  }) as any as S.Schema<DecreaseReplicationFactorResponse>;
+export const DecreaseReplicationFactorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "DecreaseReplicationFactorResponse",
+}) as any as S.Schema<DecreaseReplicationFactorResponse>;
 export interface DeleteClusterRequest {
   ClusterName: string;
 }
@@ -473,31 +738,29 @@ export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteParameterGroupRequest {
   ParameterGroupName: string;
 }
-export const DeleteParameterGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroupName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroupName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteParameterGroupRequest",
-  }) as any as S.Schema<DeleteParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "DeleteParameterGroupRequest",
+}) as any as S.Schema<DeleteParameterGroupRequest>;
 export interface DeleteParameterGroupResponse {
   DeletionMessage?: string;
 }
-export const DeleteParameterGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DeletionMessage: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteParameterGroupResponse",
-  }) as any as S.Schema<DeleteParameterGroupResponse>;
+export const DeleteParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeletionMessage: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "DeleteParameterGroupResponse",
+}) as any as S.Schema<DeleteParameterGroupResponse>;
 export interface DeleteSubnetGroupRequest {
   SubnetGroupName: string;
 }
@@ -568,27 +831,27 @@ export interface DescribeDefaultParametersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeDefaultParametersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeDefaultParametersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeDefaultParametersRequest",
-  }) as any as S.Schema<DescribeDefaultParametersRequest>;
+  ),
+).annotate({
+  identifier: "DescribeDefaultParametersRequest",
+}) as any as S.Schema<DescribeDefaultParametersRequest>;
 export type ParameterType = "DEFAULT" | "NODE_TYPE_SPECIFIC" | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
+
 export interface NodeTypeSpecificValue {
   NodeType?: string;
   Value?: string;
@@ -604,8 +867,10 @@ export const NodeTypeSpecificValueList = /*@__PURE__*/ S.Array(
 );
 export type IsModifiable = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
 export const IsModifiable = /*@__PURE__*/ S.String;
+
 export type ChangeType = "IMMEDIATE" | "REQUIRES_REBOOT" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
 export interface Parameter {
   ParameterName?: string;
   ParameterType?: ParameterType;
@@ -638,21 +903,21 @@ export interface DescribeDefaultParametersResponse {
   NextToken?: string;
   Parameters?: Parameter[];
 }
-export const DescribeDefaultParametersResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      Parameters: S.optional(ParameterList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeDefaultParametersResponse",
-  }) as any as S.Schema<DescribeDefaultParametersResponse>;
+export const DescribeDefaultParametersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    Parameters: S.optional(ParameterList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeDefaultParametersResponse",
+}) as any as S.Schema<DescribeDefaultParametersResponse>;
 export type SourceType =
   | "CLUSTER"
   | "PARAMETER_GROUP"
   | "SUBNET_GROUP"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsRequest {
   SourceName?: string;
   SourceType?: SourceType;
@@ -720,41 +985,39 @@ export interface DescribeParameterGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeParameterGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupNames: S.optional(ParameterGroupNameList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeParameterGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupNames: S.optional(ParameterGroupNameList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeParameterGroupsRequest",
-  }) as any as S.Schema<DescribeParameterGroupsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeParameterGroupsRequest",
+}) as any as S.Schema<DescribeParameterGroupsRequest>;
 export type ParameterGroupList = ParameterGroup[];
 export const ParameterGroupList = /*@__PURE__*/ S.Array(ParameterGroup);
 export interface DescribeParameterGroupsResponse {
   NextToken?: string;
   ParameterGroups?: ParameterGroup[];
 }
-export const DescribeParameterGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ParameterGroups: S.optional(ParameterGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeParameterGroupsResponse",
-  }) as any as S.Schema<DescribeParameterGroupsResponse>;
+export const DescribeParameterGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ParameterGroups: S.optional(ParameterGroupList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeParameterGroupsResponse",
+}) as any as S.Schema<DescribeParameterGroupsResponse>;
 export interface DescribeParametersRequest {
   ParameterGroupName: string;
   Source?: string;
@@ -800,75 +1063,71 @@ export interface DescribeSubnetGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeSubnetGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SubnetGroupNames: S.optional(SubnetGroupNameList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeSubnetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SubnetGroupNames: S.optional(SubnetGroupNameList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeSubnetGroupsRequest",
-  }) as any as S.Schema<DescribeSubnetGroupsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeSubnetGroupsRequest",
+}) as any as S.Schema<DescribeSubnetGroupsRequest>;
 export type SubnetGroupList = SubnetGroup[];
 export const SubnetGroupList = /*@__PURE__*/ S.Array(SubnetGroup);
 export interface DescribeSubnetGroupsResponse {
   NextToken?: string;
   SubnetGroups?: SubnetGroup[];
 }
-export const DescribeSubnetGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      SubnetGroups: S.optional(SubnetGroupList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeSubnetGroupsResponse",
-  }) as any as S.Schema<DescribeSubnetGroupsResponse>;
+export const DescribeSubnetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    SubnetGroups: S.optional(SubnetGroupList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeSubnetGroupsResponse",
+}) as any as S.Schema<DescribeSubnetGroupsResponse>;
 export interface IncreaseReplicationFactorRequest {
   ClusterName: string;
   NewReplicationFactor: number;
   AvailabilityZones?: string[];
 }
-export const IncreaseReplicationFactorRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ClusterName: S.String,
-      NewReplicationFactor: S.Number,
-      AvailabilityZones: S.optional(AvailabilityZoneList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const IncreaseReplicationFactorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterName: S.String,
+    NewReplicationFactor: S.Number,
+    AvailabilityZones: S.optional(AvailabilityZoneList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "IncreaseReplicationFactorRequest",
-  }) as any as S.Schema<IncreaseReplicationFactorRequest>;
+  ),
+).annotate({
+  identifier: "IncreaseReplicationFactorRequest",
+}) as any as S.Schema<IncreaseReplicationFactorRequest>;
 export interface IncreaseReplicationFactorResponse {
   Cluster?: Cluster;
 }
-export const IncreaseReplicationFactorResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
-  ).annotate({
-    identifier: "IncreaseReplicationFactorResponse",
-  }) as any as S.Schema<IncreaseReplicationFactorResponse>;
+export const IncreaseReplicationFactorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns),
+).annotate({
+  identifier: "IncreaseReplicationFactorResponse",
+}) as any as S.Schema<IncreaseReplicationFactorResponse>;
 export interface ListTagsRequest {
   ResourceName: string;
   NextToken?: string;
@@ -1040,34 +1299,32 @@ export interface UpdateParameterGroupRequest {
   ParameterGroupName: string;
   ParameterNameValues: ParameterNameValue[];
 }
-export const UpdateParameterGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ParameterGroupName: S.String,
-      ParameterNameValues: ParameterNameValueList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateParameterGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ParameterGroupName: S.String,
+    ParameterNameValues: ParameterNameValueList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateParameterGroupRequest",
-  }) as any as S.Schema<UpdateParameterGroupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateParameterGroupRequest",
+}) as any as S.Schema<UpdateParameterGroupRequest>;
 export interface UpdateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
-export const UpdateParameterGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateParameterGroupResponse",
-  }) as any as S.Schema<UpdateParameterGroupResponse>;
+export const UpdateParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+).annotate({
+  identifier: "UpdateParameterGroupResponse",
+}) as any as S.Schema<UpdateParameterGroupResponse>;
 export interface UpdateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
@@ -1100,183 +1357,8 @@ export const UpdateSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSubnetGroupResponse",
 }) as any as S.Schema<UpdateSubnetGroupResponse>;
-
-//# Errors
-export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
-  "ClusterAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterQuotaForCustomerExceededFault extends S.TaggedErrorClass<ClusterQuotaForCustomerExceededFault>()(
-  "ClusterQuotaForCustomerExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ClusterQuotaForCustomerExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
-  "InsufficientClusterCapacityFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InsufficientClusterCapacity",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
-  "InvalidClusterStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterCombination",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterGroupStateFault extends S.TaggedErrorClass<InvalidParameterGroupStateFault>()(
-  "InvalidParameterGroupStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidParameterGroupState",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidParameterValue", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
-  "InvalidVPCNetworkStateFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "InvalidVPCNetworkStateFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class NodeQuotaForClusterExceededFault extends S.TaggedErrorClass<NodeQuotaForClusterExceededFault>()(
-  "NodeQuotaForClusterExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NodeQuotaForClusterExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class NodeQuotaForCustomerExceededFault extends S.TaggedErrorClass<NodeQuotaForCustomerExceededFault>()(
-  "NodeQuotaForCustomerExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "NodeQuotaForCustomerExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ParameterGroupNotFoundFault extends S.TaggedErrorClass<ParameterGroupNotFoundFault>()(
-  "ParameterGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ParameterGroupNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class ServiceLinkedRoleNotFoundFault extends S.TaggedErrorClass<ServiceLinkedRoleNotFoundFault>()(
-  "ServiceLinkedRoleNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceLinkedRoleNotFoundFault",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {},
-  T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 402 }),
-).pipe(C.withQuotaError) {}
-export class SubnetGroupNotFoundFault extends S.TaggedErrorClass<SubnetGroupNotFoundFault>()(
-  "SubnetGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupNotFoundFault", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class TagQuotaPerResourceExceeded extends S.TaggedErrorClass<TagQuotaPerResourceExceeded>()(
-  "TagQuotaPerResourceExceeded",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TagQuotaPerResourceExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class ParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ParameterGroupAlreadyExistsFault>()(
-  "ParameterGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterGroupAlreadyExists",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ParameterGroupQuotaExceededFault>()(
-  "ParameterGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ParameterGroupQuotaExceeded",
-    httpResponseCode: 400,
-  }),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<SubnetGroupAlreadyExistsFault>()(
-  "SubnetGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupAlreadyExists", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class SubnetGroupQuotaExceededFault extends S.TaggedErrorClass<SubnetGroupQuotaExceededFault>()(
-  "SubnetGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupQuotaExceeded", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetNotAllowedFault extends S.TaggedErrorClass<SubnetNotAllowedFault>()(
-  "SubnetNotAllowedFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetNotAllowedFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetQuotaExceededFault extends S.TaggedErrorClass<SubnetQuotaExceededFault>()(
-  "SubnetQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetQuotaExceededFault", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
-  "ClusterNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class NodeNotFoundFault extends S.TaggedErrorClass<NodeNotFoundFault>()(
-  "NodeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "NodeNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetGroupInUseFault extends S.TaggedErrorClass<SubnetGroupInUseFault>()(
-  "SubnetGroupInUseFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetGroupInUse", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class InvalidARNFault extends S.TaggedErrorClass<InvalidARNFault>()(
-  "InvalidARNFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidARN", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError) {}
-export class TagNotFoundFault extends S.TaggedErrorClass<TagNotFoundFault>()(
-  "TagNotFoundFault",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TagNotFound", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-export class SubnetInUse extends S.TaggedErrorClass<SubnetInUse>()(
-  "SubnetInUse",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "SubnetInUse", httpResponseCode: 400 }),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type AwsQueryErrorMessage = string;
 export type CreateClusterError =
   | ClusterAlreadyExistsFault
   | ClusterQuotaForCustomerExceededFault
@@ -1322,8 +1404,11 @@ export const createCluster: API.OperationMethod<
     SubnetGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateParameterGroupError =
   | InvalidParameterCombinationException
   | InvalidParameterGroupStateFault
@@ -1352,8 +1437,11 @@ export const createParameterGroup: API.OperationMethod<
     ParameterGroupQuotaExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParameterGroup",
 }));
+
 export type CreateSubnetGroupError =
   | InvalidSubnet
   | ServiceLinkedRoleNotFoundFault
@@ -1381,8 +1469,11 @@ export const createSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubnetGroup",
 }));
+
 export type DecreaseReplicationFactorError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -1414,8 +1505,11 @@ export const decreaseReplicationFactor: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseReplicationFactor",
 }));
+
 export type DeleteClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -1445,8 +1539,11 @@ export const deleteCluster: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteParameterGroupError =
   | InvalidParameterCombinationException
   | InvalidParameterGroupStateFault
@@ -1473,8 +1570,11 @@ export const deleteParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameterGroup",
 }));
+
 export type DeleteSubnetGroupError =
   | ServiceLinkedRoleNotFoundFault
   | SubnetGroupInUseFault
@@ -1499,8 +1599,11 @@ export const deleteSubnetGroup: API.OperationMethod<
     SubnetGroupInUseFault,
     SubnetGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubnetGroup",
 }));
+
 export type DescribeClustersError =
   | ClusterNotFoundFault
   | InvalidParameterCombinationException
@@ -1540,8 +1643,11 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
 }));
+
 export type DescribeDefaultParametersError =
   | InvalidParameterCombinationException
   | InvalidParameterValueException
@@ -1564,8 +1670,11 @@ export const describeDefaultParameters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultParameters",
 }));
+
 export type DescribeEventsError =
   | InvalidParameterCombinationException
   | InvalidParameterValueException
@@ -1592,8 +1701,11 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
 }));
+
 export type DescribeParameterGroupsError =
   | InvalidParameterCombinationException
   | InvalidParameterValueException
@@ -1618,8 +1730,11 @@ export const describeParameterGroups: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameterGroups",
 }));
+
 export type DescribeParametersError =
   | InvalidParameterCombinationException
   | InvalidParameterValueException
@@ -1643,8 +1758,11 @@ export const describeParameters: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameters",
 }));
+
 export type DescribeSubnetGroupsError =
   | ServiceLinkedRoleNotFoundFault
   | SubnetGroupNotFoundFault
@@ -1662,8 +1780,11 @@ export const describeSubnetGroups: API.OperationMethod<
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubnetGroups",
 }));
+
 export type IncreaseReplicationFactorError =
   | ClusterNotFoundFault
   | InsufficientClusterCapacityFault
@@ -1697,8 +1818,11 @@ export const increaseReplicationFactor: API.OperationMethod<
     NodeQuotaForCustomerExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseReplicationFactor",
 }));
+
 export type ListTagsError =
   | ClusterNotFoundFault
   | InvalidARNFault
@@ -1727,8 +1851,11 @@ export const listTags: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
+
 export type RebootNodeError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -1761,8 +1888,11 @@ export const rebootNode: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootNode",
 }));
+
 export type TagResourceError =
   | ClusterNotFoundFault
   | InvalidARNFault
@@ -1794,8 +1924,11 @@ export const tagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ClusterNotFoundFault
   | InvalidARNFault
@@ -1826,8 +1959,11 @@ export const untagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -1859,8 +1995,11 @@ export const updateCluster: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
+
 export type UpdateParameterGroupError =
   | InvalidParameterCombinationException
   | InvalidParameterGroupStateFault
@@ -1887,8 +2026,11 @@ export const updateParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParameterGroup",
 }));
+
 export type UpdateSubnetGroupError =
   | InvalidSubnet
   | ServiceLinkedRoleNotFoundFault
@@ -1916,5 +2058,7 @@ export const updateSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubnetGroup",
 }));

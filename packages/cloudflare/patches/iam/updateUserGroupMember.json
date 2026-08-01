@@ -1,13 +1,99 @@
 {
-  "errors": {
-    "InvalidMember": [{ "code": 400 }],
-    "UserGroupNotFound": [
-      { "code": 404, "message": { "includes": "User group" } }
-    ]
-  },
-  "request": {
-    "properties": {
-      "members": { "wireKey": "body" }
+  "description": "Align iam#UserGroupsMembersUpdate with distilled cloudflare/iam updateUserGroupMember",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsMembersUpdate",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMember"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsMembersUpdateRequest",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMemberRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMember/input/target",
+      "value": "com.cloudflare.iam#UpdateUserGroupMemberRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.iam#UserGroupsMembersUpdateResponse",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMemberResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMember/output/target",
+      "value": "com.cloudflare.iam#UpdateUserGroupMemberResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMember/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#InvalidMember",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 400
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#UserGroupNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 404,
+              "message": {
+                "includes": "User group"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.iam#UpdateUserGroupMember/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.iam#InvalidMember"
+        },
+        {
+          "target": "com.cloudflare.iam#UserGroupNotFound"
+        }
+      ]
     }
-  }
+  ]
 }

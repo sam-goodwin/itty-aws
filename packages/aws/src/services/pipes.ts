@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,214 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type PipeArn = string;
-export type TagKey = string;
-export type TagValue = string | redacted.Redacted<string>;
-export type ErrorMessage = string;
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.optional(S.String),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PipeName = string;
 export type PipeDescription = string | redacted.Redacted<string>;
 export type RequestedPipeState = string;
 export type ArnOrUrl = string;
 export type EventPattern = string | redacted.Redacted<string>;
-export type LimitMax10000 = number;
-export type Arn = string;
-export type OnPartialBatchItemFailureStreams = string;
-export type MaximumBatchingWindowInSeconds = number;
-export type MaximumRecordAgeInSeconds = number;
-export type MaximumRetryAttemptsESM = number;
-export type LimitMax10 = number;
-export type KinesisStreamStartPosition = string;
-export type DynamoDBStreamStartPosition = string;
-export type SecretManagerArn = string;
-export type MQBrokerQueueName = string | redacted.Redacted<string>;
-export type URI = string | redacted.Redacted<string>;
-export type KafkaTopicName = string | redacted.Redacted<string>;
-export type MSKStartPosition = string;
-export type SelfManagedKafkaStartPosition = string;
-export type EndpointString = string | redacted.Redacted<string>;
-export type SubnetId = string | redacted.Redacted<string>;
-export type SecurityGroupId = string | redacted.Redacted<string>;
-export type OptionalArn = string;
-export type InputTemplate = string | redacted.Redacted<string>;
-export type PathParameter = string | redacted.Redacted<string>;
-export type HeaderKey = string;
-export type HeaderValue = string | redacted.Redacted<string>;
-export type QueryStringKey = string;
-export type QueryStringValue = string | redacted.Redacted<string>;
-export type PipeTargetInvocationType = string;
-export type KinesisPartitionKey = string | redacted.Redacted<string>;
-export type ArnOrJsonPath = string;
-export type LimitMin1 = number;
-export type LaunchType = string;
-export type Subnet = string | redacted.Redacted<string>;
-export type SecurityGroup = string | redacted.Redacted<string>;
-export type AssignPublicIp = string;
-export type CapacityProvider = string | redacted.Redacted<string>;
-export type CapacityProviderStrategyItemWeight = number;
-export type CapacityProviderStrategyItemBase = number;
-export type PlacementConstraintType = string;
-export type PlacementConstraintExpression = string | redacted.Redacted<string>;
-export type PlacementStrategyType = string;
-export type PlacementStrategyField = string | redacted.Redacted<string>;
-export type PropagateTags = string;
-export type ReferenceId = string | redacted.Redacted<string>;
-export type EcsEnvironmentFileType = string;
-export type EcsResourceRequirementType = string;
-export type EphemeralStorageSize = number;
-export type BatchArraySize = number;
-export type BatchRetryAttempts = number;
-export type BatchResourceRequirementType = string;
-export type BatchJobDependencyType = string;
-export type MessageGroupId = string | redacted.Redacted<string>;
-export type MessageDeduplicationId = string | redacted.Redacted<string>;
-export type SecretManagerArnOrJsonPath = string;
-export type Database = string | redacted.Redacted<string>;
-export type DbUser = string | redacted.Redacted<string>;
-export type StatementName = string | redacted.Redacted<string>;
-export type Sql = string | redacted.Redacted<string>;
-export type SageMakerPipelineParameterName = string | redacted.Redacted<string>;
-export type SageMakerPipelineParameterValue =
-  | string
-  | redacted.Redacted<string>;
-export type EventBridgeEndpointId = string | redacted.Redacted<string>;
-export type EventBridgeDetailType = string | redacted.Redacted<string>;
-export type EventBridgeEventSource = string | redacted.Redacted<string>;
-export type JsonPath = string;
-export type LogStreamName = string;
-export type TimeValue = string;
-export type EpochTimeUnit = string;
-export type TimeFieldType = string;
-export type TimestampFormat = string;
-export type VersionValue = string;
-export type DimensionValue = string;
-export type DimensionValueType = string;
-export type DimensionName = string;
-export type MeasureValue = string;
-export type MeasureValueType = string;
-export type MeasureName = string;
-export type MultiMeasureName = string;
-export type MultiMeasureAttributeName = string;
-export type RoleArn = string;
-export type S3OutputFormat = string;
-export type FirehoseArn = string;
-export type CloudwatchLogGroupArn = string;
-export type LogLevel = string;
-export type IncludeExecutionDataOption = string;
-export type KmsKeyIdentifier = string;
-export type PipeState = string;
-export type RequestedPipeStateDescribeResponse = string;
-export type PipeStateReason = string;
-export type ResourceArn = string;
-export type NextToken = string | redacted.Redacted<string>;
-export type LimitMax100 = number;
-
-//# Schemas
-export interface ListTagsForResourceRequest {
-  resourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export type TagMap = {
-  [key: string]: string | redacted.Redacted<string> | undefined;
-};
-export const TagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  SensitiveString.pipe(S.optional),
-);
-export interface ListTagsForResourceResponse {
-  tags?: { [key: string]: string | redacted.Redacted<string> | undefined };
-}
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
-export interface TagResourceRequest {
-  resourceArn: string;
-  tags: { [key: string]: string | redacted.Redacted<string> | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tags: TagMap,
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  resourceArn: string;
-  tagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
 export interface Filter {
   Pattern?: string | redacted.Redacted<string>;
 }
@@ -305,6 +155,8 @@ export interface FilterCriteria {
 export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Filters: S.optional(FilterList) }),
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
+export type LimitMax10000 = number;
+export type Arn = string;
 export interface DeadLetterConfig {
   Arn?: string;
 }
@@ -313,6 +165,12 @@ export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeadLetterConfig",
 }) as any as S.Schema<DeadLetterConfig>;
+export type OnPartialBatchItemFailureStreams = string;
+export type MaximumBatchingWindowInSeconds = number;
+export type MaximumRecordAgeInSeconds = number;
+export type MaximumRetryAttemptsESM = number;
+export type LimitMax10 = number;
+export type KinesisStreamStartPosition = string;
 export interface PipeSourceKinesisStreamParameters {
   BatchSize?: number;
   DeadLetterConfig?: DeadLetterConfig;
@@ -324,24 +182,24 @@ export interface PipeSourceKinesisStreamParameters {
   StartingPosition: string;
   StartingPositionTimestamp?: Date;
 }
-export const PipeSourceKinesisStreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BatchSize: S.optional(S.Number),
-      DeadLetterConfig: S.optional(DeadLetterConfig),
-      OnPartialBatchItemFailure: S.optional(S.String),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-      MaximumRecordAgeInSeconds: S.optional(S.Number),
-      MaximumRetryAttempts: S.optional(S.Number),
-      ParallelizationFactor: S.optional(S.Number),
-      StartingPosition: S.String,
-      StartingPositionTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PipeSourceKinesisStreamParameters",
-  }) as any as S.Schema<PipeSourceKinesisStreamParameters>;
+export const PipeSourceKinesisStreamParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BatchSize: S.optional(S.Number),
+    DeadLetterConfig: S.optional(DeadLetterConfig),
+    OnPartialBatchItemFailure: S.optional(S.String),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+    MaximumRecordAgeInSeconds: S.optional(S.Number),
+    MaximumRetryAttempts: S.optional(S.Number),
+    ParallelizationFactor: S.optional(S.Number),
+    StartingPosition: S.String,
+    StartingPositionTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "PipeSourceKinesisStreamParameters",
+}) as any as S.Schema<PipeSourceKinesisStreamParameters>;
+export type DynamoDBStreamStartPosition = string;
 export interface PipeSourceDynamoDBStreamParameters {
   BatchSize?: number;
   DeadLetterConfig?: DeadLetterConfig;
@@ -352,55 +210,55 @@ export interface PipeSourceDynamoDBStreamParameters {
   ParallelizationFactor?: number;
   StartingPosition: string;
 }
-export const PipeSourceDynamoDBStreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BatchSize: S.optional(S.Number),
-      DeadLetterConfig: S.optional(DeadLetterConfig),
-      OnPartialBatchItemFailure: S.optional(S.String),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-      MaximumRecordAgeInSeconds: S.optional(S.Number),
-      MaximumRetryAttempts: S.optional(S.Number),
-      ParallelizationFactor: S.optional(S.Number),
-      StartingPosition: S.String,
-    }),
-  ).annotate({
-    identifier: "PipeSourceDynamoDBStreamParameters",
-  }) as any as S.Schema<PipeSourceDynamoDBStreamParameters>;
+export const PipeSourceDynamoDBStreamParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BatchSize: S.optional(S.Number),
+    DeadLetterConfig: S.optional(DeadLetterConfig),
+    OnPartialBatchItemFailure: S.optional(S.String),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+    MaximumRecordAgeInSeconds: S.optional(S.Number),
+    MaximumRetryAttempts: S.optional(S.Number),
+    ParallelizationFactor: S.optional(S.Number),
+    StartingPosition: S.String,
+  }),
+).annotate({
+  identifier: "PipeSourceDynamoDBStreamParameters",
+}) as any as S.Schema<PipeSourceDynamoDBStreamParameters>;
 export interface PipeSourceSqsQueueParameters {
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const PipeSourceSqsQueueParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BatchSize: S.optional(S.Number),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PipeSourceSqsQueueParameters",
-  }) as any as S.Schema<PipeSourceSqsQueueParameters>;
+export const PipeSourceSqsQueueParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BatchSize: S.optional(S.Number),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PipeSourceSqsQueueParameters",
+}) as any as S.Schema<PipeSourceSqsQueueParameters>;
+export type SecretManagerArn = string;
 export type MQBrokerAccessCredentials = { BasicAuth: string };
 export const MQBrokerAccessCredentials = /*@__PURE__*/ S.Union([
   S.Struct({ BasicAuth: S.String }),
 ]);
+export type MQBrokerQueueName = string | redacted.Redacted<string>;
 export interface PipeSourceActiveMQBrokerParameters {
   Credentials: MQBrokerAccessCredentials;
   QueueName: string | redacted.Redacted<string>;
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const PipeSourceActiveMQBrokerParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Credentials: MQBrokerAccessCredentials,
-      QueueName: SensitiveString,
-      BatchSize: S.optional(S.Number),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PipeSourceActiveMQBrokerParameters",
-  }) as any as S.Schema<PipeSourceActiveMQBrokerParameters>;
+export const PipeSourceActiveMQBrokerParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Credentials: MQBrokerAccessCredentials,
+    QueueName: SensitiveString,
+    BatchSize: S.optional(S.Number),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PipeSourceActiveMQBrokerParameters",
+}) as any as S.Schema<PipeSourceActiveMQBrokerParameters>;
+export type URI = string | redacted.Redacted<string>;
 export interface PipeSourceRabbitMQBrokerParameters {
   Credentials: MQBrokerAccessCredentials;
   QueueName: string | redacted.Redacted<string>;
@@ -408,18 +266,19 @@ export interface PipeSourceRabbitMQBrokerParameters {
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const PipeSourceRabbitMQBrokerParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Credentials: MQBrokerAccessCredentials,
-      QueueName: SensitiveString,
-      VirtualHost: S.optional(SensitiveString),
-      BatchSize: S.optional(S.Number),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PipeSourceRabbitMQBrokerParameters",
-  }) as any as S.Schema<PipeSourceRabbitMQBrokerParameters>;
+export const PipeSourceRabbitMQBrokerParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Credentials: MQBrokerAccessCredentials,
+    QueueName: SensitiveString,
+    VirtualHost: S.optional(SensitiveString),
+    BatchSize: S.optional(S.Number),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PipeSourceRabbitMQBrokerParameters",
+}) as any as S.Schema<PipeSourceRabbitMQBrokerParameters>;
+export type KafkaTopicName = string | redacted.Redacted<string>;
+export type MSKStartPosition = string;
 export type MSKAccessCredentials =
   | { SaslScram512Auth: string; ClientCertificateTlsAuth?: never }
   | { SaslScram512Auth?: never; ClientCertificateTlsAuth: string };
@@ -448,7 +307,9 @@ export const PipeSourceManagedStreamingKafkaParameters =
   ).annotate({
     identifier: "PipeSourceManagedStreamingKafkaParameters",
   }) as any as S.Schema<PipeSourceManagedStreamingKafkaParameters>;
-export type KafkaBootstrapServers = string | redacted.Redacted<string>[];
+export type SelfManagedKafkaStartPosition = string;
+export type EndpointString = string | redacted.Redacted<string>;
+export type KafkaBootstrapServers = (string | redacted.Redacted<string>)[];
 export const KafkaBootstrapServers = /*@__PURE__*/ S.Array(SensitiveString);
 export type SelfManagedKafkaAccessConfigurationCredentials =
   | {
@@ -482,27 +343,29 @@ export const SelfManagedKafkaAccessConfigurationCredentials =
     S.Struct({ SaslScram256Auth: S.String }),
     S.Struct({ ClientCertificateTlsAuth: S.String }),
   ]);
-export type SubnetIds = string | redacted.Redacted<string>[];
+export type SubnetId = string | redacted.Redacted<string>;
+export type SubnetIds = (string | redacted.Redacted<string>)[];
 export const SubnetIds = /*@__PURE__*/ S.Array(SensitiveString);
-export type SecurityGroupIds = string | redacted.Redacted<string>[];
+export type SecurityGroupId = string | redacted.Redacted<string>;
+export type SecurityGroupIds = (string | redacted.Redacted<string>)[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SelfManagedKafkaAccessConfigurationVpc {
-  Subnets?: string | redacted.Redacted<string>[];
-  SecurityGroup?: string | redacted.Redacted<string>[];
+  Subnets?: (string | redacted.Redacted<string>)[];
+  SecurityGroup?: (string | redacted.Redacted<string>)[];
 }
-export const SelfManagedKafkaAccessConfigurationVpc =
-  /*@__PURE__*/ S.suspend(() =>
+export const SelfManagedKafkaAccessConfigurationVpc = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Subnets: S.optional(SubnetIds),
       SecurityGroup: S.optional(SecurityGroupIds),
     }),
-  ).annotate({
-    identifier: "SelfManagedKafkaAccessConfigurationVpc",
-  }) as any as S.Schema<SelfManagedKafkaAccessConfigurationVpc>;
+).annotate({
+  identifier: "SelfManagedKafkaAccessConfigurationVpc",
+}) as any as S.Schema<SelfManagedKafkaAccessConfigurationVpc>;
 export interface PipeSourceSelfManagedKafkaParameters {
   TopicName: string | redacted.Redacted<string>;
   StartingPosition?: string;
-  AdditionalBootstrapServers?: string | redacted.Redacted<string>[];
+  AdditionalBootstrapServers?: (string | redacted.Redacted<string>)[];
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
   ConsumerGroupID?: string | redacted.Redacted<string>;
@@ -510,8 +373,8 @@ export interface PipeSourceSelfManagedKafkaParameters {
   ServerRootCaCertificate?: string;
   Vpc?: SelfManagedKafkaAccessConfigurationVpc;
 }
-export const PipeSourceSelfManagedKafkaParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const PipeSourceSelfManagedKafkaParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       TopicName: SensitiveString,
       StartingPosition: S.optional(S.String),
@@ -523,9 +386,9 @@ export const PipeSourceSelfManagedKafkaParameters =
       ServerRootCaCertificate: S.optional(S.String),
       Vpc: S.optional(SelfManagedKafkaAccessConfigurationVpc),
     }),
-  ).annotate({
-    identifier: "PipeSourceSelfManagedKafkaParameters",
-  }) as any as S.Schema<PipeSourceSelfManagedKafkaParameters>;
+).annotate({
+  identifier: "PipeSourceSelfManagedKafkaParameters",
+}) as any as S.Schema<PipeSourceSelfManagedKafkaParameters>;
 export interface PipeSourceParameters {
   FilterCriteria?: FilterCriteria;
   KinesisStreamParameters?: PipeSourceKinesisStreamParameters;
@@ -554,8 +417,13 @@ export const PipeSourceParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipeSourceParameters",
 }) as any as S.Schema<PipeSourceParameters>;
-export type PathParameterList = string | redacted.Redacted<string>[];
+export type OptionalArn = string;
+export type InputTemplate = string | redacted.Redacted<string>;
+export type PathParameter = string | redacted.Redacted<string>;
+export type PathParameterList = (string | redacted.Redacted<string>)[];
 export const PathParameterList = /*@__PURE__*/ S.Array(SensitiveString);
+export type HeaderKey = string;
+export type HeaderValue = string | redacted.Redacted<string>;
 export type HeaderParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -563,6 +431,8 @@ export const HeaderParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type QueryStringKey = string;
+export type QueryStringValue = string | redacted.Redacted<string>;
 export type QueryStringParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -571,7 +441,7 @@ export const QueryStringParametersMap = /*@__PURE__*/ S.Record(
   SensitiveString.pipe(S.optional),
 );
 export interface PipeEnrichmentHttpParameters {
-  PathParameterValues?: string | redacted.Redacted<string>[];
+  PathParameterValues?: (string | redacted.Redacted<string>)[];
   HeaderParameters?: {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
@@ -579,16 +449,15 @@ export interface PipeEnrichmentHttpParameters {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
 }
-export const PipeEnrichmentHttpParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PathParameterValues: S.optional(PathParameterList),
-      HeaderParameters: S.optional(HeaderParametersMap),
-      QueryStringParameters: S.optional(QueryStringParametersMap),
-    }),
-  ).annotate({
-    identifier: "PipeEnrichmentHttpParameters",
-  }) as any as S.Schema<PipeEnrichmentHttpParameters>;
+export const PipeEnrichmentHttpParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PathParameterValues: S.optional(PathParameterList),
+    HeaderParameters: S.optional(HeaderParametersMap),
+    QueryStringParameters: S.optional(QueryStringParametersMap),
+  }),
+).annotate({
+  identifier: "PipeEnrichmentHttpParameters",
+}) as any as S.Schema<PipeEnrichmentHttpParameters>;
 export interface PipeEnrichmentParameters {
   InputTemplate?: string | redacted.Redacted<string>;
   HttpParameters?: PipeEnrichmentHttpParameters;
@@ -601,40 +470,45 @@ export const PipeEnrichmentParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipeEnrichmentParameters",
 }) as any as S.Schema<PipeEnrichmentParameters>;
+export type PipeTargetInvocationType = string;
 export interface PipeTargetLambdaFunctionParameters {
   InvocationType?: string;
 }
-export const PipeTargetLambdaFunctionParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InvocationType: S.optional(S.String) }),
-  ).annotate({
-    identifier: "PipeTargetLambdaFunctionParameters",
-  }) as any as S.Schema<PipeTargetLambdaFunctionParameters>;
+export const PipeTargetLambdaFunctionParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InvocationType: S.optional(S.String) }),
+).annotate({
+  identifier: "PipeTargetLambdaFunctionParameters",
+}) as any as S.Schema<PipeTargetLambdaFunctionParameters>;
 export interface PipeTargetStateMachineParameters {
   InvocationType?: string;
 }
-export const PipeTargetStateMachineParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ InvocationType: S.optional(S.String) }),
-  ).annotate({
-    identifier: "PipeTargetStateMachineParameters",
-  }) as any as S.Schema<PipeTargetStateMachineParameters>;
+export const PipeTargetStateMachineParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InvocationType: S.optional(S.String) }),
+).annotate({
+  identifier: "PipeTargetStateMachineParameters",
+}) as any as S.Schema<PipeTargetStateMachineParameters>;
+export type KinesisPartitionKey = string | redacted.Redacted<string>;
 export interface PipeTargetKinesisStreamParameters {
   PartitionKey: string | redacted.Redacted<string>;
 }
-export const PipeTargetKinesisStreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PartitionKey: SensitiveString }),
-  ).annotate({
-    identifier: "PipeTargetKinesisStreamParameters",
-  }) as any as S.Schema<PipeTargetKinesisStreamParameters>;
-export type Subnets = string | redacted.Redacted<string>[];
+export const PipeTargetKinesisStreamParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PartitionKey: SensitiveString }),
+).annotate({
+  identifier: "PipeTargetKinesisStreamParameters",
+}) as any as S.Schema<PipeTargetKinesisStreamParameters>;
+export type ArnOrJsonPath = string;
+export type LimitMin1 = number;
+export type LaunchType = string;
+export type Subnet = string | redacted.Redacted<string>;
+export type Subnets = (string | redacted.Redacted<string>)[];
 export const Subnets = /*@__PURE__*/ S.Array(SensitiveString);
-export type SecurityGroups = string | redacted.Redacted<string>[];
+export type SecurityGroup = string | redacted.Redacted<string>;
+export type SecurityGroups = (string | redacted.Redacted<string>)[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(SensitiveString);
+export type AssignPublicIp = string;
 export interface AwsVpcConfiguration {
-  Subnets: string | redacted.Redacted<string>[];
-  SecurityGroups?: string | redacted.Redacted<string>[];
+  Subnets: (string | redacted.Redacted<string>)[];
+  SecurityGroups?: (string | redacted.Redacted<string>)[];
   AssignPublicIp?: string;
 }
 export const AwsVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
@@ -654,25 +528,29 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
+export type CapacityProvider = string | redacted.Redacted<string>;
+export type CapacityProviderStrategyItemWeight = number;
+export type CapacityProviderStrategyItemBase = number;
 export interface CapacityProviderStrategyItem {
   capacityProvider: string | redacted.Redacted<string>;
   weight?: number;
   base?: number;
 }
-export const CapacityProviderStrategyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      capacityProvider: SensitiveString,
-      weight: S.optional(S.Number),
-      base: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CapacityProviderStrategyItem",
-  }) as any as S.Schema<CapacityProviderStrategyItem>;
+export const CapacityProviderStrategyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityProvider: SensitiveString,
+    weight: S.optional(S.Number),
+    base: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CapacityProviderStrategyItem",
+}) as any as S.Schema<CapacityProviderStrategyItem>;
 export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
 export const CapacityProviderStrategy = /*@__PURE__*/ S.Array(
   CapacityProviderStrategyItem,
 );
+export type PlacementConstraintType = string;
+export type PlacementConstraintExpression = string | redacted.Redacted<string>;
 export interface PlacementConstraint {
   type?: string;
   expression?: string | redacted.Redacted<string>;
@@ -687,6 +565,8 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
 export const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
+export type PlacementStrategyType = string;
+export type PlacementStrategyField = string | redacted.Redacted<string>;
 export interface PlacementStrategy {
   type?: string;
   field?: string | redacted.Redacted<string>;
@@ -698,6 +578,8 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
 export const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
+export type PropagateTags = string;
+export type ReferenceId = string | redacted.Redacted<string>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface EcsEnvironmentVariable {
@@ -713,6 +595,7 @@ export type EcsEnvironmentVariableList = EcsEnvironmentVariable[];
 export const EcsEnvironmentVariableList = /*@__PURE__*/ S.Array(
   EcsEnvironmentVariable,
 );
+export type EcsEnvironmentFileType = string;
 export interface EcsEnvironmentFile {
   type: string;
   value: string;
@@ -724,6 +607,7 @@ export const EcsEnvironmentFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EcsEnvironmentFile>;
 export type EcsEnvironmentFileList = EcsEnvironmentFile[];
 export const EcsEnvironmentFileList = /*@__PURE__*/ S.Array(EcsEnvironmentFile);
+export type EcsResourceRequirementType = string;
 export interface EcsResourceRequirement {
   type: string;
   value: string;
@@ -764,6 +648,7 @@ export const EcsContainerOverride = /*@__PURE__*/ S.suspend(() =>
 export type EcsContainerOverrideList = EcsContainerOverride[];
 export const EcsContainerOverrideList =
   /*@__PURE__*/ S.Array(EcsContainerOverride);
+export type EphemeralStorageSize = number;
 export interface EcsEphemeralStorage {
   sizeInGiB: number;
 }
@@ -776,19 +661,19 @@ export interface EcsInferenceAcceleratorOverride {
   deviceName?: string;
   deviceType?: string;
 }
-export const EcsInferenceAcceleratorOverride =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deviceName: S.optional(S.String),
-      deviceType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EcsInferenceAcceleratorOverride",
-  }) as any as S.Schema<EcsInferenceAcceleratorOverride>;
+export const EcsInferenceAcceleratorOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceName: S.optional(S.String),
+    deviceType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EcsInferenceAcceleratorOverride",
+}) as any as S.Schema<EcsInferenceAcceleratorOverride>;
 export type EcsInferenceAcceleratorOverrideList =
   EcsInferenceAcceleratorOverride[];
-export const EcsInferenceAcceleratorOverrideList =
-  /*@__PURE__*/ S.Array(EcsInferenceAcceleratorOverride);
+export const EcsInferenceAcceleratorOverrideList = /*@__PURE__*/ S.Array(
+  EcsInferenceAcceleratorOverride,
+);
 export interface EcsTaskOverride {
   ContainerOverrides?: EcsContainerOverride[];
   Cpu?: string;
@@ -813,6 +698,8 @@ export const EcsTaskOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EcsTaskOverride",
 }) as any as S.Schema<EcsTaskOverride>;
+export type TagKey = string;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string;
   Value: string | redacted.Redacted<string>;
@@ -839,28 +726,28 @@ export interface PipeTargetEcsTaskParameters {
   Overrides?: EcsTaskOverride;
   Tags?: Tag[];
 }
-export const PipeTargetEcsTaskParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TaskDefinitionArn: S.String,
-      TaskCount: S.optional(S.Number),
-      LaunchType: S.optional(S.String),
-      NetworkConfiguration: S.optional(NetworkConfiguration),
-      PlatformVersion: S.optional(S.String),
-      Group: S.optional(S.String),
-      CapacityProviderStrategy: S.optional(CapacityProviderStrategy),
-      EnableECSManagedTags: S.optional(S.Boolean),
-      EnableExecuteCommand: S.optional(S.Boolean),
-      PlacementConstraints: S.optional(PlacementConstraints),
-      PlacementStrategy: S.optional(PlacementStrategies),
-      PropagateTags: S.optional(S.String),
-      ReferenceId: S.optional(SensitiveString),
-      Overrides: S.optional(EcsTaskOverride),
-      Tags: S.optional(TagList),
-    }),
-  ).annotate({
-    identifier: "PipeTargetEcsTaskParameters",
-  }) as any as S.Schema<PipeTargetEcsTaskParameters>;
+export const PipeTargetEcsTaskParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskDefinitionArn: S.String,
+    TaskCount: S.optional(S.Number),
+    LaunchType: S.optional(S.String),
+    NetworkConfiguration: S.optional(NetworkConfiguration),
+    PlatformVersion: S.optional(S.String),
+    Group: S.optional(S.String),
+    CapacityProviderStrategy: S.optional(CapacityProviderStrategy),
+    EnableECSManagedTags: S.optional(S.Boolean),
+    EnableExecuteCommand: S.optional(S.Boolean),
+    PlacementConstraints: S.optional(PlacementConstraints),
+    PlacementStrategy: S.optional(PlacementStrategies),
+    PropagateTags: S.optional(S.String),
+    ReferenceId: S.optional(SensitiveString),
+    Overrides: S.optional(EcsTaskOverride),
+    Tags: S.optional(TagList),
+  }),
+).annotate({
+  identifier: "PipeTargetEcsTaskParameters",
+}) as any as S.Schema<PipeTargetEcsTaskParameters>;
+export type BatchArraySize = number;
 export interface BatchArrayProperties {
   Size?: number;
 }
@@ -869,6 +756,7 @@ export const BatchArrayProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchArrayProperties",
 }) as any as S.Schema<BatchArrayProperties>;
+export type BatchRetryAttempts = number;
 export interface BatchRetryStrategy {
   Attempts?: number;
 }
@@ -890,6 +778,7 @@ export type BatchEnvironmentVariableList = BatchEnvironmentVariable[];
 export const BatchEnvironmentVariableList = /*@__PURE__*/ S.Array(
   BatchEnvironmentVariable,
 );
+export type BatchResourceRequirementType = string;
 export interface BatchResourceRequirement {
   Type: string;
   Value: string;
@@ -900,8 +789,9 @@ export const BatchResourceRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchResourceRequirement",
 }) as any as S.Schema<BatchResourceRequirement>;
 export type BatchResourceRequirementsList = BatchResourceRequirement[];
-export const BatchResourceRequirementsList =
-  /*@__PURE__*/ S.Array(BatchResourceRequirement);
+export const BatchResourceRequirementsList = /*@__PURE__*/ S.Array(
+  BatchResourceRequirement,
+);
 export interface BatchContainerOverrides {
   Command?: string[];
   Environment?: BatchEnvironmentVariable[];
@@ -918,6 +808,7 @@ export const BatchContainerOverrides = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchContainerOverrides",
 }) as any as S.Schema<BatchContainerOverrides>;
+export type BatchJobDependencyType = string;
 export interface BatchJobDependency {
   JobId?: string;
   Type?: string;
@@ -943,35 +834,35 @@ export interface PipeTargetBatchJobParameters {
   DependsOn?: BatchJobDependency[];
   Parameters?: { [key: string]: string | undefined };
 }
-export const PipeTargetBatchJobParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      JobDefinition: S.String,
-      JobName: S.String,
-      ArrayProperties: S.optional(BatchArrayProperties),
-      RetryStrategy: S.optional(BatchRetryStrategy),
-      ContainerOverrides: S.optional(BatchContainerOverrides),
-      DependsOn: S.optional(BatchDependsOn),
-      Parameters: S.optional(BatchParametersMap),
-    }),
-  ).annotate({
-    identifier: "PipeTargetBatchJobParameters",
-  }) as any as S.Schema<PipeTargetBatchJobParameters>;
+export const PipeTargetBatchJobParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobDefinition: S.String,
+    JobName: S.String,
+    ArrayProperties: S.optional(BatchArrayProperties),
+    RetryStrategy: S.optional(BatchRetryStrategy),
+    ContainerOverrides: S.optional(BatchContainerOverrides),
+    DependsOn: S.optional(BatchDependsOn),
+    Parameters: S.optional(BatchParametersMap),
+  }),
+).annotate({
+  identifier: "PipeTargetBatchJobParameters",
+}) as any as S.Schema<PipeTargetBatchJobParameters>;
+export type MessageGroupId = string | redacted.Redacted<string>;
+export type MessageDeduplicationId = string | redacted.Redacted<string>;
 export interface PipeTargetSqsQueueParameters {
   MessageGroupId?: string | redacted.Redacted<string>;
   MessageDeduplicationId?: string | redacted.Redacted<string>;
 }
-export const PipeTargetSqsQueueParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MessageGroupId: S.optional(SensitiveString),
-      MessageDeduplicationId: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "PipeTargetSqsQueueParameters",
-  }) as any as S.Schema<PipeTargetSqsQueueParameters>;
+export const PipeTargetSqsQueueParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MessageGroupId: S.optional(SensitiveString),
+    MessageDeduplicationId: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "PipeTargetSqsQueueParameters",
+}) as any as S.Schema<PipeTargetSqsQueueParameters>;
 export interface PipeTargetHttpParameters {
-  PathParameterValues?: string | redacted.Redacted<string>[];
+  PathParameterValues?: (string | redacted.Redacted<string>)[];
   HeaderParameters?: {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
@@ -988,7 +879,12 @@ export const PipeTargetHttpParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipeTargetHttpParameters",
 }) as any as S.Schema<PipeTargetHttpParameters>;
-export type Sqls = string | redacted.Redacted<string>[];
+export type SecretManagerArnOrJsonPath = string;
+export type Database = string | redacted.Redacted<string>;
+export type DbUser = string | redacted.Redacted<string>;
+export type StatementName = string | redacted.Redacted<string>;
+export type Sql = string | redacted.Redacted<string>;
+export type Sqls = (string | redacted.Redacted<string>)[];
 export const Sqls = /*@__PURE__*/ S.Array(SensitiveString);
 export interface PipeTargetRedshiftDataParameters {
   SecretManagerArn?: string;
@@ -996,21 +892,24 @@ export interface PipeTargetRedshiftDataParameters {
   DbUser?: string | redacted.Redacted<string>;
   StatementName?: string | redacted.Redacted<string>;
   WithEvent?: boolean;
-  Sqls: string | redacted.Redacted<string>[];
+  Sqls: (string | redacted.Redacted<string>)[];
 }
-export const PipeTargetRedshiftDataParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SecretManagerArn: S.optional(S.String),
-      Database: SensitiveString,
-      DbUser: S.optional(SensitiveString),
-      StatementName: S.optional(SensitiveString),
-      WithEvent: S.optional(S.Boolean),
-      Sqls: Sqls,
-    }),
-  ).annotate({
-    identifier: "PipeTargetRedshiftDataParameters",
-  }) as any as S.Schema<PipeTargetRedshiftDataParameters>;
+export const PipeTargetRedshiftDataParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SecretManagerArn: S.optional(S.String),
+    Database: SensitiveString,
+    DbUser: S.optional(SensitiveString),
+    StatementName: S.optional(SensitiveString),
+    WithEvent: S.optional(S.Boolean),
+    Sqls: Sqls,
+  }),
+).annotate({
+  identifier: "PipeTargetRedshiftDataParameters",
+}) as any as S.Schema<PipeTargetRedshiftDataParameters>;
+export type SageMakerPipelineParameterName = string | redacted.Redacted<string>;
+export type SageMakerPipelineParameterValue =
+  | string
+  | redacted.Redacted<string>;
 export interface SageMakerPipelineParameter {
   Name: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -1021,21 +920,26 @@ export const SageMakerPipelineParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SageMakerPipelineParameter",
 }) as any as S.Schema<SageMakerPipelineParameter>;
 export type SageMakerPipelineParameterList = SageMakerPipelineParameter[];
-export const SageMakerPipelineParameterList =
-  /*@__PURE__*/ S.Array(SageMakerPipelineParameter);
+export const SageMakerPipelineParameterList = /*@__PURE__*/ S.Array(
+  SageMakerPipelineParameter,
+);
 export interface PipeTargetSageMakerPipelineParameters {
   PipelineParameterList?: SageMakerPipelineParameter[];
 }
-export const PipeTargetSageMakerPipelineParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const PipeTargetSageMakerPipelineParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       PipelineParameterList: S.optional(SageMakerPipelineParameterList),
     }),
-  ).annotate({
-    identifier: "PipeTargetSageMakerPipelineParameters",
-  }) as any as S.Schema<PipeTargetSageMakerPipelineParameters>;
+).annotate({
+  identifier: "PipeTargetSageMakerPipelineParameters",
+}) as any as S.Schema<PipeTargetSageMakerPipelineParameters>;
+export type EventBridgeEndpointId = string | redacted.Redacted<string>;
+export type EventBridgeDetailType = string | redacted.Redacted<string>;
+export type EventBridgeEventSource = string | redacted.Redacted<string>;
 export type EventBridgeEventResourceList = string[];
 export const EventBridgeEventResourceList = /*@__PURE__*/ S.Array(S.String);
+export type JsonPath = string;
 export interface PipeTargetEventBridgeEventBusParameters {
   EndpointId?: string | redacted.Redacted<string>;
   DetailType?: string | redacted.Redacted<string>;
@@ -1043,8 +947,8 @@ export interface PipeTargetEventBridgeEventBusParameters {
   Resources?: string[];
   Time?: string;
 }
-export const PipeTargetEventBridgeEventBusParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const PipeTargetEventBridgeEventBusParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EndpointId: S.optional(SensitiveString),
       DetailType: S.optional(SensitiveString),
@@ -1052,22 +956,30 @@ export const PipeTargetEventBridgeEventBusParameters =
       Resources: S.optional(EventBridgeEventResourceList),
       Time: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "PipeTargetEventBridgeEventBusParameters",
-  }) as any as S.Schema<PipeTargetEventBridgeEventBusParameters>;
+).annotate({
+  identifier: "PipeTargetEventBridgeEventBusParameters",
+}) as any as S.Schema<PipeTargetEventBridgeEventBusParameters>;
+export type LogStreamName = string;
 export interface PipeTargetCloudWatchLogsParameters {
   LogStreamName?: string;
   Timestamp?: string;
 }
-export const PipeTargetCloudWatchLogsParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LogStreamName: S.optional(S.String),
-      Timestamp: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PipeTargetCloudWatchLogsParameters",
-  }) as any as S.Schema<PipeTargetCloudWatchLogsParameters>;
+export const PipeTargetCloudWatchLogsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogStreamName: S.optional(S.String),
+    Timestamp: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PipeTargetCloudWatchLogsParameters",
+}) as any as S.Schema<PipeTargetCloudWatchLogsParameters>;
+export type TimeValue = string;
+export type EpochTimeUnit = string;
+export type TimeFieldType = string;
+export type TimestampFormat = string;
+export type VersionValue = string;
+export type DimensionValue = string;
+export type DimensionValueType = string;
+export type DimensionName = string;
 export interface DimensionMapping {
   DimensionValue: string;
   DimensionValueType: string;
@@ -1084,6 +996,9 @@ export const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DimensionMapping>;
 export type DimensionMappings = DimensionMapping[];
 export const DimensionMappings = /*@__PURE__*/ S.Array(DimensionMapping);
+export type MeasureValue = string;
+export type MeasureValueType = string;
+export type MeasureName = string;
 export interface SingleMeasureMapping {
   MeasureValue: string;
   MeasureValueType: string;
@@ -1101,24 +1016,26 @@ export const SingleMeasureMapping = /*@__PURE__*/ S.suspend(() =>
 export type SingleMeasureMappings = SingleMeasureMapping[];
 export const SingleMeasureMappings =
   /*@__PURE__*/ S.Array(SingleMeasureMapping);
+export type MultiMeasureName = string;
+export type MultiMeasureAttributeName = string;
 export interface MultiMeasureAttributeMapping {
   MeasureValue: string;
   MeasureValueType: string;
   MultiMeasureAttributeName: string;
 }
-export const MultiMeasureAttributeMapping =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MeasureValue: S.String,
-      MeasureValueType: S.String,
-      MultiMeasureAttributeName: S.String,
-    }),
-  ).annotate({
-    identifier: "MultiMeasureAttributeMapping",
-  }) as any as S.Schema<MultiMeasureAttributeMapping>;
+export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MeasureValue: S.String,
+    MeasureValueType: S.String,
+    MultiMeasureAttributeName: S.String,
+  }),
+).annotate({
+  identifier: "MultiMeasureAttributeMapping",
+}) as any as S.Schema<MultiMeasureAttributeMapping>;
 export type MultiMeasureAttributeMappings = MultiMeasureAttributeMapping[];
-export const MultiMeasureAttributeMappings =
-  /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
+export const MultiMeasureAttributeMappings = /*@__PURE__*/ S.Array(
+  MultiMeasureAttributeMapping,
+);
 export interface MultiMeasureMapping {
   MultiMeasureName: string;
   MultiMeasureAttributeMappings: MultiMeasureAttributeMapping[];
@@ -1143,21 +1060,20 @@ export interface PipeTargetTimestreamParameters {
   SingleMeasureMappings?: SingleMeasureMapping[];
   MultiMeasureMappings?: MultiMeasureMapping[];
 }
-export const PipeTargetTimestreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TimeValue: S.String,
-      EpochTimeUnit: S.optional(S.String),
-      TimeFieldType: S.optional(S.String),
-      TimestampFormat: S.optional(S.String),
-      VersionValue: S.String,
-      DimensionMappings: DimensionMappings,
-      SingleMeasureMappings: S.optional(SingleMeasureMappings),
-      MultiMeasureMappings: S.optional(MultiMeasureMappings),
-    }),
-  ).annotate({
-    identifier: "PipeTargetTimestreamParameters",
-  }) as any as S.Schema<PipeTargetTimestreamParameters>;
+export const PipeTargetTimestreamParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TimeValue: S.String,
+    EpochTimeUnit: S.optional(S.String),
+    TimeFieldType: S.optional(S.String),
+    TimestampFormat: S.optional(S.String),
+    VersionValue: S.String,
+    DimensionMappings: DimensionMappings,
+    SingleMeasureMappings: S.optional(SingleMeasureMappings),
+    MultiMeasureMappings: S.optional(MultiMeasureMappings),
+  }),
+).annotate({
+  identifier: "PipeTargetTimestreamParameters",
+}) as any as S.Schema<PipeTargetTimestreamParameters>;
 export interface PipeTargetParameters {
   InputTemplate?: string | redacted.Redacted<string>;
   LambdaFunctionParameters?: PipeTargetLambdaFunctionParameters;
@@ -1198,6 +1114,15 @@ export const PipeTargetParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PipeTargetParameters",
 }) as any as S.Schema<PipeTargetParameters>;
+export type RoleArn = string;
+export type TagMap = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const TagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export type S3OutputFormat = string;
 export interface S3LogDestinationParameters {
   BucketName: string;
   BucketOwner: string;
@@ -1214,22 +1139,26 @@ export const S3LogDestinationParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3LogDestinationParameters",
 }) as any as S.Schema<S3LogDestinationParameters>;
+export type FirehoseArn = string;
 export interface FirehoseLogDestinationParameters {
   DeliveryStreamArn: string;
 }
-export const FirehoseLogDestinationParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DeliveryStreamArn: S.String }),
-  ).annotate({
-    identifier: "FirehoseLogDestinationParameters",
-  }) as any as S.Schema<FirehoseLogDestinationParameters>;
+export const FirehoseLogDestinationParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DeliveryStreamArn: S.String }),
+).annotate({
+  identifier: "FirehoseLogDestinationParameters",
+}) as any as S.Schema<FirehoseLogDestinationParameters>;
+export type CloudwatchLogGroupArn = string;
 export interface CloudwatchLogsLogDestinationParameters {
   LogGroupArn: string;
 }
-export const CloudwatchLogsLogDestinationParameters =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ LogGroupArn: S.String })).annotate({
-    identifier: "CloudwatchLogsLogDestinationParameters",
-  }) as any as S.Schema<CloudwatchLogsLogDestinationParameters>;
+export const CloudwatchLogsLogDestinationParameters = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ LogGroupArn: S.String }),
+).annotate({
+  identifier: "CloudwatchLogsLogDestinationParameters",
+}) as any as S.Schema<CloudwatchLogsLogDestinationParameters>;
+export type LogLevel = string;
+export type IncludeExecutionDataOption = string;
 export type IncludeExecutionData = string[];
 export const IncludeExecutionData = /*@__PURE__*/ S.Array(S.String);
 export interface PipeLogConfigurationParameters {
@@ -1239,20 +1168,20 @@ export interface PipeLogConfigurationParameters {
   Level: string;
   IncludeExecutionData?: string[];
 }
-export const PipeLogConfigurationParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      S3LogDestination: S.optional(S3LogDestinationParameters),
-      FirehoseLogDestination: S.optional(FirehoseLogDestinationParameters),
-      CloudwatchLogsLogDestination: S.optional(
-        CloudwatchLogsLogDestinationParameters,
-      ),
-      Level: S.String,
-      IncludeExecutionData: S.optional(IncludeExecutionData),
-    }),
-  ).annotate({
-    identifier: "PipeLogConfigurationParameters",
-  }) as any as S.Schema<PipeLogConfigurationParameters>;
+export const PipeLogConfigurationParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    S3LogDestination: S.optional(S3LogDestinationParameters),
+    FirehoseLogDestination: S.optional(FirehoseLogDestinationParameters),
+    CloudwatchLogsLogDestination: S.optional(
+      CloudwatchLogsLogDestinationParameters,
+    ),
+    Level: S.String,
+    IncludeExecutionData: S.optional(IncludeExecutionData),
+  }),
+).annotate({
+  identifier: "PipeLogConfigurationParameters",
+}) as any as S.Schema<PipeLogConfigurationParameters>;
+export type KmsKeyIdentifier = string;
 export interface CreatePipeRequest {
   Name: string;
   Description?: string | redacted.Redacted<string>;
@@ -1297,6 +1226,8 @@ export const CreatePipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipeRequest",
 }) as any as S.Schema<CreatePipeRequest>;
+export type PipeArn = string;
+export type PipeState = string;
 export interface CreatePipeResponse {
   Arn?: string;
   Name?: string;
@@ -1319,6 +1250,47 @@ export const CreatePipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipeResponse",
 }) as any as S.Schema<CreatePipeResponse>;
+export interface DeletePipeRequest {
+  Name: string;
+}
+export const DeletePipeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/v1/pipes/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeletePipeRequest",
+}) as any as S.Schema<DeletePipeRequest>;
+export type RequestedPipeStateDescribeResponse = string;
+export interface DeletePipeResponse {
+  Arn?: string;
+  Name?: string;
+  DesiredState?: string;
+  CurrentState?: string;
+  CreationTime?: Date;
+  LastModifiedTime?: Date;
+}
+export const DeletePipeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    DesiredState: S.optional(S.String),
+    CurrentState: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "DeletePipeResponse",
+}) as any as S.Schema<DeletePipeResponse>;
 export interface DescribePipeRequest {
   Name: string;
 }
@@ -1337,6 +1309,7 @@ export const DescribePipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipeRequest",
 }) as any as S.Schema<DescribePipeRequest>;
+export type PipeStateReason = string;
 export interface S3LogDestination {
   BucketName?: string;
   Prefix?: string;
@@ -1364,12 +1337,11 @@ export const FirehoseLogDestination = /*@__PURE__*/ S.suspend(() =>
 export interface CloudwatchLogsLogDestination {
   LogGroupArn?: string;
 }
-export const CloudwatchLogsLogDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ LogGroupArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CloudwatchLogsLogDestination",
-  }) as any as S.Schema<CloudwatchLogsLogDestination>;
+export const CloudwatchLogsLogDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LogGroupArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CloudwatchLogsLogDestination",
+}) as any as S.Schema<CloudwatchLogsLogDestination>;
 export interface PipeLogConfiguration {
   S3LogDestination?: S3LogDestination;
   FirehoseLogDestination?: FirehoseLogDestination;
@@ -1434,6 +1406,247 @@ export const DescribePipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipeResponse",
 }) as any as S.Schema<DescribePipeResponse>;
+export type ResourceArn = string;
+export type NextToken = string | redacted.Redacted<string>;
+export type LimitMax100 = number;
+export interface ListPipesRequest {
+  NamePrefix?: string;
+  DesiredState?: string;
+  CurrentState?: string;
+  SourcePrefix?: string;
+  TargetPrefix?: string;
+  NextToken?: string | redacted.Redacted<string>;
+  Limit?: number;
+}
+export const ListPipesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NamePrefix: S.optional(S.String).pipe(T.HttpQuery("NamePrefix")),
+    DesiredState: S.optional(S.String).pipe(T.HttpQuery("DesiredState")),
+    CurrentState: S.optional(S.String).pipe(T.HttpQuery("CurrentState")),
+    SourcePrefix: S.optional(S.String).pipe(T.HttpQuery("SourcePrefix")),
+    TargetPrefix: S.optional(S.String).pipe(T.HttpQuery("TargetPrefix")),
+    NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("NextToken")),
+    Limit: S.optional(S.Number).pipe(T.HttpQuery("Limit")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/v1/pipes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPipesRequest",
+}) as any as S.Schema<ListPipesRequest>;
+export interface Pipe {
+  Name?: string;
+  Arn?: string;
+  DesiredState?: string;
+  CurrentState?: string;
+  StateReason?: string;
+  CreationTime?: Date;
+  LastModifiedTime?: Date;
+  Source?: string;
+  Target?: string;
+  Enrichment?: string;
+}
+export const Pipe = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Arn: S.optional(S.String),
+    DesiredState: S.optional(S.String),
+    CurrentState: S.optional(S.String),
+    StateReason: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    Source: S.optional(S.String),
+    Target: S.optional(S.String),
+    Enrichment: S.optional(S.String),
+  }),
+).annotate({ identifier: "Pipe" }) as any as S.Schema<Pipe>;
+export type PipeList = Pipe[];
+export const PipeList = /*@__PURE__*/ S.Array(Pipe);
+export interface ListPipesResponse {
+  Pipes?: Pipe[];
+  NextToken?: string | redacted.Redacted<string>;
+}
+export const ListPipesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Pipes: S.optional(PipeList),
+    NextToken: S.optional(SensitiveString),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListPipesResponse",
+}) as any as S.Schema<ListPipesResponse>;
+export interface ListTagsForResourceRequest {
+  resourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  tags?: { [key: string]: string | redacted.Redacted<string> | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface StartPipeRequest {
+  Name: string;
+}
+export const StartPipeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/pipes/{Name}/start" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartPipeRequest",
+}) as any as S.Schema<StartPipeRequest>;
+export interface StartPipeResponse {
+  Arn?: string;
+  Name?: string;
+  DesiredState?: string;
+  CurrentState?: string;
+  CreationTime?: Date;
+  LastModifiedTime?: Date;
+}
+export const StartPipeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    DesiredState: S.optional(S.String),
+    CurrentState: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "StartPipeResponse",
+}) as any as S.Schema<StartPipeResponse>;
+export interface StopPipeRequest {
+  Name: string;
+}
+export const StopPipeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/v1/pipes/{Name}/stop" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StopPipeRequest",
+}) as any as S.Schema<StopPipeRequest>;
+export interface StopPipeResponse {
+  Arn?: string;
+  Name?: string;
+  DesiredState?: string;
+  CurrentState?: string;
+  CreationTime?: Date;
+  LastModifiedTime?: Date;
+}
+export const StopPipeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    DesiredState: S.optional(S.String),
+    CurrentState: S.optional(S.String),
+    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "StopPipeResponse",
+}) as any as S.Schema<StopPipeResponse>;
+export interface TagResourceRequest {
+  resourceArn: string;
+  tags: { [key: string]: string | redacted.Redacted<string> | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tags: TagMap,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePipeSourceKinesisStreamParameters {
   BatchSize?: number;
   DeadLetterConfig?: DeadLetterConfig;
@@ -1443,8 +1656,8 @@ export interface UpdatePipeSourceKinesisStreamParameters {
   MaximumRetryAttempts?: number;
   ParallelizationFactor?: number;
 }
-export const UpdatePipeSourceKinesisStreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipeSourceKinesisStreamParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       BatchSize: S.optional(S.Number),
       DeadLetterConfig: S.optional(DeadLetterConfig),
@@ -1454,9 +1667,9 @@ export const UpdatePipeSourceKinesisStreamParameters =
       MaximumRetryAttempts: S.optional(S.Number),
       ParallelizationFactor: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "UpdatePipeSourceKinesisStreamParameters",
-  }) as any as S.Schema<UpdatePipeSourceKinesisStreamParameters>;
+).annotate({
+  identifier: "UpdatePipeSourceKinesisStreamParameters",
+}) as any as S.Schema<UpdatePipeSourceKinesisStreamParameters>;
 export interface UpdatePipeSourceDynamoDBStreamParameters {
   BatchSize?: number;
   DeadLetterConfig?: DeadLetterConfig;
@@ -1466,8 +1679,8 @@ export interface UpdatePipeSourceDynamoDBStreamParameters {
   MaximumRetryAttempts?: number;
   ParallelizationFactor?: number;
 }
-export const UpdatePipeSourceDynamoDBStreamParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipeSourceDynamoDBStreamParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       BatchSize: S.optional(S.Number),
       DeadLetterConfig: S.optional(DeadLetterConfig),
@@ -1477,52 +1690,51 @@ export const UpdatePipeSourceDynamoDBStreamParameters =
       MaximumRetryAttempts: S.optional(S.Number),
       ParallelizationFactor: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "UpdatePipeSourceDynamoDBStreamParameters",
-  }) as any as S.Schema<UpdatePipeSourceDynamoDBStreamParameters>;
+).annotate({
+  identifier: "UpdatePipeSourceDynamoDBStreamParameters",
+}) as any as S.Schema<UpdatePipeSourceDynamoDBStreamParameters>;
 export interface UpdatePipeSourceSqsQueueParameters {
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const UpdatePipeSourceSqsQueueParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BatchSize: S.optional(S.Number),
-      MaximumBatchingWindowInSeconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "UpdatePipeSourceSqsQueueParameters",
-  }) as any as S.Schema<UpdatePipeSourceSqsQueueParameters>;
+export const UpdatePipeSourceSqsQueueParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BatchSize: S.optional(S.Number),
+    MaximumBatchingWindowInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdatePipeSourceSqsQueueParameters",
+}) as any as S.Schema<UpdatePipeSourceSqsQueueParameters>;
 export interface UpdatePipeSourceActiveMQBrokerParameters {
   Credentials: MQBrokerAccessCredentials;
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const UpdatePipeSourceActiveMQBrokerParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipeSourceActiveMQBrokerParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Credentials: MQBrokerAccessCredentials,
       BatchSize: S.optional(S.Number),
       MaximumBatchingWindowInSeconds: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "UpdatePipeSourceActiveMQBrokerParameters",
-  }) as any as S.Schema<UpdatePipeSourceActiveMQBrokerParameters>;
+).annotate({
+  identifier: "UpdatePipeSourceActiveMQBrokerParameters",
+}) as any as S.Schema<UpdatePipeSourceActiveMQBrokerParameters>;
 export interface UpdatePipeSourceRabbitMQBrokerParameters {
   Credentials: MQBrokerAccessCredentials;
   BatchSize?: number;
   MaximumBatchingWindowInSeconds?: number;
 }
-export const UpdatePipeSourceRabbitMQBrokerParameters =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipeSourceRabbitMQBrokerParameters = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Credentials: MQBrokerAccessCredentials,
       BatchSize: S.optional(S.Number),
       MaximumBatchingWindowInSeconds: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "UpdatePipeSourceRabbitMQBrokerParameters",
-  }) as any as S.Schema<UpdatePipeSourceRabbitMQBrokerParameters>;
+).annotate({
+  identifier: "UpdatePipeSourceRabbitMQBrokerParameters",
+}) as any as S.Schema<UpdatePipeSourceRabbitMQBrokerParameters>;
 export interface UpdatePipeSourceManagedStreamingKafkaParameters {
   BatchSize?: number;
   Credentials?: MSKAccessCredentials;
@@ -1655,245 +1867,154 @@ export const UpdatePipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePipeResponse",
 }) as any as S.Schema<UpdatePipeResponse>;
-export interface DeletePipeRequest {
-  Name: string;
+export type ErrorMessage = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
 }
-export const DeletePipeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "DELETE", uri: "/v1/pipes/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
-  identifier: "DeletePipeRequest",
-}) as any as S.Schema<DeletePipeRequest>;
-export interface DeletePipeResponse {
-  Arn?: string;
-  Name?: string;
-  DesiredState?: string;
-  CurrentState?: string;
-  CreationTime?: Date;
-  LastModifiedTime?: Date;
-}
-export const DeletePipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    DesiredState: S.optional(S.String),
-    CurrentState: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-  }).pipe(ns),
-).annotate({
-  identifier: "DeletePipeResponse",
-}) as any as S.Schema<DeletePipeResponse>;
-export interface ListPipesRequest {
-  NamePrefix?: string;
-  DesiredState?: string;
-  CurrentState?: string;
-  SourcePrefix?: string;
-  TargetPrefix?: string;
-  NextToken?: string | redacted.Redacted<string>;
-  Limit?: number;
-}
-export const ListPipesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NamePrefix: S.optional(S.String).pipe(T.HttpQuery("NamePrefix")),
-    DesiredState: S.optional(S.String).pipe(T.HttpQuery("DesiredState")),
-    CurrentState: S.optional(S.String).pipe(T.HttpQuery("CurrentState")),
-    SourcePrefix: S.optional(S.String).pipe(T.HttpQuery("SourcePrefix")),
-    TargetPrefix: S.optional(S.String).pipe(T.HttpQuery("TargetPrefix")),
-    NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("NextToken")),
-    Limit: S.optional(S.Number).pipe(T.HttpQuery("Limit")),
-  }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "GET", uri: "/v1/pipes" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPipesRequest",
-}) as any as S.Schema<ListPipesRequest>;
-export interface Pipe {
-  Name?: string;
-  Arn?: string;
-  DesiredState?: string;
-  CurrentState?: string;
-  StateReason?: string;
-  CreationTime?: Date;
-  LastModifiedTime?: Date;
-  Source?: string;
-  Target?: string;
-  Enrichment?: string;
-}
-export const Pipe = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(S.String),
-    Arn: S.optional(S.String),
-    DesiredState: S.optional(S.String),
-    CurrentState: S.optional(S.String),
-    StateReason: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-    Source: S.optional(S.String),
-    Target: S.optional(S.String),
-    Enrichment: S.optional(S.String),
-  }),
-).annotate({ identifier: "Pipe" }) as any as S.Schema<Pipe>;
-export type PipeList = Pipe[];
-export const PipeList = /*@__PURE__*/ S.Array(Pipe);
-export interface ListPipesResponse {
-  Pipes?: Pipe[];
-  NextToken?: string | redacted.Redacted<string>;
-}
-export const ListPipesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Pipes: S.optional(PipeList),
-    NextToken: S.optional(SensitiveString),
-  }).pipe(ns),
-).annotate({
-  identifier: "ListPipesResponse",
-}) as any as S.Schema<ListPipesResponse>;
-export interface StartPipeRequest {
-  Name: string;
-}
-export const StartPipeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/v1/pipes/{Name}/start" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartPipeRequest",
-}) as any as S.Schema<StartPipeRequest>;
-export interface StartPipeResponse {
-  Arn?: string;
-  Name?: string;
-  DesiredState?: string;
-  CurrentState?: string;
-  CreationTime?: Date;
-  LastModifiedTime?: Date;
-}
-export const StartPipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    DesiredState: S.optional(S.String),
-    CurrentState: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-  }).pipe(ns),
-).annotate({
-  identifier: "StartPipeResponse",
-}) as any as S.Schema<StartPipeResponse>;
-export interface StopPipeRequest {
-  Name: string;
-}
-export const StopPipeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      ns,
-      T.Http({ method: "POST", uri: "/v1/pipes/{Name}/stop" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StopPipeRequest",
-}) as any as S.Schema<StopPipeRequest>;
-export interface StopPipeResponse {
-  Arn?: string;
-  Name?: string;
-  DesiredState?: string;
-  CurrentState?: string;
-  CreationTime?: Date;
-  LastModifiedTime?: Date;
-}
-export const StopPipeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    DesiredState: S.optional(S.String),
-    CurrentState: S.optional(S.String),
-    CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModifiedTime: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-  }).pipe(ns),
-).annotate({
-  identifier: "StopPipeResponse",
-}) as any as S.Schema<StopPipeResponse>;
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type CreatePipeError =
+  | ConflictException
+  | InternalException
+  | NotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces
+ * the need for specialized knowledge and integration code.
+ */
+export const createPipe: API.OperationMethod<
+  CreatePipeRequest,
+  CreatePipeResponse,
+  CreatePipeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePipeRequest,
+  output: CreatePipeResponse,
+  errors: [
+    ConflictException,
+    InternalException,
+    NotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePipe",
+}));
 
-//# Errors
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.optional(S.String),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withThrottlingError) {}
+export type DeletePipeError =
+  | ConflictException
+  | InternalException
+  | NotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
+ */
+export const deletePipe: API.OperationMethod<
+  DeletePipeRequest,
+  DeletePipeResponse,
+  DeletePipeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePipeRequest,
+  output: DeletePipeResponse,
+  errors: [
+    ConflictException,
+    InternalException,
+    NotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePipe",
+}));
 
-//# Operations
+export type DescribePipeError =
+  | InternalException
+  | NotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the information about an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
+ */
+export const describePipe: API.OperationMethod<
+  DescribePipeRequest,
+  DescribePipeResponse,
+  DescribePipeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribePipeRequest,
+  output: DescribePipeResponse,
+  errors: [
+    InternalException,
+    NotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribePipe",
+}));
+
+export type ListPipesError =
+  | InternalException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the pipes associated with this account. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
+ */
+export const listPipes: API.OperationMethod<
+  ListPipesRequest,
+  ListPipesResponse,
+  ListPipesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPipesRequest,
+  ) => stream.Stream<
+    ListPipesResponse,
+    ListPipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPipesRequest,
+  ) => stream.Stream<
+    Pipe,
+    ListPipesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPipesRequest,
+  output: ListPipesResponse,
+  errors: [InternalException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListPipes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Pipes",
+    pageSize: "Limit",
+  } as const,
+}));
+
 export type ListTagsForResourceError =
   | InternalException
   | NotFoundException
@@ -1911,8 +2032,71 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
+export type StartPipeError =
+  | ConflictException
+  | InternalException
+  | NotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Start an existing pipe.
+ */
+export const startPipe: API.OperationMethod<
+  StartPipeRequest,
+  StartPipeResponse,
+  StartPipeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartPipeRequest,
+  output: StartPipeResponse,
+  errors: [
+    ConflictException,
+    InternalException,
+    NotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartPipe",
+}));
+
+export type StopPipeError =
+  | ConflictException
+  | InternalException
+  | NotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Stop an existing pipe.
+ */
+export const stopPipe: API.OperationMethod<
+  StopPipeRequest,
+  StopPipeResponse,
+  StopPipeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopPipeRequest,
+  output: StopPipeResponse,
+  errors: [
+    ConflictException,
+    InternalException,
+    NotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StopPipe",
+}));
+
 export type TagResourceError =
   | InternalException
   | NotFoundException
@@ -1943,8 +2127,11 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalException
   | NotFoundException
@@ -1962,63 +2149,11 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
-export type CreatePipeError =
-  | ConflictException
-  | InternalException
-  | NotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces
- * the need for specialized knowledge and integration code.
- */
-export const createPipe: API.OperationMethod<
-  CreatePipeRequest,
-  CreatePipeResponse,
-  CreatePipeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePipeRequest,
-  output: CreatePipeResponse,
-  errors: [
-    ConflictException,
-    InternalException,
-    NotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "CreatePipe",
-}));
-export type DescribePipeError =
-  | InternalException
-  | NotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the information about an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
- */
-export const describePipe: API.OperationMethod<
-  DescribePipeRequest,
-  DescribePipeResponse,
-  DescribePipeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DescribePipeRequest,
-  output: DescribePipeResponse,
-  errors: [
-    InternalException,
-    NotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DescribePipe",
-}));
+
 export type UpdatePipeError =
   | ConflictException
   | InternalException
@@ -2056,126 +2191,7 @@ export const updatePipe: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipe",
-}));
-export type DeletePipeError =
-  | ConflictException
-  | InternalException
-  | NotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
- */
-export const deletePipe: API.OperationMethod<
-  DeletePipeRequest,
-  DeletePipeResponse,
-  DeletePipeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePipeRequest,
-  output: DeletePipeResponse,
-  errors: [
-    ConflictException,
-    InternalException,
-    NotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "DeletePipe",
-}));
-export type ListPipesError =
-  | InternalException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the pipes associated with this account. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.
- */
-export const listPipes: API.OperationMethod<
-  ListPipesRequest,
-  ListPipesResponse,
-  ListPipesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    ListPipesResponse,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPipesRequest,
-  ) => stream.Stream<
-    Pipe,
-    ListPipesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPipesRequest,
-  output: ListPipesResponse,
-  errors: [InternalException, ThrottlingException, ValidationException],
-  operationName: "ListPipes",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Pipes",
-    pageSize: "Limit",
-  } as const,
-}));
-export type StartPipeError =
-  | ConflictException
-  | InternalException
-  | NotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Start an existing pipe.
- */
-export const startPipe: API.OperationMethod<
-  StartPipeRequest,
-  StartPipeResponse,
-  StartPipeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartPipeRequest,
-  output: StartPipeResponse,
-  errors: [
-    ConflictException,
-    InternalException,
-    NotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "StartPipe",
-}));
-export type StopPipeError =
-  | ConflictException
-  | InternalException
-  | NotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Stop an existing pipe.
- */
-export const stopPipe: API.OperationMethod<
-  StopPipeRequest,
-  StopPipeResponse,
-  StopPipeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StopPipeRequest,
-  output: StopPipeResponse,
-  errors: [
-    ConflictException,
-    InternalException,
-    NotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  operationName: "StopPipe",
 }));

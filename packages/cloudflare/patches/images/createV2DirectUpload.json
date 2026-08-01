@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "ImagesAccessNotEnabled": [{ "code": 5403 }],
-    "ImageAlreadyExists": [{ "code": 5409 }],
-    "InvalidUploadFormat": [{ "code": 5415 }]
-  }
+  "description": "Align images#V2DirectUploadsCreate with distilled cloudflare/images createV2DirectUpload",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V2DirectUploadsCreate",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUpload"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V2DirectUploadsCreateRequest",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUploadRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUpload/input/target",
+      "value": "com.cloudflare.images#CreateV2DirectUploadRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V2DirectUploadsCreateResponse",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUploadResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUpload/output/target",
+      "value": "com.cloudflare.images#CreateV2DirectUploadResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#ImagesAccessNotEnabled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#ImageAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5409
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#InvalidUploadFormat",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5415
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#CreateV2DirectUpload/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.images#ImagesAccessNotEnabled"
+        },
+        {
+          "target": "com.cloudflare.images#ImageAlreadyExists"
+        },
+        {
+          "target": "com.cloudflare.images#InvalidUploadFormat"
+        }
+      ]
+    }
+  ]
 }

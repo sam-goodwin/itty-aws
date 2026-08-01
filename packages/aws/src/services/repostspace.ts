@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,37 +87,68 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type SpaceId = string;
 export type ChannelId = string;
 export type AccessorId = string;
-export type ErrorCode = number;
-export type ErrorMessage = string;
-export type ChannelName = string | redacted.Redacted<string>;
-export type ChannelDescription = string | redacted.Redacted<string>;
-export type SpaceName = string | redacted.Redacted<string>;
-export type SpaceSubdomain = string;
-export type SpaceDescription = string | redacted.Redacted<string>;
-export type KMSKey = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Arn = string;
-export type EmailDomain = string | redacted.Redacted<string>;
-export type AdminId = string;
-export type ProvisioningStatus = string;
-export type ClientId = string;
-export type IdentityStoreId = string;
-export type Url = string;
-export type StorageLimit = number;
-export type UserCount = number;
-export type ContentSize = number;
-export type ListChannelsLimit = number;
-export type GroupCount = number;
-export type ListSpacesLimit = number;
-export type InviteTitle = string | redacted.Redacted<string>;
-export type InviteBody = string | redacted.Redacted<string>;
-
-//# Schemas
 export type AccessorIdList = string[];
 export const AccessorIdList = /*@__PURE__*/ S.Array(S.String);
 export type ChannelRole =
@@ -125,6 +158,7 @@ export type ChannelRole =
   | "SUPPORTREQUESTOR"
   | (string & {});
 export const ChannelRole = /*@__PURE__*/ S.String;
+
 export interface BatchAddChannelRoleToAccessorsInput {
   spaceId: string;
   channelId: string;
@@ -153,6 +187,8 @@ export const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchAddChannelRoleToAccessorsInput",
 }) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
+export type ErrorCode = number;
+export type ErrorMessage = string;
 export interface BatchError {
   accessorId: string;
   error: number;
@@ -172,26 +208,6 @@ export const BatchAddChannelRoleToAccessorsOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchAddChannelRoleToAccessorsOutput",
 }) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export type Role =
   | "EXPERT"
   | "MODERATOR"
@@ -199,6 +215,7 @@ export type Role =
   | "SUPPORTREQUESTOR"
   | (string & {});
 export const Role = /*@__PURE__*/ S.String;
+
 export interface BatchAddRoleInput {
   spaceId: string;
   accessorIds: string[];
@@ -302,6 +319,8 @@ export const BatchRemoveRoleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchRemoveRoleOutput",
 }) as any as S.Schema<BatchRemoveRoleOutput>;
+export type ChannelName = string | redacted.Redacted<string>;
+export type ChannelDescription = string | redacted.Redacted<string>;
 export interface CreateChannelInput {
   spaceId: string;
   channelName: string | redacted.Redacted<string>;
@@ -333,12 +352,22 @@ export const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChannelOutput",
 }) as any as S.Schema<CreateChannelOutput>;
+export type SpaceName = string | redacted.Redacted<string>;
+export type SpaceSubdomain = string;
 export type TierLevel = "BASIC" | "STANDARD" | (string & {});
 export const TierLevel = /*@__PURE__*/ S.String;
+
+export type SpaceDescription = string | redacted.Redacted<string>;
+export type KMSKey = string;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type Arn = string;
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureEnableParameter = /*@__PURE__*/ S.String;
+
+export type EmailDomain = string | redacted.Redacted<string>;
 export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
 export const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
@@ -417,6 +446,7 @@ export const DeleteSpaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSpaceResponse",
 }) as any as S.Schema<DeleteSpaceResponse>;
+export type AdminId = string;
 export interface DeregisterAdminInput {
   spaceId: string;
   adminId: string;
@@ -481,6 +511,7 @@ export type ChannelStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const ChannelStatus = /*@__PURE__*/ S.String;
+
 export interface GetChannelOutput {
   spaceId: string;
   channelId: string;
@@ -522,14 +553,21 @@ export const GetSpaceInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetSpaceInput" }) as any as S.Schema<GetSpaceInput>;
+export type ProvisioningStatus = string;
 export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED" | (string & {});
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type ClientId = string;
+export type IdentityStoreId = string;
 export type VanityDomainStatus =
   | "PENDING"
   | "APPROVED"
   | "UNAPPROVED"
   | (string & {});
 export const VanityDomainStatus = /*@__PURE__*/ S.String;
+
+export type Url = string;
+export type StorageLimit = number;
 export type UserAdmins = string[];
 export const UserAdmins = /*@__PURE__*/ S.Array(S.String);
 export type GroupAdmins = string[];
@@ -541,12 +579,15 @@ export const Roles = /*@__PURE__*/ S.Record(
   S.String,
   RoleList.pipe(S.optional),
 );
+export type UserCount = number;
+export type ContentSize = number;
 export type FeatureEnableStatus =
   | "ENABLED"
   | "DISABLED"
   | "NOT_ALLOWED"
   | (string & {});
 export const FeatureEnableStatus = /*@__PURE__*/ S.String;
+
 export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
   allowedDomains?: (string | redacted.Redacted<string>)[];
@@ -615,6 +656,7 @@ export const GetSpaceOutput = /*@__PURE__*/ S.suspend(() =>
     supportedEmailDomains: S.optional(SupportedEmailDomainsStatus),
   }),
 ).annotate({ identifier: "GetSpaceOutput" }) as any as S.Schema<GetSpaceOutput>;
+export type ListChannelsLimit = number;
 export interface ListChannelsInput {
   spaceId: string;
   nextToken?: string;
@@ -638,6 +680,7 @@ export const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListChannelsInput",
 }) as any as S.Schema<ListChannelsInput>;
+export type GroupCount = number;
 export interface ChannelData {
   spaceId: string;
   channelId: string;
@@ -675,6 +718,7 @@ export const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListChannelsOutput",
 }) as any as S.Schema<ListChannelsOutput>;
+export type ListSpacesLimit = number;
 export interface ListSpacesInput {
   nextToken?: string;
   maxResults?: number;
@@ -801,6 +845,8 @@ export const RegisterAdminResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterAdminResponse",
 }) as any as S.Schema<RegisterAdminResponse>;
+export type InviteTitle = string | redacted.Redacted<string>;
+export type InviteBody = string | redacted.Redacted<string>;
 export interface SendInvitesInput {
   spaceId: string;
   accessorIds: string[];
@@ -952,63 +998,27 @@ export const UpdateSpaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSpaceResponse",
 }) as any as S.Schema<UpdateSpaceResponse>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchAddChannelRoleToAccessorsError =
   | AccessDeniedException
   | InternalServerException
@@ -1034,8 +1044,11 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAddChannelRoleToAccessors",
 }));
+
 export type BatchAddRoleError =
   | AccessDeniedException
   | InternalServerException
@@ -1061,8 +1074,11 @@ export const batchAddRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAddRole",
 }));
+
 export type BatchRemoveChannelRoleFromAccessorsError =
   | AccessDeniedException
   | InternalServerException
@@ -1088,8 +1104,11 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRemoveChannelRoleFromAccessors",
 }));
+
 export type BatchRemoveRoleError =
   | AccessDeniedException
   | InternalServerException
@@ -1115,8 +1134,11 @@ export const batchRemoveRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRemoveRole",
 }));
+
 export type CreateChannelError =
   | AccessDeniedException
   | ConflictException
@@ -1146,8 +1168,11 @@ export const createChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
+
 export type CreateSpaceError =
   | AccessDeniedException
   | ConflictException
@@ -1177,8 +1202,11 @@ export const createSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpace",
 }));
+
 export type DeleteSpaceError =
   | AccessDeniedException
   | InternalServerException
@@ -1204,8 +1232,11 @@ export const deleteSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpace",
 }));
+
 export type DeregisterAdminError =
   | AccessDeniedException
   | InternalServerException
@@ -1231,8 +1262,11 @@ export const deregisterAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterAdmin",
 }));
+
 export type GetChannelError =
   | AccessDeniedException
   | InternalServerException
@@ -1258,8 +1292,11 @@ export const getChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
+
 export type GetSpaceError =
   | AccessDeniedException
   | InternalServerException
@@ -1285,8 +1322,11 @@ export const getSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpace",
 }));
+
 export type ListChannelsError =
   | AccessDeniedException
   | InternalServerException
@@ -1327,6 +1367,8 @@ export const listChannels: API.OperationMethod<
     ValidationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
@@ -1335,6 +1377,7 @@ export const listChannels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSpacesError =
   | AccessDeniedException
   | InternalServerException
@@ -1373,6 +1416,8 @@ export const listSpaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaces",
   pagination: {
     inputToken: "nextToken",
@@ -1381,6 +1426,7 @@ export const listSpaces: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1406,8 +1452,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterAdminError =
   | AccessDeniedException
   | InternalServerException
@@ -1433,8 +1482,11 @@ export const registerAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterAdmin",
 }));
+
 export type SendInvitesError =
   | AccessDeniedException
   | InternalServerException
@@ -1460,8 +1512,11 @@ export const sendInvites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendInvites",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1487,8 +1542,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1514,8 +1572,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateChannelError =
   | AccessDeniedException
   | ConflictException
@@ -1543,8 +1604,11 @@ export const updateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
+
 export type UpdateSpaceError =
   | AccessDeniedException
   | ConflictException
@@ -1572,5 +1636,7 @@ export const updateSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpace",
 }));

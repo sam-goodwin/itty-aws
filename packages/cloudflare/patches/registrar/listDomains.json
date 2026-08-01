@@ -1,21 +1,70 @@
 {
-  "errors": {
-    "Forbidden": [{ "status": 403 }]
-  },
-  "response": {
-    "properties": {
-      "result[].name": {
-        "optional": true,
-        "definition": { "kind": "primitive", "value": "string" }
-      },
-      "result[].auto_renew": {
-        "optional": true,
-        "definition": { "kind": "primitive", "value": "boolean" }
-      },
-      "result[].privacy": {
-        "optional": true,
-        "definition": { "kind": "primitive", "value": "boolean" }
+  "description": "Align registrar#DomainsList with distilled cloudflare/registrar listDomains",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsList",
+      "path": "/shapes/com.cloudflare.registrar#ListDomains"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsListRequest",
+      "path": "/shapes/com.cloudflare.registrar#ListDomainsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.registrar#ListDomains/input/target",
+      "value": "com.cloudflare.registrar#ListDomainsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.registrar#DomainsListResponse",
+      "path": "/shapes/com.cloudflare.registrar#ListDomainsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.registrar#ListDomains/output/target",
+      "value": "com.cloudflare.registrar#ListDomainsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#ListDomains/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.registrar#ListDomains/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.registrar#Forbidden"
+        }
+      ]
     }
-  }
+  ]
 }

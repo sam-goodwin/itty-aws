@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -91,36 +93,88 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ClusterNotFound extends S.TaggedErrorClass<ClusterNotFound>()(
+  "ClusterNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Cluster id .* is not valid" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  {},
+  T.all(
+    T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class JobFlowNotFound extends S.TaggedErrorClass<JobFlowNotFound>()(
+  "JobFlowNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Specified job flow ID not valid" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class SecurityConfigurationAlreadyExists extends S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
+  "SecurityConfigurationAlreadyExists",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^SecurityConfiguration with name .* already exists" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class SecurityConfigurationNotFound extends S.TaggedErrorClass<SecurityConfigurationNotFound>()(
+  "SecurityConfigurationNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Security configuration with name .* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class StudioNotFound extends S.TaggedErrorClass<StudioNotFound>()(
+  "StudioNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "Studio does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class StudioServiceRoleMissingS3Access extends S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
+  "StudioServiceRoleMissingS3Access",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: {
+      includes: "does not have permission to access the 'S3 Location'",
+    },
+  }),
+).pipe(C.withRetryableError) {}
+export class StudioServiceRoleNotAssumable extends S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
+  "StudioServiceRoleNotAssumable",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "does not have permissions to assume role" },
+  }),
+).pipe(C.withRetryableError) {}
 export type XmlStringMaxLen256 = string;
+export type InstanceFleetType = "MASTER" | "CORE" | "TASK" | (string & {});
+export const InstanceFleetType = /*@__PURE__*/ S.String;
+
 export type WholeNumber = number;
 export type InstanceType = string;
 export type NonNegativeDouble = number;
 export type ThroughputVal = number;
-export type InstanceFleetId = string;
-export type ArnType = string;
-export type ErrorMessage = string;
-export type ErrorCode = string;
-export type XmlString = string;
-export type ResourceId = string;
-export type ClusterId = string;
-export type StepId = string;
-export type OptionalArnType = string;
-export type IAMRoleArn = string;
-export type UriString = string;
-export type MaxResultsNumber = number;
-export type Port = number;
-export type UtilizationPerformanceIndexInteger = number;
-export type SessionId = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type Marker = string;
-export type InstanceGroupId = string;
-export type InstanceId = string;
-export type ClientRequestToken = string;
-
-//# Schemas
-export type InstanceFleetType = "MASTER" | "CORE" | "TASK" | (string & {});
-export const InstanceFleetType = /*@__PURE__*/ S.String;
 export interface VolumeSpecification {
   VolumeType?: string;
   Iops?: number;
@@ -222,6 +276,7 @@ export type SpotProvisioningTimeoutAction =
   | "TERMINATE_CLUSTER"
   | (string & {});
 export const SpotProvisioningTimeoutAction = /*@__PURE__*/ S.String;
+
 export type SpotProvisioningAllocationStrategy =
   | "capacity-optimized"
   | "price-capacity-optimized"
@@ -230,6 +285,7 @@ export type SpotProvisioningAllocationStrategy =
   | "capacity-optimized-prioritized"
   | (string & {});
 export const SpotProvisioningAllocationStrategy = /*@__PURE__*/ S.String;
+
 export interface SpotProvisioningSpecification {
   TimeoutDurationMinutes?: number;
   TimeoutAction?: SpotProvisioningTimeoutAction;
@@ -251,15 +307,18 @@ export type OnDemandProvisioningAllocationStrategy =
   | "prioritized"
   | (string & {});
 export const OnDemandProvisioningAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type OnDemandCapacityReservationUsageStrategy =
   | "use-capacity-reservations-first"
   | (string & {});
 export const OnDemandCapacityReservationUsageStrategy = /*@__PURE__*/ S.String;
+
 export type OnDemandCapacityReservationPreference =
   | "open"
   | "none"
   | (string & {});
 export const OnDemandCapacityReservationPreference = /*@__PURE__*/ S.String;
+
 export interface OnDemandCapacityReservationOptions {
   UsageStrategy?: OnDemandCapacityReservationUsageStrategy;
   CapacityReservationPreference?: OnDemandCapacityReservationPreference;
@@ -385,6 +444,8 @@ export const AddInstanceFleetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddInstanceFleetInput",
 }) as any as S.Schema<AddInstanceFleetInput>;
+export type InstanceFleetId = string;
+export type ArnType = string;
 export interface AddInstanceFleetOutput {
   ClusterId?: string;
   InstanceFleetId?: string;
@@ -401,8 +462,10 @@ export const AddInstanceFleetOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddInstanceFleetOutput>;
 export type MarketType = "ON_DEMAND" | "SPOT" | (string & {});
 export const MarketType = /*@__PURE__*/ S.String;
+
 export type InstanceRoleType = "MASTER" | "CORE" | "TASK" | (string & {});
 export const InstanceRoleType = /*@__PURE__*/ S.String;
+
 export interface ScalingConstraints {
   MinCapacity?: number;
   MaxCapacity?: number;
@@ -421,6 +484,7 @@ export type AdjustmentType =
   | "EXACT_CAPACITY"
   | (string & {});
 export const AdjustmentType = /*@__PURE__*/ S.String;
+
 export interface SimpleScalingPolicyConfiguration {
   AdjustmentType?: AdjustmentType;
   ScalingAdjustment?: number;
@@ -454,6 +518,7 @@ export type ComparisonOperator =
   | "LESS_THAN_OR_EQUAL"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export type Statistic =
   | "SAMPLE_COUNT"
   | "AVERAGE"
@@ -462,6 +527,7 @@ export type Statistic =
   | "MAXIMUM"
   | (string & {});
 export const Statistic = /*@__PURE__*/ S.String;
+
 export type Unit =
   | "NONE"
   | "SECONDS"
@@ -492,6 +558,7 @@ export type Unit =
   | "COUNT_PER_SECOND"
   | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
+
 export interface MetricDimension {
   Key?: string;
   Value?: string;
@@ -641,6 +708,8 @@ export type ActionOnFailure =
   | "CONTINUE"
   | (string & {});
 export const ActionOnFailure = /*@__PURE__*/ S.String;
+
+export type XmlString = string;
 export interface KeyValue {
   Key?: string;
   Value?: string;
@@ -740,6 +809,7 @@ export const AddJobFlowStepsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddJobFlowStepsOutput",
 }) as any as S.Schema<AddJobFlowStepsOutput>;
+export type ResourceId = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -749,6 +819,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type ClusterId = string;
 export interface AddTagsInput {
   ResourceId?: string;
   Tags?: Tag[];
@@ -780,6 +851,7 @@ export type StepCancellationOption =
   | "TERMINATE_PROCESS"
   | (string & {});
 export const StepCancellationOption = /*@__PURE__*/ S.String;
+
 export interface CancelStepsInput {
   ClusterId?: string;
   StepIds?: string[];
@@ -804,8 +876,10 @@ export const CancelStepsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelStepsInput",
 }) as any as S.Schema<CancelStepsInput>;
+export type StepId = string;
 export type CancelStepsRequestStatus = "SUBMITTED" | "FAILED" | (string & {});
 export const CancelStepsRequestStatus = /*@__PURE__*/ S.String;
+
 export interface CancelStepsInfo {
   StepId?: string;
   Status?: CancelStepsRequestStatus;
@@ -840,6 +914,7 @@ export const EMRContainersConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EMRContainersConfig>;
 export type ProfilerType = "SHS" | "TEZUI" | "YTS" | (string & {});
 export const ProfilerType = /*@__PURE__*/ S.String;
+
 export interface CreatePersistentAppUIInput {
   TargetResourceArn?: string;
   EMRContainersConfig?: EMRContainersConfig;
@@ -918,10 +993,12 @@ export const CreateSecurityConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSecurityConfigurationOutput>;
 export type AuthMode = "SSO" | "IAM" | (string & {});
 export const AuthMode = /*@__PURE__*/ S.String;
+
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type IdcUserAssignment = "REQUIRED" | "OPTIONAL" | (string & {});
 export const IdcUserAssignment = /*@__PURE__*/ S.String;
+
 export interface CreateStudioInput {
   Name?: string;
   Description?: string;
@@ -987,6 +1064,7 @@ export const CreateStudioOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStudioOutput>;
 export type IdentityType = "USER" | "GROUP" | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export interface CreateStudioSessionMappingInput {
   StudioId?: string;
   IdentityId?: string;
@@ -1129,6 +1207,7 @@ export type ClusterState =
   | "TERMINATED_WITH_ERRORS"
   | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
+
 export type ClusterStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -1140,6 +1219,7 @@ export type ClusterStateChangeReasonCode =
   | "ALL_STEPS_COMPLETED"
   | (string & {});
 export const ClusterStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface ClusterStateChangeReason {
   Code?: ClusterStateChangeReasonCode;
   Message?: string;
@@ -1237,6 +1317,7 @@ export type InstanceCollectionType =
   | "INSTANCE_GROUP"
   | (string & {});
 export const InstanceCollectionType = /*@__PURE__*/ S.String;
+
 export interface Application {
   Name?: string;
   Version?: string;
@@ -1258,8 +1339,10 @@ export type ScaleDownBehavior =
   | "TERMINATE_AT_TASK_COMPLETION"
   | (string & {});
 export const ScaleDownBehavior = /*@__PURE__*/ S.String;
+
 export type RepoUpgradeOnBoot = "SECURITY" | "NONE" | (string & {});
 export const RepoUpgradeOnBoot = /*@__PURE__*/ S.String;
+
 export interface KerberosAttributes {
   Realm?: string;
   KdcAdminPassword?: string | redacted.Redacted<string>;
@@ -1278,6 +1361,7 @@ export const KerberosAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KerberosAttributes",
 }) as any as S.Schema<KerberosAttributes>;
+export type OptionalArnType = string;
 export type PlacementGroupStrategy =
   | "SPREAD"
   | "PARTITION"
@@ -1285,6 +1369,7 @@ export type PlacementGroupStrategy =
   | "NONE"
   | (string & {});
 export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
+
 export interface PlacementGroupConfig {
   InstanceRole?: InstanceRoleType;
   PlacementStrategy?: PlacementGroupStrategy;
@@ -1329,12 +1414,14 @@ export type LogType =
   | "persistent-ui-logs"
   | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type LogUploadPolicyValue =
   | "emr-managed"
   | "on-customer-s3only"
   | "disabled"
   | (string & {});
 export const LogUploadPolicyValue = /*@__PURE__*/ S.String;
+
 export type LogTypeMap = { [key in LogType]?: LogUploadPolicyValue };
 export const LogTypeMap = /*@__PURE__*/ S.Record(
   LogType,
@@ -1472,6 +1559,7 @@ export type JobFlowExecutionState =
   | "FAILED"
   | (string & {});
 export const JobFlowExecutionState = /*@__PURE__*/ S.String;
+
 export type JobFlowExecutionStateList = JobFlowExecutionState[];
 export const JobFlowExecutionStateList = /*@__PURE__*/ S.Array(
   JobFlowExecutionState,
@@ -1538,6 +1626,7 @@ export type InstanceGroupState =
   | "ENDED"
   | (string & {});
 export const InstanceGroupState = /*@__PURE__*/ S.String;
+
 export interface InstanceGroupDetail {
   InstanceGroupId?: string;
   Name?: string;
@@ -1637,6 +1726,7 @@ export type StepExecutionState =
   | "INTERRUPTED"
   | (string & {});
 export const StepExecutionState = /*@__PURE__*/ S.String;
+
 export interface StepExecutionStatusDetail {
   State?: StepExecutionState;
   CreationDateTime?: Date;
@@ -1809,6 +1899,8 @@ export const DescribeNotebookExecutionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNotebookExecutionInput>;
 export type ExecutionEngineType = "EMR" | (string & {});
 export const ExecutionEngineType = /*@__PURE__*/ S.String;
+
+export type IAMRoleArn = string;
 export interface ExecutionEngineConfig {
   Id?: string;
   Type?: ExecutionEngineType;
@@ -1838,6 +1930,8 @@ export type NotebookExecutionStatus =
   | "STOPPED"
   | (string & {});
 export const NotebookExecutionStatus = /*@__PURE__*/ S.String;
+
+export type UriString = string;
 export interface NotebookS3LocationForOutput {
   Bucket?: string;
   Key?: string;
@@ -1858,6 +1952,7 @@ export const OutputNotebookS3LocationForOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputNotebookS3LocationForOutput>;
 export type OutputNotebookFormat = "HTML" | (string & {});
 export const OutputNotebookFormat = /*@__PURE__*/ S.String;
+
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
 export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1935,6 +2030,7 @@ export const DescribePersistentAppUIInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePersistentAppUIInput>;
 export type PersistentAppUIType = "SHS" | "TEZ" | "YTS" | (string & {});
 export const PersistentAppUIType = /*@__PURE__*/ S.String;
+
 export type PersistentAppUITypeList = PersistentAppUIType[];
 export const PersistentAppUITypeList =
   /*@__PURE__*/ S.Array(PersistentAppUIType);
@@ -1972,6 +2068,7 @@ export const DescribePersistentAppUIOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePersistentAppUIOutput",
 }) as any as S.Schema<DescribePersistentAppUIOutput>;
+export type MaxResultsNumber = number;
 export interface DescribeReleaseLabelInput {
   ReleaseLabel?: string;
   NextToken?: string;
@@ -2115,8 +2212,10 @@ export type StepState =
   | "INTERRUPTED"
   | (string & {});
 export const StepState = /*@__PURE__*/ S.String;
+
 export type StepStateChangeReasonCode = "NONE" | (string & {});
 export const StepStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface StepStateChangeReason {
   Code?: StepStateChangeReasonCode;
   Message?: string;
@@ -2326,6 +2425,7 @@ export const GetBlockPublicAccessConfigurationInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBlockPublicAccessConfigurationInput",
 }) as any as S.Schema<GetBlockPublicAccessConfigurationInput>;
+export type Port = number;
 export interface PortRange {
   MinRange?: number;
   MaxRange?: number;
@@ -2465,6 +2565,7 @@ export type ComputeLimitsUnitType =
   | "VCPU"
   | (string & {});
 export const ComputeLimitsUnitType = /*@__PURE__*/ S.String;
+
 export interface ComputeLimits {
   UnitType?: ComputeLimitsUnitType;
   MinimumCapacityUnits?: number;
@@ -2481,8 +2582,10 @@ export const ComputeLimits = /*@__PURE__*/ S.suspend(() =>
     MaximumCoreCapacityUnits: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ComputeLimits" }) as any as S.Schema<ComputeLimits>;
+export type UtilizationPerformanceIndexInteger = number;
 export type ScalingStrategy = "DEFAULT" | "ADVANCED" | (string & {});
 export const ScalingStrategy = /*@__PURE__*/ S.String;
+
 export interface ManagedScalingPolicy {
   ComputeLimits?: ComputeLimits;
   UtilizationPerformanceIndex?: number;
@@ -2520,6 +2623,7 @@ export type OnClusterAppUIType =
   | "ResourceManager"
   | (string & {});
 export const OnClusterAppUIType = /*@__PURE__*/ S.String;
+
 export interface GetOnClusterAppUIPresignedURLInput {
   ClusterId?: string;
   OnClusterAppUIType?: OnClusterAppUIType;
@@ -2601,6 +2705,7 @@ export const GetPersistentAppUIPresignedURLOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetPersistentAppUIPresignedURLOutput",
 }) as any as S.Schema<GetPersistentAppUIPresignedURLOutput>;
+export type SessionId = string;
 export interface GetSessionInput {
   ClusterId?: string;
   SessionId?: string;
@@ -2634,6 +2739,7 @@ export type SessionState =
   | "FAILED"
   | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
+
 export interface SessionCloudWatchLoggingConfiguration {
   Enabled?: boolean;
   LogGroup?: string;
@@ -2790,6 +2896,7 @@ export const GetSessionEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSessionEndpointInput",
 }) as any as S.Schema<GetSessionEndpointInput>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetSessionEndpointOutput {
   Endpoint: string;
   AuthToken?: string | redacted.Redacted<string>;
@@ -2866,6 +2973,7 @@ export const GetStudioSessionMappingOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStudioSessionMappingOutput",
 }) as any as S.Schema<GetStudioSessionMappingOutput>;
+export type Marker = string;
 export interface ListBootstrapActionsInput {
   ClusterId?: string;
   Marker?: string;
@@ -3007,6 +3115,7 @@ export type InstanceFleetState =
   | "TERMINATED"
   | (string & {});
 export const InstanceFleetState = /*@__PURE__*/ S.String;
+
 export type InstanceFleetStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -3014,6 +3123,7 @@ export type InstanceFleetStateChangeReasonCode =
   | "CLUSTER_TERMINATED"
   | (string & {});
 export const InstanceFleetStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface InstanceFleetStateChangeReason {
   Code?: InstanceFleetStateChangeReasonCode;
   Message?: string;
@@ -3182,8 +3292,10 @@ export const ListInstanceGroupsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInstanceGroupsInput",
 }) as any as S.Schema<ListInstanceGroupsInput>;
+export type InstanceGroupId = string;
 export type InstanceGroupType = "MASTER" | "CORE" | "TASK" | (string & {});
 export const InstanceGroupType = /*@__PURE__*/ S.String;
+
 export type InstanceGroupStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
@@ -3191,6 +3303,7 @@ export type InstanceGroupStateChangeReasonCode =
   | "CLUSTER_TERMINATED"
   | (string & {});
 export const InstanceGroupStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface InstanceGroupStateChangeReason {
   Code?: InstanceGroupStateChangeReasonCode;
   Message?: string;
@@ -3233,6 +3346,7 @@ export const InstanceGroupStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceGroupStatus",
 }) as any as S.Schema<InstanceGroupStatus>;
+export type InstanceId = string;
 export type EC2InstanceIdsList = string[];
 export const EC2InstanceIdsList = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceResizePolicy {
@@ -3268,12 +3382,14 @@ export type AutoScalingPolicyState =
   | "FAILED"
   | (string & {});
 export const AutoScalingPolicyState = /*@__PURE__*/ S.String;
+
 export type AutoScalingPolicyStateChangeReasonCode =
   | "USER_REQUEST"
   | "PROVISION_FAILURE"
   | "CLEANUP_FAILURE"
   | (string & {});
 export const AutoScalingPolicyStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface AutoScalingPolicyStateChangeReason {
   Code?: AutoScalingPolicyStateChangeReasonCode;
   Message?: string;
@@ -3407,6 +3523,7 @@ export type InstanceState =
   | "TERMINATED"
   | (string & {});
 export const InstanceState = /*@__PURE__*/ S.String;
+
 export type InstanceStateList = InstanceState[];
 export const InstanceStateList = /*@__PURE__*/ S.Array(InstanceState);
 export interface ListInstancesInput {
@@ -3449,6 +3566,7 @@ export type InstanceStateChangeReasonCode =
   | "CLUSTER_TERMINATED"
   | (string & {});
 export const InstanceStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface InstanceStateChangeReason {
   Code?: InstanceStateChangeReasonCode;
   Message?: string;
@@ -4080,6 +4198,7 @@ export type EC2InstanceIdsToTerminateList = string[];
 export const EC2InstanceIdsToTerminateList = /*@__PURE__*/ S.Array(S.String);
 export type ReconfigurationType = "OVERWRITE" | "MERGE" | (string & {});
 export const ReconfigurationType = /*@__PURE__*/ S.String;
+
 export interface InstanceGroupModifyConfig {
   InstanceGroupId?: string;
   InstanceCount?: number;
@@ -4730,6 +4849,7 @@ export const StartNotebookExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartNotebookExecutionOutput",
 }) as any as S.Schema<StartNotebookExecutionOutput>;
+export type ClientRequestToken = string;
 export interface StartSessionInput {
   Name?: string;
   ClusterId?: string;
@@ -4936,84 +5056,8 @@ export const UpdateStudioSessionMappingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStudioSessionMappingResponse",
 }) as any as S.Schema<UpdateStudioSessionMappingResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  {},
-  T.all(
-    T.AwsQueryError({ code: "InternalFailure", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class SecurityConfigurationAlreadyExists extends S.TaggedErrorClass<SecurityConfigurationAlreadyExists>()(
-  "SecurityConfigurationAlreadyExists",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^SecurityConfiguration with name .* already exists" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class StudioServiceRoleNotAssumable extends S.TaggedErrorClass<StudioServiceRoleNotAssumable>()(
-  "StudioServiceRoleNotAssumable",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "does not have permissions to assume role" },
-  }),
-).pipe(C.withRetryableError) {}
-export class StudioServiceRoleMissingS3Access extends S.TaggedErrorClass<StudioServiceRoleMissingS3Access>()(
-  "StudioServiceRoleMissingS3Access",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: {
-      includes: "does not have permission to access the 'S3 Location'",
-    },
-  }),
-).pipe(C.withRetryableError) {}
-export class SecurityConfigurationNotFound extends S.TaggedErrorClass<SecurityConfigurationNotFound>()(
-  "SecurityConfigurationNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Security configuration with name .* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class StudioNotFound extends S.TaggedErrorClass<StudioNotFound>()(
-  "StudioNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "Studio does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ClusterNotFound extends S.TaggedErrorClass<ClusterNotFound>()(
-  "ClusterNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Cluster id .* is not valid" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class JobFlowNotFound extends S.TaggedErrorClass<JobFlowNotFound>()(
-  "JobFlowNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Specified job flow ID not valid" },
-  }),
-).pipe(C.withNotFoundError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type ErrorCode = string;
 export type AddInstanceFleetError =
   | InternalServerException
   | InvalidRequestException
@@ -5033,8 +5077,11 @@ export const addInstanceFleet: API.OperationMethod<
   input: AddInstanceFleetInput,
   output: AddInstanceFleetOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddInstanceFleet",
 }));
+
 export type AddInstanceGroupsError = InternalServerError | CommonErrors;
 /**
  * Adds one or more instance groups to a running cluster.
@@ -5048,8 +5095,11 @@ export const addInstanceGroups: API.OperationMethod<
   input: AddInstanceGroupsInput,
   output: AddInstanceGroupsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddInstanceGroups",
 }));
+
 export type AddJobFlowStepsError = InternalServerError | CommonErrors;
 /**
  * AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed
@@ -5084,8 +5134,11 @@ export const addJobFlowSteps: API.OperationMethod<
   input: AddJobFlowStepsInput,
   output: AddJobFlowStepsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddJobFlowSteps",
 }));
+
 export type AddTagsError =
   | InternalServerException
   | InvalidRequestException
@@ -5106,8 +5159,11 @@ export const addTags: API.OperationMethod<
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
+
 export type CancelStepsError =
   | InternalServerError
   | InvalidRequestException
@@ -5128,8 +5184,11 @@ export const cancelSteps: API.OperationMethod<
   input: CancelStepsInput,
   output: CancelStepsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSteps",
 }));
+
 export type CreatePersistentAppUIError =
   | InternalServerException
   | InvalidRequestException
@@ -5146,8 +5205,11 @@ export const createPersistentAppUI: API.OperationMethod<
   input: CreatePersistentAppUIInput,
   output: CreatePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePersistentAppUI",
 }));
+
 export type CreateSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -5170,8 +5232,11 @@ export const createSecurityConfiguration: API.OperationMethod<
     InvalidRequestException,
     SecurityConfigurationAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
+
 export type CreateStudioError =
   | InternalServerException
   | InvalidRequestException
@@ -5195,8 +5260,11 @@ export const createStudio: API.OperationMethod<
     StudioServiceRoleNotAssumable,
     StudioServiceRoleMissingS3Access,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStudio",
 }));
+
 export type CreateStudioSessionMappingError =
   | InternalServerError
   | InvalidRequestException
@@ -5217,8 +5285,11 @@ export const createStudioSessionMapping: API.OperationMethod<
   input: CreateStudioSessionMappingInput,
   output: CreateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStudioSessionMapping",
 }));
+
 export type DeleteSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -5240,8 +5311,11 @@ export const deleteSecurityConfiguration: API.OperationMethod<
     InvalidRequestException,
     SecurityConfigurationNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityConfiguration",
 }));
+
 export type DeleteStudioError =
   | InternalServerException
   | InvalidRequestException
@@ -5259,8 +5333,11 @@ export const deleteStudio: API.OperationMethod<
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStudio",
 }));
+
 export type DeleteStudioSessionMappingError =
   | InternalServerError
   | InvalidRequestException
@@ -5277,8 +5354,11 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   input: DeleteStudioSessionMappingInput,
   output: DeleteStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStudioSessionMapping",
 }));
+
 export type DescribeClusterError =
   | InternalServerException
   | InvalidRequestException
@@ -5297,8 +5377,11 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
   errors: [InternalServerException, InvalidRequestException, ClusterNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeJobFlowsError = InternalServerError | CommonErrors;
 /**
  * This API is no longer supported and will eventually be removed. We recommend you use
@@ -5331,8 +5414,11 @@ export const describeJobFlows: API.OperationMethod<
   input: DescribeJobFlowsInput,
   output: DescribeJobFlowsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobFlows",
 }));
+
 export type DescribeNotebookExecutionError =
   | InternalServerError
   | InvalidRequestException
@@ -5349,8 +5435,11 @@ export const describeNotebookExecution: API.OperationMethod<
   input: DescribeNotebookExecutionInput,
   output: DescribeNotebookExecutionOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotebookExecution",
 }));
+
 export type DescribePersistentAppUIError =
   | InternalServerException
   | InvalidRequestException
@@ -5367,8 +5456,11 @@ export const describePersistentAppUI: API.OperationMethod<
   input: DescribePersistentAppUIInput,
   output: DescribePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePersistentAppUI",
 }));
+
 export type DescribeReleaseLabelError =
   | InternalServerException
   | InvalidRequestException
@@ -5387,8 +5479,11 @@ export const describeReleaseLabel: API.OperationMethod<
   input: DescribeReleaseLabelInput,
   output: DescribeReleaseLabelOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReleaseLabel",
 }));
+
 export type DescribeSecurityConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -5411,8 +5506,11 @@ export const describeSecurityConfiguration: API.OperationMethod<
     InvalidRequestException,
     SecurityConfigurationNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityConfiguration",
 }));
+
 export type DescribeStepError =
   | InternalServerException
   | InvalidRequestException
@@ -5429,8 +5527,11 @@ export const describeStep: API.OperationMethod<
   input: DescribeStepInput,
   output: DescribeStepOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStep",
 }));
+
 export type DescribeStudioError =
   | InternalServerException
   | InvalidRequestException
@@ -5449,8 +5550,11 @@ export const describeStudio: API.OperationMethod<
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStudio",
 }));
+
 export type GetAutoTerminationPolicyError = CommonErrors;
 /**
  * Returns the auto-termination policy for an Amazon EMR cluster.
@@ -5464,8 +5568,11 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   input: GetAutoTerminationPolicyInput,
   output: GetAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoTerminationPolicy",
 }));
+
 export type GetBlockPublicAccessConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -5484,8 +5591,11 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   input: GetBlockPublicAccessConfigurationInput,
   output: GetBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlockPublicAccessConfiguration",
 }));
+
 export type GetClusterSessionCredentialsError =
   | InternalServerError
   | InvalidRequestException
@@ -5505,8 +5615,11 @@ export const getClusterSessionCredentials: API.OperationMethod<
   input: GetClusterSessionCredentialsInput,
   output: GetClusterSessionCredentialsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterSessionCredentials",
 }));
+
 export type GetManagedScalingPolicyError = CommonErrors;
 /**
  * Fetches the attached managed scaling policy for an Amazon EMR cluster.
@@ -5520,8 +5633,11 @@ export const getManagedScalingPolicy: API.OperationMethod<
   input: GetManagedScalingPolicyInput,
   output: GetManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedScalingPolicy",
 }));
+
 export type GetOnClusterAppUIPresignedURLError =
   | InternalServerError
   | InvalidRequestException
@@ -5538,8 +5654,11 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   input: GetOnClusterAppUIPresignedURLInput,
   output: GetOnClusterAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOnClusterAppUIPresignedURL",
 }));
+
 export type GetPersistentAppUIPresignedURLError =
   | InternalServerError
   | InvalidRequestException
@@ -5556,8 +5675,11 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   input: GetPersistentAppUIPresignedURLInput,
   output: GetPersistentAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPersistentAppUIPresignedURL",
 }));
+
 export type GetSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -5574,8 +5696,11 @@ export const getSession: API.OperationMethod<
   input: GetSessionInput,
   output: GetSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
+
 export type GetSessionEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -5592,8 +5717,11 @@ export const getSessionEndpoint: API.OperationMethod<
   input: GetSessionEndpointInput,
   output: GetSessionEndpointOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionEndpoint",
 }));
+
 export type GetStudioSessionMappingError =
   | InternalServerError
   | InvalidRequestException
@@ -5611,8 +5739,11 @@ export const getStudioSessionMapping: API.OperationMethod<
   input: GetStudioSessionMappingInput,
   output: GetStudioSessionMappingOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStudioSessionMapping",
 }));
+
 export type ListBootstrapActionsError =
   | InternalServerException
   | InvalidRequestException
@@ -5644,6 +5775,8 @@ export const listBootstrapActions: API.OperationMethod<
   input: ListBootstrapActionsInput,
   output: ListBootstrapActionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBootstrapActions",
   pagination: {
     inputToken: "Marker",
@@ -5651,6 +5784,7 @@ export const listBootstrapActions: API.OperationMethod<
     items: "BootstrapActions",
   } as const,
 }));
+
 export type ListClustersError =
   | InternalServerException
   | InvalidRequestException
@@ -5686,6 +5820,8 @@ export const listClusters: API.OperationMethod<
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "Marker",
@@ -5693,6 +5829,7 @@ export const listClusters: API.OperationMethod<
     items: "Clusters",
   } as const,
 }));
+
 export type ListInstanceFleetsError =
   | InternalServerException
   | InvalidRequestException
@@ -5727,6 +5864,8 @@ export const listInstanceFleets: API.OperationMethod<
   input: ListInstanceFleetsInput,
   output: ListInstanceFleetsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceFleets",
   pagination: {
     inputToken: "Marker",
@@ -5734,6 +5873,7 @@ export const listInstanceFleets: API.OperationMethod<
     items: "InstanceFleets",
   } as const,
 }));
+
 export type ListInstanceGroupsError =
   | InternalServerException
   | InvalidRequestException
@@ -5765,6 +5905,8 @@ export const listInstanceGroups: API.OperationMethod<
   input: ListInstanceGroupsInput,
   output: ListInstanceGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceGroups",
   pagination: {
     inputToken: "Marker",
@@ -5772,6 +5914,7 @@ export const listInstanceGroups: API.OperationMethod<
     items: "InstanceGroups",
   } as const,
 }));
+
 export type ListInstancesError =
   | InternalServerException
   | InvalidRequestException
@@ -5806,6 +5949,8 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesInput,
   output: ListInstancesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "Marker",
@@ -5813,6 +5958,7 @@ export const listInstances: API.OperationMethod<
     items: "Instances",
   } as const,
 }));
+
 export type ListNotebookExecutionsError =
   | InternalServerError
   | InvalidRequestException
@@ -5847,6 +5993,8 @@ export const listNotebookExecutions: API.OperationMethod<
   input: ListNotebookExecutionsInput,
   output: ListNotebookExecutionsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookExecutions",
   pagination: {
     inputToken: "Marker",
@@ -5854,6 +6002,7 @@ export const listNotebookExecutions: API.OperationMethod<
     items: "NotebookExecutions",
   } as const,
 }));
+
 export type ListReleaseLabelsError =
   | InternalServerException
   | InvalidRequestException
@@ -5886,6 +6035,8 @@ export const listReleaseLabels: API.OperationMethod<
   input: ListReleaseLabelsInput,
   output: ListReleaseLabelsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReleaseLabels",
   pagination: {
     inputToken: "NextToken",
@@ -5893,6 +6044,7 @@ export const listReleaseLabels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSecurityConfigurationsError =
   | InternalServerException
   | InvalidRequestException
@@ -5927,6 +6079,8 @@ export const listSecurityConfigurations: API.OperationMethod<
   input: ListSecurityConfigurationsInput,
   output: ListSecurityConfigurationsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityConfigurations",
   pagination: {
     inputToken: "Marker",
@@ -5934,6 +6088,7 @@ export const listSecurityConfigurations: API.OperationMethod<
     items: "SecurityConfigurations",
   } as const,
 }));
+
 export type ListSessionsError =
   | InternalServerException
   | InvalidRequestException
@@ -5965,6 +6120,8 @@ export const listSessions: API.OperationMethod<
   input: ListSessionsInput,
   output: ListSessionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
@@ -5972,6 +6129,7 @@ export const listSessions: API.OperationMethod<
     items: "Sessions",
   } as const,
 }));
+
 export type ListStepsError =
   | InternalServerException
   | InvalidRequestException
@@ -6008,6 +6166,8 @@ export const listSteps: API.OperationMethod<
   input: ListStepsInput,
   output: ListStepsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSteps",
   pagination: {
     inputToken: "Marker",
@@ -6015,6 +6175,7 @@ export const listSteps: API.OperationMethod<
     items: "Steps",
   } as const,
 }));
+
 export type ListStudiosError =
   | InternalServerException
   | InvalidRequestException
@@ -6047,6 +6208,8 @@ export const listStudios: API.OperationMethod<
   input: ListStudiosInput,
   output: ListStudiosOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStudios",
   pagination: {
     inputToken: "Marker",
@@ -6054,6 +6217,7 @@ export const listStudios: API.OperationMethod<
     items: "Studios",
   } as const,
 }));
+
 export type ListStudioSessionMappingsError =
   | InternalServerError
   | InvalidRequestException
@@ -6086,6 +6250,8 @@ export const listStudioSessionMappings: API.OperationMethod<
   input: ListStudioSessionMappingsInput,
   output: ListStudioSessionMappingsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStudioSessionMappings",
   pagination: {
     inputToken: "Marker",
@@ -6093,6 +6259,7 @@ export const listStudioSessionMappings: API.OperationMethod<
     items: "SessionMappings",
   } as const,
 }));
+
 export type ListSupportedInstanceTypesError =
   | InternalServerException
   | InvalidRequestException
@@ -6125,9 +6292,12 @@ export const listSupportedInstanceTypes: API.OperationMethod<
   input: ListSupportedInstanceTypesInput,
   output: ListSupportedInstanceTypesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupportedInstanceTypes",
   pagination: { inputToken: "Marker", outputToken: "Marker" } as const,
 }));
+
 export type ModifyClusterError =
   | InternalServerError
   | InvalidRequestException
@@ -6145,8 +6315,11 @@ export const modifyCluster: API.OperationMethod<
   input: ModifyClusterInput,
   output: ModifyClusterOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCluster",
 }));
+
 export type ModifyInstanceFleetError =
   | InternalServerException
   | InvalidRequestException
@@ -6168,8 +6341,11 @@ export const modifyInstanceFleet: API.OperationMethod<
   input: ModifyInstanceFleetInput,
   output: ModifyInstanceFleetResponse,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceFleet",
 }));
+
 export type ModifyInstanceGroupsError = InternalServerError | CommonErrors;
 /**
  * ModifyInstanceGroups modifies the number of nodes and configuration settings of an
@@ -6185,8 +6361,11 @@ export const modifyInstanceGroups: API.OperationMethod<
   input: ModifyInstanceGroupsInput,
   output: ModifyInstanceGroupsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceGroups",
 }));
+
 export type PutAutoScalingPolicyError = CommonErrors;
 /**
  * Creates or updates an automatic scaling policy for a core instance group or task
@@ -6203,8 +6382,11 @@ export const putAutoScalingPolicy: API.OperationMethod<
   input: PutAutoScalingPolicyInput,
   output: PutAutoScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAutoScalingPolicy",
 }));
+
 export type PutAutoTerminationPolicyError = CommonErrors;
 /**
  * Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and
@@ -6225,8 +6407,11 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   input: PutAutoTerminationPolicyInput,
   output: PutAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAutoTerminationPolicy",
 }));
+
 export type PutBlockPublicAccessConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -6246,8 +6431,11 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   input: PutBlockPublicAccessConfigurationInput,
   output: PutBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBlockPublicAccessConfiguration",
 }));
+
 export type PutManagedScalingPolicyError = CommonErrors;
 /**
  * Creates or updates a managed scaling policy for an Amazon EMR cluster. The
@@ -6264,8 +6452,11 @@ export const putManagedScalingPolicy: API.OperationMethod<
   input: PutManagedScalingPolicyInput,
   output: PutManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutManagedScalingPolicy",
 }));
+
 export type RemoveAutoScalingPolicyError = CommonErrors;
 /**
  * Removes an automatic scaling policy from a specified instance group within an Amazon EMR cluster.
@@ -6279,8 +6470,11 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   input: RemoveAutoScalingPolicyInput,
   output: RemoveAutoScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAutoScalingPolicy",
 }));
+
 export type RemoveAutoTerminationPolicyError = CommonErrors;
 /**
  * Removes an auto-termination policy from an Amazon EMR cluster.
@@ -6294,8 +6488,11 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   input: RemoveAutoTerminationPolicyInput,
   output: RemoveAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAutoTerminationPolicy",
 }));
+
 export type RemoveManagedScalingPolicyError = CommonErrors;
 /**
  * Removes a managed scaling policy from a specified Amazon EMR cluster.
@@ -6309,8 +6506,11 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   input: RemoveManagedScalingPolicyInput,
   output: RemoveManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveManagedScalingPolicy",
 }));
+
 export type RemoveTagsError =
   | InternalServerException
   | InvalidRequestException
@@ -6332,8 +6532,11 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type RunJobFlowError = InternalServerError | CommonErrors;
 /**
  * RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the
@@ -6371,8 +6574,11 @@ export const runJobFlow: API.OperationMethod<
   input: RunJobFlowInput,
   output: RunJobFlowOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunJobFlow",
 }));
+
 export type SetKeepJobFlowAliveWhenNoStepsError =
   | InternalServerError
   | CommonErrors;
@@ -6392,8 +6598,11 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   input: SetKeepJobFlowAliveWhenNoStepsInput,
   output: SetKeepJobFlowAliveWhenNoStepsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetKeepJobFlowAliveWhenNoSteps",
 }));
+
 export type SetTerminationProtectionError =
   | InternalServerError
   | JobFlowNotFound
@@ -6428,8 +6637,11 @@ export const setTerminationProtection: API.OperationMethod<
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
   errors: [InternalServerError, JobFlowNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTerminationProtection",
 }));
+
 export type SetUnhealthyNodeReplacementError =
   | InternalServerError
   | CommonErrors;
@@ -6458,8 +6670,11 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   input: SetUnhealthyNodeReplacementInput,
   output: SetUnhealthyNodeReplacementResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUnhealthyNodeReplacement",
 }));
+
 export type SetVisibleToAllUsersError = InternalServerError | CommonErrors;
 /**
  * The SetVisibleToAllUsers parameter is no longer supported. Your cluster may be
@@ -6486,8 +6701,11 @@ export const setVisibleToAllUsers: API.OperationMethod<
   input: SetVisibleToAllUsersInput,
   output: SetVisibleToAllUsersResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVisibleToAllUsers",
 }));
+
 export type StartNotebookExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -6504,8 +6722,11 @@ export const startNotebookExecution: API.OperationMethod<
   input: StartNotebookExecutionInput,
   output: StartNotebookExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNotebookExecution",
 }));
+
 export type StartSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -6522,8 +6743,11 @@ export const startSession: API.OperationMethod<
   input: StartSessionInput,
   output: StartSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSession",
 }));
+
 export type StopNotebookExecutionError =
   | InternalServerError
   | InvalidRequestException
@@ -6540,8 +6764,11 @@ export const stopNotebookExecution: API.OperationMethod<
   input: StopNotebookExecutionInput,
   output: StopNotebookExecutionResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopNotebookExecution",
 }));
+
 export type TerminateJobFlowsError =
   | InternalServerError
   | JobFlowNotFound
@@ -6565,8 +6792,11 @@ export const terminateJobFlows: API.OperationMethod<
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
   errors: [InternalServerError, JobFlowNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateJobFlows",
 }));
+
 export type TerminateSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -6583,8 +6813,11 @@ export const terminateSession: API.OperationMethod<
   input: TerminateSessionInput,
   output: TerminateSessionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateSession",
 }));
+
 export type UpdateStudioError =
   | InternalServerException
   | InvalidRequestException
@@ -6603,8 +6836,11 @@ export const updateStudio: API.OperationMethod<
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
   errors: [InternalServerException, InvalidRequestException, StudioNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStudio",
 }));
+
 export type UpdateStudioSessionMappingError =
   | InternalServerError
   | InvalidRequestException
@@ -6621,5 +6857,7 @@ export const updateStudioSessionMapping: API.OperationMethod<
   input: UpdateStudioSessionMappingInput,
   output: UpdateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStudioSessionMapping",
 }));

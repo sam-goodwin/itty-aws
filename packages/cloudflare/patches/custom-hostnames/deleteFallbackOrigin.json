@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "FallbackOriginNotFound": [{ "status": 404 }],
-    "SaasAccessNotGranted": [{ "code": 1456 }]
-  }
-}

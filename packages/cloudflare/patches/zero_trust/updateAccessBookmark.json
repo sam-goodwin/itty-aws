@@ -1,0 +1,68 @@
+{
+  "description": "Align zero_trust#AccessBookmarksUpdate with distilled cloudflare/zero-trust updateAccessBookmark",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessBookmarksUpdate",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmark"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessBookmarksUpdateRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmarkRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmark/input/target",
+      "value": "com.cloudflare.zero_trust#UpdateAccessBookmarkRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessBookmarksUpdateResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmarkResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmark/output/target",
+      "value": "com.cloudflare.zero_trust#UpdateAccessBookmarkResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessBookmarkNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 12045
+            },
+            {
+              "code": 12135
+            },
+            {
+              "code": 11021
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessBookmark/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#AccessBookmarkNotFound"
+        }
+      ]
+    }
+  ]
+}

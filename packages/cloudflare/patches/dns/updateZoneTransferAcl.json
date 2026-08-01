@@ -1,1 +1,62 @@
-{ "errors": { "AclNotFound": [{ "status": 404 }] } }
+{
+  "description": "Align dns#ZoneTransfersAclsUpdate with distilled cloudflare/dns updateZoneTransferAcl",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersAclsUpdate",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAcl"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersAclsUpdateRequest",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAclRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAcl/input/target",
+      "value": "com.cloudflare.dns#UpdateZoneTransferAclRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.dns#ZoneTransfersAclsUpdateResponse",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAclResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAcl/output/target",
+      "value": "com.cloudflare.dns#UpdateZoneTransferAclResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#AclNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.dns#UpdateZoneTransferAcl/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.dns#AclNotFound"
+        }
+      ]
+    }
+  ]
+}

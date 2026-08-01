@@ -215,7 +215,9 @@ test(
         e === "still-exists" ? Effect.fail(e) : Effect.void,
       ),
       Effect.retry(
-        Schedule.max([Schedule.exponential("500 millis"), Schedule.recurs(10)]),
+        Schedule.exponential("500 millis").pipe(
+          Schedule.both(Schedule.recurs(10)),
+        ),
       ),
     );
   }),

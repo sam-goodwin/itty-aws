@@ -1,0 +1,91 @@
+{
+  "description": "Align keyless_certificates#Delete with distilled cloudflare/keyless-certificates deleteKeylessCertificate",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.keyless_certificates#Delete",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificate"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.keyless_certificates#DeleteRequest",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificateRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificate/input/target",
+      "value": "com.cloudflare.keyless_certificates#DeleteKeylessCertificateRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.keyless_certificates#DeleteResponse",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificateResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificate/output/target",
+      "value": "com.cloudflare.keyless_certificates#DeleteKeylessCertificateResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.keyless_certificates#KeylessCertificateNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1005,
+              "message": {
+                "includes": "Invalid or missing Keyless SSL"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.keyless_certificates#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.keyless_certificates#DeleteKeylessCertificate/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.keyless_certificates#KeylessCertificateNotFound"
+        },
+        {
+          "target": "com.cloudflare.keyless_certificates#Forbidden"
+        }
+      ]
+    }
+  ]
+}

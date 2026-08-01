@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "PoolAccessFailed": [{ "code": 1002, "message": { "includes": "Access Failed" } }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

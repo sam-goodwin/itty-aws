@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,46 +87,79 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type InputString = string;
 export type OptInType = string;
-export type ValidationExceptionReason = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Status = string;
-export type SnapshotType = string;
-export type Auth = string;
-export type Password = string | redacted.Redacted<string>;
-export type PaginationToken = string;
-export type Arn = string;
-
-//# Schemas
 export interface ApplyPendingMaintenanceActionInput {
   resourceArn: string;
   applyAction: string;
   optInType: string;
   applyOn?: string;
 }
-export const ApplyPendingMaintenanceActionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.String,
-      applyAction: S.String,
-      optInType: S.String,
-      applyOn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/pending-action" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ApplyPendingMaintenanceActionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String,
+    applyAction: S.String,
+    optInType: S.String,
+    applyOn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/pending-action" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ApplyPendingMaintenanceActionInput",
-  }) as any as S.Schema<ApplyPendingMaintenanceActionInput>;
+  ),
+).annotate({
+  identifier: "ApplyPendingMaintenanceActionInput",
+}) as any as S.Schema<ApplyPendingMaintenanceActionInput>;
 export interface PendingMaintenanceActionDetails {
   action: string;
   autoAppliedAfterDate?: string;
@@ -133,62 +168,49 @@ export interface PendingMaintenanceActionDetails {
   currentApplyDate?: string;
   description?: string;
 }
-export const PendingMaintenanceActionDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.String,
-      autoAppliedAfterDate: S.optional(S.String),
-      forcedApplyDate: S.optional(S.String),
-      optInStatus: S.optional(S.String),
-      currentApplyDate: S.optional(S.String),
-      description: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PendingMaintenanceActionDetails",
-  }) as any as S.Schema<PendingMaintenanceActionDetails>;
+export const PendingMaintenanceActionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.String,
+    autoAppliedAfterDate: S.optional(S.String),
+    forcedApplyDate: S.optional(S.String),
+    optInStatus: S.optional(S.String),
+    currentApplyDate: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PendingMaintenanceActionDetails",
+}) as any as S.Schema<PendingMaintenanceActionDetails>;
 export type PendingMaintenanceActionDetailsList =
   PendingMaintenanceActionDetails[];
-export const PendingMaintenanceActionDetailsList =
-  /*@__PURE__*/ S.Array(PendingMaintenanceActionDetails);
+export const PendingMaintenanceActionDetailsList = /*@__PURE__*/ S.Array(
+  PendingMaintenanceActionDetails,
+);
 export interface ResourcePendingMaintenanceAction {
   resourceArn?: string;
   pendingMaintenanceActionDetails?: PendingMaintenanceActionDetails[];
 }
-export const ResourcePendingMaintenanceAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.optional(S.String),
-      pendingMaintenanceActionDetails: S.optional(
-        PendingMaintenanceActionDetailsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcePendingMaintenanceAction",
-  }) as any as S.Schema<ResourcePendingMaintenanceAction>;
+export const ResourcePendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.optional(S.String),
+    pendingMaintenanceActionDetails: S.optional(
+      PendingMaintenanceActionDetailsList,
+    ),
+  }),
+).annotate({
+  identifier: "ResourcePendingMaintenanceAction",
+}) as any as S.Schema<ResourcePendingMaintenanceAction>;
 export interface ApplyPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
-export const ApplyPendingMaintenanceActionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
-    }),
-  ).annotate({
-    identifier: "ApplyPendingMaintenanceActionOutput",
-  }) as any as S.Schema<ApplyPendingMaintenanceActionOutput>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
+export const ApplyPendingMaintenanceActionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
+  }),
 ).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+  identifier: "ApplyPendingMaintenanceActionOutput",
+}) as any as S.Schema<ApplyPendingMaintenanceActionOutput>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -223,6 +245,8 @@ export const CopyClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyClusterSnapshotInput>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type Status = string;
+export type SnapshotType = string;
 export interface ClusterSnapshot {
   subnetIds: string[];
   snapshotName: string;
@@ -261,6 +285,8 @@ export const CopyClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyClusterSnapshotOutput",
 }) as any as S.Schema<CopyClusterSnapshotOutput>;
+export type Auth = string;
+export type Password = string | redacted.Redacted<string>;
 export interface CreateClusterInput {
   clusterName: string;
   authType: string;
@@ -392,12 +418,11 @@ export const CreateClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const CreateClusterSnapshotOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ snapshot: ClusterSnapshot }),
-  ).annotate({
-    identifier: "CreateClusterSnapshotOutput",
-  }) as any as S.Schema<CreateClusterSnapshotOutput>;
+export const CreateClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshot: ClusterSnapshot }),
+).annotate({
+  identifier: "CreateClusterSnapshotOutput",
+}) as any as S.Schema<CreateClusterSnapshotOutput>;
 export interface DeleteClusterInput {
   clusterArn: string;
 }
@@ -443,12 +468,11 @@ export const DeleteClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-export const DeleteClusterSnapshotOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ snapshot: ClusterSnapshot }),
-  ).annotate({
-    identifier: "DeleteClusterSnapshotOutput",
-  }) as any as S.Schema<DeleteClusterSnapshotOutput>;
+export const DeleteClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ snapshot: ClusterSnapshot }),
+).annotate({
+  identifier: "DeleteClusterSnapshotOutput",
+}) as any as S.Schema<DeleteClusterSnapshotOutput>;
 export interface GetClusterInput {
   clusterArn: string;
 }
@@ -502,32 +526,31 @@ export const GetClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetPendingMaintenanceActionInput {
   resourceArn: string;
 }
-export const GetPendingMaintenanceActionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/pending-action/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPendingMaintenanceActionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/pending-action/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetPendingMaintenanceActionInput",
-  }) as any as S.Schema<GetPendingMaintenanceActionInput>;
+  ),
+).annotate({
+  identifier: "GetPendingMaintenanceActionInput",
+}) as any as S.Schema<GetPendingMaintenanceActionInput>;
 export interface GetPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
-export const GetPendingMaintenanceActionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
-    }),
-  ).annotate({
-    identifier: "GetPendingMaintenanceActionOutput",
-  }) as any as S.Schema<GetPendingMaintenanceActionOutput>;
+export const GetPendingMaintenanceActionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction,
+  }),
+).annotate({
+  identifier: "GetPendingMaintenanceActionOutput",
+}) as any as S.Schema<GetPendingMaintenanceActionOutput>;
+export type PaginationToken = string;
 export interface ListClustersInput {
   nextToken?: string;
   maxResults?: number;
@@ -632,41 +655,41 @@ export interface ListPendingMaintenanceActionsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListPendingMaintenanceActionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/pending-actions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPendingMaintenanceActionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/pending-actions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPendingMaintenanceActionsInput",
-  }) as any as S.Schema<ListPendingMaintenanceActionsInput>;
+  ),
+).annotate({
+  identifier: "ListPendingMaintenanceActionsInput",
+}) as any as S.Schema<ListPendingMaintenanceActionsInput>;
 export type ResourcePendingMaintenanceActionList =
   ResourcePendingMaintenanceAction[];
-export const ResourcePendingMaintenanceActionList =
-  /*@__PURE__*/ S.Array(ResourcePendingMaintenanceAction);
+export const ResourcePendingMaintenanceActionList = /*@__PURE__*/ S.Array(
+  ResourcePendingMaintenanceAction,
+);
 export interface ListPendingMaintenanceActionsOutput {
   resourcePendingMaintenanceActions: ResourcePendingMaintenanceAction[];
   nextToken?: string;
 }
-export const ListPendingMaintenanceActionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourcePendingMaintenanceActions: ResourcePendingMaintenanceActionList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPendingMaintenanceActionsOutput",
-  }) as any as S.Schema<ListPendingMaintenanceActionsOutput>;
+export const ListPendingMaintenanceActionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourcePendingMaintenanceActions: ResourcePendingMaintenanceActionList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPendingMaintenanceActionsOutput",
+}) as any as S.Schema<ListPendingMaintenanceActionsOutput>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -687,12 +710,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RestoreClusterFromSnapshotInput {
   clusterName: string;
   snapshotArn: string;
@@ -703,40 +725,40 @@ export interface RestoreClusterFromSnapshotInput {
   shardCapacity?: number;
   shardInstanceCount?: number;
 }
-export const RestoreClusterFromSnapshotInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clusterName: S.String,
-      snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
-      vpcSecurityGroupIds: S.optional(StringList),
-      subnetIds: S.optional(StringList),
-      kmsKeyId: S.optional(S.String),
-      tags: S.optional(TagMap),
-      shardCapacity: S.optional(S.Number),
-      shardInstanceCount: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/cluster-snapshot/{snapshotArn}/restore",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestoreClusterFromSnapshotInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterName: S.String,
+    snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
+    vpcSecurityGroupIds: S.optional(StringList),
+    subnetIds: S.optional(StringList),
+    kmsKeyId: S.optional(S.String),
+    tags: S.optional(TagMap),
+    shardCapacity: S.optional(S.Number),
+    shardInstanceCount: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/cluster-snapshot/{snapshotArn}/restore",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RestoreClusterFromSnapshotInput",
-  }) as any as S.Schema<RestoreClusterFromSnapshotInput>;
+  ),
+).annotate({
+  identifier: "RestoreClusterFromSnapshotInput",
+}) as any as S.Schema<RestoreClusterFromSnapshotInput>;
 export interface RestoreClusterFromSnapshotOutput {
   cluster: Cluster;
 }
-export const RestoreClusterFromSnapshotOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ cluster: Cluster })).annotate({
-    identifier: "RestoreClusterFromSnapshotOutput",
-  }) as any as S.Schema<RestoreClusterFromSnapshotOutput>;
+export const RestoreClusterFromSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ cluster: Cluster }),
+).annotate({
+  identifier: "RestoreClusterFromSnapshotOutput",
+}) as any as S.Schema<RestoreClusterFromSnapshotOutput>;
 export interface StartClusterInput {
   clusterArn: string;
 }
@@ -892,47 +914,20 @@ export const UpdateClusterOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateClusterOutput",
 }) as any as S.Schema<UpdateClusterOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable(),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type ApplyPendingMaintenanceActionError =
   | AccessDeniedException
   | ConflictException
@@ -960,8 +955,11 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
+
 export type CopyClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -991,8 +989,11 @@ export const copyClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
+
 export type CreateClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1020,8 +1021,11 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1051,8 +1055,11 @@ export const createClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
+
 export type DeleteClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1080,8 +1087,11 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1109,8 +1119,11 @@ export const deleteClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
+
 export type GetClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1136,8 +1149,11 @@ export const getCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCluster",
 }));
+
 export type GetClusterSnapshotError =
   | AccessDeniedException
   | InternalServerException
@@ -1163,8 +1179,11 @@ export const getClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterSnapshot",
 }));
+
 export type GetPendingMaintenanceActionError =
   | AccessDeniedException
   | ConflictException
@@ -1192,8 +1211,11 @@ export const getPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPendingMaintenanceAction",
 }));
+
 export type ListClustersError =
   | AccessDeniedException
   | InternalServerException
@@ -1232,6 +1254,8 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -1240,6 +1264,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListClusterSnapshotsError =
   | AccessDeniedException
   | InternalServerException
@@ -1278,6 +1303,8 @@ export const listClusterSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterSnapshots",
   pagination: {
     inputToken: "nextToken",
@@ -1286,6 +1313,7 @@ export const listClusterSnapshots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPendingMaintenanceActionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1324,6 +1352,8 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPendingMaintenanceActions",
   pagination: {
     inputToken: "nextToken",
@@ -1332,6 +1362,7 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1355,8 +1386,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RestoreClusterFromSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1386,8 +1420,11 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreClusterFromSnapshot",
 }));
+
 export type StartClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1413,8 +1450,11 @@ export const startCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCluster",
 }));
+
 export type StopClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1441,8 +1481,11 @@ export const stopCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCluster",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1466,8 +1509,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1491,8 +1537,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1521,5 +1570,7 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));

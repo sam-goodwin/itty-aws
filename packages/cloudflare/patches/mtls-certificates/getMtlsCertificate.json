@@ -1,8 +1,0 @@
-{
-  "errors": {
-    "CertificateNotFound": [
-      { "code": 1472, "message": { "includes": "Certificate not found" } },
-      { "status": 404 }
-    ]
-  }
-}

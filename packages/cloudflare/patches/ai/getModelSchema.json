@@ -1,7 +1,114 @@
 {
-  "errors": {
-    "ModelNotSupported": [{ "code": 1000 }],
-    "ModelSchemaNotFound": [{ "code": 6002 }],
-    "AccountNotFound": [{ "code": 7003 }]
-  }
+  "description": "Align ai#ModelsSchemaGet with distilled cloudflare/ai getModelSchema",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ai#ModelsSchemaGet",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchema"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ai#ModelsSchemaGetRequest",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchemaRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchema/input/target",
+      "value": "com.cloudflare.ai#GetModelSchemaRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.ai#ModelsSchemaGetResponse",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchemaResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchema/output/target",
+      "value": "com.cloudflare.ai#GetModelSchemaResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#ModelNotSupported",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#ModelSchemaNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 6002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#AccountNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.ai#GetModelSchema/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.ai#ModelNotSupported"
+        },
+        {
+          "target": "com.cloudflare.ai#ModelSchemaNotFound"
+        },
+        {
+          "target": "com.cloudflare.ai#AccountNotFound"
+        }
+      ]
+    }
+  ]
 }

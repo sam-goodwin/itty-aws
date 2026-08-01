@@ -91,3 +91,51 @@ export type ClientErrors =
  * can emit at runtime.
  */
 export type DefaultErrors = CoreDefaultErrors | ClientErrors;
+
+// =============================================================================
+// Legacy fallback classes (kept for generated-code compatibility)
+// =============================================================================
+
+import * as S from "effect/Schema";
+import { withThrottlingError } from "@distilled.cloud/core/category";
+import { withCategory } from "@distilled.cloud/core/error-category";
+import { RETRYABLE } from "@distilled.cloud/core/errors";
+
+/** A single `{ code, message }` entry from the envelope's `errors` array. */
+export interface CloudflareApiError {
+  readonly code?: number;
+  readonly message: string;
+}
+
+/**
+ * Legacy generic Cloudflare API error. The protocol no longer constructs
+ * this (failures map to the distilled-compatible DefaultErrors classes
+ * above); it remains exported because generated operations reference it in
+ * their `errors` lists.
+ */
+export class CloudflareError extends S.TaggedErrorClass<CloudflareError>()(
+  "CloudflareError",
+  {
+    status: S.Number,
+    errors: S.Array(
+      S.Struct({
+        code: S.optional(S.Number),
+        message: S.String,
+      }),
+    ),
+  },
+) {}
+
+/** Legacy rate-limit error — see {@link CloudflareError}'s note. */
+export class CloudflareRateLimited extends S.TaggedErrorClass<CloudflareRateLimited>()(
+  "CloudflareRateLimited",
+  {
+    status: S.Number,
+    errors: S.Array(
+      S.Struct({
+        code: S.optional(S.Number),
+        message: S.String,
+      }),
+    ),
+  },
+).pipe(withCategory(RETRYABLE), withThrottlingError) {}

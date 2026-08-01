@@ -1,9 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "test/**/*.ts",
-    "scripts/**/*.ts"
-  ],
+  "include": ["test/**/*.ts", "scripts/**/*.ts"],
   "compilerOptions": {
     "noEmit": true,
     "rewriteRelativeImportExtensions": false,

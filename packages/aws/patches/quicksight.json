@@ -2,17 +2,42 @@
   "structures": {
     "CredentialPair": {
       "members": {
-        "Password": { "sensitive": true }
+        "Password": {
+          "sensitive": true
+        }
       }
     },
     "WebProxyCredentials": {
       "members": {
-        "WebProxyPassword": { "sensitive": true }
+        "WebProxyPassword": {
+          "sensitive": true
+        }
       }
     },
     "AssetBundleImportJobDataSourceCredentialPair": {
       "members": {
-        "Password": { "sensitive": true }
+        "Password": {
+          "sensitive": true
+        }
+      }
+    },
+    "DataSource": {
+      "members": {
+        "DataSourceId": {
+          "optional": false
+        },
+        "Arn": {
+          "optional": false
+        },
+        "Name": {
+          "optional": false
+        },
+        "Type": {
+          "optional": false
+        },
+        "Status": {
+          "optional": false
+        }
       }
     }
   },
@@ -63,8 +88,6 @@
     }
   },
   "errorCategories": {
-    "QuickSightSubscriptionRequired": [
-      "NotFoundError"
-    ]
+    "QuickSightSubscriptionRequired": ["NotFoundError"]
   }
 }

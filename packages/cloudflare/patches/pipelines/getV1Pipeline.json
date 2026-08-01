@@ -1,7 +1,62 @@
 {
-  "errors": {
-    "PipelineNotExists": [
-      { "code": 1000 }
-    ]
-  }
+  "description": "Align pipelines#GetV1 with distilled cloudflare/pipelines getV1Pipeline",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#GetV1",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1Pipeline"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#GetV1Request",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1PipelineRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1Pipeline/input/target",
+      "value": "com.cloudflare.pipelines#GetV1PipelineRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#GetV1Response",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1PipelineResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1Pipeline/output/target",
+      "value": "com.cloudflare.pipelines#GetV1PipelineResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#PipelineNotExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#GetV1Pipeline/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#PipelineNotExists"
+        }
+      ]
+    }
+  ]
 }

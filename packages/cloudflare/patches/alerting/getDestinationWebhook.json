@@ -1,8 +1,91 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }],
-    "WebhookNotFound": [
-      { "code": 0, "message": { "includes": "Webhook not found" } }
-    ]
-  }
+  "description": "Align alerting#DestinationsWebhooksGet with distilled cloudflare/alerting getDestinationWebhook",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#DestinationsWebhooksGet",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhook"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#DestinationsWebhooksGetRequest",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhookRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhook/input/target",
+      "value": "com.cloudflare.alerting#GetDestinationWebhookRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#DestinationsWebhooksGetResponse",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhookResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhook/output/target",
+      "value": "com.cloudflare.alerting#GetDestinationWebhookResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#WebhookNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "Webhook not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#GetDestinationWebhook/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.alerting#WebhookNotFound"
+        }
+      ]
+    }
+  ]
 }

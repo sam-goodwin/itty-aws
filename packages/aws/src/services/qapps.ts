@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,64 +85,94 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ContentTooLargeException extends S.TaggedErrorClass<ContentTooLargeException>()(
+  "ContentTooLargeException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.String },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type InstanceId = string;
 export type UUID = string;
-export type AppVersion = number;
-export type QAppsTimestamp = Date;
-export type Filename = string;
-export type Title = string;
-export type Description = string;
-export type Placeholder = string;
-export type Default = string;
-export type Prompt = string;
-export type DocumentAttributeKey = string;
-export type DocumentAttributeStringValue = string;
-export type PlatoString = string;
-export type PluginId = string;
-export type ActionIdentifier = string;
-export type FormInputCardMetadataSchema = unknown;
-export type InitialPrompt = string;
-export type AppArn = string;
-export type SessionName = string;
-export type SessionSharingEnabled = boolean;
-export type SessionSharingAcceptResponses = boolean;
-export type SessionSharingRevealCards = boolean;
-export type PageLimit = number;
-export type PaginationToken = string;
-export type UserId = string;
-export type AmazonResourceName = string;
-export type TagKey = string;
-export type TagValue = string;
-
-//# Schemas
 export interface AssociateLibraryItemReviewInput {
   instanceId: string;
   libraryItemId: string;
 }
-export const AssociateLibraryItemReviewInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      libraryItemId: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/catalog.associateItemRating" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateLibraryItemReviewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    libraryItemId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/catalog.associateItemRating" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateLibraryItemReviewInput",
-  }) as any as S.Schema<AssociateLibraryItemReviewInput>;
+  ),
+).annotate({
+  identifier: "AssociateLibraryItemReviewInput",
+}) as any as S.Schema<AssociateLibraryItemReviewInput>;
 export interface AssociateLibraryItemReviewResponse {}
-export const AssociateLibraryItemReviewResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateLibraryItemReviewResponse",
-  }) as any as S.Schema<AssociateLibraryItemReviewResponse>;
+export const AssociateLibraryItemReviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateLibraryItemReviewResponse",
+}) as any as S.Schema<AssociateLibraryItemReviewResponse>;
 export interface AssociateQAppWithUserInput {
   instanceId: string;
   appId: string;
@@ -163,29 +195,30 @@ export const AssociateQAppWithUserInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociateQAppWithUserInput",
 }) as any as S.Schema<AssociateQAppWithUserInput>;
 export interface AssociateQAppWithUserResponse {}
-export const AssociateQAppWithUserResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateQAppWithUserResponse",
-  }) as any as S.Schema<AssociateQAppWithUserResponse>;
+export const AssociateQAppWithUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateQAppWithUserResponse",
+}) as any as S.Schema<AssociateQAppWithUserResponse>;
 export interface BatchCreateCategoryInputCategory {
   id?: string;
   title: string;
   color?: string;
 }
-export const BatchCreateCategoryInputCategory =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      title: S.String,
-      color: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchCreateCategoryInputCategory",
-  }) as any as S.Schema<BatchCreateCategoryInputCategory>;
+export const BatchCreateCategoryInputCategory = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    title: S.String,
+    color: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchCreateCategoryInputCategory",
+}) as any as S.Schema<BatchCreateCategoryInputCategory>;
 export type BatchCreateCategoryInputCategoryList =
   BatchCreateCategoryInputCategory[];
-export const BatchCreateCategoryInputCategoryList =
-  /*@__PURE__*/ S.Array(BatchCreateCategoryInputCategory);
+export const BatchCreateCategoryInputCategoryList = /*@__PURE__*/ S.Array(
+  BatchCreateCategoryInputCategory,
+);
 export interface BatchCreateCategoryInput {
   instanceId: string;
   categories: BatchCreateCategoryInputCategory[];
@@ -208,10 +241,11 @@ export const BatchCreateCategoryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateCategoryInput",
 }) as any as S.Schema<BatchCreateCategoryInput>;
 export interface BatchCreateCategoryResponse {}
-export const BatchCreateCategoryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchCreateCategoryResponse",
-  }) as any as S.Schema<BatchCreateCategoryResponse>;
+export const BatchCreateCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchCreateCategoryResponse",
+}) as any as S.Schema<BatchCreateCategoryResponse>;
 export type DeleteCategoryInputList = string[];
 export const DeleteCategoryInputList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteCategoryInput {
@@ -236,10 +270,11 @@ export const BatchDeleteCategoryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteCategoryInput",
 }) as any as S.Schema<BatchDeleteCategoryInput>;
 export interface BatchDeleteCategoryResponse {}
-export const BatchDeleteCategoryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteCategoryResponse",
-  }) as any as S.Schema<BatchDeleteCategoryResponse>;
+export const BatchDeleteCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchDeleteCategoryResponse",
+}) as any as S.Schema<BatchDeleteCategoryResponse>;
 export interface CategoryInput {
   id: string;
   title: string;
@@ -272,10 +307,12 @@ export const BatchUpdateCategoryInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateCategoryInput",
 }) as any as S.Schema<BatchUpdateCategoryInput>;
 export interface BatchUpdateCategoryResponse {}
-export const BatchUpdateCategoryResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchUpdateCategoryResponse",
-  }) as any as S.Schema<BatchUpdateCategoryResponse>;
+export const BatchUpdateCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchUpdateCategoryResponse",
+}) as any as S.Schema<BatchUpdateCategoryResponse>;
+export type AppVersion = number;
 export type CategoryIdList = string[];
 export const CategoryIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateLibraryItemInput {
@@ -303,6 +340,7 @@ export const CreateLibraryItemInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLibraryItemInput",
 }) as any as S.Schema<CreateLibraryItemInput>;
+export type QAppsTimestamp = Date;
 export interface CreateLibraryItemOutput {
   libraryItemId: string;
   status: string;
@@ -329,8 +367,10 @@ export const CreateLibraryItemOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLibraryItemOutput",
 }) as any as S.Schema<CreateLibraryItemOutput>;
+export type Filename = string;
 export type DocumentScope = "APPLICATION" | "SESSION" | (string & {});
 export const DocumentScope = /*@__PURE__*/ S.String;
+
 export interface CreatePresignedUrlInput {
   instanceId: string;
   cardId: string;
@@ -385,6 +425,8 @@ export const CreatePresignedUrlOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePresignedUrlOutput",
 }) as any as S.Schema<CreatePresignedUrlOutput>;
+export type Title = string;
+export type Description = string;
 export type CardType =
   | "text-input"
   | "q-query"
@@ -393,6 +435,9 @@ export type CardType =
   | "form-input"
   | (string & {});
 export const CardType = /*@__PURE__*/ S.String;
+
+export type Placeholder = string;
+export type Default = string;
 export interface TextInputCardInput {
   title: string;
   id: string;
@@ -411,14 +456,19 @@ export const TextInputCardInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TextInputCardInput",
 }) as any as S.Schema<TextInputCardInput>;
+export type Prompt = string;
 export type CardOutputSource = "approved-sources" | "llm" | (string & {});
 export const CardOutputSource = /*@__PURE__*/ S.String;
+
 export type AttributeFilters = AttributeFilter[];
 export const AttributeFilters = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
     identifier: "AttributeFilter",
   }),
 ) as any as S.Schema<AttributeFilters>;
+export type DocumentAttributeKey = string;
+export type DocumentAttributeStringValue = string;
+export type PlatoString = string;
 export type DocumentAttributeStringListValue = string[];
 export const DocumentAttributeStringListValue = /*@__PURE__*/ S.Array(S.String);
 export type DocumentAttributeValue =
@@ -521,6 +571,8 @@ export const QQueryCardInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QQueryCardInput",
 }) as any as S.Schema<QQueryCardInput>;
+export type PluginId = string;
+export type ActionIdentifier = string;
 export interface QPluginCardInput {
   title: string;
   id: string;
@@ -561,6 +613,7 @@ export const FileUploadCardInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileUploadCardInput",
 }) as any as S.Schema<FileUploadCardInput>;
+export type FormInputCardMetadataSchema = unknown;
 export interface FormInputCardMetadata {
   schema: any;
 }
@@ -571,6 +624,7 @@ export const FormInputCardMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FormInputCardMetadata>;
 export type InputCardComputeMode = "append" | "replace" | (string & {});
 export const InputCardComputeMode = /*@__PURE__*/ S.String;
+
 export interface FormInputCardInput {
   title: string;
   id: string;
@@ -634,6 +688,7 @@ export const CardInput = /*@__PURE__*/ S.Union([
 ]);
 export type CardList = CardInput[];
 export const CardList = /*@__PURE__*/ S.Array(CardInput);
+export type InitialPrompt = string;
 export interface AppDefinitionInput {
   cards: CardInput[];
   initialPrompt?: string;
@@ -675,8 +730,10 @@ export const CreateQAppInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateQAppInput",
 }) as any as S.Schema<CreateQAppInput>;
+export type AppArn = string;
 export type AppStatus = "PUBLISHED" | "DRAFT" | "DELETED" | (string & {});
 export const AppStatus = /*@__PURE__*/ S.String;
+
 export type AppRequiredCapability =
   | "FileUpload"
   | "CreatorMode"
@@ -684,6 +741,7 @@ export type AppRequiredCapability =
   | "PluginMode"
   | (string & {});
 export const AppRequiredCapability = /*@__PURE__*/ S.String;
+
 export type AppRequiredCapabilities = AppRequiredCapability[];
 export const AppRequiredCapabilities = /*@__PURE__*/ S.Array(
   AppRequiredCapability,
@@ -778,28 +836,29 @@ export interface DescribeQAppPermissionsInput {
   instanceId: string;
   appId: string;
 }
-export const DescribeQAppPermissionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      appId: S.String.pipe(T.HttpQuery("appId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/apps.describeQAppPermissions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeQAppPermissionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    appId: S.String.pipe(T.HttpQuery("appId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/apps.describeQAppPermissions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeQAppPermissionsInput",
-  }) as any as S.Schema<DescribeQAppPermissionsInput>;
+  ),
+).annotate({
+  identifier: "DescribeQAppPermissionsInput",
+}) as any as S.Schema<DescribeQAppPermissionsInput>;
 export type Action = "read" | "write" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export type UserType = "owner" | "user" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
+
 export interface PrincipalOutput {
   userId?: string;
   userType?: UserType;
@@ -830,70 +889,69 @@ export interface DescribeQAppPermissionsOutput {
   appId?: string;
   permissions?: PermissionOutput[];
 }
-export const DescribeQAppPermissionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.optional(S.String),
-      appId: S.optional(S.String),
-      permissions: S.optional(PermissionsOutputList),
-    }),
-  ).annotate({
-    identifier: "DescribeQAppPermissionsOutput",
-  }) as any as S.Schema<DescribeQAppPermissionsOutput>;
+export const DescribeQAppPermissionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.optional(S.String),
+    appId: S.optional(S.String),
+    permissions: S.optional(PermissionsOutputList),
+  }),
+).annotate({
+  identifier: "DescribeQAppPermissionsOutput",
+}) as any as S.Schema<DescribeQAppPermissionsOutput>;
 export interface DisassociateLibraryItemReviewInput {
   instanceId: string;
   libraryItemId: string;
 }
-export const DisassociateLibraryItemReviewInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      libraryItemId: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/catalog.disassociateItemRating" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateLibraryItemReviewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    libraryItemId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/catalog.disassociateItemRating" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateLibraryItemReviewInput",
-  }) as any as S.Schema<DisassociateLibraryItemReviewInput>;
+  ),
+).annotate({
+  identifier: "DisassociateLibraryItemReviewInput",
+}) as any as S.Schema<DisassociateLibraryItemReviewInput>;
 export interface DisassociateLibraryItemReviewResponse {}
-export const DisassociateLibraryItemReviewResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateLibraryItemReviewResponse",
-  }) as any as S.Schema<DisassociateLibraryItemReviewResponse>;
+export const DisassociateLibraryItemReviewResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociateLibraryItemReviewResponse",
+}) as any as S.Schema<DisassociateLibraryItemReviewResponse>;
 export interface DisassociateQAppFromUserInput {
   instanceId: string;
   appId: string;
 }
-export const DisassociateQAppFromUserInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      appId: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/apps.uninstall" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateQAppFromUserInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    appId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/apps.uninstall" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateQAppFromUserInput",
-  }) as any as S.Schema<DisassociateQAppFromUserInput>;
+  ),
+).annotate({
+  identifier: "DisassociateQAppFromUserInput",
+}) as any as S.Schema<DisassociateQAppFromUserInput>;
 export interface DisassociateQAppFromUserResponse {}
-export const DisassociateQAppFromUserResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateQAppFromUserResponse",
-  }) as any as S.Schema<DisassociateQAppFromUserResponse>;
+export const DisassociateQAppFromUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisassociateQAppFromUserResponse",
+}) as any as S.Schema<DisassociateQAppFromUserResponse>;
 export interface ExportQAppSessionDataInput {
   instanceId: string;
   sessionId: string;
@@ -920,16 +978,15 @@ export interface ExportQAppSessionDataOutput {
   expiresAt: Date;
   sessionArn: string;
 }
-export const ExportQAppSessionDataOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      csvFileLink: S.String,
-      expiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      sessionArn: S.String,
-    }),
-  ).annotate({
-    identifier: "ExportQAppSessionDataOutput",
-  }) as any as S.Schema<ExportQAppSessionDataOutput>;
+export const ExportQAppSessionDataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    csvFileLink: S.String,
+    expiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    sessionArn: S.String,
+  }),
+).annotate({
+  identifier: "ExportQAppSessionDataOutput",
+}) as any as S.Schema<ExportQAppSessionDataOutput>;
 export interface GetLibraryItemInput {
   instanceId: string;
   libraryItemId: string;
@@ -1089,6 +1146,7 @@ export type PluginType =
   | "ZENDESK_SUITE"
   | (string & {});
 export const PluginType = /*@__PURE__*/ S.String;
+
 export interface QPluginCard {
   id: string;
   title: string;
@@ -1259,6 +1317,7 @@ export const GetQAppSessionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQAppSessionInput",
 }) as any as S.Schema<GetQAppSessionInput>;
+export type SessionName = string;
 export type ExecutionStatus =
   | "IN_PROGRESS"
   | "WAITING"
@@ -1266,6 +1325,7 @@ export type ExecutionStatus =
   | "ERROR"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface Submission {
   value?: any;
   submissionId?: string;
@@ -1327,39 +1387,40 @@ export interface GetQAppSessionMetadataInput {
   instanceId: string;
   sessionId: string;
 }
-export const GetQAppSessionMetadataInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      sessionId: S.String.pipe(T.HttpQuery("sessionId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/runtime.getQAppSessionMetadata" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetQAppSessionMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    sessionId: S.String.pipe(T.HttpQuery("sessionId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/runtime.getQAppSessionMetadata" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetQAppSessionMetadataInput",
-  }) as any as S.Schema<GetQAppSessionMetadataInput>;
+  ),
+).annotate({
+  identifier: "GetQAppSessionMetadataInput",
+}) as any as S.Schema<GetQAppSessionMetadataInput>;
+export type SessionSharingEnabled = boolean;
+export type SessionSharingAcceptResponses = boolean;
+export type SessionSharingRevealCards = boolean;
 export interface SessionSharingConfiguration {
   enabled: boolean;
   acceptResponses?: boolean;
   revealCards?: boolean;
 }
-export const SessionSharingConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      acceptResponses: S.optional(S.Boolean),
-      revealCards: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "SessionSharingConfiguration",
-  }) as any as S.Schema<SessionSharingConfiguration>;
+export const SessionSharingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    acceptResponses: S.optional(S.Boolean),
+    revealCards: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SessionSharingConfiguration",
+}) as any as S.Schema<SessionSharingConfiguration>;
 export interface GetQAppSessionMetadataOutput {
   sessionId: string;
   sessionArn: string;
@@ -1367,18 +1428,17 @@ export interface GetQAppSessionMetadataOutput {
   sharingConfiguration: SessionSharingConfiguration;
   sessionOwner?: boolean;
 }
-export const GetQAppSessionMetadataOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sessionId: S.String,
-      sessionArn: S.String,
-      sessionName: S.optional(S.String),
-      sharingConfiguration: SessionSharingConfiguration,
-      sessionOwner: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetQAppSessionMetadataOutput",
-  }) as any as S.Schema<GetQAppSessionMetadataOutput>;
+export const GetQAppSessionMetadataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    sessionArn: S.String,
+    sessionName: S.optional(S.String),
+    sharingConfiguration: SessionSharingConfiguration,
+    sessionOwner: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetQAppSessionMetadataOutput",
+}) as any as S.Schema<GetQAppSessionMetadataOutput>;
 export interface ImportDocumentInput {
   instanceId: string;
   cardId: string;
@@ -1445,6 +1505,8 @@ export const ListCategoriesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCategoriesOutput",
 }) as any as S.Schema<ListCategoriesOutput>;
+export type PageLimit = number;
+export type PaginationToken = string;
 export interface ListLibraryItemsInput {
   instanceId: string;
   limit?: number;
@@ -1595,6 +1657,7 @@ export const ListQAppSessionDataInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListQAppSessionDataInput",
 }) as any as S.Schema<ListQAppSessionDataInput>;
+export type UserId = string;
 export interface User {
   userId?: string;
 }
@@ -1639,6 +1702,7 @@ export const ListQAppSessionDataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListQAppSessionDataOutput",
 }) as any as S.Schema<ListQAppSessionDataOutput>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
@@ -1656,17 +1720,21 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type Sender = "USER" | "SYSTEM" | (string & {});
 export const Sender = /*@__PURE__*/ S.String;
+
 export interface ConversationMessage {
   body: string;
   type: Sender;
@@ -1731,6 +1799,7 @@ export const PredictQAppOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictQAppOutput>;
 export type SubmissionMutationKind = "edit" | "delete" | "add" | (string & {});
 export const SubmissionMutationKind = /*@__PURE__*/ S.String;
+
 export interface SubmissionMutation {
   submissionId: string;
   mutationType: SubmissionMutationKind;
@@ -1877,6 +1946,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type LibraryItemStatus = "PUBLISHED" | "DISABLED" | (string & {});
 export const LibraryItemStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateLibraryItemInput {
   instanceId: string;
   libraryItemId: string;
@@ -1943,30 +2013,30 @@ export interface UpdateLibraryItemMetadataInput {
   libraryItemId: string;
   isVerified?: boolean;
 }
-export const UpdateLibraryItemMetadataInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      libraryItemId: S.String,
-      isVerified: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/catalog.updateItemMetadata" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateLibraryItemMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    libraryItemId: S.String,
+    isVerified: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/catalog.updateItemMetadata" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateLibraryItemMetadataInput",
-  }) as any as S.Schema<UpdateLibraryItemMetadataInput>;
+  ),
+).annotate({
+  identifier: "UpdateLibraryItemMetadataInput",
+}) as any as S.Schema<UpdateLibraryItemMetadataInput>;
 export interface UpdateLibraryItemMetadataResponse {}
-export const UpdateLibraryItemMetadataResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateLibraryItemMetadataResponse",
-  }) as any as S.Schema<UpdateLibraryItemMetadataResponse>;
+export const UpdateLibraryItemMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateLibraryItemMetadataResponse",
+}) as any as S.Schema<UpdateLibraryItemMetadataResponse>;
 export interface UpdateQAppInput {
   instanceId: string;
   appId: string;
@@ -2067,16 +2137,15 @@ export interface UpdateQAppPermissionsOutput {
   appId?: string;
   permissions?: PermissionOutput[];
 }
-export const UpdateQAppPermissionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.optional(S.String),
-      appId: S.optional(S.String),
-      permissions: S.optional(PermissionsOutputList),
-    }),
-  ).annotate({
-    identifier: "UpdateQAppPermissionsOutput",
-  }) as any as S.Schema<UpdateQAppPermissionsOutput>;
+export const UpdateQAppPermissionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.optional(S.String),
+    appId: S.optional(S.String),
+    permissions: S.optional(PermissionsOutputList),
+  }),
+).annotate({
+  identifier: "UpdateQAppPermissionsOutput",
+}) as any as S.Schema<UpdateQAppPermissionsOutput>;
 export interface UpdateQAppSessionInput {
   instanceId: string;
   sessionId: string;
@@ -2115,99 +2184,41 @@ export interface UpdateQAppSessionMetadataInput {
   sessionName?: string;
   sharingConfiguration: SessionSharingConfiguration;
 }
-export const UpdateQAppSessionMetadataInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceId: S.String.pipe(T.HttpHeader("instance-id")),
-      sessionId: S.String,
-      sessionName: S.optional(S.String),
-      sharingConfiguration: SessionSharingConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/runtime.updateQAppSessionMetadata" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateQAppSessionMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceId: S.String.pipe(T.HttpHeader("instance-id")),
+    sessionId: S.String,
+    sessionName: S.optional(S.String),
+    sharingConfiguration: SessionSharingConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runtime.updateQAppSessionMetadata" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateQAppSessionMetadataInput",
-  }) as any as S.Schema<UpdateQAppSessionMetadataInput>;
+  ),
+).annotate({
+  identifier: "UpdateQAppSessionMetadataInput",
+}) as any as S.Schema<UpdateQAppSessionMetadataInput>;
 export interface UpdateQAppSessionMetadataOutput {
   sessionId: string;
   sessionArn: string;
   sessionName?: string;
   sharingConfiguration: SessionSharingConfiguration;
 }
-export const UpdateQAppSessionMetadataOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sessionId: S.String,
-      sessionArn: S.String,
-      sessionName: S.optional(S.String),
-      sharingConfiguration: SessionSharingConfiguration,
-    }),
-  ).annotate({
-    identifier: "UpdateQAppSessionMetadataOutput",
-  }) as any as S.Schema<UpdateQAppSessionMetadataOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.Retryable({ throttling: true }),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.String },
-).pipe(C.withAuthError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ContentTooLargeException extends S.TaggedErrorClass<ContentTooLargeException>()(
-  "ContentTooLargeException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const UpdateQAppSessionMetadataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    sessionArn: S.String,
+    sessionName: S.optional(S.String),
+    sharingConfiguration: SessionSharingConfiguration,
+  }),
+).annotate({
+  identifier: "UpdateQAppSessionMetadataOutput",
+}) as any as S.Schema<UpdateQAppSessionMetadataOutput>;
 export type AssociateLibraryItemReviewError =
   | AccessDeniedException
   | ConflictException
@@ -2239,8 +2250,11 @@ export const associateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLibraryItemReview",
 }));
+
 export type AssociateQAppWithUserError =
   | AccessDeniedException
   | InternalServerException
@@ -2270,8 +2284,11 @@ export const associateQAppWithUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateQAppWithUser",
 }));
+
 export type BatchCreateCategoryError =
   | AccessDeniedException
   | ConflictException
@@ -2301,8 +2318,11 @@ export const batchCreateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateCategory",
 }));
+
 export type BatchDeleteCategoryError =
   | AccessDeniedException
   | ConflictException
@@ -2332,8 +2352,11 @@ export const batchDeleteCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteCategory",
 }));
+
 export type BatchUpdateCategoryError =
   | AccessDeniedException
   | ConflictException
@@ -2363,8 +2386,11 @@ export const batchUpdateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateCategory",
 }));
+
 export type CreateLibraryItemError =
   | AccessDeniedException
   | InternalServerException
@@ -2394,8 +2420,11 @@ export const createLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLibraryItem",
 }));
+
 export type CreatePresignedUrlError =
   | AccessDeniedException
   | InternalServerException
@@ -2423,8 +2452,11 @@ export const createPresignedUrl: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedUrl",
 }));
+
 export type CreateQAppError =
   | AccessDeniedException
   | ConflictException
@@ -2456,8 +2488,11 @@ export const createQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQApp",
 }));
+
 export type DeleteLibraryItemError =
   | AccessDeniedException
   | InternalServerException
@@ -2487,8 +2522,11 @@ export const deleteLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLibraryItem",
 }));
+
 export type DeleteQAppError =
   | AccessDeniedException
   | InternalServerException
@@ -2516,8 +2554,11 @@ export const deleteQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQApp",
 }));
+
 export type DescribeQAppPermissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2545,8 +2586,11 @@ export const describeQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQAppPermissions",
 }));
+
 export type DisassociateLibraryItemReviewError =
   | AccessDeniedException
   | ConflictException
@@ -2578,8 +2622,11 @@ export const disassociateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLibraryItemReview",
 }));
+
 export type DisassociateQAppFromUserError =
   | AccessDeniedException
   | InternalServerException
@@ -2607,8 +2654,11 @@ export const disassociateQAppFromUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateQAppFromUser",
 }));
+
 export type ExportQAppSessionDataError =
   | AccessDeniedException
   | ConflictException
@@ -2640,8 +2690,11 @@ export const exportQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportQAppSessionData",
 }));
+
 export type GetLibraryItemError =
   | AccessDeniedException
   | InternalServerException
@@ -2669,8 +2722,11 @@ export const getLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLibraryItem",
 }));
+
 export type GetQAppError =
   | AccessDeniedException
   | InternalServerException
@@ -2698,8 +2754,11 @@ export const getQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQApp",
 }));
+
 export type GetQAppSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -2729,8 +2788,11 @@ export const getQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQAppSession",
 }));
+
 export type GetQAppSessionMetadataError =
   | AccessDeniedException
   | InternalServerException
@@ -2760,8 +2822,11 @@ export const getQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQAppSessionMetadata",
 }));
+
 export type ImportDocumentError =
   | AccessDeniedException
   | ContentTooLargeException
@@ -2793,8 +2858,11 @@ export const importDocument: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDocument",
 }));
+
 export type ListCategoriesError =
   | AccessDeniedException
   | InternalServerException
@@ -2822,8 +2890,11 @@ export const listCategories: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCategories",
 }));
+
 export type ListLibraryItemsError =
   | AccessDeniedException
   | InternalServerException
@@ -2866,6 +2937,8 @@ export const listLibraryItems: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLibraryItems",
   pagination: {
     inputToken: "nextToken",
@@ -2874,6 +2947,7 @@ export const listLibraryItems: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListQAppsError =
   | AccessDeniedException
   | InternalServerException
@@ -2914,6 +2988,8 @@ export const listQApps: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQApps",
   pagination: {
     inputToken: "nextToken",
@@ -2922,6 +2998,7 @@ export const listQApps: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListQAppSessionDataError =
   | AccessDeniedException
   | InternalServerException
@@ -2951,8 +3028,11 @@ export const listQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQAppSessionData",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2978,8 +3058,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PredictQAppError =
   | AccessDeniedException
   | InternalServerException
@@ -3005,8 +3088,11 @@ export const predictQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PredictQApp",
 }));
+
 export type StartQAppSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -3038,8 +3124,11 @@ export const startQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQAppSession",
 }));
+
 export type StopQAppSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -3069,8 +3158,11 @@ export const stopQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQAppSession",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -3098,8 +3190,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -3125,8 +3220,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateLibraryItemError =
   | AccessDeniedException
   | ConflictException
@@ -3156,8 +3254,11 @@ export const updateLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLibraryItem",
 }));
+
 export type UpdateLibraryItemMetadataError =
   | AccessDeniedException
   | ConflictException
@@ -3187,8 +3288,11 @@ export const updateLibraryItemMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLibraryItemMetadata",
 }));
+
 export type UpdateQAppError =
   | AccessDeniedException
   | ContentTooLargeException
@@ -3218,8 +3322,11 @@ export const updateQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQApp",
 }));
+
 export type UpdateQAppPermissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3247,8 +3354,11 @@ export const updateQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppPermissions",
 }));
+
 export type UpdateQAppSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -3278,8 +3388,11 @@ export const updateQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppSession",
 }));
+
 export type UpdateQAppSessionMetadataError =
   | AccessDeniedException
   | InternalServerException
@@ -3309,5 +3422,7 @@ export const updateQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppSessionMetadata",
 }));

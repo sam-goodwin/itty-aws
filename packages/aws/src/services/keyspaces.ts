@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -86,40 +88,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceQuotaExceededException",
+      httpResponseCode: 402,
+    }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+) {}
 export type KeyspaceName = string;
 export type TagKey = string;
 export type TagValue = string;
-export type Rs = string;
-export type Region = string;
-export type ARN = string;
-export type TableName = string;
-export type SortOrder = string;
-export type ThroughputMode = string;
-export type CapacityUnits = number;
-export type EncryptionType = string;
-export type KmsKeyARN = string;
-export type PointInTimeRecoveryStatus = string;
-export type TimeToLiveStatus = string;
-export type DefaultTimeToLive = number;
-export type ClientSideTimestampsStatus = string;
-export type IntegerObject = number;
-export type DoubleObject = number;
-export type CdcStatus = string;
-export type ViewType = string;
-export type CdcPropagateTags = string;
-export type TypeName = string;
-export type KeyspaceStatus = string;
-export type TablesReplicationProgress = string;
-export type TableStatus = string;
-export type WarmThroughputStatus = string;
-export type StreamArn = string;
-export type TypeStatus = string;
-export type Depth = number;
-export type NextToken = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface Tag {
   key: string;
   value: string;
@@ -129,6 +151,8 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type Rs = string;
+export type Region = string;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export interface ReplicationSpecification {
@@ -159,6 +183,7 @@ export const CreateKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyspaceRequest",
 }) as any as S.Schema<CreateKeyspaceRequest>;
+export type ARN = string;
 export interface CreateKeyspaceResponse {
   resourceArn: string;
 }
@@ -167,6 +192,7 @@ export const CreateKeyspaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyspaceResponse",
 }) as any as S.Schema<CreateKeyspaceResponse>;
+export type TableName = string;
 export interface ColumnDefinition {
   name: string;
   type: string;
@@ -186,6 +212,7 @@ export const PartitionKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartitionKey" }) as any as S.Schema<PartitionKey>;
 export type PartitionKeyList = PartitionKey[];
 export const PartitionKeyList = /*@__PURE__*/ S.Array(PartitionKey);
+export type SortOrder = string;
 export interface ClusteringKey {
   name: string;
   orderBy: string;
@@ -225,6 +252,8 @@ export interface Comment {
 export const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.String }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
+export type ThroughputMode = string;
+export type CapacityUnits = number;
 export interface CapacitySpecification {
   throughputMode: string;
   readCapacityUnits?: number;
@@ -239,6 +268,8 @@ export const CapacitySpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacitySpecification",
 }) as any as S.Schema<CapacitySpecification>;
+export type EncryptionType = string;
+export type KmsKeyARN = string;
 export interface EncryptionSpecification {
   type: string;
   kmsKeyIdentifier?: string;
@@ -248,6 +279,7 @@ export const EncryptionSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionSpecification",
 }) as any as S.Schema<EncryptionSpecification>;
+export type PointInTimeRecoveryStatus = string;
 export interface PointInTimeRecovery {
   status: string;
 }
@@ -256,12 +288,15 @@ export const PointInTimeRecovery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PointInTimeRecovery",
 }) as any as S.Schema<PointInTimeRecovery>;
+export type TimeToLiveStatus = string;
 export interface TimeToLive {
   status: string;
 }
 export const TimeToLive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.String }),
 ).annotate({ identifier: "TimeToLive" }) as any as S.Schema<TimeToLive>;
+export type DefaultTimeToLive = number;
+export type ClientSideTimestampsStatus = string;
 export interface ClientSideTimestamps {
   status: string;
 }
@@ -270,23 +305,25 @@ export const ClientSideTimestamps = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClientSideTimestamps",
 }) as any as S.Schema<ClientSideTimestamps>;
+export type IntegerObject = number;
+export type DoubleObject = number;
 export interface TargetTrackingScalingPolicyConfiguration {
   disableScaleIn?: boolean;
   scaleInCooldown?: number;
   scaleOutCooldown?: number;
   targetValue: number;
 }
-export const TargetTrackingScalingPolicyConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
+export const TargetTrackingScalingPolicyConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       disableScaleIn: S.optional(S.Boolean),
       scaleInCooldown: S.optional(S.Number),
       scaleOutCooldown: S.optional(S.Number),
       targetValue: S.Number,
     }),
-  ).annotate({
-    identifier: "TargetTrackingScalingPolicyConfiguration",
-  }) as any as S.Schema<TargetTrackingScalingPolicyConfiguration>;
+).annotate({
+  identifier: "TargetTrackingScalingPolicyConfiguration",
+}) as any as S.Schema<TargetTrackingScalingPolicyConfiguration>;
 export interface AutoScalingPolicy {
   targetTrackingScalingPolicyConfiguration?: TargetTrackingScalingPolicyConfiguration;
 }
@@ -344,6 +381,9 @@ export const ReplicaSpecification = /*@__PURE__*/ S.suspend(() =>
 export type ReplicaSpecificationList = ReplicaSpecification[];
 export const ReplicaSpecificationList =
   /*@__PURE__*/ S.Array(ReplicaSpecification);
+export type CdcStatus = string;
+export type ViewType = string;
+export type CdcPropagateTags = string;
 export interface CdcSpecification {
   status: string;
   viewType?: string;
@@ -364,15 +404,14 @@ export interface WarmThroughputSpecification {
   readUnitsPerSecond?: number;
   writeUnitsPerSecond?: number;
 }
-export const WarmThroughputSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      readUnitsPerSecond: S.optional(S.Number),
-      writeUnitsPerSecond: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "WarmThroughputSpecification",
-  }) as any as S.Schema<WarmThroughputSpecification>;
+export const WarmThroughputSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readUnitsPerSecond: S.optional(S.Number),
+    writeUnitsPerSecond: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WarmThroughputSpecification",
+}) as any as S.Schema<WarmThroughputSpecification>;
 export interface CreateTableRequest {
   keyspaceName: string;
   tableName: string;
@@ -421,6 +460,7 @@ export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTableResponse",
 }) as any as S.Schema<CreateTableResponse>;
+export type TypeName = string;
 export interface FieldDefinition {
   name: string;
   type: string;
@@ -520,6 +560,8 @@ export const GetKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKeyspaceRequest",
 }) as any as S.Schema<GetKeyspaceRequest>;
+export type KeyspaceStatus = string;
+export type TablesReplicationProgress = string;
 export interface ReplicationGroupStatus {
   region: string;
   keyspaceStatus: string;
@@ -567,25 +609,25 @@ export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableRequest",
 }) as any as S.Schema<GetTableRequest>;
+export type TableStatus = string;
 export interface CapacitySpecificationSummary {
   throughputMode: string;
   readCapacityUnits?: number;
   writeCapacityUnits?: number;
   lastUpdateToPayPerRequestTimestamp?: Date;
 }
-export const CapacitySpecificationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      throughputMode: S.String,
-      readCapacityUnits: S.optional(S.Number),
-      writeCapacityUnits: S.optional(S.Number),
-      lastUpdateToPayPerRequestTimestamp: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CapacitySpecificationSummary",
-  }) as any as S.Schema<CapacitySpecificationSummary>;
+export const CapacitySpecificationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    throughputMode: S.String,
+    readCapacityUnits: S.optional(S.Number),
+    writeCapacityUnits: S.optional(S.Number),
+    lastUpdateToPayPerRequestTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "CapacitySpecificationSummary",
+}) as any as S.Schema<CapacitySpecificationSummary>;
 export interface PointInTimeRecoverySummary {
   status: string;
   earliestRestorableTimestamp?: Date;
@@ -600,43 +642,42 @@ export const PointInTimeRecoverySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PointInTimeRecoverySummary",
 }) as any as S.Schema<PointInTimeRecoverySummary>;
+export type WarmThroughputStatus = string;
 export interface WarmThroughputSpecificationSummary {
   readUnitsPerSecond: number;
   writeUnitsPerSecond: number;
   status: string;
 }
-export const WarmThroughputSpecificationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      readUnitsPerSecond: S.Number,
-      writeUnitsPerSecond: S.Number,
-      status: S.String,
-    }),
-  ).annotate({
-    identifier: "WarmThroughputSpecificationSummary",
-  }) as any as S.Schema<WarmThroughputSpecificationSummary>;
+export const WarmThroughputSpecificationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readUnitsPerSecond: S.Number,
+    writeUnitsPerSecond: S.Number,
+    status: S.String,
+  }),
+).annotate({
+  identifier: "WarmThroughputSpecificationSummary",
+}) as any as S.Schema<WarmThroughputSpecificationSummary>;
 export interface ReplicaSpecificationSummary {
   region?: string;
   status?: string;
   capacitySpecification?: CapacitySpecificationSummary;
   warmThroughputSpecification?: WarmThroughputSpecificationSummary;
 }
-export const ReplicaSpecificationSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      status: S.optional(S.String),
-      capacitySpecification: S.optional(CapacitySpecificationSummary),
-      warmThroughputSpecification: S.optional(
-        WarmThroughputSpecificationSummary,
-      ),
-    }),
-  ).annotate({
-    identifier: "ReplicaSpecificationSummary",
-  }) as any as S.Schema<ReplicaSpecificationSummary>;
+export const ReplicaSpecificationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(S.String),
+    status: S.optional(S.String),
+    capacitySpecification: S.optional(CapacitySpecificationSummary),
+    warmThroughputSpecification: S.optional(WarmThroughputSpecificationSummary),
+  }),
+).annotate({
+  identifier: "ReplicaSpecificationSummary",
+}) as any as S.Schema<ReplicaSpecificationSummary>;
 export type ReplicaSpecificationSummaryList = ReplicaSpecificationSummary[];
-export const ReplicaSpecificationSummaryList =
-  /*@__PURE__*/ S.Array(ReplicaSpecificationSummary);
+export const ReplicaSpecificationSummaryList = /*@__PURE__*/ S.Array(
+  ReplicaSpecificationSummary,
+);
+export type StreamArn = string;
 export interface CdcSpecificationSummary {
   status: string;
   viewType?: string;
@@ -694,31 +735,30 @@ export interface GetTableAutoScalingSettingsRequest {
   keyspaceName: string;
   tableName: string;
 }
-export const GetTableAutoScalingSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetTableAutoScalingSettingsRequest",
-  }) as any as S.Schema<GetTableAutoScalingSettingsRequest>;
+export const GetTableAutoScalingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetTableAutoScalingSettingsRequest",
+}) as any as S.Schema<GetTableAutoScalingSettingsRequest>;
 export interface ReplicaAutoScalingSpecification {
   region?: string;
   autoScalingSpecification?: AutoScalingSpecification;
 }
-export const ReplicaAutoScalingSpecification =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.optional(S.String),
-      autoScalingSpecification: S.optional(AutoScalingSpecification),
-    }),
-  ).annotate({
-    identifier: "ReplicaAutoScalingSpecification",
-  }) as any as S.Schema<ReplicaAutoScalingSpecification>;
+export const ReplicaAutoScalingSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(S.String),
+    autoScalingSpecification: S.optional(AutoScalingSpecification),
+  }),
+).annotate({
+  identifier: "ReplicaAutoScalingSpecification",
+}) as any as S.Schema<ReplicaAutoScalingSpecification>;
 export type ReplicaAutoScalingSpecificationList =
   ReplicaAutoScalingSpecification[];
-export const ReplicaAutoScalingSpecificationList =
-  /*@__PURE__*/ S.Array(ReplicaAutoScalingSpecification);
+export const ReplicaAutoScalingSpecificationList = /*@__PURE__*/ S.Array(
+  ReplicaAutoScalingSpecification,
+);
 export interface GetTableAutoScalingSettingsResponse {
   keyspaceName: string;
   tableName: string;
@@ -726,18 +766,17 @@ export interface GetTableAutoScalingSettingsResponse {
   autoScalingSpecification?: AutoScalingSpecification;
   replicaSpecifications?: ReplicaAutoScalingSpecification[];
 }
-export const GetTableAutoScalingSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keyspaceName: S.String,
-      tableName: S.String,
-      resourceArn: S.String,
-      autoScalingSpecification: S.optional(AutoScalingSpecification),
-      replicaSpecifications: S.optional(ReplicaAutoScalingSpecificationList),
-    }),
-  ).annotate({
-    identifier: "GetTableAutoScalingSettingsResponse",
-  }) as any as S.Schema<GetTableAutoScalingSettingsResponse>;
+export const GetTableAutoScalingSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyspaceName: S.String,
+    tableName: S.String,
+    resourceArn: S.String,
+    autoScalingSpecification: S.optional(AutoScalingSpecification),
+    replicaSpecifications: S.optional(ReplicaAutoScalingSpecificationList),
+  }),
+).annotate({
+  identifier: "GetTableAutoScalingSettingsResponse",
+}) as any as S.Schema<GetTableAutoScalingSettingsResponse>;
 export interface GetTypeRequest {
   keyspaceName: string;
   typeName: string;
@@ -747,10 +786,12 @@ export const GetTypeRequest = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetTypeRequest" }) as any as S.Schema<GetTypeRequest>;
+export type TypeStatus = string;
 export type TableNameList = string[];
 export const TableNameList = /*@__PURE__*/ S.Array(S.String);
 export type TypeNameList = string[];
 export const TypeNameList = /*@__PURE__*/ S.Array(S.String);
+export type Depth = number;
 export interface GetTypeResponse {
   keyspaceName: string;
   typeName: string;
@@ -779,6 +820,8 @@ export const GetTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTypeResponse",
 }) as any as S.Schema<GetTypeResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListKeyspacesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -882,12 +925,11 @@ export interface ListTagsForResourceResponse {
   nextToken?: string;
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ nextToken: S.optional(S.String), tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ nextToken: S.optional(S.String), tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTypesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1057,43 +1099,6 @@ export const UpdateTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTableResponse",
 }) as any as S.Schema<UpdateTableResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDeniedException", httpResponseCode: 403 }),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ServiceQuotaExceededException",
-    httpResponseCode: 402,
-  }),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
-  T.AwsQueryError({ code: "ResourceNotFoundException", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateKeyspaceError =
   | AccessDeniedException
   | ConflictException
@@ -1123,8 +1128,11 @@ export const createKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyspace",
 }));
+
 export type CreateTableError =
   | AccessDeniedException
   | ConflictException
@@ -1156,8 +1164,11 @@ export const createTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
+
 export type CreateTypeError =
   | AccessDeniedException
   | ConflictException
@@ -1189,8 +1200,11 @@ export const createType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateType",
 }));
+
 export type DeleteKeyspaceError =
   | AccessDeniedException
   | ConflictException
@@ -1218,8 +1232,11 @@ export const deleteKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyspace",
 }));
+
 export type DeleteTableError =
   | AccessDeniedException
   | ConflictException
@@ -1247,8 +1264,11 @@ export const deleteTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
+
 export type DeleteTypeError =
   | AccessDeniedException
   | ConflictException
@@ -1278,8 +1298,11 @@ export const deleteType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteType",
 }));
+
 export type GetKeyspaceError =
   | AccessDeniedException
   | InternalServerException
@@ -1305,8 +1328,11 @@ export const getKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyspace",
 }));
+
 export type GetTableError =
   | AccessDeniedException
   | InternalServerException
@@ -1334,8 +1360,11 @@ export const getTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
+
 export type GetTableAutoScalingSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -1371,8 +1400,11 @@ export const getTableAutoScalingSettings: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableAutoScalingSettings",
 }));
+
 export type GetTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -1400,8 +1432,11 @@ export const getType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetType",
 }));
+
 export type ListKeyspacesError =
   | AccessDeniedException
   | InternalServerException
@@ -1442,6 +1477,8 @@ export const listKeyspaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyspaces",
   pagination: {
     inputToken: "nextToken",
@@ -1450,6 +1487,7 @@ export const listKeyspaces: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTablesError =
   | AccessDeniedException
   | InternalServerException
@@ -1492,6 +1530,8 @@ export const listTables: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "nextToken",
@@ -1500,6 +1540,7 @@ export const listTables: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1542,6 +1583,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -1550,6 +1593,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -1592,6 +1636,8 @@ export const listTypes: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypes",
   pagination: {
     inputToken: "nextToken",
@@ -1600,6 +1646,7 @@ export const listTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RestoreTableError =
   | AccessDeniedException
   | ConflictException
@@ -1653,8 +1700,11 @@ export const restoreTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTable",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1684,8 +1734,11 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1713,8 +1766,11 @@ export const untagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateKeyspaceError =
   | AccessDeniedException
   | ConflictException
@@ -1782,8 +1838,11 @@ export const updateKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyspace",
 }));
+
 export type UpdateTableError =
   | AccessDeniedException
   | ConflictException
@@ -1811,5 +1870,7 @@ export const updateTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,44 +85,85 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    QuotaCode: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Errors: S.optional(
+      S.suspend(() => ValidationErrors).annotate({
+        identifier: "ValidationErrors",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RuleName = string;
 export type Region = string;
+export type Regions = string[];
+export const Regions = /*@__PURE__*/ S.Array(S.String);
 export type SourceFilterString = string;
 export type LogsFilterString = string;
 export type DataSourceFilterString = string;
-export type MetricsFilterString = string;
-export type AccountIdentifier = string;
-export type ResourceArn = string;
-export type LogGroupNamePattern = string;
-export type TagKey = string;
-export type TagValue = string;
-export type RetentionPeriodInDays = number;
-export type AllRegions = boolean;
-export type RuleIdentifier = string;
-export type AwsResourceExplorerManagedViewArn = string;
-export type FailureReason = string;
-export type IsReplicated = boolean;
-export type ListCentralizationRulesForOrganizationMaxResults = number;
-export type NextToken = string;
-export type ResourceIdentifierPrefix = string;
-export type ListResourceTelemetryMaxResults = number;
-export type ResourceIdentifier = string;
-export type ListResourceTelemetryForOrganizationMaxResults = number;
-export type ListS3TableIntegrationsMaxResults = number;
-export type ListTelemetryRulesMaxResults = number;
-export type OrganizationUnitIdentifier = string;
-export type ListTelemetryRulesForOrganizationMaxResults = number;
-export type TelemetryPipelineConfigurationBody = string;
-export type TelemetryPipelineName = string;
-export type TelemetryPipelineIdentifier = string;
-export type ListTelemetryPipelinesMaxResults = number;
-
-//# Schemas
-export type Regions = string[];
-export const Regions = /*@__PURE__*/ S.Array(S.String);
 export type EncryptedLogGroupStrategy = "ALLOW" | "SKIP" | (string & {});
 export const EncryptedLogGroupStrategy = /*@__PURE__*/ S.String;
+
 export interface SourceLogsConfiguration {
   LogGroupSelectionCriteria?: string;
   DataSourceSelectionCriteria?: string;
@@ -135,6 +178,7 @@ export const SourceLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceLogsConfiguration",
 }) as any as S.Schema<SourceLogsConfiguration>;
+export type MetricsFilterString = string;
 export interface SourceMetricsConfiguration {
   MetricsSelectionCriteria?: string;
 }
@@ -159,33 +203,36 @@ export const CentralizationRuleSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CentralizationRuleSource",
 }) as any as S.Schema<CentralizationRuleSource>;
+export type AccountIdentifier = string;
 export type EncryptionStrategy =
   | "CUSTOMER_MANAGED"
   | "AWS_OWNED"
   | (string & {});
 export const EncryptionStrategy = /*@__PURE__*/ S.String;
+
+export type ResourceArn = string;
 export type EncryptionConflictResolutionStrategy =
   | "ALLOW"
   | "SKIP"
   | (string & {});
 export const EncryptionConflictResolutionStrategy = /*@__PURE__*/ S.String;
+
 export interface LogsEncryptionConfiguration {
   EncryptionStrategy: EncryptionStrategy;
   KmsKeyArn?: string;
   EncryptionConflictResolutionStrategy?: EncryptionConflictResolutionStrategy;
 }
-export const LogsEncryptionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EncryptionStrategy: EncryptionStrategy,
-      KmsKeyArn: S.optional(S.String),
-      EncryptionConflictResolutionStrategy: S.optional(
-        EncryptionConflictResolutionStrategy,
-      ),
-    }),
-  ).annotate({
-    identifier: "LogsEncryptionConfiguration",
-  }) as any as S.Schema<LogsEncryptionConfiguration>;
+export const LogsEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EncryptionStrategy: EncryptionStrategy,
+    KmsKeyArn: S.optional(S.String),
+    EncryptionConflictResolutionStrategy: S.optional(
+      EncryptionConflictResolutionStrategy,
+    ),
+  }),
+).annotate({
+  identifier: "LogsEncryptionConfiguration",
+}) as any as S.Schema<LogsEncryptionConfiguration>;
 export interface LogsBackupConfiguration {
   Region: string;
   KmsKeyArn?: string;
@@ -195,6 +242,7 @@ export const LogsBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogsBackupConfiguration",
 }) as any as S.Schema<LogsBackupConfiguration>;
+export type LogGroupNamePattern = string;
 export interface LogGroupNameConfiguration {
   LogGroupNamePattern: string;
 }
@@ -208,16 +256,15 @@ export interface DestinationLogsConfiguration {
   BackupConfiguration?: LogsBackupConfiguration;
   LogGroupNameConfiguration?: LogGroupNameConfiguration;
 }
-export const DestinationLogsConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      LogsEncryptionConfiguration: S.optional(LogsEncryptionConfiguration),
-      BackupConfiguration: S.optional(LogsBackupConfiguration),
-      LogGroupNameConfiguration: S.optional(LogGroupNameConfiguration),
-    }),
-  ).annotate({
-    identifier: "DestinationLogsConfiguration",
-  }) as any as S.Schema<DestinationLogsConfiguration>;
+export const DestinationLogsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogsEncryptionConfiguration: S.optional(LogsEncryptionConfiguration),
+    BackupConfiguration: S.optional(LogsBackupConfiguration),
+    LogGroupNameConfiguration: S.optional(LogGroupNameConfiguration),
+  }),
+).annotate({
+  identifier: "DestinationLogsConfiguration",
+}) as any as S.Schema<DestinationLogsConfiguration>;
 export interface MetricsBackupConfiguration {
   Region: string;
 }
@@ -229,31 +276,29 @@ export const MetricsBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DestinationMetricsConfiguration {
   BackupConfiguration?: MetricsBackupConfiguration;
 }
-export const DestinationMetricsConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ BackupConfiguration: S.optional(MetricsBackupConfiguration) }),
-  ).annotate({
-    identifier: "DestinationMetricsConfiguration",
-  }) as any as S.Schema<DestinationMetricsConfiguration>;
+export const DestinationMetricsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BackupConfiguration: S.optional(MetricsBackupConfiguration) }),
+).annotate({
+  identifier: "DestinationMetricsConfiguration",
+}) as any as S.Schema<DestinationMetricsConfiguration>;
 export interface CentralizationRuleDestination {
   Region: string;
   Account?: string;
   DestinationLogsConfiguration?: DestinationLogsConfiguration;
   DestinationMetricsConfiguration?: DestinationMetricsConfiguration;
 }
-export const CentralizationRuleDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Region: S.String,
-      Account: S.optional(S.String),
-      DestinationLogsConfiguration: S.optional(DestinationLogsConfiguration),
-      DestinationMetricsConfiguration: S.optional(
-        DestinationMetricsConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "CentralizationRuleDestination",
-  }) as any as S.Schema<CentralizationRuleDestination>;
+export const CentralizationRuleDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Region: S.String,
+    Account: S.optional(S.String),
+    DestinationLogsConfiguration: S.optional(DestinationLogsConfiguration),
+    DestinationMetricsConfiguration: S.optional(
+      DestinationMetricsConfiguration,
+    ),
+  }),
+).annotate({
+  identifier: "CentralizationRuleDestination",
+}) as any as S.Schema<CentralizationRuleDestination>;
 export interface CentralizationRule {
   Source: CentralizationRuleSource;
   Destination: CentralizationRuleDestination;
@@ -266,6 +311,8 @@ export const CentralizationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CentralizationRule",
 }) as any as S.Schema<CentralizationRule>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMapInput = { [key: string]: string | undefined };
 export const TagMapInput = /*@__PURE__*/ S.Record(
   S.String,
@@ -307,29 +354,9 @@ export const CreateCentralizationRuleForOrganizationOutput =
   ).annotate({
     identifier: "CreateCentralizationRuleForOrganizationOutput",
   }) as any as S.Schema<CreateCentralizationRuleForOrganizationOutput>;
-export type FieldMap = { [key: string]: string | undefined };
-export const FieldMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface ValidationError {
-  Message?: string;
-  Reason?: string;
-  FieldMap?: { [key: string]: string | undefined };
-}
-export const ValidationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Message: S.optional(S.String),
-    Reason: S.optional(S.String),
-    FieldMap: S.optional(FieldMap),
-  }),
-).annotate({
-  identifier: "ValidationError",
-}) as any as S.Schema<ValidationError>;
-export type ValidationErrors = ValidationError[];
-export const ValidationErrors = /*@__PURE__*/ S.Array(ValidationError);
 export type SSEAlgorithm = "aws:kms" | "AES256" | (string & {});
 export const SSEAlgorithm = /*@__PURE__*/ S.String;
+
 export interface Encryption {
   SseAlgorithm: SSEAlgorithm;
   KmsKeyArn?: string;
@@ -342,34 +369,73 @@ export interface CreateS3TableIntegrationInput {
   RoleArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateS3TableIntegrationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Encryption: Encryption,
-      RoleArn: S.String,
-      Tags: S.optional(TagMapInput),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateS3TableIntegration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Encryption: Encryption,
+    RoleArn: S.String,
+    Tags: S.optional(TagMapInput),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateS3TableIntegration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateS3TableIntegrationInput",
-  }) as any as S.Schema<CreateS3TableIntegrationInput>;
+  ),
+).annotate({
+  identifier: "CreateS3TableIntegrationInput",
+}) as any as S.Schema<CreateS3TableIntegrationInput>;
 export interface CreateS3TableIntegrationOutput {
   Arn?: string;
 }
-export const CreateS3TableIntegrationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Arn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateS3TableIntegrationOutput",
-  }) as any as S.Schema<CreateS3TableIntegrationOutput>;
+export const CreateS3TableIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateS3TableIntegrationOutput",
+}) as any as S.Schema<CreateS3TableIntegrationOutput>;
+export type TelemetryPipelineName = string;
+export type TelemetryPipelineConfigurationBody = string;
+export interface TelemetryPipelineConfiguration {
+  Body: string;
+}
+export const TelemetryPipelineConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Body: S.String }),
+).annotate({
+  identifier: "TelemetryPipelineConfiguration",
+}) as any as S.Schema<TelemetryPipelineConfiguration>;
+export interface CreateTelemetryPipelineInput {
+  Name: string;
+  Configuration: TelemetryPipelineConfiguration;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Configuration: TelemetryPipelineConfiguration,
+    Tags: S.optional(TagMapInput),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateTelemetryPipelineInput",
+}) as any as S.Schema<CreateTelemetryPipelineInput>;
+export interface CreateTelemetryPipelineOutput {
+  Arn?: string;
+}
+export const CreateTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateTelemetryPipelineOutput",
+}) as any as S.Schema<CreateTelemetryPipelineOutput>;
 export type ResourceType =
   | "AWS::EC2::Instance"
   | "AWS::EC2::VPC"
@@ -392,8 +458,10 @@ export type ResourceType =
   | "AWS::MSK::Cluster"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type TelemetryType = "Logs" | "Metrics" | "Traces" | (string & {});
 export const TelemetryType = /*@__PURE__*/ S.String;
+
 export type TelemetrySourceType =
   | "VPC_FLOW_LOGS"
   | "ROUTE53_RESOLVER_QUERY_LOGS"
@@ -404,10 +472,13 @@ export type TelemetrySourceType =
   | "EKS_API_LOGS"
   | (string & {});
 export const TelemetrySourceType = /*@__PURE__*/ S.String;
+
 export type TelemetrySourceTypes = TelemetrySourceType[];
 export const TelemetrySourceTypes = /*@__PURE__*/ S.Array(TelemetrySourceType);
 export type DestinationType = "cloud-watch-logs" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
+
+export type RetentionPeriodInDays = number;
 export interface VPCFlowLogParameters {
   LogFormat?: string;
   TrafficType?: string;
@@ -471,19 +542,19 @@ export const CloudtrailParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudtrailParameters>;
 export type OutputFormat = "plain" | "json" | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
+
 export interface ELBLoadBalancerLoggingParameters {
   OutputFormat?: OutputFormat;
   FieldDelimiter?: string;
 }
-export const ELBLoadBalancerLoggingParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      OutputFormat: S.optional(OutputFormat),
-      FieldDelimiter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ELBLoadBalancerLoggingParameters",
-  }) as any as S.Schema<ELBLoadBalancerLoggingParameters>;
+export const ELBLoadBalancerLoggingParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OutputFormat: S.optional(OutputFormat),
+    FieldDelimiter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ELBLoadBalancerLoggingParameters",
+}) as any as S.Schema<ELBLoadBalancerLoggingParameters>;
 export interface SingleHeader {
   Name?: string;
 }
@@ -508,8 +579,10 @@ export type RedactedFields = FieldToMatch[];
 export const RedactedFields = /*@__PURE__*/ S.Array(FieldToMatch);
 export type FilterBehavior = "KEEP" | "DROP" | (string & {});
 export const FilterBehavior = /*@__PURE__*/ S.String;
+
 export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
 export const FilterRequirement = /*@__PURE__*/ S.String;
+
 export type Action =
   | "ALLOW"
   | "BLOCK"
@@ -519,6 +592,7 @@ export type Action =
   | "EXCLUDED_AS_COUNT"
   | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export interface ActionCondition {
   Action?: Action;
 }
@@ -573,6 +647,7 @@ export const LoggingFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingFilter" }) as any as S.Schema<LoggingFilter>;
 export type WAFLogType = "WAF_LOGS" | (string & {});
 export const WAFLogType = /*@__PURE__*/ S.String;
+
 export interface WAFLoggingParameters {
   RedactedFields?: FieldToMatch[];
   LoggingFilter?: LoggingFilter;
@@ -595,6 +670,7 @@ export type LogType =
   | "CONNECTION_LOGS"
   | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type LogTypes = LogType[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogDeliveryParameters {
@@ -612,6 +688,7 @@ export type MskEnhancedMonitoringLevel =
   | "PER_TOPIC_PER_PARTITION"
   | (string & {});
 export const MskEnhancedMonitoringLevel = /*@__PURE__*/ S.String;
+
 export interface MskMonitoringParameters {
   EnhancedMonitoring?: MskEnhancedMonitoringLevel;
 }
@@ -631,24 +708,24 @@ export interface TelemetryDestinationConfiguration {
   LogDeliveryParameters?: LogDeliveryParameters;
   MskMonitoringParameters?: MskMonitoringParameters;
 }
-export const TelemetryDestinationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DestinationType: S.optional(DestinationType),
-      DestinationPattern: S.optional(S.String),
-      RetentionInDays: S.optional(S.Number),
-      VPCFlowLogParameters: S.optional(VPCFlowLogParameters),
-      CloudtrailParameters: S.optional(CloudtrailParameters),
-      ELBLoadBalancerLoggingParameters: S.optional(
-        ELBLoadBalancerLoggingParameters,
-      ),
-      WAFLoggingParameters: S.optional(WAFLoggingParameters),
-      LogDeliveryParameters: S.optional(LogDeliveryParameters),
-      MskMonitoringParameters: S.optional(MskMonitoringParameters),
-    }),
-  ).annotate({
-    identifier: "TelemetryDestinationConfiguration",
-  }) as any as S.Schema<TelemetryDestinationConfiguration>;
+export const TelemetryDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DestinationType: S.optional(DestinationType),
+    DestinationPattern: S.optional(S.String),
+    RetentionInDays: S.optional(S.Number),
+    VPCFlowLogParameters: S.optional(VPCFlowLogParameters),
+    CloudtrailParameters: S.optional(CloudtrailParameters),
+    ELBLoadBalancerLoggingParameters: S.optional(
+      ELBLoadBalancerLoggingParameters,
+    ),
+    WAFLoggingParameters: S.optional(WAFLoggingParameters),
+    LogDeliveryParameters: S.optional(LogDeliveryParameters),
+    MskMonitoringParameters: S.optional(MskMonitoringParameters),
+  }),
+).annotate({
+  identifier: "TelemetryDestinationConfiguration",
+}) as any as S.Schema<TelemetryDestinationConfiguration>;
+export type AllRegions = boolean;
 export interface TelemetryRule {
   ResourceType?: ResourceType;
   TelemetryType: TelemetryType;
@@ -709,8 +786,8 @@ export interface CreateTelemetryRuleForOrganizationInput {
   Rule: TelemetryRule;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RuleName: S.String,
       Rule: TelemetryRule,
@@ -725,18 +802,18 @@ export const CreateTelemetryRuleForOrganizationInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateTelemetryRuleForOrganizationInput",
-  }) as any as S.Schema<CreateTelemetryRuleForOrganizationInput>;
+).annotate({
+  identifier: "CreateTelemetryRuleForOrganizationInput",
+}) as any as S.Schema<CreateTelemetryRuleForOrganizationInput>;
 export interface CreateTelemetryRuleForOrganizationOutput {
   RuleArn?: string;
 }
-export const CreateTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateTelemetryRuleForOrganizationOutput",
-  }) as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>;
+export const CreateTelemetryRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RuleArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateTelemetryRuleForOrganizationOutput",
+}) as any as S.Schema<CreateTelemetryRuleForOrganizationOutput>;
+export type RuleIdentifier = string;
 export interface DeleteCentralizationRuleForOrganizationInput {
   RuleIdentifier: string;
 }
@@ -766,26 +843,50 @@ export const DeleteCentralizationRuleForOrganizationResponse =
 export interface DeleteS3TableIntegrationInput {
   Arn: string;
 }
-export const DeleteS3TableIntegrationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Arn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteS3TableIntegration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteS3TableIntegration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteS3TableIntegrationInput",
-  }) as any as S.Schema<DeleteS3TableIntegrationInput>;
+  ),
+).annotate({
+  identifier: "DeleteS3TableIntegrationInput",
+}) as any as S.Schema<DeleteS3TableIntegrationInput>;
 export interface DeleteS3TableIntegrationResponse {}
-export const DeleteS3TableIntegrationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteS3TableIntegrationResponse",
-  }) as any as S.Schema<DeleteS3TableIntegrationResponse>;
+export const DeleteS3TableIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteS3TableIntegrationResponse",
+}) as any as S.Schema<DeleteS3TableIntegrationResponse>;
+export type TelemetryPipelineIdentifier = string;
+export interface DeleteTelemetryPipelineInput {
+  PipelineIdentifier: string;
+}
+export const DeleteTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PipelineIdentifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteTelemetryPipelineInput",
+}) as any as S.Schema<DeleteTelemetryPipelineInput>;
+export interface DeleteTelemetryPipelineOutput {}
+export const DeleteTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTelemetryPipelineOutput",
+}) as any as S.Schema<DeleteTelemetryPipelineOutput>;
 export interface DeleteTelemetryRuleInput {
   RuleIdentifier: string;
 }
@@ -804,15 +905,16 @@ export const DeleteTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTelemetryRuleInput",
 }) as any as S.Schema<DeleteTelemetryRuleInput>;
 export interface DeleteTelemetryRuleResponse {}
-export const DeleteTelemetryRuleResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTelemetryRuleResponse",
-  }) as any as S.Schema<DeleteTelemetryRuleResponse>;
+export const DeleteTelemetryRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTelemetryRuleResponse",
+}) as any as S.Schema<DeleteTelemetryRuleResponse>;
 export interface DeleteTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
 }
-export const DeleteTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/DeleteTelemetryRuleForOrganization" }),
@@ -823,9 +925,9 @@ export const DeleteTelemetryRuleForOrganizationInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteTelemetryRuleForOrganizationInput",
-  }) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>;
+).annotate({
+  identifier: "DeleteTelemetryRuleForOrganizationInput",
+}) as any as S.Schema<DeleteTelemetryRuleForOrganizationInput>;
 export interface DeleteTelemetryRuleForOrganizationResponse {}
 export const DeleteTelemetryRuleForOrganizationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
@@ -858,12 +960,14 @@ export type RuleHealth =
   | "Provisioning"
   | (string & {});
 export const RuleHealth = /*@__PURE__*/ S.String;
+
 export type CentralizationFailureReason =
   | "TRUSTED_ACCESS_NOT_ENABLED"
   | "DESTINATION_ACCOUNT_NOT_IN_ORGANIZATION"
   | "INTERNAL_SERVER_ERROR"
   | (string & {});
 export const CentralizationFailureReason = /*@__PURE__*/ S.String;
+
 export interface GetCentralizationRuleForOrganizationOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -910,6 +1014,7 @@ export const GetS3TableIntegrationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetS3TableIntegrationInput>;
 export type IntegrationStatus = "ACTIVE" | "DELETING" | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
+
 export interface GetS3TableIntegrationOutput {
   Arn?: string;
   RoleArn?: string;
@@ -918,70 +1023,68 @@ export interface GetS3TableIntegrationOutput {
   DestinationTableBucketArn?: string;
   CreatedTimeStamp?: number;
 }
-export const GetS3TableIntegrationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      RoleArn: S.optional(S.String),
-      Status: S.optional(IntegrationStatus),
-      Encryption: S.optional(Encryption),
-      DestinationTableBucketArn: S.optional(S.String),
-      CreatedTimeStamp: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GetS3TableIntegrationOutput",
-  }) as any as S.Schema<GetS3TableIntegrationOutput>;
+export const GetS3TableIntegrationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    RoleArn: S.optional(S.String),
+    Status: S.optional(IntegrationStatus),
+    Encryption: S.optional(Encryption),
+    DestinationTableBucketArn: S.optional(S.String),
+    CreatedTimeStamp: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetS3TableIntegrationOutput",
+}) as any as S.Schema<GetS3TableIntegrationOutput>;
 export interface GetTelemetryEnrichmentStatusRequest {}
-export const GetTelemetryEnrichmentStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetTelemetryEnrichmentStatus" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTelemetryEnrichmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetTelemetryEnrichmentStatus" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTelemetryEnrichmentStatusRequest",
-  }) as any as S.Schema<GetTelemetryEnrichmentStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetTelemetryEnrichmentStatusRequest",
+}) as any as S.Schema<GetTelemetryEnrichmentStatusRequest>;
 export type TelemetryEnrichmentStatus =
   | "Running"
   | "Stopped"
   | "Impaired"
   | (string & {});
 export const TelemetryEnrichmentStatus = /*@__PURE__*/ S.String;
+
+export type AwsResourceExplorerManagedViewArn = string;
 export interface GetTelemetryEnrichmentStatusOutput {
   Status?: TelemetryEnrichmentStatus;
   AwsResourceExplorerManagedViewArn?: string;
 }
-export const GetTelemetryEnrichmentStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Status: S.optional(TelemetryEnrichmentStatus),
-      AwsResourceExplorerManagedViewArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetTelemetryEnrichmentStatusOutput",
-  }) as any as S.Schema<GetTelemetryEnrichmentStatusOutput>;
+export const GetTelemetryEnrichmentStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(TelemetryEnrichmentStatus),
+    AwsResourceExplorerManagedViewArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetTelemetryEnrichmentStatusOutput",
+}) as any as S.Schema<GetTelemetryEnrichmentStatusOutput>;
 export interface GetTelemetryEvaluationStatusRequest {}
-export const GetTelemetryEvaluationStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetTelemetryEvaluationStatus" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTelemetryEvaluationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetTelemetryEvaluationStatus" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTelemetryEvaluationStatusRequest",
-  }) as any as S.Schema<GetTelemetryEvaluationStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetTelemetryEvaluationStatusRequest",
+}) as any as S.Schema<GetTelemetryEvaluationStatusRequest>;
 export type Status =
   | "NOT_STARTED"
   | "STARTING"
@@ -992,6 +1095,8 @@ export type Status =
   | "STOPPED"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type FailureReason = string;
 export interface RegionStatus {
   Region?: string;
   Status?: string;
@@ -1014,17 +1119,16 @@ export interface GetTelemetryEvaluationStatusOutput {
   HomeRegion?: string;
   RegionStatuses?: RegionStatus[];
 }
-export const GetTelemetryEvaluationStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Status: S.optional(Status),
-      FailureReason: S.optional(S.String),
-      HomeRegion: S.optional(S.String),
-      RegionStatuses: S.optional(RegionStatuses),
-    }),
-  ).annotate({
-    identifier: "GetTelemetryEvaluationStatusOutput",
-  }) as any as S.Schema<GetTelemetryEvaluationStatusOutput>;
+export const GetTelemetryEvaluationStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(Status),
+    FailureReason: S.optional(S.String),
+    HomeRegion: S.optional(S.String),
+    RegionStatuses: S.optional(RegionStatuses),
+  }),
+).annotate({
+  identifier: "GetTelemetryEvaluationStatusOutput",
+}) as any as S.Schema<GetTelemetryEvaluationStatusOutput>;
 export interface GetTelemetryEvaluationStatusForOrganizationRequest {}
 export const GetTelemetryEvaluationStatusForOrganizationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1061,6 +1165,78 @@ export const GetTelemetryEvaluationStatusForOrganizationOutput =
   ).annotate({
     identifier: "GetTelemetryEvaluationStatusForOrganizationOutput",
   }) as any as S.Schema<GetTelemetryEvaluationStatusForOrganizationOutput>;
+export interface GetTelemetryPipelineInput {
+  PipelineIdentifier: string;
+}
+export const GetTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PipelineIdentifier: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetTelemetryPipelineInput",
+}) as any as S.Schema<GetTelemetryPipelineInput>;
+export type TelemetryPipelineStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | (string & {});
+export const TelemetryPipelineStatus = /*@__PURE__*/ S.String;
+
+export interface TelemetryPipelineStatusReason {
+  Description?: string;
+}
+export const TelemetryPipelineStatusReason = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Description: S.optional(S.String) }),
+).annotate({
+  identifier: "TelemetryPipelineStatusReason",
+}) as any as S.Schema<TelemetryPipelineStatusReason>;
+export type TagMapOutput = { [key: string]: string | undefined };
+export const TagMapOutput = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface TelemetryPipeline {
+  CreatedTimeStamp?: number;
+  LastUpdateTimeStamp?: number;
+  Arn?: string;
+  Name?: string;
+  Configuration?: TelemetryPipelineConfiguration;
+  Status?: TelemetryPipelineStatus;
+  StatusReason?: TelemetryPipelineStatusReason;
+  Tags?: { [key: string]: string | undefined };
+}
+export const TelemetryPipeline = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreatedTimeStamp: S.optional(S.Number),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    Configuration: S.optional(TelemetryPipelineConfiguration),
+    Status: S.optional(TelemetryPipelineStatus),
+    StatusReason: S.optional(TelemetryPipelineStatusReason),
+    Tags: S.optional(TagMapOutput),
+  }),
+).annotate({
+  identifier: "TelemetryPipeline",
+}) as any as S.Schema<TelemetryPipeline>;
+export interface GetTelemetryPipelineOutput {
+  Pipeline?: TelemetryPipeline;
+}
+export const GetTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Pipeline: S.optional(TelemetryPipeline) }),
+).annotate({
+  identifier: "GetTelemetryPipelineOutput",
+}) as any as S.Schema<GetTelemetryPipelineOutput>;
 export interface GetTelemetryRuleInput {
   RuleIdentifier: string;
 }
@@ -1078,6 +1254,7 @@ export const GetTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTelemetryRuleInput",
 }) as any as S.Schema<GetTelemetryRuleInput>;
+export type IsReplicated = boolean;
 export interface GetTelemetryRuleOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -1105,8 +1282,8 @@ export const GetTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetTelemetryRuleForOrganizationInput {
   RuleIdentifier: string;
 }
-export const GetTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ RuleIdentifier: S.String }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/GetTelemetryRuleForOrganization" }),
@@ -1117,9 +1294,9 @@ export const GetTelemetryRuleForOrganizationInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetTelemetryRuleForOrganizationInput",
-  }) as any as S.Schema<GetTelemetryRuleForOrganizationInput>;
+).annotate({
+  identifier: "GetTelemetryRuleForOrganizationInput",
+}) as any as S.Schema<GetTelemetryRuleForOrganizationInput>;
 export interface GetTelemetryRuleForOrganizationOutput {
   RuleName?: string;
   RuleArn?: string;
@@ -1130,8 +1307,8 @@ export interface GetTelemetryRuleForOrganizationOutput {
   IsReplicated?: boolean;
   RegionStatuses?: RegionStatus[];
 }
-export const GetTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetTelemetryRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RuleName: S.optional(S.String),
       RuleArn: S.optional(S.String),
@@ -1142,9 +1319,11 @@ export const GetTelemetryRuleForOrganizationOutput =
       IsReplicated: S.optional(S.Boolean),
       RegionStatuses: S.optional(RegionStatuses),
     }),
-  ).annotate({
-    identifier: "GetTelemetryRuleForOrganizationOutput",
-  }) as any as S.Schema<GetTelemetryRuleForOrganizationOutput>;
+).annotate({
+  identifier: "GetTelemetryRuleForOrganizationOutput",
+}) as any as S.Schema<GetTelemetryRuleForOrganizationOutput>;
+export type ListCentralizationRulesForOrganizationMaxResults = number;
+export type NextToken = string;
 export interface ListCentralizationRulesForOrganizationInput {
   RuleNamePrefix?: string;
   AllRegions?: boolean;
@@ -1219,6 +1398,7 @@ export const ListCentralizationRulesForOrganizationOutput =
   ).annotate({
     identifier: "ListCentralizationRulesForOrganizationOutput",
   }) as any as S.Schema<ListCentralizationRulesForOrganizationOutput>;
+export type ResourceIdentifierPrefix = string;
 export type ResourceTypes = ResourceType[];
 export const ResourceTypes = /*@__PURE__*/ S.Array(ResourceType);
 export type TelemetryState =
@@ -1227,6 +1407,7 @@ export type TelemetryState =
   | "NotApplicable"
   | (string & {});
 export const TelemetryState = /*@__PURE__*/ S.String;
+
 export type TelemetryConfigurationState = {
   [key in TelemetryType]?: TelemetryState;
 };
@@ -1234,6 +1415,7 @@ export const TelemetryConfigurationState = /*@__PURE__*/ S.Record(
   TelemetryType,
   TelemetryState.pipe(S.optional),
 );
+export type ListResourceTelemetryMaxResults = number;
 export interface ListResourceTelemetryInput {
   ResourceIdentifierPrefix?: string;
   ResourceTypes?: ResourceType[];
@@ -1263,11 +1445,7 @@ export const ListResourceTelemetryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourceTelemetryInput",
 }) as any as S.Schema<ListResourceTelemetryInput>;
-export type TagMapOutput = { [key: string]: string | undefined };
-export const TagMapOutput = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export type ResourceIdentifier = string;
 export interface TelemetryConfiguration {
   AccountIdentifier?: string;
   TelemetryConfigurationState?: { [key: string]: TelemetryState | undefined };
@@ -1298,17 +1476,17 @@ export interface ListResourceTelemetryOutput {
   TelemetryConfigurations?: TelemetryConfiguration[];
   NextToken?: string;
 }
-export const ListResourceTelemetryOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TelemetryConfigurations: S.optional(TelemetryConfigurations),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListResourceTelemetryOutput",
-  }) as any as S.Schema<ListResourceTelemetryOutput>;
+export const ListResourceTelemetryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TelemetryConfigurations: S.optional(TelemetryConfigurations),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourceTelemetryOutput",
+}) as any as S.Schema<ListResourceTelemetryOutput>;
 export type AccountIdentifiers = string[];
 export const AccountIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export type ListResourceTelemetryForOrganizationMaxResults = number;
 export interface ListResourceTelemetryForOrganizationInput {
   AccountIdentifiers?: string[];
   ResourceIdentifierPrefix?: string;
@@ -1357,28 +1535,28 @@ export const ListResourceTelemetryForOrganizationOutput =
   ).annotate({
     identifier: "ListResourceTelemetryForOrganizationOutput",
   }) as any as S.Schema<ListResourceTelemetryForOrganizationOutput>;
+export type ListS3TableIntegrationsMaxResults = number;
 export interface ListS3TableIntegrationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListS3TableIntegrationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListS3TableIntegrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListS3TableIntegrationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListS3TableIntegrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListS3TableIntegrationsInput",
-  }) as any as S.Schema<ListS3TableIntegrationsInput>;
+  ),
+).annotate({
+  identifier: "ListS3TableIntegrationsInput",
+}) as any as S.Schema<ListS3TableIntegrationsInput>;
 export interface IntegrationSummary {
   Arn?: string;
   Status?: IntegrationStatus;
@@ -1397,15 +1575,14 @@ export interface ListS3TableIntegrationsOutput {
   IntegrationSummaries?: IntegrationSummary[];
   NextToken?: string;
 }
-export const ListS3TableIntegrationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IntegrationSummaries: S.optional(IntegrationSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListS3TableIntegrationsOutput",
-  }) as any as S.Schema<ListS3TableIntegrationsOutput>;
+export const ListS3TableIntegrationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IntegrationSummaries: S.optional(IntegrationSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListS3TableIntegrationsOutput",
+}) as any as S.Schema<ListS3TableIntegrationsOutput>;
 export interface ListTagsForResourceInput {
   ResourceARN: string;
 }
@@ -1431,670 +1608,28 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
-export interface ListTelemetryRulesInput {
-  RuleNamePrefix?: string;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListTelemetryRulesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleNamePrefix: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListTelemetryRules" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTelemetryRulesInput",
-}) as any as S.Schema<ListTelemetryRulesInput>;
-export interface TelemetryRuleSummary {
-  RuleName?: string;
-  RuleArn?: string;
-  CreatedTimeStamp?: number;
-  LastUpdateTimeStamp?: number;
-  ResourceType?: ResourceType;
-  TelemetryType?: TelemetryType;
-  TelemetrySourceTypes?: TelemetrySourceType[];
-}
-export const TelemetryRuleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RuleName: S.optional(S.String),
-    RuleArn: S.optional(S.String),
-    CreatedTimeStamp: S.optional(S.Number),
-    LastUpdateTimeStamp: S.optional(S.Number),
-    ResourceType: S.optional(ResourceType),
-    TelemetryType: S.optional(TelemetryType),
-    TelemetrySourceTypes: S.optional(TelemetrySourceTypes),
-  }),
-).annotate({
-  identifier: "TelemetryRuleSummary",
-}) as any as S.Schema<TelemetryRuleSummary>;
-export type TelemetryRuleSummaries = TelemetryRuleSummary[];
-export const TelemetryRuleSummaries =
-  /*@__PURE__*/ S.Array(TelemetryRuleSummary);
-export interface ListTelemetryRulesOutput {
-  TelemetryRuleSummaries?: TelemetryRuleSummary[];
-  NextToken?: string;
-}
-export const ListTelemetryRulesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListTelemetryRulesOutput",
-}) as any as S.Schema<ListTelemetryRulesOutput>;
-export type OrganizationUnitIdentifiers = string[];
-export const OrganizationUnitIdentifiers = /*@__PURE__*/ S.Array(S.String);
-export interface ListTelemetryRulesForOrganizationInput {
-  RuleNamePrefix?: string;
-  SourceAccountIds?: string[];
-  SourceOrganizationUnitIds?: string[];
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListTelemetryRulesForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RuleNamePrefix: S.optional(S.String),
-      SourceAccountIds: S.optional(AccountIdentifiers),
-      SourceOrganizationUnitIds: S.optional(OrganizationUnitIdentifiers),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTelemetryRulesForOrganization" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ListTelemetryRulesForOrganizationInput",
-  }) as any as S.Schema<ListTelemetryRulesForOrganizationInput>;
-export interface ListTelemetryRulesForOrganizationOutput {
-  TelemetryRuleSummaries?: TelemetryRuleSummary[];
-  NextToken?: string;
-}
-export const ListTelemetryRulesForOrganizationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTelemetryRulesForOrganizationOutput",
-  }) as any as S.Schema<ListTelemetryRulesForOrganizationOutput>;
-export interface StartTelemetryEnrichmentRequest {}
-export const StartTelemetryEnrichmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/StartTelemetryEnrichment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StartTelemetryEnrichmentRequest",
-  }) as any as S.Schema<StartTelemetryEnrichmentRequest>;
-export interface StartTelemetryEnrichmentOutput {
-  Status?: TelemetryEnrichmentStatus;
-  AwsResourceExplorerManagedViewArn?: string;
-}
-export const StartTelemetryEnrichmentOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Status: S.optional(TelemetryEnrichmentStatus),
-      AwsResourceExplorerManagedViewArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StartTelemetryEnrichmentOutput",
-  }) as any as S.Schema<StartTelemetryEnrichmentOutput>;
-export interface StartTelemetryEvaluationInput {
-  Regions?: string[];
-  AllRegions?: boolean;
-}
-export const StartTelemetryEvaluationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Regions: S.optional(Regions),
-      AllRegions: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/StartTelemetryEvaluation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StartTelemetryEvaluationInput",
-  }) as any as S.Schema<StartTelemetryEvaluationInput>;
-export interface StartTelemetryEvaluationResponse {}
-export const StartTelemetryEvaluationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StartTelemetryEvaluationResponse",
-  }) as any as S.Schema<StartTelemetryEvaluationResponse>;
-export interface StartTelemetryEvaluationForOrganizationInput {
-  Regions?: string[];
-  AllRegions?: boolean;
-}
-export const StartTelemetryEvaluationForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Regions: S.optional(Regions),
-      AllRegions: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/StartTelemetryEvaluationForOrganization",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StartTelemetryEvaluationForOrganizationInput",
-  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>;
-export interface StartTelemetryEvaluationForOrganizationResponse {}
-export const StartTelemetryEvaluationForOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StartTelemetryEvaluationForOrganizationResponse",
-  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>;
-export interface StopTelemetryEnrichmentRequest {}
-export const StopTelemetryEnrichmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/StopTelemetryEnrichment" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StopTelemetryEnrichmentRequest",
-  }) as any as S.Schema<StopTelemetryEnrichmentRequest>;
-export interface StopTelemetryEnrichmentOutput {
-  Status?: TelemetryEnrichmentStatus;
-}
-export const StopTelemetryEnrichmentOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: S.optional(TelemetryEnrichmentStatus) }),
-  ).annotate({
-    identifier: "StopTelemetryEnrichmentOutput",
-  }) as any as S.Schema<StopTelemetryEnrichmentOutput>;
-export interface StopTelemetryEvaluationRequest {}
-export const StopTelemetryEvaluationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/StopTelemetryEvaluation" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StopTelemetryEvaluationRequest",
-  }) as any as S.Schema<StopTelemetryEvaluationRequest>;
-export interface StopTelemetryEvaluationResponse {}
-export const StopTelemetryEvaluationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StopTelemetryEvaluationResponse",
-  }) as any as S.Schema<StopTelemetryEvaluationResponse>;
-export interface StopTelemetryEvaluationForOrganizationRequest {}
-export const StopTelemetryEvaluationForOrganizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/StopTelemetryEvaluationForOrganization",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "StopTelemetryEvaluationForOrganizationRequest",
-  }) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>;
-export interface StopTelemetryEvaluationForOrganizationResponse {}
-export const StopTelemetryEvaluationForOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StopTelemetryEvaluationForOrganizationResponse",
-  }) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>;
-export interface TagResourceInput {
-  ResourceARN: string;
-  Tags: { [key: string]: string | undefined };
-}
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, Tags: TagMapInput }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/TagResource" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceInput",
-}) as any as S.Schema<TagResourceInput>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type RecordFormat = "STRING" | "JSON" | (string & {});
-export const RecordFormat = /*@__PURE__*/ S.String;
-export interface Record {
-  Data?: string;
-  Type?: RecordFormat;
-}
-export const Record = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Data: S.optional(S.String), Type: S.optional(RecordFormat) }),
-).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
-export type Records = Record[];
-export const Records = /*@__PURE__*/ S.Array(Record);
-export interface TelemetryPipelineConfiguration {
-  Body: string;
-}
-export const TelemetryPipelineConfiguration =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ Body: S.String })).annotate({
-    identifier: "TelemetryPipelineConfiguration",
-  }) as any as S.Schema<TelemetryPipelineConfiguration>;
-export interface TestTelemetryPipelineInput {
-  Records: Record[];
-  Configuration: TelemetryPipelineConfiguration;
-}
-export const TestTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Records: Records,
-    Configuration: TelemetryPipelineConfiguration,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/TestTelemetryPipeline" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TestTelemetryPipelineInput",
-}) as any as S.Schema<TestTelemetryPipelineInput>;
-export interface PipelineOutputError {
-  Message?: string;
-}
-export const PipelineOutputError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Message: S.optional(S.String) }),
-).annotate({
-  identifier: "PipelineOutputError",
-}) as any as S.Schema<PipelineOutputError>;
-export interface PipelineOutput {
-  Record?: Record;
-  Error?: PipelineOutputError;
-}
-export const PipelineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Record: S.optional(Record),
-    Error: S.optional(PipelineOutputError),
-  }),
-).annotate({ identifier: "PipelineOutput" }) as any as S.Schema<PipelineOutput>;
-export type PipelineOutputs = PipelineOutput[];
-export const PipelineOutputs = /*@__PURE__*/ S.Array(PipelineOutput);
-export interface TestTelemetryPipelineOutput {
-  Results?: PipelineOutput[];
-}
-export const TestTelemetryPipelineOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Results: S.optional(PipelineOutputs) }),
-  ).annotate({
-    identifier: "TestTelemetryPipelineOutput",
-  }) as any as S.Schema<TestTelemetryPipelineOutput>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceInput {
-  ResourceARN: string;
-  TagKeys: string[];
-}
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/UntagResource" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceInput",
-}) as any as S.Schema<UntagResourceInput>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
-export interface UpdateCentralizationRuleForOrganizationInput {
-  RuleIdentifier: string;
-  Rule: CentralizationRule;
-}
-export const UpdateCentralizationRuleForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleIdentifier: S.String, Rule: CentralizationRule }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/UpdateCentralizationRuleForOrganization",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateCentralizationRuleForOrganizationInput",
-  }) as any as S.Schema<UpdateCentralizationRuleForOrganizationInput>;
-export interface UpdateCentralizationRuleForOrganizationOutput {
-  RuleArn?: string;
-}
-export const UpdateCentralizationRuleForOrganizationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UpdateCentralizationRuleForOrganizationOutput",
-  }) as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>;
-export interface UpdateTelemetryRuleInput {
-  RuleIdentifier: string;
-  Rule: TelemetryRule;
-}
-export const UpdateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/UpdateTelemetryRule" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateTelemetryRuleInput",
-}) as any as S.Schema<UpdateTelemetryRuleInput>;
-export interface UpdateTelemetryRuleOutput {
-  RuleArn?: string;
-}
-export const UpdateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RuleArn: S.optional(S.String) }),
-).annotate({
-  identifier: "UpdateTelemetryRuleOutput",
-}) as any as S.Schema<UpdateTelemetryRuleOutput>;
-export interface UpdateTelemetryRuleForOrganizationInput {
-  RuleIdentifier: string;
-  Rule: TelemetryRule;
-}
-export const UpdateTelemetryRuleForOrganizationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateTelemetryRuleForOrganization" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateTelemetryRuleForOrganizationInput",
-  }) as any as S.Schema<UpdateTelemetryRuleForOrganizationInput>;
-export interface UpdateTelemetryRuleForOrganizationOutput {
-  RuleArn?: string;
-}
-export const UpdateTelemetryRuleForOrganizationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UpdateTelemetryRuleForOrganizationOutput",
-  }) as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>;
-export interface ValidateTelemetryPipelineConfigurationInput {
-  Configuration: TelemetryPipelineConfiguration;
-}
-export const ValidateTelemetryPipelineConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Configuration: TelemetryPipelineConfiguration }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/ValidateTelemetryPipelineConfiguration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "ValidateTelemetryPipelineConfigurationInput",
-  }) as any as S.Schema<ValidateTelemetryPipelineConfigurationInput>;
-export interface ValidateTelemetryPipelineConfigurationOutput {
-  Errors?: ValidationError[];
-}
-export const ValidateTelemetryPipelineConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Errors: S.optional(ValidationErrors) }),
-  ).annotate({
-    identifier: "ValidateTelemetryPipelineConfigurationOutput",
-  }) as any as S.Schema<ValidateTelemetryPipelineConfigurationOutput>;
-export interface CreateTelemetryPipelineInput {
-  Name: string;
-  Configuration: TelemetryPipelineConfiguration;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateTelemetryPipelineInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Configuration: TelemetryPipelineConfiguration,
-      Tags: S.optional(TagMapInput),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateTelemetryPipeline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "CreateTelemetryPipelineInput",
-  }) as any as S.Schema<CreateTelemetryPipelineInput>;
-export interface CreateTelemetryPipelineOutput {
-  Arn?: string;
-}
-export const CreateTelemetryPipelineOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Arn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateTelemetryPipelineOutput",
-  }) as any as S.Schema<CreateTelemetryPipelineOutput>;
-export interface GetTelemetryPipelineInput {
-  PipelineIdentifier: string;
-}
-export const GetTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ PipelineIdentifier: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetTelemetryPipeline" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTelemetryPipelineInput",
-}) as any as S.Schema<GetTelemetryPipelineInput>;
-export type TelemetryPipelineStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | (string & {});
-export const TelemetryPipelineStatus = /*@__PURE__*/ S.String;
-export interface TelemetryPipelineStatusReason {
-  Description?: string;
-}
-export const TelemetryPipelineStatusReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Description: S.optional(S.String) }),
-  ).annotate({
-    identifier: "TelemetryPipelineStatusReason",
-  }) as any as S.Schema<TelemetryPipelineStatusReason>;
-export interface TelemetryPipeline {
-  CreatedTimeStamp?: number;
-  LastUpdateTimeStamp?: number;
-  Arn?: string;
-  Name?: string;
-  Configuration?: TelemetryPipelineConfiguration;
-  Status?: TelemetryPipelineStatus;
-  StatusReason?: TelemetryPipelineStatusReason;
-  Tags?: { [key: string]: string | undefined };
-}
-export const TelemetryPipeline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CreatedTimeStamp: S.optional(S.Number),
-    LastUpdateTimeStamp: S.optional(S.Number),
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    Configuration: S.optional(TelemetryPipelineConfiguration),
-    Status: S.optional(TelemetryPipelineStatus),
-    StatusReason: S.optional(TelemetryPipelineStatusReason),
-    Tags: S.optional(TagMapOutput),
-  }),
-).annotate({
-  identifier: "TelemetryPipeline",
-}) as any as S.Schema<TelemetryPipeline>;
-export interface GetTelemetryPipelineOutput {
-  Pipeline?: TelemetryPipeline;
-}
-export const GetTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Pipeline: S.optional(TelemetryPipeline) }),
-).annotate({
-  identifier: "GetTelemetryPipelineOutput",
-}) as any as S.Schema<GetTelemetryPipelineOutput>;
-export interface UpdateTelemetryPipelineInput {
-  PipelineIdentifier: string;
-  Configuration: TelemetryPipelineConfiguration;
-}
-export const UpdateTelemetryPipelineInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PipelineIdentifier: S.String,
-      Configuration: TelemetryPipelineConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/UpdateTelemetryPipeline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "UpdateTelemetryPipelineInput",
-  }) as any as S.Schema<UpdateTelemetryPipelineInput>;
-export interface UpdateTelemetryPipelineOutput {}
-export const UpdateTelemetryPipelineOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateTelemetryPipelineOutput",
-  }) as any as S.Schema<UpdateTelemetryPipelineOutput>;
-export interface DeleteTelemetryPipelineInput {
-  PipelineIdentifier: string;
-}
-export const DeleteTelemetryPipelineInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PipelineIdentifier: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteTelemetryPipeline" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-  ).annotate({
-    identifier: "DeleteTelemetryPipelineInput",
-  }) as any as S.Schema<DeleteTelemetryPipelineInput>;
-export interface DeleteTelemetryPipelineOutput {}
-export const DeleteTelemetryPipelineOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTelemetryPipelineOutput",
-  }) as any as S.Schema<DeleteTelemetryPipelineOutput>;
+export type ListTelemetryPipelinesMaxResults = number;
 export interface ListTelemetryPipelinesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListTelemetryPipelinesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListTelemetryPipelines" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTelemetryPipelinesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTelemetryPipelines" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListTelemetryPipelinesInput",
-  }) as any as S.Schema<ListTelemetryPipelinesInput>;
+  ),
+).annotate({
+  identifier: "ListTelemetryPipelinesInput",
+}) as any as S.Schema<ListTelemetryPipelinesInput>;
 export interface Source {
   Type?: string;
 }
@@ -2164,73 +1699,545 @@ export interface ListTelemetryPipelinesOutput {
   PipelineSummaries?: TelemetryPipelineSummary[];
   NextToken?: string;
 }
-export const ListTelemetryPipelinesOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListTelemetryPipelinesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PipelineSummaries: S.optional(TelemetryPipelineSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTelemetryPipelinesOutput",
+}) as any as S.Schema<ListTelemetryPipelinesOutput>;
+export type ListTelemetryRulesMaxResults = number;
+export interface ListTelemetryRulesInput {
+  RuleNamePrefix?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListTelemetryRulesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleNamePrefix: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListTelemetryRules" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTelemetryRulesInput",
+}) as any as S.Schema<ListTelemetryRulesInput>;
+export interface TelemetryRuleSummary {
+  RuleName?: string;
+  RuleArn?: string;
+  CreatedTimeStamp?: number;
+  LastUpdateTimeStamp?: number;
+  ResourceType?: ResourceType;
+  TelemetryType?: TelemetryType;
+  TelemetrySourceTypes?: TelemetrySourceType[];
+}
+export const TelemetryRuleSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleName: S.optional(S.String),
+    RuleArn: S.optional(S.String),
+    CreatedTimeStamp: S.optional(S.Number),
+    LastUpdateTimeStamp: S.optional(S.Number),
+    ResourceType: S.optional(ResourceType),
+    TelemetryType: S.optional(TelemetryType),
+    TelemetrySourceTypes: S.optional(TelemetrySourceTypes),
+  }),
+).annotate({
+  identifier: "TelemetryRuleSummary",
+}) as any as S.Schema<TelemetryRuleSummary>;
+export type TelemetryRuleSummaries = TelemetryRuleSummary[];
+export const TelemetryRuleSummaries =
+  /*@__PURE__*/ S.Array(TelemetryRuleSummary);
+export interface ListTelemetryRulesOutput {
+  TelemetryRuleSummaries?: TelemetryRuleSummary[];
+  NextToken?: string;
+}
+export const ListTelemetryRulesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTelemetryRulesOutput",
+}) as any as S.Schema<ListTelemetryRulesOutput>;
+export type OrganizationUnitIdentifier = string;
+export type OrganizationUnitIdentifiers = string[];
+export const OrganizationUnitIdentifiers = /*@__PURE__*/ S.Array(S.String);
+export type ListTelemetryRulesForOrganizationMaxResults = number;
+export interface ListTelemetryRulesForOrganizationInput {
+  RuleNamePrefix?: string;
+  SourceAccountIds?: string[];
+  SourceOrganizationUnitIds?: string[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListTelemetryRulesForOrganizationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      PipelineSummaries: S.optional(TelemetryPipelineSummaries),
+      RuleNamePrefix: S.optional(S.String),
+      SourceAccountIds: S.optional(AccountIdentifiers),
+      SourceOrganizationUnitIds: S.optional(OrganizationUnitIdentifiers),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/ListTelemetryRulesForOrganization" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListTelemetryRulesForOrganizationInput",
+}) as any as S.Schema<ListTelemetryRulesForOrganizationInput>;
+export interface ListTelemetryRulesForOrganizationOutput {
+  TelemetryRuleSummaries?: TelemetryRuleSummary[];
+  NextToken?: string;
+}
+export const ListTelemetryRulesForOrganizationOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      TelemetryRuleSummaries: S.optional(TelemetryRuleSummaries),
       NextToken: S.optional(S.String),
     }),
+).annotate({
+  identifier: "ListTelemetryRulesForOrganizationOutput",
+}) as any as S.Schema<ListTelemetryRulesForOrganizationOutput>;
+export interface StartTelemetryEnrichmentRequest {}
+export const StartTelemetryEnrichmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/StartTelemetryEnrichment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartTelemetryEnrichmentRequest",
+}) as any as S.Schema<StartTelemetryEnrichmentRequest>;
+export interface StartTelemetryEnrichmentOutput {
+  Status?: TelemetryEnrichmentStatus;
+  AwsResourceExplorerManagedViewArn?: string;
+}
+export const StartTelemetryEnrichmentOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(TelemetryEnrichmentStatus),
+    AwsResourceExplorerManagedViewArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StartTelemetryEnrichmentOutput",
+}) as any as S.Schema<StartTelemetryEnrichmentOutput>;
+export interface StartTelemetryEvaluationInput {
+  Regions?: string[];
+  AllRegions?: boolean;
+}
+export const StartTelemetryEvaluationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Regions: S.optional(Regions),
+    AllRegions: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/StartTelemetryEvaluation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartTelemetryEvaluationInput",
+}) as any as S.Schema<StartTelemetryEvaluationInput>;
+export interface StartTelemetryEvaluationResponse {}
+export const StartTelemetryEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StartTelemetryEvaluationResponse",
+}) as any as S.Schema<StartTelemetryEvaluationResponse>;
+export interface StartTelemetryEvaluationForOrganizationInput {
+  Regions?: string[];
+  AllRegions?: boolean;
+}
+export const StartTelemetryEvaluationForOrganizationInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Regions: S.optional(Regions),
+      AllRegions: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/StartTelemetryEvaluationForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
   ).annotate({
-    identifier: "ListTelemetryPipelinesOutput",
-  }) as any as S.Schema<ListTelemetryPipelinesOutput>;
+    identifier: "StartTelemetryEvaluationForOrganizationInput",
+  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationInput>;
+export interface StartTelemetryEvaluationForOrganizationResponse {}
+export const StartTelemetryEvaluationForOrganizationResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "StartTelemetryEvaluationForOrganizationResponse",
+  }) as any as S.Schema<StartTelemetryEvaluationForOrganizationResponse>;
+export interface StopTelemetryEnrichmentRequest {}
+export const StopTelemetryEnrichmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/StopTelemetryEnrichment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StopTelemetryEnrichmentRequest",
+}) as any as S.Schema<StopTelemetryEnrichmentRequest>;
+export interface StopTelemetryEnrichmentOutput {
+  Status?: TelemetryEnrichmentStatus;
+}
+export const StopTelemetryEnrichmentOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(TelemetryEnrichmentStatus) }),
+).annotate({
+  identifier: "StopTelemetryEnrichmentOutput",
+}) as any as S.Schema<StopTelemetryEnrichmentOutput>;
+export interface StopTelemetryEvaluationRequest {}
+export const StopTelemetryEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/StopTelemetryEvaluation" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StopTelemetryEvaluationRequest",
+}) as any as S.Schema<StopTelemetryEvaluationRequest>;
+export interface StopTelemetryEvaluationResponse {}
+export const StopTelemetryEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopTelemetryEvaluationResponse",
+}) as any as S.Schema<StopTelemetryEvaluationResponse>;
+export interface StopTelemetryEvaluationForOrganizationRequest {}
+export const StopTelemetryEvaluationForOrganizationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/StopTelemetryEvaluationForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StopTelemetryEvaluationForOrganizationRequest",
+  }) as any as S.Schema<StopTelemetryEvaluationForOrganizationRequest>;
+export interface StopTelemetryEvaluationForOrganizationResponse {}
+export const StopTelemetryEvaluationForOrganizationResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "StopTelemetryEvaluationForOrganizationResponse",
+  }) as any as S.Schema<StopTelemetryEvaluationForOrganizationResponse>;
+export interface TagResourceInput {
+  ResourceARN: string;
+  Tags: { [key: string]: string | undefined };
+}
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String, Tags: TagMapInput }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/TagResource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceInput",
+}) as any as S.Schema<TagResourceInput>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type RecordFormat = "STRING" | "JSON" | (string & {});
+export const RecordFormat = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
+export interface Record {
+  Data?: string;
+  Type?: RecordFormat;
+}
+export const Record = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Data: S.optional(S.String), Type: S.optional(RecordFormat) }),
+).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
+export type Records = Record[];
+export const Records = /*@__PURE__*/ S.Array(Record);
+export interface TestTelemetryPipelineInput {
+  Records: Record[];
+  Configuration: TelemetryPipelineConfiguration;
+}
+export const TestTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Records: Records,
+    Configuration: TelemetryPipelineConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/TestTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TestTelemetryPipelineInput",
+}) as any as S.Schema<TestTelemetryPipelineInput>;
+export interface PipelineOutputError {
+  Message?: string;
+}
+export const PipelineOutputError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Message: S.optional(S.String) }),
+).annotate({
+  identifier: "PipelineOutputError",
+}) as any as S.Schema<PipelineOutputError>;
+export interface PipelineOutput {
+  Record?: Record;
+  Error?: PipelineOutputError;
+}
+export const PipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Record: S.optional(Record),
+    Error: S.optional(PipelineOutputError),
+  }),
+).annotate({ identifier: "PipelineOutput" }) as any as S.Schema<PipelineOutput>;
+export type PipelineOutputs = PipelineOutput[];
+export const PipelineOutputs = /*@__PURE__*/ S.Array(PipelineOutput);
+export interface TestTelemetryPipelineOutput {
+  Results?: PipelineOutput[];
+}
+export const TestTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Results: S.optional(PipelineOutputs) }),
+).annotate({
+  identifier: "TestTelemetryPipelineOutput",
+}) as any as S.Schema<TestTelemetryPipelineOutput>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceInput {
+  ResourceARN: string;
+  TagKeys: string[];
+}
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UntagResource" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceInput",
+}) as any as S.Schema<UntagResourceInput>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateCentralizationRuleForOrganizationInput {
+  RuleIdentifier: string;
+  Rule: CentralizationRule;
+}
+export const UpdateCentralizationRuleForOrganizationInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ RuleIdentifier: S.String, Rule: CentralizationRule }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/UpdateCentralizationRuleForOrganization",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateCentralizationRuleForOrganizationInput",
+  }) as any as S.Schema<UpdateCentralizationRuleForOrganizationInput>;
+export interface UpdateCentralizationRuleForOrganizationOutput {
+  RuleArn?: string;
+}
+export const UpdateCentralizationRuleForOrganizationOutput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ RuleArn: S.optional(S.String) }),
+  ).annotate({
+    identifier: "UpdateCentralizationRuleForOrganizationOutput",
+  }) as any as S.Schema<UpdateCentralizationRuleForOrganizationOutput>;
+export interface UpdateTelemetryPipelineInput {
+  PipelineIdentifier: string;
+  Configuration: TelemetryPipelineConfiguration;
+}
+export const UpdateTelemetryPipelineInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PipelineIdentifier: S.String,
+    Configuration: TelemetryPipelineConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateTelemetryPipeline" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTelemetryPipelineInput",
+}) as any as S.Schema<UpdateTelemetryPipelineInput>;
+export interface UpdateTelemetryPipelineOutput {}
+export const UpdateTelemetryPipelineOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateTelemetryPipelineOutput",
+}) as any as S.Schema<UpdateTelemetryPipelineOutput>;
+export interface UpdateTelemetryRuleInput {
+  RuleIdentifier: string;
+  Rule: TelemetryRule;
+}
+export const UpdateTelemetryRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/UpdateTelemetryRule" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTelemetryRuleInput",
+}) as any as S.Schema<UpdateTelemetryRuleInput>;
+export interface UpdateTelemetryRuleOutput {
+  RuleArn?: string;
+}
+export const UpdateTelemetryRuleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleArn: S.optional(S.String) }),
+).annotate({
+  identifier: "UpdateTelemetryRuleOutput",
+}) as any as S.Schema<UpdateTelemetryRuleOutput>;
+export interface UpdateTelemetryRuleForOrganizationInput {
+  RuleIdentifier: string;
+  Rule: TelemetryRule;
+}
+export const UpdateTelemetryRuleForOrganizationInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ RuleIdentifier: S.String, Rule: TelemetryRule }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/UpdateTelemetryRuleForOrganization" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateTelemetryRuleForOrganizationInput",
+}) as any as S.Schema<UpdateTelemetryRuleForOrganizationInput>;
+export interface UpdateTelemetryRuleForOrganizationOutput {
+  RuleArn?: string;
+}
+export const UpdateTelemetryRuleForOrganizationOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ RuleArn: S.optional(S.String) }),
+).annotate({
+  identifier: "UpdateTelemetryRuleForOrganizationOutput",
+}) as any as S.Schema<UpdateTelemetryRuleForOrganizationOutput>;
+export interface ValidateTelemetryPipelineConfigurationInput {
+  Configuration: TelemetryPipelineConfiguration;
+}
+export const ValidateTelemetryPipelineConfigurationInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Configuration: TelemetryPipelineConfiguration }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/ValidateTelemetryPipelineConfiguration",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ValidateTelemetryPipelineConfigurationInput",
+  }) as any as S.Schema<ValidateTelemetryPipelineConfigurationInput>;
+export type FieldMap = { [key: string]: string | undefined };
+export const FieldMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface ValidationError {
+  Message?: string;
+  Reason?: string;
+  FieldMap?: { [key: string]: string | undefined };
+}
+export const ValidationError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
     Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    QuotaCode: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withQuotaError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String), Errors: S.optional(ValidationErrors) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+    Reason: S.optional(S.String),
+    FieldMap: S.optional(FieldMap),
+  }),
+).annotate({
+  identifier: "ValidationError",
+}) as any as S.Schema<ValidationError>;
+export type ValidationErrors = ValidationError[];
+export const ValidationErrors = /*@__PURE__*/ S.Array(ValidationError);
+export interface ValidateTelemetryPipelineConfigurationOutput {
+  Errors?: ValidationError[];
+}
+export const ValidateTelemetryPipelineConfigurationOutput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ Errors: S.optional(ValidationErrors) }),
+  ).annotate({
+    identifier: "ValidateTelemetryPipelineConfigurationOutput",
+  }) as any as S.Schema<ValidateTelemetryPipelineConfigurationOutput>;
 export type CreateCentralizationRuleForOrganizationError =
   | AccessDeniedException
   | ConflictException
@@ -2258,8 +2265,11 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCentralizationRuleForOrganization",
 }));
+
 export type CreateS3TableIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -2287,8 +2297,43 @@ export const createS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateS3TableIntegration",
 }));
+
+export type CreateTelemetryPipelineError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | TooManyRequestsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a telemetry pipeline for processing and transforming telemetry data. The pipeline defines how data flows from sources through processors to destinations, enabling data transformation and delivering capabilities.
+ */
+export const createTelemetryPipeline: API.OperationMethod<
+  CreateTelemetryPipelineInput,
+  CreateTelemetryPipelineOutput,
+  CreateTelemetryPipelineError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTelemetryPipelineInput,
+  output: CreateTelemetryPipelineOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    TooManyRequestsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTelemetryPipeline",
+}));
+
 export type CreateTelemetryRuleError =
   | AccessDeniedException
   | ConflictException
@@ -2316,8 +2361,11 @@ export const createTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTelemetryRule",
 }));
+
 export type CreateTelemetryRuleForOrganizationError =
   | AccessDeniedException
   | ConflictException
@@ -2345,8 +2393,11 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTelemetryRuleForOrganization",
 }));
+
 export type DeleteCentralizationRuleForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2372,8 +2423,11 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCentralizationRuleForOrganization",
 }));
+
 export type DeleteS3TableIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -2401,8 +2455,43 @@ export const deleteS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteS3TableIntegration",
 }));
+
+export type DeleteTelemetryPipelineError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a telemetry pipeline and its associated resources. This operation stops data processing and removes the pipeline configuration.
+ */
+export const deleteTelemetryPipeline: API.OperationMethod<
+  DeleteTelemetryPipelineInput,
+  DeleteTelemetryPipelineOutput,
+  DeleteTelemetryPipelineError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTelemetryPipelineInput,
+  output: DeleteTelemetryPipelineOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTelemetryPipeline",
+}));
+
 export type DeleteTelemetryRuleError =
   | AccessDeniedException
   | InternalServerException
@@ -2428,8 +2517,11 @@ export const deleteTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTelemetryRule",
 }));
+
 export type DeleteTelemetryRuleForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2455,8 +2547,11 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTelemetryRuleForOrganization",
 }));
+
 export type GetCentralizationRuleForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2482,8 +2577,11 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCentralizationRuleForOrganization",
 }));
+
 export type GetS3TableIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -2509,8 +2607,11 @@ export const getS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetS3TableIntegration",
 }));
+
 export type GetTelemetryEnrichmentStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2534,8 +2635,11 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEnrichmentStatus",
 }));
+
 export type GetTelemetryEvaluationStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2557,8 +2661,11 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEvaluationStatus",
 }));
+
 export type GetTelemetryEvaluationStatusForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2582,8 +2689,41 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEvaluationStatusForOrganization",
 }));
+
+export type GetTelemetryPipelineError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific telemetry pipeline, including its configuration, status, and metadata.
+ */
+export const getTelemetryPipeline: API.OperationMethod<
+  GetTelemetryPipelineInput,
+  GetTelemetryPipelineOutput,
+  GetTelemetryPipelineError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTelemetryPipelineInput,
+  output: GetTelemetryPipelineOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTelemetryPipeline",
+}));
+
 export type GetTelemetryRuleError =
   | AccessDeniedException
   | InternalServerException
@@ -2609,8 +2749,11 @@ export const getTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryRule",
 }));
+
 export type GetTelemetryRuleForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2636,8 +2779,11 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryRuleForOrganization",
 }));
+
 export type ListCentralizationRulesForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2676,6 +2822,8 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCentralizationRulesForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2684,6 +2832,7 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceTelemetryError =
   | AccessDeniedException
   | InternalServerException
@@ -2722,6 +2871,8 @@ export const listResourceTelemetry: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTelemetry",
   pagination: {
     inputToken: "NextToken",
@@ -2730,6 +2881,7 @@ export const listResourceTelemetry: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceTelemetryForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2768,6 +2920,8 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTelemetryForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2776,6 +2930,7 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListS3TableIntegrationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2814,6 +2969,8 @@ export const listS3TableIntegrations: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListS3TableIntegrations",
   pagination: {
     inputToken: "NextToken",
@@ -2822,6 +2979,7 @@ export const listS3TableIntegrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2847,8 +3005,60 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
+export type ListTelemetryPipelinesError =
+  | AccessDeniedException
+  | InternalServerException
+  | TooManyRequestsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of telemetry pipelines in your account. Returns up to 100 results. If more than 100 telemetry pipelines exist, include the `NextToken` value from the response to retrieve the next set of results.
+ */
+export const listTelemetryPipelines: API.OperationMethod<
+  ListTelemetryPipelinesInput,
+  ListTelemetryPipelinesOutput,
+  ListTelemetryPipelinesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTelemetryPipelinesInput,
+  ) => stream.Stream<
+    ListTelemetryPipelinesOutput,
+    ListTelemetryPipelinesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTelemetryPipelinesInput,
+  ) => stream.Stream<
+    TelemetryPipelineSummary,
+    ListTelemetryPipelinesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListTelemetryPipelinesInput,
+  output: ListTelemetryPipelinesOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    TooManyRequestsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTelemetryPipelines",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "PipelineSummaries",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListTelemetryRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -2887,6 +3097,8 @@ export const listTelemetryRules: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTelemetryRules",
   pagination: {
     inputToken: "NextToken",
@@ -2895,6 +3107,7 @@ export const listTelemetryRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTelemetryRulesForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2933,6 +3146,8 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTelemetryRulesForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2941,6 +3156,7 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartTelemetryEnrichmentError =
   | AccessDeniedException
   | ConflictException
@@ -2964,8 +3180,11 @@ export const startTelemetryEnrichment: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEnrichment",
 }));
+
 export type StartTelemetryEvaluationError =
   | AccessDeniedException
   | InternalServerException
@@ -2989,8 +3208,11 @@ export const startTelemetryEvaluation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEvaluation",
 }));
+
 export type StartTelemetryEvaluationForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -3014,8 +3236,11 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEvaluationForOrganization",
 }));
+
 export type StopTelemetryEnrichmentError =
   | AccessDeniedException
   | ConflictException
@@ -3039,8 +3264,11 @@ export const stopTelemetryEnrichment: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEnrichment",
 }));
+
 export type StopTelemetryEvaluationError =
   | AccessDeniedException
   | InternalServerException
@@ -3064,8 +3292,11 @@ export const stopTelemetryEvaluation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEvaluation",
 }));
+
 export type StopTelemetryEvaluationForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -3089,8 +3320,11 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEvaluationForOrganization",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -3118,8 +3352,11 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestTelemetryPipelineError =
   | AccessDeniedException
   | InternalServerException
@@ -3143,8 +3380,11 @@ export const testTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestTelemetryPipeline",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -3170,8 +3410,11 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCentralizationRuleForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -3199,149 +3442,11 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCentralizationRuleForOrganization",
 }));
-export type UpdateTelemetryRuleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | TooManyRequestsException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing telemetry rule in your account. If multiple users attempt to modify the same telemetry rule simultaneously, a ConflictException is returned to provide specific error information for concurrent modification scenarios.
- */
-export const updateTelemetryRule: API.OperationMethod<
-  UpdateTelemetryRuleInput,
-  UpdateTelemetryRuleOutput,
-  UpdateTelemetryRuleError,
-  Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTelemetryRuleInput,
-  output: UpdateTelemetryRuleOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    TooManyRequestsException,
-    ValidationException,
-  ],
-  operationName: "UpdateTelemetryRule",
-}));
-export type UpdateTelemetryRuleForOrganizationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | TooManyRequestsException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing telemetry rule that applies across an Amazon Web Services Organization. This operation can only be called by the organization's management account or a delegated administrator account.
- */
-export const updateTelemetryRuleForOrganization: API.OperationMethod<
-  UpdateTelemetryRuleForOrganizationInput,
-  UpdateTelemetryRuleForOrganizationOutput,
-  UpdateTelemetryRuleForOrganizationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTelemetryRuleForOrganizationInput,
-  output: UpdateTelemetryRuleForOrganizationOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    TooManyRequestsException,
-    ValidationException,
-  ],
-  operationName: "UpdateTelemetryRuleForOrganization",
-}));
-export type ValidateTelemetryPipelineConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | TooManyRequestsException
-  | ValidationException
-  | CommonErrors;
-/**
- * Validates a pipeline configuration without creating the pipeline. This operation checks the configuration for syntax errors and compatibility issues.
- */
-export const validateTelemetryPipelineConfiguration: API.OperationMethod<
-  ValidateTelemetryPipelineConfigurationInput,
-  ValidateTelemetryPipelineConfigurationOutput,
-  ValidateTelemetryPipelineConfigurationError,
-  Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ValidateTelemetryPipelineConfigurationInput,
-  output: ValidateTelemetryPipelineConfigurationOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    TooManyRequestsException,
-    ValidationException,
-  ],
-  operationName: "ValidateTelemetryPipelineConfiguration",
-}));
-export type CreateTelemetryPipelineError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | TooManyRequestsException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a telemetry pipeline for processing and transforming telemetry data. The pipeline defines how data flows from sources through processors to destinations, enabling data transformation and delivering capabilities.
- */
-export const createTelemetryPipeline: API.OperationMethod<
-  CreateTelemetryPipelineInput,
-  CreateTelemetryPipelineOutput,
-  CreateTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelemetryPipelineInput,
-  output: CreateTelemetryPipelineOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    TooManyRequestsException,
-    ValidationException,
-  ],
-  operationName: "CreateTelemetryPipeline",
-}));
-export type GetTelemetryPipelineError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | TooManyRequestsException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific telemetry pipeline, including its configuration, status, and metadata.
- */
-export const getTelemetryPipeline: API.OperationMethod<
-  GetTelemetryPipelineInput,
-  GetTelemetryPipelineOutput,
-  GetTelemetryPipelineError,
-  Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTelemetryPipelineInput,
-  output: GetTelemetryPipelineOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    TooManyRequestsException,
-    ValidationException,
-  ],
-  operationName: "GetTelemetryPipeline",
-}));
+
 export type UpdateTelemetryPipelineError =
   | AccessDeniedException
   | InternalServerException
@@ -3415,80 +3520,101 @@ export const updateTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTelemetryPipeline",
 }));
-export type DeleteTelemetryPipelineError =
+
+export type UpdateTelemetryRuleError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | TooManyRequestsException
   | ValidationException
   | CommonErrors;
 /**
- * Deletes a telemetry pipeline and its associated resources. This operation stops data processing and removes the pipeline configuration.
+ * Updates an existing telemetry rule in your account. If multiple users attempt to modify the same telemetry rule simultaneously, a ConflictException is returned to provide specific error information for concurrent modification scenarios.
  */
-export const deleteTelemetryPipeline: API.OperationMethod<
-  DeleteTelemetryPipelineInput,
-  DeleteTelemetryPipelineOutput,
-  DeleteTelemetryPipelineError,
+export const updateTelemetryRule: API.OperationMethod<
+  UpdateTelemetryRuleInput,
+  UpdateTelemetryRuleOutput,
+  UpdateTelemetryRuleError,
   Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelemetryPipelineInput,
-  output: DeleteTelemetryPipelineOutput,
+  input: UpdateTelemetryRuleInput,
+  output: UpdateTelemetryRuleOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     TooManyRequestsException,
     ValidationException,
   ],
-  operationName: "DeleteTelemetryPipeline",
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTelemetryRule",
 }));
-export type ListTelemetryPipelinesError =
+
+export type UpdateTelemetryRuleForOrganizationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | TooManyRequestsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing telemetry rule that applies across an Amazon Web Services Organization. This operation can only be called by the organization's management account or a delegated administrator account.
+ */
+export const updateTelemetryRuleForOrganization: API.OperationMethod<
+  UpdateTelemetryRuleForOrganizationInput,
+  UpdateTelemetryRuleForOrganizationOutput,
+  UpdateTelemetryRuleForOrganizationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTelemetryRuleForOrganizationInput,
+  output: UpdateTelemetryRuleForOrganizationOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    TooManyRequestsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTelemetryRuleForOrganization",
+}));
+
+export type ValidateTelemetryPipelineConfigurationError =
   | AccessDeniedException
   | InternalServerException
   | TooManyRequestsException
   | ValidationException
   | CommonErrors;
 /**
- * Returns a list of telemetry pipelines in your account. Returns up to 100 results. If more than 100 telemetry pipelines exist, include the `NextToken` value from the response to retrieve the next set of results.
+ * Validates a pipeline configuration without creating the pipeline. This operation checks the configuration for syntax errors and compatibility issues.
  */
-export const listTelemetryPipelines: API.OperationMethod<
-  ListTelemetryPipelinesInput,
-  ListTelemetryPipelinesOutput,
-  ListTelemetryPipelinesError,
+export const validateTelemetryPipelineConfiguration: API.OperationMethod<
+  ValidateTelemetryPipelineConfigurationInput,
+  ValidateTelemetryPipelineConfigurationOutput,
+  ValidateTelemetryPipelineConfigurationError,
   Credentials | Rgn | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    ListTelemetryPipelinesOutput,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListTelemetryPipelinesInput,
-  ) => stream.Stream<
-    TelemetryPipelineSummary,
-    ListTelemetryPipelinesError,
-    Credentials | Rgn | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTelemetryPipelinesInput,
-  output: ListTelemetryPipelinesOutput,
+> = /*@__PURE__*/ API.make(() => ({
+  input: ValidateTelemetryPipelineConfigurationInput,
+  output: ValidateTelemetryPipelineConfigurationOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
     TooManyRequestsException,
     ValidationException,
   ],
-  operationName: "ListTelemetryPipelines",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "PipelineSummaries",
-    pageSize: "MaxResults",
-  } as const,
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ValidateTelemetryPipelineConfiguration",
 }));

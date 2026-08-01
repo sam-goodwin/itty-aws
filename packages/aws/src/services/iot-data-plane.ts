@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -116,44 +118,69 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
+  "GatewayTimeoutException",
+  { message: S.optional(S.String) },
+  T.HttpError(504),
+).pipe(C.withTimeoutError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
+  "MethodNotAllowedException",
+  { message: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
+  "RequestEntityTooLargeException",
+  { message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnsupportedDocumentEncodingException extends S.TaggedErrorClass<UnsupportedDocumentEncodingException>()(
+  "UnsupportedDocumentEncodingException",
+  { message: S.optional(S.String) },
+  T.HttpError(415),
+).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type CleanSession = boolean;
 export type PreventWillMessage = boolean;
-export type ErrorMessage = string;
-export type ThingName = string;
-export type ShadowName = string;
-export type IncludeSocketInformation = boolean;
-export type Connected = boolean;
-export type SourceIp = string;
-export type SourcePort = number;
-export type TargetIp = string;
-export type TargetPort = number;
-export type KeepAliveDuration = number;
-export type DisconnectReason = string;
-export type SessionExpiry = number;
-export type VpcEndpointId = string;
-export type Topic = string;
-export type Payload = Uint8Array;
-export type Qos = number;
-export type UserPropertiesBlob = Uint8Array;
-export type NextToken = string;
-export type PageSize = number;
-export type MaxResults = number;
-export type PayloadSize = number;
-export type TopicFilter = string;
-export type Retain = boolean;
-export type SynthesizedJsonUserProperties = string;
-export type ContentType = string;
-export type ResponseTopic = string;
-export type CorrelationData = string;
-export type MessageExpiry = number;
-export type Confirmation = boolean;
-export type TimeoutInSeconds = number;
-export type ResponseMessage = string;
-export type TraceId = string;
-
-//# Schemas
 export interface DeleteConnectionRequest {
   clientId: string;
   cleanSession?: boolean;
@@ -185,6 +212,8 @@ export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteConnectionResponse",
 }) as any as S.Schema<DeleteConnectionResponse>;
+export type ThingName = string;
+export type ShadowName = string;
 export interface DeleteThingShadowRequest {
   thingName: string;
   shadowName?: string;
@@ -214,6 +243,7 @@ export const DeleteThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteThingShadowResponse",
 }) as any as S.Schema<DeleteThingShadowResponse>;
+export type IncludeSocketInformation = boolean;
 export interface GetConnectionRequest {
   clientId: string;
   includeSocketInformation?: boolean;
@@ -237,6 +267,15 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
+export type Connected = boolean;
+export type SourceIp = string;
+export type SourcePort = number;
+export type TargetIp = string;
+export type TargetPort = number;
+export type KeepAliveDuration = number;
+export type DisconnectReason = string;
+export type SessionExpiry = number;
+export type VpcEndpointId = string;
 export interface GetConnectionResponse {
   connected?: boolean;
   thingName?: string;
@@ -273,6 +312,7 @@ export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionResponse",
 }) as any as S.Schema<GetConnectionResponse>;
+export type Topic = string;
 export interface GetRetainedMessageRequest {
   topic: string;
 }
@@ -290,6 +330,9 @@ export const GetRetainedMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRetainedMessageRequest",
 }) as any as S.Schema<GetRetainedMessageRequest>;
+export type Payload = Uint8Array;
+export type Qos = number;
+export type UserPropertiesBlob = Uint8Array;
 export interface GetRetainedMessageResponse {
   topic?: string;
   payload?: Uint8Array;
@@ -337,33 +380,34 @@ export const GetThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetThingShadowResponse",
 }) as any as S.Schema<GetThingShadowResponse>;
+export type NextToken = string;
+export type PageSize = number;
 export interface ListNamedShadowsForThingRequest {
   thingName: string;
   nextToken?: string;
   pageSize?: number;
 }
-export const ListNamedShadowsForThingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      thingName: S.String.pipe(T.HttpLabel("thingName")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/api/things/shadow/ListNamedShadowsForThing/{thingName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListNamedShadowsForThingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thingName: S.String.pipe(T.HttpLabel("thingName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/api/things/shadow/ListNamedShadowsForThing/{thingName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListNamedShadowsForThingRequest",
-  }) as any as S.Schema<ListNamedShadowsForThingRequest>;
+  ),
+).annotate({
+  identifier: "ListNamedShadowsForThingRequest",
+}) as any as S.Schema<ListNamedShadowsForThingRequest>;
 export type NamedShadowList = string[];
 export const NamedShadowList = /*@__PURE__*/ S.Array(S.String);
 export interface ListNamedShadowsForThingResponse {
@@ -371,38 +415,38 @@ export interface ListNamedShadowsForThingResponse {
   nextToken?: string;
   timestamp?: number;
 }
-export const ListNamedShadowsForThingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: S.optional(NamedShadowList),
-      nextToken: S.optional(S.String),
-      timestamp: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ListNamedShadowsForThingResponse",
-  }) as any as S.Schema<ListNamedShadowsForThingResponse>;
+export const ListNamedShadowsForThingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(NamedShadowList),
+    nextToken: S.optional(S.String),
+    timestamp: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListNamedShadowsForThingResponse",
+}) as any as S.Schema<ListNamedShadowsForThingResponse>;
+export type MaxResults = number;
 export interface ListRetainedMessagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListRetainedMessagesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/retainedMessage" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListRetainedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/retainedMessage" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListRetainedMessagesRequest",
-  }) as any as S.Schema<ListRetainedMessagesRequest>;
+  ),
+).annotate({
+  identifier: "ListRetainedMessagesRequest",
+}) as any as S.Schema<ListRetainedMessagesRequest>;
+export type PayloadSize = number;
 export interface RetainedMessageSummary {
   topic?: string;
   payloadSize?: number;
@@ -427,15 +471,14 @@ export interface ListRetainedMessagesResponse {
   retainedTopics?: RetainedMessageSummary[];
   nextToken?: string;
 }
-export const ListRetainedMessagesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      retainedTopics: S.optional(RetainedMessageList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListRetainedMessagesResponse",
-  }) as any as S.Schema<ListRetainedMessagesResponse>;
+export const ListRetainedMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retainedTopics: S.optional(RetainedMessageList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRetainedMessagesResponse",
+}) as any as S.Schema<ListRetainedMessagesResponse>;
 export interface ListSubscriptionsRequest {
   clientId: string;
   nextToken?: string;
@@ -459,6 +502,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
+export type TopicFilter = string;
 export interface SubscriptionSummary {
   topicFilter: string;
   qos: number;
@@ -482,11 +526,18 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubscriptionsResponse",
 }) as any as S.Schema<ListSubscriptionsResponse>;
+export type Retain = boolean;
+export type SynthesizedJsonUserProperties = string;
 export type PayloadFormatIndicator =
   | "UNSPECIFIED_BYTES"
   | "UTF8_DATA"
   | (string & {});
 export const PayloadFormatIndicator = /*@__PURE__*/ S.String;
+
+export type ContentType = string;
+export type ResponseTopic = string;
+export type CorrelationData = string;
+export type MessageExpiry = number;
 export interface PublishRequest {
   topic: string;
   qos?: number;
@@ -534,6 +585,8 @@ export const PublishResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublishResponse",
 }) as any as S.Schema<PublishResponse>;
+export type Confirmation = boolean;
+export type TimeoutInSeconds = number;
 export interface SendDirectMessageRequest {
   clientId: string;
   topic: string;
@@ -577,6 +630,8 @@ export const SendDirectMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendDirectMessageRequest",
 }) as any as S.Schema<SendDirectMessageRequest>;
+export type ResponseMessage = string;
+export type TraceId = string;
 export interface SendDirectMessageResponse {
   message?: string;
   traceId?: string;
@@ -617,70 +672,7 @@ export const UpdateThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateThingShadowResponse",
 }) as any as S.Schema<UpdateThingShadowResponse>;
-
-//# Errors
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { message: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class UnsupportedDocumentEncodingException extends S.TaggedErrorClass<UnsupportedDocumentEncodingException>()(
-  "UnsupportedDocumentEncodingException",
-  { message: S.optional(S.String) },
-  T.HttpError(415),
-).pipe(C.withBadRequestError) {}
-export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
-  "GatewayTimeoutException",
-  { message: S.optional(S.String) },
-  T.HttpError(504),
-).pipe(C.withTimeoutError) {}
-export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
-  "RequestEntityTooLargeException",
-  { message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DeleteConnectionError =
   | ForbiddenException
   | InternalFailureException
@@ -708,8 +700,11 @@ export const deleteConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteThingShadowError =
   | InternalFailureException
   | InvalidRequestException
@@ -747,8 +742,11 @@ export const deleteThingShadow: API.OperationMethod<
     UnsupportedDocumentEncodingException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThingShadow",
 }));
+
 export type GetConnectionError =
   | ForbiddenException
   | InternalFailureException
@@ -776,8 +774,11 @@ export const getConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
+
 export type GetRetainedMessageError =
   | InternalFailureException
   | InvalidRequestException
@@ -818,8 +819,11 @@ export const getRetainedMessage: API.OperationMethod<
     UnauthorizedException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRetainedMessage",
 }));
+
 export type GetThingShadowError =
   | InternalFailureException
   | InvalidRequestException
@@ -858,8 +862,11 @@ export const getThingShadow: API.OperationMethod<
     UnsupportedDocumentEncodingException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThingShadow",
 }));
+
 export type ListNamedShadowsForThingError =
   | InternalFailureException
   | InvalidRequestException
@@ -893,8 +900,11 @@ export const listNamedShadowsForThing: API.OperationMethod<
     UnauthorizedException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamedShadowsForThing",
 }));
+
 export type ListRetainedMessagesError =
   | InternalFailureException
   | InvalidRequestException
@@ -952,6 +962,8 @@ export const listRetainedMessages: API.OperationMethod<
     UnauthorizedException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetainedMessages",
   pagination: {
     inputToken: "nextToken",
@@ -960,6 +972,7 @@ export const listRetainedMessages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSubscriptionsError =
   | ForbiddenException
   | InternalFailureException
@@ -1002,6 +1015,8 @@ export const listSubscriptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -1010,6 +1025,7 @@ export const listSubscriptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PublishError =
   | InternalFailureException
   | InvalidRequestException
@@ -1046,8 +1062,11 @@ export const publish: API.OperationMethod<
     UnauthorizedException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Publish",
 }));
+
 export type SendDirectMessageError =
   | ForbiddenException
   | GatewayTimeoutException
@@ -1087,8 +1106,11 @@ export const sendDirectMessage: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDirectMessage",
 }));
+
 export type UpdateThingShadowError =
   | ConflictException
   | InternalFailureException
@@ -1129,5 +1151,7 @@ export const updateThingShadow: API.OperationMethod<
     UnsupportedDocumentEncodingException,
     ForbiddenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingShadow",
 }));

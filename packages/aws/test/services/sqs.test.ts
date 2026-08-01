@@ -46,7 +46,9 @@ const cleanupQueueByName = (queueName: string) =>
 // Retry policy for QueueDoesNotExist (eventual consistency after create)
 const retryQueueNotExist = {
   while: (err: { _tag: string }) => err._tag === "QueueDoesNotExist",
-  schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+  schedule: Schedule.spaced("1 second").pipe(
+    Schedule.both(Schedule.recurs(10)),
+  ),
 };
 
 // Helper to ensure cleanup happens even on failure - cleans up before AND after
@@ -64,7 +66,9 @@ const withQueue = <A, E, R>(
     const createResult = yield* createQueue({ QueueName: resolvedName }).pipe(
       Effect.retry({
         while: (err) => err._tag === "QueueDeletedRecently",
-        schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(12)]),
+        schedule: Schedule.spaced("5 seconds").pipe(
+          Schedule.both(Schedule.recurs(12)), // Max 60 seconds
+        ),
       }),
     );
     const queueUrl = createResult.QueueUrl!;
@@ -95,7 +99,9 @@ const withFifoQueue = <A, E, R>(
     }).pipe(
       Effect.retry({
         while: (err) => err._tag === "QueueDeletedRecently",
-        schedule: Schedule.max([Schedule.spaced("5 seconds"), Schedule.recurs(12)]),
+        schedule: Schedule.spaced("5 seconds").pipe(
+          Schedule.both(Schedule.recurs(12)), // Max 60 seconds
+        ),
       }),
     );
     const queueUrl = createResult.QueueUrl!;
@@ -176,7 +182,9 @@ test(
       }).pipe(
         Effect.retry({
           while: (err) => err === "not ready yet",
-          schedule: Schedule.max([Schedule.spaced("1 second"), Schedule.recurs(10)]),
+          schedule: Schedule.spaced("1 second").pipe(
+            Schedule.both(Schedule.recurs(10)),
+          ),
         }),
       );
     }),
@@ -520,8 +528,8 @@ test(
         MessageAttributes?: {
           [key: string]:
             | {
-            DataType?: string;
-            StringValue?: string;
+                DataType?: string;
+                StringValue?: string;
               }
             | undefined;
         };
@@ -720,7 +728,9 @@ test(
         MaxNumberOfMessages: 1,
         WaitTimeSeconds: 5,
       }).pipe(Effect.retry(retryQueueNotExist));
-      expect(receiveResult1.Messages?.[0]?.Body).toEqual("FIFO Batch Message 1");
+      expect(receiveResult1.Messages?.[0]?.Body).toEqual(
+        "FIFO Batch Message 1",
+      );
 
       yield* deleteMessage({
         QueueUrl: queueUrl,
@@ -732,7 +742,9 @@ test(
         MaxNumberOfMessages: 1,
         WaitTimeSeconds: 5,
       }).pipe(Effect.retry(retryQueueNotExist));
-      expect(receiveResult2.Messages?.[0]?.Body).toEqual("FIFO Batch Message 2");
+      expect(receiveResult2.Messages?.[0]?.Body).toEqual(
+        "FIFO Batch Message 2",
+      );
 
       yield* deleteMessage({
         QueueUrl: queueUrl,
@@ -744,7 +756,9 @@ test(
         MaxNumberOfMessages: 1,
         WaitTimeSeconds: 5,
       }).pipe(Effect.retry(retryQueueNotExist));
-      expect(receiveResult3.Messages?.[0]?.Body).toEqual("FIFO Batch Message 3");
+      expect(receiveResult3.Messages?.[0]?.Body).toEqual(
+        "FIFO Batch Message 3",
+      );
     }),
   ),
 );

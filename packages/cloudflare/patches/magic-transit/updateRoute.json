@@ -1,7 +1,0 @@
-{
-  "errors": {
-    "RouteNotFound": [{ "code": 1020 }],
-    "MagicTransitNotOnboarded": [{ "code": 1012 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

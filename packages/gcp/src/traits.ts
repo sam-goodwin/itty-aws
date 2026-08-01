@@ -1,40 +1,49 @@
 /**
- * GCP traits - re-exports shared traits and adds GCP-specific ones.
+ * GCP SDK trait surface — hand-written.
+ *
+ * Re-exports the generic protocol traits from core (so generated services
+ * import everything from one place) and extends the `Http` trait with the
+ * per-service base URL: every Google service has its own `rootUrl` +
+ * `servicePath` (from its discovery document), which `scripts/generate.ts`
+ * bakes into each operation's `T.Http({ ... baseUrl })` pipe.
  */
-export * from "@distilled.cloud/core/traits";
+import {
+  httpSymbol,
+  makeAnnotation,
+  type HttpTrait,
+} from "@distilled.cloud/core/trait";
 
-import { getAnnotation } from "@distilled.cloud/core/traits";
-import * as AST from "effect/SchemaAST";
-
-// =============================================================================
-// GCP-specific Error Matcher Traits
-// =============================================================================
-
-/** Symbol for error matcher annotations */
-export const errorMatchersSymbol = Symbol.for(
-  "@distilled.cloud/gcp/error-matchers",
-);
-
-export interface ErrorMatcher {
-  httpStatus?: number;
-  status?: string;
-  reason?: string;
-  domain?: string;
-  message?: string;
-}
+export {
+  Body,
+  Header,
+  Query,
+  Label,
+  HttpBody,
+  applyErrorMatchers,
+  getErrorMatchers,
+  makeAnnotation,
+  type ErrorMatcher,
+  type HttpTrait,
+  bodySymbol,
+  headerSymbol,
+  querySymbol,
+  labelSymbol,
+  httpSymbol,
+  httpBodySymbol,
+  errorMatchersSymbol,
+} from "@distilled.cloud/core/trait";
 
 /**
- * Apply error matchers directly to a class's AST annotations.
- * Used for TaggedErrorClass where .pipe() on a class returns a schema
- * (not a class), breaking `extends ... .pipe(...)`.
+ * Core `HttpTrait` plus the service base URL from the discovery document.
+ *
+ * `baseUrl` is `rootUrl + servicePath` (always ends with `/`); the
+ * operation's `uri` is the discovery method `path` (no leading slash,
+ * possibly containing RFC 6570 reserved-expansion `{+param}` tokens) and is
+ * appended verbatim by the protocol.
  */
-export const applyErrorMatchers = (
-  cls: { ast: AST.AST },
-  matchers: ErrorMatcher[],
-): void => {
-  const annotations = cls.ast.annotations as Record<symbol, unknown>;
-  annotations[errorMatchersSymbol] = matchers;
-};
+export interface GcpHttpTrait extends HttpTrait {
+  readonly baseUrl: string;
+}
 
-export const getErrorMatchers = (ast: AST.AST) =>
-  getAnnotation<ErrorMatcher[]>(ast, errorMatchersSymbol);
+/** Operation-level HTTP binding carrying the GCP per-service base URL. */
+export const Http = (trait: GcpHttpTrait) => makeAnnotation(httpSymbol, trait);

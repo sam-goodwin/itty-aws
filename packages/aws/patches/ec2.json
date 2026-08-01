@@ -1,15 +1,8 @@
 {
   "errorCategories": {
-    "RequestLimitExceeded": [
-      "ThrottlingError"
-    ],
-    "IncorrectState": [
-      "ConflictError"
-    ],
-    "VolumeInUse": [
-      "ConflictError",
-      "RetryableError"
-    ]
+    "RequestLimitExceeded": ["ThrottlingError"],
+    "IncorrectState": ["ConflictError"],
+    "VolumeInUse": ["ConflictError", "RetryableError"]
   },
   "operations": {
     "createVpc": {
@@ -681,11 +674,7 @@
       ]
     },
     "describeVpcEndpointServices": {
-      "errors": [
-        "RequestLimitExceeded",
-        "ParseError",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "modifyNetworkInterfaceAttribute": {
       "errors": [
@@ -1031,11 +1020,7 @@
       ]
     },
     "describeTags": {
-      "errors": [
-        "RequestLimitExceeded",
-        "ParseError",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "deleteTags": {
       "errors": [
@@ -1505,11 +1490,7 @@
       ]
     },
     "createTrafficMirrorFilter": {
-      "errors": [
-        "RequestLimitExceeded",
-        "ParseError",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "deleteTrafficMirrorFilter": {
       "errors": [
@@ -1975,11 +1956,7 @@
       ]
     },
     "confirmProductInstance": {
-      "errors": [
-        "RequestLimitExceeded",
-        "AuthFailure",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "AuthFailure", "UnauthorizedOperation"]
     },
     "createNetworkInterfacePermission": {
       "errors": [
@@ -2105,11 +2082,7 @@
       ]
     },
     "createCapacityReservation": {
-      "errors": [
-        "RequestLimitExceeded",
-        "Unsupported",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "Unsupported", "UnauthorizedOperation"]
     },
     "associateCapacityReservationBillingOwner": {
       "errors": [
@@ -2806,11 +2779,7 @@
       ]
     },
     "cancelExportTask": {
-      "errors": [
-        "RequestLimitExceeded",
-        "InvalidID",
-        "UnauthorizedOperation"
-      ]
+      "errors": ["RequestLimitExceeded", "InvalidID", "UnauthorizedOperation"]
     },
     "cancelImageLaunchPermission": {
       "errors": [
@@ -5310,21 +5279,13 @@
       ]
     },
     "RIProductDescription": {
-      "add": [
-        "Red Hat Enterprise Linux",
-        "SUSE Linux",
-        "Ubuntu Pro Linux"
-      ]
+      "add": ["Red Hat Enterprise Linux", "SUSE Linux", "Ubuntu Pro Linux"]
     },
     "HypervisorType": {
-      "add": [
-        "nitro"
-      ]
+      "add": ["nitro"]
     },
     "VirtualizationType": {
-      "add": [
-        "nested-virtualization"
-      ]
+      "add": ["nested-virtualization"]
     },
     "State": {
       "replace": [
@@ -5338,6 +5299,9 @@
         "expired",
         "partial"
       ]
+    },
+    "AttachmentStatus": {
+      "add": ["available"]
     }
   }
 }

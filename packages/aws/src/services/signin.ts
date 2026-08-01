@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -290,30 +292,81 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsError extends S.TaggedErrorClass<TooManyRequestsError>()(
+  "TooManyRequestsError",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type GrantType = string;
 export type AuthorizationCode = string;
 export type RedirectUri = string;
 export type CodeVerifier = string;
 export type RefreshToken = string | redacted.Redacted<string>;
-export type TokenType = string;
-export type ExpiresIn = number;
-export type IdToken = string;
-export type TargetId = string;
-export type StatementId = string;
-export type ClientToken = string;
-export type ConditionType = string;
-export type ConsolePermissionMaxResults = number;
-export type NextToken = string;
-export type SourceVpc = string;
-export type SourceVpce = string;
-export type VpcSourceIp = string;
-export type SourceIp = string;
-export type RequestedRegion = string;
-export type ExcludedPrincipal = string;
-
-//# Schemas
 export interface CreateOAuth2TokenRequestBody {
   clientId: string;
   grantType: string;
@@ -322,19 +375,18 @@ export interface CreateOAuth2TokenRequestBody {
   codeVerifier?: string;
   refreshToken?: string | redacted.Redacted<string>;
 }
-export const CreateOAuth2TokenRequestBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      clientId: S.String,
-      grantType: S.String,
-      code: S.optional(S.String),
-      redirectUri: S.optional(S.String),
-      codeVerifier: S.optional(S.String),
-      refreshToken: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "CreateOAuth2TokenRequestBody",
-  }) as any as S.Schema<CreateOAuth2TokenRequestBody>;
+export const CreateOAuth2TokenRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    grantType: S.String,
+    code: S.optional(S.String),
+    redirectUri: S.optional(S.String),
+    codeVerifier: S.optional(S.String),
+    refreshToken: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "CreateOAuth2TokenRequestBody",
+}) as any as S.Schema<CreateOAuth2TokenRequestBody>;
 export interface CreateOAuth2TokenRequest {
   tokenInput: CreateOAuth2TokenRequestBody;
 }
@@ -369,6 +421,9 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
     sessionToken: S.String,
   }),
 ).annotate({ identifier: "AccessToken" }) as any as S.Schema<AccessToken>;
+export type TokenType = string;
+export type ExpiresIn = number;
+export type IdToken = string;
 export interface CreateOAuth2TokenResponseBody {
   accessToken: AccessToken;
   tokenType: string;
@@ -376,18 +431,17 @@ export interface CreateOAuth2TokenResponseBody {
   refreshToken: string | redacted.Redacted<string>;
   idToken?: string;
 }
-export const CreateOAuth2TokenResponseBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessToken: AccessToken,
-      tokenType: S.String,
-      expiresIn: S.Number,
-      refreshToken: SensitiveString,
-      idToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateOAuth2TokenResponseBody",
-  }) as any as S.Schema<CreateOAuth2TokenResponseBody>;
+export const CreateOAuth2TokenResponseBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessToken: AccessToken,
+    tokenType: S.String,
+    expiresIn: S.Number,
+    refreshToken: SensitiveString,
+    idToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateOAuth2TokenResponseBody",
+}) as any as S.Schema<CreateOAuth2TokenResponseBody>;
 export interface CreateOAuth2TokenResponse {
   tokenOutput: CreateOAuth2TokenResponseBody;
 }
@@ -400,18 +454,7 @@ export const CreateOAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOAuth2TokenResponse",
 }) as any as S.Schema<CreateOAuth2TokenResponse>;
-export type OAuth2ErrorCode =
-  | "TOKEN_EXPIRED"
-  | "USER_CREDENTIALS_CHANGED"
-  | "INSUFFICIENT_PERMISSIONS"
-  | "AUTHCODE_EXPIRED"
-  | "server_error"
-  | "INVALID_REQUEST"
-  | "RESOURCE_NOT_FOUND"
-  | "CONFLICT"
-  | "SERVICE_QUOTA_EXCEEDED"
-  | (string & {});
-export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
+export type TargetId = string;
 export interface DeleteConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
@@ -449,12 +492,14 @@ export const DeleteConsoleAuthorizationConfigurationOutput =
   ).annotate({
     identifier: "DeleteConsoleAuthorizationConfigurationOutput",
   }) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>;
+export type StatementId = string;
+export type ClientToken = string;
 export interface DeleteResourcePermissionStatementInput {
   statementId: string;
   clientToken?: string;
 }
-export const DeleteResourcePermissionStatementInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const DeleteResourcePermissionStatementInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       statementId: S.String,
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -472,14 +517,15 @@ export const DeleteResourcePermissionStatementInput =
         T.StaticContextParams({ IsControlPlane: { value: true } }),
       ),
     ),
-  ).annotate({
-    identifier: "DeleteResourcePermissionStatementInput",
-  }) as any as S.Schema<DeleteResourcePermissionStatementInput>;
+).annotate({
+  identifier: "DeleteResourcePermissionStatementInput",
+}) as any as S.Schema<DeleteResourcePermissionStatementInput>;
 export interface DeleteResourcePermissionStatementOutput {}
-export const DeleteResourcePermissionStatementOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteResourcePermissionStatementOutput",
-  }) as any as S.Schema<DeleteResourcePermissionStatementOutput>;
+export const DeleteResourcePermissionStatementOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePermissionStatementOutput",
+}) as any as S.Schema<DeleteResourcePermissionStatementOutput>;
 export interface GetConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
@@ -540,6 +586,7 @@ export const Principal = /*@__PURE__*/ S.Record(
 );
 export type PolicyActions = string[];
 export const PolicyActions = /*@__PURE__*/ S.Array(S.String);
+export type ConditionType = string;
 export type ConditionValues = string[];
 export const ConditionValues = /*@__PURE__*/ S.Array(S.String);
 export type Condition = { [key: string]: string[] | undefined };
@@ -604,12 +651,14 @@ export const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyOutput",
 }) as any as S.Schema<GetResourcePolicyOutput>;
+export type ConsolePermissionMaxResults = number;
+export type NextToken = string;
 export interface ListResourcePermissionStatementsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResourcePermissionStatementsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourcePermissionStatementsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxResults: S.optional(S.Number),
       nextToken: S.optional(S.String),
@@ -624,9 +673,9 @@ export const ListResourcePermissionStatementsInput =
         T.StaticContextParams({ IsControlPlane: { value: true } }),
       ),
     ),
-  ).annotate({
-    identifier: "ListResourcePermissionStatementsInput",
-  }) as any as S.Schema<ListResourcePermissionStatementsInput>;
+).annotate({
+  identifier: "ListResourcePermissionStatementsInput",
+}) as any as S.Schema<ListResourcePermissionStatementsInput>;
 export interface PermissionStatementSummary {
   sid: string;
   condition?: {
@@ -646,15 +695,15 @@ export interface ListResourcePermissionStatementsOutput {
   permissionStatements: PermissionStatementSummary[];
   nextToken?: string;
 }
-export const ListResourcePermissionStatementsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListResourcePermissionStatementsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       permissionStatements: PermissionStatementSummaries,
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListResourcePermissionStatementsOutput",
-  }) as any as S.Schema<ListResourcePermissionStatementsOutput>;
+).annotate({
+  identifier: "ListResourcePermissionStatementsOutput",
+}) as any as S.Schema<ListResourcePermissionStatementsOutput>;
 export interface PutConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
@@ -692,6 +741,12 @@ export const PutConsoleAuthorizationConfigurationOutput =
   ).annotate({
     identifier: "PutConsoleAuthorizationConfigurationOutput",
   }) as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>;
+export type SourceVpc = string;
+export type SourceVpce = string;
+export type VpcSourceIp = string;
+export type SourceIp = string;
+export type RequestedRegion = string;
+export type ExcludedPrincipal = string;
 export interface PutResourcePermissionStatementInput {
   sourceVpc?: string;
   signinSourceVpce?: string;
@@ -702,70 +757,51 @@ export interface PutResourcePermissionStatementInput {
   excludedPrincipal?: string;
   clientToken?: string;
 }
-export const PutResourcePermissionStatementInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceVpc: S.optional(S.String),
-      signinSourceVpce: S.optional(S.String),
-      consoleSourceVpce: S.optional(S.String),
-      vpcSourceIp: S.optional(S.String),
-      sourceIp: S.optional(S.String),
-      requestedRegion: S.optional(S.String),
-      excludedPrincipal: S.optional(S.String),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/put-resource-permission-statement" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-        T.StaticContextParams({ IsControlPlane: { value: true } }),
-      ),
+export const PutResourcePermissionStatementInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceVpc: S.optional(S.String),
+    signinSourceVpce: S.optional(S.String),
+    consoleSourceVpce: S.optional(S.String),
+    vpcSourceIp: S.optional(S.String),
+    sourceIp: S.optional(S.String),
+    requestedRegion: S.optional(S.String),
+    excludedPrincipal: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/put-resource-permission-statement" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+      T.StaticContextParams({ IsControlPlane: { value: true } }),
     ),
-  ).annotate({
-    identifier: "PutResourcePermissionStatementInput",
-  }) as any as S.Schema<PutResourcePermissionStatementInput>;
+  ),
+).annotate({
+  identifier: "PutResourcePermissionStatementInput",
+}) as any as S.Schema<PutResourcePermissionStatementInput>;
 export interface PutResourcePermissionStatementOutput {
   statementId: string;
 }
-export const PutResourcePermissionStatementOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ statementId: S.String })).annotate({
-    identifier: "PutResourcePermissionStatementOutput",
-  }) as any as S.Schema<PutResourcePermissionStatementOutput>;
+export const PutResourcePermissionStatementOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ statementId: S.String }),
+).annotate({
+  identifier: "PutResourcePermissionStatementOutput",
+}) as any as S.Schema<PutResourcePermissionStatementOutput>;
+export type OAuth2ErrorCode =
+  | "TOKEN_EXPIRED"
+  | "USER_CREDENTIALS_CHANGED"
+  | "INSUFFICIENT_PERMISSIONS"
+  | "AUTHCODE_EXPIRED"
+  | "server_error"
+  | "INVALID_REQUEST"
+  | "RESOURCE_NOT_FOUND"
+  | "CONFLICT"
+  | "SERVICE_QUOTA_EXCEEDED"
+  | (string & {});
+export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withServerError) {}
-export class TooManyRequestsError extends S.TaggedErrorClass<TooManyRequestsError>()(
-  "TooManyRequestsError",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type CreateOAuth2TokenError =
   | AccessDeniedException
   | InternalServerException
@@ -816,8 +852,11 @@ export const createOAuth2Token: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOAuth2Token",
 }));
+
 export type DeleteConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -843,8 +882,11 @@ export const deleteConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConsoleAuthorizationConfiguration",
 }));
+
 export type DeleteResourcePermissionStatementError =
   | AccessDeniedException
   | InternalServerException
@@ -870,8 +912,11 @@ export const deleteResourcePermissionStatement: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePermissionStatement",
 }));
+
 export type GetConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -897,8 +942,11 @@ export const getConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConsoleAuthorizationConfiguration",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -922,8 +970,11 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListResourcePermissionStatementsError =
   | AccessDeniedException
   | InternalServerException
@@ -964,6 +1015,8 @@ export const listResourcePermissionStatements: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcePermissionStatements",
   pagination: {
     inputToken: "nextToken",
@@ -972,6 +1025,7 @@ export const listResourcePermissionStatements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -999,8 +1053,11 @@ export const putConsoleAuthorizationConfiguration: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConsoleAuthorizationConfiguration",
 }));
+
 export type PutResourcePermissionStatementError =
   | AccessDeniedException
   | ConflictException
@@ -1028,5 +1085,7 @@ export const putResourcePermissionStatement: API.OperationMethod<
     TooManyRequestsError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePermissionStatement",
 }));

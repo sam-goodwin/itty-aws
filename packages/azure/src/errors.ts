@@ -1,7 +1,8 @@
 /**
- * Azure-specific error types.
+ * Azure-specific error types — hand-written (ported verbatim from
+ * distilled v0's `packages/azure/src/errors.ts`).
  *
- * Re-exports common HTTP errors from sdk-core and adds Azure-specific
+ * Re-exports common HTTP errors from core and adds Azure-specific
  * error matching and API error types.
  *
  * Azure Resource Manager (ARM) returns errors in the format:
@@ -284,7 +285,7 @@ export class InvalidScope extends Schema.TaggedErrorClass<InvalidScope>()(
 
 /**
  * Azure error code to typed error class mapping.
- * Used by the client's `matchError` to dispatch by ARM error code.
+ * Used by the protocol's error matching to dispatch by ARM error code.
  */
 export const AZURE_ERROR_CODE_MAP: Record<string, new (props: any) => unknown> =
   {
@@ -358,3 +359,28 @@ export class AzureParseError extends Schema.TaggedErrorClass<AzureParseError>()(
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+/** Union of every ARM-code-mapped typed error class. */
+export type AzureApiError =
+  | ResourceNotFound
+  | ResourceGroupNotFound
+  | SubscriptionNotFound
+  | AuthorizationFailed
+  | InvalidAuthenticationToken
+  | InvalidAuthenticationTokenAudience
+  | InvalidAuthenticationTokenTenant
+  | LinkedAuthorizationFailed
+  | InvalidParameter
+  | InvalidResourceType
+  | InvalidResourceName
+  | InvalidRequestContent
+  | MissingRequiredProperty
+  | InvalidPropertyValue
+  | ResourceConflict
+  | PreconditionFailed
+  | OperationNotAllowed
+  | MissingRegistration
+  | QuotaExceeded
+  | RequestRateLimitExceeded
+  | LocationNotAvailable
+  | InvalidScope;

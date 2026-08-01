@@ -1,7 +1,52 @@
 {
-  "errors": {
-    "PipelineNotExists": [
-      { "code": 1000 }
-    ]
-  }
+  "description": "Align pipelines#Delete with distilled cloudflare/pipelines deletePipeline",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#Delete",
+      "path": "/shapes/com.cloudflare.pipelines#DeletePipeline"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.pipelines#DeleteRequest",
+      "path": "/shapes/com.cloudflare.pipelines#DeletePipelineRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.pipelines#DeletePipeline/input/target",
+      "value": "com.cloudflare.pipelines#DeletePipelineRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#PipelineNotExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.pipelines#DeletePipeline/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.pipelines#PipelineNotExists"
+        }
+      ]
+    }
+  ]
 }

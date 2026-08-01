@@ -36,11 +36,13 @@ import { test } from "../test.ts";
 
 const isLocalStack = process.env.LOCAL === "true" || process.env.LOCAL === "1";
 
-const deterministicId = (process.env.USER ??
+const deterministicId = (
+  process.env.USER ??
   process.env.LOGNAME ??
   process.env.CI_JOB_ID ??
   process.env.GITHUB_ACTOR ??
-  "local")
+  "local"
+)
   .toLowerCase()
   .replace(/[^a-z0-9-]/g, "-")
   .replace(/-+/g, "-")
@@ -66,7 +68,9 @@ const retryEventually = <A, E, R>(
   effect.pipe(
     Effect.filterOrFail(ready, () => new Error("CloudWatch fixture not ready")),
     Effect.retry({
-      schedule: Schedule.max([Schedule.fixed("10 seconds"), Schedule.recurs(6)]),
+      schedule: Schedule.fixed("10 seconds").pipe(
+        Schedule.both(Schedule.recurs(6)),
+      ),
     }),
   );
 
@@ -160,9 +164,7 @@ const createInsightRuleFixture = Effect.gen(function* () {
       fixture: "cloudwatch-test",
       suite: deterministicId,
     },
-  }).pipe(
-    Effect.catchTag("ResourceAlreadyExistsException", () => Effect.void),
-  );
+  }).pipe(Effect.catchTag("ResourceAlreadyExistsException", () => Effect.void));
 
   yield* putInsightRule({
     RuleName: insightRuleName,
@@ -426,7 +428,9 @@ test(
     const insightRules = yield* retryEventually(
       describeInsightRules({}),
       (result) =>
-        (result.InsightRules ?? []).some((rule) => rule.Name === insightRuleName),
+        (result.InsightRules ?? []).some(
+          (rule) => rule.Name === insightRuleName,
+        ),
     );
 
     expect(

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -82,7 +84,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DatabaseErrorException extends S.TaggedErrorClass<DatabaseErrorException>()(
+  "DatabaseErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DatabaseNotFoundException extends S.TaggedErrorClass<DatabaseNotFoundException>()(
+  "DatabaseNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class DatabaseResumingException extends S.TaggedErrorClass<DatabaseResumingException>()(
+  "DatabaseResumingException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DatabaseUnavailableException extends S.TaggedErrorClass<DatabaseUnavailableException>()(
+  "DatabaseUnavailableException",
+  {},
+  T.HttpError(504),
+).pipe(C.withTimeoutError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class HttpEndpointNotEnabledException extends S.TaggedErrorClass<HttpEndpointNotEnabledException>()(
+  "HttpEndpointNotEnabledException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  {},
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
+  "InvalidResourceStateException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSecretException extends S.TaggedErrorClass<InvalidSecretException>()(
+  "InvalidSecretException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class SecretsErrorException extends S.TaggedErrorClass<SecretsErrorException>()(
+  "SecretsErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
+  "ServiceUnavailableError",
+  {},
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class StatementTimeoutException extends S.TaggedErrorClass<StatementTimeoutException>()(
+  "StatementTimeoutException",
+  { message: S.optional(S.String), dbConnectionId: S.optional(S.Number) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TransactionNotFoundException extends S.TaggedErrorClass<TransactionNotFoundException>()(
+  "TransactionNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedResultException extends S.TaggedErrorClass<UnsupportedResultException>()(
+  "UnsupportedResultException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type SqlStatement = string;
 export type DbName = string;
@@ -90,15 +176,6 @@ export type ParameterName = string;
 export type BoxedBoolean = boolean;
 export type BoxedLong = number;
 export type BoxedDouble = number;
-export type Id = string;
-export type ErrorMessage = string;
-export type TransactionStatus = string;
-export type BoxedInteger = number;
-export type BoxedFloat = number;
-export type RecordsUpdated = number;
-export type FormattedSqlRecords = string;
-
-//# Schemas
 export type BooleanArray = boolean[];
 export const BooleanArray = /*@__PURE__*/ S.Array(S.Boolean).pipe(T.Sparse());
 export type LongArray = number[];
@@ -240,6 +317,7 @@ export type TypeHint =
   | "DECIMAL"
   | (string & {});
 export const TypeHint = /*@__PURE__*/ S.String;
+
 export interface SqlParameter {
   name?: string;
   value?: Field;
@@ -256,6 +334,7 @@ export type SqlParametersList = SqlParameter[];
 export const SqlParametersList = /*@__PURE__*/ S.Array(SqlParameter);
 export type SqlParameterSets = SqlParameter[][];
 export const SqlParameterSets = /*@__PURE__*/ S.Array(SqlParametersList);
+export type Id = string;
 export interface BatchExecuteStatementRequest {
   resourceArn: string;
   secretArn: string;
@@ -265,29 +344,28 @@ export interface BatchExecuteStatementRequest {
   parameterSets?: SqlParameter[][];
   transactionId?: string;
 }
-export const BatchExecuteStatementRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.String,
-      secretArn: S.String,
-      sql: S.String,
-      database: S.optional(S.String),
-      schema: S.optional(S.String),
-      parameterSets: S.optional(SqlParameterSets),
-      transactionId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/BatchExecute" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchExecuteStatementRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String,
+    secretArn: S.String,
+    sql: S.String,
+    database: S.optional(S.String),
+    schema: S.optional(S.String),
+    parameterSets: S.optional(SqlParameterSets),
+    transactionId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/BatchExecute" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchExecuteStatementRequest",
-  }) as any as S.Schema<BatchExecuteStatementRequest>;
+  ),
+).annotate({
+  identifier: "BatchExecuteStatementRequest",
+}) as any as S.Schema<BatchExecuteStatementRequest>;
 export type FieldList = Field[];
 export const FieldList = /*@__PURE__*/ S.Array(Field);
 export interface UpdateResult {
@@ -301,12 +379,11 @@ export const UpdateResults = /*@__PURE__*/ S.Array(UpdateResult);
 export interface BatchExecuteStatementResponse {
   updateResults?: UpdateResult[];
 }
-export const BatchExecuteStatementResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ updateResults: S.optional(UpdateResults) }),
-  ).annotate({
-    identifier: "BatchExecuteStatementResponse",
-  }) as any as S.Schema<BatchExecuteStatementResponse>;
+export const BatchExecuteStatementResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ updateResults: S.optional(UpdateResults) }),
+).annotate({
+  identifier: "BatchExecuteStatementResponse",
+}) as any as S.Schema<BatchExecuteStatementResponse>;
 export interface BeginTransactionRequest {
   resourceArn: string;
   secretArn: string;
@@ -363,6 +440,7 @@ export const CommitTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CommitTransactionRequest",
 }) as any as S.Schema<CommitTransactionRequest>;
+export type TransactionStatus = string;
 export interface CommitTransactionResponse {
   transactionStatus?: string;
 }
@@ -446,6 +524,8 @@ export const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultSetMetadata",
 }) as any as S.Schema<ResultSetMetadata>;
+export type BoxedInteger = number;
+export type BoxedFloat = number;
 export type ArrayValueList = Value[];
 export const ArrayValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value).annotate({ identifier: "Value" }),
@@ -625,6 +705,7 @@ export const ResultFrame = /*@__PURE__*/ S.suspend(() =>
     records: S.optional(Records),
   }),
 ).annotate({ identifier: "ResultFrame" }) as any as S.Schema<ResultFrame>;
+export type RecordsUpdated = number;
 export interface SqlStatementResult {
   resultFrame?: ResultFrame;
   numberOfRecordsUpdated?: number;
@@ -649,8 +730,10 @@ export const ExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteSqlResponse>;
 export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG" | (string & {});
 export const DecimalReturnType = /*@__PURE__*/ S.String;
+
 export type LongReturnType = "STRING" | "LONG" | (string & {});
 export const LongReturnType = /*@__PURE__*/ S.String;
+
 export interface ResultSetOptions {
   decimalReturnType?: DecimalReturnType;
   longReturnType?: LongReturnType;
@@ -665,6 +748,7 @@ export const ResultSetOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResultSetOptions>;
 export type RecordsFormatType = "NONE" | "JSON" | (string & {});
 export const RecordsFormatType = /*@__PURE__*/ S.String;
+
 export interface ExecuteStatementRequest {
   resourceArn: string;
   secretArn: string;
@@ -706,6 +790,7 @@ export const ExecuteStatementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteStatementRequest>;
 export type SqlRecords = Field[][];
 export const SqlRecords = /*@__PURE__*/ S.Array(FieldList);
+export type FormattedSqlRecords = string;
 export interface ExecuteStatementResponse {
   records?: Field[][];
   columnMetadata?: ColumnMetadata[];
@@ -750,84 +835,12 @@ export const RollbackTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RollbackTransactionResponse {
   transactionStatus?: string;
 }
-export const RollbackTransactionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ transactionStatus: S.optional(S.String) }),
-  ).annotate({
-    identifier: "RollbackTransactionResponse",
-  }) as any as S.Schema<RollbackTransactionResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DatabaseErrorException extends S.TaggedErrorClass<DatabaseErrorException>()(
-  "DatabaseErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DatabaseNotFoundException extends S.TaggedErrorClass<DatabaseNotFoundException>()(
-  "DatabaseNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DatabaseResumingException extends S.TaggedErrorClass<DatabaseResumingException>()(
-  "DatabaseResumingException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class DatabaseUnavailableException extends S.TaggedErrorClass<DatabaseUnavailableException>()(
-  "DatabaseUnavailableException",
-  {},
-).pipe(C.withTimeoutError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class HttpEndpointNotEnabledException extends S.TaggedErrorClass<HttpEndpointNotEnabledException>()(
-  "HttpEndpointNotEnabledException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  {},
-).pipe(C.withServerError) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidSecretException extends S.TaggedErrorClass<InvalidSecretException>()(
-  "InvalidSecretException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class SecretsErrorException extends S.TaggedErrorClass<SecretsErrorException>()(
-  "SecretsErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
-  "ServiceUnavailableError",
-  {},
-).pipe(C.withServerError) {}
-export class StatementTimeoutException extends S.TaggedErrorClass<StatementTimeoutException>()(
-  "StatementTimeoutException",
-  { message: S.optional(S.String), dbConnectionId: S.optional(S.Number) },
-).pipe(C.withBadRequestError) {}
-export class TransactionNotFoundException extends S.TaggedErrorClass<TransactionNotFoundException>()(
-  "TransactionNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class UnsupportedResultException extends S.TaggedErrorClass<UnsupportedResultException>()(
-  "UnsupportedResultException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export const RollbackTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ transactionStatus: S.optional(S.String) }),
+).annotate({
+  identifier: "RollbackTransactionResponse",
+}) as any as S.Schema<RollbackTransactionResponse>;
+export type ErrorMessage = string;
 export type BatchExecuteStatementError =
   | AccessDeniedException
   | BadRequestException
@@ -881,8 +894,11 @@ export const batchExecuteStatement: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
+
 export type BeginTransactionError =
   | AccessDeniedException
   | BadRequestException
@@ -934,8 +950,11 @@ export const beginTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BeginTransaction",
 }));
+
 export type CommitTransactionError =
   | AccessDeniedException
   | BadRequestException
@@ -981,8 +1000,11 @@ export const commitTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CommitTransaction",
 }));
+
 export type ExecuteSqlError =
   | AccessDeniedException
   | BadRequestException
@@ -1010,8 +1032,11 @@ export const executeSql: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteSql",
 }));
+
 export type ExecuteStatementError =
   | AccessDeniedException
   | BadRequestException
@@ -1063,8 +1088,11 @@ export const executeStatement: API.OperationMethod<
     TransactionNotFoundException,
     UnsupportedResultException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
+
 export type RollbackTransactionError =
   | AccessDeniedException
   | BadRequestException
@@ -1110,5 +1138,7 @@ export const rollbackTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackTransaction",
 }));

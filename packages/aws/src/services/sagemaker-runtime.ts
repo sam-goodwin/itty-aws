@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -93,7 +95,52 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalDependencyException extends S.TaggedErrorClass<InternalDependencyException>()(
+  "InternalDependencyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(530),
+).pipe(C.withServerError) {}
+export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
+  "InternalFailure",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
+  "InternalStreamFailure",
+  { Message: S.optional(S.String) },
+) {}
+export class ModelError extends S.TaggedErrorClass<ModelError>()(
+  "ModelError",
+  {
+    Message: S.optional(S.String),
+    OriginalStatusCode: S.optional(S.Number),
+    OriginalMessage: S.optional(S.String),
+    LogStreamArn: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
+export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
+  "ModelNotReadyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
+  "ModelStreamError",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+) {}
+export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
+  "ServiceUnavailable",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
+  "ValidationError",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type EndpointName = string;
 export type Header = string;
 export type CustomAttributesHeader = string | redacted.Redacted<string>;
@@ -104,20 +151,6 @@ export type InferenceId = string;
 export type EnableExplanationsHeader = string;
 export type InferenceComponentHeader = string;
 export type SessionIdOrNewSessionConstantHeader = string;
-export type NewSessionResponseHeader = string;
-export type SessionIdHeader = string;
-export type Message = string;
-export type StatusCode = number;
-export type LogStreamArn = string;
-export type InputLocationHeader = string;
-export type S3OutputPathExtensionHeader = string;
-export type FilenameHeader = string;
-export type RequestTTLSecondsHeader = number;
-export type InvocationTimeoutSecondsHeader = number;
-export type PartBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-export type ErrorCode = string;
-
-//# Schemas
 export interface InvokeEndpointInput {
   EndpointName: string;
   Body?: T.StreamingInputBody;
@@ -175,6 +208,8 @@ export const InvokeEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeEndpointInput",
 }) as any as S.Schema<InvokeEndpointInput>;
+export type NewSessionResponseHeader = string;
+export type SessionIdHeader = string;
 export interface InvokeEndpointOutput {
   Body: T.StreamingOutputBody;
   ContentType?: string;
@@ -203,6 +238,11 @@ export const InvokeEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeEndpointOutput",
 }) as any as S.Schema<InvokeEndpointOutput>;
+export type InputLocationHeader = string;
+export type S3OutputPathExtensionHeader = string;
+export type FilenameHeader = string;
+export type RequestTTLSecondsHeader = number;
+export type InvocationTimeoutSecondsHeader = number;
 export interface InvokeEndpointAsyncInput {
   EndpointName: string;
   ContentType?: string;
@@ -291,8 +331,8 @@ export interface InvokeEndpointWithResponseStreamInput {
   InferenceComponentName?: string;
   SessionId?: string;
 }
-export const InvokeEndpointWithResponseStreamInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const InvokeEndpointWithResponseStreamInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
       Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -331,15 +371,18 @@ export const InvokeEndpointWithResponseStreamInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "InvokeEndpointWithResponseStreamInput",
-  }) as any as S.Schema<InvokeEndpointWithResponseStreamInput>;
+).annotate({
+  identifier: "InvokeEndpointWithResponseStreamInput",
+}) as any as S.Schema<InvokeEndpointWithResponseStreamInput>;
+export type PartBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface PayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
 export const PayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "PayloadPart" }) as any as S.Schema<PayloadPart>;
+export type Message = string;
+export type ErrorCode = string;
 export type ResponseStream =
   | {
       PayloadPart: PayloadPart;
@@ -377,8 +420,8 @@ export interface InvokeEndpointWithResponseStreamOutput {
   InvokedProductionVariant?: string;
   CustomAttributes?: string | redacted.Redacted<string>;
 }
-export const InvokeEndpointWithResponseStreamOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const InvokeEndpointWithResponseStreamOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Body: ResponseStream.pipe(T.HttpPayload()),
       ContentType: S.optional(S.String).pipe(
@@ -391,48 +434,11 @@ export const InvokeEndpointWithResponseStreamOutput =
         T.HttpHeader("X-Amzn-SageMaker-Custom-Attributes"),
       ),
     }),
-  ).annotate({
-    identifier: "InvokeEndpointWithResponseStreamOutput",
-  }) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>;
-
-//# Errors
-export class InternalDependencyException extends S.TaggedErrorClass<InternalDependencyException>()(
-  "InternalDependencyException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
-  "InternalFailure",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ModelError extends S.TaggedErrorClass<ModelError>()("ModelError", {
-  Message: S.optional(S.String),
-  OriginalStatusCode: S.optional(S.Number),
-  OriginalMessage: S.optional(S.String),
-  LogStreamArn: S.optional(S.String),
-}) {}
-export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
-  "ModelNotReadyException",
-  { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
-).pipe(C.withThrottlingError) {}
-export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
-  "ServiceUnavailable",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
-  "InternalStreamFailure",
-  { Message: S.optional(S.String) },
-) {}
-export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
-  "ModelStreamError",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-) {}
-
-//# Operations
+).annotate({
+  identifier: "InvokeEndpointWithResponseStreamOutput",
+}) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>;
+export type StatusCode = number;
+export type LogStreamArn = string;
 export type InvokeEndpointError =
   | InternalDependencyException
   | InternalFailure
@@ -481,8 +487,11 @@ export const invokeEndpoint: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpoint",
 }));
+
 export type InvokeEndpointAsyncError =
   | InternalFailure
   | ServiceUnavailable
@@ -514,8 +523,11 @@ export const invokeEndpointAsync: API.OperationMethod<
   input: InvokeEndpointAsyncInput,
   output: InvokeEndpointAsyncOutput,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpointAsync",
 }));
+
 export type InvokeEndpointWithResponseStreamError =
   | InternalFailure
   | InternalStreamFailure
@@ -566,5 +578,7 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpointWithResponseStream",
 }));

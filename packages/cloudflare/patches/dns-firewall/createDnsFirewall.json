@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "DnsFirewallNotEntitled": [{ "code": 10101 }],
-    "Forbidden": [{ "status": 403 }]
-  }
-}

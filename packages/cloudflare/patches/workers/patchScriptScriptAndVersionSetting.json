@@ -1,101 +1,88 @@
 {
-  "errors": {
-    "WorkerNotFound": [{ "code": 10007 }],
-    "ContentTypeRequired": [{ "code": 10001 }]
-  },
-  "request": {
-    "properties": {
-      "settings.bindings[].json": { "type": "unknown" },
-      "settings.bindings[?type=durable_object_namespace].class_name": {
-        "optional": false
-      },
-      "settings.bindings[?type=workflow].class_name": {
-        "optional": false
-      },
-      "settings.bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
+  "description": "Align workers#ScriptsScriptAndVersionSettingsEdit with distilled cloudflare/workers patchScriptScriptAndVersionSetting",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsScriptAndVersionSettingsEdit",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSetting"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditRequest",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSettingRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSetting/input/target",
+      "value": "com.cloudflare.workers#PatchScriptScriptAndVersionSettingRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ScriptsScriptAndVersionSettingsEditResponse",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSettingResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSetting/output/target",
+      "value": "com.cloudflare.workers#PatchScriptScriptAndVersionSettingResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#WorkerNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
           },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
+          "message": {
+            "target": "smithy.api#String"
           }
-        ]
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10007
+            }
+          ]
+        }
       }
-    }
-  },
-  "response": {
-    "properties": {
-      "placement": { "type": "unknown" },
-      "bindings[].json": { "type": "unknown" },
-      "bindings[]": {
-        "appendUnion": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "worker_loader" }
-              }
-            ]
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ContentTypeRequired",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
           },
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "name",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              },
-              {
-                "name": "type",
-                "required": true,
-                "type": { "kind": "literal", "value": "artifacts" }
-              },
-              {
-                "name": "namespace",
-                "required": true,
-                "type": { "kind": "primitive", "value": "string" }
-              }
-            ]
+          "message": {
+            "target": "smithy.api#String"
           }
-        ]
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10001
+            }
+          ]
+        }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#PatchScriptScriptAndVersionSetting/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#WorkerNotFound"
+        },
+        {
+          "target": "com.cloudflare.workers#ContentTypeRequired"
+        }
+      ]
     }
-  }
+  ]
 }

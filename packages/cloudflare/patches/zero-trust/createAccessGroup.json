@@ -1,7 +1,0 @@
-{
-  "response": {
-    "properties": {
-      "is_default": { "type": "boolean" }
-    }
-  }
-}

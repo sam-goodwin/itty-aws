@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -84,13 +86,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type TagKey = string;
-export type TagValue = string;
-export type Size = number;
-export type Httpstatus = number;
-
-//# Schemas
+export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
+  "InsufficientCapacityException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
+  "MissingParameterValueException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
+  "NoLongerSupportedException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PolicyEnforcedException extends S.TaggedErrorClass<PolicyEnforcedException>()(
+  "PolicyEnforcedException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
+  "RequestTimeoutException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export interface AbortMultipartUploadInput {
   accountId: string;
   vaultName: string;
@@ -119,10 +195,11 @@ export const AbortMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortMultipartUploadInput",
 }) as any as S.Schema<AbortMultipartUploadInput>;
 export interface AbortMultipartUploadResponse {}
-export const AbortMultipartUploadResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "AbortMultipartUploadResponse",
-  }) as any as S.Schema<AbortMultipartUploadResponse>;
+export const AbortMultipartUploadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "AbortMultipartUploadResponse",
+}) as any as S.Schema<AbortMultipartUploadResponse>;
 export interface AbortVaultLockInput {
   accountId: string;
   vaultName: string;
@@ -154,6 +231,8 @@ export const AbortVaultLockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbortVaultLockResponse",
 }) as any as S.Schema<AbortVaultLockResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -199,35 +278,30 @@ export interface CompleteMultipartUploadInput {
   archiveSize?: string;
   checksum?: string;
 }
-export const CompleteMultipartUploadInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.HttpLabel("accountId")),
-      vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-      uploadId: S.String.pipe(T.HttpLabel("uploadId")),
-      archiveSize: S.optional(S.String).pipe(
-        T.HttpHeader("x-amz-archive-size"),
-      ),
-      checksum: S.optional(S.String).pipe(
-        T.HttpHeader("x-amz-sha256-tree-hash"),
-      ),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CompleteMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    vaultName: S.String.pipe(T.HttpLabel("vaultName")),
+    uploadId: S.String.pipe(T.HttpLabel("uploadId")),
+    archiveSize: S.optional(S.String).pipe(T.HttpHeader("x-amz-archive-size")),
+    checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-sha256-tree-hash")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CompleteMultipartUploadInput",
-  }) as any as S.Schema<CompleteMultipartUploadInput>;
+  ),
+).annotate({
+  identifier: "CompleteMultipartUploadInput",
+}) as any as S.Schema<CompleteMultipartUploadInput>;
 export interface ArchiveCreationOutput {
   location?: string;
   checksum?: string;
@@ -372,64 +446,64 @@ export interface DeleteVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
 }
-export const DeleteVaultAccessPolicyInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.HttpLabel("accountId")),
-      vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/{accountId}/vaults/{vaultName}/access-policy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    vaultName: S.String.pipe(T.HttpLabel("vaultName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/{accountId}/vaults/{vaultName}/access-policy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVaultAccessPolicyInput",
-  }) as any as S.Schema<DeleteVaultAccessPolicyInput>;
+  ),
+).annotate({
+  identifier: "DeleteVaultAccessPolicyInput",
+}) as any as S.Schema<DeleteVaultAccessPolicyInput>;
 export interface DeleteVaultAccessPolicyResponse {}
-export const DeleteVaultAccessPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteVaultAccessPolicyResponse",
-  }) as any as S.Schema<DeleteVaultAccessPolicyResponse>;
+export const DeleteVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteVaultAccessPolicyResponse",
+}) as any as S.Schema<DeleteVaultAccessPolicyResponse>;
 export interface DeleteVaultNotificationsInput {
   accountId: string;
   vaultName: string;
 }
-export const DeleteVaultNotificationsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.HttpLabel("accountId")),
-      vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/{accountId}/vaults/{vaultName}/notification-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    vaultName: S.String.pipe(T.HttpLabel("vaultName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/{accountId}/vaults/{vaultName}/notification-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVaultNotificationsInput",
-  }) as any as S.Schema<DeleteVaultNotificationsInput>;
+  ),
+).annotate({
+  identifier: "DeleteVaultNotificationsInput",
+}) as any as S.Schema<DeleteVaultNotificationsInput>;
 export interface DeleteVaultNotificationsResponse {}
-export const DeleteVaultNotificationsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteVaultNotificationsResponse",
-  }) as any as S.Schema<DeleteVaultNotificationsResponse>;
+export const DeleteVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteVaultNotificationsResponse",
+}) as any as S.Schema<DeleteVaultNotificationsResponse>;
 export interface DescribeJobInput {
   accountId: string;
   vaultName: string;
@@ -463,8 +537,11 @@ export type ActionCode =
   | "Select"
   | (string & {});
 export const ActionCode = /*@__PURE__*/ S.String;
+
 export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
 export const StatusCode = /*@__PURE__*/ S.String;
+
+export type Size = number;
 export interface InventoryRetrievalJobDescription {
   Format?: string;
   StartDate?: string;
@@ -472,20 +549,20 @@ export interface InventoryRetrievalJobDescription {
   Limit?: string;
   Marker?: string;
 }
-export const InventoryRetrievalJobDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Format: S.optional(S.String),
-      StartDate: S.optional(S.String),
-      EndDate: S.optional(S.String),
-      Limit: S.optional(S.String),
-      Marker: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InventoryRetrievalJobDescription",
-  }) as any as S.Schema<InventoryRetrievalJobDescription>;
+export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Format: S.optional(S.String),
+    StartDate: S.optional(S.String),
+    EndDate: S.optional(S.String),
+    Limit: S.optional(S.String),
+    Marker: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InventoryRetrievalJobDescription",
+}) as any as S.Schema<InventoryRetrievalJobDescription>;
 export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
+
 export interface CSVInput {
   FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
@@ -514,8 +591,10 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputSerialization>;
 export type ExpressionType = "SQL" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
+
 export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
 export const QuoteFields = /*@__PURE__*/ S.String;
+
 export interface CSVOutput {
   QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
@@ -558,6 +637,7 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SelectParameters>;
 export type EncryptionType = "aws:kms" | "AES256" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface Encryption {
   EncryptionType?: EncryptionType;
   KMSKeyId?: string;
@@ -580,12 +660,14 @@ export type CannedACL =
   | "bucket-owner-full-control"
   | (string & {});
 export const CannedACL = /*@__PURE__*/ S.String;
+
 export type Type =
   | "AmazonCustomerByEmail"
   | "CanonicalUser"
   | "Group"
   | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface Grantee {
   Type: Type;
   DisplayName?: string;
@@ -610,6 +692,7 @@ export type Permission =
   | "READ_ACP"
   | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export interface Grant {
   Grantee?: Grantee;
   Permission?: Permission;
@@ -633,6 +716,7 @@ export type StorageClass =
   | "STANDARD_IA"
   | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
 export interface S3Location {
   BucketName?: string;
   Prefix?: string;
@@ -756,22 +840,21 @@ export const DescribeVaultOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataRetrievalPolicyInput {
   accountId: string;
 }
-export const GetDataRetrievalPolicyInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/{accountId}/policies/data-retrieval" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/{accountId}/policies/data-retrieval" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDataRetrievalPolicyInput",
-  }) as any as S.Schema<GetDataRetrievalPolicyInput>;
+  ),
+).annotate({
+  identifier: "GetDataRetrievalPolicyInput",
+}) as any as S.Schema<GetDataRetrievalPolicyInput>;
 export interface DataRetrievalRule {
   Strategy?: string;
   BytesPerHour?: number;
@@ -797,12 +880,11 @@ export const DataRetrievalPolicy = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataRetrievalPolicyOutput {
   Policy?: DataRetrievalPolicy;
 }
-export const GetDataRetrievalPolicyOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policy: S.optional(DataRetrievalPolicy) }).pipe(ns),
-  ).annotate({
-    identifier: "GetDataRetrievalPolicyOutput",
-  }) as any as S.Schema<GetDataRetrievalPolicyOutput>;
+export const GetDataRetrievalPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(DataRetrievalPolicy) }).pipe(ns),
+).annotate({
+  identifier: "GetDataRetrievalPolicyOutput",
+}) as any as S.Schema<GetDataRetrievalPolicyOutput>;
 export interface GetJobOutputInput {
   accountId: string;
   vaultName: string;
@@ -832,6 +914,7 @@ export const GetJobOutputInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetJobOutputInput",
 }) as any as S.Schema<GetJobOutputInput>;
+export type Httpstatus = number;
 export interface GetJobOutputOutput {
   body?: T.StreamingOutputBody;
   checksum?: string;
@@ -984,16 +1067,15 @@ export const VaultNotificationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface GetVaultNotificationsOutput {
   vaultNotificationConfig?: VaultNotificationConfig;
 }
-export const GetVaultNotificationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      vaultNotificationConfig: S.optional(VaultNotificationConfig)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "VaultNotificationConfig" }),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetVaultNotificationsOutput",
-  }) as any as S.Schema<GetVaultNotificationsOutput>;
+export const GetVaultNotificationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vaultNotificationConfig: S.optional(VaultNotificationConfig)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "VaultNotificationConfig" }),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetVaultNotificationsOutput",
+}) as any as S.Schema<GetVaultNotificationsOutput>;
 export interface InventoryRetrievalJobInput {
   StartDate?: string;
   EndDate?: string;
@@ -1084,47 +1166,45 @@ export interface InitiateMultipartUploadInput {
   archiveDescription?: string;
   partSize?: string;
 }
-export const InitiateMultipartUploadInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.HttpLabel("accountId")),
-      vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-      archiveDescription: S.optional(S.String).pipe(
-        T.HttpHeader("x-amz-archive-description"),
-      ),
-      partSize: S.optional(S.String).pipe(T.HttpHeader("x-amz-part-size")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/{accountId}/vaults/{vaultName}/multipart-uploads",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const InitiateMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    vaultName: S.String.pipe(T.HttpLabel("vaultName")),
+    archiveDescription: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-archive-description"),
     ),
-  ).annotate({
-    identifier: "InitiateMultipartUploadInput",
-  }) as any as S.Schema<InitiateMultipartUploadInput>;
+    partSize: S.optional(S.String).pipe(T.HttpHeader("x-amz-part-size")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "POST",
+        uri: "/{accountId}/vaults/{vaultName}/multipart-uploads",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InitiateMultipartUploadInput",
+}) as any as S.Schema<InitiateMultipartUploadInput>;
 export interface InitiateMultipartUploadOutput {
   location?: string;
   uploadId?: string;
 }
-export const InitiateMultipartUploadOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-      uploadId: S.optional(S.String).pipe(
-        T.HttpHeader("x-amz-multipart-upload-id"),
-      ),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "InitiateMultipartUploadOutput",
-  }) as any as S.Schema<InitiateMultipartUploadOutput>;
+export const InitiateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String).pipe(T.HttpHeader("Location")),
+    uploadId: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-multipart-upload-id"),
+    ),
+  }).pipe(ns),
+).annotate({
+  identifier: "InitiateMultipartUploadOutput",
+}) as any as S.Schema<InitiateMultipartUploadOutput>;
 export interface VaultLockPolicy {
   Policy?: string;
 }
@@ -1340,37 +1420,35 @@ export const ListPartsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListProvisionedCapacityInput {
   accountId: string;
 }
-export const ListProvisionedCapacityInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/{accountId}/provisioned-capacity" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/{accountId}/provisioned-capacity" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListProvisionedCapacityInput",
-  }) as any as S.Schema<ListProvisionedCapacityInput>;
+  ),
+).annotate({
+  identifier: "ListProvisionedCapacityInput",
+}) as any as S.Schema<ListProvisionedCapacityInput>;
 export interface ProvisionedCapacityDescription {
   CapacityId?: string;
   StartDate?: string;
   ExpirationDate?: string;
 }
-export const ProvisionedCapacityDescription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CapacityId: S.optional(S.String),
-      StartDate: S.optional(S.String),
-      ExpirationDate: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedCapacityDescription",
-  }) as any as S.Schema<ProvisionedCapacityDescription>;
+export const ProvisionedCapacityDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CapacityId: S.optional(S.String),
+    StartDate: S.optional(S.String),
+    ExpirationDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisionedCapacityDescription",
+}) as any as S.Schema<ProvisionedCapacityDescription>;
 export type ProvisionedCapacityList = ProvisionedCapacityDescription[];
 export const ProvisionedCapacityList = /*@__PURE__*/ S.Array(
   ProvisionedCapacityDescription,
@@ -1378,14 +1456,13 @@ export const ProvisionedCapacityList = /*@__PURE__*/ S.Array(
 export interface ListProvisionedCapacityOutput {
   ProvisionedCapacityList?: ProvisionedCapacityDescription[];
 }
-export const ListProvisionedCapacityOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProvisionedCapacityList: S.optional(ProvisionedCapacityList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListProvisionedCapacityOutput",
-  }) as any as S.Schema<ListProvisionedCapacityOutput>;
+export const ListProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisionedCapacityList: S.optional(ProvisionedCapacityList),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListProvisionedCapacityOutput",
+}) as any as S.Schema<ListProvisionedCapacityOutput>;
 export interface ListTagsForVaultInput {
   accountId: string;
   vaultName: string;
@@ -1457,33 +1534,31 @@ export const ListVaultsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface PurchaseProvisionedCapacityInput {
   accountId: string;
 }
-export const PurchaseProvisionedCapacityInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/{accountId}/provisioned-capacity" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PurchaseProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/{accountId}/provisioned-capacity" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PurchaseProvisionedCapacityInput",
-  }) as any as S.Schema<PurchaseProvisionedCapacityInput>;
+  ),
+).annotate({
+  identifier: "PurchaseProvisionedCapacityInput",
+}) as any as S.Schema<PurchaseProvisionedCapacityInput>;
 export interface PurchaseProvisionedCapacityOutput {
   capacityId?: string;
 }
-export const PurchaseProvisionedCapacityOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      capacityId: S.optional(S.String).pipe(T.HttpHeader("x-amz-capacity-id")),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "PurchaseProvisionedCapacityOutput",
-  }) as any as S.Schema<PurchaseProvisionedCapacityOutput>;
+export const PurchaseProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityId: S.optional(S.String).pipe(T.HttpHeader("x-amz-capacity-id")),
+  }).pipe(ns),
+).annotate({
+  identifier: "PurchaseProvisionedCapacityOutput",
+}) as any as S.Schema<PurchaseProvisionedCapacityOutput>;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveTagsFromVaultInput {
@@ -1514,38 +1589,39 @@ export const RemoveTagsFromVaultInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromVaultInput",
 }) as any as S.Schema<RemoveTagsFromVaultInput>;
 export interface RemoveTagsFromVaultResponse {}
-export const RemoveTagsFromVaultResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RemoveTagsFromVaultResponse",
-  }) as any as S.Schema<RemoveTagsFromVaultResponse>;
+export const RemoveTagsFromVaultResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RemoveTagsFromVaultResponse",
+}) as any as S.Schema<RemoveTagsFromVaultResponse>;
 export interface SetDataRetrievalPolicyInput {
   accountId: string;
   Policy?: DataRetrievalPolicy;
 }
-export const SetDataRetrievalPolicyInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.HttpLabel("accountId")),
-      Policy: S.optional(DataRetrievalPolicy),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "PUT", uri: "/{accountId}/policies/data-retrieval" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.HttpLabel("accountId")),
+    Policy: S.optional(DataRetrievalPolicy),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "PUT", uri: "/{accountId}/policies/data-retrieval" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetDataRetrievalPolicyInput",
-  }) as any as S.Schema<SetDataRetrievalPolicyInput>;
+  ),
+).annotate({
+  identifier: "SetDataRetrievalPolicyInput",
+}) as any as S.Schema<SetDataRetrievalPolicyInput>;
 export interface SetDataRetrievalPolicyResponse {}
-export const SetDataRetrievalPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetDataRetrievalPolicyResponse",
-  }) as any as S.Schema<SetDataRetrievalPolicyResponse>;
+export const SetDataRetrievalPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetDataRetrievalPolicyResponse",
+}) as any as S.Schema<SetDataRetrievalPolicyResponse>;
 export interface SetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
@@ -1576,10 +1652,11 @@ export const SetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultAccessPolicyInput",
 }) as any as S.Schema<SetVaultAccessPolicyInput>;
 export interface SetVaultAccessPolicyResponse {}
-export const SetVaultAccessPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetVaultAccessPolicyResponse",
-  }) as any as S.Schema<SetVaultAccessPolicyResponse>;
+export const SetVaultAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetVaultAccessPolicyResponse",
+}) as any as S.Schema<SetVaultAccessPolicyResponse>;
 export interface SetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
@@ -1610,10 +1687,11 @@ export const SetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultNotificationsInput",
 }) as any as S.Schema<SetVaultNotificationsInput>;
 export interface SetVaultNotificationsResponse {}
-export const SetVaultNotificationsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetVaultNotificationsResponse",
-  }) as any as S.Schema<SetVaultNotificationsResponse>;
+export const SetVaultNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetVaultNotificationsResponse",
+}) as any as S.Schema<SetVaultNotificationsResponse>;
 export interface UploadArchiveInput {
   vaultName: string;
   accountId: string;
@@ -1690,82 +1768,6 @@ export const UploadMultipartPartOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadMultipartPartOutput",
 }) as any as S.Schema<UploadMultipartPartOutput>;
-
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
-  "MissingParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
-  "NoLongerSupportedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
-  "InsufficientCapacityException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class PolicyEnforcedException extends S.TaggedErrorClass<PolicyEnforcedException>()(
-  "PolicyEnforcedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
-  "RequestTimeoutException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withTimeoutError) {}
-
-//# Operations
 export type AbortMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1808,8 +1810,11 @@ export const abortMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortMultipartUpload",
 }));
+
 export type AbortVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1850,8 +1855,11 @@ export const abortVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortVaultLock",
 }));
+
 export type AddTagsToVaultError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -1883,8 +1891,11 @@ export const addTagsToVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToVault",
 }));
+
 export type CompleteMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1948,8 +1959,11 @@ export const completeMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteMultipartUpload",
 }));
+
 export type CompleteVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1990,8 +2004,11 @@ export const completeVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteVaultLock",
 }));
+
 export type CreateVaultError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -2038,8 +2055,11 @@ export const createVault: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVault",
 }));
+
 export type DeleteArchiveError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2088,8 +2108,11 @@ export const deleteArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArchive",
 }));
+
 export type DeleteVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2135,8 +2158,11 @@ export const deleteVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVault",
 }));
+
 export type DeleteVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2169,8 +2195,11 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVaultAccessPolicy",
 }));
+
 export type DeleteVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2209,8 +2238,11 @@ export const deleteVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVaultNotifications",
 }));
+
 export type DescribeJobError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2257,8 +2289,11 @@ export const describeJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
+
 export type DescribeVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2302,8 +2337,11 @@ export const describeVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVault",
 }));
+
 export type GetDataRetrievalPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2329,8 +2367,11 @@ export const getDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataRetrievalPolicy",
 }));
+
 export type GetJobOutputError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2395,8 +2436,11 @@ export const getJobOutput: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobOutput",
 }));
+
 export type GetVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2427,8 +2471,11 @@ export const getVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultAccessPolicy",
 }));
+
 export type GetVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2476,8 +2523,11 @@ export const getVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultLock",
 }));
+
 export type GetVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2519,8 +2569,11 @@ export const getVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultNotifications",
 }));
+
 export type InitiateJobError =
   | InsufficientCapacityException
   | InvalidParameterValueException
@@ -2553,8 +2606,11 @@ export const initiateJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateJob",
 }));
+
 export type InitiateMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2612,8 +2668,11 @@ export const initiateMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateMultipartUpload",
 }));
+
 export type InitiateVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2670,8 +2729,11 @@ export const initiateVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateVaultLock",
 }));
+
 export type ListJobsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2745,6 +2807,8 @@ export const listJobs: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "marker",
@@ -2753,6 +2817,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListMultipartUploadsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2818,6 +2883,8 @@ export const listMultipartUploads: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultipartUploads",
   pagination: {
     inputToken: "marker",
@@ -2826,6 +2893,7 @@ export const listMultipartUploads: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListPartsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2888,6 +2956,8 @@ export const listParts: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParts",
   pagination: {
     inputToken: "marker",
@@ -2896,6 +2966,7 @@ export const listParts: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListProvisionedCapacityError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2920,8 +2991,11 @@ export const listProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedCapacity",
 }));
+
 export type ListTagsForVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2949,8 +3023,11 @@ export const listTagsForVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForVault",
 }));
+
 export type ListVaultsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3010,6 +3087,8 @@ export const listVaults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVaults",
   pagination: {
     inputToken: "marker",
@@ -3018,6 +3097,7 @@ export const listVaults: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type PurchaseProvisionedCapacityError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -3043,8 +3123,11 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseProvisionedCapacity",
 }));
+
 export type RemoveTagsFromVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3073,8 +3156,11 @@ export const removeTagsFromVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromVault",
 }));
+
 export type SetDataRetrievalPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3104,8 +3190,11 @@ export const setDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDataRetrievalPolicy",
 }));
+
 export type SetVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3136,8 +3225,11 @@ export const setVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVaultAccessPolicy",
 }));
+
 export type SetVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3193,8 +3285,11 @@ export const setVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVaultNotifications",
 }));
+
 export type UploadArchiveError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3254,8 +3349,11 @@ export const uploadArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadArchive",
 }));
+
 export type UploadMultipartPartError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3324,5 +3422,7 @@ export const uploadMultipartPart: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadMultipartPart",
 }));

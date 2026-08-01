@@ -1,10 +1,70 @@
 {
-  "errors": {
-    "InvalidRoute": [{ "code": 7003 }]
-  },
-  "response": {
-    "properties": {
-      "result[].consumers[].script_name": { "wireKey": "script" }
+  "description": "Align queues#List with distilled cloudflare/queues listQueues",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#List",
+      "path": "/shapes/com.cloudflare.queues#ListQueues"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#ListRequest",
+      "path": "/shapes/com.cloudflare.queues#ListQueuesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#ListQueues/input/target",
+      "value": "com.cloudflare.queues#ListQueuesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.queues#ListResponse",
+      "path": "/shapes/com.cloudflare.queues#ListQueuesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.queues#ListQueues/output/target",
+      "value": "com.cloudflare.queues#ListQueuesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#ListQueues/traits/smithy.api#paginated",
+      "value": {
+        "mode": "single",
+        "items": "result"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.queues#ListQueues/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.queues#InvalidRoute"
+        }
+      ]
     }
-  }
+  ]
 }

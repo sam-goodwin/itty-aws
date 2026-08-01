@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -85,39 +87,83 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidCampaignStateException extends S.TaggedErrorClass<InvalidCampaignStateException>()(
+  "InvalidCampaignStateException",
+  {
+    state: S.String,
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CampaignName = string;
 export type InstanceId = string;
 export type BandwidthAllocation = number;
 export type DialingCapacity = number;
-export type ContactFlowId = string;
-export type SourcePhoneNumber = string;
-export type QueueId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CampaignId = string;
-export type CampaignArn = string;
-export type XAmazonErrorType = string;
-export type CampaignState = string;
-export type GetCampaignStateBatchFailureCode = string;
-export type ServiceLinkedRoleArn = string;
-export type Enabled = boolean;
-export type EncryptionType = string;
-export type EncryptionKey = string;
-export type InstanceOnboardingJobStatusCode = string;
-export type InstanceOnboardingJobFailureCode = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type InstanceIdFilterOperator = string;
-export type Arn = string;
-export type ClientToken = string;
-export type DestinationPhoneNumber = string | redacted.Redacted<string>;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type DialRequestId = string;
-export type FailureCode = string;
-
-//# Schemas
 export interface ProgressiveDialerConfig {
   bandwidthAllocation: number;
   dialingCapacity?: number;
@@ -171,19 +217,21 @@ export const DialerConfig = /*@__PURE__*/ S.Union([
   S.Struct({ predictiveDialerConfig: PredictiveDialerConfig }),
   S.Struct({ agentlessDialerConfig: AgentlessDialerConfig }),
 ]);
+export type ContactFlowId = string;
+export type SourcePhoneNumber = string;
+export type QueueId = string;
 export interface AnswerMachineDetectionConfig {
   enableAnswerMachineDetection: boolean;
   awaitAnswerMachinePrompt?: boolean;
 }
-export const AnswerMachineDetectionConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableAnswerMachineDetection: S.Boolean,
-      awaitAnswerMachinePrompt: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "AnswerMachineDetectionConfig",
-  }) as any as S.Schema<AnswerMachineDetectionConfig>;
+export const AnswerMachineDetectionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableAnswerMachineDetection: S.Boolean,
+    awaitAnswerMachinePrompt: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AnswerMachineDetectionConfig",
+}) as any as S.Schema<AnswerMachineDetectionConfig>;
 export interface OutboundCallConfig {
   connectContactFlowId: string;
   connectSourcePhoneNumber?: string;
@@ -200,6 +248,8 @@ export const OutboundCallConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutboundCallConfig",
 }) as any as S.Schema<OutboundCallConfig>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -232,6 +282,8 @@ export const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCampaignRequest",
 }) as any as S.Schema<CreateCampaignRequest>;
+export type CampaignId = string;
+export type CampaignArn = string;
 export interface CreateCampaignResponse {
   id?: string;
   arn?: string;
@@ -272,59 +324,59 @@ export const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConnectInstanceConfigRequest {
   connectInstanceId: string;
 }
-export const DeleteConnectInstanceConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/connect-instance/{connectInstanceId}/config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConnectInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/connect-instance/{connectInstanceId}/config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConnectInstanceConfigRequest",
-  }) as any as S.Schema<DeleteConnectInstanceConfigRequest>;
+  ),
+).annotate({
+  identifier: "DeleteConnectInstanceConfigRequest",
+}) as any as S.Schema<DeleteConnectInstanceConfigRequest>;
 export interface DeleteConnectInstanceConfigResponse {}
-export const DeleteConnectInstanceConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteConnectInstanceConfigResponse",
-  }) as any as S.Schema<DeleteConnectInstanceConfigResponse>;
+export const DeleteConnectInstanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectInstanceConfigResponse",
+}) as any as S.Schema<DeleteConnectInstanceConfigResponse>;
 export interface DeleteInstanceOnboardingJobRequest {
   connectInstanceId: string;
 }
-export const DeleteInstanceOnboardingJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/connect-instance/{connectInstanceId}/onboarding",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/connect-instance/{connectInstanceId}/onboarding",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteInstanceOnboardingJobRequest",
-  }) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
+  ),
+).annotate({
+  identifier: "DeleteInstanceOnboardingJobRequest",
+}) as any as S.Schema<DeleteInstanceOnboardingJobRequest>;
 export interface DeleteInstanceOnboardingJobResponse {}
-export const DeleteInstanceOnboardingJobResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteInstanceOnboardingJobResponse",
-  }) as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
+export const DeleteInstanceOnboardingJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteInstanceOnboardingJobResponse",
+}) as any as S.Schema<DeleteInstanceOnboardingJobResponse>;
 export interface DescribeCampaignRequest {
   id: string;
 }
@@ -387,6 +439,7 @@ export const GetCampaignStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCampaignStateRequest",
 }) as any as S.Schema<GetCampaignStateRequest>;
+export type CampaignState = string;
 export interface GetCampaignStateResponse {
   state?: string;
 }
@@ -400,87 +453,89 @@ export const CampaignIdList = /*@__PURE__*/ S.Array(S.String);
 export interface GetCampaignStateBatchRequest {
   campaignIds: string[];
 }
-export const GetCampaignStateBatchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ campaignIds: CampaignIdList }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/campaigns-state" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetCampaignStateBatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ campaignIds: CampaignIdList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/campaigns-state" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetCampaignStateBatchRequest",
-  }) as any as S.Schema<GetCampaignStateBatchRequest>;
+  ),
+).annotate({
+  identifier: "GetCampaignStateBatchRequest",
+}) as any as S.Schema<GetCampaignStateBatchRequest>;
 export interface SuccessfulCampaignStateResponse {
   campaignId?: string;
   state?: string;
 }
-export const SuccessfulCampaignStateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
-  ).annotate({
-    identifier: "SuccessfulCampaignStateResponse",
-  }) as any as S.Schema<SuccessfulCampaignStateResponse>;
+export const SuccessfulCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ campaignId: S.optional(S.String), state: S.optional(S.String) }),
+).annotate({
+  identifier: "SuccessfulCampaignStateResponse",
+}) as any as S.Schema<SuccessfulCampaignStateResponse>;
 export type SuccessfulCampaignStateResponseList =
   SuccessfulCampaignStateResponse[];
-export const SuccessfulCampaignStateResponseList =
-  /*@__PURE__*/ S.Array(SuccessfulCampaignStateResponse);
+export const SuccessfulCampaignStateResponseList = /*@__PURE__*/ S.Array(
+  SuccessfulCampaignStateResponse,
+);
+export type GetCampaignStateBatchFailureCode = string;
 export interface FailedCampaignStateResponse {
   campaignId?: string;
   failureCode?: string;
 }
-export const FailedCampaignStateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      campaignId: S.optional(S.String),
-      failureCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FailedCampaignStateResponse",
-  }) as any as S.Schema<FailedCampaignStateResponse>;
+export const FailedCampaignStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    campaignId: S.optional(S.String),
+    failureCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FailedCampaignStateResponse",
+}) as any as S.Schema<FailedCampaignStateResponse>;
 export type FailedCampaignStateResponseList = FailedCampaignStateResponse[];
-export const FailedCampaignStateResponseList =
-  /*@__PURE__*/ S.Array(FailedCampaignStateResponse);
+export const FailedCampaignStateResponseList = /*@__PURE__*/ S.Array(
+  FailedCampaignStateResponse,
+);
 export interface GetCampaignStateBatchResponse {
   successfulRequests?: SuccessfulCampaignStateResponse[];
   failedRequests?: FailedCampaignStateResponse[];
 }
-export const GetCampaignStateBatchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      successfulRequests: S.optional(SuccessfulCampaignStateResponseList),
-      failedRequests: S.optional(FailedCampaignStateResponseList),
-    }),
-  ).annotate({
-    identifier: "GetCampaignStateBatchResponse",
-  }) as any as S.Schema<GetCampaignStateBatchResponse>;
+export const GetCampaignStateBatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successfulRequests: S.optional(SuccessfulCampaignStateResponseList),
+    failedRequests: S.optional(FailedCampaignStateResponseList),
+  }),
+).annotate({
+  identifier: "GetCampaignStateBatchResponse",
+}) as any as S.Schema<GetCampaignStateBatchResponse>;
 export interface GetConnectInstanceConfigRequest {
   connectInstanceId: string;
 }
-export const GetConnectInstanceConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/connect-instance/{connectInstanceId}/config",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetConnectInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/connect-instance/{connectInstanceId}/config",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetConnectInstanceConfigRequest",
-  }) as any as S.Schema<GetConnectInstanceConfigRequest>;
+  ),
+).annotate({
+  identifier: "GetConnectInstanceConfigRequest",
+}) as any as S.Schema<GetConnectInstanceConfigRequest>;
+export type ServiceLinkedRoleArn = string;
+export type Enabled = boolean;
+export type EncryptionType = string;
+export type EncryptionKey = string;
 export interface EncryptionConfig {
   enabled: boolean;
   encryptionType?: string;
@@ -510,17 +565,16 @@ export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
 export interface GetConnectInstanceConfigResponse {
   connectInstanceConfig?: InstanceConfig;
 }
-export const GetConnectInstanceConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ connectInstanceConfig: S.optional(InstanceConfig) }),
-  ).annotate({
-    identifier: "GetConnectInstanceConfigResponse",
-  }) as any as S.Schema<GetConnectInstanceConfigResponse>;
+export const GetConnectInstanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connectInstanceConfig: S.optional(InstanceConfig) }),
+).annotate({
+  identifier: "GetConnectInstanceConfigResponse",
+}) as any as S.Schema<GetConnectInstanceConfigResponse>;
 export interface GetInstanceOnboardingJobStatusRequest {
   connectInstanceId: string;
 }
-export const GetInstanceOnboardingJobStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetInstanceOnboardingJobStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
     }).pipe(
@@ -536,37 +590,41 @@ export const GetInstanceOnboardingJobStatusRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetInstanceOnboardingJobStatusRequest",
-  }) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>;
+).annotate({
+  identifier: "GetInstanceOnboardingJobStatusRequest",
+}) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>;
+export type InstanceOnboardingJobStatusCode = string;
+export type InstanceOnboardingJobFailureCode = string;
 export interface InstanceOnboardingJobStatus {
   connectInstanceId: string;
   status: string;
   failureCode?: string;
 }
-export const InstanceOnboardingJobStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceId: S.String,
-      status: S.String,
-      failureCode: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InstanceOnboardingJobStatus",
-  }) as any as S.Schema<InstanceOnboardingJobStatus>;
+export const InstanceOnboardingJobStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceId: S.String,
+    status: S.String,
+    failureCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstanceOnboardingJobStatus",
+}) as any as S.Schema<InstanceOnboardingJobStatus>;
 export interface GetInstanceOnboardingJobStatusResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
-export const GetInstanceOnboardingJobStatusResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetInstanceOnboardingJobStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       connectInstanceOnboardingJobStatus: S.optional(
         InstanceOnboardingJobStatus,
       ),
     }),
-  ).annotate({
-    identifier: "GetInstanceOnboardingJobStatusResponse",
-  }) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>;
+).annotate({
+  identifier: "GetInstanceOnboardingJobStatusResponse",
+}) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export type InstanceIdFilterOperator = string;
 export interface InstanceIdFilter {
   value: string;
   operator: string;
@@ -637,6 +695,7 @@ export const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCampaignsResponse",
 }) as any as S.Schema<ListCampaignsResponse>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
@@ -657,12 +716,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PauseCampaignRequest {
   id: string;
 }
@@ -686,6 +744,10 @@ export const PauseCampaignResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PauseCampaignResponse",
 }) as any as S.Schema<PauseCampaignResponse>;
+export type ClientToken = string;
+export type DestinationPhoneNumber = string | redacted.Redacted<string>;
+export type AttributeName = string;
+export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -728,6 +790,7 @@ export const PutDialRequestBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutDialRequestBatchRequest",
 }) as any as S.Schema<PutDialRequestBatchRequest>;
+export type DialRequestId = string;
 export interface SuccessfulRequest {
   clientToken?: string;
   id?: string;
@@ -739,6 +802,7 @@ export const SuccessfulRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulRequest>;
 export type SuccessfulRequestList = SuccessfulRequest[];
 export const SuccessfulRequestList = /*@__PURE__*/ S.Array(SuccessfulRequest);
+export type FailureCode = string;
 export interface FailedRequest {
   clientToken?: string;
   id?: string;
@@ -757,15 +821,14 @@ export interface PutDialRequestBatchResponse {
   successfulRequests?: SuccessfulRequest[];
   failedRequests?: FailedRequest[];
 }
-export const PutDialRequestBatchResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      successfulRequests: S.optional(SuccessfulRequestList),
-      failedRequests: S.optional(FailedRequestList),
-    }),
-  ).annotate({
-    identifier: "PutDialRequestBatchResponse",
-  }) as any as S.Schema<PutDialRequestBatchResponse>;
+export const PutDialRequestBatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successfulRequests: S.optional(SuccessfulRequestList),
+    failedRequests: S.optional(FailedRequestList),
+  }),
+).annotate({
+  identifier: "PutDialRequestBatchResponse",
+}) as any as S.Schema<PutDialRequestBatchResponse>;
 export interface ResumeCampaignRequest {
   id: string;
 }
@@ -816,40 +879,36 @@ export interface StartInstanceOnboardingJobRequest {
   connectInstanceId: string;
   encryptionConfig: EncryptionConfig;
 }
-export const StartInstanceOnboardingJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
-      encryptionConfig: EncryptionConfig,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/connect-instance/{connectInstanceId}/onboarding",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartInstanceOnboardingJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceId: S.String.pipe(T.HttpLabel("connectInstanceId")),
+    encryptionConfig: EncryptionConfig,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/connect-instance/{connectInstanceId}/onboarding",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartInstanceOnboardingJobRequest",
-  }) as any as S.Schema<StartInstanceOnboardingJobRequest>;
+  ),
+).annotate({
+  identifier: "StartInstanceOnboardingJobRequest",
+}) as any as S.Schema<StartInstanceOnboardingJobRequest>;
 export interface StartInstanceOnboardingJobResponse {
   connectInstanceOnboardingJobStatus?: InstanceOnboardingJobStatus;
 }
-export const StartInstanceOnboardingJobResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      connectInstanceOnboardingJobStatus: S.optional(
-        InstanceOnboardingJobStatus,
-      ),
-    }),
-  ).annotate({
-    identifier: "StartInstanceOnboardingJobResponse",
-  }) as any as S.Schema<StartInstanceOnboardingJobResponse>;
+export const StartInstanceOnboardingJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectInstanceOnboardingJobStatus: S.optional(InstanceOnboardingJobStatus),
+  }),
+).annotate({
+  identifier: "StartInstanceOnboardingJobResponse",
+}) as any as S.Schema<StartInstanceOnboardingJobResponse>;
 export interface StopCampaignRequest {
   id: string;
 }
@@ -930,29 +989,29 @@ export interface UpdateCampaignDialerConfigRequest {
   id: string;
   dialerConfig: DialerConfig;
 }
-export const UpdateCampaignDialerConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String.pipe(T.HttpLabel("id")),
-      dialerConfig: DialerConfig,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/campaigns/{id}/dialer-config" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateCampaignDialerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpLabel("id")),
+    dialerConfig: DialerConfig,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/campaigns/{id}/dialer-config" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateCampaignDialerConfigRequest",
-  }) as any as S.Schema<UpdateCampaignDialerConfigRequest>;
+  ),
+).annotate({
+  identifier: "UpdateCampaignDialerConfigRequest",
+}) as any as S.Schema<UpdateCampaignDialerConfigRequest>;
 export interface UpdateCampaignDialerConfigResponse {}
-export const UpdateCampaignDialerConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateCampaignDialerConfigResponse",
-  }) as any as S.Schema<UpdateCampaignDialerConfigResponse>;
+export const UpdateCampaignDialerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateCampaignDialerConfigResponse",
+}) as any as S.Schema<UpdateCampaignDialerConfigResponse>;
 export interface UpdateCampaignNameRequest {
   id: string;
   name: string;
@@ -983,8 +1042,8 @@ export interface UpdateCampaignOutboundCallConfigRequest {
   connectSourcePhoneNumber?: string;
   answerMachineDetectionConfig?: AnswerMachineDetectionConfig;
 }
-export const UpdateCampaignOutboundCallConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateCampaignOutboundCallConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       connectContactFlowId: S.optional(S.String),
@@ -1000,84 +1059,16 @@ export const UpdateCampaignOutboundCallConfigRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateCampaignOutboundCallConfigRequest",
-  }) as any as S.Schema<UpdateCampaignOutboundCallConfigRequest>;
+).annotate({
+  identifier: "UpdateCampaignOutboundCallConfigRequest",
+}) as any as S.Schema<UpdateCampaignOutboundCallConfigRequest>;
 export interface UpdateCampaignOutboundCallConfigResponse {}
-export const UpdateCampaignOutboundCallConfigResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateCampaignOutboundCallConfigResponse",
-  }) as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.Retryable(),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.Retryable(),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withConflictError) {}
-export class InvalidCampaignStateException extends S.TaggedErrorClass<InvalidCampaignStateException>()(
-  "InvalidCampaignStateException",
-  {
-    state: S.String,
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-).pipe(C.withConflictError) {}
-
-//# Operations
+export const UpdateCampaignOutboundCallConfigResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateCampaignOutboundCallConfigResponse",
+}) as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
+export type XAmazonErrorType = string;
 export type CreateCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1107,8 +1098,11 @@ export const createCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCampaign",
 }));
+
 export type DeleteCampaignError =
   | AccessDeniedException
   | InternalServerException
@@ -1132,8 +1126,11 @@ export const deleteCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaign",
 }));
+
 export type DeleteConnectInstanceConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -1161,8 +1158,11 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectInstanceConfig",
 }));
+
 export type DeleteInstanceOnboardingJobError =
   | AccessDeniedException
   | InternalServerException
@@ -1188,8 +1188,11 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceOnboardingJob",
 }));
+
 export type DescribeCampaignError =
   | AccessDeniedException
   | InternalServerException
@@ -1213,8 +1216,11 @@ export const describeCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCampaign",
 }));
+
 export type GetCampaignStateError =
   | AccessDeniedException
   | InternalServerException
@@ -1240,8 +1246,11 @@ export const getCampaignState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignState",
 }));
+
 export type GetCampaignStateBatchError =
   | AccessDeniedException
   | InternalServerException
@@ -1265,8 +1274,11 @@ export const getCampaignStateBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignStateBatch",
 }));
+
 export type GetConnectInstanceConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -1290,8 +1302,11 @@ export const getConnectInstanceConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectInstanceConfig",
 }));
+
 export type GetInstanceOnboardingJobStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -1315,8 +1330,11 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceOnboardingJobStatus",
 }));
+
 export type ListCampaignsError =
   | AccessDeniedException
   | InternalServerException
@@ -1349,6 +1367,8 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
@@ -1357,6 +1377,7 @@ export const listCampaigns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1382,8 +1403,11 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PauseCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1413,8 +1437,11 @@ export const pauseCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseCampaign",
 }));
+
 export type PutDialRequestBatchError =
   | AccessDeniedException
   | ConflictException
@@ -1444,8 +1471,11 @@ export const putDialRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDialRequestBatch",
 }));
+
 export type ResumeCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1475,8 +1505,11 @@ export const resumeCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeCampaign",
 }));
+
 export type StartCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1506,8 +1539,11 @@ export const startCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCampaign",
 }));
+
 export type StartInstanceOnboardingJobError =
   | AccessDeniedException
   | ConflictException
@@ -1535,8 +1571,11 @@ export const startInstanceOnboardingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInstanceOnboardingJob",
 }));
+
 export type StopCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1566,8 +1605,11 @@ export const stopCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCampaign",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1593,8 +1635,11 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1620,8 +1665,11 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCampaignDialerConfigError =
   | AccessDeniedException
   | ConflictException
@@ -1647,8 +1695,11 @@ export const updateCampaignDialerConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignDialerConfig",
 }));
+
 export type UpdateCampaignNameError =
   | AccessDeniedException
   | ConflictException
@@ -1674,8 +1725,11 @@ export const updateCampaignName: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignName",
 }));
+
 export type UpdateCampaignOutboundCallConfigError =
   | AccessDeniedException
   | ConflictException
@@ -1703,5 +1757,7 @@ export const updateCampaignOutboundCallConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignOutboundCallConfig",
 }));

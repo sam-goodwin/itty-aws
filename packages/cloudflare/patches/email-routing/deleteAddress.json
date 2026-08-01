@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "EmailAddressNotFound": [{ "code": 2015 }],
-    "EmailAddressCreatedTooRecently": [{ "code": 2032 }]
-  }
-}

@@ -1,9 +1,129 @@
 {
-  "errors": {
-    "BgpPrefixNotFound": [{ "code": 1002 }],
-    "InvalidAccountId": [
-      { "code": 7003, "message": { "includes": "Could not route" } }
-    ],
-    "PrefixNotFound": [{ "code": 1000, "message": { "includes": "not_found" } }]
-  }
+  "description": "Align addressing#PrefixesBgpPrefixesGet with distilled cloudflare/addressing getPrefixBgpPrefix",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesBgpPrefixesGet",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefix"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesBgpPrefixesGetRequest",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefixRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefix/input/target",
+      "value": "com.cloudflare.addressing#GetPrefixBgpPrefixRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.addressing#PrefixesBgpPrefixesGetResponse",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefixResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefix/output/target",
+      "value": "com.cloudflare.addressing#GetPrefixBgpPrefixResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#BgpPrefixNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1002
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#InvalidAccountId",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003,
+              "message": {
+                "includes": "Could not route"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#PrefixNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1000
+            },
+            {
+              "code": 1000,
+              "message": {
+                "includes": "not_found"
+              }
+            },
+            {
+              "code": 1002,
+              "message": {
+                "includes": "forbidden"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.addressing#GetPrefixBgpPrefix/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.addressing#BgpPrefixNotFound"
+        },
+        {
+          "target": "com.cloudflare.addressing#InvalidAccountId"
+        },
+        {
+          "target": "com.cloudflare.addressing#PrefixNotFound"
+        }
+      ]
+    }
+  ]
 }

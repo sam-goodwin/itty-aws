@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -83,50 +85,130 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    DependentEntities: S.optional(
+      S.suspend(() => DependentEntityList).annotate({
+        identifier: "DependentEntityList",
+      }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DataEncryptionException extends S.TaggedErrorClass<DataEncryptionException>()(
+  "DataEncryptionException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IncidentManagerNotOnboarded extends S.TaggedErrorClass<IncidentManagerNotOnboarded>()(
+  "IncidentManagerNotOnboarded",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Account not found for the request" },
+  }),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRotationArn extends S.TaggedErrorClass<InvalidRotationArn>()(
+  "InvalidRotationArn",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Invalid resource Arn" },
+  }),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.String,
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type SsmContactsArn = string;
-export type ReceiptInfo = string;
-export type AcceptCode = string;
-export type RetryAfterSeconds = number;
-export type ActivationCode = string;
-export type ContactAlias = string;
-export type ContactName = string;
-export type StageDurationInMins = number;
-export type RetryIntervalInMinutes = number;
-export type IsEssential = boolean;
-export type TagKey = string;
-export type TagValue = string;
-export type IdempotencyToken = string;
-export type ChannelName = string;
-export type SimpleAddress = string;
-export type DeferActivation = boolean;
-export type RotationName = string;
-export type TimeZoneId = string;
-export type DayOfMonth = number;
-export type HourOfDay = number;
-export type MinuteOfHour = number;
-export type NumberOfOnCalls = number;
-export type RecurrenceMultiplier = number;
-export type Uuid = string;
-export type Sender = string;
-export type Subject = string;
-export type Content = string;
-export type PublicSubject = string;
-export type PublicContent = string;
-export type IncidentId = string;
-export type Policy = string;
-export type PaginationToken = string;
-export type MaxResults = number;
-export type StageIndex = number;
-export type Member = string;
-export type AmazonResourceName = string;
-export type StopReason = string;
-
-//# Schemas
 export type AcceptType = "DELIVERED" | "READ" | (string & {});
 export const AcceptType = /*@__PURE__*/ S.String;
+
+export type ReceiptInfo = string;
+export type AcceptCode = string;
 export type AcceptCodeValidation = "IGNORE" | "ENFORCE" | (string & {});
 export const AcceptCodeValidation = /*@__PURE__*/ S.String;
+
 export interface AcceptPageRequest {
   PageId: string;
   ContactChannelId?: string;
@@ -155,49 +237,35 @@ export const AcceptPageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptPageResult",
 }) as any as S.Schema<AcceptPageResult>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type ActivationCode = string;
 export interface ActivateContactChannelRequest {
   ContactChannelId: string;
   ActivationCode: string;
 }
-export const ActivateContactChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ContactChannelId: S.String, ActivationCode: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ActivateContactChannelRequest",
-  }) as any as S.Schema<ActivateContactChannelRequest>;
+export const ActivateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ContactChannelId: S.String, ActivationCode: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ActivateContactChannelRequest",
+}) as any as S.Schema<ActivateContactChannelRequest>;
 export interface ActivateContactChannelResult {}
-export const ActivateContactChannelResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ActivateContactChannelResult",
-  }) as any as S.Schema<ActivateContactChannelResult>;
+export const ActivateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ActivateContactChannelResult",
+}) as any as S.Schema<ActivateContactChannelResult>;
+export type ContactAlias = string;
+export type ContactName = string;
 export type ContactType =
   | "PERSONAL"
   | "ESCALATION"
   | "ONCALL_SCHEDULE"
   | (string & {});
 export const ContactType = /*@__PURE__*/ S.String;
+
+export type StageDurationInMins = number;
+export type RetryIntervalInMinutes = number;
 export interface ChannelTargetInfo {
   ContactChannelId: string;
   RetryIntervalInMinutes?: number;
@@ -210,6 +278,7 @@ export const ChannelTargetInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChannelTargetInfo",
 }) as any as S.Schema<ChannelTargetInfo>;
+export type IsEssential = boolean;
 export interface ContactTargetInfo {
   ContactId?: string;
   IsEssential: boolean;
@@ -252,6 +321,8 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
     RotationIds: S.optional(SsmContactsArnList),
   }),
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -261,6 +332,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagsList = Tag[];
 export const TagsList = /*@__PURE__*/ S.Array(Tag);
+export type IdempotencyToken = string;
 export interface CreateContactRequest {
   Alias: string;
   DisplayName?: string;
@@ -291,22 +363,11 @@ export const CreateContactResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContactResult",
 }) as any as S.Schema<CreateContactResult>;
-export interface DependentEntity {
-  RelationType: string;
-  DependentResourceIds: string[];
-}
-export const DependentEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    RelationType: S.String,
-    DependentResourceIds: SsmContactsArnList,
-  }),
-).annotate({
-  identifier: "DependentEntity",
-}) as any as S.Schema<DependentEntity>;
-export type DependentEntityList = DependentEntity[];
-export const DependentEntityList = /*@__PURE__*/ S.Array(DependentEntity);
+export type ChannelName = string;
 export type ChannelType = "SMS" | "VOICE" | "EMAIL" | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
+
+export type SimpleAddress = string;
 export interface ContactChannelAddress {
   SimpleAddress?: string;
 }
@@ -315,6 +376,7 @@ export const ContactChannelAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContactChannelAddress",
 }) as any as S.Schema<ContactChannelAddress>;
+export type DeferActivation = boolean;
 export interface CreateContactChannelRequest {
   ContactId: string;
   Name: string;
@@ -323,21 +385,20 @@ export interface CreateContactChannelRequest {
   DeferActivation?: boolean;
   IdempotencyToken?: string;
 }
-export const CreateContactChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContactId: S.String,
-      Name: S.String,
-      Type: ChannelType,
-      DeliveryAddress: ContactChannelAddress,
-      DeferActivation: S.optional(S.Boolean),
-      IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateContactChannelRequest",
-  }) as any as S.Schema<CreateContactChannelRequest>;
+export const CreateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContactId: S.String,
+    Name: S.String,
+    Type: ChannelType,
+    DeliveryAddress: ContactChannelAddress,
+    DeferActivation: S.optional(S.Boolean),
+    IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateContactChannelRequest",
+}) as any as S.Schema<CreateContactChannelRequest>;
 export interface CreateContactChannelResult {
   ContactChannelArn: string;
 }
@@ -346,8 +407,13 @@ export const CreateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContactChannelResult",
 }) as any as S.Schema<CreateContactChannelResult>;
+export type RotationName = string;
 export type RotationContactsArnList = string[];
 export const RotationContactsArnList = /*@__PURE__*/ S.Array(S.String);
+export type TimeZoneId = string;
+export type DayOfMonth = number;
+export type HourOfDay = number;
+export type MinuteOfHour = number;
 export interface HandOffTime {
   HourOfDay: number;
   MinuteOfHour: number;
@@ -374,6 +440,7 @@ export type DayOfWeek =
   | "SUN"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export interface WeeklySetting {
   DayOfWeek: DayOfWeek;
   HandOffTime: HandOffTime;
@@ -385,6 +452,7 @@ export type WeeklySettings = WeeklySetting[];
 export const WeeklySettings = /*@__PURE__*/ S.Array(WeeklySetting);
 export type DailySettings = HandOffTime[];
 export const DailySettings = /*@__PURE__*/ S.Array(HandOffTime);
+export type NumberOfOnCalls = number;
 export interface CoverageTime {
   Start?: HandOffTime;
   End?: HandOffTime;
@@ -399,6 +467,7 @@ export const ShiftCoveragesMap = /*@__PURE__*/ S.Record(
   DayOfWeek,
   CoverageTimes.pipe(S.optional),
 );
+export type RecurrenceMultiplier = number;
 export interface RecurrenceSettings {
   MonthlySettings?: MonthlySetting[];
   WeeklySettings?: WeeklySetting[];
@@ -460,45 +529,44 @@ export interface CreateRotationOverrideRequest {
   EndTime: Date;
   IdempotencyToken?: string;
 }
-export const CreateRotationOverrideRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RotationId: S.String,
-      NewContactIds: RotationOverrideContactsArnList,
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      IdempotencyToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateRotationOverrideRequest",
-  }) as any as S.Schema<CreateRotationOverrideRequest>;
+export const CreateRotationOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RotationId: S.String,
+    NewContactIds: RotationOverrideContactsArnList,
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    IdempotencyToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateRotationOverrideRequest",
+}) as any as S.Schema<CreateRotationOverrideRequest>;
+export type Uuid = string;
 export interface CreateRotationOverrideResult {
   RotationOverrideId: string;
 }
-export const CreateRotationOverrideResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RotationOverrideId: S.String }),
-  ).annotate({
-    identifier: "CreateRotationOverrideResult",
-  }) as any as S.Schema<CreateRotationOverrideResult>;
+export const CreateRotationOverrideResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RotationOverrideId: S.String }),
+).annotate({
+  identifier: "CreateRotationOverrideResult",
+}) as any as S.Schema<CreateRotationOverrideResult>;
 export interface DeactivateContactChannelRequest {
   ContactChannelId: string;
 }
-export const DeactivateContactChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ContactChannelId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeactivateContactChannelRequest",
-  }) as any as S.Schema<DeactivateContactChannelRequest>;
+export const DeactivateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ContactChannelId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeactivateContactChannelRequest",
+}) as any as S.Schema<DeactivateContactChannelRequest>;
 export interface DeactivateContactChannelResult {}
-export const DeactivateContactChannelResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeactivateContactChannelResult",
-  }) as any as S.Schema<DeactivateContactChannelResult>;
+export const DeactivateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeactivateContactChannelResult",
+}) as any as S.Schema<DeactivateContactChannelResult>;
 export interface DeleteContactRequest {
   ContactId: string;
 }
@@ -518,14 +586,13 @@ export const DeleteContactResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteContactChannelRequest {
   ContactChannelId: string;
 }
-export const DeleteContactChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ContactChannelId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteContactChannelRequest",
-  }) as any as S.Schema<DeleteContactChannelRequest>;
+export const DeleteContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ContactChannelId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteContactChannelRequest",
+}) as any as S.Schema<DeleteContactChannelRequest>;
 export interface DeleteContactChannelResult {}
 export const DeleteContactChannelResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -552,19 +619,19 @@ export interface DeleteRotationOverrideRequest {
   RotationId: string;
   RotationOverrideId: string;
 }
-export const DeleteRotationOverrideRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RotationId: S.String, RotationOverrideId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteRotationOverrideRequest",
-  }) as any as S.Schema<DeleteRotationOverrideRequest>;
+export const DeleteRotationOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RotationId: S.String, RotationOverrideId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteRotationOverrideRequest",
+}) as any as S.Schema<DeleteRotationOverrideRequest>;
 export interface DeleteRotationOverrideResult {}
-export const DeleteRotationOverrideResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteRotationOverrideResult",
-  }) as any as S.Schema<DeleteRotationOverrideResult>;
+export const DeleteRotationOverrideResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRotationOverrideResult",
+}) as any as S.Schema<DeleteRotationOverrideResult>;
 export interface DescribeEngagementRequest {
   EngagementId: string;
 }
@@ -575,6 +642,12 @@ export const DescribeEngagementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEngagementRequest",
 }) as any as S.Schema<DescribeEngagementRequest>;
+export type Sender = string;
+export type Subject = string;
+export type Content = string;
+export type PublicSubject = string;
+export type PublicContent = string;
+export type IncidentId = string;
 export interface DescribeEngagementResult {
   ContactArn: string;
   EngagementArn: string;
@@ -685,6 +758,7 @@ export const GetContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContactChannelRequest>;
 export type ActivationStatus = "ACTIVATED" | "NOT_ACTIVATED" | (string & {});
 export const ActivationStatus = /*@__PURE__*/ S.String;
+
 export interface GetContactChannelResult {
   ContactArn: string;
   ContactChannelArn: string;
@@ -715,15 +789,13 @@ export const GetContactPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContactPolicyRequest",
 }) as any as S.Schema<GetContactPolicyRequest>;
+export type Policy = string;
 export interface GetContactPolicyResult {
   ContactArn?: string;
   Policy?: string;
 }
 export const GetContactPolicyResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ContactArn: S.optional(S.String),
-    Policy: S.optional(S.String),
-  }),
+  S.Struct({ ContactArn: S.optional(S.String), Policy: S.optional(S.String) }),
 ).annotate({
   identifier: "GetContactPolicyResult",
 }) as any as S.Schema<GetContactPolicyResult>;
@@ -788,6 +860,8 @@ export const GetRotationOverrideResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRotationOverrideResult",
 }) as any as S.Schema<GetRotationOverrideResult>;
+export type PaginationToken = string;
+export type MaxResults = number;
 export interface ListContactChannelsRequest {
   ContactId: string;
   NextToken?: string;
@@ -963,6 +1037,7 @@ export type ReceiptType =
   | "STOP"
   | (string & {});
 export const ReceiptType = /*@__PURE__*/ S.String;
+
 export interface Receipt {
   ContactChannelArn?: string;
   ReceiptType: ReceiptType;
@@ -1002,6 +1077,7 @@ export const ListPageResolutionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPageResolutionsRequest",
 }) as any as S.Schema<ListPageResolutionsRequest>;
+export type StageIndex = number;
 export interface ResolutionContact {
   ContactArn: string;
   Type: ContactType;
@@ -1084,33 +1160,33 @@ export interface ListPagesByEngagementRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPagesByEngagementRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EngagementId: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListPagesByEngagementRequest",
-  }) as any as S.Schema<ListPagesByEngagementRequest>;
+export const ListPagesByEngagementRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EngagementId: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListPagesByEngagementRequest",
+}) as any as S.Schema<ListPagesByEngagementRequest>;
 export interface ListPagesByEngagementResult {
   NextToken?: string;
   Pages: Page[];
 }
-export const ListPagesByEngagementResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ NextToken: S.optional(S.String), Pages: PagesList }),
-  ).annotate({
-    identifier: "ListPagesByEngagementResult",
-  }) as any as S.Schema<ListPagesByEngagementResult>;
+export const ListPagesByEngagementResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NextToken: S.optional(S.String), Pages: PagesList }),
+).annotate({
+  identifier: "ListPagesByEngagementResult",
+}) as any as S.Schema<ListPagesByEngagementResult>;
+export type Member = string;
 export type RotationPreviewMemberList = string[];
 export const RotationPreviewMemberList = /*@__PURE__*/ S.Array(S.String);
 export type RotationOverridePreviewMemberList = string[];
-export const RotationOverridePreviewMemberList =
-  /*@__PURE__*/ S.Array(S.String);
+export const RotationOverridePreviewMemberList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface PreviewOverride {
   NewMembers?: string[];
   StartTime?: Date;
@@ -1138,28 +1214,28 @@ export interface ListPreviewRotationShiftsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPreviewRotationShiftsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RotationStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      Members: RotationPreviewMemberList,
-      TimeZoneId: S.String,
-      Recurrence: RecurrenceSettings,
-      Overrides: S.optional(OverrideList),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const ListPreviewRotationShiftsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RotationStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
-  ).annotate({
-    identifier: "ListPreviewRotationShiftsRequest",
-  }) as any as S.Schema<ListPreviewRotationShiftsRequest>;
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    Members: RotationPreviewMemberList,
+    TimeZoneId: S.String,
+    Recurrence: RecurrenceSettings,
+    Overrides: S.optional(OverrideList),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListPreviewRotationShiftsRequest",
+}) as any as S.Schema<ListPreviewRotationShiftsRequest>;
 export type ShiftType = "REGULAR" | "OVERRIDDEN" | (string & {});
 export const ShiftType = /*@__PURE__*/ S.String;
+
 export interface ShiftDetails {
   OverriddenContactIds: string[];
 }
@@ -1188,15 +1264,14 @@ export interface ListPreviewRotationShiftsResult {
   RotationShifts?: RotationShift[];
   NextToken?: string;
 }
-export const ListPreviewRotationShiftsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RotationShifts: S.optional(RotationShifts),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPreviewRotationShiftsResult",
-  }) as any as S.Schema<ListPreviewRotationShiftsResult>;
+export const ListPreviewRotationShiftsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RotationShifts: S.optional(RotationShifts),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPreviewRotationShiftsResult",
+}) as any as S.Schema<ListPreviewRotationShiftsResult>;
 export interface ListRotationOverridesRequest {
   RotationId: string;
   StartTime: Date;
@@ -1204,20 +1279,19 @@ export interface ListRotationOverridesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListRotationOverridesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RotationId: S.String,
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListRotationOverridesRequest",
-  }) as any as S.Schema<ListRotationOverridesRequest>;
+export const ListRotationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RotationId: S.String,
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListRotationOverridesRequest",
+}) as any as S.Schema<ListRotationOverridesRequest>;
 export interface RotationOverride {
   RotationOverrideId: string;
   NewContactIds: string[];
@@ -1242,15 +1316,14 @@ export interface ListRotationOverridesResult {
   RotationOverrides?: RotationOverride[];
   NextToken?: string;
 }
-export const ListRotationOverridesResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RotationOverrides: S.optional(RotationOverrides),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListRotationOverridesResult",
-  }) as any as S.Schema<ListRotationOverridesResult>;
+export const ListRotationOverridesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RotationOverrides: S.optional(RotationOverrides),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRotationOverridesResult",
+}) as any as S.Schema<ListRotationOverridesResult>;
 export interface ListRotationsRequest {
   RotationNamePrefix?: string;
   NextToken?: string;
@@ -1328,6 +1401,7 @@ export const ListRotationShiftsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRotationShiftsResult",
 }) as any as S.Schema<ListRotationShiftsResult>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -1413,6 +1487,7 @@ export const StartEngagementResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartEngagementResult",
 }) as any as S.Schema<StartEngagementResult>;
+export type StopReason = string;
 export interface StopEngagementRequest {
   EngagementId: string;
   Reason?: string;
@@ -1493,18 +1568,17 @@ export interface UpdateContactChannelRequest {
   Name?: string;
   DeliveryAddress?: ContactChannelAddress;
 }
-export const UpdateContactChannelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContactChannelId: S.String,
-      Name: S.optional(S.String),
-      DeliveryAddress: S.optional(ContactChannelAddress),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "UpdateContactChannelRequest",
-  }) as any as S.Schema<UpdateContactChannelRequest>;
+export const UpdateContactChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContactChannelId: S.String,
+    Name: S.optional(S.String),
+    DeliveryAddress: S.optional(ContactChannelAddress),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateContactChannelRequest",
+}) as any as S.Schema<UpdateContactChannelRequest>;
 export interface UpdateContactChannelResult {}
 export const UpdateContactChannelResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -1537,97 +1611,42 @@ export const UpdateRotationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRotationResult",
 }) as any as S.Schema<UpdateRotationResult>;
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class IncidentManagerNotOnboarded extends S.TaggedErrorClass<IncidentManagerNotOnboarded>()(
-  "IncidentManagerNotOnboarded",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Account not found for the request" },
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export interface DependentEntity {
+  RelationType: string;
+  DependentResourceIds: string[];
+}
+export const DependentEntity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RelationType: S.String,
+    DependentResourceIds: SsmContactsArnList,
   }),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    DependentEntities: S.optional(DependentEntityList),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class DataEncryptionException extends S.TaggedErrorClass<DataEncryptionException>()(
-  "DataEncryptionException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.String,
-    ServiceCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class InvalidRotationArn extends S.TaggedErrorClass<InvalidRotationArn>()(
-  "InvalidRotationArn",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Invalid resource Arn" },
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+).annotate({
+  identifier: "DependentEntity",
+}) as any as S.Schema<DependentEntity>;
+export type DependentEntityList = DependentEntity[];
+export const DependentEntityList = /*@__PURE__*/ S.Array(DependentEntity);
 export type AcceptPageError =
   | AccessDeniedException
   | InternalServerException
@@ -1655,8 +1674,11 @@ export const acceptPage: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPage",
 }));
+
 export type ActivateContactChannelError =
   | AccessDeniedException
   | InternalServerException
@@ -1685,8 +1707,11 @@ export const activateContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateContactChannel",
 }));
+
 export type CreateContactError =
   | AccessDeniedException
   | ConflictException
@@ -1720,8 +1745,11 @@ export const createContact: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContact",
 }));
+
 export type CreateContactChannelError =
   | AccessDeniedException
   | ConflictException
@@ -1751,8 +1779,11 @@ export const createContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactChannel",
 }));
+
 export type CreateRotationError =
   | AccessDeniedException
   | InternalServerException
@@ -1784,8 +1815,11 @@ export const createRotation: API.OperationMethod<
     ConflictException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRotation",
 }));
+
 export type CreateRotationOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -1817,8 +1851,11 @@ export const createRotationOverride: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRotationOverride",
 }));
+
 export type DeactivateContactChannelError =
   | AccessDeniedException
   | InternalServerException
@@ -1847,8 +1884,11 @@ export const deactivateContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateContactChannel",
 }));
+
 export type DeleteContactError =
   | AccessDeniedException
   | ConflictException
@@ -1882,8 +1922,11 @@ export const deleteContact: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContact",
 }));
+
 export type DeleteContactChannelError =
   | AccessDeniedException
   | InternalServerException
@@ -1915,8 +1958,11 @@ export const deleteContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactChannel",
 }));
+
 export type DeleteRotationError =
   | AccessDeniedException
   | ConflictException
@@ -1949,8 +1995,11 @@ export const deleteRotation: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRotation",
 }));
+
 export type DeleteRotationOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -1980,8 +2029,11 @@ export const deleteRotationOverride: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRotationOverride",
 }));
+
 export type DescribeEngagementError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2012,8 +2064,11 @@ export const describeEngagement: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngagement",
 }));
+
 export type DescribePageError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2043,8 +2098,11 @@ export const describePage: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePage",
 }));
+
 export type GetContactError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2074,8 +2132,11 @@ export const getContact: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContact",
 }));
+
 export type GetContactChannelError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2105,8 +2166,11 @@ export const getContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactChannel",
 }));
+
 export type GetContactPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -2135,8 +2199,11 @@ export const getContactPolicy: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactPolicy",
 }));
+
 export type GetRotationError =
   | AccessDeniedException
   | InternalServerException
@@ -2166,8 +2233,11 @@ export const getRotation: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRotation",
 }));
+
 export type GetRotationOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -2197,8 +2267,11 @@ export const getRotationOverride: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRotationOverride",
 }));
+
 export type ListContactChannelsError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2243,6 +2316,8 @@ export const listContactChannels: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactChannels",
   pagination: {
     inputToken: "NextToken",
@@ -2251,6 +2326,7 @@ export const listContactChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListContactsError =
   | AccessDeniedException
   | InternalServerException
@@ -2291,6 +2367,8 @@ export const listContacts: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContacts",
   pagination: {
     inputToken: "NextToken",
@@ -2299,6 +2377,7 @@ export const listContacts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEngagementsError =
   | AccessDeniedException
   | InternalServerException
@@ -2339,6 +2418,8 @@ export const listEngagements: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagements",
   pagination: {
     inputToken: "NextToken",
@@ -2347,6 +2428,7 @@ export const listEngagements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPageReceiptsError =
   | AccessDeniedException
   | InternalServerException
@@ -2389,6 +2471,8 @@ export const listPageReceipts: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPageReceipts",
   pagination: {
     inputToken: "NextToken",
@@ -2397,6 +2481,7 @@ export const listPageReceipts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPageResolutionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2443,6 +2528,8 @@ export const listPageResolutions: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPageResolutions",
   pagination: {
     inputToken: "NextToken",
@@ -2450,6 +2537,7 @@ export const listPageResolutions: API.OperationMethod<
     items: "PageResolutions",
   } as const,
 }));
+
 export type ListPagesByContactError =
   | AccessDeniedException
   | InternalServerException
@@ -2492,6 +2580,8 @@ export const listPagesByContact: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPagesByContact",
   pagination: {
     inputToken: "NextToken",
@@ -2500,6 +2590,7 @@ export const listPagesByContact: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPagesByEngagementError =
   | AccessDeniedException
   | InternalServerException
@@ -2542,6 +2633,8 @@ export const listPagesByEngagement: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPagesByEngagement",
   pagination: {
     inputToken: "NextToken",
@@ -2550,6 +2643,7 @@ export const listPagesByEngagement: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPreviewRotationShiftsError =
   | AccessDeniedException
   | InternalServerException
@@ -2592,6 +2686,8 @@ export const listPreviewRotationShifts: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPreviewRotationShifts",
   pagination: {
     inputToken: "NextToken",
@@ -2600,6 +2696,7 @@ export const listPreviewRotationShifts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRotationOverridesError =
   | AccessDeniedException
   | InternalServerException
@@ -2644,6 +2741,8 @@ export const listRotationOverrides: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotationOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -2652,6 +2751,7 @@ export const listRotationOverrides: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRotationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2694,6 +2794,8 @@ export const listRotations: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotations",
   pagination: {
     inputToken: "NextToken",
@@ -2702,6 +2804,7 @@ export const listRotations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRotationShiftsError =
   | AccessDeniedException
   | ConflictException
@@ -2748,6 +2851,8 @@ export const listRotationShifts: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotationShifts",
   pagination: {
     inputToken: "NextToken",
@@ -2756,6 +2861,7 @@ export const listRotationShifts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2783,8 +2889,11 @@ export const listTagsForResource: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutContactPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -2816,8 +2925,11 @@ export const putContactPolicy: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContactPolicy",
 }));
+
 export type SendActivationCodeError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2851,8 +2963,11 @@ export const sendActivationCode: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendActivationCode",
 }));
+
 export type StartEngagementError =
   | AccessDeniedException
   | DataEncryptionException
@@ -2883,8 +2998,11 @@ export const startEngagement: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEngagement",
 }));
+
 export type StopEngagementError =
   | AccessDeniedException
   | InternalServerException
@@ -2913,8 +3031,11 @@ export const stopEngagement: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEngagement",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2945,8 +3066,11 @@ export const tagResource: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2974,8 +3098,11 @@ export const untagResource: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateContactError =
   | AccessDeniedException
   | DataEncryptionException
@@ -3007,8 +3134,11 @@ export const updateContact: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContact",
 }));
+
 export type UpdateContactChannelError =
   | AccessDeniedException
   | ConflictException
@@ -3040,8 +3170,11 @@ export const updateContactChannel: API.OperationMethod<
     ValidationException,
     IncidentManagerNotOnboarded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactChannel",
 }));
+
 export type UpdateRotationError =
   | AccessDeniedException
   | ConflictException
@@ -3073,5 +3206,7 @@ export const updateRotation: API.OperationMethod<
     IncidentManagerNotOnboarded,
     InvalidRotationArn,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRotation",
 }));

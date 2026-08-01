@@ -13,9 +13,7 @@
     }
   },
   "errorCategories": {
-    "SigningProfileAlreadyExists": [
-      "AlreadyExistsError"
-    ]
+    "SigningProfileAlreadyExists": ["AlreadyExistsError"]
   },
   "structures": {
     "SigningMaterial": {

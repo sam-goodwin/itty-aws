@@ -1,8 +1,12 @@
 /**
- * Mongodb-atlas-specific error types.
+ * MongoDB Atlas-specific error types.
  *
- * Re-exports common HTTP errors from sdk-core and adds Mongodb-atlas-specific
- * error matching and API error types.
+ * Re-exports the common HTTP errors from core and adds the Atlas-specific
+ * classes (ported from distilled v0). Note the generated service module
+ * additionally defines its own per-status matcher classes
+ * (BadRequest/PaymentRequired/…) for the statuses each operation declares —
+ * those share `_tag`s with the classes here, so `catchTag` works against
+ * either.
  */
 export {
   BadGateway,
@@ -27,13 +31,17 @@ export type { DefaultErrors } from "@distilled.cloud/core/errors";
 import * as Schema from "effect/Schema";
 import * as Category from "@distilled.cloud/core/category";
 
-// Payment Required - billing/quota limit (402)
+/** Payment Required — billing/quota limit (402). */
 export class PaymentRequired extends Schema.TaggedErrorClass<PaymentRequired>()(
   "PaymentRequired",
   { message: Schema.String },
 ).pipe(Category.withBadRequestError) {}
 
-// Unknown Mongodb-atlas error - returned when an error code is not recognized
+/**
+ * Unknown MongoDB Atlas error — returned when nothing else matches the
+ * failure. Carries the Atlas error envelope fields
+ * (`{ error, errorCode, reason?, detail? }`) for later cataloging.
+ */
 export class UnknownMongodbAtlasError extends Schema.TaggedErrorClass<UnknownMongodbAtlasError>()(
   "UnknownMongodbAtlasError",
   {
@@ -44,7 +52,7 @@ export class UnknownMongodbAtlasError extends Schema.TaggedErrorClass<UnknownMon
   },
 ).pipe(Category.withServerError) {}
 
-// Schema parse error wrapper
+/** Schema parse error wrapper (kept for v0 surface parity). */
 export class MongodbAtlasParseError extends Schema.TaggedErrorClass<MongodbAtlasParseError>()(
   "MongodbAtlasParseError",
   {

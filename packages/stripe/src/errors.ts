@@ -1,8 +1,9 @@
 /**
  * Stripe-specific error types.
  *
- * Re-exports common HTTP errors from sdk-core and adds Stripe-specific
- * error matching and API error types.
+ * Re-exports common HTTP errors from core and adds Stripe-specific error
+ * matching and API error types. Ported from distilled v0's stripe errors
+ * module.
  */
 export {
   BadGateway,
