@@ -205522,7 +205522,9 @@ export const listIdentityProviderScimUsers: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListIdentityProvidersForAccountError = CloudflareOpError;
+export type ListIdentityProvidersForAccountError =
+  | Forbidden
+  | CloudflareOpError;
 /** Lists all configured identity providers. */
 export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
   ListIdentityProvidersForAccountRequest,
@@ -205533,7 +205535,7 @@ export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
   () => ({
     input: ListIdentityProvidersForAccountRequest,
     output: ListIdentityProvidersResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -205547,7 +205549,7 @@ export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type ListIdentityProvidersForZoneError = CloudflareOpError;
+export type ListIdentityProvidersForZoneError = Forbidden | CloudflareOpError;
 /** Lists all configured identity providers. */
 export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
   ListIdentityProvidersForZoneRequest,
@@ -205558,7 +205560,7 @@ export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
   () => ({
     input: ListIdentityProvidersForZoneRequest,
     output: ListIdentityProvidersResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
