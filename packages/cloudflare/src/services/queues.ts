@@ -15,7 +15,7 @@ import * as Retry from "../retry.ts";
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */
-const KEY_DICTIONARY: Record<string, string> = {
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   backlogBytes: "backlog_bytes",
   backlogCount: "backlog_count",
   batchSize: "batch_size",
@@ -47,7 +47,7 @@ const KEY_DICTIONARY: Record<string, string> = {
   queueName: "queue_name",
   resultInfo: "result_info",
   retryDelay: "retry_delay",
-  scriptName: "script_name",
+  scriptName: ["script_name", "script"],
   startedAt: "started_at",
   timestampMs: "timestamp_ms",
   totalCount: "total_count",
@@ -1878,10 +1878,10 @@ export interface ConsumersGetResultWorker {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
+  /** Name of a Worker */
+  scriptName?: string | null;
   settings?: ConsumersGetResultWorkerSettings | null;
   type?: ConsumersGetResultWorkerType | null;
-  /** Name of a Worker */
-  script?: string | null;
 }
 export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1891,9 +1891,9 @@ export const ConsumersGetResultWorker = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script"))),
     settings: S.optional(S.NullOr(ConsumersGetResultWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersGetResultWorkerType)),
-    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersGetResultWorker",
@@ -1960,9 +1960,9 @@ export const ConsumersGetResult = /*@__PURE__*/ S.Unknown.pipe(
       "createdOn",
       "deadLetterQueue",
       "queueName",
+      "scriptName",
       "settings",
       "type",
-      "script",
     ],
     [
       "consumerId",
@@ -2637,10 +2637,10 @@ export interface ConsumersListResultItemWorker {
   /** Name of the dead letter queue, or empty string if not configured */
   deadLetterQueue?: string | null;
   queueName?: string | null;
+  /** Name of a Worker */
+  scriptName?: string | null;
   settings?: ConsumersListResultItemWorkerSettings | null;
   type?: ConsumersListResultItemWorkerType | null;
-  /** Name of a Worker */
-  script?: string | null;
 }
 export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2650,9 +2650,9 @@ export const ConsumersListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(S.String).pipe(T.Body("dead_letter_queue")),
     ),
     queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
+    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script"))),
     settings: S.optional(S.NullOr(ConsumersListResultItemWorkerSettings)),
     type: S.optional(S.NullOr(ConsumersListResultItemWorkerType)),
-    script: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
   identifier: "ConsumersListResultItemWorker",
@@ -2720,9 +2720,9 @@ export const ConsumersListResultItem = /*@__PURE__*/ S.Unknown.pipe(
       "createdOn",
       "deadLetterQueue",
       "queueName",
+      "scriptName",
       "settings",
       "type",
-      "script",
     ],
     [
       "consumerId",

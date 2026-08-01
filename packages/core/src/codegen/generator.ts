@@ -238,10 +238,11 @@ export interface SdkSpec {
   /**
    * Service-wide fallback key dictionary stamped on op I/O roots (emitted
    * as a `KEY_DICTIONARY` header const + `T.KeyDictionary(KEY_DICTIONARY)`
-   * root pipe). `doc` is the const's doc comment.
+   * root pipe). `doc` is the const's doc comment. An entry may list several
+   * wire spellings (first = canonical encode name; decode accepts all).
    */
   readonly rootKeyDictionary?: {
-    readonly dict: Record<string, string>;
+    readonly dict: Record<string, string | ReadonlyArray<string>>;
     readonly doc: string;
   };
 
@@ -1003,7 +1004,7 @@ export const generateService = (
       `export type { ${decl.commonErrorType}, ${decl.contextType} };\n\n` +
       (spec.rootKeyDictionary
         ? `/** ${spec.rootKeyDictionary.doc} */\n` +
-          `const KEY_DICTIONARY: Record<string, string> = ${JSON.stringify(spec.rootKeyDictionary.dict)};\n\n`
+          `const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = ${JSON.stringify(spec.rootKeyDictionary.dict)};\n\n`
         : "")
     );
   };

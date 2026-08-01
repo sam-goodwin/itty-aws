@@ -158,8 +158,19 @@ export const keyDictionarySymbol = Symbol.for(
  * not modeled (opaque `Document` content). The protocol renames any matching
  * key at any depth on encode (and the reverse on decode); keys not in the
  * dictionary pass through verbatim.
+ *
+ * A value may be an array of wire names when the API itself is inconsistent
+ * (e.g. queues consumer responses name the worker script `script_name` on
+ * create/update but `script` on get/list): the first entry is the canonical
+ * wire name used on encode; decode maps every listed spelling back to the
+ * TS name.
  */
-export const KeyDictionary = (dict: Record<string, string>) =>
+export type KeyDictionaryEntries = Record<
+  string,
+  string | ReadonlyArray<string>
+>;
+
+export const KeyDictionary = (dict: KeyDictionaryEntries) =>
   makeAnnotation(keyDictionarySymbol, dict);
 
 export const unionCasesSymbol = Symbol.for("@distilled.cloud/core/union-cases");

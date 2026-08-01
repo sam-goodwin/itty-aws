@@ -28,7 +28,7 @@ const DEEP_QUERY_TRAIT = "com.cloudflare.protocols#deepQuery";
 
 /** Cloudflare's provider spec for the shared smithy→SDK compiler. */
 const makeCfSpec = (
-  keyDictionary?: Record<string, string>,
+  keyDictionary?: Record<string, string | ReadonlyArray<string>>,
   opAliases?: Array<{ alias: string; target: string }>,
 ): SdkSpec => ({
   // Docs wire names are snake_case; the TS surface is camelCase.

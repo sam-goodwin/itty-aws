@@ -25,6 +25,7 @@ import {
   unionCasesSymbol,
   type ErrorMatcher,
   type HttpTrait,
+  type KeyDictionaryEntries,
 } from "./trait.ts";
 
 //#region AST helpers (survive S.optional / Suspend / transforms)
@@ -98,9 +99,13 @@ export const isOpaqueValue = (v: unknown): boolean =>
   v instanceof Uint8Array ||
   v instanceof Date;
 
-/** Deep-rename keys via a plain dictionary (see `T.KeyDictionary`). */
+/**
+ * Deep-rename keys via a plain dictionary (see `T.KeyDictionary`). An entry
+ * may list several wire spellings; encode uses the first (canonical) one and
+ * decode maps every listed spelling back to the TS name.
+ */
 export const mapKeysByDictionary = (
-  dict: Record<string, string>,
+  dict: KeyDictionaryEntries,
   value: unknown,
   direction: "encode" | "decode",
 ): unknown => {
@@ -110,14 +115,25 @@ export const mapKeysByDictionary = (
   if (Array.isArray(value)) {
     return value.map((v) => mapKeysByDictionary(dict, v, direction));
   }
-  const reverse =
+  const rename: Record<string, string> =
     direction === "decode"
-      ? Object.fromEntries(Object.entries(dict).map(([k, v]) => [v, k]))
-      : dict;
+      ? Object.fromEntries(
+          Object.entries(dict).flatMap(([ts, wire]) =>
+            typeof wire === "string"
+              ? [[wire, ts] as const]
+              : wire.map((w) => [w, ts] as const),
+          ),
+        )
+      : Object.fromEntries(
+          Object.entries(dict).map(([ts, wire]) => [
+            ts,
+            typeof wire === "string" ? wire : wire[0]!,
+          ]),
+        );
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
     if (v === undefined) continue;
-    out[reverse[k] ?? k] = mapKeysByDictionary(dict, v, direction);
+    out[rename[k] ?? k] = mapKeysByDictionary(dict, v, direction);
   }
   return out;
 };
@@ -135,7 +151,7 @@ export const mapKeys = (
   ast: AST.AST,
   value: unknown,
   direction: "encode" | "decode",
-  fallback?: Record<string, string>,
+  fallback?: KeyDictionaryEntries,
 ): unknown => {
   if (
     value === null ||
@@ -146,7 +162,7 @@ export const mapKeys = (
     return value;
   }
   const dict =
-    (getAnn(ast, keyDictionarySymbol) as Record<string, string> | undefined) ??
+    (getAnn(ast, keyDictionarySymbol) as KeyDictionaryEntries | undefined) ??
     fallback;
 
   // Discriminated union whose cases the API returns merged (every case's
@@ -409,7 +425,7 @@ export const buildRequest = ({
   // Root key dictionary: fallback wire mapping for opaque/unknown content
   // the schema doesn't model.
   const rootDict = getAnn(inputAst, keyDictionarySymbol) as
-    | Record<string, string>
+    | KeyDictionaryEntries
     | undefined;
 
   const headers: Record<string, string> = { ...baseHeaders };
