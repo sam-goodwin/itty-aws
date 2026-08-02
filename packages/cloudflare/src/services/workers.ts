@@ -10128,6 +10128,13 @@ export const PutScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptMetadataCache",
 }) as any as S.Schema<PutScriptMetadataCache>;
 
+export type PutScriptMetadataStreamingTailConsumersList =
+  Array<PutScriptTailConsumer>;
+export const PutScriptMetadataStreamingTailConsumersList =
+  /*@__PURE__*/ S.Array(
+    PutScriptTailConsumer,
+  ) as any as S.Schema<PutScriptMetadataStreamingTailConsumersList>;
+
 export interface PutScriptMetadata {
   annotations?: PutScriptMetadataAnnotations;
   assets?: PutScriptMetadataAssets;
@@ -10148,6 +10155,7 @@ export interface PutScriptMetadata {
   tailConsumers?: PutScriptMetadataTailConsumersList | null;
   usageModel?: PutScriptMetadataUsageModel | (string & {});
   cacheOptions?: PutScriptMetadataCache;
+  streamingTailConsumers?: PutScriptMetadataStreamingTailConsumersList | null;
 }
 export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10181,6 +10189,11 @@ export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
     ),
     cacheOptions: S.optional(
       PutScriptMetadataCache.pipe(T.Body("cache_options")),
+    ),
+    streamingTailConsumers: S.optional(
+      S.NullOr(PutScriptMetadataStreamingTailConsumersList).pipe(
+        T.Body("streaming_tail_consumers"),
+      ),
     ),
   }),
 ).annotate({
