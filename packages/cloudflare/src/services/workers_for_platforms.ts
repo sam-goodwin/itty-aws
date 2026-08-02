@@ -7336,6 +7336,7 @@ export interface PutDispatchNamespaceScriptMetadata {
   logpush?: boolean;
   mainModule?: string;
   migrations?: unknown;
+  exports?: unknown;
   observability?: unknown;
   placement?: unknown;
   tags?: PutDispatchNamespaceScriptMetadataStringList;
@@ -8098,6 +8099,16 @@ export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
           workflowName: "workflow_name",
           zoneId: "zone_id",
           zoneName: "zone_name",
+        }),
+      ),
+    ),
+    exports: S.optional(
+      S.Unknown.pipe(
+        T.KeyDictionary({
+          cache: "cache",
+          renamedTo: "renamed_to",
+          transferredTo: "transferred_to",
+          transferFrom: "transfer_from",
         }),
       ),
     ),

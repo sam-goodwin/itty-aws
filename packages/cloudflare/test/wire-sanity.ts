@@ -20,6 +20,7 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import type * as HttpBody from "effect/unstable/http/HttpBody";
 import * as Cloudflare from "../src/index.ts";
+import { putDispatchNamespaceScript } from "../src/services/workers_for_platforms.ts";
 import { putScript } from "../src/services/workers.ts";
 import { listZones } from "../src/services/zones.ts";
 
@@ -280,6 +281,47 @@ await Effect.runPromise(
           "consumer-worker" &&
         worker.exportsReconciliation.removableEntries[0] === "DeletedCounter",
       "nested reconciliation wire names decode",
+    );
+
+    script = [() => envelope({ startup_time_ms: 0 })];
+    yield* provide(
+      putDispatchNamespaceScript({
+        accountId: "account",
+        dispatchNamespace: "namespace",
+        scriptName: "worker",
+        metadata: {
+          mainModule: "index.mjs",
+          exports: {
+            OldCounter: {
+              type: "durable-object",
+              state: "renamed",
+              renamedTo: "Counter",
+            },
+            Counter: { type: "durable-object", storage: "sqlite" },
+          },
+        },
+      }),
+    );
+    const dispatchUpload = captured.at(-1);
+    assert(
+      dispatchUpload?.body._tag === "FormData",
+      "dispatch script upload uses multipart form data",
+    );
+    const dispatchMetadata = dispatchUpload.body.formData.get("metadata");
+    assert(
+      dispatchMetadata ===
+        JSON.stringify({
+          main_module: "index.mjs",
+          exports: {
+            OldCounter: {
+              type: "durable-object",
+              state: "renamed",
+              renamed_to: "Counter",
+            },
+            Counter: { type: "durable-object", storage: "sqlite" },
+          },
+        }),
+      `dispatch exports preserve map keys and wire names (${dispatchMetadata})`,
     );
 
     console.log("\nAll wire-sanity checks passed.");
