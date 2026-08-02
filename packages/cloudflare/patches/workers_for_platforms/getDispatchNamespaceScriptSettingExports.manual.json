@@ -1,0 +1,63 @@
+{
+  "description": "Type live declarative exports returned by dispatch Worker settings, including Durable Object storage and pending transfer state",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportStorage",
+      "value": {
+        "type": "enum",
+        "members": {
+          "SQLITE": {
+            "target": "smithy.api#Unit",
+            "traits": { "smithy.api#enumValue": "sqlite" }
+          },
+          "LEGACY_KV": {
+            "target": "smithy.api#Unit",
+            "traits": { "smithy.api#enumValue": "legacy-kv" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportState",
+      "value": {
+        "type": "enum",
+        "members": {
+          "CREATED": {
+            "target": "smithy.api#Unit",
+            "traits": { "smithy.api#enumValue": "created" }
+          },
+          "EXPECTING_TRANSFER": {
+            "target": "smithy.api#Unit",
+            "traits": { "smithy.api#enumValue": "expecting-transfer" }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsValue/members/storage",
+      "value": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportStorage"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsValue/members/state",
+      "value": {
+        "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportState"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsValue/members/transfer_from",
+      "value": { "target": "smithy.api#String" }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsValue/members/container",
+      "value": { "target": "smithy.api#String" }
+    }
+  ]
+}

@@ -20,8 +20,14 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import type * as HttpBody from "effect/unstable/http/HttpBody";
 import * as Cloudflare from "../src/index.ts";
-import { putDispatchNamespaceScript } from "../src/services/workers_for_platforms.ts";
-import { putScript } from "../src/services/workers.ts";
+import {
+  getDispatchNamespaceScriptSetting,
+  putDispatchNamespaceScript,
+} from "../src/services/workers_for_platforms.ts";
+import {
+  getScriptScriptAndVersionSetting,
+  putScript,
+} from "../src/services/workers.ts";
 import { listZones } from "../src/services/zones.ts";
 
 // ---------------------------------------------------------------------------
@@ -322,6 +328,52 @@ await Effect.runPromise(
           },
         }),
       `dispatch exports preserve map keys and wire names (${dispatchMetadata})`,
+    );
+
+    // (e) — live export state decodes from both settings APIs --------------
+    console.log("(e) settings APIs decode live Durable Object export state");
+    const settingsResult = {
+      exports: {
+        Counter: {
+          type: "durable-object",
+          state: "expecting-transfer",
+          storage: "legacy-kv",
+          transfer_from: "source-worker",
+          container: "Counter",
+        },
+      },
+    };
+    script = [() => envelope(settingsResult)];
+    const settings = yield* provide(
+      getScriptScriptAndVersionSetting({
+        accountId: "account",
+        scriptName: "worker",
+      }),
+    );
+    const regularExport = settings.exports?.Counter;
+    assert(
+      regularExport?.state === "expecting-transfer" &&
+        regularExport.storage === "legacy-kv" &&
+        regularExport.transferFrom === "source-worker" &&
+        regularExport.container === "Counter",
+      "Worker settings preserve live export lifecycle fields",
+    );
+
+    script = [() => envelope(settingsResult)];
+    const dispatchSettings = yield* provide(
+      getDispatchNamespaceScriptSetting({
+        accountId: "account",
+        dispatchNamespace: "namespace",
+        scriptName: "worker",
+      }),
+    );
+    const dispatchExport = dispatchSettings.exports?.Counter;
+    assert(
+      dispatchExport?.state === "expecting-transfer" &&
+        dispatchExport.storage === "legacy-kv" &&
+        dispatchExport.transferFrom === "source-worker" &&
+        dispatchExport.container === "Counter",
+      "dispatch settings preserve live export lifecycle fields",
     );
 
     console.log("\nAll wire-sanity checks passed.");

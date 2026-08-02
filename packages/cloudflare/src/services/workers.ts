@@ -18425,11 +18425,27 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsValueCache =
     identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsValueCache",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueCache>;
 
+export type ScriptsScriptAndVersionSettingsGetResponseExportStorage =
+  | "sqlite"
+  | "legacy-kv";
+export const ScriptsScriptAndVersionSettingsGetResponseExportStorage =
+  /*@__PURE__*/ S.String;
+
+export type ScriptsScriptAndVersionSettingsGetResponseExportState =
+  | "created"
+  | "expecting-transfer";
+export const ScriptsScriptAndVersionSettingsGetResponseExportState =
+  /*@__PURE__*/ S.String;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsValue {
   /** The kind of export. */
   type: ScriptsScriptAndVersionSettingsGetResponseExportsValueType;
   /** Cache override for this entrypoint. It applies only to */
   cache?: ScriptsScriptAndVersionSettingsGetResponseExportsValueCache | null;
+  storage?: ScriptsScriptAndVersionSettingsGetResponseExportStorage | null;
+  state?: ScriptsScriptAndVersionSettingsGetResponseExportState | null;
+  transferFrom?: string | null;
+  container?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -18438,6 +18454,16 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsValue =
       cache: S.optional(
         S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportsValueCache),
       ),
+      storage: S.optional(
+        S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportStorage),
+      ),
+      state: S.optional(
+        S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportState),
+      ),
+      transferFrom: S.optional(
+        S.NullOr(S.String).pipe(T.Body("transfer_from")),
+      ),
+      container: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsValue",

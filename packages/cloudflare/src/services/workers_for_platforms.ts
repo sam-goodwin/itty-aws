@@ -4204,11 +4204,27 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsValueCache =
     identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsValueCache",
   }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueCache>;
 
+export type DispatchNamespacesScriptsSettingsGetResponseExportStorage =
+  | "sqlite"
+  | "legacy-kv";
+export const DispatchNamespacesScriptsSettingsGetResponseExportStorage =
+  /*@__PURE__*/ S.String;
+
+export type DispatchNamespacesScriptsSettingsGetResponseExportState =
+  | "created"
+  | "expecting-transfer";
+export const DispatchNamespacesScriptsSettingsGetResponseExportState =
+  /*@__PURE__*/ S.String;
+
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValue {
   /** The kind of export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueType;
   /** Cache override for this entrypoint. It applies only to */
   cache?: DispatchNamespacesScriptsSettingsGetResponseExportsValueCache | null;
+  storage?: DispatchNamespacesScriptsSettingsGetResponseExportStorage | null;
+  state?: DispatchNamespacesScriptsSettingsGetResponseExportState | null;
+  transferFrom?: string | null;
+  container?: string | null;
 }
 export const DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -4217,6 +4233,16 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsValue =
       cache: S.optional(
         S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsValueCache),
       ),
+      storage: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportStorage),
+      ),
+      state: S.optional(
+        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportState),
+      ),
+      transferFrom: S.optional(
+        S.NullOr(S.String).pipe(T.Body("transfer_from")),
+      ),
+      container: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsValue",
