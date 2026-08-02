@@ -9557,6 +9557,22 @@ export const PutScriptBindingArtifacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutScriptBindingArtifacts",
 }) as any as S.Schema<PutScriptBindingArtifacts>;
 
+export type PutScriptBindingStreamType = "stream";
+export const PutScriptBindingStreamType = /*@__PURE__*/ S.String;
+
+export interface PutScriptBindingStream {
+  name: string;
+  type: PutScriptBindingStreamType;
+}
+export const PutScriptBindingStream = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: PutScriptBindingStreamType,
+  }),
+).annotate({
+  identifier: "PutScriptBindingStream",
+}) as any as S.Schema<PutScriptBindingStream>;
+
 export type PutScriptBinding =
   | PutScriptBindingAi
   | PutScriptBindingAiSearch
@@ -9594,7 +9610,8 @@ export type PutScriptBinding =
   | PutScriptBindingVpcService
   | PutScriptBindingVpcNetwork
   | PutScriptBindingWorkerLoader
-  | PutScriptBindingArtifacts;
+  | PutScriptBindingArtifacts
+  | PutScriptBindingStream;
 export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["name", "type"],
@@ -9648,6 +9665,7 @@ export const PutScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
     ["name", "networkId", "tunnelId", "type"],
     ["name", "type"],
     ["name", "namespace", "type"],
+    ["name", "type"],
   ]),
 );
 

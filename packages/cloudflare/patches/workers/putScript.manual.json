@@ -2079,6 +2079,42 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.workers#PutScriptBindingStreamType",
+      "value": {
+        "type": "enum",
+        "members": {
+          "STREAM": {
+            "target": "smithy.api#Unit",
+            "traits": {
+              "smithy.api#enumValue": "stream"
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#PutScriptBindingStream",
+      "value": {
+        "type": "structure",
+        "members": {
+          "name": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "type": {
+            "target": "com.cloudflare.workers#PutScriptBindingStreamType",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.workers#PutScriptBinding",
       "value": {
         "type": "union",
@@ -2193,6 +2229,9 @@
           },
           "case36": {
             "target": "com.cloudflare.workers#PutScriptBindingArtifacts"
+          },
+          "case37": {
+            "target": "com.cloudflare.workers#PutScriptBindingStream"
           }
         }
       }
