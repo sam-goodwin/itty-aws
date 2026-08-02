@@ -2823,6 +2823,16 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.workers#PutScriptMetadataStreamingTailConsumersList",
+      "value": {
+        "type": "list",
+        "member": {
+          "target": "com.cloudflare.workers#PutScriptTailConsumer"
+        }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.workers#PutScriptContainer",
       "value": {
         "type": "structure",
@@ -2968,6 +2978,12 @@
           },
           "cache_options": {
             "target": "com.cloudflare.workers#PutScriptMetadataCache"
+          },
+          "streaming_tail_consumers": {
+            "target": "com.cloudflare.workers#PutScriptMetadataStreamingTailConsumersList",
+            "traits": {
+              "com.cloudflare.protocols#nullable": {}
+            }
           }
         }
       }
