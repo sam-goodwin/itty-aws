@@ -1,5 +1,10 @@
 {
   "errors": {
     "Forbidden": [{ "status": 403 }]
+  },
+  "request": {
+    "properties": {
+      "body": { "optional": true }
+    }
   }
 }
