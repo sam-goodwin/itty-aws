@@ -16,6 +16,9 @@
     "rewriteRelativeImportExtensions": true,
     "verbatimModuleSyntax": true,
     "strict": true,
+    // Skip type-checking these massive generated SDKs during `tsc -b`.
+    // Emit still runs (composite + declaration); consumers typecheck against .d.ts.
+    "noCheck": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": false,

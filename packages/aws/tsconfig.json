@@ -9,8 +9,6 @@
     "noEmit": false,
     "outDir": "./lib",
     "rootDir": "./src",
-    "resolveJsonModule": true,
-    "noCheck": true,
     "paths": {
       "@distilled.cloud/core/*": ["../core/src/*"]
     }
